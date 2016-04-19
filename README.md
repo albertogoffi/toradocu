@@ -10,17 +10,16 @@ Toradocu takes the source code of a class as input and produces a set of
 [aspects](https://eclipse.org/aspectj/).
 
 ## Building Toradocu
-To compile Toradocu run the command `./gradlew build -x test`.
+To compile Toradocu run the command: `./gradlew shadowJar`
 
-The command `./gradlew shadowJar` creates a jar package that includes 
-Toradocu as well as all the needed dependencies. This will create the file 
+This will create the file 
 `build/libs/toradocu-0.1-all.jar`.
 
 ## Running Toradocu
-Toradocu is a command line tool. To get the list of parameters (asterics
+Toradocu is a command-line tool. To get the list of parameters (asterisks
 indicate mandatory parameters) execute
 
-	  java -cp toradocu-0.1-all.jar org.toradocu.Toradocu --help
+	  java -cp ...toradocu/build/libs/toradocu-0.1-all.jar org.toradocu.Toradocu --help
 
 Internally Toradocu executes the `javadoc` tool. Every option starting with `-J`
 will be passed to the `javadoc` tool. For example, you have to specify the path
