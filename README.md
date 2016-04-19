@@ -15,11 +15,12 @@ To compile Toradocu run the command: `./gradlew shadowJar`
 This will create the file 
 `build/libs/toradocu-0.1-all.jar`.
 
-## Running Toradocu
-Toradocu is a command-line tool. To get the list of parameters (asterisks
-indicate mandatory parameters) execute
+Notice that building Toradocu requires a Java JDK 1.8+. 
 
-	  java -cp ...toradocu/build/libs/toradocu-0.1-all.jar org.toradocu.Toradocu --help
+## Running Toradocu
+Toradocu is a command-line tool. To get the list of parameters execute
+
+	  java -jar toradocu-0.1-all.jar --help
 
 Internally Toradocu executes the `javadoc` tool. Every option starting with `-J`
 will be passed to the `javadoc` tool. For example, you have to specify the path
@@ -28,7 +29,7 @@ to your sources with `-J-sourcepath=...`. You can customize the behavior of the
 
 A typical Toradocu invocation looks like this
 
-	java -cp toradocu-0.1-all.jar org.toradocu.Toradocu
+	java -jar toradocu-0.1-all.jar
    	--targetClass mypackage.MyClass
    	--outputDir output
    	--testClass mypackage.Test

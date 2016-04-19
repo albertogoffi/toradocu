@@ -1,5 +1,6 @@
 plugins {
 	id 'java'
+	id 'application'
 	id 'eclipse'
 	id 'com.github.johnrengelman.shadow' version '1.2.3'
 	id 'de.undercouch.download' version '2.1.0'
@@ -7,6 +8,7 @@ plugins {
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+mainClassName = "org.toradocu.Toradocu"
 version = '0.1'
 jar {
     manifest {
