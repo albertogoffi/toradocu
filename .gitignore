@@ -1,3 +1,22 @@
+# Toradocu's output folders
+/tmp/
+/aspects/
+
+# Toradocu's test resources (downloaded automatically on gradle test)
+/src/test/resources/*.zip
+/src/test/resources/*.jar
+/src/test/resources/*
+!/src/test/resources/Guava-19
+!/src/test/resources/CommonsCollections-4.1
+
+# Eclipse IDE
+/bin/
+/.settings/
+/.externalToolBuilders/
+.project
+.classpath
+
+# Gradle
 .gradle
 build/
 
@@ -9,3 +28,17 @@ gradle-app.setting
 
 # Cache of project
 .gradletasknamecache
+
+# Java
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*

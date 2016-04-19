@@ -1,0 +1,4 @@
+com.google.common.primitives.Floats.ensureCapacity(float[], int, int) throws java.lang.IllegalArgumentException if minLength or padding is negative ==> [args[1]<0||args[2]<0]
+com.google.common.primitives.Floats.max(float...) throws java.lang.IllegalArgumentException if array is empty ==> [args[0].length==0]
+com.google.common.primitives.Floats.min(float...) throws java.lang.IllegalArgumentException if array is empty ==> [args[0].length==0]
+com.google.common.primitives.Floats.toArray(java.util.Collection<? extends java.lang.Number>) throws java.lang.NullPointerException if collection or any of its elements is null ==> [args[0]==null||args[0].contains(null)]

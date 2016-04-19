@@ -1,0 +1,86 @@
+plugins {
+	id 'java'
+	id 'eclipse'
+	id 'com.github.johnrengelman.shadow' version '1.2.3'
+	id 'de.undercouch.download' version '2.1.0'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+version = '0.1'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Toradocu',
+                   'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile fileTree(dir: 'lib', include: '*.jar')
+	compile	'edu.stanford.nlp:stanford-corenlp:3.6.0'
+	compile	'edu.stanford.nlp:stanford-corenlp:3.6.0:models-english'
+	compile 'org.jsoup:jsoup:1.8.3' // We use JSoup only to remove html tags in comments
+	compile 'com.github.javaparser:javaparser-core:2.3.0'
+	compile 'org.jgrapht:jgrapht-core:0.9.1'
+	compile "com.beust:jcommander:1.48"
+	testCompile 'junit:junit:4.12'
+}
+
+task wrapper(type: Wrapper) {
+     gradleVersion = '2.12'
+}
+
+task copyDocletResources1(type: Copy) {
+	from 'src/main/java/org/toradocu/doclet/internal/toolkit/resources'
+	into 'build/classes/main/org/toradocu/doclet/internal/toolkit/resources'
+}
+
+task copyDocletResources2(type: Copy) {
+	from 'src/main/java/org/toradocu/doclet/formats/html/resources'
+	into 'build/classes/main/org/toradocu/doclet/formats/html/resources'
+}
+
+compileJava.doLast {
+	tasks.copyDocletResources1.execute()
+	tasks.copyDocletResources2.execute()
+}
+
+test {
+	testLogging {
+		events 'PASSED', 'SKIPPED', 'FAILED', 'STANDARD_OUT', 'STANDARD_ERROR'
+	}
+}
+
+import de.undercouch.gradle.tasks.download.Download
+
+task downloadGuavaSrc(type: Download) {
+	src 'https://repo1.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0-sources.jar'
+	dest 'src/test/resources/guava-19.0-sources.jar'
+}
+
+task downloadCommonsCollectionsSrc(type: Download) {
+	src 'http://mirror.switch.ch/mirror/apache/dist/commons/collections/source/commons-collections4-4.1-src.zip'
+	dest 'src/test/resources/commons-collections4-4.1-src.zip'
+}
+
+task extractGuavaSrc(type: Copy, dependsOn: downloadGuavaSrc) {
+	from zipTree('src/test/resources/guava-19.0-sources.jar')
+	into 'src/test/resources/guava-19.0-sources'
+}
+
+task extractCommonsCollectionsSrc(type: Copy, dependsOn: downloadCommonsCollectionsSrc) {
+	from zipTree('src/test/resources/commons-collections4-4.1-src.zip')
+	into 'src/test/resources/'
+}
+
+test.dependsOn extractGuavaSrc, extractCommonsCollectionsSrc
+
+task removeDefaultOutpuDir(type: Delete) {
+	delete 'tmp', 'aspects'
+}
+
+clean.dependsOn removeDefaultOutpuDir
