@@ -16,9 +16,10 @@ The command `./gradlew shadowJar` creates a jar package that includes
 Toradocu as well as all the needed dependencies. This will create the file 
 `build/libs/toradocu-0.1-all.jar`.
 
+Notice that building Toradocu requires a Java JDK 1.8+. 
+
 ## Running Toradocu
-Toradocu is a command line tool. To get the list of parameters (asterics
-indicate mandatory parameters) execute
+Toradocu is a command line tool. To get the list of parameters execute
 
 	  java -cp toradocu-0.1-all.jar org.toradocu.Toradocu --help
 
