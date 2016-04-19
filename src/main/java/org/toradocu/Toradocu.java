@@ -27,7 +27,7 @@ import com.sun.tools.javadoc.Main;
 public class Toradocu {
 	private static final Logger LOG = Logger.getLogger(Toradocu.class.getName());
 	private static final String DOCLET = "org.toradocu.doclet.standard.Standard";
-	private static final String PROGRAM_NAME = "Toradocu";
+	private static final String PROGRAM_NAME = "java -jar toradocu.jar";
 	private static final Configuration CONF = Configuration.getInstance();
 	
 	public static void main(String[] args) {
@@ -36,6 +36,7 @@ public class Toradocu {
 		
 		if (CONF.help()) {
 			options.usage();
+			System.out.println("Options preceded by an asterisk are required.");
 			return;
 		}
 		
