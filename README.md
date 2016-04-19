@@ -12,9 +12,9 @@ Toradocu takes the source code of a class as input and produces a set of
 ## Building Toradocu
 To compile Toradocu run the command `./gradlew build -x test`.
 
-To create a jar package that includes Toradocu as well as all the needed
-dependencies run the command `./gradlew shadowJar`.
-This will create the file `build/libs/toradocu-0.1-all.jar`.
+The command `./gradlew shadowJar` creates a jar package that includes 
+Toradocu as well as all the needed dependencies. This will create the file 
+`build/libs/toradocu-0.1-all.jar`.
 
 ## Running Toradocu
 Toradocu is a command line tool. To get the list of parameters (asterics
@@ -29,12 +29,12 @@ to your sources with `-J-sourcepath=...`. You can customize the behavior of the
 
 A typical Toradocu invocation looks like this
 
-   java -cp toradocu-0.1-all.jar org.toradocu.Toradocu
-   --targetClass mypackage.MyClass
-   --outputDir output
-   --testClass mypackage.Test
-   -J-d=output/javadoc
-   -J-sourcepath=project/src
+	java -cp toradocu-0.1-all.jar org.toradocu.Toradocu
+   	--targetClass mypackage.MyClass
+   	--outputDir output
+   	--testClass mypackage.Test
+   	-J-d=output/javadoc
+   	-J-sourcepath=project/src
 
 ## Notes for Developers
 
