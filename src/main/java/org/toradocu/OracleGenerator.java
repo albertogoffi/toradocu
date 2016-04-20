@@ -94,7 +94,7 @@ public class OracleGenerator {
 				continue; // Fix to avoid to generate "empty" aspects (aspects that do not check anything)
 			}
 			
-			Set<TranslatedExceptionComment> tc = conditionsMap.get(translatedComment);
+			Set<TranslatedExceptionComment> tc = conditionsMap.get(translatedComment.getMember());
 			if (tc == null) {
 				Set<TranslatedExceptionComment> newSet = new HashSet<>();
 				newSet.add(translatedComment);
