@@ -18,23 +18,23 @@ This will create the file
 Notice that building Toradocu requires Java JDK 1.8+. 
 
 ## Running Toradocu
-Toradocu is a command-line tool. To get the list of parameters execute
+Toradocu is a command-line tool. To get the list of parameters, execute
 
-	  java -jar toradocu-0.1-all.jar --help
+      java -jar toradocu-0.1-all.jar --help
 
 Internally Toradocu executes the `javadoc` tool. Every option starting with `-J`
 will be passed to the `javadoc` tool. For example, you have to specify the path
 to your sources with `-J-sourcepath=...`. You can customize the behavior of the
 `javadoc` tool using all its options.
 
-A typical Toradocu invocation looks like this
+A typical Toradocu invocation looks like this:
 
-	java -jar toradocu-0.1-all.jar
-   	--targetClass mypackage.MyClass
-   	--outputDir output
-   	--testClass mypackage.Test
-   	-J-d=output/javadoc
-   	-J-sourcepath=project/src
+    java -jar toradocu-0.1-all.jar \
+       --targetClass mypackage.MyClass \
+       --outputDir output \
+       --testClass mypackage.Test \
+       -J-d=output/javadoc \
+       -J-sourcepath=project/src
 
 ## Notes for Developers
 
