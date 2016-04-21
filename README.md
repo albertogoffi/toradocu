@@ -15,7 +15,7 @@ To compile Toradocu run the command: `./gradlew shadowJar`
 This will create the file 
 `build/libs/toradocu-0.1-all.jar`.
 
-Notice that building Toradocu requires a Java JDK 1.8+. 
+Notice that building Toradocu requires Java JDK 1.8+. 
 
 ## Running Toradocu
 Toradocu is a command-line tool. To get the list of parameters execute
