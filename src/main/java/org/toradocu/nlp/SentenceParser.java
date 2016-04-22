@@ -124,7 +124,7 @@ public class SentenceParser {
 		if (predicate != null) {
 			return predicate;
 		} else {
-			throw new NotSupportedException("Unable to identify a predicate (" + governor.word() + ")", sentenceAsString);
+			throw new NotSupportedException("Unable to identify a predicate (governor = " + governor.word() + ")", sentenceAsString);
 		}
 	}
 	
