@@ -1,9 +1,9 @@
 package org.toradocu.aspect;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -25,7 +25,7 @@ public class AspectGenerator {
 	
 	public void create(String testClassName, ExecutableMemberDoc doc, boolean parsingComplete, Set<TranslatedExceptionComment> comments, String completePath) {
 		// creates an input stream for the file to be parsed
-        try (FileInputStream template = new FileInputStream(aspectTemplate);
+        try (InputStream template = getClass().getResourceAsStream("/" + aspectTemplate);
              FileOutputStream output = new FileOutputStream(new File(completePath + ".java"))) {
         	CompilationUnit cu = JavaParser.parse(template);
             new MethodChangerVisitor(testClassName, doc, !parsingComplete, comments).visit(cu, null);

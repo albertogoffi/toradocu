@@ -35,7 +35,7 @@ public class Configuration {
 	private boolean oracleGeneration = true;
 	
 	@Parameter(names = "--aspectTemplate", description = "Template to use to generate the aspects")
-	private String aspectTemplate = "src/main/resources/AspectTemplate.java";
+	private String aspectTemplate = "AspectTemplate.java";
 	
 	@Parameter(names = "--testClass", description = "Qualified name of the class that will be instrumented with aspects")
 	private String testClass;
