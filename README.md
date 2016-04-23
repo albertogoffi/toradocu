@@ -36,6 +36,13 @@ A typical Toradocu invocation looks like this:
        -J-d=output/javadoc \
        -J-sourcepath=project/src
 
+With those options, Toradocu generates [Aspectj aspects](https://eclipse.org/aspectj/)
+in the folder `output`. `output-javadoc` contains the output of the `javadoc`
+tool. Aspects genereated by Toradocu are standard Aspectj aspects and can
+be used to instrument an existing test suite. Please refer to the
+[Aspectj documentation](https://eclipse.org/aspectj/doc/released/devguide/ajc-ref.html)
+for more information.
+
 ## Notes for Developers
 
 ### Toradocu Dependencies
