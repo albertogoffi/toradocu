@@ -2,12 +2,14 @@
 Toradocu - automated generation of test oracles from Javadoc documentation
 
 Toradocu generates test oracles from the Javadoc documentation of a
-class. Toradocu and its internals are described in the paper *Automatic
-Generation of Oracles for Exceptional Behaviors* by Alberto Goffi, Alessandra
-Gorla, Michael D. Ernst, and Mauro Pezzè (presented at [ISSTA 2016](https://issta2016.cispa.saarland)).
+class. Toradocu is described in the paper *Automatic Generation of
+Oracles for Exceptional Behaviors* by Alberto Goffi, Alessandra
+Gorla, Michael D. Ernst, and Mauro Pezzè (presented at
+[ISSTA 2016](https://issta2016.cispa.saarland)).
 
 Toradocu takes the source code of a class as input and produces a set of
 [aspects](https://eclipse.org/aspectj/).
+
 
 ## Building Toradocu
 To compile Toradocu run the command: `./gradlew shadowJar`
@@ -17,16 +19,9 @@ This will create the file
 
 Notice that building Toradocu requires Java JDK 1.8+. 
 
+
 ## Running Toradocu
-Toradocu is a command-line tool. To get the list of parameters, execute
-
-      java -jar toradocu-0.1-all.jar --help
-
-Internally Toradocu executes the `javadoc` tool. Every option starting with `-J`
-will be passed to the `javadoc` tool. For example, you have to specify the path
-to your sources with `-J-sourcepath=...`. You can customize the behavior of the
-`javadoc` tool using all its options.
-
+Toradocu is a command-line tool.
 A typical Toradocu invocation looks like this:
 
     java -jar toradocu-0.1-all.jar \
@@ -42,6 +37,16 @@ tool. Aspects genereated by Toradocu are standard Aspectj aspects and can
 be used to instrument an existing test suite. Please refer to the
 [Aspectj documentation](https://eclipse.org/aspectj/doc/released/devguide/ajc-ref.html)
 for more information.
+
+To get the list of all command-line parameters, execute
+
+      java -jar toradocu-0.1-all.jar --help
+
+Internally Toradocu executes the `javadoc` tool. Every option starting with `-J`
+will be passed to the `javadoc` tool. For example, you have to specify the path
+to your sources with `-J-sourcepath=...`. You can customize the behavior of the
+`javadoc` tool using all its options.
+
 
 ## Notes for Developers
 
