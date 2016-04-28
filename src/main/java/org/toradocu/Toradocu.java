@@ -28,7 +28,7 @@ public class Toradocu {
 	private static final Logger LOG = Logger.getLogger(Toradocu.class.getName());
 	private static final String DOCLET = "org.toradocu.doclet.standard.Standard";
 	private static final String PROGRAM_NAME = "java -jar toradocu.jar";
-	private static final Configuration CONF = Configuration.getInstance();
+	private static final Configuration CONF = Configuration.INSTANCE;
 	
 	public static void main(String[] args) {
 		JCommander options = new JCommander(CONF, args);

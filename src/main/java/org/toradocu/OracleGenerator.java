@@ -20,7 +20,7 @@ import com.sun.javadoc.ExecutableMemberDoc;
 public class OracleGenerator {
 	
 	private static final Logger LOG = Logger.getLogger(OracleGenerator.class.getName());
-	private static final Configuration CONF = Configuration.getInstance();
+	private static final Configuration CONF = Configuration.INSTANCE;
 	
 	public static void generate(List<TranslatedExceptionComment> translatedComments) {
 		if (!CONF.isOracleGenerationEnabled()) {
@@ -40,11 +40,11 @@ public class OracleGenerator {
 			for (ExecutableMemberDoc classMember : translatedCommentMap.keySet()) {
 				aspectNumber++;
 				String aspectName = "Aspect_" + aspectNumber;
-				String aspectPath = Configuration.getInstance().getAspectsOutputDir() + File.separator + aspectName;
+				String aspectPath = CONF.getAspectsOutputDir() + File.separator + aspectName;
 				aspectGenerator.create(testClassName, classMember, isParsingComplete(translatedCommentMap.get(classMember)), translatedCommentMap.get(classMember), aspectPath);
 				createdAspectNames.add(aspectName);
 			}
-			createAOPXml(Configuration.getInstance().getAspectsOutputDir(), createdAspectNames);
+			createAOPXml(CONF.getAspectsOutputDir(), createdAspectNames);
 		}
 	}
 	

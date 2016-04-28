@@ -11,7 +11,9 @@ import com.beust.jcommander.DynamicParameter;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.converters.FileConverter;
 
-public class Configuration {
+public enum Configuration {
+	
+	INSTANCE;
 	
 // General options
 
@@ -34,9 +36,6 @@ public class Configuration {
 	@Parameter(names = "--oracleGeneration", description = "Enable/disable the generation of the aspects", arity = 1)
 	private boolean oracleGeneration = true;
 	
-	@Parameter(names = "--aspectTemplate", description = "Template to use to generate the aspects")
-	private String aspectTemplate = "AspectTemplate.java";
-	
 	@Parameter(names = "--testClass", description = "Qualified name of the class that will be instrumented with aspects")
 	private String testClass;
 	
@@ -47,16 +46,12 @@ public class Configuration {
 	
 	@DynamicParameter(names = "-J", description = "Javadoc options")
 	private Map<String, String> javadocOptions = new HashMap<>();
+	
+// Constants
+	
+	private final String aspectTemplate = "AspectTemplate.java";
 
 // ====================
-
-	private static final Configuration INSTANCE = new Configuration();
-	
-	private Configuration() {}
-	
-	public static Configuration getInstance() {
-		return INSTANCE;
-	}
 	
 	public boolean isOracleGenerationEnabled() {
 		return oracleGeneration;
