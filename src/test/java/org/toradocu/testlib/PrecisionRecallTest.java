@@ -23,7 +23,6 @@ public class PrecisionRecallTest {
 		Toradocu.main(new String[] {"--targetClass", targetClass,
 				"--saveConditionTranslatorOutput", actualOutputFile,
 //				"--oracleGeneration", "false",
-				"--aspectTemplate", "/Users/alberto/git/toradocu/src/main/resources/AspectTemplate.java",
 				"--testClass", "foo",
 //				"--debug",
 				"-J-sourcepath=" + srcPath,
