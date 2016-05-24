@@ -1,4 +1,4 @@
-package org.toradocu;
+package org.toradocu.extractor;
 
 import java.io.IOException;
 import java.util.ArrayList;

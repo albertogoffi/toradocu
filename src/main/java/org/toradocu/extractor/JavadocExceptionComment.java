@@ -1,4 +1,4 @@
-package org.toradocu;
+package org.toradocu.extractor;
 
 import com.sun.javadoc.ExecutableMemberDoc;
 

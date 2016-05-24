@@ -18,6 +18,8 @@ import java.util.logging.Logger;
 
 import org.toradocu.conf.Configuration;
 import org.toradocu.doclet.formats.html.ConfigurationImpl;
+import org.toradocu.extractor.JavadocExceptionComment;
+import org.toradocu.extractor.JavadocExtractor;
 import org.toradocu.util.NullOutputStream;
 
 import com.beust.jcommander.JCommander;

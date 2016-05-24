@@ -2,6 +2,8 @@ package org.toradocu;
 
 import java.util.Set;
 
+import org.toradocu.extractor.JavadocExceptionComment;
+
 import com.sun.javadoc.ExecutableMemberDoc;
 
 public class TranslatedExceptionComment extends JavadocExceptionComment {

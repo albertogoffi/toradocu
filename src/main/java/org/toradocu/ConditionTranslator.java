@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.logging.Logger;
 
 import org.jgrapht.Graph;
+import org.toradocu.extractor.JavadocExceptionComment;
 import org.toradocu.nlp.CodeElement;
 import org.toradocu.nlp.ConjunctionEdge;
 import org.toradocu.nlp.Matcher;
