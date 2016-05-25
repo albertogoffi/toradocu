@@ -28,8 +28,10 @@ dependencies {
 	compile 'org.jsoup:jsoup:1.8.3' // We use JSoup only to remove html tags in comments
 	compile 'com.github.javaparser:javaparser-core:2.3.0'
 	compile 'org.jgrapht:jgrapht-core:0.9.1'
-	compile "com.beust:jcommander:1.48"
+	compile 'com.beust:jcommander:1.48'
+	compile 'com.google.code.gson:gson:2.6.2'
 	testCompile 'junit:junit:4.12'
+	runtime 'org.slf4j:slf4j-simple:1.7.21'
 }
 
 task wrapper(type: Wrapper) {

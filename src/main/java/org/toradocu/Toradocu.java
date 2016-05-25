@@ -20,6 +20,7 @@ import org.toradocu.conf.Configuration;
 import org.toradocu.doclet.formats.html.ConfigurationImpl;
 import org.toradocu.extractor.JavadocExceptionComment;
 import org.toradocu.extractor.JavadocExtractor;
+import org.toradocu.extractor.Method;
 import org.toradocu.util.NullOutputStream;
 
 import com.beust.jcommander.JCommander;
@@ -60,34 +61,36 @@ public class Toradocu {
 	}
 	
 	public static void process(ClassDoc classDoc, ConfigurationImpl configuration) throws IOException {
-		if (classDoc.qualifiedName().equals(CONF.getTargetClass())) {
-			Set<JavadocExceptionComment> extractedComments = JavadocExtractor.extract(classDoc, configuration);
-			List<TranslatedExceptionComment> translatedComments = ConditionTranslator.translate(extractedComments);
-			printOutput(translatedComments);
-			OracleGenerator.generate(translatedComments);
-		}
+		if (!classDoc.qualifiedName().equals(CONF.getTargetClass())) return;
+		
+		JavadocExtractor extractor = new JavadocExtractor(configuration);
+		List<Method> methods = extractor.extract(classDoc);
+		
+//		List<TranslatedExceptionComment> translatedComments = ConditionTranslator.translate(extractedComments);
+//		printOutput(translatedComments);
+//		OracleGenerator.generate(translatedComments);
 	}
 	
-	private static void printOutput(Collection<?> c) {
-		List<?> sortedC = new ArrayList<>(c);
-		Collections.sort(sortedC, (c1, c2) -> c1.toString().compareTo(c2.toString()));
-		File outputFile = CONF.getConditionTranslatorOutput();
-		if (outputFile != null) { // If the command line option to print the condition translator's output is present
-			try (BufferedWriter writer = Files.newBufferedWriter(outputFile.toPath(), StandardCharsets.UTF_8)) {
-				for (Object element : sortedC) {
-					writer.write(element.toString());
-					writer.newLine();
-				}
-			} catch (Exception e) {
-				LOG.log(Level.WARNING, "Unable to write the output of the condition translator", e);
-			}
-		} else { // Else, print the condition translator's output on the standard output
-			StringBuilder output = new StringBuilder();
-			for (Object o : sortedC) {
-				output.append(o).append("\n");
-			}
-			LOG.info(output.toString());
-		}
-	}
-	
+//	private static void printOutput(Collection<?> c) {
+//		List<?> sortedC = new ArrayList<>(c);
+//		Collections.sort(sortedC, (c1, c2) -> c1.toString().compareTo(c2.toString()));
+//		File outputFile = CONF.getConditionTranslatorOutput();
+//		if (outputFile != null) { // If the command line option to print the condition translator's output is present
+//			try (BufferedWriter writer = Files.newBufferedWriter(outputFile.toPath(), StandardCharsets.UTF_8)) {
+//				for (Object element : sortedC) {
+//					writer.write(element.toString());
+//					writer.newLine();
+//				}
+//			} catch (Exception e) {
+//				LOG.log(Level.WARNING, "Unable to write the output of the condition translator", e);
+//			}
+//		} else { // Else, print the condition translator's output on the standard output
+//			StringBuilder output = new StringBuilder();
+//			for (Object o : sortedC) {
+//				output.append(o).append("\n");
+//			}
+//			LOG.info(output.toString());
+//		}
+//	}
+//	
 }

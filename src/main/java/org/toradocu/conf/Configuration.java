@@ -26,7 +26,15 @@ public enum Configuration {
 	@Parameter(names = {"-h", "--help"}, description = "Print a list of available options", help = true)
 	private boolean help;
 	
+// Javadoc extractor options
+	
+	@Parameter(names = "--saveJavadocExtractorOutput", description = "File where to save the Javadoc extractor output", converter = FileConverter.class)
+	private File javadocExtractorOutput;
+	
 // Condition translator options
+	
+	@Parameter(names = "--conditionTranslation", description = "Enable/disable the condition translator", arity = 1)
+	private boolean conditionTranslation = true;
 	
 	@Parameter(names = "--saveConditionTranslatorOutput", description = "File where to save the condition translator output", converter = FileConverter.class)
 	private File conditionTranslatorOutput;
@@ -57,6 +65,10 @@ public enum Configuration {
 		return oracleGeneration;
 	}
 	
+	public boolean isConditionTranslation() {
+		return conditionTranslation;
+	}
+	
 	public String getAspectsOutputDir() {
 		return aspectsOutputDir;
 	}
@@ -71,6 +83,10 @@ public enum Configuration {
 	
 	public String getTargetClass() {
 		return targetClass;
+	}
+	
+	public File getJavadocExtractorOutput() {
+		return javadocExtractorOutput;
 	}
 	
 	public File getConditionTranslatorOutput() {
