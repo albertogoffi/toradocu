@@ -1,27 +1,36 @@
 package org.toradocu.extractor;
 
 import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
 
 import org.junit.Test;
+import org.toradocu.extractor.Method.Builder;
 
 import com.google.gson.Gson;
 
 public class MethodTest {
 
 	@Test
-	public void test() {
-		Gson gson = new Gson();
+	public void testEquals() {
+		Builder methodBuilder = new Method.Builder("compute", new Parameter("java.lang.String[]", "array"));
+		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
+		Method method1 = methodBuilder.build();
 		
-		ThrowsTag throwsTag = new ThrowsTag("java.lang.NullPointerException", "if the array is empty");
-		Method method = new Method.Builder("compute", new Parameter("java.lang.String[]", "array"))
-								  .tag(throwsTag).build();
-		
-		String json = gson.toJson(method);
-		System.out.println(json);
-		
-		Method methodDeserialized = gson.fromJson(json, Method.class);
-		assertThat(methodDeserialized, is(method));
+		methodBuilder = new Method.Builder("compute", new Parameter("java.lang.String[]", "array"));
+		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
+		Method method2 = methodBuilder.build();
+
+		assertTrue(method1.equals(method2));
+	}
+	
+	@Test
+	public void testJSon() {
+		Builder methodBuilder = new Method.Builder("compute", new Parameter("java.lang.String[]", "array"));
+		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
+		Method method1 = methodBuilder.build();
+
+		String json = new Gson().toJson(method1);
+		Method method2 = new Gson().fromJson(json, Method.class);
+		assertEquals(method1, method2);
 	}
 
 }
