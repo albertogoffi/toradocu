@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,7 @@ public class JavadocExtractorTest {
 
 	// Test with 'example' application 
 	@Test
-	public void exampleTest() throws Throwable {
+	public void exampleTest() {
 		List<Method> expected = new ArrayList<>();
 		
 		Builder foo = new Builder("example.AClass.foo", new Parameter("int[]", "array"));
@@ -65,7 +66,7 @@ public class JavadocExtractorTest {
 //		test("org.apache.commons.collections4.ArrayStack", output, expectedOutput, commonsCollectionsSrc);
 //	}
 	
-	private void test(String targetClass, List<Method> expected, String actualOutput, String sourcePath) throws IOException {
+	private void test(String targetClass, List<Method> expected, String actualOutput, String sourcePath) {
 		Toradocu.main(new String[] {"--targetClass", targetClass,
 				"--saveJavadocExtractorOutput", actualOutput,
 				"--conditionTranslation", "false",
@@ -77,10 +78,14 @@ public class JavadocExtractorTest {
 		
 		Type listType = new TypeToken<List<Method>>(){}.getType();
 		Gson gson = GsonInst.gson();
-		BufferedReader reader = Files.newBufferedReader(Paths.get(actualOutput));
-		List<Method> actual = gson.fromJson(reader, listType);
-		
-		assertEquals(expected, actual);
+		Path ouputFilePath = Paths.get(actualOutput);
+		try (BufferedReader reader = Files.newBufferedReader(ouputFilePath)) {
+			List<Method> actual = gson.fromJson(reader, listType);
+			assertEquals(expected, actual);
+			Files.delete(ouputFilePath);
+		} catch(IOException e) {
+			fail(e.getMessage());
+		}
 	}
 	
 //	private void compare(String outputFile, String expectedOutputFile) {
