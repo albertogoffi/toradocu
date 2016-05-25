@@ -1,4 +1,4 @@
-package org.toradocu.nlp;
+package org.toradocu.translator;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -12,7 +12,7 @@ import java.util.stream.StreamSupport;
 
 import org.jgrapht.Graph;
 import org.jgrapht.graph.SimpleGraph;
-import org.toradocu.nlp.ConjunctionEdge.Conjunction;
+import org.toradocu.translator.ConjunctionEdge.Conjunction;
 
 import edu.stanford.nlp.ling.HasWord;
 import edu.stanford.nlp.ling.IndexedWord;

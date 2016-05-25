@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 
 import org.toradocu.aspect.AspectGenerator;
 import org.toradocu.conf.Configuration;
+import org.toradocu.translator.TranslatedExceptionComment;
 
 import com.sun.javadoc.ExecutableMemberDoc;
 

@@ -1,4 +1,4 @@
-package org.toradocu.nlp;
+package org.toradocu.translator;
 
 import java.util.ArrayList;
 import java.util.Collections;

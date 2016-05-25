@@ -7,9 +7,9 @@ import java.util.Set;
 
 import org.jgrapht.Graph;
 import org.junit.Test;
-import org.toradocu.nlp.ConjunctionEdge;
-import org.toradocu.nlp.Proposition;
-import org.toradocu.nlp.PropositionExtractor;
+import org.toradocu.translator.ConjunctionEdge;
+import org.toradocu.translator.Proposition;
+import org.toradocu.translator.PropositionExtractor;
 
 public class PropositionExtractorTest {
 	

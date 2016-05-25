@@ -1,4 +1,4 @@
-package org.toradocu.nlp;
+package org.toradocu.translator;
 
 public class NotSupportedException extends Exception {
 	

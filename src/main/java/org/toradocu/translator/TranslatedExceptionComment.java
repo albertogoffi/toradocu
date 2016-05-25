@@ -1,4 +1,4 @@
-package org.toradocu;
+package org.toradocu.translator;
 
 import java.util.Set;
 

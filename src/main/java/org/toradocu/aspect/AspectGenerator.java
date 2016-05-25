@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import org.toradocu.TranslatedExceptionComment;
+import org.toradocu.translator.TranslatedExceptionComment;
 
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParseException;

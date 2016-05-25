@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import org.toradocu.TranslatedExceptionComment;
+import org.toradocu.translator.TranslatedExceptionComment;
 
 import com.github.javaparser.ASTHelper;
 import com.github.javaparser.JavaParser;

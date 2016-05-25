@@ -1,4 +1,4 @@
-package org.toradocu;
+package org.toradocu.translator;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -8,11 +8,6 @@ import java.util.logging.Logger;
 
 import org.jgrapht.Graph;
 import org.toradocu.extractor.JavadocExceptionComment;
-import org.toradocu.nlp.CodeElement;
-import org.toradocu.nlp.ConjunctionEdge;
-import org.toradocu.nlp.Matcher;
-import org.toradocu.nlp.Proposition;
-import org.toradocu.nlp.PropositionExtractor;
 
 import com.sun.javadoc.ExecutableMemberDoc;
 
