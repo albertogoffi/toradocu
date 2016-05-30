@@ -57,8 +57,14 @@ public class Proposition {
 	
 	@Override
 	public String toString() {
-		String toString = "(\"" + subject + "\", \"" + relation + "\", \"" + Arrays.toString(arguments) + "\")";
-		toString += " " + getTranslation().orElseGet(() -> "");
-		return toString;
+		StringBuilder output = new StringBuilder("(" + subject + ", " + relation);
+		if (arguments.length != 0) {
+			output.append(", " + Arrays.toString(arguments));
+		}
+		output.append(")");
+		if (getTranslation().isPresent()) {
+			output.append(" -> " + getTranslation().orElseGet(() -> ""));
+		}		
+		return output.toString();
 	}
 }

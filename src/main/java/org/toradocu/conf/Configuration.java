@@ -33,6 +33,11 @@ public enum Configuration {
 	
 // Condition translator options
 	
+	@Parameter(names = "--conditionTranslatorInput",
+			   description = "File that the condition tranlator will process. This option disables the Javadoc extractor", 
+			   converter = FileConverter.class)
+	private File conditionTranslatorInput;
+	
 	@Parameter(names = "--conditionTranslation", description = "Enable/disable the condition translator", arity = 1)
 	private boolean conditionTranslation = true;
 	
@@ -87,6 +92,10 @@ public enum Configuration {
 	
 	public File getJavadocExtractorOutput() {
 		return javadocExtractorOutput;
+	}
+	
+	public File getConditionTranslatorInput() {
+		return conditionTranslatorInput;
 	}
 	
 	public File getConditionTranslatorOutput() {

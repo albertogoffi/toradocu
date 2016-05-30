@@ -32,20 +32,4 @@ public class ConjunctionEdge<V> extends DefaultEdge {
 	public String toString() {
 		return source + " " + conjunction + " " + target;
 	}
-	
-	public enum Conjunction { 
-		OR, AND;
-		
-		@Override
-		public String toString() {
-			switch (this) {
-			case AND:
-				return "&&";
-			case OR:
-				return "||";
-			default:
-				return "";
-			}
-		}
-	};
 }

@@ -4,55 +4,61 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.logging.Logger;
 
 import org.jgrapht.Graph;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.toradocu.extractor.JavadocExceptionComment;
+import org.toradocu.extractor.Method;
+import org.toradocu.extractor.ThrowsTag;
 
 import com.sun.javadoc.ExecutableMemberDoc;
 
 public class ConditionTranslator {
 	
-	private static final Logger LOG = Logger.getLogger(ConditionTranslator.class.getName());
+	private static final Logger LOG = LoggerFactory.getLogger(ConditionTranslator.class);
 	
-	public static List<TranslatedExceptionComment> translate(Set<JavadocExceptionComment> commentsToTranslate) {
+	public static List<TranslatedExceptionComment> translate(List<Method> methodsToProcess) {
 		List<TranslatedExceptionComment> translatedComments = new ArrayList<>();
 
 		// For each comment to translate
-		for (JavadocExceptionComment commentToTranslate : commentsToTranslate) {
-			String javadocComment = commentToTranslate.getComment();
-			ExecutableMemberDoc member = commentToTranslate.getMember();
+		for (Method method : methodsToProcess) {
 			
-			StringBuilder logMessage = new StringBuilder("=== " + member.qualifiedName() + " ===");
-			logMessage.append("\n").append("Identifying propositions from: \"" + javadocComment + "\"");
-			LOG.fine(logMessage.toString());
-			
-			// We identify propositions in the comment (as a -potentially disconnected- graph)
-			Set<String> javaConditions = new HashSet<>();
-			Graph<Proposition, ConjunctionEdge<Proposition>> propositionGraph = PropositionExtractor.getPropositionGraph(javadocComment);			
-			
-			// We translate subject and predicate into Java code elements
-			translatePropositions(propositionGraph, commentToTranslate);
-			
-			// We remove from the proposition graph all the proposition for which the translation has failed
-			pruneUntraslatedPropositions(propositionGraph);
-			
-			// We remove from the proposition graph all the proposition we know are wrong
-			pruneWrongTranslations(propositionGraph);
-			
-			// We build the Java conditions taking into account also conjunctions
-			Set<Proposition> visitedPropositions = new HashSet<>();
-			for (ConjunctionEdge<Proposition> edge : propositionGraph.edgeSet()) { // TODO Improve this. We do not support multiple conjunctions
-				javaConditions.add(edge.getSource().getTranslation().get() + edge.getConjunction() + edge.getTarget().getTranslation().get());
-				visitedPropositions.add(edge.getSource());
-				visitedPropositions.add(edge.getTarget());
-			}
-			for (Proposition p : propositionGraph.vertexSet()) { // This loop adds propositions not linked with others by a conjunction
-				if (!visitedPropositions.contains(p)) {
-					javaConditions.add(p.getTranslation().get());
+			for (ThrowsTag tag : method.tags()) {
+				String tagComment = tag.getComment();
+				ExecutableMemberDoc member = commentToTranslate.getMember();
+				
+				StringBuilder logMessage = new StringBuilder("=== " + member.qualifiedName() + " ===");
+				logMessage.append("\n").append("Identifying propositions from: \"" + javadocComment + "\"");
+				LOG.fine(logMessage.toString());
+				
+				// We identify propositions in the comment (as a -potentially disconnected- graph)
+				Set<String> javaConditions = new HashSet<>();
+				Graph<Proposition, ConjunctionEdge<Proposition>> propositionGraph = PropositionExtractor.getPropositionGraph(javadocComment);			
+				
+				// We translate subject and predicate into Java code elements
+				translatePropositions(propositionGraph, tagComment);
+				
+				// We remove from the proposition graph all the proposition for which the translation has failed
+				pruneUntraslatedPropositions(propositionGraph);
+				
+				// We remove from the proposition graph all the proposition we know are wrong
+				pruneWrongTranslations(propositionGraph);
+				
+				// We build the Java conditions taking into account also conjunctions
+				Set<Proposition> visitedPropositions = new HashSet<>();
+				for (ConjunctionEdge<Proposition> edge : propositionGraph.edgeSet()) { // TODO Improve this. We do not support multiple conjunctions
+					javaConditions.add(edge.getSource().getTranslation().get() + edge.getConjunction() + edge.getTarget().getTranslation().get());
+					visitedPropositions.add(edge.getSource());
+					visitedPropositions.add(edge.getTarget());
 				}
+				for (Proposition p : propositionGraph.vertexSet()) { // This loop adds propositions not linked with others by a conjunction
+					if (!visitedPropositions.contains(p)) {
+						javaConditions.add(p.getTranslation().get());
+					}
+				}
+				translatedComments.add(new TranslatedExceptionComment(commentToTranslate, javaConditions));
 			}
-			translatedComments.add(new TranslatedExceptionComment(commentToTranslate, javaConditions));
 		}
 		return translatedComments;
 	}

@@ -2,7 +2,7 @@ package org.toradocu.extractor;
 
 import java.util.Objects;
 
-final class ThrowsTag {
+public final class ThrowsTag {
 	private final String comment;
 	private final String exception;
 	
