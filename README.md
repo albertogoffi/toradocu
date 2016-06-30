@@ -77,19 +77,3 @@ behavior of constructors.
 
 Run weaved test suite as a normal test suite, just be sure to have AspectJ on
 the classpath.
-
-## Notes for Developers
-
-### Toradocu Dependencies
-* `lib/tools-jdk1.8.0_72.jar`: the custom doclet depends on this jar that is
-  part of the standard JDK distribution (original name: tools.jar).
-  Other dependencies are listed in `build.gradle` and are automatically
-  downloaded during the building process.
-
-### Get the standard doclet source code
-1. Download the source code from
-   [here](http://hg.openjdk.java.net/jdk8/jdk8/langtools/tags)
-   2. Standard doclet is in `/src/share/classes/com/sun/tools/doclets/`
-   3. Change package declarations with the command:
-      ``perl -pi -e 's/com.sun.tools.doclets/org.newpackge/g' `find . -name
-      “*.java”` ``
