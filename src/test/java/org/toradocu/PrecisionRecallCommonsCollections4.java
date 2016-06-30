@@ -2,15 +2,21 @@ package org.toradocu;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.toradocu.testlib.AbstracPrecisionRecallTestSuite;
-import org.toradocu.testlib.PrecisionRecallTest;
 import org.toradocu.testlib.TestCaseStats;
 
 public class PrecisionRecallCommonsCollections4 extends AbstracPrecisionRecallTestSuite {
 
 	private static final String COMMONSCOLLECTIONS_4_SRC = "src/test/resources/commons-collections4-4.1-src/src/main/java";
 	private static final String COMMONSCOLLECTIONS_4_EXPECTED_DIR = "src/test/resources/CommonsCollections-4.1/";
+	
+	@Before
+    public void init() {
+		setSourceDir(COMMONSCOLLECTIONS_4_SRC);
+		setExpectedOutputDir(COMMONSCOLLECTIONS_4_EXPECTED_DIR);
+	}
 	
 	@Test
 	public void arrayStackTest() throws Exception {
@@ -61,11 +67,5 @@ public class PrecisionRecallCommonsCollections4 extends AbstracPrecisionRecallTe
 		TestCaseStats stats = test("org.apache.commons.collections4.comparators.FixedOrderComparator");
 		assertEquals(1, stats.getPrecision(), 0);
 		assertEquals(0.66, stats.getRecall(), PRECISION);
-	}
-	
-	private TestCaseStats test(String targetClass) {
-		TestCaseStats stats = PrecisionRecallTest.test(targetClass, COMMONSCOLLECTIONS_4_SRC, COMMONSCOLLECTIONS_4_EXPECTED_DIR);
-		testSuiteStats.addTest(stats);
-		return stats;
 	}
 }

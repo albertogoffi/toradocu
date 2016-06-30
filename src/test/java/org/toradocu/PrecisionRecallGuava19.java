@@ -2,15 +2,21 @@ package org.toradocu;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.toradocu.testlib.AbstracPrecisionRecallTestSuite;
-import org.toradocu.testlib.PrecisionRecallTest;
 import org.toradocu.testlib.TestCaseStats;
 
 public class PrecisionRecallGuava19 extends AbstracPrecisionRecallTestSuite {
 
 	private static final String GUAVA_19_SRC = "src/test/resources/guava-19.0-sources";
 	private static final String GUAVA_EXPECTED_DIR = "src/test/resources/Guava-19/";
+	
+	@Before
+    public void init() {
+		setSourceDir(GUAVA_19_SRC);
+		setExpectedOutputDir(GUAVA_EXPECTED_DIR);
+	}
 	
 	@Test
 	public void arrayListMultimapTest() throws Exception {
@@ -73,11 +79,5 @@ public class PrecisionRecallGuava19 extends AbstracPrecisionRecallTestSuite {
 		TestCaseStats stats = test("com.google.common.util.concurrent.AtomicDoubleArray");
 		assertEquals(1, stats.getPrecision(), 0);
 		assertEquals(1, stats.getRecall(), 0);
-	}
-	
-	private TestCaseStats test(String targetClass) {
-		TestCaseStats stats = PrecisionRecallTest.test(targetClass, GUAVA_19_SRC, GUAVA_EXPECTED_DIR);
-		testSuiteStats.addTest(stats);
-		return stats;
 	}
 }

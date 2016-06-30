@@ -22,7 +22,7 @@ public class PrecisionRecallTest {
 		
 		Toradocu.main(new String[] {"--targetClass", targetClass,
 				"--saveConditionTranslatorOutput", actualOutputFile,
-//				"--oracleGeneration", "false",
+				"--oracleGeneration", "false",
 				"--testClass", "foo",
 //				"--debug",
 				"-J-sourcepath=" + srcPath,
@@ -59,8 +59,8 @@ public class PrecisionRecallTest {
 			float precision = result.getPrecision();
 			float recall = result.getRecall();
 			report.append("Conditions: " + expected.size() + "\n");
-			report.append("Precision: " + precision + "\n");
-			report.append("Recall: " + recall + "\n");
+			report.append("Precision: " + String.format("%.2f", precision) + "\n");
+			report.append("Recall: " + String.format("%.2f", recall) + "\n");
 			System.out.println(report);
 			return result;
 		} catch (IOException e) {
