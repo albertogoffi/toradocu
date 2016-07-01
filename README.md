@@ -1,9 +1,10 @@
-# Toradocu
-Toradocu - automated generation of test oracles from Javadoc documentation
+# Toradocu: automated generation of test oracles from Javadoc documentation
+
+[![Build Status](https://travis-ci.org/albertogoffi/toradocu.svg?branch=master)](https://travis-ci.org/albertogoffi/toradocu)
 
 Toradocu generates test oracles from the Javadoc documentation of a
-class. Toradocu is described in the paper *Automatic Generation of
-Oracles for Exceptional Behaviors* by Alberto Goffi, Alessandra
+class. Toradocu is described in the paper [*Automatic Generation of
+Oracles for Exceptional Behaviors*](http://star.inf.usi.ch/star/papers/16-issta-toradocu.pdf) by Alberto Goffi, Alessandra
 Gorla, Michael D. Ernst, and Mauro Pezzè (presented at
 [ISSTA 2016](https://issta2016.cispa.saarland)).
 
