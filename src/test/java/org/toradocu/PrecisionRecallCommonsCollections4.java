@@ -35,15 +35,15 @@ public class PrecisionRecallCommonsCollections4 extends AbstracPrecisionRecallTe
 	@Test
 	public void closureUtilsTest() throws Exception {
 		TestCaseStats stats = test("org.apache.commons.collections4.ClosureUtils");
-		assertEquals(0.88, stats.getPrecision(), PRECISION);
+		assertEquals(0.79, stats.getPrecision(), PRECISION);
 		assertEquals(0.60, stats.getRecall(), PRECISION);
 	}
 	
 	@Test
 	public void collectionUtilsTest() throws Exception {
 		TestCaseStats stats = test("org.apache.commons.collections4.CollectionUtils");
-		assertEquals(0.66, stats.getPrecision(), PRECISION);
-		assertEquals(0.49, stats.getRecall(), PRECISION);
+		assertEquals(0.71, stats.getPrecision(), PRECISION);
+		assertEquals(0.54, stats.getRecall(), PRECISION);
 	}
 	
 	@Test
@@ -65,7 +65,7 @@ public class PrecisionRecallCommonsCollections4 extends AbstracPrecisionRecallTe
 	@Test
 	public void fixedOrderComparatorTest() throws Exception {
 		TestCaseStats stats = test("org.apache.commons.collections4.comparators.FixedOrderComparator");
-		assertEquals(1, stats.getPrecision(), 0);
-		assertEquals(0.66, stats.getRecall(), PRECISION);
+		assertEquals(0.83, stats.getPrecision(), PRECISION);
+		assertEquals(0.55, stats.getRecall(), PRECISION);
 	}
 }
