@@ -52,7 +52,8 @@ public class Proposition {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(subject, relation, arguments);
+		//FIXME Bad hash code implementation. In method equals(Object) we consider also the field arguments!
+		return Objects.hash(subject, relation);
 	}
 	
 	@Override
