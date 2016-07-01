@@ -48,7 +48,7 @@ to your sources with `-J-sourcepath=...`. You can customize the behavior of the
 `javadoc` tool using all its options.
 
 Note that this is an early release of Toradocu. The tool prints a lot of
-trancing/debugging information on the stadard input/error.
+tracing/debugging information on the standard input/error.
 
 ## Using Toradocu Aspects
 Toradocu generates [AspectJ aspects](https://eclipse.org/aspectj/) in the folder
