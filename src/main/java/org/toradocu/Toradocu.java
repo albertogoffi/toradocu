@@ -5,7 +5,12 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -28,6 +33,7 @@ import com.sun.javadoc.ClassDoc;
 import com.sun.tools.javadoc.Main;
 
 public class Toradocu {
+
 	private static final Logger LOG = Logger.getLogger(Toradocu.class.getName());
 	private static final String DOCLET = "org.toradocu.doclet.standard.Standard";
 	private static final String PROGRAM_NAME = "java -jar toradocu.jar";
@@ -46,6 +52,7 @@ public class Toradocu {
 		if (CONF.help()) {
 			options.usage();
 			System.out.println("Options preceded by an asterisk are required.");
+			deleteTemporaryFiles();
 			return;
 		}
 		
@@ -64,6 +71,31 @@ public class Toradocu {
 		 */  
 		PrintWriter nullPrintWriter = new PrintWriter(new NullOutputStream());
 		Main.execute(PROGRAM_NAME + " - Javadoc Extractor", nullPrintWriter, nullPrintWriter, nullPrintWriter, DOCLET, CONF.getJavadocOptions());
+		
+		deleteTemporaryFiles();
+	}
+	
+	private static void deleteTemporaryFiles() {
+		if (CONF.getTempJavadocOutputDir() != null) {
+			Path directory = Paths.get(CONF.getTempJavadocOutputDir());
+			try {
+				Files.walkFileTree(directory, new SimpleFileVisitor<Path>() {
+				   @Override
+				   public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+				       Files.delete(file);
+				       return FileVisitResult.CONTINUE;
+				   }
+
+				   @Override
+				   public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+				       Files.delete(dir);
+				       return FileVisitResult.CONTINUE;
+				   }
+				});
+			} catch (IOException e) {
+				LOG.log(Level.WARNING, "Unable to delete temporary Javadoc output", e);
+			}
+		}
 	}
 	
 	public static void process(ClassDoc classDoc, ConfigurationImpl configuration) throws IOException {
@@ -90,8 +122,8 @@ public class Toradocu {
 			}
 		} else { // Else, print the condition translator's output on the standard output
 			StringBuilder output = new StringBuilder();
-			for (Object o : sortedC) {
-				output.append(o).append("\n");
+			for (Object element : sortedC) {
+				output.append(element).append("\n");
 			}
 			LOG.info(output.toString());
 		}
