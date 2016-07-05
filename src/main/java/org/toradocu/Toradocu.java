@@ -23,6 +23,7 @@ import org.toradocu.extractor.JavadocExtractor;
 import org.toradocu.util.NullOutputStream;
 
 import com.beust.jcommander.JCommander;
+import com.beust.jcommander.ParameterException;
 import com.sun.javadoc.ClassDoc;
 import com.sun.tools.javadoc.Main;
 
@@ -33,7 +34,13 @@ public class Toradocu {
 	private static final Configuration CONF = Configuration.INSTANCE;
 	
 	public static void main(String[] args) {
-		JCommander options = new JCommander(CONF, args);
+		JCommander options;
+		try {
+			options = new JCommander(CONF, args);
+		} catch (ParameterException e) {
+			System.out.println(e.getMessage());
+			return;
+		}
 		options.setProgramName(PROGRAM_NAME);
 		
 		if (CONF.help()) {
