@@ -1,6 +1,8 @@
 package org.toradocu;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.number.IsCloseTo.closeTo;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -21,63 +23,63 @@ public class PrecisionRecallGuava19 extends AbstracPrecisionRecallTestSuite {
 	@Test
 	public void arrayListMultimapTest() throws Exception {
 		TestCaseStats stats = test("com.google.common.collect.ArrayListMultimap");
-		assertEquals(1, stats.getPrecision(), 0);
-		assertEquals(1, stats.getRecall(), 0);
+		assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
+		assertThat(RECALL_MESSAGE, stats.getRecall(), is(1.0));
 	}
 	
 	@Test
 	public void concurrentHashMultisetTest() throws Exception {
 		TestCaseStats stats = test("com.google.common.collect.ConcurrentHashMultiset");
-		assertEquals(0.81, stats.getPrecision(), PRECISION);
-		assertEquals(0.75, stats.getRecall(), 0);
+		assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.81, PRECISION));
+		assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.75));
 	}
 	
 	@Test
 	public void doublesTest() throws Exception {
 		TestCaseStats stats = test("com.google.common.primitives.Doubles");
-		assertEquals(0.75, stats.getPrecision(), 0);
-		assertEquals(0.75, stats.getRecall(), 0);
+		assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(0.75));
+		assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.75));
 	}
 	
 	@Test
 	public void floatsTest() throws Exception {
 		TestCaseStats stats = test("com.google.common.primitives.Floats");
-		assertEquals(0.75, stats.getPrecision(), 0);
-		assertEquals(0.75, stats.getRecall(), 0);
+		assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(0.75));
+		assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.75));
 	}
 	
 	@Test
 	public void moreObjectsTest() throws Exception {
 		TestCaseStats stats = test("com.google.common.base.MoreObjects");
-		assertEquals(1, stats.getPrecision(), 0);
-		assertEquals(1, stats.getRecall(), 0);
+		assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
+		assertThat(RECALL_MESSAGE, stats.getRecall(), is(1.0));
 	}
 	
 	@Test
 	public void shortsTest() throws Exception {
 		TestCaseStats stats = test("com.google.common.primitives.Shorts");
-		assertEquals(0.75, stats.getPrecision(), 0);
-		assertEquals(0.5, stats.getRecall(), 0);
+		assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(0.75));
+		assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.5));
 	}
 	
 	@Test
 	public void stringsTest() throws Exception {
 		TestCaseStats stats = test("com.google.common.base.Strings");
-		assertEquals(1, stats.getPrecision(), 0);
-		assertEquals(1, stats.getRecall(), 0);
+		assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
+		assertThat(RECALL_MESSAGE, stats.getRecall(), is(1.0));
 	}
 	
 	@Test
 	public void verifyTest() throws Exception {
 		TestCaseStats stats = test("com.google.common.base.Verify");
-		assertEquals(1, stats.getPrecision(), 0);
-		assertEquals(1, stats.getRecall(), 0);
+		assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
+		assertThat(RECALL_MESSAGE, stats.getRecall(), is(1.0));
 	}
 	
 	@Test
 	public void atomicDoubleArrayTest() throws Exception {
 		TestCaseStats stats = test("com.google.common.util.concurrent.AtomicDoubleArray");
-		assertEquals(1, stats.getPrecision(), 0);
-		assertEquals(1, stats.getRecall(), 0);
+		assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
+		assertThat(RECALL_MESSAGE, stats.getRecall(), is(1.0));
 	}
 }

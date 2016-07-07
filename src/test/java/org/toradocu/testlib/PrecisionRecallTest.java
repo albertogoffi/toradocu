@@ -56,8 +56,8 @@ public class PrecisionRecallTest {
 					report.append("Missing condition:" + line + "\n");
 				}
 			}
-			float precision = result.getPrecision();
-			float recall = result.getRecall();
+			double precision = result.getPrecision();
+			double recall = result.getRecall();
 			report.append("Conditions: " + expected.size() + "\n");
 			report.append("Precision: " + String.format("%.2f", precision) + "\n");
 			report.append("Recall: " + String.format("%.2f", recall) + "\n");

@@ -1,6 +1,8 @@
 package org.toradocu;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.number.IsCloseTo.closeTo;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -21,51 +23,49 @@ public class PrecisionRecallCommonsCollections4 extends AbstracPrecisionRecallTe
 	@Test
 	public void arrayStackTest() throws Exception {
 		TestCaseStats stats = test("org.apache.commons.collections4.ArrayStack");
-		assertEquals(1, stats.getPrecision(), 0);
-		assertEquals(0.75, stats.getRecall(), 0);
+		assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
+		assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.75));
 	}
 	
 	@Test
 	public void bagUtilsTest() throws Exception {
 		TestCaseStats stats = test("org.apache.commons.collections4.BagUtils");
-		assertEquals(1, stats.getPrecision(), 0);
-		assertEquals(1, stats.getRecall(), 0);
+		assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
+		assertThat(RECALL_MESSAGE, stats.getRecall(), is(1.0));
 	}
 	
 	@Test
 	public void closureUtilsTest() throws Exception {
 		TestCaseStats stats = test("org.apache.commons.collections4.ClosureUtils");
-		assertEquals(0.79, stats.getPrecision(), PRECISION);
-		assertEquals(0.60, stats.getRecall(), PRECISION);
+		assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.79, PRECISION));
+		assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.6));
 	}
 	
 	@Test
 	public void collectionUtilsTest() throws Exception {
 		TestCaseStats stats = test("org.apache.commons.collections4.CollectionUtils");
-		assertEquals(0.71, stats.getPrecision(), PRECISION);
-		assertEquals(0.54, stats.getRecall(), PRECISION);
+		assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.71, PRECISION));
+		assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.54, PRECISION));
 	}
 	
 	@Test
 	public void predicateUtilsTest() throws Exception {
 		TestCaseStats stats = test("org.apache.commons.collections4.PredicateUtils");
-		assertEquals(0.72, stats.getPrecision(), PRECISION);
-		assertEquals(0.69, stats.getRecall(), PRECISION);
+		assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.72, PRECISION));
+		assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.7));
 	}
 	
 	@Test
 	public void queueUtilsTest() throws Exception {
 		TestCaseStats stats = test("org.apache.commons.collections4.QueueUtils");
-		assertEquals(1, stats.getPrecision(), 0);
-		assertEquals(1, stats.getRecall(), 0);
+		assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
+		assertThat(RECALL_MESSAGE, stats.getRecall(), is(1.0));
 	}
-	
-// =====================
 	
 	@Test
 	public void fixedOrderComparatorTest() throws Exception {
 		TestCaseStats stats = test("org.apache.commons.collections4.comparators.FixedOrderComparator");
-		assertEquals(0.83, stats.getPrecision(), PRECISION);
-		assertEquals(0.55, stats.getRecall(), PRECISION);
+		assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.83, PRECISION));
+		assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.55, PRECISION));
 	}
 }

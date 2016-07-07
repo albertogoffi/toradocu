@@ -5,7 +5,9 @@ import org.junit.BeforeClass;
 
 public abstract class AbstracPrecisionRecallTestSuite {
 
-	protected static final float PRECISION = 0.01f;
+	protected static final double PRECISION = 0.01;
+	protected static final String PRECISION_MESSAGE = "Precision is different than expected";
+	protected static final String RECALL_MESSAGE = "Precision is different than expected";
 	
 	private static TestSuiteStats testSuiteStats;
 	private String sourceDirPath, expectedOutputDirPath;
