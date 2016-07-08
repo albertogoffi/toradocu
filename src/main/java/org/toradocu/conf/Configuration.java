@@ -1,6 +1,8 @@
 package org.toradocu.conf;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -60,11 +62,14 @@ public enum Configuration {
 	@DynamicParameter(names = "-J", description = "Javadoc options")
 	private Map<String, String> javadocOptions = new HashMap<>();
 	
+// Temporary Javadoc output directory
+	private String tempJavadocOutputDir;
+	
 // Constants
 	
 	private final String aspectTemplate = "AspectTemplate.java";
 
-// ====================
+// Getters
 	
 	public boolean isOracleGenerationEnabled() {
 		return oracleGeneration;
@@ -97,6 +102,17 @@ public enum Configuration {
 	public File getConditionTranslatorInput() {
 		return conditionTranslatorInput;
 	}
+
+	/**
+	 * Returns a temporary directory for Javadoc output or null if a
+	 * non-temporary directory is set for Javadoc output.
+	 * 
+	 * @return a temporary directory for Javadoc output or null if a
+	 * non-temporary directory is set for Javadoc output
+	 */
+	public String getTempJavadocOutputDir() {
+		return tempJavadocOutputDir;
+	}
 	
 	public File getConditionTranslatorOutput() {
 		return conditionTranslatorOutput;
@@ -121,6 +137,18 @@ public enum Configuration {
 		if (!arguments.contains("-quiet")) {
 			arguments.add("-quiet");
 		}
+		
+		// Use a temporary Javadoc output directory if one is not specified
+		if (!arguments.contains("-d")) {
+			try {
+				tempJavadocOutputDir = Files.createTempDirectory(null).toString();
+				arguments.add("-d");
+				arguments.add(tempJavadocOutputDir);
+			} catch (IOException e) {
+				// Output to working directory instead.
+			}
+		}
+		
 		arguments.add(getTargetPackage());
 		return arguments.toArray(new String[0]);
 	}

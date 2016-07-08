@@ -33,6 +33,12 @@ public class SentenceParser {
 		this.sentenceAsString = sentence.stream().map(Object::toString).collect(Collectors.joining(" "));
 	}
 	
+	/**
+	 * Identify propositions in a given sentence. Identified propositions are then returned as a single
+	 * <code>PropositionList</code> code.
+	 * 
+	 * @return a proposition list containing all the identified propositions joint with conjunctions.
+	 */
 	public PropositionList getPropositionList() {
 		Map<List<IndexedWord>, Proposition> propositionMap = new HashMap<>();
 		PropositionList propositionList = new PropositionList();

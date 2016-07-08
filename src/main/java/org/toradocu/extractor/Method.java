@@ -28,6 +28,14 @@ public final class Method {
 	public List<ThrowsTag> tags() {
 		return Collections.unmodifiableList(tags);
 	}
+
+	public List<Parameter> getParameters() {
+		return parameters;
+	}
+	
+	public String getSignature() {
+		return signature;
+	}
 	
 	@Override
 	public int hashCode() {
@@ -36,18 +44,6 @@ public final class Method {
 	
 	@Override
 	public String toString() {
-		if (signature == null) {
-			StringBuilder signature = new StringBuilder(name + "(");
-			for (Parameter par : parameters) {
-				signature.append(par);
-				signature.append(",");
-			}
-			if (signature.charAt(signature.length() - 1) == ',') { // Remove last comma when needed
-				signature.deleteCharAt(signature.length() - 1);
-			}
-			signature.append(")");
-			this.signature = signature.toString(); 
-		}
 		return this.signature;
 	}
 	
@@ -60,6 +56,7 @@ public final class Method {
 		public Builder(String name, Parameter... parameters) {
 			Objects.requireNonNull(name);
 			Objects.requireNonNull(parameters);
+			
 			this.name = name;
 			this.parameters = Arrays.asList(parameters);
 			tags = new ArrayList<>();
@@ -82,5 +79,15 @@ public final class Method {
 		name = builder.name;
 		parameters = builder.parameters;
 		tags = builder.tags;
+		StringBuilder signature = new StringBuilder(name + "(");
+		for (Parameter par : parameters) {
+			signature.append(par);
+			signature.append(",");
+		}
+		if (signature.charAt(signature.length() - 1) == ',') { // Remove last comma when needed
+			signature.deleteCharAt(signature.length() - 1);
+		}
+		signature.append(")");
+		this.signature = signature.toString(); 
 	}
 }

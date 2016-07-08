@@ -8,19 +8,15 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import com.sun.javadoc.ClassDoc;
-import com.sun.javadoc.ExecutableMemberDoc;
-import com.sun.javadoc.FieldDoc;
-import com.sun.javadoc.MethodDoc;
-import com.sun.javadoc.Parameter;
-import com.sun.javadoc.Type;
+import org.toradocu.extractor.Method;
+import org.toradocu.extractor.Parameter;
 
 public class Matcher {
 	
 	private static final int THRESHOLD = 9;
 
-	public static List<CodeElement<?>> subjectMatch(String s, ExecutableMemberDoc member) {
-		Set<CodeElement<?>> codeElements = collectPossibleMatchingElements(member);
+	public static List<CodeElement<?>> subjectMatch(String s, Method method) {
+		Set<CodeElement<?>> codeElements = collectPossibleMatchingElements(method);
 		
 		/* The presence of words like either, both, etc. can influence the distance. We need to
 		 * remove them. 
@@ -31,26 +27,26 @@ public class Matcher {
 	
 	public static String predicateMatch(String s, CodeElement<?> subject) {
 		String match = simpleMatch(s);
-		if (match == null) {
-			Set<CodeElement<?>> codeElements = null;
-			if (subject instanceof ParameterCodeElement) {
-				ParameterCodeElement par = (ParameterCodeElement) subject;
-				codeElements = collectPossibleMatchingElements(par.getCodeElement().type());
-			} else if (subject instanceof ClassCodeElement) {
-				ClassCodeElement classCodeElement = (ClassCodeElement) subject;
-				codeElements = collectPossibleMatchingElements(classCodeElement.getCodeElement());
-			} else {
-				return null; // Any other subject type should have a predicate matching with simple matching strategy
-			}
-			List<CodeElement<?>> match_ = getMatchingCodeElement(s, codeElements);
-			/* match_ contains matches that are at the same distance from s. We simply return one of those
-			   because we don't know which one is better */
-			Optional<CodeElement<?>> foundMatch = match_.stream().findFirst();
-			if (foundMatch.isPresent()) {
-				match = foundMatch.get().getStringRepresentation();
-				match += getCheck(s);
-			}
-		}
+//		if (match == null) {
+//			Set<CodeElement<?>> codeElements = null;
+//			if (subject instanceof ParameterCodeElement) {
+//				ParameterCodeElement par = (ParameterCodeElement) subject;
+//				codeElements = collectPossibleMatchingElements(par.getCodeElement().type());
+//			} else if (subject instanceof ClassCodeElement) {
+//				ClassCodeElement classCodeElement = (ClassCodeElement) subject;
+//				codeElements = collectPossibleMatchingElements(classCodeElement.getCodeElement());
+//			} else {
+//				return null; // Any other subject type should have a predicate matching with simple matching strategy
+//			}
+//			List<CodeElement<?>> match_ = getMatchingCodeElement(s, codeElements);
+//			/* match_ contains matches that are at the same distance from s. We simply return one of those
+//			   because we don't know which one is better */
+//			Optional<CodeElement<?>> foundMatch = match_.stream().findFirst();
+//			if (foundMatch.isPresent()) {
+//				match = foundMatch.get().getStringRepresentation();
+//				match += getCheck(s);
+//			}
+//		}
 		return match;
 	}
 	
@@ -91,52 +87,54 @@ public class Matcher {
 		return elements;
 	}
 	
-	private static Set<CodeElement<?>> collectPossibleMatchingElements(Type type) {
-		// Given the subject type, possible matching elements for the predicates are subject's methods and fields
-		// Note that this method is also used in predicate matching
-		Set<CodeElement<?>> elements = new HashSet<>();
-		
-		if (!type.isPrimitive()) {
-			ClassDoc classDoc = type.asClassDoc();
-			for (FieldDoc field : classDoc.fields()) {
-				if (field.isPublic()) {
-					elements.add(new FieldCodeElement(field, field.name()));
-				}
-			}
-			for (MethodDoc method : classDoc.methods()) {
-				if (method.isPublic() && method.parameters().length == 0 && 
-						(method.returnType().simpleTypeName().equals("boolean") || method.returnType().simpleTypeName().equals("Boolean"))) {
-					elements.add(new MethodCodeElement(method, method.name()));
-				}
-			}
-		} else if (type.dimension().equals("[]")) {
-			elements.add(new DummyCodeElement("isEmpty", ".length==0"));
-			elements.add(new DummyCodeElement("length", ".length"));
-		}
-		return elements;
-	}
+//	private static Set<CodeElement<?>> collectPossibleMatchingElements(Type type) {
+//		// Given the subject type, possible matching elements for the predicates are subject's methods and fields
+//		// Note that this method is also used in predicate matching
+//		Set<CodeElement<?>> elements = new HashSet<>();
+//		
+//		if (!type.isPrimitive()) {
+//			ClassDoc classDoc = type.asClassDoc();
+//			for (FieldDoc field : classDoc.fields()) {
+//				if (field.isPublic()) {
+//					elements.add(new FieldCodeElement(field, field.name()));
+//				}
+//			}
+//			for (MethodDoc method : classDoc.methods()) {
+//				if (method.isPublic() && method.parameters().length == 0 && 
+//						(method.returnType().simpleTypeName().equals("boolean") || method.returnType().simpleTypeName().equals("Boolean"))) {
+//					elements.add(new MethodCodeElement(method, method.name()));
+//				}
+//			}
+//		} else if (type.dimension().equals("[]")) {
+//			elements.add(new DummyCodeElement("isEmpty", ".length==0"));
+//			elements.add(new DummyCodeElement("length", ".length"));
+//		}
+//		return elements;
+//	}
 	
 	/**
 	 * This method collect Java code elements that a subject can possibly match.
 	 */
-	private static Set<CodeElement<?>> collectPossibleMatchingElements(ExecutableMemberDoc member) {
+	private static Set<CodeElement<?>> collectPossibleMatchingElements(Method method) {
 		Set<CodeElement<?>> elements = new LinkedHashSet<>();
 		
 		// Add parameters' names and types as code elements
-		for (Parameter par : member.parameters()) {
-			ParameterCodeElement parCodeElement = new ParameterCodeElement(par, member);
+		List<Parameter> parameters = method.getParameters();
+		for (int i = 0; i < parameters.size(); i++) {
+			Parameter par = parameters.get(i);
+			ParameterCodeElement parCodeElement = new ParameterCodeElement(par, i);
 			// Name identifiers
-			parCodeElement.addIdentifier(par.name());
-			parCodeElement.addIdentifier(par.type().simpleTypeName() + " " + par.name());
-			parCodeElement.addIdentifier(par.name() + " " + par.type().simpleTypeName());
+			parCodeElement.addIdentifier(par.getName());
+			parCodeElement.addIdentifier(par.getSimpleType() + " " + par.getName());
+			parCodeElement.addIdentifier(par.getName() + " " + par.getSimpleType());
 			parCodeElement.addIdentifier("parameter");
 			// Type identifiers
-			if (par.type().dimension().contains("[]")) {
+			if (par.getDimension().contains("[]")) {
 				parCodeElement.addIdentifier("array");
-				parCodeElement.addIdentifier(par.type().simpleTypeName() + " array");
+				parCodeElement.addIdentifier(par.getType() + " array");
 			} else {
-				parCodeElement.addIdentifier(par.type().simpleTypeName());
-				if (par.type().simpleTypeName().equals("java.lang.Iterable")) {
+				parCodeElement.addIdentifier(par.getType());
+				if (par.getType().equals("java.lang.Iterable")) {
 					parCodeElement.addIdentifier("collection");
 				}
 			}
@@ -144,36 +142,35 @@ public class Matcher {
 		}
 		
 		// Add target object as code element
-		ClassDoc containingClass = member.containingClass();
-		ClassCodeElement classCodeElement = new ClassCodeElement(containingClass);
-		String className = containingClass.simpleTypeName();
-		classCodeElement.addIdentifier(className);
-		
-		char[] classNameArray = className.toCharArray(); 
-		for (int i = classNameArray.length - 1; i > 0; i--) {
-			if (Character.isUpperCase(classNameArray[i])) {
-				classCodeElement.addIdentifier(className.substring(i));
-				break;
-			}
-		}
-		
-		
-		for (ClassDoc implementedInterface : containingClass.interfaces()) {
-			classCodeElement.addIdentifier(implementedInterface.simpleTypeName());
-		}
-		elements.add(classCodeElement);
-		
-		// Add target object methods as code elements
-		for (MethodDoc method : containingClass.methods()) {
-			if (method.isPublic() && method.parameters().length == 0) {
-				String methodName = method.name();
-				if (methodName.startsWith("get")) {
-					methodName = methodName.replaceFirst("get", "");
-				}
-				MethodCodeElement m = new MethodCodeElement(method, "target", methodName);
-				elements.add(m);
-			}
-		}
+//		ClassDoc containingClass = member.containingClass();
+//		ClassCodeElement classCodeElement = new ClassCodeElement(containingClass);
+//		String className = containingClass.simpleTypeName();
+//		classCodeElement.addIdentifier(className);
+//		
+//		char[] classNameArray = className.toCharArray(); 
+//		for (int i = classNameArray.length - 1; i > 0; i--) {
+//			if (Character.isUpperCase(classNameArray[i])) {
+//				classCodeElement.addIdentifier(className.substring(i));
+//				break;
+//			}
+//		}
+//		
+//		for (ClassDoc implementedInterface : containingClass.interfaces()) {
+//			classCodeElement.addIdentifier(implementedInterface.simpleTypeName());
+//		}
+//		elements.add(classCodeElement);
+//		
+//		// Add target object methods as code elements
+//		for (MethodDoc method : containingClass.methods()) {
+//			if (method.isPublic() && method.parameters().length == 0) {
+//				String methodName = method.name();
+//				if (methodName.startsWith("get")) {
+//					methodName = methodName.replaceFirst("get", "");
+//				}
+//				MethodCodeElement m = new MethodCodeElement(method, "target", methodName);
+//				elements.add(m);
+//			}
+//		}
 		
 		return elements;
 	}

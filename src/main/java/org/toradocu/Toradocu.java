@@ -1,37 +1,36 @@
 package org.toradocu;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.reflect.Type;
-import java.nio.charset.StandardCharsets;
+import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.event.Level;
 import org.toradocu.conf.Configuration;
 import org.toradocu.doclet.formats.html.ConfigurationImpl;
-import org.toradocu.extractor.JavadocExceptionComment;
 import org.toradocu.extractor.JavadocExtractor;
 import org.toradocu.extractor.Method;
+import org.toradocu.translator.ConditionTranslator;
+import org.toradocu.translator.TranslatedExceptionComment;
 import org.toradocu.util.GsonInst;
 import org.toradocu.util.NullOutputStream;
 
 import com.beust.jcommander.JCommander;
+import com.beust.jcommander.ParameterException;
 import com.google.gson.reflect.TypeToken;
 import com.sun.javadoc.ClassDoc;
 import com.sun.tools.javadoc.Main;
 
 public class Toradocu {
+	
 	private static final Logger LOG = LoggerFactory.getLogger(Toradocu.class);
 	private static final String DOCLET = "org.toradocu.doclet.standard.Standard";
 	private static final String PROGRAM_NAME = "java -jar toradocu.jar";
@@ -39,12 +38,19 @@ public class Toradocu {
 	private static final List<Method> methods = new ArrayList<>();
 	
 	public static void main(String[] args) {
-		JCommander options = new JCommander(CONF, args);
+		JCommander options;
+		try {
+			options = new JCommander(CONF, args);
+		} catch (ParameterException e) {
+			System.out.println(e.getMessage());
+			return;
+		}
 		options.setProgramName(PROGRAM_NAME);
 		
 		if (CONF.help()) {
 			options.usage();
 			System.out.println("Options preceded by an asterisk are required.");
+			deleteTemporaryFiles();
 			return;
 		}
 		
@@ -52,11 +58,12 @@ public class Toradocu {
 			System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "debug");
 		}
 		
+// === Javadoc Extractor
+		
 		if (CONF.getConditionTranslatorInput() == null) { // List of methods to analyze must be retrieved with the Javadoc tool
 			/* The execute method executes Javadoc with our doclet that in
-			 * org.toradocu.doclet.formats.html.HtmlDoclet invokes the method
-			 * Toradocu.process defined below.
-			 */  
+			   org.toradocu.doclet.formats.html.HtmlDoclet invokes the method
+			   Toradocu.process defined below. */  
 			PrintWriter nullPrintWriter = new PrintWriter(new NullOutputStream()); // suppress all the output of the Javadoc tool
 			Main.execute(PROGRAM_NAME + " - Javadoc Extractor", nullPrintWriter, nullPrintWriter, nullPrintWriter, DOCLET, CONF.getJavadocOptions());
 		} else { // List of methods to analyze are read from a file specified with a command line option
@@ -67,9 +74,36 @@ public class Toradocu {
 			}
 		}
 		
-//		List<TranslatedExceptionComment> translatedComments = ConditionTranslator.translate(extractedComments);
+// === Condition Translator
+		
+//		List<TranslatedExceptionComment> translatedComments = ConditionTranslator.translate(methods);
 //		printOutput(translatedComments);
 //		OracleGenerator.generate(translatedComments);
+		
+		deleteTemporaryFiles();
+	}
+	
+	private static void deleteTemporaryFiles() {
+		if (CONF.getTempJavadocOutputDir() != null) {
+			Path directory = Paths.get(CONF.getTempJavadocOutputDir());
+			try {
+				Files.walkFileTree(directory, new SimpleFileVisitor<Path>() {
+				   @Override
+				   public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+				       Files.delete(file);
+				       return FileVisitResult.CONTINUE;
+				   }
+
+				   @Override
+				   public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+				       Files.delete(dir);
+				       return FileVisitResult.CONTINUE;
+				   }
+				});
+			} catch (IOException e) {
+				LOG.warn("Unable to delete temporary Javadoc output", e);
+			}
+		}
 	}
 	
 	/**
@@ -80,7 +114,7 @@ public class Toradocu {
 		if (!classDoc.qualifiedName().equals(CONF.getTargetClass())) return;
 		
 		JavadocExtractor extractor = new JavadocExtractor(configuration);
-		methods.addAll(extractor.extract(classDoc));
+		methods.addAll(extractor.extract(classDoc)); 
 	}
 	
 //	private static void printOutput(Collection<?> c) {
@@ -94,15 +128,14 @@ public class Toradocu {
 //					writer.newLine();
 //				}
 //			} catch (Exception e) {
-//				LOG.log(Level.WARNING, "Unable to write the output of the condition translator", e);
+//				LOG.warn("Unable to write the output of the condition translator", e);
 //			}
 //		} else { // Else, print the condition translator's output on the standard output
 //			StringBuilder output = new StringBuilder();
-//			for (Object o : sortedC) {
-//				output.append(o).append("\n");
+//			for (Object element : sortedC) {
+//				output.append(element).append("\n");
 //			}
 //			LOG.info(output.toString());
 //		}
 //	}
-//	
 }

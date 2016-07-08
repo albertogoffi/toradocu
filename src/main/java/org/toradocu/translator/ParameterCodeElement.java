@@ -1,25 +1,18 @@
 package org.toradocu.translator;
 
-import com.sun.javadoc.ExecutableMemberDoc;
-import com.sun.javadoc.Parameter;
+import org.toradocu.extractor.Parameter;
 
 public class ParameterCodeElement extends CodeElement<Parameter> {
 	
-	private ExecutableMemberDoc member;
+	private final int parameterNumber;
 	
-	public ParameterCodeElement(Parameter parameter, ExecutableMemberDoc member, String... identifiers) {
+	public ParameterCodeElement(Parameter parameter, int parameterNumber, String... identifiers) {
 		super(parameter, identifiers);
-		this.member = member;
+		this.parameterNumber = parameterNumber;
 	}
 
 	@Override
 	protected String buildStringRepresentation() {
-		Parameter[] parameters =  member.parameters();
-		for (int i = 0; i < parameters.length; i++) {
-			if (codeElement.name().equals(parameters[i].name())) {
-				return "args[" + i + "]";
-			}
-		}
-		return null;
+		return "args[" + parameterNumber + "]";
 	}
 }

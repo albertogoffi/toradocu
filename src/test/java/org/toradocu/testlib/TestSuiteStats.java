@@ -7,7 +7,7 @@ import java.util.List;
 public class TestSuiteStats {
 	
 	private final List<TestCaseStats> tests = Collections.synchronizedList(new ArrayList<>());
-	private float precision = 0, recall = 0, precisionStdDeviation = 0, recallStdDeviation = 0;
+	private double precision = 0, recall = 0, precisionStdDeviation = 0, recallStdDeviation = 0;
 	
 	public void addTest(TestCaseStats test) {
 		tests.add(test);
@@ -20,27 +20,27 @@ public class TestSuiteStats {
 		this.recallStdDeviation = computeRecallStdDeviation();
 	}
 
-	public float getPrecision() {
+	public double getPrecision() {
 		return precision;
 	}
 	
-	public float getRecall() {
+	public double getRecall() {
 		return recall;
 	}
 	
-	public float getPrecisionStdDeviation() {
+	public double getPrecisionStdDeviation() {
 		return precisionStdDeviation;
 	}
 	
-	public float getRecallStdDeviation() {
+	public double getRecallStdDeviation() {
 		return recallStdDeviation;
 	}
 	
-	public float getFMeasure() {
+	public double getFMeasure() {
 		return (2 * getPrecision() * getRecall()) / (getPrecision() + getRecall());
 	}
 
-	private float computePrecision() {
+	private double computePrecision() {
 		float precision = 0;
 		for (TestCaseStats test : tests) {
 			precision += test.getPrecision();
@@ -48,7 +48,7 @@ public class TestSuiteStats {
 		return precision / tests.size();
 	}
 
-	private float computeRecall() {
+	private double computeRecall() {
 		float recall = 0;
 		for (TestCaseStats test : tests) {
 			recall += test.getRecall();
@@ -56,19 +56,19 @@ public class TestSuiteStats {
 		return recall / tests.size();
 	}
 	
-	private float computePrecisionStdDeviation() {
+	private double computePrecisionStdDeviation() {
 		double deviation = 0;	
 		for (TestCaseStats test : tests) {
 			deviation += Math.pow(test.getPrecision() - precision, 2);
 		}
-		return (float) (deviation / tests.size());
+		return deviation / tests.size();
 	}
 
-	private float computeRecallStdDeviation() {
+	private double computeRecallStdDeviation() {
 		double deviation = 0;
 		for (TestCaseStats test : tests) {
 			deviation += Math.pow(test.getRecall() - recall, 2);
 		}
-		return (float) (deviation / tests.size());
+		return deviation / tests.size();
 	}
 }

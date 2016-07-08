@@ -1,9 +1,10 @@
-# Toradocu
-Toradocu - automated generation of test oracles from Javadoc documentation
+# Toradocu: automated generation of test oracles from Javadoc documentation
+
+[![Build Status](https://travis-ci.org/albertogoffi/toradocu.svg?branch=master)](https://travis-ci.org/albertogoffi/toradocu)
 
 Toradocu generates test oracles from the Javadoc documentation of a
-class. Toradocu is described in the paper *Automatic Generation of
-Oracles for Exceptional Behaviors* by Alberto Goffi, Alessandra
+class. Toradocu is described in the paper [*Automatic Generation of
+Oracles for Exceptional Behaviors*](http://star.inf.usi.ch/star/papers/16-issta-toradocu.pdf) by Alberto Goffi, Alessandra
 Gorla, Michael D. Ernst, and Mauro Pezzè (presented at
 [ISSTA 2016](https://issta2016.cispa.saarland)).
 
@@ -48,7 +49,7 @@ to your sources with `-J-sourcepath=...`. You can customize the behavior of the
 `javadoc` tool using all its options.
 
 Note that this is an early release of Toradocu. The tool prints a lot of
-trancing/debugging information on the stadard input/error.
+tracing/debugging information on the standard input/error.
 
 ## Using Toradocu Aspects
 Toradocu generates [AspectJ aspects](https://eclipse.org/aspectj/) in the folder
@@ -77,19 +78,3 @@ behavior of constructors.
 
 Run weaved test suite as a normal test suite, just be sure to have AspectJ on
 the classpath.
-
-## Notes for Developers
-
-### Toradocu Dependencies
-* `lib/tools-jdk1.8.0_72.jar`: the custom doclet depends on this jar that is
-  part of the standard JDK distribution (original name: tools.jar).
-  Other dependencies are listed in `build.gradle` and are automatically
-  downloaded during the building process.
-
-### Get the standard doclet source code
-1. Download the source code from
-   [here](http://hg.openjdk.java.net/jdk8/jdk8/langtools/tags)
-   2. Standard doclet is in `/src/share/classes/com/sun/tools/doclets/`
-   3. Change package declarations with the command:
-      ``perl -pi -e 's/com.sun.tools.doclets/org.newpackge/g' `find . -name
-      “*.java”` ``

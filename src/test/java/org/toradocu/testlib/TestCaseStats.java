@@ -8,12 +8,12 @@ public class TestCaseStats {
 		this.total = total;
 	}
 	
-	public float getRecall() {
-		return tp / (float) total;
+	public double getRecall() {
+		return tp / (double) total;
 	}
 
-	public float getPrecision() {
-		return tp / (float) (tp + fp);
+	public double getPrecision() {
+		return tp / (double) (tp + fp);
 	}
 
 	public void incrementTP() {

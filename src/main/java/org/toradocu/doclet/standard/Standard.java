@@ -26,7 +26,7 @@
 package org.toradocu.doclet.standard;
 
 import com.sun.javadoc.*;
-import org.toradocu.doclet.formats.html.*;
+import org.toradocu.doclet.formats.html.HtmlDoclet;
 
 
 public class Standard {
