@@ -6,7 +6,7 @@ public final class Parameter {
 	
 	private final String type;
 	private final String name;
-	private final String dimension;
+	private final transient String dimension;
 	
 	public Parameter(String type, String name) {
 		Objects.requireNonNull(type);
@@ -15,11 +15,7 @@ public final class Parameter {
 		this.name = name;
 		
 		int dimensionIndex = type.indexOf('[');
-		if (dimensionIndex > 0) {
-			dimension = type.substring(dimensionIndex, type.length() - 1);
-		} else {
-			dimension = "";
-		}
+		dimension = dimensionIndex > 0 ? type.substring(dimensionIndex, type.length()) : "";
 	}
 	
 	public String getDimension() {
