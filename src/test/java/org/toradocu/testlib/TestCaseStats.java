@@ -32,6 +32,9 @@ public class TestCaseStats {
 	 * @return the precision of the test case
 	 */
 	public double getPrecision() {
+		if (tp + fp == 0) {
+			return 0;
+		}
 		return tp / (double) (tp + fp);
 	}
 
