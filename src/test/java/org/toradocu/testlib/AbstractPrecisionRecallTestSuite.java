@@ -3,11 +3,11 @@ package org.toradocu.testlib;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
-public abstract class AbstracPrecisionRecallTestSuite {
+public abstract class AbstractPrecisionRecallTestSuite {
 
 	protected static final double PRECISION = 0.01;
 	protected static final String PRECISION_MESSAGE = "Precision is different than expected";
-	protected static final String RECALL_MESSAGE = "Precision is different than expected";
+	protected static final String RECALL_MESSAGE = "Recall is different than expected";
 	
 	private static TestSuiteStats testSuiteStats;
 	private String sourceDirPath, expectedOutputDirPath;

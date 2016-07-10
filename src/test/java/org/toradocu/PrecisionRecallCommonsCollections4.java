@@ -6,10 +6,10 @@ import static org.hamcrest.number.IsCloseTo.closeTo;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.toradocu.testlib.AbstracPrecisionRecallTestSuite;
+import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 import org.toradocu.testlib.TestCaseStats;
 
-public class PrecisionRecallCommonsCollections4 extends AbstracPrecisionRecallTestSuite {
+public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallTestSuite {
 
 	private static final String COMMONSCOLLECTIONS_4_SRC = "src/test/resources/commons-collections4-4.1-src/src/main/java";
 	private static final String COMMONSCOLLECTIONS_4_EXPECTED_DIR = "src/test/resources/CommonsCollections-4.1/";
