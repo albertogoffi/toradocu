@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.omg.PortableInterceptor.LOCATION_FORWARD;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.extractor.JavadocExceptionComment;
@@ -86,12 +87,19 @@ public class ConditionTranslator {
 		for (Proposition p : propositionList.getNodes()) {
 			String translation = "";
 			
-			List<CodeElement<?>> subjectMatches = Matcher.subjectMatch(p.getSubject(), method);
-//			if (subjectMatches.isEmpty()) {
-//				LOG.fine("Failed subject translation for: " + p);
-//				return;
-//			}
-//			
+			List<CodeElement> subjectMatches;
+			try {
+				subjectMatches = Matcher.subjectMatch(p.getSubject(), method);
+				if (subjectMatches.isEmpty()) {
+					LOG.debug("Failed subject translation for: " + p);
+					return;
+				}
+				
+			} catch (ClassNotFoundException e) {
+				LOG.error("Unable to load class. Check the classpath");
+				return;
+			}
+			
 //			for (CodeElement<?> subjectMatch : subjectMatches) { // A subject can match multiple elements (e.g., "either value...")
 //				String translatedPredicate = Matcher.predicateMatch(p.getRelation(), subjectMatch);
 //				if (translatedPredicate == null) {

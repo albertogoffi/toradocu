@@ -1,13 +1,11 @@
 package org.toradocu.translator;
 
-import org.toradocu.extractor.Parameter;
-
-public class ParameterCodeElement extends CodeElement<Parameter> {
+public class ParameterCodeElement extends CodeElement {
 	
 	private final int parameterNumber;
 	
-	public ParameterCodeElement(Parameter parameter, int parameterNumber, String... identifiers) {
-		super(parameter, identifiers);
+	public ParameterCodeElement(int parameterNumber, String... identifiers) {
+		super(identifiers);
 		this.parameterNumber = parameterNumber;
 	}
 

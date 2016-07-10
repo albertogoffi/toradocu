@@ -1,33 +1,28 @@
 package org.toradocu.translator;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+import java.util.Objects;
 
 import org.toradocu.util.Distance;
 
-public abstract class CodeElement<T> {
+public abstract class CodeElement {
 	
-	private Set<String> identifiers; // Strings that can be used to refer to the codeElement
+	private List<String> identifiers; // Strings that can be used to refer to this code element
 	private String stringRepresentation; // String used to build Java conditions
-	protected T codeElement; // Java code element
 	
-	public CodeElement(T codeElement, String... identifiers) {
-		this.codeElement = codeElement;
-		this.identifiers = new HashSet<>(Arrays.asList(identifiers));
+	public CodeElement(String... identifiers) {
+		this.identifiers = new ArrayList<>(Arrays.asList(identifiers));
 	}
 
 	public void addIdentifier(String indentifier) {
 		identifiers.add(indentifier);
 	}
 	
-	public Set<String> getIdentifiers() {
+	public List<String> getIdentifiers() {
 		return identifiers;
-	}
-	
-	public T getCodeElement() {
-		return codeElement;
 	}
 	
 	public String getStringRepresentation() {
@@ -46,24 +41,23 @@ public abstract class CodeElement<T> {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof CodeElement) {
-			CodeElement<?> that = (CodeElement<?>) obj;
-			if (this.getCodeElement().equals(that.getCodeElement()) &&
-				this.getIdentifiers().equals(that.getIdentifiers()) &&
-				this.getStringRepresentation().equals(that.getStringRepresentation())) {
-				return true;
-			}
+		if (!(obj instanceof CodeElement)) return false;
+		
+		CodeElement that = (CodeElement) obj;
+		if (this.getIdentifiers().equals(that.getIdentifiers()) && 
+			this.getStringRepresentation().equals(that.getStringRepresentation())) {
+			return true;
 		}
 		return false;
 	}
 	
 	@Override
 	public int hashCode() {
-		return getCodeElement().hashCode() + getIdentifiers().hashCode() + getStringRepresentation().hashCode();
+		return Objects.hash(getIdentifiers(), getStringRepresentation());
 	}
 	
 	@Override
 	public String toString() {
-		return getCodeElement().toString() + ": " + getIdentifiers();
+		return getStringRepresentation() + ": " + getIdentifiers();
 	}
 }

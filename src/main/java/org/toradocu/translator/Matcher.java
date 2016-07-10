@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import org.toradocu.extractor.Method;
 import org.toradocu.extractor.Parameter;
@@ -15,19 +17,20 @@ public class Matcher {
 	
 	private static final int THRESHOLD = 9;
 
-	public static List<CodeElement<?>> subjectMatch(String s, Method method) {
-		Set<CodeElement<?>> codeElements = collectPossibleMatchingElements(method);
+	public static List<CodeElement> subjectMatch(String subject, Method methodUnderTest) throws ClassNotFoundException {
+		List<CodeElement> codeElements;
+		codeElements = collectPossibleMatchingElements(methodUnderTest);
 		
 		/* The presence of words like either, both, etc. can influence the distance. We need to
 		 * remove them. 
 		 */
-		s = s.replace("either", "").trim();
-		return getMatchingCodeElement(s, codeElements);
+		subject = subject.replace("either", "").trim(); //TODO: Remove initial "stop words" only at the beginning of the subject s
+		return getMatchingCodeElement(subject, codeElements);
 	}
 	
-	public static String predicateMatch(String s, CodeElement<?> subject) {
+	public static String predicateMatch(String s, CodeElement subject) {
 		String match = simpleMatch(s);
-//		if (match == null) {
+		if (match == null) {
 //			Set<CodeElement<?>> codeElements = null;
 //			if (subject instanceof ParameterCodeElement) {
 //				ParameterCodeElement par = (ParameterCodeElement) subject;
@@ -46,7 +49,7 @@ public class Matcher {
 //				match = foundMatch.get().getStringRepresentation();
 //				match += getCheck(s);
 //			}
-//		}
+		}
 		return match;
 	}
 	
@@ -73,9 +76,10 @@ public class Matcher {
 		}
 	}
 	
-	private static List<CodeElement<?>> getMatchingCodeElement(String s, Set<CodeElement<?>> codeElements) {
-		List<CodeElement<?>> elements = new ArrayList<>(codeElements);
+	private static List<CodeElement> getMatchingCodeElement(String s, List<CodeElement> codeElements) {
+		List<CodeElement> elements = new ArrayList<>(codeElements);
 		elements.removeIf(e -> e.getLevenshteinDistanceFrom(s) >= THRESHOLD);
+		// FIXME Remove the sort and just pick the element with minimun distance (ignoring elements above treshold
 		Collections.sort(elements, (e1, e2) -> e1.getLevenshteinDistanceFrom(s) < e2.getLevenshteinDistanceFrom(s) ? -1 
 											 : e1.getLevenshteinDistanceFrom(s) == e2.getLevenshteinDistanceFrom(s) ? 0 : 1);
 //		elements.stream().forEach(e -> System.out.println(e.getCodeElement() + " " + e.getLevenshteinDistanceFrom(s)));
@@ -114,15 +118,16 @@ public class Matcher {
 	
 	/**
 	 * This method collect Java code elements that a subject can possibly match.
+	 * @throws ClassNotFoundException if the class declaring <code>method</code> cannot be loaded
 	 */
-	private static Set<CodeElement<?>> collectPossibleMatchingElements(Method method) {
-		Set<CodeElement<?>> elements = new LinkedHashSet<>();
+	private static List<CodeElement> collectPossibleMatchingElements(Method method) throws ClassNotFoundException {
+		List<CodeElement> elements = new ArrayList<>();
 		
 		// Add parameters' names and types as code elements
 		List<Parameter> parameters = method.getParameters();
 		for (int i = 0; i < parameters.size(); i++) {
 			Parameter par = parameters.get(i);
-			ParameterCodeElement parCodeElement = new ParameterCodeElement(par, i);
+			ParameterCodeElement parCodeElement = new ParameterCodeElement(i);
 			// Name identifiers
 			parCodeElement.addIdentifier(par.getName());
 			parCodeElement.addIdentifier(par.getSimpleType() + " " + par.getName());
@@ -142,37 +147,46 @@ public class Matcher {
 		}
 		
 		// Add target object as code element
-//		ClassDoc containingClass = member.containingClass();
-//		ClassCodeElement classCodeElement = new ClassCodeElement(containingClass);
-//		String className = containingClass.simpleTypeName();
-//		classCodeElement.addIdentifier(className);
-//		
-//		char[] classNameArray = className.toCharArray(); 
-//		for (int i = classNameArray.length - 1; i > 0; i--) {
-//			if (Character.isUpperCase(classNameArray[i])) {
-//				classCodeElement.addIdentifier(className.substring(i));
-//				break;
-//			}
-//		}
-//		
-//		for (ClassDoc implementedInterface : containingClass.interfaces()) {
-//			classCodeElement.addIdentifier(implementedInterface.simpleTypeName());
-//		}
-//		elements.add(classCodeElement);
-//		
-//		// Add target object methods as code elements
-//		for (MethodDoc method : containingClass.methods()) {
-//			if (method.isPublic() && method.parameters().length == 0) {
-//				String methodName = method.name();
-//				if (methodName.startsWith("get")) {
-//					methodName = methodName.replaceFirst("get", "");
-//				}
-//				MethodCodeElement m = new MethodCodeElement(method, "target", methodName);
-//				elements.add(m);
-//			}
-//		}
+		Class<?> containingClass = Class.forName(method.getContainingClass());
+		ClassCodeElement classCodeElement = new ClassCodeElement();
+		String className = containingClass.getSimpleName();
+		classCodeElement.addIdentifier(className);
+		
+		char[] classNameArray = className.toCharArray(); 
+		for (int i = classNameArray.length - 1; i > 0; i--) {
+			if (Character.isUpperCase(classNameArray[i])) {
+				classCodeElement.addIdentifier(className.substring(i));
+				break;
+			}
+		}
+		
+		for (Class<?> implementedInterface : containingClass.getInterfaces()) {
+			classCodeElement.addIdentifier(implementedInterface.getSimpleName());
+		}
+		elements.add(classCodeElement);
+		
+		// Add target object methods as code elements
+		for (java.lang.reflect.Method classMethod : containingClass.getMethods()) { // TODO Consider also protected methods?
+			if (classMethod.getParameters().length == 0) {
+				String methodName = classMethod.getName();
+				if (methodName.startsWith("get")) {
+					methodName = methodName.replaceFirst("get", "");
+				}
+				MethodCodeElement m = new MethodCodeElement(getSignature(classMethod), "target", classMethod.getName());
+				elements.add(m);
+			}
+		}
 		
 		return elements;
+	}
+	
+	private static String getSignature(java.lang.reflect.Method method) {
+		 Pattern pattern = Pattern.compile("[^.]*\\(.*\\)");
+		 java.util.regex.Matcher matcher = pattern.matcher(method.toString());
+		 if (matcher.find()) {
+			return matcher.group(); 
+		 }
+		 return "";
 	}
 	
 	private static String getCheck(String predicate) {

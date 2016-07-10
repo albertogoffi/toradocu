@@ -1,25 +1,21 @@
 package org.toradocu.translator;
 
-import com.sun.javadoc.MethodDoc;
+public class MethodCodeElement extends CodeElement {
 
-public class MethodCodeElement extends CodeElement<MethodDoc>{
-
-	private String receiver;
+	private final String receiver, signature;
 	
-	public MethodCodeElement(MethodDoc method, String identifier) {
-		super(method, identifier);
-		receiver = "";
+	public MethodCodeElement(String signature, String identifier) {
+		this(signature, "", identifier);
 	}
 
-	public MethodCodeElement(MethodDoc method, String receiver, String identifier) {
-		super(method, identifier);
+	public MethodCodeElement(String signature, String receiver, String identifier) {
+		super(identifier);
+		this.signature = signature;
 		this.receiver = receiver;
 	}
-	
 
 	@Override
 	protected String buildStringRepresentation() {
-		return receiver + "." + codeElement.name() + codeElement.signature();
+		return receiver + "." + signature;
 	}
-
 }

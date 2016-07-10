@@ -10,7 +10,8 @@ public final class Method {
 	private final String name;
 	private final List<Parameter> parameters;
 	private final List<ThrowsTag> tags;
-	private transient String signature;
+	private final transient String signature;
+	private final transient String containingClass;
 	
 	@Override
 	public boolean equals(Object obj) {
@@ -35,6 +36,10 @@ public final class Method {
 	
 	public String getSignature() {
 		return signature;
+	}
+	
+	public String getContainingClass() {
+		return containingClass;
 	}
 	
 	@Override
@@ -88,6 +93,7 @@ public final class Method {
 			signature.deleteCharAt(signature.length() - 1);
 		}
 		signature.append(")");
-		this.signature = signature.toString(); 
+		this.signature = signature.toString();
+		this.containingClass = signature.substring(0, signature.lastIndexOf("."));
 	}
 }

@@ -1,16 +1,17 @@
 package org.toradocu.translator;
 
-import com.sun.javadoc.FieldDoc;
+public class FieldCodeElement extends CodeElement {
 
-public class FieldCodeElement extends CodeElement<FieldDoc> {
-
-	public FieldCodeElement(FieldDoc codeElement, String identifier) {
-		super(codeElement, identifier);
+	private final String name;
+	
+	public FieldCodeElement(String name, String identifier) {
+		super(identifier);
+		this.name = name;
 	}
 
 	@Override
 	protected String buildStringRepresentation() {
-		return codeElement.name();
+		return name;
 	}
 
 }

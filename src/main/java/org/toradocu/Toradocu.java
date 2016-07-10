@@ -76,7 +76,7 @@ public class Toradocu {
 		
 // === Condition Translator
 		
-//		List<TranslatedExceptionComment> translatedComments = ConditionTranslator.translate(methods);
+		List<TranslatedExceptionComment> translatedComments = ConditionTranslator.translate(methods);
 //		printOutput(translatedComments);
 //		OracleGenerator.generate(translatedComments);
 		

@@ -1,17 +1,12 @@
 package org.toradocu.translator;
 
-public class DummyCodeElement extends CodeElement<Object> {
+public class DummyCodeElement extends CodeElement {
 
 	String representation;
 	
-	public DummyCodeElement(String identifier, String representation) {
-		super(new Object(), identifier);
+	public DummyCodeElement(String representation, String identifier) {
+		super(identifier);
 		this.representation = representation;
-	}
-	
-	@Override
-	public int hashCode() {
-		return getIdentifiers().hashCode() + getStringRepresentation().hashCode();
 	}
 
 	@Override
