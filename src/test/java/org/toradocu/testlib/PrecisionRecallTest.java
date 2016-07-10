@@ -12,12 +12,27 @@ import java.util.stream.Collectors;
 
 import org.toradocu.Toradocu;
 
+/**
+ * PrecisionRecallTest contains static methods to perform a precision recall
+ * test using Toradocu.
+ */
 public class PrecisionRecallTest {
 
+	/**
+	 * Runs Toradocu on the given class and collects data on its precision and
+	 * recall.
+	 *
+	 * @param targetClass the fully qualified name of the class on which to
+	 *        run the test
+	 * @param srcPath the source path for the given targetClass
+	 * @param expectedOutputDir the path of the directory containing the
+	 *        expected output for the targetClass.
+	 * @return statistics for the test
+	 */
 	public static TestCaseStats test(String targetClass, String srcPath, String expectedOutputDir) {
 		String className = getClassName(targetClass);
 		String actualOutputFile = "tmp" + File.separator + className + "_out.txt";
-		String expectedOutputFile = expectedOutputDir + className + "_expected.txt";
+		String expectedOutputFile = Paths.get(expectedOutputDir, className + "_expected.txt").toString();
 		String message = "=== Test " + targetClass + " ===";
 		
 		Toradocu.main(new String[] {"--targetClass", targetClass,
@@ -31,10 +46,26 @@ public class PrecisionRecallTest {
 		return compare(actualOutputFile, expectedOutputFile, message);
 	}
 	
+	/**
+	 * Returns a simple class name for the class with the given qualified
+	 * name.
+	 *
+	 * @param qualifiedClassName the qualified name of the class
+	 * @return the simple name of the class
+	 */
 	private static String getClassName(String qualifiedClassName) {
 		return qualifiedClassName.substring(qualifiedClassName.lastIndexOf(".") + 1);
 	}
 
+	/**
+	 * Compares the output file and the expected output file. Calculates
+	 * statistics on precision and recall and prints the results.
+	 *
+	 * @param outputFile the file containing the actual test output
+	 * @param expectedOutputFile the file containing the expected test output
+	 * @param message a message to print before all other output
+	 * @return statistics on precision and recall for the test
+	 */
 	private static TestCaseStats compare(String outputFile, String expectedOutputFile, String message) {
 		StringBuilder report = new StringBuilder();
 		
