@@ -60,57 +60,24 @@ public class Matcher {
 	}
 	
 	private static String simpleMatch(String phrase) {
-		/*
 		switch (phrase) {
 		case "is negative":
 			return "<0";
 		case "is positive":
 			return ">0";
-		case "is false":
-			return "==false";
-		case "is true":
-			return "==true";
-		case "is null":
-		case "are null":
 		case "been set":
 			return "==null";
-		case "is < 1": // TODO Generalize this case!
-			return "<1";
-		case "is <= 0": // TODO Generalize this case!
-			return "<=0";
-		default:
-			return null;
-		}
-		*/
-		switch (phrase) {
-		case "is negative":
-			return "<0";
-		case "is positive":
-			return ">0";
-		case "is false":
-			return "==false";
-		case "is true":
-			return "==true";
-		case "is null":
-		case "are null":
-		case "been set":
-			return "==null";
-		case "is < 1": // TODO Generalize this case!
-			return "<1";
-		case "is <= 0": // TODO Generalize this case!
-			return "<=0";
 		default:
 			String symbol = null;
 			String numberString = null;
 			String[] phraseStarts = { "is ", "are ", "" };
 			String[] potentialSymbols = { "<=", ">=", "==", "!=", "=", "<", ">", "" };
-			LOG.fine("Got phrase: " + phrase);
 			for (String phraseStart : phraseStarts) {
 				for (String potentialSymbol : potentialSymbols) {
 					if (phrase.startsWith(phraseStart + potentialSymbol)) {
 						// Set symbol to the appropriate Java expression symbol.
-						if (potentialSymbol == "="
-								|| (potentialSymbol == "" && phraseStart != "")) {
+						if (potentialSymbol.equals("=")
+								|| (potentialSymbol.equals("") && !phraseStart.equals(""))) {
 							symbol = "==";
 						} else {
 							symbol = potentialSymbol;
@@ -126,16 +93,14 @@ public class Matcher {
 				return null;
 			}
 			try {
-				if ((numberString == "null" || numberString == "true"
-						|| numberString == "false") && (symbol == "==" || symbol == "!=")) {
-					LOG.fine("symbol: " + symbol + ", value: " + numberString);
+				if ((numberString.equals("null") || numberString.equals("true")
+						|| numberString.equals("false")) && (symbol.equals("==") || symbol.equals("!="))) {
 					return symbol + numberString;
 				}
 				int number = Integer.parseInt(numberString);
-				LOG.fine("symbol: " + symbol + ", value: " + number);
 				return symbol + String.valueOf(number);
 			} catch (NumberFormatException e) {
-				// Text following symbol is not a number. 
+				// Text following symbol is not a number.
 				return null;
 			}
 		}
