@@ -40,7 +40,7 @@ public class ConditionTranslator {
 			translatePropositions(propositionGraph, commentToTranslate);
 			
 			// We remove from the proposition graph all the proposition for which the translation has failed
-			pruneUntraslatedPropositions(propositionGraph);
+			pruneUntranslatedPropositions(propositionGraph);
 			
 			// We remove from the proposition graph all the proposition we know are wrong
 			pruneWrongTranslations(propositionGraph);
@@ -71,7 +71,7 @@ public class ConditionTranslator {
 		}
 	}
 
-	private static void pruneUntraslatedPropositions(Graph<Proposition, ConjunctionEdge<Proposition>> propositionGraph) {
+	private static void pruneUntranslatedPropositions(Graph<Proposition, ConjunctionEdge<Proposition>> propositionGraph) {
 		HashSet<Proposition> propositions = new HashSet<>(propositionGraph.vertexSet());
 		for (Proposition p : propositions) {
 			if (!p.getTranslation().isPresent()) {

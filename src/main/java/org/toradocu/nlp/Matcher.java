@@ -7,10 +7,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.logging.Logger;
-
-import org.slf4j.LoggerFactory;
-import org.toradocu.ConditionTranslator;
 
 import com.sun.javadoc.ClassDoc;
 import com.sun.javadoc.ExecutableMemberDoc;
@@ -22,7 +18,6 @@ import com.sun.javadoc.Type;
 public class Matcher {
 	
 	private static final int THRESHOLD = 9;
-	private static final Logger LOG = Logger.getLogger(Matcher.class.getName());
 
 	public static List<CodeElement<?>> subjectMatch(String s, ExecutableMemberDoc member) {
 		Set<CodeElement<?>> codeElements = collectPossibleMatchingElements(member);
@@ -30,7 +25,12 @@ public class Matcher {
 		/* The presence of words like either, both, etc. can influence the distance. We need to
 		 * remove them. 
 		 */
-		s = s.replace("either", "").trim();
+		if (s.startsWith("either ")) {
+			s = s.replaceFirst("either", "");
+		} else if (s.startsWith("both ")) {
+			s = s.replaceFirst("both", "");
+		}
+		s = s.trim();
 		return getMatchingCodeElement(s, codeElements);
 	}
 	
