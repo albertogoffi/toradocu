@@ -129,6 +129,10 @@ public enum Configuration {
 	}
 	
 	private String getTargetPackage() {
-		return targetClass.substring(0, targetClass.lastIndexOf("."));
+		int packageStringEnd = targetClass.lastIndexOf(".");
+		if (packageStringEnd == -1) {
+			return "";
+		}
+		return targetClass.substring(0, packageStringEnd);
 	}
 }

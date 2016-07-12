@@ -34,7 +34,7 @@ public class ConditionTranslator {
 			
 			// We identify propositions in the comment (as a -potentially disconnected- graph)
 			Set<String> javaConditions = new HashSet<>();
-			Graph<Proposition, ConjunctionEdge<Proposition>> propositionGraph = PropositionExtractor.getPropositionGraph(javadocComment);			
+			Graph<Proposition, ConjunctionEdge<Proposition>> propositionGraph = PropositionExtractor.getPropositionGraph(javadocComment);
 			
 			// We translate subject and predicate into Java code elements
 			translatePropositions(propositionGraph, commentToTranslate);
