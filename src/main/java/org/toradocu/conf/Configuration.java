@@ -112,6 +112,9 @@ public enum Configuration {
 		if (!arguments.contains("-quiet")) {
 			arguments.add("-quiet");
 		}
+		if (!arguments.contains("-private")) {
+			arguments.add("-private");
+		}
 		
 		// Use a temporary Javadoc output directory if one is not specified
 		if (!arguments.contains("-d")) {

@@ -42,7 +42,7 @@ public class PrecisionRecallTest {
 //				"--debug",
 				"-J-sourcepath=" + srcPath,
 				"-J-docletpath=build/classes/main",
-				"-J-d=tmp", "-J-quiet="});
+				"-J-d=tmp", "-J-quiet=", "-J-private="});
 		return compare(actualOutputFile, expectedOutputFile, message);
 	}
 	

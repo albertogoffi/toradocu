@@ -68,5 +68,12 @@ public class PrecisionRecallJGraphT extends AbstractPrecisionRecallTestSuite {
 		assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
 		assertThat(RECALL_MESSAGE, stats.getRecall(), is(1.0));
 	}
+	
+	@Test
+	public void abstractPathElementListTest() throws Exception {
+		TestCaseStats stats = test("org.jgrapht.alg.AbstractPathElementList");
+		assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
+		assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.33, PRECISION));
+	}
 
 }
