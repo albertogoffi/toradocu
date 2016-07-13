@@ -29,6 +29,7 @@ org.apache.commons.collections4.CollectionUtils.<T>addIgnoreNull(java.util.Colle
 org.apache.commons.collections4.CollectionUtils.<T>get(java.lang.Iterable<T>, int) throws java.lang.IndexOutOfBoundsException if the index is invalid ==> [???]
 org.apache.commons.collections4.CollectionUtils.<T>get(java.util.Iterator<T>, int) throws java.lang.IllegalArgumentException if the object type is invalid ==> [???]
 org.apache.commons.collections4.CollectionUtils.<T>get(java.util.Iterator<T>, int) throws java.lang.IndexOutOfBoundsException if the index is invalid ==> [???]
+org.apache.commons.collections4.CollectionUtils.checkIndexBounds(int) throws java.lang.IndexOutOfBoundsException if the index is negative. ==> [args[0]<0]
 org.apache.commons.collections4.CollectionUtils.get(java.lang.Object, int) throws java.lang.IllegalArgumentException if the object type is invalid ==> [???]
 org.apache.commons.collections4.CollectionUtils.get(java.lang.Object, int) throws java.lang.IndexOutOfBoundsException if the index is invalid ==> [???]
 org.apache.commons.collections4.CollectionUtils.isFull(java.util.Collection<? extends java.lang.Object>) throws java.lang.NullPointerException if the collection is null ==> [args[0]==null]
