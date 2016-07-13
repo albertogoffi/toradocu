@@ -6,10 +6,10 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.toradocu.testlib.AbstracPrecisionRecallTestSuite;
+import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 import org.toradocu.testlib.TestCaseStats;
 
-public class PrecisionRecallGuava19 extends AbstracPrecisionRecallTestSuite {
+public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
 	private static final String GUAVA_19_SRC = "src/test/resources/guava-19.0-sources";
 	private static final String GUAVA_EXPECTED_DIR = "src/test/resources/Guava-19/";

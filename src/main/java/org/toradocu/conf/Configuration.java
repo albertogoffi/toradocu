@@ -112,6 +112,9 @@ public enum Configuration {
 		if (!arguments.contains("-quiet")) {
 			arguments.add("-quiet");
 		}
+		if (!arguments.contains("-private")) {
+			arguments.add("-private");
+		}
 		
 		// Use a temporary Javadoc output directory if one is not specified
 		if (!arguments.contains("-d")) {
@@ -129,6 +132,10 @@ public enum Configuration {
 	}
 	
 	private String getTargetPackage() {
-		return targetClass.substring(0, targetClass.lastIndexOf("."));
+		int packageStringEnd = targetClass.lastIndexOf(".");
+		if (packageStringEnd == -1) {
+			return "";
+		}
+		return targetClass.substring(0, packageStringEnd);
 	}
 }

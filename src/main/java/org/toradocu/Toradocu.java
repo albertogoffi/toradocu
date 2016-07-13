@@ -39,6 +39,12 @@ public class Toradocu {
 	private static final String PROGRAM_NAME = "java -jar toradocu.jar";
 	private static final Configuration CONF = Configuration.INSTANCE;
 	
+	/**
+	 * Entry point for Toradocu. Takes several command-line arguments that
+	 * configure its behavior.
+	 *
+	 * @param args command-line arguments
+	 */
 	public static void main(String[] args) {
 		JCommander options;
 		try {
@@ -52,7 +58,6 @@ public class Toradocu {
 		if (CONF.help()) {
 			options.usage();
 			System.out.println("Options preceded by an asterisk are required.");
-			deleteTemporaryFiles();
 			return;
 		}
 		
@@ -75,6 +80,9 @@ public class Toradocu {
 		deleteTemporaryFiles();
 	}
 	
+	/**
+	 * Deletes any temporary files created by Toradocu to store Javadoc output. 
+	 */
 	private static void deleteTemporaryFiles() {
 		if (CONF.getTempJavadocOutputDir() != null) {
 			Path directory = Paths.get(CONF.getTempJavadocOutputDir());

@@ -25,7 +25,12 @@ public class Matcher {
 		/* The presence of words like either, both, etc. can influence the distance. We need to
 		 * remove them. 
 		 */
-		s = s.replace("either", "").trim();
+		if (s.startsWith("either ")) {
+			s = s.replaceFirst("either", "");
+		} else if (s.startsWith("both ")) {
+			s = s.replaceFirst("both", "");
+		}
+		s = s.trim();
 		return getMatchingCodeElement(s, codeElements);
 	}
 	
@@ -60,20 +65,44 @@ public class Matcher {
 			return "<0";
 		case "is positive":
 			return ">0";
-		case "is false":
-			return "==false";
-		case "is true":
-			return "==true";
-		case "is null":
-		case "are null":
 		case "been set":
 			return "==null";
-		case "is < 1": // TODO Generalize this case!
-			return "<1";
-		case "is <= 0": // TODO Generalize this case!
-			return "<=0";
 		default:
-			return null;
+			String symbol = null;
+			String numberString = null;
+			String[] phraseStarts = { "is ", "are ", "" };
+			String[] potentialSymbols = { "<=", ">=", "==", "!=", "=", "<", ">", "" };
+			for (String phraseStart : phraseStarts) {
+				for (String potentialSymbol : potentialSymbols) {
+					if (phrase.startsWith(phraseStart + potentialSymbol)) {
+						// Set symbol to the appropriate Java expression symbol.
+						if (potentialSymbol.equals("=")
+								|| (potentialSymbol.equals("") && !phraseStart.equals(""))) {
+							symbol = "==";
+						} else {
+							symbol = potentialSymbol;
+						}
+						numberString = phrase.substring(phraseStart.length() + potentialSymbol.length()).trim();
+						break;
+					}
+				}
+				if (symbol != null) break;
+			}
+			if (symbol == null || numberString == "") {
+				// The phrase did not match a simple pattern.
+				return null;
+			}
+			try {
+				if ((numberString.equals("null") || numberString.equals("true")
+						|| numberString.equals("false")) && (symbol.equals("==") || symbol.equals("!="))) {
+					return symbol + numberString;
+				}
+				int number = Integer.parseInt(numberString);
+				return symbol + String.valueOf(number);
+			} catch (NumberFormatException e) {
+				// Text following symbol is not a number.
+				return null;
+			}
 		}
 	}
 	

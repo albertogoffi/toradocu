@@ -1,15 +1,15 @@
 package org.toradocu;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
 import static org.hamcrest.number.IsCloseTo.closeTo;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.toradocu.testlib.AbstracPrecisionRecallTestSuite;
+import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 import org.toradocu.testlib.TestCaseStats;
 
-public class PrecisionRecallCommonsCollections4 extends AbstracPrecisionRecallTestSuite {
+public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallTestSuite {
 
 	private static final String COMMONSCOLLECTIONS_4_SRC = "src/test/resources/commons-collections4-4.1-src/src/main/java";
 	private static final String COMMONSCOLLECTIONS_4_EXPECTED_DIR = "src/test/resources/CommonsCollections-4.1/";
@@ -44,8 +44,8 @@ public class PrecisionRecallCommonsCollections4 extends AbstracPrecisionRecallTe
 	@Test
 	public void collectionUtilsTest() throws Exception {
 		TestCaseStats stats = test("org.apache.commons.collections4.CollectionUtils");
-		assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.71, PRECISION));
-		assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.54, PRECISION));
+		assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.72, PRECISION));
+		assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.55, PRECISION));
 	}
 	
 	@Test

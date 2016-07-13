@@ -1,4 +1,4 @@
-com.google.common.collect.AbstractMultiset.add(E) throws java.lang.IllegalArgumentException if Integer.MAX_VALUE occurrences of element are already contained in this multiset ==> [target.count(args[0]==Integer.MAX_VALUE)]
+com.google.common.collect.AbstractMultiset.add(E) throws java.lang.IllegalArgumentException if Integer.MAX_VALUE occurrences of element are already contained in this multiset ==> [target.count(args[0])==Integer.MAX_VALUE)]
 com.google.common.collect.AbstractMultiset.add(E) throws java.lang.NullPointerException if element is null and this implementation does not permit null elements ==> [args[0]==null]
 com.google.common.collect.ConcurrentHashMultiset.add(E, int) throws java.lang.IllegalArgumentException if occurrences is negative, or if the resulting amount would exceed Integer.MAX_VALUE ==> [args[1]<0||target.count(args[0])+args[1]>Integer.MAX_VALUE]
 com.google.common.collect.ConcurrentHashMultiset.add(E, int) throws java.lang.IllegalArgumentException if occurrences is negative, or if this operation would result in more than Integer.MAX_VALUE occurrences of the element ==> [args[1]<0||target.count(args[0])+args[1]>Integer.MAX_VALUE]
