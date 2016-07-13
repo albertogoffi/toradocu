@@ -75,7 +75,7 @@ public enum Configuration {
 		return oracleGeneration;
 	}
 	
-	public boolean isConditionTranslation() {
+	public boolean isConditionTranslationEnabled() {
 		return conditionTranslation;
 	}
 	

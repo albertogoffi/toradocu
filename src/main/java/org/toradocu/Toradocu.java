@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.toradocu.conf.Configuration;
 import org.toradocu.doclet.formats.html.ConfigurationImpl;
 import org.toradocu.extractor.JavadocExtractor;
-import org.toradocu.extractor.Method;
+import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.translator.ConditionTranslator;
 import org.toradocu.translator.TranslatedExceptionComment;
 import org.toradocu.util.GsonInst;
@@ -35,7 +35,7 @@ public class Toradocu {
 	private static final String DOCLET = "org.toradocu.doclet.standard.Standard";
 	private static final String PROGRAM_NAME = "java -jar toradocu.jar";
 	private static final Configuration CONF = Configuration.INSTANCE;
-	private static final List<Method> methods = new ArrayList<>();
+	private static final List<DocumentedMethod> methods = new ArrayList<>();
 	
 	public static void main(String[] args) {
 		JCommander options;
@@ -68,7 +68,7 @@ public class Toradocu {
 			Main.execute(PROGRAM_NAME + " - Javadoc Extractor", nullPrintWriter, nullPrintWriter, nullPrintWriter, DOCLET, CONF.getJavadocOptions());
 		} else { // List of methods to analyze are read from a file specified with a command line option
 			try (BufferedReader reader = Files.newBufferedReader(CONF.getConditionTranslatorInput().toPath())) {
-				methods.addAll(GsonInst.gson().fromJson(reader, new TypeToken<List<Method>>(){}.getType()));
+				methods.addAll(GsonInst.gson().fromJson(reader, new TypeToken<List<DocumentedMethod>>(){}.getType()));
 			} catch (IOException e) {
 				LOG.error("Unable to read the file: " + CONF.getConditionTranslatorInput(), e);
 			}
@@ -76,7 +76,9 @@ public class Toradocu {
 		
 // === Condition Translator
 		
-		List<TranslatedExceptionComment> translatedComments = ConditionTranslator.translate(methods);
+		if (CONF.isConditionTranslationEnabled()) {
+			List<TranslatedExceptionComment> translatedComments = ConditionTranslator.translate(methods);
+		}
 //		printOutput(translatedComments);
 //		OracleGenerator.generate(translatedComments);
 		

@@ -10,14 +10,15 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import org.toradocu.extractor.Method;
+import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.Parameter;
+import org.toradocu.util.Reflection;
 
 public class Matcher {
 	
 	private static final int THRESHOLD = 9;
 
-	public static List<CodeElement> subjectMatch(String subject, Method methodUnderTest) throws ClassNotFoundException {
+	public static List<CodeElement> subjectMatch(String subject, DocumentedMethod methodUnderTest) throws ClassNotFoundException {
 		List<CodeElement> codeElements;
 		codeElements = collectPossibleMatchingElements(methodUnderTest);
 		
@@ -28,27 +29,27 @@ public class Matcher {
 		return getMatchingCodeElement(subject, codeElements);
 	}
 	
-	public static String predicateMatch(String s, CodeElement subject) {
-		String match = simpleMatch(s);
+	public static String predicateMatch(String predicate, CodeElement subject) {
+		String match = simpleMatch(predicate);
 		if (match == null) {
-//			Set<CodeElement<?>> codeElements = null;
-//			if (subject instanceof ParameterCodeElement) {
-//				ParameterCodeElement par = (ParameterCodeElement) subject;
-//				codeElements = collectPossibleMatchingElements(par.getCodeElement().type());
-//			} else if (subject instanceof ClassCodeElement) {
-//				ClassCodeElement classCodeElement = (ClassCodeElement) subject;
-//				codeElements = collectPossibleMatchingElements(classCodeElement.getCodeElement());
-//			} else {
-//				return null; // Any other subject type should have a predicate matching with simple matching strategy
-//			}
-//			List<CodeElement<?>> match_ = getMatchingCodeElement(s, codeElements);
-//			/* match_ contains matches that are at the same distance from s. We simply return one of those
-//			   because we don't know which one is better */
-//			Optional<CodeElement<?>> foundMatch = match_.stream().findFirst();
-//			if (foundMatch.isPresent()) {
-//				match = foundMatch.get().getStringRepresentation();
-//				match += getCheck(s);
-//			}
+			List<CodeElement> codeElements = null;
+			if (subject instanceof ParameterCodeElement) {
+				ParameterCodeElement par = (ParameterCodeElement) subject;
+				codeElements = collectPossibleMatchingElements(par.getCodeElement().type());
+			} else if (subject instanceof ClassCodeElement) {
+				ClassCodeElement classCodeElement = (ClassCodeElement) subject;
+				codeElements = collectPossibleMatchingElements(classCodeElement.getCodeElement());
+			} else {
+				return null; // Any other subject type should have a predicate matching with simple matching strategy
+			}
+			List<CodeElement> match_ = getMatchingCodeElement(predicate, codeElements);
+			/* match_ contains matches that are at the same distance from s. We simply return one of those
+			   because we don't know which one is better */
+			Optional<CodeElement> foundMatch = match_.stream().findFirst();
+			if (foundMatch.isPresent()) {
+				match = foundMatch.get().getStringRepresentation();
+				match += getCheck(predicate);
+			}
 		}
 		return match;
 	}
@@ -91,11 +92,11 @@ public class Matcher {
 		return elements;
 	}
 	
-//	private static Set<CodeElement<?>> collectPossibleMatchingElements(Type type) {
-//		// Given the subject type, possible matching elements for the predicates are subject's methods and fields
-//		// Note that this method is also used in predicate matching
-//		Set<CodeElement<?>> elements = new HashSet<>();
-//		
+	private static Set<CodeElement> collectPossibleMatchingElements(Type type) {
+		// Given the subject type, possible matching elements for the predicates are subject's methods and fields
+		// Note that this method is also used in predicate matching
+		Set<CodeElement> elements = new HashSet<>();
+		
 //		if (!type.isPrimitive()) {
 //			ClassDoc classDoc = type.asClassDoc();
 //			for (FieldDoc field : classDoc.fields()) {
@@ -114,13 +115,13 @@ public class Matcher {
 //			elements.add(new DummyCodeElement("length", ".length"));
 //		}
 //		return elements;
-//	}
+	}
 	
 	/**
 	 * This method collect Java code elements that a subject can possibly match.
 	 * @throws ClassNotFoundException if the class declaring <code>method</code> cannot be loaded
 	 */
-	private static List<CodeElement> collectPossibleMatchingElements(Method method) throws ClassNotFoundException {
+	private static List<CodeElement> collectPossibleMatchingElements(DocumentedMethod method) throws ClassNotFoundException {
 		List<CodeElement> elements = new ArrayList<>();
 		
 		// Add parameters' names and types as code elements
@@ -172,21 +173,12 @@ public class Matcher {
 				if (methodName.startsWith("get")) {
 					methodName = methodName.replaceFirst("get", "");
 				}
-				MethodCodeElement m = new MethodCodeElement(getSignature(classMethod), "target", classMethod.getName());
+				MethodCodeElement m = new MethodCodeElement(Reflection.getMethodSignature(classMethod), "target", classMethod.getName());
 				elements.add(m);
 			}
 		}
 		
 		return elements;
-	}
-	
-	private static String getSignature(java.lang.reflect.Method method) {
-		 Pattern pattern = Pattern.compile("[^.]*\\(.*\\)");
-		 java.util.regex.Matcher matcher = pattern.matcher(method.toString());
-		 if (matcher.find()) {
-			return matcher.group(); 
-		 }
-		 return "";
 	}
 	
 	private static String getCheck(String predicate) {

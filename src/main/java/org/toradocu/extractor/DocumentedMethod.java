@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public final class Method {
+public final class DocumentedMethod {
 	private final String name;
 	private final List<Parameter> parameters;
 	private final List<ThrowsTag> tags;
@@ -15,9 +15,9 @@ public final class Method {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof Method)) return false;
+		if (!(obj instanceof DocumentedMethod)) return false;
 		
-		Method that = (Method) obj;
+		DocumentedMethod that = (DocumentedMethod) obj;
 		if (this.name.equals(that.name) &&
 			this.parameters.equals(that.parameters) &&
 			this.tags.equals(that.tags)) {
@@ -52,7 +52,7 @@ public final class Method {
 		return this.signature;
 	}
 	
-	public static class Builder implements org.toradocu.util.Builder<Method> {
+	public static class Builder implements org.toradocu.util.Builder<DocumentedMethod> {
 
 		private final String name;
 		private final List<Parameter> parameters;
@@ -75,12 +75,12 @@ public final class Method {
 		}
 		
 		@Override
-		public Method build() {
-			return new Method(this);
+		public DocumentedMethod build() {
+			return new DocumentedMethod(this);
 		}
 	}
 	
-	private Method(Builder builder) {
+	private DocumentedMethod(Builder builder) {
 		name = builder.name;
 		parameters = builder.parameters;
 		tags = builder.tags;

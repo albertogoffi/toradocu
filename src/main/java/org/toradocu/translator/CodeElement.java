@@ -8,12 +8,14 @@ import java.util.Objects;
 
 import org.toradocu.util.Distance;
 
-public abstract class CodeElement {
+public abstract class CodeElement<T> {
 	
 	private List<String> identifiers; // Strings that can be used to refer to this code element
 	private String stringRepresentation; // String used to build Java conditions
+	private T javaCodeElement; // The Java code element this object wraps
 	
-	public CodeElement(String... identifiers) {
+	public CodeElement(T javaCodeElement, String... identifiers) {
+		this.javaCodeElement = javaCodeElement;
 		this.identifiers = new ArrayList<>(Arrays.asList(identifiers));
 	}
 
@@ -36,15 +38,20 @@ public abstract class CodeElement {
 		return identifiers.stream().map(identifier -> Distance.levenshteinDistance(identifier, s))
 								   .min(Comparator.naturalOrder()).orElse(Integer.MAX_VALUE);
 	}
+	
+	public T getJavaCodeElement() {
+		return javaCodeElement;
+	}
 
-	protected abstract String buildStringRepresentation();
+	public abstract String buildStringRepresentation();
 	
 	@Override
 	public boolean equals(Object obj) {
 		if (!(obj instanceof CodeElement)) return false;
 		
-		CodeElement that = (CodeElement) obj;
+		CodeElement<?> that = (CodeElement<?>) obj;
 		if (this.getIdentifiers().equals(that.getIdentifiers()) && 
+			this.getJavaCodeElement().equals(that.getJavaCodeElement()) &&
 			this.getStringRepresentation().equals(that.getStringRepresentation())) {
 			return true;
 		}

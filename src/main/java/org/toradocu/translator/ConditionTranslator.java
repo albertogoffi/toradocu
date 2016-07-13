@@ -9,7 +9,7 @@ import org.omg.PortableInterceptor.LOCATION_FORWARD;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.extractor.JavadocExceptionComment;
-import org.toradocu.extractor.Method;
+import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.ThrowsTag;
 
 import com.sun.javadoc.ExecutableMemberDoc;
@@ -18,11 +18,11 @@ public class ConditionTranslator {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(ConditionTranslator.class);
 	
-	public static List<TranslatedExceptionComment> translate(List<Method> methodsToProcess) {
+	public static List<TranslatedExceptionComment> translate(List<DocumentedMethod> methodsToProcess) {
 		List<TranslatedExceptionComment> translatedComments = new ArrayList<>();
 
 		// For each method that has comments to translate
-		for (Method method : methodsToProcess) {
+		for (DocumentedMethod method : methodsToProcess) {
 			// For each comment to translate
 			for (ThrowsTag tag : method.tags()) {
 				String tagComment = tag.getComment();
@@ -82,7 +82,7 @@ public class ConditionTranslator {
 //		}
 //	}
 
-	private static void translatePropositions(PropositionList propositionList, Method method) {
+	private static void translatePropositions(PropositionList propositionList, DocumentedMethod method) {
 	
 		for (Proposition p : propositionList.getNodes()) {
 			String translation = "";

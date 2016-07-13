@@ -15,7 +15,7 @@ import java.util.List;
 
 import org.junit.Test;
 import org.toradocu.Toradocu;
-import org.toradocu.extractor.Method.Builder;
+import org.toradocu.extractor.DocumentedMethod.Builder;
 import org.toradocu.util.GsonInst;
 
 import com.google.gson.Gson;
@@ -32,7 +32,7 @@ public class JavadocExtractorTest {
 	 */
 	@Test
 	public void exampleTest() {
-		List<Method> expected = new ArrayList<>();
+		List<DocumentedMethod> expected = new ArrayList<>();
 		
 		Builder foo = new Builder("example.AClass.foo", new Parameter("int[]", "array"));
 		foo.tag(new ThrowsTag("java.lang.NullPointerException", "if array is null"));
@@ -49,7 +49,7 @@ public class JavadocExtractorTest {
 		test("example.AClass", expected, testResources + "/exampleTest_extractor_output.txt", testResources);
 	}
 	
-	private void test(String targetClass, List<Method> expected, String actualOutput, String sourcePath) {
+	private void test(String targetClass, List<DocumentedMethod> expected, String actualOutput, String sourcePath) {
 		Toradocu.main(new String[] {"--targetClass", targetClass,
 				"--saveJavadocExtractorOutput", actualOutput,
 				"--conditionTranslation", "false",
@@ -59,11 +59,11 @@ public class JavadocExtractorTest {
 				"-J-docletpath=build/classes/main",
 				"-J-d=" + toradocuOutputDir});
 		
-		Type listType = new TypeToken<List<Method>>(){}.getType();
+		Type listType = new TypeToken<List<DocumentedMethod>>(){}.getType();
 		Gson gson = GsonInst.gson();
 		Path ouputFilePath = Paths.get(actualOutput);
 		try (BufferedReader reader = Files.newBufferedReader(ouputFilePath)) {
-			List<Method> actual = gson.fromJson(reader, listType);
+			List<DocumentedMethod> actual = gson.fromJson(reader, listType);
 			assertThat(actual, is(expected));
 			Files.delete(ouputFilePath);
 		} catch(IOException e) {

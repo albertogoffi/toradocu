@@ -16,7 +16,7 @@ import org.toradocu.doclet.internal.toolkit.taglets.TagletWriter;
 import org.toradocu.doclet.internal.toolkit.util.DocFinder;
 import org.toradocu.doclet.internal.toolkit.util.DocPath;
 import org.toradocu.doclet.internal.toolkit.util.ImplementedMethods;
-import org.toradocu.extractor.Method.Builder;
+import org.toradocu.extractor.DocumentedMethod.Builder;
 import org.toradocu.util.OutputPrinter;
 
 import com.sun.javadoc.ClassDoc;
@@ -36,13 +36,13 @@ public final class JavadocExtractor {
 		this.configuration = configuration;
 	}
 
-	public List<Method> extract(ClassDoc classDoc) throws IOException {
+	public List<DocumentedMethod> extract(ClassDoc classDoc) throws IOException {
 		TagletWriter tagletWriterInstance = new HtmlDocletWriter(configuration, DocPath.forClass(classDoc)).getTagletWriterInstance(false);   	
-		List<Method> methods = new ArrayList<>();
+		List<DocumentedMethod> methods = new ArrayList<>();
 		
 		// Loop on constructors and methods (also inherited) of the target class
 		for (ExecutableMemberDoc member : getConstructorsAndMethods(classDoc)) {
-			Builder methodBuilder = new Method.Builder(member.qualifiedName(), getParameters(member));
+			Builder methodBuilder = new DocumentedMethod.Builder(member.qualifiedName(), getParameters(member));
 			
 			List<Tag> tags = new ArrayList<>();
 			
@@ -94,7 +94,7 @@ public final class JavadocExtractor {
 		return parameters;
 	}
 
-	private void printOutput(List<Method> collectionToPrint) {
+	private void printOutput(List<DocumentedMethod> collectionToPrint) {
 		OutputPrinter.Builder builder = new OutputPrinter.Builder("JavadocExtractor", collectionToPrint);
 		OutputPrinter printer = builder.file(Configuration.INSTANCE.getJavadocExtractorOutput()).build();
 		printer.print();
