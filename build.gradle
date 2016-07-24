@@ -17,6 +17,22 @@ jar {
     }
 }
 
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+            exclude 'org/toradocu/OracleGenerator.java'
+            exclude 'org/toradocu/translator/**'
+            exclude 'org/toradocu/aspect/**'
+        }
+    }
+    test {
+        java {
+            srcDir 'src/test/java'
+        }
+    }
+}
+
 repositories {
     mavenCentral()
 }
@@ -29,6 +45,8 @@ dependencies {
 	compile 'com.github.javaparser:javaparser-core:2.3.0'
 	compile 'com.beust:jcommander:1.48'
 	compile 'com.google.code.gson:gson:2.6.2'
+	compile 'org.apache.commons:commons-lang3:3.4'
+	compile 'commons-io:commons-io:2.5'
 	testCompile 'junit:junit:4.12'
 	runtime 'org.slf4j:slf4j-simple:1.7.21'
 	testCompile 'org.hamcrest:java-hamcrest:2.0.0.0'
