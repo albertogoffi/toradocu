@@ -24,7 +24,7 @@ public class ConditionTranslator {
 		// For each method that has comments to translate
 		for (DocumentedMethod method : methodsToProcess) {
 			// For each comment to translate
-			for (ThrowsTag tag : method.tags()) {
+			for (ThrowsTag tag : method.throwsTags()) {
 				String tagComment = tag.getComment();
 				
 				StringBuilder logMessage = new StringBuilder("=== " + method.getSignature() + " ===");

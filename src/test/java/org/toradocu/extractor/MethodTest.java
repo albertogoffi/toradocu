@@ -47,7 +47,7 @@ public class MethodTest {
 		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
 		DocumentedMethod method1 = methodBuilder.build();
 		
-		List<ThrowsTag> tags = method1.tags();
+		List<ThrowsTag> tags = method1.throwsTags();
 		assertThat(tags.size(), is(1));
 		assertThat(tags.get(0), is(new ThrowsTag("java.lang.NullPointerException", "if the array is empty")));
 	}

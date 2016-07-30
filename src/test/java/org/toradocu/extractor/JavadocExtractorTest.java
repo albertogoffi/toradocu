@@ -16,7 +16,7 @@ import java.util.List;
 import org.junit.Test;
 import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod.Builder;
-import org.toradocu.util.GsonInst;
+import org.toradocu.util.GsonInstance;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -60,7 +60,7 @@ public class JavadocExtractorTest {
 				"-J-d=" + toradocuOutputDir});
 		
 		Type listType = new TypeToken<List<DocumentedMethod>>(){}.getType();
-		Gson gson = GsonInst.gson();
+		Gson gson = GsonInstance.gson();
 		Path ouputFilePath = Paths.get(actualOutput);
 		try (BufferedReader reader = Files.newBufferedReader(ouputFilePath)) {
 			List<DocumentedMethod> actual = gson.fromJson(reader, listType);

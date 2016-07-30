@@ -1,11 +1,29 @@
 package org.toradocu.util;
 
+/**
+ * This utility class returns the Levenshtein distance between two strings.
+ */
 public class Distance {
 	
+	/**
+	 * Returns the Levenshtein distance between the two strings ignoring case.
+	 * 
+	 * @param s0 the first string to use in calculating distance
+	 * @param s1 the second string to use in calculating distance
+	 * @return the Levenshtein distance between the two strings
+	 */
 	public static int levenshteinDistance(String s0, String s1) {
 		return levenshteinDistance(s0, s1, false);
 	}
 
+	/**
+	 * Returns the Levenshtein distance between the two strings.
+	 * 
+	 * @param s0 the first string to use in calculating distance
+	 * @param s1 the second string to use in calculating distance
+	 * @param caseSensitive true to consider case in calculating distance
+	 * @return the Levenshtein distance between the two strings
+	 */
 	public static int levenshteinDistance(String s0, String s1, boolean caseSensitive) {
 		if (!caseSensitive) {
 			s0 = s0.toLowerCase();

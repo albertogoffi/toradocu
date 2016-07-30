@@ -13,6 +13,9 @@ import com.beust.jcommander.DynamicParameter;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.converters.FileConverter;
 
+/**
+ * This singleton class holds the configuration options (particularly command-line options) for Toradocu.
+ */
 public enum Configuration {
 	
 	INSTANCE;
@@ -36,7 +39,7 @@ public enum Configuration {
 // Condition translator options
 	
 	@Parameter(names = "--conditionTranslatorInput",
-			   description = "File that the condition tranlator will process. This option disables the Javadoc extractor", 
+			   description = "File that the condition tranlator will process (this option disables the Javadoc extractor)", 
 			   converter = FileConverter.class)
 	private File conditionTranslatorInput;
 	
@@ -71,28 +74,20 @@ public enum Configuration {
 
 // Getters
 	
-	public boolean isOracleGenerationEnabled() {
-		return oracleGeneration;
-	}
-	
-	public boolean isConditionTranslationEnabled() {
-		return conditionTranslation;
-	}
-	
-	public String getAspectsOutputDir() {
-		return aspectsOutputDir;
-	}
-	
-	public String getTestClass() {
-		return testClass;
-	}
-	
 	public String getAspectTemplate() {
 		return aspectTemplate;
 	}
 	
 	public String getTargetClass() {
 		return targetClass;
+	}
+	
+	public boolean debug() {
+		return debug;
+	}
+	
+	public boolean help() {
+		return help;
 	}
 	
 	public File getJavadocExtractorOutput() {
@@ -102,28 +97,25 @@ public enum Configuration {
 	public File getConditionTranslatorInput() {
 		return conditionTranslatorInput;
 	}
-
-	/**
-	 * Returns a temporary directory for Javadoc output or null if a
-	 * non-temporary directory is set for Javadoc output.
-	 * 
-	 * @return a temporary directory for Javadoc output or null if a
-	 * non-temporary directory is set for Javadoc output
-	 */
-	public String getTempJavadocOutputDir() {
-		return tempJavadocOutputDir;
+	
+	public boolean isConditionTranslationEnabled() {
+		return conditionTranslation;
 	}
 	
 	public File getConditionTranslatorOutput() {
 		return conditionTranslatorOutput;
 	}
 	
-	public boolean help() {
-		return help;
+	public boolean isOracleGenerationEnabled() {
+		return oracleGeneration;
 	}
 	
-	public boolean debug() {
-		return debug;
+	public String getTestClass() {
+		return testClass;
+	}
+	
+	public String getAspectsOutputDir() {
+		return aspectsOutputDir;
 	}
 	
 	public String[] getJavadocOptions() {
@@ -148,12 +140,23 @@ public enum Configuration {
 				arguments.add("-d");
 				arguments.add(tempJavadocOutputDir);
 			} catch (IOException e) {
-				// Output to working directory instead.
+				// Could not create temporary directory so output to working directory instead.
 			}
 		}
 		
 		arguments.add(getTargetPackage());
 		return arguments.toArray(new String[0]);
+	}
+	
+	/**
+	 * Returns a temporary directory for Javadoc output or null if a
+	 * non-temporary directory is set for Javadoc output.
+	 * 
+	 * @return a temporary directory for Javadoc output or null if a
+	 * non-temporary directory is set for Javadoc output
+	 */
+	public String getTempJavadocOutputDir() {
+		return tempJavadocOutputDir;
 	}
 	
 	private String getTargetPackage() {
