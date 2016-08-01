@@ -39,7 +39,6 @@ public final class DocumentedMethod {
 		StringBuilder signature = new StringBuilder(name + "(");
 		for (Parameter param : parameters) {
 			signature.append(param);
-			signature.append("{nullable: " + param.getNullability() + "}");
 			signature.append(",");
 		}
 		if (signature.charAt(signature.length() - 1) == ',') { // Remove last comma when needed
@@ -95,6 +94,7 @@ public final class DocumentedMethod {
 	@Override
 	public boolean equals(Object obj) {
 		if (!(obj instanceof DocumentedMethod)) return false;
+		if (this == obj) return true;
 		
 		DocumentedMethod that = (DocumentedMethod) obj;
 		if (this.name.equals(that.name) &&

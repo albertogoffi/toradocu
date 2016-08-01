@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * This class represents a throws tag in a method.
  */
-public final class ThrowsTag {
+public class ThrowsTag {
 	
 	/** The fully qualified name of the exception. */
 	private final String exception;

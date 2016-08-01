@@ -66,6 +66,7 @@ public enum Configuration {
 	private Map<String, String> javadocOptions = new HashMap<>();
 	
 // Temporary Javadoc output directory
+
 	private String tempJavadocOutputDir;
 	
 // Constants

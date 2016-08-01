@@ -1,11 +1,15 @@
 package org.toradocu;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -17,8 +21,8 @@ import org.toradocu.conf.Configuration;
 import org.toradocu.doclet.formats.html.ConfigurationImpl;
 import org.toradocu.extractor.JavadocExtractor;
 import org.toradocu.extractor.DocumentedMethod;
-// import org.toradocu.translator.ConditionTranslator;
-// import org.toradocu.translator.TranslatedExceptionComment;
+import org.toradocu.translator.ConditionTranslator;
+import org.toradocu.translator.TranslatedExceptionComment;
 import org.toradocu.util.GsonInstance;
 import org.toradocu.util.NullOutputStream;
 
@@ -87,10 +91,10 @@ public class Toradocu {
 		
 		// === Condition Translator ===
 		
-		// if (CONF.isConditionTranslationEnabled()) {
-		//	  List<TranslatedExceptionComment> translatedComments = ConditionTranslator.translate(methods);
-		//}
-		// printOutput(translatedComments);
+		if (CONF.isConditionTranslationEnabled()) {
+			List<TranslatedExceptionComment> translatedComments = ConditionTranslator.translate(methods);
+			printOutput(translatedComments);
+		}
 		
 		// === Oracle Generator ===
 		// OracleGenerator.generate(translatedComments);
@@ -126,25 +130,25 @@ public class Toradocu {
 		}
 	}
 	
-//	private static void printOutput(Collection<?> c) {
-//		List<?> sortedC = new ArrayList<>(c);
-//		Collections.sort(sortedC, (c1, c2) -> c1.toString().compareTo(c2.toString()));
-//		File outputFile = CONF.getConditionTranslatorOutput();
-//		if (outputFile != null) { // If the command line option to print the condition translator's output is present
-//			try (BufferedWriter writer = Files.newBufferedWriter(outputFile.toPath(), StandardCharsets.UTF_8)) {
-//				for (Object element : sortedC) {
-//					writer.write(element.toString());
-//					writer.newLine();
-//				}
-//			} catch (Exception e) {
-//				LOG.warn("Unable to write the output of the condition translator", e);
-//			}
-//		} else { // Else, print the condition translator's output on the standard output
-//			StringBuilder output = new StringBuilder();
-//			for (Object element : sortedC) {
-//				output.append(element).append("\n");
-//			}
-//			LOG.info(output.toString());
-//		}
-//	}
+	private static void printOutput(Collection<?> c) {
+		List<?> sortedC = new ArrayList<>(c);
+		Collections.sort(sortedC, (c1, c2) -> c1.toString().compareTo(c2.toString()));
+		File outputFile = CONF.getConditionTranslatorOutput();
+		if (outputFile != null) { // If the command line option to print the condition translator's output is present
+			try (BufferedWriter writer = Files.newBufferedWriter(outputFile.toPath(), StandardCharsets.UTF_8)) {
+				for (Object element : sortedC) {
+					writer.write(element.toString());
+					writer.newLine();
+				}
+			} catch (Exception e) {
+				LOG.warn("Unable to write the output of the condition translator", e);
+			}
+		} else { // Else, print the condition translator's output on the standard output
+			StringBuilder output = new StringBuilder();
+			for (Object element : sortedC) {
+				output.append(element).append("\n");
+			}
+			LOG.info(output.toString());
+		}
+	}
 }

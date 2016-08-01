@@ -14,26 +14,32 @@ import org.toradocu.extractor.ThrowsTag;
 
 import com.sun.javadoc.ExecutableMemberDoc;
 
+/**
+ * ConditionTranslator translates exception comments in method documentation to
+ * Java expressions.
+ */
 public class ConditionTranslator {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(ConditionTranslator.class);
 	
-	public static List<TranslatedExceptionComment> translate(List<DocumentedMethod> methodsToProcess) {
-		List<TranslatedExceptionComment> translatedComments = new ArrayList<>();
+	/**
+	 * This method translates and returns the throws tags in the given methods.
+	 * 
+	 * @param methodsToProcess a list of {@code DocumentedMethod}s whose throws tags to translate
+	 * @return a list of {@code TranslatedThrowsTag}s
+	 */
+	public static List<TranslatedThrowsTag> translate(List<DocumentedMethod> methodsToProcess) {
+		List<TranslatedThrowsTag> translatedThrowsTags = new ArrayList<>();
 
-		// For each method that has comments to translate
 		for (DocumentedMethod method : methodsToProcess) {
-			// For each comment to translate
-			for (ThrowsTag tag : method.throwsTags()) {
-				String tagComment = tag.getComment();
-				
+			for (ThrowsTag tag : method.throwsTags()) {				
 				StringBuilder logMessage = new StringBuilder("=== " + method.getSignature() + " ===");
-				logMessage.append("\n").append("Identifying propositions from: \"" + tagComment + "\"");
+				logMessage.append("\n").append("Identifying propositions from: \"" + tag.getComment() + "\"");
 				LOG.trace(logMessage.toString());
 				
-				// We identify propositions in the comment (as a -potentially disconnected- graph)
-				Set<String> javaConditions = new HashSet<>();
-				List<PropositionList> extractedPropositions = PropositionExtractor.getPropositions(tagComment);		
+				Set<String> conditions = new HashSet<>();
+				// We identify propositions in the comment (as a potentially disconnected graph).
+				List<PropositionList> extractedPropositions = PropositionExtractor.getPropositions(tag.getComment());		
 				
 				// We translate subject and predicate into Java code elements
 				for (PropositionList propositions : extractedPropositions) {
@@ -58,10 +64,10 @@ public class ConditionTranslator {
 //						javaConditions.add(p.getTranslation().get());
 //					}
 //				}
-//				translatedComments.add(new TranslatedExceptionComment(commentToTranslate, javaConditions));
+				translatedThrowsTags.add(new TranslatedThrowsTag(tag, method, conditions));
 			}
 		}
-		return translatedComments;
+		return translatedThrowsTags;
 	}
 
 //	private static void pruneWrongTranslations(Graph<Proposition, ConjunctionEdge<Proposition>> propositionGraph) {
