@@ -13,8 +13,6 @@ import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.ThrowsTag;
 import org.toradocu.util.OutputPrinter;
 
-import com.sun.javadoc.ExecutableMemberDoc;
-
 /**
  * ConditionTranslator translates exception comments in method documentation to
  * Java expressions.
@@ -24,16 +22,13 @@ public class ConditionTranslator {
 	private static final Logger LOG = LoggerFactory.getLogger(ConditionTranslator.class);
 	
 	/**
-	 * This method translates and returns the throws tags in the given methods.
+	 * This method translates the throws tags in the given methods.
 	 * 
-	 * @param methodsToProcess a list of {@code DocumentedMethod}s whose throws tags to translate
-	 * @return a list of {@code TranslatedThrowsTag}s
+	 * @param methods a list of {@code DocumentedMethod}s whose throws tags to translate
 	 */
-	public static List<TranslatedThrowsTag> translate(List<DocumentedMethod> methodsToProcess) {
-		List<TranslatedThrowsTag> translatedThrowsTags = new ArrayList<>();
-		for (DocumentedMethod method : methodsToProcess) {
+	public static void translate(List<DocumentedMethod> methods) {
+		for (DocumentedMethod method : methods) {
 			for (ThrowsTag tag : method.throwsTags()) {
-				translatedThrowsTags.add(new TranslatedThrowsTag(tag, method, new HashSet<>(Arrays.asList("Oranges are orange", "Apples are red"))));
 				/*
 				StringBuilder logMessage = new StringBuilder("=== " + method.getSignature() + " ===");
 				logMessage.append("\n").append("Identifying propositions from: \"" + tag.getComment() + "\"");
@@ -63,18 +58,17 @@ public class ConditionTranslator {
 //				}
 //				for (Proposition p : propositionGraph.vertexSet()) { // This loop adds propositions not linked with others by a conjunction
 //					if (!visitedPropositions.contains(p)) {
-//						javaConditions.add(p.getTranslation().get());
+//						conditions.add(p.getTranslation().get());
 //					}
 //				}
-				translatedThrowsTags.add(new TranslatedThrowsTag(tag, method, conditions));
-				*/
+				tag.setConditions(conditions);
+   				*/
 			}
 		}
 		// Print translated throws tags.
-		OutputPrinter.Builder builder = new OutputPrinter.Builder("ConditionTranslator", translatedThrowsTags);
+		OutputPrinter.Builder builder = new OutputPrinter.Builder("ConditionTranslator", methods);
 		builder.logger(LOG);
 		builder.build().print();
-		return translatedThrowsTags;
 	}
 
 //	private static void pruneWrongTranslations(Graph<Proposition, ConjunctionEdge<Proposition>> propositionGraph) {

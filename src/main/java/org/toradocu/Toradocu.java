@@ -22,7 +22,6 @@ import org.toradocu.doclet.formats.html.ConfigurationImpl;
 import org.toradocu.extractor.JavadocExtractor;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.translator.ConditionTranslator;
-import org.toradocu.translator.TranslatedThrowsTag;
 import org.toradocu.util.ExportedData;
 import org.toradocu.util.GsonInstance;
 import org.toradocu.util.NullOutputStream;
@@ -94,11 +93,9 @@ public class Toradocu {
 		// === Condition Translator ===
 		
 		if (CONF.isConditionTranslationEnabled()) {
-			List<TranslatedThrowsTag> translatedComments = ConditionTranslator.translate(methods);
+			ConditionTranslator.translate(methods);
 			if (CONF.getExportFile() != null) {
-				ExportedData data = new ExportedData();
-				data.addTranslatedThrowsTags(translatedComments);
-				data.addMethodsWithNullnessConstraints(methods);
+				ExportedData data = new ExportedData(methods);
 				try (BufferedWriter writer = Files.newBufferedWriter(CONF.getExportFile().toPath(),
 																	 StandardCharsets.UTF_8)) {
 					writer.write(data.asJson());
@@ -109,7 +106,7 @@ public class Toradocu {
 		}
 		
 		// === Oracle Generator ===
-		// OracleGenerator.generate(translatedComments);
+		// OracleGenerator.generate(methods);
 		
 		deleteTemporaryFiles();
 	}
