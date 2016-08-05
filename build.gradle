@@ -21,9 +21,13 @@ sourceSets {
     main {
         java {
             srcDir 'src/main/java'
-            exclude 'org/toradocu/OracleGenerator.java'
-            exclude 'org/toradocu/translator/**'
-            exclude 'org/toradocu/aspect/**'
+            exclude 'org/toradocu/translator/**Element.java'
+            exclude 'org/toradocu/translator/Matcher.java'
+            // exclude 'org/toradocu/OracleGenerator.java'
+            // exclude 'org/toradocu/translator/**'
+            // exclude 'org/toradocu/aspect/**'
+            // include 'org/toradocu/translator/ConditionTranslator.java'
+            // include 'org/toradocu/translator/TranslatedThrowsTag.java'
         }
     }
     test {

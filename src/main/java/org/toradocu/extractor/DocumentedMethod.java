@@ -22,9 +22,9 @@ public final class DocumentedMethod {
 	/** A list of throws tags specified in the method's Javadoc. */
 	private final List<ThrowsTag> throwsTags;
 	/** The signature of the method (excluding return type). */
-	private final transient String signature;
+	private final String signature;
 	/** The class in which the method is contained. */
-	private final transient String containingClass;
+	private final String containingClass;
 	
 	/**
 	 * Constructs a {@code DocumentedMethod} using the information in the provided {@code Builder}.
@@ -46,7 +46,7 @@ public final class DocumentedMethod {
 		}
 		signature.append(")");
 		this.signature = signature.toString();
-		this.containingClass = signature.substring(0, signature.lastIndexOf("."));
+		this.containingClass = name.substring(0, name.lastIndexOf("."));
 	}
 	
 	/**

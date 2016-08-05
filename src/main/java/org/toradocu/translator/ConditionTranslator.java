@@ -1,6 +1,7 @@
 package org.toradocu.translator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -8,9 +9,9 @@ import java.util.Set;
 import org.omg.PortableInterceptor.LOCATION_FORWARD;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.toradocu.extractor.JavadocExceptionComment;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.ThrowsTag;
+import org.toradocu.util.OutputPrinter;
 
 import com.sun.javadoc.ExecutableMemberDoc;
 
@@ -30,9 +31,10 @@ public class ConditionTranslator {
 	 */
 	public static List<TranslatedThrowsTag> translate(List<DocumentedMethod> methodsToProcess) {
 		List<TranslatedThrowsTag> translatedThrowsTags = new ArrayList<>();
-
 		for (DocumentedMethod method : methodsToProcess) {
-			for (ThrowsTag tag : method.throwsTags()) {				
+			for (ThrowsTag tag : method.throwsTags()) {
+				translatedThrowsTags.add(new TranslatedThrowsTag(tag, method, new HashSet<>(Arrays.asList("Oranges are orange", "Apples are red"))));
+				/*
 				StringBuilder logMessage = new StringBuilder("=== " + method.getSignature() + " ===");
 				logMessage.append("\n").append("Identifying propositions from: \"" + tag.getComment() + "\"");
 				LOG.trace(logMessage.toString());
@@ -65,8 +67,13 @@ public class ConditionTranslator {
 //					}
 //				}
 				translatedThrowsTags.add(new TranslatedThrowsTag(tag, method, conditions));
+				*/
 			}
 		}
+		// Print translated throws tags.
+		OutputPrinter.Builder builder = new OutputPrinter.Builder("ConditionTranslator", translatedThrowsTags);
+		builder.logger(LOG);
+		builder.build().print();
 		return translatedThrowsTags;
 	}
 
@@ -87,7 +94,7 @@ public class ConditionTranslator {
 //			}
 //		}
 //	}
-
+/*
 	private static void translatePropositions(PropositionList propositionList, DocumentedMethod method) {
 	
 		for (Proposition p : propositionList.getNodes()) {
@@ -143,4 +150,5 @@ public class ConditionTranslator {
 			return "";
 		}
 	}
+*/
 }

@@ -22,9 +22,11 @@ import org.toradocu.doclet.formats.html.ConfigurationImpl;
 import org.toradocu.extractor.JavadocExtractor;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.translator.ConditionTranslator;
-import org.toradocu.translator.TranslatedExceptionComment;
+import org.toradocu.translator.TranslatedThrowsTag;
+import org.toradocu.util.ExportedData;
 import org.toradocu.util.GsonInstance;
 import org.toradocu.util.NullOutputStream;
+import org.toradocu.util.OutputPrinter;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
@@ -92,8 +94,18 @@ public class Toradocu {
 		// === Condition Translator ===
 		
 		if (CONF.isConditionTranslationEnabled()) {
-			List<TranslatedExceptionComment> translatedComments = ConditionTranslator.translate(methods);
-			printOutput(translatedComments);
+			List<TranslatedThrowsTag> translatedComments = ConditionTranslator.translate(methods);
+			if (CONF.getExportFile() != null) {
+				ExportedData data = new ExportedData();
+				data.addTranslatedThrowsTags(translatedComments);
+				data.addMethodsWithNullnessConstraints(methods);
+				try (BufferedWriter writer = Files.newBufferedWriter(CONF.getExportFile().toPath(),
+																	 StandardCharsets.UTF_8)) {
+					writer.write(data.asJson());
+				} catch (Exception e) {
+					LOG.error("Unable to write the output on file " + CONF.getExportFile().getAbsolutePath(), e);
+				}
+			}
 		}
 		
 		// === Oracle Generator ===
@@ -127,28 +139,6 @@ public class Toradocu {
 			} catch (IOException e) {
 				LOG.warn("Unable to delete temporary Javadoc output", e);
 			}
-		}
-	}
-	
-	private static void printOutput(Collection<?> c) {
-		List<?> sortedC = new ArrayList<>(c);
-		Collections.sort(sortedC, (c1, c2) -> c1.toString().compareTo(c2.toString()));
-		File outputFile = CONF.getConditionTranslatorOutput();
-		if (outputFile != null) { // If the command line option to print the condition translator's output is present
-			try (BufferedWriter writer = Files.newBufferedWriter(outputFile.toPath(), StandardCharsets.UTF_8)) {
-				for (Object element : sortedC) {
-					writer.write(element.toString());
-					writer.newLine();
-				}
-			} catch (Exception e) {
-				LOG.warn("Unable to write the output of the condition translator", e);
-			}
-		} else { // Else, print the condition translator's output on the standard output
-			StringBuilder output = new StringBuilder();
-			for (Object element : sortedC) {
-				output.append(element).append("\n");
-			}
-			LOG.info(output.toString());
 		}
 	}
 }

@@ -13,7 +13,7 @@ import org.toradocu.extractor.ThrowsTag;
 public final class TranslatedThrowsTag extends ThrowsTag {
 	
 	/** The method that this throws tag is for. */
-	private final DocumentedMethod method;
+	private final transient DocumentedMethod method;
 	
 	/** Conditions translated from the comment for this throws tag. */
 	private final Set<String> conditions;
@@ -67,6 +67,19 @@ public final class TranslatedThrowsTag extends ThrowsTag {
 	 */
 	public Set<String> getConditions() {
 		return Collections.unmodifiableSet(conditions);
+	}
+	
+	/**
+	 * Returns a string representation of this throws tag. The returned string is in the
+	 * format "@throws EXCEPTION COMMENT ==> [CONDITION_1, CONDITION_2, ...]" where EXCEPTION is the
+	 * fully qualified name of the exception in this throws tag and COMMENT is the text of the comment
+	 * in the throws tag. CONDITION_i are the conditions for the exception as Java expressions.
+	 * 
+	 * @return a string representation of this throws tag
+	 */
+	@Override
+	public String toString() {
+		return super.toString() + " ==> " + conditions;
 	}
 	
 	/**

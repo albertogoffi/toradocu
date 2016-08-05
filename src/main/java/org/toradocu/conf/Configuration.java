@@ -31,6 +31,11 @@ public enum Configuration {
 	@Parameter(names = {"-h", "--help"}, description = "Print a list of available options", help = true)
 	private boolean help;
 	
+	@Parameter(names = "--exportFile",
+			   description = "File where to export Toradocu results for use in other programs",
+			   converter = FileConverter.class)
+	private File exportFile;
+	
 // Javadoc extractor options
 	
 	@Parameter(names = "--saveJavadocExtractorOutput", description = "File where to save the Javadoc extractor output", converter = FileConverter.class)
@@ -89,6 +94,10 @@ public enum Configuration {
 	
 	public boolean help() {
 		return help;
+	}
+	
+	public File getExportFile() {
+		return exportFile;
 	}
 	
 	public File getJavadocExtractorOutput() {
