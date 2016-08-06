@@ -3,6 +3,7 @@ package org.toradocu.extractor;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -52,20 +53,25 @@ public class ThrowsTag {
 	}
 	
 	/**
-	 * Returns the translated conditions for this throws tag.
+	 * Returns the translated conditions for this throws tag as an optional which is empty if translation
+	 * has not been attempted yet.
 	 * 
-	 * @return the translated conditions for this throws tag
+	 * @return the translated conditions for this throws tag if translation attempted, else empty optional
 	 */
-	public Set<String> getConditions() {
-		return conditions;
+	public Optional<Set<String>> getConditions() {
+		return Optional.ofNullable(conditions);
 	}
 	
 	/**
 	 * Sets the translated conditions for this throws tags to the given conditions.
 	 * 
 	 * @param conditions the translated conditions for this throws tag (as Java expressions)
+	 * @throws IllegalArgumentException if conditions is null
 	 */
 	public void setConditions(Set<String> conditions) {
+		if (conditions == null) {
+			throw new IllegalArgumentException("conditions must not be null");
+		}
 		this.conditions = conditions;
 	}
 	
