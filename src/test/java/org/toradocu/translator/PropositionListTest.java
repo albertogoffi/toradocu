@@ -8,7 +8,7 @@ public class PropositionListTest {
 
 	@Test
 	public void toStringTest() {
-		PropositionList list = new PropositionList();
+		PropositionSeries list = new PropositionSeries();
 		list.add(new Proposition("subject1", "predicate1"));
 		list.add(Conjunction.OR, new Proposition("subject2", "predicate2"));
 		list.add(Conjunction.AND, new Proposition("subject3", "predicate3"));

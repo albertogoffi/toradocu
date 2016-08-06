@@ -39,9 +39,9 @@ public class SentenceParser {
 	 * 
 	 * @return a proposition list containing all the identified propositions joint with conjunctions.
 	 */
-	public PropositionList getPropositionList() {
+	public PropositionSeries getPropositionSeries() {
 		Map<List<IndexedWord>, Proposition> propositionMap = new HashMap<>();
-		PropositionList propositionList = new PropositionList();
+		PropositionSeries propositionList = new PropositionSeries();
 		
 		init(); // Initialization phase where we extract information from the sentence
 		
