@@ -29,16 +29,17 @@ public class ConditionTranslator {
 	public static void translate(List<DocumentedMethod> methods) {
 		for (DocumentedMethod method : methods) {
 			for (ThrowsTag tag : method.throwsTags()) {
-				StringBuilder logMessage = new StringBuilder("=== " + method.getSignature() + " ===");
+				StringBuilder logMessage = new StringBuilder("===" + method.getSignature() + "===");
 				logMessage.append("\n").append("Identifying propositions from: \"" + tag.getComment() + "\"");
-				LOG.trace(logMessage.toString());
+				LOG.info(logMessage.toString());
 				
 				Set<String> conditions = new HashSet<>();
-				// We identify propositions in the comment. Each sentence in the comment is parsed into
+				// Identify propositions in the comment. Each sentence in the comment is parsed into
 				// a PropositionSeries.
-				List<PropositionSeries> extractedPropositions = PropositionExtractor.getPropositions(tag.getComment());		
-				
-				// We translate subject and predicate into Java code elements
+				List<PropositionSeries> extractedPropositions
+						= PropositionExtractor.getPropositionSeries(tag.getComment());		
+
+				// Identify Java code elements in propositions.
 				for (PropositionSeries propositions : extractedPropositions) {
 					translatePropositions(propositions, method);
 				}
@@ -65,7 +66,10 @@ public class ConditionTranslator {
 			}
 		}
 		// Print translated throws tags.
-		OutputPrinter.Builder builder = new OutputPrinter.Builder("ConditionTranslator", methods);
+		List<ThrowsTag> tags = methods.stream()
+									  .map(m -> m.throwsTags())
+									  .collect(ArrayList::new, ArrayList::addAll, ArrayList::addAll);
+		OutputPrinter.Builder builder = new OutputPrinter.Builder("ConditionTranslator", tags);
 		builder.logger(LOG);
 		builder.build().print();
 	}
@@ -88,9 +92,9 @@ public class ConditionTranslator {
 //		}
 //	}
 
-	private static void translatePropositions(PropositionSeries propositionList, DocumentedMethod method) {
+	private static void translatePropositions(PropositionSeries propositionSeries, DocumentedMethod method) {
 	
-		for (Proposition p : propositionList.getNodes()) {
+		for (Proposition p : propositionSeries.getPropositions()) {
 			String translation = "";
 			
 			List<CodeElement> subjectMatches;
@@ -143,5 +147,5 @@ public class ConditionTranslator {
 			return "";
 		}
 	}
-a
+
 }
