@@ -179,7 +179,7 @@ public final class JavadocExtractor {
 	private void printOutput(List<DocumentedMethod> methods) {
 		OutputPrinter.Builder builder = new OutputPrinter.Builder("JavadocExtractor", methods);
 		OutputPrinter printer = builder.file(Configuration.INSTANCE.getJavadocExtractorOutput()).logger(LOG).build();
-		printer.print();
+		// printer.print();
 	}
 	
 	/**

@@ -66,7 +66,7 @@ public class Toradocu {
 		}
 		
 		if (CONF.debug()) {
-			System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "debug");
+			System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "trace");
 		}
 		
 		// === Javadoc Extractor ===
