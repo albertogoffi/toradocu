@@ -32,20 +32,19 @@ public class ConditionTranslator {
 				StringBuilder logMessage = new StringBuilder("===" + method.getSignature() + "===");
 				logMessage.append("\n").append("Identifying propositions from: \"" + tag.getComment() + "\"");
 				LOG.info(logMessage.toString());
-
-				Set<String> conditions = new HashSet<>();
+				
 				// Identify propositions in the comment. Each sentence in the comment is parsed into
 				// a PropositionSeries.
 				List<PropositionSeries> extractedPropositions
 						= PropositionExtractor.getPropositionSeries(tag.getComment());
 				LOG.trace(extractedPropositions.toString());
 
+				/*
 				// Identify Java code elements in propositions.
 				for (PropositionSeries propositions : extractedPropositions) {
 					translatePropositions(propositions, method, tag);
 				}
 
-				/*
 				// We remove from the proposition graph all the proposition for which the translation has failed
 //				pruneUntranslatedPropositions(propositionGraph);
 				
@@ -65,6 +64,8 @@ public class ConditionTranslator {
 //					}
 //				}
 				*/
+				
+				Set<String> conditions = new HashSet<>(Arrays.asList("DEBUG_CONDITION_1", "DEBUG_CONDITION_2"));
 				tag.setConditions(conditions);
 			}
 		}
@@ -94,7 +95,7 @@ public class ConditionTranslator {
 //			}
 //		}
 //	}
-
+/*
 	private static void translatePropositions(PropositionSeries propositionSeries, DocumentedMethod method, ThrowsTag tag) {
 	
 		for (Proposition p : propositionSeries.getPropositions()) {

@@ -2,6 +2,7 @@ package org.toradocu.extractor;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -17,9 +18,9 @@ public class ThrowsTag {
 	private final String comment;
 	/**
 	 * Conditions translated from the comment for this throws tag. Null if translation not attempted.
-	 * Empty set if no translations found.
+	 * Empty string if no translations found.
 	 */
-	private Set<String> conditions;
+	private String conditions;
 	
 	/**
 	 * Constructs a {@code ThrowsTag} with the given exception and comment.
@@ -58,8 +59,31 @@ public class ThrowsTag {
 	 * 
 	 * @return the translated conditions for this throws tag if translation attempted, else empty optional
 	 */
-	public Optional<Set<String>> getConditions() {
+	public Optional<String> getConditions() {
 		return Optional.ofNullable(conditions);
+	}
+	
+	/**
+	 * Sets the translated conditions for this throws tags to the given conditions. Each element in
+	 * the set is combined using an || conjunction.
+	 * 
+	 * @param conditions the translated conditions for this throws tag (as Java expressions)
+	 * @throws IllegalArgumentException if conditions is null
+	 */
+	public void setConditions(Set<String> conditions) {
+		if (conditions == null) {
+			throw new IllegalArgumentException("conditions must not be null");
+		}
+		if (conditions.size() == 0) {
+			this.conditions = "";
+		} else {
+			Iterator<String> it = conditions.iterator();
+			StringBuilder conditionsBuilder = new StringBuilder("(" + it.next() + ")");
+			while (it.hasNext()) {
+				conditionsBuilder.append("||(" + it.next() + ")");
+			}
+			this.conditions = conditionsBuilder.toString();
+		}
 	}
 	
 	/**
@@ -68,7 +92,7 @@ public class ThrowsTag {
 	 * @param conditions the translated conditions for this throws tag (as Java expressions)
 	 * @throws IllegalArgumentException if conditions is null
 	 */
-	public void setConditions(Set<String> conditions) {
+	public void setConditions(String conditions) {
 		if (conditions == null) {
 			throw new IllegalArgumentException("conditions must not be null");
 		}
