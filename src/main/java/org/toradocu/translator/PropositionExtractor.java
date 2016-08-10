@@ -1,29 +1,30 @@
 package org.toradocu.translator;
 
-import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.stanford.nlp.ling.HasWord;
-import edu.stanford.nlp.process.DocumentPreprocessor;
+import edu.stanford.nlp.semgraph.SemanticGraph;
 
+/**
+ * PropositionExtractor takes a Javadoc comment as a {@code String} and uses NLP to convert it into propositions.
+ */
 public class PropositionExtractor {
 
-	public static List<PropositionList> getPropositions(String comment) {		
-		List<PropositionList> propositionList = new ArrayList<>();
+	/**
+	 * Takes a comment as a String and returns a list of {@code PropositionSeries} objects, one for each
+	 * sentence in the comment.
+	 * 
+	 * @param comment the text of a Javadoc comment
+	 * @return a list of {@code PropositionSeries} objects, one for each sentence in the comment
+	 */
+	public static List<PropositionSeries> getPropositionSeries(String comment) {		
+		List<PropositionSeries> result = new ArrayList<>();
 		
-		// Preprocess text: where should we do this? Is it necessary?
-		
-		// For each sentence in comment
-		for (List<HasWord> sentence : getSentences(comment)) {
-			// Identify propositions
-			PropositionList propositions = new SentenceParser(sentence).getPropositionList();
-			propositionList.add(propositions);
+		for (SemanticGraph semanticGraph : StanfordParser.getSemanticGraphs(comment)) {
+			result.add(new SentenceParser(semanticGraph).getPropositionSeries());
 		}
-		return propositionList;
+		
+		return result;
 	}
 	
-	private static Iterable<List<HasWord>> getSentences(String text) {
-		return new DocumentPreprocessor(new StringReader(text));
-	}
 }

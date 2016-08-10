@@ -1,6 +1,7 @@
 package org.toradocu.translator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -8,35 +9,38 @@ import java.util.Set;
 import org.omg.PortableInterceptor.LOCATION_FORWARD;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.toradocu.extractor.JavadocExceptionComment;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.ThrowsTag;
+import org.toradocu.util.OutputPrinter;
 
-import com.sun.javadoc.ExecutableMemberDoc;
-
+/**
+ * ConditionTranslator translates exception comments in method documentation to
+ * Java expressions.
+ */
 public class ConditionTranslator {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(ConditionTranslator.class);
 	
-	public static List<TranslatedExceptionComment> translate(List<DocumentedMethod> methodsToProcess) {
-		List<TranslatedExceptionComment> translatedComments = new ArrayList<>();
-
-		// For each method that has comments to translate
-		for (DocumentedMethod method : methodsToProcess) {
-			// For each comment to translate
+	/**
+	 * This method translates the throws tags in the given methods.
+	 * 
+	 * @param methods a list of {@code DocumentedMethod}s whose throws tags to translate
+	 */
+	public static void translate(List<DocumentedMethod> methods) {
+		for (DocumentedMethod method : methods) {
 			for (ThrowsTag tag : method.throwsTags()) {
-				String tagComment = tag.getComment();
+				StringBuilder logMessage = new StringBuilder("===" + method.getSignature() + "===");
+				logMessage.append("\n").append("Identifying propositions from: \"" + tag.getComment() + "\"");
+				LOG.info(logMessage.toString());
 				
-				StringBuilder logMessage = new StringBuilder("=== " + method.getSignature() + " ===");
-				logMessage.append("\n").append("Identifying propositions from: \"" + tagComment + "\"");
-				LOG.trace(logMessage.toString());
-				
-				// We identify propositions in the comment (as a -potentially disconnected- graph)
-				Set<String> javaConditions = new HashSet<>();
-				List<PropositionList> extractedPropositions = PropositionExtractor.getPropositions(tagComment);		
-				
-				// We translate subject and predicate into Java code elements
-				for (PropositionList propositions : extractedPropositions) {
+				Set<String> conditions = new HashSet<>();
+				// Identify propositions in the comment. Each sentence in the comment is parsed into
+				// a PropositionSeries.
+				List<PropositionSeries> extractedPropositions
+						= PropositionExtractor.getPropositionSeries(tag.getComment());		
+
+				// Identify Java code elements in propositions.
+				for (PropositionSeries propositions : extractedPropositions) {
 					translatePropositions(propositions, method);
 				}
 				
@@ -55,13 +59,19 @@ public class ConditionTranslator {
 //				}
 //				for (Proposition p : propositionGraph.vertexSet()) { // This loop adds propositions not linked with others by a conjunction
 //					if (!visitedPropositions.contains(p)) {
-//						javaConditions.add(p.getTranslation().get());
+//						conditions.add(p.getTranslation().get());
 //					}
 //				}
-//				translatedComments.add(new TranslatedExceptionComment(commentToTranslate, javaConditions));
+				tag.setConditions(conditions);
 			}
 		}
-		return translatedComments;
+		// Print translated throws tags.
+		List<ThrowsTag> tags = methods.stream()
+									  .map(m -> m.throwsTags())
+									  .collect(ArrayList::new, ArrayList::addAll, ArrayList::addAll);
+		OutputPrinter.Builder builder = new OutputPrinter.Builder("ConditionTranslator", tags);
+		builder.logger(LOG);
+		builder.build().print();
 	}
 
 //	private static void pruneWrongTranslations(Graph<Proposition, ConjunctionEdge<Proposition>> propositionGraph) {
@@ -82,9 +92,9 @@ public class ConditionTranslator {
 //		}
 //	}
 
-	private static void translatePropositions(PropositionList propositionList, DocumentedMethod method) {
+	private static void translatePropositions(PropositionSeries propositionSeries, DocumentedMethod method) {
 	
-		for (Proposition p : propositionList.getNodes()) {
+		for (Proposition p : propositionSeries.getPropositions()) {
 			String translation = "";
 			
 			List<CodeElement> subjectMatches;
@@ -137,4 +147,5 @@ public class ConditionTranslator {
 			return "";
 		}
 	}
+
 }

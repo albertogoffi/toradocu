@@ -20,35 +20,41 @@ import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraph.OutputFormat;
 import edu.stanford.nlp.semgraph.SemanticGraphEdge;
 
+/**
+ * {@code SentenceParser} parses a {@code PropositionSeries} from a sentence (i.e. a {@code List<HasWord>}),
+ * using NLP to identify subjects, relations, conjunctions, and so on from the sentence.
+ */
 public class SentenceParser {
 
-	private final List<HasWord> sentence;
-	private String sentenceAsString;
-	private List<SemanticGraphEdge> subjectRelations, copulaRelations, complementRelations, conjunctionRelations;
 	private SemanticGraph semanticGraph;
+	private List<SemanticGraphEdge> subjectRelations, copulaRelations, complementRelations, conjunctionRelations;
 	private static final Logger LOG = LoggerFactory.getLogger(SentenceParser.class);
 
-	public SentenceParser(List<HasWord> sentence) {
-		this.sentence = sentence;
-		this.sentenceAsString = sentence.stream().map(Object::toString).collect(Collectors.joining(" "));
+	/**
+	 * Constructs a {@code SentenceParser} object that will parse a {@code PropositionSeries}
+	 * from the given {@code SemanticGraph}.
+	 * 
+	 * @param semanticGraph the {@code SemanticGraph} that will be used to create the {@code PropositionSeries}
+	 */
+	public SentenceParser(SemanticGraph semanticGraph) {
+		this.semanticGraph = semanticGraph;
 	}
 	
 	/**
-	 * Identify propositions in a given sentence. Identified propositions are then returned as a single
-	 * <code>PropositionList</code> code.
+	 * Parses and returns a {@code PropositionSeries} for the sentence that this parser is initialized to parse.
 	 * 
-	 * @return a proposition list containing all the identified propositions joint with conjunctions.
+	 * @return a {@code PropositionSeries} for the sentence that this parser is initialized to parse
 	 */
-	public PropositionList getPropositionList() {
+	public PropositionSeries getPropositionSeries() {
 		Map<List<IndexedWord>, Proposition> propositionMap = new HashMap<>();
-		PropositionList propositionList = new PropositionList();
+		PropositionSeries propositionSeries = new PropositionSeries();
 		
-		init(); // Initialization phase where we extract information from the sentence
+		initializeRelations();
 		
 		// For each subject in the sentence we try to create a proposition
 		for (SemanticGraphEdge subjectRelation : subjectRelations) {
-			IndexedWord subjectAsIndexWord = subjectRelation.getDependent();
-			List<IndexedWord> subjectWords = getSubject(subjectAsIndexWord);
+			IndexedWord subjectAsIndexedWord = subjectRelation.getDependent();
+			List<IndexedWord> subjectWords = getSubject(subjectAsIndexedWord);
 			String subject = subjectWords.stream().map(word -> word.word()).collect(Collectors.joining(" "));
 			
 			List<IndexedWord> predicateWords = getPredicate(subjectRelation.getGovernor());
@@ -76,25 +82,50 @@ public class SentenceParser {
 			}
 			
 			if (p1 != null && p2 != null) {
-				if (propositionList.isEmpty()) {
-					propositionList.add(p1);
+				if (propositionSeries.isEmpty()) {
+					propositionSeries.add(p1);
 				}
-				propositionList.add(getConjunction(conjunctionRelation), p2);
+				propositionSeries.add(getConjunction(conjunctionRelation), p2);
 			}
 		}
 		
 		// Add to graph propositions not part of a conjunction relation
 		for (Proposition p : propositionMap.values()) {
-			if (!propositionList.contains(p)) {
-				if (propositionList.isEmpty()) {
-					propositionList.add(p);
+			if (!propositionSeries.contains(p)) {
+				if (propositionSeries.isEmpty()) {
+					propositionSeries.add(p);
 				} else {
-					propositionList.add(Conjunction.OR, p); // We assume OR as conjunction when is not specified
+					propositionSeries.add(Conjunction.OR, p); // We assume OR as conjunction when is not specified
 				}
 			}
 		}
 		
-		return propositionList;
+		return propositionSeries;
+	}
+	
+	/**
+	 * Initializes the relations fields using the semantic graph.
+	 */
+	private void initializeRelations() {
+		subjectRelations = getRelationsFromGraph("nsubj", "nsubjpass");
+		if (subjectRelations.isEmpty()) {
+			LOG.warn("Unable to identify subjects in \"{}\".", semanticGraph.toRecoveredSentenceString());
+		}
+		copulaRelations = getRelationsFromGraph("cop");
+		complementRelations = getRelationsFromGraph("acomp", "xcomp", "dobj");
+		conjunctionRelations = getRelationsFromGraph("conj");
+	}
+	
+	/**
+	 * Retrieves relations with the given names from the semantic graph.
+	 * 
+	 * @param relationShortNames the abbreviated names of the relations to retrieve
+	 * @return all the grammatical relations in the sentence (as graph edges) that match the specified relation names
+	 */
+	private List<SemanticGraphEdge> getRelationsFromGraph(String... relationShortNames) {
+		List<String> relations = Arrays.asList(relationShortNames);
+		Stream<SemanticGraphEdge> stream = StreamSupport.stream(semanticGraph.edgeIterable().spliterator(), false);
+		return stream.filter(e -> relations.contains(e.getRelation().getShortName())).collect(Collectors.toList());
 	}
 
 	private Conjunction getConjunction(SemanticGraphEdge conjunctionRelation) {
@@ -118,7 +149,7 @@ public class SentenceParser {
 		List<String> STOPWORDS = Arrays.asList("a", "an", "the");
 		
 		// When the subject is a compound name (e.g., JNDI name) we have to complete the subject
-		Optional<SemanticGraphEdge> compoundEdge = getRelations("compound", "det", "advmod").stream()
+		Optional<SemanticGraphEdge> compoundEdge = getRelationsFromGraph("compound", "det", "advmod").stream()
 				.filter(e -> e.getGovernor().equals(subject))
 				.filter(e -> !STOPWORDS.contains(e.getDependent().word()))
 				.findFirst();
@@ -150,7 +181,7 @@ public class SentenceParser {
 		}
 		
 		if (predicate.isEmpty()) {
-			LOG.warn("Unable to identify a predicate (governor = " + governor.word() + ")", sentenceAsString);
+			LOG.warn("Unable to identify a predicate (governor = " + governor.word() + ")", semanticGraph.toRecoveredSentenceString());
 		}
 		
 		return predicate;
@@ -200,13 +231,13 @@ public class SentenceParser {
 			predicate.add(verb);
 			
 			// Check if there is an "element of compound number" to consider, it then becomes part of the predicate
-			Optional<SemanticGraphEdge> edge = getRelations("number").stream().filter(e -> e.getGovernor().equals(copulaRelationGovernor)).findFirst();
+			Optional<SemanticGraphEdge> edge = getRelationsFromGraph("number").stream().filter(e -> e.getGovernor().equals(copulaRelationGovernor)).findFirst();
 			if (edge.isPresent()) {
 				predicate.add(edge.get().getDependent());
 			}
 			
 			// Check if there is a "negation modifier" to consider, it then becomes part of the predicate
-			edge = getRelations("neg").stream().filter(e -> e.getGovernor().equals(copulaRelationGovernor)).findFirst();
+			edge = getRelationsFromGraph("neg").stream().filter(e -> e.getGovernor().equals(copulaRelationGovernor)).findFirst();
 			if (edge.isPresent()) {
 				predicate.add(edge.get().getDependent());
 			}
@@ -249,13 +280,13 @@ public class SentenceParser {
 //		}
 	
 		// This should be general
-		Optional<SemanticGraphEdge> passiveAuxiliaryOpt = getRelations("auxpass").stream().filter(e -> e.getGovernor().equals(passiveNominalSubjectGovernor)).findFirst();
+		Optional<SemanticGraphEdge> passiveAuxiliaryOpt = getRelationsFromGraph("auxpass").stream().filter(e -> e.getGovernor().equals(passiveNominalSubjectGovernor)).findFirst();
 		if (passiveAuxiliaryOpt.isPresent()) {
 			SemanticGraphEdge passiveAux = passiveAuxiliaryOpt.get();
 			predicate.add(passiveAux.getDependent());
 			
 			// Check if there is a "negation modifier" to consider, then it becomes part of the predicate
-			Optional<SemanticGraphEdge> edge = getRelations("neg").stream().filter(e -> e.getGovernor().equals(passiveAux.getGovernor())).findFirst();
+			Optional<SemanticGraphEdge> edge = getRelationsFromGraph("neg").stream().filter(e -> e.getGovernor().equals(passiveAux.getGovernor())).findFirst();
 			if (edge.isPresent()) { predicate.add(edge.get().getDependent()); }
 			
 			predicate.add(passiveNominalSubjectGovernor);
@@ -264,30 +295,4 @@ public class SentenceParser {
 		return predicate;
 	}
 
-	/**
-	 * Collect information from the sentence (subjects, complements, copulas, ...)
-	 * 
-	 * @throws NotSupportedException if unable to identify subjects in the sentence
-	 */
-	private void init() {
-		this.semanticGraph = StanfordParser.getSemanticGraph(sentence);
-		LOG.trace(semanticGraph.toString(OutputFormat.READABLE));
-		subjectRelations = getRelations("nsubj", "nsubjpass");
-		if (subjectRelations.isEmpty()) {
-			LOG.warn("Unable to identify subjects.", sentenceAsString);
-		}
-		copulaRelations = getRelations("cop");
-		complementRelations = getRelations("acomp", "xcomp", "dobj");
-		conjunctionRelations = getRelations("conj");
-	}
-	
-	/**
-	 * @param relationShortName
-	 * @return all the grammatical relations in the sentence that match the specified relation (short) name
-	 */
-	private List<SemanticGraphEdge> getRelations(String... relationShortName) {
-		List<String> relations = Arrays.asList(relationShortName);
-		Stream<SemanticGraphEdge> stream = StreamSupport.stream(semanticGraph.edgeIterable().spliterator(), false);
-		return stream.filter(e -> relations.contains(e.getRelation().getShortName())).collect(Collectors.toList());
-	}
 }

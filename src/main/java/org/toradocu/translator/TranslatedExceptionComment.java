@@ -6,6 +6,7 @@ import org.toradocu.extractor.JavadocExceptionComment;
 
 import com.sun.javadoc.ExecutableMemberDoc;
 
+@Deprecated
 public class TranslatedExceptionComment extends JavadocExceptionComment {
 
 	private Set<String> conditions;
