@@ -145,7 +145,7 @@ public final class DocumentedMethod {
 			
 			if (name.startsWith(".") || name.endsWith(".") || !name.contains(".")) {
 			    throw new IllegalArgumentException("Name must be a valid qualified name of a method of the form"
-			        + "<package>.<class>.<method name>");
+			        + "<package>.<class>.<method name> where <package> is optional.");
 			}
 			
 			this.name = name;
