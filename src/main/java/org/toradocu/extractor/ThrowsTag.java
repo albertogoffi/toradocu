@@ -1,7 +1,5 @@
 package org.toradocu.extractor;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Objects;
 import java.util.Optional;
@@ -68,12 +66,11 @@ public class ThrowsTag {
 	 * the set is combined using an || conjunction.
 	 * 
 	 * @param conditions the translated conditions for this throws tag (as Java expressions)
-	 * @throws IllegalArgumentException if conditions is null
+	 * @throws NullPointerException if conditions is null
 	 */
 	public void setConditions(Set<String> conditions) {
-		if (conditions == null) {
-			throw new IllegalArgumentException("conditions must not be null");
-		}
+		Objects.requireNonNull(conditions, "conditions must not be null");
+		
 		if (conditions.size() == 0) {
 			this.conditions = "";
 		} else {
@@ -90,12 +87,10 @@ public class ThrowsTag {
 	 * Sets the translated conditions for this throws tags to the given conditions.
 	 * 
 	 * @param conditions the translated conditions for this throws tag (as Java expressions)
-	 * @throws IllegalArgumentException if conditions is null
+	 * @throws NullPointerException if conditions is null
 	 */
 	public void setConditions(String conditions) {
-		if (conditions == null) {
-			throw new IllegalArgumentException("conditions must not be null");
-		}
+		Objects.requireNonNull(conditions, "conditions must not be null");
 		this.conditions = conditions;
 	}
 	
