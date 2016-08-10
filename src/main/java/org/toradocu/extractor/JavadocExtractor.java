@@ -64,11 +64,14 @@ public final class JavadocExtractor {
 		// Loop on constructors and methods (also inherited) of the target class.
 		for (ExecutableMemberDoc member : getConstructorsAndMethods(classDoc)) {
 			DocumentedMethod.Builder methodBuilder = new DocumentedMethod.Builder(member.qualifiedName(), getParameters(member));
-			
 			List<Tag> tags = new ArrayList<>();
+			
+			// Collect tags in the current method's documentation.
+			Collections.addAll(tags, member.tags("@throws"));
+			Collections.addAll(tags, member.tags("@exception"));
     		
-			// Collect tags in the current method's documentation and those that are automatically inherited
-    		// (i.e., when there is no comment for a method overriding another one).
+			// Collect tags that are automatically inherited (i.e., when there is no comment for a method
+			// overriding another one).
     		Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
 			Collections.addAll(tags, holder.tags("@throws"));
     		Collections.addAll(tags, holder.tags("@exception"));
@@ -179,7 +182,7 @@ public final class JavadocExtractor {
 	private void printOutput(List<DocumentedMethod> methods) {
 		OutputPrinter.Builder builder = new OutputPrinter.Builder("JavadocExtractor", methods);
 		OutputPrinter printer = builder.file(Configuration.INSTANCE.getJavadocExtractorOutput()).logger(LOG).build();
-		// printer.print();
+		printer.print();
 	}
 	
 	/**
