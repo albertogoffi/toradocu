@@ -6,9 +6,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import org.toradocu.conf.Configuration;
-import org.toradocu.util.OutputPrinter;
-
 /**
  * DocumentedMethod represents the documentation for a method in a class. It identifies the method itself
  * and key Javadoc information associated with it, such as throws tags and parameters.
@@ -145,6 +142,11 @@ public final class DocumentedMethod {
 		public Builder(String name, Parameter... parameters) {
 			Objects.requireNonNull(name);
 			Objects.requireNonNull(parameters);
+			
+			if (name.startsWith(".") || name.endsWith(".") || !name.contains(".")) {
+			    throw new IllegalArgumentException("Name must be a valid qualified name of a method of the form"
+			        + "<package>.<class>.<method name>");
+			}
 			
 			this.name = name;
 			this.parameters = Arrays.asList(parameters);
