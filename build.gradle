@@ -114,7 +114,9 @@ task extractJGraphTSrc(type: Copy, dependsOn: downloadJGraphTSrc) {
 	into 'src/test/resources/jgrapht-core-0.9.2-sources'
 }
 
-test.dependsOn extractGuavaSrc, extractCommonsCollectionsSrc, extractJGraphTSrc
+// Comment out the following line to enable download of target systems used for 
+// precision-recall measurement.
+// test.dependsOn extractGuavaSrc, extractCommonsCollectionsSrc, extractJGraphTSrc
 
 task removeDefaultOutputDir(type: Delete) {
 	delete 'tmp', 'aspects'
