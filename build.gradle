@@ -23,13 +23,17 @@ sourceSets {
             srcDir 'src/main/java'
             exclude 'org/toradocu/translator/**Element.java'
             exclude 'org/toradocu/translator/Matcher.java'
-            // exclude 'org/toradocu/OracleGenerator.java'
-            // exclude 'org/toradocu/aspect/**'
+            exclude 'org/toradocu/OracleGenerator.java'
+            exclude 'org/toradocu/aspect/**'
         }
     }
     test {
         java {
             srcDir 'src/test/java'
+            exclude 'org/toradocu/**.java'
+            exclude 'org/toradocu/nlp/**'
+            exclude 'org/toradocu/testlib/**'
+            exclude 'org/toradocu/translator/**'
         }
     }
 }
@@ -42,7 +46,7 @@ dependencies {
 	compile fileTree(dir: 'lib', include: '*.jar')
 	compile	'edu.stanford.nlp:stanford-corenlp:3.6.0'
 	compile	'edu.stanford.nlp:stanford-corenlp:3.6.0:models-english'
-	compile 'org.jsoup:jsoup:1.8.3' // We use JSoup only to remove html tags in comments
+	compile 'org.jsoup:jsoup:1.8.3' // We use JSoup only to remove HTML tags in comments.
 	compile 'com.github.javaparser:javaparser-core:2.3.0'
 	compile 'com.beust:jcommander:1.48'
 	compile 'com.google.code.gson:gson:2.6.2'
