@@ -41,7 +41,7 @@ public class PropositionSeries {
 	 * series with this proposition. An {@code IllegalStateException} is thrown if there are no propositions in the
 	 * series when this method is called (since there is then nothing to link the conjunction with).
 	 * 
-	 * @param conjunction the conjunction between the formerly last proposition with the given proposition
+	 * @param conjunction the conjunction between the formerly last proposition and the given proposition
 	 * @param proposition the proposition to add to the end of the series
 	 * @throws IllegalStateException if there is not already at least one proposition in the series
 	 */

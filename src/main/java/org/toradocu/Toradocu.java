@@ -8,8 +8,6 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -25,7 +23,6 @@ import org.toradocu.translator.ConditionTranslator;
 import org.toradocu.util.ExportedData;
 import org.toradocu.util.GsonInstance;
 import org.toradocu.util.NullOutputStream;
-import org.toradocu.util.OutputPrinter;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
