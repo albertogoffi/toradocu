@@ -37,7 +37,7 @@ import com.sun.tools.javadoc.Main;
 
 public class Toradocu {
 	
-	private static final Logger LOG = LoggerFactory.getLogger(Toradocu.class);
+	private static Logger LOG;
 	private static final String DOCLET = "org.toradocu.doclet.standard.Standard";
 	private static final String PROGRAM_NAME = "java -jar toradocu.jar";
 	private static final Configuration CONF = Configuration.INSTANCE;
@@ -68,6 +68,7 @@ public class Toradocu {
 		if (CONF.debug()) {
 			System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "trace");
 		}
+		LOG = LoggerFactory.getLogger(Toradocu.class);
 		
 		// === Javadoc Extractor ===
 		
