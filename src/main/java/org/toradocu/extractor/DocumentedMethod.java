@@ -12,8 +12,12 @@ import java.util.Objects;
  */
 public final class DocumentedMethod {
 	
+	/** The fully qualified name of the method return type. */ 
+	private final String returnType;
 	/** The fully qualified name of the method. */
 	private final String name;
+	/** The simple name of the method. */
+	private final String simpleName;
 	/** A list of parameters in the method. */
 	private final List<Parameter> parameters;
 	/** A list of throws tags specified in the method's Javadoc. */
@@ -22,6 +26,8 @@ public final class DocumentedMethod {
 	private final String signature;
 	/** The class in which the method is contained. */
 	private final String containingClass;
+	/** True when this method is a constructor. */
+	private final boolean isAConstructor;
 	
 	/**
 	 * Constructs a {@code DocumentedMethod} using the information in the provided {@code Builder}.
@@ -29,9 +35,21 @@ public final class DocumentedMethod {
 	 * @param builder the {@code Builder} containing information about this {@code DocumentedMethod}
 	 */
 	private DocumentedMethod(Builder builder) {
-		name = builder.name;
-		parameters = builder.parameters;
-		throwsTags = builder.throwsTags;
+		this.name = builder.name;
+		this.simpleName = name.substring(name.lastIndexOf(".") + 1);
+		this.containingClass = name.substring(0, name.lastIndexOf("."));
+		if (this.containingClass.contains(".")) {
+			this.isAConstructor = simpleName.equals(this.containingClass.substring(this.containingClass.lastIndexOf(".") + 1));
+		} else {
+			this.isAConstructor = simpleName.equals(containingClass);
+		}
+		if (this.isAConstructor) {
+			this.returnType = "";
+		} else {
+			this.returnType = builder.returnType;
+		}
+		this.parameters = builder.parameters;
+		this.throwsTags = builder.throwsTags;
 		// Create the method signature using the method name and parameters.
 		StringBuilder signature = new StringBuilder(name + "(");
 		for (Parameter param : parameters) {
@@ -43,7 +61,6 @@ public final class DocumentedMethod {
 		}
 		signature.append(")");
 		this.signature = signature.toString();
-		this.containingClass = name.substring(0, name.lastIndexOf("."));
 	}
 	
 	/**
@@ -53,6 +70,24 @@ public final class DocumentedMethod {
 	 */
 	public List<ThrowsTag> throwsTags() {
 		return Collections.unmodifiableList(throwsTags);
+	}
+	
+	/**
+	 * Checks whether this method is a regular method or a constructor. 
+	 * 
+	 * @return {@code true} if this method is a constructor, {@code false} otherwise
+	 */
+	public boolean isAConstructor() {
+		return isAConstructor;
+	}
+	
+	/**
+	 * Returns the simple name of this method.
+	 * 
+	 * @return the simple name of this method
+	 */
+	public String getSimpleName() {
+		return simpleName;
 	}
 
 	/**
@@ -71,6 +106,15 @@ public final class DocumentedMethod {
 	 */
 	public String getSignature() {
 		return signature;
+	}
+	
+	/**
+	 * Returns the return type of this method when this method is not a constructor.
+	 * 
+	 * @return the return type of this method (empty string if this method is a constructor)
+	 */
+	public String getReturnType() {
+		return returnType;
 	}
 	
 	/**
@@ -94,7 +138,8 @@ public final class DocumentedMethod {
 		if (this == obj) return true;
 		
 		DocumentedMethod that = (DocumentedMethod) obj;
-		if (this.name.equals(that.name) &&
+		if (this.returnType.equals(that.returnType) &&
+			this.name.equals(that.name) &&
 			this.parameters.equals(that.parameters) &&
 			this.throwsTags.equals(that.throwsTags)) {
 			return true;
@@ -109,7 +154,7 @@ public final class DocumentedMethod {
 	 */
 	@Override
 	public int hashCode() {
-		return Objects.hash(name, parameters, throwsTags);
+		return Objects.hash(returnType, name, parameters, throwsTags);
 	}
 	
 	/**
@@ -119,7 +164,11 @@ public final class DocumentedMethod {
 	 */
 	@Override
 	public String toString() {
-		return this.signature;
+		if (returnType.isEmpty()) {
+			return signature;
+		} else {
+			return returnType + " " + signature;
+		}
 	}
 	
 	/**
@@ -127,6 +176,8 @@ public final class DocumentedMethod {
 	 */
 	public static class Builder implements org.apache.commons.lang3.builder.Builder<DocumentedMethod> {
 
+		/** The fully qualified name of the {@code DocumentedMethod} return type. */ 
+		private final String returnType;		
 		/** The fully qualified name of the {@code DocumentedMethod} to build. */
 		private final String name;
 		/** The parameters of the {@code DocumentedMethod} to build. */
@@ -139,7 +190,8 @@ public final class DocumentedMethod {
 		 * @param name the fully qualified name of the {@code DocumentedMethod} to build
 		 * @param parameters the parameters of the {@code DocumentedMethod} to build
 		 */
-		public Builder(String name, Parameter... parameters) {
+		public Builder(String returnType, String name, Parameter... parameters) {
+			Objects.requireNonNull(returnType);
 			Objects.requireNonNull(name);
 			Objects.requireNonNull(parameters);
 			
@@ -148,6 +200,7 @@ public final class DocumentedMethod {
 			        + "<package>.<class>.<method name> where <package> is optional.");
 			}
 			
+			this.returnType = returnType;
 			this.name = name;
 			this.parameters = Arrays.asList(parameters);
 			this.throwsTags = new ArrayList<>();
