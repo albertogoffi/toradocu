@@ -63,7 +63,13 @@ public final class JavadocExtractor {
 		
 		// Loop on constructors and methods (also inherited) of the target class.
 		for (ExecutableMemberDoc member : getConstructorsAndMethods(classDoc)) {
-			DocumentedMethod.Builder methodBuilder = new DocumentedMethod.Builder(member.receiverType().qualifiedTypeName(), member.qualifiedName(), getParameters(member));
+			// Return type is an empty string if no receiver type is present
+			String returnType = "";
+			if (member.receiverType() != null) {
+				returnType = member.receiverType().qualifiedTypeName();
+			} 
+			
+			DocumentedMethod.Builder methodBuilder = new DocumentedMethod.Builder(returnType, member.qualifiedName(), getParameters(member));
 			List<Tag> tags = new ArrayList<>();
 			
 			// Collect tags in the current method's documentation.
