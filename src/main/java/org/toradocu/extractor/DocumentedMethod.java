@@ -89,6 +89,15 @@ public final class DocumentedMethod {
 	public String getSimpleName() {
 		return simpleName;
 	}
+	
+	/**
+	 * Returns the fully qualified name of this method.
+	 * 
+	 * @return the  fully qualified name of this method
+	 */
+	public String getName() {
+		return name;
+	}
 
 	/**
 	 * Returns an unmodifiable list view of the parameters in this method.

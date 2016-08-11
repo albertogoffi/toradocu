@@ -23,15 +23,12 @@ sourceSets {
             srcDir 'src/main/java'
             exclude 'org/toradocu/translator/**Element.java'
             exclude 'org/toradocu/translator/Matcher.java'
-            exclude 'org/toradocu/OracleGenerator.java'
-            exclude 'org/toradocu/aspect/**'
         }
     }
     test {
         java {
             srcDir 'src/test/java'
             exclude 'org/toradocu/**.java'
-            exclude 'org/toradocu/nlp/**'
             exclude 'org/toradocu/testlib/**'
             exclude 'org/toradocu/translator/**'
         }
@@ -76,6 +73,7 @@ compileJava.doLast {
 	tasks.copyDocletResources2.execute()
 }
 
+// Comment out to avoid useless output of output and error streams and therefore reduce building time
 test {
 	testLogging {
 		events 'PASSED', 'SKIPPED', 'FAILED', 'STANDARD_OUT', 'STANDARD_ERROR'
