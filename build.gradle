@@ -74,11 +74,11 @@ compileJava.doLast {
 }
 
 // Comment out to avoid useless output of output and error streams and therefore reduce building time
-test {
-	testLogging {
-		events 'PASSED', 'SKIPPED', 'FAILED', 'STANDARD_OUT', 'STANDARD_ERROR'
-	}
-}
+//test {
+//	testLogging {
+//		events 'PASSED', 'SKIPPED', 'FAILED', 'STANDARD_OUT', 'STANDARD_ERROR'
+//	}
+//}
 
 import de.undercouch.gradle.tasks.download.Download
 
