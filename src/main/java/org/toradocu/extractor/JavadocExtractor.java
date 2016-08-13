@@ -38,7 +38,6 @@ public final class JavadocExtractor {
 	/** {@code Logger} for this class. */
 	private final Logger LOG;
 
-	
 	/**
 	 * Constructs a {@code JavadocExtractor} with the given doclet {@code configuration}.
 	 * 
@@ -63,7 +62,7 @@ public final class JavadocExtractor {
 		
 		// Loop on constructors and methods (also inherited) of the target class.
 		for (ExecutableMemberDoc member : getConstructorsAndMethods(classDoc)) {
-			DocumentedMethod.Builder methodBuilder = new DocumentedMethod.Builder(member.qualifiedName(), getParameters(member));
+			DocumentedMethod.Builder methodBuilder = new DocumentedMethod.Builder(member.qualifiedName(), getReturnType(member), getParameters(member));
 			List<Tag> tags = new ArrayList<>();
 			
 			// Collect tags in the current method's documentation.
@@ -146,6 +145,22 @@ public final class JavadocExtractor {
 	}
 	
 	/**
+	 * Returns the fully qualified return type of the given constructor or method, including the dimension
+	 * of the return type if it's an array. The returned string is the empty string if this is a constructor.
+	 * 
+	 * @param member the executable member (constructor or method) to return the return type of as a string
+	 * @return the return type of the given member or the empty string if the member is a constructor
+	 */
+	private String getReturnType(ExecutableMemberDoc member) {
+		if (member instanceof MethodDoc) {
+			MethodDoc method = (MethodDoc) member;
+			return method.returnType().qualifiedTypeName() + method.returnType().dimension();
+		} else {
+			return "";
+		}
+	}
+	
+	/**
 	 * Returns an array of {@code Parameter}s from the documentation for the given constructor or method.
 	 * 
 	 * @param member the constructor or method from which to extract parameters
@@ -169,7 +184,7 @@ public final class JavadocExtractor {
 					break;
 				}
 			}
-			parameters[i] = new Parameter(type, params[i].name(), nullable);
+			parameters[i] = new Parameter(type, params[i].name(), i, nullable);
 		}
 		return parameters;
 	}

@@ -11,7 +11,7 @@ import org.toradocu.util.OutputPrinter;
 
 /**
  * DocumentedMethod represents the documentation for a method in a class. It identifies the method itself
- * and key Javadoc information associated with it, such as throws tags and parameters.
+ * and key Javadoc information associated with it, such as throws tags, parameters and return type.
  */
 public final class DocumentedMethod {
 	
@@ -23,6 +23,8 @@ public final class DocumentedMethod {
 	private final List<ThrowsTag> throwsTags;
 	/** The signature of the method (excluding return type). */
 	private final String signature;
+	/** The return type of the method, including its dimension if it's an array. */
+	private final String returnType;
 	/** The class in which the method is contained. */
 	private final String containingClass;
 	
@@ -35,6 +37,7 @@ public final class DocumentedMethod {
 		name = builder.name;
 		parameters = builder.parameters;
 		throwsTags = builder.throwsTags;
+		returnType = builder.returnType;
 		// Create the method signature using the method name and parameters.
 		StringBuilder signature = new StringBuilder(name + "(");
 		for (Parameter param : parameters) {
@@ -74,6 +77,17 @@ public final class DocumentedMethod {
 	 */
 	public String getSignature() {
 		return signature;
+	}
+	
+	/**
+	 * Returns the return type of this method, including its dimension if it's an array, or the
+	 * empty string if this is a constructor.
+	 * 
+	 * @return the return type of this method, including its dimension if it's an array, or the
+	 *         empty string if this is a constructor
+	 */
+	public String getReturnType() {
+		return returnType;
 	}
 	
 	/**
@@ -134,19 +148,25 @@ public final class DocumentedMethod {
 		private final String name;
 		/** The parameters of the {@code DocumentedMethod} to build. */
 		private final List<Parameter> parameters;
+		/** The return type of the {@code DocumentedMethod} to build. */
+		private final String returnType;
 		/** The throws tags of the {@code DocumentedMethod} to build. */
 		private final List<ThrowsTag> throwsTags;
 		
 		/** Constructs a builder for a {@code DocumentedMethod} with the given {@code name} and {@parameters}.
 		 * 
 		 * @param name the fully qualified name of the {@code DocumentedMethod} to build
+		 * @param returnType the fully qualified return type of the method, including its dimension if it's an array,
+		 *        or the empty string if the {@code DocumentedMethod} to build is a constructor
 		 * @param parameters the parameters of the {@code DocumentedMethod} to build
 		 */
-		public Builder(String name, Parameter... parameters) {
+		public Builder(String name, String returnType, Parameter... parameters) {
 			Objects.requireNonNull(name);
+			Objects.requireNonNull(returnType);
 			Objects.requireNonNull(parameters);
 			
 			this.name = name;
+			this.returnType = returnType;
 			this.parameters = Arrays.asList(parameters);
 			this.throwsTags = new ArrayList<>();
 		}
