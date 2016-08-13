@@ -51,18 +51,6 @@ public class MethodChangerVisitor extends VoidVisitorAdapter<Object> {
     			pointcut += " && within(" + CONF.getTestClass() + ")";
     		}
     		
-
-//    		/* Avoid to add within declaration if we target a constructor defined in an abstract class.
-//    		 * This is because such constructors are not called directly in the test suite. */
-//    		if (doc instanceof MethodDoc || (doc instanceof ConstructorDoc && !containingClass.isAbstract())) { 
-//    			pointcut = "call(" + getPointcutSignature(doc) + ")";
-//    			if (!testClassName.isEmpty()) {
-//    				pointcut += " && within(" + testClassName + ")";
-//    			}
-//    		} else {
-//    			pointcut = "execution(" + getPointcutSignature(doc) + ")";
-//    		}
-    		
     		AnnotationExpr annotation = new SingleMemberAnnotationExpr(new NameExpr("Around"), new StringLiteralExpr(pointcut));
     		List<AnnotationExpr> annotations = n.getAnnotations();
     		annotations.add(annotation);
@@ -134,44 +122,14 @@ public class MethodChangerVisitor extends VoidVisitorAdapter<Object> {
 			pointcut = pointcut.substring(0, pointcut.length() - 1); // Remove the last comma in parameters list
 		}
 		
-		// TODO Add support for var args in class extractor.Parameter
-//		if (doc.isVarArgs()) {
-//			if (pointcut.endsWith("[]")) { // Remove "[]" part of the qualified name 
-// 				pointcut = pointcut.substring(0, pointcut.length() - 2);
-//			}
-//			pointcut += "...";
-//		}
-		
 		pointcut += ")";
 		return pointcut;
 	}
-	
-//	private String getRawQualifiedTypeName(Type type) {
-//		String rawTypeName = null;
-//		if (type.asTypeVariable() != null) {
-//			rawTypeName = Object.class.getCanonicalName(); // If the parameter IS a TypeVariable
-//		} else {
-//			rawTypeName = type.qualifiedTypeName();
-//			if (rawTypeName.contains("<")) { // Handling of parameterized type such as Map<? extends K, ? extends V>
-//				rawTypeName = rawTypeName.substring(0, rawTypeName.indexOf("<"));
-//			}
-//			String dimension = type.dimension();
-//			if (!dimension.isEmpty()) {
-//				rawTypeName += dimension;
-//			}
-//		}
-//		return rawTypeName;
-//	}
 
-	private String addCasting(String condition) {
-		
+	private String addCasting(String condition) {	
 		int index = 0;
 		for (Parameter parameter : method.getParameters()) {
 			String type = parameter.getType();
-			String dimension = parameter.getDimension();
-			if (dimension != null) {
-				type += dimension;
-			}
 			condition = condition.replace("args[" + index + "]", "((" + type + ") args[" + index + "])");
 			index++;
 		}
@@ -179,24 +137,5 @@ public class MethodChangerVisitor extends VoidVisitorAdapter<Object> {
 		// Casting of target object in check
 		condition = condition.replace("target.", "((" + method.getContainingClass() + ") target).");		
 		return condition;
-		
-		// Casting of parameters in the condition
-//		Parameter[] parameters = method.getParameters().toArray(new Parameter[0]);
-//		for (int i = 0; i < parameterTypes.length; i++) {
-//			Type type = parameterTypes[i].type();
-//			if (type.asTypeVariable() != null || type.asParameterizedType() != null) {
-//				continue; // Avoid the casting of a TypeVariable or of a ParametrizedType
-//			}
-//			String typeString = parameterTypes[i].type().qualifiedTypeName();
-//			if (type.dimension().contains("[]")) {
-//				typeString += type.dimension(); // Add dimensions for parameters that are arrays
-//			}
-//			check = check.replace("args[" + i + "]", "((" + typeString + ")args[" + i + "])");
-//		}
-//		
-//		// Casting of target object in check
-//		check = check.replace("target.", "((" + doc.containingClass().qualifiedName() + ")target).");
-//		
-//		return check;
 	}
 }

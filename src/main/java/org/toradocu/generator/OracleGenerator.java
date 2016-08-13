@@ -69,13 +69,13 @@ public class OracleGenerator {
         try (InputStream template = getClass().getResourceAsStream("/" + CONF.getAspectTemplate());
              FileOutputStream output = new FileOutputStream(new File(aspectPath + ".java"))) {
         	CompilationUnit cu = JavaParser.parse(template);
+        	
             new MethodChangerVisitor(method).visit(cu, null);    
             String newAspect = cu.toString();
             newAspect = newAspect.replace("public class Aspect_Template", "public class " + aspectName);
             output.write(newAspect.getBytes());
 		} catch (IOException|ParseException e) {
 			LOG.error("Error during aspect creation.", e);
-			e.printStackTrace();
 		}
 	}
 	
