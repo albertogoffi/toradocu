@@ -9,21 +9,20 @@ import java.util.Objects;
 import org.toradocu.util.Distance;
 
 /**
- * This class represents a Java code element for use in translation. It holds one or more String
- * identifiers for the code element and a Java expression representation of the code element to
- * build Java conditions.
+ * This class represents a Java code element for use in translation. It String identifiers for the code element
+ * and a Java expression representation of the code element to build Java conditions.
  *
  * @param <T> the type of code element that this class holds data on
  */
 public abstract class CodeElement<T> {
-	
+
 	/** Strings that can be used to refer to this code element. */
 	private List<String> identifiers;
 	/** String used to build Java conditions. */
 	private String javaExpression;
 	/** The Java code element this object wraps. */
 	private T javaCodeElement;
-	
+
 	/**
 	 * Constructs a new {@code CodeElement} that represents the given element with the given
 	 * identifiers.
@@ -35,6 +34,15 @@ public abstract class CodeElement<T> {
 		this.javaCodeElement = javaCodeElement;
 		this.identifiers = new ArrayList<>(Arrays.asList(identifiers));
 	}
+	
+	/**
+	 * Constructs a new {@code CodeElement} that represents the given element.
+	 * 
+	 * @param javaCodeElement the element that this code element contains data on
+	 */
+	protected CodeElement(T javaCodeElement) {
+		this(javaCodeElement, new String[0]);
+	}
 
 	/**
 	 * Adds a string identifier for the code element that this object represents.
@@ -44,7 +52,7 @@ public abstract class CodeElement<T> {
 	public void addIdentifier(String identifier) {
 		identifiers.add(identifier);
 	}
-	
+
 	/**
 	 * Returns a list of strings that identify this code element.
 	 * 
@@ -53,7 +61,7 @@ public abstract class CodeElement<T> {
 	public List<String> getIdentifiers() {
 		return identifiers;
 	}
-	
+
 	/**
 	 * Returns the Java expression representation of this code element for use in building
 	 * Java conditions.
@@ -66,7 +74,7 @@ public abstract class CodeElement<T> {
 		}
 		return javaExpression;
 	}
-	
+
 	/**
 	 * Returns the Levenshtein distance between this code element and the given string. The returned
 	 * distance is the minimum distance calculated for all the identifiers of this code element.
@@ -80,7 +88,7 @@ public abstract class CodeElement<T> {
 		return identifiers.stream().map(identifier -> Distance.levenshteinDistance(identifier, s))
 								   .min(Comparator.naturalOrder()).orElse(Integer.MAX_VALUE);
 	}
-	
+
 	/**
 	 * Returns the backing code element that this object holds data on.
 	 * 
@@ -95,8 +103,8 @@ public abstract class CodeElement<T> {
 	 * 
 	 * @return the Java expression representation of this code element after building it
 	 */
-	public abstract String buildJavaExpression();
-	
+	protected abstract String buildJavaExpression();
+
 	/**
 	 * Returns true if this {@code CodeElement} and the specified object are equal.
 	 * 
@@ -107,6 +115,8 @@ public abstract class CodeElement<T> {
 	public boolean equals(Object obj) {
 		if (!(obj instanceof CodeElement)) return false;
 		
+		if (this == obj) return true;
+		
 		CodeElement<?> that = (CodeElement<?>) obj;
 		if (this.getIdentifiers().equals(that.getIdentifiers()) && 
 			this.getJavaCodeElement().equals(that.getJavaCodeElement()) &&
@@ -115,7 +125,7 @@ public abstract class CodeElement<T> {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Returns the hash code of this object.
 	 * 
@@ -125,7 +135,7 @@ public abstract class CodeElement<T> {
 	public int hashCode() {
 		return Objects.hash(getIdentifiers(), getJavaExpression());
 	}
-	
+
 	/**
 	 * Returns a string representation of this {@code CodeElement}. The returned string is
 	 * formatted as "EXPRESSION: [IDENTIFIER_1, IDENTIFIER_2, ...]", where EXPRESSION is the
