@@ -184,6 +184,10 @@ public final class JavadocExtractor {
 					break;
 				}
 			}
+			// Set type of last parameter to varargs if necessary.
+			if (member.isVarArgs() && i == parameters.length - 1) {
+				type = pType.qualifiedTypeName() + "...";
+			}
 			parameters[i] = new Parameter(type, params[i].name(), i, nullable);
 		}
 		return parameters;
