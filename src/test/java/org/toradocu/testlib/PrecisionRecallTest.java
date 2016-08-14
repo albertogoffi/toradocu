@@ -36,13 +36,12 @@ public class PrecisionRecallTest {
 		String message = "=== Test " + targetClass + " ===";
 		
 		Toradocu.main(new String[] {"--targetClass", targetClass,
-				"--saveConditionTranslatorOutput", actualOutputFile,
-				"--oracleGeneration", "false",
-				"--testClass", "foo",
-//				"--debug",
-				"-J-sourcepath=" + srcPath,
+				"--condition-translator-output", actualOutputFile,
+				"--oracle-generation", "false",
+				"--test-class", "foo",
+				"--source-dir", srcPath,
 				"-J-docletpath=build/classes/main",
-				"-J-d=tmp", "-J-quiet=", "-J-private="});
+				"-J-d=tmp"});
 		return compare(actualOutputFile, expectedOutputFile, message);
 	}
 	
