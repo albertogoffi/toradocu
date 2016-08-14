@@ -39,17 +39,23 @@ public final class DocumentedMethod {
 		throwsTags = builder.throwsTags;
 		returnType = builder.returnType;
 		// Create the method signature using the method name and parameters.
-		StringBuilder signature = new StringBuilder(name + "(");
+		StringBuilder signatureBuilder = new StringBuilder(name + "(");
 		for (Parameter param : parameters) {
-			signature.append(param);
-			signature.append(",");
+			signatureBuilder.append(param);
+			signatureBuilder.append(",");
 		}
-		if (signature.charAt(signature.length() - 1) == ',') { // Remove last comma when needed
-			signature.deleteCharAt(signature.length() - 1);
+		if (signatureBuilder.charAt(signatureBuilder.length() - 1) == ',') { // Remove last comma when needed
+			signatureBuilder.deleteCharAt(signatureBuilder.length() - 1);
 		}
-		signature.append(")");
-		this.signature = signature.toString();
-		this.containingClass = name.substring(0, name.lastIndexOf("."));
+		signatureBuilder.append(")");
+		signature = signatureBuilder.toString();
+		// Set the containingClass.
+		if (returnType == "") {
+			// DocumentedMethod is for a constructor.
+			containingClass = name;
+		} else {
+			this.containingClass = name.substring(0, name.lastIndexOf("."));
+		}
 	}
 	
 	/**
