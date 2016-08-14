@@ -9,6 +9,7 @@ import java.util.Set;
 import org.omg.PortableInterceptor.LOCATION_FORWARD;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.ThrowsTag;
 import org.toradocu.util.OutputPrinter;
@@ -29,22 +30,21 @@ public class ConditionTranslator {
 	public static void translate(List<DocumentedMethod> methods) {
 		for (DocumentedMethod method : methods) {
 			for (ThrowsTag tag : method.throwsTags()) {
-				StringBuilder logMessage = new StringBuilder("===" + method.getSignature() + "===");
-				logMessage.append("\n").append("Identifying propositions from: \"" + tag.getComment() + "\"");
-				LOG.info(logMessage.toString());
+				StringBuilder logMessage = new StringBuilder("Identifying propositions from: ");
+				logMessage.append("\"" + tag.getComment() + "\" in " + method.getSignature());
+				LOG.trace(logMessage.toString());
 				
 				// Identify propositions in the comment. Each sentence in the comment is parsed into
 				// a PropositionSeries.
 				List<PropositionSeries> extractedPropositions
 						= PropositionExtractor.getPropositionSeries(tag.getComment());
-				LOG.trace(extractedPropositions.toString());
 
-				/*
 				// Identify Java code elements in propositions.
 				for (PropositionSeries propositions : extractedPropositions) {
 					translatePropositions(propositions, method, tag);
 				}
-
+				
+				/*
 				// We remove from the proposition graph all the proposition for which the translation has failed
 //				pruneUntranslatedPropositions(propositionGraph);
 				
@@ -74,6 +74,9 @@ public class ConditionTranslator {
 									  .map(m -> m.throwsTags())
 									  .collect(ArrayList::new, ArrayList::addAll, ArrayList::addAll);
 		OutputPrinter.Builder builder = new OutputPrinter.Builder("ConditionTranslator", tags);
+		if (Toradocu.CONFIGURATION.getConditionTranslatorOutput() != null) {
+			builder.file(Toradocu.CONFIGURATION.getConditionTranslatorOutput());
+		}
 		builder.logger(LOG);
 		builder.build().print();
 	}
@@ -95,22 +98,16 @@ public class ConditionTranslator {
 //			}
 //		}
 //	}
-/*
+
 	private static void translatePropositions(PropositionSeries propositionSeries, DocumentedMethod method, ThrowsTag tag) {
 	
 		for (Proposition p : propositionSeries.getPropositions()) {
 			String translation = "";
 			
-			List<CodeElement> subjectMatches;
-			try {
-				subjectMatches = Matcher.subjectMatch(p.getSubject(), method);
-				if (subjectMatches.isEmpty()) {
-					LOG.debug("Failed subject translation for: " + p);
-					return;
-				}
-				
-			} catch (ClassNotFoundException e) {
-				LOG.error("Unable to load class. Check the classpath");
+			Set<CodeElement<?>> subjectMatches;
+			subjectMatches = Matcher.subjectMatch(p.getSubject(), method);
+			if (subjectMatches.isEmpty()) {
+				LOG.debug("Failed subject translation for: " + p);
 				return;
 			}
 			
@@ -151,5 +148,5 @@ public class ConditionTranslator {
 			return "";
 		}
 	}
-*/
+
 }
