@@ -48,14 +48,23 @@ public final class Parameter {
 	}
 	
 	/**
-	 * Returns the dimension of the parameter if it is an array. Otherwise returns null.
+	 * Returns the dimension of the parameter if it is an array. Otherwise returns empty string.
 	 * 
-	 * @return the dimension of the parameter if it is an array or null otherwise
+	 * @return the dimension of the parameter if it is an array or empty string
 	 */
 	public String getDimension() {
 		return dimension;
 	}
 	
+	/**
+	 * Returns the index of the parameter (i.e. its zero-based position in the parameter list).
+	 * 
+	 * @return the index of the parameter (i.e. its zero-based position in the parameter list)
+	 */
+	public int getIndex() {
+		return index;
+	}
+
 	/**
 	 * Returns the name of the parameter.
 	 * 
