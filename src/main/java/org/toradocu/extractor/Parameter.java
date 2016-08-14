@@ -12,7 +12,9 @@ public final class Parameter {
 	/** The name of the parameter. */
 	private final String name;
 	/** The dimension of the parameter if it is an array. */
-	private final transient String dimension;
+	private final String dimension;
+	/** The index of the parameter (i.e. its zero-based position in the parameter list). */
+	private final int index;
 	/** True if this parameter is nullable, false if nonnull, and null if unspecified. */
 	private final Boolean nullable;
 	
@@ -23,11 +25,12 @@ public final class Parameter {
 	 * @param name the name of the parameter
 	 * @param nullable true if the parameter is nullable, false if nonnull and null if unspecified
 	 */
-	public Parameter(String type, String name, Boolean nullable) {
+	public Parameter(String type, String name, int index, Boolean nullable) {
 		Objects.requireNonNull(type);
 		Objects.requireNonNull(name);
 		this.type = type;
 		this.name = name;
+		this.index = index;
 		this.nullable = nullable;
 		// Extract the dimension from the type string if the type is an array.
 		int dimensionIndex = type.indexOf('[');
@@ -40,19 +43,28 @@ public final class Parameter {
 	 * @param type the type of the parameter including its dimension
 	 * @param name the name of the parameter
 	 */
-	public Parameter(String type, String name) {
-		this(type, name, null);
+	public Parameter(String type, String name, int index) {
+		this(type, name, index, null);
 	}
 	
 	/**
-	 * Returns the dimension of the parameter if it is an array. Otherwise returns null.
+	 * Returns the dimension of the parameter if it is an array. Otherwise returns empty string.
 	 * 
-	 * @return the dimension of the parameter if it is an array or null otherwise
+	 * @return the dimension of the parameter if it is an array or empty string
 	 */
 	public String getDimension() {
 		return dimension;
 	}
 	
+	/**
+	 * Returns the index of the parameter (i.e. its zero-based position in the parameter list).
+	 * 
+	 * @return the index of the parameter (i.e. its zero-based position in the parameter list)
+	 */
+	public int getIndex() {
+		return index;
+	}
+
 	/**
 	 * Returns the name of the parameter.
 	 * 

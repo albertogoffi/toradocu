@@ -3,6 +3,8 @@ package org.toradocu.conf;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.Map.Entry;
 import com.beust.jcommander.DynamicParameter;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.converters.FileConverter;
+import com.beust.jcommander.converters.PathConverter;
 
 /**
  * This singleton class holds the configuration options (particularly command-line options) for Toradocu.
@@ -20,68 +23,143 @@ public enum Configuration {
 	
 	INSTANCE;
 	
-// General options
+	// Constants
+	
+	private static final String ASPECT_TEMPLATE = "AspectTemplate.java";
+	
+	// General options
 
-	@Parameter(names = "--targetClass", description = "Qualified name of the class to analyze with Toradocu", required = true)
+	@Parameter(names = "--target-class",
+			   description = "Qualified name of the class to analyze with Toradocu",
+			   required = true)
 	private String targetClass;
 	
-	@Parameter(names = "--debug", description = "Enable debug mode with fine-grained logging")
+	@Parameter(names = "--source-dir",
+			   description = "Path to directory containing source files for target class",
+			   converter = PathConverter.class)
+	private Path sourceDir;
+	
+	@Parameter(names = "--class-dir",
+			   description = "Path to directory containing class files for target class",
+			   converter = PathConverter.class)
+	private Path classDir;
+	
+	@Parameter(names = "--debug", description = "Enable fine-grained logging")
 	private boolean debug;
 	
 	@Parameter(names = {"-h", "--help"}, description = "Print a list of available options", help = true)
 	private boolean help;
 	
-	@Parameter(names = "--exportFile",
-			   description = "File where to export Toradocu results for use in other programs",
+	@Parameter(names = "--export-file",
+			   description = "File in which to export Toradocu results for use in other programs",
 			   converter = FileConverter.class)
 	private File exportFile;
 	
-// Javadoc extractor options
+	// Javadoc extractor options
 	
-	@Parameter(names = "--saveJavadocExtractorOutput", description = "File where to save the Javadoc extractor output", converter = FileConverter.class)
+	@Parameter(names = "--javadoc-extractor-output",
+			   description = "File in which to save the Javadoc extractor output as JSON",
+			   converter = FileConverter.class)
 	private File javadocExtractorOutput;
 	
-// Condition translator options
+	// Condition translator options
 	
-	@Parameter(names = "--conditionTranslatorInput",
+	@Parameter(names = "--condition-translation", description = "Enable/disable the condition translator", arity = 1)
+	private boolean conditionTranslation = true;
+	
+	@Parameter(names = "--condition-translator-input",
 			   description = "File that the condition tranlator will process (this option disables the Javadoc extractor)", 
 			   converter = FileConverter.class)
 	private File conditionTranslatorInput;
 	
-	@Parameter(names = "--conditionTranslation", description = "Enable/disable the condition translator", arity = 1)
-	private boolean conditionTranslation = true;
-	
-	@Parameter(names = "--saveConditionTranslatorOutput", description = "File where to save the condition translator output", converter = FileConverter.class)
+	@Parameter(names = "--condition-translator-output",
+			   description = "File in which to save the condition translator output",
+			   converter = FileConverter.class)
 	private File conditionTranslatorOutput;
 	
-// Aspect creation options
+	// Aspect creation options
 	
-	@Parameter(names = "--oracleGeneration", description = "Enable/disable the generation of the aspects", arity = 1)
+	@Parameter(names = "--oracle-generation", description = "Enable/disable the generation of the aspects", arity = 1)
 	private boolean oracleGeneration = true;
 	
-	@Parameter(names = "--testClass", description = "Qualified name of the class that will be instrumented with aspects")
+	@Parameter(names = "--test-class", description = "Qualified name of the class that will be instrumented with aspects")
 	private String testClass;
 	
-	@Parameter(names = "--outputDir", description = "Folder where Toradocu saves aspects")
+	@Parameter(names = "--aspects-output-dir", description = "Folder where Toradocu saves aspects")
 	private String aspectsOutputDir = "aspects";
 	
-// Javadoc options
+	// Javadoc options
 	
 	@DynamicParameter(names = "-J", description = "Javadoc options")
 	private Map<String, String> javadocOptions = new HashMap<>();
-	
-// Temporary Javadoc output directory
 
+	private List<String> javadocOptionsList;
+	
 	private String tempJavadocOutputDir;
 	
-// Constants
+	/**
+	 * Initializes the configuration based on the given command-line options. This method must
+	 * be called before Javadoc options or the temporary Javadoc output directory are retrieved.
+	 */
+	public void initialize() {
+		if (help) {
+			// No initialization necessary.
+			return;
+		}
+		
+		if (sourceDir == null) {
+			sourceDir = Paths.get(".");
+		}
+		if (classDir == null) {
+			classDir = Paths.get(".");
+		}
+		
+		javadocOptionsList = new ArrayList<>();
+		for (Entry<String, String> javadocOption : javadocOptions.entrySet()) {
+			javadocOptionsList.add(javadocOption.getKey());
+			if (!javadocOption.getValue().isEmpty()) {
+				javadocOptionsList.add(javadocOption.getValue());
+			}
+		}
+		// Suppress Javadoc console output.
+		if (!javadocOptions.containsKey("-quiet")) {
+			javadocOptionsList.add("-quiet");
+		}
+		// Process classes with protected and private modifiers.
+		if (!javadocOptions.containsKey("-private")) {
+			javadocOptionsList.add("-private");
+		}
+		// Set the Javadoc source files directory.
+		if (!javadocOptions.containsKey("-sourcepath")) {
+			javadocOptionsList.add("-sourcepath");
+			javadocOptionsList.add(sourceDir.toString());
+		}
+		// Use a temporary Javadoc output directory if one is not set.
+		if (!javadocOptions.containsKey("-d")) {
+			try {
+				tempJavadocOutputDir = Files.createTempDirectory(null).toString();
+				javadocOptionsList.add("-d");
+				javadocOptionsList.add(tempJavadocOutputDir);
+			} catch (IOException e) {
+				// Could not create temporary directory so output to working directory instead.
+			}
+		}
+		
+		javadocOptionsList.add(getTargetPackage());
+	}
 	
-	private final String aspectTemplate = "AspectTemplate.java";
-
-// Getters
+	// Getters
+	
+	private String getTargetPackage() {
+		int packageStringEnd = targetClass.lastIndexOf(".");
+		if (packageStringEnd == -1) {
+			return "";
+		}
+		return targetClass.substring(0, packageStringEnd);
+	}
 	
 	public String getAspectTemplate() {
-		return aspectTemplate;
+		return ASPECT_TEMPLATE;
 	}
 	
 	public String getTargetClass() {
@@ -96,6 +174,14 @@ public enum Configuration {
 		return help;
 	}
 	
+	public Path getSourceDir() {
+		return sourceDir;
+	}
+	
+	public Path getClassDir() {
+		return classDir;
+	}
+	
 	public File getExportFile() {
 		return exportFile;
 	}
@@ -108,12 +194,12 @@ public enum Configuration {
 		return conditionTranslatorInput;
 	}
 	
-	public boolean isConditionTranslationEnabled() {
-		return conditionTranslation;
-	}
-	
 	public File getConditionTranslatorOutput() {
 		return conditionTranslatorOutput;
+	}
+	
+	public boolean isConditionTranslationEnabled() {
+		return conditionTranslation;
 	}
 	
 	public boolean isOracleGenerationEnabled() {
@@ -129,33 +215,7 @@ public enum Configuration {
 	}
 	
 	public String[] getJavadocOptions() {
-		List<String> arguments = new ArrayList<>();
-		for (Entry<String, String> javadocOption : javadocOptions.entrySet()) {
-			arguments.add(javadocOption.getKey());
-			if (!javadocOption.getValue().isEmpty()) {
-				arguments.add(javadocOption.getValue());
-			}
-		}
-		if (!arguments.contains("-quiet")) {
-			arguments.add("-quiet");
-		}
-		if (!arguments.contains("-private")) {
-			arguments.add("-private");
-		}
-		
-		// Use a temporary Javadoc output directory if one is not specified
-		if (!arguments.contains("-d")) {
-			try {
-				tempJavadocOutputDir = Files.createTempDirectory(null).toString();
-				arguments.add("-d");
-				arguments.add(tempJavadocOutputDir);
-			} catch (IOException e) {
-				// Could not create temporary directory so output to working directory instead.
-			}
-		}
-		
-		arguments.add(getTargetPackage());
-		return arguments.toArray(new String[0]);
+		return javadocOptionsList.toArray(new String[0]);
 	}
 	
 	/**
@@ -169,11 +229,4 @@ public enum Configuration {
 		return tempJavadocOutputDir;
 	}
 	
-	private String getTargetPackage() {
-		int packageStringEnd = targetClass.lastIndexOf(".");
-		if (packageStringEnd == -1) {
-			return "";
-		}
-		return targetClass.substring(0, packageStringEnd);
-	}
 }

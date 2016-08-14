@@ -15,7 +15,7 @@ public class MethodCodeElement extends CodeElement {
 	}
 
 	@Override
-	protected String buildStringRepresentation() {
+	protected String buildJavaExpression() {
 		return receiver + "." + signature;
 	}
 }
