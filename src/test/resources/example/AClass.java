@@ -1,9 +1,27 @@
 package example;
 
-public class AClass implements Interface {
+import example.annotation.NonNull;
+import example.annotation.NotNull;
+import example.annotation.Nullable;
 
+public class AClass implements Interface {
+	
+	/**
+	 * @throws NullPointerException always
+	 */
+	public AClass() {
+		// TODO Auto-generated constructor stub
+   	}
+	
+	/**
+	 * @throws NullPointerException if x is null
+	 */
+	public AClass(String x) {
+		// TODO Auto-generated constructor stub
+   	}
+	
 	@Override
-	public double foo(int[] array) {
+	public double foo(@Nullable int[] array) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -13,7 +31,7 @@ public class AClass implements Interface {
 	 * @see example.Interface#bar(java.lang.Object, java.lang.Object)
 	 */
 	@Override
-	public double bar(Object x, Object y) {
+	public double bar(@NotNull Object x, @NonNull Object y) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
