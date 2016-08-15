@@ -32,5 +32,8 @@ public class OracleGeneratorTest {
 		methods.add(method);
 		
 		oracleGenerator.createAspects(methods);
+		
+		//TODO: check created aspects
+		//TODO: delete created aspects
 	}
 }

@@ -72,6 +72,10 @@ public class JavadocExtractorTest {
 		bar.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if x is null"));
 		expected.add(bar.build());
 		
+		Builder vararg = new Builder("", "example.AClass.vararg", new Parameter("java.lang.Object...", "x"));
+		vararg.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if x is null"));
+		expected.add(vararg.build());
+		
 		test("example.AChild", expected, testResources + "/exampleTest_extractor_output.txt", testResources);
 	}
 	

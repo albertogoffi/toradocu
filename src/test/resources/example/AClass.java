@@ -45,5 +45,4 @@ public class AClass implements Interface {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 }
