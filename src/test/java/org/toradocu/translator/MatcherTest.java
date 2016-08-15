@@ -11,7 +11,7 @@ import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.Parameter;
 import org.toradocu.extractor.ThrowsTag;
 
-public class MacherTest {
+public class MatcherTest {
 
 	@Test
 	public void test() throws Throwable {
@@ -26,7 +26,7 @@ public class MacherTest {
 		
 		CodeElement codeElement = matchList.get(0);
 		assertThat(codeElement.getClass(), is(ParameterCodeElement.class));
-		assertThat(codeElement.getStringRepresentation(), is("args[0]"));
+		assertThat(codeElement.getJavaExpression(), is("args[0]"));
 	}
 	
 	public class ClassUnderTest {

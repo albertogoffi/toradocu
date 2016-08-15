@@ -77,11 +77,11 @@ public class JavadocExtractorTest {
 	
 	private void test(String targetClass, List<DocumentedMethod> expected, String actualOutput, String sourcePath) {
 		Toradocu.main(new String[] {"--targetClass", targetClass,
-				"--saveJavadocExtractorOutput", actualOutput,
-				"--conditionTranslation", "false",
-				"--oracleGeneration", "false",
-				"--testClass", "foo",
-				"-J-sourcepath=" + sourcePath,
+				"--javadoc-extractor-output", actualOutput,
+				"--condition-translation", "false",
+				"--oracle-generation", "false",
+				"--test-class", "foo",
+				"--source-dir", sourcePath,
 				"-J-docletpath=build/classes/main",
 				"-J-d=" + toradocuOutputDir});
 		
