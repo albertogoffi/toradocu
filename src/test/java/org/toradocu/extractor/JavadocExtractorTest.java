@@ -32,27 +32,27 @@ public class JavadocExtractorTest {
 	public void exampleAClassTest() {
 		List<DocumentedMethod> expected = new ArrayList<>();
 		
-		Builder constructor1 = new Builder("", "example.AClass");
+		Builder constructor1 = new Builder("example.AClass", "");
 		constructor1.tag(new ThrowsTag("java.lang.NullPointerException", "always"));
 		expected.add(constructor1.build());
 		
-		Builder constructor2 = new Builder("", "example.AClass", new Parameter("java.lang.String", "x"));
+		Builder constructor2 = new Builder("example.AClass", "", new Parameter("java.lang.String", "x", 0));
 		constructor2.tag(new ThrowsTag("java.lang.NullPointerException", "if x is null"));
 		expected.add(constructor2.build());
 		
-		Builder foo = new Builder("", "example.AClass.foo", new Parameter("int[]", "array"));
+		Builder foo = new Builder("example.AClass.foo", "double", new Parameter("int[]", "array", 0));
 		foo.tag(new ThrowsTag("java.lang.NullPointerException", "if array is null"));
 		expected.add(foo.build());
 		
-		Builder bar = new Builder("", "example.AClass.bar", new Parameter("java.lang.Object", "x"), new Parameter("java.lang.Object", "y"));
+		Builder bar = new Builder("example.AClass.bar", "double", new Parameter("java.lang.Object", "x", 0), new Parameter("java.lang.Object", "y", 1));
 		bar.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if x is null"));
 		expected.add(bar.build());
 		
-		Builder baz = new Builder("", "example.AClass.baz", new Parameter("java.lang.Object", "x"));
+		Builder baz = new Builder("example.AClass.baz", "double", new Parameter("java.lang.Object", "x", 0));
 		baz.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if x is null"));
 		expected.add(baz.build());
 		
-		test("example.AClass", expected, testResources + "/exampleTest_extractor_output.txt", testResources);
+		test("example.AClass", expected, testResources + "/example.AClass_extractor_output.txt", testResources);
 	}
 	
 	/* This test case tests the JavadocExtractor on the example class example.AChild in src/test/resources/example */
@@ -60,32 +60,32 @@ public class JavadocExtractorTest {
 	public void exampleAChildTest() {
 		List<DocumentedMethod> expected = new ArrayList<>();
 		
-		Builder baz = new Builder("", "example.AChild.baz", new Parameter("java.lang.Object", "z"));
+		Builder baz = new Builder("example.AChild.baz", "double", new Parameter("java.lang.Object", "z", 0));
 		baz.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if z is null"));
 		expected.add(baz.build());
 		
-		Builder foo = new Builder("", "example.AClass.foo", new Parameter("int[]", "array"));
-		foo.tag(new ThrowsTag("java.lang.NullPointerException", "if array is null"));
-		expected.add(foo.build());
-		
-		Builder bar = new Builder("", "example.AClass.bar", new Parameter("java.lang.Object", "x"), new Parameter("java.lang.Object", "y"));
-		bar.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if x is null"));
-		expected.add(bar.build());
-		
-		Builder vararg = new Builder("", "example.AClass.vararg", new Parameter("java.lang.Object...", "x"));
+		Builder vararg = new Builder("example.AChild.vararg", "double", new Parameter("java.lang.Object...", "x", 0));
 		vararg.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if x is null"));
 		expected.add(vararg.build());
 		
-		test("example.AChild", expected, testResources + "/exampleTest_extractor_output.txt", testResources);
+		Builder foo = new Builder("example.AClass.foo", "double", new Parameter("int[]", "array", 0));
+		foo.tag(new ThrowsTag("java.lang.NullPointerException", "if array is null"));
+		expected.add(foo.build());
+		
+		Builder bar = new Builder("example.AClass.bar", "double", new Parameter("java.lang.Object", "x", 0), new Parameter("java.lang.Object", "y", 1));
+		bar.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if x is null"));
+		expected.add(bar.build());
+		
+		test("example.AChild", expected, testResources + "/example.AChild_extractor_output.txt", testResources);
 	}
 	
 	private void test(String targetClass, List<DocumentedMethod> expected, String actualOutput, String sourcePath) {
-		Toradocu.main(new String[] {"--targetClass", targetClass,
-				"--saveJavadocExtractorOutput", actualOutput,
-				"--conditionTranslation", "false",
-				"--oracleGeneration", "false",
-				"--testClass", "foo",
-				"-J-sourcepath=" + sourcePath,
+		Toradocu.main(new String[] {"--target-class", targetClass,
+				"--javadoc-extractor-output", actualOutput,
+				"--condition-translation", "false",
+				"--oracle-generation", "false",
+				"--test-class", "foo",
+				"--source-dir", sourcePath,
 				"-J-docletpath=build/classes/main",
 				"-J-d=" + toradocuOutputDir});
 		

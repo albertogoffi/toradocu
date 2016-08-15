@@ -10,7 +10,7 @@ public class FieldCodeElement extends CodeElement {
 	}
 
 	@Override
-	protected String buildStringRepresentation() {
+	protected String buildJavaExpression() {
 		return name;
 	}
 

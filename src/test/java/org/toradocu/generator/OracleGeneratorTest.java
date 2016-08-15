@@ -16,13 +16,13 @@ public class OracleGeneratorTest {
 	@Test
 	public void oracleGeneratorTest() throws Exception {
 		final Configuration CONF = Configuration.INSTANCE;
-		String[] args = new String[] {"--targetClass", "example.util.Arrays",
-									  "--oracleGeneration", "true"};
+		String[] args = new String[] {"--target-class", "example.util.Arrays",
+									  "--oracle-generation", "true"};
 		new JCommander(CONF, args);
 		
 		OracleGenerator oracleGenerator = new OracleGenerator();
-		Parameter parameter1 = new Parameter("java.lang.Integer[]", "array");
-		Parameter parameter2 = new Parameter("java.lang.Integer", "element");
+		Parameter parameter1 = new Parameter("java.lang.Integer[]", "array", 0);
+		Parameter parameter2 = new Parameter("java.lang.Integer", "element", 1);
 		ThrowsTag tag = new ThrowsTag("java.lang.NullPointerException", "if array or element is null");
 		tag.setConditions("args[0]==null || args[1]==null");
 		DocumentedMethod method = new DocumentedMethod.Builder("java.lang.Integer", "example.util.Arrays.count", parameter1, parameter2)
