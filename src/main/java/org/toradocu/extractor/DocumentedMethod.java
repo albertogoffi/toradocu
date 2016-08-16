@@ -145,7 +145,7 @@ public final class DocumentedMethod {
 	/**
 	 * Builds a {@code DocumentedMethod} using the provided information.
 	 */
-	public static class Builder implements org.apache.commons.lang3.builder.Builder<DocumentedMethod> {
+	public static class Builder implements org.toradocu.util.Builder<DocumentedMethod> {
 
 		/** The fully qualified name of the {@code DocumentedMethod} to build. */
 		private final String name;
