@@ -117,7 +117,7 @@ public final class JavadocExtractor {
 		
 		// Add non-default constructors.
 		for (ConstructorDoc constructor : currentClass.constructors()) {
-			// This is a bad workaround to bug in Doc.position() method. It does not return null
+			// This is a workaround to strange behavior of method Doc.position(). It does not return null
 			// for default constructors. It instead returns the line number of the start of the class.
 			if (constructor.position() == null
 				|| !constructor.position().toString().equals(currentClass.position().toString())) {
