@@ -17,6 +17,7 @@ public class ParameterTest {
         assertThat(p.getSimpleType(), is("Parameter"));
         assertThat(p.getName(), is("par"));
         assertThat(p.getDimension(), is(""));
+        assertThat(p.getIndex(), is(0));
         assertThat(p.getNullability(), is(nullValue()));
 
         Parameter intPar = new Parameter("int", "par", 0, false);

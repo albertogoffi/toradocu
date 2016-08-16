@@ -1,6 +1,10 @@
 package org.toradocu.extractor;
 
 import static org.junit.Assert.*;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 import static org.hamcrest.Matchers.*;
 
 import org.junit.Test;
@@ -13,6 +17,17 @@ public class ThrowsTagTest {
 		assertThat(tag.getComment(), is("if x is null"));
 		assertThat(tag.getException(), is("java.lang.NullPointerException"));
 		assertThat(tag.getConditions().isPresent(), is(false));
+		
+		tag.setConditions(new LinkedHashSet<String>());
+		assertThat(tag.getConditions().isPresent(), is(true));
+		assertThat(tag.getConditions().get(), is(emptyString()));
+		
+		Set<String> conditions = new LinkedHashSet<>();
+		conditions.add("x==null");
+		conditions.add("y==null");
+		tag.setConditions(conditions);
+		assertThat(tag.getConditions().isPresent(), is(true));
+		assertThat(tag.getConditions().get(), is("(x==null)||(y==null)"));
 	}
 	
 	@Test

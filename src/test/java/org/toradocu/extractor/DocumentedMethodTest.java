@@ -21,6 +21,7 @@ public class DocumentedMethodTest {
 	public void testBasics() {
 		DocumentedMethod method = new DocumentedMethod.Builder("Foo.bar", "void").build();
 		assertThat(method.getSignature(), is("Foo.bar()"));
+		assertThat(method.getName(), is("Foo.bar"));
 		assertThat(method.getContainingClass(), is("Foo"));
 		assertThat(method.getReturnType(), is("void"));
 		assertThat(method.isAConstructor(), is(false));
@@ -85,8 +86,8 @@ public class DocumentedMethodTest {
 	    method = new DocumentedMethod.Builder("Foo.compute", "void", new Parameter("int", "x", 0), new Parameter("int", "y", 1)).build();
         assertThat(method.toString(), is("void Foo.compute(int x,int y)"));
         
-        method = new DocumentedMethod.Builder("Foo.Foo", "void").build();
-        assertThat(method.toString(), is("void Foo.Foo()"));
+        method = new DocumentedMethod.Builder("Foo.Foo", "").build();
+        assertThat(method.toString(), is("Foo.Foo()"));
 	}
 	
 	@Test
