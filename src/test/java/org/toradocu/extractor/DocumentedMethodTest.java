@@ -24,14 +24,14 @@ public class DocumentedMethodTest {
 		assertThat(method.getName(), is("Foo.bar"));
 		assertThat(method.getContainingClass(), is("Foo"));
 		assertThat(method.getReturnType(), is("void"));
-		assertThat(method.isAConstructor(), is(false));
+		assertThat(method.isConstructor(), is(false));
 		assertThat(method.getParameters(), is(emptyCollectionOf(Parameter.class)));
 		
 		method = new DocumentedMethod.Builder("example.Foo.Foo", "").build();
 		assertThat(method.getSignature(), is("example.Foo.Foo()"));
 		assertThat(method.getContainingClass(), is("example.Foo"));
 		assertThat(method.getReturnType(), is(""));
-		assertThat(method.isAConstructor(), is(true));
+		assertThat(method.isConstructor(), is(true));
 		assertThat(method.getParameters(), is(emptyCollectionOf(Parameter.class)));
 	}
 	

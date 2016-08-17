@@ -1,6 +1,7 @@
 package org.toradocu.generator;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -44,10 +45,10 @@ public class MethodChangerVisitor extends VoidVisitorAdapter<Object> {
     	if (n.getName().equals("advice")) {
     		String pointcut = "";
     		
-    		if (method.isAConstructor()) {
-    			pointcut = "execution(" + getPointcutSignature(method) + ")";
+    		if (method.isConstructor()) {
+    			pointcut = "execution(" + getPointcut(method) + ")";
     		} else {
-    			pointcut = "call(" + getPointcutSignature(method) + ")";
+    			pointcut = "call(" + getPointcut(method) + ")";
     			pointcut += " && within(" + CONF.getTestClass() + ")";
     		}
     		
@@ -105,25 +106,34 @@ public class MethodChangerVisitor extends VoidVisitorAdapter<Object> {
     	}
     }
 
-	private String getPointcutSignature(DocumentedMethod method) {
-		String pointcut = "";// doc.modifiers() + " ";
+	/**
+	 * Generates the AspectJ pointcut definition to be used to match the given {@code DocumentedMethod}.
+	 * A pointcut definition looks like {@code call(void C.foo()}. 
+	 * Given a {@code DocumentedMethod} describing the method C.foo(), this method returns the string {@code call(void C.foo())}.
+	 * 
+	 * @param method {@code DocumentedMethod} for which generate the pointcut definition
+	 * @return the pointcut definition matching {@code method}
+	 */
+	private String getPointcut(DocumentedMethod method) {
+		StringBuilder pointcut = new StringBuilder();
 		
-		if (!method.isAConstructor()) { // Regular methods
-			pointcut += method.getReturnType() + " ";
-			pointcut += method.getName() + "(";
+		if (!method.isConstructor()) { // Regular methods
+			pointcut.append(method.getReturnType() + " " + method.getName() + "(");
 		} else { // Constructors
-			pointcut += method.getContainingClass() + ".new("; 
+			pointcut.append(method.getContainingClass() + ".new("); 
 		}
 		
-		for (Parameter parameter : method.getParameters()) {
-			pointcut += parameter.getType() + ","; // We add one comma at the end of the parameters list
-		}
-		if (pointcut.endsWith(",")) {
-			pointcut = pointcut.substring(0, pointcut.length() - 1); // Remove the last comma in parameters list
+		Iterator<Parameter> parametersIterator = method.getParameters().iterator();
+		while (parametersIterator.hasNext()) {
+			Parameter parameter = parametersIterator.next();
+			pointcut.append(parameter.getType());
+			if (parametersIterator.hasNext()) {
+				pointcut.append(", ");
+			}
 		}
 		
-		pointcut += ")";
-		return pointcut;
+		pointcut.append(")");
+		return pointcut.toString();
 	}
 
 	private String addCasting(String condition) {	

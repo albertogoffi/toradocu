@@ -7,22 +7,23 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * DocumentedMethod represents the documentation for a method in a class. It identifies the method itself
- * and key Javadoc information associated with it, such as throws tags, parameters and return type.
+ * DocumentedMethod represents the Javadoc documentation for a method in a class. It identifies the method itself
+ * and key Javadoc information associated with it, such as throws tags, parameters, and return type.
  */
 public final class DocumentedMethod {
 	
-	/** The fully qualified name of the method. */
+	/** Fully-qualified name of the method. */
 	private final String name;
-	/** A list of parameters in the method. */
-	private final List<Parameter> parameters;
-	/** A list of throws tags specified in the method's Javadoc. */
-	private final List<ThrowsTag> throwsTags;
-	/** The signature of the method (excluding return type). */
-	private final String signature;
-	/** The return type of the method, including its dimension if it's an array. */
+	/** Fully-qualified return type of the method, including its dimension if it's an array. */
 	private final String returnType;
-	/** The class in which the method is contained. */
+	/** Method's parameters. */
+	private final List<Parameter> parameters;
+	/** Throws tags specified in the method's Javadoc. */
+	private final List<ThrowsTag> throwsTags;
+	
+	/** Method signature in the format method_name(type1 arg1, type2 arg2). */
+	private final String signature;
+	/** Fully-qualified name of the class in which the method is contained. */
 	private final String containingClass;
 	
 	/**
@@ -41,7 +42,7 @@ public final class DocumentedMethod {
 			signatureBuilder.append(param);
 			signatureBuilder.append(",");
 		}
-		if (signatureBuilder.charAt(signatureBuilder.length() - 1) == ',') { // Remove last comma when needed
+		if (signatureBuilder.lastIndexOf(",") == signatureBuilder.length() - 1) { // Remove last comma when needed
 			signatureBuilder.deleteCharAt(signatureBuilder.length() - 1);
 		}
 		signatureBuilder.append(")");
@@ -72,7 +73,7 @@ public final class DocumentedMethod {
 	 * 
 	 * @return {@code true} if this method is a constructor, {@code false} otherwise
 	 */
-	public boolean isAConstructor() {
+	public boolean isConstructor() {
 		String notQualifiedName = name.substring(name.lastIndexOf(".") + 1);
 		if (this.containingClass.contains(".")) {
 			return notQualifiedName.equals(this.containingClass.substring(this.containingClass.lastIndexOf(".") + 1));
@@ -131,8 +132,8 @@ public final class DocumentedMethod {
 		if (this == obj) return true;
 		
 		DocumentedMethod that = (DocumentedMethod) obj;
-		if (this.returnType.equals(that.returnType) &&
-			this.name.equals(that.name) &&
+		if (this.name.equals(that.name) &&
+			this.returnType.equals(that.returnType) &&
 			this.parameters.equals(that.parameters) &&
 			this.throwsTags.equals(that.throwsTags)) {
 			return true;
@@ -147,7 +148,7 @@ public final class DocumentedMethod {
 	 */
 	@Override
 	public int hashCode() {
-		return Objects.hash(returnType, name, parameters, throwsTags);
+		return Objects.hash(name, returnType, parameters, throwsTags);
 	}
 	
 	/**
