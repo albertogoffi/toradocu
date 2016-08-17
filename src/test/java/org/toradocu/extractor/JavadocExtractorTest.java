@@ -26,8 +26,9 @@ public class JavadocExtractorTest {
 	private final String toradocuOutputDir = "tmp";
 	private final String testResources = "src/test/resources";
 
-	 
-	/* This test case tests the JavadocExtractor on the example class example.AClass in src/test/resources/example */
+	/**
+	 * Tests {@code JavadocExtractor} on the example class example.AClass in src/test/resources/example
+	 */
 	@Test
 	public void exampleAClassTest() {
 		List<DocumentedMethod> expected = new ArrayList<>();
@@ -55,7 +56,9 @@ public class JavadocExtractorTest {
 		test("example.AClass", expected, testResources + "/example.AClass_extractor_output.txt", testResources);
 	}
 	
-	/* This test case tests the JavadocExtractor on the example class example.AChild in src/test/resources/example */
+	/**
+	 * Tests {@code JavadocExtractor} on the example class example.AChild in src/test/resources/example
+	 */ 
 	@Test
 	public void exampleAChildTest() {
 		List<DocumentedMethod> expected = new ArrayList<>();
