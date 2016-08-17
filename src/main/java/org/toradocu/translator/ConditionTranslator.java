@@ -69,16 +69,16 @@ public class ConditionTranslator {
 				tag.setConditions(conditions);
 			}
 		}
-		// Print translated throws tags.
-		List<ThrowsTag> tags = methods.stream()
-									  .map(m -> m.throwsTags())
-									  .collect(ArrayList::new, ArrayList::addAll, ArrayList::addAll);
-		OutputPrinter.Builder builder = new OutputPrinter.Builder("ConditionTranslator", tags);
-		if (Toradocu.CONFIGURATION.getConditionTranslatorOutput() != null) {
-			builder.file(Toradocu.CONFIGURATION.getConditionTranslatorOutput());
-		}
-		builder.logger(LOG);
-		builder.build().print();
+//		// Print translated throws tags.
+//		List<ThrowsTag> tags = methods.stream()
+//									  .map(m -> m.throwsTags())
+//									  .collect(ArrayList::new, ArrayList::addAll, ArrayList::addAll);
+//		OutputPrinter.Builder builder = new OutputPrinter.Builder("ConditionTranslator", tags);
+//		if (Toradocu.CONFIGURATION.getConditionTranslatorOutput() != null) {
+//			builder.file(Toradocu.CONFIGURATION.getConditionTranslatorOutput());
+//		}
+//		builder.logger(LOG);
+//		builder.build().print();
 	}
 
 //	private static void pruneWrongTranslations(Graph<Proposition, ConjunctionEdge<Proposition>> propositionGraph) {
