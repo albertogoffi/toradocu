@@ -110,3 +110,10 @@ task removeDefaultOutputDir(type: Delete) {
 }
 
 clean.dependsOn removeDefaultOutputDir
+
+/* Make Emacs TAGS table */
+task tags(type: Exec) {
+  description "Run etags to create an Emacs TAGS table"
+  environment PATH: "$System.env.PATH:$buildDir/utils/plume-lib/bin"
+  commandLine "bash", "-c", "find src/ -name *.java | sort-directory-order | xargs etags"
+}
