@@ -7,7 +7,7 @@ import java.util.Objects;
  */
 public final class Parameter {
 	
-	/** The fully qualified name of the type of the parameter including its dimension. */
+	/** The type of the parameter. */
 	private final Type type;
 	/** The name of the parameter. */
 	private final String name;

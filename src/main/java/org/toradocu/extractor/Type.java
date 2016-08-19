@@ -7,7 +7,7 @@ import java.util.Objects;
  */
 public class Type {
 
-	/** Fully-qualified name of this {@code Type} */
+	/** Fully qualified name of this {@code Type} */
 	private final String qualifiedName;
 	
 	/** Simple name of this {@code Type} */
@@ -56,16 +56,19 @@ public class Type {
 	}
 	
 	/**
-	 * @return
+	 * Returns true if this Type represents an array type (e.g. int[], java.lang.String[][]).
+	 * Returns false otherwise.
+	 * 
+	 * @return true if this Type is an array type, false otherwise 
 	 */
 	public boolean isArray() {
 		 return isArray;
 	}
 	
 	/** 
-	 * Returns the fully-qualified name of this {@code Type}.
+	 * Returns the fully qualified name of this {@code Type}.
 	 * 
-	 * @return the fully-qualified name of this {@code Type}
+	 * @return the fully qualified name of this {@code Type}
 	 */
 	@Override
 	public String toString() {
