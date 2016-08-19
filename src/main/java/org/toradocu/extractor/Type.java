@@ -7,9 +7,13 @@ import java.util.Objects;
  */
 public class Type {
 
+	/** Separator used in Java to separate identifiers (e.g., Foo.toString() where "." separates class and method identifiers) */
+	public static final String SEPARATOR = "."; 
+	
 	/** Fully qualified name of this {@code Type} */
 	private final String qualifiedName;
 	
+	// The following fields are derived from qualifiedName
 	/** Simple name of this {@code Type} */
 	private final String name;
 	/** Flag {@code true} when this {@code Type} is an array type (e.g., java.lang.String[]) */
@@ -23,7 +27,6 @@ public class Type {
 	 */
 	public Type(String qualifiedName) {
 		Objects.requireNonNull(qualifiedName);
-		final String SEPARATOR = ".";
 		if (qualifiedName.startsWith(SEPARATOR) || qualifiedName.endsWith(SEPARATOR)) {
 			throw new IllegalArgumentException(qualifiedName + " is not a valid fully-qualified type name.");
 		}

@@ -5,32 +5,33 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
+import org.toradocu.util.Checks;
+
 /**
  * This class represents a throws tag in a method.
  */
 public class ThrowsTag {
 	
-	/** The exception. */
+	/** The exception described in this {@code ThrowsTag}. */
 	private final Type exception;
 	/** The comment associated with the exception. */
 	private final String comment;
 	/**
-	 * Java boolean condition translated from the comment for this throws tag.
-	 * Null if translation not yet attempted.
-	 * Empty string if no translations found.
+	 * Java boolean condition translated from the comment for this {@code ThrowsTag}.
+	 * Null if translation not yet attempted. Empty string if no translations found.
 	 */
 	private String condition;
 	
 	/**
 	 * Constructs a {@code ThrowsTag} with the given exception and comment.
 	 * 
-	 * @param exception the fully qualified name of the exception
+	 * @param exception the exception type
 	 * @param comment the comment associated with the exception
 	 * @throws NullPointerException if exception or comment is null
 	 */
 	public ThrowsTag(Type exception, String comment) {
-		Objects.requireNonNull(exception);
-		Objects.requireNonNull(comment);
+		Checks.nonNullParameter(exception, "exception");
+		Checks.nonNullParameter(comment, "comment");
 		this.comment = comment;
 		this.exception = exception;
 	}
@@ -65,7 +66,7 @@ public class ThrowsTag {
 	
 	/**
 	 * Sets the translated condition for this throws tags to the given conditions. Each element in
-	 * the set is combined using an || conjunction.
+	 * the set is combined using an || operator.
 	 * 
 	 * @param conditions the translated conditions for this throws tag (as Java boolean conditions)
 	 * @throws NullPointerException if conditions is null
@@ -86,13 +87,13 @@ public class ThrowsTag {
 	}
 	
 	/**
-	 * Sets the translated conditions for this throws tags to the given conditions.
+	 * Sets the translated condition for this throws tags to the given conditions.
 	 * 
-	 * @param conditions the translated conditions for this throws tag (as Java boolean conditions)
+	 * @param condition the translated conditions for this throws tag (as Java boolean conditions)
 	 * @throws NullPointerException if condition is null
 	 */
 	public void setCondition(String condition) {
-		Objects.requireNonNull(condition, "conditions must not be null");
+		Checks.nonNullParameter(condition, "condition");
 		this.condition = condition;
 	}
 	

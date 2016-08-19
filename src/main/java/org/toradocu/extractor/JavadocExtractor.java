@@ -128,7 +128,7 @@ public final class JavadocExtractor {
 		
 		// Collect non-synthetic methods (i.e. those methods that have not been synthesized by the compiler).
 		ClassDoc currentClass = classDoc; // Used to traverse over superclasses.
-		do {
+		while (currentClass != null && !currentClass.qualifiedName().equals("java.lang.Object")) {
 			List<ExecutableMemberDoc> currentClassMethods = new ArrayList<>(Arrays.asList(currentClass.methods()));
 			// Class hierarchy is traversed from from subclass to superclass. Each visited method's signature
 			// is stored so that a method is considered only once, even when it is overridden.
@@ -139,7 +139,7 @@ public final class JavadocExtractor {
 				}
 			}
 			currentClass = currentClass.superclass();
-		} while (currentClass != null && !currentClass.qualifiedName().equals("java.lang.Object"));
+		} 
 
 		List<ExecutableMemberDoc> constructorsAndMethods = constructors;
 		constructorsAndMethods.addAll(methods.values());

@@ -40,6 +40,7 @@ public final class Parameter {
 	 * 
 	 * @param type the type of the parameter including its dimension
 	 * @param name the name of the parameter
+	 * @param index the 0-based index of the parameter in the parameter list this parameter is added to
 	 */
 	public Parameter(Type type, String name, int index) {
 		this(type, name, index, null);
@@ -64,19 +65,19 @@ public final class Parameter {
 	}
 	
 	/**
-	 * Returns the fully qualified name of the type of the parameter including its dimension.
+	 * Returns the type of the parameter.
 	 * 
-	 * @return the fully qualified name of the type of the parameter including its dimension
+	 * @return the type of the parameter
 	 */
 	public Type getType() {
 		return type;
 	}
 	
 	/**
-	 * Returns true if the parameter is nullable, false if it is nonnull, or null if its
+	 * Returns {@code true} if the parameter is nullable, {@code false} if it is nonnull, or {@code null} if its
 	 * nullability is unspecified.
 	 * 
-	 * @return true if the parameter is nullable, false if it is nonnull, or null if its
+	 * @return {@code true} if the parameter is nullable, {@code false} if it is nonnull, or {@code null} if its
 	 * nullability is unspecified
 	 */
 	public Boolean getNullability() {

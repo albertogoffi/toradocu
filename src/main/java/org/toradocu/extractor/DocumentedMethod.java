@@ -48,7 +48,7 @@ public final class DocumentedMethod {
 			signatureBuilder.append(param);
 			signatureBuilder.append(",");
 		}
-		if (signatureBuilder.lastIndexOf(",") == signatureBuilder.length() - 1) { // Remove last comma when needed
+		if (signatureBuilder.charAt(signatureBuilder.length() - 1) == ',') { // Remove last comma when needed.
 			signatureBuilder.deleteCharAt(signatureBuilder.length() - 1);
 		}
 		signatureBuilder.append(")");
@@ -74,16 +74,16 @@ public final class DocumentedMethod {
 	}
 	
 	/**
-	 * Returns the fully qualified name of this method.
+	 * Returns the name of this method.
 	 * 
-	 * @return the fully qualified name of this method
+	 * @return the name of this method
 	 */
 	public String getName() {
 		return name;
 	}
 	
 	/**
-	 * Returns true if this method is constructor, false otherwise. 
+	 * Returns true if this method is a constructor, false otherwise. 
 	 * 
 	 * @return {@code true} if this method is a constructor, {@code false} otherwise
 	 */
@@ -135,8 +135,8 @@ public final class DocumentedMethod {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof DocumentedMethod)) return false;
 		if (this == obj) return true;
+		if (!(obj instanceof DocumentedMethod)) return false;
 		
 		DocumentedMethod that = (DocumentedMethod) obj;
 		if (this.containingClass.equals(that.containingClass) &&
@@ -161,17 +161,18 @@ public final class DocumentedMethod {
 	}
 	
 	/**
-	 * Returns return type (when present), fully-qualified class, and signature of this method 
-	 * in the format <RETURN_TYPE> <CLASS.SIGNATURE>
+	 * Returns return type (when present), fully qualified class, and signature of this method 
+	 * in the format "<RETURN TYPE> <CLASS TYPE.METHOD SIGNATURE>"
 	 * 
-	 * @return return string representation of this method
+	 * @return return the string representation of this method
 	 */
 	@Override
 	public String toString() {
-		StringBuilder methodAsString = new StringBuilder(containingClass.getQualifiedName() + "." + signature);
+		StringBuilder methodAsString = new StringBuilder();
 		if (returnType != null) {
-			methodAsString.insert(0, returnType.getQualifiedName() + " ");
+			methodAsString.append(returnType + " ");
 		}
+		methodAsString.append(containingClass + Type.SEPARATOR + signature);
 		return methodAsString.toString();
 	}
 	
@@ -220,7 +221,7 @@ public final class DocumentedMethod {
 		 * @param isVarArgs true if the {@code DocumentedMethod} to build takes a variable number of arguments, false otherwise
 		 * @param parameters the parameters of the {@code DocumentedMethod} to build
 		 * 
-		 *  @throws NullPointerException if {@code containingClass} or {@code name} or {@parameters} is null
+		 * @throws NullPointerException if {@code containingClass} or {@code name} or {@parameters} is null
 		 */
 		public Builder(Type containingClass, String name, Type returnType, boolean isVarArgs, Parameter... parameters) {
 			Checks.nonNullParameter(containingClass, "containingClass");
@@ -229,14 +230,14 @@ public final class DocumentedMethod {
 			
 			if (name.contains(".")) {
 			    throw new IllegalArgumentException("Invalid method name: " + name + ". Method's name must be a valid "
-			    		+ "Java method name (e.g., method name must not contain '.'");
+			    		+ "Java method name (i.e., method name must not contain '.'");
 			}
 			
 			this.containingClass = containingClass;
 			this.name = name;
 			this.returnType = returnType;
-			this.parameters = Arrays.asList(parameters);
 			this.isVarArgs = isVarArgs;
+			this.parameters = Arrays.asList(parameters);
 			this.throwsTags = new ArrayList<>();
 		}
 		
