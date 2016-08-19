@@ -19,18 +19,18 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
 		// Add name identifiers.
 		addIdentifier("parameter");
 		addIdentifier(parameter.getName());
-		addIdentifier(parameter.getSimpleType() + " " + parameter.getName());
-		addIdentifier(parameter.getName() + " " + parameter.getSimpleType());
+		addIdentifier(parameter.getType().getName() + " " + parameter.getName());
+		addIdentifier(parameter.getName() + " " + parameter.getType().getName());
 		
 		// Add type identifiers
-		if (parameter.getDimension() == "") {
-			addIdentifier(parameter.getSimpleType());
+		if (!parameter.getType().isArray()) {
+			addIdentifier(parameter.getType().getName());
+			if (parameter.getType().getQualifiedName().equals("java.lang.Iterable"))	{
+				addIdentifier("collection");
+			}
 		} else {
 			addIdentifier("array");
-			addIdentifier(parameter.getSimpleType() + " array");
-		}
-		if (parameter.getSimpleType().equals("java.lang.Iterable"))	{
-			addIdentifier("collection");
+			addIdentifier(parameter.getType().getName() + " array");
 		}
 	}
 	

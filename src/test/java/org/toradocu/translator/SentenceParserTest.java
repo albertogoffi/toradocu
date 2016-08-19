@@ -140,4 +140,19 @@ public class SentenceParserTest {
 		SentenceParser parser = new SentenceParser(semanticGraphs.get(0));
 		return parser.getPropositionSeries();
 	}
+	
+	@Test
+	public void scratch() {
+		List<SemanticGraph> semanticGraphs = StanfordParser.getSemanticGraphs("any element in array is null.");
+		System.out.println(semanticGraphs.get(0).toString());
+		
+		semanticGraphs = StanfordParser.getSemanticGraphs("the set is empty or null.");
+		System.out.println(semanticGraphs.get(0).toString());
+		
+		semanticGraphs = StanfordParser.getSemanticGraphs("the set is empty.");
+		System.out.println(semanticGraphs.get(0).toString());
+		
+		semanticGraphs = StanfordParser.getSemanticGraphs("the set or the list is empty.");
+		System.out.println(semanticGraphs.get(0).toString());
+	}
 }

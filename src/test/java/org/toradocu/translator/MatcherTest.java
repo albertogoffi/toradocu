@@ -9,14 +9,15 @@ import org.junit.Test;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.Parameter;
 import org.toradocu.extractor.ThrowsTag;
+import org.toradocu.extractor.Type;
 
 public class MatcherTest {
 
 	@Test
 	public void test() throws Throwable {
-		Parameter p1 = new Parameter("Employee", "employee", 0);
-		Parameter p2 = new Parameter("Double", "salary", 1);
-		DocumentedMethod methodUnderTest = new DocumentedMethod.Builder(ClassUnderTest.class.getName() + ".setSalary", "", p1, p2)
+		Parameter p1 = new Parameter(new Type("Employee"), "employee", 0);
+		Parameter p2 = new Parameter(new Type("Double"), "salary", 1);
+		DocumentedMethod methodUnderTest = new DocumentedMethod.Builder(ClassUnderTest.class.getName() + ".setSalary", null, p1, p2)
 				.tag(new ThrowsTag("NullPointerException", "if employee or salary are null"))
 				.build();
 		

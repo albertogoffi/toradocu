@@ -9,13 +9,17 @@ plugins {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 mainClassName = "org.toradocu.Toradocu"
-version = '0.1'
+version = '1.0-devel'
 jar {
     manifest {
         attributes 'Implementation-Title': 'Toradocu',
                    'Implementation-Version': version
     }
 }
+
+//compileJava {
+//    options.compilerArgs << '-Xlint:unchecked'
+//}
 
 sourceSets {
     test {
@@ -40,7 +44,6 @@ dependencies {
 	compile 'com.github.javaparser:javaparser-core:2.3.0'
 	compile 'com.beust:jcommander:1.48'
 	compile 'com.google.code.gson:gson:2.6.2'
-	compile 'org.apache.commons:commons-lang3:3.4'
 	compile 'commons-io:commons-io:2.5'
 	compile 'org.slf4j:slf4j-simple:1.7.21'
 	testCompile 'junit:junit:4.12'

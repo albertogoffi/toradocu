@@ -49,7 +49,7 @@ public final class OutputPrinter {
 	/**
 	 * Builds an {@code OutputPrinter} using the provided information.
 	 */
-	public static class Builder implements org.apache.commons.lang3.builder.Builder<OutputPrinter> {
+	public static class Builder implements org.toradocu.util.Builder<OutputPrinter> {
 
 		// Required parameters.
 		/** Component that wants to print. */

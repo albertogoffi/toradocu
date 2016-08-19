@@ -139,7 +139,7 @@ public class MethodChangerVisitor extends VoidVisitorAdapter<Object> {
 	private String addCasting(String condition) {	
 		int index = 0;
 		for (Parameter parameter : method.getParameters()) {
-			String type = parameter.getType();
+			String type = parameter.getType().getQualifiedName();
 			condition = condition.replace("args[" + index + "]", "((" + type + ") args[" + index + "])");
 			index++;
 		}

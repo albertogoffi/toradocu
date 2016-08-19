@@ -14,10 +14,12 @@ public final class DocumentedMethod {
 	
 	/** Fully-qualified name of the method. */
 	private final String name;
-	/** Fully-qualified return type of the method, including its dimension if it's an array. */
-	private final String returnType;
+	/** Fully-qualified return type of the method. */
+	private final Type returnType;
 	/** Method's parameters. */
 	private final List<Parameter> parameters;
+	/** Flag indicating whether this method takes a variable number of arguments.  */
+	private final boolean isVarArgs;
 	/** Throws tags specified in the method's Javadoc. */
 	private final List<ThrowsTag> throwsTags;
 	
@@ -33,9 +35,10 @@ public final class DocumentedMethod {
 	 */
 	private DocumentedMethod(Builder builder) {
 		name = builder.name;
-		parameters = builder.parameters;
-		throwsTags = builder.throwsTags;
 		returnType = builder.returnType;
+		parameters = builder.parameters;
+		isVarArgs = builder.isVarArgs;
+		throwsTags = builder.throwsTags;
 		// Create the method signature using the method name and parameters.
 		StringBuilder signatureBuilder = new StringBuilder(name + "(");
 		for (Parameter param : parameters) {
@@ -60,9 +63,18 @@ public final class DocumentedMethod {
 	}
 	
 	/**
+	 * Returns true if this method takes a variable number of arguments, false otherwise
+	 * 
+	 * @return {@code true} if this method takes a variable number of arguments, {@code false} otherwise
+	 */
+	public boolean isVarArgs() {
+		return isVarArgs;
+	}
+	
+	/**
 	 * Returns the fully qualified name of this method.
 	 * 
-	 * @return the  fully qualified name of this method
+	 * @return the fully qualified name of this method
 	 */
 	public String getName() {
 		return name;
@@ -101,13 +113,11 @@ public final class DocumentedMethod {
 	}
 	
 	/**
-	 * Returns the return type of this method, including its dimension if it's an array, or the
-	 * empty string if this is a constructor.
+	 * Returns the return type of this method or null if this is a constructor.
 	 * 
-	 * @return the return type of this method, including its dimension if it's an array, or the
-	 *         empty string if this is a constructor
+	 * @return the return type of this method or {@code null} if this is a constructor
 	 */
-	public String getReturnType() {
+	public Type getReturnType() {
 		return returnType;
 	}
 	
@@ -133,7 +143,7 @@ public final class DocumentedMethod {
 		
 		DocumentedMethod that = (DocumentedMethod) obj;
 		if (this.name.equals(that.name) &&
-			this.returnType.equals(that.returnType) &&
+			Objects.equals(this.returnType, that.returnType) &&
 			this.parameters.equals(that.parameters) &&
 			this.throwsTags.equals(that.throwsTags)) {
 			return true;
@@ -152,13 +162,13 @@ public final class DocumentedMethod {
 	}
 	
 	/**
-	 * Returns the signature of this method.
+	 * Returns return type and signature of this method.
 	 * 
-	 * @return the signature of this method
+	 * @return return type and signature of this method
 	 */
 	@Override
 	public String toString() {
-		if (returnType.isEmpty()) {
+		if (returnType == null) {
 			return signature;
 		} else {
 			return returnType + " " + signature;
@@ -168,16 +178,29 @@ public final class DocumentedMethod {
 	/**
 	 * Builds a {@code DocumentedMethod} using the provided information.
 	 */
-	public static class Builder implements org.apache.commons.lang3.builder.Builder<DocumentedMethod> {
+	public static class Builder implements org.toradocu.util.Builder<DocumentedMethod> {
 
 		/** The fully qualified name of the {@code DocumentedMethod} to build. */
 		private final String name;
 		/** The parameters of the {@code DocumentedMethod} to build. */
 		private final List<Parameter> parameters;
 		/** The return type of the {@code DocumentedMethod} to build. */
-		private final String returnType;
+		private final Type returnType;
+		/** Flag indicating whether the {@code DocumentedMethod} to build takes a variable number of arguments. */
+		private final boolean isVarArgs;
 		/** The throws tags of the {@code DocumentedMethod} to build. */
 		private final List<ThrowsTag> throwsTags;
+		
+		/** Constructs a builder for a {@code DocumentedMethod} with the given {@code name} and {@parameters}.
+		 * 
+		 * @param name the fully qualified name of the {@code DocumentedMethod} to build
+		 * @param returnType the fully qualified return type of the method or null 
+		 *        if the {@code DocumentedMethod} to build is a constructor
+		 * @param parameters the parameters of the {@code DocumentedMethod} to build
+		 */
+		public Builder(String name, Type returnType, Parameter... parameters) {
+			this(name, returnType, false, parameters);
+		}
 		
 		/** Constructs a builder for a {@code DocumentedMethod} with the given {@code name} and {@parameters}.
 		 * 
@@ -186,19 +209,20 @@ public final class DocumentedMethod {
 		 *        or the empty string if the {@code DocumentedMethod} to build is a constructor
 		 * @param parameters the parameters of the {@code DocumentedMethod} to build
 		 */
-		public Builder(String name, String returnType, Parameter... parameters) {
+		public Builder(String name, Type returnType, boolean isVarArgs, Parameter... parameters) {
 			Objects.requireNonNull(name);
-			Objects.requireNonNull(returnType);
 			Objects.requireNonNull(parameters);
 			
 			if (name.startsWith(".") || name.endsWith(".") || !name.contains(".")) {
-			    throw new IllegalArgumentException("Name must be a valid qualified name of a method of the form"
-			        + " <package>.<class>.<method name> where <package> is optional.");
+			    throw new IllegalArgumentException("Invalid method name: " + name + ". Method's name must be a valid "
+			    		+ "fully-qualified name of a method of the form "
+			    		+ "<package>.<class>.<method name> where <package> is optional.");
 			}
 			
 			this.name = name;
 			this.returnType = returnType;
 			this.parameters = Arrays.asList(parameters);
+			this.isVarArgs = isVarArgs;
 			this.throwsTags = new ArrayList<>();
 		}
 		

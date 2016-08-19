@@ -15,7 +15,8 @@ public class ThrowsTag {
 	/** The comment associated with the exception. */
 	private final String comment;
 	/**
-	 * Conditions translated from the comment for this throws tag. Null if translation not attempted.
+	 * Java boolean conditions translated from the comment for this throws tag.
+	 * Null if translation not yet attempted.
 	 * Empty string if no translations found.
 	 */
 	private String conditions;
@@ -52,7 +53,7 @@ public class ThrowsTag {
 	}
 	
 	/**
-	 * Returns the translated conditions for this throws tag as an optional which is empty if translation
+	 * Returns the translated Java boolean conditions for this throws tag as an optional which is empty if translation
 	 * has not been attempted yet.
 	 * 
 	 * @return the translated conditions for this throws tag if translation attempted, else empty optional
@@ -65,7 +66,7 @@ public class ThrowsTag {
 	 * Sets the translated conditions for this throws tags to the given conditions. Each element in
 	 * the set is combined using an || conjunction.
 	 * 
-	 * @param conditions the translated conditions for this throws tag (as Java expressions)
+	 * @param conditions the translated conditions for this throws tag (as Java boolean conditions)
 	 * @throws NullPointerException if conditions is null
 	 */
 	public void setConditions(Set<String> conditions) {
@@ -86,7 +87,7 @@ public class ThrowsTag {
 	/**
 	 * Sets the translated conditions for this throws tags to the given conditions.
 	 * 
-	 * @param conditions the translated conditions for this throws tag (as Java expressions)
+	 * @param conditions the translated conditions for this throws tag (as Java boolean conditions)
 	 * @throws NullPointerException if conditions is null
 	 */
 	public void setConditions(String conditions) {
@@ -127,7 +128,7 @@ public class ThrowsTag {
 	 * Returns a string representation of this throws tag. The returned string is in the
 	 * format "@throws EXCEPTION COMMENT" where EXCEPTION is the fully qualified name of
 	 * the exception in this throws tag and COMMENT is the text of the comment in the throws tag.
-	 * If translation has been attemped on this tag, then the returned string is also appended
+	 * If translation has been attempted on this tag, then the returned string is also appended
 	 * with " ==> [CONDITION_1, CONDITION_2, ...]" where CONDITION_i are the translated conditions
 	 * for the exception as Java expressions.
 	 * 

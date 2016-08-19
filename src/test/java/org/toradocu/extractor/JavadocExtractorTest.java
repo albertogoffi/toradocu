@@ -6,7 +6,6 @@ import static org.junit.Assert.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -25,6 +24,9 @@ public class JavadocExtractorTest {
 
 	private final String toradocuOutputDir = "tmp";
 	private final String testResources = "src/test/resources";
+	private final Type doubleType = new Type("double");
+	private final Type objectType = new Type("java.lang.Object");
+	private final Type objectArrayType = new Type("java.lang.Object[]");
 
 	/**
 	 * Tests {@code JavadocExtractor} on the example class example.AClass in src/test/resources/example
@@ -33,23 +35,23 @@ public class JavadocExtractorTest {
 	public void exampleAClassTest() {
 		List<DocumentedMethod> expected = new ArrayList<>();
 		
-		Builder constructor1 = new Builder("example.AClass", "");
+		Builder constructor1 = new Builder("example.AClass", null);
 		constructor1.tag(new ThrowsTag("java.lang.NullPointerException", "always"));
 		expected.add(constructor1.build());
 		
-		Builder constructor2 = new Builder("example.AClass", "", new Parameter("java.lang.String", "x", 0));
+		Builder constructor2 = new Builder("example.AClass", null, new Parameter(new Type("java.lang.String"), "x", 0));
 		constructor2.tag(new ThrowsTag("java.lang.NullPointerException", "if x is null"));
 		expected.add(constructor2.build());
 		
-		Builder foo = new Builder("example.AClass.foo", "double", new Parameter("int[]", "array", 0));
+		Builder foo = new Builder("example.AClass.foo", doubleType, new Parameter(new Type("int[]"), "array", 0));
 		foo.tag(new ThrowsTag("java.lang.NullPointerException", "if array is null"));
 		expected.add(foo.build());
 		
-		Builder bar = new Builder("example.AClass.bar", "double", new Parameter("java.lang.Object", "x", 0), new Parameter("java.lang.Object", "y", 1));
+		Builder bar = new Builder("example.AClass.bar", doubleType, new Parameter(objectType, "x", 0), new Parameter(objectType, "y", 1));
 		bar.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if x is null"));
 		expected.add(bar.build());
 		
-		Builder baz = new Builder("example.AClass.baz", "double", new Parameter("java.lang.Object", "x", 0));
+		Builder baz = new Builder("example.AClass.baz", doubleType, new Parameter(objectType, "x", 0));
 		baz.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if x is null"));
 		expected.add(baz.build());
 		
@@ -63,19 +65,19 @@ public class JavadocExtractorTest {
 	public void exampleAChildTest() {
 		List<DocumentedMethod> expected = new ArrayList<>();
 		
-		Builder baz = new Builder("example.AChild.baz", "double", new Parameter("java.lang.Object", "z", 0));
+		Builder baz = new Builder("example.AChild.baz", doubleType, new Parameter(objectType, "z", 0));
 		baz.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if z is null"));
 		expected.add(baz.build());
 		
-		Builder vararg = new Builder("example.AChild.vararg", "double", new Parameter("java.lang.Object...", "x", 0));
+		Builder vararg = new Builder("example.AChild.vararg", doubleType, true, new Parameter(objectArrayType, "x", 0));
 		vararg.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if x is null"));
 		expected.add(vararg.build());
 		
-		Builder foo = new Builder("example.AClass.foo", "double", new Parameter("int[]", "array", 0));
+		Builder foo = new Builder("example.AClass.foo", doubleType, new Parameter(new Type("int[]"), "array", 0));
 		foo.tag(new ThrowsTag("java.lang.NullPointerException", "if array is null"));
 		expected.add(foo.build());
 		
-		Builder bar = new Builder("example.AClass.bar", "double", new Parameter("java.lang.Object", "x", 0), new Parameter("java.lang.Object", "y", 1));
+		Builder bar = new Builder("example.AClass.bar", doubleType, new Parameter(objectType, "x", 0), new Parameter(objectType, "y", 1));
 		bar.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if x is null"));
 		expected.add(bar.build());
 		
@@ -92,7 +94,7 @@ public class JavadocExtractorTest {
 				"-J-docletpath=build/classes/main",
 				"-J-d=" + toradocuOutputDir});
 		
-		Type listType = new TypeToken<List<DocumentedMethod>>(){}.getType();
+		java.lang.reflect.Type listType = new TypeToken<List<DocumentedMethod>>(){}.getType();
 		Gson gson = GsonInstance.gson();
 		Path ouputFilePath = Paths.get(actualOutput);
 		try (BufferedReader reader = Files.newBufferedReader(ouputFilePath)) {

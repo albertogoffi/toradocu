@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.emptyCollectionOf;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
@@ -17,20 +18,23 @@ import com.google.gson.Gson;
 
 public class DocumentedMethodTest {
 	
+	private Type voidType = new Type("void");
+	private Type arrayType = new Type("java.lang.String[]");
+	
 	@Test
 	public void testBasics() {
-		DocumentedMethod method = new DocumentedMethod.Builder("Foo.bar", "void").build();
+		DocumentedMethod method = new DocumentedMethod.Builder("Foo.bar", voidType).build();
 		assertThat(method.getSignature(), is("Foo.bar()"));
 		assertThat(method.getName(), is("Foo.bar"));
 		assertThat(method.getContainingClass(), is("Foo"));
-		assertThat(method.getReturnType(), is("void"));
+		assertThat(method.getReturnType().toString(), is("void"));
 		assertThat(method.isConstructor(), is(false));
 		assertThat(method.getParameters(), is(emptyCollectionOf(Parameter.class)));
 		
-		method = new DocumentedMethod.Builder("example.Foo.Foo", "").build();
+		method = new DocumentedMethod.Builder("example.Foo.Foo", null).build();
 		assertThat(method.getSignature(), is("example.Foo.Foo()"));
 		assertThat(method.getContainingClass(), is("example.Foo"));
-		assertThat(method.getReturnType(), is(""));
+		assertThat(method.getReturnType(), is(nullValue()));
 		assertThat(method.isConstructor(), is(true));
 		assertThat(method.getParameters(), is(emptyCollectionOf(Parameter.class)));
 	}
@@ -38,24 +42,24 @@ public class DocumentedMethodTest {
 	@Test
 	public void testIllegalMethodName() {
 		try {
-			new DocumentedMethod.Builder("void", "foo");
+			new DocumentedMethod.Builder("foo", voidType);
 			fail("IllegalArgumentException expected but not thrown.");
 		} catch (IllegalArgumentException e) {}
 		
 		try {
-			new DocumentedMethod.Builder("void", ".Foo.bar");
+			new DocumentedMethod.Builder(".Foo.bar", voidType);
 			fail("IllegalArgumentException expected but not thrown.");
 		} catch (IllegalArgumentException e) {}
 		
 		try {
-			new DocumentedMethod.Builder("void", "Foo.bar.");
+			new DocumentedMethod.Builder("Foo.bar.", voidType);
 			fail("IllegalArgumentException expected but not thrown.");
 		} catch (IllegalArgumentException e) {}
 	}
 	
 	@Test
 	public void testMultipleTags() {
-		Builder methodBuilder = new DocumentedMethod.Builder("Foo.compute", "void", new Parameter("java.lang.String[]", "array", 0));
+		Builder methodBuilder = new DocumentedMethod.Builder("Foo.compute", voidType, new Parameter(arrayType, "array", 0));
 		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
 		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
 		DocumentedMethod method = methodBuilder.build();
@@ -64,7 +68,7 @@ public class DocumentedMethodTest {
 		assertThat(tags.size(), is(1));
 		assertThat(tags.get(0), is(new ThrowsTag("java.lang.NullPointerException", "if the array is empty")));
 		
-		methodBuilder = new DocumentedMethod.Builder("Foo.compute", "void", new Parameter("java.lang.String[]", "array", 0));
+		methodBuilder = new DocumentedMethod.Builder("Foo.compute", voidType, new Parameter(arrayType, "array", 0));
         methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is null"));
         methodBuilder.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if the array is empty"));
         method = methodBuilder.build();
@@ -77,36 +81,36 @@ public class DocumentedMethodTest {
 	
 	@Test
 	public void testToString() {
-	    DocumentedMethod method = new DocumentedMethod.Builder("Foo.compute", "void").build();
+	    DocumentedMethod method = new DocumentedMethod.Builder("Foo.compute", voidType).build();
         assertThat(method.toString(), is("void Foo.compute()"));
 	  
-		method = new DocumentedMethod.Builder("Foo.compute", "void", new Parameter("java.lang.String[]", "array", 0)).build();
+		method = new DocumentedMethod.Builder("Foo.compute", voidType, new Parameter(arrayType, "array", 0)).build();
 		assertThat(method.toString(), is("void Foo.compute(java.lang.String[] array)"));
 		
-	    method = new DocumentedMethod.Builder("Foo.compute", "void", new Parameter("int", "x", 0), new Parameter("int", "y", 1)).build();
+	    method = new DocumentedMethod.Builder("Foo.compute", voidType, new Parameter(new Type("int"), "x", 0), new Parameter(new Type("int"), "y", 1)).build();
         assertThat(method.toString(), is("void Foo.compute(int x,int y)"));
         
-        method = new DocumentedMethod.Builder("Foo.Foo", "").build();
+        method = new DocumentedMethod.Builder("Foo.Foo", null).build();
         assertThat(method.toString(), is("Foo.Foo()"));
 	}
 	
 	@Test
 	public void testEquals() {
-		Builder methodBuilder = new DocumentedMethod.Builder("Foo.compute", "void", new Parameter("java.lang.String[]", "array", 0));
+		Builder methodBuilder = new DocumentedMethod.Builder("Foo.compute", voidType, new Parameter(arrayType, "array", 0));
 		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
 		DocumentedMethod method1 = methodBuilder.build();
 		
 		assertThat(method1.equals(method1), is(true));
 		assertThat(method1.equals(new Object()), is(false));
 
-		methodBuilder = new DocumentedMethod.Builder("Foo.compute", "void", new Parameter("java.lang.String[]", "array", 0));
+		methodBuilder = new DocumentedMethod.Builder("Foo.compute", voidType, new Parameter(arrayType, "array", 0));
 		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
 		DocumentedMethod method2 = methodBuilder.build();
 		
 		assertThat(method1.equals(method2), is(true));
 		assertThat(method1.hashCode(), is(equalTo(method2.hashCode())));
 		
-		methodBuilder = new DocumentedMethod.Builder("Foo.foo", "void", new Parameter("java.lang.String[]", "array", 0));
+		methodBuilder = new DocumentedMethod.Builder("Foo.foo", voidType, new Parameter(arrayType, "array", 0));
 		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
 		DocumentedMethod method3 = methodBuilder.build();
 
@@ -116,7 +120,7 @@ public class DocumentedMethodTest {
 
 	@Test
 	public void testJSon() {
-		Builder methodBuilder = new DocumentedMethod.Builder("Foo.compute", "void", new Parameter("java.lang.String[]", "array", 0));
+		Builder methodBuilder = new DocumentedMethod.Builder("Foo.compute", voidType, new Parameter(arrayType, "array", 0));
 		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
 		DocumentedMethod method1 = methodBuilder.build();
 
