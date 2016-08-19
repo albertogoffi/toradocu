@@ -23,6 +23,8 @@ public final class Parameter {
 	 * @param name the name of the parameter
 	 * @param index the 0-based index of the parameter in the parameter list this parameter is added to
 	 * @param nullable true if the parameter is nullable, false if nonnull and null if unspecified
+	 * 
+	 * @throws NullPointerException if type or name is null
 	 */
 	public Parameter(Type type, String name, int index, Boolean nullable) {
 		Objects.requireNonNull(type);

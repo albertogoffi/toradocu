@@ -19,6 +19,7 @@ public class Type {
 	 * Creates a new {@code Type} with a given fully-qualified name.
 	 * 
 	 * @param qualifiedName fully-qualified name of this {@code Type}
+	 * @throws NullPointerException if {@code qualifiedName} is null
 	 */
 	public Type(String qualifiedName) {
 		Objects.requireNonNull(qualifiedName);

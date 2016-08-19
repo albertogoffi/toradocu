@@ -89,7 +89,7 @@ public class ThrowsTag {
 	 * Sets the translated conditions for this throws tags to the given conditions.
 	 * 
 	 * @param conditions the translated conditions for this throws tag (as Java boolean conditions)
-	 * @throws NullPointerException if conditions is null
+	 * @throws NullPointerException if condition is null
 	 */
 	public void setCondition(String condition) {
 		Objects.requireNonNull(condition, "conditions must not be null");
