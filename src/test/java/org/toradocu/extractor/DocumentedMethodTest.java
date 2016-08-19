@@ -18,8 +18,10 @@ import com.google.gson.Gson;
 
 public class DocumentedMethodTest {
 	
-	private Type voidType = new Type("void");
-	private Type arrayType = new Type("java.lang.String[]");
+	private final Type voidType = new Type("void");
+	private final Type arrayType = new Type("java.lang.String[]");
+	private final Type npe = new Type("java.lang.NullPointerException");
+	private final Type iae = new Type("java.lang.IllegalArgumentException");
 	
 	@Test
 	public void testBasics() {
@@ -60,23 +62,23 @@ public class DocumentedMethodTest {
 	@Test
 	public void testMultipleTags() {
 		Builder methodBuilder = new DocumentedMethod.Builder("Foo.compute", voidType, new Parameter(arrayType, "array", 0));
-		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
-		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
+		methodBuilder.tag(new ThrowsTag(npe, "if the array is empty"));
+		methodBuilder.tag(new ThrowsTag(npe, "if the array is empty"));
 		DocumentedMethod method = methodBuilder.build();
 		
 		List<ThrowsTag> tags = method.throwsTags();
 		assertThat(tags.size(), is(1));
-		assertThat(tags.get(0), is(new ThrowsTag("java.lang.NullPointerException", "if the array is empty")));
+		assertThat(tags.get(0), is(new ThrowsTag(npe, "if the array is empty")));
 		
 		methodBuilder = new DocumentedMethod.Builder("Foo.compute", voidType, new Parameter(arrayType, "array", 0));
-        methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is null"));
-        methodBuilder.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if the array is empty"));
+        methodBuilder.tag(new ThrowsTag(npe, "if the array is null"));
+        methodBuilder.tag(new ThrowsTag(iae, "if the array is empty"));
         method = methodBuilder.build();
         
         tags = method.throwsTags();
         assertThat(tags.size(), is(2));
-        assertThat(tags.get(0), is(new ThrowsTag("java.lang.NullPointerException", "if the array is null")));
-        assertThat(tags.get(1), is(new ThrowsTag("java.lang.IllegalArgumentException", "if the array is empty")));
+        assertThat(tags.get(0), is(new ThrowsTag(npe, "if the array is null")));
+        assertThat(tags.get(1), is(new ThrowsTag(iae, "if the array is empty")));
 	}
 	
 	@Test
@@ -97,21 +99,21 @@ public class DocumentedMethodTest {
 	@Test
 	public void testEquals() {
 		Builder methodBuilder = new DocumentedMethod.Builder("Foo.compute", voidType, new Parameter(arrayType, "array", 0));
-		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
+		methodBuilder.tag(new ThrowsTag(npe, "if the array is empty"));
 		DocumentedMethod method1 = methodBuilder.build();
 		
 		assertThat(method1.equals(method1), is(true));
 		assertThat(method1.equals(new Object()), is(false));
 
 		methodBuilder = new DocumentedMethod.Builder("Foo.compute", voidType, new Parameter(arrayType, "array", 0));
-		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
+		methodBuilder.tag(new ThrowsTag(npe, "if the array is empty"));
 		DocumentedMethod method2 = methodBuilder.build();
 		
 		assertThat(method1.equals(method2), is(true));
 		assertThat(method1.hashCode(), is(equalTo(method2.hashCode())));
 		
 		methodBuilder = new DocumentedMethod.Builder("Foo.foo", voidType, new Parameter(arrayType, "array", 0));
-		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
+		methodBuilder.tag(new ThrowsTag(npe, "if the array is empty"));
 		DocumentedMethod method3 = methodBuilder.build();
 
 		assertThat(method1.equals(method3), is(false));
@@ -121,7 +123,7 @@ public class DocumentedMethodTest {
 	@Test
 	public void testJSon() {
 		Builder methodBuilder = new DocumentedMethod.Builder("Foo.compute", voidType, new Parameter(arrayType, "array", 0));
-		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
+		methodBuilder.tag(new ThrowsTag(npe, "if the array is empty"));
 		DocumentedMethod method1 = methodBuilder.build();
 
 		String json = new Gson().toJson(method1);

@@ -10,8 +10,8 @@ import java.util.Set;
  */
 public class ThrowsTag {
 	
-	/** The fully qualified name of the exception. */
-	private final String exception;
+	/** The exception. */
+	private final Type exception;
 	/** The comment associated with the exception. */
 	private final String comment;
 	/**
@@ -28,7 +28,7 @@ public class ThrowsTag {
 	 * @param comment the comment associated with the exception
 	 * @throws NullPointerException if exception or comment is null
 	 */
-	public ThrowsTag(String exception, String comment) {
+	public ThrowsTag(Type exception, String comment) {
 		Objects.requireNonNull(exception);
 		Objects.requireNonNull(comment);
 		this.comment = comment;
@@ -36,11 +36,11 @@ public class ThrowsTag {
 	}
 	
 	/**
-	 * Returns the fully qualified name of the exception in this throws tag.
+	 * Returns the type of the exception in this throws tag.
 	 * 
-	 * @return the fully qualified name of the exception in this throws tag
+	 * @return the type of the exception in this throws tag
 	 */
-	public String getException() {
+	public Type getException() {
 		return exception;
 	}
 	

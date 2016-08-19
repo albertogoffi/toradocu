@@ -11,11 +11,14 @@ import org.junit.Test;
 
 public class ThrowsTagTest {
 
+	private final Type npe = new Type("java.lang.NullPointerException");
+	private final Type iae = new Type("java.lang.IllegalArgumentException");
+	
 	@Test
 	public void testBasics() {
-		ThrowsTag tag = new ThrowsTag("java.lang.NullPointerException", "if x is null");
+		ThrowsTag tag = new ThrowsTag(npe, "if x is null");
 		assertThat(tag.getComment(), is("if x is null"));
-		assertThat(tag.getException(), is("java.lang.NullPointerException"));
+		assertThat(tag.getException(), is(npe));
 		assertThat(tag.getCondition().isPresent(), is(false));
 		
 		tag.setCondition(new LinkedHashSet<String>());
@@ -32,7 +35,7 @@ public class ThrowsTagTest {
 	
 	@Test
 	public void testToString() {
-		ThrowsTag tag = new ThrowsTag("java.lang.NullPointerException", "if x is null");
+		ThrowsTag tag = new ThrowsTag(npe, "if x is null");
 		assertThat(tag.toString(), is("@throws java.lang.NullPointerException" + " " + "if x is null"));
 	
 		tag.setCondition("x == null");
@@ -42,8 +45,8 @@ public class ThrowsTagTest {
 
 	@Test
 	public void testEquals() {
-		ThrowsTag tag1 = new ThrowsTag("java.lang.NullPointerException", "if x is null");
-		ThrowsTag tag2 = new ThrowsTag("java.lang.NullPointerException", "if x is null");
+		ThrowsTag tag1 = new ThrowsTag(npe, "if x is null");
+		ThrowsTag tag2 = new ThrowsTag(npe, "if x is null");
 		assertThat(tag1.equals(tag2), is(true));
 		assertThat(tag1.hashCode(), is(equalTo(tag2.hashCode())));
 		assertThat(tag1.equals(new Object()), is(false));
@@ -56,10 +59,10 @@ public class ThrowsTagTest {
 		tag2.setCondition("x == null || y == null");
 		assertThat(tag1.equals(tag2), is(false));
 		
-		ThrowsTag tag3 = new ThrowsTag("java.lang.NullPointerException", "if y is null");
+		ThrowsTag tag3 = new ThrowsTag(npe, "if y is null");
 		assertThat(tag1.equals(tag3), is(false));
 		
-		ThrowsTag tag4 = new ThrowsTag("java.lang.IllegalArgumentException", "if x is null");
+		ThrowsTag tag4 = new ThrowsTag(iae, "if x is null");
 		assertThat(tag1.equals(tag4), is(false));
 	}
 }

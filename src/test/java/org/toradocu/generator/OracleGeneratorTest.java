@@ -14,6 +14,8 @@ import com.beust.jcommander.JCommander;
 
 public class OracleGeneratorTest {
 	
+	private final Type npe = new Type("java.lang.NullPointerException");
+	
 	@Test
 	public void oracleGeneratorTest() throws Exception {
 		String[] args = new String[] {"--target-class", "example.util.Arrays",
@@ -24,7 +26,7 @@ public class OracleGeneratorTest {
 		Parameter parameter1 = new Parameter(new Type("java.lang.Integer[]"), "array", 0);
 		Parameter parameter2 = new Parameter(new Type("java.lang.Integer"), "element", 1);
 		Parameter parameter3 = new Parameter(new Type("java.lang.String[]"), "names", 2);
-		ThrowsTag tag = new ThrowsTag("java.lang.NullPointerException", "if array or element is null");
+		ThrowsTag tag = new ThrowsTag(npe, "if array or element is null");
 		tag.setCondition("args[0]==null || args[1]==null");
 		DocumentedMethod method = new DocumentedMethod.Builder("example.util.Arrays.count", new Type("java.lang.Integer"), 
 										parameter1, parameter2, parameter3)

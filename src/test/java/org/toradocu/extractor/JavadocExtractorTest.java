@@ -27,6 +27,8 @@ public class JavadocExtractorTest {
 	private final Type doubleType = new Type("double");
 	private final Type objectType = new Type("java.lang.Object");
 	private final Type objectArrayType = new Type("java.lang.Object[]");
+	private final Type npe = new Type("java.lang.NullPointerException");
+	private final Type iae = new Type("java.lang.IllegalArgumentException");
 
 	/**
 	 * Tests {@code JavadocExtractor} on the example class example.AClass in src/test/resources/example
@@ -36,23 +38,23 @@ public class JavadocExtractorTest {
 		List<DocumentedMethod> expected = new ArrayList<>();
 		
 		Builder constructor1 = new Builder("example.AClass", null);
-		constructor1.tag(new ThrowsTag("java.lang.NullPointerException", "always"));
+		constructor1.tag(new ThrowsTag(npe, "always"));
 		expected.add(constructor1.build());
 		
 		Builder constructor2 = new Builder("example.AClass", null, new Parameter(new Type("java.lang.String"), "x", 0));
-		constructor2.tag(new ThrowsTag("java.lang.NullPointerException", "if x is null"));
+		constructor2.tag(new ThrowsTag(npe, "if x is null"));
 		expected.add(constructor2.build());
 		
 		Builder foo = new Builder("example.AClass.foo", doubleType, new Parameter(new Type("int[]"), "array", 0, true));
-		foo.tag(new ThrowsTag("java.lang.NullPointerException", "if array is null"));
+		foo.tag(new ThrowsTag(npe, "if array is null"));
 		expected.add(foo.build());
 		
 		Builder bar = new Builder("example.AClass.bar", doubleType, new Parameter(objectType, "x", 0, false), new Parameter(objectType, "y", 1, false));
-		bar.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if x is null"));
+		bar.tag(new ThrowsTag(iae, "if x is null"));
 		expected.add(bar.build());
 		
 		Builder baz = new Builder("example.AClass.baz", doubleType, new Parameter(objectType, "x", 0));
-		baz.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if x is null"));
+		baz.tag(new ThrowsTag(iae, "if x is null"));
 		expected.add(baz.build());
 		
 		test("example.AClass", expected, testResources + "/example.AClass_extractor_output.txt", testResources);
@@ -66,19 +68,19 @@ public class JavadocExtractorTest {
 		List<DocumentedMethod> expected = new ArrayList<>();
 		
 		Builder baz = new Builder("example.AChild.baz", doubleType, new Parameter(objectType, "z", 0));
-		baz.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if z is null"));
+		baz.tag(new ThrowsTag(iae, "if z is null"));
 		expected.add(baz.build());
 		
 		Builder vararg = new Builder("example.AChild.vararg", doubleType, true, new Parameter(objectArrayType, "x", 0));
-		vararg.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if x is null"));
+		vararg.tag(new ThrowsTag(iae, "if x is null"));
 		expected.add(vararg.build());
 		
 		Builder foo = new Builder("example.AClass.foo", doubleType, new Parameter(new Type("int[]"), "array", 0, true));
-		foo.tag(new ThrowsTag("java.lang.NullPointerException", "if array is null"));
+		foo.tag(new ThrowsTag(npe, "if array is null"));
 		expected.add(foo.build());
 		
 		Builder bar = new Builder("example.AClass.bar", doubleType, new Parameter(objectType, "x", 0, false), new Parameter(objectType, "y", 1, false));
-		bar.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if x is null"));
+		bar.tag(new ThrowsTag(iae, "if x is null"));
 		expected.add(bar.build());
 		
 		test("example.AChild", expected, testResources + "/example.AChild_extractor_output.txt", testResources);
