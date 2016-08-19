@@ -17,7 +17,7 @@ public class MatcherTest {
 	public void test() throws Throwable {
 		Parameter p1 = new Parameter(new Type("Employee"), "employee", 0);
 		Parameter p2 = new Parameter(new Type("Double"), "salary", 1);
-		DocumentedMethod methodUnderTest = new DocumentedMethod.Builder(ClassUnderTest.class.getName() + ".setSalary", null, p1, p2)
+		DocumentedMethod methodUnderTest = new DocumentedMethod.Builder(new Type(ClassUnderTest.class.getName()), "setSalary", null, p1, p2)
 				.tag(new ThrowsTag(new Type("NullPointerException"), "if employee or salary are null"))
 				.build();
 		

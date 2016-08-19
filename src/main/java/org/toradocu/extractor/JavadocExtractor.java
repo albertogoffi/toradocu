@@ -60,7 +60,8 @@ public final class JavadocExtractor {
 		
 		// Loop on constructors and methods (also inherited) of the target class.
 		for (ExecutableMemberDoc member : getConstructorsAndMethods(classDoc)) {
-			DocumentedMethod.Builder methodBuilder = new DocumentedMethod.Builder(member.qualifiedName(), getReturnType(member), member.isVarArgs(), getParameters(member));
+			org.toradocu.extractor.Type containgClass = new org.toradocu.extractor.Type(member.containingClass().qualifiedName());
+			DocumentedMethod.Builder methodBuilder = new DocumentedMethod.Builder(containgClass, member.name(), getReturnType(member), member.isVarArgs(), getParameters(member));
 			List<Tag> throwsTags = new ArrayList<>();
 			
 			// Collect tags in the current method's documentation.
@@ -84,7 +85,7 @@ public final class JavadocExtractor {
 			
     		for (Tag tag : throwsTags) {
     			if (!(tag instanceof com.sun.javadoc.ThrowsTag)) {
-    				throw new IllegalStateException(tag + "is not a @Throws tag. This should not happen. Toradocu only considers @throws tags.");
+    				throw new IllegalStateException(tag + " is not a @Throws tag. This should not happen. Toradocu only considers @throws tags.");
     			}
     			
     			com.sun.javadoc.ThrowsTag throwsTag = (com.sun.javadoc.ThrowsTag) tag;

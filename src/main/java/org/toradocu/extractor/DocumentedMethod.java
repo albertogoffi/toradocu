@@ -6,13 +6,17 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import org.toradocu.util.Checks;
+
 /**
  * DocumentedMethod represents the Javadoc documentation for a method in a class. It identifies the method itself
  * and key Javadoc information associated with it, such as throws tags, parameters, and return type.
  */
 public final class DocumentedMethod {
 	
-	/** Fully qualified name of the method. */
+	/** Class in which the method is contained. */
+	private final Type containingClass;
+	/** Name of the method. */
 	private final String name;
 	/** Return type of the method. Null if this DocumentedMethod represents a constructor. */
 	private final Type returnType;
@@ -25,8 +29,6 @@ public final class DocumentedMethod {
 	
 	/** Method signature in the format method_name(type1 arg1, type2 arg2). */
 	private final String signature;
-	/** Fully qualified name of the class in which the method is contained. */
-	private final String containingClass;
 	
 	/**
 	 * Constructs a {@code DocumentedMethod} using the information in the provided {@code Builder}.
@@ -34,6 +36,7 @@ public final class DocumentedMethod {
 	 * @param builder the {@code Builder} containing information about this {@code DocumentedMethod}
 	 */
 	private DocumentedMethod(Builder builder) {
+		containingClass = builder.containingClass;
 		name = builder.name;
 		returnType = builder.returnType;
 		parameters = builder.parameters;
@@ -50,7 +53,6 @@ public final class DocumentedMethod {
 		}
 		signatureBuilder.append(")");
 		signature = signatureBuilder.toString();
-		containingClass = name.substring(0, name.lastIndexOf("."));
 	}
 	
 	/**
@@ -117,11 +119,11 @@ public final class DocumentedMethod {
 	}
 	
 	/**
-	 * Returns the fully qualified name of the class in which this method is contained.
+	 * Returns the class in which this method is contained.
 	 * 
-	 * @return the fully qualified name of the class in which this method is contained
+	 * @return the class in which this method is contained
 	 */
-	public String getContainingClass() {
+	public Type getContainingClass() {
 		return containingClass;
 	}
 	
@@ -137,7 +139,8 @@ public final class DocumentedMethod {
 		if (this == obj) return true;
 		
 		DocumentedMethod that = (DocumentedMethod) obj;
-		if (this.name.equals(that.name) &&
+		if (this.containingClass.equals(that.containingClass) &&
+			this.name.equals(that.name) &&
 			Objects.equals(this.returnType, that.returnType) &&
 			this.parameters.equals(that.parameters) &&
 			this.isVarArgs == that.isVarArgs &&
@@ -154,21 +157,22 @@ public final class DocumentedMethod {
 	 */
 	@Override
 	public int hashCode() {
-		return Objects.hash(name, returnType, parameters, throwsTags);
+		return Objects.hash(containingClass, name, returnType, parameters, throwsTags);
 	}
 	
 	/**
-	 * Returns return type and signature of this method.
+	 * Returns return type (when present), fully-qualified class, and signature of this method 
+	 * in the format <RETURN_TYPE> <CLASS.SIGNATURE>
 	 * 
-	 * @return return type and signature of this method
+	 * @return return string representation of this method
 	 */
 	@Override
 	public String toString() {
-		if (returnType == null) {
-			return signature;
-		} else {
-			return returnType + " " + signature;
+		StringBuilder methodAsString = new StringBuilder(containingClass.getQualifiedName() + "." + signature);
+		if (returnType != null) {
+			methodAsString.insert(0, returnType.getQualifiedName() + " ");
 		}
+		return methodAsString.toString();
 	}
 	
 	/**
@@ -176,7 +180,9 @@ public final class DocumentedMethod {
 	 */
 	public static class Builder implements org.toradocu.util.Builder<DocumentedMethod> {
 
-		/** The fully qualified name of the {@code DocumentedMethod} to build. */
+		/** The class containing the {@code DocumentedMethod} to build. */
+		private final Type containingClass;
+		/** The name of the {@code DocumentedMethod} to build. */
 		private final String name;
 		/** The parameters of the {@code DocumentedMethod} to build. */
 		private final List<Parameter> parameters;
@@ -187,34 +193,46 @@ public final class DocumentedMethod {
 		/** The throws tags of the {@code DocumentedMethod} to build. */
 		private final List<ThrowsTag> throwsTags;
 		
-		/** Constructs a builder for a {@code DocumentedMethod} with the given {@code name} and {@parameters}.
+		/** 
+		 * Constructs a builder for a {@code DocumentedMethod} contained in a given {@code containingClass}
+		 * with the given {@code name}, {@code returnType}, and {@parameters}.
 		 * 
-		 * @param name the fully qualified name of the {@code DocumentedMethod} to build
-		 * @param returnType the fully qualified return type of the method or null 
+		 * @param containingClass class containing the {@code DocumentedMethod} to build
+		 * @param name name of the {@code DocumentedMethod} to build
+		 * @param returnType return type of the method or null 
 		 *        if the {@code DocumentedMethod} to build is a constructor
 		 * @param parameters the parameters of the {@code DocumentedMethod} to build
+		 * 
+		 * @throws NullPointerException if {@code containingClass} or {@code name} or {@parameters} is null
 		 */
-		public Builder(String name, Type returnType, Parameter... parameters) {
-			this(name, returnType, false, parameters);
+		public Builder(Type containingClass, String name, Type returnType, Parameter... parameters) {
+			this(containingClass, name, returnType, false, parameters);
 		}
 		
-		/** Constructs a builder for a {@code DocumentedMethod} with the given {@code name} and {@parameters}.
+		/** 
+		 * Constructs a builder for a {@code DocumentedMethod} contained in a given {@code containingClass}
+		 * with the given {@code name}, {@code returnType}, and {@parameters}.
 		 * 
+		 * @param containingClass class containing the {@code DocumentedMethod} to build
 		 * @param name the fully qualified name of the {@code DocumentedMethod} to build
 		 * @param returnType the fully qualified return type of the method, including its dimension if it's an array,
 		 *        or the empty string if the {@code DocumentedMethod} to build is a constructor
+		 * @param isVarArgs true if the {@code DocumentedMethod} to build takes a variable number of arguments, false otherwise
 		 * @param parameters the parameters of the {@code DocumentedMethod} to build
+		 * 
+		 *  @throws NullPointerException if {@code containingClass} or {@code name} or {@parameters} is null
 		 */
-		public Builder(String name, Type returnType, boolean isVarArgs, Parameter... parameters) {
-			Objects.requireNonNull(name);
-			Objects.requireNonNull(parameters);
+		public Builder(Type containingClass, String name, Type returnType, boolean isVarArgs, Parameter... parameters) {
+			Checks.nonNullParameter(containingClass, "containingClass");
+			Checks.nonNullParameter(name, "name");
+			Checks.nonNullParameter(parameters, "parameters");
 			
-			if (name.startsWith(".") || name.endsWith(".") || !name.contains(".")) {
+			if (name.contains(".")) {
 			    throw new IllegalArgumentException("Invalid method name: " + name + ". Method's name must be a valid "
-			    		+ "fully qualified name of a method of the form "
-			    		+ "<package>.<class>.<method name> where <package> is optional.");
+			    		+ "Java method name (e.g., method name must not contain '.'");
 			}
 			
+			this.containingClass = containingClass;
 			this.name = name;
 			this.returnType = returnType;
 			this.parameters = Arrays.asList(parameters);

@@ -91,7 +91,7 @@ public class Matcher {
 		}
 		
 		// Add the containing class as a code element.
-		Class<?> containingClass = getClass(method.getContainingClass());
+		Class<?> containingClass = getClass(method.getContainingClass().getQualifiedName());
 		result.add(new ClassCodeElement(containingClass));
 		
 		// Add methods in containing class as code elements.

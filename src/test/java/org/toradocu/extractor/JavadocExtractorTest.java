@@ -36,24 +36,25 @@ public class JavadocExtractorTest {
 	@Test
 	public void exampleAClassTest() {
 		List<DocumentedMethod> expected = new ArrayList<>();
+		Type aClass = new Type("example.AClass");
 		
-		Builder constructor1 = new Builder("example.AClass", null);
+		Builder constructor1 = new Builder(aClass, "AClass", null);
 		constructor1.tag(new ThrowsTag(npe, "always"));
 		expected.add(constructor1.build());
 		
-		Builder constructor2 = new Builder("example.AClass", null, new Parameter(new Type("java.lang.String"), "x", 0));
+		Builder constructor2 = new Builder(aClass, "AClass", null, new Parameter(new Type("java.lang.String"), "x", 0));
 		constructor2.tag(new ThrowsTag(npe, "if x is null"));
 		expected.add(constructor2.build());
 		
-		Builder foo = new Builder("example.AClass.foo", doubleType, new Parameter(new Type("int[]"), "array", 0, true));
+		Builder foo = new Builder(aClass, "foo", doubleType, new Parameter(new Type("int[]"), "array", 0, true));
 		foo.tag(new ThrowsTag(npe, "if array is null"));
 		expected.add(foo.build());
 		
-		Builder bar = new Builder("example.AClass.bar", doubleType, new Parameter(objectType, "x", 0, false), new Parameter(objectType, "y", 1, false));
+		Builder bar = new Builder(aClass, "bar", doubleType, new Parameter(objectType, "x", 0, false), new Parameter(objectType, "y", 1, false));
 		bar.tag(new ThrowsTag(iae, "if x is null"));
 		expected.add(bar.build());
 		
-		Builder baz = new Builder("example.AClass.baz", doubleType, new Parameter(objectType, "x", 0));
+		Builder baz = new Builder(aClass, "baz", doubleType, new Parameter(objectType, "x", 0));
 		baz.tag(new ThrowsTag(iae, "if x is null"));
 		expected.add(baz.build());
 		
@@ -66,20 +67,22 @@ public class JavadocExtractorTest {
 	@Test
 	public void exampleAChildTest() {
 		List<DocumentedMethod> expected = new ArrayList<>();
+		Type aClass = new Type("example.AClass");
+		Type aChild = new Type("example.AChild");
 		
-		Builder baz = new Builder("example.AChild.baz", doubleType, new Parameter(objectType, "z", 0));
+		Builder baz = new Builder(aChild, "baz", doubleType, new Parameter(objectType, "z", 0));
 		baz.tag(new ThrowsTag(iae, "if z is null"));
 		expected.add(baz.build());
 		
-		Builder vararg = new Builder("example.AChild.vararg", doubleType, true, new Parameter(objectArrayType, "x", 0));
+		Builder vararg = new Builder(aChild, "vararg", doubleType, true, new Parameter(objectArrayType, "x", 0));
 		vararg.tag(new ThrowsTag(iae, "if x is null"));
 		expected.add(vararg.build());
 		
-		Builder foo = new Builder("example.AClass.foo", doubleType, new Parameter(new Type("int[]"), "array", 0, true));
+		Builder foo = new Builder(aClass, "foo", doubleType, new Parameter(new Type("int[]"), "array", 0, true));
 		foo.tag(new ThrowsTag(npe, "if array is null"));
 		expected.add(foo.build());
 		
-		Builder bar = new Builder("example.AClass.bar", doubleType, new Parameter(objectType, "x", 0, false), new Parameter(objectType, "y", 1, false));
+		Builder bar = new Builder(aClass, "bar", doubleType, new Parameter(objectType, "x", 0, false), new Parameter(objectType, "y", 1, false));
 		bar.tag(new ThrowsTag(iae, "if x is null"));
 		expected.add(bar.build());
 		

@@ -28,7 +28,7 @@ public class OracleGeneratorTest {
 		Parameter parameter3 = new Parameter(new Type("java.lang.String[]"), "names", 2);
 		ThrowsTag tag = new ThrowsTag(npe, "if array or element is null");
 		tag.setCondition("args[0]==null || args[1]==null");
-		DocumentedMethod method = new DocumentedMethod.Builder("example.util.Arrays.count", new Type("java.lang.Integer"), 
+		DocumentedMethod method = new DocumentedMethod.Builder(new Type("example.util.Arrays"), "count", new Type("java.lang.Integer"), 
 										parameter1, parameter2, parameter3)
 								  		.tag(tag).build();
 			
