@@ -43,11 +43,11 @@ public class JavadocExtractorTest {
 		constructor2.tag(new ThrowsTag("java.lang.NullPointerException", "if x is null"));
 		expected.add(constructor2.build());
 		
-		Builder foo = new Builder("example.AClass.foo", doubleType, new Parameter(new Type("int[]"), "array", 0));
+		Builder foo = new Builder("example.AClass.foo", doubleType, new Parameter(new Type("int[]"), "array", 0, true));
 		foo.tag(new ThrowsTag("java.lang.NullPointerException", "if array is null"));
 		expected.add(foo.build());
 		
-		Builder bar = new Builder("example.AClass.bar", doubleType, new Parameter(objectType, "x", 0), new Parameter(objectType, "y", 1));
+		Builder bar = new Builder("example.AClass.bar", doubleType, new Parameter(objectType, "x", 0, false), new Parameter(objectType, "y", 1, false));
 		bar.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if x is null"));
 		expected.add(bar.build());
 		
@@ -73,11 +73,11 @@ public class JavadocExtractorTest {
 		vararg.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if x is null"));
 		expected.add(vararg.build());
 		
-		Builder foo = new Builder("example.AClass.foo", doubleType, new Parameter(new Type("int[]"), "array", 0));
+		Builder foo = new Builder("example.AClass.foo", doubleType, new Parameter(new Type("int[]"), "array", 0, true));
 		foo.tag(new ThrowsTag("java.lang.NullPointerException", "if array is null"));
 		expected.add(foo.build());
 		
-		Builder bar = new Builder("example.AClass.bar", doubleType, new Parameter(objectType, "x", 0), new Parameter(objectType, "y", 1));
+		Builder bar = new Builder("example.AClass.bar", doubleType, new Parameter(objectType, "x", 0, false), new Parameter(objectType, "y", 1, false));
 		bar.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if x is null"));
 		expected.add(bar.build());
 		

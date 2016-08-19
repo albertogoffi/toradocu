@@ -53,7 +53,7 @@ public class ExportedData {
 				usefulMethod = true;
 			}
 			for (ThrowsTag tag : method.throwsTags()) {
-				if (tag.getConditions().isPresent()) {
+				if (tag.getCondition().isPresent()) {
 					if (!translatedThrowsTags.containsKey(method.getSignature())) {
 						translatedThrowsTags.put(method.getSignature(), new ArrayList<>());
 					}

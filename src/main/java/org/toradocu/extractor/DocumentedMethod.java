@@ -12,9 +12,9 @@ import java.util.Objects;
  */
 public final class DocumentedMethod {
 	
-	/** Fully-qualified name of the method. */
+	/** Fully qualified name of the method. */
 	private final String name;
-	/** Fully-qualified return type of the method. */
+	/** Return type of the method. Null if this DocumentedMethod represents a constructor. */
 	private final Type returnType;
 	/** Method's parameters. */
 	private final List<Parameter> parameters;
@@ -25,7 +25,7 @@ public final class DocumentedMethod {
 	
 	/** Method signature in the format method_name(type1 arg1, type2 arg2). */
 	private final String signature;
-	/** Fully-qualified name of the class in which the method is contained. */
+	/** Fully qualified name of the class in which the method is contained. */
 	private final String containingClass;
 	
 	/**
@@ -86,12 +86,7 @@ public final class DocumentedMethod {
 	 * @return {@code true} if this method is a constructor, {@code false} otherwise
 	 */
 	public boolean isConstructor() {
-		String notQualifiedName = name.substring(name.lastIndexOf(".") + 1);
-		if (this.containingClass.contains(".")) {
-			return notQualifiedName.equals(this.containingClass.substring(this.containingClass.lastIndexOf(".") + 1));
-		} else {
-			return notQualifiedName.equals(containingClass);
-		}
+		return returnType == null;
 	}
 
 	/**
@@ -145,6 +140,7 @@ public final class DocumentedMethod {
 		if (this.name.equals(that.name) &&
 			Objects.equals(this.returnType, that.returnType) &&
 			this.parameters.equals(that.parameters) &&
+			this.isVarArgs == that.isVarArgs &&
 			this.throwsTags.equals(that.throwsTags)) {
 			return true;
 		}
@@ -215,7 +211,7 @@ public final class DocumentedMethod {
 			
 			if (name.startsWith(".") || name.endsWith(".") || !name.contains(".")) {
 			    throw new IllegalArgumentException("Invalid method name: " + name + ". Method's name must be a valid "
-			    		+ "fully-qualified name of a method of the form "
+			    		+ "fully qualified name of a method of the form "
 			    		+ "<package>.<class>.<method name> where <package> is optional.");
 			}
 			

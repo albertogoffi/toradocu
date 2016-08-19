@@ -21,6 +21,7 @@ public final class Parameter {
 	 * 
 	 * @param type the type of the parameter including its dimension
 	 * @param name the name of the parameter
+	 * @param index the 0-based index of the parameter in the parameter list this parameter is added to
 	 * @param nullable true if the parameter is nullable, false if nonnull and null if unspecified
 	 */
 	public Parameter(Type type, String name, int index, Boolean nullable) {
@@ -91,7 +92,10 @@ public final class Parameter {
 		if (!(obj instanceof Parameter)) return false;
 		
 		Parameter that = (Parameter) obj;
-		return type.equals(that.type) && name.equals(that.name);
+		return type.equals(that.type) && 
+			   name.equals(that.name) &&
+			   index == that.index &&
+			   Objects.equals(nullable, that.nullable);
 	}
 	
 	/**
@@ -101,7 +105,7 @@ public final class Parameter {
 	 */
 	@Override
 	public int hashCode() {
-		return Objects.hash(type, name);
+		return Objects.hash(type, name, index, nullable);
 	}
 	
 	/**

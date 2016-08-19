@@ -16,18 +16,18 @@ public class ThrowsTagTest {
 		ThrowsTag tag = new ThrowsTag("java.lang.NullPointerException", "if x is null");
 		assertThat(tag.getComment(), is("if x is null"));
 		assertThat(tag.getException(), is("java.lang.NullPointerException"));
-		assertThat(tag.getConditions().isPresent(), is(false));
+		assertThat(tag.getCondition().isPresent(), is(false));
 		
-		tag.setConditions(new LinkedHashSet<String>());
-		assertThat(tag.getConditions().isPresent(), is(true));
-		assertThat(tag.getConditions().get(), is(emptyString()));
+		tag.setCondition(new LinkedHashSet<String>());
+		assertThat(tag.getCondition().isPresent(), is(true));
+		assertThat(tag.getCondition().get(), is(emptyString()));
 		
 		Set<String> conditions = new LinkedHashSet<>();
 		conditions.add("x==null");
 		conditions.add("y==null");
-		tag.setConditions(conditions);
-		assertThat(tag.getConditions().isPresent(), is(true));
-		assertThat(tag.getConditions().get(), is("(x==null)||(y==null)"));
+		tag.setCondition(conditions);
+		assertThat(tag.getCondition().isPresent(), is(true));
+		assertThat(tag.getCondition().get(), is("(x==null)||(y==null)"));
 	}
 	
 	@Test
@@ -35,7 +35,7 @@ public class ThrowsTagTest {
 		ThrowsTag tag = new ThrowsTag("java.lang.NullPointerException", "if x is null");
 		assertThat(tag.toString(), is("@throws java.lang.NullPointerException" + " " + "if x is null"));
 	
-		tag.setConditions("x == null");
+		tag.setCondition("x == null");
 		assertThat(tag.toString(), is("@throws java.lang.NullPointerException" + " " 
 				+ "if x is null" + " ==> " + "x == null"));	
 	}
@@ -48,12 +48,12 @@ public class ThrowsTagTest {
 		assertThat(tag1.hashCode(), is(equalTo(tag2.hashCode())));
 		assertThat(tag1.equals(new Object()), is(false));
 		
-		tag1.setConditions("x == null");
-		tag2.setConditions("x == null");
+		tag1.setCondition("x == null");
+		tag2.setCondition("x == null");
 		assertThat(tag1.equals(tag2), is(true));
 		assertThat(tag1.hashCode(), is(equalTo(tag2.hashCode())));
 		
-		tag2.setConditions("x == null || y == null");
+		tag2.setCondition("x == null || y == null");
 		assertThat(tag1.equals(tag2), is(false));
 		
 		ThrowsTag tag3 = new ThrowsTag("java.lang.NullPointerException", "if y is null");

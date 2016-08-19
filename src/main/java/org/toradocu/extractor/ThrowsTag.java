@@ -15,17 +15,18 @@ public class ThrowsTag {
 	/** The comment associated with the exception. */
 	private final String comment;
 	/**
-	 * Java boolean conditions translated from the comment for this throws tag.
+	 * Java boolean condition translated from the comment for this throws tag.
 	 * Null if translation not yet attempted.
 	 * Empty string if no translations found.
 	 */
-	private String conditions;
+	private String condition;
 	
 	/**
 	 * Constructs a {@code ThrowsTag} with the given exception and comment.
 	 * 
 	 * @param exception the fully qualified name of the exception
 	 * @param comment the comment associated with the exception
+	 * @throws NullPointerException if exception or comment is null
 	 */
 	public ThrowsTag(String exception, String comment) {
 		Objects.requireNonNull(exception);
@@ -53,34 +54,34 @@ public class ThrowsTag {
 	}
 	
 	/**
-	 * Returns the translated Java boolean conditions for this throws tag as an optional which is empty if translation
+	 * Returns the translated Java boolean condition for this throws tag as an optional which is empty if translation
 	 * has not been attempted yet.
 	 * 
 	 * @return the translated conditions for this throws tag if translation attempted, else empty optional
 	 */
-	public Optional<String> getConditions() {
-		return Optional.ofNullable(conditions);
+	public Optional<String> getCondition() {
+		return Optional.ofNullable(condition);
 	}
 	
 	/**
-	 * Sets the translated conditions for this throws tags to the given conditions. Each element in
+	 * Sets the translated condition for this throws tags to the given conditions. Each element in
 	 * the set is combined using an || conjunction.
 	 * 
 	 * @param conditions the translated conditions for this throws tag (as Java boolean conditions)
 	 * @throws NullPointerException if conditions is null
 	 */
-	public void setConditions(Set<String> conditions) {
+	public void setCondition(Set<String> conditions) {
 		Objects.requireNonNull(conditions, "conditions must not be null");
 		
 		if (conditions.size() == 0) {
-			this.conditions = "";
+			this.condition = "";
 		} else {
 			Iterator<String> it = conditions.iterator();
 			StringBuilder conditionsBuilder = new StringBuilder("(" + it.next() + ")");
 			while (it.hasNext()) {
 				conditionsBuilder.append("||(" + it.next() + ")");
 			}
-			this.conditions = conditionsBuilder.toString();
+			this.condition = conditionsBuilder.toString();
 		}
 	}
 	
@@ -90,9 +91,9 @@ public class ThrowsTag {
 	 * @param conditions the translated conditions for this throws tag (as Java boolean conditions)
 	 * @throws NullPointerException if conditions is null
 	 */
-	public void setConditions(String conditions) {
-		Objects.requireNonNull(conditions, "conditions must not be null");
-		this.conditions = conditions;
+	public void setCondition(String condition) {
+		Objects.requireNonNull(condition, "conditions must not be null");
+		this.condition = condition;
 	}
 	
 	/**
@@ -106,12 +107,9 @@ public class ThrowsTag {
 		if (!(obj instanceof ThrowsTag)) return false;
 		
 		ThrowsTag that = (ThrowsTag) obj;
-		boolean result = this.comment.equals(that.comment) && this.exception.equals(that.exception);
-		if (this.conditions == null) {
-			return result;
-		} else {
-			return result && this.conditions.equals(that.conditions);
-		}
+		return this.comment.equals(that.comment) && 
+			   this.exception.equals(that.exception) &&
+			   Objects.equals(this.condition, that.condition);
 	}
 	
 	/**
@@ -121,7 +119,7 @@ public class ThrowsTag {
 	 */
 	@Override
 	public int hashCode() {
-		return Objects.hash(comment, exception, conditions);
+		return Objects.hash(comment, exception, condition);
 	}
 	
 	/**
@@ -129,18 +127,17 @@ public class ThrowsTag {
 	 * format "@throws EXCEPTION COMMENT" where EXCEPTION is the fully qualified name of
 	 * the exception in this throws tag and COMMENT is the text of the comment in the throws tag.
 	 * If translation has been attempted on this tag, then the returned string is also appended
-	 * with " ==> [CONDITION_1, CONDITION_2, ...]" where CONDITION_i are the translated conditions
-	 * for the exception as Java expressions.
+	 * with " ==> CONDITION" where CONDITION is the translated condition for the exception 
+	 * as Java expressions.
 	 * 
 	 * @return a string representation of this throws tag
 	 */
 	@Override
 	public String toString() {
 		String result = "@throws " + exception + " " + comment;
-		if (conditions == null) {
-			return result;
-		} else {
-			return result + " ==> " + conditions;
+		if (condition != null) {
+			result += " ==> " + condition;
 		}
+		return result;
 	}
 }

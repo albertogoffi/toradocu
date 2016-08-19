@@ -62,7 +62,7 @@ public class MethodChangerVisitor extends VoidVisitorAdapter<Object> {
              								+ "System.err.println(\"Class not found!\" + e);}}";
         	
         	for (ThrowsTag tag : method.throwsTags()) {
-        		String condition = tag.getConditions().orElse("");
+        		String condition = tag.getCondition().orElse("");
         		if (condition.isEmpty()) {
         			continue;
         		}

@@ -103,7 +103,7 @@ public final class JavadocExtractor {
 	
 	/**
 	 * Returns all constructors and methods (including inherited ones) from the given {@code ClassDoc}.
-	 * Notice that methods inherited from the class {@code java.lang.Object} are ignored and not inclued
+	 * Notice that methods inherited from the class {@code java.lang.Object} are ignored and not included
 	 * in the returned list. 
 	 * 
 	 * @param classDoc the {@code ClassDoc} from which to extract constructors and methods
@@ -146,11 +146,11 @@ public final class JavadocExtractor {
 	}
 	
 	/**
-	 * Returns the fully qualified return type of the given constructor or method. 
-	 * The returned string is the empty string if this is a constructor.
+	 * Returns the return type of the given {@code member}.
+	 * Returns {@code null} if {@code member} is a constructor.
 	 * 
-	 * @param member the executable member (constructor or method) to return the return type of as a string
-	 * @return the return type of the given member or the empty string if the member is a constructor
+	 * @param member the executable member (constructor or method) to return the return type
+	 * @return the return type of the given member or null if the member is a constructor
 	 */
 	private org.toradocu.extractor.Type getReturnType(ExecutableMemberDoc member) {
 		if (member instanceof MethodDoc) {
@@ -187,7 +187,7 @@ public final class JavadocExtractor {
 			
 			Type pType = params[i].type();
 			String type = pType.qualifiedTypeName() + pType.dimension();
-			// Set type of last parameter to varargs if necessary.
+			// Set type of last parameter to array if necessary (member takes varargs).
 			if (member.isVarArgs() && i == parameters.length - 1) {
 				type = pType.qualifiedTypeName() + "[]";
 			}

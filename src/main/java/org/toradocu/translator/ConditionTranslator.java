@@ -1,18 +1,14 @@
 package org.toradocu.translator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.omg.PortableInterceptor.LOCATION_FORWARD;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.ThrowsTag;
-import org.toradocu.util.OutputPrinter;
 
 /**
  * ConditionTranslator translates exception comments in method documentation to
@@ -66,7 +62,7 @@ public class ConditionTranslator {
 				*/
 				
 				Set<String> conditions = new HashSet<>(Arrays.asList("DEBUG_CONDITION_1", "DEBUG_CONDITION_2"));
-				tag.setConditions(conditions);
+				tag.setCondition(conditions);
 			}
 		}
 //		// Print translated throws tags.
