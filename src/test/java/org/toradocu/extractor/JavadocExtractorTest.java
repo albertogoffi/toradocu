@@ -44,6 +44,7 @@ public class JavadocExtractorTest {
 		
 		Builder constructor2 = new Builder(aClass, "AClass", null, new Parameter(new Type("java.lang.String"), "x", 0));
 		constructor2.tag(new ThrowsTag(npe, "if x is null"));
+		constructor2.tag(new ThrowsTag(new Type("example.exception.AnException"), "if x is empty"));
 		expected.add(constructor2.build());
 		
 		Builder foo = new Builder(aClass, "foo", doubleType, new Parameter(new Type("int[]"), "array", 0, true));
