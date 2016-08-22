@@ -23,14 +23,14 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
 		addIdentifier(parameter.getName() + " " + parameter.getType().getName());
 		
 		// Add type identifiers
-		if (!parameter.getType().isArray()) {
+		if (parameter.getType().isArray()) {
+			addIdentifier("array");
+			addIdentifier(parameter.getType().getName() + " array");
+		} else {
 			addIdentifier(parameter.getType().getName());
 			if (parameter.getType().getQualifiedName().equals("java.lang.Iterable"))	{
 				addIdentifier("collection");
 			}
-		} else {
-			addIdentifier("array");
-			addIdentifier(parameter.getType().getName() + " array");
 		}
 	}
 	
