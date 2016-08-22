@@ -6,7 +6,6 @@ import java.util.Objects;
  * This utility class contains methods to check different properties of given objects.
  */
 public class Checks {
-
 	
 	/**
 	 * This method checks whether {@code obj} is null. If it is null, a {@code NullPointerException} will be thrown
@@ -18,6 +17,6 @@ public class Checks {
 	 * @throws NullPointerException if {@code obj} is null
 	 */
 	public static void nonNullParameter(Object obj, String parameterName) {
-		Objects.requireNonNull(obj, "The parameter " + parameterName + "must not be null");
+		Objects.requireNonNull(obj, "The parameter " + parameterName + " must not be null");
 	}
 }
