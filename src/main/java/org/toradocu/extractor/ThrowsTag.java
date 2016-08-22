@@ -1,14 +1,14 @@
 package org.toradocu.extractor;
 
-import java.util.Iterator;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
 
 import org.toradocu.util.Checks;
 
 /**
- * This class represents a throws tag in a method.
+ * This class represents a throws tag in a method. Each @throws tag consists of an exception,
+ * a comment, and can have an optional condition. A condition is the translation of the comment
+ * into a Java boolean condition.  
  */
 public class ThrowsTag {
 	
@@ -41,7 +41,7 @@ public class ThrowsTag {
 	 * 
 	 * @return the type of the exception in this throws tag
 	 */
-	public Type getException() {
+	public Type exception() {
 		return exception;
 	}
 	
@@ -50,7 +50,7 @@ public class ThrowsTag {
 	 * 
 	 * @return the comment associated with the exception in this throws tag
 	 */
-	public String getComment() {
+	public String exceptionComment() {
 		return comment;
 	}
 	
@@ -62,28 +62,6 @@ public class ThrowsTag {
 	 */
 	public Optional<String> getCondition() {
 		return Optional.ofNullable(condition);
-	}
-	
-	/**
-	 * Sets the translated condition for this throws tags to the given conditions. Each element in
-	 * the set is combined using an || operator.
-	 * 
-	 * @param conditions the translated conditions for this throws tag (as Java boolean conditions)
-	 * @throws NullPointerException if conditions is null
-	 */
-	public void setCondition(Set<String> conditions) {
-		Objects.requireNonNull(conditions, "conditions must not be null");
-		
-		if (conditions.size() == 0) {
-			this.condition = "";
-		} else {
-			Iterator<String> it = conditions.iterator();
-			StringBuilder conditionsBuilder = new StringBuilder("(" + it.next() + ")");
-			while (it.hasNext()) {
-				conditionsBuilder.append("||(" + it.next() + ")");
-			}
-			this.condition = conditionsBuilder.toString();
-		}
 	}
 	
 	/**

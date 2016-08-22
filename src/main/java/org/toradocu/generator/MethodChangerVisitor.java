@@ -75,7 +75,7 @@ public class MethodChangerVisitor extends VoidVisitorAdapter<Object> {
     				conditionExpression = JavaParser.parseExpression(condition);
     				ifStmt.setCondition(conditionExpression);
     				String addExpectedException = addExpectedExceptionPart1 + 
-    											  "Class.forName(\"" + tag.getException() + "\")" +
+    											  "Class.forName(\"" + tag.exception() + "\")" +
     											  addExpectedExceptionPart2;
     				ifStmt.setThenStmt(JavaParser.parseBlock(addExpectedException));
     		

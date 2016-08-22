@@ -1,7 +1,5 @@
 package org.toradocu.translator;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -27,13 +25,13 @@ public class ConditionTranslator {
 		for (DocumentedMethod method : methods) {
 			for (ThrowsTag tag : method.throwsTags()) {
 				StringBuilder logMessage = new StringBuilder("Identifying propositions from: ");
-				logMessage.append("\"" + tag.getComment() + "\" in " + method.getSignature());
+				logMessage.append("\"" + tag.exceptionComment() + "\" in " + method.getSignature());
 				LOG.trace(logMessage.toString());
 				
 				// Identify propositions in the comment. Each sentence in the comment is parsed into
 				// a PropositionSeries.
 				List<PropositionSeries> extractedPropositions
-						= PropositionExtractor.getPropositionSeries(tag.getComment());
+						= PropositionExtractor.getPropositionSeries(tag.exceptionComment());
 
 				// Identify Java code elements in propositions.
 				for (PropositionSeries propositions : extractedPropositions) {
@@ -61,8 +59,7 @@ public class ConditionTranslator {
 //				}
 				*/
 				
-				Set<String> conditions = new HashSet<>(Arrays.asList("DEBUG_CONDITION_1", "DEBUG_CONDITION_2"));
-				tag.setCondition(conditions);
+				tag.setCondition("DEBUG_CONDITION_1 || DEBUG_CONDITION_2");
 			}
 		}
 //		// Print translated throws tags.
