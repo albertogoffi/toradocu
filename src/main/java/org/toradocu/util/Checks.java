@@ -4,8 +4,12 @@ import java.util.Objects;
 
 /**
  * This utility class contains methods to check different properties of given objects.
+ * For example, the non-nullity of a method's parameter named foo can be checked with
+ * {@code Checks.nonNullParameter(foo, "foo")}. The main advantage of this pattern is
+ * that in this way the error messages provided to the users are consistent.
+ * This class is intended to be used within the Toradocu codebase.
  */
-public class Checks {
+public final class Checks {
 	
 	/**
 	 * This method checks whether {@code obj} is null. If it is null, a {@code NullPointerException} will be thrown
