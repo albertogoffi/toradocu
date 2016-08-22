@@ -304,7 +304,7 @@ public class ConfigurationImpl extends Configuration {
     }
 
     /**
-     * Returns the "length" of a given option. If an option takes no
+     * Returns the "length" of the given option. If an option takes no
      * arguments, its length is one. If it takes one argument, it's
      * length is two, and so on. This method is called by JavaDoc to
      * parse the options it does not recognize. It then calls
