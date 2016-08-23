@@ -51,7 +51,7 @@ public final class DocumentedMethod {
 			// DocumentedMethod is for a constructor.
 			containingClass = name;
 		} else {
-			this.containingClass = name.substring(0, name.lastIndexOf("."));
+			this.containingClass = name.substring(0, name.lastIndexOf('.'));
 		}
 	}
 	
@@ -71,6 +71,20 @@ public final class DocumentedMethod {
 	 */
 	public List<Parameter> getParameters() {
 		return Collections.unmodifiableList(parameters);
+	}
+	
+	/**
+	 * Returns the simple name of this method.
+	 * 
+	 * @return the simple name of this method
+	 */
+	public String getSimpleName() {
+		int lastIndex = name.lastIndexOf('.');
+		if (lastIndex == -1) {
+			return name;
+		} else {
+			return name.substring(lastIndex + 1);
+		}
 	}
 	
 	/**

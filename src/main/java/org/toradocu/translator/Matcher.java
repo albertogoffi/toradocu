@@ -1,16 +1,14 @@
 package org.toradocu.translator;
 
-import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Executable;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -18,8 +16,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
-import org.toradocu.extractor.Parameter;
 
+/**
+ * The {@code Matcher} class translates subjects and predicates in Javadoc comments to Java expressions containing
+ * Java code elements.
+ */
 public class Matcher {
 	
 	/**
@@ -40,8 +41,9 @@ public class Matcher {
 	 * @return a set of {@CodeElement}s that have a similar name to the subject
 	 */
 	public static Set<CodeElement<?>> subjectMatch(String subject, DocumentedMethod method) {
-		// Extract every CodeElement from the given method.
-		Set<CodeElement<?>> codeElements = extractCodeElements(method);
+		// Extract every CodeElement associated with the method and the containing class of the method.
+		Class<?> containingClass = getClass(method.getContainingClass());
+		Set<CodeElement<?>> codeElements = extractCodeElements(containingClass, method);
 		
 		// Clean the subject string by removing words and characters not related to its identity so that
 		// they do not influence string matching.
@@ -82,33 +84,6 @@ public class Matcher {
 	}
 	
 	/**
-	 * Extracts and returns all {@code CodeElement}s associated with the given method and its enclosing class.
-	 * 
-	 * @param method the method (and its enclosing class) to extract {@code CodeElement}s from
-	 * @return all {@code CodeElement}s associated with the given method and its enclosing class
-	 */
-	private static Set<CodeElement<?>> extractCodeElements(DocumentedMethod method) {
-		Set<CodeElement<?>> result = new LinkedHashSet<>();
-		
-		// Add parameter code elements.
-		for (Parameter param : method.getParameters()) {
-			ParameterCodeElement paramCodeElement = new ParameterCodeElement(param);
-			result.add(paramCodeElement);
-		}
-		
-		// Add the containing class as a code element.
-		Class<?> containingClass = getClass(method.getContainingClass());
-		result.add(new ClassCodeElement(containingClass));
-		
-		// Add methods in containing class as code elements.
-		for (Method classMethod : containingClass.getMethods()) {
-			result.add(new MethodCodeElement(classMethod));
-		}
-		
-		return result;
-	}
-	
-	/**
 	 * Returns the {@code Class} object for the class with the given name or null if the class could not
 	 * be retrieved.
 	 * 
@@ -125,111 +100,160 @@ public class Matcher {
 			LOG.error(ERROR_MESSAGE);
 			return null;
 		}
-		try (URLClassLoader classLoader = new URLClassLoader(new URL[] { classDir })) {
+		try {
+			URLClassLoader classLoader = new URLClassLoader(new URL[] { classDir });
 			targetClass = classLoader.loadClass(className);
 		} catch (ClassNotFoundException e) {
 			LOG.error(ERROR_MESSAGE);
 			return null;
-		} catch (IOException e) {
-			LOG.warn("Could not close class loader.");
 		}
 		return targetClass;
 	}
-
 	
-	
-	
-	/*
-	private static Set<CodeElement<?>> collectPossibleMatchingElements(ExecutableMemberDoc member) {
-		
-		// Add target object as code element
-		ClassDoc containingClass = member.containingClass();
-		ClassCodeElement classCodeElement = new ClassCodeElement(containingClass);
-		String className = containingClass.simpleTypeName();
-		classCodeElement.addIdentifier(className);
-		
-		char[] classNameArray = className.toCharArray(); 
-		for (int i = classNameArray.length - 1; i > 0; i--) {
-			if (Character.isUpperCase(classNameArray[i])) {
-				classCodeElement.addIdentifier(className.substring(i));
-				break;
-			}
-		}
-		
-		
-		for (ClassDoc implementedInterface : containingClass.interfaces()) {
-			classCodeElement.addIdentifier(implementedInterface.simpleTypeName());
-		}
-		elements.add(classCodeElement);
-		
-		// Add target object methods as code elements
-		for (MethodDoc method : containingClass.methods()) {
-			if (method.isPublic() && method.parameters().length == 0) {
-				String methodName = method.name();
-				if (methodName.startsWith("get")) {
-					methodName = methodName.replaceFirst("get", "");
-				}
-				MethodCodeElement m = new MethodCodeElement(method, "target", methodName);
-				elements.add(m);
-			}
-		}
-		
-		return elements;
-	}
-
-	/*
-	private static Set<CodeElement<?>> collectPossibleMatchingElements(Type type) {
-		// Given the subject type, possible matching elements for the predicates are subject's methods and fields
-		// Note that this method is also used in predicate matching
-		Set<CodeElement<?>> elements = new HashSet<>();
-		
-		if (!type.isPrimitive()) {
-			ClassDoc classDoc = type.asClassDoc();
-			for (FieldDoc field : classDoc.fields()) {
-				if (field.isPublic()) {
-					elements.add(new FieldCodeElement(field, field.name()));
-				}
-			}
-			for (MethodDoc method : classDoc.methods()) {
-				if (method.isPublic() && method.parameters().length == 0 && 
-						(method.returnType().simpleTypeName().equals("boolean") || method.returnType().simpleTypeName().equals("Boolean"))) {
-					elements.add(new MethodCodeElement(method, method.name()));
-				}
-			}
-		} else if (type.dimension().equals("[]")) {
-			elements.add(new DummyCodeElement("isEmpty", ".length==0"));
-			elements.add(new DummyCodeElement("length", ".length"));
-		}
-		return elements;
-	}
-	
-	public static String predicateMatch(String s, CodeElement<?> subject) {
-		String match = simpleMatch(s);
-		if (match == null) {
+	/**
+	 * Returns the translation (to a Java expression) of the given subject and predicate. Returns null
+	 * if a translation could not be found.
+	 * 
+	 * @param subject the subject of the proposition to translate
+	 * @param predicate the predicate of the proposition to translate
+	 * @param negate true if the given predicate should be negated, false otherwise
+	 * @return the translation (to a Java expression) of the predicate with the given subject and
+	 *         predicate, or null if no translation found
+	 */
+	public static String predicateMatch(CodeElement<?> subject, String predicate, boolean negate) {
+		String match = simpleMatch(predicate);
+		if (match != null) {
+			match = subject.getJavaExpression() + match;
+		} else {
 			Set<CodeElement<?>> codeElements = null;
 			if (subject instanceof ParameterCodeElement) {
-				ParameterCodeElement par = (ParameterCodeElement) subject;
-				codeElements = collectPossibleMatchingElements(par.getCodeElement().type());
+				ParameterCodeElement paramCodeElement = (ParameterCodeElement) subject;
+				codeElements = extractBooleanCodeElements(paramCodeElement,
+														  paramCodeElement.getJavaCodeElement().getType());
 			} else if (subject instanceof ClassCodeElement) {
 				ClassCodeElement classCodeElement = (ClassCodeElement) subject;
-				codeElements = collectPossibleMatchingElements(classCodeElement.getCodeElement());
+				codeElements = extractBooleanCodeElements(classCodeElement,
+														  classCodeElement.getJavaCodeElement());
+			} else if (subject instanceof MethodCodeElement) {
+				MethodCodeElement methodCodeElement = (MethodCodeElement) subject;
+				codeElements = extractBooleanCodeElements(methodCodeElement,
+														  methodCodeElement.getJavaCodeElement().getReturnType());
 			} else {
-				return null; // Any other subject type should have a predicate matching with simple matching strategy
+				return null;
 			}
-			List<CodeElement<?>> match_ = getMatchingCodeElement(s, codeElements);
-			// match_ contains matches that are at the same distance from s. We simply return one of those
-			// because we don't know which one is better
-			Optional<CodeElement<?>> foundMatch = match_.stream().findFirst();
-			if (foundMatch.isPresent()) {
-				match = foundMatch.get().getJavaExpression();
-				match += getCheck(s);
+			Set<CodeElement<?>> matches = filterMatchingCodeElements(predicate, codeElements);
+			if (matches.isEmpty()) {
+				return null;
+			} else {
+				// Matches contains matches that are at the same distance from s. We simply return one of those
+				// because we don't know which one is best.
+				match = matches.stream().findFirst().get().getJavaExpression();
 			}
+		}
+		if (negate) {
+			match = "(" + match + ") == false";
 		}
 		return match;
 	}
 	
-	private static String simpleMatch(String phrase) {
-		switch (phrase) {
+	/**
+	 * Extracts and returns all fields and methods in the given class that have a boolean (return) value.
+	 * The returned code elements have the given code element integrated into their Java expression
+	 * representations as the receiver of the field or method call.
+	 * 
+	 * @param receiver the code element that calls the field or method in the Java expression
+	 *        representation of the return code elements
+	 * @param type the class whose boolean-valued fields and methods to extract
+	 * @return the boolean-valued fields and methods in the given class as a set of code elements
+	 */
+	private static Set<CodeElement<?>> extractBooleanCodeElements(CodeElement<?> receiver, Class<?> type) {
+		Set<CodeElement<?>> result = new LinkedHashSet<>();
+		
+		if (type.isPrimitive()) {
+			if (type.isArray()) {
+				result.add(new GeneralCodeElement("isEmpty", receiver.getJavaExpression() + ".length==0"));
+				result.add(new GeneralCodeElement("length", receiver.getJavaExpression() + ".length"));
+			}
+			return result;
+		}
+		
+		for (Field field : type.getFields()) {
+			if (field.getType().equals(Boolean.class) || field.getType().equals(boolean.class)) {
+				result.add(new FieldCodeElement(receiver.getJavaExpression(), field));
+			}
+		}
+		
+		for (Method method : type.getMethods()) {
+			if (method.getParameterCount() == 0
+				&& (method.getReturnType().equals(Boolean.class) || method.getReturnType().equals(boolean.class))) {
+				result.add(new MethodCodeElement(receiver.getJavaExpression(), method));
+			}
+		}
+		
+		return result;
+	}
+
+	/**
+	 * Extracts and returns all {@code CodeElement}s associated with the given class and method.
+	 * 
+	 * @param class the class  to extract {@code CodeElement}s from
+	 * @param documentedMethod the method to extract {@code ParameterCodeElement}s from
+	 * @return all {@code CodeElement}s associated with the given class and method
+	 */
+	private static Set<CodeElement<?>> extractCodeElements(Class<?> type, DocumentedMethod documentedMethod) {
+		Set<CodeElement<?>> result = new LinkedHashSet<>();
+		
+		Executable methodOrConstructor = null;
+		// Load the DocumentedMethod as a reflection Method or Constructor.
+		if (documentedMethod.getReturnType().equals("")) {
+			// DocumentedMethod is a constructor.
+			for (Constructor<?> constructor : type.getDeclaredConstructors()) {
+				if (constructor.getParameterCount() == documentedMethod.getParameters().size()) {
+					methodOrConstructor = constructor;
+					break;
+				}
+			}
+		} else {
+			for (Method method : type.getDeclaredMethods()) {
+				if (method.getName().equals(documentedMethod.getSimpleName())
+					&& method.getParameterCount() == documentedMethod.getParameters().size()) {
+					methodOrConstructor = method;
+					break;
+				}
+			}
+		}
+		if (methodOrConstructor == null) {
+			LOG.error("Could not load method/constructor from DocumentedMethod " + documentedMethod);
+		}
+		
+		// Add method parameters as code elements.
+		for (int i = 0 ; i < methodOrConstructor.getParameters().length; i++) {
+			result.add(new ParameterCodeElement(methodOrConstructor.getParameters()[i], i));
+		}
+		
+		// Add the class itself as a code element.
+		result.add(new ClassCodeElement(type));
+		
+		// Add no-arg methods in containing class as code elements.
+		for (Method classMethod : type.getMethods()) {
+			if (classMethod.getParameterCount() == 0) {
+				result.add(new MethodCodeElement("target", classMethod));
+			}
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * Attempts to match the given predicate to a simple Java expression (i.e. one containing only
+	 * literals).
+	 * 
+	 * @param predicate the predicate to translate to a Java expression
+	 * @return a Java expression translation of the given predicate or null if the predicate could
+	 *         not be matched
+	 */
+	private static String simpleMatch(String predicate) {
+		switch (predicate) {
 		case "is negative":
 			return "<0";
 		case "is positive":
@@ -243,7 +267,7 @@ public class Matcher {
 			String[] potentialSymbols = { "<=", ">=", "==", "!=", "=", "<", ">", "" };
 			for (String phraseStart : phraseStarts) {
 				for (String potentialSymbol : potentialSymbols) {
-					if (phrase.startsWith(phraseStart + potentialSymbol)) {
+					if (predicate.startsWith(phraseStart + potentialSymbol)) {
 						// Set symbol to the appropriate Java expression symbol.
 						if (potentialSymbol.equals("=")
 								|| (potentialSymbol.equals("") && !phraseStart.equals(""))) {
@@ -251,7 +275,7 @@ public class Matcher {
 						} else {
 							symbol = potentialSymbol;
 						}
-						numberString = phrase.substring(phraseStart.length() + potentialSymbol.length()).trim();
+						numberString = predicate.substring(phraseStart.length() + potentialSymbol.length()).trim();
 						break;
 					}
 				}
@@ -274,19 +298,5 @@ public class Matcher {
 			}
 		}
 	}
-	
-	private static String getCheck(String predicate) {
-		if (predicate.contains("not") || predicate.contains("n't")) {
-			return "==false";
-		} else {
-			return ""; // "==true";
-		}
-	}
-	*/
-	
-	
-	
-	
-	
 	
 }

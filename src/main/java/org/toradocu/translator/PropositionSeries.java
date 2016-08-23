@@ -1,6 +1,7 @@
 package org.toradocu.translator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -100,6 +101,29 @@ public class PropositionSeries {
 	}
 	
 	/**
+	 * Returns the translation of this series of propositions to a Java expression.
+	 * 
+	 * @return the translation of this series of propositions to a Java expression
+	 */
+	public String getTranslation() {
+		StringBuilder output = new StringBuilder();
+		int i = 0;
+		while (i < numberOfPropositions() && !propositions.get(i).getTranslation().isPresent()) {
+			i++;
+		}
+		if (i < numberOfPropositions()) {
+			output.append(propositions.get(i).getTranslation().get());
+			for (int j = i + 1; j < numberOfPropositions(); j++) {
+				if (propositions.get(j).getTranslation().isPresent()) {
+					output.append(conjunctions.get(j - 1));
+					output.append(propositions.get(j).getTranslation().get());
+				}
+			}
+		}
+		return output.toString();
+	}
+	
+	/**
 	 * Returns a string representation of this series. The returned string is formatted
 	 * as "PROPOSITION_A CONJUNCTION_AB PROPOSITION_B CONJUNCTION_BC PROPOSITION_C ..."
 	 * where CONJUNCTION_ij is the conjunction linking propositions PROPOSITION_i and
@@ -109,7 +133,7 @@ public class PropositionSeries {
 	 */
 	@Override
 	public String toString() {
-		StringBuilder output = new StringBuilder("");
+		StringBuilder output = new StringBuilder();
 		if (!isEmpty()) {
 			output.append(propositions.get(0));
 			for (int i = 1; i < numberOfPropositions(); i++) {

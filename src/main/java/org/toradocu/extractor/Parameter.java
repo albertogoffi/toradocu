@@ -13,8 +13,6 @@ public final class Parameter {
 	private final String name;
 	/** The dimension of the parameter if it is an array. */
 	private final String dimension;
-	/** The index of the parameter (i.e. its zero-based position in the parameter list). */
-	private final int index;
 	/** True if this parameter is nullable, false if nonnull, and null if unspecified. */
 	private final Boolean nullable;
 	
@@ -30,7 +28,6 @@ public final class Parameter {
 		Objects.requireNonNull(name);
 		this.type = type;
 		this.name = name;
-		this.index = index;
 		this.nullable = nullable;
 		// Extract the dimension from the type string if the type is an array.
 		int dimensionIndex = type.indexOf('[');
@@ -54,15 +51,6 @@ public final class Parameter {
 	 */
 	public String getDimension() {
 		return dimension;
-	}
-	
-	/**
-	 * Returns the index of the parameter (i.e. its zero-based position in the parameter list).
-	 * 
-	 * @return the index of the parameter (i.e. its zero-based position in the parameter list)
-	 */
-	public int getIndex() {
-		return index;
 	}
 
 	/**
@@ -115,7 +103,8 @@ public final class Parameter {
 		if (!(obj instanceof Parameter)) return false;
 		
 		Parameter that = (Parameter) obj;
-		return type.equals(that.type) && name.equals(that.name);
+		return type.equals(that.type) && name.equals(that.name)
+			   && (nullable == null ? that.nullable == null : nullable.equals(that.nullable));
 	}
 	
 	/**
@@ -125,7 +114,7 @@ public final class Parameter {
 	 */
 	@Override
 	public int hashCode() {
-		return Objects.hash(type, name);
+		return Objects.hash(type, name, nullable);
 	}
 	
 	/**

@@ -2,11 +2,10 @@ package org.toradocu.translator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.omg.PortableInterceptor.LOCATION_FORWARD;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
@@ -39,33 +38,12 @@ public class ConditionTranslator {
 				List<PropositionSeries> extractedPropositions
 						= PropositionExtractor.getPropositionSeries(tag.getComment());
 
+				Set<String> conditions = new LinkedHashSet<>();
 				// Identify Java code elements in propositions.
 				for (PropositionSeries propositions : extractedPropositions) {
-					translatePropositions(propositions, method, tag);
+					translatePropositions(propositions, method);
+					conditions.add(propositions.getTranslation());
 				}
-				
-				/*
-				// We remove from the proposition graph all the proposition for which the translation has failed
-//				pruneUntranslatedPropositions(propositionGraph);
-				
-				// We remove from the proposition graph all the proposition we know are wrong
-//				pruneWrongTranslations(propositionGraph);
-				
-				// We build the Java conditions taking into account also conjunctions
-//				Set<Proposition> visitedPropositions = new HashSet<>();
-//				for (ConjunctionEdge<Proposition> edge : propositionGraph.edgeSet()) { // TODO Improve this. We do not support multiple conjunctions
-//					javaConditions.add(edge.getSource().getTranslation().get() + edge.getConjunction() + edge.getTarget().getTranslation().get());
-//					visitedPropositions.add(edge.getSource());
-//					visitedPropositions.add(edge.getTarget());
-//				}
-//				for (Proposition p : propositionGraph.vertexSet()) { // This loop adds propositions not linked with others by a conjunction
-//					if (!visitedPropositions.contains(p)) {
-//						conditions.add(p.getTranslation().get());
-//					}
-//				}
-				*/
-				
-				Set<String> conditions = new HashSet<>(Arrays.asList("DEBUG_CONDITION_1", "DEBUG_CONDITION_2"));
 				tag.setConditions(conditions);
 			}
 		}
@@ -81,29 +59,15 @@ public class ConditionTranslator {
 		builder.build().print();
 	}
 
-//	private static void pruneWrongTranslations(Graph<Proposition, ConjunctionEdge<Proposition>> propositionGraph) {
-//		HashSet<Proposition> propositions = new HashSet<>(propositionGraph.vertexSet());
-//		for (Proposition p : propositions) {
-//			if (p.getTranslation().isPresent() && p.getTranslation().get().contains("target==null")) {
-//				propositionGraph.removeVertex(p);
-//			}
-//		}
-//	}
-//
-//	private static void pruneUntranslatedPropositions(Graph<Proposition, ConjunctionEdge<Proposition>> propositionGraph) {
-//		HashSet<Proposition> propositions = new HashSet<>(propositionGraph.vertexSet());
-//		for (Proposition p : propositions) {
-//			if (!p.getTranslation().isPresent()) {
-//				propositionGraph.removeVertex(p);
-//			}
-//		}
-//	}
-
-	private static void translatePropositions(PropositionSeries propositionSeries, DocumentedMethod method, ThrowsTag tag) {
-	
+	/**
+	 * Translates the {@code Proposition}s in the given {@code propositionSeries} to Java expressions.
+	 * 
+	 * @param propositionSeries the {@code Proposition}s to translate into Java expressions
+	 * @param method the method the containing the Javadoc comment from which the {@code propositionSeries} was
+	 *        extracted
+	 */
+	private static void translatePropositions(PropositionSeries propositionSeries, DocumentedMethod method) {
 		for (Proposition p : propositionSeries.getPropositions()) {
-			String translation = "";
-			
 			Set<CodeElement<?>> subjectMatches;
 			subjectMatches = Matcher.subjectMatch(p.getSubject(), method);
 			if (subjectMatches.isEmpty()) {
@@ -111,41 +75,45 @@ public class ConditionTranslator {
 				return;
 			}
 			
-//			for (CodeElement<?> subjectMatch : subjectMatches) { // A subject can match multiple elements (e.g., "either value...")
-//				String translatedPredicate = Matcher.predicateMatch(p.getRelation(), subjectMatch);
-//				if (translatedPredicate == null) {
-//					LOG.fine("Failed predicate translation for: " + p);
-//					continue;
-//				}
-//					
-//				String translatedSubject = subjectMatch.getStringRepresentation();
-//				String t = translatedSubject + translatedPredicate;
-//				
-//				if (t.contains("target==null")) {
-//					LOG.fine("Ignored translation: " + t);
-//					continue;
-//				}
-//				LOG.fine("Translated as: " + t);
-//				if (translation.isEmpty()) {
-//					translation = translatedSubject + translatedPredicate;
-//				} else {
-//					translation = translation + getConjunction(p.getSubject()) + translatedSubject + translatedPredicate;
-//				}
-//			}
-//			
-//			if (!translation.isEmpty()) {
-//				p.setTranslation(translation);
-//			}
+			// A single subject can match multiple elements (e.g., in "either value is null").
+			// Therefore, predicate matching should be attempted for each matched subject code element.
+			String translation = "";
+			for (CodeElement<?> subjectMatch : subjectMatches) {
+				String currentTranslation = Matcher.predicateMatch(subjectMatch, p.getPredicate(), p.isNegative());
+				if (currentTranslation == null) {
+					LOG.trace("Failed predicate translation for: " + p);
+					continue;
+				}
+				
+				if (translation.isEmpty()) {
+					translation = currentTranslation;
+				} else {
+					translation += getConjunction(p.getSubject()) + currentTranslation;
+				}
+			}
+			
+			if (!translation.isEmpty()) {
+				LOG.trace("Translated proposition " + p + " as: " + translation);
+				p.setTranslation(translation);
+			}
 		}
 	}
 
+	/**
+	 * Returns the conjunction that should be used to form the translation for a {@code Proposition}
+	 * with the given subject. Returns null if no conjunction should be used.
+	 * 
+	 * @param subject the subject of the {@code Proposition}
+	 * @return the conjunction that should be used to form the translation for the {@code Proposition}
+	 *         with the given subject or null if no conjunction should be used
+	 */
 	private static String getConjunction(String subject) {
-		if (subject.startsWith("either")) {
+		if (subject.startsWith("either ") || subject.startsWith("any ")) {
 			return "||";
-		} else if (subject.startsWith("both")) {
+		} else if (subject.startsWith("both") || subject.startsWith("all ")) {
 			return "&&";
 		} else {
-			return "";
+			return null;
 		}
 	}
 

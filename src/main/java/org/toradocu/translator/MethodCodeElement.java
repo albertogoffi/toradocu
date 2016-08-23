@@ -1,11 +1,10 @@
 package org.toradocu.translator;
 
 import java.lang.reflect.Method;
-import java.util.Arrays;
 
 /**
  * This class represents a method code element for use in translation. It holds String identifiers for the
- * method and a Java expression representation of the class to build Java conditions.
+ * method and a Java expression representation of the method to build Java conditions.
  */
 public class MethodCodeElement extends CodeElement<Method> {
 

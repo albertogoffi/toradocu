@@ -78,8 +78,10 @@ public class Proposition {
 	 * this proposition is negated.
 	 * 
 	 * @param translation a Java expression representing the proposition
+	 * @throws NullPointerException if translation is null
 	 */
 	public void setTranslation(String translation) {
+		Objects.requireNonNull(translation);
 		this.translation = translation;
 	}
 	
