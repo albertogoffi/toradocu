@@ -3,6 +3,8 @@ package org.toradocu.translator;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.Test;
@@ -15,11 +17,12 @@ public class MatcherTest {
 
 	@Test
 	public void test() throws Throwable {
-		Parameter p1 = new Parameter(new Type("Employee"), "employee", 0);
-		Parameter p2 = new Parameter(new Type("Double"), "salary", 1);
-		DocumentedMethod methodUnderTest = new DocumentedMethod.Builder(new Type(ClassUnderTest.class.getName()), "setSalary", null, p1, p2)
-				.tag(new ThrowsTag(new Type("NullPointerException"), "if employee or salary are null"))
-				.build();
+		List<Parameter> parameters = new ArrayList<>();
+		parameters.add(new Parameter(new Type("Employee"), "employee", 0));
+		parameters.add(new Parameter(new Type("Double"), "salary", 1));
+		List<ThrowsTag> tags = new ArrayList<>();
+		tags.add(new ThrowsTag(new Type("NullPointerException"), "if employee or salary are null"));
+		DocumentedMethod methodUnderTest = new DocumentedMethod(new Type(ClassUnderTest.class.getName()), "setSalary", null, parameters, false, tags);
 		
 		Set<CodeElement<?>> matchList = Matcher.subjectMatch("employee", methodUnderTest);
 		assertThat(matchList.size(), is(1));

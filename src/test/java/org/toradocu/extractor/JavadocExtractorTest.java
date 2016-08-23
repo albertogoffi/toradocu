@@ -1,8 +1,9 @@
 package org.toradocu.extractor;
 
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,7 +15,6 @@ import java.util.List;
 
 import org.junit.Test;
 import org.toradocu.Toradocu;
-import org.toradocu.extractor.DocumentedMethod.Builder;
 import org.toradocu.util.GsonInstance;
 
 import com.google.gson.Gson;
@@ -35,29 +35,38 @@ public class JavadocExtractorTest {
 	 */
 	@Test
 	public void exampleAClassTest() {
+	    List<Parameter> params = new ArrayList<>();
+	    List<ThrowsTag> tags = new ArrayList<>();
 		List<DocumentedMethod> expected = new ArrayList<>();
 		Type aClass = new Type("example.AClass");
 		
-		Builder constructor1 = new Builder(aClass, "AClass", null);
-		constructor1.tag(new ThrowsTag(npe, "always"));
-		expected.add(constructor1.build());
+		tags.add(new ThrowsTag(npe, "always"));
+		expected.add(new DocumentedMethod(aClass, "AClass", null, null, false, tags));
 		
-		Builder constructor2 = new Builder(aClass, "AClass", null, new Parameter(new Type("java.lang.String"), "x", 0));
-		constructor2.tag(new ThrowsTag(npe, "if x is null"));
-		constructor2.tag(new ThrowsTag(new Type("example.exception.AnException"), "if x is empty"));
-		expected.add(constructor2.build());
+		params.add(new Parameter(new Type("java.lang.String"), "x", 0));
+		tags.clear();
+		tags.add(new ThrowsTag(npe, "if x is null"));
+		tags.add(new ThrowsTag(new Type("example.exception.AnException"), "if x is empty"));
+		expected.add(new DocumentedMethod(aClass, "AClass", null, params, false, tags));
 		
-		Builder foo = new Builder(aClass, "foo", doubleType, new Parameter(new Type("int[]"), "array", 0, true));
-		foo.tag(new ThrowsTag(npe, "if array is null"));
-		expected.add(foo.build());
+		params.clear();
+		params.add(new Parameter(new Type("int[]"), "array", 0, true));
+		tags.clear();
+		tags.add(new ThrowsTag(npe, "if array is null"));
+		expected.add(new DocumentedMethod(aClass, "foo", doubleType, params, false, tags));
 		
-		Builder bar = new Builder(aClass, "bar", doubleType, new Parameter(objectType, "x", 0, false), new Parameter(objectType, "y", 1, false));
-		bar.tag(new ThrowsTag(iae, "if x is null"));
-		expected.add(bar.build());
+		params.clear();
+        params.add(new Parameter(objectType, "x", 0, false));
+        params.add(new Parameter(objectType, "y", 1, false));
+		tags.clear();
+        tags.add(new ThrowsTag(iae, "if x is null"));
+		expected.add(new DocumentedMethod(aClass, "bar", doubleType, params, false, tags));
 		
-		Builder baz = new Builder(aClass, "baz", doubleType, new Parameter(objectType, "x", 0));
-		baz.tag(new ThrowsTag(iae, "if x is null"));
-		expected.add(baz.build());
+		params.clear();
+        params.add(new Parameter(objectType, "x", 0));
+        tags.clear();
+        tags.add(new ThrowsTag(iae, "if x is null"));
+		expected.add(new DocumentedMethod(aClass, "baz", doubleType, params, false, tags));
 		
 		test("example.AClass", expected, testResources + "/example.AClass_extractor_output.txt", testResources);
 	}
@@ -67,26 +76,35 @@ public class JavadocExtractorTest {
 	 */ 
 	@Test
 	public void exampleAChildTest() {
+	    List<Parameter> params = new ArrayList<>();
+        List<ThrowsTag> tags = new ArrayList<>();
 		List<DocumentedMethod> expected = new ArrayList<>();
 		Type aClass = new Type("example.AClass");
 		Type aChild = new Type("example.AChild");
 		
-		Builder baz = new Builder(aChild, "baz", doubleType, new Parameter(objectType, "z", 0));
-		baz.tag(new ThrowsTag(iae, "if z is null"));
-		expected.add(baz.build());
+		params.add(new Parameter(objectType, "z", 0));
+		tags.add(new ThrowsTag(iae, "if z is null"));
+		expected.add(new DocumentedMethod(aChild, "baz", doubleType, params, false, tags));
 		
-		Builder vararg = new Builder(aChild, "vararg", doubleType, true, new Parameter(objectArrayType, "x", 0));
-		vararg.tag(new ThrowsTag(iae, "if x is null"));
-		expected.add(vararg.build());
+		params.clear();
+        params.add(new Parameter(objectArrayType, "x", 0));
+        tags.clear();
+        tags.add(new ThrowsTag(iae, "if x is null"));
+		expected.add(new DocumentedMethod(aChild, "vararg", doubleType, params, true, tags));
 		
-		Builder foo = new Builder(aClass, "foo", doubleType, new Parameter(new Type("int[]"), "array", 0, true));
-		foo.tag(new ThrowsTag(npe, "if array is null"));
-		expected.add(foo.build());
+		params.clear();
+		params.add(new Parameter(new Type("int[]"), "array", 0, true));
+		tags.clear();
+		tags.add(new ThrowsTag(npe, "if array is null"));
+		expected.add(new DocumentedMethod(aClass, "foo", doubleType, params, false, tags));
 		
-		Builder bar = new Builder(aClass, "bar", doubleType, new Parameter(objectType, "x", 0, false), new Parameter(objectType, "y", 1, false));
-		bar.tag(new ThrowsTag(iae, "if x is null"));
-		expected.add(bar.build());
-		
+		params.clear();
+        params.add(new Parameter(objectType, "x", 0, false));
+        params.add(new Parameter(objectType, "y", 1, false));
+        tags.clear();
+        tags.add(new ThrowsTag(iae, "if x is null"));
+		expected.add(new DocumentedMethod(aClass, "bar", doubleType, params, false, tags));
+		        
 		test("example.AChild", expected, testResources + "/example.AChild_extractor_output.txt", testResources);
 	}
 	

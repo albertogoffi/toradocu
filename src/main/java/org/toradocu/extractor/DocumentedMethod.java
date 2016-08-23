@@ -1,10 +1,10 @@
 package org.toradocu.extractor;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import org.toradocu.util.Checks;
 
@@ -21,47 +21,67 @@ public final class DocumentedMethod {
 	/** Return type of the method. Null if this DocumentedMethod represents a constructor. */
 	private final Type returnType;
 	/** Method's parameters. */
-	private final List<Parameter> parameters;
+	private final Set<Parameter> parameters;
 	/** Flag indicating whether this method takes a variable number of arguments.  */
 	private final boolean isVarArgs;
 	/** Throws tags specified in the method's Javadoc. */
-	private final List<ThrowsTag> throwsTags;
+	private final Set<ThrowsTag> throwsTags;
 	
 	/** Method signature in the format method_name(type1 arg1, type2 arg2). */
 	private final String signature;
 	
-	/**
-	 * Constructs a {@code DocumentedMethod} using the information in the provided {@code Builder}.
+	/** 
+	 * Constructs a {@code DocumentedMethod} contained in a given {@code containingClass}
+	 * with the given {@code name}, {@code returnType}, {@code parameters}, and {@code throwsTags}.
 	 * 
-	 * @param builder the {@code Builder} containing information about this {@code DocumentedMethod}
+	 * @param containingClass class containing the {@code DocumentedMethod}
+	 * @param name the fully qualified name of the {@code DocumentedMethod}
+	 * @param returnType the fully qualified return type of the metho or the empty string 
+	 *        if the {@code DocumentedMethod} is a constructor
+	 * @param parameters the parameters of the {@code DocumentedMethod}
+	 * @param isVarArgs true if the {@code DocumentedMethod} takes a variable number of arguments, false otherwise
+	 * @param throwsTags the {@code @throws tags} of the {@code DocumentedMethod}
+	 * 
+	 * @throws NullPointerException if {@code containingClass} or {@code name} is null
 	 */
-	private DocumentedMethod(Builder builder) {
-		containingClass = builder.containingClass;
-		name = builder.name;
-		returnType = builder.returnType;
-		parameters = builder.parameters;
-		isVarArgs = builder.isVarArgs;
-		throwsTags = builder.throwsTags;
-		// Create the method signature using the method name and parameters.
-		StringBuilder signatureBuilder = new StringBuilder(name + "(");
-		for (Parameter param : parameters) {
-			signatureBuilder.append(param);
-			signatureBuilder.append(",");
-		}
-		if (signatureBuilder.charAt(signatureBuilder.length() - 1) == ',') { // Remove last comma when needed.
-			signatureBuilder.deleteCharAt(signatureBuilder.length() - 1);
-		}
-		signatureBuilder.append(")");
-		signature = signatureBuilder.toString();
+	public DocumentedMethod(Type containingClass, String name, Type returnType, Collection<Parameter> parameters, boolean isVarArgs,
+	        Collection<ThrowsTag> throwsTags) {
+	    Checks.nonNullParameter(containingClass, "containingClass");
+	    Checks.nonNullParameter(name, "name");
+
+	    if (name.contains(".")) {
+	        throw new IllegalArgumentException("Invalid method name: " + name 
+	                + ". Method's name must be a valid Java method name (i.e., method name must not contain '.'");
+	    }
+
+	    this.containingClass = containingClass;
+	    this.name = name;
+	    this.returnType = returnType;
+	    this.parameters = parameters == null ? new LinkedHashSet<>() : new LinkedHashSet<>(parameters);
+	    this.isVarArgs = isVarArgs;
+	    this.throwsTags = throwsTags == null ? new LinkedHashSet<>() : new LinkedHashSet<>(throwsTags);
+	    
+	    // Create the method signature using the method name and parameters.
+	    StringBuilder signatureBuilder = new StringBuilder(name + "(");
+	    for (Parameter param : this.parameters) {
+	        signatureBuilder.append(param);
+	        signatureBuilder.append(",");
+	    }
+	    // Remove last comma when needed.
+	    if (signatureBuilder.charAt(signatureBuilder.length() - 1) == ',') { 
+	        signatureBuilder.deleteCharAt(signatureBuilder.length() - 1);
+	    }
+	    signatureBuilder.append(")");
+	    signature = signatureBuilder.toString();
 	}
 	
 	/**
-	 * Returns an unmodifiable list view of the throws tags in this method.
+	 * Returns an unmodifiable view of the throws tags in this method.
 	 * 
-	 * @return an unmodifiable list view of the throws tags in this method
+	 * @return an unmodifiable view of the throws tags in this method
 	 */
-	public List<ThrowsTag> throwsTags() {
-		return Collections.unmodifiableList(throwsTags);
+	public Set<ThrowsTag> throwsTags() {
+		return Collections.unmodifiableSet(throwsTags);
 	}
 	
 	/**
@@ -92,12 +112,12 @@ public final class DocumentedMethod {
 	}
 
 	/**
-	 * Returns an unmodifiable list view of the parameters in this method.
+	 * Returns an unmodifiable view of the parameters in this method.
 	 * 
-	 * @return an unmodifiable list view of the parameters in this method
+	 * @return an unmodifiable view of the parameters in this method
 	 */
-	public List<Parameter> getParameters() {
-		return Collections.unmodifiableList(parameters);
+	public Set<Parameter> getParameters() {
+		return Collections.unmodifiableSet(parameters);
 	}
 	
 	/**
@@ -175,94 +195,4 @@ public final class DocumentedMethod {
 		methodAsString.append(containingClass + Type.SEPARATOR + signature);
 		return methodAsString.toString();
 	}
-	
-	/**
-	 * Builds a {@code DocumentedMethod} using the provided information.
-	 */
-	public static class Builder implements org.toradocu.util.Builder<DocumentedMethod> {
-
-		/** The class containing the {@code DocumentedMethod} to build. */
-		private final Type containingClass;
-		/** The name of the {@code DocumentedMethod} to build. */
-		private final String name;
-		/** The parameters of the {@code DocumentedMethod} to build. */
-		private final List<Parameter> parameters;
-		/** The return type of the {@code DocumentedMethod} to build. */
-		private final Type returnType;
-		/** Flag indicating whether the {@code DocumentedMethod} to build takes a variable number of arguments. */
-		private final boolean isVarArgs;
-		/** The throws tags of the {@code DocumentedMethod} to build. */
-		private final List<ThrowsTag> throwsTags;
-		
-		/** 
-		 * Constructs a builder for a {@code DocumentedMethod} contained in a given {@code containingClass}
-		 * with the given {@code name}, {@code returnType}, and {@parameters}.
-		 * 
-		 * @param containingClass class containing the {@code DocumentedMethod} to build
-		 * @param name name of the {@code DocumentedMethod} to build
-		 * @param returnType return type of the method or null 
-		 *        if the {@code DocumentedMethod} to build is a constructor
-		 * @param parameters the parameters of the {@code DocumentedMethod} to build
-		 * 
-		 * @throws NullPointerException if {@code containingClass} or {@code name} or {@parameters} is null
-		 */
-		public Builder(Type containingClass, String name, Type returnType, Parameter... parameters) {
-			this(containingClass, name, returnType, false, parameters);
-		}
-		
-		/** 
-		 * Constructs a builder for a {@code DocumentedMethod} contained in a given {@code containingClass}
-		 * with the given {@code name}, {@code returnType}, and {@parameters}.
-		 * 
-		 * @param containingClass class containing the {@code DocumentedMethod} to build
-		 * @param name the fully qualified name of the {@code DocumentedMethod} to build
-		 * @param returnType the fully qualified return type of the method, including its dimension if it's an array,
-		 *        or the empty string if the {@code DocumentedMethod} to build is a constructor
-		 * @param isVarArgs true if the {@code DocumentedMethod} to build takes a variable number of arguments, false otherwise
-		 * @param parameters the parameters of the {@code DocumentedMethod} to build
-		 * 
-		 * @throws NullPointerException if {@code containingClass} or {@code name} or {@parameters} is null
-		 */
-		public Builder(Type containingClass, String name, Type returnType, boolean isVarArgs, Parameter... parameters) {
-			Checks.nonNullParameter(containingClass, "containingClass");
-			Checks.nonNullParameter(name, "name");
-			Checks.nonNullParameter(parameters, "parameters");
-			
-			if (name.contains(".")) {
-			    throw new IllegalArgumentException("Invalid method name: " + name + ". Method's name must be a valid "
-			    		+ "Java method name (i.e., method name must not contain '.'");
-			}
-			
-			this.containingClass = containingClass;
-			this.name = name;
-			this.returnType = returnType;
-			this.isVarArgs = isVarArgs;
-			this.parameters = Arrays.asList(parameters);
-			this.throwsTags = new ArrayList<>();
-		}
-		
-		/**
-		 * Adds the specified throws tag to the {@code DocumentedMethod} to build.
-		 * 
-		 * @param tag the throws tag in the {@code DocumentedMethod} to build
-		 * @return this {@code Builder}
-		 */
-		public Builder tag(ThrowsTag tag) {
-			if (!throwsTags.contains(tag)) {
-				throwsTags.add(tag);
-			}
-			return this;
-		}
-		
-		/**
-		 * Builds and returns a {@code DocumentedMethod} with the information given to this {@code Builder}.
-		 * 
-		 * @return a {@code DocumentedMethod} containing the information passed to this builder
-		 */
-		@Override
-		public DocumentedMethod build() {
-			return new DocumentedMethod(this);
-		}
-	}
-	
 }
