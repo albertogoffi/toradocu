@@ -20,15 +20,15 @@ public class Type {
 	private final boolean isArray;
 	
 	/**
-	 * Creates a new {@code Type} with a given fully-qualified name.
+	 * Creates a new {@code Type} with a given fully qualified name.
 	 * 
-	 * @param qualifiedName fully-qualified name of this {@code Type}
+	 * @param qualifiedName fully qualified name of this {@code Type}
 	 * @throws NullPointerException if {@code qualifiedName} is null
 	 */
 	public Type(String qualifiedName) {
 		Objects.requireNonNull(qualifiedName);
 		if (qualifiedName.startsWith(SEPARATOR) || qualifiedName.endsWith(SEPARATOR)) {
-			throw new IllegalArgumentException(qualifiedName + " is not a valid fully-qualified type name.");
+			throw new IllegalArgumentException(qualifiedName + " is not a valid fully qualified type name.");
 		}
 		
 		this.qualifiedName = qualifiedName;
@@ -41,9 +41,9 @@ public class Type {
 	}
 	
 	/**
-	 * Returns the fully-qualified name of this {@code Type}
+	 * Returns the fully qualified name of this {@code Type}.
 	 * 
-	 * @return the fully-qualified name of this {@code Type}
+	 * @return the fully qualified name of this {@code Type}
 	 */
 	public String getQualifiedName() {
 		return qualifiedName;
