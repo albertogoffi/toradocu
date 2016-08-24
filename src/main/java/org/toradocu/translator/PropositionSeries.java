@@ -107,6 +107,7 @@ public class PropositionSeries {
 	 */
 	public String getTranslation() {
 		StringBuilder output = new StringBuilder();
+		// Only output translations for those propositions that actually have a translation.
 		int i = 0;
 		while (i < numberOfPropositions() && !propositions.get(i).getTranslation().isPresent()) {
 			i++;

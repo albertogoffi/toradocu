@@ -258,6 +258,8 @@ public class Matcher {
 			return "<0";
 		case "is positive":
 			return ">0";
+		case "is zero":
+			return "==0";
 		case "been set":
 			return "==null";
 		default:

@@ -71,8 +71,11 @@ public class ThrowsTag {
 	public void setConditions(Set<String> conditions) {
 		Objects.requireNonNull(conditions, "conditions must not be null");
 		
+		conditions.removeIf(s -> s.isEmpty());
 		if (conditions.size() == 0) {
 			this.conditions = "";
+		} else if (conditions.size() == 1) {
+			this.conditions = conditions.iterator().next();
 		} else {
 			Iterator<String> it = conditions.iterator();
 			StringBuilder conditionsBuilder = new StringBuilder("(" + it.next() + ")");
@@ -128,8 +131,8 @@ public class ThrowsTag {
 	 * format "@throws EXCEPTION COMMENT" where EXCEPTION is the fully qualified name of
 	 * the exception in this throws tag and COMMENT is the text of the comment in the throws tag.
 	 * If translation has been attemped on this tag, then the returned string is also appended
-	 * with " ==> [CONDITION_1, CONDITION_2, ...]" where CONDITION_i are the translated conditions
-	 * for the exception as Java expressions.
+	 * with " ==> CONDITION" where CONDITION is the translated condition for the exception as
+	 * a Java expression or the empty string if translation failed.
 	 * 
 	 * @return a string representation of this throws tag
 	 */

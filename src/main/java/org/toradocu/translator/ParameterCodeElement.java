@@ -8,6 +8,7 @@ import java.lang.reflect.Parameter;
  */
 public class ParameterCodeElement extends CodeElement<Parameter> {
 
+	/** The 0-based index of this parameter in its associated method's parameter list. */
 	private int index;
 	
 	/**
