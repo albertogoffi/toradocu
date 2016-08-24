@@ -28,14 +28,14 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
 		addIdentifier(parameter.getName() + " " + parameter.getType().getSimpleName());
 		
 		// Add type identifiers
-		if (!parameter.getType().isArray()) {
-			addIdentifier(parameter.getType().getSimpleName());
-		} else {
+		if (parameter.getType().isArray()) {
 			addIdentifier("array");
 			addIdentifier(parameter.getType().getSimpleName() + " array");
-		}
-		if (parameter.getType().getName().equals("java.lang.Iterable"))	{
-			addIdentifier("collection");
+		} else {
+			addIdentifier(parameter.getType().getSimpleName());
+			if (parameter.getType().getName().equals("java.lang.Iterable"))	{
+				addIdentifier("collection");
+			}
 		}
 	}
 	

@@ -2,17 +2,17 @@ package org.toradocu.extractor;
 
 import java.util.Objects;
 
+import org.toradocu.util.Checks;
+
 /**
  * This class represents a method parameter.
  */
 public final class Parameter {
 	
-	/** The fully qualified name of the type of the parameter including its dimension. */
-	private final String type;
+	/** The type of the parameter. */
+	private final Type type;
 	/** The name of the parameter. */
 	private final String name;
-	/** The dimension of the parameter if it is an array. */
-	private final String dimension;
 	/** True if this parameter is nullable, false if nonnull, and null if unspecified. */
 	private final Boolean nullable;
 	
@@ -22,16 +22,15 @@ public final class Parameter {
 	 * @param type the type of the parameter including its dimension
 	 * @param name the name of the parameter
 	 * @param nullable true if the parameter is nullable, false if nonnull and null if unspecified
+	 * 
+	 * @throws NullPointerException if type or name is null
 	 */
-	public Parameter(String type, String name, int index, Boolean nullable) {
-		Objects.requireNonNull(type);
-		Objects.requireNonNull(name);
+	public Parameter(Type type, String name, Boolean nullable) {
+		Checks.nonNullParameter(type, "type");
+		Checks.nonNullParameter(name, "name");
 		this.type = type;
 		this.name = name;
 		this.nullable = nullable;
-		// Extract the dimension from the type string if the type is an array.
-		int dimensionIndex = type.indexOf('[');
-		dimension = dimensionIndex > 0 ? type.substring(dimensionIndex, type.length()) : "";
 	}
 	
 	/**
@@ -40,52 +39,33 @@ public final class Parameter {
 	 * @param type the type of the parameter including its dimension
 	 * @param name the name of the parameter
 	 */
-	public Parameter(String type, String name, int index) {
-		this(type, name, index, null);
-	}
-	
-	/**
-	 * Returns the dimension of the parameter if it is an array. Otherwise returns empty string.
-	 * 
-	 * @return the dimension of the parameter if it is an array or empty string
-	 */
-	public String getDimension() {
-		return dimension;
+	public Parameter(Type type, String name) {
+		this(type, name, null);
 	}
 
 	/**
-	 * Returns the name of the parameter.
+	 * Returns the simple name of the parameter.
 	 * 
-	 * @return the name of the parameter
+	 * @return the simple name of the parameter
 	 */
 	public String getName() {
 		return name;
 	}
 	
 	/**
-	 * Returns the fully qualified name of the type of the parameter including its dimension.
+	 * Returns the type of the parameter.
 	 * 
-	 * @return the fully qualified name of the type of the parameter including its dimension
+	 * @return the type of the parameter
 	 */
-	public String getType() {
+	public Type getType() {
 		return type;
 	}
 	
 	/**
-	 * Returns the simple type of the parameter.
-	 * 
-	 * @return the simple type of the parameter
-	 */
-	public String getSimpleType() {
-		int lastDotIndex = type.lastIndexOf('.');
-		return lastDotIndex < 0 ? getType() : type.substring(lastDotIndex + 1);
-	}
-	
-	/**
-	 * Returns true if the parameter is nullable, false if it is nonnull, or null if its
+	 * Returns {@code true} if the parameter is nullable, {@code false} if it is nonnull, or {@code null} if its
 	 * nullability is unspecified.
 	 * 
-	 * @return true if the parameter is nullable, false if it is nonnull, or null if its
+	 * @return {@code true} if the parameter is nullable, {@code false} if it is nonnull, or {@code null} if its
 	 * nullability is unspecified
 	 */
 	public Boolean getNullability() {
@@ -103,8 +83,9 @@ public final class Parameter {
 		if (!(obj instanceof Parameter)) return false;
 		
 		Parameter that = (Parameter) obj;
-		return type.equals(that.type) && name.equals(that.name)
-			   && (nullable == null ? that.nullable == null : nullable.equals(that.nullable));
+		return type.equals(that.type) && 
+			   name.equals(that.name) &&
+			   Objects.equals(nullable, that.nullable);
 	}
 	
 	/**

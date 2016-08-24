@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'application'
 	id 'eclipse'
+	id 'jacoco'
 	id 'com.github.johnrengelman.shadow' version '1.2.3'
 	id 'de.undercouch.download' version '2.1.0'
 }
@@ -9,7 +10,7 @@ plugins {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 mainClassName = "org.toradocu.Toradocu"
-version = '0.1'
+version = '1.0-devel'
 jar {
     manifest {
         attributes 'Implementation-Title': 'Toradocu',
@@ -17,21 +18,15 @@ jar {
     }
 }
 
+//compileJava {
+//    options.compilerArgs << '-Xlint:unchecked'
+//}
+
 sourceSets {
-    main {
-        java {
-            srcDir 'src/main/java'
-            exclude 'org/toradocu/translator/**Element.java'
-            exclude 'org/toradocu/translator/Matcher.java'
-            exclude 'org/toradocu/OracleGenerator.java'
-            exclude 'org/toradocu/aspect/**'
-        }
-    }
     test {
         java {
             srcDir 'src/test/java'
             exclude 'org/toradocu/**.java'
-            exclude 'org/toradocu/nlp/**'
             exclude 'org/toradocu/testlib/**'
             exclude 'org/toradocu/translator/**'
         }
@@ -75,12 +70,6 @@ compileJava.doLast {
 	tasks.copyDocletResources2.execute()
 }
 
-test {
-	testLogging {
-		events 'PASSED', 'SKIPPED', 'FAILED', 'STANDARD_OUT', 'STANDARD_ERROR'
-	}
-}
-
 import de.undercouch.gradle.tasks.download.Download
 
 task downloadGuavaSrc(type: Download) {
@@ -122,3 +111,10 @@ task removeDefaultOutputDir(type: Delete) {
 }
 
 clean.dependsOn removeDefaultOutputDir
+
+/* Make Emacs TAGS table */
+task tags(type: Exec) {
+  description "Run etags to create an Emacs TAGS table"
+  environment PATH: "$System.env.PATH:$buildDir/utils/plume-lib/bin"
+  commandLine "bash", "-c", "find src/ -name *.java | sort-directory-order | xargs etags"
+}

@@ -1,17 +1,13 @@
 package org.toradocu.translator;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.ThrowsTag;
-import org.toradocu.util.OutputPrinter;
 
 /**
  * ConditionTranslator translates exception comments in method documentation to
@@ -30,13 +26,13 @@ public class ConditionTranslator {
 		for (DocumentedMethod method : methods) {
 			for (ThrowsTag tag : method.throwsTags()) {
 				StringBuilder logMessage = new StringBuilder("Identifying propositions from: ");
-				logMessage.append("\"" + tag.getComment() + "\" in " + method.getSignature());
+				logMessage.append("\"" + tag.exceptionComment() + "\" in " + method.getSignature());
 				LOG.trace(logMessage.toString());
 				
 				// Identify propositions in the comment. Each sentence in the comment is parsed into
 				// a PropositionSeries.
 				List<PropositionSeries> extractedPropositions
-						= PropositionExtractor.getPropositionSeries(tag.getComment());
+						= PropositionExtractor.getPropositionSeries(tag.exceptionComment());
 
 				Set<String> conditions = new LinkedHashSet<>();
 				// Identify Java code elements in propositions.
@@ -48,15 +44,15 @@ public class ConditionTranslator {
 			}
 		}
 		// Print translated throws tags.
-		List<ThrowsTag> tags = methods.stream()
-									  .map(m -> m.throwsTags())
-									  .collect(ArrayList::new, ArrayList::addAll, ArrayList::addAll);
-		OutputPrinter.Builder builder = new OutputPrinter.Builder("ConditionTranslator", tags);
-		if (Toradocu.CONFIGURATION.getConditionTranslatorOutput() != null) {
-			builder.file(Toradocu.CONFIGURATION.getConditionTranslatorOutput());
-		}
-		builder.logger(LOG);
-		builder.build().print();
+//		List<ThrowsTag> tags = methods.stream()
+//									  .map(m -> m.throwsTags())
+//									  .collect(ArrayList::new, ArrayList::addAll, ArrayList::addAll);
+//		OutputPrinter.Builder builder = new OutputPrinter.Builder("ConditionTranslator", tags);
+//		if (Toradocu.CONFIGURATION.getConditionTranslatorOutput() != null) {
+//			builder.file(Toradocu.CONFIGURATION.getConditionTranslatorOutput());
+//		}
+//		builder.logger(LOG);
+//		builder.build().print();
 	}
 
 	/**

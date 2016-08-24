@@ -1,112 +1,134 @@
 package org.toradocu.extractor;
 
-//import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.Matchers.emptyCollectionOf;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.junit.Test;
-import org.toradocu.extractor.DocumentedMethod.Builder;
 
 import com.google.gson.Gson;
 
 public class DocumentedMethodTest {
 	
+	private final Type voidType = new Type("void");
+	private final Type arrayType = new Type("java.lang.String[]");
+	private final Type npe = new Type("java.lang.NullPointerException");
+	private final Type iae = new Type("java.lang.IllegalArgumentException");
+	private final Type containingClass = new Type("example.Foo");
+	
 	@Test
 	public void testBasics() {
-		DocumentedMethod method = new DocumentedMethod.Builder("Foo.bar").build();
-		assertThat(method.getSignature(), is("Foo.bar()"));
-		assertThat(method.getContainingClass(), is("Foo"));
+		DocumentedMethod method = new DocumentedMethod(containingClass, "bar", voidType, null, false, null);
+		assertThat(method.getSignature(), is("bar()"));
+		assertThat(method.getName(), is("bar"));
+		assertThat(method.getContainingClass(), is(containingClass));
+		assertThat(method.getReturnType(), is(voidType));
+		assertThat(method.isConstructor(), is(false));
 		assertThat(method.getParameters(), is(emptyCollectionOf(Parameter.class)));
+		assertThat(method.isVarArgs(), is(false));
+		
+		method = new DocumentedMethod(containingClass, "Foo", null, null, false, null);
+		assertThat(method.getSignature(), is("Foo()"));
+		assertThat(method.getContainingClass(), is(containingClass));
+		assertThat(method.getReturnType(), is(nullValue()));
+		assertThat(method.isConstructor(), is(true));
+		assertThat(method.getParameters(), is(emptyCollectionOf(Parameter.class)));
+		assertThat(method.isVarArgs(), is(false));
+		
+		List<Parameter> params = new ArrayList<>();
+		params.add(new Parameter(new Type("int"), "elements", 0));
+		method = new DocumentedMethod(containingClass, "bat", voidType, params, true, null);
+		assertThat(method.isVarArgs(), is(true));
 	}
 	
 	@Test
 	public void testIllegalMethodName() {
 		try {
-			new DocumentedMethod.Builder("foo");
-			fail("IllegalArgumentException expected but not thrown.");
-		} catch (IllegalArgumentException e) {}
-		
-		try {
-			new DocumentedMethod.Builder(".Foo.bar");
-			fail("IllegalArgumentException expected but not thrown.");
-		} catch (IllegalArgumentException e) {}
-		
-		try {
-			new DocumentedMethod.Builder("Foo.bar.");
+			new DocumentedMethod(new Type("Foo"), "Foo.bar", voidType, null, false, null);
 			fail("IllegalArgumentException expected but not thrown.");
 		} catch (IllegalArgumentException e) {}
 	}
 	
 	@Test
 	public void testMultipleTags() {
-		Builder methodBuilder = new DocumentedMethod.Builder("Foo.compute", new Parameter("java.lang.String[]", "array"));
-		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
-		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
-		DocumentedMethod method = methodBuilder.build();
-		
-		List<ThrowsTag> tags = method.throwsTags();
-		assertThat(tags.size(), is(1));
-		assertThat(tags.get(0), is(new ThrowsTag("java.lang.NullPointerException", "if the array is empty")));
-		
-		methodBuilder = new DocumentedMethod.Builder("Foo.compute", new Parameter("java.lang.String[]", "array"));
-        methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is null"));
-        methodBuilder.tag(new ThrowsTag("java.lang.IllegalArgumentException", "if the array is empty"));
-        method = methodBuilder.build();
+	    List<Parameter> params = new ArrayList<>();
+        params.add(new Parameter(new Type("int"), "elements", 0));
+        List<ThrowsTag> tags = new ArrayList<>();
+        tags.add(new ThrowsTag(npe, "if the array is empty"));
+        tags.add(new ThrowsTag(npe, "if the array is empty"));
         
-        tags = method.throwsTags();
-        assertThat(tags.size(), is(2));
-        assertThat(tags.get(0), is(new ThrowsTag("java.lang.NullPointerException", "if the array is null")));
-        assertThat(tags.get(1), is(new ThrowsTag("java.lang.IllegalArgumentException", "if the array is empty")));
+        DocumentedMethod method = new DocumentedMethod(containingClass, "compute", voidType, params, false, tags);
+		assertThat(method.throwsTags().size(), is(1));
+        assertThat(method.throwsTags().iterator().next(), is(new ThrowsTag(npe, "if the array is empty")));
+		
+		tags.clear();
+		tags.add(new ThrowsTag(npe, "if the array is null"));
+		tags.add(new ThrowsTag(iae, "if the array is empty"));
+        method = new DocumentedMethod(containingClass, "compute", voidType, params, false, tags);
+        assertThat(method.throwsTags().size(), is(2));
+        Iterator<ThrowsTag> iterator = method.throwsTags().iterator();
+        assertThat(iterator.next(), is(new ThrowsTag(npe, "if the array is null")));
+        assertThat(iterator.next(), is(new ThrowsTag(iae, "if the array is empty")));
 	}
 	
 	@Test
 	public void testToString() {
-	    DocumentedMethod method = new DocumentedMethod.Builder("Foo.compute").build();
-        assertThat(method.toString(), is("Foo.compute()"));
-	  
-		method = new DocumentedMethod.Builder("Foo.compute", new Parameter("java.lang.String[]", "array")).build();
-		assertThat(method.toString(), is("Foo.compute(java.lang.String[] array)"));
+	    DocumentedMethod method = new DocumentedMethod(containingClass, "compute", voidType, null, false, null);
+        assertThat(method.toString(), is("void example.Foo.compute()"));
+        
+        List<Parameter> params = new ArrayList<>();
+        params.add(new Parameter(arrayType, "array", 0));
+		method = new DocumentedMethod(containingClass, "compute", voidType, params, false, null);
+		assertThat(method.toString(), is("void example.Foo.compute(java.lang.String[] array)"));
 		
-	    method = new DocumentedMethod.Builder("Foo.compute", new Parameter("int", "x"), new Parameter("int", "y")).build();
-        assertThat(method.toString(), is("Foo.compute(int x,int y)"));
+		params.clear();
+        params.add(new Parameter(new Type("int"), "x", 0));
+        params.add(new Parameter(new Type("int"), "y", 1));
+	    method = new DocumentedMethod(containingClass, "compute", voidType, params, false, null);
+        assertThat(method.toString(), is("void example.Foo.compute(int x,int y)"));
+        
+        method = new DocumentedMethod(containingClass, "Foo", null, null, false, null);
+        assertThat(method.toString(), is("example.Foo.Foo()"));
 	}
 	
 	@Test
 	public void testEquals() {
-		Builder methodBuilder = new DocumentedMethod.Builder("Foo.compute", new Parameter("java.lang.String[]", "array"));
-		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
-		DocumentedMethod method1 = methodBuilder.build();
+	    List<Parameter> params = new ArrayList<>();
+	    List<ThrowsTag> tags = new ArrayList<>();
+	    
+	    params.add(new Parameter(arrayType, "array", 0));
+	    tags.add(new ThrowsTag(npe, "if the array is empty"));
+		DocumentedMethod method1 =  new DocumentedMethod(containingClass, "compute", voidType, params, false, tags);
 		
 		assertThat(method1.equals(method1), is(true));
 		assertThat(method1.equals(new Object()), is(false));
-
-		methodBuilder = new DocumentedMethod.Builder("Foo.compute", new Parameter("java.lang.String[]", "array"));
-		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
-		DocumentedMethod method2 = methodBuilder.build();
 		
+		DocumentedMethod method2 =  new DocumentedMethod(containingClass, "compute", voidType, params, false, tags);
 		assertThat(method1.equals(method2), is(true));
 		assertThat(method1.hashCode(), is(equalTo(method2.hashCode())));
-		
-		methodBuilder = new DocumentedMethod.Builder("Foo.foo", new Parameter("java.lang.String[]", "array"));
-		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
-		DocumentedMethod method3 = methodBuilder.build();
 
+        DocumentedMethod method3 = new DocumentedMethod(containingClass, "foo", voidType, params, false, tags);
 		assertThat(method1.equals(method3), is(false));
 		assertThat(method1.hashCode(), is(not(equalTo(method3.hashCode()))));
 	}
 
 	@Test
 	public void testJSon() {
-		Builder methodBuilder = new DocumentedMethod.Builder("Foo.compute", new Parameter("java.lang.String[]", "array"));
-		methodBuilder.tag(new ThrowsTag("java.lang.NullPointerException", "if the array is empty"));
-		DocumentedMethod method1 = methodBuilder.build();
+	    List<Parameter> params = new ArrayList<>();
+        params.add(new Parameter(new Type("int"), "elements", 0));
+        List<ThrowsTag> tags = new ArrayList<>();
+		tags.add(new ThrowsTag(npe, "if the array is empty"));
 
+		DocumentedMethod method1 = new DocumentedMethod(containingClass, "compute", voidType, params, false, tags);
+		
 		String json = new Gson().toJson(method1);
 		DocumentedMethod method2 = new Gson().fromJson(json, DocumentedMethod.class);
 		assertThat(method1, is(equalTo(method2)));

@@ -10,4 +10,12 @@ public class AChild extends AClass {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	/**
+	 * @throws IllegalArgumentException if x is null
+	 */
+	public double vararg(Object... x) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

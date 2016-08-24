@@ -35,7 +35,7 @@ public class PrecisionRecallTest {
 		String expectedOutputFile = Paths.get(expectedOutputDir, className + "_expected.txt").toString();
 		String message = "=== Test " + targetClass + " ===";
 		
-		Toradocu.main(new String[] {"--targetClass", targetClass,
+		Toradocu.main(new String[] {"--target-class", targetClass,
 				"--condition-translator-output", actualOutputFile,
 				"--oracle-generation", "false",
 				"--test-class", "foo",

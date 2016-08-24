@@ -30,50 +30,47 @@ public enum Configuration {
 	// General options
 
 	@Parameter(names = "--target-class",
-			   description = "Qualified name of the class to analyze with Toradocu",
+			   description = "Fully-qualified class for which generate test oracles",
 			   required = true)
 	private String targetClass;
 	
 	@Parameter(names = "--source-dir",
-			   description = "Path to directory containing source files for target class",
+			   description = "Directory containing source files for target class",
 			   converter = PathConverter.class)
 	private Path sourceDir;
 	
 	@Parameter(names = "--class-dir",
-			   description = "Path to directory containing class files for target class",
+			   description = "Directory containing class files for target class",
 			   converter = PathConverter.class)
 	private Path classDir;
 	
-	@Parameter(names = "--debug", description = "Enable fine-grained logging")
-	private boolean debug;
+	@Parameter(names = "--debug", description = "Enable fine-grained logging", hidden = true)
+	private boolean debug = false;
 	
-	@Parameter(names = {"-h", "--help"}, description = "Print a list of available options", help = true)
+	@Parameter(names = {"-h", "-help", "--help"}, description = "Print a list of available options", help = true)
 	private boolean help;
-	
-	@Parameter(names = "--export-file",
-			   description = "File in which to export Toradocu results for use in other programs",
-			   converter = FileConverter.class)
-	private File exportFile;
 	
 	// Javadoc extractor options
 	
 	@Parameter(names = "--javadoc-extractor-output",
-			   description = "File in which to save the Javadoc extractor output as JSON",
-			   converter = FileConverter.class)
+			   description = "File in which to export Javadoc extractor output as JSON",
+			   converter = FileConverter.class,
+			   hidden = true)
 	private File javadocExtractorOutput;
 	
 	// Condition translator options
 	
-	@Parameter(names = "--condition-translation", description = "Enable/disable the condition translator", arity = 1)
+	@Parameter(names = "--condition-translation", description = "Enable/disable the condition translator", arity = 1, hidden = true)
 	private boolean conditionTranslation = true;
 	
 	@Parameter(names = "--condition-translator-input",
 			   description = "File that the condition tranlator will process (this option disables the Javadoc extractor)", 
-			   converter = FileConverter.class)
+			   converter = FileConverter.class,
+			   hidden = true)
 	private File conditionTranslatorInput;
 	
 	@Parameter(names = "--condition-translator-output",
-			   description = "File in which to save the condition translator output",
+			   description = "File in which to export condition translator output as JSON",
 			   converter = FileConverter.class)
 	private File conditionTranslatorOutput;
 	
@@ -82,10 +79,10 @@ public enum Configuration {
 	@Parameter(names = "--oracle-generation", description = "Enable/disable the generation of the aspects", arity = 1)
 	private boolean oracleGeneration = true;
 	
-	@Parameter(names = "--test-class", description = "Qualified name of the class that will be instrumented with aspects")
+	@Parameter(names = "--test-class", description = "Fully-qualified name of the class that will be instrumented with aspects")
 	private String testClass;
 	
-	@Parameter(names = "--aspects-output-dir", description = "Folder where Toradocu saves aspects")
+	@Parameter(names = "--aspects-output-dir", description = "Directory where Toradocu will output aspects")
 	private String aspectsOutputDir = "aspects";
 	
 	// Javadoc options
@@ -180,10 +177,6 @@ public enum Configuration {
 	
 	public Path getClassDir() {
 		return classDir;
-	}
-	
-	public File getExportFile() {
-		return exportFile;
 	}
 	
 	public File getJavadocExtractorOutput() {

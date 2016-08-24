@@ -93,13 +93,13 @@ public class Toradocu {
 		
 		if (CONFIGURATION.isConditionTranslationEnabled()) {
 			ConditionTranslator.translate(methods);
-			if (CONFIGURATION.getExportFile() != null) {
+			if (CONFIGURATION.getConditionTranslatorOutput() != null) {
 				ExportedData data = new ExportedData(methods);
-				try (BufferedWriter writer = Files.newBufferedWriter(CONFIGURATION.getExportFile().toPath(),
+				try (BufferedWriter writer = Files.newBufferedWriter(CONFIGURATION.getConditionTranslatorOutput().toPath(),
 																	 StandardCharsets.UTF_8)) {
 					writer.write(data.asJson());
 				} catch (Exception e) {
-					LOG.error("Unable to write the output on file " + CONFIGURATION.getExportFile().getAbsolutePath(), e);
+					LOG.error("Unable to write the output on file " + CONFIGURATION.getConditionTranslatorOutput().getAbsolutePath(), e);
 				}
 			}
 		}

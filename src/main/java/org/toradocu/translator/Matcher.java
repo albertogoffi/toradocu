@@ -7,9 +7,13 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+<<<<<<< HEAD
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Optional;
+=======
+import java.util.LinkedHashSet;
+>>>>>>> 1ec08a54f0170258741f75af2b54ccbd34716774
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -42,7 +46,7 @@ public class Matcher {
 	 */
 	public static Set<CodeElement<?>> subjectMatch(String subject, DocumentedMethod method) {
 		// Extract every CodeElement associated with the method and the containing class of the method.
-		Class<?> containingClass = getClass(method.getContainingClass());
+		Class<?> containingClass = getClass(method.getContainingClass().getQualifiedName());
 		Set<CodeElement<?>> codeElements = extractCodeElements(containingClass, method);
 		
 		// Clean the subject string by removing words and characters not related to its identity so that
@@ -205,8 +209,7 @@ public class Matcher {
 		
 		Executable methodOrConstructor = null;
 		// Load the DocumentedMethod as a reflection Method or Constructor.
-		if (documentedMethod.getReturnType().equals("")) {
-			// DocumentedMethod is a constructor.
+		if (documentedMethod.isConstructor()) {
 			for (Constructor<?> constructor : type.getDeclaredConstructors()) {
 				if (constructor.getParameterCount() == documentedMethod.getParameters().size()) {
 					methodOrConstructor = constructor;

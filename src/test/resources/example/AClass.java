@@ -4,6 +4,8 @@ import example.annotation.NonNull;
 import example.annotation.NotNull;
 import example.annotation.Nullable;
 
+import example.exception.AnException;
+
 public class AClass implements Interface {
 	
 	/**
@@ -15,6 +17,7 @@ public class AClass implements Interface {
 	
 	/**
 	 * @throws NullPointerException if x is null
+	 * @throws AnException if x is empty
 	 */
 	public AClass(String x) {
 		// TODO Auto-generated constructor stub
@@ -45,5 +48,4 @@ public class AClass implements Interface {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 }
