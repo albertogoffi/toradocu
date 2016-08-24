@@ -7,13 +7,7 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
-<<<<<<< HEAD
-import java.util.Arrays;
 import java.util.LinkedHashSet;
-import java.util.Optional;
-=======
-import java.util.LinkedHashSet;
->>>>>>> 1ec08a54f0170258741f75af2b54ccbd34716774
 import java.util.Set;
 
 import org.slf4j.Logger;
