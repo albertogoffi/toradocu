@@ -44,7 +44,7 @@ public class DocumentedMethodTest {
 		assertThat(method.isVarArgs(), is(false));
 		
 		List<Parameter> params = new ArrayList<>();
-		params.add(new Parameter(new Type("int"), "elements", 0));
+		params.add(new Parameter(new Type("int"), "elements"));
 		method = new DocumentedMethod(containingClass, "bat", voidType, params, true, null);
 		assertThat(method.isVarArgs(), is(true));
 	}
@@ -60,7 +60,7 @@ public class DocumentedMethodTest {
 	@Test
 	public void testMultipleTags() {
 	    List<Parameter> params = new ArrayList<>();
-        params.add(new Parameter(new Type("int"), "elements", 0));
+        params.add(new Parameter(new Type("int"), "elements"));
         List<ThrowsTag> tags = new ArrayList<>();
         tags.add(new ThrowsTag(npe, "if the array is empty"));
         tags.add(new ThrowsTag(npe, "if the array is empty"));
@@ -85,13 +85,13 @@ public class DocumentedMethodTest {
         assertThat(method.toString(), is("void example.Foo.compute()"));
         
         List<Parameter> params = new ArrayList<>();
-        params.add(new Parameter(arrayType, "array", 0));
+        params.add(new Parameter(arrayType, "array"));
 		method = new DocumentedMethod(containingClass, "compute", voidType, params, false, null);
 		assertThat(method.toString(), is("void example.Foo.compute(java.lang.String[] array)"));
 		
 		params.clear();
-        params.add(new Parameter(new Type("int"), "x", 0));
-        params.add(new Parameter(new Type("int"), "y", 1));
+        params.add(new Parameter(new Type("int"), "x"));
+        params.add(new Parameter(new Type("int"), "y"));
 	    method = new DocumentedMethod(containingClass, "compute", voidType, params, false, null);
         assertThat(method.toString(), is("void example.Foo.compute(int x,int y)"));
         
@@ -104,7 +104,7 @@ public class DocumentedMethodTest {
 	    List<Parameter> params = new ArrayList<>();
 	    List<ThrowsTag> tags = new ArrayList<>();
 	    
-	    params.add(new Parameter(arrayType, "array", 0));
+	    params.add(new Parameter(arrayType, "array"));
 	    tags.add(new ThrowsTag(npe, "if the array is empty"));
 		DocumentedMethod method1 =  new DocumentedMethod(containingClass, "compute", voidType, params, false, tags);
 		
@@ -123,7 +123,7 @@ public class DocumentedMethodTest {
 	@Test
 	public void testJSon() {
 	    List<Parameter> params = new ArrayList<>();
-        params.add(new Parameter(new Type("int"), "elements", 0));
+        params.add(new Parameter(new Type("int"), "elements"));
         List<ThrowsTag> tags = new ArrayList<>();
 		tags.add(new ThrowsTag(npe, "if the array is empty"));
 

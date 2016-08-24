@@ -99,7 +99,6 @@ public final class JavadocExtractor {
     			ThrowsTag tagToProcess = new ThrowsTag(new org.toradocu.extractor.Type(getExceptionName(throwsTag, member)), comment);
     			memberTags.add(tagToProcess);
     		}
-    
     		methods.add(new DocumentedMethod(containgClass, member.name(), getReturnType(member), getParameters(member), member.isVarArgs(), memberTags));
 		}
 	

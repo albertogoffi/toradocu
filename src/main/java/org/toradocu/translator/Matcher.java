@@ -212,7 +212,7 @@ public class Matcher {
 			}
 		} else {
 			for (Method method : type.getDeclaredMethods()) {
-				if (method.getName().equals(documentedMethod.getSimpleName())
+				if (method.getName().equals(documentedMethod.getName())
 					&& method.getParameterCount() == documentedMethod.getParameters().size()) {
 					methodOrConstructor = method;
 					break;

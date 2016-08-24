@@ -16,7 +16,7 @@ public final class DocumentedMethod {
 	
 	/** Class in which the method is contained. */
 	private final Type containingClass;
-	/** Fully-qualified name of the method. */
+	/** Simple name of the method. */
 	private final String name;
 	/** Return type of the method. Null if this DocumentedMethod represents a constructor. */
 	private final Type returnType;
@@ -34,7 +34,7 @@ public final class DocumentedMethod {
 	 * with the given {@code name}, {@code returnType}, {@code parameters}, and {@code throwsTags}.
 	 * 
 	 * @param containingClass class containing the {@code DocumentedMethod}
-	 * @param name the fully qualified name of the {@code DocumentedMethod}
+	 * @param name the simple name of the {@code DocumentedMethod}
 	 * @param returnType the fully qualified return type of the method or the empty string 
 	 *        if the {@code DocumentedMethod} is a constructor
 	 * @param parameters the parameters of the {@code DocumentedMethod}
@@ -61,7 +61,7 @@ public final class DocumentedMethod {
 	    this.throwsTags = throwsTags == null ? new LinkedHashSet<>() : new LinkedHashSet<>(throwsTags);
 	    
 	    // Create the method signature using the method name and parameters.
-	    StringBuilder signatureBuilder = new StringBuilder(getSimpleName() + "(");
+	    StringBuilder signatureBuilder = new StringBuilder(name + "(");
 	    for (Parameter param : this.parameters) {
 	        signatureBuilder.append(param);
 	        signatureBuilder.append(",");
@@ -93,9 +93,9 @@ public final class DocumentedMethod {
 	}
 	
 	/**
-	 * Returns the fully-qualified name of this method.
+	 * Returns the simple name of this method.
 	 * 
-	 * @return the fully-qualified name of this method
+	 * @return the simple name of this method
 	 */
 	public String getName() {
 		return name;
@@ -117,20 +117,6 @@ public final class DocumentedMethod {
 	 */
 	public Set<Parameter> getParameters() {
 		return Collections.unmodifiableSet(parameters);
-	}
-	
-	/**
-	 * Returns the simple name of this method.
-	 * 
-	 * @return the simple name of this method
-	 */
-	public String getSimpleName() {
-		int lastIndex = name.lastIndexOf('.');
-		if (lastIndex == -1) {
-			return name;
-		} else {
-			return name.substring(lastIndex + 1);
-		}
 	}
 	
 	/**
