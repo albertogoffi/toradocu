@@ -4,22 +4,20 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.number.IsCloseTo.closeTo;
 import static org.junit.Assert.assertThat;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 import org.toradocu.testlib.TestCaseStats;
 
 public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallTestSuite {
 
-	private static final String COMMONSCOLLECTIONS_4_SRC = "src/test/resources/commons-collections4-4.1-src/src/main/java";
+	private static final String COMMONSCOLLECTIONS_4_SRC = "src/test/resources/src/commons-collections4-4.1-src/commons-collections4-4.1-src/src/main/java";
+	private static final String COMMONSCOLLECTIONS_4_BIN = "src/test/resources/bin/commons-collections4-4.1.jar";
 	private static final String COMMONSCOLLECTIONS_4_EXPECTED_DIR = "src/test/resources/CommonsCollections-4.1/";
 	
-	@Before
-    public void init() {
-		setSourceDir(COMMONSCOLLECTIONS_4_SRC);
-		setExpectedOutputDir(COMMONSCOLLECTIONS_4_EXPECTED_DIR);
-	}
-	
+	public PrecisionRecallCommonsCollections4() {
+        super(COMMONSCOLLECTIONS_4_SRC, COMMONSCOLLECTIONS_4_BIN, COMMONSCOLLECTIONS_4_EXPECTED_DIR);
+    }
+		
 	@Test
 	public void arrayStackTest() throws Exception {
 		TestCaseStats stats = test("org.apache.commons.collections4.ArrayStack");

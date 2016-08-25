@@ -29,7 +29,7 @@ public class PrecisionRecallTest {
 	 *        expected output for the targetClass.
 	 * @return statistics for the test
 	 */
-	public static TestCaseStats test(String targetClass, String srcPath, String expectedOutputDir) {
+	public static TestCaseStats test(String targetClass, String srcPath, String binPath, String expectedOutputDir) {
 		String className = getClassName(targetClass);
 		String actualOutputFile = "tmp" + File.separator + className + "_out.txt";
 		String expectedOutputFile = Paths.get(expectedOutputDir, className + "_expected.txt").toString();
@@ -39,9 +39,8 @@ public class PrecisionRecallTest {
 				"--condition-translator-output", actualOutputFile,
 				"--oracle-generation", "false",
 				"--test-class", "foo",
-				"--source-dir", srcPath,
-				"-J-docletpath=build/classes/main",
-				"-J-d=tmp"});
+				"--class-dir", binPath,
+				"--source-dir", srcPath});
 		return compare(actualOutputFile, expectedOutputFile, message);
 	}
 	

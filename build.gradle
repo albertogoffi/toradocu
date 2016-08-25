@@ -3,8 +3,8 @@ plugins {
 	id 'application'
 	id 'eclipse'
 	id 'jacoco'
-	id 'com.github.johnrengelman.shadow' version '1.2.3'
-	id 'de.undercouch.download' version '2.1.0'
+	id 'com.github.johnrengelman.shadow' version '1.2.3' // For creating the fat jar
+	id 'de.undercouch.download' version '3.1.1' // For the download tasks
 }
 
 sourceCompatibility = 1.8
@@ -52,7 +52,7 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-     gradleVersion = '2.12'
+     gradleVersion = '3.0'
 }
 
 task copyDocletResources1(type: Copy) {
@@ -72,39 +72,41 @@ compileJava.doLast {
 
 import de.undercouch.gradle.tasks.download.Download
 
-task downloadGuavaSrc(type: Download) {
-	src 'https://repo1.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0-sources.jar'
-	dest 'src/test/resources/guava-19.0-sources.jar'
+/* This task downloads sources of the systems used to measure Toradocu's precision and recall */ 
+task downloadSources(type: Download) {
+    src ([
+       'http://mirror.switch.ch/mirror/apache/dist/commons/collections/source/commons-collections4-4.1-src.zip',
+       'https://repo1.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0-sources.jar',
+       'https://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2-sources.jar'
+    ])
+    dest 'src/test/resources/src'
+    onlyIfNewer true
 }
 
-task downloadCommonsCollectionsSrc(type: Download) {
-	src 'http://mirror.switch.ch/mirror/apache/dist/commons/collections/source/commons-collections4-4.1-src.zip'
-	dest 'src/test/resources/commons-collections4-4.1-src.zip'
+/* This task downloads binaries of the systems used to measure Toradocu's precision and recall */ 
+task downloadBinaries(type: Download) {
+    src ([
+       'http://mirror.switch.ch/mirror/apache/dist/commons/collections/binaries/commons-collections4-4.1-bin.zip',
+       'https://repo1.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0.jar',
+       'https://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2.jar'
+    ])
+    dest 'src/test/resources/bin'
+    onlyIfNewer true
 }
 
-task downloadJGraphTSrc(type: Download) {
-	src 'https://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2-sources.jar'
-	dest 'src/test/resources/jgrapht-core-0.9.2-sources.jar'
+task extractSources(dependsOn: downloadSources) << { 
+    file('src/test/resources/src').listFiles().findAll{it.name.endsWith('.zip')||it.name.endsWith('.jar')}.each{ file ->
+        def fileName = "$file.name"
+        def index = fileName.lastIndexOf('.')
+        def fileBaseName = fileName.substring(0, index)
+        copy {
+            from zipTree(file)
+            into 'src/test/resources/src/' + fileBaseName
+        }
+    }
 }
 
-task extractGuavaSrc(type: Copy, dependsOn: downloadGuavaSrc) {
-	from zipTree('src/test/resources/guava-19.0-sources.jar')
-	into 'src/test/resources/guava-19.0-sources'
-}
-
-task extractCommonsCollectionsSrc(type: Copy, dependsOn: downloadCommonsCollectionsSrc) {
-	from zipTree('src/test/resources/commons-collections4-4.1-src.zip')
-	into 'src/test/resources/'
-}
-
-task extractJGraphTSrc(type: Copy, dependsOn: downloadJGraphTSrc) {
-	from zipTree('src/test/resources/jgrapht-core-0.9.2-sources.jar')
-	into 'src/test/resources/jgrapht-core-0.9.2-sources'
-}
-
-// Comment out the following line to enable download of target systems used for 
-// precision-recall measurement.
-// test.dependsOn extractGuavaSrc, extractCommonsCollectionsSrc, extractJGraphTSrc
+test.dependsOn extractSources, downloadBinaries
 
 task removeDefaultOutputDir(type: Delete) {
 	delete 'tmp', 'aspects'

@@ -4,21 +4,19 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.number.IsCloseTo.closeTo;
 import static org.junit.Assert.assertThat;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 import org.toradocu.testlib.TestCaseStats;
 
 public class PrecisionRecallJGraphT extends AbstractPrecisionRecallTestSuite {
 
-	private static final String JGRAPHT_SRC = "src/test/resources/jgrapht-core-0.9.2-sources";
+	private static final String JGRAPHT_SRC = "src/test/resources/src/jgrapht-core-0.9.2-sources";
+	private static final String JGRAPHT_BIN = "src/test/resources/bin/jgrapht-core-0.9.2.jar";
 	private static final String JGRAPHT_EXPECTED_DIR = "src/test/resources/JGraphT/";
 
-	@Before
-    public void init() {
-		setSourceDir(JGRAPHT_SRC);
-		setExpectedOutputDir(JGRAPHT_EXPECTED_DIR);
-	}
+	public PrecisionRecallJGraphT() {
+        super(JGRAPHT_SRC, JGRAPHT_BIN, JGRAPHT_EXPECTED_DIR);
+    }
 
 	@Test
 	public void abstractGraphTest() throws Exception {

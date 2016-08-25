@@ -1,7 +1,6 @@
 package org.toradocu.testlib;
 
 import org.junit.AfterClass;
-import org.junit.BeforeClass;
 
 /**
  * Represents an abstract test suite that uses precision and recall to measure
@@ -16,18 +15,19 @@ public abstract class AbstractPrecisionRecallTestSuite {
 	/** Keeps track of statistics on currently run tests. */
 	private static TestSuiteStats testSuiteStats;
 	/** The directory containing the source files on which to run tests. */
-	private String sourceDirPath;
+	private final String sourceDirPath;
+	/** The directory containing the binaries on which to run tests. */
+    private final String binDirPath;
 	/** The directory containing the expected output of the tests. */
-	private String expectedOutputDirPath;
+	private final String expectedOutputDirPath;
 
-	/**
-	 * Initializes the test suite.
-	 */
-	@BeforeClass
-	public static void setUp() {
-		testSuiteStats = new TestSuiteStats();
-	}
-
+	public AbstractPrecisionRecallTestSuite(String sourceDirPath, String binDirPath, String expectedOutputDirPath) {
+	    this.sourceDirPath = sourceDirPath;
+	    this.binDirPath = binDirPath;
+	    this.expectedOutputDirPath = expectedOutputDirPath;
+	    testSuiteStats = new TestSuiteStats();
+    }
+	
 	/**
 	 * Prints the results (i.e. statistics) of the test suite.
 	 */
@@ -52,30 +52,8 @@ public abstract class AbstractPrecisionRecallTestSuite {
 	 * @return the statistics for the test
 	 */
 	protected TestCaseStats test(String targetClass) {
-		TestCaseStats stats = PrecisionRecallTest.test(targetClass, sourceDirPath, expectedOutputDirPath);
+		TestCaseStats stats = PrecisionRecallTest.test(targetClass, sourceDirPath, binDirPath, expectedOutputDirPath);
 		testSuiteStats.addTest(stats);
 		return stats;
-	}
-
-	/**
-	 * Sets the path to the directory containing the source files on which to
-	 * run tests.
-	 *
-	 * @param sourceDirPath the path to the directory containing the source
-	 * files on which to run tests
-	 */
-	protected void setSourceDir(String sourceDirPath) {
-		this.sourceDirPath = sourceDirPath;
-	}
-
-	/**
-	 * Sets the path to the directory containing the expected output of the
-	 * tests.
-	 *
-	 * @param expectedOutputDirPath the path to the directory containing the
-	 * expected output of the tests
-	 */
-	protected void setExpectedOutputDir(String expectedOutputDirPath) {
-		this.expectedOutputDirPath = expectedOutputDirPath;
 	}
 }
