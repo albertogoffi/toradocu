@@ -7,7 +7,10 @@ import java.util.Objects;
  */
 public class Type {
 
-	/** Separator used in Java to separate identifiers (e.g., Foo.toString() where "." separates class and method identifiers) */
+	/**
+	 * Separator used in Java to separate identifiers (e.g., Foo.toString() where "." separates class
+	 * and method identifiers)
+	 */
 	public static final String SEPARATOR = "."; 
 	
 	/** Fully qualified name of this {@code Type} */

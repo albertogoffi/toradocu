@@ -16,7 +16,7 @@ public final class DocumentedMethod {
 	
 	/** Class in which the method is contained. */
 	private final Type containingClass;
-	/** Name of the method. */
+	/** Simple name of the method. */
 	private final String name;
 	/** Return type of the method. Null if this DocumentedMethod represents a constructor. */
 	private final Type returnType;
@@ -26,8 +26,7 @@ public final class DocumentedMethod {
 	private final boolean isVarArgs;
 	/** Throws tags specified in the method's Javadoc. */
 	private final Set<ThrowsTag> throwsTags;
-	
-	/** Method signature in the format method_name(type1 arg1, type2 arg2). */
+	/** Method signature in the format method_name(type1 arg1, type2 arg2, ...). */
 	private final String signature;
 	
 	/** 
@@ -35,8 +34,8 @@ public final class DocumentedMethod {
 	 * with the given {@code name}, {@code returnType}, {@code parameters}, and {@code throwsTags}.
 	 * 
 	 * @param containingClass class containing the {@code DocumentedMethod}
-	 * @param name the fully qualified name of the {@code DocumentedMethod}
-	 * @param returnType the fully qualified return type of the metho or the empty string 
+	 * @param name the simple name of the {@code DocumentedMethod}
+	 * @param returnType the fully qualified return type of the method or the empty string 
 	 *        if the {@code DocumentedMethod} is a constructor
 	 * @param parameters the parameters of the {@code DocumentedMethod}
 	 * @param isVarArgs true if the {@code DocumentedMethod} takes a variable number of arguments, false otherwise
@@ -85,7 +84,7 @@ public final class DocumentedMethod {
 	}
 	
 	/**
-	 * Returns true if this method takes a variable number of arguments, false otherwise
+	 * Returns true if this method takes a variable number of arguments, false otherwise.
 	 * 
 	 * @return {@code true} if this method takes a variable number of arguments, {@code false} otherwise
 	 */
@@ -94,9 +93,9 @@ public final class DocumentedMethod {
 	}
 	
 	/**
-	 * Returns the name of this method.
+	 * Returns the simple name of this method.
 	 * 
-	 * @return the name of this method
+	 * @return the simple name of this method
 	 */
 	public String getName() {
 		return name;

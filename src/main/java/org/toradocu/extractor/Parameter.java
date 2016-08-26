@@ -2,6 +2,8 @@ package org.toradocu.extractor;
 
 import java.util.Objects;
 
+import org.toradocu.util.Checks;
+
 /**
  * This class represents a method parameter.
  */
@@ -11,8 +13,6 @@ public final class Parameter {
 	private final Type type;
 	/** The name of the parameter. */
 	private final String name;
-	/** The index of the parameter (i.e. its zero-based position in the parameter list). */
-	private final int index;
 	/** True if this parameter is nullable, false if nonnull, and null if unspecified. */
 	private final Boolean nullable;
 	
@@ -21,17 +21,15 @@ public final class Parameter {
 	 * 
 	 * @param type the type of the parameter including its dimension
 	 * @param name the name of the parameter
-	 * @param index the 0-based index of the parameter in the parameter list this parameter is added to
 	 * @param nullable true if the parameter is nullable, false if nonnull and null if unspecified
 	 * 
 	 * @throws NullPointerException if type or name is null
 	 */
-	public Parameter(Type type, String name, int index, Boolean nullable) {
-		Objects.requireNonNull(type);
-		Objects.requireNonNull(name);
+	public Parameter(Type type, String name, Boolean nullable) {
+		Checks.nonNullParameter(type, "type");
+		Checks.nonNullParameter(name, "name");
 		this.type = type;
 		this.name = name;
-		this.index = index;
 		this.nullable = nullable;
 	}
 	
@@ -40,19 +38,9 @@ public final class Parameter {
 	 * 
 	 * @param type the type of the parameter including its dimension
 	 * @param name the name of the parameter
-	 * @param index the 0-based index of the parameter in the parameter list this parameter is added to
 	 */
-	public Parameter(Type type, String name, int index) {
-		this(type, name, index, null);
-	}
-
-	/**
-	 * Returns the index of the parameter (i.e. its zero-based position in the parameter list).
-	 * 
-	 * @return the index of the parameter (i.e. its zero-based position in the parameter list)
-	 */
-	public int getIndex() {
-		return index;
+	public Parameter(Type type, String name) {
+		this(type, name, null);
 	}
 
 	/**
@@ -97,7 +85,6 @@ public final class Parameter {
 		Parameter that = (Parameter) obj;
 		return type.equals(that.type) && 
 			   name.equals(that.name) &&
-			   index == that.index &&
 			   Objects.equals(nullable, that.nullable);
 	}
 	
@@ -108,7 +95,7 @@ public final class Parameter {
 	 */
 	@Override
 	public int hashCode() {
-		return Objects.hash(type, name, index, nullable);
+		return Objects.hash(type, name, nullable);
 	}
 	
 	/**

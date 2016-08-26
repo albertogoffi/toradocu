@@ -18,8 +18,8 @@ public class MatcherTest {
 	@Test
 	public void test() throws Throwable {
 		List<Parameter> parameters = new ArrayList<>();
-		parameters.add(new Parameter(new Type("Employee"), "employee", 0));
-		parameters.add(new Parameter(new Type("Double"), "salary", 1));
+		parameters.add(new Parameter(new Type("Employee"), "employee"));
+		parameters.add(new Parameter(new Type("Double"), "salary"));
 		List<ThrowsTag> tags = new ArrayList<>();
 		tags.add(new ThrowsTag(new Type("NullPointerException"), "if employee or salary are null"));
 		DocumentedMethod methodUnderTest = new DocumentedMethod(new Type(ClassUnderTest.class.getName()), "setSalary", null, parameters, false, tags);
