@@ -21,7 +21,6 @@ import org.toradocu.translator.ConditionTranslator;
 import org.toradocu.util.ExportedData;
 import org.toradocu.util.GsonInstance;
 import org.toradocu.util.NullOutputStream;
-import org.toradocu.util.OutputPrinter;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
@@ -87,11 +86,6 @@ public class Toradocu {
 				LOG.error("Unable to read the file: " + CONFIGURATION.getConditionTranslatorInput(), e);
 			}
 		}
-		
-		/* Prints the given list of {@code DocumentedMethod}s to the configured Javadoc extractor output file. */
-	    OutputPrinter.Builder builder = new OutputPrinter.Builder("JavadocExtractor", methods);
-	    OutputPrinter printer = builder.file(CONFIGURATION.getJavadocExtractorOutput()).logger(LOG).build();
-	    printer.print();
 	    
 	    if (CONFIGURATION.getJavadocExtractorOutput() != null) { // Print collection to the output file.
             try (BufferedWriter writer = Files.newBufferedWriter(CONFIGURATION.getJavadocExtractorOutput().toPath(), StandardCharsets.UTF_8)) {
@@ -123,6 +117,9 @@ public class Toradocu {
 		// OracleGenerator.generate(methods);
 		
 		deleteTemporaryFiles();
+		/* Needed for testing: multiple executions of Toradocu run in the same JVM. This can be improved making {@code methods}
+         * non-static and changing the way Toradocu interacts with the javadoc tool. */
+		methods.clear();
 	}
 	
 	/**
