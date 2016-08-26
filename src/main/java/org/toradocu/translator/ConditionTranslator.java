@@ -1,5 +1,6 @@
 package org.toradocu.translator;
 
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,7 +41,7 @@ public class ConditionTranslator {
 					translatePropositions(propositions, method);
 					conditions.add(propositions.getTranslation());
 				}
-				tag.setConditions(conditions);
+				tag.setCondition(mergeConditions(conditions));
 			}
 		}
 		// Print translated throws tags.
@@ -92,6 +93,29 @@ public class ConditionTranslator {
 				LOG.trace("Translated proposition " + p + " as: " + translation);
 				p.setTranslation(translation);
 			}
+		}
+	}
+	
+	/**
+	 * Returns a boolean Java expression that merges the conditions from the given set of
+	 * conditions. Each condition in the set is combined using an || conjunction.
+	 * 
+	 * @param conditions the translated conditions for a throws tag (as Java boolean conditions)
+	 * @return a boolean Java expression that is true only if any of the given conditions is true
+	 */
+	private static String mergeConditions(Set<String> conditions) {
+		conditions.removeIf(s -> s.isEmpty());
+		if (conditions.size() == 0) {
+			return "";
+		} else if (conditions.size() == 1) {
+			return conditions.iterator().next();
+		} else {
+			Iterator<String> it = conditions.iterator();
+			StringBuilder conditionsBuilder = new StringBuilder("(" + it.next() + ")");
+			while (it.hasNext()) {
+				conditionsBuilder.append("||(" + it.next() + ")");
+			}
+			return conditionsBuilder.toString();
 		}
 	}
 
