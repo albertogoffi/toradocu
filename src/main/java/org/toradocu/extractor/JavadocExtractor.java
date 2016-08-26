@@ -9,16 +9,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.jsoup.Jsoup;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.toradocu.conf.Configuration;
 import org.toradocu.doclet.formats.html.ConfigurationImpl;
 import org.toradocu.doclet.formats.html.HtmlDocletWriter;
 import org.toradocu.doclet.internal.toolkit.taglets.TagletWriter;
 import org.toradocu.doclet.internal.toolkit.util.DocFinder;
 import org.toradocu.doclet.internal.toolkit.util.DocPath;
 import org.toradocu.doclet.internal.toolkit.util.ImplementedMethods;
-import org.toradocu.util.OutputPrinter;
 
 import com.sun.javadoc.AnnotationDesc;
 import com.sun.javadoc.ClassDoc;
@@ -33,8 +29,6 @@ public final class JavadocExtractor {
 	
 	/** Holds Javadoc doclet configuration options. */
 	private final ConfigurationImpl configuration;
-	/** {@code Logger} for this class. */
-	private final Logger LOG;
 
 	/**
 	 * Constructs a {@code JavadocExtractor} with the given doclet {@code configuration}.
@@ -43,7 +37,6 @@ public final class JavadocExtractor {
 	 */
 	public JavadocExtractor(ConfigurationImpl configuration) {
 		this.configuration = configuration;
-		LOG = LoggerFactory.getLogger(JavadocExtractor.class);
 	}
 	
 	/**
@@ -103,7 +96,6 @@ public final class JavadocExtractor {
     		methods.add(new DocumentedMethod(containgClass, member.name(), getReturnType(member), getParameters(member), member.isVarArgs(), memberTags));
 		}
 	
-		printOutput(methods);
 		return methods;
 	}
 	
@@ -200,17 +192,6 @@ public final class JavadocExtractor {
 			parameters[i] = new Parameter(new org.toradocu.extractor.Type(type), params[i].name(), i, nullable);
 		}
 		return Arrays.asList(parameters);
-	}
-
-	/**
-	 * Prints the given list of {@code DocumentedMethod}s to the configured Javadoc extractor output file.
-	 * 
-	 * @param methods the methods to print
-	 */
-	private void printOutput(List<DocumentedMethod> methods) {
-		OutputPrinter.Builder builder = new OutputPrinter.Builder("JavadocExtractor", methods);
-		OutputPrinter printer = builder.file(Configuration.INSTANCE.getJavadocExtractorOutput()).logger(LOG).build();
-		printer.print();
 	}
 	
 	/**

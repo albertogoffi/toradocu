@@ -11,24 +11,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.toradocu.conf.Configuration;
 import org.toradocu.doclet.formats.html.ConfigurationImpl;
-import org.toradocu.extractor.JavadocExtractor;
 import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.JavadocExtractor;
 import org.toradocu.translator.ConditionTranslator;
 import org.toradocu.util.ExportedData;
 import org.toradocu.util.GsonInstance;
 import org.toradocu.util.NullOutputStream;
+import org.toradocu.util.OutputPrinter;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
-
 import com.google.gson.reflect.TypeToken;
-
 import com.sun.javadoc.ClassDoc;
 import com.sun.tools.javadoc.Main;
 
@@ -66,6 +63,8 @@ public class Toradocu {
 		if (CONFIGURATION.debug()) {
 			System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "trace");
 		}
+		/* Suppress non-error messages from Stanford parser (some of the messages directly printed on standard error are still visible). */
+		System.setProperty(org.slf4j.impl.SimpleLogger.LOG_KEY_PREFIX + "edu.stanford", "error");
 		LOG = LoggerFactory.getLogger(Toradocu.class);
 		
 		// === Javadoc Extractor ===
@@ -88,6 +87,22 @@ public class Toradocu {
 				LOG.error("Unable to read the file: " + CONFIGURATION.getConditionTranslatorInput(), e);
 			}
 		}
+		
+		/* Prints the given list of {@code DocumentedMethod}s to the configured Javadoc extractor output file. */
+	    OutputPrinter.Builder builder = new OutputPrinter.Builder("JavadocExtractor", methods);
+	    OutputPrinter printer = builder.file(CONFIGURATION.getJavadocExtractorOutput()).logger(LOG).build();
+	    printer.print();
+	    
+	    if (CONFIGURATION.getJavadocExtractorOutput() != null) { // Print collection to the output file.
+            try (BufferedWriter writer = Files.newBufferedWriter(CONFIGURATION.getJavadocExtractorOutput().toPath(), StandardCharsets.UTF_8)) {
+                writer.write(GsonInstance.gson().toJson(methods));
+            } catch (Exception e) {
+                LOG.error("Unable to write the output on file " + CONFIGURATION.getJavadocExtractorOutput().getAbsolutePath(), e);
+            }
+        }
+        if (CONFIGURATION.debug()) {
+            LOG.debug("Methods with Javadoc documentation found in source code: " + methods.toString());
+        }
 		
 		// === Condition Translator ===
 		
