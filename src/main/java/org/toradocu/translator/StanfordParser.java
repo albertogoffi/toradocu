@@ -21,7 +21,8 @@ public class StanfordParser {
 	static {
 		// Creates a StanfordCoreNLP object, with POS tagging, lemmatization, NER, parsing, and coreference resolution.
 		Properties props = new Properties();
-		props.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref");
+		/* Complete annotations list was "tokenize, ssplit, pos, lemma, ner, parse, dcoref" */
+		props.setProperty("annotators", "tokenize, ssplit, parse");
 		pipeline = new StanfordCoreNLP(props);
 	}
 	
