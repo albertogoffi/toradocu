@@ -1,6 +1,6 @@
 package org.toradocu.translator;
 
-import org.toradocu.extractor.Parameter;
+import java.lang.reflect.Parameter;
 
 /**
  * This class represents a parameter code element for use in translation. It holds String identifiers for the
@@ -8,27 +8,32 @@ import org.toradocu.extractor.Parameter;
  */
 public class ParameterCodeElement extends CodeElement<Parameter> {
 
+	/** The 0-based index of this parameter in its associated method's parameter list. */
+	private int index;
+	
 	/**
 	 * Constructs and initializes a {@code ParameterCodeElement} that identifies the given parameter.
 	 * 
 	 * @param parameter the backing parameter that this code element identifies
+	 * @param index the 0-based index of the parameter in the parameter list of its associated method
 	 */
-	public ParameterCodeElement(Parameter parameter) {
+	public ParameterCodeElement(Parameter parameter, int index) {
 		super(parameter);
+		this.index = index;
 		
 		// Add name identifiers.
 		addIdentifier("parameter");
 		addIdentifier(parameter.getName());
-		addIdentifier(parameter.getType().getName() + " " + parameter.getName());
-		addIdentifier(parameter.getName() + " " + parameter.getType().getName());
+		addIdentifier(parameter.getType().getSimpleName() + " " + parameter.getName());
+		addIdentifier(parameter.getName() + " " + parameter.getType().getSimpleName());
 		
 		// Add type identifiers
 		if (parameter.getType().isArray()) {
 			addIdentifier("array");
-			addIdentifier(parameter.getType().getName() + " array");
+			addIdentifier(parameter.getType().getSimpleName() + " array");
 		} else {
-			addIdentifier(parameter.getType().getName());
-			if (parameter.getType().getQualifiedName().equals("java.lang.Iterable"))	{
+			addIdentifier(parameter.getType().getSimpleName());
+			if (parameter.getType().getName().equals("java.lang.Iterable"))	{
 				addIdentifier("collection");
 			}
 		}
@@ -42,7 +47,7 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
 	 */
 	@Override
 	public String buildJavaExpression() {
-		return "args[" + getJavaCodeElement().getIndex() + "]";
+		return "args[" + index + "]";
 	}
 	
 }

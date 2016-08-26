@@ -92,7 +92,6 @@ public final class JavadocExtractor {
     			ThrowsTag tagToProcess = new ThrowsTag(new org.toradocu.extractor.Type(getExceptionName(throwsTag, member)), comment);
     			memberTags.add(tagToProcess);
     		}
-    
     		methods.add(new DocumentedMethod(containgClass, member.name(), getReturnType(member), getParameters(member), member.isVarArgs(), memberTags));
 		}
 	
@@ -189,7 +188,7 @@ public final class JavadocExtractor {
 			if (member.isVarArgs() && i == parameters.length - 1) {
 				type = pType.qualifiedTypeName() + "[]";
 			}
-			parameters[i] = new Parameter(new org.toradocu.extractor.Type(type), params[i].name(), i, nullable);
+			parameters[i] = new Parameter(new org.toradocu.extractor.Type(type), params[i].name(), nullable);
 		}
 		return Arrays.asList(parameters);
 	}

@@ -1,7 +1,9 @@
 package org.toradocu.extractor;
 
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 
 import org.toradocu.util.Checks;
 
@@ -65,14 +67,39 @@ public class ThrowsTag {
 	}
 	
 	/**
-	 * Sets the translated condition for this throws tags to the given conditions.
+	 * Sets the translated condition for this throws tags to the given condition.
 	 * 
-	 * @param condition the translated conditions for this throws tag (as Java boolean conditions)
+	 * @param condition the translated condition for this throws tag (as a Java boolean condition)
 	 * @throws NullPointerException if condition is null
 	 */
 	public void setCondition(String condition) {
 		Checks.nonNullParameter(condition, "condition");
 		this.condition = condition;
+	}
+	
+	/**
+	 * Sets the translated conditions for this throws tags to the given conditions. Each element in
+	 * the set is combined using an || conjunction.
+	 * 
+	 * @param conditions the translated conditions for this throws tag (as Java boolean conditions)
+	 * @throws NullPointerException if conditions is null
+	 */
+	public void setConditions(Set<String> conditions) {
+		Checks.nonNullParameter(conditions, "conditions");
+		
+		conditions.removeIf(s -> s.isEmpty());
+		if (conditions.size() == 0) {
+			this.condition = "";
+		} else if (conditions.size() == 1) {
+			this.condition = conditions.iterator().next();
+		} else {
+			Iterator<String> it = conditions.iterator();
+			StringBuilder conditionsBuilder = new StringBuilder("(" + it.next() + ")");
+			while (it.hasNext()) {
+				conditionsBuilder.append("||(" + it.next() + ")");
+			}
+			this.condition = conditionsBuilder.toString();
+		}
 	}
 	
 	/**
@@ -106,8 +133,8 @@ public class ThrowsTag {
 	 * format "@throws EXCEPTION COMMENT" where EXCEPTION is the fully qualified name of
 	 * the exception in this throws tag and COMMENT is the text of the comment in the throws tag.
 	 * If translation has been attempted on this tag, then the returned string is also appended
-	 * with " ==> CONDITION" where CONDITION is the translated condition for the exception 
-	 * as Java expressions.
+	 * with " ==> CONDITION" where CONDITION is the translated condition for the exception as
+	 * a Java expression or the empty string if translation failed.
 	 * 
 	 * @return a string representation of this throws tag
 	 */

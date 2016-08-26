@@ -43,27 +43,27 @@ public class JavadocExtractorTest {
 		tags.add(new ThrowsTag(npe, "always"));
 		expected.add(new DocumentedMethod(aClass, "AClass", null, null, false, tags));
 		
-		params.add(new Parameter(new Type("java.lang.String"), "x", 0));
+		params.add(new Parameter(new Type("java.lang.String"), "x"));
 		tags.clear();
 		tags.add(new ThrowsTag(npe, "if x is null"));
 		tags.add(new ThrowsTag(new Type("example.exception.AnException"), "if x is empty"));
 		expected.add(new DocumentedMethod(aClass, "AClass", null, params, false, tags));
 		
 		params.clear();
-		params.add(new Parameter(new Type("int[]"), "array", 0, true));
+		params.add(new Parameter(new Type("int[]"), "array", true));
 		tags.clear();
 		tags.add(new ThrowsTag(npe, "if array is null"));
 		expected.add(new DocumentedMethod(aClass, "foo", doubleType, params, false, tags));
 		
 		params.clear();
-        params.add(new Parameter(objectType, "x", 0, false));
-        params.add(new Parameter(objectType, "y", 1, false));
+        params.add(new Parameter(objectType, "x", false));
+        params.add(new Parameter(objectType, "y", false));
 		tags.clear();
         tags.add(new ThrowsTag(iae, "if x is null"));
 		expected.add(new DocumentedMethod(aClass, "bar", doubleType, params, false, tags));
 		
 		params.clear();
-        params.add(new Parameter(objectType, "x", 0));
+        params.add(new Parameter(objectType, "x"));
         tags.clear();
         tags.add(new ThrowsTag(iae, "if x is null"));
 		expected.add(new DocumentedMethod(aClass, "baz", doubleType, params, false, tags));
@@ -82,25 +82,25 @@ public class JavadocExtractorTest {
 		Type aClass = new Type("example.AClass");
 		Type aChild = new Type("example.AChild");
 		
-		params.add(new Parameter(objectType, "z", 0));
+		params.add(new Parameter(objectType, "z"));
 		tags.add(new ThrowsTag(iae, "if z is null"));
 		expected.add(new DocumentedMethod(aChild, "baz", doubleType, params, false, tags));
 		
 		params.clear();
-        params.add(new Parameter(objectArrayType, "x", 0));
+        params.add(new Parameter(objectArrayType, "x"));
         tags.clear();
         tags.add(new ThrowsTag(iae, "if x is null"));
 		expected.add(new DocumentedMethod(aChild, "vararg", doubleType, params, true, tags));
 		
 		params.clear();
-		params.add(new Parameter(new Type("int[]"), "array", 0, true));
+		params.add(new Parameter(new Type("int[]"), "array", true));
 		tags.clear();
 		tags.add(new ThrowsTag(npe, "if array is null"));
 		expected.add(new DocumentedMethod(aClass, "foo", doubleType, params, false, tags));
 		
 		params.clear();
-        params.add(new Parameter(objectType, "x", 0, false));
-        params.add(new Parameter(objectType, "y", 1, false));
+        params.add(new Parameter(objectType, "x", false));
+        params.add(new Parameter(objectType, "y", false));
         tags.clear();
         tags.add(new ThrowsTag(iae, "if x is null"));
 		expected.add(new DocumentedMethod(aClass, "bar", doubleType, params, false, tags));

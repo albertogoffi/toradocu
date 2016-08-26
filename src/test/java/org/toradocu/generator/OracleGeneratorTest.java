@@ -24,9 +24,9 @@ public class OracleGeneratorTest {
 		
 		OracleGenerator oracleGenerator = new OracleGenerator();
 		List<Parameter> parameters = new ArrayList<>();
-		parameters.add(new Parameter(new Type("java.lang.Integer[]"), "array", 0));
-		parameters.add(new Parameter(new Type("java.lang.Integer"), "element", 1));
-		parameters.add(new Parameter(new Type("java.lang.String[]"), "names", 2));
+		parameters.add(new Parameter(new Type("java.lang.Integer[]"), "array"));
+		parameters.add(new Parameter(new Type("java.lang.Integer"), "element"));
+		parameters.add(new Parameter(new Type("java.lang.String[]"), "names"));
 		List<ThrowsTag> tags = new ArrayList<>();
 		ThrowsTag tag = new ThrowsTag(npe, "if array or element is null");
 		tag.setCondition("args[0]==null || args[1]==null");
