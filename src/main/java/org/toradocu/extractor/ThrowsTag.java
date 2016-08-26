@@ -78,31 +78,6 @@ public class ThrowsTag {
 	}
 	
 	/**
-	 * Sets the translated conditions for this throws tags to the given conditions. Each element in
-	 * the set is combined using an || conjunction.
-	 * 
-	 * @param conditions the translated conditions for this throws tag (as Java boolean conditions)
-	 * @throws NullPointerException if conditions is null
-	 */
-	public void setConditions(Set<String> conditions) {
-		Checks.nonNullParameter(conditions, "conditions");
-		
-		conditions.removeIf(s -> s.isEmpty());
-		if (conditions.size() == 0) {
-			this.condition = "";
-		} else if (conditions.size() == 1) {
-			this.condition = conditions.iterator().next();
-		} else {
-			Iterator<String> it = conditions.iterator();
-			StringBuilder conditionsBuilder = new StringBuilder("(" + it.next() + ")");
-			while (it.hasNext()) {
-				conditionsBuilder.append("||(" + it.next() + ")");
-			}
-			this.condition = conditionsBuilder.toString();
-		}
-	}
-	
-	/**
 	 * Returns true if this {@code ThrowsTag} and the specified object are equal.
 	 * 
 	 * @param obj the object to test for equality

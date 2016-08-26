@@ -12,19 +12,13 @@ public class FieldCodeElement extends CodeElement<Field> {
 	private final String receiver;
 	
 	/**
-	 * Constructs and initializes a {@code MethodCodeElement} that identifies the given method. The given method
-	 * must take no arguments.
+	 * Constructs and initializes a {@code FieldCodeElement} that identifies the given field.
 	 * 
 	 * @param receiver the class/object in which this field is contained
-	 * @param field the boolean field that this code element identifies
-	 * @throws IllegalArgumentException if field is not boolean/Boolean
+	 * @param field the field that this code element identifies
 	 */
 	public FieldCodeElement(String receiver, Field field) {
 		super(field);
-		if (!field.getType().equals(Boolean.class) && !field.getType().equals(boolean.class)) {
-			throw new IllegalArgumentException("Field " + field.getName() + " is of type "
-											   + field.getType().getName() + ". Expected boolean/Boolean.");
-		}
 		this.receiver = receiver;
 		
 		// Add name identifier.
