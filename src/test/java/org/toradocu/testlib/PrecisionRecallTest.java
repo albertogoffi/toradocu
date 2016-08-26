@@ -30,9 +30,8 @@ public class PrecisionRecallTest {
 	 * @return statistics for the test
 	 */
 	public static TestCaseStats test(String targetClass, String srcPath, String binPath, String expectedOutputDir) {
-		String className = getClassName(targetClass);
-		String actualOutputFile = "tmp" + File.separator + className + "_out.txt";
-		String expectedOutputFile = Paths.get(expectedOutputDir, className + "_expected.txt").toString();
+		String actualOutputFile = "tmp" + File.separator + targetClass + "_out.txt";
+		String expectedOutputFile = Paths.get(expectedOutputDir, targetClass + "_expected.txt").toString();
 		String message = "=== Test " + targetClass + " ===";
 		
 		Toradocu.main(new String[] {"--target-class", targetClass,
@@ -44,17 +43,6 @@ public class PrecisionRecallTest {
 		return compare(actualOutputFile, expectedOutputFile, message);
 	}
 	
-	/**
-	 * Returns a simple class name for the class with the given qualified
-	 * name.
-	 *
-	 * @param qualifiedClassName the qualified name of the class
-	 * @return the simple name of the class
-	 */
-	private static String getClassName(String qualifiedClassName) {
-		return qualifiedClassName.substring(qualifiedClassName.lastIndexOf(".") + 1);
-	}
-
 	/**
 	 * Compares the output file and the expected output file. Calculates
 	 * statistics on precision and recall and prints the results.
