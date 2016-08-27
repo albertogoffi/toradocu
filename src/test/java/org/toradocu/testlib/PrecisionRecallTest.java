@@ -1,16 +1,24 @@
 package org.toradocu.testlib;
 
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.toradocu.Toradocu;
+import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ThrowsTag;
+import org.toradocu.util.GsonInstance;
+
+import com.google.gson.reflect.TypeToken;
 
 /**
  * PrecisionRecallTest contains static methods to perform a precision recall
@@ -30,8 +38,8 @@ public class PrecisionRecallTest {
 	 * @return statistics for the test
 	 */
 	public static TestCaseStats test(String targetClass, String srcPath, String binPath, String expectedOutputDir) {
-		String actualOutputFile = "tmp" + File.separator + targetClass + "_out.txt";
-		String expectedOutputFile = Paths.get(expectedOutputDir, targetClass + "_expected.txt").toString();
+		String actualOutputFile = "tmp" + File.separator + targetClass + "_out.json";
+		String expectedOutputFile = Paths.get(expectedOutputDir, targetClass + "_expected.json").toString();
 		String message = "=== Test " + targetClass + " ===";
 		
 		Toradocu.main(new String[] {"--target-class", targetClass,
@@ -53,35 +61,66 @@ public class PrecisionRecallTest {
 	 * @return statistics on precision and recall for the test
 	 */
 	private static TestCaseStats compare(String outputFile, String expectedOutputFile, String message) {
-		StringBuilder report = new StringBuilder();
+		StringBuilder report = new StringBuilder(message + "\n");
 		
-		report.append(message + "\n");
 		try (BufferedReader outFile = Files.newBufferedReader(Paths.get(outputFile));
 			 BufferedReader expFile = Files.newBufferedReader(Paths.get(expectedOutputFile))) {
-			List<String> output = outFile.lines().collect(Collectors.toList());
-			List<String> expected = expFile.lines().collect(Collectors.toList());
-			TestCaseStats result = new TestCaseStats(expected.size());
-			for (String line : output) {
-				if (!line.endsWith("==> []")) { // If Toradocu output is not empty (important to get correct recall)
-					if (expected.contains(line)) {
-						result.incrementTP();
-					} else {
-						result.incrementFP();
-						report.append("Wrong condition: " + line + "\n");
-					}
-				} else {
-					report.append("Missing condition:" + line + "\n");
-				}
-			}
-			double precision = result.getPrecision();
-			double recall = result.getRecall();
-			report.append("Conditions: " + expected.size() + "\n");
-			report.append("Precision: " + String.format("%.2f", precision) + "\n");
-			report.append("Recall: " + String.format("%.2f", recall) + "\n");
-			System.out.println(report);
+		    
+		    Type collectionType = new TypeToken<Collection<DocumentedMethod>>(){}.getType();
+		    List<DocumentedMethod> actualResult = GsonInstance.gson().fromJson(outFile, collectionType);
+		    List<DocumentedMethod> expectedResult = GsonInstance.gson().fromJson(expFile, collectionType);
+			
+		    assertThat(actualResult.size(), is(expectedResult.size()));
+		    
+		    TestCaseStats result = new TestCaseStats();
+		    int numberOfComments = 0;
+		    for (int methodIndex = 0; methodIndex < expectedResult.size(); methodIndex++) {
+		        DocumentedMethod method = expectedResult.get(methodIndex);
+		        ThrowsTag[] expectedMethodTags = method.throwsTags().toArray(new ThrowsTag[0]);
+		        ThrowsTag[] actualMethodTags = actualResult.get(methodIndex).throwsTags().toArray(new ThrowsTag[0]);
+		       
+		        if (expectedMethodTags.length != 0) {
+		            report.append(method.getSignature() + ":\n");
+		        }
+		        
+		        assertThat(expectedMethodTags.length, is(actualMethodTags.length));
+		        
+		        for (int tagIndex = 0; tagIndex < expectedMethodTags.length; tagIndex++) {
+		            ThrowsTag expectedTag = expectedMethodTags[tagIndex];
+		            ThrowsTag actualTag = actualMethodTags[tagIndex];
+		            
+		            String expectedCondition = expectedTag.getCondition().get();
+		            String actualCondition = actualTag.getCondition().get();
+		            numberOfComments++;
+		           
+		            if (expectedCondition.equals(actualCondition)) {
+		                result.incrementTP();
+		                report.append("Translation OK\n");
+		            } else {
+		                if (actualCondition.isEmpty()) {
+		                    report.append("Empty condition. Comment: " + expectedTag.exceptionComment()
+                            + ". Expected condition: " + expectedCondition + ". Actual condition: " + actualCondition + "\n");
+		                } else {
+		                    result.incrementFP();
+		                    report.append("Wrong condition. Comment: " + expectedTag.exceptionComment()
+                                    + ". Expected condition: " + expectedCondition + ". Actual condition: " + actualCondition + "\n");
+		                }
+		            }
+		        }
+		    }
+		    
+		    result.setTotal(numberOfComments);
+		    double precision = result.getPrecision();
+		    double recall = result.getRecall();
+		    report.append("Conditions: " + numberOfComments 
+		            + " | Precision: " + String.format("%.2f", precision)
+		            + " | Recall: " + String.format("%.2f", recall)
+		            + "\n");
+		    System.out.println(report);
 			return result;
 		} catch (IOException e) {
-			fail(e.getMessage());
+		    e.printStackTrace();
+			fail();
 			return null;
 		}
 	}

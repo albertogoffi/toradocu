@@ -11,9 +11,9 @@ public abstract class AbstractPrecisionRecallTestSuite {
 	protected static final double PRECISION = 0.01;
 	protected static final String PRECISION_MESSAGE = "Precision is different than expected";
 	protected static final String RECALL_MESSAGE = "Recall is different than expected";
-
+	
 	/** Keeps track of statistics on currently run tests. */
-	private static TestSuiteStats testSuiteStats;
+	private static final TestSuiteStats testSuiteStats = new TestSuiteStats();
 	/** The directory containing the source files on which to run tests. */
 	private final String sourceDirPath;
 	/** The directory containing the binaries on which to run tests. */
@@ -25,7 +25,6 @@ public abstract class AbstractPrecisionRecallTestSuite {
 	    this.sourceDirPath = sourceDirPath;
 	    this.binDirPath = binDirPath;
 	    this.expectedOutputDirPath = expectedOutputDirPath;
-	    testSuiteStats = new TestSuiteStats();
     }
 	
 	/**

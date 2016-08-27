@@ -9,15 +9,6 @@ public class TestCaseStats {
 	private int tp = 0, fp = 0, total = 0;
 
 	/**
-	 * Constructs a test case with the given number of relevant elements.
-	 *
-	 * @param total the number of relevant elements in the test case
-	 */
-	public TestCaseStats(int total) {
-		this.total = total;
-	}
-
-	/**
 	 * Returns the recall of the test case.
 	 *
 	 * @return the recall of the test case
@@ -36,6 +27,15 @@ public class TestCaseStats {
 			return 0;
 		}
 		return tp / (double) (tp + fp);
+	}
+	
+	/**
+     * Set the total number of relevant elements.
+     *
+     * @param total the number of relevant elements in the test case
+     */
+	public void setTotal(int total) {
+	    this.total = total;
 	}
 
 	/**

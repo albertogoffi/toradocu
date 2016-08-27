@@ -18,7 +18,6 @@ import org.toradocu.doclet.formats.html.ConfigurationImpl;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.JavadocExtractor;
 import org.toradocu.translator.ConditionTranslator;
-import org.toradocu.util.ExportedData;
 import org.toradocu.util.GsonInstance;
 import org.toradocu.util.NullOutputStream;
 
@@ -103,10 +102,9 @@ public class Toradocu {
 		if (CONFIGURATION.isConditionTranslationEnabled()) {
 			ConditionTranslator.translate(methods);
 			if (CONFIGURATION.getConditionTranslatorOutput() != null) {
-				ExportedData data = new ExportedData(methods);
 				try (BufferedWriter writer = Files.newBufferedWriter(CONFIGURATION.getConditionTranslatorOutput().toPath(),
 																	 StandardCharsets.UTF_8)) {
-					writer.write(data.asJson());
+					writer.write(GsonInstance.gson().toJson(methods));
 				} catch (Exception e) {
 					LOG.error("Unable to write the output on file " + CONFIGURATION.getConditionTranslatorOutput().getAbsolutePath(), e);
 				}
