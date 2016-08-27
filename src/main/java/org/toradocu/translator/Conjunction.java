@@ -16,9 +16,9 @@ public enum Conjunction {
 	public String toString() {
 		switch (this) {
 			case AND:
-				return "&&";
+				return " && ";
 			case OR:
-				return "||";
+				return " || ";
 			default:
 				return "";
 		}
