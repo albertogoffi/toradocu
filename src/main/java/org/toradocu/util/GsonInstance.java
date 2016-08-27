@@ -9,7 +9,7 @@ import com.google.gson.GsonBuilder;
 public final class GsonInstance {
 	
 	/** The Gson object instance. */
-	private final static Gson gson = new GsonBuilder().setPrettyPrinting().create();
+	private final static Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
 
 	/** Disables construction of this class. */
 	private GsonInstance() {}
