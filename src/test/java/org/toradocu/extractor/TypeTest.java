@@ -10,7 +10,7 @@ public class TypeTest {
 	@Test
 	public void testBasics() throws Exception {
 		Type typeInDefaultPackage = new Type("Foo[]");
-		assertThat(typeInDefaultPackage.getName(), is("Foo[]"));
+		assertThat(typeInDefaultPackage.getSimpleName(), is("Foo[]"));
 		assertThat(typeInDefaultPackage.getQualifiedName(), is("Foo[]"));
 		assertThat(typeInDefaultPackage.isArray(), is(true));
 		assertThat(typeInDefaultPackage.toString(), is("Foo[]"));
@@ -18,7 +18,7 @@ public class TypeTest {
 		assertThat(typeInDefaultPackage.equals(new Object()), is(false));
 		
 		Type standardType = new Type("example.Foo");
-		assertThat(standardType.getName(), is("Foo"));
+		assertThat(standardType.getSimpleName(), is("Foo"));
 		assertThat(standardType.getQualifiedName(), is("example.Foo"));
 		assertThat(standardType.isArray(), is(false));
 		assertThat(standardType.toString(), is("example.Foo"));

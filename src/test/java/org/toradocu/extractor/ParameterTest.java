@@ -14,12 +14,12 @@ public class ParameterTest {
     public void testBasics() {
         Parameter p = new Parameter(new Type("org.toradocu.Parameter"), "par");
         assertThat(p.getType().getQualifiedName(), is("org.toradocu.Parameter"));
-        assertThat(p.getType().getName(), is("Parameter"));
+        assertThat(p.getType().getSimpleName(), is("Parameter"));
         assertThat(p.getName(), is("par"));
         assertThat(p.getNullability(), is(nullValue()));
 
         Parameter intPar = new Parameter(new Type("int"), "par", false);
-        assertThat(intPar.getType().getName(), is("int"));
+        assertThat(intPar.getType().getSimpleName(), is("int"));
         assertThat(intPar.getType().getQualifiedName(), is("int"));
         assertThat(intPar.getNullability(), is(false));
         

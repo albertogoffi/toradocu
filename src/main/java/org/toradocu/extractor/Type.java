@@ -57,7 +57,7 @@ public class Type {
 	 * 
 	 * @return the simple name of this {@code Type}
 	 */
-	public String getName() {
+	public String getSimpleName() {
 		return name;
 	}
 	
