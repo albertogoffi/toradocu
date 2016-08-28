@@ -25,7 +25,7 @@ public class Matcher {
 	 * Represents the threshold for the Levenshtein distance above which {@code CodeElement}s are
 	 * considered to be not matching.
 	 */
-	private static final int LEVENSHTEIN_DISTANCE_THRESHOLD = 9;
+	private static final int LEVENSHTEIN_DISTANCE_THRESHOLD = 1;
 
 	private static final Logger LOG = LoggerFactory.getLogger(Matcher.class);
 	
@@ -167,11 +167,9 @@ public class Matcher {
 	private static Set<CodeElement<?>> extractBooleanCodeElements(CodeElement<?> receiver, Class<?> type) {
 		Set<CodeElement<?>> result = new LinkedHashSet<>();
 		
-		if (type.isPrimitive()) {
-			if (type.isArray()) {
-				result.add(new GeneralCodeElement("isEmpty", receiver.getJavaExpression() + ".length==0"));
-				result.add(new GeneralCodeElement("length", receiver.getJavaExpression() + ".length"));
-			}
+		if (type.isArray()) {
+			result.add(new GeneralCodeElement(receiver.getJavaExpression() + ".length==0", "isEmpty"));
+			result.add(new GeneralCodeElement(receiver.getJavaExpression() + ".length", "length"));
 			return result;
 		}
 		
