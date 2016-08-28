@@ -1,6 +1,11 @@
 package org.toradocu.testlib;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import org.junit.AfterClass;
+import org.junit.BeforeClass;
 
 /**
  * Represents an abstract test suite that uses precision and recall to measure
@@ -26,6 +31,14 @@ public abstract class AbstractPrecisionRecallTestSuite {
 	    this.binDirPath = binDirPath;
 	    this.expectedOutputDirPath = expectedOutputDirPath;
     }
+	
+	/**
+     * Creates the temporary directory if it does not exist.
+     */
+	@BeforeClass
+	public static void setUp() throws IOException {
+	    Files.createDirectories(Paths.get("tmp"));
+	}
 	
 	/**
 	 * Prints the results (i.e. statistics) of the test suite.
