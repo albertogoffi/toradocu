@@ -108,7 +108,7 @@ task extractSources(dependsOn: downloadSources) << {
     }
 }
 
-test.dependsOn extractSources, downloadBinaries
+//test.dependsOn extractSources, downloadBinaries
 
 task removeDefaultOutputDir(type: Delete) {
 	delete 'tmp', 'aspects'

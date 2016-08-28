@@ -2,14 +2,8 @@
 /tmp/
 /aspects/
 
-# Toradocu's test resources (downloaded automatically on gradle test)
-/src/test/resources/*.zip
-/src/test/resources/*.jar
-/src/test/resources/*
-!/src/test/resources/Guava-19
-!/src/test/resources/CommonsCollections-4.1
-!/src/test/resources/JGraphT
-!/src/test/resources/example
+# Toradocu's test resources (only the systems' source code that is downloaded automatically on gradle test)
+/src/test/resources/src
 
 # Eclipse IDE
 /bin/
@@ -41,6 +35,7 @@ gradle-app.setting
 *.jar
 !gradle-wrapper.jar
 !/lib/*.jar
+!/src/test/resources/bin/*.jar
 *.war
 *.ear
 
