@@ -1,5 +1,4 @@
 plugins {
-	id 'java'
 	id 'application'
 	id 'eclipse'
 	id 'jacoco'
@@ -41,10 +40,10 @@ dependencies {
 	compile fileTree(dir: 'lib', include: '*.jar')
 	compile	'edu.stanford.nlp:stanford-corenlp:3.6.0'
 	compile	'edu.stanford.nlp:stanford-corenlp:3.6.0:models-english'
-	compile 'org.jsoup:jsoup:1.8.3' // We use JSoup only to remove HTML tags in comments.
+	compile 'org.jsoup:jsoup:1.8.3' // JSoup used only to remove HTML tags in comments.
 	compile 'com.github.javaparser:javaparser-core:2.3.0'
 	compile 'com.beust:jcommander:1.48'
-	compile 'com.google.code.gson:gson:2.6.2'
+	compile 'com.google.code.gson:gson:2.7'
 	compile 'commons-io:commons-io:2.5'
 	compile 'org.slf4j:slf4j-simple:1.7.21'
 	testCompile 'junit:junit:4.12'
@@ -72,7 +71,7 @@ compileJava.doLast {
 
 import de.undercouch.gradle.tasks.download.Download
 
-/* This task downloads sources of the systems used to measure Toradocu's precision and recall */ 
+/* Downloads sources of the systems used to measure Toradocu's precision and recall */ 
 task downloadSources(type: Download) {
     src ([
        'http://mirror.switch.ch/mirror/apache/dist/commons/collections/source/commons-collections4-4.1-src.zip',
@@ -81,9 +80,10 @@ task downloadSources(type: Download) {
     ])
     dest 'src/test/resources/src'
     onlyIfNewer true
+    overwrite false
 }
 
-/* This task downloads binaries of the systems used to measure Toradocu's precision and recall */ 
+/* Downloads binaries of the systems used to measure Toradocu's precision and recall */ 
 task downloadBinaries(type: Download) {
     src ([
        'http://mirror.switch.ch/mirror/apache/dist/commons/collections/binaries/commons-collections4-4.1-bin.zip',
@@ -92,8 +92,10 @@ task downloadBinaries(type: Download) {
     ])
     dest 'src/test/resources/bin'
     onlyIfNewer true
+    overwrite false
 }
 
+/* Extracts source archives of the systems used to measure Toradocu's precision and recall */ 
 task extractSources(dependsOn: downloadSources) << { 
     file('src/test/resources/src').listFiles().findAll{it.name.endsWith('.zip')||it.name.endsWith('.jar')}.each{ file ->
         def fileName = "$file.name"
