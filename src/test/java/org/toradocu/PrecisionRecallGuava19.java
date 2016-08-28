@@ -28,8 +28,8 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 	@Test
 	public void concurrentHashMultisetTest() throws Exception {
 		TestCaseStats stats = test("com.google.common.collect.ConcurrentHashMultiset");
-		assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.81, PRECISION));
-		assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.75));
+		assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.83, PRECISION));
+		assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.77, PRECISION));
 	}
 	
 	@Test
@@ -56,8 +56,8 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 	@Test
 	public void shortsTest() throws Exception {
 		TestCaseStats stats = test("com.google.common.primitives.Shorts");
-		assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(0.75));
-		assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.5));
+		assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
+		assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.67, PRECISION));
 	}
 	
 	@Test
