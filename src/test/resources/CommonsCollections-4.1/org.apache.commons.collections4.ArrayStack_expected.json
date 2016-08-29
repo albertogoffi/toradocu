@@ -1,0 +1,1451 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ArrayStack",
+      "name": "ArrayStack",
+      "isArray": false
+    },
+    "name": "ArrayStack",
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "ArrayStack()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ArrayStack",
+      "name": "ArrayStack",
+      "isArray": false
+    },
+    "name": "ArrayStack",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "initialSize"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if the specified initial size is negative",
+        "condition": "initialSize<0"
+      }
+    ],
+    "signature": "ArrayStack(int initialSize)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ArrayStack",
+      "name": "ArrayStack",
+      "isArray": false
+    },
+    "name": "empty",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "empty()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ArrayStack",
+      "name": "ArrayStack",
+      "isArray": false
+    },
+    "name": "peek",
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.util.EmptyStackException",
+          "name": "EmptyStackException",
+          "isArray": false
+        },
+        "comment": "if the stack is empty",
+        "condition": "target.isEmpty()"
+      }
+    ],
+    "signature": "peek()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ArrayStack",
+      "name": "ArrayStack",
+      "isArray": false
+    },
+    "name": "peek",
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "n"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.util.EmptyStackException",
+          "name": "EmptyStackException",
+          "isArray": false
+        },
+        "comment": "if there are not enough items on the stack to satisfy this request",
+        "condition": "target.size()<n"
+      }
+    ],
+    "signature": "peek(int n)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ArrayStack",
+      "name": "ArrayStack",
+      "isArray": false
+    },
+    "name": "pop",
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.util.EmptyStackException",
+          "name": "EmptyStackException",
+          "isArray": false
+        },
+        "comment": "if the stack is empty",
+        "condition": "target.isEmpty()"
+      }
+    ],
+    "signature": "pop()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ArrayStack",
+      "name": "ArrayStack",
+      "isArray": false
+    },
+    "name": "push",
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "E",
+          "name": "E",
+          "isArray": false
+        },
+        "name": "item"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "push(E item)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ArrayStack",
+      "name": "ArrayStack",
+      "isArray": false
+    },
+    "name": "search",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "object"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "search(java.lang.Object object)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "trimToSize",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "trimToSize()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "ensureCapacity",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "ensureCapacity(int arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "ensureCapacityInternal",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "ensureCapacityInternal(int arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "ensureExplicitCapacity",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "ensureExplicitCapacity(int arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "grow",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "grow(int arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "hugeCapacity",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "hugeCapacity(int arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "size",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "size()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "isEmpty",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "isEmpty()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "contains",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "contains(java.lang.Object arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "indexOf",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "indexOf(java.lang.Object arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "lastIndexOf",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "lastIndexOf(java.lang.Object arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "clone",
+    "returnType": {
+      "qualifiedName": "java.lang.Object",
+      "name": "Object",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "clone()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "toArray",
+    "returnType": {
+      "qualifiedName": "java.lang.Object[]",
+      "name": "Object[]",
+      "isArray": true
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "toArray()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "toArray",
+    "returnType": {
+      "qualifiedName": "T[]",
+      "name": "T[]",
+      "isArray": true
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "T[]",
+          "name": "T[]",
+          "isArray": true
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "toArray(T[] arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "elementData",
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "elementData(int arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "get",
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "get(int arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "set",
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      },
+      {
+        "type": {
+          "qualifiedName": "E",
+          "name": "E",
+          "isArray": false
+        },
+        "name": "arg1"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "set(int arg0,E arg1)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "add",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "E",
+          "name": "E",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "add(E arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "add",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      },
+      {
+        "type": {
+          "qualifiedName": "E",
+          "name": "E",
+          "isArray": false
+        },
+        "name": "arg1"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "add(int arg0,E arg1)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "remove",
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "remove(int arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "remove",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "remove(java.lang.Object arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "fastRemove",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "fastRemove(int arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "clear",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "clear()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "addAll",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "addAll(java.util.Collection arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "addAll",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "arg1"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "addAll(int arg0,java.util.Collection arg1)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "removeRange",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg1"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "removeRange(int arg0,int arg1)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "rangeCheck",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "rangeCheck(int arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "rangeCheckForAdd",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "rangeCheckForAdd(int arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "outOfBoundsMsg",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "outOfBoundsMsg(int arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "removeAll",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "removeAll(java.util.Collection arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "retainAll",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "retainAll(java.util.Collection arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "batchRemove",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "arg0"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "arg1"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "batchRemove(java.util.Collection arg0,boolean arg1)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "writeObject",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.ObjectOutputStream",
+          "name": "ObjectOutputStream",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "writeObject(java.io.ObjectOutputStream arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "readObject",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.ObjectInputStream",
+          "name": "ObjectInputStream",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "readObject(java.io.ObjectInputStream arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "listIterator",
+    "returnType": {
+      "qualifiedName": "java.util.ListIterator",
+      "name": "ListIterator",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "listIterator(int arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "listIterator",
+    "returnType": {
+      "qualifiedName": "java.util.ListIterator",
+      "name": "ListIterator",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "listIterator()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "iterator",
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "iterator()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "subList",
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg1"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "subList(int arg0,int arg1)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "subListRangeCheck",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg1"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg2"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "subListRangeCheck(int arg0,int arg1,int arg2)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "forEach",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.function.Consumer",
+          "name": "Consumer",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "forEach(java.util.function.Consumer arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "spliterator",
+    "returnType": {
+      "qualifiedName": "java.util.Spliterator",
+      "name": "Spliterator",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "spliterator()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "removeIf",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.function.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "removeIf(java.util.function.Predicate arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "replaceAll",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.function.UnaryOperator",
+          "name": "UnaryOperator",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "replaceAll(java.util.function.UnaryOperator arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "name": "sort",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Comparator",
+          "name": "Comparator",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "sort(java.util.Comparator arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractList",
+      "name": "AbstractList",
+      "isArray": false
+    },
+    "name": "equals",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "equals(java.lang.Object arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractList",
+      "name": "AbstractList",
+      "isArray": false
+    },
+    "name": "hashCode",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "hashCode()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractCollection",
+      "name": "AbstractCollection",
+      "isArray": false
+    },
+    "name": "finishToArray",
+    "returnType": {
+      "qualifiedName": "T[]",
+      "name": "T[]",
+      "isArray": true
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "T[]",
+          "name": "T[]",
+          "isArray": true
+        },
+        "name": "arg0"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "arg1"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "finishToArray(T[] arg0,java.util.Iterator arg1)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractCollection",
+      "name": "AbstractCollection",
+      "isArray": false
+    },
+    "name": "containsAll",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "containsAll(java.util.Collection arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractCollection",
+      "name": "AbstractCollection",
+      "isArray": false
+    },
+    "name": "toString",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "toString()"
+  }
+]
