@@ -2013,7 +2013,7 @@
           "isArray": false
         },
         "comment": "if either collection is null",
-        "condition": "args[0]==null||args[1]==null"
+        "condition": "args[0]==null || args[1]==null"
       }
     ],
     "signature": "collate(java.lang.Iterable a,java.lang.Iterable b)"
@@ -2065,7 +2065,7 @@
           "isArray": false
         },
         "comment": "if either collection is null",
-        "condition": "args[0]==null||args[1]==null"
+        "condition": "args[0]==null || args[1]==null"
       }
     ],
     "signature": "collate(java.lang.Iterable a,java.lang.Iterable b,boolean includeDuplicates)"
@@ -2610,7 +2610,7 @@
           "isArray": false
         },
         "comment": "if collection is empty or contains more than one element",
-        "condition": "args[0].isEmpty() or args[0].size()>1"
+        "condition": "args[0].isEmpty() || args[0].size()>1"
       }
     ],
     "signature": "extractSingleton(java.util.Collection collection)"

@@ -42,8 +42,8 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 	@Test
 	public void collectionUtilsTest() throws Exception {
 		TestCaseStats stats = test("org.apache.commons.collections4.CollectionUtils");
-		assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.79, PRECISION));
-		assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.68, PRECISION));
+		assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.85, PRECISION));
+		assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.74, PRECISION));
 	}
 	
 	@Test
