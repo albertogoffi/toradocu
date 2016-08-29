@@ -113,7 +113,7 @@ public class ConditionTranslator {
 			Iterator<String> it = conditions.iterator();
 			StringBuilder conditionsBuilder = new StringBuilder("(" + it.next() + ")");
 			while (it.hasNext()) {
-				conditionsBuilder.append("||(" + it.next() + ")");
+				conditionsBuilder.append(" || (" + it.next() + ")");
 			}
 			return conditionsBuilder.toString();
 		}
@@ -129,9 +129,9 @@ public class ConditionTranslator {
 	 */
 	private static String getConjunction(String subject) {
 		if (subject.startsWith("either ") || subject.startsWith("any ")) {
-			return "||";
-		} else if (subject.startsWith("both") || subject.startsWith("all ")) {
-			return "&&";
+			return " || ";
+		} else if (subject.startsWith("both ") || subject.startsWith("all ")) {
+			return " && ";
 		} else {
 			return null;
 		}

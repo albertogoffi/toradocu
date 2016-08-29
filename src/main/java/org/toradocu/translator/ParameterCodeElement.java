@@ -23,6 +23,7 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
 		
 		// Add name identifiers.
 		addIdentifier("parameter");
+		addIdentifier("argument");
 		addIdentifier(parameter.getName());
 		addIdentifier(parameter.getType().getSimpleName() + " " + parameter.getName());
 		addIdentifier(parameter.getName() + " " + parameter.getType().getSimpleName());
