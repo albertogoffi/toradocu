@@ -22,6 +22,8 @@ public class Type {
 	/** Flag {@code true} when this {@code Type} is an array type (e.g., java.lang.String[]) */
 	private final boolean isArray;
 	
+	private final Type componentType; 
+	
 	/**
 	 * Creates a new {@code Type} with a given fully qualified name.
 	 * 
@@ -41,6 +43,7 @@ public class Type {
 			name = qualifiedName;
 		}
 		isArray = name.endsWith("]");
+		componentType = isArray ? new Type(qualifiedName.replaceAll("\\[\\]", "")) : null;
 	}
 	
 	/**
@@ -71,6 +74,20 @@ public class Type {
 		 return isArray;
 	}
 	
+	/**
+	 * Returns the {@code Type} representing the component type of an array. If this class does not represent 
+	 * an array class this method returns {@code null}.
+	 * 
+	 * @return the {@code Type} representing the component type of this type if this type is an array
+	 */
+	public Type getComponentType() {
+	    return componentType;
+	}
+	
+	public int dimension() {
+	    return getDimension(getQualifiedName());
+	}
+
 	/** 
 	 * Returns the fully qualified name of this {@code Type}.
 	 * 
@@ -96,6 +113,23 @@ public class Type {
 	}
 	
 	/**
+	 * Compares this type with a Java Class type.
+	 * 
+	 * @param type the Class to be compared with this type.
+	 * @return {@code true} if this type and {@code type} are equal, {@code false} otherwise.
+	 */
+	public boolean equalsTo(Class<?> type) {
+	    if (!isArray() && !type.isArray()) {
+	        /* Replacement of '$' with '.' needed for nested classes. Toradocu Type uses '.' while
+	         * Java reflection uses '$' as specified by the Java Language Specification. */
+	        return getQualifiedName().equals(type.getName().replace("$", "."));
+	    }
+	    return isArray() == type.isArray() && 
+	           dimension() == getDimension(type.getName()) &&
+	           getComponentType().equalsTo(type.getComponentType());
+	}
+	
+	/**
 	 * Returns the hash code of this object.
 	 * 
 	 * @return the hash code of this object
@@ -103,5 +137,24 @@ public class Type {
 	@Override
 	public int hashCode() {
 		return Objects.hash(qualifiedName);
+	}
+	
+	/**
+	 * Returns the dimension of the given type. For example,
+	 * the dimension of "Integer" is 0,
+	 * the dimension of "String[]" is 1,
+	 * the dimension of "String[][]" is 2.
+	 * 
+	 * @param type a type (e.g. "java.lang.String[][]").
+	 * @return the dimension of the given type.
+	 */
+	private int getDimension(String type) {
+	    int typeDimension = 0;
+        for (char ch : type.toCharArray()) {
+           if (ch == '[') {
+               typeDimension++;
+           }
+        }
+        return typeDimension;
 	}
 }

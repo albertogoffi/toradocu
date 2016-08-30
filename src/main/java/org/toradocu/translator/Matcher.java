@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.Parameter;
 
 /**
  * The {@code Matcher} class translates subjects and predicates in Javadoc comments to Java expressions containing
@@ -203,15 +204,15 @@ public class Matcher {
 		// Load the DocumentedMethod as a reflection Method or Constructor.
 		if (documentedMethod.isConstructor()) {
 			for (Constructor<?> constructor : type.getDeclaredConstructors()) {
-				if (constructor.getParameterCount() == documentedMethod.getParameters().size()) {
+			    if (checkTypes(documentedMethod.getParameters().toArray(new Parameter[0]), constructor.getParameterTypes())) {
 					methodOrConstructor = constructor;
 					break;
 				}
 			}
 		} else {
 			for (Method method : type.getDeclaredMethods()) {
-				if (method.getName().equals(documentedMethod.getName())
-					&& method.getParameterCount() == documentedMethod.getParameters().size()) {
+				if (method.getName().equals(documentedMethod.getName()) &&
+				        checkTypes(documentedMethod.getParameters().toArray(new Parameter[0]), method.getParameterTypes())) {
 					methodOrConstructor = method;
 					break;
 				}
@@ -296,4 +297,24 @@ public class Matcher {
 		}
 	}
 	
+	/**
+	 * Check the type of all the specified parameters.
+	 * Returns true if all the specified {@code parameters} have the types specified in the array {@code types}. 
+	 * 
+	 * @param parameters the parameters whose type has to be checked
+	 * @param types the types that the parameters should have
+	 * @return true if all the specified {@code parameters} have the types specified in the array {@code types}. False otherwise.
+	 */
+	private static boolean checkTypes(Parameter[] parameters, Class<?>[] types) {
+	    if (types.length != parameters.length) {
+	        return false;
+	    }
+	    
+	    for (int i = 0; i < types.length; i++) {
+	        if (!parameters[i].getType().equalsTo(types[i])) {
+	            return false;
+	        }
+	    }
+	    return true;
+	}
 }

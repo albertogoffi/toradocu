@@ -24,6 +24,7 @@ import com.sun.javadoc.ExecutableMemberDoc;
 import com.sun.javadoc.MethodDoc;
 import com.sun.javadoc.Tag;
 import com.sun.javadoc.Type;
+import com.sun.javadoc.TypeVariable;
 
 public final class JavadocExtractor {
 	
@@ -182,18 +183,38 @@ public final class JavadocExtractor {
 				}
 			}
 			
-			Type pType = params[i].type();
-			String type = pType.qualifiedTypeName() + pType.dimension();
-			// Set type of last parameter to array if necessary (member takes varargs).
-			if (member.isVarArgs() && i == parameters.length - 1) {
-				type = pType.qualifiedTypeName() + "[]";
-			}
-			parameters[i] = new Parameter(new org.toradocu.extractor.Type(type), params[i].name(), nullable);
+			String parameterType = getParameterType(params[i].type());
+			parameters[i] = new Parameter(new org.toradocu.extractor.Type(parameterType), params[i].name(), nullable);
 		}
 		return Arrays.asList(parameters);
 	}
 	
 	/**
+	 * Returns the qualified name (with dimension information) of the specified parameter type.
+	 * @param parameterType the type (of a parameter).
+	 * @return the qualified name (with dimension information) of the specified parameter type.
+	 */
+	private String getParameterType(Type parameterType) {
+	    String qualifiedName;
+        
+	    TypeVariable pTypeAsTypeVariable = parameterType.asTypeVariable();
+	    /* If the parameter is a type variable. Example: C foo where C refers to <C extends java.lang.Collection>. */
+        if (pTypeAsTypeVariable != null) {
+            Type[] bounds = pTypeAsTypeVariable.bounds();
+            if (bounds.length == 0) {
+                qualifiedName = "java.lang.Object";
+            } else {
+                /* FIXME What if the parameter type has multiple bounds? (e.g., <T extends B1 & B2>) */
+                qualifiedName = bounds[0].qualifiedTypeName();
+            }
+        } else {
+            qualifiedName = parameterType.qualifiedTypeName();
+        }
+        /* Add dimension information when appropriate. Add "[]" if parameterType is a vararg. */
+        return qualifiedName + parameterType.dimension(); 
+    }
+
+    /**
 	 * This method tries to return the qualified name of the exception in the {@code throwsTag}.
 	 * If the source code of the exception is not available, then just the simple name in the Javadoc
 	 * comment is returned.
