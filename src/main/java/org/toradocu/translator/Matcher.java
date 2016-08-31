@@ -27,7 +27,7 @@ public class Matcher {
 	 * considered to be not matching.
 	 */
 	private static final int LEVENSHTEIN_DISTANCE_THRESHOLD = 1;
-
+	private static URLClassLoader classLoader;
 	private static final Logger LOG = LoggerFactory.getLogger(Matcher.class);
 	
 	/**
@@ -91,16 +91,18 @@ public class Matcher {
 	 */
 	private static Class<?> getClass(String className) {
 		Class<?> targetClass = null;
-		URL classDir = null;
 		final String ERROR_MESSAGE = "Unable to load class. Check the classpath.";
-		try {
-			classDir = Toradocu.CONFIGURATION.getClassDir().toUri().toURL();
-		} catch (MalformedURLException e) {
-			LOG.error(ERROR_MESSAGE);
-			return null;
+		if (classLoader == null) {
+			URL classDir = null;
+			try {
+				classDir = Toradocu.CONFIGURATION.getClassDir().toUri().toURL();
+			} catch (MalformedURLException e) {
+				LOG.error(ERROR_MESSAGE);
+				return null;
+			}
+			classLoader = new URLClassLoader(new URL[] { classDir });
 		}
 		try {
-			URLClassLoader classLoader = new URLClassLoader(new URL[] { classDir });
 			targetClass = classLoader.loadClass(className);
 		} catch (ClassNotFoundException e) {
 			LOG.error(ERROR_MESSAGE);
