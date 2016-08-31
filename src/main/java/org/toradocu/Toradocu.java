@@ -109,7 +109,9 @@ public class Toradocu {
 				} catch (Exception e) {
 					LOG.error("Unable to write the output on file " + CONFIGURATION.getConditionTranslatorOutput().getAbsolutePath(), e);
 				}
-			}
+			} else {
+	            System.out.println("Condition translator output:\n" + GsonInstance.gson().toJson(methods));
+	        }
 		}
 		
 		// === Oracle Generator ===
