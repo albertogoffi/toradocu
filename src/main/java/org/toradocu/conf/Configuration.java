@@ -17,12 +17,10 @@ import com.beust.jcommander.converters.FileConverter;
 import com.beust.jcommander.converters.PathConverter;
 
 /**
- * This singleton class holds the configuration options (particularly command-line options) for Toradocu.
+ * This class holds the configuration options (particularly command-line options) for Toradocu.
  */
-public enum Configuration {
-	
-	INSTANCE;
-	
+public class Configuration {
+    
 	// Constants
 	
 	private static final String ASPECT_TEMPLATE = "AspectTemplate.java";

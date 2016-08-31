@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.toradocu.Toradocu;
 import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.Parameter;
@@ -34,7 +35,7 @@ public class MethodChangerVisitor extends VoidVisitorAdapter<Object> {
 	/** {@code Logger} for this class. */
 	private static final Logger LOG = LoggerFactory.getLogger(MethodChangerVisitor.class);
 	/** Holds Toradocu configuration options. */
-	private final Configuration CONF = Configuration.INSTANCE;
+	private final Configuration CONF = Toradocu.CONFIGURATION;
 
 	public MethodChangerVisitor(DocumentedMethod method) {
 		this.method = method;
