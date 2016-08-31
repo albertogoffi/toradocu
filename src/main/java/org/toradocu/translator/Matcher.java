@@ -224,7 +224,8 @@ public class Matcher {
 		
 		// Add method parameters as code elements.
 		for (int i = 0 ; i < methodOrConstructor.getParameters().length; i++) {
-			result.add(new ParameterCodeElement(methodOrConstructor.getParameters()[i], i));
+			result.add(new ParameterCodeElement(methodOrConstructor.getParameters()[i],
+					   documentedMethod.getParameters().get(i).getName(), i));
 		}
 		
 		// Add the class itself as a code element.

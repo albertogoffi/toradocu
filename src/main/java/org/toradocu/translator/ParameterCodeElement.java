@@ -15,18 +15,19 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
 	 * Constructs and initializes a {@code ParameterCodeElement} that identifies the given parameter.
 	 * 
 	 * @param parameter the backing parameter that this code element identifies
+	 * @param name the name of the parameter
 	 * @param index the 0-based index of the parameter in the parameter list of its associated method
 	 */
-	public ParameterCodeElement(Parameter parameter, int index) {
+	public ParameterCodeElement(Parameter parameter, String name, int index) {
 		super(parameter);
 		this.index = index;
 		
 		// Add name identifiers.
 		addIdentifier("parameter");
 		addIdentifier("argument");
-		addIdentifier(parameter.getName());
-		addIdentifier(parameter.getType().getSimpleName() + " " + parameter.getName());
-		addIdentifier(parameter.getName() + " " + parameter.getType().getSimpleName());
+		addIdentifier(name);
+		addIdentifier(parameter.getType().getSimpleName() + " " + name);
+		addIdentifier(name + " " + parameter.getType().getSimpleName());
 		
 		// Add type identifiers
 		if (parameter.getType().isArray()) {
