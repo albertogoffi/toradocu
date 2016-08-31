@@ -113,11 +113,11 @@ task extractSources(dependsOn: downloadSources) << {
 
 test.dependsOn extractSources 
 
-task removeDefaultOutputDir(type: Delete) {
+task removeTestOutputDirs(type: Delete) {
 	delete 'tmp', 'aspects'
 }
 
-clean.dependsOn removeDefaultOutputDir
+clean.dependsOn removeTestOutputDirs
 
 /* Make Emacs TAGS table */
 task tags(type: Exec) {

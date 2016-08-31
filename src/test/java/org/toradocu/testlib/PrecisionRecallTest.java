@@ -39,7 +39,7 @@ public class PrecisionRecallTest {
 	 * @return statistics for the test
 	 */
 	public static TestCaseStats test(String targetClass, String srcPath, String binPath, String expectedOutputDir) {
-		String actualOutputFile = "tmp" + File.separator + targetClass + "_out.json";
+		String actualOutputFile = AbstractPrecisionRecallTestSuite.OUTPUT_DIR + File.separator + targetClass + "_out.json";
 		String expectedOutputFile = Paths.get(expectedOutputDir, targetClass + "_expected.json").toString();
 		String message = "=== Test " + targetClass + " ===";
 		
@@ -77,13 +77,10 @@ public class PrecisionRecallTest {
 		    for (int methodIndex = 0; methodIndex < expectedResult.size(); methodIndex++) {
 		        DocumentedMethod method = expectedResult.get(methodIndex);
 		        ThrowsTag[] expectedMethodTags = method.throwsTags().toArray(new ThrowsTag[0]);
-		        ThrowsTag[] actualMethodTags = actualResult.get(methodIndex).throwsTags().toArray(new ThrowsTag[0]);
-		       
-		        if (expectedMethodTags.length != 0) {
-		            report.append(method.getSignature() + ":\n");
-		        }
-		        
+		        ThrowsTag[] actualMethodTags = actualResult.get(methodIndex).throwsTags().toArray(new ThrowsTag[0]);        
 		        assertThat(expectedMethodTags.length, is(actualMethodTags.length));
+		        StringBuilder methodReport = new StringBuilder(method.getSignature() + ":\n"); 
+		        boolean errors = false;
 		        
 		        for (int tagIndex = 0; tagIndex < expectedMethodTags.length; tagIndex++) {
 		            ThrowsTag expectedTag = expectedMethodTags[tagIndex];
@@ -95,17 +92,20 @@ public class PrecisionRecallTest {
 		           
 		            if (expectedCondition.equals(actualCondition)) {
 		                result.incrementTP();
-		                report.append("Translation OK\n");
 		            } else {
+		                errors = true;
 		                if (actualCondition.isEmpty()) {
-		                    report.append("Empty condition. Comment: " + expectedTag.exceptionComment()
-                            + ". Expected condition: " + expectedCondition + ". Actual condition: " + actualCondition + "\n");
+		                    methodReport.append("Empty condition. Comment: " + expectedTag.exceptionComment());
 		                } else {
 		                    result.incrementFP();
-		                    report.append("Wrong condition. Comment: " + expectedTag.exceptionComment()
-                                    + ". Expected condition: " + expectedCondition + ". Actual condition: " + actualCondition + "\n");
+		                    methodReport.append("Wrong condition. Comment: " + expectedTag.exceptionComment());
 		                }
+		                methodReport.append(". Expected condition: " + expectedCondition + ". Actual condition: " + actualCondition + "\n");
 		            }
+		        }
+		        
+		        if (errors) {
+		            report.append(methodReport.toString());
 		        }
 		    }
 		    
