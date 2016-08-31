@@ -30,11 +30,12 @@ public class PropositionSeries {
 	 * @param propositions the propositions contained in this series
 	 * @param conjunctions the conjunctions between the given propositions
 	 * @throws IllegalArgumentException if the number of conjunctions is not exactly 1 less than the
-	 *         number of propositions.
+	 *         number of propositions, unless both are empty.
 	 */
 	public PropositionSeries(List<Proposition> propositions, List<Conjunction> conjunctions) {
-		if (propositions.size() - conjunctions.size() != 1) {
-			throw new IllegalArgumentException();
+		if (propositions.size() != 0 && conjunctions.size() != 0
+			&& propositions.size() - conjunctions.size() != 1) {
+			throw new IllegalArgumentException("propositions: " + propositions.size() + " conjunctions: " + conjunctions.size());
 		}
 		this.propositions = propositions;
 		this.conjunctions = conjunctions;
