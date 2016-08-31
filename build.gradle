@@ -24,10 +24,12 @@ jar {
 sourceSets {
     test {
         java {
-            srcDir 'src/test/java'
-            exclude 'org/toradocu/**.java'
-            exclude 'org/toradocu/testlib/**'
             exclude 'org/toradocu/translator/**'
+            exclude 'org/toradocu/generator/**'
+            exclude 'org/toradocu/PrecisionRecallTestSuite.java'
+            exclude 'org/toradocu/PrecisionRecallGuava19.java'
+            exclude 'org/toradocu/PrecisionRecallCommonsCollections4.java'
+            exclude 'org/toradocu/PrecisionRecallJGraphT.java'
         }
     }
 }
@@ -51,7 +53,7 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-     gradleVersion = '3.0'
+    gradleVersion = '3.0'
 }
 
 task copyDocletResources1(type: Copy) {
