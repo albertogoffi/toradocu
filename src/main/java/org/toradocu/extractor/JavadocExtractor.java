@@ -52,7 +52,7 @@ public final class JavadocExtractor {
 		
 		// Loop on constructors and methods (also inherited) of the target class.
 		for (ExecutableMemberDoc member : getConstructorsAndMethods(classDoc)) {
-			org.toradocu.extractor.Type containgClass = new org.toradocu.extractor.Type(member.containingClass().qualifiedName());
+			org.toradocu.extractor.Type containingClass = new org.toradocu.extractor.Type(member.containingClass().qualifiedName());
 			List<Tag> throwsTags = new ArrayList<>();
 			
 			// Collect tags in the current method's documentation. This is needed because DocFinder.search
@@ -93,7 +93,7 @@ public final class JavadocExtractor {
     			ThrowsTag tagToProcess = new ThrowsTag(new org.toradocu.extractor.Type(getExceptionName(throwsTag, member)), comment);
     			memberTags.add(tagToProcess);
     		}
-    		methods.add(new DocumentedMethod(containgClass, member.name(), getReturnType(member), getParameters(member), member.isVarArgs(), memberTags));
+    		methods.add(new DocumentedMethod(containingClass, member.name(), getReturnType(member), getParameters(member), member.isVarArgs(), memberTags));
 		}
 	
 		return methods;
@@ -191,6 +191,7 @@ public final class JavadocExtractor {
 	
 	/**
 	 * Returns the qualified name (with dimension information) of the specified parameter type.
+	 * 
 	 * @param parameterType the type (of a parameter).
 	 * @return the qualified name (with dimension information) of the specified parameter type.
 	 */
