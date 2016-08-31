@@ -33,6 +33,7 @@ public class PrecisionRecallTest {
 	 * @param targetClass the fully qualified name of the class on which to
 	 *        run the test
 	 * @param srcPath the source path for the given targetClass
+	 * @param binPath the path to the binaries for the given targetClass
 	 * @param expectedOutputDir the path of the directory containing the
 	 *        expected output for the targetClass.
 	 * @return statistics for the test
@@ -45,7 +46,6 @@ public class PrecisionRecallTest {
 		Toradocu.main(new String[] {"--target-class", targetClass,
 				"--condition-translator-output", actualOutputFile,
 				"--oracle-generation", "false",
-				"--test-class", "foo",
 				"--class-dir", binPath,
 				"--source-dir", srcPath});
 		return compare(actualOutputFile, expectedOutputFile, message);
@@ -119,9 +119,8 @@ public class PrecisionRecallTest {
 		    System.out.println(report);
 			return result;
 		} catch (IOException e) {
-		    e.printStackTrace();
-			fail();
-			return null;
+			fail(e.getMessage());
 		}
+        return null;
 	}
 }
