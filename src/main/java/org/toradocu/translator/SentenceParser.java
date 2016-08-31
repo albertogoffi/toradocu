@@ -196,8 +196,8 @@ public class SentenceParser {
 			// Predicate is not of non-copula form.
 			return predicateWords;
 		}
-		predicateWords.add(complementEdge.get().getDependent());
 		predicateWords.add(governor);
+		predicateWords.add(complementEdge.get().getDependent());
 		
 		return predicateWords;
 	}
