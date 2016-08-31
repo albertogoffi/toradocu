@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
 import org.toradocu.util.GsonInstance;
 
@@ -22,13 +24,13 @@ import com.google.gson.reflect.TypeToken;
 
 public class JavadocExtractorTest {
 
-	private final String toradocuOutputDir = "tmp";
 	private final String testResources = "src/test/resources";
 	private final Type doubleType = new Type("double");
 	private final Type objectType = new Type("java.lang.Object");
 	private final Type objectArrayType = new Type("java.lang.Object[]");
 	private final Type npe = new Type("java.lang.NullPointerException");
 	private final Type iae = new Type("java.lang.IllegalArgumentException");
+	private final Logger LOG = LoggerFactory.getLogger(JavadocExtractorTest.class);
 
 	/**
 	 * Tests {@code JavadocExtractor} on the example class example.AClass in src/test/resources/example
@@ -113,10 +115,7 @@ public class JavadocExtractorTest {
 				"--javadoc-extractor-output", actualOutput,
 				"--condition-translation", "false",
 				"--oracle-generation", "false",
-				"--test-class", "foo",
-				"--source-dir", sourcePath,
-				"-J-docletpath=build/classes/main",
-				"-J-d=" + toradocuOutputDir});
+				"--source-dir", sourcePath});
 		
 		java.lang.reflect.Type listType = new TypeToken<List<DocumentedMethod>>(){}.getType();
 		Gson gson = GsonInstance.gson();
@@ -124,9 +123,13 @@ public class JavadocExtractorTest {
 		try (BufferedReader reader = Files.newBufferedReader(ouputFilePath)) {
 			List<DocumentedMethod> actual = gson.fromJson(reader, listType);
 			assertThat(actual, is(equalTo(expected)));
-			Files.delete(ouputFilePath);
 		} catch(IOException e) {
 			fail(e.getMessage());
 		}
+		try {
+            Files.delete(ouputFilePath);
+        } catch (IOException e) {
+            LOG.error("Error deleting the file: " + ouputFilePath);
+        }
 	}
 }

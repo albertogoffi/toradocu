@@ -32,7 +32,7 @@ public class Toradocu {
 	private static Logger LOG;
 	private static final String DOCLET = "org.toradocu.doclet.standard.Standard";
 	private static final String PROGRAM_NAME = "java -jar toradocu.jar";
-	public static final Configuration CONFIGURATION = Configuration.INSTANCE;
+	public static Configuration CONFIGURATION = null;
 	private static final List<DocumentedMethod> methods = new ArrayList<>();
 	
 	/**
@@ -42,6 +42,7 @@ public class Toradocu {
 	 * @param args command-line arguments
 	 */
 	public static void main(String[] args) {
+	    CONFIGURATION  = new Configuration();
 		JCommander options;
 		try {
 			options = new JCommander(CONFIGURATION, args);
