@@ -39,7 +39,7 @@ public class PrecisionRecallTest {
 	 * @return statistics for the test
 	 */
 	public static TestCaseStats test(String targetClass, String srcPath, String binPath, String expectedOutputDir) {
-		String actualOutputFile = "tmp" + File.separator + targetClass + "_out.json";
+		String actualOutputFile = AbstractPrecisionRecallTestSuite.OUTPUT_DIR + File.separator + targetClass + "_out.json";
 		String expectedOutputFile = Paths.get(expectedOutputDir, targetClass + "_expected.json").toString();
 		String message = "=== Test " + targetClass + " ===";
 		

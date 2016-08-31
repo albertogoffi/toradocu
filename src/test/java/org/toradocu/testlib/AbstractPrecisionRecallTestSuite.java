@@ -16,6 +16,7 @@ public abstract class AbstractPrecisionRecallTestSuite {
 	protected static final double PRECISION = 0.01;
 	protected static final String PRECISION_MESSAGE = "Precision is different than expected";
 	protected static final String RECALL_MESSAGE = "Recall is different than expected";
+	public static final String OUTPUT_DIR = "tmp";
 	
 	/** Keeps track of statistics on currently run tests. */
 	private static final TestSuiteStats testSuiteStats = new TestSuiteStats();
@@ -37,7 +38,7 @@ public abstract class AbstractPrecisionRecallTestSuite {
      */
 	@BeforeClass
 	public static void setUp() throws IOException {
-	    Files.createDirectories(Paths.get("tmp"));
+	    Files.createDirectories(Paths.get(OUTPUT_DIR));
 	}
 	
 	/**
