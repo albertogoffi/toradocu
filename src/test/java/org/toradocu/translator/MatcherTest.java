@@ -15,29 +15,31 @@ import org.toradocu.extractor.Type;
 
 public class MatcherTest {
 
-	@Test
-	public void test() throws Throwable {
-		List<Parameter> parameters = new ArrayList<>();
-		parameters.add(new Parameter(new Type("Employee"), "employee"));
-		parameters.add(new Parameter(new Type("Double"), "salary"));
-		List<ThrowsTag> tags = new ArrayList<>();
-		tags.add(new ThrowsTag(new Type("NullPointerException"), "if employee or salary are null"));
-		DocumentedMethod methodUnderTest = new DocumentedMethod(new Type(ClassUnderTest.class.getName()), "setSalary", null, parameters, false, tags);
-		
-		Set<CodeElement<?>> matchList = Matcher.subjectMatch("employee", methodUnderTest);
-		assertThat(matchList.size(), is(1));
-		
-		CodeElement<?> codeElement = matchList.iterator().next();
-		assertThat(codeElement.getClass(), is(ParameterCodeElement.class));
-		assertThat(codeElement.getJavaExpression(), is("args[0]"));
-	}
-	
-	public class ClassUnderTest {
-		public void setSalary(Object Employee, Double salary) {}
-		
-		@Override
-		public String toString() {
-			return "ClassUnderTest";
-		}
-	}
+  @Test
+  public void test() throws Throwable {
+    List<Parameter> parameters = new ArrayList<>();
+    parameters.add(new Parameter(new Type("Employee"), "employee"));
+    parameters.add(new Parameter(new Type("Double"), "salary"));
+    List<ThrowsTag> tags = new ArrayList<>();
+    tags.add(new ThrowsTag(new Type("NullPointerException"), "if employee or salary are null"));
+    DocumentedMethod methodUnderTest =
+        new DocumentedMethod(
+            new Type(ClassUnderTest.class.getName()), "setSalary", null, parameters, false, tags);
+
+    Set<CodeElement<?>> matchList = Matcher.subjectMatch("employee", methodUnderTest);
+    assertThat(matchList.size(), is(1));
+
+    CodeElement<?> codeElement = matchList.iterator().next();
+    assertThat(codeElement.getClass(), is(ParameterCodeElement.class));
+    assertThat(codeElement.getJavaExpression(), is("args[0]"));
+  }
+
+  public class ClassUnderTest {
+    public void setSalary(Object Employee, Double salary) {}
+
+    @Override
+    public String toString() {
+      return "ClassUnderTest";
+    }
+  }
 }

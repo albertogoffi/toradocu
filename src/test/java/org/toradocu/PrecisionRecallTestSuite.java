@@ -5,10 +5,8 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	PrecisionRecallGuava19.class,
-	PrecisionRecallCommonsCollections4.class,
-	PrecisionRecallJGraphT.class
+  PrecisionRecallGuava19.class,
+  PrecisionRecallCommonsCollections4.class,
+  PrecisionRecallJGraphT.class
 })
-public class PrecisionRecallTestSuite {
-
-}
+public class PrecisionRecallTestSuite {}
