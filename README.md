@@ -38,7 +38,7 @@ for more information.
 
 To get the list of all command-line parameters, execute
 
-      java -jar toradocu-1.0-all.jar --help
+    java -jar toradocu-1.0-all.jar --help
 
 Internally Toradocu executes the `javadoc` tool. Every option starting with `-J`
 will be passed to the `javadoc` tool. For example, you can specify the directory
@@ -46,12 +46,12 @@ where to save the Javadoc documentation with `-J-d=javadoc_output`. You can
 customize the behavior of the `javadoc` tool using all its options.
 
 
-## Using Toradocu Aspects Toradocu generates
-[AspectJ aspects](https://eclipse.org/aspectj/) in the directory specified with
-the option `--aspects-output-dir` (`aspects` in your working dir by default). In
-the aspects output directory Toradocu places the source code of the aspects and
-an `aop.xml` that lists the generated aspects and that is used by the AspectJ
-compiler.
+## Using Toradocu Aspects
+Toradocu generates [AspectJ aspects](https://eclipse.org/aspectj/) in the
+directory specified with the option `--aspects-output-dir` (`aspects` in your
+working dir by default). In the aspects output directory Toradocu places the
+source code of the aspects and an `aop.xml` that lists the generated aspects and
+that is used by the AspectJ compiler.
 
 To augment an existing test suite with Toradocu's oracles you have to:
 
@@ -74,3 +74,23 @@ behavior of constructors.
 
 Run weaved test suite as a normal test suite, just be sure to have AspectJ on
 the classpath.
+
+
+## Notes for the contributors
+The source code of this project follows the
+[Google Java Style Guide](https://google.github.io/styleguide/javaguide.html). The
+style of the code is automatically checked by a git pre-commit hook. Please,
+install the hook with the command 
+
+    ln -s ../../git-pre-commit-hook.sh .git/hooks/pre-commit
+
+Two gradle tasks help you formatting the code:
+
+1. `./gradlew verGJF` verifies if the source code is compliant with the style guide; 
+2. `./gradlew goJF` formats the source code according to the style guide.
+
+The pre-commit hook also checks that the build process succeeds, and this
+implies that no test has failed.
+
+Other information for the contributors can be found in the
+[wiki pages](https://github.com/albertogoffi/toradocu/wiki).
