@@ -28,15 +28,15 @@ public class PrecisionRecallJGraphT extends AbstractPrecisionRecallTestSuite {
   @Test
   public void graphTest() throws Exception {
     TestCaseStats stats = test("org.jgrapht.Graph");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(0.5));
+    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
     assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.3));
   }
 
   @Test
   public void graphsTest() throws Exception {
     TestCaseStats stats = test("org.jgrapht.Graphs");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(0.0));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.0));
+    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
+    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.5));
   }
 
   @Test
@@ -56,8 +56,8 @@ public class PrecisionRecallJGraphT extends AbstractPrecisionRecallTestSuite {
   @Test
   public void kShortestPathsTest() throws Exception {
     TestCaseStats stats = test("org.jgrapht.alg.KShortestPaths");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.33, PRECISION));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.33, PRECISION));
+    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
+    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.66, PRECISION));
   }
 
   @Test

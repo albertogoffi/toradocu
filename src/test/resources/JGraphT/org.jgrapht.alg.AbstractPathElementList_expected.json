@@ -1,0 +1,1002 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.AbstractPathElementList",
+      "name": "AbstractPathElementList",
+      "isArray": false
+    },
+    "name": "AbstractPathElementList",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "graph"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxSize"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.alg.AbstractPathElementList",
+          "name": "AbstractPathElementList",
+          "isArray": false
+        },
+        "name": "elementList"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "edge"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the specified prevPathElementList or edge is null.",
+        "condition": "args[2]==null||args[3]==null"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if maxSize is negative or 0.",
+        "condition": "args[1]<=0"
+      }
+    ],
+    "signature": "AbstractPathElementList(org.jgrapht.Graph graph,int maxSize,org.jgrapht.alg.AbstractPathElementList elementList,java.lang.Object edge)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.AbstractPathElementList",
+      "name": "AbstractPathElementList",
+      "isArray": false
+    },
+    "name": "AbstractPathElementList",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "graph"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxSize"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.alg.AbstractPathElement",
+          "name": "AbstractPathElement",
+          "isArray": false
+        },
+        "name": "pathElement"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the specified path-element is null.",
+        "condition": "args[2]==null"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if maxSize is negative or 0.",
+        "condition": "args[1]<=0"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if pathElement is not empty.",
+        "condition": "args[2].getPrevEdge()!=null"
+      }
+    ],
+    "signature": "AbstractPathElementList(org.jgrapht.Graph graph,int maxSize,org.jgrapht.alg.AbstractPathElement pathElement)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.AbstractPathElementList",
+      "name": "AbstractPathElementList",
+      "isArray": false
+    },
+    "name": "AbstractPathElementList",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "graph"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxSize"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "vertex"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if maxSize is negative or 0.",
+        "condition": ""
+      }
+    ],
+    "signature": "AbstractPathElementList(org.jgrapht.Graph graph,int maxSize,java.lang.Object vertex)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.AbstractPathElementList",
+      "name": "AbstractPathElementList",
+      "isArray": false
+    },
+    "name": "get",
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "get(int index)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.AbstractPathElementList",
+      "name": "AbstractPathElementList",
+      "isArray": false
+    },
+    "name": "getVertex",
+    "returnType": {
+      "qualifiedName": "V",
+      "name": "V",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getVertex()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.AbstractPathElementList",
+      "name": "AbstractPathElementList",
+      "isArray": false
+    },
+    "name": "size",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "size()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractList",
+      "name": "AbstractList",
+      "isArray": false
+    },
+    "name": "add",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "add(java.lang.Object arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractList",
+      "name": "AbstractList",
+      "isArray": false
+    },
+    "name": "set",
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "arg1"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "set(int arg0,java.lang.Object arg1)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractList",
+      "name": "AbstractList",
+      "isArray": false
+    },
+    "name": "add",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "arg1"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "add(int arg0,java.lang.Object arg1)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractList",
+      "name": "AbstractList",
+      "isArray": false
+    },
+    "name": "remove",
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "remove(int arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractList",
+      "name": "AbstractList",
+      "isArray": false
+    },
+    "name": "indexOf",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "indexOf(java.lang.Object arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractList",
+      "name": "AbstractList",
+      "isArray": false
+    },
+    "name": "lastIndexOf",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "lastIndexOf(java.lang.Object arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractList",
+      "name": "AbstractList",
+      "isArray": false
+    },
+    "name": "clear",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "clear()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractList",
+      "name": "AbstractList",
+      "isArray": false
+    },
+    "name": "addAll",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "arg1"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "addAll(int arg0,java.util.Collection arg1)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractList",
+      "name": "AbstractList",
+      "isArray": false
+    },
+    "name": "iterator",
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "iterator()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractList",
+      "name": "AbstractList",
+      "isArray": false
+    },
+    "name": "listIterator",
+    "returnType": {
+      "qualifiedName": "java.util.ListIterator",
+      "name": "ListIterator",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "listIterator()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractList",
+      "name": "AbstractList",
+      "isArray": false
+    },
+    "name": "listIterator",
+    "returnType": {
+      "qualifiedName": "java.util.ListIterator",
+      "name": "ListIterator",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "listIterator(int arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractList",
+      "name": "AbstractList",
+      "isArray": false
+    },
+    "name": "subList",
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg1"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "subList(int arg0,int arg1)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractList",
+      "name": "AbstractList",
+      "isArray": false
+    },
+    "name": "equals",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "equals(java.lang.Object arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractList",
+      "name": "AbstractList",
+      "isArray": false
+    },
+    "name": "hashCode",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "hashCode()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractList",
+      "name": "AbstractList",
+      "isArray": false
+    },
+    "name": "removeRange",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg1"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "removeRange(int arg0,int arg1)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractList",
+      "name": "AbstractList",
+      "isArray": false
+    },
+    "name": "rangeCheckForAdd",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "rangeCheckForAdd(int arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractList",
+      "name": "AbstractList",
+      "isArray": false
+    },
+    "name": "outOfBoundsMsg",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "outOfBoundsMsg(int arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractCollection",
+      "name": "AbstractCollection",
+      "isArray": false
+    },
+    "name": "isEmpty",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "isEmpty()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractCollection",
+      "name": "AbstractCollection",
+      "isArray": false
+    },
+    "name": "contains",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "contains(java.lang.Object arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractCollection",
+      "name": "AbstractCollection",
+      "isArray": false
+    },
+    "name": "toArray",
+    "returnType": {
+      "qualifiedName": "java.lang.Object[]",
+      "name": "Object[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "java.lang.Object",
+        "name": "Object",
+        "isArray": false
+      }
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "toArray()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractCollection",
+      "name": "AbstractCollection",
+      "isArray": false
+    },
+    "name": "toArray",
+    "returnType": {
+      "qualifiedName": "T[]",
+      "name": "T[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "T",
+        "name": "T",
+        "isArray": false
+      }
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object[]",
+          "name": "Object[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          }
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "toArray(java.lang.Object[] arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractCollection",
+      "name": "AbstractCollection",
+      "isArray": false
+    },
+    "name": "finishToArray",
+    "returnType": {
+      "qualifiedName": "T[]",
+      "name": "T[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "T",
+        "name": "T",
+        "isArray": false
+      }
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object[]",
+          "name": "Object[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          }
+        },
+        "name": "arg0"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "arg1"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "finishToArray(java.lang.Object[] arg0,java.util.Iterator arg1)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractCollection",
+      "name": "AbstractCollection",
+      "isArray": false
+    },
+    "name": "hugeCapacity",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "hugeCapacity(int arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractCollection",
+      "name": "AbstractCollection",
+      "isArray": false
+    },
+    "name": "remove",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "remove(java.lang.Object arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractCollection",
+      "name": "AbstractCollection",
+      "isArray": false
+    },
+    "name": "containsAll",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "containsAll(java.util.Collection arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractCollection",
+      "name": "AbstractCollection",
+      "isArray": false
+    },
+    "name": "addAll",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "addAll(java.util.Collection arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractCollection",
+      "name": "AbstractCollection",
+      "isArray": false
+    },
+    "name": "removeAll",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "removeAll(java.util.Collection arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractCollection",
+      "name": "AbstractCollection",
+      "isArray": false
+    },
+    "name": "retainAll",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "retainAll(java.util.Collection arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractCollection",
+      "name": "AbstractCollection",
+      "isArray": false
+    },
+    "name": "toString",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "toString()"
+  }
+]
