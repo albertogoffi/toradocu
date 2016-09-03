@@ -13,8 +13,7 @@ mainClassName = "org.toradocu.Toradocu"
 version = '1.0-devel'
 jar {
   manifest {
-  attributes 'Implementation-Title': 'Toradocu',
-       'Implementation-Version': version
+    attributes 'Implementation-Title': 'Toradocu', 'Implementation-Version': version
   }
 }
 
@@ -28,7 +27,6 @@ sourceSets {
       exclude 'org/toradocu/translator/**'
       exclude 'org/toradocu/generator/**'
       exclude 'org/toradocu/PrecisionRecallTestSuite.java'
-      exclude 'org/toradocu/PrecisionRecallGuava19.java'
       exclude 'org/toradocu/PrecisionRecallCommonsCollections4.java'
       exclude 'org/toradocu/PrecisionRecallJGraphT.java'
     }
@@ -85,7 +83,7 @@ tasks.verifyGoogleJavaFormat {
 import de.undercouch.gradle.tasks.download.Download
 
 /* Downloads binaries of the systems used to measure Toradocu's precision and recall. Task not used at the moment:
- * We include binaries until Toradocu needs to load parameters name from the binaries. */ 
+ * We include binaries until Toradocu needs to load parameters name from the binaries. */
 task downloadBinaries(type: Download) {
   src ([
     'http://mirror.switch.ch/mirror/apache/dist/commons/collections/binaries/commons-collections4-4.1-bin.zip',
@@ -97,7 +95,7 @@ task downloadBinaries(type: Download) {
   overwrite false
 }
 
-/* Downloads sources of the systems used to measure Toradocu's precision and recall */ 
+/* Downloads sources of the systems used to measure Toradocu's precision and recall */
 task downloadSources(type: Download) {
   src ([
     'http://mirror.switch.ch/mirror/apache/dist/commons/collections/source/commons-collections4-4.1-src.zip',
@@ -109,8 +107,8 @@ task downloadSources(type: Download) {
   overwrite false
 }
 
-/* Extracts source archives of the systems used to measure Toradocu's precision and recall */ 
-task extractSources(dependsOn: downloadSources) << { 
+/* Extracts source archives of the systems used to measure Toradocu's precision and recall */
+task extractSources(dependsOn: downloadSources) << {
   file('src/test/resources/src').listFiles().findAll{it.name.endsWith('.zip')||it.name.endsWith('.jar')}.each{ file ->
     def fileName = "$file.name"
     def index = fileName.lastIndexOf('.')
@@ -122,7 +120,7 @@ task extractSources(dependsOn: downloadSources) << {
   }
 }
 
-test.dependsOn extractSources 
+test.dependsOn extractSources
 
 task removeTestOutputDirs(type: Delete) {
   delete 'tmp', 'aspects'

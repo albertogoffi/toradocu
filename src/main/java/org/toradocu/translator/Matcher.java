@@ -9,7 +9,6 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.LinkedHashSet;
 import java.util.Set;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
@@ -152,6 +151,12 @@ public class Matcher {
         match = matches.stream().findFirst().get().getJavaExpression();
       }
     }
+
+    /* Condition "target==null" is indeed not correct. */
+    if (match.equals("target==null")) {
+      return null;
+    }
+
     if (negate) {
       match = "(" + match + ") == false";
     }
