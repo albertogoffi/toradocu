@@ -134,3 +134,12 @@ task tags(type: Exec) {
   environment PATH: "$System.env.PATH:$buildDir/utils/plume-lib/bin"
   commandLine "bash", "-c", "find src/ -name *.java | sort-directory-order | xargs etags"
 }
+
+/* Install the git pre-commit hook */
+task installhook(type:Exec) {
+  commandLine 'sh', '-c' , 'ln -s ../../git-pre-commit-hook.sh .git/hooks/pre-commit'
+}
+
+gradle.taskGraph.beforeTask { Task task ->
+  installhook.execute()
+}
