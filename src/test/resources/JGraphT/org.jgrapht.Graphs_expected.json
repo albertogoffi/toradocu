@@ -470,7 +470,7 @@
           "isArray": false
         },
         "comment": "if the graph is neither DirectedGraph nor UndirectedGraph.",
-        "condition": ""
+        "condition": "!(args[0] instanceof org.jgrapht.DirectedGraph) && !(args[0] instanceof org.jgrapht.UndirectedGraph)"
       }
     ],
     "signature": "undirectedGraph(org.jgrapht.Graph g)"

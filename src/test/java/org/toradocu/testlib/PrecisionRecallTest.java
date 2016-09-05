@@ -4,6 +4,7 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
+import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -12,13 +13,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.List;
-
 import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.ThrowsTag;
 import org.toradocu.util.GsonInstance;
-
-import com.google.gson.reflect.TypeToken;
 
 /**
  * PrecisionRecallTest contains static methods to perform a precision recall test using Toradocu.
@@ -105,6 +103,9 @@ public class PrecisionRecallTest {
           } else {
             errors = true;
             if (actualCondition.isEmpty()) {
+              /* We do not consider any empty condition as correct. Empty conditions in expected
+               * output files mean that it was not possible to manually define a condition.
+               * This should not impact precision and recall. */
               methodReport.append("Empty condition. Comment: " + expectedTag.exceptionComment());
             } else {
               result.incrementFP();

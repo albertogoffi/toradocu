@@ -3,7 +3,6 @@ package org.toradocu.testlib;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
@@ -12,7 +11,7 @@ import org.junit.BeforeClass;
  */
 public abstract class AbstractPrecisionRecallTestSuite {
 
-  protected static final double PRECISION = 0.01;
+  protected static final double PRECISION = 0.001;
   protected static final String PRECISION_MESSAGE = "Precision is different than expected";
   protected static final String RECALL_MESSAGE = "Recall is different than expected";
   public static final String OUTPUT_DIR = "tmp";

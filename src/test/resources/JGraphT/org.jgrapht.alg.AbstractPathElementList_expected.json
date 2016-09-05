@@ -49,7 +49,7 @@
           "isArray": false
         },
         "comment": "if the specified prevPathElementList or edge is null.",
-        "condition": "args[2]==null||args[3]==null"
+        "condition": "args[2]==null || args[3]==null"
       },
       {
         "exception": {
@@ -58,7 +58,7 @@
           "isArray": false
         },
         "comment": "if maxSize is negative or 0.",
-        "condition": "args[1]<=0"
+        "condition": "args[1]<0 || args[1]==0"
       }
     ],
     "signature": "AbstractPathElementList(org.jgrapht.Graph graph,int maxSize,org.jgrapht.alg.AbstractPathElementList elementList,java.lang.Object edge)"
@@ -114,7 +114,7 @@
           "isArray": false
         },
         "comment": "if maxSize is negative or 0.",
-        "condition": "args[1]<=0"
+        "condition": "args[1]<0 || args[1]==0"
       },
       {
         "exception": {
@@ -170,7 +170,7 @@
           "isArray": false
         },
         "comment": "if maxSize is negative or 0.",
-        "condition": ""
+        "condition": "args[1]<0 || args[1]==0"
       }
     ],
     "signature": "AbstractPathElementList(org.jgrapht.Graph graph,int maxSize,java.lang.Object vertex)"
