@@ -4,7 +4,6 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.extractor.DocumentedMethod;
@@ -29,10 +28,18 @@ public class ConditionTranslator {
         logMessage.append("\"" + tag.exceptionComment() + "\" in " + method.getSignature());
         LOG.trace(logMessage.toString());
 
-        // Identify propositions in the comment. Each sentence in the comment is parsed into
-        // a PropositionSeries.
+        String comment = tag.exceptionComment().trim();
+        String lowerCaseComment = comment.toLowerCase();
+
+        // Sanitize exception comment: remove initial "if"
+        if (lowerCaseComment.startsWith("if ") && lowerCaseComment.length() > 3) {
+          comment = comment.substring(3);
+        }
+
+        /* Identify propositions in the comment. Each sentence in the comment is parsed into a
+         * PropositionSeries. */
         List<PropositionSeries> extractedPropositions =
-            PropositionExtractor.getPropositionSeries(tag.exceptionComment());
+            PropositionExtractor.getPropositionSeries(comment);
 
         Set<String> conditions = new LinkedHashSet<>();
         // Identify Java code elements in propositions.
@@ -50,7 +57,7 @@ public class ConditionTranslator {
    *
    * @param propositionSeries the {@code Proposition}s to translate into Java expressions
    * @param method the method the containing the Javadoc comment from which the
-   * {@code propositionSeries} was extracted
+   *        {@code propositionSeries} was extracted
    */
   private static void translatePropositions(
       PropositionSeries propositionSeries, DocumentedMethod method) {
@@ -116,7 +123,7 @@ public class ConditionTranslator {
    *
    * @param subject the subject of the {@code Proposition}
    * @return the conjunction that should be used to form the translation for the {@code Proposition}
-   * with the given subject or null if no conjunction should be used
+   *         with the given subject or null if no conjunction should be used
    */
   private static String getConjunction(String subject) {
     if (subject.startsWith("either ") || subject.startsWith("any ")) {
