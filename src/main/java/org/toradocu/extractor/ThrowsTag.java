@@ -1,10 +1,7 @@
 package org.toradocu.extractor;
 
-import java.util.Iterator;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
-
 import org.toradocu.util.Checks;
 
 /**
@@ -108,7 +105,7 @@ public class ThrowsTag {
    * Returns a string representation of this throws tag. The returned string is in the format
    * "@throws EXCEPTION COMMENT" where EXCEPTION is the fully qualified name of the exception in
    * this throws tag and COMMENT is the text of the comment in the throws tag. If translation has
-   * been attempted on this tag, then the returned string is also appended with " ==> CONDITION"
+   * been attempted on this tag, then the returned string is also appended with " ==&gt; CONDITION"
    * where CONDITION is the translated condition for the exception as a Java expression or the empty
    * string if translation failed.
    *

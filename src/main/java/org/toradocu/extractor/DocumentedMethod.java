@@ -196,7 +196,7 @@ public final class DocumentedMethod {
 
   /**
    * Returns return type (when present), fully qualified class, and signature of this method in the
-   * format "<RETURN TYPE> <CLASS TYPE.METHOD SIGNATURE>"
+   * format "&lt;RETURN TYPE&gt; &lt;CLASS TYPE.METHOD SIGNATURE&gt;"
    *
    * @return return the string representation of this method
    */

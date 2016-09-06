@@ -8,7 +8,7 @@ public enum Conjunction {
   OR;
 
   /**
-   * Returns a string representation of this enum: "&&" for AND, "||" for OR.
+   * Returns a string representation of this enum: "&amp;&amp;" for AND, "||" for OR.
    *
    * @return a string representation of this conjunction
    */

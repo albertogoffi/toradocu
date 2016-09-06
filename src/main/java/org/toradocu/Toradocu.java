@@ -157,6 +157,7 @@ public class Toradocu {
    * @param classDoc the class from which methods are extracted, but only if it is the target class
    * specified in {@code CONF}
    * @param docletConfiguration configuration options for the Javadoc doclet
+   * @throws IOException if there is an error while reading/generating class documentation
    */
   public static void process(ClassDoc classDoc, ConfigurationImpl docletConfiguration)
       throws IOException {

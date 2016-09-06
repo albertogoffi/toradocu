@@ -121,7 +121,7 @@ public class Proposition {
 
   /**
    * Returns a String representation of this proposition. The returned String is formatted as
-   * "(SUBJECT, PREDICATE) -> TRANSLATION", or if no translation is present, "(SUBJECT, PREDICATE)".
+   * "(SUBJECT, PREDICATE) -&gt; TRANSLATION", or if no translation is present, "(SUBJECT, PREDICATE)".
    * PREDICATE is formatted as "not (PREDICATE)" if this proposition is negative.
    *
    * @return a string representation of this proposition

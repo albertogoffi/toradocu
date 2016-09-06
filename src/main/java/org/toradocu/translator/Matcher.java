@@ -31,7 +31,7 @@ public class Matcher {
 
   /**
    * Takes the subject of a proposition in a Javadoc comment and the {@code DocumentedMethod} that
-   * subject was extracted from. Then returns all {@CodeElement}s that match (i.e.
+   * subject was extracted from. Then returns all {@code CodeElement}s that match (i.e.
    * have a similar name to) the given subject string.
    *
    * @param subject the subject of a proposition from a Javadoc comment
