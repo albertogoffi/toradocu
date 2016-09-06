@@ -4,7 +4,6 @@ plugins {
   id 'jacoco'
   id 'com.github.johnrengelman.shadow' version '1.2.3' // For creating the fat jar
   id 'de.undercouch.download' version '3.1.1' // For the download tasks
-  id 'com.github.sherter.google-java-format' version '0.3.2'
 }
 
 sourceCompatibility = 1.8
@@ -16,6 +15,10 @@ jar {
     attributes 'Implementation-Title': 'Toradocu', 'Implementation-Version': version
   }
 }
+
+//tasks.build.doLast {
+//  javadoc.execute()
+//}
 
 //compileJava {
 //  options.compilerArgs << '-Xlint:unchecked'
@@ -70,20 +73,13 @@ compileJava.doLast {
   tasks.copyDocletResources2.execute()
 }
 
-tasks.googleJavaFormat {
-  exclude 'src/main/java/org/toradocu/doclet/**/*.java'
-  exclude 'src/test/resources/**'
-}
-
-tasks.verifyGoogleJavaFormat {
-  exclude 'src/main/java/org/toradocu/doclet/**/*.java'
-  exclude 'src/test/resources/**'
-}
-
 import de.undercouch.gradle.tasks.download.Download
 
-/* Downloads binaries of the systems used to measure Toradocu's precision and recall. Task not used at the moment:
- * We include binaries until Toradocu needs to load parameters name from the binaries. */
+/**
+ * Downloads binaries of the systems used to measure Toradocu's precision and recall.
+ * Task not used at the moment: We include binaries until Toradocu needs to load parameters name
+ * from the binaries (binaries that have to be compiled with the option -parameters).
+ */
 task downloadBinaries(type: Download) {
   src ([
     'http://mirror.switch.ch/mirror/apache/dist/commons/collections/binaries/commons-collections4-4.1-bin.zip',
@@ -120,13 +116,12 @@ task extractSources(dependsOn: downloadSources) << {
   }
 }
 
-test.dependsOn extractSources
-
 task removeTestOutputDirs(type: Delete) {
   delete 'tmp', 'aspects'
 }
 
 clean.dependsOn removeTestOutputDirs
+test.dependsOn removeTestOutputDirs, extractSources
 
 /* Make Emacs TAGS table */
 task tags(type: Exec) {
@@ -137,8 +132,7 @@ task tags(type: Exec) {
 
 /* Install the git pre-commit hook */
 task installhook(type:Exec) {
-  commandLine 'sh', '-c' , 'ln -s ../../git-pre-commit-hook.sh .git/hooks/pre-commit'
-  ignoreExitValue true
+  commandLine 'sh', '-c' , 'if [ ! -f .git/hooks/pre-commit ]; then ln -s ../../git-pre-commit-hook.sh .git/hooks/pre-commit; fi'
 }
 
 gradle.taskGraph.beforeTask { Task task ->
