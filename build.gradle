@@ -16,9 +16,18 @@ jar {
   }
 }
 
-//tasks.build.doLast {
-//  javadoc.execute()
-//}
+tasks.build.doLast {
+  tasks.javadoc.execute()
+}
+
+javadoc {
+  excludes += 'org/toradocu/doclet/**'
+}
+
+startScripts.enabled = false
+distZip.enabled = false
+distTar.enabled = false
+assemble.enabled = false
 
 //compileJava {
 //  options.compilerArgs << '-Xlint:unchecked'
