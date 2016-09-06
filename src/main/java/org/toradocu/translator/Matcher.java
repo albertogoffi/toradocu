@@ -94,7 +94,7 @@ public class Matcher {
     URL classDir = null;
     final String ERROR_MESSAGE = "Unable to load class. Check the classpath.";
     try {
-      classDir = Toradocu.CONFIGURATION.getClassDir().toUri().toURL();
+      classDir = Toradocu.configuration.getClassDir().toUri().toURL();
     } catch (MalformedURLException e) {
       LOG.error(ERROR_MESSAGE);
       return null;

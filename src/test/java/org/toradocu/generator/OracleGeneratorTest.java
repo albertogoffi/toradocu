@@ -1,16 +1,14 @@
 package org.toradocu.generator;
 
+import com.beust.jcommander.JCommander;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.Test;
 import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.Parameter;
 import org.toradocu.extractor.ThrowsTag;
 import org.toradocu.extractor.Type;
-
-import com.beust.jcommander.JCommander;
 
 public class OracleGeneratorTest {
 
@@ -20,7 +18,7 @@ public class OracleGeneratorTest {
   public void oracleGeneratorTest() throws Exception {
     String[] args =
         new String[] {"--target-class", "example.util.Arrays", "--oracle-generation", "true"};
-    new JCommander(Toradocu.CONFIGURATION, args);
+    new JCommander(Toradocu.configuration, args);
 
     OracleGenerator oracleGenerator = new OracleGenerator();
     List<Parameter> parameters = new ArrayList<>();

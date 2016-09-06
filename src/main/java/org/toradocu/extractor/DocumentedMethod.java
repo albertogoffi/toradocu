@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
-
 import org.toradocu.util.Checks;
 
 /**
@@ -19,13 +18,19 @@ public final class DocumentedMethod {
   private final Type containingClass;
   /** Simple name of the method. */
   private final String name;
-  /** Return type of the method. Null if this DocumentedMethod represents a constructor. */
+  /**
+   * Return type of the method. {@code null} if this DocumentedMethod represents a constructor.
+   * {@code Type.VOID} if the return type is void.
+   */
   private final Type returnType;
   /** Method's parameters. */
   private final Set<Parameter> parameters;
   /** Flag indicating whether this method takes a variable number of arguments.  */
   private final boolean isVarArgs;
-  /** Throws tags specified in the method's Javadoc. */
+  /**
+   * Throws tags specified in the method's Javadoc.
+   * Also, each throws tag can contain the translation of the comment as Java boolean condition.
+   */
   private final Set<ThrowsTag> throwsTags;
   /** Method signature in the format method_name(type1 arg1, type2 arg2, ...). */
   private final String signature;
@@ -37,10 +42,10 @@ public final class DocumentedMethod {
    * @param containingClass class containing the {@code DocumentedMethod}
    * @param name the simple name of the {@code DocumentedMethod}
    * @param returnType the fully qualified return type of the method or the empty string if the
-   * {@code DocumentedMethod} is a constructor
+   *        {@code DocumentedMethod} is a constructor
    * @param parameters the parameters of the {@code DocumentedMethod}
    * @param isVarArgs true if the {@code DocumentedMethod} takes a variable number of arguments,
-   * false otherwise
+   *        false otherwise
    * @param throwsTags the {@code @throws tags} of the {@code DocumentedMethod}
    *
    * @throws NullPointerException if {@code containingClass} or {@code name} is null
@@ -96,7 +101,7 @@ public final class DocumentedMethod {
    * Returns true if this method takes a variable number of arguments, false otherwise.
    *
    * @return {@code true} if this method takes a variable number of arguments, {@code false}
-   * otherwise
+   *         otherwise
    */
   public boolean isVarArgs() {
     return isVarArgs;

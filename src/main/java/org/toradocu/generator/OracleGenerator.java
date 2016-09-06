@@ -1,5 +1,8 @@
 package org.toradocu.generator;
 
+import com.github.javaparser.JavaParser;
+import com.github.javaparser.ParseException;
+import com.github.javaparser.ast.CompilationUnit;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -7,15 +10,10 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
-
-import com.github.javaparser.JavaParser;
-import com.github.javaparser.ParseException;
-import com.github.javaparser.ast.CompilationUnit;
 
 public class OracleGenerator {
 
@@ -28,7 +26,7 @@ public class OracleGenerator {
    * @param methods the {@code List} of methods for which create aspects
    */
   public void createAspects(List<DocumentedMethod> methods) {
-    if (!Toradocu.CONFIGURATION.isOracleGenerationEnabled()) {
+    if (!Toradocu.configuration.isOracleGenerationEnabled()) {
       LOG.info("Oracle generator disabled: skipped aspect generation.");
       return;
     }
@@ -37,7 +35,7 @@ public class OracleGenerator {
       return;
     }
 
-    createFolder(Toradocu.CONFIGURATION.getAspectsOutputDir());
+    createFolder(Toradocu.configuration.getAspectsOutputDir());
 
     List<String> createdAspectNames = new ArrayList<>();
     int aspectNumber = 1;
@@ -47,7 +45,7 @@ public class OracleGenerator {
       createdAspectNames.add(aspectName);
       aspectNumber++;
     }
-    createAOPXml(Toradocu.CONFIGURATION.getAspectsOutputDir(), createdAspectNames);
+    createAOPXml(Toradocu.configuration.getAspectsOutputDir(), createdAspectNames);
   }
 
   /**
@@ -60,10 +58,10 @@ public class OracleGenerator {
     Objects.requireNonNull(method, "parameter method must not be null");
     Objects.requireNonNull(aspectName, "parameter aspectName must not be null");
 
-    String aspectPath = Toradocu.CONFIGURATION.getAspectsOutputDir() + File.separator + aspectName;
+    String aspectPath = Toradocu.configuration.getAspectsOutputDir() + File.separator + aspectName;
 
     try (InputStream template =
-            getClass().getResourceAsStream("/" + Toradocu.CONFIGURATION.getAspectTemplate());
+            getClass().getResourceAsStream("/" + Toradocu.configuration.getAspectTemplate());
         FileOutputStream output = new FileOutputStream(new File(aspectPath + ".java"))) {
       CompilationUnit cu = JavaParser.parse(template);
 

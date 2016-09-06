@@ -12,16 +12,17 @@ public class Type {
    * and method identifiers)
    */
   public static final String SEPARATOR = ".";
+  /** Void type that can be used to represent the void return type */
+  public static final Type VOID = new Type("void");
 
   /** Fully qualified name of this {@code Type} */
   private final String qualifiedName;
-
   // The following fields are derived from qualifiedName
-  /** Simple name of this {@code Type} */
+  /** Simple name of this {@code Type}. */
   private final String name;
-  /** Flag {@code true} when this {@code Type} is an array type (e.g., java.lang.String[]) */
+  /** Flag {@code true} when this {@code Type} is an array type (e.g., java.lang.String[]). */
   private final boolean isArray;
-
+  /** If this type is an array, componentType is the type of the contained elements. */
   private final Type componentType;
 
   /**

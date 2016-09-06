@@ -1,17 +1,5 @@
 package org.toradocu.generator;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.toradocu.Toradocu;
-import org.toradocu.conf.Configuration;
-import org.toradocu.extractor.DocumentedMethod;
-import org.toradocu.extractor.Parameter;
-import org.toradocu.extractor.ThrowsTag;
-
 import com.github.javaparser.ASTHelper;
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParseException;
@@ -27,6 +15,16 @@ import com.github.javaparser.ast.stmt.IfStmt;
 import com.github.javaparser.ast.stmt.TryStmt;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.toradocu.Toradocu;
+import org.toradocu.conf.Configuration;
+import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.Parameter;
+import org.toradocu.extractor.ThrowsTag;
 
 public class MethodChangerVisitor extends VoidVisitorAdapter<Object> {
 
@@ -35,7 +33,7 @@ public class MethodChangerVisitor extends VoidVisitorAdapter<Object> {
   /** {@code Logger} for this class. */
   private static final Logger LOG = LoggerFactory.getLogger(MethodChangerVisitor.class);
   /** Holds Toradocu configuration options. */
-  private final Configuration CONF = Toradocu.CONFIGURATION;
+  private final Configuration conf = Toradocu.configuration;
 
   public MethodChangerVisitor(DocumentedMethod method) {
     this.method = method;
@@ -50,7 +48,7 @@ public class MethodChangerVisitor extends VoidVisitorAdapter<Object> {
         pointcut = "execution(" + getPointcut(method) + ")";
       } else {
         pointcut = "call(" + getPointcut(method) + ")";
-        pointcut += " && within(" + CONF.getTestClass() + ")";
+        pointcut += " && within(" + conf.getTestClass() + ")";
       }
 
       AnnotationExpr annotation =

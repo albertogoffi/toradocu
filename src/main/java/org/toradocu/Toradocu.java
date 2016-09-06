@@ -1,5 +1,10 @@
 package org.toradocu;
 
+import com.beust.jcommander.JCommander;
+import com.beust.jcommander.ParameterException;
+import com.google.gson.reflect.TypeToken;
+import com.sun.javadoc.ClassDoc;
+import com.sun.tools.javadoc.Main;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -9,7 +14,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,18 +25,21 @@ import org.toradocu.translator.ConditionTranslator;
 import org.toradocu.util.GsonInstance;
 import org.toradocu.util.NullOutputStream;
 
-import com.beust.jcommander.JCommander;
-import com.beust.jcommander.ParameterException;
-import com.google.gson.reflect.TypeToken;
-import com.sun.javadoc.ClassDoc;
-import com.sun.tools.javadoc.Main;
-
+/**
+ * Entry point of Toradocu. {@code Toradocu.main} is automatically executed running the command:
+ * {@code java -jar toradocu.jar}.
+ */
 public class Toradocu {
 
-  private static Logger LOG;
+  /** Doclet class used when javadoc command is run. */
   private static final String DOCLET = "org.toradocu.doclet.standard.Standard";
-  private static final String PROGRAM_NAME = "java -jar toradocu.jar";
-  public static Configuration CONFIGURATION = null;
+  /** Command to run Toradocu. This string is used only in output messages. */
+  private static final String TORADOCU_COMMAND = "java -jar toradocu.jar";
+  /** Toradocu's configurations. */
+  public static Configuration configuration = null;
+  /** Logger of this class. */
+  private static Logger log;
+  /** Documented methods that will be processed by the condition translator. */
   private static final List<DocumentedMethod> methods = new ArrayList<>();
 
   /**
@@ -41,86 +48,91 @@ public class Toradocu {
    * @param args command-line arguments
    */
   public static void main(String[] args) {
-    CONFIGURATION = new Configuration();
-    JCommander options;
+    configuration = new Configuration();
+    JCommander options = null;
     try {
-      options = new JCommander(CONFIGURATION, args);
+      options = new JCommander(configuration, args);
     } catch (ParameterException e) {
       System.out.println(e.getMessage());
-      return;
+      System.exit(1);
     }
-    options.setProgramName(PROGRAM_NAME);
-    CONFIGURATION.initialize();
+    options.setProgramName(TORADOCU_COMMAND);
+    configuration.initialize();
 
-    if (CONFIGURATION.help()) {
+    if (configuration.help()) {
       options.usage();
       System.out.println("Options preceded by an asterisk are required.");
-      return;
+      System.exit(1);
     }
 
-    if (CONFIGURATION.debug()) {
+    if (configuration.debug()) {
       System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "trace");
     }
-    /* Suppress non-error messages from Stanford parser (some of the messages directly printed on standard error are still visible). */
+
+    // Suppress non-error messages from Stanford parser (some of the messages directly printed on
+    // standard error are still visible).
     System.setProperty(org.slf4j.impl.SimpleLogger.LOG_KEY_PREFIX + "edu.stanford", "error");
-    LOG = LoggerFactory.getLogger(Toradocu.class);
+    log = LoggerFactory.getLogger(Toradocu.class);
 
     // === Javadoc Extractor ===
 
-    if (CONFIGURATION.getConditionTranslatorInput() == null) {
-      // List of methods to analyze must be retrieved with the Javadoc tool.
+    // Populate the methods field.
+    if (configuration.getConditionTranslatorInput() == null) {
+      // Obtain list of methods by running Javadoc. Our doclet invokes method Toradocu.process
+      // which side-effects the methods field.
+
       // Suppress all the output of the Javadoc tool.
       PrintWriter nullPrintWriter = new PrintWriter(new NullOutputStream());
-      // The execute method executes Javadoc with our doclet that in org.toradocu.doclet.formats.html.HtmlDoclet
-      // invokes the method Toradocu.process defined below.
+
       Main.execute(
-          PROGRAM_NAME + " - Javadoc Extractor",
+          TORADOCU_COMMAND + " - Javadoc Extractor",
           nullPrintWriter,
           nullPrintWriter,
           nullPrintWriter,
           DOCLET,
-          CONFIGURATION.getJavadocOptions());
+          configuration.getJavadocOptions());
     } else {
       // List of methods to analyze are read from a file specified with a command line option.
       try (BufferedReader reader =
-          Files.newBufferedReader(CONFIGURATION.getConditionTranslatorInput().toPath())) {
+          Files.newBufferedReader(configuration.getConditionTranslatorInput().toPath())) {
         methods.addAll(
             GsonInstance.gson()
                 .fromJson(reader, new TypeToken<List<DocumentedMethod>>() {}.getType()));
       } catch (IOException e) {
-        LOG.error("Unable to read the file: " + CONFIGURATION.getConditionTranslatorInput(), e);
+        log.error("Unable to read the file: " + configuration.getConditionTranslatorInput(), e);
+        System.exit(1);
       }
     }
 
-    if (CONFIGURATION.getJavadocExtractorOutput() != null) { // Print collection to the output file.
+    if (configuration.getJavadocExtractorOutput() != null) { // Print collection to the output file.
       try (BufferedWriter writer =
           Files.newBufferedWriter(
-              CONFIGURATION.getJavadocExtractorOutput().toPath(), StandardCharsets.UTF_8)) {
+              configuration.getJavadocExtractorOutput().toPath(), StandardCharsets.UTF_8)) {
         writer.write(GsonInstance.gson().toJson(methods));
       } catch (Exception e) {
-        LOG.error(
+        log.error(
             "Unable to write the output on file "
-                + CONFIGURATION.getJavadocExtractorOutput().getAbsolutePath(),
+                + configuration.getJavadocExtractorOutput().getAbsolutePath(),
             e);
       }
     }
-    if (CONFIGURATION.debug()) {
-      LOG.debug("Methods with Javadoc documentation found in source code: " + methods.toString());
+    if (configuration.debug()) {
+      log.debug("Methods with Javadoc documentation found in source code: " + methods.toString());
     }
 
     // === Condition Translator ===
 
-    if (CONFIGURATION.isConditionTranslationEnabled()) {
+    if (configuration.isConditionTranslationEnabled()) {
       ConditionTranslator.translate(methods);
-      if (CONFIGURATION.getConditionTranslatorOutput() != null) {
+      if (configuration.getConditionTranslatorOutput() != null) {
         try (BufferedWriter writer =
             Files.newBufferedWriter(
-                CONFIGURATION.getConditionTranslatorOutput().toPath(), StandardCharsets.UTF_8)) {
+                configuration.getConditionTranslatorOutput().toPath(), StandardCharsets.UTF_8)) {
           writer.write(GsonInstance.gson().toJson(methods));
         } catch (Exception e) {
-          LOG.error(
+          log.error(
               "Unable to write the output on file "
-                  + CONFIGURATION.getConditionTranslatorOutput().getAbsolutePath(),
+                  + configuration.getConditionTranslatorOutput().getAbsolutePath(),
               e);
         }
       } else {
@@ -144,12 +156,14 @@ public class Toradocu {
    *
    * @param classDoc the class from which methods are extracted, but only if it is the target class
    * specified in {@code CONF}
-   * @param configuration configuration options for the Javadoc doclet
+   * @param docletConfiguration configuration options for the Javadoc doclet
    */
-  public static void process(ClassDoc classDoc, ConfigurationImpl configuration)
+  public static void process(ClassDoc classDoc, ConfigurationImpl docletConfiguration)
       throws IOException {
-    if (!classDoc.qualifiedName().equals(CONFIGURATION.getTargetClass())) return;
-    JavadocExtractor extractor = new JavadocExtractor(configuration);
+    if (!classDoc.qualifiedName().equals(configuration.getTargetClass())) {
+      return;
+    }
+    JavadocExtractor extractor = new JavadocExtractor(docletConfiguration);
     methods.addAll(extractor.extract(classDoc));
   }
 
@@ -157,11 +171,11 @@ public class Toradocu {
    * Deletes any temporary files created by Toradocu to store Javadoc output.
    */
   private static void deleteTemporaryFiles() {
-    if (CONFIGURATION.getTempJavadocOutputDir() != null) {
+    if (configuration.getTempJavadocOutputDir() != null) {
       try {
-        FileUtils.deleteDirectory(new File(CONFIGURATION.getTempJavadocOutputDir()));
+        FileUtils.deleteDirectory(new File(configuration.getTempJavadocOutputDir()));
       } catch (IOException e) {
-        LOG.warn("Unable to delete temporary Javadoc output", e);
+        log.warn("Unable to delete temporary Javadoc output", e);
       }
     }
   }
