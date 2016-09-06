@@ -1,5 +1,7 @@
 package org.toradocu.translator;
 
+import edu.stanford.nlp.semgraph.SemanticGraph;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -11,22 +13,26 @@ import org.toradocu.extractor.ThrowsTag;
 
 /**
  * ConditionTranslator translates exception comments in method documentation to Java expressions.
+ * The entry point is {@link #translate(List)}.
  */
 public class ConditionTranslator {
 
-  private static final Logger LOG = LoggerFactory.getLogger(ConditionTranslator.class);
+  private static final Logger log = LoggerFactory.getLogger(ConditionTranslator.class);
 
   /**
-   * This method translates the throws tags in the given methods.
+   * Translates the throws tags in the given methods. This method sets the field
+   * {@code ThrowsTag.condition} for each throws tags in the given methods.
    *
    * @param methods a list of {@code DocumentedMethod}s whose throws tags to translate
    */
   public static void translate(List<DocumentedMethod> methods) {
     for (DocumentedMethod method : methods) {
       for (ThrowsTag tag : method.throwsTags()) {
-        StringBuilder logMessage = new StringBuilder("Identifying propositions from: ");
-        logMessage.append("\"" + tag.exceptionComment() + "\" in " + method.getSignature());
-        LOG.trace(logMessage.toString());
+        log.trace(
+            "Identifying propositions from: \""
+                + tag.exceptionComment()
+                + "\" in "
+                + method.getSignature());
 
         String comment = tag.exceptionComment().trim();
         String lowerCaseComment = comment.toLowerCase();
@@ -38,8 +44,7 @@ public class ConditionTranslator {
 
         /* Identify propositions in the comment. Each sentence in the comment is parsed into a
          * PropositionSeries. */
-        List<PropositionSeries> extractedPropositions =
-            PropositionExtractor.getPropositionSeries(comment);
+        List<PropositionSeries> extractedPropositions = getPropositionSeries(comment);
 
         Set<String> conditions = new LinkedHashSet<>();
         // Identify Java code elements in propositions.
@@ -50,6 +55,23 @@ public class ConditionTranslator {
         tag.setCondition(mergeConditions(conditions));
       }
     }
+  }
+
+  /**
+   * Takes a comment as a String and returns a list of {@code PropositionSeries} objects, one for
+   * each sentence in the comment.
+   *
+   * @param comment the text of a Javadoc comment
+   * @return a list of {@code PropositionSeries} objects, one for each sentence in the comment
+   */
+  private static List<PropositionSeries> getPropositionSeries(String comment) {
+    List<PropositionSeries> result = new ArrayList<>();
+
+    for (SemanticGraph semanticGraph : StanfordParser.getSemanticGraphs(comment)) {
+      result.add(new SentenceParser(semanticGraph).getPropositionSeries());
+    }
+
+    return result;
   }
 
   /**
@@ -65,7 +87,7 @@ public class ConditionTranslator {
       Set<CodeElement<?>> subjectMatches;
       subjectMatches = Matcher.subjectMatch(p.getSubject(), method);
       if (subjectMatches.isEmpty()) {
-        LOG.debug("Failed subject translation for: " + p);
+        log.debug("Failed subject translation for: " + p);
         return;
       }
 
@@ -76,7 +98,7 @@ public class ConditionTranslator {
         String currentTranslation =
             Matcher.predicateMatch(subjectMatch, p.getPredicate(), p.isNegative());
         if (currentTranslation == null) {
-          LOG.trace("Failed predicate translation for: " + p);
+          log.trace("Failed predicate translation for: " + p);
           continue;
         }
 
@@ -88,7 +110,7 @@ public class ConditionTranslator {
       }
 
       if (!translation.isEmpty()) {
-        LOG.trace("Translated proposition " + p + " as: " + translation);
+        log.trace("Translated proposition " + p + " as: " + translation);
         p.setTranslation(translation);
       }
     }

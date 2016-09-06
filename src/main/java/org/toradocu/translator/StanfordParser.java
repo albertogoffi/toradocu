@@ -1,19 +1,20 @@
 package org.toradocu.translator;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
-
 import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation;
 import edu.stanford.nlp.util.CoreMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
 
 /**
- * This class initializes the Stanford Parser and uses it to return the semantic graphs for
- * sentences.
+ *
+ * This class provides a method to get the semantic graph of a sentence produced by the Stanford
+ * parser. To optimize execution time, the Stanford parser is initialized once in the static block
+ * to ensure that its initialization phase is done only once.
  */
 public class StanfordParser {
 

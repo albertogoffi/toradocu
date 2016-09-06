@@ -36,7 +36,7 @@ public class Matcher {
    *
    * @param subject the subject of a proposition from a Javadoc comment
    * @param method the {@code DocumentedMethod} that the subject was extracted from
-   * @return a set of {@CodeElement}s that have a similar name to the subject
+   * @return a set of {@code CodeElement}s that have a similar name to the subject
    */
   public static Set<CodeElement<?>> subjectMatch(String subject, DocumentedMethod method) {
     // Extract every CodeElement associated with the method and the containing class of the method.
@@ -295,7 +295,7 @@ public class Matcher {
           }
           if (symbol != null) break;
         }
-        if (symbol == null || numberString == "") {
+        if (symbol == null || numberString.equals("")) {
           // The phrase did not match a simple pattern.
           return null;
         }
