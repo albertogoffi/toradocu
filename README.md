@@ -88,10 +88,5 @@ according the style guide using the following command:
 
 	python run-google-java-format.py [file1 file2 ...]
 
-Two gradle tasks help you formatting the code:
-
-1. `./gradlew verGJF` verifies if the source code is compliant with the style guide;
-2. `./gradlew goJF` formats the entire source code base according to the style guide.
-
 Other information for the contributors can be found in the
 [wiki pages](https://github.com/albertogoffi/toradocu/wiki).
