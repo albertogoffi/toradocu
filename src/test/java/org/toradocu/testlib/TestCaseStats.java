@@ -6,7 +6,14 @@ package org.toradocu.testlib;
  */
 public class TestCaseStats {
 
-  private int tp = 0, fp = 0, total = 0;
+  /** Qualified name of the class under test. */
+  private String className;
+  /** tp: true positives, fp: false positives, total: total number of conditions */
+  private int tp = 0, fp = 0, conditions = 0;
+
+  public TestCaseStats(String className) {
+    this.className = className;
+  }
 
   /**
    * Returns the recall of the test case.
@@ -14,7 +21,7 @@ public class TestCaseStats {
    * @return the recall of the test case
    */
   public double getRecall() {
-    return tp / (double) total;
+    return tp / (double) conditions;
   }
 
   /**
@@ -35,7 +42,7 @@ public class TestCaseStats {
    * @param total the number of relevant elements in the test case
    */
   public void setTotal(int total) {
-    this.total = total;
+    this.conditions = total;
   }
 
   /**
@@ -50,5 +57,32 @@ public class TestCaseStats {
    */
   public void incrementFP() {
     ++fp;
+  }
+
+  @Override
+  public String toString() {
+    return className
+        + "| # Conditions: "
+        + conditions
+        + " | Precsion: "
+        + String.format("%.2f", getPrecision())
+        + " | Recall: "
+        + String.format("%.2f", getRecall());
+  }
+
+  /**
+   * Returns the representation of this object as comma-separated values.
+   *
+   * @return the representation of this object as comma-separated values
+   */
+  public String asCSV() {
+    final String SEPARATOR = ",";
+    return className
+        + SEPARATOR
+        + conditions
+        + SEPARATOR
+        + getPrecision()
+        + SEPARATOR
+        + getRecall();
   }
 }

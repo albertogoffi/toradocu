@@ -45,20 +45,19 @@ public abstract class AbstractPrecisionRecallTestSuite {
    */
   @AfterClass
   public static void tearDown() {
-    StringBuilder report = new StringBuilder();
     testSuiteStats.computeResults();
-    report.append("=== Test Suite ===").append("\n");
-    report.append("Average precision: " + String.format("%.2f", testSuiteStats.getPrecision()));
-    report
-        .append(
-            ", Std deviation: " + String.format("%.2f", testSuiteStats.getPrecisionStdDeviation()))
-        .append("\n");
-    report.append("Average recall: " + String.format("%.2f", testSuiteStats.getRecall()));
-    report
-        .append(", Std deviation: " + String.format("%.2f", testSuiteStats.getRecallStdDeviation()))
-        .append("\n");
-    report.append("F-measure: " + String.format("%.2f", testSuiteStats.getFMeasure()));
-    System.out.println(report);
+    System.out.println(
+        "=== Test Suite ==="
+            + "\nAverage precision: "
+            + String.format("%.2f", testSuiteStats.getPrecision())
+            + ", Std deviation: "
+            + String.format("%.2f", testSuiteStats.getPrecisionStdDeviation())
+            + "\nAverage recall: "
+            + String.format("%.2f", testSuiteStats.getRecall())
+            + ", Std deviation: "
+            + String.format("%.2f", testSuiteStats.getRecallStdDeviation())
+            + "\nF-measure: "
+            + String.format("%.2f", testSuiteStats.getFMeasure()));
   }
 
   /**

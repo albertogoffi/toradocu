@@ -6,11 +6,13 @@ import static org.junit.Assert.fail;
 
 import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.Collection;
 import java.util.List;
 import org.toradocu.Toradocu;
@@ -54,24 +56,30 @@ public class PrecisionRecallTest {
           "--source-dir",
           srcPath
         });
-    return compare(actualOutputFile, expectedOutputFile, message);
+    return compare(targetClass, actualOutputFile, expectedOutputFile, message);
   }
 
   /**
    * Compares the output file and the expected output file. Calculates statistics on precision and
    * recall and prints the results.
    *
+   * @param targetClass the qualified name of the class under test
    * @param outputFile the file containing the actual test output
    * @param expectedOutputFile the file containing the expected test output
    * @param message a message to print before all other output
    * @return statistics on precision and recall for the test
    */
   private static TestCaseStats compare(
-      String outputFile, String expectedOutputFile, String message) {
+      String targetClass, String outputFile, String expectedOutputFile, String message) {
     StringBuilder report = new StringBuilder(message + "\n");
 
     try (BufferedReader outFile = Files.newBufferedReader(Paths.get(outputFile));
-        BufferedReader expFile = Files.newBufferedReader(Paths.get(expectedOutputFile))) {
+        BufferedReader expFile = Files.newBufferedReader(Paths.get(expectedOutputFile));
+        BufferedWriter resultsFile =
+            Files.newBufferedWriter(
+                Paths.get(AbstractPrecisionRecallTestSuite.OUTPUT_DIR + "/results.csv"),
+                StandardOpenOption.CREATE,
+                StandardOpenOption.APPEND)) {
 
       Type collectionType = new TypeToken<Collection<DocumentedMethod>>() {}.getType();
       List<DocumentedMethod> actualResult = GsonInstance.gson().fromJson(outFile, collectionType);
@@ -79,7 +87,7 @@ public class PrecisionRecallTest {
 
       assertThat(actualResult.size(), is(expectedResult.size()));
 
-      TestCaseStats result = new TestCaseStats();
+      TestCaseStats result = new TestCaseStats(targetClass);
       int numberOfComments = 0;
       for (int methodIndex = 0; methodIndex < expectedResult.size(); methodIndex++) {
         DocumentedMethod method = expectedResult.get(methodIndex);
@@ -126,19 +134,15 @@ public class PrecisionRecallTest {
       }
 
       result.setTotal(numberOfComments);
-      double precision = result.getPrecision();
-      double recall = result.getRecall();
-      report.append(
-          "Conditions: "
-              + numberOfComments
-              + " | Precision: "
-              + String.format("%.2f", precision)
-              + " | Recall: "
-              + String.format("%.2f", recall)
-              + "\n");
+      report.append(result);
       System.out.println(report);
+
+      resultsFile.append(result.asCSV());
+      resultsFile.newLine();
+
       return result;
     } catch (IOException e) {
+      e.printStackTrace();
       fail(e.getMessage());
     }
     return null;
