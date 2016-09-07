@@ -148,13 +148,13 @@ public class Matcher {
       if (matches.isEmpty()) {
         return null;
       } else {
-        /* Matches contains matches that are at the same distance from s. We simply return one of
-         * those because we don't know which one is best. */
+        // Matches contains matches that are at the same distance from s. We simply return one of
+        // those because we don't know which one is best.
         match = matches.stream().findFirst().get().getJavaExpression();
       }
     }
 
-    /* Condition "target==null" is indeed not correct. */
+    // Condition "target==null" is indeed not correct.
     if (match.equals("target==null")) {
       return null;
     }
