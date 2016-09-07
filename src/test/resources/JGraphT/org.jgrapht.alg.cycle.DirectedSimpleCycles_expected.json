@@ -1,0 +1,82 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.cycle.DirectedSimpleCycles",
+      "name": "DirectedSimpleCycles",
+      "isArray": false
+    },
+    "name": "getGraph",
+    "returnType": {
+      "qualifiedName": "org.jgrapht.DirectedGraph",
+      "name": "DirectedGraph",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getGraph()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.cycle.DirectedSimpleCycles",
+      "name": "DirectedSimpleCycles",
+      "isArray": false
+    },
+    "name": "setGraph",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.DirectedGraph",
+          "name": "DirectedGraph",
+          "isArray": false
+        },
+        "name": "graph"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if the argument is null.",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "setGraph(org.jgrapht.DirectedGraph graph)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.cycle.DirectedSimpleCycles",
+      "name": "DirectedSimpleCycles",
+      "isArray": false
+    },
+    "name": "findSimpleCycles",
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if the current graph is null.",
+        "condition": "target.getGraph()==null"
+      }
+    ],
+    "signature": "findSimpleCycles()"
+  }
+]
