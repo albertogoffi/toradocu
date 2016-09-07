@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- *
  * This class provides a method to get the semantic graph of a sentence produced by the Stanford
  * parser. To optimize execution time, the Stanford parser is initialized once in the static block
  * to ensure that its initialization phase is done only once.
@@ -21,10 +20,10 @@ public class StanfordParser {
   private static final StanfordCoreNLP pipeline;
 
   static {
-    /* Creates a StanfordCoreNLP object, with POS tagging, lemmatization, NER, parsing, and
-     * coreference resolution. */
+    // Creates a StanfordCoreNLP object, with POS tagging, lemmatization, NER, parsing, and
+    // coreference resolution.
     Properties props = new Properties();
-    /* Complete annotations list was "tokenize, ssplit, pos, lemma, ner, parse, dcoref" */
+    // Complete annotations list was "tokenize, ssplit, pos, lemma, ner, parse, dcoref".
     props.setProperty("annotators", "tokenize, ssplit, parse");
     pipeline = new StanfordCoreNLP(props);
   }

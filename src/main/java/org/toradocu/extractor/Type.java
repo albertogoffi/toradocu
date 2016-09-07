@@ -86,6 +86,12 @@ public class Type {
     return componentType;
   }
 
+  /**
+   * Returns the dimension of this type. For example, the dimension of "Integer" is 0, the
+   * dimension of "String[]" is 1, the dimension of "String[][]" is 2.
+   *
+   * @return the dimension of this type
+   */
   public int dimension() {
     return getDimension(getQualifiedName());
   }

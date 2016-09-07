@@ -100,6 +100,7 @@ public class ConditionTranslator {
 
   private static final String INEQUALITY_NUMBER_REGEX = "(<|>)=? ?-?[0-9]+";
   private static final String PLACEHOLDER_PREFIX = "INEQUALITY_";
+  /** Stores the inequalities that are replaced by placeholders when addPlaceholders is called. */
   private static List<String> inequalities = new ArrayList<>();
 
   /**

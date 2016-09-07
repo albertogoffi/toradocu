@@ -26,6 +26,10 @@ import com.sun.javadoc.Tag;
 import com.sun.javadoc.Type;
 import com.sun.javadoc.TypeVariable;
 
+/**
+ * {@code JavadocExtractor} extracts {@code DocumentedMethod}s from {@code ClassDoc}s. The entry
+ * point for this class is the {@link #extract(ClassDoc)} method.
+ */
 public final class JavadocExtractor {
 
   /** Holds Javadoc doclet configuration options. */
