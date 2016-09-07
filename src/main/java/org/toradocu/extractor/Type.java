@@ -123,8 +123,8 @@ public class Type {
   /**
    * Compares this type with a Java Class type.
    *
-   * @param type the Class to be compared with this type.
-   * @return {@code true} if this type and {@code type} are equal, {@code false} otherwise.
+   * @param type the Class to be compared with this type
+   * @return {@code true} if this type and {@code type} are equal, {@code false} otherwise
    */
   public boolean equalsTo(Class<?> type) {
     if (!isArray() && !type.isArray()) {
@@ -151,8 +151,8 @@ public class Type {
    * Returns the dimension of the given type. For example, the dimension of "Integer" is 0, the
    * dimension of "String[]" is 1, the dimension of "String[][]" is 2.
    *
-   * @param type a type (e.g. "java.lang.String[][]").
-   * @return the dimension of the given type.
+   * @param type a type (e.g. "java.lang.String[][]")
+   * @return the dimension of the given type
    */
   private int getDimension(String type) {
     int typeDimension = 0;
