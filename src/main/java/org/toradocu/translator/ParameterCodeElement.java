@@ -37,6 +37,7 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
     } else {
       addIdentifier(parameter.getType().getSimpleName());
       if (parameter.getType().getName().equals("java.lang.Iterable")) {
+        addIdentifier("iterator");
         addIdentifier("collection");
       }
     }
