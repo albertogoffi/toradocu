@@ -3,8 +3,10 @@ package org.toradocu.translator;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -44,8 +46,8 @@ public class ConditionTranslator {
           comment = comment.substring(3);
         }
 
-        /* Identify propositions in the comment. Each sentence in the comment is parsed into a
-         * PropositionSeries. */
+        // Identify propositions in the comment. Each sentence in the comment is parsed into a
+        // PropositionSeries.
         List<PropositionSeries> extractedPropositions = getPropositionSeries(comment);
 
         Set<String> conditions = new LinkedHashSet<>();
@@ -146,9 +148,9 @@ public class ConditionTranslator {
         return;
       }
 
-      // A single subject can match multiple elements (e.g., in "either value is null").
-      // Therefore, predicate matching should be attempted for each matched subject code element.
-      String translation = "";
+      // Maps each subject code element to the Java expression translation that uses
+      // that code element.
+      Map<CodeElement<?>, String> translations = new LinkedHashMap<>();
       for (CodeElement<?> subjectMatch : subjectMatches) {
         String currentTranslation =
             Matcher.predicateMatch(subjectMatch, p.getPredicate(), p.isNegative());
@@ -156,18 +158,52 @@ public class ConditionTranslator {
           log.trace("Failed predicate translation for: " + p);
           continue;
         }
+        translations.put(subjectMatch, currentTranslation);
+      }
 
-        if (translation.isEmpty()) {
-          translation = currentTranslation;
-        } else {
-          translation += getConjunction(p.getSubject()) + currentTranslation;
+      if (translations.isEmpty()) {
+        // Predicate match failed for every subject match.
+        return;
+      }
+
+      // The final translation.
+      String result = null;
+
+      String conjunction = getConjunction(p.getSubject());
+      if (conjunction != null) {
+        // A single subject can refer to multiple elements (e.g., in "either value is null").
+        // Therefore, translations for each subject code element should be merged using the
+        // appropriate conjunction.
+        for (String translation : translations.values()) {
+          if (result == null) {
+            result = translation;
+          } else {
+            result += conjunction + translation;
+          }
         }
+      } else {
+        // Only one of the subject matches should be used.
+        // Prefer parameters, followed by classes, methods and fields.
+        CodeElement<?> preferredSubjectMatch = null;
+        for (CodeElement<?> subjectMatch : translations.keySet()) {
+          if (subjectMatch instanceof ParameterCodeElement) {
+            preferredSubjectMatch = subjectMatch;
+            break;
+          } else if (subjectMatch instanceof ClassCodeElement) {
+            preferredSubjectMatch = subjectMatch;
+          } else if (subjectMatch instanceof MethodCodeElement
+              && (preferredSubjectMatch == null
+                  || preferredSubjectMatch instanceof FieldCodeElement)) {
+            preferredSubjectMatch = subjectMatch;
+          } else if (subjectMatch instanceof FieldCodeElement && preferredSubjectMatch == null) {
+            preferredSubjectMatch = subjectMatch;
+          }
+        }
+        result = translations.get(preferredSubjectMatch);
       }
 
-      if (!translation.isEmpty()) {
-        log.trace("Translated proposition " + p + " as: " + translation);
-        p.setTranslation(translation);
-      }
+      log.trace("Translated proposition " + p + " as: " + result);
+      p.setTranslation(result);
     }
   }
 
