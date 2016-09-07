@@ -27,7 +27,7 @@ public class Matcher {
    */
   private static final int LEVENSHTEIN_DISTANCE_THRESHOLD = 1;
   private static URLClassLoader classLoader;
-  private static final Logger LOG = LoggerFactory.getLogger(Matcher.class);
+  private static final Logger log = LoggerFactory.getLogger(Matcher.class);
 
   /**
    * Takes the subject of a proposition in a Javadoc comment and the {@code DocumentedMethod} that
@@ -97,7 +97,7 @@ public class Matcher {
       try {
         classDir = Toradocu.configuration.getClassDir().toUri().toURL();
       } catch (MalformedURLException e) {
-        LOG.error(ERROR_MESSAGE);
+        log.error(ERROR_MESSAGE);
         return null;
       }
       classLoader = new URLClassLoader(new URL[] {classDir});
@@ -105,7 +105,7 @@ public class Matcher {
     try {
       targetClass = classLoader.loadClass(className);
     } catch (ClassNotFoundException e) {
-      LOG.error(ERROR_MESSAGE);
+      log.error(ERROR_MESSAGE);
       return null;
     }
     return targetClass;
@@ -205,7 +205,7 @@ public class Matcher {
   /**
    * Extracts and returns all {@code CodeElement}s associated with the given class and method.
    *
-   * @param class the class to extract {@code CodeElement}s from
+   * @param type the class to extract {@code CodeElement}s from
    * @param documentedMethod the method to extract {@code ParameterCodeElement}s from
    * @return all {@code CodeElement}s associated with the given class and method
    */
@@ -236,7 +236,7 @@ public class Matcher {
       }
     }
     if (methodOrConstructor == null) {
-      LOG.error("Could not load method/constructor from DocumentedMethod " + documentedMethod);
+      log.error("Could not load method/constructor from DocumentedMethod " + documentedMethod);
     }
 
     // Add method parameters as code elements.
