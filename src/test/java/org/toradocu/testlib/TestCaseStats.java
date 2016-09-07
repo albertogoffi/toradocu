@@ -64,7 +64,7 @@ public class TestCaseStats {
     return className
         + "| # Conditions: "
         + conditions
-        + " | Precsion: "
+        + " | Precision: "
         + String.format("%.2f", getPrecision())
         + " | Recall: "
         + String.format("%.2f", getRecall());
