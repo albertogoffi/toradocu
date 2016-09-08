@@ -87,6 +87,13 @@ public class ConditionTranslator {
    * @return text with inequalities replaced by placeholders
    */
   private static String addPlaceholders(String text) {
+    // Replace written out inequalities with symbols.
+    text =
+        text.replace("greater than or equal to", ">=")
+            .replace("less than or equal to", "<=")
+            .replace("greater than", ">")
+            .replace("less than", "<")
+            .replace("equal to", "==");
     java.util.regex.Matcher matcher = Pattern.compile(INEQUALITY_NUMBER_REGEX).matcher(text);
     String placeholderText = text;
     int i = 0;
@@ -98,14 +105,15 @@ public class ConditionTranslator {
     return placeholderText;
   }
 
-  private static final String INEQUALITY_NUMBER_REGEX = "(<|>)=? ?-?[0-9]+";
+  private static final String INEQUALITY_NUMBER_REGEX = "(([<>=]=?)|(!=)) ?-?[0-9]+";
   private static final String PLACEHOLDER_PREFIX = "INEQUALITY_";
   /** Stores the inequalities that are replaced by placeholders when addPlaceholders is called. */
   private static List<String> inequalities = new ArrayList<>();
 
   /**
    * Returns a new list of {@code PropositionSeries} in which any placeholder text has been replaced
-   * by the original inequalities.
+   * by the original inequalities. Original inequalities that were written out (e.g. "less than")
+   * are replaced by their symbolic equivalent (e.g. "<").
    *
    * @param seriesList the list of {@code PropositionSeries} containing placeholder text
    * @return a new list of {@code PropositionSeries} with placeholders replaced by inequalities
