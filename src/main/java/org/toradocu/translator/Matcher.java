@@ -90,25 +90,25 @@ public class Matcher {
    * @return the {@code Class} object for the given class
    */
   private static Class<?> getClass(String className) {
-    Class<?> targetClass = null;
     final String ERROR_MESSAGE = "Unable to load class " + className + ". Check the classpath.";
-    if (classLoader == null) {
-      URL classDir = null;
-      try {
-        classDir = Toradocu.configuration.getClassDir().toUri().toURL();
-      } catch (MalformedURLException e) {
-        log.error(ERROR_MESSAGE);
-        return null;
-      }
-      classLoader = new URLClassLoader(new URL[] {classDir});
-    }
     try {
-      targetClass = classLoader.loadClass(className);
-    } catch (ClassNotFoundException e) {
+      URL classDir = Toradocu.configuration.getClassDir().toUri().toURL();
+      if (classLoader == null) {
+        classLoader = URLClassLoader.newInstance(new URL[] {classDir});
+      } else {
+        URL[] originalURLs = classLoader.getURLs();
+        URL[] newURLs = new URL[originalURLs.length + 1];
+        for (int i = 0; i < originalURLs.length; i++) {
+          newURLs[i] = originalURLs[i];
+        }
+        newURLs[newURLs.length - 1] = classDir;
+        classLoader = URLClassLoader.newInstance(newURLs);
+      }
+      return classLoader.loadClass(className);
+    } catch (MalformedURLException | ClassNotFoundException e) {
       log.error(ERROR_MESSAGE);
       return null;
     }
-    return targetClass;
   }
 
   /**
