@@ -31,7 +31,7 @@ public class MethodChangerVisitor extends VoidVisitorAdapter<Object> {
   /** {@code DocumentedMethod} for which generate an aspect */
   private DocumentedMethod method;
   /** {@code Logger} for this class. */
-  private static final Logger LOG = LoggerFactory.getLogger(MethodChangerVisitor.class);
+  private static final Logger log = LoggerFactory.getLogger(MethodChangerVisitor.class);
   /** Holds Toradocu configuration options. */
   private final Configuration conf = Toradocu.configuration;
 
@@ -99,7 +99,7 @@ public class MethodChangerVisitor extends VoidVisitorAdapter<Object> {
 
           ASTHelper.addStmt(n.getBody(), nullCheckTryCatch);
         } catch (ParseException e) {
-          LOG.error("Parsing error during the apect creation.", e);
+          log.error("Parsing error during the apect creation.", e);
           e.printStackTrace();
         }
       }
@@ -107,7 +107,7 @@ public class MethodChangerVisitor extends VoidVisitorAdapter<Object> {
       try {
         ASTHelper.addStmt(n.getBody(), JavaParser.parseStatement("return expectedExceptions;"));
       } catch (ParseException e) {
-        LOG.error("Parsing error during the apect creation.", e);
+        log.error("Parsing error during the apect creation.", e);
         e.printStackTrace();
       }
     }

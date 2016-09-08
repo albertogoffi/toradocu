@@ -26,6 +26,10 @@ import com.sun.javadoc.Tag;
 import com.sun.javadoc.Type;
 import com.sun.javadoc.TypeVariable;
 
+/**
+ * {@code JavadocExtractor} extracts {@code DocumentedMethod}s from {@code ClassDoc}s. The entry
+ * point for this class is the {@link #extract(ClassDoc)} method.
+ */
 public final class JavadocExtractor {
 
   /** Holds Javadoc doclet configuration options. */
@@ -53,7 +57,7 @@ public final class JavadocExtractor {
 
     // Loop on constructors and methods (also inherited) of the target class.
     for (ExecutableMemberDoc member : getConstructorsAndMethods(classDoc)) {
-      org.toradocu.extractor.Type containgClass =
+      org.toradocu.extractor.Type containingClass =
           new org.toradocu.extractor.Type(member.containingClass().qualifiedName());
       List<Tag> throwsTags = new ArrayList<>();
 
@@ -104,7 +108,7 @@ public final class JavadocExtractor {
       }
       methods.add(
           new DocumentedMethod(
-              containgClass,
+              containingClass,
               member.name(),
               getReturnType(member),
               getParameters(member),
@@ -212,8 +216,8 @@ public final class JavadocExtractor {
   /**
    * Returns the qualified name (with dimension information) of the specified parameter type.
    *
-   * @param parameterType the type (of a parameter).
-   * @return the qualified name (with dimension information) of the specified parameter type.
+   * @param parameterType the type (of a parameter)
+   * @return the qualified name (with dimension information) of the specified parameter type
    */
   private String getParameterType(Type parameterType) {
     String qualifiedName;

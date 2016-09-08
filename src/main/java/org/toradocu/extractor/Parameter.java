@@ -44,9 +44,9 @@ public final class Parameter {
   }
 
   /**
-   * Returns the simple name of the parameter.
+   * Returns the name of the parameter.
    *
-   * @return the simple name of the parameter
+   * @return the name of the parameter
    */
   public String getName() {
     return name;
