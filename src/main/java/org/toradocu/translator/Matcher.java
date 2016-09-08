@@ -91,7 +91,7 @@ public class Matcher {
    */
   private static Class<?> getClass(String className) {
     Class<?> targetClass = null;
-    final String ERROR_MESSAGE = "Unable to load class. Check the classpath.";
+    final String ERROR_MESSAGE = "Unable to load class " + className + ". Check the classpath.";
     if (classLoader == null) {
       URL classDir = null;
       try {
