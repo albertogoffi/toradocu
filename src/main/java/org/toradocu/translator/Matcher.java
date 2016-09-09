@@ -25,9 +25,9 @@ public class Matcher {
    * Represents the threshold for the Levenshtein distance above which {@code CodeElement}s are
    * considered to be not matching.
    */
-  private static final int LEVENSHTEIN_DISTANCE_THRESHOLD = 1;
-
-  private static final Logger LOG = LoggerFactory.getLogger(Matcher.class);
+  private static final int LEVENSHTEIN_DISTANCE_THRESHOLD = 2;
+  private static URLClassLoader classLoader;
+  private static final Logger log = LoggerFactory.getLogger(Matcher.class);
 
   /**
    * Takes the subject of a proposition in a Javadoc comment and the {@code DocumentedMethod} that
@@ -90,23 +90,25 @@ public class Matcher {
    * @return the {@code Class} object for the given class
    */
   private static Class<?> getClass(String className) {
-    Class<?> targetClass = null;
-    URL classDir = null;
-    final String ERROR_MESSAGE = "Unable to load class. Check the classpath.";
+    final String ERROR_MESSAGE = "Unable to load class " + className + ". Check the classpath.";
     try {
-      classDir = Toradocu.configuration.getClassDir().toUri().toURL();
-    } catch (MalformedURLException e) {
-      LOG.error(ERROR_MESSAGE);
+      URL classDir = Toradocu.configuration.getClassDir().toUri().toURL();
+      if (classLoader == null) {
+        classLoader = URLClassLoader.newInstance(new URL[] {classDir});
+      } else {
+        URL[] originalURLs = classLoader.getURLs();
+        URL[] newURLs = new URL[originalURLs.length + 1];
+        for (int i = 0; i < originalURLs.length; i++) {
+          newURLs[i] = originalURLs[i];
+        }
+        newURLs[newURLs.length - 1] = classDir;
+        classLoader = URLClassLoader.newInstance(newURLs);
+      }
+      return classLoader.loadClass(className);
+    } catch (MalformedURLException | ClassNotFoundException e) {
+      log.error(ERROR_MESSAGE);
       return null;
     }
-    try {
-      URLClassLoader classLoader = new URLClassLoader(new URL[] {classDir});
-      targetClass = classLoader.loadClass(className);
-    } catch (ClassNotFoundException e) {
-      LOG.error(ERROR_MESSAGE);
-      return null;
-    }
-    return targetClass;
   }
 
   /**
@@ -146,13 +148,13 @@ public class Matcher {
       if (matches.isEmpty()) {
         return null;
       } else {
-        /* Matches contains matches that are at the same distance from s. We simply return one of
-         * those because we don't know which one is best. */
+        // Matches contains matches that are at the same distance from s. We simply return one of
+        // those because we don't know which one is best.
         match = matches.stream().findFirst().get().getJavaExpression();
       }
     }
 
-    /* Condition "target==null" is indeed not correct. */
+    // Condition "target==null" is indeed not correct.
     if (match.equals("target==null")) {
       return null;
     }
@@ -203,7 +205,7 @@ public class Matcher {
   /**
    * Extracts and returns all {@code CodeElement}s associated with the given class and method.
    *
-   * @param class the class to extract {@code CodeElement}s from
+   * @param type the class to extract {@code CodeElement}s from
    * @param documentedMethod the method to extract {@code ParameterCodeElement}s from
    * @return all {@code CodeElement}s associated with the given class and method
    */
@@ -234,12 +236,16 @@ public class Matcher {
       }
     }
     if (methodOrConstructor == null) {
-      LOG.error("Could not load method/constructor from DocumentedMethod " + documentedMethod);
+      log.error("Could not load method/constructor from DocumentedMethod " + documentedMethod);
     }
 
     // Add method parameters as code elements.
     for (int i = 0; i < methodOrConstructor.getParameters().length; i++) {
-      result.add(new ParameterCodeElement(methodOrConstructor.getParameters()[i], i));
+      result.add(
+          new ParameterCodeElement(
+              methodOrConstructor.getParameters()[i],
+              documentedMethod.getParameters().get(i).getName(),
+              i));
     }
 
     // Add the class itself as a code element.

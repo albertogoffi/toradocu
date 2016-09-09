@@ -3,9 +3,13 @@ package org.toradocu.translator;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.regex.Pattern;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.extractor.DocumentedMethod;
@@ -42,8 +46,8 @@ public class ConditionTranslator {
           comment = comment.substring(3);
         }
 
-        /* Identify propositions in the comment. Each sentence in the comment is parsed into a
-         * PropositionSeries. */
+        // Identify propositions in the comment. Each sentence in the comment is parsed into a
+        // PropositionSeries.
         List<PropositionSeries> extractedPropositions = getPropositionSeries(comment);
 
         Set<String> conditions = new LinkedHashSet<>();
@@ -65,12 +69,74 @@ public class ConditionTranslator {
    * @return a list of {@code PropositionSeries} objects, one for each sentence in the comment
    */
   private static List<PropositionSeries> getPropositionSeries(String comment) {
+    comment = addPlaceholders(comment);
     List<PropositionSeries> result = new ArrayList<>();
 
     for (SemanticGraph semanticGraph : StanfordParser.getSemanticGraphs(comment)) {
       result.add(new SentenceParser(semanticGraph).getPropositionSeries());
     }
 
+    return removePlaceholders(result);
+  }
+
+  /**
+   * Replaces inequalities (e.g. "< 3", ">= 42") with placeholder text that can be more easily
+   * parsed.
+   *
+   * @param text the text containing inequalities
+   * @return text with inequalities replaced by placeholders
+   */
+  private static String addPlaceholders(String text) {
+    // Replace written out inequalities with symbols.
+    text =
+        text.replace("greater than or equal to", ">=")
+            .replace("less than or equal to", "<=")
+            .replace("greater than", ">")
+            .replace("less than", "<")
+            .replace("equal to", "==");
+    java.util.regex.Matcher matcher = Pattern.compile(INEQUALITY_NUMBER_REGEX).matcher(text);
+    String placeholderText = text;
+    int i = 0;
+    while (matcher.find()) {
+      inequalities.add(text.substring(matcher.start(), matcher.end()));
+      placeholderText =
+          placeholderText.replaceFirst(INEQUALITY_NUMBER_REGEX, PLACEHOLDER_PREFIX + i++);
+    }
+    return placeholderText;
+  }
+
+  private static final String INEQUALITY_NUMBER_REGEX = "(([<>=]=?)|(!=)) ?-?[0-9]+";
+  private static final String PLACEHOLDER_PREFIX = "INEQUALITY_";
+  /** Stores the inequalities that are replaced by placeholders when addPlaceholders is called. */
+  private static List<String> inequalities = new ArrayList<>();
+
+  /**
+   * Returns a new list of {@code PropositionSeries} in which any placeholder text has been replaced
+   * by the original inequalities. Original inequalities that were written out (e.g. "less than")
+   * are replaced by their symbolic equivalent (e.g. "<").
+   *
+   * @param seriesList the list of {@code PropositionSeries} containing placeholder text
+   * @return a new list of {@code PropositionSeries} with placeholders replaced by inequalities
+   */
+  private static List<PropositionSeries> removePlaceholders(List<PropositionSeries> seriesList) {
+    List<PropositionSeries> result = new ArrayList<>();
+
+    for (PropositionSeries series : seriesList) {
+      List<Proposition> inequalityPropositions = new ArrayList<>();
+      for (Proposition placeholderProposition : series.getPropositions()) {
+        String subject = placeholderProposition.getSubject();
+        String predicate = placeholderProposition.getPredicate();
+        for (int i = 0; i < inequalities.size(); i++) {
+          subject = subject.replaceAll(PLACEHOLDER_PREFIX + i, inequalities.get(i));
+          predicate = predicate.replaceAll(PLACEHOLDER_PREFIX + i, inequalities.get(i));
+        }
+        inequalityPropositions.add(
+            new Proposition(subject, predicate, placeholderProposition.isNegative()));
+      }
+      result.add(new PropositionSeries(inequalityPropositions, series.getConjunctions()));
+    }
+
+    inequalities.clear();
     return result;
   }
 
@@ -91,9 +157,9 @@ public class ConditionTranslator {
         return;
       }
 
-      // A single subject can match multiple elements (e.g., in "either value is null").
-      // Therefore, predicate matching should be attempted for each matched subject code element.
-      String translation = "";
+      // Maps each subject code element to the Java expression translation that uses
+      // that code element.
+      Map<CodeElement<?>, String> translations = new LinkedHashMap<>();
       for (CodeElement<?> subjectMatch : subjectMatches) {
         String currentTranslation =
             Matcher.predicateMatch(subjectMatch, p.getPredicate(), p.isNegative());
@@ -101,18 +167,52 @@ public class ConditionTranslator {
           log.trace("Failed predicate translation for: " + p);
           continue;
         }
+        translations.put(subjectMatch, currentTranslation);
+      }
 
-        if (translation.isEmpty()) {
-          translation = currentTranslation;
-        } else {
-          translation += getConjunction(p.getSubject()) + currentTranslation;
+      if (translations.isEmpty()) {
+        // Predicate match failed for every subject match.
+        return;
+      }
+
+      // The final translation.
+      String result = null;
+
+      String conjunction = getConjunction(p.getSubject());
+      if (conjunction != null) {
+        // A single subject can refer to multiple elements (e.g., in "either value is null").
+        // Therefore, translations for each subject code element should be merged using the
+        // appropriate conjunction.
+        for (String translation : translations.values()) {
+          if (result == null) {
+            result = translation;
+          } else {
+            result += conjunction + translation;
+          }
         }
+      } else {
+        // Only one of the subject matches should be used.
+        // Prefer parameters, followed by classes, methods and fields.
+        CodeElement<?> preferredSubjectMatch = null;
+        for (CodeElement<?> subjectMatch : translations.keySet()) {
+          if (subjectMatch instanceof ParameterCodeElement) {
+            preferredSubjectMatch = subjectMatch;
+            break;
+          } else if (subjectMatch instanceof ClassCodeElement) {
+            preferredSubjectMatch = subjectMatch;
+          } else if (subjectMatch instanceof MethodCodeElement
+              && (preferredSubjectMatch == null
+                  || preferredSubjectMatch instanceof FieldCodeElement)) {
+            preferredSubjectMatch = subjectMatch;
+          } else if (subjectMatch instanceof FieldCodeElement && preferredSubjectMatch == null) {
+            preferredSubjectMatch = subjectMatch;
+          }
+        }
+        result = translations.get(preferredSubjectMatch);
       }
 
-      if (!translation.isEmpty()) {
-        log.trace("Translated proposition " + p + " as: " + translation);
-        p.setTranslation(translation);
-      }
+      log.trace("Translated proposition " + p + " as: " + result);
+      p.setTranslation(result);
     }
   }
 

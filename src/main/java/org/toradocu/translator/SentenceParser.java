@@ -32,7 +32,7 @@ public class SentenceParser {
       complementRelations,
       conjunctionRelations,
       negationRelations;
-  private static final Logger LOG = LoggerFactory.getLogger(SentenceParser.class);
+  private static final Logger log = LoggerFactory.getLogger(SentenceParser.class);
 
   /**
    * Constructs a {@code SentenceParser} object that will parse a {@code PropositionSeries} from the
@@ -181,7 +181,7 @@ public class SentenceParser {
       result = tryConjunctionPredicate(governor);
     }
     if (result.isEmpty()) {
-      LOG.warn(
+      log.warn(
           "Unable to identify a predicate (governor = " + governor.word() + ") in \"{}\"",
           semanticGraph.toRecoveredSentenceString());
     }
@@ -205,8 +205,8 @@ public class SentenceParser {
       // Predicate is not of non-copula form.
       return predicateWords;
     }
-    predicateWords.add(complementEdge.get().getDependent());
     predicateWords.add(governor);
+    predicateWords.add(complementEdge.get().getDependent());
 
     return predicateWords;
   }
@@ -334,7 +334,7 @@ public class SentenceParser {
   private void initializeRelations() {
     subjectRelations = getRelationsFromGraph("nsubj", "nsubjpass");
     if (subjectRelations.isEmpty()) {
-      LOG.warn("Unable to identify subjects in \"{}\".", semanticGraph.toRecoveredSentenceString());
+      log.warn("Unable to identify subjects in \"{}\".", semanticGraph.toRecoveredSentenceString());
     }
     copulaRelations = getRelationsFromGraph("cop");
     complementRelations = getRelationsFromGraph("acomp", "xcomp", "dobj");

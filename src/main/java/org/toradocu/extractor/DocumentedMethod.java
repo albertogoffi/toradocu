@@ -1,8 +1,10 @@
 package org.toradocu.extractor;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import org.toradocu.util.Checks;
@@ -24,7 +26,7 @@ public final class DocumentedMethod {
    */
   private final Type returnType;
   /** Method's parameters. */
-  private final Set<Parameter> parameters;
+  private final List<Parameter> parameters;
   /** Flag indicating whether this method takes a variable number of arguments.  */
   private final boolean isVarArgs;
   /**
@@ -54,7 +56,7 @@ public final class DocumentedMethod {
       Type containingClass,
       String name,
       Type returnType,
-      Collection<Parameter> parameters,
+      List<Parameter> parameters,
       boolean isVarArgs,
       Collection<ThrowsTag> throwsTags) {
     Checks.nonNullParameter(containingClass, "containingClass");
@@ -70,7 +72,7 @@ public final class DocumentedMethod {
     this.containingClass = containingClass;
     this.name = name;
     this.returnType = returnType;
-    this.parameters = parameters == null ? new LinkedHashSet<>() : new LinkedHashSet<>(parameters);
+    this.parameters = parameters == null ? new ArrayList<>() : new ArrayList<>(parameters);
     this.isVarArgs = isVarArgs;
     this.throwsTags = throwsTags == null ? new LinkedHashSet<>() : new LinkedHashSet<>(throwsTags);
 
@@ -126,12 +128,12 @@ public final class DocumentedMethod {
   }
 
   /**
-   * Returns an unmodifiable view of the parameters in this method.
+   * Returns an unmodifiable list view of the parameters in this method.
    *
-   * @return an unmodifiable view of the parameters in this method
+   * @return an unmodifiable list view of the parameters in this method
    */
-  public Set<Parameter> getParameters() {
-    return Collections.unmodifiableSet(parameters);
+  public List<Parameter> getParameters() {
+    return Collections.unmodifiableList(parameters);
   }
 
   /**

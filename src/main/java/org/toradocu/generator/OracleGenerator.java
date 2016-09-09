@@ -18,7 +18,7 @@ import org.toradocu.extractor.DocumentedMethod;
 public class OracleGenerator {
 
   /** {@code Logger} for this class. */
-  private final Logger LOG = LoggerFactory.getLogger(OracleGenerator.class);
+  private static final Logger log = LoggerFactory.getLogger(OracleGenerator.class);
 
   /**
    * Creates one aspect for each method in the given {@code methods} list
@@ -27,7 +27,7 @@ public class OracleGenerator {
    */
   public void createAspects(List<DocumentedMethod> methods) {
     if (!Toradocu.configuration.isOracleGenerationEnabled()) {
-      LOG.info("Oracle generator disabled: skipped aspect generation.");
+      log.info("Oracle generator disabled: skipped aspect generation.");
       return;
     }
 
@@ -70,7 +70,7 @@ public class OracleGenerator {
       newAspect = newAspect.replace("public class Aspect_Template", "public class " + aspectName);
       output.write(newAspect.getBytes());
     } catch (IOException | ParseException e) {
-      LOG.error("Error during aspect creation.", e);
+      log.error("Error during aspect creation.", e);
     }
   }
 
@@ -94,7 +94,7 @@ public class OracleGenerator {
         new FileOutputStream(new File(folder + File.separator + "aop.xml"))) {
       output.write(content.toString().getBytes());
     } catch (IOException e) {
-      LOG.error("Error while creating aop.xml file.", e);
+      log.error("Error while creating aop.xml file.", e);
     }
   }
 

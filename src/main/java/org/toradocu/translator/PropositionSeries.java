@@ -23,6 +23,23 @@ public class PropositionSeries {
   }
 
   /**
+   * Initializes a {@code PropositionSeries} with the given propositions interlaced with the given conjunctions.
+   *
+   * @param propositions the propositions contained in this series
+   * @param conjunctions the conjunctions between the propositions
+   * @throws IllegalArgumentException if the number of conjunctions is not exactly 1 less than the number of propositions, unless both are empty
+   */
+  public PropositionSeries(List<Proposition> propositions, List<Conjunction> conjunctions) {
+    if (propositions.size() != 0
+        && conjunctions.size() != 0
+        && propositions.size() - conjunctions.size() != 1) {
+      throw new IllegalArgumentException();
+    }
+    this.propositions = propositions;
+    this.conjunctions = conjunctions;
+  }
+
+  /**
    * Adds an initial proposition to an empty {@code PropositionSeries}. If this series is not empty,
    * an {@code IllegalStateException} is thrown.
    *
