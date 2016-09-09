@@ -25,7 +25,7 @@ public class Matcher {
    * Represents the threshold for the Levenshtein distance above which {@code CodeElement}s are
    * considered to be not matching.
    */
-  private static final int LEVENSHTEIN_DISTANCE_THRESHOLD = 1;
+  private static final int LEVENSHTEIN_DISTANCE_THRESHOLD = 2;
   private static URLClassLoader classLoader;
   private static final Logger log = LoggerFactory.getLogger(Matcher.class);
 

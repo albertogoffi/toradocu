@@ -83,35 +83,31 @@ compileJava.doLast {
 
 import de.undercouch.gradle.tasks.download.Download
 
-/**
- * Downloads binaries of the systems used to measure Toradocu's precision and recall.
- * Task not used at the moment: We include binaries until Toradocu needs to load parameters name
- * from the binaries (binaries that have to be compiled with the option -parameters).
- */
+/* Downloads binaries of the systems used to measure Toradocu's precision and recall. */
 task downloadBinaries(type: Download) {
   src ([
-    'http://mirror.switch.ch/mirror/apache/dist/commons/collections/binaries/commons-collections4-4.1-bin.zip',
-    'https://repo1.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0.jar',
-    'https://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2.jar'
+    'http://repo1.maven.org/maven2/org/apache/commons/commons-collections4/4.1/commons-collections4-4.1.jar',
+    'http://repo1.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0.jar',
+    'http://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2.jar'
   ])
   dest 'src/test/resources/bin'
   onlyIfNewer true
   overwrite false
 }
 
-/* Downloads sources of the systems used to measure Toradocu's precision and recall */
+/* Downloads sources of the systems used to measure Toradocu's precision and recall. */
 task downloadSources(type: Download) {
   src ([
     'http://mirror.switch.ch/mirror/apache/dist/commons/collections/source/commons-collections4-4.1-src.zip',
-    'https://repo1.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0-sources.jar',
-    'https://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2-sources.jar'
+    'http://repo1.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0-sources.jar',
+    'http://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2-sources.jar'
   ])
   dest 'src/test/resources/src'
   onlyIfNewer true
   overwrite false
 }
 
-/* Extracts source archives of the systems used to measure Toradocu's precision and recall */
+/* Extracts source archives of the systems used to measure Toradocu's precision and recall. */
 task extractSources(dependsOn: downloadSources) << {
   file('src/test/resources/src').listFiles().findAll{it.name.endsWith('.zip')||it.name.endsWith('.jar')}.each{ file ->
     def fileName = "$file.name"
@@ -129,7 +125,7 @@ task removeTestOutputDirs(type: Delete) {
 }
 
 clean.dependsOn removeTestOutputDirs
-test.dependsOn removeTestOutputDirs, extractSources
+test.dependsOn removeTestOutputDirs, extractSources, downloadBinaries
 
 /* Make Emacs TAGS table */
 task tags(type: Exec) {

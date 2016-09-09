@@ -39,7 +39,7 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
   public void closureUtilsTest() throws Exception {
     TestCaseStats stats = test("org.apache.commons.collections4.ClosureUtils");
     assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.64));
+    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.68));
   }
 
   @Test
@@ -53,7 +53,7 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
   public void predicateUtilsTest() throws Exception {
     TestCaseStats stats = test("org.apache.commons.collections4.PredicateUtils");
     assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.7));
+    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.733, PRECISION));
   }
 
   @Test
