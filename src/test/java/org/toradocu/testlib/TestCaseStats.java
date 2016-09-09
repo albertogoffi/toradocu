@@ -62,7 +62,7 @@ public class TestCaseStats {
   @Override
   public String toString() {
     return className
-        + "| # Conditions: "
+        + " | # Conditions: "
         + conditions
         + " | Precision: "
         + String.format("%.2f", getPrecision())
