@@ -1,8 +1,10 @@
 package org.toradocu.translator;
 
 /**
- * This class represents a class code element for use in translation. It holds String identifiers
- * for the class and a Java expression representation of the class to build Java conditions.
+ * This class represents a {@code Class} code element for use in translation. It holds String
+ * identifiers (words or sequences or words that can be used in Javadoc comments to refer to this
+ * Java code element) for the class and a Java expression representation of the class to build Java
+ * conditions.
  */
 public class ClassCodeElement extends CodeElement<Class<?>> {
 
@@ -27,6 +29,8 @@ public class ClassCodeElement extends CodeElement<Class<?>> {
     }
 
     // Add implemented interfaces as identifiers.
+    // TODO: This only account for the directly implemented interfaces. It omits their
+    // superinterfaces, and interfaces implemented by superclasses.
     for (Class<?> implementedInterface : backingClass.getInterfaces()) {
       addIdentifier(implementedInterface.getSimpleName());
     }

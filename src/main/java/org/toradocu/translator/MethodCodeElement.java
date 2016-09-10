@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
  */
 public class MethodCodeElement extends CodeElement<Method> {
 
-  /** The class/object in which this method is called. */
+  /** The class/object on which this method is called. */
   private final String receiver;
 
   /**
@@ -41,8 +41,8 @@ public class MethodCodeElement extends CodeElement<Method> {
 
   /**
    * Builds and returns the Java expression representation of this method code element. The returned
-   * string is formatted as "RECEIVER.SIGNATURE" where RECEIVER is the name of the class in which
-   * this method is called and SIGNATURE is the signature of this method.
+   * string is formatted as "RECEIVER.METHOD_NAME" where RECEIVER is the name of the class on which
+   * this method is called and METHOD_NAME is the name of this method.
    *
    * @return the Java expression representation of this method code element after building it
    */

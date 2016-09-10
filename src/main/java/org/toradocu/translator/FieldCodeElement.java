@@ -23,6 +23,18 @@ public class FieldCodeElement extends CodeElement<Field> {
 
     // Add name identifier.
     addIdentifier(field.getName());
+    // Add type identifiers
+    Class<?> type = field.getType();
+    if (type.isArray()) {
+      addIdentifier("array");
+      addIdentifier(type.getSimpleName() + " array");
+    } else {
+      addIdentifier(type.getSimpleName());
+      if (type.getName().equals("java.lang.Iterable")) {
+        addIdentifier("iterator");
+        addIdentifier("collection");
+      }
+    }
   }
 
   @Override

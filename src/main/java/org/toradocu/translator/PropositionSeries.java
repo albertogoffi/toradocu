@@ -4,14 +4,27 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+// TODO: Check the validity of the (field) invariants.
 /**
  * This class represents a series of propositions and conjunctions in a sentence, as in
  * "PROPOSITION_A CONJUNCTION_AB PROPOSITION_B CONJUNCTION_BC PROPOSITION_C ...". It provides
  * methods to retrieve propositions and conjunctions between propositions.
+ *
+ * Propositions are represented using a series rather than a tree because is difficult to express
+ * the precedence of conjunctions with natural language.
  */
 public class PropositionSeries {
 
+  /**
+   * Propositions composing this {@code PropositionSeries}.
+   * <p>Invariant: propositions.size() = conjunctions.size() + 1
+   */
   private final List<Proposition> propositions;
+  /**
+   * Conjunctions composing this {@code PropositionSeries}.
+   * Each conjunction links two propositions.
+   * <p>Invariant: conjunctions.size() = propositions.size() - 1
+   */
   private final List<Conjunction> conjunctions;
 
   /**
@@ -48,7 +61,8 @@ public class PropositionSeries {
    */
   public void add(Proposition proposition) {
     if (!propositions.isEmpty()) {
-      throw new IllegalStateException("Series is not empty. Use add(Proposition, Conjunction).");
+      throw new IllegalStateException(
+          "Proposition series is not empty. Use add(Proposition, Conjunction).");
     }
     propositions.add(proposition);
   }
@@ -60,13 +74,13 @@ public class PropositionSeries {
    * to link the conjunction with).
    *
    * @param conjunction the conjunction between the formerly last proposition and the given
-   * proposition
+   *        proposition
    * @param proposition the proposition to add to the end of the series
    * @throws IllegalStateException if there is not already at least one proposition in the series
    */
   public void add(Conjunction conjunction, Proposition proposition) {
     if (propositions.isEmpty()) {
-      throw new IllegalStateException("List is empty. Use add(Proposition)");
+      throw new IllegalStateException("Proposition series is empty. Use add(Proposition)");
     }
     conjunctions.add(conjunction);
     propositions.add(proposition);
@@ -126,6 +140,13 @@ public class PropositionSeries {
   public String getTranslation() {
     StringBuilder output = new StringBuilder();
     // Only output translations for those propositions that actually have a translation.
+    // TODO: Document that fact.  Also document how you decide which
+    // conjunction to use when some propositions have no translation.  I
+    // imagine you want to ensure that it's consistent with treating all
+    // missing propositions as true or all as false.  Would it be simpler
+    // to just implement it that way?  (Actually, does it give up as soon
+    // as any proposition is untranslatable?  That's not what the comment
+    // above said and doesn't seem desirable.)
     int i = 0;
     while (i < numberOfPropositions() && !propositions.get(i).getTranslation().isPresent()) {
       i++;
@@ -155,7 +176,7 @@ public class PropositionSeries {
     if (!isEmpty()) {
       output.append(propositions.get(0));
       for (int i = 1; i < numberOfPropositions(); i++) {
-        output.append(conjunctions.get(i - 1));
+        output.append(" " + conjunctions.get(i - 1) + " ");
         output.append(propositions.get(i));
       }
     }
