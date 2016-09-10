@@ -176,7 +176,7 @@ public class PropositionSeries {
     if (!isEmpty()) {
       output.append(propositions.get(0));
       for (int i = 1; i < numberOfPropositions(); i++) {
-        output.append(" " + conjunctions.get(i - 1) + " ");
+        output.append(conjunctions.get(i - 1));
         output.append(propositions.get(i));
       }
     }

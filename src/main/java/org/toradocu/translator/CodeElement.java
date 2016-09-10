@@ -14,7 +14,7 @@ import org.toradocu.util.Distance;
  * to refer to this Java code element) for the code element and a Java
  * expression representation of the code element to build Java conditions.
  * A typical constructor invocation looks like this:
- * <p>{@code new CodeElement(parameter, "names", "array", "array names").
+ * <p>{@code new CodeElement(parameter, "names", "array", "array names")}.
  *
  * @param <T> the type of code element that this class holds data on
  */
