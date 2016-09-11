@@ -39,6 +39,7 @@ sourceSets {
       exclude 'org/toradocu/generator/**'
       exclude 'org/toradocu/PrecisionRecallTestSuite.java'
       exclude 'org/toradocu/PrecisionRecallCommonsCollections4.java'
+      exclude 'org/toradocu/PrecisionRecallCommonsMath3.java'
       exclude 'org/toradocu/PrecisionRecallJGraphT.java'
     }
   }
@@ -87,6 +88,7 @@ import de.undercouch.gradle.tasks.download.Download
 task downloadBinaries(type: Download) {
   src ([
     'http://repo1.maven.org/maven2/org/apache/commons/commons-collections4/4.1/commons-collections4-4.1.jar',
+    'http://repo1.maven.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar',
     'http://repo1.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0.jar',
     'http://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2.jar'
   ])
@@ -98,7 +100,8 @@ task downloadBinaries(type: Download) {
 /* Downloads sources of the systems used to measure Toradocu's precision and recall. */
 task downloadSources(type: Download) {
   src ([
-    'http://mirror.switch.ch/mirror/apache/dist/commons/collections/source/commons-collections4-4.1-src.zip',
+    'https://www.apache.org/dist/commons/collections/source/commons-collections4-4.1-src.zip',
+    'https://www.apache.org/dist/commons/math/source/commons-math3-3.6.1-src.zip',
     'http://repo1.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0-sources.jar',
     'http://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2-sources.jar'
   ])
@@ -135,7 +138,7 @@ task tags(type: Exec) {
 }
 
 /* Install the git pre-commit hook */
-task installhook(type:Exec) {
+task installhook(type: Exec) {
   commandLine 'sh', '-c' , 'if [ ! -f .git/hooks/pre-commit ]; then ln -s ../../git-pre-commit-hook.sh .git/hooks/pre-commit; fi'
 }
 
