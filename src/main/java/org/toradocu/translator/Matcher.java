@@ -22,10 +22,10 @@ import org.toradocu.extractor.Parameter;
 public class Matcher {
 
   /**
-   * Represents the threshold for the Levenshtein distance above which {@code CodeElement}s are
+   * Represents the threshold for the edit distance above which {@code CodeElement}s are
    * considered to be not matching.
    */
-  private static final int LEVENSHTEIN_DISTANCE_THRESHOLD = 2;
+  private static final int EDIT_DISTANCE_THRESHOLD = 2;
   private static URLClassLoader classLoader;
   private static final Logger log = LoggerFactory.getLogger(Matcher.class);
 
@@ -67,10 +67,10 @@ public class Matcher {
       String filter, Set<CodeElement<?>> codeElements) {
     Set<CodeElement<?>> minCodeElements = new LinkedHashSet<>();
     // Only consider elements with a minimum distance <= the threshold distance.
-    int minDistance = LEVENSHTEIN_DISTANCE_THRESHOLD;
-    // Returns the CodeElement(s) with the smallest Levenshtein distance.
+    int minDistance = EDIT_DISTANCE_THRESHOLD;
+    // Returns the CodeElement(s) with the smallest distance.
     for (CodeElement<?> codeElement : codeElements) {
-      int distance = codeElement.getLevenshteinDistanceFrom(filter);
+      int distance = codeElement.getEditDistanceFrom(filter);
       if (distance < minDistance) {
         minDistance = distance;
         minCodeElements.clear();
