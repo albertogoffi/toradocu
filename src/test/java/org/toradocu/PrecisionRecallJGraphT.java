@@ -57,7 +57,7 @@ public class PrecisionRecallJGraphT extends AbstractPrecisionRecallTestSuite {
   public void kShortestPathsTest() throws Exception {
     TestCaseStats stats = test("org.jgrapht.alg.KShortestPaths");
     assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.666, PRECISION));
+    assertThat(RECALL_MESSAGE, stats.getRecall(), is(1.0));
   }
 
   @Test
@@ -71,6 +71,6 @@ public class PrecisionRecallJGraphT extends AbstractPrecisionRecallTestSuite {
   public void abstractPathElementListTest() throws Exception {
     TestCaseStats stats = test("org.jgrapht.alg.AbstractPathElementList");
     assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.5));
+    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.666, PRECISION));
   }
 }
