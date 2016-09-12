@@ -29,20 +29,16 @@ public class Distance {
   private static final int WORD_DELETION_COST = 1;
 
   private static int editDistanceRecursive(String s0, List<String> s1) {
-    if (s1.isEmpty()) {
-      return levenshteinDistance(s0, "");
-    } else {
-      int minDistance = levenshteinDistance(s0, joinWords(s1));
-      for (int i = 0; i < s1.size(); i++) {
-        String word = s1.remove(i);
-        int distance = WORD_DELETION_COST + editDistanceRecursive(s0, s1);
-        if (distance < minDistance) {
-          minDistance = distance;
-        }
-        s1.add(i, word);
+    int minDistance = levenshteinDistance(s0, joinWords(s1));
+    for (int i = 0; i < s1.size(); i++) {
+      String word = s1.remove(i);
+      int distance = WORD_DELETION_COST + editDistanceRecursive(s0, s1);
+      if (distance < minDistance) {
+        minDistance = distance;
       }
-      return minDistance;
+      s1.add(i, word);
     }
+    return minDistance;
   }
 
   private static String joinWords(List<String> words) {
