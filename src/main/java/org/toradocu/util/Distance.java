@@ -1,9 +1,56 @@
 package org.toradocu.util;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 /**
- * This utility class returns the Levenshtein distance between two strings.
+ * This utility class returns the edit distance between two strings based on character edits
+ * and word deletions.
  */
 public class Distance {
+
+  /**
+   * Returns the edit distance between the given strings. {@code s1} is the only string in which
+   * word deletions are considered when calculating the edit distance.
+   *
+   * @param s0 the first string to use in calculating distance. Word deletions are not considered
+   *        for this string.
+   * @param s1 the second string to use in calculating distance. Word deletions are considered
+   *        for this string only.
+   * @return the edit distance between the two strings, taking into account character edits and
+   *         word deletions
+   */
+  public static int editDistance(String s0, String s1) {
+    String[] words = s1.split(" ");
+    return editDistanceRecursive(s0, new LinkedList<>(Arrays.asList(words)));
+  }
+
+  private static final int WORD_DELETION_COST = 1;
+
+  private static int editDistanceRecursive(String s0, List<String> s1) {
+    int minDistance = levenshteinDistance(s0, joinWords(s1));
+    for (int i = 0; i < s1.size(); i++) {
+      String word = s1.remove(i);
+      int distance = WORD_DELETION_COST + editDistanceRecursive(s0, s1);
+      if (distance < minDistance) {
+        minDistance = distance;
+      }
+      s1.add(i, word);
+    }
+    return minDistance;
+  }
+
+  private static String joinWords(List<String> words) {
+    if (words.isEmpty()) {
+      return "";
+    }
+    StringBuilder result = new StringBuilder(words.get(0));
+    for (int i = 1; i < words.size(); i++) {
+      result.append(" " + words.get(i));
+    }
+    return result.toString();
+  }
 
   /**
    * Returns the Levenshtein distance between the two strings ignoring case.

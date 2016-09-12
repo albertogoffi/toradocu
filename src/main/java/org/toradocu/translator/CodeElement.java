@@ -87,18 +87,18 @@ public abstract class CodeElement<T> {
   }
 
   /**
-   * Returns the Levenshtein distance between this code element and the given string. The returned
+   * Returns the edit distance between this code element and the given string. The returned
    * distance is the minimum distance calculated for all the identifiers of this code element.
    * Integer.MAX_VALUE is returned if this code element has no identifiers.
    *
-   * @param s the string to get the Levenshtein distance from
-   * @return the minimum Levenshtein distance between the given string and the identifiers of this
+   * @param s the string to get the edit distance from
+   * @return the minimum edit distance between the given string and the identifiers of this
    * code element, or Integer.MAX_VALUE if this code element has no identifiers
    */
-  public int getLevenshteinDistanceFrom(String s) {
+  public int getEditDistanceFrom(String s) {
     return identifiers
         .stream()
-        .map(identifier -> Distance.levenshteinDistance(identifier, s))
+        .map(identifier -> Distance.editDistance(identifier, s))
         .min(Comparator.naturalOrder())
         .orElse(Integer.MAX_VALUE);
   }
