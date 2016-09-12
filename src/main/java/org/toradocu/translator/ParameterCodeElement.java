@@ -29,6 +29,7 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
     addIdentifier(name);
     addIdentifier(parameter.getType().getSimpleName() + " " + name);
     addIdentifier(name + " " + parameter.getType().getSimpleName());
+    // TODO: Consider to add more like param and arg
 
     // Add type identifiers
     if (parameter.getType().isArray()) {

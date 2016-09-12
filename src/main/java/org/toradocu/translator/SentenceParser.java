@@ -1,5 +1,8 @@
 package org.toradocu.translator;
 
+import edu.stanford.nlp.ling.IndexedWord;
+import edu.stanford.nlp.semgraph.SemanticGraph;
+import edu.stanford.nlp.semgraph.SemanticGraphEdge;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -10,39 +13,42 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import edu.stanford.nlp.ling.IndexedWord;
-import edu.stanford.nlp.semgraph.SemanticGraph;
-import edu.stanford.nlp.semgraph.SemanticGraphEdge;
-
 /**
- * {@code SentenceParser} parses a {@code PropositionSeries} from a sentence (i.e. a
- * {@code List<HasWord>}), using NLP to identify subjects, relations, conjunctions, and so on from
- * the sentence.
+ * {@code SentenceParser} parses the {@code edu.stanford.nlp.semgraph.SemanticGraph} of a sentence
+ * into a {@code PropositionSeries} through the method {@code getPropositionSeries}.
+ * This class uses NLP to identify subjects, relations, conjunctions, and so on from the sentence.
+ * <p>This class makes an extensive use of the Stanford parser APIs. The basic thing to know is that
+ * an {@code IndexedWord} represents a word in a sentence; a grammatical relation has a governor
+ * (or a head) and a dependent. The sentence "she looks beautiful" contains a nsubj (subject)
+ * relation between "she" and "looks", where "looks" is the governor and "she" is the dependent.
  */
 public class SentenceParser {
 
+  /** The semantic graph of the sentence from which the proposition series will be derived. */
   private SemanticGraph semanticGraph;
+  /** Grammatical relations that are extracted from the semantic graph. */
   private List<SemanticGraphEdge>
       subjectRelations,
       copulaRelations,
       complementRelations,
       conjunctionRelations,
       negationRelations;
+  /** Logger for this class. */
   private static final Logger log = LoggerFactory.getLogger(SentenceParser.class);
 
   /**
-   * Constructs a {@code SentenceParser} object that will parse a {@code PropositionSeries} from the
-   * given {@code SemanticGraph}.
+   * Constructs a {@code SentenceParser} object that will parse the given {@code SemanticGraph}
+   * into a {@code PropositionSeries}.
    *
    * @param semanticGraph the {@code SemanticGraph} that will be used to create the
    * {@code PropositionSeries}
    */
   public SentenceParser(SemanticGraph semanticGraph) {
     this.semanticGraph = semanticGraph;
+    initializeRelations();
   }
 
   /**
@@ -52,15 +58,21 @@ public class SentenceParser {
    * @return a {@code PropositionSeries} for the sentence that this parser is initialized to parse
    */
   public PropositionSeries getPropositionSeries() {
+    // Map between some of the words in a sentence and the proposition composed of those words.
+    // (IndexedWord is a Stanford parser class representing a word in a sentence, plus many other
+    // information).
+    // This map is used to understand which propositions a conjunction is joining, since we have to
+    // map a conjunction between two specific words to a conjunction between two propositions.
     Map<List<IndexedWord>, Proposition> propositionMap = new HashMap<>();
+    // Proposition series that will be built and returned.
     PropositionSeries propositionSeries = new PropositionSeries();
-
-    initializeRelations();
 
     for (SemanticGraphEdge subjectRelation : subjectRelations) {
       // Stores the word marked as a subject word in the semantic graph.
       IndexedWord subject = subjectRelation.getDependent();
       // Stores the subject and associated words, such as any modifiers that come before it.
+      // Words (but the subject) appear in the list in the same order as they appear in the
+      // sentence. Subject is always the last word in the list.
       List<IndexedWord> subjectWords = getSubjectWords(subject);
 
       // Get the words that make up the predicate.
@@ -324,7 +336,7 @@ public class SentenceParser {
             .map(e -> e.getDependent())
             .sorted((w1, w2) -> Integer.compare(w1.index(), w2.index()))
             .collect(Collectors.toList());
-    result.add(subject);
+    result.add(subject); // TODO: Why we assume that the subject is the last word?
     return result;
   }
 

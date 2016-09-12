@@ -52,8 +52,8 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
   @Test
   public void predicateUtilsTest() throws Exception {
     TestCaseStats stats = test("org.apache.commons.collections4.PredicateUtils");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.94, PRECISION));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.7));
+    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
+    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.733, PRECISION));
   }
 
   @Test
@@ -66,7 +66,7 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
   @Test
   public void fixedOrderComparatorTest() throws Exception {
     TestCaseStats stats = test("org.apache.commons.collections4.comparators.FixedOrderComparator");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.83, PRECISION));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.55, PRECISION));
+    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
+    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.666, PRECISION));
   }
 }

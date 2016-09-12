@@ -3,7 +3,10 @@
 /aspects/
 
 # Toradocu's test resources (only the systems' source code that is downloaded automatically on gradle test)
-/src/test/resources/src
+src/test/resources/commons-collections4-4.1-src
+src/test/resources/commons-collections4-4.1-src.zip
+src/test/resources/guava-19.0-sources
+src/test/resources/guava-19.0-sources.jar
 
 # Eclipse IDE
 /bin/
@@ -19,9 +22,6 @@ build/
 # Ignore Gradle GUI config
 gradle-app.setting
 
-# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
-
 # Cache of project
 .gradletasknamecache
 
@@ -35,7 +35,6 @@ gradle-app.setting
 *.jar
 !gradle-wrapper.jar
 !/lib/*.jar
-!/src/test/resources/bin/*.jar
 *.war
 *.ear
 
