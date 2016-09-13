@@ -1,5 +1,9 @@
 package org.toradocu.conf;
 
+import com.beust.jcommander.DynamicParameter;
+import com.beust.jcommander.Parameter;
+import com.beust.jcommander.converters.FileConverter;
+import com.beust.jcommander.converters.PathConverter;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,11 +14,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import com.beust.jcommander.DynamicParameter;
-import com.beust.jcommander.Parameter;
-import com.beust.jcommander.converters.FileConverter;
-import com.beust.jcommander.converters.PathConverter;
 
 /**
  * This class holds the configuration options (particularly command-line options) for Toradocu.
