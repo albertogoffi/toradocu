@@ -28,22 +28,24 @@ public class Configuration {
 
   @Parameter(
     names = "--target-class",
-    description = "Fully-qualified class for which generate test oracles",
+    description = "Fully-qualified name of the class that Toradocu should analyze",
     required = true
   )
   private String targetClass;
 
   @Parameter(
     names = "--source-dir",
-    description = "Directory containing source files for target class",
-    converter = PathConverter.class
+    description = "Directory containing source files of the target class",
+    converter = PathConverter.class,
+    required = true
   )
   private Path sourceDir;
 
   @Parameter(
     names = "--class-dir",
-    description = "Directory containing class files for target class",
-    converter = PathConverter.class
+    description = "Directory containing binaries of the target class",
+    converter = PathConverter.class,
+    required = true
   )
   private Path classDir;
 
@@ -61,7 +63,7 @@ public class Configuration {
 
   @Parameter(
     names = "--javadoc-extractor-output",
-    description = "File in which to export Javadoc extractor output as JSON",
+    description = "File path to export the Javadoc extractor output in JSON format.",
     converter = FileConverter.class,
     hidden = true
   )
@@ -80,7 +82,7 @@ public class Configuration {
   @Parameter(
     names = "--condition-translator-input",
     description =
-        "File that the condition tranlator will process (this option disables the Javadoc extractor)",
+        "Input file to the condition translator (this option disables the Javadoc extractor)",
     converter = FileConverter.class,
     hidden = true
   )
@@ -88,7 +90,7 @@ public class Configuration {
 
   @Parameter(
     names = "--condition-translator-output",
-    description = "File in which to export condition translator output as JSON",
+    description = "File path to export condition translator output in JSON format",
     converter = FileConverter.class
   )
   private File conditionTranslatorOutput;
