@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
  */
 public class MethodCodeElement extends CodeElement<Method> {
 
-  /** The class/object on which this method is called. */
+  /** The name of the class/object on which this method is called. */
   private final String receiver;
 
   /**

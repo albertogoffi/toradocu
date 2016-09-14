@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-// TODO: Check the validity of the (field) invariants.
 /**
  * This class represents a series of propositions and conjunctions in a sentence, as in
  * "PROPOSITION_A CONJUNCTION_AB PROPOSITION_B CONJUNCTION_BC PROPOSITION_C ...". It provides
@@ -17,13 +16,13 @@ public class PropositionSeries {
 
   /**
    * Propositions composing this {@code PropositionSeries}.
-   * <p>Invariant: propositions.size() = conjunctions.size() + 1
+   * {@literal Invariant: (propositions.size() = 0 && conjunctions.size() = 0) || propositions.size() = conjunctions.size() + 1}
    */
   private final List<Proposition> propositions;
   /**
    * Conjunctions composing this {@code PropositionSeries}.
    * Each conjunction links two propositions.
-   * <p>Invariant: conjunctions.size() = propositions.size() - 1
+   * {@literal Invariant: (propositions.size() = 0 && conjunctions.size() = 0) || conjunctions.size() = propositions.size() - 1}
    */
   private final List<Conjunction> conjunctions;
 
@@ -140,13 +139,8 @@ public class PropositionSeries {
   public String getTranslation() {
     StringBuilder output = new StringBuilder();
     // Only output translations for those propositions that actually have a translation.
-    // TODO: Document that fact.  Also document how you decide which
-    // conjunction to use when some propositions have no translation.  I
-    // imagine you want to ensure that it's consistent with treating all
-    // missing propositions as true or all as false.  Would it be simpler
-    // to just implement it that way?  (Actually, does it give up as soon
-    // as any proposition is untranslatable?  That's not what the comment
-    // above said and doesn't seem desirable.)
+    // The conjunction used to link a proposition is the one immediately preceding it in
+    // the series regardless of if the previous proposition has a translation.
     int i = 0;
     while (i < numberOfPropositions() && !propositions.get(i).getTranslation().isPresent()) {
       i++;
