@@ -95,6 +95,22 @@ public class Configuration {
   )
   private File conditionTranslatorOutput;
 
+  @Parameter(
+    names = "--distance-threshold",
+    description =
+        "Distance threshold: only code elements with distance less than this threshold"
+            + " will be considered as candidate for the translation",
+    hidden = true
+  )
+  private int distanceThreshold = 2;
+
+  @Parameter(
+    names = "--word-removal-cost",
+    description = "Cost of a single word deletion in the distance algorithm",
+    hidden = true
+  )
+  private int wordRemovalCost = 1;
+
   // Aspect creation options
 
   @Parameter(
@@ -251,5 +267,13 @@ public class Configuration {
    */
   public String getTempJavadocOutputDir() {
     return tempJavadocOutputDir;
+  }
+
+  public int getDistanceThreshold() {
+    return distanceThreshold;
+  }
+
+  public int getWordRemovalCost() {
+    return wordRemovalCost;
   }
 }

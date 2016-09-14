@@ -3,6 +3,7 @@ package org.toradocu.util;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import org.toradocu.Toradocu;
 
 /**
  * This utility class returns the edit distance between two strings based on character edits
@@ -26,7 +27,7 @@ public class Distance {
     return editDistanceRecursive(s0, new LinkedList<>(Arrays.asList(words)));
   }
 
-  private static final int WORD_DELETION_COST = 1;
+  private static final int WORD_DELETION_COST = Toradocu.configuration.getWordRemovalCost();
 
   private static int editDistanceRecursive(String s0, List<String> s1) {
     int minDistance = levenshteinDistance(s0, joinWords(s1));

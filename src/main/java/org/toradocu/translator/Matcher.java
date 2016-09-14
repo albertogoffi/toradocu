@@ -25,7 +25,7 @@ public class Matcher {
    * Represents the threshold for the edit distance above which {@code CodeElement}s are
    * considered to be not matching.
    */
-  private static final int EDIT_DISTANCE_THRESHOLD = 2;
+  private static final int EDIT_DISTANCE_THRESHOLD = Toradocu.configuration.getDistanceThreshold();
   private static URLClassLoader classLoader;
   private static final Logger log = LoggerFactory.getLogger(Matcher.class);
 
