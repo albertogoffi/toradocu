@@ -5,6 +5,8 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,15 +14,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
 import org.toradocu.util.GsonInstance;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 public class JavadocExtractorTest {
 
@@ -133,7 +131,9 @@ public class JavadocExtractorTest {
           "--oracle-generation",
           "false",
           "--source-dir",
-          sourcePath
+          sourcePath,
+          "--class-dir",
+          ""
         });
 
     java.lang.reflect.Type listType = new TypeToken<List<DocumentedMethod>>() {}.getType();
