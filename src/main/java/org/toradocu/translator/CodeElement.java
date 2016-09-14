@@ -88,7 +88,7 @@ public abstract class CodeElement<T> {
 
   /**
    * Builds and returns the Java expression representation of this code element.
-   * Clients should call {@link getJavaExpression} instead.
+   * Clients should call {@link #getJavaExpression} instead.
    *
    * @return the Java expression representation of this code element after building it
    */
