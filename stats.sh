@@ -1,4 +1,4 @@
-#! bin/sh
+#! bin/bash
 
 # Fail if any command fails
 set -e
@@ -31,27 +31,31 @@ for targets_descriptor in $@; do
     EXPECTED_FILE_DIR=`sed -n '1p' $targets_descriptor`
     BIN=`sed -n '2p' $targets_descriptor`
     SRC=`sed -n '3p' $targets_descriptor`
+
     i=0
     for target in `tail -n +4 $targets_descriptor`; do
     	targets[$i]=$target
     	expected[$i]="$EXPECTED_FILE_DIR$target$EXPECTED_OUTPUT_FILE_SUFFIX"
-    	(( i++ ))
+    	i=$(( i+1 ))
     done
 
-    for (( i=0; i<${#targets[*]}; i++ )); do
+    for (( j=0; j<${#targets[@]}; j++ )); do
     	for distance_threshold in `seq 0 $MAX_DISTANCE`; do
-    	    for word_removal_cost in `seq 0 $MAX_REMOVAL_COST`; do
-    		echo "Executing Toradocu on ${targets[$i]} with threshold=$distance_threshold and word removal cost=$word_removal_cost"
+    	    for word_removal_cost in `seq 0 $MAX_WORD_REMOVAL_COST`; do
+    		echo "Executing Toradocu on ${targets[$j]} with threshold=$distance_threshold and word removal cost=$word_removal_cost"
     		java -jar build/libs/toradocu-1.0-devel-all.jar \
-    		     --target-class ${targets[$i]} \
+    		     --target-class ${targets[$j]} \
     		     --oracle-generation false \
 		     --condition-translator-output /dev/null \
     		     --class-dir $BIN \
     		     --source-dir $SRC \
-    		     --expected-output ${expected[$i]} \
+    		     --expected-output ${expected[$j]} \
     		     --distance-threshold $distance_threshold \
     		     --word-removal-cost $word_removal_cost
     	    done
     	done
     done
+
+    targets=()
+    expected=()
 done
