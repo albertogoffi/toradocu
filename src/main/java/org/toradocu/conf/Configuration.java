@@ -111,6 +111,17 @@ public class Configuration {
   )
   private int wordRemovalCost = 1;
 
+  @Parameter(
+    names = "--expected-output",
+    description =
+        "Condition extractor expected output file used to compute statitcs about the "
+            + "Toradocu behavior. Statistic are computed only if a valid expected output file is "
+            + "provided",
+    converter = FileConverter.class,
+    hidden = true
+  )
+  private File expectedOutput;
+
   // Aspect creation options
 
   @Parameter(
@@ -275,5 +286,9 @@ public class Configuration {
 
   public int getWordRemovalCost() {
     return wordRemovalCost;
+  }
+
+  public File getExpectedOutput() {
+    return expectedOutput;
   }
 }
