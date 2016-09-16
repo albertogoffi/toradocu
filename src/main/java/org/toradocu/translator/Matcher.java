@@ -8,8 +8,11 @@ import java.lang.reflect.Modifier;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
+import java.util.regex.Pattern;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
@@ -283,54 +286,57 @@ public class Matcher {
    * be matched
    */
   private static String simpleMatch(String predicate) {
-    switch (predicate) {
-      case "is negative":
-        return "<0";
-      case "is positive":
-        return ">0";
-      case "is zero":
+    java.util.regex.Matcher isWord =
+        Pattern.compile("(is |are )?(==|=)? ?(true|false|null|zero|positive|negative)")
+            .matcher(predicate);
+    java.util.regex.Matcher isNotWord =
+        Pattern.compile("(is |are )?(!=) ?(true|false|null|zero|positive|negative)")
+            .matcher(predicate);
+    java.util.regex.Matcher numberRelation =
+        Pattern.compile("(is |are )?(<=|>=|<|>|!=|==|=)? ?(-?[0-9]+)").matcher(predicate);
+    if (isWord.find()) {
+      // Get the last group in the regular expression.
+      String word = isWord.group(isWord.groupCount());
+      if (word.equals("true") || word.equals("false") || word.equals("null")) {
+        return "==" + word;
+      } else if (word.equals("zero")) {
         return "==0";
-      case "been set":
-        return "==null";
-      default:
-        String symbol = null;
-        String numberString = null;
-        String[] phraseStarts = {"is ", "are ", ""};
-        String[] potentialSymbols = {"<=", ">=", "==", "!=", "=", "<", ">", ""};
-        for (String phraseStart : phraseStarts) {
-          for (String potentialSymbol : potentialSymbols) {
-            if (predicate.startsWith(phraseStart + potentialSymbol)) {
-              // Set symbol to the appropriate Java expression symbol.
-              if (potentialSymbol.equals("=")
-                  || (potentialSymbol.equals("") && !phraseStart.equals(""))) {
-                symbol = "==";
-              } else {
-                symbol = potentialSymbol;
-              }
-              numberString =
-                  predicate.substring(phraseStart.length() + potentialSymbol.length()).trim();
-              break;
-            }
-          }
-          if (symbol != null) break;
+      } else if (word.equals("positive")) {
+        return ">0";
+      } else { // negative
+        return "<0";
+      }
+    } else if (isNotWord.find()) {
+      String word = isNotWord.group(isWord.groupCount());
+      if (word.equals("true") || word.equals("false") || word.equals("null")) {
+        return "!=" + word;
+      } else if (word.equals("zero")) {
+        return "!=0";
+      } else if (word.equals("positive")) {
+        return "<0";
+      } else { // not negative
+        return ">=0";
+      }
+    } else if (numberRelation.find()) {
+      // Get the number from the last group of the regular expression.
+      String numberString = numberRelation.group(numberRelation.groupCount());
+      // Get the symbol from the regular expression.
+      String relation = numberRelation.group(2);
+      try {
+        int number = Integer.parseInt(numberString);
+        if (relation == null || relation.equals("=")) {
+          return "==" + number;
+        } else {
+          return relation + number;
         }
-        if (symbol == null || numberString.equals("")) {
-          // The phrase did not match a simple pattern.
-          return null;
-        }
-        try {
-          if ((numberString.equals("null")
-                  || numberString.equals("true")
-                  || numberString.equals("false"))
-              && (symbol.equals("==") || symbol.equals("!="))) {
-            return symbol + numberString;
-          }
-          int number = Integer.parseInt(numberString);
-          return symbol + String.valueOf(number);
-        } catch (NumberFormatException e) {
-          // Text following symbol is not a number.
-          return null;
-        }
+      } catch (NumberFormatException e) {
+        // Text following symbol is not a number.
+        return null;
+      }
+    } else if (predicate.equals("been set")) {
+      return "!=null";
+    } else {
+      return null;
     }
   }
 
