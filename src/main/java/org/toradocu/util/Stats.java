@@ -19,7 +19,7 @@ public class Stats {
     for (int methodIndex = 0; methodIndex < expectedMethodList.size(); methodIndex++) {
       DocumentedMethod expectedMethod = expectedMethodList.get(methodIndex);
       ThrowsTag[] expectedMethodTags = expectedMethod.throwsTags().toArray(new ThrowsTag[0]);
-      DocumentedMethod actualMethod = expectedMethodList.get(methodIndex);
+      DocumentedMethod actualMethod = actualMethodList.get(methodIndex);
       ThrowsTag[] actualMethodTags = actualMethod.throwsTags().toArray(new ThrowsTag[0]);
       if (expectedMethodTags.length != actualMethodTags.length) {
         throw new IllegalArgumentException(

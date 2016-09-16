@@ -9,16 +9,16 @@ public class MethodStats {
   /** Method name. **/
   private final String methodName;
   /** Number of conditions correctly translated by Toradocu. **/
-  private int truePositives;
+  private int correctTranslations;
   /** Number of conditions wrongly translated by Toradocu. **/
-  private int falsePositives;
+  private int wrongTranslation;
   /** Number of conditions not translated at all by Toradocu. **/
   private int missingTranslations;
 
   public MethodStats(String methodName) {
     this.methodName = methodName;
-    truePositives = 0;
-    falsePositives = 0;
+    correctTranslations = 0;
+    wrongTranslation = 0;
     missingTranslations = 0;
   }
 
@@ -28,7 +28,10 @@ public class MethodStats {
    * @return the recall
    */
   public double getRecall() {
-    return truePositives / (double) (truePositives + falsePositives + missingTranslations);
+    if (getNumberOfConditions() == 0) {
+      return 0; // Toradocu did not translated any condition
+    }
+    return correctTranslations / (double) getNumberOfConditions();
   }
 
   /**
@@ -37,10 +40,10 @@ public class MethodStats {
    * @return the precision of the test case
    */
   public double getPrecision() {
-    if (truePositives + falsePositives == 0) {
-      return 0;
+    if (correctTranslations + wrongTranslation == 0) {
+      return 1; // Toradocu did not translated any condition
     }
-    return truePositives / (double) (truePositives + falsePositives);
+    return correctTranslations / (double) (correctTranslations + wrongTranslation);
   }
 
   /**
@@ -49,21 +52,21 @@ public class MethodStats {
    * @return the number of conditions
    */
   public int getNumberOfConditions() {
-    return truePositives + falsePositives + missingTranslations;
+    return correctTranslations + wrongTranslation + missingTranslations;
   }
 
   /**
    * Increments the number of correct translations produced by Toradocu by 1.
    */
   public void addCorrectTranslation() {
-    ++truePositives;
+    ++correctTranslations;
   }
 
   /**
    * Increments the number of wrong translations produced by Toradocu by 1.
    */
   public void addWrongTranslation() {
-    ++falsePositives;
+    ++wrongTranslation;
   }
 
   /**
