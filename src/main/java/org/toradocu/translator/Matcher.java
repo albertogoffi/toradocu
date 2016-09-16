@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Executable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -141,6 +142,12 @@ public class Matcher {
         codeElements =
             extractBooleanCodeElements(
                 methodCodeElement, methodCodeElement.getJavaCodeElement().getReturnType());
+      } else if (subject instanceof StaticMethodCodeElement) {
+        StaticMethodCodeElement staticMethodCodeElement = (StaticMethodCodeElement) subject;
+        codeElements =
+            extractBooleanCodeElements(
+                staticMethodCodeElement,
+                staticMethodCodeElement.getJavaCodeElement().getReturnType());
       } else {
         return null;
       }
@@ -251,10 +258,16 @@ public class Matcher {
     // Add the class itself as a code element.
     result.add(new ClassCodeElement(type));
 
-    // Add no-arg methods in containing class as code elements.
+    // Add methods in containing class as code elements.
     for (Method classMethod : type.getMethods()) {
       if (classMethod.getParameterCount() == 0) {
+        // Only add no-arg instance methods.
         result.add(new MethodCodeElement("target", classMethod));
+      } else if (Modifier.isStatic(classMethod.getModifiers())
+          && classMethod.getParameterCount() == 1
+          && classMethod.getParameterTypes()[0].equals(type)) {
+        // Only add static methods with 1 parameter of the same type as the target class.
+        result.add(new StaticMethodCodeElement(classMethod));
       }
     }
 
