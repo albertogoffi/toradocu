@@ -10,8 +10,11 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.io.FileUtils;
@@ -23,7 +26,9 @@ import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.JavadocExtractor;
 import org.toradocu.translator.ConditionTranslator;
 import org.toradocu.util.GsonInstance;
+import org.toradocu.util.MethodStats;
 import org.toradocu.util.NullOutputStream;
+import org.toradocu.util.Stats;
 
 /**
  * Entry point of Toradocu. {@code Toradocu.main} is automatically executed running the command:
@@ -137,6 +142,30 @@ public class Toradocu {
         }
       } else {
         System.out.println("Condition translator output:\n" + GsonInstance.gson().toJson(methods));
+      }
+
+      // Create statistics
+      File expectedResultFile = configuration.getExpectedOutput();
+      if (expectedResultFile != null) {
+        Type collectionType = new TypeToken<List<DocumentedMethod>>() {}.getType();
+        try (BufferedReader reader = Files.newBufferedReader(expectedResultFile.toPath());
+            BufferedWriter resultsFile =
+                Files.newBufferedWriter(
+                    Paths.get("stats" + File.separator + "stats.csv"),
+                    StandardOpenOption.CREATE,
+                    StandardOpenOption.APPEND)) {
+          List<DocumentedMethod> expectedResult =
+              GsonInstance.gson().fromJson(reader, collectionType);
+          List<MethodStats> targetClassResults = Stats.getStats(methods, expectedResult);
+          for (MethodStats result : targetClassResults) {
+            if (result.getNumberOfConditions() != 0) { // Ignore methods with no @throws tag
+              resultsFile.write(result.asCSV());
+              resultsFile.newLine();
+            }
+          }
+        } catch (IOException e) {
+          log.error("Unable to read the file: " + configuration.getConditionTranslatorInput(), e);
+        }
       }
     }
 

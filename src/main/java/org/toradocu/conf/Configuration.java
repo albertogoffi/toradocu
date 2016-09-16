@@ -95,6 +95,33 @@ public class Configuration {
   )
   private File conditionTranslatorOutput;
 
+  @Parameter(
+    names = "--distance-threshold",
+    description =
+        "Distance threshold: only code elements with distance less than this threshold"
+            + " will be considered as candidate for the translation",
+    hidden = true
+  )
+  private int distanceThreshold = 2;
+
+  @Parameter(
+    names = "--word-removal-cost",
+    description = "Cost of a single word deletion in the distance algorithm",
+    hidden = true
+  )
+  private int wordRemovalCost = 1;
+
+  @Parameter(
+    names = "--expected-output",
+    description =
+        "Condition extractor expected output file used to compute statitcs about the "
+            + "Toradocu behavior. Statistic are computed only if a valid expected output file is "
+            + "provided",
+    converter = FileConverter.class,
+    hidden = true
+  )
+  private File expectedOutput;
+
   // Aspect creation options
 
   @Parameter(
@@ -251,5 +278,17 @@ public class Configuration {
    */
   public String getTempJavadocOutputDir() {
     return tempJavadocOutputDir;
+  }
+
+  public int getDistanceThreshold() {
+    return distanceThreshold;
+  }
+
+  public int getWordRemovalCost() {
+    return wordRemovalCost;
+  }
+
+  public File getExpectedOutput() {
+    return expectedOutput;
   }
 }
