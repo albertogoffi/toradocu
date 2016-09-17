@@ -3,12 +3,12 @@ package org.toradocu.translator;
 import java.lang.reflect.Method;
 
 /**
- * This class represents a method code element for use in translation. It holds String identifiers
- * for the method and a Java expression representation of the method to build Java conditions.
+ * This class represents an instance method code element for use in translation. It holds String identifiers
+ * for the instance method and a Java expression representation of the method to build Java conditions.
  */
 public class MethodCodeElement extends CodeElement<Method> {
 
-  /** The class/object on which this method is called. */
+  /** The name of the class/object on which this method is called. */
   private final String receiver;
 
   /**
@@ -36,6 +36,7 @@ public class MethodCodeElement extends CodeElement<Method> {
     if (methodName.startsWith("get")) {
       methodName = methodName.replaceFirst("get", "");
     }
+
     addIdentifier(methodName);
   }
 

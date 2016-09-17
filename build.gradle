@@ -39,6 +39,7 @@ sourceSets {
       exclude 'org/toradocu/generator/**'
       exclude 'org/toradocu/PrecisionRecallTestSuite.java'
       exclude 'org/toradocu/PrecisionRecallCommonsCollections4.java'
+      // exclude 'org/toradocu/PrecisionRecallGuava19.java'
       exclude 'org/toradocu/PrecisionRecallCommonsMath3.java'
       exclude 'org/toradocu/PrecisionRecallJGraphT.java'
     }
@@ -59,6 +60,7 @@ dependencies {
   compile 'com.google.code.gson:gson:2.7'
   compile 'commons-io:commons-io:2.5'
   compile 'org.slf4j:slf4j-simple:1.7.21'
+  compile 'org.apache.commons:commons-lang3:3.4'
   testCompile 'junit:junit:4.12'
   testCompile 'org.hamcrest:java-hamcrest:2.0.0.0'
 }

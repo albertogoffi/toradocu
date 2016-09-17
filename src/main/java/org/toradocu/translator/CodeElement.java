@@ -87,6 +87,14 @@ public abstract class CodeElement<T> {
   }
 
   /**
+   * Builds and returns the Java expression representation of this code element.
+   * Clients should call {@link #getJavaExpression} instead.
+   *
+   * @return the Java expression representation of this code element after building it
+   */
+  protected abstract String buildJavaExpression();
+
+  /**
    * Returns the edit distance between this code element and the given string. The returned
    * distance is the minimum distance calculated for all the identifiers of this code element.
    * Integer.MAX_VALUE is returned if this code element has no identifiers.
@@ -113,16 +121,9 @@ public abstract class CodeElement<T> {
   }
 
   /**
-   * Builds and returns the Java expression representation of this code element.
-   *
-   * @return the Java expression representation of this code element after building it
-   */
-  protected abstract String buildJavaExpression();
-
-  /**
    * Returns true if this {@code CodeElement} and the specified object are equal.
    *
-   * @param obj the object to test for equality
+   * @param obj the object to compare against this object
    * @return true if this object and {@code obj} are equal
    */
   @Override

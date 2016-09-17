@@ -1,5 +1,7 @@
 package org.toradocu.translator;
 
+import org.apache.commons.lang3.ClassUtils;
+
 /**
  * This class represents a {@code Class} code element for use in translation. It holds String
  * identifiers (words or sequences or words that can be used in Javadoc comments to refer to this
@@ -29,9 +31,7 @@ public class ClassCodeElement extends CodeElement<Class<?>> {
     }
 
     // Add implemented interfaces as identifiers.
-    // TODO: This only account for the directly implemented interfaces. It omits their
-    // superinterfaces, and interfaces implemented by superclasses.
-    for (Class<?> implementedInterface : backingClass.getInterfaces()) {
+    for (Class<?> implementedInterface : ClassUtils.getAllInterfaces(backingClass)) {
       addIdentifier(implementedInterface.getSimpleName());
     }
   }

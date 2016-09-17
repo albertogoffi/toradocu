@@ -3,8 +3,9 @@ package org.toradocu.translator;
 /**
  * This class represents a dummy Java code element for use in translation. This code element does
  * not wrap a real Java code element, but rather it allows to represent an arbitrary piece of code
- * like ".lenght==0".
- * <p>This class holds the String identifiers and Java expression representation specified by the
+ * like ".length==0".
+ * <p>
+ * This class holds the String identifiers and Java expression representation specified by the
  * client.
  */
 public class GeneralCodeElement extends CodeElement<String> {
