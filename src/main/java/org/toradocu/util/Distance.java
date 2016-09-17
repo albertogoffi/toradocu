@@ -27,7 +27,8 @@ public class Distance {
     return editDistanceRecursive(s0, new LinkedList<>(Arrays.asList(words)));
   }
 
-  private static final int WORD_DELETION_COST = Toradocu.configuration.getWordRemovalCost();
+  // Package visible and non-final for testing
+  static int WORD_DELETION_COST = Toradocu.configuration.getWordRemovalCost();
 
   private static int editDistanceRecursive(String s0, List<String> s1) {
     int minDistance = levenshteinDistance(s0, joinWords(s1));

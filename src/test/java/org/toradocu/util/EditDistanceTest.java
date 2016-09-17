@@ -1,10 +1,8 @@
-package org.toradocu.translator;
+package org.toradocu.util;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.toradocu.Toradocu;
@@ -13,20 +11,17 @@ import org.toradocu.util.Distance;
 
 public class EditDistanceTest {
 
-  private static Field wordDeletionCost;
-
+  /**
+   * Initializes Toradocu.configuration field that is read during initialization of the class
+   * util.Distance (thus preventing a NullPointerException).
+   *
+   * @throws Exception if something bad happens during the initialization of the field
+   *         {@code Toradocu.configuration}
+   */
   @BeforeClass
   public static void setUp() throws Exception {
     Configuration toradocuConfiguration = new Configuration();
     Toradocu.class.getDeclaredField("configuration").set(null, toradocuConfiguration);
-
-    wordDeletionCost = Distance.class.getDeclaredField("WORD_DELETION_COST");
-    wordDeletionCost.setAccessible(true);
-
-    // Remove final from Distance.WORD_DELETION_COST modifiers
-    Field modifiersField = Field.class.getDeclaredField("modifiers");
-    modifiersField.setAccessible(true);
-    modifiersField.setInt(wordDeletionCost, wordDeletionCost.getModifiers() & ~Modifier.FINAL);
   }
 
   @Test
@@ -98,6 +93,6 @@ public class EditDistanceTest {
   }
 
   private void setWordDeletionCost(int cost) throws Exception {
-    wordDeletionCost.set(null, cost);
+    Distance.WORD_DELETION_COST = cost;
   }
 }
