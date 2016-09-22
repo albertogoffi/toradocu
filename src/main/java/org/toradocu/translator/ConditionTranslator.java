@@ -108,7 +108,7 @@ public class ConditionTranslator {
       placeholderText =
           placeholderText.replaceFirst(INEQUALITY_NUMBER_REGEX, PLACEHOLDER_PREFIX + i++);
     }
-
+   
     return placeholderText;
   }
 
@@ -142,8 +142,6 @@ public class ConditionTranslator {
     java.util.regex.Matcher matcher2 = Pattern.compile(INEQ_2).matcher(text);
     java.util.regex.Matcher matcher3 = Pattern.compile(INEQ_3).matcher(text);
     java.util.regex.Matcher matcher4 = Pattern.compile(INEQ_4).matcher(text);
-    java.util.regex.Matcher matcherPlaceHolderPrefix =
-        Pattern.compile(PLACEHOLDER_PREFIX).matcher(text);
 
     String placeholderText = text;
 
@@ -163,6 +161,7 @@ public class ConditionTranslator {
         symbols.add(text.substring(matcher.start(), matcher.end()));
         placeholderText =
             placeholderText.replaceFirst(INEQUALITY_REGEX, "is " + PLACEHOLDER_PREFIX + i++ + " ");
+
       } else if (matcher1.find()) {
         symbols.add(text.substring(matcher.start(), matcher.end()));
         placeholderText =
@@ -171,12 +170,15 @@ public class ConditionTranslator {
     }
 
     int j = 0;
+
+    java.util.regex.Matcher matcherPlaceHolderPrefix =
+        Pattern.compile(PLACEHOLDER_PREFIX + ".").matcher(placeholderText);
+
     while (matcherPlaceHolderPrefix.find()) {
 
-      placeholderText = placeholderText.replaceFirst(PLACEHOLDER_PREFIX, symbols.get(j++));
+      placeholderText = placeholderText.replaceFirst(PLACEHOLDER_PREFIX + ".", symbols.get(j++));
     }
 
-    System.out.println(placeholderText);
     return placeholderText;
   }
 
