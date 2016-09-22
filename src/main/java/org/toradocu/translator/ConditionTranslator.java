@@ -108,7 +108,7 @@ public class ConditionTranslator {
       placeholderText =
           placeholderText.replaceFirst(INEQUALITY_NUMBER_REGEX, PLACEHOLDER_PREFIX + i++);
     }
-   
+
     return placeholderText;
   }
 
@@ -121,10 +121,10 @@ public class ConditionTranslator {
   private static final String INEQUALITY_REGEX = "(([<>=]=?)|(!=))";
 
   /** Possibilities for the four combinations corresponding to the comparators*/
-  private static final String INEQ_1 = ".(([<>=]=?)|(!=)).";
-  private static final String INEQ_2 = " (([<>=]=?)|(!=)).";
-  private static final String INEQ_3 = ".(([<>=]=?)|(!=)) ";
-  private static final String INEQ_4 = " (([<>=]=?)|(!=)) ";
+  private static final String INEQ_1 = ".(([<>=]=?)|(!=)).";// e.g "b<1"
+  private static final String INEQ_2 = " (([<>=]=?)|(!=)).";// e.g "b <1"
+  private static final String INEQ_3 = ".(([<>=]=?)|(!=)) ";// e.g "b< 1"
+  private static final String INEQ_4 = " (([<>=]=?)|(!=)) ";// e.g "b < 1"
 
   /**
    *
