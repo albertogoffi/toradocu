@@ -59,6 +59,13 @@ public class Configuration {
   )
   private boolean help;
 
+  @Parameter(
+    names = "--stats-file",
+    description = "File path to export the Toradocu statistics in CSV format.",
+    converter = FileConverter.class
+  )
+  private File statsFile;
+
   // Javadoc extractor options
 
   @Parameter(
@@ -160,6 +167,10 @@ public class Configuration {
     if (help) {
       // No initialization necessary.
       return;
+    }
+
+    if (statsFile == null) {
+      statsFile = new File("stats.csv");
     }
 
     if (sourceDir == null) {
@@ -295,5 +306,9 @@ public class Configuration {
 
   public File getExpectedOutput() {
     return expectedOutput;
+  }
+
+  public File getStatsFile() {
+    return statsFile;
   }
 }

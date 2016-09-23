@@ -13,7 +13,6 @@ import java.io.PrintWriter;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
@@ -151,7 +150,7 @@ public class Toradocu {
         try (BufferedReader reader = Files.newBufferedReader(expectedResultFile.toPath());
             BufferedWriter resultsFile =
                 Files.newBufferedWriter(
-                    Paths.get("stats" + File.separator + "stats.csv"),
+                    configuration.getStatsFile().toPath(),
                     StandardOpenOption.CREATE,
                     StandardOpenOption.APPEND)) {
           List<DocumentedMethod> expectedResult =
