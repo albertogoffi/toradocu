@@ -121,10 +121,10 @@ public class ConditionTranslator {
   private static final String INEQUALITY_REGEX = "(([<>=]=?)|(!=))";
 
   /** Possibilities for the four combinations corresponding to the comparators*/
-  private static final String INEQ_1 = ".(([<>=]=?)|(!=)).";// e.g "b<1"
-  private static final String INEQ_2 = " (([<>=]=?)|(!=)).";// e.g "b <1"
-  private static final String INEQ_3 = ".(([<>=]=?)|(!=)) ";// e.g "b< 1"
-  private static final String INEQ_4 = " (([<>=]=?)|(!=)) ";// e.g "b < 1"
+  private static final String INEQ_1 = ".(([<>=]=?)|(!=))."; // e.g "b<1"
+  private static final String INEQ_2 = " (([<>=]=?)|(!=))."; // e.g "b <1"
+  private static final String INEQ_3 = ".(([<>=]=?)|(!=)) "; // e.g "b< 1"
+  private static final String INEQ_4 = " (([<>=]=?)|(!=)) "; // e.g "b < 1"
 
   /**
    *
