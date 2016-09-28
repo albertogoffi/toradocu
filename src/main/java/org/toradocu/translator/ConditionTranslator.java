@@ -68,15 +68,11 @@ public class ConditionTranslator {
    * @return a list of {@code PropositionSeries} objects, one for each sentence in the comment
    */
   private static List<PropositionSeries> getPropositionSeries(String comment) {
-
     comment = addPlaceholders(comment);
-
     List<PropositionSeries> result = new ArrayList<>();
-
     for (SemanticGraph semanticGraph : StanfordParser.getSemanticGraphs(comment)) {
       result.add(new SentenceParser(semanticGraph).getPropositionSeries());
     }
-
     return removePlaceholders(result);
   }
 
@@ -135,18 +131,14 @@ public class ConditionTranslator {
    * @return the throws tag string ready to be parsed
    */
   private static String inCorrectFormat(String text) {
-
     java.util.regex.Matcher matcher = Pattern.compile(INEQUALITY_REGEX).matcher(text);
-
     java.util.regex.Matcher matcher1 = Pattern.compile(INEQ_1).matcher(text);
     java.util.regex.Matcher matcher2 = Pattern.compile(INEQ_2).matcher(text);
     java.util.regex.Matcher matcher3 = Pattern.compile(INEQ_3).matcher(text);
     java.util.regex.Matcher matcher4 = Pattern.compile(INEQ_4).matcher(text);
 
     String placeholderText = text;
-
     int i = 0;
-
     List<String> symbols = new ArrayList<>();
     while (matcher.find()) {
       if (matcher4.find()) {
@@ -170,12 +162,9 @@ public class ConditionTranslator {
     }
 
     int j = 0;
-
     java.util.regex.Matcher matcherPlaceHolderPrefix =
         Pattern.compile(PLACEHOLDER_PREFIX + ".").matcher(placeholderText);
-
     while (matcherPlaceHolderPrefix.find()) {
-
       placeholderText = placeholderText.replaceFirst(PLACEHOLDER_PREFIX + ".", symbols.get(j++));
     }
 
