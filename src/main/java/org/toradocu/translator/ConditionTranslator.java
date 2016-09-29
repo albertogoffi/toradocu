@@ -119,7 +119,7 @@ public class ConditionTranslator {
   /** Stores the inequalities that are replaced by placeholders when addPlaceholders is called. */
   private static List<String> inequalities = new ArrayList<>();
 
-  /** Regular expression just for the comparators*/
+  /** Regular expression just for the comparators. */
   private static final String INEQUALITY_REGEX = "(([<>=]=?)|(!=))";
 
   /** Possibilities for the four combinations corresponding to the comparators*/
@@ -130,10 +130,10 @@ public class ConditionTranslator {
 
   /**
    *
-   * This auxiliar function is meant to be the one that formats the comments for the StamfordParser
-   * to parse them
+   * This auxiliary function is meant to be the one that formats the comments for the StanfordParser
+   * to parse them.
    *
-   * @param text the comment of the throws tag that has to be formated
+   * @param text the comment of the throws tag that has to be formatted
    * @return the throws tag string ready to be parsed
    */
   private static String inCorrectFormat(String text) {
