@@ -748,7 +748,7 @@
           "isArray": false
         },
         "comment": "if collection or any of its elements is null",
-        "condition": "args[0]==null"
+        "condition": "args[0]==null || args[0].contains(null)"
       }
     ],
     "signature": "toArray(java.util.Collection collection)"

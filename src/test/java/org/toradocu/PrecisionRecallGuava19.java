@@ -56,8 +56,8 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
   @Test
   public void shortsTest() throws Exception {
     TestCaseStats stats = test("com.google.common.primitives.Shorts");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.666, PRECISION));
+    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(0.75));
+    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.5));
   }
 
   @Test
