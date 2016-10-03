@@ -120,7 +120,7 @@ public class PrecisionRecallTest {
               methodReport.append("Wrong condition. Comment: " + expectedTag.exceptionComment());
             }
             methodReport.append(
-                ". Expected condition: "
+                " | Expected condition: "
                     + expectedCondition
                     + ". Actual condition: "
                     + actualCondition

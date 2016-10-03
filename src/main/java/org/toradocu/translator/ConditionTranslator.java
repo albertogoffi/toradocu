@@ -38,11 +38,17 @@ public class ConditionTranslator {
                 + method.getSignature());
 
         String comment = tag.exceptionComment().trim();
-        String lowerCaseComment = comment.toLowerCase();
+
+        // Add end-of-sentence period, if missing
+        if (!comment.endsWith(".")) {
+          comment += ".";
+        }
 
         // Sanitize exception comment: remove initial "if"
-        if (lowerCaseComment.startsWith("if ") && lowerCaseComment.length() > 3) {
+        String lowerCaseComment = comment.toLowerCase();
+        while (lowerCaseComment.startsWith("if ")) {
           comment = comment.substring(3);
+          lowerCaseComment = comment.toLowerCase();
         }
 
         // Identify propositions in the comment. Each sentence in the comment is parsed into a
