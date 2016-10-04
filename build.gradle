@@ -35,7 +35,6 @@ assemble.enabled = false
 sourceSets {
   test {
     java {
-      exclude 'org/toradocu/generator/**'
       exclude 'org/toradocu/PrecisionRecallTestSuite.java'
       exclude 'org/toradocu/PrecisionRecallCommonsCollections4.java'
       // exclude 'org/toradocu/PrecisionRecallGuava19.java'

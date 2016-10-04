@@ -23,6 +23,7 @@ import org.toradocu.conf.Configuration;
 import org.toradocu.doclet.formats.html.ConfigurationImpl;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.JavadocExtractor;
+import org.toradocu.generator.OracleGenerator;
 import org.toradocu.translator.ConditionTranslator;
 import org.toradocu.util.GsonInstance;
 import org.toradocu.util.MethodStats;
@@ -169,11 +170,13 @@ public class Toradocu {
     }
 
     // === Oracle Generator ===
-    // OracleGenerator.generate(methods);
+    OracleGenerator.createAspects(methods);
 
     deleteTemporaryFiles();
-    /* Needed for testing: multiple executions of Toradocu run in the same JVM. This can be improved making {@code methods}
-     * non-static and changing the way Toradocu interacts with the javadoc tool. */
+
+    // Needed for testing: multiple executions (tests) of Toradocu run in the same JVM.
+    // This can be improved making {@code methods} non-static and changing the way Toradocu
+    // interacts with the javadoc tool.
     methods.clear();
   }
 

@@ -9,27 +9,35 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ThrowsTag;
+import org.toradocu.util.Checks;
 
+/**
+ * The oracle generator. The method {@code createAspects} of this class creates the aspects for a
+ * list of {@code DocumentedMethod}.
+ */
 public class OracleGenerator {
 
   /** {@code Logger} for this class. */
   private static final Logger log = LoggerFactory.getLogger(OracleGenerator.class);
 
   /**
-   * Creates one aspect for each method in the given {@code methods} list
+   * Creates one aspect for each method in the given {@code methods} list if the method has at least
+   * one comment translated by the condition translator.
    *
    * @param methods the {@code List} of methods for which create aspects
+   * @throws NullPointerException if {@code methods} is null
    */
-  public void createAspects(List<DocumentedMethod> methods) {
+  public static void createAspects(List<DocumentedMethod> methods) {
     if (!Toradocu.configuration.isOracleGenerationEnabled()) {
       log.info("Oracle generator disabled: skipped aspect generation.");
       return;
     }
+    Checks.nonNullParameter(methods, "methods");
 
     if (methods.isEmpty()) {
       return;
@@ -40,10 +48,16 @@ public class OracleGenerator {
     List<String> createdAspectNames = new ArrayList<>();
     int aspectNumber = 1;
     for (DocumentedMethod method : methods) {
-      String aspectName = "Aspect_" + aspectNumber;
-      createAspect(method, aspectName);
-      createdAspectNames.add(aspectName);
-      aspectNumber++;
+      for (ThrowsTag throwTag : method.throwsTags()) {
+        // Create an aspect for each method that has at least on translated comment (condition)
+        if (!throwTag.getCondition().orElse("").isEmpty()) {
+          String aspectName = "Aspect_" + aspectNumber;
+          createAspect(method, aspectName);
+          createdAspectNames.add(aspectName);
+          aspectNumber++;
+          break;
+        }
+      }
     }
     createAOPXml(Toradocu.configuration.getAspectsOutputDir(), createdAspectNames);
   }
@@ -53,15 +67,16 @@ public class OracleGenerator {
    *
    * @param method method for which an aspect will be created
    * @param aspectName name of the file where the newly created aspect is saved
+   * @throws NullPointerException if {@code method} or {@code aspectName} is null
    */
-  private void createAspect(DocumentedMethod method, String aspectName) {
-    Objects.requireNonNull(method, "parameter method must not be null");
-    Objects.requireNonNull(aspectName, "parameter aspectName must not be null");
+  private static void createAspect(DocumentedMethod method, String aspectName) {
+    Checks.nonNullParameter(method, "method");
+    Checks.nonNullParameter(aspectName, "aspectName");
 
     String aspectPath = Toradocu.configuration.getAspectsOutputDir() + File.separator + aspectName;
 
     try (InputStream template =
-            getClass().getResourceAsStream("/" + Toradocu.configuration.getAspectTemplate());
+            Object.class.getResourceAsStream("/" + Toradocu.configuration.getAspectTemplate());
         FileOutputStream output = new FileOutputStream(new File(aspectPath + ".java"))) {
       CompilationUnit cu = JavaParser.parse(template);
 
@@ -81,7 +96,7 @@ public class OracleGenerator {
    * @param folder where the file aop.xml is created
    * @param createdAspects list of the aspects to be mentioned in the aop.xml file
    */
-  private void createAOPXml(String folder, List<String> createdAspects) {
+  private static void createAOPXml(String folder, List<String> createdAspects) {
     final String HEADER =
         "<aspectj>\n\t<weaver options=\"-verbose -showWeaveInfo\"/>\n\t<aspects>\n";
     final String FOOTER = "\t</aspects>\n</aspectj>";
@@ -103,7 +118,7 @@ public class OracleGenerator {
    *
    * @param folderPath the path of the folder to be created
    */
-  private void createFolder(String folderPath) {
+  private static void createFolder(String folderPath) {
     File folderToCreate = new File(folderPath);
     if (!folderToCreate.exists()) {
       folderToCreate.mkdir();
