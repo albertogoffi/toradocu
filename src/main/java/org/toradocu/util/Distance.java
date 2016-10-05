@@ -13,7 +13,8 @@ public class Distance {
 
   /**
    * Returns the edit distance between the given strings. {@code s1} is the only string in which
-   * word deletions are considered when calculating the edit distance.
+   * word deletions are considered when calculating the edit distance. The cost of a word deletion
+   * is specified by the field {@code org.toradocu.conf.Configuration.wordRemovalCost}.
    *
    * @param s0 the first string to use in calculating distance. Word deletions are not considered
    *        for this string.
@@ -23,18 +24,32 @@ public class Distance {
    *         word deletions
    */
   public static int editDistance(String s0, String s1) {
-    String[] words = s1.split(" ");
-    return editDistanceRecursive(s0, new LinkedList<>(Arrays.asList(words)));
+    return editDistance(Toradocu.configuration.getWordRemovalCost(), s0, s1);
   }
 
-  // Package visible and non-final for testing
-  static int WORD_DELETION_COST = Toradocu.configuration.getWordRemovalCost();
+  /**
+   * Returns the edit distance between the given strings, using the specified cost for word
+   * deletions. {@code s1} is the only string in which word deletions are considered when
+   * calculating the edit distance. This method is mainly provided for testing purposes.
+   *
+   * @param wordDeletionCost the cost of a single word deletion
+   * @param s0 the first string to use in calculating distance. Word deletions are not considered
+   *        for this string.
+   * @param s1 the second string to use in calculating distance. Word deletions are considered
+   *        for this string only.
+   * @return the edit distance between the two strings, taking into account character edits and
+   *         word deletions
+   */
+  static int editDistance(int wordDeletionCost, String s0, String s1) {
+    String[] words = s1.split(" ");
+    return editDistanceRecursive(wordDeletionCost, s0, new LinkedList<>(Arrays.asList(words)));
+  }
 
-  private static int editDistanceRecursive(String s0, List<String> s1) {
+  private static int editDistanceRecursive(int wordDeletionCost, String s0, List<String> s1) {
     int minDistance = levenshteinDistance(s0, joinWords(s1));
     for (int i = 0; i < s1.size(); i++) {
       String word = s1.remove(i);
-      int distance = WORD_DELETION_COST + editDistanceRecursive(s0, s1);
+      int distance = wordDeletionCost + editDistanceRecursive(wordDeletionCost, s0, s1);
       if (distance < minDistance) {
         minDistance = distance;
       }
