@@ -211,7 +211,7 @@ public class Configuration {
       }
     }
     // Use UTF-8 as default encoding if no encoding was set by the user.
-    if (!javadocOptions.containsKey("-encodig")) {
+    if (!javadocOptions.containsKey("-encoding")) {
       javadocOptionsList.add("-encoding");
       javadocOptionsList.add("UTF-8");
     }
