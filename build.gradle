@@ -32,16 +32,10 @@ assemble.enabled = false
 //  options.compilerArgs << '-Xlint:unchecked'
 //}
 
-sourceSets {
-  test {
-    java {
-      exclude 'org/toradocu/PrecisionRecallTestSuite.java'
-      exclude 'org/toradocu/PrecisionRecallCommonsCollections4.java'
-      // exclude 'org/toradocu/PrecisionRecallGuava19.java'
-      exclude 'org/toradocu/PrecisionRecallCommonsMath3.java'
-      // exclude 'org/toradocu/PrecisionRecallJGraphT.java'
-    }
-  }
+test {
+  exclude 'org/toradocu/PrecisionRecallTestSuite.class'
+  exclude 'org/toradocu/PrecisionRecallCommonsCollections4.class'
+  exclude 'org/toradocu/PrecisionRecallCommonsMath3.class'
 }
 
 repositories {
@@ -64,7 +58,7 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '3.0'
+  gradleVersion = '3.1'
 }
 
 task copyDocletResources1(type: Copy) {
