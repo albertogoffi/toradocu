@@ -38,21 +38,21 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
   @Test
   public void closureUtilsTest() throws Exception {
     TestCaseStats stats = test("org.apache.commons.collections4.ClosureUtils");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
+    assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.895, PRECISION));
     assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.68));
   }
 
   @Test
   public void collectionUtilsTest() throws Exception {
     TestCaseStats stats = test("org.apache.commons.collections4.CollectionUtils");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.94, PRECISION));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.87, PRECISION));
+    assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.914, PRECISION));
+    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.842, PRECISION));
   }
 
   @Test
   public void predicateUtilsTest() throws Exception {
     TestCaseStats stats = test("org.apache.commons.collections4.PredicateUtils");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
+    assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.733, PRECISION));
     assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.733, PRECISION));
   }
 
@@ -87,7 +87,7 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
   @Test
   public void LRUMapTest() throws Exception {
     TestCaseStats stats = test("org.apache.commons.collections4.map.LRUMap");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.833, PRECISION));
+    assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.625, PRECISION));
     assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.468, PRECISION));
   }
 
@@ -95,7 +95,7 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
   public void allPredicateTest() throws Exception {
     TestCaseStats stats = test("org.apache.commons.collections4.functors.AllPredicate");
     assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.571, PRECISION));
+    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.714, PRECISION));
   }
 
   @Test
@@ -109,6 +109,6 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
   public void anyPredicateTest() throws Exception {
     TestCaseStats stats = test("org.apache.commons.collections4.functors.AnyPredicate");
     assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.571, PRECISION));
+    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.714, PRECISION));
   }
 }

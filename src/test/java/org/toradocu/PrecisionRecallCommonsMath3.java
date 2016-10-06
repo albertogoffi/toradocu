@@ -36,66 +36,66 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
   @Test
   public void functionUtilsTest() throws Exception {
     TestCaseStats stats = test("org.apache.commons.math3.analysis.FunctionUtils");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), is(1.0));
+    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(0.0));
+    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.0));
   }
 
   @Test
   public void baseAbstractUnivariateIntegratorTest() throws Exception {
     TestCaseStats stats = test("org.apache.commons.math3.analysis.integration.SimpsonIntegrator");
     assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), is(1.0));
+    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.357, PRECISION));
   }
 
   @Test
   public void stepFunctionTest() throws Exception {
     TestCaseStats stats = test("org.apache.commons.math3.analysis.function.StepFunction");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(0.8));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.8));
+    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(0.5));
+    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.4));
   }
 
   @Test
   public void iterativeLegendreGaussIntegratorTest() throws Exception {
     TestCaseStats stats =
         test("org.apache.commons.math3.analysis.integration.IterativeLegendreGaussIntegrator");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.533, PRECISION));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.533, PRECISION));
+    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
+    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.733, PRECISION));
   }
 
   @Test
-  public void linearInterpolationTest() throws Exception {
+  public void linearInterpolatorTest() throws Exception {
     TestCaseStats stats =
         test("org.apache.commons.math3.analysis.interpolation.LinearInterpolator");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(0.6));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.6));
+    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
+    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.4));
   }
 
   @Test
   public void loessInterpolatorTest() throws Exception {
     TestCaseStats stats = test("org.apache.commons.math3.analysis.interpolation.LoessInterpolator");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.473, PRECISION));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.473, PRECISION));
+    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
+    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.6));
   }
 
   @Test
   public void polynomialFunctionNewtonFormTest() throws Exception {
     TestCaseStats stats =
         test("org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.818, PRECISION));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.818, PRECISION));
+    assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.625, PRECISION));
+    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.454, PRECISION));
   }
 
   @Test
   public void binaryMutationTest() throws Exception {
     TestCaseStats stats = test("org.apache.commons.math3.genetics.BinaryMutation");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(0.5));
+    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
     assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.5));
   }
 
   @Test
   public void cycleCrossoverTest() throws Exception {
     TestCaseStats stats = test("org.apache.commons.math3.genetics.CycleCrossover");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(0.75));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.75));
+    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
+    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.25));
   }
 }
