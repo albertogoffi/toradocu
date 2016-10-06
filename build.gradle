@@ -1,99 +1,141 @@
 plugins {
-	id 'java'
-	id 'application'
-	id 'eclipse'
-	id 'com.github.johnrengelman.shadow' version '1.2.3'
-	id 'de.undercouch.download' version '2.1.0'
+  id 'application'
+  id 'eclipse'
+  id 'com.github.johnrengelman.shadow' version '1.2.3' // For creating the fat jar
+  id 'de.undercouch.download' version '3.1.1' // For the download tasks
 }
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 mainClassName = "org.toradocu.Toradocu"
-version = '0.1'
+version = '1.0-devel'
 jar {
-    manifest {
-        attributes 'Implementation-Title': 'Toradocu',
-                   'Implementation-Version': version
-    }
+  manifest {
+    attributes 'Implementation-Title': 'Toradocu', 'Implementation-Version': version
+  }
+}
+
+tasks.build.doLast {
+  tasks.javadoc.execute()
+}
+
+javadoc {
+  excludes += 'org/toradocu/doclet/**'
+}
+
+startScripts.enabled = false
+distZip.enabled = false
+distTar.enabled = false
+assemble.enabled = false
+
+//compileJava {
+//  options.compilerArgs << '-Xlint:unchecked'
+//}
+
+test {
+  exclude 'org/toradocu/PrecisionRecallTestSuite.class'
+  exclude 'org/toradocu/PrecisionRecallCommonsCollections4.class'
+  exclude 'org/toradocu/PrecisionRecallCommonsMath3.class'
 }
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 dependencies {
-	compile fileTree(dir: 'lib', include: '*.jar')
-	compile	'edu.stanford.nlp:stanford-corenlp:3.6.0'
-	compile	'edu.stanford.nlp:stanford-corenlp:3.6.0:models-english'
-	compile 'org.jsoup:jsoup:1.8.3' // We use JSoup only to remove html tags in comments
-	compile 'com.github.javaparser:javaparser-core:2.3.0'
-	compile 'org.jgrapht:jgrapht-core:0.9.1'
-	compile "com.beust:jcommander:1.48"
-	testCompile 'junit:junit:4.12'
-	testCompile 'org.hamcrest:java-hamcrest:2.0.0.0'
+  compile fileTree(dir: 'lib', include: '*.jar')
+  compile 'edu.stanford.nlp:stanford-corenlp:3.6.0'
+  compile 'edu.stanford.nlp:stanford-corenlp:3.6.0:models-english'
+  compile 'org.jsoup:jsoup:1.8.3' // JSoup used only to remove HTML tags in comments.
+  compile 'com.github.javaparser:javaparser-core:2.3.0'
+  compile 'com.beust:jcommander:1.48'
+  compile 'com.google.code.gson:gson:2.7'
+  compile 'commons-io:commons-io:2.5'
+  compile 'org.slf4j:slf4j-simple:1.7.21'
+  compile 'org.apache.commons:commons-lang3:3.4'
+  testCompile 'junit:junit:4.12'
+  testCompile 'org.hamcrest:java-hamcrest:2.0.0.0'
 }
 
 task wrapper(type: Wrapper) {
-     gradleVersion = '2.12'
+  gradleVersion = '3.1'
 }
 
 task copyDocletResources1(type: Copy) {
-	from 'src/main/java/org/toradocu/doclet/internal/toolkit/resources'
-	into 'build/classes/main/org/toradocu/doclet/internal/toolkit/resources'
+  from 'src/main/java/org/toradocu/doclet/internal/toolkit/resources'
+  into 'build/classes/main/org/toradocu/doclet/internal/toolkit/resources'
 }
 
 task copyDocletResources2(type: Copy) {
-	from 'src/main/java/org/toradocu/doclet/formats/html/resources'
-	into 'build/classes/main/org/toradocu/doclet/formats/html/resources'
+  from 'src/main/java/org/toradocu/doclet/formats/html/resources'
+  into 'build/classes/main/org/toradocu/doclet/formats/html/resources'
 }
 
 compileJava.doLast {
-	tasks.copyDocletResources1.execute()
-	tasks.copyDocletResources2.execute()
-}
-
-test {
-	testLogging {
-		events 'PASSED', 'SKIPPED', 'FAILED', 'STANDARD_OUT', 'STANDARD_ERROR'
-	}
+  tasks.copyDocletResources1.execute()
+  tasks.copyDocletResources2.execute()
 }
 
 import de.undercouch.gradle.tasks.download.Download
 
-task downloadGuavaSrc(type: Download) {
-	src 'https://repo1.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0-sources.jar'
-	dest 'src/test/resources/guava-19.0-sources.jar'
+/* Downloads binaries of the systems used to measure Toradocu's precision and recall. */
+task downloadBinaries(type: Download) {
+  src ([
+    'http://repo1.maven.org/maven2/org/apache/commons/commons-collections4/4.1/commons-collections4-4.1.jar',
+    'http://repo1.maven.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar',
+    'http://repo1.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0.jar',
+    'http://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2.jar'
+  ])
+  dest 'src/test/resources/bin'
+  onlyIfNewer true
+  overwrite false
 }
 
-task downloadCommonsCollectionsSrc(type: Download) {
-	src 'http://mirror.switch.ch/mirror/apache/dist/commons/collections/source/commons-collections4-4.1-src.zip'
-	dest 'src/test/resources/commons-collections4-4.1-src.zip'
+/* Downloads sources of the systems used to measure Toradocu's precision and recall. */
+task downloadSources(type: Download) {
+  src ([
+    'https://www.apache.org/dist/commons/collections/source/commons-collections4-4.1-src.zip',
+    'https://www.apache.org/dist/commons/math/source/commons-math3-3.6.1-src.zip',
+    'http://repo1.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0-sources.jar',
+    'http://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2-sources.jar'
+  ])
+  dest 'src/test/resources/src'
+  onlyIfNewer true
+  overwrite false
 }
 
-task downloadJGraphTSrc(type: Download) {
-	src 'https://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2-sources.jar'
-	dest 'src/test/resources/jgrapht-core-0.9.2-sources.jar'
+/* Extracts source archives of the systems used to measure Toradocu's precision and recall. */
+task extractSources(dependsOn: downloadSources) << {
+  file('src/test/resources/src').listFiles().findAll{it.name.endsWith('.zip')||it.name.endsWith('.jar')}.each{ file ->
+    def fileName = "$file.name"
+    def index = fileName.lastIndexOf('.')
+    def fileBaseName = fileName.substring(0, index)
+    copy {
+      from zipTree(file)
+      into 'src/test/resources/src/' + fileBaseName
+    }
+  }
 }
 
-task extractGuavaSrc(type: Copy, dependsOn: downloadGuavaSrc) {
-	from zipTree('src/test/resources/guava-19.0-sources.jar')
-	into 'src/test/resources/guava-19.0-sources'
+task removeTestOutputDirs(type: Delete) {
+  delete 'tmp', 'aspects'
 }
 
-task extractCommonsCollectionsSrc(type: Copy, dependsOn: downloadCommonsCollectionsSrc) {
-	from zipTree('src/test/resources/commons-collections4-4.1-src.zip')
-	into 'src/test/resources/'
+clean.dependsOn removeTestOutputDirs
+test.dependsOn removeTestOutputDirs, extractSources, downloadBinaries
+
+/* Make Emacs TAGS table */
+task tags(type: Exec) {
+  description "Run etags to create an Emacs TAGS table"
+  environment PATH: "$System.env.PATH:$buildDir/utils/plume-lib/bin"
+  commandLine "bash", "-c", "find src/ -name *.java | sort-directory-order | xargs etags"
 }
 
-task extractJGraphTSrc(type: Copy, dependsOn: downloadJGraphTSrc) {
-	from zipTree('src/test/resources/jgrapht-core-0.9.2-sources.jar')
-	into 'src/test/resources/jgrapht-core-0.9.2-sources'
+/* Install the git pre-commit hook */
+task installhook(type: Exec) {
+  commandLine 'sh', '-c' , 'if [ ! -f .git/hooks/pre-commit ]; then ln -s ../../git-pre-commit-hook.sh .git/hooks/pre-commit; fi'
 }
 
-test.dependsOn extractGuavaSrc, extractCommonsCollectionsSrc, extractJGraphTSrc
-
-task removeDefaultOutputDir(type: Delete) {
-	delete 'tmp', 'aspects'
+gradle.taskGraph.beforeTask { Task task ->
+  installhook.execute()
 }
-
-clean.dependsOn removeDefaultOutputDir

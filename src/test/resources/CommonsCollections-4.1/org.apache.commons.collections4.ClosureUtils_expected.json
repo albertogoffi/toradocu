@@ -1,0 +1,737 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ClosureUtils",
+      "name": "ClosureUtils",
+      "isArray": false
+    },
+    "name": "ClosureUtils",
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "ClosureUtils()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ClosureUtils",
+      "name": "ClosureUtils",
+      "isArray": false
+    },
+    "name": "exceptionClosure",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Closure",
+      "name": "Closure",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "exceptionClosure()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ClosureUtils",
+      "name": "ClosureUtils",
+      "isArray": false
+    },
+    "name": "nopClosure",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Closure",
+      "name": "Closure",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "nopClosure()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ClosureUtils",
+      "name": "ClosureUtils",
+      "isArray": false
+    },
+    "name": "asClosure",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Closure",
+      "name": "Closure",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Transformer",
+          "name": "Transformer",
+          "isArray": false
+        },
+        "name": "transformer"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "asClosure(org.apache.commons.collections4.Transformer transformer)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ClosureUtils",
+      "name": "ClosureUtils",
+      "isArray": false
+    },
+    "name": "forClosure",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Closure",
+      "name": "Closure",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "count"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Closure",
+          "name": "Closure",
+          "isArray": false
+        },
+        "name": "closure"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "forClosure(int count,org.apache.commons.collections4.Closure closure)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ClosureUtils",
+      "name": "ClosureUtils",
+      "isArray": false
+    },
+    "name": "whileClosure",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Closure",
+      "name": "Closure",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "predicate"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Closure",
+          "name": "Closure",
+          "isArray": false
+        },
+        "name": "closure"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if either argument is null",
+        "condition": "args[0]==null || args[1]==null"
+      }
+    ],
+    "signature": "whileClosure(org.apache.commons.collections4.Predicate predicate,org.apache.commons.collections4.Closure closure)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ClosureUtils",
+      "name": "ClosureUtils",
+      "isArray": false
+    },
+    "name": "doWhileClosure",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Closure",
+      "name": "Closure",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Closure",
+          "name": "Closure",
+          "isArray": false
+        },
+        "name": "closure"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "predicate"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if either argument is null",
+        "condition": "args[0]==null || args[1]==null"
+      }
+    ],
+    "signature": "doWhileClosure(org.apache.commons.collections4.Closure closure,org.apache.commons.collections4.Predicate predicate)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ClosureUtils",
+      "name": "ClosureUtils",
+      "isArray": false
+    },
+    "name": "invokerClosure",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Closure",
+      "name": "Closure",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "methodName"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the method name is null",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "invokerClosure(java.lang.String methodName)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ClosureUtils",
+      "name": "ClosureUtils",
+      "isArray": false
+    },
+    "name": "invokerClosure",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Closure",
+      "name": "Closure",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "methodName"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Class[]",
+          "name": "Class[]",
+          "isArray": true
+        },
+        "name": "paramTypes"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object[]",
+          "name": "Object[]",
+          "isArray": true
+        },
+        "name": "args"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the method name is null",
+        "condition": "args[0]==null"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if the paramTypes and args don't match",
+        "condition": ""
+      }
+    ],
+    "signature": "invokerClosure(java.lang.String methodName,java.lang.Class[] paramTypes,java.lang.Object[] args)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ClosureUtils",
+      "name": "ClosureUtils",
+      "isArray": false
+    },
+    "name": "chainedClosure",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Closure",
+      "name": "Closure",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Closure[]",
+          "name": "Closure[]",
+          "isArray": true
+        },
+        "name": "closures"
+      }
+    ],
+    "isVarArgs": true,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the closures array is null",
+        "condition": "args[0]==null"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if any closure in the array is null",
+        "condition": "Arrays.asList(args[0]).contains(null)"
+      }
+    ],
+    "signature": "chainedClosure(org.apache.commons.collections4.Closure[] closures)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ClosureUtils",
+      "name": "ClosureUtils",
+      "isArray": false
+    },
+    "name": "chainedClosure",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Closure",
+      "name": "Closure",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "closures"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the closures collection is null",
+        "condition": "args[0]==null"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if any closure in the collection is null",
+        "condition": "args[0].contains(null)"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if the closures collection is empty",
+        "condition": "args[0].isEmpty()"
+      }
+    ],
+    "signature": "chainedClosure(java.util.Collection closures)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ClosureUtils",
+      "name": "ClosureUtils",
+      "isArray": false
+    },
+    "name": "ifClosure",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Closure",
+      "name": "Closure",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "predicate"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Closure",
+          "name": "Closure",
+          "isArray": false
+        },
+        "name": "trueClosure"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the predicate or closure is null",
+        "condition": "args[0]==null || args[1]==null"
+      }
+    ],
+    "signature": "ifClosure(org.apache.commons.collections4.Predicate predicate,org.apache.commons.collections4.Closure trueClosure)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ClosureUtils",
+      "name": "ClosureUtils",
+      "isArray": false
+    },
+    "name": "ifClosure",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Closure",
+      "name": "Closure",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "predicate"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Closure",
+          "name": "Closure",
+          "isArray": false
+        },
+        "name": "trueClosure"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Closure",
+          "name": "Closure",
+          "isArray": false
+        },
+        "name": "falseClosure"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the predicate or either closure is null",
+        "condition": "args[0]==null || args[1]==null || args[2]==null"
+      }
+    ],
+    "signature": "ifClosure(org.apache.commons.collections4.Predicate predicate,org.apache.commons.collections4.Closure trueClosure,org.apache.commons.collections4.Closure falseClosure)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ClosureUtils",
+      "name": "ClosureUtils",
+      "isArray": false
+    },
+    "name": "switchClosure",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Closure",
+      "name": "Closure",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Predicate[]",
+          "name": "Predicate[]",
+          "isArray": true
+        },
+        "name": "predicates"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Closure[]",
+          "name": "Closure[]",
+          "isArray": true
+        },
+        "name": "closures"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the either array is null",
+        "condition": "args[0]==null || args[1]==null"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if any element in the arrays is null",
+        "condition": "Arrays.asList(args[0]).contains(null) || Arrays.asList(args[1]).contains(null)"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if the arrays have different sizes",
+        "condition": "args[0].length != args[1].length"
+      }
+    ],
+    "signature": "switchClosure(org.apache.commons.collections4.Predicate[] predicates,org.apache.commons.collections4.Closure[] closures)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ClosureUtils",
+      "name": "ClosureUtils",
+      "isArray": false
+    },
+    "name": "switchClosure",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Closure",
+      "name": "Closure",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Predicate[]",
+          "name": "Predicate[]",
+          "isArray": true
+        },
+        "name": "predicates"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Closure[]",
+          "name": "Closure[]",
+          "isArray": true
+        },
+        "name": "closures"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Closure",
+          "name": "Closure",
+          "isArray": false
+        },
+        "name": "defaultClosure"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the either array is null",
+        "condition": "args[0]==null || args[1]==null"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if any element in the arrays is null",
+        "condition": "Arrays.asList(args[0]).contains(null) || Arrays.asList(args[1]).contains(null)"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if the arrays are different sizes",
+        "condition": "args[0].length != args[1].length"
+      }
+    ],
+    "signature": "switchClosure(org.apache.commons.collections4.Predicate[] predicates,org.apache.commons.collections4.Closure[] closures,org.apache.commons.collections4.Closure defaultClosure)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ClosureUtils",
+      "name": "ClosureUtils",
+      "isArray": false
+    },
+    "name": "switchClosure",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Closure",
+      "name": "Closure",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Map",
+          "name": "Map",
+          "isArray": false
+        },
+        "name": "predicatesAndClosures"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the map is null",
+        "condition": "args[0]==null"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if any closure in the map is null",
+        "condition": "args[0].values().contains(null)"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if the map is empty",
+        "condition": "args[0].isEmpty()"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.ClassCastException",
+          "name": "ClassCastException",
+          "isArray": false
+        },
+        "comment": "if the map elements are of the wrong type",
+        "condition": ""
+      }
+    ],
+    "signature": "switchClosure(java.util.Map predicatesAndClosures)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ClosureUtils",
+      "name": "ClosureUtils",
+      "isArray": false
+    },
+    "name": "switchMapClosure",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Closure",
+      "name": "Closure",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Map",
+          "name": "Map",
+          "isArray": false
+        },
+        "name": "objectsAndClosures"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the map is null",
+        "condition": "args[0]==null"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if any closure in the map is null",
+        "condition": "args[0].values().contains(null)"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if the map is empty",
+        "condition": "args[0].isEmpty()"
+      }
+    ],
+    "signature": "switchMapClosure(java.util.Map objectsAndClosures)"
+  }
+]

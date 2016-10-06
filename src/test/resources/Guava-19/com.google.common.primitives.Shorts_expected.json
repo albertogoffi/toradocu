@@ -1,0 +1,782 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "Shorts",
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "Shorts()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "hashCode",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "short",
+          "name": "short",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "hashCode(short value)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "checkedCast",
+    "returnType": {
+      "qualifiedName": "short",
+      "name": "short",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if value is greater than Short.MAX_VALUE or less than Short.MIN_VALUE",
+        "condition": "args[0]>Short.MAX_VALUE || args[0]<Short.MIN_VALUE"
+      }
+    ],
+    "signature": "checkedCast(long value)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "saturatedCast",
+    "returnType": {
+      "qualifiedName": "short",
+      "name": "short",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "saturatedCast(long value)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "compare",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "short",
+          "name": "short",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "short",
+          "name": "short",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "compare(short a,short b)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "contains",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "short[]",
+          "name": "short[]",
+          "isArray": true
+        },
+        "name": "array"
+      },
+      {
+        "type": {
+          "qualifiedName": "short",
+          "name": "short",
+          "isArray": false
+        },
+        "name": "target"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "contains(short[] array,short target)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "indexOf",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "short[]",
+          "name": "short[]",
+          "isArray": true
+        },
+        "name": "array"
+      },
+      {
+        "type": {
+          "qualifiedName": "short",
+          "name": "short",
+          "isArray": false
+        },
+        "name": "target"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "indexOf(short[] array,short target)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "indexOf",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "short[]",
+          "name": "short[]",
+          "isArray": true
+        },
+        "name": "array"
+      },
+      {
+        "type": {
+          "qualifiedName": "short",
+          "name": "short",
+          "isArray": false
+        },
+        "name": "target"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "start"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "end"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "indexOf(short[] array,short target,int start,int end)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "indexOf",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "short[]",
+          "name": "short[]",
+          "isArray": true
+        },
+        "name": "array"
+      },
+      {
+        "type": {
+          "qualifiedName": "short[]",
+          "name": "short[]",
+          "isArray": true
+        },
+        "name": "target"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "indexOf(short[] array,short[] target)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "lastIndexOf",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "short[]",
+          "name": "short[]",
+          "isArray": true
+        },
+        "name": "array"
+      },
+      {
+        "type": {
+          "qualifiedName": "short",
+          "name": "short",
+          "isArray": false
+        },
+        "name": "target"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "lastIndexOf(short[] array,short target)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "lastIndexOf",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "short[]",
+          "name": "short[]",
+          "isArray": true
+        },
+        "name": "array"
+      },
+      {
+        "type": {
+          "qualifiedName": "short",
+          "name": "short",
+          "isArray": false
+        },
+        "name": "target"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "start"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "end"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "lastIndexOf(short[] array,short target,int start,int end)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "min",
+    "returnType": {
+      "qualifiedName": "short",
+      "name": "short",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "short[]",
+          "name": "short[]",
+          "isArray": true
+        },
+        "name": "array"
+      }
+    ],
+    "isVarArgs": true,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if array is empty",
+        "condition": "args[0].length==0"
+      }
+    ],
+    "signature": "min(short[] array)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "max",
+    "returnType": {
+      "qualifiedName": "short",
+      "name": "short",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "short[]",
+          "name": "short[]",
+          "isArray": true
+        },
+        "name": "array"
+      }
+    ],
+    "isVarArgs": true,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if array is empty",
+        "condition": "args[0].length==0"
+      }
+    ],
+    "signature": "max(short[] array)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "concat",
+    "returnType": {
+      "qualifiedName": "short[]",
+      "name": "short[]",
+      "isArray": true
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "short[]",
+          "name": "short[]",
+          "isArray": true
+        },
+        "name": "arrays"
+      }
+    ],
+    "isVarArgs": true,
+    "throwsTags": [],
+    "signature": "concat(short[] arrays)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "toByteArray",
+    "returnType": {
+      "qualifiedName": "byte[]",
+      "name": "byte[]",
+      "isArray": true
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "short",
+          "name": "short",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "toByteArray(short value)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "fromByteArray",
+    "returnType": {
+      "qualifiedName": "short",
+      "name": "short",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "byte[]",
+          "name": "byte[]",
+          "isArray": true
+        },
+        "name": "bytes"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if bytes has fewer than 2 elements",
+        "condition": "args[0].length<2"
+      }
+    ],
+    "signature": "fromByteArray(byte[] bytes)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "fromBytes",
+    "returnType": {
+      "qualifiedName": "short",
+      "name": "short",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "byte",
+          "name": "byte",
+          "isArray": false
+        },
+        "name": "b1"
+      },
+      {
+        "type": {
+          "qualifiedName": "byte",
+          "name": "byte",
+          "isArray": false
+        },
+        "name": "b2"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "fromBytes(byte b1,byte b2)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "stringConverter",
+    "returnType": {
+      "qualifiedName": "com.google.common.base.Converter",
+      "name": "Converter",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "stringConverter()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "ensureCapacity",
+    "returnType": {
+      "qualifiedName": "short[]",
+      "name": "short[]",
+      "isArray": true
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "short[]",
+          "name": "short[]",
+          "isArray": true
+        },
+        "name": "array"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "minLength"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "padding"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if minLength or padding is negative",
+        "condition": "args[1]<0 || args[2]<0"
+      }
+    ],
+    "signature": "ensureCapacity(short[] array,int minLength,int padding)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "copyOf",
+    "returnType": {
+      "qualifiedName": "short[]",
+      "name": "short[]",
+      "isArray": true
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "short[]",
+          "name": "short[]",
+          "isArray": true
+        },
+        "name": "original"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "length"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "copyOf(short[] original,int length)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "join",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "separator"
+      },
+      {
+        "type": {
+          "qualifiedName": "short[]",
+          "name": "short[]",
+          "isArray": true
+        },
+        "name": "array"
+      }
+    ],
+    "isVarArgs": true,
+    "throwsTags": [],
+    "signature": "join(java.lang.String separator,short[] array)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "lexicographicalComparator",
+    "returnType": {
+      "qualifiedName": "java.util.Comparator",
+      "name": "Comparator",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "lexicographicalComparator()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "toArray",
+    "returnType": {
+      "qualifiedName": "short[]",
+      "name": "short[]",
+      "isArray": true
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "collection"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if collection or any of its elements is null",
+        "condition": "args[0]==null || args[0].contains(null)"
+      }
+    ],
+    "signature": "toArray(java.util.Collection collection)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "name": "asList",
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "short[]",
+          "name": "short[]",
+          "isArray": true
+        },
+        "name": "backingArray"
+      }
+    ],
+    "isVarArgs": true,
+    "throwsTags": [],
+    "signature": "asList(short[] backingArray)"
+  }
+]
