@@ -29,7 +29,7 @@ public class OracleGenerator {
    * Creates one aspect for each method in the given {@code methods} list if the method has at least
    * one comment translated by the condition translator.
    *
-   * @param methods the {@code List} of methods for which create aspects
+   * @param methods the {@code List} of methods to create aspects for
    * @throws NullPointerException if {@code methods} is null
    */
   public static void createAspects(List<DocumentedMethod> methods) {
@@ -49,7 +49,7 @@ public class OracleGenerator {
     int aspectNumber = 1;
     for (DocumentedMethod method : methods) {
       for (ThrowsTag throwTag : method.throwsTags()) {
-        // Create an aspect for each method that has at least on translated comment (condition)
+        // Create an aspect for each method that has at least one translated comment (condition)
         if (!throwTag.getCondition().orElse("").isEmpty()) {
           String aspectName = "Aspect_" + aspectNumber;
           createAspect(method, aspectName);
