@@ -34,11 +34,6 @@ A typical Toradocu invocation looks like this:
 	   --class-dir project/bin \
        --aspects-output-dir aspects
 
-Internally Toradocu executes the `javadoc` tool. Every option starting with `-J`
-will be passed to the `javadoc` tool. For example, you can specify the directory
-where to save the Javadoc documentation with `-J-d=javadoc_output`. You can
-customize the behavior of the `javadoc` tool using all its options.
-
 
 ## Using Toradocu Aspects
 With those options, Toradocu generates [AspectJ aspects](https://eclipse.org/aspectj/) in the
