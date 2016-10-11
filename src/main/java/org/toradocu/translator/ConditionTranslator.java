@@ -102,9 +102,16 @@ public class ConditionTranslator {
             .replace("equal to", "==");
 
     java.util.regex.Matcher matcher = Pattern.compile(INEQUALITY_NUMBER_REGEX).matcher(text);
+    java.util.regex.Matcher matcherIOf = Pattern.compile(INEQ_INSOFPRCS).matcher(text);
     String placeholderText = text;
 
     int i = 0;
+    while (matcherIOf.find()) {
+      //Specific case for the instance of placeholder. We put into inequalities the instanceof and the name
+      // of the class
+      inequalities.add(text.substring(matcherIOf.start(), matcherIOf.end()));
+      placeholderText = placeholderText.replaceFirst(INEQ_INSOFPRCS, PLACEHOLDER_PREFIX + i++);
+    }
     while (matcher.find()) {
       inequalities.add(text.substring(matcher.start(), matcher.end()));
       placeholderText =
@@ -128,6 +135,11 @@ public class ConditionTranslator {
   private static final String INEQ_3 = ".(([<>=]=?)|(!=)) "; // e.g "b< 1"
   private static final String INEQ_4 = " (([<>=]=?)|(!=)) "; // e.g "b < 1"
 
+  private static final String INEQ_INSOF = " *[an]* (instance of)"; // e.g "an instance of"
+
+  private static final String INEQ_INSOFPRCS =
+      "instanceof +[^ \\.]*"; // e.g. "instanceof BinaryMutation"
+
   /**
    *
    * This auxiliar function is meant to be the one that formats the comments for the StamfordParser
@@ -143,9 +155,17 @@ public class ConditionTranslator {
     java.util.regex.Matcher matcher3 = Pattern.compile(INEQ_3).matcher(text);
     java.util.regex.Matcher matcher4 = Pattern.compile(INEQ_4).matcher(text);
 
+    java.util.regex.Matcher matcherInsOf = Pattern.compile(INEQ_INSOF).matcher(text);
+
     String placeholderText = text;
     int i = 0;
     List<String> symbols = new ArrayList<>();
+
+    while (matcherInsOf.find()) {
+      // Instance of added to the comparator list
+      placeholderText = placeholderText.replaceFirst(INEQ_INSOF, " instanceof");
+    }
+
     while (matcher.find()) {
       if (matcher4.find()) {
         symbols.add(text.substring(matcher.start(), matcher.end()));
