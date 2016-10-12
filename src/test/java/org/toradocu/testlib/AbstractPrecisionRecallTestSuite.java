@@ -8,6 +8,9 @@ import org.junit.BeforeClass;
 
 /**
  * Represents an abstract test suite that uses precision and recall to measure relevance.
+ *
+ * To create a new precision/recall test suite, create a new test class extending
+ * `org.toradocu.testlib.AbstractPrecisionRecallTestSuite`.
  */
 public abstract class AbstractPrecisionRecallTestSuite {
 
@@ -25,6 +28,15 @@ public abstract class AbstractPrecisionRecallTestSuite {
   /** The directory containing the expected output of the tests. */
   private final String expectedOutputDirPath;
 
+  /**
+   * Constructs and initializes a precision recall test suite that will test
+   * Toradocu using the files in the given directories.
+   *
+   * @param sourceDirPath the path to the sources of the library to test
+   * @param binDirPath the path to the binaries of the library to test
+   * @param expectedOutputDirPath the path to the directory containing the
+   *                              expected output files
+   */
   public AbstractPrecisionRecallTestSuite(
       String sourceDirPath, String binDirPath, String expectedOutputDirPath) {
     this.sourceDirPath = sourceDirPath;
