@@ -11,6 +11,13 @@ import org.junit.BeforeClass;
  *
  * To create a new precision/recall test suite, create a new test class extending
  * `org.toradocu.testlib.AbstractPrecisionRecallTestSuite`.
+ *
+ * In the newly created class, create a method for each target class. In the method add
+ * the following line of code to execute Toradocu on the target class:
+ * {@code TestCaseStats stats = test(<qualified_class_name>)}. A TestCaseStats object
+ * contains the results (e.g., precision, recall, ...) of the execution of Toradocu on
+ * a given class. You probably want to add assertions on the precision/recall values obtained.
+ * The existing test suites have examples of assertions on the precision/recall values.
  */
 public abstract class AbstractPrecisionRecallTestSuite {
 
