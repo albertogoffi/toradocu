@@ -24,7 +24,7 @@ public abstract class AbstractPrecisionRecallTestSuite {
   protected static final double PRECISION = 0.001;
   protected static final String PRECISION_MESSAGE = "Precision is different than expected";
   protected static final String RECALL_MESSAGE = "Recall is different than expected";
-  public static final String OUTPUT_DIR = "tmp";
+  public static final String OUTPUT_DIR = "build/test-results";
 
   /** Keeps track of statistics on currently run tests. */
   private static final TestSuiteStats testSuiteStats = new TestSuiteStats();
