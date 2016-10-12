@@ -7,7 +7,7 @@ Toradocu's source code
 
 Libraries used by Toradocu
 * ```lib/tools-jdk1.8.0_72.jar``` (part of the standard Oracle's JDK distribution, 
-  license [here](http://www.oracle.com/technetwork/java/javase/terms/license/index.html).
+  license [here](http://www.oracle.com/technetwork/java/javase/terms/license/index.html)).
 * Other libraries are automatically fetched by the building system and are listed in ```toradocu/build.gradle```.  
   Please refer to individual licenses.
   
