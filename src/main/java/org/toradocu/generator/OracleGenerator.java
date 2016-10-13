@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
@@ -29,21 +31,25 @@ public class OracleGenerator {
    * Creates one aspect for each method in the given {@code methods} list if the method has at least
    * one comment translated by the condition translator.
    *
-   * @param methods the {@code List} of methods to create aspects for
-   * @throws NullPointerException if {@code methods} is null
+   * @param methods the {@code List} of methods to create aspects for. Must not be null.
    */
   public static void createAspects(List<DocumentedMethod> methods) {
     if (!Toradocu.configuration.isOracleGenerationEnabled()) {
       log.info("Oracle generator disabled: skipped aspect generation.");
       return;
     }
-    Checks.nonNullParameter(methods, "methods");
 
     if (methods.isEmpty()) {
       return;
     }
 
-    createFolder(Toradocu.configuration.getAspectsOutputDir());
+    String aspectDir = Toradocu.configuration.getAspectsOutputDir();
+    try {
+      Files.createDirectory(Paths.get(aspectDir));
+    } catch (IOException e) {
+      log.error("Error while creating" + aspectDir + ".", e);
+      System.exit(1);
+    }
 
     List<String> createdAspectNames = new ArrayList<>();
     int aspectNumber = 1;
@@ -59,7 +65,7 @@ public class OracleGenerator {
         }
       }
     }
-    createAOPXml(Toradocu.configuration.getAspectsOutputDir(), createdAspectNames);
+    createAopXml(aspectDir, createdAspectNames);
   }
 
   /**
@@ -80,10 +86,9 @@ public class OracleGenerator {
         FileOutputStream output = new FileOutputStream(new File(aspectPath + ".java"))) {
       CompilationUnit cu = JavaParser.parse(template);
 
-      new MethodChangerVisitor(method).visit(cu, null);
-      String newAspect = cu.toString();
-      newAspect = newAspect.replace("public class Aspect_Template", "public class " + aspectName);
-      output.write(newAspect.getBytes());
+      new MethodChangerVisitor().visit(cu, method);
+      new ClassChangerVisitor().visit(cu, aspectName);
+      output.write(cu.toString().getBytes());
     } catch (IOException | ParseException e) {
       log.error("Error during aspect creation.", e);
     }
@@ -96,7 +101,7 @@ public class OracleGenerator {
    * @param folder where the file aop.xml is created
    * @param createdAspects list of the aspects to be mentioned in the aop.xml file
    */
-  private static void createAOPXml(String folder, List<String> createdAspects) {
+  private static void createAopXml(String folder, List<String> createdAspects) {
     final String HEADER =
         "<aspectj>\n\t<weaver options=\"-verbose -showWeaveInfo\"/>\n\t<aspects>\n";
     final String FOOTER = "\t</aspects>\n</aspectj>";
@@ -110,18 +115,7 @@ public class OracleGenerator {
       output.write(content.toString().getBytes());
     } catch (IOException e) {
       log.error("Error while creating aop.xml file.", e);
-    }
-  }
-
-  /**
-   * Creates a new folder with the given {@code folderPath} if it does not exist.
-   *
-   * @param folderPath the path of the folder to be created
-   */
-  private static void createFolder(String folderPath) {
-    File folderToCreate = new File(folderPath);
-    if (!folderToCreate.exists()) {
-      folderToCreate.mkdir();
+      System.exit(1);
     }
   }
 }

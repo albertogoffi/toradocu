@@ -3,6 +3,7 @@ package org.toradocu.generator;
 import com.github.javaparser.ASTHelper;
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParseException;
+import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.body.VariableDeclaratorId;
 import com.github.javaparser.ast.expr.AnnotationExpr;
@@ -14,7 +15,7 @@ import com.github.javaparser.ast.stmt.CatchClause;
 import com.github.javaparser.ast.stmt.IfStmt;
 import com.github.javaparser.ast.stmt.TryStmt;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
-import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
+import com.github.javaparser.ast.visitor.ModifierVisitorAdapter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -25,68 +26,82 @@ import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.Parameter;
 import org.toradocu.extractor.ThrowsTag;
+import org.toradocu.util.Checks;
 
-public class MethodChangerVisitor extends VoidVisitorAdapter<Object> {
+/**
+ * Visitor that modifies the aspect template (see method {@code visit}) to generate an aspect
+ * (oracle) for a {@code DocumentedMethod}.
+ */
+public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMethod> {
 
-  /** {@code DocumentedMethod} for which generate an aspect */
-  private DocumentedMethod method;
   /** {@code Logger} for this class. */
   private static final Logger log = LoggerFactory.getLogger(MethodChangerVisitor.class);
   /** Holds Toradocu configuration options. */
   private final Configuration conf = Toradocu.configuration;
 
-  public MethodChangerVisitor(DocumentedMethod method) {
-    this.method = method;
-  }
-
+  /**
+   * Modifies the methods {@code advice} and {@code getExpectedExceptions} of the aspect template,
+   * injecting the appropriate source code to get an aspect (oracle) for the method arg.
+   *
+   * @param methdoDeclaration the method declaration of the method to visit
+   * @param documentedMethod the {@code DocumentedMethod} for which to generate the aspect (oracle)
+   * @return the {@code methodDeclaration} modified as and when needed
+   * @throws NullPointerException if {@code methdoDeclaration} or {@code documentedMethod} is null
+   */
   @Override
-  public void visit(MethodDeclaration n, Object arg) {
-    if (n.getName().equals("advice")) {
+  public Node visit(MethodDeclaration methdoDeclaration, DocumentedMethod documentedMethod) {
+    Checks.nonNullParameter(methdoDeclaration, "methdoDeclaration");
+    Checks.nonNullParameter(documentedMethod, "documentedMethod");
+
+    if (methdoDeclaration.getName().equals("advice")) {
       String pointcut = "";
 
-      if (method.isConstructor()) {
-        pointcut = "execution(" + getPointcut(method) + ")";
+      if (documentedMethod.isConstructor()) {
+        pointcut = "execution(" + getPointcut(documentedMethod) + ")";
       } else {
-        pointcut = "call(" + getPointcut(method) + ")";
+        pointcut = "call(" + getPointcut(documentedMethod) + ")";
         pointcut += " && within(" + conf.getTestClass() + ")";
       }
 
       AnnotationExpr annotation =
           new SingleMemberAnnotationExpr(new NameExpr("Around"), new StringLiteralExpr(pointcut));
-      List<AnnotationExpr> annotations = n.getAnnotations();
+      List<AnnotationExpr> annotations = methdoDeclaration.getAnnotations();
       annotations.add(annotation);
-      n.setAnnotations(annotations);
-    } else if (n.getName().equals("getExpectedExceptions")) {
-      String addExpectedExceptionPart1 = "{try{expectedExceptions.add(";
-      String addExpectedExceptionPart2 =
-          ");} catch (ClassNotFoundException e) {"
-              + "System.err.println(\"Class not found!\" + e);}}";
-
-      for (ThrowsTag tag : method.throwsTags()) {
+      methdoDeclaration.setAnnotations(annotations);
+    } else if (methdoDeclaration.getName().equals("getExpectedExceptions")) {
+      for (ThrowsTag tag : documentedMethod.throwsTags()) {
         String condition = tag.getCondition().orElse("");
         if (condition.isEmpty()) {
           continue;
         }
 
-        condition = addCasting(condition);
+        condition = addCasting(condition, documentedMethod);
 
         IfStmt ifStmt = new IfStmt();
         Expression conditionExpression;
         try {
           conditionExpression = JavaParser.parseExpression(condition);
           ifStmt.setCondition(conditionExpression);
+          // Add a try-catch block to prevent runtime error when looking for an exception type
+          // that is not on the classpath.
           String addExpectedException =
-              addExpectedExceptionPart1
+              "{try{expectedExceptions.add("
                   + "Class.forName(\""
                   + tag.exception()
                   + "\")"
-                  + addExpectedExceptionPart2;
+                  + ");} catch (ClassNotFoundException e) {"
+                  + "System.err.println(\"Class not found!\" + e);}}";
           ifStmt.setThenStmt(JavaParser.parseBlock(addExpectedException));
 
-          ClassOrInterfaceType exceptionType =
+          // Add a try-catch block to avoid NullPointerException to be raised while evaluating a
+          // boolean condition generated by Toradocu. For example, suppose that the first argument
+          // of a method is null, and that Toradocu generates a condition like
+          // args[0].isEmpty()==true. The condition generates a NullPointerException that we want
+          // to ignore.
+          ClassOrInterfaceType nullPointerException =
               new ClassOrInterfaceType("java.lang.NullPointerException");
           List<com.github.javaparser.ast.type.Type> types = new ArrayList<>();
-          types.add(exceptionType);
+          types.add(nullPointerException);
           CatchClause catchClause =
               new CatchClause(
                   0, null, types, new VariableDeclaratorId("e"), JavaParser.parseBlock("{}"));
@@ -97,7 +112,7 @@ public class MethodChangerVisitor extends VoidVisitorAdapter<Object> {
           nullCheckTryCatch.setTryBlock(JavaParser.parseBlock("{" + ifStmt.toString() + "}"));
           nullCheckTryCatch.setCatchs(catchClauses);
 
-          ASTHelper.addStmt(n.getBody(), nullCheckTryCatch);
+          ASTHelper.addStmt(methdoDeclaration.getBody(), nullCheckTryCatch);
         } catch (ParseException e) {
           log.error("Parsing error during the aspect creation.", e);
           e.printStackTrace();
@@ -105,12 +120,14 @@ public class MethodChangerVisitor extends VoidVisitorAdapter<Object> {
       }
 
       try {
-        ASTHelper.addStmt(n.getBody(), JavaParser.parseStatement("return expectedExceptions;"));
+        ASTHelper.addStmt(
+            methdoDeclaration.getBody(), JavaParser.parseStatement("return expectedExceptions;"));
       } catch (ParseException e) {
         log.error("Parsing error during the aspect creation.", e);
         e.printStackTrace();
       }
     }
+    return methdoDeclaration;
   }
 
   /**
@@ -144,7 +161,19 @@ public class MethodChangerVisitor extends VoidVisitorAdapter<Object> {
     return pointcut.toString();
   }
 
-  private String addCasting(String condition) {
+  /**
+   * Add the appropriate cast to each mention of a method argument or target in a given Java
+   * boolean condition.
+   *
+   * @param condition the Java boolean condition to which add the casts
+   * @param method the method to which the {@code condition} belongs
+   * @return the input condition with casted method arguments and target
+   * @throws NullPointerException if {@code condition} or {@code method} is null
+   */
+  private String addCasting(String condition, DocumentedMethod method) {
+    Checks.nonNullParameter(condition, "condition");
+    Checks.nonNullParameter(method, "method");
+
     int index = 0;
     for (Parameter parameter : method.getParameters()) {
       String type = parameter.getType().getQualifiedName();
@@ -152,7 +181,7 @@ public class MethodChangerVisitor extends VoidVisitorAdapter<Object> {
       index++;
     }
 
-    // Casting of target object in check
+    // Casting of target object in condition
     condition = condition.replace("target.", "((" + method.getContainingClass() + ") target).");
     return condition;
   }

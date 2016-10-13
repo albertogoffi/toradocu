@@ -3,7 +3,7 @@
 # Fail if any command fails
 set -e
 
-CHANGED_JAVA_FILES=`git diff --staged --name-only --diff-filter=ACM | grep '\.java$'` || true
+CHANGED_JAVA_FILES=`git diff --staged --name-only --diff-filter=ACM | grep -v 'src/test/resources/aspects/*' | grep '\.java$'` || true
 if [ ! -z "$CHANGED_JAVA_FILES" ]; then
   SCRIPT_URL=https://raw.githubusercontent.com/mernst/plume-lib/master/bin/check-google-java-format.py
   if [ `uname` = 'Darwin' ]; then
