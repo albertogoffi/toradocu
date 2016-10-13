@@ -91,9 +91,6 @@ public class ConditionTranslator {
    */
   private static String addPlaceholders(String text) {
     // Replace written out inequalities with symbols.
-
-    text = inCorrectFormat(text);
-
     text =
         text.replace("greater than or equal to", ">=")
             .replace("less than or equal to", "<=")
@@ -108,74 +105,31 @@ public class ConditionTranslator {
     while (matcher.find()) {
       inequalities.add(text.substring(matcher.start(), matcher.end()));
       placeholderText =
-          placeholderText.replaceFirst(INEQUALITY_NUMBER_REGEX, PLACEHOLDER_PREFIX + i++);
+          placeholderText.replaceFirst(INEQUALITY_NUMBER_REGEX, PLACEHOLDER_PREFIX + i);
+      // Verbs that could appear before the inequality. One of these most be present
+      // and will be added otherwise.
+      String[] possibleVerbs = {"is", "is not", "isn't", "are", "are not", "aren't"};
+      boolean containsVerb = false;
+      for (String possibleVerb : possibleVerbs) {
+        if (placeholderText.contains(possibleVerb + PLACEHOLDER_PREFIX + i)) {
+          containsVerb = true;
+        }
+      }
+      if (!containsVerb) {
+        // The verb is assumed to be "is" and will be added to the text.
+        placeholderText =
+            placeholderText.replaceFirst(PLACEHOLDER_PREFIX + i, " is" + PLACEHOLDER_PREFIX + i);
+      }
+      i++;
     }
 
     return placeholderText;
   }
 
-  private static final String INEQUALITY_NUMBER_REGEX = "(([<>=]=?)|(!=)) ?-?[0-9]+";
-  private static final String PLACEHOLDER_PREFIX = "INEQUALITY_";
+  private static final String INEQUALITY_NUMBER_REGEX = " *(([<>=]=?)|(!=)) ?-?[0-9]+";
+  private static final String PLACEHOLDER_PREFIX = " INEQUALITY_";
   /** Stores the inequalities that are replaced by placeholders when addPlaceholders is called. */
   private static List<String> inequalities = new ArrayList<>();
-
-  /** Regular expression just for the comparators*/
-  private static final String INEQUALITY_REGEX = "(([<>=]=?)|(!=))";
-
-  /** Possibilities for the four combinations corresponding to the comparators*/
-  private static final String INEQ_1 = ".(([<>=]=?)|(!=))."; // e.g "b<1"
-  private static final String INEQ_2 = " (([<>=]=?)|(!=))."; // e.g "b <1"
-  private static final String INEQ_3 = ".(([<>=]=?)|(!=)) "; // e.g "b< 1"
-  private static final String INEQ_4 = " (([<>=]=?)|(!=)) "; // e.g "b < 1"
-
-  /**
-   *
-   * This auxiliar function is meant to be the one that formats the comments for the StamfordParser
-   * to parse them
-   *
-   * @param text the comment of the throws tag that has to be formated
-   * @return the throws tag string ready to be parsed
-   */
-  private static String inCorrectFormat(String text) {
-    java.util.regex.Matcher matcher = Pattern.compile(INEQUALITY_REGEX).matcher(text);
-    java.util.regex.Matcher matcher1 = Pattern.compile(INEQ_1).matcher(text);
-    java.util.regex.Matcher matcher2 = Pattern.compile(INEQ_2).matcher(text);
-    java.util.regex.Matcher matcher3 = Pattern.compile(INEQ_3).matcher(text);
-    java.util.regex.Matcher matcher4 = Pattern.compile(INEQ_4).matcher(text);
-
-    String placeholderText = text;
-    int i = 0;
-    List<String> symbols = new ArrayList<>();
-    while (matcher.find()) {
-      if (matcher4.find()) {
-        symbols.add(text.substring(matcher.start(), matcher.end()));
-        placeholderText =
-            placeholderText.replaceFirst(INEQUALITY_REGEX, "is " + PLACEHOLDER_PREFIX + i++);
-      } else if (matcher3.find()) {
-        symbols.add(text.substring(matcher.start(), matcher.end()));
-        placeholderText =
-            placeholderText.replaceFirst(INEQUALITY_REGEX, " is " + PLACEHOLDER_PREFIX + i++);
-      } else if (matcher2.find()) {
-        symbols.add(text.substring(matcher.start(), matcher.end()));
-        placeholderText =
-            placeholderText.replaceFirst(INEQUALITY_REGEX, "is " + PLACEHOLDER_PREFIX + i++ + " ");
-
-      } else if (matcher1.find()) {
-        symbols.add(text.substring(matcher.start(), matcher.end()));
-        placeholderText =
-            placeholderText.replaceFirst(INEQUALITY_REGEX, " is " + PLACEHOLDER_PREFIX + i++ + " ");
-      }
-    }
-
-    int j = 0;
-    java.util.regex.Matcher matcherPlaceHolderPrefix =
-        Pattern.compile(PLACEHOLDER_PREFIX + ".").matcher(placeholderText);
-    while (matcherPlaceHolderPrefix.find()) {
-      placeholderText = placeholderText.replaceFirst(PLACEHOLDER_PREFIX + ".", symbols.get(j++));
-    }
-
-    return placeholderText;
-  }
 
   /**
    * Returns a new list of {@code PropositionSeries} in which any placeholder text has been replaced
