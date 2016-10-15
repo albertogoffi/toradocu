@@ -66,17 +66,6 @@ Please refer to the [AspectJ documentation](https://eclipse.org/aspectj/doc/rele
 for more information.
 
 
-## Notes for the contributors
-The source code of this project follows the
-[Google Java Style Guide](https://google.github.io/styleguide/javaguide.html). The
-style of the code is automatically checked by a git pre-commit hook. Also, the
-hook prevents any commits of files containing trailing spaces. The hook is
-automatically installed as soon as any gradle task is executed.
+## Contributing to Toradocu
+Information for contributers can be found on the [wiki pages](https://github.com/albertogoffi/toradocu/wiki).
 
-If a commit fails for the improper format of some file, you can format your code
-according the style guide using the following command:
-
-	python run-google-java-format.py [file1 file2 ...]
-
-Other information for the contributors can be found in the
-[wiki pages](https://github.com/albertogoffi/toradocu/wiki).
