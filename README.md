@@ -67,5 +67,5 @@ for more information.
 
 
 ## Contributing to Toradocu
-Information for contributers can be found on the [wiki pages](https://github.com/albertogoffi/toradocu/wiki).
+Information for contributers can be found on the [wiki pages](https://github.com/albertogoffi/toradocu/wiki/Developer-Notes).
 
