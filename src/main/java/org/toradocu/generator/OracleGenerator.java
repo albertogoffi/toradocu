@@ -47,7 +47,7 @@ public class OracleGenerator {
     try {
       Files.createDirectory(Paths.get(aspectDir));
     } catch (IOException e) {
-      log.error("Error while creating" + aspectDir + ".", e);
+      log.error("Error while creating directory \"" + aspectDir + "\".", e);
       System.exit(1);
     }
 
