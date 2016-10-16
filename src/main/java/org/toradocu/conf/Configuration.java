@@ -45,7 +45,7 @@ public class Configuration {
   private boolean debug = false;
 
   @Parameter(
-    names = {"-h", "--help"},
+    names = {"--help", "-h"},
     description = "Print a list of available options",
     help = true
   )
@@ -111,13 +111,13 @@ public class Configuration {
   private int wordRemovalCost = 1;
 
   @Parameter(
-          names = "--expected-output",
-          description =
-                  "Condition extractor expected output file used to compute statistics about "
-                          + "Toradocu's performance. Statistics are computed only if a valid expected output file is "
-                          + "provided",
-          converter = FileConverter.class,
-          hidden = true
+    names = "--expected-output",
+    description =
+        "Condition extractor expected output file used to compute statistics about "
+            + "Toradocu's performance. Statistics are computed only if a valid expected output file is "
+            + "provided",
+    converter = FileConverter.class,
+    hidden = true
   )
   private File expectedOutput;
 
@@ -163,13 +163,6 @@ public class Configuration {
 
     if (statsFile == null) {
       statsFile = new File("stats.csv");
-    }
-
-    if (sourceDir == null) {
-      sourceDir = Paths.get(".");
-    }
-    if (classDir == null) {
-      classDir = Paths.get(".");
     }
 
     // Initialize command-line options passed to Javadoc:
