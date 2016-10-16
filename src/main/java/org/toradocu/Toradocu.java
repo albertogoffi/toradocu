@@ -144,7 +144,7 @@ public class Toradocu {
         System.out.println("Condition translator output:\n" + GsonInstance.gson().toJson(methods));
       }
 
-      // Create statistics
+      // Create statistics.
       File expectedResultFile = configuration.getExpectedOutput();
       if (expectedResultFile != null) {
         Type collectionType = new TypeToken<List<DocumentedMethod>>() {}.getType();
@@ -182,11 +182,11 @@ public class Toradocu {
 
   /**
    * This method populates the static field {@code methods} using {@code JavadocExtractor} when the
-   * given {@code classDoc} is the target class specified in {@code CONF}. This method is intended
+   * given {@code classDoc} is the target class specified in {@code configuration}. This method is intended
    * to be invoked by the Javadoc doclet.
    *
    * @param classDoc the class from which methods are extracted, but only if it is the target class
-   * specified in {@code CONF}
+   * specified in {@code configuration}
    * @param docletConfiguration configuration options for the Javadoc doclet
    * @throws IOException if there is an error while reading/generating class documentation
    */
@@ -203,9 +203,9 @@ public class Toradocu {
    * Deletes any temporary files created by Toradocu to store Javadoc output.
    */
   private static void deleteTemporaryFiles() {
-    if (configuration.getTempJavadocOutputDir() != null) {
+    if (configuration.getJavadocOutputDir() != null) {
       try {
-        FileUtils.deleteDirectory(new File(configuration.getTempJavadocOutputDir()));
+        FileUtils.deleteDirectory(new File(configuration.getJavadocOutputDir()));
       } catch (IOException e) {
         log.warn("Unable to delete temporary Javadoc output", e);
       }
