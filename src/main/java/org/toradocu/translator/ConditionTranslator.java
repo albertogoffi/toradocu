@@ -99,9 +99,27 @@ public class ConditionTranslator {
             .replace("equal to", "==");
 
     java.util.regex.Matcher matcher = Pattern.compile(INEQUALITY_NUMBER_REGEX).matcher(text);
-    String placeholderText = text;
 
+    java.util.regex.Matcher matcherInstanceOf = Pattern.compile(INEQ_INSOF).matcher(text);
+
+    while (matcherInstanceOf.find()) {
+      // Instance of added to the comparator list
+      // Replace "[an] instance of" with "instanceof"
+      text = text.replaceFirst(INEQ_INSOF, " instanceof");
+    }
+
+    java.util.regex.Matcher matcherIOfProcessed =
+        Pattern.compile(INEQ_INSOFPROCESSED).matcher(text);
+    String placeholderText = text;
     int i = 0;
+
+    while (matcherIOfProcessed.find()) {
+      //Specific case for the instance of placeholder. We put into inequalities the instanceof and the name
+      // of the class
+      inequalities.add(text.substring(matcherIOfProcessed.start(), matcherIOfProcessed.end()));
+      placeholderText = placeholderText.replaceFirst(INEQ_INSOFPROCESSED, PLACEHOLDER_PREFIX + i++);
+    }
+
     while (matcher.find()) {
       inequalities.add(text.substring(matcher.start(), matcher.end()));
       placeholderText =
@@ -128,6 +146,10 @@ public class ConditionTranslator {
 
   private static final String INEQUALITY_NUMBER_REGEX = " *(([<>=]=?)|(!=)) ?-?[0-9]+";
   private static final String PLACEHOLDER_PREFIX = " INEQUALITY_";
+  private static final String INEQ_INSOF = " *[an]* (instance of)"; // e.g "an instance of"
+  private static final String INEQ_INSOFPROCESSED =
+      " instanceof +[^ \\.]*"; // e.g. "instanceof BinaryMutation"
+
   /** Stores the inequalities that are replaced by placeholders when addPlaceholders is called. */
   private static List<String> inequalities = new ArrayList<>();
 
