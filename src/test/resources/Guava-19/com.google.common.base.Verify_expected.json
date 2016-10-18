@@ -1,0 +1,196 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Verify",
+      "name": "Verify",
+      "isArray": false
+    },
+    "name": "Verify",
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "Verify()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Verify",
+      "name": "Verify",
+      "isArray": false
+    },
+    "name": "verify",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "expression"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "com.google.common.base.VerifyException",
+          "name": "VerifyException",
+          "isArray": false
+        },
+        "comment": "if expression is false",
+        "condition": "args[0]==false"
+      }
+    ],
+    "signature": "verify(boolean expression)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Verify",
+      "name": "Verify",
+      "isArray": false
+    },
+    "name": "verify",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "expression"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "errorMessageTemplate",
+        "nullable": true
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object[]",
+          "name": "Object[]",
+          "isArray": true
+        },
+        "name": "errorMessageArgs",
+        "nullable": true
+      }
+    ],
+    "isVarArgs": true,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "com.google.common.base.VerifyException",
+          "name": "VerifyException",
+          "isArray": false
+        },
+        "comment": "if expression is false",
+        "condition": "args[0]==false"
+      }
+    ],
+    "signature": "verify(boolean expression,java.lang.String errorMessageTemplate,java.lang.Object[] errorMessageArgs)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Verify",
+      "name": "Verify",
+      "isArray": false
+    },
+    "name": "verifyNotNull",
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "T",
+          "name": "T",
+          "isArray": false
+        },
+        "name": "reference",
+        "nullable": true
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "com.google.common.base.VerifyException",
+          "name": "VerifyException",
+          "isArray": false
+        },
+        "comment": "if reference is null",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "verifyNotNull(T reference)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Verify",
+      "name": "Verify",
+      "isArray": false
+    },
+    "name": "verifyNotNull",
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "T",
+          "name": "T",
+          "isArray": false
+        },
+        "name": "reference",
+        "nullable": true
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "errorMessageTemplate",
+        "nullable": true
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object[]",
+          "name": "Object[]",
+          "isArray": true
+        },
+        "name": "errorMessageArgs",
+        "nullable": true
+      }
+    ],
+    "isVarArgs": true,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "com.google.common.base.VerifyException",
+          "name": "VerifyException",
+          "isArray": false
+        },
+        "comment": "if reference is null",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "verifyNotNull(T reference,java.lang.String errorMessageTemplate,java.lang.Object[] errorMessageArgs)"
+  }
+]

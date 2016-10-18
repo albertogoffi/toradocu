@@ -1,0 +1,1011 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "ConcurrentHashMultiset",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.concurrent.ConcurrentMap",
+          "name": "ConcurrentMap",
+          "isArray": false
+        },
+        "name": "countMap"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if countMap is not empty",
+        "condition": "(args[0].isEmpty()) == false"
+      }
+    ],
+    "signature": "ConcurrentHashMultiset(java.util.concurrent.ConcurrentMap countMap)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "create",
+    "returnType": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "create()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "create",
+    "returnType": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "elements"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "create(java.lang.Iterable elements)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "create",
+    "returnType": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "com.google.common.collect.MapMaker",
+          "name": "MapMaker",
+          "isArray": false
+        },
+        "name": "mapMaker"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "create(com.google.common.collect.MapMaker mapMaker)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "count",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "element",
+        "nullable": true
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "count(java.lang.Object element)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "size",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "size()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "toArray",
+    "returnType": {
+      "qualifiedName": "java.lang.Object[]",
+      "name": "Object[]",
+      "isArray": true
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "toArray()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "toArray",
+    "returnType": {
+      "qualifiedName": "T[]",
+      "name": "T[]",
+      "isArray": true
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "T[]",
+          "name": "T[]",
+          "isArray": true
+        },
+        "name": "array"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "toArray(T[] array)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "snapshot",
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "snapshot()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "add",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "E",
+          "name": "E",
+          "isArray": false
+        },
+        "name": "element"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "occurrences"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if occurrences is negative, or if the resulting amount would exceed Integer.MAX_VALUE",
+        "condition": "args[1]<0"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if occurrences is negative, or if this operation would result in more than Integer.MAX_VALUE occurrences of the element",
+        "condition": "args[1]<0"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if element is null and this implementation does not permit null elements. Note that if occurrences is zero, the implementation may opt to return normally.",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "add(E element,int occurrences)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "remove",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "element",
+        "nullable": true
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "occurrences"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if occurrences is negative",
+        "condition": "args[1]<0"
+      }
+    ],
+    "signature": "remove(java.lang.Object element,int occurrences)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "removeExactly",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "element",
+        "nullable": true
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "occurrences"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if occurrences is negative",
+        "condition": "args[1]<0"
+      }
+    ],
+    "signature": "removeExactly(java.lang.Object element,int occurrences)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "setCount",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "E",
+          "name": "E",
+          "isArray": false
+        },
+        "name": "element"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "count"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if count is negative",
+        "condition": "args[1]<0"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if element is null and this implementation does not permit null elements. Note that if count is zero, the implementor may optionally return zero instead.",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "setCount(E element,int count)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "setCount",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "E",
+          "name": "E",
+          "isArray": false
+        },
+        "name": "element"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "expectedOldCount"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "newCount"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if expectedOldCount or newCount is negative",
+        "condition": "args[1]<0 || args[2]<0"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if oldCount or newCount is negative",
+        "condition": "args[1]<0 || args[2]<0"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if element is null and the implementation does not permit null elements. Note that if oldCount and newCount are both zero, the implementor may optionally return true instead.",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "setCount(E element,int expectedOldCount,int newCount)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "createElementSet",
+    "returnType": {
+      "qualifiedName": "java.util.Set",
+      "name": "Set",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "createElementSet()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "createEntrySet",
+    "returnType": {
+      "qualifiedName": "java.util.Set",
+      "name": "Set",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "createEntrySet()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "distinctElements",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "distinctElements()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "isEmpty",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "isEmpty()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "entryIterator",
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "entryIterator()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "clear",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "clear()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "writeObject",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.ObjectOutputStream",
+          "name": "ObjectOutputStream",
+          "isArray": false
+        },
+        "name": "stream"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "writeObject(java.io.ObjectOutputStream stream)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.ConcurrentHashMultiset",
+      "name": "ConcurrentHashMultiset",
+      "isArray": false
+    },
+    "name": "readObject",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.ObjectInputStream",
+          "name": "ObjectInputStream",
+          "isArray": false
+        },
+        "name": "stream"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "readObject(java.io.ObjectInputStream stream)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.AbstractMultiset",
+      "name": "AbstractMultiset",
+      "isArray": false
+    },
+    "name": "contains",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "element",
+        "nullable": true
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "contains(java.lang.Object element)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.AbstractMultiset",
+      "name": "AbstractMultiset",
+      "isArray": false
+    },
+    "name": "iterator",
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "iterator()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.AbstractMultiset",
+      "name": "AbstractMultiset",
+      "isArray": false
+    },
+    "name": "add",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "E",
+          "name": "E",
+          "isArray": false
+        },
+        "name": "element",
+        "nullable": true
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if element is null and this implementation does not permit null elements",
+        "condition": "args[0]==null"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if Integer.MAX_VALUE occurrences of element are already contained in this multiset",
+        "condition": "target.count(element)==Integer.MAX_VALUE"
+      }
+    ],
+    "signature": "add(E element)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.AbstractMultiset",
+      "name": "AbstractMultiset",
+      "isArray": false
+    },
+    "name": "remove",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "element",
+        "nullable": true
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "remove(java.lang.Object element)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.AbstractMultiset",
+      "name": "AbstractMultiset",
+      "isArray": false
+    },
+    "name": "addAll",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "elementsToAdd"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "addAll(java.util.Collection elementsToAdd)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.AbstractMultiset",
+      "name": "AbstractMultiset",
+      "isArray": false
+    },
+    "name": "removeAll",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "elementsToRemove"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "removeAll(java.util.Collection elementsToRemove)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.AbstractMultiset",
+      "name": "AbstractMultiset",
+      "isArray": false
+    },
+    "name": "retainAll",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "elementsToRetain"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "retainAll(java.util.Collection elementsToRetain)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.AbstractMultiset",
+      "name": "AbstractMultiset",
+      "isArray": false
+    },
+    "name": "elementSet",
+    "returnType": {
+      "qualifiedName": "java.util.Set",
+      "name": "Set",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "elementSet()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.AbstractMultiset",
+      "name": "AbstractMultiset",
+      "isArray": false
+    },
+    "name": "entrySet",
+    "returnType": {
+      "qualifiedName": "java.util.Set",
+      "name": "Set",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "entrySet()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.AbstractMultiset",
+      "name": "AbstractMultiset",
+      "isArray": false
+    },
+    "name": "equals",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "object",
+        "nullable": true
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "equals(java.lang.Object object)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.AbstractMultiset",
+      "name": "AbstractMultiset",
+      "isArray": false
+    },
+    "name": "hashCode",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "hashCode()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.AbstractMultiset",
+      "name": "AbstractMultiset",
+      "isArray": false
+    },
+    "name": "toString",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "toString()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractCollection",
+      "name": "AbstractCollection",
+      "isArray": false
+    },
+    "name": "finishToArray",
+    "returnType": {
+      "qualifiedName": "T[]",
+      "name": "T[]",
+      "isArray": true
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "T[]",
+          "name": "T[]",
+          "isArray": true
+        },
+        "name": "arg0"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "arg1"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "finishToArray(T[] arg0,java.util.Iterator arg1)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractCollection",
+      "name": "AbstractCollection",
+      "isArray": false
+    },
+    "name": "hugeCapacity",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "hugeCapacity(int arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractCollection",
+      "name": "AbstractCollection",
+      "isArray": false
+    },
+    "name": "containsAll",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "containsAll(java.util.Collection arg0)"
+  }
+]

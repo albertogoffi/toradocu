@@ -1,0 +1,75 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.generate.EmptyGraphGenerator",
+      "name": "EmptyGraphGenerator",
+      "isArray": false
+    },
+    "name": "EmptyGraphGenerator",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "size"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if the specified size is negative.",
+        "condition": "args[0]<0"
+      }
+    ],
+    "signature": "EmptyGraphGenerator(int size)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.generate.EmptyGraphGenerator",
+      "name": "EmptyGraphGenerator",
+      "isArray": false
+    },
+    "name": "generateGraph",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "target"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.VertexFactory",
+          "name": "VertexFactory",
+          "isArray": false
+        },
+        "name": "vertexFactory"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Map",
+          "name": "Map",
+          "isArray": false
+        },
+        "name": "resultMap"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "generateGraph(org.jgrapht.Graph target,org.jgrapht.VertexFactory vertexFactory,java.util.Map resultMap)"
+  }
+]

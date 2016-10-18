@@ -1,0 +1,516 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
+      "name": "SimpsonIntegrator",
+      "isArray": false
+    },
+    "name": "SimpsonIntegrator",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "relativeAccuracy"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "absoluteAccuracy"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "minimalIterationCount"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maximalIterationCount"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
+        "comment": "if minimal number of iterations is not strictly positive",
+        "condition": "args[2]<=0"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException",
+          "name": "NumberIsTooSmallException",
+          "isArray": false
+        },
+        "comment": "if maximal number of iterations is lesser than or equal to the minimal number of iterations",
+        "condition": "args[3]<=args[2]"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException",
+          "name": "NumberIsTooLargeException",
+          "isArray": false
+        },
+        "comment": "if maximal number of iterations is greater than SIMPSON_MAX_ITERATIONS_COUNT",
+        "condition": "args[3]>target.SIMPSON_MAX_ITERATIONS_COUNT"
+      }
+    ],
+    "signature": "SimpsonIntegrator(double relativeAccuracy,double absoluteAccuracy,int minimalIterationCount,int maximalIterationCount)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
+      "name": "SimpsonIntegrator",
+      "isArray": false
+    },
+    "name": "SimpsonIntegrator",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "minimalIterationCount"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maximalIterationCount"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
+        "comment": "if minimal number of iterations is not strictly positive",
+        "condition": "args[0]<=0"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException",
+          "name": "NumberIsTooSmallException",
+          "isArray": false
+        },
+        "comment": "if maximal number of iterations is lesser than or equal to the minimal number of iterations",
+        "condition": "args[1]<=args[0]"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException",
+          "name": "NumberIsTooLargeException",
+          "isArray": false
+        },
+        "comment": "if maximal number of iterations is greater than SIMPSON_MAX_ITERATIONS_COUNT",
+        "condition": "args[1]>target.SIMPSON_MAX_ITERATIONS_COUNT"
+      }
+    ],
+    "signature": "SimpsonIntegrator(int minimalIterationCount,int maximalIterationCount)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
+      "name": "SimpsonIntegrator",
+      "isArray": false
+    },
+    "name": "SimpsonIntegrator",
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "SimpsonIntegrator()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
+      "name": "SimpsonIntegrator",
+      "isArray": false
+    },
+    "name": "doIntegrate",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "doIntegrate()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator",
+      "name": "BaseAbstractUnivariateIntegrator",
+      "isArray": false
+    },
+    "name": "getRelativeAccuracy",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getRelativeAccuracy()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator",
+      "name": "BaseAbstractUnivariateIntegrator",
+      "isArray": false
+    },
+    "name": "getAbsoluteAccuracy",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getAbsoluteAccuracy()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator",
+      "name": "BaseAbstractUnivariateIntegrator",
+      "isArray": false
+    },
+    "name": "getMinimalIterationCount",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getMinimalIterationCount()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator",
+      "name": "BaseAbstractUnivariateIntegrator",
+      "isArray": false
+    },
+    "name": "getMaximalIterationCount",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getMaximalIterationCount()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator",
+      "name": "BaseAbstractUnivariateIntegrator",
+      "isArray": false
+    },
+    "name": "getEvaluations",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getEvaluations()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator",
+      "name": "BaseAbstractUnivariateIntegrator",
+      "isArray": false
+    },
+    "name": "getIterations",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getIterations()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator",
+      "name": "BaseAbstractUnivariateIntegrator",
+      "isArray": false
+    },
+    "name": "incrementCount",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MaxCountExceededException",
+          "name": "MaxCountExceededException",
+          "isArray": false
+        },
+        "comment": "if the number of iterations exceeds the allowed maximum number",
+        "condition": "target.getIterations() + 1 > target.getMaximalIterationCount()"
+      }
+    ],
+    "signature": "incrementCount()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator",
+      "name": "BaseAbstractUnivariateIntegrator",
+      "isArray": false
+    },
+    "name": "getMin",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getMin()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator",
+      "name": "BaseAbstractUnivariateIntegrator",
+      "isArray": false
+    },
+    "name": "getMax",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getMax()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator",
+      "name": "BaseAbstractUnivariateIntegrator",
+      "isArray": false
+    },
+    "name": "computeObjectiveValue",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "point"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.TooManyEvaluationsException",
+          "name": "TooManyEvaluationsException",
+          "isArray": false
+        },
+        "comment": "if the maximal number of function evaluations is exceeded.",
+        "condition": ""
+      }
+    ],
+    "signature": "computeObjectiveValue(double point)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator",
+      "name": "BaseAbstractUnivariateIntegrator",
+      "isArray": false
+    },
+    "name": "setup",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxEval"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+          "name": "UnivariateFunction",
+          "isArray": false
+        },
+        "name": "f"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "lower"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "upper"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "comment": "if f is null.",
+        "condition": "args[1]==null"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException",
+          "name": "MathIllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if min >= max.",
+        "condition": "args[2]>=args[3]"
+      }
+    ],
+    "signature": "setup(int maxEval,org.apache.commons.math3.analysis.UnivariateFunction f,double lower,double upper)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator",
+      "name": "BaseAbstractUnivariateIntegrator",
+      "isArray": false
+    },
+    "name": "integrate",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxEval"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+          "name": "UnivariateFunction",
+          "isArray": false
+        },
+        "name": "f"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "lower"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "upper"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.TooManyEvaluationsException",
+          "name": "TooManyEvaluationsException",
+          "isArray": false
+        },
+        "comment": "if the maximum number of function evaluations is exceeded",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MaxCountExceededException",
+          "name": "MaxCountExceededException",
+          "isArray": false
+        },
+        "comment": "if the maximum iteration count is exceeded or the integrator detects convergence problems otherwise",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException",
+          "name": "MathIllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if min > max or the endpoints do not satisfy the requirements specified by the integrator",
+        "condition": "args[3]>args[2]"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "comment": "if f is null.",
+        "condition": "args[1]==null"
+      }
+    ],
+    "signature": "integrate(int maxEval,org.apache.commons.math3.analysis.UnivariateFunction f,double lower,double upper)"
+  }
+]
