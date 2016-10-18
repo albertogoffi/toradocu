@@ -89,13 +89,13 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
   public void binaryMutationTest() throws Exception {
     TestCaseStats stats = test("org.apache.commons.math3.genetics.BinaryMutation");
     assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.5));
+    assertThat(RECALL_MESSAGE, stats.getRecall(), is(1.0));
   }
 
   @Test
   public void cycleCrossoverTest() throws Exception {
     TestCaseStats stats = test("org.apache.commons.math3.genetics.CycleCrossover");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
+    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(0.5));
     assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.25));
   }
 }

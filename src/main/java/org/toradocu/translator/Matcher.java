@@ -292,6 +292,7 @@ public class Matcher {
             .matcher(predicate);
     java.util.regex.Matcher numberRelation =
         Pattern.compile("(is |are )?(<=|>=|<|>|!=|==|=)? ?(-?[0-9]+)").matcher(predicate);
+    java.util.regex.Matcher instanceOf = Pattern.compile("(instanceof) (.*)").matcher(predicate);
     if (isWord.find()) {
       // Get the last group in the regular expression.
       String word = isWord.group(isWord.groupCount());
@@ -333,6 +334,10 @@ public class Matcher {
       }
     } else if (predicate.equals("been set")) {
       return "!=null";
+    } else if (instanceOf.find()) {
+      //If the comparator is instance of
+      String textoreturn = " instanceof " + instanceOf.group(2);
+      return textoreturn;
     } else {
       return null;
     }
