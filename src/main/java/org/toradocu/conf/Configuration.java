@@ -1,5 +1,6 @@
 package org.toradocu.conf;
 
+import com.beust.jcommander.DynamicParameter;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.converters.FileConverter;
 import com.beust.jcommander.converters.PathConverter;
@@ -7,9 +8,10 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This class holds the configuration options (particularly command-line options) for Toradocu.
@@ -67,6 +69,9 @@ public class Configuration {
     hidden = true
   )
   private File javadocExtractorOutput;
+
+  @DynamicParameter(names = "-J", description = "Javadoc options")
+  private Map<String, String> javadocOptionsMap = new HashMap<>();
 
   // Condition translator options
 
@@ -146,9 +151,12 @@ public class Configuration {
   private static final String ASPECT_TEMPLATE = "AspectTemplate.java";
 
   /** Command-line options passed to the Javadoc tool. */
-  private List<String> javadocOptions = new ArrayList<>();;
+  private List<String> javadocOptions = new ArrayList<>();
 
-  /** Temporary directory for Javadoc output or null if working directory is set for Javadoc output. */
+  /**
+   * Temporary directory for Javadoc output or null if a non-temporary directory
+   * (e.g. the working directory) is set for Javadoc output.
+   */
   private String javadocOutputDir;
 
   /**
@@ -166,24 +174,41 @@ public class Configuration {
     }
 
     // Initialize command-line options passed to Javadoc:
+    for (Map.Entry<String, String> javadocOption : javadocOptionsMap.entrySet()) {
+      javadocOptions.add(javadocOption.getKey());
+      if (!javadocOption.getValue().isEmpty()) {
+        javadocOptions.add(javadocOption.getValue());
+      }
+    }
+
     // Suppress Javadoc console output.
-    javadocOptions.add("-quiet");
+    if (!javadocOptions.contains("-quiet")) {
+      javadocOptions.add("-quiet");
+    }
     // Process classes with protected and private modifiers.
-    javadocOptions.add("-private");
+    if (!javadocOptions.contains("-private")) {
+      javadocOptions.add("-private");
+    }
     // Set the Javadoc source files directory.
-    javadocOptions.add("-sourcepath");
-    javadocOptions.add(sourceDir.toString());
+    if (!javadocOptions.contains("-sourcepath")) {
+      javadocOptions.add("-sourcepath");
+      javadocOptions.add(sourceDir.toString());
+    }
     // Attempt to use a temporary Javadoc output directory.
-    try {
-      javadocOutputDir = Files.createTempDirectory(null).toString();
-      javadocOptions.add("-d");
-      javadocOptions.add(javadocOutputDir);
-    } catch (IOException e) {
-      // Could not create temporary directory so output to working directory instead.
+    if (!javadocOptions.contains("-d")) {
+      try {
+        javadocOutputDir = Files.createTempDirectory(null).toString();
+        javadocOptions.add("-d");
+        javadocOptions.add(javadocOutputDir);
+      } catch (IOException e) {
+        // Could not create temporary directory so output to working directory instead.
+      }
     }
     // Use UTF-8 as default encoding.
-    javadocOptions.add("-encoding");
-    javadocOptions.add("UTF-8");
+    if (!javadocOptions.contains("-encoding")) {
+      javadocOptions.add("-encoding");
+      javadocOptions.add("UTF-8");
+    }
     // Specify the target package on which to run Javadoc.
     javadocOptions.add(getTargetPackage());
   }
@@ -328,10 +353,10 @@ public class Configuration {
   }
 
   /**
-   * Returns a temporary directory for Javadoc output or null if the working directory is set
+   * Returns a temporary directory for Javadoc output or null if a non-temporary directory is set
    * for Javadoc output.
    *
-   * @return a temporary directory for Javadoc output or null if the working directory is set
+   * @return a temporary directory for Javadoc output or null if a non-temporary directory is set
    * for Javadoc output
    */
   public String getJavadocOutputDir() {
