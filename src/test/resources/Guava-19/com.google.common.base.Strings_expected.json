@@ -1,0 +1,325 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Strings",
+      "name": "Strings",
+      "isArray": false
+    },
+    "name": "Strings",
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "Strings()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Strings",
+      "name": "Strings",
+      "isArray": false
+    },
+    "name": "nullToEmpty",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "string",
+        "nullable": true
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "nullToEmpty(java.lang.String string)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Strings",
+      "name": "Strings",
+      "isArray": false
+    },
+    "name": "emptyToNull",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "string",
+        "nullable": true
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "emptyToNull(java.lang.String string)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Strings",
+      "name": "Strings",
+      "isArray": false
+    },
+    "name": "isNullOrEmpty",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "string",
+        "nullable": true
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "isNullOrEmpty(java.lang.String string)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Strings",
+      "name": "Strings",
+      "isArray": false
+    },
+    "name": "padStart",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "string"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "minLength"
+      },
+      {
+        "type": {
+          "qualifiedName": "char",
+          "name": "char",
+          "isArray": false
+        },
+        "name": "padChar"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "padStart(java.lang.String string,int minLength,char padChar)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Strings",
+      "name": "Strings",
+      "isArray": false
+    },
+    "name": "padEnd",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "string"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "minLength"
+      },
+      {
+        "type": {
+          "qualifiedName": "char",
+          "name": "char",
+          "isArray": false
+        },
+        "name": "padChar"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "padEnd(java.lang.String string,int minLength,char padChar)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Strings",
+      "name": "Strings",
+      "isArray": false
+    },
+    "name": "repeat",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "string"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "count"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if count is negative",
+        "condition": "args[1]<0"
+      }
+    ],
+    "signature": "repeat(java.lang.String string,int count)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Strings",
+      "name": "Strings",
+      "isArray": false
+    },
+    "name": "commonPrefix",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.CharSequence",
+          "name": "CharSequence",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.CharSequence",
+          "name": "CharSequence",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "commonPrefix(java.lang.CharSequence a,java.lang.CharSequence b)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Strings",
+      "name": "Strings",
+      "isArray": false
+    },
+    "name": "commonSuffix",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.CharSequence",
+          "name": "CharSequence",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.CharSequence",
+          "name": "CharSequence",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "commonSuffix(java.lang.CharSequence a,java.lang.CharSequence b)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Strings",
+      "name": "Strings",
+      "isArray": false
+    },
+    "name": "validSurrogatePairAt",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.CharSequence",
+          "name": "CharSequence",
+          "isArray": false
+        },
+        "name": "string"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "validSurrogatePairAt(java.lang.CharSequence string,int index)"
+  }
+]

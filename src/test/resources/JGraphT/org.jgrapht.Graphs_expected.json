@@ -1,0 +1,588 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "name": "addEdge",
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "g"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "sourceVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "targetVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "weight"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "addEdge(org.jgrapht.Graph g,java.lang.Object sourceVertex,java.lang.Object targetVertex,double weight)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "name": "addEdgeWithVertices",
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "g"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "sourceVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "targetVertex"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "addEdgeWithVertices(org.jgrapht.Graph g,java.lang.Object sourceVertex,java.lang.Object targetVertex)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "name": "addEdgeWithVertices",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "targetGraph"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "sourceGraph"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "edge"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "addEdgeWithVertices(org.jgrapht.Graph targetGraph,org.jgrapht.Graph sourceGraph,java.lang.Object edge)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "name": "addEdgeWithVertices",
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "g"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "sourceVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "targetVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "weight"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "addEdgeWithVertices(org.jgrapht.Graph g,java.lang.Object sourceVertex,java.lang.Object targetVertex,double weight)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "name": "addGraph",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "destination"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "source"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "addGraph(org.jgrapht.Graph destination,org.jgrapht.Graph source)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "name": "addGraphReversed",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.DirectedGraph",
+          "name": "DirectedGraph",
+          "isArray": false
+        },
+        "name": "destination"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.DirectedGraph",
+          "name": "DirectedGraph",
+          "isArray": false
+        },
+        "name": "source"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "addGraphReversed(org.jgrapht.DirectedGraph destination,org.jgrapht.DirectedGraph source)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "name": "addAllEdges",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "destination"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "source"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "edges"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "addAllEdges(org.jgrapht.Graph destination,org.jgrapht.Graph source,java.util.Collection edges)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "name": "addAllVertices",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "destination"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "vertices"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the specified vertices contains one or more null vertices, or if the specified vertex collection is null.",
+        "condition": "args[1].contains(null) || args[1]==null"
+      }
+    ],
+    "signature": "addAllVertices(org.jgrapht.Graph destination,java.util.Collection vertices)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "name": "neighborListOf",
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "g"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "vertex"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "neighborListOf(org.jgrapht.Graph g,java.lang.Object vertex)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "name": "predecessorListOf",
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.DirectedGraph",
+          "name": "DirectedGraph",
+          "isArray": false
+        },
+        "name": "g"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "vertex"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "predecessorListOf(org.jgrapht.DirectedGraph g,java.lang.Object vertex)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "name": "successorListOf",
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.DirectedGraph",
+          "name": "DirectedGraph",
+          "isArray": false
+        },
+        "name": "g"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "vertex"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "successorListOf(org.jgrapht.DirectedGraph g,java.lang.Object vertex)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "name": "undirectedGraph",
+    "returnType": {
+      "qualifiedName": "org.jgrapht.UndirectedGraph",
+      "name": "UndirectedGraph",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "g"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if the graph is neither DirectedGraph nor UndirectedGraph.",
+        "condition": "!(args[0] instanceof org.jgrapht.DirectedGraph) && !(args[0] instanceof org.jgrapht.UndirectedGraph)"
+      }
+    ],
+    "signature": "undirectedGraph(org.jgrapht.Graph g)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "name": "testIncidence",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "g"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "e"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "testIncidence(org.jgrapht.Graph g,java.lang.Object e,java.lang.Object v)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "name": "getOppositeVertex",
+    "returnType": {
+      "qualifiedName": "V",
+      "name": "V",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "g"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "e"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getOppositeVertex(org.jgrapht.Graph g,java.lang.Object e,java.lang.Object v)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "name": "getPathVertexList",
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.GraphPath",
+          "name": "GraphPath",
+          "isArray": false
+        },
+        "name": "path"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getPathVertexList(org.jgrapht.GraphPath path)"
+  }
+]

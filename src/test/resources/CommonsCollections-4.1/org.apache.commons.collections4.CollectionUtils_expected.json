@@ -1,0 +1,2618 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "CollectionUtils",
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "CollectionUtils()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "emptyCollection",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "emptyCollection()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "emptyIfNull",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "collection"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "emptyIfNull(java.util.Collection collection)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "union",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "union(java.lang.Iterable a,java.lang.Iterable b)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "intersection",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "intersection(java.lang.Iterable a,java.lang.Iterable b)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "disjunction",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "disjunction(java.lang.Iterable a,java.lang.Iterable b)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "subtract",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "subtract(java.lang.Iterable a,java.lang.Iterable b)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "subtract",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "p"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "subtract(java.lang.Iterable a,java.lang.Iterable b,org.apache.commons.collections4.Predicate p)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "containsAll",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "coll1"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "coll2"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "containsAll(java.util.Collection coll1,java.util.Collection coll2)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "containsAny",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "coll1"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "coll2"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "containsAny(java.util.Collection coll1,java.util.Collection coll2)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "getCardinalityMap",
+    "returnType": {
+      "qualifiedName": "java.util.Map",
+      "name": "Map",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "coll"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getCardinalityMap(java.lang.Iterable coll)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "isSubCollection",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "isSubCollection(java.util.Collection a,java.util.Collection b)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "isProperSubCollection",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "isProperSubCollection(java.util.Collection a,java.util.Collection b)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "isEqualCollection",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "isEqualCollection(java.util.Collection a,java.util.Collection b)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "isEqualCollection",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Equator",
+          "name": "Equator",
+          "isArray": false
+        },
+        "name": "equator"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the equator is null",
+        "condition": "args[2]==null"
+      }
+    ],
+    "signature": "isEqualCollection(java.util.Collection a,java.util.Collection b,org.apache.commons.collections4.Equator equator)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "cardinality",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "O",
+          "name": "O",
+          "isArray": false
+        },
+        "name": "obj"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "coll"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if coll is null",
+        "condition": "args[1]==null"
+      }
+    ],
+    "signature": "cardinality(O obj,java.lang.Iterable coll)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "find",
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "collection"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "predicate"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "find(java.lang.Iterable collection,org.apache.commons.collections4.Predicate predicate)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "forAllDo",
+    "returnType": {
+      "qualifiedName": "C",
+      "name": "C",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "collection"
+      },
+      {
+        "type": {
+          "qualifiedName": "C",
+          "name": "C",
+          "isArray": false
+        },
+        "name": "closure"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "forAllDo(java.lang.Iterable collection,C closure)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "forAllDo",
+    "returnType": {
+      "qualifiedName": "C",
+      "name": "C",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "iterator"
+      },
+      {
+        "type": {
+          "qualifiedName": "C",
+          "name": "C",
+          "isArray": false
+        },
+        "name": "closure"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "forAllDo(java.util.Iterator iterator,C closure)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "forAllButLastDo",
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "collection"
+      },
+      {
+        "type": {
+          "qualifiedName": "C",
+          "name": "C",
+          "isArray": false
+        },
+        "name": "closure"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "forAllButLastDo(java.lang.Iterable collection,C closure)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "forAllButLastDo",
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "iterator"
+      },
+      {
+        "type": {
+          "qualifiedName": "C",
+          "name": "C",
+          "isArray": false
+        },
+        "name": "closure"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "forAllButLastDo(java.util.Iterator iterator,C closure)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "filter",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "collection"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "predicate"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "filter(java.lang.Iterable collection,org.apache.commons.collections4.Predicate predicate)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "filterInverse",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "collection"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "predicate"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "filterInverse(java.lang.Iterable collection,org.apache.commons.collections4.Predicate predicate)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "transform",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "collection"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Transformer",
+          "name": "Transformer",
+          "isArray": false
+        },
+        "name": "transformer"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "transform(java.util.Collection collection,org.apache.commons.collections4.Transformer transformer)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "countMatches",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "input"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "predicate"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "countMatches(java.lang.Iterable input,org.apache.commons.collections4.Predicate predicate)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "exists",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "input"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "predicate"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "exists(java.lang.Iterable input,org.apache.commons.collections4.Predicate predicate)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "matchesAll",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "input"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "predicate"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "matchesAll(java.lang.Iterable input,org.apache.commons.collections4.Predicate predicate)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "select",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "inputCollection"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "predicate"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the input collection is null",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "select(java.lang.Iterable inputCollection,org.apache.commons.collections4.Predicate predicate)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "select",
+    "returnType": {
+      "qualifiedName": "R",
+      "name": "R",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "inputCollection"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "predicate"
+      },
+      {
+        "type": {
+          "qualifiedName": "R",
+          "name": "R",
+          "isArray": false
+        },
+        "name": "outputCollection"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "select(java.lang.Iterable inputCollection,org.apache.commons.collections4.Predicate predicate,R outputCollection)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "select",
+    "returnType": {
+      "qualifiedName": "R",
+      "name": "R",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "inputCollection"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "predicate"
+      },
+      {
+        "type": {
+          "qualifiedName": "R",
+          "name": "R",
+          "isArray": false
+        },
+        "name": "outputCollection"
+      },
+      {
+        "type": {
+          "qualifiedName": "R",
+          "name": "R",
+          "isArray": false
+        },
+        "name": "rejectedCollection"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "select(java.lang.Iterable inputCollection,org.apache.commons.collections4.Predicate predicate,R outputCollection,R rejectedCollection)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "selectRejected",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "inputCollection"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "predicate"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the input collection is null",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "selectRejected(java.lang.Iterable inputCollection,org.apache.commons.collections4.Predicate predicate)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "selectRejected",
+    "returnType": {
+      "qualifiedName": "R",
+      "name": "R",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "inputCollection"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "predicate"
+      },
+      {
+        "type": {
+          "qualifiedName": "R",
+          "name": "R",
+          "isArray": false
+        },
+        "name": "outputCollection"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "selectRejected(java.lang.Iterable inputCollection,org.apache.commons.collections4.Predicate predicate,R outputCollection)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "collect",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "inputCollection"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Transformer",
+          "name": "Transformer",
+          "isArray": false
+        },
+        "name": "transformer"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the input collection is null",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "collect(java.lang.Iterable inputCollection,org.apache.commons.collections4.Transformer transformer)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "collect",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "inputIterator"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Transformer",
+          "name": "Transformer",
+          "isArray": false
+        },
+        "name": "transformer"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "collect(java.util.Iterator inputIterator,org.apache.commons.collections4.Transformer transformer)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "collect",
+    "returnType": {
+      "qualifiedName": "R",
+      "name": "R",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "inputCollection"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Transformer",
+          "name": "Transformer",
+          "isArray": false
+        },
+        "name": "transformer"
+      },
+      {
+        "type": {
+          "qualifiedName": "R",
+          "name": "R",
+          "isArray": false
+        },
+        "name": "outputCollection"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the outputCollection is null and both, inputCollection and transformer are not null",
+        "condition": "(args[0]==null) == false && (args[1]==null) == false || args[2]==null"
+      }
+    ],
+    "signature": "collect(java.lang.Iterable inputCollection,org.apache.commons.collections4.Transformer transformer,R outputCollection)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "collect",
+    "returnType": {
+      "qualifiedName": "R",
+      "name": "R",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "inputIterator"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Transformer",
+          "name": "Transformer",
+          "isArray": false
+        },
+        "name": "transformer"
+      },
+      {
+        "type": {
+          "qualifiedName": "R",
+          "name": "R",
+          "isArray": false
+        },
+        "name": "outputCollection"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the output collection is null and both, inputIterator and transformer are not null",
+        "condition": "(args[0]==null) == false && (args[1]==null) == false || args[2]==null"
+      }
+    ],
+    "signature": "collect(java.util.Iterator inputIterator,org.apache.commons.collections4.Transformer transformer,R outputCollection)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "addIgnoreNull",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "collection"
+      },
+      {
+        "type": {
+          "qualifiedName": "T",
+          "name": "T",
+          "isArray": false
+        },
+        "name": "object"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the collection is null",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "addIgnoreNull(java.util.Collection collection,T object)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "addAll",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "collection"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "iterable"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the collection or iterator is null",
+        "condition": "args[0]==null || args[1]==null"
+      }
+    ],
+    "signature": "addAll(java.util.Collection collection,java.lang.Iterable iterable)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "addAll",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "collection"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "iterator"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the collection or iterator is null",
+        "condition": "args[0]==null || args[1]==null"
+      }
+    ],
+    "signature": "addAll(java.util.Collection collection,java.util.Iterator iterator)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "addAll",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "collection"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Enumeration",
+          "name": "Enumeration",
+          "isArray": false
+        },
+        "name": "enumeration"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the collection or enumeration is null",
+        "condition": "args[0]==null || args[1]==null"
+      }
+    ],
+    "signature": "addAll(java.util.Collection collection,java.util.Enumeration enumeration)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "addAll",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "collection"
+      },
+      {
+        "type": {
+          "qualifiedName": "C[]",
+          "name": "C[]",
+          "isArray": true
+        },
+        "name": "elements"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the collection or array is null",
+        "condition": "args[0]==null || args[1]==null"
+      }
+    ],
+    "signature": "addAll(java.util.Collection collection,C[] elements)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "get",
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "iterator"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IndexOutOfBoundsException",
+          "name": "IndexOutOfBoundsException",
+          "isArray": false
+        },
+        "comment": "if the index is invalid",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if the object type is invalid",
+        "condition": ""
+      }
+    ],
+    "signature": "get(java.util.Iterator iterator,int index)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "checkIndexBounds",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IndexOutOfBoundsException",
+          "name": "IndexOutOfBoundsException",
+          "isArray": false
+        },
+        "comment": "if the index is negative.",
+        "condition": "args[0]<0"
+      }
+    ],
+    "signature": "checkIndexBounds(int index)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "get",
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "iterable"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IndexOutOfBoundsException",
+          "name": "IndexOutOfBoundsException",
+          "isArray": false
+        },
+        "comment": "if the index is invalid",
+        "condition": ""
+      }
+    ],
+    "signature": "get(java.lang.Iterable iterable,int index)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "get",
+    "returnType": {
+      "qualifiedName": "java.lang.Object",
+      "name": "Object",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "object"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IndexOutOfBoundsException",
+          "name": "IndexOutOfBoundsException",
+          "isArray": false
+        },
+        "comment": "if the index is invalid",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if the object type is invalid",
+        "condition": ""
+      }
+    ],
+    "signature": "get(java.lang.Object object,int index)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "get",
+    "returnType": {
+      "qualifiedName": "java.util.Map.Entry",
+      "name": "Entry",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Map",
+          "name": "Map",
+          "isArray": false
+        },
+        "name": "map"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IndexOutOfBoundsException",
+          "name": "IndexOutOfBoundsException",
+          "isArray": false
+        },
+        "comment": "if the index is invalid",
+        "condition": "map.entrySet().size()<args[1] || args[1]<0"
+      }
+    ],
+    "signature": "get(java.util.Map map,int index)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "size",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "object"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "thrown if object is not recognised",
+        "condition": ""
+      }
+    ],
+    "signature": "size(java.lang.Object object)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "sizeIsEmpty",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "object"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "thrown if object is not recognised",
+        "condition": ""
+      }
+    ],
+    "signature": "sizeIsEmpty(java.lang.Object object)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "isEmpty",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "coll"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "isEmpty(java.util.Collection coll)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "isNotEmpty",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "coll"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "isNotEmpty(java.util.Collection coll)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "reverseArray",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object[]",
+          "name": "Object[]",
+          "isArray": true
+        },
+        "name": "array"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "reverseArray(java.lang.Object[] array)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "isFull",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "coll"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the collection is null",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "isFull(java.util.Collection coll)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "maxSize",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "coll"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the collection is null",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "maxSize(java.util.Collection coll)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "collate",
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if either collection is null",
+        "condition": "args[0]==null || args[1]==null"
+      }
+    ],
+    "signature": "collate(java.lang.Iterable a,java.lang.Iterable b)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "collate",
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "includeDuplicates"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if either collection is null",
+        "condition": "args[0]==null || args[1]==null"
+      }
+    ],
+    "signature": "collate(java.lang.Iterable a,java.lang.Iterable b,boolean includeDuplicates)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "collate",
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Comparator",
+          "name": "Comparator",
+          "isArray": false
+        },
+        "name": "c"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if either collection or the comparator is null",
+        "condition": "args[0]==null || args[1]==null || args[2]==null"
+      }
+    ],
+    "signature": "collate(java.lang.Iterable a,java.lang.Iterable b,java.util.Comparator c)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "collate",
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Comparator",
+          "name": "Comparator",
+          "isArray": false
+        },
+        "name": "c"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "includeDuplicates"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if either collection or the comparator is null",
+        "condition": "args[0]==null || args[1]==null || args[2]==null"
+      }
+    ],
+    "signature": "collate(java.lang.Iterable a,java.lang.Iterable b,java.util.Comparator c,boolean includeDuplicates)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "permutations",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "collection"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if collection is null",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "permutations(java.util.Collection collection)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "retainAll",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "collection"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "retain"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if either parameter is null",
+        "condition": "args[0]==null || args[1]==null"
+      }
+    ],
+    "signature": "retainAll(java.util.Collection collection,java.util.Collection retain)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "retainAll",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "collection"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "retain"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Equator",
+          "name": "Equator",
+          "isArray": false
+        },
+        "name": "equator"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if any of the parameters is null",
+        "condition": "args[0]==null || args[1]==null || args[2]==null"
+      }
+    ],
+    "signature": "retainAll(java.lang.Iterable collection,java.lang.Iterable retain,org.apache.commons.collections4.Equator equator)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "removeAll",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "collection"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "remove"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if either parameter is null",
+        "condition": "args[0]==null || args[1]==null"
+      }
+    ],
+    "signature": "removeAll(java.util.Collection collection,java.util.Collection remove)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "removeAll",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "collection"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "remove"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Equator",
+          "name": "Equator",
+          "isArray": false
+        },
+        "name": "equator"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if any of the parameters is null",
+        "condition": "args[0]==null || args[1]==null || args[2]==null"
+      }
+    ],
+    "signature": "removeAll(java.lang.Iterable collection,java.lang.Iterable remove,org.apache.commons.collections4.Equator equator)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "synchronizedCollection",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "collection"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the collection is null",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "synchronizedCollection(java.util.Collection collection)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "unmodifiableCollection",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "collection"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the collection is null",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "unmodifiableCollection(java.util.Collection collection)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "predicatedCollection",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "collection"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "predicate"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the Collection is null",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "predicatedCollection(java.util.Collection collection,org.apache.commons.collections4.Predicate predicate)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "transformingCollection",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "collection"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Transformer",
+          "name": "Transformer",
+          "isArray": false
+        },
+        "name": "transformer"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the Collection or Transformer is null",
+        "condition": "args[0]==null || args[1]==null"
+      }
+    ],
+    "signature": "transformingCollection(java.util.Collection collection,org.apache.commons.collections4.Transformer transformer)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.CollectionUtils",
+      "name": "CollectionUtils",
+      "isArray": false
+    },
+    "name": "extractSingleton",
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "collection"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if collection is null",
+        "condition": "args[0]==null"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if collection is empty or contains more than one element",
+        "condition": "args[0].isEmpty() || args[0].size()>1"
+      }
+    ],
+    "signature": "extractSingleton(java.util.Collection collection)"
+  }
+]
