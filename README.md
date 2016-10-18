@@ -69,12 +69,12 @@ for more information.
 This step-by-step tutorial illustrates how Toradocu can be used to discover faults in a
 software system under test.
 
-1. Move to the tutorial directory
+1\. Move to the tutorial directory
 ```bash
 cd tutorial
 ```
 
-2. Download of required libraries
+2\. Download the required libraries
 ```bash
 wget -O junit-4.12.jar http://search.maven.org/remotecontent\?filepath\=junit/junit/4.12/junit-4.12.jar
 wget -O hamcrest-core-1.3.jar http://search.maven.org/remotecontent?filepath=org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
@@ -83,19 +83,19 @@ wget -O aspectjweaver-1.8.9.jar http://central.maven.org/maven2/org/aspectj/aspe
 wget -O aspectjrt-1.8.9.jar http://central.maven.org/maven2/org/aspectj/aspectjrt/1.8.9/aspectjrt-1.8.9.jar
 ```
 
-3. Compile the source code of the system under test
+3\. Compile the source code of the system under test
 ```bash
 javac src/net/Connection.java
 ```
 
-4. Compile and execute the test suite
+4\. Compile and execute the test suite
 ```bash
 javac -cp junit-4.12.jar:src test/net/ConnectionTest.java
 java -cp junit-4.12.jar:hamcrest-core-1.3.jar:test:src org.junit.runner.JUnitCore net.ConnectionTest
 ```
 The test suite terminates without failures, printing `OK (1 test)`.
 
-5. Generate the aspects with Toradocu in the folder `aspects`
+5\. Generate the aspects with Toradocu in the folder `aspects`
 ```bash
 java -jar ../build/libs/toradocu-1.0-all.jar \
     --target-class net.Connection \
@@ -106,13 +106,13 @@ java -jar ../build/libs/toradocu-1.0-all.jar \
 ```
 Toradocu prints on the standard output the output of the condition translation phase.
 
-6. Compile the generated aspects and weave them into the test suite of the system under test
+6\. Compile the generated aspects and weave them into the test suite of the system under test
 ```bash
 javac -g -cp aspectjrt-1.8.9.jar:src:junit-4.12.jar aspects/Aspect_1.java
 java -cp aspectjtools-1.8.9.jar:aspectjweaver-1.8.9.jar:aspectjrt-1.8.9.jar:src org.aspectj.tools.ajc.Main -inpath aspects:test -outjar weaved_testsuite.jar -showWeaveInfo
 ```
 
-7. Run the test suite enriched with Toradocu's oracles
+7\. Run the test suite enriched with Toradocu's oracles
 ```bash
 java -cp junit-4.12.jar:hamcrest-core-1.3.jar:src:weaved_testsuite.jar:aspectjrt-1.8.9.jar org.junit.runner.JUnitCore net.ConnectionTest
 ```
