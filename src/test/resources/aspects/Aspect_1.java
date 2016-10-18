@@ -8,7 +8,7 @@ import org.aspectj.lang.annotation.Aspect;
 @Aspect
 public class Aspect_1 {
 
-    @Around("call(com.google.common.collect.ArrayListMultimap create(int, int)) && within(null)")
+    @Around("call(com.google.common.collect.ArrayListMultimap com.google.common.collect.ArrayListMultimap.create(int, int))")
     public Object advice(ProceedingJoinPoint jp) throws Throwable {
         boolean expectedExceptionsComplete = false;
         String output = "Triggered aspect: " + this.getClass().getName() + " (" + jp.getSourceLocation() + ")";
