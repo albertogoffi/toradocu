@@ -219,6 +219,11 @@ public class Configuration {
    * @return the package in which the target class is contained
    */
   private String getTargetPackage() {
+    // Note that this implementation is currently incorrect.
+    // It does not correctly separate the package and class part for inner classes.
+    // One heuristic to fix this would be to separate package and class parts based
+    // on capitalization. This would not work in every case but would handle the
+    // majority of inner classes.
     int packageStringEnd = targetClass.lastIndexOf(".");
     if (packageStringEnd == -1) {
       return "";
