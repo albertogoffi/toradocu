@@ -43,32 +43,35 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
    * Modifies the methods {@code advice} and {@code getExpectedExceptions} of the aspect template,
    * injecting the appropriate source code to get an aspect (oracle) for the method arg.
    *
-   * @param methdoDeclaration the method declaration of the method to visit
+   * @param methodDeclaration the method declaration of the method to visit
    * @param documentedMethod the {@code DocumentedMethod} for which to generate the aspect (oracle)
    * @return the {@code methodDeclaration} modified as and when needed
-   * @throws NullPointerException if {@code methdoDeclaration} or {@code documentedMethod} is null
+   * @throws NullPointerException if {@code methodDeclaration} or {@code documentedMethod} is null
    */
   @Override
-  public Node visit(MethodDeclaration methdoDeclaration, DocumentedMethod documentedMethod) {
-    Checks.nonNullParameter(methdoDeclaration, "methdoDeclaration");
+  public Node visit(MethodDeclaration methodDeclaration, DocumentedMethod documentedMethod) {
+    Checks.nonNullParameter(methodDeclaration, "methodDeclaration");
     Checks.nonNullParameter(documentedMethod, "documentedMethod");
 
-    if (methdoDeclaration.getName().equals("advice")) {
+    if (methodDeclaration.getName().equals("advice")) {
       String pointcut = "";
 
       if (documentedMethod.isConstructor()) {
         pointcut = "execution(" + getPointcut(documentedMethod) + ")";
       } else {
         pointcut = "call(" + getPointcut(documentedMethod) + ")";
-        pointcut += " && within(" + conf.getTestClass() + ")";
+        String testClassName = conf.getTestClass();
+        if (testClassName != null) {
+          pointcut += " && within(" + testClassName + ")";
+        }
       }
 
       AnnotationExpr annotation =
           new SingleMemberAnnotationExpr(new NameExpr("Around"), new StringLiteralExpr(pointcut));
-      List<AnnotationExpr> annotations = methdoDeclaration.getAnnotations();
+      List<AnnotationExpr> annotations = methodDeclaration.getAnnotations();
       annotations.add(annotation);
-      methdoDeclaration.setAnnotations(annotations);
-    } else if (methdoDeclaration.getName().equals("getExpectedExceptions")) {
+      methodDeclaration.setAnnotations(annotations);
+    } else if (methodDeclaration.getName().equals("getExpectedExceptions")) {
       for (ThrowsTag tag : documentedMethod.throwsTags()) {
         String condition = tag.getCondition().orElse("");
         if (condition.isEmpty()) {
@@ -112,7 +115,7 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
           nullCheckTryCatch.setTryBlock(JavaParser.parseBlock("{" + ifStmt.toString() + "}"));
           nullCheckTryCatch.setCatchs(catchClauses);
 
-          ASTHelper.addStmt(methdoDeclaration.getBody(), nullCheckTryCatch);
+          ASTHelper.addStmt(methodDeclaration.getBody(), nullCheckTryCatch);
         } catch (ParseException e) {
           log.error("Parsing error during the aspect creation.", e);
           e.printStackTrace();
@@ -121,13 +124,13 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
 
       try {
         ASTHelper.addStmt(
-            methdoDeclaration.getBody(), JavaParser.parseStatement("return expectedExceptions;"));
+            methodDeclaration.getBody(), JavaParser.parseStatement("return expectedExceptions;"));
       } catch (ParseException e) {
         log.error("Parsing error during the aspect creation.", e);
         e.printStackTrace();
       }
     }
-    return methdoDeclaration;
+    return methodDeclaration;
   }
 
   /**
@@ -142,10 +145,16 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
   private String getPointcut(DocumentedMethod method) {
     StringBuilder pointcut = new StringBuilder();
 
-    if (!method.isConstructor()) { // Regular methods
-      pointcut.append(method.getReturnType() + " " + method.getName() + "(");
-    } else { // Constructors
+    if (method.isConstructor()) { // Constructors
       pointcut.append(method.getContainingClass() + ".new(");
+    } else { // Regular methods
+      pointcut.append(
+          method.getReturnType()
+              + " "
+              + method.getContainingClass()
+              + "."
+              + method.getName()
+              + "(");
     }
 
     Iterator<Parameter> parametersIterator = method.getParameters().iterator();
