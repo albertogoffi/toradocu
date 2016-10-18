@@ -7,8 +7,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
@@ -44,12 +42,7 @@ public class OracleGenerator {
     }
 
     String aspectDir = Toradocu.configuration.getAspectsOutputDir();
-    try {
-      Files.createDirectory(Paths.get(aspectDir));
-    } catch (IOException e) {
-      log.error("Error while creating" + aspectDir + ".", e);
-      System.exit(1);
-    }
+    new File(aspectDir).mkdir();
 
     List<String> createdAspectNames = new ArrayList<>();
     int aspectNumber = 1;

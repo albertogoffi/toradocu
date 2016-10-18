@@ -131,6 +131,7 @@ public class ConditionTranslator {
       for (String possibleVerb : possibleVerbs) {
         if (placeholderText.contains(possibleVerb + PLACEHOLDER_PREFIX + i)) {
           containsVerb = true;
+          break;
         }
       }
       if (!containsVerb) {
