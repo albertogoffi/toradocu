@@ -93,11 +93,19 @@ task downloadBinaries(type: Download) {
     'http://repo1.maven.org/maven2/org/apache/commons/commons-collections4/4.1/commons-collections4-4.1.jar',
     'http://repo1.maven.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar',
     'http://repo1.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0.jar',
-    'http://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2.jar'
+    'http://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2.jar',
+    'https://github.com/mernst/plume-lib/releases/download/v1.1.0/plume-lib-1.1.0.tar.gz'
   ])
   dest 'src/test/resources/bin'
   onlyIfNewer true
   overwrite false
+}
+
+/* Extracts binaries that were not already downloaded directly. */
+task extractBinaries(type: Exec, dependsOn: 'downloadBinaries') {
+  description "Extract .jar files from downloaded files"
+  workingDir 'src/test/resources/bin'
+  commandLine "tar", "xzf", "plume-lib-1.1.0.tar.gz", "--strip-components=2", "plume-lib-1.1.0/java/plume.jar"
 }
 
 /* Downloads sources of the systems used to measure Toradocu's precision and recall. */
@@ -106,13 +114,16 @@ task downloadSources(type: Download) {
     'https://www.apache.org/dist/commons/collections/source/commons-collections4-4.1-src.zip',
     'https://www.apache.org/dist/commons/math/source/commons-math3-3.6.1-src.zip',
     'http://repo1.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0-sources.jar',
-    'http://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2-sources.jar'
+    'http://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2-sources.jar',
+    'https://github.com/mernst/plume-lib/releases/download/v1.1.0/plume-lib-1.1.0.tar.gz'
   ])
   dest 'src/test/resources/src'
   onlyIfNewer true
   overwrite false
 }
 
+// TODO: this should not try to copy unconditionally.
+// If the directory already exists, then this need not do anything.
 /* Extracts source archives of the systems used to measure Toradocu's precision and recall. */
 task extractSources(dependsOn: downloadSources) << {
   file('src/test/resources/src').listFiles().findAll{it.name.endsWith('.zip')||it.name.endsWith('.jar')}.each{ file ->
@@ -127,6 +138,14 @@ task extractSources(dependsOn: downloadSources) << {
       into 'src/test/resources/src/' + fileBaseName
     }
   }
+
+  // This fails if the directory already exists.
+  file('src/test/resources/src').listFiles().findAll{it.name.endsWith('.tar')||it.name.endsWith('.tar.gz')}.each{ file ->
+    copy {
+      from tarTree(file)
+      into 'src/test/resources/src/'
+    }
+  }
 }
 
 task removeTestOutputDirs(type: Delete) {
@@ -134,7 +153,7 @@ task removeTestOutputDirs(type: Delete) {
 }
 
 clean.dependsOn removeTestOutputDirs
-test.dependsOn removeTestOutputDirs, extractSources, downloadBinaries
+test.dependsOn removeTestOutputDirs, extractSources, extractBinaries
 
 /* Make Emacs TAGS table */
 task tags(type: Exec) {
