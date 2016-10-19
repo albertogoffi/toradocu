@@ -113,12 +113,20 @@ task downloadSources(type: Download) {
   overwrite false
 }
 
-/* Extracts source archives of the systems used to measure Toradocu's precision and recall. */
-task extractSources(dependsOn: downloadSources) << {
-  file('src/test/resources/src').listFiles().findAll{it.name.endsWith('.zip')||it.name.endsWith('.jar')}.each{ file ->
-    // Extracting into an extra directory level is required only for guava
-    // which anti-socially does not do so; other packages extract into their own
-    // directory.  It would be better to special-case Guava
+/* Extracts source zip archives of the systems used to measure Toradocu's precision and recall. */
+task extractSourcesInZipArchives(dependsOn: downloadSources) << {
+  file('src/test/resources/src').listFiles().findAll { it.name.endsWith('.zip') }.each { file ->
+    copy {
+      from zipTree(file)
+      into 'src/test/resources/src/'
+    }
+  }
+}
+
+/* Extracts source jar archives of the systems used to measure Toradocu's precision and recall. */
+task extractSourcesInJarArchives(dependsOn: downloadSources) << {
+  // Extracting into an extra directory level is required for jar archives.
+  file('src/test/resources/src').listFiles().findAll { it.name.endsWith('.jar') }.each { file ->
     def fileName = "$file.name"
     def index = fileName.lastIndexOf('.')
     def fileBaseName = fileName.substring(0, index)
@@ -134,7 +142,8 @@ task removeTestOutputDirs(type: Delete) {
 }
 
 clean.dependsOn removeTestOutputDirs
-test.dependsOn removeTestOutputDirs, extractSources, downloadBinaries
+test.dependsOn removeTestOutputDirs, extractSourcesInZipArchives,
+        extractSourcesInJarArchives, downloadBinaries
 
 /* Make Emacs TAGS table */
 task tags(type: Exec) {
