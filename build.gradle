@@ -1,12 +1,12 @@
 // Temporary workaround, see https://github.com/michel-kraemer/gradle-download-task/issues/56
 buildscript {
-  repositories {
-    jcenter()
-  }
-  dependencies {
-    classpath 'de.undercouch:gradle-download-task:3.1.1'
-    classpath 'org.apache.httpcomponents:httpclient:4.5.2'
-  }
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'de.undercouch:gradle-download-task:3.1.1'
+        classpath 'org.apache.httpcomponents:httpclient:4.5.2'
+    }
 }
 
 plugins {
