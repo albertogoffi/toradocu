@@ -148,3 +148,10 @@ task installhook(type: Exec) {
 gradle.taskGraph.beforeTask { Task task ->
   installhook.execute()
 }
+
+shadowJar {
+  // default: "${baseName}-${version}-${classifier}.${extension}",
+  // where ${baseName} is the name of the directory into which the toradocu
+  // repository is cloned.
+  archiveName = "toradocu-${version}-${classifier}.${extension}"
+}
