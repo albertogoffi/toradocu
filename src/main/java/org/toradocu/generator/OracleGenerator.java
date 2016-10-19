@@ -88,7 +88,7 @@ public class OracleGenerator {
   }
 
   /**
-   * Creates the file aop.xml needed by Aspectj compiler for the instrumentation. The file aop.xml
+   * Creates the file aop.xml needed by AspectJ compiler for the instrumentation. The file aop.xml
    * lists all the aspects that must be woven into a target source code.
    *
    * @param folder where the file aop.xml is created
