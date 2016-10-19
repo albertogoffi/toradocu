@@ -1,0 +1,214 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.KShortestPaths",
+      "name": "KShortestPaths",
+      "isArray": false
+    },
+    "name": "KShortestPaths",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "graph"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "startVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "k"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "KShortestPaths(org.jgrapht.Graph graph,java.lang.Object startVertex,int k)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.KShortestPaths",
+      "name": "KShortestPaths",
+      "isArray": false
+    },
+    "name": "KShortestPaths",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "graph"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "startVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "nPaths"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "nMaxHops"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the specified graph or startVertex is null.",
+        "condition": "args[0]==null || args[1]==null"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if nPaths is negative or 0.",
+        "condition": "args[2]<0 || args[2]==0"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if nMaxHops is negative or 0.",
+        "condition": "args[3]<0 || args[3]==0"
+      }
+    ],
+    "signature": "KShortestPaths(org.jgrapht.Graph graph,java.lang.Object startVertex,int nPaths,int nMaxHops)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.KShortestPaths",
+      "name": "KShortestPaths",
+      "isArray": false
+    },
+    "name": "getPaths",
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "endVertex"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getPaths(java.lang.Object endVertex)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.KShortestPaths",
+      "name": "KShortestPaths",
+      "isArray": false
+    },
+    "name": "assertGetPaths",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "endVertex"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "assertGetPaths(java.lang.Object endVertex)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.KShortestPaths",
+      "name": "KShortestPaths",
+      "isArray": false
+    },
+    "name": "assertKShortestPathsFinder",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "graph"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "startVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "nPaths"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "nMaxHops"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "assertKShortestPathsFinder(org.jgrapht.Graph graph,java.lang.Object startVertex,int nPaths,int nMaxHops)"
+  }
+]

@@ -2,13 +2,9 @@
 /tmp/
 /aspects/
 
-# Toradocu's test resources (downloaded automatically on gradle test)
-/src/test/resources/*.zip
-/src/test/resources/*.jar
-/src/test/resources/*
-!/src/test/resources/Guava-19
-!/src/test/resources/CommonsCollections-4.1
-!/src/test/resources/JGraphT
+# Toradocu's test resources (test subjects' source code and binaries are downloaded automatically on gradle test)
+src/test/resources/src
+src/test/resources/bin
 
 # Eclipse IDE
 /bin/
@@ -17,15 +13,15 @@
 .project
 .classpath
 
+# IntelliJ IDEA
+/.idea/
+
 # Gradle
 .gradle
-build/
+/build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
-
-# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
 
 # Cache of project
 .gradletasknamecache
@@ -43,8 +39,16 @@ gradle-app.setting
 *.war
 *.ear
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# Virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
 # Mac OS X files
 .DS_Store
+
+# Emacs temp files
+*~
+
+# Python scripts to check style
+check-google-java-format.py
+fixup-google-java-format.py
+run-google-java-format.py

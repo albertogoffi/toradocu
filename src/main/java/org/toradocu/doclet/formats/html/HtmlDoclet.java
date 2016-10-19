@@ -201,7 +201,7 @@ public class HtmlDoclet extends AbstractDoclet {
                             .getClassBuilder(curr, prev, next, classtree);
                     classBuilder.build();
                 }
-                Toradocu.process(curr, configuration); // This is the only change we made to the standard doclet
+                Toradocu.process(curr, configuration); // This is the only change made to the standard doclet.
             } catch (IOException e) {
                 throw new DocletAbortException(e);
             } catch (DocletAbortException de) {

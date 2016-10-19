@@ -1,0 +1,138 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.MoreObjects",
+      "name": "MoreObjects",
+      "isArray": false
+    },
+    "name": "MoreObjects",
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "MoreObjects()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.MoreObjects",
+      "name": "MoreObjects",
+      "isArray": false
+    },
+    "name": "firstNonNull",
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "T",
+          "name": "T",
+          "isArray": false
+        },
+        "name": "first",
+        "nullable": true
+      },
+      {
+        "type": {
+          "qualifiedName": "T",
+          "name": "T",
+          "isArray": false
+        },
+        "name": "second",
+        "nullable": true
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if both first and second are null",
+        "condition": "args[0]==null && args[1]==null"
+      }
+    ],
+    "signature": "firstNonNull(T first,T second)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.MoreObjects",
+      "name": "MoreObjects",
+      "isArray": false
+    },
+    "name": "toStringHelper",
+    "returnType": {
+      "qualifiedName": "com.google.common.base.MoreObjects.ToStringHelper",
+      "name": "ToStringHelper",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "self"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "toStringHelper(java.lang.Object self)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.MoreObjects",
+      "name": "MoreObjects",
+      "isArray": false
+    },
+    "name": "toStringHelper",
+    "returnType": {
+      "qualifiedName": "com.google.common.base.MoreObjects.ToStringHelper",
+      "name": "ToStringHelper",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Class",
+          "name": "Class",
+          "isArray": false
+        },
+        "name": "clazz"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "toStringHelper(java.lang.Class clazz)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.MoreObjects",
+      "name": "MoreObjects",
+      "isArray": false
+    },
+    "name": "toStringHelper",
+    "returnType": {
+      "qualifiedName": "com.google.common.base.MoreObjects.ToStringHelper",
+      "name": "ToStringHelper",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "className"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "toStringHelper(java.lang.String className)"
+  }
+]
