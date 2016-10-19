@@ -20,8 +20,8 @@ public class TestSuiteStats {
    *
    * @param test the statistics for the test case
    */
-  public void addTest(TestCaseStats test) {
-    tests.add(test);
+  public void addStats(TestCaseStats stats) {
+    tests.add(stats);
   }
 
   /**
