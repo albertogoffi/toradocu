@@ -26,10 +26,10 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
     // Add name identifiers.
     addIdentifier("parameter");
     addIdentifier("argument");
+    addIdentifier("param");
     addIdentifier(name);
     addIdentifier(parameter.getType().getSimpleName() + " " + name);
     addIdentifier(name + " " + parameter.getType().getSimpleName());
-
     // Add type identifiers
     if (parameter.getType().isArray()) {
       addIdentifier("array");

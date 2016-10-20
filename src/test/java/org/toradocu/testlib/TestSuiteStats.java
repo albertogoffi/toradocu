@@ -18,10 +18,10 @@ public class TestSuiteStats {
    * Adds a test case to the list of test cases used to compute statistics for the test suite. Added
    * test cases are not incorporated into the test suite statistics until computeResults is called.
    *
-   * @param test the statistics for the test case
+   * @param stats the statistics for the test case
    */
-  public void addTest(TestCaseStats test) {
-    tests.add(test);
+  public void addStats(TestCaseStats stats) {
+    tests.add(stats);
   }
 
   /**

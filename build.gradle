@@ -1,15 +1,27 @@
+// Temporary workaround, see https://github.com/michel-kraemer/gradle-download-task/issues/56.
+buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath 'de.undercouch:gradle-download-task:3.1.1'
+    classpath 'org.apache.httpcomponents:httpclient:4.5.2'
+  }
+}
+
 plugins {
+  id 'java'
   id 'application'
-  id 'eclipse'
-  id 'jacoco'
-  id 'com.github.johnrengelman.shadow' version '1.2.3' // For creating the fat jar
+  id 'com.github.johnrengelman.shadow' version '1.2.3' // For creating the fat JAR
   id 'de.undercouch.download' version '3.1.1' // For the download tasks
+  id 'eclipse' // Support for Eclipse projects
+  id 'idea' // Support for IntelliJ IDEA projects
 }
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 mainClassName = "org.toradocu.Toradocu"
-version = '1.0-devel'
+version = '1.0'
 jar {
   manifest {
     attributes 'Implementation-Title': 'Toradocu', 'Implementation-Version': version
@@ -24,6 +36,7 @@ javadoc {
   excludes += 'org/toradocu/doclet/**'
 }
 
+/* Disable unneeded tasks */
 startScripts.enabled = false
 distZip.enabled = false
 distTar.enabled = false
@@ -33,14 +46,10 @@ assemble.enabled = false
 //  options.compilerArgs << '-Xlint:unchecked'
 //}
 
-sourceSets {
-  test {
-    java {
-      exclude 'org/toradocu/generator/**'
-      exclude 'org/toradocu/PrecisionRecallTestSuite.java'
-      exclude 'org/toradocu/PrecisionRecallCommonsCollections4.java'
-      exclude 'org/toradocu/PrecisionRecallJGraphT.java'
-    }
+/* Print standard output during tests execution. */
+test {
+  testLogging {
+    events = ['STANDARD_OUT']
   }
 }
 
@@ -58,14 +67,16 @@ dependencies {
   compile 'com.google.code.gson:gson:2.7'
   compile 'commons-io:commons-io:2.5'
   compile 'org.slf4j:slf4j-simple:1.7.21'
+  compile 'org.apache.commons:commons-lang3:3.4'
   testCompile 'junit:junit:4.12'
   testCompile 'org.hamcrest:java-hamcrest:2.0.0.0'
 }
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '3.0'
+  gradleVersion = '3.1'
 }
 
+/* Copy resources needed for doclet API to build directory after compilation. */
 task copyDocletResources1(type: Copy) {
   from 'src/main/java/org/toradocu/doclet/internal/toolkit/resources'
   into 'build/classes/main/org/toradocu/doclet/internal/toolkit/resources'
@@ -87,20 +98,31 @@ import de.undercouch.gradle.tasks.download.Download
 task downloadBinaries(type: Download) {
   src ([
     'http://repo1.maven.org/maven2/org/apache/commons/commons-collections4/4.1/commons-collections4-4.1.jar',
+    'http://repo1.maven.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar',
     'http://repo1.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0.jar',
-    'http://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2.jar'
+    'http://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2.jar',
+    'https://github.com/mernst/plume-lib/releases/download/v1.1.0/plume-lib-1.1.0.tar.gz'
   ])
   dest 'src/test/resources/bin'
   onlyIfNewer true
   overwrite false
 }
 
+/* Extracts binaries that were not already downloaded directly. */
+task extractBinaries(type: Exec, dependsOn: 'downloadBinaries') {
+  description "Extract .jar files from downloaded files"
+  workingDir 'src/test/resources/bin'
+  commandLine "tar", "xzf", "plume-lib-1.1.0.tar.gz", "--strip-components=2", "plume-lib-1.1.0/java/plume.jar"
+}
+
 /* Downloads sources of the systems used to measure Toradocu's precision and recall. */
 task downloadSources(type: Download) {
   src ([
-    'http://mirror.switch.ch/mirror/apache/dist/commons/collections/source/commons-collections4-4.1-src.zip',
+    'https://www.apache.org/dist/commons/collections/source/commons-collections4-4.1-src.zip',
+    'https://www.apache.org/dist/commons/math/source/commons-math3-3.6.1-src.zip',
     'http://repo1.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0-sources.jar',
-    'http://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2-sources.jar'
+    'http://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2-sources.jar',
+    'https://github.com/mernst/plume-lib/releases/download/v1.1.0/plume-lib-1.1.0.tar.gz'
   ])
   dest 'src/test/resources/src'
   onlyIfNewer true
@@ -109,23 +131,39 @@ task downloadSources(type: Download) {
 
 /* Extracts source archives of the systems used to measure Toradocu's precision and recall. */
 task extractSources(dependsOn: downloadSources) << {
-  file('src/test/resources/src').listFiles().findAll{it.name.endsWith('.zip')||it.name.endsWith('.jar')}.each{ file ->
-    def fileName = "$file.name"
-    def index = fileName.lastIndexOf('.')
-    def fileBaseName = fileName.substring(0, index)
-    copy {
-      from zipTree(file)
-      into 'src/test/resources/src/' + fileBaseName
+  file('src/test/resources/src').listFiles().findAll {
+    it.name.endsWith('.zip') || it.name.endsWith('.tar.gz') || it.name.endsWith('.jar')
+  }.each { file ->
+    if (file.name.endsWith('.zip')) {
+      copy {
+        from zipTree(file)
+        into 'src/test/resources/src/'
+        fileMode 0664
+      }
+    } else if (file.name.endsWith('.tar.gz')) {
+      copy {
+        from tarTree(resources.gzip(file))
+        into 'src/test/resources/src/'
+        fileMode 0664
+      }
+    } else if (file.name.endsWith('.jar')) {
+      def fileName = file.name
+      def index = fileName.lastIndexOf('.')
+      def fileBaseName = fileName.substring(0, index)
+      copy {
+        from zipTree(file)
+        into 'src/test/resources/src/' + fileBaseName
+        fileMode 0664
+      }
     }
   }
 }
 
 task removeTestOutputDirs(type: Delete) {
-  delete 'tmp', 'aspects'
+  delete 'build/test-results'
 }
 
-clean.dependsOn removeTestOutputDirs
-test.dependsOn removeTestOutputDirs, extractSources, downloadBinaries
+test.dependsOn removeTestOutputDirs, extractSources, extractBinaries
 
 /* Make Emacs TAGS table */
 task tags(type: Exec) {
@@ -135,10 +173,17 @@ task tags(type: Exec) {
 }
 
 /* Install the git pre-commit hook */
-task installhook(type:Exec) {
+task installhook(type: Exec) {
   commandLine 'sh', '-c' , 'if [ ! -f .git/hooks/pre-commit ]; then ln -s ../../git-pre-commit-hook.sh .git/hooks/pre-commit; fi'
 }
 
 gradle.taskGraph.beforeTask { Task task ->
   installhook.execute()
+}
+
+shadowJar {
+  // default: "${baseName}-${version}-${classifier}.${extension}",
+  // where ${baseName} is the name of the directory into which the toradocu
+  // repository is cloned.
+  archiveName = "toradocu-${version}-${classifier}.${extension}"
 }

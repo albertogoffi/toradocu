@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.extractor.DocumentedMethod;
@@ -39,11 +38,17 @@ public class ConditionTranslator {
                 + method.getSignature());
 
         String comment = tag.exceptionComment().trim();
-        String lowerCaseComment = comment.toLowerCase();
+
+        // Add end-of-sentence period, if missing
+        if (!comment.endsWith(".")) {
+          comment += ".";
+        }
 
         // Sanitize exception comment: remove initial "if"
-        if (lowerCaseComment.startsWith("if ") && lowerCaseComment.length() > 3) {
+        String lowerCaseComment = comment.toLowerCase();
+        while (lowerCaseComment.startsWith("if ")) {
           comment = comment.substring(3);
+          lowerCaseComment = comment.toLowerCase();
         }
 
         // Identify propositions in the comment. Each sentence in the comment is parsed into a
@@ -71,11 +76,9 @@ public class ConditionTranslator {
   private static List<PropositionSeries> getPropositionSeries(String comment) {
     comment = addPlaceholders(comment);
     List<PropositionSeries> result = new ArrayList<>();
-
     for (SemanticGraph semanticGraph : StanfordParser.getSemanticGraphs(comment)) {
       result.add(new SentenceParser(semanticGraph).getPropositionSeries());
     }
-
     return removePlaceholders(result);
   }
 
@@ -94,19 +97,60 @@ public class ConditionTranslator {
             .replace("greater than", ">")
             .replace("less than", "<")
             .replace("equal to", "==");
+
     java.util.regex.Matcher matcher = Pattern.compile(INEQUALITY_NUMBER_REGEX).matcher(text);
+
+    java.util.regex.Matcher matcherInstanceOf = Pattern.compile(INEQ_INSOF).matcher(text);
+
+    while (matcherInstanceOf.find()) {
+      // Instance of added to the comparator list
+      // Replace "[an] instance of" with "instanceof"
+      text = text.replaceFirst(INEQ_INSOF, " instanceof");
+    }
+
+    java.util.regex.Matcher matcherIOfProcessed =
+        Pattern.compile(INEQ_INSOFPROCESSED).matcher(text);
     String placeholderText = text;
     int i = 0;
+
+    while (matcherIOfProcessed.find()) {
+      //Specific case for the instance of placeholder. We put into inequalities the instanceof and the name
+      // of the class
+      inequalities.add(text.substring(matcherIOfProcessed.start(), matcherIOfProcessed.end()));
+      placeholderText = placeholderText.replaceFirst(INEQ_INSOFPROCESSED, PLACEHOLDER_PREFIX + i++);
+    }
+
     while (matcher.find()) {
       inequalities.add(text.substring(matcher.start(), matcher.end()));
       placeholderText =
-          placeholderText.replaceFirst(INEQUALITY_NUMBER_REGEX, PLACEHOLDER_PREFIX + i++);
+          placeholderText.replaceFirst(INEQUALITY_NUMBER_REGEX, PLACEHOLDER_PREFIX + i);
+      // Verbs that could appear before the inequality. One of these most be present
+      // and will be added otherwise.
+      String[] possibleVerbs = {"is", "is not", "isn't", "are", "are not", "aren't"};
+      boolean containsVerb = false;
+      for (String possibleVerb : possibleVerbs) {
+        if (placeholderText.contains(possibleVerb + PLACEHOLDER_PREFIX + i)) {
+          containsVerb = true;
+          break;
+        }
+      }
+      if (!containsVerb) {
+        // The verb is assumed to be "is" and will be added to the text.
+        placeholderText =
+            placeholderText.replaceFirst(PLACEHOLDER_PREFIX + i, " is" + PLACEHOLDER_PREFIX + i);
+      }
+      i++;
     }
+
     return placeholderText;
   }
 
-  private static final String INEQUALITY_NUMBER_REGEX = "(([<>=]=?)|(!=)) ?-?[0-9]+";
-  private static final String PLACEHOLDER_PREFIX = "INEQUALITY_";
+  private static final String INEQUALITY_NUMBER_REGEX = " *(([<>=]=?)|(!=)) ?-?[0-9]+";
+  private static final String PLACEHOLDER_PREFIX = " INEQUALITY_";
+  private static final String INEQ_INSOF = " *[an]* (instance of)"; // e.g "an instance of"
+  private static final String INEQ_INSOFPROCESSED =
+      " instanceof +[^ \\.]*"; // e.g. "instanceof BinaryMutation"
+
   /** Stores the inequalities that are replaced by placeholders when addPlaceholders is called. */
   private static List<String> inequalities = new ArrayList<>();
 

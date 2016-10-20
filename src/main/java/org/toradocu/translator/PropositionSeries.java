@@ -8,10 +8,22 @@ import java.util.List;
  * This class represents a series of propositions and conjunctions in a sentence, as in
  * "PROPOSITION_A CONJUNCTION_AB PROPOSITION_B CONJUNCTION_BC PROPOSITION_C ...". It provides
  * methods to retrieve propositions and conjunctions between propositions.
+ *
+ * Propositions are represented using a series rather than a tree because is difficult to express
+ * the precedence of conjunctions with natural language.
  */
 public class PropositionSeries {
 
+  /**
+   * Propositions composing this {@code PropositionSeries}.
+   * {@literal Invariant: (propositions.size() = 0 && conjunctions.size() = 0) || propositions.size() = conjunctions.size() + 1}
+   */
   private final List<Proposition> propositions;
+  /**
+   * Conjunctions composing this {@code PropositionSeries}.
+   * Each conjunction links two propositions.
+   * {@literal Invariant: (propositions.size() = 0 && conjunctions.size() = 0) || conjunctions.size() = propositions.size() - 1}
+   */
   private final List<Conjunction> conjunctions;
 
   /**
@@ -48,7 +60,8 @@ public class PropositionSeries {
    */
   public void add(Proposition proposition) {
     if (!propositions.isEmpty()) {
-      throw new IllegalStateException("Series is not empty. Use add(Proposition, Conjunction).");
+      throw new IllegalStateException(
+          "Proposition series is not empty. Use add(Proposition, Conjunction).");
     }
     propositions.add(proposition);
   }
@@ -60,13 +73,13 @@ public class PropositionSeries {
    * to link the conjunction with).
    *
    * @param conjunction the conjunction between the formerly last proposition and the given
-   * proposition
+   *        proposition
    * @param proposition the proposition to add to the end of the series
    * @throws IllegalStateException if there is not already at least one proposition in the series
    */
   public void add(Conjunction conjunction, Proposition proposition) {
     if (propositions.isEmpty()) {
-      throw new IllegalStateException("List is empty. Use add(Proposition)");
+      throw new IllegalStateException("Proposition series is empty. Use add(Proposition)");
     }
     conjunctions.add(conjunction);
     propositions.add(proposition);
@@ -126,6 +139,8 @@ public class PropositionSeries {
   public String getTranslation() {
     StringBuilder output = new StringBuilder();
     // Only output translations for those propositions that actually have a translation.
+    // The conjunction used to link a proposition is the one immediately preceding it in
+    // the series regardless of if the previous proposition has a translation.
     int i = 0;
     while (i < numberOfPropositions() && !propositions.get(i).getTranslation().isPresent()) {
       i++;

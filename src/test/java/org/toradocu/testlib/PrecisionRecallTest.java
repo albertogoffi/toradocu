@@ -25,6 +25,11 @@ import org.toradocu.util.GsonInstance;
  */
 public class PrecisionRecallTest {
 
+  public static TestCaseStats test(
+      String targetClass, String srcPath, String binPath, String expectedOutputDir) {
+    return computePrecisionAndRecall(targetClass, srcPath, binPath, expectedOutputDir);
+  }
+
   /**
    * Runs Toradocu on the given class and collects data on its precision and recall.
    *
@@ -35,7 +40,7 @@ public class PrecisionRecallTest {
    * targetClass.
    * @return statistics for the test
    */
-  public static TestCaseStats test(
+  public static TestCaseStats computePrecisionAndRecall(
       String targetClass, String srcPath, String binPath, String expectedOutputDir) {
     String actualOutputFile =
         AbstractPrecisionRecallTestSuite.OUTPUT_DIR + File.separator + targetClass + "_out.json";
@@ -120,7 +125,7 @@ public class PrecisionRecallTest {
               methodReport.append("Wrong condition. Comment: " + expectedTag.exceptionComment());
             }
             methodReport.append(
-                ". Expected condition: "
+                " | Expected condition: "
                     + expectedCondition
                     + ". Actual condition: "
                     + actualCondition
