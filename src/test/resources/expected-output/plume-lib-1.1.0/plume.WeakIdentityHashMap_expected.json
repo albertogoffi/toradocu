@@ -1,0 +1,792 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "WeakIdentityHashMap",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "initialCapacity"
+      },
+      {
+        "type": {
+          "qualifiedName": "float",
+          "name": "float",
+          "isArray": false
+        },
+        "name": "loadFactor"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "If the initial capacity is negative, or if the load factor is nonpositive.",
+        "condition": "args[0]<0 || args[1]<=0"
+      }
+    ],
+    "signature": "WeakIdentityHashMap(int initialCapacity,float loadFactor)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "WeakIdentityHashMap",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "initialCapacity"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "If the initial capacity is negative.",
+        "condition": "args[0]<0"
+      }
+    ],
+    "signature": "WeakIdentityHashMap(int initialCapacity)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "WeakIdentityHashMap",
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "WeakIdentityHashMap()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "WeakIdentityHashMap",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Map",
+          "name": "Map",
+          "isArray": false
+        },
+        "name": "t"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the specified map is null.",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "WeakIdentityHashMap(java.util.Map t)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "maskNull",
+    "returnType": {
+      "qualifiedName": "java.lang.Object",
+      "name": "Object",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "maskNull(java.lang.Object key)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "unmaskNull",
+    "returnType": {
+      "qualifiedName": "K",
+      "name": "K",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "unmaskNull(java.lang.Object key)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "eq",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "x"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "y"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "eq(java.lang.Object x,java.lang.Object y)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "hasher",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "x"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "hasher(java.lang.Object x)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "indexFor",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "h"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "length"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "indexFor(int h,int length)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "expungeStaleEntries",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "expungeStaleEntries()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "getTable",
+    "returnType": {
+      "qualifiedName": "plume.WeakIdentityHashMap.Entry[]",
+      "name": "Entry[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "plume.WeakIdentityHashMap.Entry",
+        "name": "Entry",
+        "isArray": false
+      }
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getTable()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "size",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "size()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "isEmpty",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "isEmpty()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "get",
+    "returnType": {
+      "qualifiedName": "V",
+      "name": "V",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "get(java.lang.Object key)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "containsKey",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "containsKey(java.lang.Object key)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "getEntry",
+    "returnType": {
+      "qualifiedName": "plume.WeakIdentityHashMap.Entry",
+      "name": "Entry",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getEntry(java.lang.Object key)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "put",
+    "returnType": {
+      "qualifiedName": "V",
+      "name": "V",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "put(java.lang.Object key,java.lang.Object value)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "resize",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "newCapacity"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "resize(int newCapacity)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "transfer",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "plume.WeakIdentityHashMap.Entry[]",
+          "name": "Entry[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "plume.WeakIdentityHashMap.Entry",
+            "name": "Entry",
+            "isArray": false
+          }
+        },
+        "name": "src"
+      },
+      {
+        "type": {
+          "qualifiedName": "plume.WeakIdentityHashMap.Entry[]",
+          "name": "Entry[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "plume.WeakIdentityHashMap.Entry",
+            "name": "Entry",
+            "isArray": false
+          }
+        },
+        "name": "dest"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "transfer(plume.WeakIdentityHashMap.Entry[] src,plume.WeakIdentityHashMap.Entry[] dest)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "putAll",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Map",
+          "name": "Map",
+          "isArray": false
+        },
+        "name": "m"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "comment": "if the specified map is null.",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "putAll(java.util.Map m)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "remove",
+    "returnType": {
+      "qualifiedName": "V",
+      "name": "V",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "remove(java.lang.Object key)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "removeMapping",
+    "returnType": {
+      "qualifiedName": "plume.WeakIdentityHashMap.Entry",
+      "name": "Entry",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "o"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "removeMapping(java.lang.Object o)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "clear",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "clear()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "containsValue",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "containsValue(java.lang.Object value)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "containsNullValue",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "containsNullValue()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "keySet",
+    "returnType": {
+      "qualifiedName": "java.util.Set",
+      "name": "Set",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "keySet()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "values",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "values()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.WeakIdentityHashMap",
+      "name": "WeakIdentityHashMap",
+      "isArray": false
+    },
+    "name": "entrySet",
+    "returnType": {
+      "qualifiedName": "java.util.Set",
+      "name": "Set",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "entrySet()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractMap",
+      "name": "AbstractMap",
+      "isArray": false
+    },
+    "name": "equals",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "equals(java.lang.Object arg0)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractMap",
+      "name": "AbstractMap",
+      "isArray": false
+    },
+    "name": "hashCode",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "hashCode()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractMap",
+      "name": "AbstractMap",
+      "isArray": false
+    },
+    "name": "toString",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "toString()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.util.AbstractMap",
+      "name": "AbstractMap",
+      "isArray": false
+    },
+    "name": "clone",
+    "returnType": {
+      "qualifiedName": "java.lang.Object",
+      "name": "Object",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "clone()"
+  }
+]
