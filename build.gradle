@@ -1,4 +1,4 @@
-// Temporary workaround, see https://github.com/michel-kraemer/gradle-download-task/issues/56
+// Temporary workaround, see https://github.com/michel-kraemer/gradle-download-task/issues/56.
 buildscript {
   repositories {
     jcenter()
@@ -12,7 +12,7 @@ buildscript {
 plugins {
   id 'java'
   id 'application'
-  id 'com.github.johnrengelman.shadow' version '1.2.3' // For creating the fat jar
+  id 'com.github.johnrengelman.shadow' version '1.2.3' // For creating the fat JAR
   id 'de.undercouch.download' version '3.1.1' // For the download tasks
   id 'eclipse' // Support for Eclipse projects
   id 'idea' // Support for IntelliJ IDEA projects
@@ -36,6 +36,7 @@ javadoc {
   excludes += 'org/toradocu/doclet/**'
 }
 
+/* Disable unneeded tasks */
 startScripts.enabled = false
 distZip.enabled = false
 distTar.enabled = false
@@ -45,6 +46,7 @@ assemble.enabled = false
 //  options.compilerArgs << '-Xlint:unchecked'
 //}
 
+/* Add exclusion rule to prevent all the precision/recall tests from being run twice. */
 test {
   exclude 'org/toradocu/PrecisionRecallTestSuite.class'
 }
@@ -72,6 +74,7 @@ task wrapper(type: Wrapper) {
   gradleVersion = '3.1'
 }
 
+/* Copy resources needed for doclet API to build directory after compilation. */
 task copyDocletResources1(type: Copy) {
   from 'src/main/java/org/toradocu/doclet/internal/toolkit/resources'
   into 'build/classes/main/org/toradocu/doclet/internal/toolkit/resources'
@@ -125,7 +128,7 @@ task downloadSources(type: Download) {
 }
 
 /* Extracts source zip archives of the systems used to measure Toradocu's precision and recall. */
-task extractSourcesInArchives(dependsOn: downloadSources) << {
+task extractSources(dependsOn: downloadSources) << {
   file('src/test/resources/src').listFiles().findAll {
     it.name.endsWith('.zip') || it.name.endsWith('.tar.gz') || it.name.endsWith('.jar')
   }.each { file ->
@@ -155,11 +158,10 @@ task extractSourcesInArchives(dependsOn: downloadSources) << {
 }
 
 task removeTestOutputDirs(type: Delete) {
-  delete 'tmp', 'aspects'
+  delete 'build/test-results'
 }
 
-clean.dependsOn removeTestOutputDirs
-test.dependsOn removeTestOutputDirs, extractSourcesInArchives, extractBinaries
+test.dependsOn removeTestOutputDirs, extractSources, extractBinaries
 
 /* Make Emacs TAGS table */
 task tags(type: Exec) {

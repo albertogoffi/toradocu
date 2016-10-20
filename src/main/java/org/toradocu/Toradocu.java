@@ -192,13 +192,14 @@ public class Toradocu {
    */
   private static void printConditionLines(String jsonOutput) {
     BufferedReader reader = new BufferedReader(new StringReader(jsonOutput));
+    String fileName = configuration.getConditionTranslatorOutput().toString();
     String line = null;
     int lineNumber = 1;
     try {
       while ((line = reader.readLine()) != null) {
         line = line.trim();
         if (line.startsWith("\"comment\"") || line.startsWith("\"condition\"")) {
-          System.out.println(lineNumber + ": " + line);
+          System.out.println(fileName + ":" + lineNumber + ": " + line);
         }
         if (line.startsWith("\"condition\"")) {
           // Put a blank line between comment/condition pairs.

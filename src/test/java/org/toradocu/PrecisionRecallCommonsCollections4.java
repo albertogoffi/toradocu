@@ -11,7 +11,7 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
   private static final String COMMONSCOLLECTIONS_4_BIN =
       "src/test/resources/bin/commons-collections4-4.1.jar";
   private static final String COMMONSCOLLECTIONS_4_EXPECTED_DIR =
-      "src/test/resources/CommonsCollections-4.1/";
+      "src/test/resources/expected-output/CommonsCollections-4.1/";
 
   public PrecisionRecallCommonsCollections4() {
     super(COMMONSCOLLECTIONS_4_SRC, COMMONSCOLLECTIONS_4_BIN, COMMONSCOLLECTIONS_4_EXPECTED_DIR);
