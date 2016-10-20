@@ -1,9 +1,5 @@
 package org.toradocu;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.number.IsCloseTo.closeTo;
-import static org.junit.Assert.assertThat;
-
 import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 import org.toradocu.testlib.TestCaseStats;
@@ -11,9 +7,10 @@ import org.toradocu.testlib.TestCaseStats;
 public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuite {
 
   private static final String COMMONSMATH_3_SRC =
-      "src/test/resources/src/commons-math3-3.6.1-src/commons-math3-3.6.1-src/src/main/java";
+      "src/test/resources/src/commons-math3-3.6.1-src/src/main/java";
   private static final String COMMONSMATH_3_BIN = "src/test/resources/bin/commons-math3-3.6.1.jar";
-  private static final String COMMONSMATH_3_EXPECTED_DIR = "src/test/resources/CommonsMath-3.6.1/";
+  private static final String COMMONSMATH_3_EXPECTED_DIR =
+      "src/test/resources/expected-output/CommonsMath-3.6.1/";
 
   public PrecisionRecallCommonsMath3() {
     super(COMMONSMATH_3_SRC, COMMONSMATH_3_BIN, COMMONSMATH_3_EXPECTED_DIR);
@@ -21,81 +18,60 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void gaussianTest() throws Exception {
-    TestCaseStats stats = test("org.apache.commons.math3.analysis.function.Gaussian");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), is(1.0));
+    test("org.apache.commons.math3.analysis.function.Gaussian", 1.0, 1.0);
   }
 
   @Test
   public void logisticTest() throws Exception {
-    TestCaseStats stats = test("org.apache.commons.math3.analysis.function.Logistic");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), is(1.0));
+    test("org.apache.commons.math3.analysis.function.Logistic", 1.0, 1.0);
   }
 
   @Test
   public void functionUtilsTest() throws Exception {
-    TestCaseStats stats = test("org.apache.commons.math3.analysis.FunctionUtils");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(0.0));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.0));
+    test("org.apache.commons.math3.analysis.FunctionUtils", 0.0, 0.0);
   }
 
   @Test
   public void baseAbstractUnivariateIntegratorTest() throws Exception {
-    TestCaseStats stats = test("org.apache.commons.math3.analysis.integration.SimpsonIntegrator");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.357, PRECISION));
+    test("org.apache.commons.math3.analysis.integration.SimpsonIntegrator", 1.0, 0.357);
   }
 
   @Test
   public void stepFunctionTest() throws Exception {
-    TestCaseStats stats = test("org.apache.commons.math3.analysis.function.StepFunction");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(0.5));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.4));
+    test("org.apache.commons.math3.analysis.function.StepFunction", 0.5, 0.4);
   }
 
   @Test
   public void iterativeLegendreGaussIntegratorTest() throws Exception {
-    TestCaseStats stats =
-        test("org.apache.commons.math3.analysis.integration.IterativeLegendreGaussIntegrator");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.733, PRECISION));
+    test(
+        "org.apache.commons.math3.analysis.integration.IterativeLegendreGaussIntegrator",
+        1.0,
+        0.733);
   }
 
   @Test
   public void linearInterpolatorTest() throws Exception {
-    TestCaseStats stats =
-        test("org.apache.commons.math3.analysis.interpolation.LinearInterpolator");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.4));
+    test("org.apache.commons.math3.analysis.interpolation.LinearInterpolator", 1.0, 0.4);
   }
 
   @Test
   public void loessInterpolatorTest() throws Exception {
-    TestCaseStats stats = test("org.apache.commons.math3.analysis.interpolation.LoessInterpolator");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.6));
+    test("org.apache.commons.math3.analysis.interpolation.LoessInterpolator", 1.0, 0.6);
   }
 
   @Test
   public void polynomialFunctionNewtonFormTest() throws Exception {
-    TestCaseStats stats =
-        test("org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), closeTo(0.625, PRECISION));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), closeTo(0.454, PRECISION));
+    test(
+        "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm", 0.625, 0.454);
   }
 
   @Test
   public void binaryMutationTest() throws Exception {
-    TestCaseStats stats = test("org.apache.commons.math3.genetics.BinaryMutation");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(1.0));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), is(1.0));
+    test("org.apache.commons.math3.genetics.BinaryMutation", 1.0, 1.0);
   }
 
   @Test
   public void cycleCrossoverTest() throws Exception {
-    TestCaseStats stats = test("org.apache.commons.math3.genetics.CycleCrossover");
-    assertThat(PRECISION_MESSAGE, stats.getPrecision(), is(0.5));
-    assertThat(RECALL_MESSAGE, stats.getRecall(), is(0.25));
+    test("org.apache.commons.math3.genetics.CycleCrossover", 0.5, 0.25);
   }
 }

@@ -9,13 +9,16 @@ by Alberto Goffi, Alessandra Gorla, Michael D. Ernst, and Mauro Pezzè (presente
 at [ISSTA 2016](https://issta2016.cispa.saarland)).
 
 Toradocu takes the source code of a class as input and produces a set of
-[aspects](https://eclipse.org/aspectj/).
+[aspects](https://eclipse.org/aspectj/) that can be used as test oracles.
 
 
 ## Building Toradocu
 To compile Toradocu run the command: `./gradlew shadowJar`
-This will create the file `build/libs/toradocu-1.0-all.jar`.
-Notice that building Toradocu requires Java JDK 1.8+.
+
+This will create the file 
+`build/libs/toradocu-0.1-all.jar`.
+
+Building Toradocu requires Java JDK 1.8+. 
 
 
 ## Running Toradocu
@@ -23,7 +26,7 @@ Toradocu is a command-line tool.
 
 To get the list of all command-line parameters, execute
 
-    java -jar toradocu-1.0-all.jar --help
+      java -jar build/libs/toradocu-0.1-all.jar --help
 
 A typical Toradocu invocation looks like this:
 
