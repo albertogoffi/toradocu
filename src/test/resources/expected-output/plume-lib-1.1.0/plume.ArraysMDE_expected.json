@@ -4133,7 +4133,7 @@
           "isArray": false
         },
         "comment": "if obj is null or is not one of the types mentioned above.",
-        "condition": "args[0]==null"
+        "condition": "args[0]==null || ! (args[0] instanceof boolean[] || args[0] instanceof double[] || args[0] instanceof int[] || args[0] instanceof long[] || args[0] instanceof Object[]"
       }
     ],
     "signature": "toString(java.lang.Object obj)"
@@ -4169,7 +4169,7 @@
           "isArray": false
         },
         "comment": "if obj is null or is not one of the types mentioned above.",
-        "condition": "args[0]==null"
+        "condition": "args[0]==null || ! (args[0] instanceof boolean[] || args[0] instanceof double[] || args[0] instanceof int[] || args[0] instanceof long[] || args[0] instanceof Object[]"
       }
     ],
     "signature": "length(java.lang.Object obj)"
@@ -4812,7 +4812,7 @@
           "isArray": false
         },
         "comment": "if a value of a is outside of arange",
-        "condition": ""
+        "condition": "min(a)<0 or max(a)>=arange"
       },
       {
         "exception": {
@@ -4821,7 +4821,7 @@
           "isArray": false
         },
         "comment": "when the function is not invertible",
-        "condition": ""
+        "condition": "[hard to express]"
       }
     ],
     "signature": "fn_inverse(int[] a,int arange)"
