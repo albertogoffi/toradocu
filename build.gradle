@@ -46,9 +46,11 @@ assemble.enabled = false
 //  options.compilerArgs << '-Xlint:unchecked'
 //}
 
-/* Add exclusion rule to prevent all the precision/recall tests from being run twice. */
+/* Print standard output during tests execution. */
 test {
-  exclude 'org/toradocu/PrecisionRecallTestSuite.class'
+  testLogging {
+    events = ['STANDARD_OUT']
+  }
 }
 
 repositories {
@@ -127,7 +129,7 @@ task downloadSources(type: Download) {
   overwrite false
 }
 
-/* Extracts source zip archives of the systems used to measure Toradocu's precision and recall. */
+/* Extracts source archives of the systems used to measure Toradocu's precision and recall. */
 task extractSources(dependsOn: downloadSources) << {
   file('src/test/resources/src').listFiles().findAll {
     it.name.endsWith('.zip') || it.name.endsWith('.tar.gz') || it.name.endsWith('.jar')
