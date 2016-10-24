@@ -134,4 +134,4 @@ source code in `tutorial/src`.
    The report says that an IllegalStateException was expected, but wrongly the method `net.Connection#open` did not raise any exception.
 
 ## Contributing to Toradocu
-Information for contributers can be found on the [wiki pages](https://github.com/albertogoffi/toradocu/wiki/Developer-Notes).
+Information for contributors can be found on the [wiki pages](https://github.com/albertogoffi/toradocu/wiki/Developer-Notes).
