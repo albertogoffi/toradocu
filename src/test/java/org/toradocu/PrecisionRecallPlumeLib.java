@@ -21,6 +21,21 @@ public class PrecisionRecallPlumeLib extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void arraysMDETest() throws Exception {
-    test("plume.ArraysMDE", 1.0, 1.0);
+    test("plume.ArraysMDE", 0.889, 0.8);
+  }
+
+  @Test
+  public void regexUtilTest() throws Exception {
+    test("plume.RegexUtil", 0.0, 0.0);
+  }
+
+  @Test
+  public void fileCompilerTest() throws Exception {
+    test("plume.FileCompiler", 1.0, 0.5);
+  }
+
+  @Test
+  public void testWeakIdentityHashMap() throws Exception {
+    test("plume.WeakIdentityHashMap", 0.75, 0.75);
   }
 }

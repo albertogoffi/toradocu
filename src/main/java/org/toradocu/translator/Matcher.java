@@ -285,10 +285,12 @@ public class Matcher {
    */
   private static String simpleMatch(String predicate) {
     java.util.regex.Matcher isWord =
-        Pattern.compile("(is |are )?(==|=)? ?(true|false|null|zero|positive|negative)")
+        Pattern.compile(
+                "(is |are )?(==|=)? ??(true|false|null|zero|positive|strictly positive|negative|strictly negative)")
             .matcher(predicate);
     java.util.regex.Matcher isNotWord =
-        Pattern.compile("(is |are )?(!=) ?(true|false|null|zero|positive|negative)")
+        Pattern.compile(
+                "(is |are )?(!=) ?(true|false|null|zero|positive|strictly positive|negative|strictly negative)")
             .matcher(predicate);
     java.util.regex.Matcher numberRelation =
         Pattern.compile("(is |are )?(<=|>=|<|>|!=|==|=)? ?(-?[0-9]+)").matcher(predicate);
@@ -300,7 +302,7 @@ public class Matcher {
         return "==" + word;
       } else if (word.equals("zero")) {
         return "==0";
-      } else if (word.equals("positive")) {
+      } else if (word.equals("positive") || word.equals("strictly positive")) {
         return ">0";
       } else { // negative
         return "<0";
@@ -311,7 +313,7 @@ public class Matcher {
         return "!=" + word;
       } else if (word.equals("zero")) {
         return "!=0";
-      } else if (word.equals("positive")) {
+      } else if (word.equals("positive") || word.equals("strictly positive")) {
         return "<0";
       } else { // not negative
         return ">=0";
@@ -336,8 +338,7 @@ public class Matcher {
       return "!=null";
     } else if (instanceOf.find()) {
       //If the comparator is instance of
-      String textoreturn = " instanceof " + instanceOf.group(2);
-      return textoreturn;
+      return " instanceof " + instanceOf.group(2);
     } else {
       return null;
     }

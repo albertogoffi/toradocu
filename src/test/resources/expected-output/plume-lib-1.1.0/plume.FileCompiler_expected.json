@@ -1,0 +1,264 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "plume.FileCompiler",
+      "name": "FileCompiler",
+      "isArray": false
+    },
+    "name": "FileCompiler",
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "FileCompiler()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.FileCompiler",
+      "name": "FileCompiler",
+      "isArray": false
+    },
+    "name": "FileCompiler",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String[]",
+          "name": "String[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          }
+        },
+        "name": "compiler"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "timeLimit"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "FileCompiler(java.lang.String[] compiler,long timeLimit)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.FileCompiler",
+      "name": "FileCompiler",
+      "isArray": false
+    },
+    "name": "FileCompiler",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.ArrayList",
+          "name": "ArrayList",
+          "isArray": false
+        },
+        "name": "compiler"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "timeLimit"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "FileCompiler(java.util.ArrayList compiler,long timeLimit)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.FileCompiler",
+      "name": "FileCompiler",
+      "isArray": false
+    },
+    "name": "FileCompiler",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "compiler"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "timeLimit"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "FileCompiler(java.lang.String compiler,long timeLimit)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.FileCompiler",
+      "name": "FileCompiler",
+      "isArray": false
+    },
+    "name": "compileFiles",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "fileNames"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "comment": "if there is a problem reading a file",
+        "condition": ""
+      }
+    ],
+    "signature": "compileFiles(java.util.List fileNames)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.FileCompiler",
+      "name": "FileCompiler",
+      "isArray": false
+    },
+    "name": "compile_source",
+    "returnType": {
+      "qualifiedName": "plume.TimeLimitProcess",
+      "name": "TimeLimitProcess",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "filenames"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.Error",
+          "name": "Error",
+          "isArray": false
+        },
+        "comment": "if an empty list of filenames is provided.",
+        "condition": "args[0].isEmpty()"
+      }
+    ],
+    "signature": "compile_source(java.util.List filenames)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.FileCompiler",
+      "name": "FileCompiler",
+      "isArray": false
+    },
+    "name": "recompile_without_errors",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "fileNames"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "errorString"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "recompile_without_errors(java.util.List fileNames,java.lang.String errorString)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.FileCompiler",
+      "name": "FileCompiler",
+      "isArray": false
+    },
+    "name": "getClassFilePath",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "sourceFilePath"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getClassFilePath(java.lang.String sourceFilePath)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.FileCompiler",
+      "name": "FileCompiler",
+      "isArray": false
+    },
+    "name": "fileExists",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "pathName"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "fileExists(java.lang.String pathName)"
+  }
+]

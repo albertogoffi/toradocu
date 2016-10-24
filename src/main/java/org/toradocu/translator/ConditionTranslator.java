@@ -95,6 +95,8 @@ public class ConditionTranslator {
         text.replace("greater than or equal to", ">=")
             .replace("less than or equal to", "<=")
             .replace("greater than", ">")
+            .replace("smaller than or equal to", "<=")
+            .replace("smaller than", "<")
             .replace("less than", "<")
             .replace("equal to", "==");
 
