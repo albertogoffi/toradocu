@@ -14,6 +14,9 @@ public class Connection {
     open = true;
   }
 
+  /**
+   * @returns true if the connection is open, false otherwise
+   */
   public boolean isOpen() {
     return open;
   }
