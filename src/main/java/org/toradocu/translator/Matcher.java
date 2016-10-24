@@ -285,10 +285,12 @@ public class Matcher {
    */
   private static String simpleMatch(String predicate) {
     java.util.regex.Matcher isWord =
-        Pattern.compile("(is |are )?(==|=)? ??(true|false|null|zero|positive|strictly positive|negative|strictly negative)")
+        Pattern.compile(
+                "(is |are )?(==|=)? ??(true|false|null|zero|positive|strictly positive|negative|strictly negative)")
             .matcher(predicate);
     java.util.regex.Matcher isNotWord =
-        Pattern.compile("(is |are )?(!=) ?(true|false|null|zero|positive|strictly positive|negative|strictly negative)")
+        Pattern.compile(
+                "(is |are )?(!=) ?(true|false|null|zero|positive|strictly positive|negative|strictly negative)")
             .matcher(predicate);
     java.util.regex.Matcher numberRelation =
         Pattern.compile("(is |are )?(<=|>=|<|>|!=|==|=)? ?(-?[0-9]+)").matcher(predicate);
