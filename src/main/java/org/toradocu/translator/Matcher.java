@@ -8,14 +8,17 @@ import java.lang.reflect.Modifier;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.Parameter;
+import org.toradocu.extractor.Type;
 
 /**
  * The {@code Matcher} class translates subjects and predicates in Javadoc comments to Java
@@ -243,17 +246,17 @@ public class Matcher {
         }
       }
     }
-    if (methodOrConstructor == null) {
+    if (methodOrConstructor != null) {
+      // Add method parameters as code elements.
+      for (int i = 0; i < methodOrConstructor.getParameters().length; i++) {
+        result.add(
+            new ParameterCodeElement(
+                methodOrConstructor.getParameters()[i],
+                documentedMethod.getParameters().get(i).getName(),
+                i));
+      }
+    } else {
       log.error("Could not load method/constructor from DocumentedMethod " + documentedMethod);
-    }
-
-    // Add method parameters as code elements.
-    for (int i = 0; i < methodOrConstructor.getParameters().length; i++) {
-      result.add(
-          new ParameterCodeElement(
-              methodOrConstructor.getParameters()[i],
-              documentedMethod.getParameters().get(i).getName(),
-              i));
     }
 
     // Add the class itself as a code element.
@@ -359,8 +362,21 @@ public class Matcher {
     }
 
     for (int i = 0; i < types.length; i++) {
-      if (!parameters[i].getType().equalsTo(types[i])) {
-        return false;
+      final Type parameterType = parameters[i].getType();
+      if (parameterType.isArray() && types[i].isArray()) {
+        // Build the parameter type name (the name encodes the dimension of the array)
+        String parameterTypeName = "L" + parameterType.getComponentType().getQualifiedName();
+        for (int j = 0; j < parameterType.dimension(); j++) {
+          parameterTypeName = "[" + parameterTypeName;
+        }
+        // Compare the two type names
+        if (parameterTypeName.equals(types[i].getComponentType().getName())) {
+          return false;
+        }
+      } else {
+        if (!parameterType.equalsTo(types[i])) {
+          return false;
+        }
       }
     }
     return true;

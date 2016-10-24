@@ -96,12 +96,17 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
   }
 
   @Test
-  public void Vector3DTest() throws Exception {
+  public void vector3DTest() throws Exception {
     test("org.apache.commons.math3.geometry.euclidean.threed.Vector3D", 1.0, 0.5);
   }
 
   @Test
   public void s2PointTest() throws Exception {
     test("org.apache.commons.math3.geometry.spherical.twod.S2Point", 0.666, 0.666);
+  }
+
+  @Test
+  public void testFieldRotation() throws Exception {
+    test("org.apache.commons.math3.geometry.euclidean.threed.FieldRotation", 0.5, 0.375);
   }
 }
