@@ -336,8 +336,7 @@ public class Matcher {
       return "!=null";
     } else if (instanceOf.find()) {
       //If the comparator is instance of
-      String textoreturn = " instanceof " + instanceOf.group(2);
-      return textoreturn;
+      return " instanceof " + instanceOf.group(2);
     } else {
       return null;
     }
