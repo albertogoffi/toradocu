@@ -120,13 +120,15 @@ public class Matcher {
    * Returns the translation (to a Java expression) of the given subject and predicate. Returns null
    * if a translation could not be found.
    *
+   * @param method the method whose comment (and predicate) is being translated
    * @param subject the subject of the proposition to translate
    * @param predicate the predicate of the proposition to translate
    * @param negate true if the given predicate should be negated, false otherwise
    * @return the translation (to a Java expression) of the predicate with the given subject and
    * predicate, or null if no translation found
    */
-  public static String predicateMatch(CodeElement<?> subject, String predicate, boolean negate) {
+  public static String predicateMatch(
+      DocumentedMethod method, CodeElement<?> subject, String predicate, boolean negate) {
     String match = simpleMatch(predicate);
     if (match != null) {
       match = subject.getJavaExpression() + match;
@@ -137,6 +139,8 @@ public class Matcher {
         codeElements =
             extractBooleanCodeElements(
                 paramCodeElement, paramCodeElement.getJavaCodeElement().getType());
+        Class<?> targetClass = getClass(method.getContainingClass().getQualifiedName());
+        codeElements.addAll(extractStaticBooleanMethods(targetClass, paramCodeElement));
       } else if (subject instanceof ClassCodeElement) {
         ClassCodeElement classCodeElement = (ClassCodeElement) subject;
         codeElements =
@@ -174,6 +178,38 @@ public class Matcher {
       match = "(" + match + ") == false";
     }
     return match;
+  }
+
+  /**
+   * Extracts and returns all the boolean methods of {@code type}, including methods that take as
+   * parameter {@code parameterType}.
+   *
+   * @param targetClass the class from which extract the methods
+   * @param parameter the actual parameter that has to be used to invoke the extracted methods
+   * @return the static boolean methods in the given class target class as a set of code elements
+   */
+  private static Set<CodeElement<?>> extractStaticBooleanMethods(
+      Class<?> targetClass, ParameterCodeElement parameter) {
+    Set<CodeElement<?>> collectedElements = new LinkedHashSet<>();
+
+    // Add methods in containing class as code elements.
+    methodCollection:
+    for (Method classMethod : targetClass.getMethods()) {
+      if (Modifier.isStatic(classMethod.getModifiers())
+          && classMethod.getParameters().length < 2
+          && (classMethod.getReturnType().equals(Boolean.class)
+              || classMethod.getReturnType().equals(boolean.class))) {
+        for (java.lang.reflect.Parameter par : classMethod.getParameters()) {
+          if (!parameter.getJavaCodeElement().getType().equals(par.getType())) {
+            continue methodCollection;
+          }
+        }
+        collectedElements.add(
+            new StaticMethodCodeElement(classMethod, parameter.getJavaExpression()));
+      }
+    }
+
+    return collectedElements;
   }
 
   /**
