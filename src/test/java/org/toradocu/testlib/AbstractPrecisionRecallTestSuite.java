@@ -35,8 +35,8 @@ public abstract class AbstractPrecisionRecallTestSuite {
   private final String sourceDirPath;
   /** The directory containing the binaries on which to run tests. */
   private final String binDirPath;
-  /** The directory containing the expected output of the tests. */
-  private final String expectedOutputDirPath;
+  /** The directory containing the goal output of the tests. */
+  private final String goalOutputDirPath;
 
   /**
    * Constructs and initializes a precision recall test suite that will test
@@ -44,14 +44,14 @@ public abstract class AbstractPrecisionRecallTestSuite {
    *
    * @param sourceDirPath the path to the sources of the library to test
    * @param binDirPath the path to the binaries of the library to test
-   * @param expectedOutputDirPath the path to the directory containing the
-   *                              expected output files
+   * @param goalOutputDirPath the path to the directory containing the
+   *                              goal output files
    */
   public AbstractPrecisionRecallTestSuite(
-      String sourceDirPath, String binDirPath, String expectedOutputDirPath) {
+      String sourceDirPath, String binDirPath, String goalOutputDirPath) {
     this.sourceDirPath = sourceDirPath;
     this.binDirPath = binDirPath;
-    this.expectedOutputDirPath = expectedOutputDirPath;
+    this.goalOutputDirPath = goalOutputDirPath;
   }
 
   /**
@@ -91,7 +91,7 @@ public abstract class AbstractPrecisionRecallTestSuite {
   protected TestCaseStats computePrecisionAndRecall(String targetClass) {
     TestCaseStats stats =
         PrecisionRecallTest.computePrecisionAndRecall(
-            targetClass, sourceDirPath, binDirPath, expectedOutputDirPath);
+            targetClass, sourceDirPath, binDirPath, goalOutputDirPath);
     testSuiteStats.addStats(stats);
     return stats;
   }

@@ -7,11 +7,10 @@ public class PrecisionRecallPlumeLib extends AbstractPrecisionRecallTestSuite {
 
   private static final String PLUMELIB_SRC = "src/test/resources/src/plume-lib-1.1.0/java/src";
   private static final String PLUMELIB_BIN = "src/test/resources/bin/plume-lib-1.1.0.jar";
-  private static final String PLUMELIB_EXPECTED_DIR =
-      "src/test/resources/goal-output/plume-lib-1.1.0/";
+  private static final String PLUMELIB_GOAL_DIR = "src/test/resources/goal-output/plume-lib-1.1.0/";
 
   public PrecisionRecallPlumeLib() {
-    super(PLUMELIB_SRC, PLUMELIB_BIN, PLUMELIB_EXPECTED_DIR);
+    super(PLUMELIB_SRC, PLUMELIB_BIN, PLUMELIB_GOAL_DIR);
   }
 
   @Test

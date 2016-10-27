@@ -9,11 +9,11 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
       "src/test/resources/src/commons-collections4-4.1-src/src/main/java";
   private static final String COMMONSCOLLECTIONS_4_BIN =
       "src/test/resources/bin/commons-collections4-4.1.jar";
-  private static final String COMMONSCOLLECTIONS_4_EXPECTED_DIR =
+  private static final String COMMONSCOLLECTIONS_4_GOAL_DIR =
       "src/test/resources/goal-output/commons-collections4-4.1/";
 
   public PrecisionRecallCommonsCollections4() {
-    super(COMMONSCOLLECTIONS_4_SRC, COMMONSCOLLECTIONS_4_BIN, COMMONSCOLLECTIONS_4_EXPECTED_DIR);
+    super(COMMONSCOLLECTIONS_4_SRC, COMMONSCOLLECTIONS_4_BIN, COMMONSCOLLECTIONS_4_GOAL_DIR);
   }
 
   @Test

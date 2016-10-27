@@ -7,11 +7,11 @@ public class PrecisionRecallJGraphT extends AbstractPrecisionRecallTestSuite {
 
   private static final String JGRAPHT_SRC = "src/test/resources/src/jgrapht-core-0.9.2-sources";
   private static final String JGRAPHT_BIN = "src/test/resources/bin/jgrapht-core-0.9.2.jar";
-  private static final String JGRAPHT_EXPECTED_DIR =
+  private static final String JGRAPHT_GOAL_DIR =
       "src/test/resources/goal-output/jgrapht-core-0.9.2/";
 
   public PrecisionRecallJGraphT() {
-    super(JGRAPHT_SRC, JGRAPHT_BIN, JGRAPHT_EXPECTED_DIR);
+    super(JGRAPHT_SRC, JGRAPHT_BIN, JGRAPHT_GOAL_DIR);
   }
 
   @Test
