@@ -1,12 +1,10 @@
 package org.toradocu.testlib;
 
-import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.number.IsCloseTo.closeTo;
 import static org.junit.Assert.assertThat;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
@@ -35,8 +33,8 @@ public abstract class AbstractPrecisionRecallTestSuite {
   private final String sourceDirPath;
   /** The directory containing the binaries on which to run tests. */
   private final String binDirPath;
-  /** The directory containing the expected output of the tests. */
-  private final String expectedOutputDirPath;
+  /** The directory containing the goal output of the tests. */
+  private final String goalOutputDirPath;
 
   /**
    * Constructs and initializes a precision recall test suite that will test
@@ -44,14 +42,14 @@ public abstract class AbstractPrecisionRecallTestSuite {
    *
    * @param sourceDirPath the path to the sources of the library to test
    * @param binDirPath the path to the binaries of the library to test
-   * @param expectedOutputDirPath the path to the directory containing the
-   *                              expected output files
+   * @param goalOutputDirPath the path to the directory containing the
+   *                              goal output files
    */
   public AbstractPrecisionRecallTestSuite(
-      String sourceDirPath, String binDirPath, String expectedOutputDirPath) {
+      String sourceDirPath, String binDirPath, String goalOutputDirPath) {
     this.sourceDirPath = sourceDirPath;
     this.binDirPath = binDirPath;
-    this.expectedOutputDirPath = expectedOutputDirPath;
+    this.goalOutputDirPath = goalOutputDirPath;
   }
 
   /**
@@ -59,7 +57,7 @@ public abstract class AbstractPrecisionRecallTestSuite {
    */
   @BeforeClass
   public static void setUp() throws IOException {
-    Files.createDirectories(Paths.get(OUTPUT_DIR));
+    new File(OUTPUT_DIR).mkdir();
   }
 
   /**
@@ -70,6 +68,8 @@ public abstract class AbstractPrecisionRecallTestSuite {
     testSuiteStats.computeResults();
     System.out.println(
         "=== Test Suite ==="
+            + "\nNumber of conditions: "
+            + testSuiteStats.getTotalNumConditions()
             + "\nAverage precision: "
             + String.format("%.2f", testSuiteStats.getPrecision())
             + ", Std deviation: "
@@ -91,7 +91,7 @@ public abstract class AbstractPrecisionRecallTestSuite {
   protected TestCaseStats computePrecisionAndRecall(String targetClass) {
     TestCaseStats stats =
         PrecisionRecallTest.computePrecisionAndRecall(
-            targetClass, sourceDirPath, binDirPath, expectedOutputDirPath);
+            targetClass, sourceDirPath, binDirPath, goalOutputDirPath);
     testSuiteStats.addStats(stats);
     return stats;
   }
@@ -102,7 +102,6 @@ public abstract class AbstractPrecisionRecallTestSuite {
    * @param targetClass the fully qualified name of the class on which to run the test
    * @param precision the expected precision
    * @param recall the expected recall
-   * @throws exception if precision and recall are not as expected
    */
   protected void test(String targetClass, double precision, double recall) {
     TestCaseStats stats = computePrecisionAndRecall(targetClass);
