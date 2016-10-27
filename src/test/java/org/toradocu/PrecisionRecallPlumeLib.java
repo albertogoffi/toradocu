@@ -11,7 +11,7 @@ import org.toradocu.testlib.TestCaseStats;
 public class PrecisionRecallPlumeLib extends AbstractPrecisionRecallTestSuite {
 
   private static final String PLUMELIB_SRC = "src/test/resources/src/plume-lib-1.1.0/java/src";
-  private static final String PLUMELIB_BIN = "src/test/resources/bin/plume.jar";
+  private static final String PLUMELIB_BIN = "src/test/resources/bin/plume-lib-1.1.0.jar";
   private static final String PLUMELIB_EXPECTED_DIR =
       "src/test/resources/expected-output/plume-lib-1.1.0/";
 
