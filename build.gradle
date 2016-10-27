@@ -112,7 +112,7 @@ task downloadBinaries(type: Download) {
 task extractBinaries(type: Exec, dependsOn: 'downloadBinaries') {
   description "Extract .jar files from downloaded files"
   workingDir 'src/test/resources/bin'
-  commandLine "tar", "xzf", "plume-lib-1.1.0.tar.gz", "--strip-components=2", "plume-lib-1.1.0/java/plume.jar"
+  commandLine "bash", "-c", "tar xzf plume-lib-1.1.0.tar.gz --strip-components=2 plume-lib-1.1.0/java/plume.jar && mv plume.jar plume-lib-1.1.0.jar"
 }
 
 /* Downloads sources of the systems used to measure Toradocu's precision and recall. */
@@ -174,7 +174,7 @@ task tags(type: Exec) {
 
 /* Install the git pre-commit hook */
 task installhook(type: Exec) {
-  commandLine 'sh', '-c' , 'if [ ! -f .git/hooks/pre-commit ]; then ln -s ../../git-pre-commit-hook.sh .git/hooks/pre-commit; fi'
+  commandLine 'bash', '-c' , 'if [ ! -f .git/hooks/pre-commit ]; then ln -s ../../git-pre-commit-hook.sh .git/hooks/pre-commit; fi'
 }
 
 gradle.taskGraph.beforeTask { Task task ->
