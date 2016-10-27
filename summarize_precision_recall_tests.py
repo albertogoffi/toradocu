@@ -31,11 +31,11 @@ def get_package(class_name):
 # Takes a list of class names and prints the packages they are in to standard output.
 def print_packages(classes):
 	print('Packages:')
-	packages = set()
+	seen_packages = set()
 	for class_name in classes:
 		package = get_package(class_name)
-		if package not in packages:
-			packages.add(package)
+		if package not in seen_packages:
+			seen_packages.add(package)
 			print(' - ' + package)
 
 # Parse CSV file and output results.
