@@ -16,12 +16,12 @@ if [ $# -lt 2 ]; then
 fi
 
 # Constants and variables initialization
-MAX_DISTANCE=1 # Edit distance threshold. Word deletion cost will be MAX_DISTANCE + 1
+MAX_DISTANCE=2 # Edit distance threshold. Word deletion cost will be MAX_DISTANCE + 1
 EXPECTED_OUTPUT_FILE_SUFFIX="_expected.json"
 STATS_FILE=$1
 
 # Create Toradocu jar and target systems sources and binaries
-./gradlew shadowJar extractSources downloadBinaries
+./gradlew shadowJar extractSources extractBinaries
 
 # Remove old stats file (if user agrees)
 if [ -e $STATS_FILE ]; then
@@ -54,7 +54,7 @@ for targets_descriptor in $@; do
 	    word_removal_bound=$(( distance_threshold + 1 )) # Word deletion cost. Is always edit distance threshold + 1.
     	    for word_removal_cost in `seq 0 $word_removal_bound`; do
     		echo "Executing Toradocu on ${targets[$j]} with threshold=$distance_threshold and word removal cost=$word_removal_cost"
-    		java -jar build/libs/toradocu-1.0-devel-all.jar \
+    		java -jar build/libs/toradocu-1.0-all.jar \
     		     --target-class ${targets[$j]} \
     		     --oracle-generation false \
 		     --condition-translator-output /dev/null \

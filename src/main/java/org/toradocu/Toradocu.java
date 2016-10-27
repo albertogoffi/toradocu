@@ -10,6 +10,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringReader;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -133,7 +134,9 @@ public class Toradocu {
         try (BufferedWriter writer =
             Files.newBufferedWriter(
                 configuration.getConditionTranslatorOutput().toPath(), StandardCharsets.UTF_8)) {
-          writer.write(GsonInstance.gson().toJson(methods));
+          String jsonOutput = GsonInstance.gson().toJson(methods);
+          writer.write(jsonOutput);
+          printConditionLines(jsonOutput);
         } catch (Exception e) {
           log.error(
               "Unable to write the output on file "
@@ -144,7 +147,7 @@ public class Toradocu {
         System.out.println("Condition translator output:\n" + GsonInstance.gson().toJson(methods));
       }
 
-      // Create statistics
+      // Create statistics.
       File expectedResultFile = configuration.getExpectedOutput();
       if (expectedResultFile != null) {
         Type collectionType = new TypeToken<List<DocumentedMethod>>() {}.getType();
@@ -181,12 +184,42 @@ public class Toradocu {
   }
 
   /**
+   * Prints (to standard output) line numbers for lines in the given JSON output string that
+   * contain Java expression translations of conditions. These lines can be altered to generate
+   * expected output files for the precision recall test suite.
+   *
+   * @param jsonOutput string containing output of condition translator in JSON format
+   */
+  private static void printConditionLines(String jsonOutput) {
+    BufferedReader reader = new BufferedReader(new StringReader(jsonOutput));
+    String fileName = configuration.getConditionTranslatorOutput().toString();
+    String line = null;
+    int lineNumber = 1;
+    try {
+      while ((line = reader.readLine()) != null) {
+        line = line.trim();
+        if (line.startsWith("\"comment\"") || line.startsWith("\"condition\"")) {
+          System.out.println(fileName + ":" + lineNumber + ": " + line);
+        }
+        if (line.startsWith("\"condition\"")) {
+          // Put a blank line between comment/condition pairs.
+          System.out.println();
+        }
+        lineNumber++;
+      }
+    } catch (IOException e) {
+      // An IOException should never occur when using a StringReader.
+      e.printStackTrace();
+    }
+  }
+
+  /**
    * This method populates the static field {@code methods} using {@code JavadocExtractor} when the
-   * given {@code classDoc} is the target class specified in {@code CONF}. This method is intended
+   * given {@code classDoc} is the target class specified in {@code configuration}. This method is intended
    * to be invoked by the Javadoc doclet.
    *
    * @param classDoc the class from which methods are extracted, but only if it is the target class
-   * specified in {@code CONF}
+   * specified in {@code configuration}
    * @param docletConfiguration configuration options for the Javadoc doclet
    * @throws IOException if there is an error while reading/generating class documentation
    */
@@ -203,9 +236,9 @@ public class Toradocu {
    * Deletes any temporary files created by Toradocu to store Javadoc output.
    */
   private static void deleteTemporaryFiles() {
-    if (configuration.getTempJavadocOutputDir() != null) {
+    if (configuration.getJavadocOutputDir() != null) {
       try {
-        FileUtils.deleteDirectory(new File(configuration.getTempJavadocOutputDir()));
+        FileUtils.deleteDirectory(new File(configuration.getJavadocOutputDir()));
       } catch (IOException e) {
         log.warn("Unable to delete temporary Javadoc output", e);
       }

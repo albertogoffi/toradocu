@@ -1,0 +1,550 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "name": "Line",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+          "name": "Vector3D",
+          "isArray": false
+        },
+        "name": "p1"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+          "name": "Vector3D",
+          "isArray": false
+        },
+        "name": "p2"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "tolerance"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException",
+          "name": "MathIllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if the points are equal",
+        "condition": "args[0].equals(args[1])"
+      }
+    ],
+    "signature": "Line(org.apache.commons.math3.geometry.euclidean.threed.Vector3D p1,org.apache.commons.math3.geometry.euclidean.threed.Vector3D p2,double tolerance)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "name": "Line",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+          "name": "Line",
+          "isArray": false
+        },
+        "name": "line"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "Line(org.apache.commons.math3.geometry.euclidean.threed.Line line)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "name": "Line",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+          "name": "Vector3D",
+          "isArray": false
+        },
+        "name": "p1"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+          "name": "Vector3D",
+          "isArray": false
+        },
+        "name": "p2"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException",
+          "name": "MathIllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if the points are equal",
+        "condition": "args[0].equals(args[1])"
+      }
+    ],
+    "signature": "Line(org.apache.commons.math3.geometry.euclidean.threed.Vector3D p1,org.apache.commons.math3.geometry.euclidean.threed.Vector3D p2)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "name": "reset",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+          "name": "Vector3D",
+          "isArray": false
+        },
+        "name": "p1"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+          "name": "Vector3D",
+          "isArray": false
+        },
+        "name": "p2"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException",
+          "name": "MathIllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if the points are equal",
+        "condition": "args[0].equals(args[1])"
+      }
+    ],
+    "signature": "reset(org.apache.commons.math3.geometry.euclidean.threed.Vector3D p1,org.apache.commons.math3.geometry.euclidean.threed.Vector3D p2)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "name": "getTolerance",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getTolerance()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "name": "revert",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "revert()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "name": "getDirection",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+      "name": "Vector3D",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getDirection()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "name": "getOrigin",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+      "name": "Vector3D",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getOrigin()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "name": "getAbscissa",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+          "name": "Vector3D",
+          "isArray": false
+        },
+        "name": "point"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getAbscissa(org.apache.commons.math3.geometry.euclidean.threed.Vector3D point)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "name": "pointAt",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+      "name": "Vector3D",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "abscissa"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "pointAt(double abscissa)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "name": "toSubSpace",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.Vector1D",
+      "name": "Vector1D",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+          "name": "Vector",
+          "isArray": false
+        },
+        "name": "vector"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "toSubSpace(org.apache.commons.math3.geometry.Vector vector)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "name": "toSpace",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+      "name": "Vector3D",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+          "name": "Vector",
+          "isArray": false
+        },
+        "name": "vector"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "toSpace(org.apache.commons.math3.geometry.Vector vector)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "name": "toSubSpace",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.Vector1D",
+      "name": "Vector1D",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.Point",
+          "name": "Point",
+          "isArray": false
+        },
+        "name": "point"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "toSubSpace(org.apache.commons.math3.geometry.Point point)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "name": "toSpace",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+      "name": "Vector3D",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.Point",
+          "name": "Point",
+          "isArray": false
+        },
+        "name": "point"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "toSpace(org.apache.commons.math3.geometry.Point point)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "name": "isSimilarTo",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+          "name": "Line",
+          "isArray": false
+        },
+        "name": "line"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "isSimilarTo(org.apache.commons.math3.geometry.euclidean.threed.Line line)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "name": "contains",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+          "name": "Vector3D",
+          "isArray": false
+        },
+        "name": "p"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "contains(org.apache.commons.math3.geometry.euclidean.threed.Vector3D p)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "name": "distance",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+          "name": "Vector3D",
+          "isArray": false
+        },
+        "name": "p"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "distance(org.apache.commons.math3.geometry.euclidean.threed.Vector3D p)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "name": "distance",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+          "name": "Line",
+          "isArray": false
+        },
+        "name": "line"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "distance(org.apache.commons.math3.geometry.euclidean.threed.Line line)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "name": "closestPoint",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+      "name": "Vector3D",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+          "name": "Line",
+          "isArray": false
+        },
+        "name": "line"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "closestPoint(org.apache.commons.math3.geometry.euclidean.threed.Line line)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "name": "intersection",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+      "name": "Vector3D",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+          "name": "Line",
+          "isArray": false
+        },
+        "name": "line"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "intersection(org.apache.commons.math3.geometry.euclidean.threed.Line line)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+      "name": "Line",
+      "isArray": false
+    },
+    "name": "wholeLine",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
+      "name": "SubLine",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "wholeLine()"
+  }
+]
