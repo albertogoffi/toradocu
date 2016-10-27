@@ -15,10 +15,10 @@ Toradocu takes the source code of a class as input and produces a set of
 ## Building Toradocu
 To compile Toradocu run the command: `./gradlew shadowJar`
 
-This will create the file 
-`build/libs/toradocu-0.1-all.jar`.
+This will create the file
+`build/libs/toradocu-1.0-all.jar`.
 
-Building Toradocu requires Java JDK 1.8+. 
+Building Toradocu requires Java JDK 1.8+.
 
 
 ## Running Toradocu
@@ -26,7 +26,7 @@ Toradocu is a command-line tool.
 
 To get the list of all command-line parameters, execute
 
-      java -jar build/libs/toradocu-0.1-all.jar --help
+      java -jar build/libs/toradocu-1.0-all.jar --help
 
 A typical Toradocu invocation looks like this:
 
