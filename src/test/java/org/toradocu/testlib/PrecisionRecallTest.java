@@ -78,7 +78,7 @@ public class PrecisionRecallTest {
     StringBuilder report = new StringBuilder(message + "\n");
 
     try (BufferedReader outFile = Files.newBufferedReader(Paths.get(outputFile));
-        BufferedReader expFile = Files.newBufferedReader(Paths.get(goalOutputFile));
+        BufferedReader goalFile = Files.newBufferedReader(Paths.get(goalOutputFile));
         BufferedWriter resultsFile =
             Files.newBufferedWriter(
                 Paths.get(AbstractPrecisionRecallTestSuite.OUTPUT_DIR + "/results.csv"),
@@ -87,7 +87,7 @@ public class PrecisionRecallTest {
 
       Type collectionType = new TypeToken<Collection<DocumentedMethod>>() {}.getType();
       List<DocumentedMethod> actualResult = GsonInstance.gson().fromJson(outFile, collectionType);
-      List<DocumentedMethod> goalResult = GsonInstance.gson().fromJson(expFile, collectionType);
+      List<DocumentedMethod> goalResult = GsonInstance.gson().fromJson(goalFile, collectionType);
 
       assertThat(actualResult.size(), is(goalResult.size()));
 
