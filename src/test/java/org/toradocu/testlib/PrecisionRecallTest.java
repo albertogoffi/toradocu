@@ -137,7 +137,7 @@ public class PrecisionRecallTest {
         }
       }
 
-      result.setTotal(numberOfComments);
+      result.setNumConditions(numberOfComments);
       report.append(result);
       System.out.println(report);
 
