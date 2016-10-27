@@ -2,55 +2,55 @@ package org.toradocu;
 
 import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
-import org.toradocu.testlib.TestCaseStats;
 
 public class PrecisionRecallJGraphT extends AbstractPrecisionRecallTestSuite {
 
   private static final String JGRAPHT_SRC = "src/test/resources/src/jgrapht-core-0.9.2-sources";
   private static final String JGRAPHT_BIN = "src/test/resources/bin/jgrapht-core-0.9.2.jar";
-  private static final String JGRAPHT_EXPECTED_DIR = "src/test/resources/expected-output/JGraphT/";
+  private static final String JGRAPHT_GOAL_DIR =
+      "src/test/resources/goal-output/jgrapht-core-0.9.2/";
 
   public PrecisionRecallJGraphT() {
-    super(JGRAPHT_SRC, JGRAPHT_BIN, JGRAPHT_EXPECTED_DIR);
+    super(JGRAPHT_SRC, JGRAPHT_BIN, JGRAPHT_GOAL_DIR);
   }
 
   @Test
-  public void abstractGraphTest() throws Exception {
+  public void testAbstractGraph() throws Exception {
     test("org.jgrapht.graph.AbstractGraph", 1.0, 0.5);
   }
 
   @Test
-  public void graphTest() throws Exception {
+  public void testGraph() throws Exception {
     test("org.jgrapht.Graph", 0.8, 0.4);
   }
 
   @Test
-  public void graphsTest() throws Exception {
+  public void testGraphs() throws Exception {
     test("org.jgrapht.Graphs", 0.0, 0.0);
   }
 
   @Test
-  public void linearGraphGeneratorTest() throws Exception {
+  public void testLinearGraphGenerator() throws Exception {
     test("org.jgrapht.generate.LinearGraphGenerator", 1.0, 1.0);
   }
 
   @Test
-  public void emptyGraphGeneratorTest() throws Exception {
+  public void testEmptyGraphGenerator() throws Exception {
     test("org.jgrapht.generate.EmptyGraphGenerator", 1.0, 1.0);
   }
 
   @Test
-  public void kShortestPathsTest() throws Exception {
+  public void testKShortestPaths() throws Exception {
     test("org.jgrapht.alg.KShortestPaths", 1.0, 1.0);
   }
 
   @Test
-  public void directedSimpleCyclesTest() throws Exception {
+  public void testDirectedSimpleCycles() throws Exception {
     test("org.jgrapht.alg.cycle.DirectedSimpleCycles", 1.0, 1.0);
   }
 
   @Test
-  public void abstractPathElementListTest() throws Exception {
+  public void testAbstractPathElementList() throws Exception {
     test("org.jgrapht.alg.AbstractPathElementList", 1.0, 0.666);
   }
 }
