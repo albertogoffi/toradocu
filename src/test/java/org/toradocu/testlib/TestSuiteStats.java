@@ -154,4 +154,12 @@ public class TestSuiteStats {
     }
     return conditions;
   }
+
+  public String asCSV() {
+    StringBuilder result = new StringBuilder();
+    for (TestCaseStats test : tests) {
+      result.append(test + "\n");
+    }
+    return result.toString();
+  }
 }
