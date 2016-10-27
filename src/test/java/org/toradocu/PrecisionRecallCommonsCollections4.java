@@ -2,7 +2,6 @@ package org.toradocu;
 
 import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
-import org.toradocu.testlib.TestCaseStats;
 
 public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallTestSuite {
 
@@ -18,67 +17,67 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
   }
 
   @Test
-  public void arrayStackTest() throws Exception {
+  public void testArrayStack() throws Exception {
     test("org.apache.commons.collections4.ArrayStack", 1.0, 0.75);
   }
 
   @Test
-  public void bagUtilsTest() throws Exception {
+  public void testBagUtils() throws Exception {
     test("org.apache.commons.collections4.BagUtils", 1.0, 1.0);
   }
 
   @Test
-  public void closureUtilsTest() throws Exception {
+  public void testClosureUtils() throws Exception {
     test("org.apache.commons.collections4.ClosureUtils", 0.895, 0.68);
   }
 
   @Test
-  public void collectionUtilsTest() throws Exception {
+  public void testCollectionUtils() throws Exception {
     test("org.apache.commons.collections4.CollectionUtils", 0.914, 0.842);
   }
 
   @Test
-  public void predicateUtilsTest() throws Exception {
+  public void testPredicateUtils() throws Exception {
     test("org.apache.commons.collections4.PredicateUtils", 0.733, 0.733);
   }
 
   @Test
-  public void queueUtilsTest() throws Exception {
+  public void testQueueUtils() throws Exception {
     test("org.apache.commons.collections4.QueueUtils", 1.0, 1.0);
   }
 
   @Test
-  public void fixedOrderComparatorTest() throws Exception {
+  public void testFixedOrderComparator() throws Exception {
     test("org.apache.commons.collections4.comparators.FixedOrderComparator", 1.0, 0.666);
   }
 
   @Test
-  public void synchronizedBagTest() throws Exception {
+  public void testSynchronizedBag() throws Exception {
     test("org.apache.commons.collections4.bag.SynchronizedBag", 1.0, 1.0);
   }
 
   @Test
-  public void fluentIterableTest() throws Exception {
+  public void testFluentIterable() throws Exception {
     test("org.apache.commons.collections4.FluentIterable", 1.0, 0.875);
   }
 
   @Test
-  public void LRUMapTest() throws Exception {
+  public void testLRUMap() throws Exception {
     test("org.apache.commons.collections4.map.LRUMap", 0.708, 0.531);
   }
 
   @Test
-  public void allPredicateTest() throws Exception {
+  public void testAllPredicate() throws Exception {
     test("org.apache.commons.collections4.functors.AllPredicate", 1.0, 0.714);
   }
 
   @Test
-  public void andPredicateTest() throws Exception {
+  public void testAndPredicate() throws Exception {
     test("org.apache.commons.collections4.functors.AndPredicate", 1.0, 1.0);
   }
 
   @Test
-  public void anyPredicateTest() throws Exception {
+  public void testAnyPredicate() throws Exception {
     test("org.apache.commons.collections4.functors.AnyPredicate", 1.0, 0.714);
   }
 }

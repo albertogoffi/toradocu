@@ -1,12 +1,7 @@
 package org.toradocu;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.number.IsCloseTo.closeTo;
-import static org.junit.Assert.assertThat;
-
 import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
-import org.toradocu.testlib.TestCaseStats;
 
 public class PrecisionRecallPlumeLib extends AbstractPrecisionRecallTestSuite {
 
@@ -20,17 +15,17 @@ public class PrecisionRecallPlumeLib extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void arraysMDETest() throws Exception {
+  public void testArraysMDE() throws Exception {
     test("plume.ArraysMDE", 0.889, 0.8);
   }
 
   @Test
-  public void regexUtilTest() throws Exception {
+  public void testRegexUtil() throws Exception {
     test("plume.RegexUtil", 0.0, 0.0);
   }
 
   @Test
-  public void fileCompilerTest() throws Exception {
+  public void testFileCompiler() throws Exception {
     test("plume.FileCompiler", 1.0, 0.5);
   }
 
