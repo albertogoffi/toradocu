@@ -8,14 +8,17 @@ import java.lang.reflect.Modifier;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.Parameter;
+import org.toradocu.extractor.Type;
 
 /**
  * The {@code Matcher} class translates subjects and predicates in Javadoc comments to Java
@@ -117,13 +120,15 @@ public class Matcher {
    * Returns the translation (to a Java expression) of the given subject and predicate. Returns null
    * if a translation could not be found.
    *
+   * @param method the method whose comment (and predicate) is being translated
    * @param subject the subject of the proposition to translate
    * @param predicate the predicate of the proposition to translate
    * @param negate true if the given predicate should be negated, false otherwise
    * @return the translation (to a Java expression) of the predicate with the given subject and
    * predicate, or null if no translation found
    */
-  public static String predicateMatch(CodeElement<?> subject, String predicate, boolean negate) {
+  public static String predicateMatch(
+      DocumentedMethod method, CodeElement<?> subject, String predicate, boolean negate) {
     String match = simpleMatch(predicate);
     if (match != null) {
       match = subject.getJavaExpression() + match;
@@ -134,6 +139,8 @@ public class Matcher {
         codeElements =
             extractBooleanCodeElements(
                 paramCodeElement, paramCodeElement.getJavaCodeElement().getType());
+        Class<?> targetClass = getClass(method.getContainingClass().getQualifiedName());
+        codeElements.addAll(extractStaticBooleanMethods(targetClass, paramCodeElement));
       } else if (subject instanceof ClassCodeElement) {
         ClassCodeElement classCodeElement = (ClassCodeElement) subject;
         codeElements =
@@ -171,6 +178,38 @@ public class Matcher {
       match = "(" + match + ") == false";
     }
     return match;
+  }
+
+  /**
+   * Extracts and returns all the boolean methods of {@code type}, including methods that take as
+   * parameter {@code parameterType}.
+   *
+   * @param targetClass the class from which extract the methods
+   * @param parameter the actual parameter that has to be used to invoke the extracted methods
+   * @return the static boolean methods in the given class target class as a set of code elements
+   */
+  private static Set<CodeElement<?>> extractStaticBooleanMethods(
+      Class<?> targetClass, ParameterCodeElement parameter) {
+    Set<CodeElement<?>> collectedElements = new LinkedHashSet<>();
+
+    // Add methods in containing class as code elements.
+    methodCollection:
+    for (Method classMethod : targetClass.getMethods()) {
+      if (Modifier.isStatic(classMethod.getModifiers())
+          && classMethod.getParameters().length < 2
+          && (classMethod.getReturnType().equals(Boolean.class)
+              || classMethod.getReturnType().equals(boolean.class))) {
+        for (java.lang.reflect.Parameter par : classMethod.getParameters()) {
+          if (!parameter.getJavaCodeElement().getType().equals(par.getType())) {
+            continue methodCollection;
+          }
+        }
+        collectedElements.add(
+            new StaticMethodCodeElement(classMethod, parameter.getJavaExpression()));
+      }
+    }
+
+    return collectedElements;
   }
 
   /**
@@ -243,17 +282,17 @@ public class Matcher {
         }
       }
     }
-    if (methodOrConstructor == null) {
+    if (methodOrConstructor != null) {
+      // Add method parameters as code elements.
+      for (int i = 0; i < methodOrConstructor.getParameters().length; i++) {
+        result.add(
+            new ParameterCodeElement(
+                methodOrConstructor.getParameters()[i],
+                documentedMethod.getParameters().get(i).getName(),
+                i));
+      }
+    } else {
       log.error("Could not load method/constructor from DocumentedMethod " + documentedMethod);
-    }
-
-    // Add method parameters as code elements.
-    for (int i = 0; i < methodOrConstructor.getParameters().length; i++) {
-      result.add(
-          new ParameterCodeElement(
-              methodOrConstructor.getParameters()[i],
-              documentedMethod.getParameters().get(i).getName(),
-              i));
     }
 
     // Add the class itself as a code element.
@@ -338,8 +377,7 @@ public class Matcher {
       return "!=null";
     } else if (instanceOf.find()) {
       //If the comparator is instance of
-      String textoreturn = " instanceof " + instanceOf.group(2);
-      return textoreturn;
+      return " instanceof " + instanceOf.group(2);
     } else {
       return null;
     }
@@ -360,8 +398,21 @@ public class Matcher {
     }
 
     for (int i = 0; i < types.length; i++) {
-      if (!parameters[i].getType().equalsTo(types[i])) {
-        return false;
+      final Type parameterType = parameters[i].getType();
+      if (parameterType.isArray() && types[i].isArray()) {
+        // Build the parameter type name (the name encodes the dimension of the array)
+        String parameterTypeName = "L" + parameterType.getComponentType().getQualifiedName();
+        for (int j = 0; j < parameterType.dimension(); j++) {
+          parameterTypeName = "[" + parameterTypeName;
+        }
+        // Compare the two type names
+        if (parameterTypeName.equals(types[i].getComponentType().getName())) {
+          return false;
+        }
+      } else {
+        if (!parameterType.equalsTo(types[i])) {
+          return false;
+        }
       }
     }
     return true;

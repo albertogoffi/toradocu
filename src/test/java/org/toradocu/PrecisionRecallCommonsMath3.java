@@ -74,34 +74,39 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
   public void cycleCrossoverTest() throws Exception {
     test("org.apache.commons.math3.genetics.CycleCrossover", 0.5, 0.25);
   }
-  
+
   @Test
   public void bigFractionTest() throws Exception {
     test("org.apache.commons.math3.fraction.BigFraction", 0.791, 0.703);
   }
-  
+
   @Test
   public void fractionTest() throws Exception {
-    test("org.apache.commons.math3.fraction.Fraction", 0.9, 1.0);
+    test("org.apache.commons.math3.fraction.Fraction", 0.91, 0.87);
   }
-  
+
   @Test
   public void lineTest() throws Exception {
     test("org.apache.commons.math3.geometry.euclidean.threed.Line", 0.0, 0.0);
   }
-  
+
   @Test
   public void subLineTest() throws Exception {
     test("org.apache.commons.math3.geometry.euclidean.threed.SubLine", 1.0, 0.25);
   }
-  
+
   @Test
-  public void Vector3DTest() throws Exception {
+  public void vector3DTest() throws Exception {
     test("org.apache.commons.math3.geometry.euclidean.threed.Vector3D", 1.0, 0.5);
   }
-  
+
   @Test
   public void s2PointTest() throws Exception {
     test("org.apache.commons.math3.geometry.spherical.twod.S2Point", 0.666, 0.666);
+  }
+
+  @Test
+  public void testFieldRotation() throws Exception {
+    test("org.apache.commons.math3.geometry.euclidean.threed.FieldRotation", 0.5, 0.375);
   }
 }
