@@ -208,7 +208,7 @@ public class ConditionTranslator {
       Map<CodeElement<?>, String> translations = new LinkedHashMap<>();
       for (CodeElement<?> subjectMatch : subjectMatches) {
         String currentTranslation =
-            Matcher.predicateMatch(subjectMatch, p.getPredicate(), p.isNegative());
+            Matcher.predicateMatch(method, subjectMatch, p.getPredicate(), p.isNegative());
         if (currentTranslation == null) {
           log.trace("Failed predicate translation for: " + p);
           continue;
