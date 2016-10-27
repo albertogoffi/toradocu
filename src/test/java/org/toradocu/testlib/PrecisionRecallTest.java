@@ -44,8 +44,7 @@ public class PrecisionRecallTest {
       String targetClass, String srcPath, String binPath, String expectedOutputDir) {
     String actualOutputFile =
         AbstractPrecisionRecallTestSuite.OUTPUT_DIR + File.separator + targetClass + "_out.json";
-    String expectedOutputFile =
-        Paths.get(expectedOutputDir, targetClass + "_expected.json").toString();
+    String expectedOutputFile = Paths.get(expectedOutputDir, targetClass + "_goal.json").toString();
     String message = "=== Test " + targetClass + " ===";
 
     Toradocu.main(
