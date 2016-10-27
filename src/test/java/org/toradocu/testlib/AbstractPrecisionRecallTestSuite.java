@@ -1,12 +1,10 @@
 package org.toradocu.testlib;
 
-import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.number.IsCloseTo.closeTo;
 import static org.junit.Assert.assertThat;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
@@ -59,7 +57,7 @@ public abstract class AbstractPrecisionRecallTestSuite {
    */
   @BeforeClass
   public static void setUp() throws IOException {
-    Files.createDirectories(Paths.get(OUTPUT_DIR));
+    new File(OUTPUT_DIR).mkdir();
   }
 
   /**
