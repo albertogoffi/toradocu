@@ -68,6 +68,8 @@ public abstract class AbstractPrecisionRecallTestSuite {
     testSuiteStats.computeResults();
     System.out.println(
         "=== Test Suite ==="
+            + "\nNumber of conditions: "
+            + testSuiteStats.getTotalNumConditions()
             + "\nAverage precision: "
             + String.format("%.2f", testSuiteStats.getPrecision())
             + ", Std deviation: "
