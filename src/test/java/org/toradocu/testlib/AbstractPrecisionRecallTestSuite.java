@@ -102,7 +102,6 @@ public abstract class AbstractPrecisionRecallTestSuite {
    * @param targetClass the fully qualified name of the class on which to run the test
    * @param precision the expected precision
    * @param recall the expected recall
-   * @throws exception if precision and recall are not as expected
    */
   protected void test(String targetClass, double precision, double recall) {
     TestCaseStats stats = computePrecisionAndRecall(targetClass);
