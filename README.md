@@ -1,5 +1,4 @@
 # Toradocu: automated generation of test oracles from Javadoc documentation
-
 [![Build Status](https://travis-ci.org/albertogoffi/toradocu.svg?branch=master)](https://travis-ci.org/albertogoffi/toradocu)
 
 Toradocu generates test oracles from the Javadoc documentation of a
@@ -11,6 +10,9 @@ at [ISSTA 2016](https://issta2016.cispa.saarland)).
 Toradocu takes the source code of a class as input and produces a set of
 [aspects](https://eclipse.org/aspectj/) that can be used as test oracles.
 
+## Tutorial
+To see how to use Toradocu to automatically add test oracles to your test suite
+follow the [tutorial instructions](tutorial/README.md).
 
 ## Building Toradocu
 To compile Toradocu run the command: `./gradlew shadowJar`
@@ -26,7 +28,7 @@ Toradocu is a command-line tool.
 
 To get the list of all command-line parameters, execute
 
-      java -jar build/libs/toradocu-1.0-all.jar --help
+    java -jar build/libs/toradocu-0.1-all.jar --help
 
 A typical Toradocu invocation looks like this:
 
@@ -69,5 +71,4 @@ for more information.
 
 
 ## Contributing to Toradocu
-Information for contributers can be found on the [wiki pages](https://github.com/albertogoffi/toradocu/wiki/Developer-Notes).
-
+Information for contributors can be found on the [wiki pages](https://github.com/albertogoffi/toradocu/wiki/Developer-Notes).
