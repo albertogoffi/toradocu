@@ -305,7 +305,7 @@ public class Matcher {
           && classMethod.getParameterCount() == 1
           && classMethod.getParameterTypes()[0].equals(type)) {
         // Only add static methods with 1 parameter of the same type as the target class.
-        result.add(new StaticMethodCodeElement(classMethod));
+        result.add(new StaticMethodCodeElement(classMethod, "target"));
       }
     }
 
