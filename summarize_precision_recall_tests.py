@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 # Parse build/test-results/results.csv, compute summary of test results, and output to standard output.
 
 import os
