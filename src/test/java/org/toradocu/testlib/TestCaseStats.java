@@ -8,8 +8,8 @@ public class TestCaseStats {
 
   /** Qualified name of the class under test. */
   private String className;
-  /** tp: true positives, fp: false positives, total: total number of conditions */
-  private int tp = 0, fp = 0, conditions = 0;
+  /** tp: true positives, fp: false positives, numConditions: total number of conditions */
+  private int tp = 0, fp = 0, numConditions = 0;
 
   public TestCaseStats(String className) {
     this.className = className;
@@ -21,7 +21,7 @@ public class TestCaseStats {
    * @return the recall of the test case
    */
   public double getRecall() {
-    return tp / (double) conditions;
+    return tp / (double) numConditions;
   }
 
   /**
@@ -37,12 +37,21 @@ public class TestCaseStats {
   }
 
   /**
-   * Set the total number of relevant elements.
+   * Returns the number of numConditions in the test case.
    *
-   * @param total the number of relevant elements in the test case
+   * @return the number of numConditions in the test case
    */
-  public void setTotal(int total) {
-    this.conditions = total;
+  public int getNumConditions() {
+    return numConditions;
+  }
+
+  /**
+   * Set the total number of numConditions in the test case.
+   *
+   * @param numConditions the number of numConditions in the test case
+   */
+  public void setNumConditions(int numConditions) {
+    this.numConditions = numConditions;
   }
 
   /**
@@ -63,7 +72,7 @@ public class TestCaseStats {
   public String toString() {
     return className
         + " | # Conditions: "
-        + conditions
+        + numConditions
         + " | Precision: "
         + String.format("%.2f", getPrecision())
         + " | Recall: "
@@ -79,7 +88,7 @@ public class TestCaseStats {
     final String SEPARATOR = ",";
     return className
         + SEPARATOR
-        + conditions
+        + numConditions
         + SEPARATOR
         + getPrecision()
         + SEPARATOR

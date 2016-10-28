@@ -248,7 +248,7 @@
           "isArray": false
         },
         "comment": "if argument is not a regex",
-        "condition": "! isRegex(args[0])"
+        "condition": "(plume.RegexUtil.isRegex(args[0])) == false"
       }
     ],
     "signature": "asRegex(java.lang.String s)"
@@ -292,7 +292,7 @@
           "isArray": false
         },
         "comment": "if argument is not a regex",
-        "condition": "! isRegex(args[0])"
+        "condition": "(plume.RegexUtil.isRegex(args[0])) == false"
       }
     ],
     "signature": "asRegex(java.lang.String s,int groups)"
