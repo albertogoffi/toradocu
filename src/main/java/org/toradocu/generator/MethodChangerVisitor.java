@@ -3,6 +3,8 @@ package org.toradocu.generator;
 import com.github.javaparser.ASTHelper;
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParseException;
+import com.github.javaparser.Position;
+import com.github.javaparser.Range;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.body.VariableDeclaratorId;
@@ -103,11 +105,16 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
           // to ignore.
           ClassOrInterfaceType nullPointerException =
               new ClassOrInterfaceType("java.lang.NullPointerException");
-          List<com.github.javaparser.ast.type.Type> types = new ArrayList<>();
-          types.add(nullPointerException);
+          Position position = new Position(0, 0);
+          Range range = new Range(position, position);
           CatchClause catchClause =
               new CatchClause(
-                  0, null, types, new VariableDeclaratorId("e"), JavaParser.parseBlock("{}"));
+                  range,
+                  0,
+                  null,
+                  nullPointerException,
+                  new VariableDeclaratorId("e"),
+                  JavaParser.parseBlock("{}"));
           List<CatchClause> catchClauses = new ArrayList<>();
           catchClauses.add(catchClause);
 
