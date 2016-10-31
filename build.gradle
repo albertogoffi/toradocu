@@ -191,8 +191,9 @@ shadowJar {
 
 /* Clone the git repository containing the scripts to format the code */
 task getCodeFormatScripts(type: Exec) {
-  commandLine "bash", "-c", "git -C .run-google-java-format pull -q " +
-          "|| git clone -q https://github.com/plume-lib/run-google-java-format.git .run-google-java-format"
+  commandLine "bash", "-c", "(cd .run-google-java-format && git pull -q)" +
+          " || " +
+          "git clone -q https://github.com/plume-lib/run-google-java-format.git .run-google-java-format"
 }
 
 /* Check if the code is properly formatted */
@@ -208,7 +209,7 @@ checkCodeStyle.dependsOn getCodeFormatScripts
 
 /* Format the code according to the Google Java format code style */
 task formatCode(type: Exec) {
-  description "Run checkCodeStyle to check if the source code is properly formatted"
+  description "Run properly the source code"
   commandLine "bash", "-c", "find src -name \"*.java\" -type f " +
           "-not -path \"src/test/resources/src/*\" " +
           "-not -path \"src/test/resources/aspects/*\" " +
