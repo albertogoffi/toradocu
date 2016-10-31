@@ -29,6 +29,7 @@ jar {
 }
 
 build.doLast {
+  tasks.getCodeFormatScripts.execute()
   tasks.checkCodeStyle.execute()
   tasks.javadoc.execute()
 }
