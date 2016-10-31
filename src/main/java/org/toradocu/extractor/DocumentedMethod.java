@@ -1,5 +1,8 @@
 package org.toradocu.extractor;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Executable;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -8,6 +11,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import org.toradocu.util.Checks;
+import org.toradocu.util.Reflection;
 
 /**
  * DocumentedMethod represents the Javadoc documentation for a method in a class. It identifies the
@@ -183,6 +187,29 @@ public final class DocumentedMethod {
       return true;
     }
     return false;
+  }
+
+  public Executable getExecutable() {
+    Class<?> containingClass = Reflection.getClass(getContainingClass().getQualifiedName());
+
+    // Load the DocumentedMethod as a reflection Method or Constructor.
+    if (isConstructor()) {
+      for (Constructor<?> constructor : containingClass.getDeclaredConstructors()) {
+        if (Reflection.checkTypes(
+            getParameters().toArray(new Parameter[0]), constructor.getParameterTypes())) {
+          return constructor;
+        }
+      }
+    } else {
+      for (Method method : containingClass.getDeclaredMethods()) {
+        if (method.getName().equals(getName())
+            && Reflection.checkTypes(
+                getParameters().toArray(new Parameter[0]), method.getParameterTypes())) {
+          return method;
+        }
+      }
+    }
+    return null;
   }
 
   /**

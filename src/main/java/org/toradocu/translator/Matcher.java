@@ -1,7 +1,5 @@
 package org.toradocu.translator;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Executable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -259,56 +257,58 @@ public class Matcher {
       Class<?> type, DocumentedMethod documentedMethod) {
     Set<CodeElement<?>> result = new LinkedHashSet<>();
 
-    Executable methodOrConstructor = null;
-    // Load the DocumentedMethod as a reflection Method or Constructor.
-    if (documentedMethod.isConstructor()) {
-      for (Constructor<?> constructor : type.getDeclaredConstructors()) {
-        if (checkTypes(
-            documentedMethod.getParameters().toArray(new Parameter[0]),
-            constructor.getParameterTypes())) {
-          methodOrConstructor = constructor;
-          break;
-        }
-      }
-    } else {
-      for (Method method : type.getDeclaredMethods()) {
-        if (method.getName().equals(documentedMethod.getName())
-            && checkTypes(
-                documentedMethod.getParameters().toArray(new Parameter[0]),
-                method.getParameterTypes())) {
-          methodOrConstructor = method;
-          break;
-        }
-      }
-    }
-    if (methodOrConstructor != null) {
-      // Add method parameters as code elements.
-      for (int i = 0; i < methodOrConstructor.getParameters().length; i++) {
-        result.add(
-            new ParameterCodeElement(
-                methodOrConstructor.getParameters()[i],
-                documentedMethod.getParameters().get(i).getName(),
-                i));
-      }
-    } else {
-      log.error("Could not load method/constructor from DocumentedMethod " + documentedMethod);
-    }
+    result = JavaElementsCollector.collect(documentedMethod);
 
-    // Add the class itself as a code element.
-    result.add(new ClassCodeElement(type));
-
-    // Add methods in containing class as code elements.
-    for (Method classMethod : type.getMethods()) {
-      if (classMethod.getParameterCount() == 0) {
-        // Only add no-arg instance methods.
-        result.add(new MethodCodeElement("target", classMethod));
-      } else if (Modifier.isStatic(classMethod.getModifiers())
-          && classMethod.getParameterCount() == 1
-          && classMethod.getParameterTypes()[0].equals(type)) {
-        // Only add static methods with 1 parameter of the same type as the target class.
-        result.add(new StaticMethodCodeElement(classMethod, "target"));
-      }
-    }
+    //    Executable methodOrConstructor = null;
+    //    // Load the DocumentedMethod as a reflection Method or Constructor.
+    //    if (documentedMethod.isConstructor()) {
+    //      for (Constructor<?> constructor : type.getDeclaredConstructors()) {
+    //        if (checkTypes(
+    //            documentedMethod.getParameters().toArray(new Parameter[0]),
+    //            constructor.getParameterTypes())) {
+    //          methodOrConstructor = constructor;
+    //          break;
+    //        }
+    //      }
+    //    } else {
+    //      for (Method method : type.getDeclaredMethods()) {
+    //        if (method.getName().equals(documentedMethod.getName())
+    //            && checkTypes(
+    //                documentedMethod.getParameters().toArray(new Parameter[0]),
+    //                method.getParameterTypes())) {
+    //          methodOrConstructor = method;
+    //          break;
+    //        }
+    //      }
+    //    }
+    //    if (methodOrConstructor != null) {
+    //      // Add method parameters as code elements.
+    //      for (int i = 0; i < methodOrConstructor.getParameters().length; i++) {
+    //        result.add(
+    //            new ParameterCodeElement(
+    //                methodOrConstructor.getParameters()[i],
+    //                documentedMethod.getParameters().get(i).getName(),
+    //                i));
+    //      }
+    //    } else {
+    //      log.error("Could not load method/constructor from DocumentedMethod " + documentedMethod);
+    //    }
+    //
+    //    // Add the class itself as a code element.
+    //    result.add(new ClassCodeElement(type));
+    //
+    //    // Add methods in containing class as code elements.
+    //    for (Method classMethod : type.getMethods()) {
+    //      if (classMethod.getParameterCount() == 0) {
+    //        // Only add no-arg instance methods.
+    //        result.add(new MethodCodeElement("target", classMethod));
+    //      } else if (Modifier.isStatic(classMethod.getModifiers())
+    //          && classMethod.getParameterCount() == 1
+    //          && classMethod.getParameterTypes()[0].equals(type)) {
+    //        // Only add static methods with 1 parameter of the same type as the target class.
+    //        result.add(new StaticMethodCodeElement(classMethod, "target"));
+    //      }
+    //    }
 
     return result;
   }

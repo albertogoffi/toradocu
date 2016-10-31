@@ -1,6 +1,7 @@
 package org.toradocu.translator;
 
 import java.lang.reflect.Method;
+import java.util.List;
 
 /**
  * This class represents a static method code element for use in translation. It holds String
@@ -13,7 +14,7 @@ public class StaticMethodCodeElement extends CodeElement<Method> {
    * Actual parameter values used to build the Java expression corresponding to the invocation of
    * this static method
    */
-  private final String[] parameters;
+  private String[] parameters;
 
   /**
    * Constructs and initializes a {@code StaticMethodCodeElement} that identifies the given static
@@ -30,15 +31,6 @@ public class StaticMethodCodeElement extends CodeElement<Method> {
   public StaticMethodCodeElement(Method method, String... parameters) {
     super(method);
     this.parameters = parameters;
-    if (method.getParameterCount() != parameters.length) {
-      throw new IllegalArgumentException(
-          "Method '"
-              + method.getName()
-              + "' has "
-              + method.getParameterCount()
-              + " parameters. Expected "
-              + parameters.length);
-    }
 
     // Add name identifier.
     String methodName = method.getName();
@@ -47,6 +39,16 @@ public class StaticMethodCodeElement extends CodeElement<Method> {
     }
 
     addIdentifier(methodName);
+  }
+
+  /**
+   * Set the actual parameters to be used to invoke this method.
+   *
+   * @param parameters the actual parameters of this method
+   * @throws NullPointerException if {@code parameters} is null
+   */
+  public void setParameters(List<String> parameters) {
+    this.parameters = parameters.toArray(new String[0]);
   }
 
   /**
@@ -64,7 +66,9 @@ public class StaticMethodCodeElement extends CodeElement<Method> {
     for (String parameter : parameters) {
       javaExpression += parameter + ", ";
     }
-    javaExpression = javaExpression.substring(0, javaExpression.length() - 2);
+    if (javaExpression.endsWith(", ")) {
+      javaExpression = javaExpression.substring(0, javaExpression.length() - 2);
+    }
     return javaExpression + ")";
   }
 }
