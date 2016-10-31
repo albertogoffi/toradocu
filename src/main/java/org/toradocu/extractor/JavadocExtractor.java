@@ -1,21 +1,5 @@
 package org.toradocu.extractor;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.jsoup.Jsoup;
-import org.toradocu.doclet.formats.html.ConfigurationImpl;
-import org.toradocu.doclet.formats.html.HtmlDocletWriter;
-import org.toradocu.doclet.internal.toolkit.taglets.TagletWriter;
-import org.toradocu.doclet.internal.toolkit.util.DocFinder;
-import org.toradocu.doclet.internal.toolkit.util.DocPath;
-import org.toradocu.doclet.internal.toolkit.util.ImplementedMethods;
-
 import com.sun.javadoc.AnnotationDesc;
 import com.sun.javadoc.ClassDoc;
 import com.sun.javadoc.ConstructorDoc;
@@ -25,6 +9,20 @@ import com.sun.javadoc.MethodDoc;
 import com.sun.javadoc.Tag;
 import com.sun.javadoc.Type;
 import com.sun.javadoc.TypeVariable;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import org.jsoup.Jsoup;
+import org.toradocu.doclet.formats.html.ConfigurationImpl;
+import org.toradocu.doclet.formats.html.HtmlDocletWriter;
+import org.toradocu.doclet.internal.toolkit.taglets.TagletWriter;
+import org.toradocu.doclet.internal.toolkit.util.DocFinder;
+import org.toradocu.doclet.internal.toolkit.util.DocPath;
+import org.toradocu.doclet.internal.toolkit.util.ImplementedMethods;
 
 /**
  * {@code JavadocExtractor} extracts {@code DocumentedMethod}s from {@code ClassDoc}s. The entry
@@ -50,7 +48,7 @@ public final class JavadocExtractor {
    * @param classDoc the {@code ClassDoc} from which to extract method documentation
    * @return a list containing documented methods from the class
    * @throws IOException if the method encounters an error while reading/generating class
-   * documentation
+   *     documentation
    */
   public List<DocumentedMethod> extract(ClassDoc classDoc) throws IOException {
     List<DocumentedMethod> methods = new ArrayList<>();
@@ -126,7 +124,7 @@ public final class JavadocExtractor {
    *
    * @param classDoc the {@code ClassDoc} from which to extract constructors and methods
    * @return a list of {@code ExecutableMemberDoc}s representing the constructors and methods of
-   * {@code classDoc}
+   *     {@code classDoc}
    */
   private List<ExecutableMemberDoc> getConstructorsAndMethods(ClassDoc classDoc) {
     /** Constructors of the class {@code classDoc} to be returned by this method */

@@ -141,10 +141,10 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
   }
 
   /**
-   * Generates the AspectJ pointcut definition to be used to match the given
-   * {@code DocumentedMethod}. A pointcut definition looks like {@code call(void C.foo())}. Given a
-   * {@code DocumentedMethod} describing the method C.foo(), this method returns the string
-   * {@code call(void C.foo())}.
+   * Generates the AspectJ pointcut definition to be used to match the given {@code
+   * DocumentedMethod}. A pointcut definition looks like {@code call(void C.foo())}. Given a {@code
+   * DocumentedMethod} describing the method C.foo(), this method returns the string {@code
+   * call(void C.foo())}.
    *
    * @param method {@code DocumentedMethod} for which to generate the pointcut definition
    * @return the pointcut definition matching {@code method}
@@ -178,8 +178,8 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
   }
 
   /**
-   * Add the appropriate cast to each mention of a method argument or target in a given Java
-   * boolean condition.
+   * Add the appropriate cast to each mention of a method argument or target in a given Java boolean
+   * condition.
    *
    * @param condition the Java boolean condition to which add the casts
    * @param method the method to which the {@code condition} belongs

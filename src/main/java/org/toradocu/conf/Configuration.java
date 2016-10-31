@@ -13,9 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * This class holds the configuration options (particularly command-line options) for Toradocu.
- */
+/** This class holds the configuration options (particularly command-line options) for Toradocu. */
 public class Configuration {
 
   // General options
@@ -154,8 +152,8 @@ public class Configuration {
   private List<String> javadocOptions = new ArrayList<>();
 
   /**
-   * Temporary directory for Javadoc output or null if a non-temporary directory
-   * (e.g. the working directory) is set for Javadoc output.
+   * Temporary directory for Javadoc output or null if a non-temporary directory (e.g. the working
+   * directory) is set for Javadoc output.
    */
   private String javadocOutputDir;
 
@@ -286,9 +284,11 @@ public class Configuration {
   }
 
   /**
-   * Returns the file in which to export Javadoc extractor output or null if this file is not specified.
+   * Returns the file in which to export Javadoc extractor output or null if this file is not
+   * specified.
    *
-   * @return the file in which to export Javadoc extractor output or null if this file is not specified
+   * @return the file in which to export Javadoc extractor output or null if this file is not
+   *     specified
    */
   public File getJavadocExtractorOutput() {
     return javadocExtractorOutput;
@@ -331,9 +331,11 @@ public class Configuration {
   }
 
   /**
-   * Returns the fully-qualified name of the class that will be instrumented with aspects or null if a test class is not specified.
+   * Returns the fully-qualified name of the class that will be instrumented with aspects or null if
+   * a test class is not specified.
    *
-   * @return the fully-qualified name of the class that will be instrumented with aspects or null if a test class is not specified
+   * @return the fully-qualified name of the class that will be instrumented with aspects or null if
+   *     a test class is not specified
    */
   public String getTestClass() {
     return testClass;
@@ -362,7 +364,7 @@ public class Configuration {
    * for Javadoc output.
    *
    * @return a temporary directory for Javadoc output or null if a non-temporary directory is set
-   * for Javadoc output
+   *     for Javadoc output
    */
   public String getJavadocOutputDir() {
     return javadocOutputDir;
@@ -387,11 +389,11 @@ public class Configuration {
   }
 
   /**
-   * Returns the expected output file to compare Toradocu's output against, or null if no such
-   * file is specified.
+   * Returns the expected output file to compare Toradocu's output against, or null if no such file
+   * is specified.
    *
-   * @return the expected output file to compare Toradocu's output against, or null if no such
-   * file is specified
+   * @return the expected output file to compare Toradocu's output against, or null if no such file
+   *     is specified
    */
   public File getExpectedOutput() {
     return expectedOutput;

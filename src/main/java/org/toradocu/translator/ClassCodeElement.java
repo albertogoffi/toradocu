@@ -41,7 +41,7 @@ public class ClassCodeElement extends CodeElement<Class<?>> {
    * code element.
    *
    * @return the string "target" as the Java expression representation of this parameter code
-   * element
+   *     element
    */
   @Override
   public String buildJavaExpression() {

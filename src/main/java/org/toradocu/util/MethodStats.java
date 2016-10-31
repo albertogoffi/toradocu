@@ -2,17 +2,15 @@ package org.toradocu.util;
 
 import org.toradocu.Toradocu;
 
-/**
- * This class produces the statistics about the behavior of Toradocu on a specific method.
- */
+/** This class produces the statistics about the behavior of Toradocu on a specific method. */
 public class MethodStats {
-  /** Method name. **/
+  /** Method name. * */
   private final String methodName;
-  /** Number of conditions correctly translated by Toradocu. **/
+  /** Number of conditions correctly translated by Toradocu. * */
   private int correctTranslations;
-  /** Number of conditions wrongly translated by Toradocu. **/
+  /** Number of conditions wrongly translated by Toradocu. * */
   private int wrongTranslation;
-  /** Number of conditions not translated at all by Toradocu. **/
+  /** Number of conditions not translated at all by Toradocu. * */
   private int missingTranslations;
 
   public MethodStats(String methodName) {
@@ -55,23 +53,17 @@ public class MethodStats {
     return correctTranslations + wrongTranslation + missingTranslations;
   }
 
-  /**
-   * Increments the number of correct translations produced by Toradocu by 1.
-   */
+  /** Increments the number of correct translations produced by Toradocu by 1. */
   public void addCorrectTranslation() {
     ++correctTranslations;
   }
 
-  /**
-   * Increments the number of wrong translations produced by Toradocu by 1.
-   */
+  /** Increments the number of wrong translations produced by Toradocu by 1. */
   public void addWrongTranslation() {
     ++wrongTranslation;
   }
 
-  /**
-   * Increments the number of missing translations produced by Toradocu by 1.
-   */
+  /** Increments the number of missing translations produced by Toradocu by 1. */
   public void addMissingTranslation() {
     ++missingTranslations;
   }

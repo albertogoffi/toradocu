@@ -20,9 +20,7 @@ public class ExportedData {
   /** Maps each method signature to a {@code DocumentedMethod} object. */
   private Map<String, DocumentedMethod> methods;
 
-  /**
-   * Constructs an {@code ExportedData} object with no data to export initially.
-   */
+  /** Constructs an {@code ExportedData} object with no data to export initially. */
   public ExportedData() {
     translatedThrowsTags = new HashMap<>();
     methods = new HashMap<>();
