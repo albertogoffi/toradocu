@@ -108,4 +108,9 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
   public void testFieldRotation() throws Exception {
     test("org.apache.commons.math3.geometry.euclidean.threed.FieldRotation", 0.5, 0.375);
   }
+
+  // @Test
+  public void testRealVector() throws Exception {
+    test("org.apache.commons.math3.linear.RealVector", 1.0, 1.0);
+  }
 }
