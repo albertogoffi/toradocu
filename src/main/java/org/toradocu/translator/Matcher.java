@@ -13,8 +13,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
-import org.toradocu.extractor.Parameter;
-import org.toradocu.extractor.Type;
 
 /**
  * The {@code Matcher} class translates subjects and predicates in Javadoc comments to Java
@@ -43,7 +41,7 @@ public class Matcher {
   public static Set<CodeElement<?>> subjectMatch(String subject, DocumentedMethod method) {
     // Extract every CodeElement associated with the method and the containing class of the method.
     Class<?> containingClass = getClass(method.getContainingClass().getQualifiedName());
-    Set<CodeElement<?>> codeElements = extractCodeElements(containingClass, method);
+    Set<CodeElement<?>> codeElements = JavaElementsCollector.collect(method);
 
     // Clean the subject string by removing words and characters not related to its identity so that
     // they do not influence string matching.
@@ -247,73 +245,6 @@ public class Matcher {
   }
 
   /**
-   * Extracts and returns all {@code CodeElement}s associated with the given class and method.
-   *
-   * @param type the class to extract {@code CodeElement}s from
-   * @param documentedMethod the method to extract {@code ParameterCodeElement}s from
-   * @return all {@code CodeElement}s associated with the given class and method
-   */
-  private static Set<CodeElement<?>> extractCodeElements(
-      Class<?> type, DocumentedMethod documentedMethod) {
-    Set<CodeElement<?>> result = new LinkedHashSet<>();
-
-    result = JavaElementsCollector.collect(documentedMethod);
-
-    //    Executable methodOrConstructor = null;
-    //    // Load the DocumentedMethod as a reflection Method or Constructor.
-    //    if (documentedMethod.isConstructor()) {
-    //      for (Constructor<?> constructor : type.getDeclaredConstructors()) {
-    //        if (checkTypes(
-    //            documentedMethod.getParameters().toArray(new Parameter[0]),
-    //            constructor.getParameterTypes())) {
-    //          methodOrConstructor = constructor;
-    //          break;
-    //        }
-    //      }
-    //    } else {
-    //      for (Method method : type.getDeclaredMethods()) {
-    //        if (method.getName().equals(documentedMethod.getName())
-    //            && checkTypes(
-    //                documentedMethod.getParameters().toArray(new Parameter[0]),
-    //                method.getParameterTypes())) {
-    //          methodOrConstructor = method;
-    //          break;
-    //        }
-    //      }
-    //    }
-    //    if (methodOrConstructor != null) {
-    //      // Add method parameters as code elements.
-    //      for (int i = 0; i < methodOrConstructor.getParameters().length; i++) {
-    //        result.add(
-    //            new ParameterCodeElement(
-    //                methodOrConstructor.getParameters()[i],
-    //                documentedMethod.getParameters().get(i).getName(),
-    //                i));
-    //      }
-    //    } else {
-    //      log.error("Could not load method/constructor from DocumentedMethod " + documentedMethod);
-    //    }
-    //
-    //    // Add the class itself as a code element.
-    //    result.add(new ClassCodeElement(type));
-    //
-    //    // Add methods in containing class as code elements.
-    //    for (Method classMethod : type.getMethods()) {
-    //      if (classMethod.getParameterCount() == 0) {
-    //        // Only add no-arg instance methods.
-    //        result.add(new MethodCodeElement("target", classMethod));
-    //      } else if (Modifier.isStatic(classMethod.getModifiers())
-    //          && classMethod.getParameterCount() == 1
-    //          && classMethod.getParameterTypes()[0].equals(type)) {
-    //        // Only add static methods with 1 parameter of the same type as the target class.
-    //        result.add(new StaticMethodCodeElement(classMethod, "target"));
-    //      }
-    //    }
-
-    return result;
-  }
-
-  /**
    * Attempts to match the given predicate to a simple Java expression (i.e. one containing only
    * literals).
    *
@@ -380,40 +311,5 @@ public class Matcher {
     } else {
       return null;
     }
-  }
-
-  /**
-   * Check the type of all the specified parameters. Returns true if all the specified {@code
-   * parameters} have the types specified in the array {@code types}.
-   *
-   * @param parameters the parameters whose type has to be checked
-   * @param types the types that the parameters should have
-   * @return true if all the specified {@code parameters} have the types specified in the array
-   *     {@code types}. False otherwise.
-   */
-  private static boolean checkTypes(Parameter[] parameters, Class<?>[] types) {
-    if (types.length != parameters.length) {
-      return false;
-    }
-
-    for (int i = 0; i < types.length; i++) {
-      final Type parameterType = parameters[i].getType();
-      if (parameterType.isArray() && types[i].isArray()) {
-        // Build the parameter type name (the name encodes the dimension of the array)
-        String parameterTypeName = "L" + parameterType.getComponentType().getQualifiedName();
-        for (int j = 0; j < parameterType.dimension(); j++) {
-          parameterTypeName = "[" + parameterTypeName;
-        }
-        // Compare the two type names
-        if (parameterTypeName.equals(types[i].getComponentType().getName())) {
-          return false;
-        }
-      } else {
-        if (!parameterType.equalsTo(types[i])) {
-          return false;
-        }
-      }
-    }
-    return true;
   }
 }
