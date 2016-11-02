@@ -208,7 +208,7 @@ build.dependsOn checkCodeStyle
 
 /* Format the code according to the Google Java format code style */
 task formatCode(type: Exec) {
-  description "Run properly the source code"
+  description "Run formatCode to properly format the source code"
   commandLine "bash", "-c", "find src -name \"*.java\" -type f " +
           "-not -path \"src/test/resources/src/*\" " +
           "-not -path \"src/test/resources/aspects/*\" " +
