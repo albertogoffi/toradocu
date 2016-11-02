@@ -3,8 +3,6 @@ package org.toradocu.translator;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -13,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.util.Reflection;
 
 /**
  * The {@code Matcher} class translates subjects and predicates in Javadoc comments to Java
@@ -40,7 +39,7 @@ public class Matcher {
    */
   public static Set<CodeElement<?>> subjectMatch(String subject, DocumentedMethod method) {
     // Extract every CodeElement associated with the method and the containing class of the method.
-    Class<?> containingClass = getClass(method.getContainingClass().getQualifiedName());
+    Class<?> containingClass = Reflection.getClass(method.getContainingClass().getQualifiedName());
     Set<CodeElement<?>> codeElements = JavaElementsCollector.collect(method);
 
     // Clean the subject string by removing words and characters not related to its identity so that
@@ -83,35 +82,6 @@ public class Matcher {
   }
 
   /**
-   * Returns the {@code Class} object for the class with the given name or null if the class could
-   * not be retrieved.
-   *
-   * @param className the fully qualified name of a class
-   * @return the {@code Class} object for the given class
-   */
-  private static Class<?> getClass(String className) {
-    final String ERROR_MESSAGE = "Unable to load class " + className + ". Check the classpath.";
-    try {
-      URL classDir = Toradocu.configuration.getClassDir().toUri().toURL();
-      if (classLoader == null) {
-        classLoader = URLClassLoader.newInstance(new URL[] {classDir});
-      } else {
-        URL[] originalURLs = classLoader.getURLs();
-        URL[] newURLs = new URL[originalURLs.length + 1];
-        for (int i = 0; i < originalURLs.length; i++) {
-          newURLs[i] = originalURLs[i];
-        }
-        newURLs[newURLs.length - 1] = classDir;
-        classLoader = URLClassLoader.newInstance(newURLs);
-      }
-      return classLoader.loadClass(className);
-    } catch (MalformedURLException | ClassNotFoundException e) {
-      log.error(ERROR_MESSAGE);
-      return null;
-    }
-  }
-
-  /**
    * Returns the translation (to a Java expression) of the given subject and predicate. Returns null
    * if a translation could not be found.
    *
@@ -134,7 +104,7 @@ public class Matcher {
         codeElements =
             extractBooleanCodeElements(
                 paramCodeElement, paramCodeElement.getJavaCodeElement().getType());
-        Class<?> targetClass = getClass(method.getContainingClass().getQualifiedName());
+        Class<?> targetClass = Reflection.getClass(method.getContainingClass().getQualifiedName());
         codeElements.addAll(extractStaticBooleanMethods(targetClass, paramCodeElement));
       } else if (subject instanceof ClassCodeElement) {
         ClassCodeElement classCodeElement = (ClassCodeElement) subject;
@@ -240,74 +210,6 @@ public class Matcher {
         result.add(new MethodCodeElement(receiver.getJavaExpression(), method));
       }
     }
-
-    return result;
-  }
-
-  /**
-   * <<<<<<< Updated upstream ======= Extracts and returns all {@code CodeElement}s associated with
-   * the given class and method.
-   *
-   * @param type the class to extract {@code CodeElement}s from
-   * @param documentedMethod the method to extract {@code ParameterCodeElement}s from
-   * @return all {@code CodeElement}s associated with the given class and method
-   */
-  private static Set<CodeElement<?>> extractCodeElements(
-      Class<?> type, DocumentedMethod documentedMethod) {
-    Set<CodeElement<?>> result = new LinkedHashSet<>();
-
-    result = JavaElementsCollector.collect(documentedMethod);
-
-    //    Executable methodOrConstructor = null;
-    //    // Load the DocumentedMethod as a reflection Method or Constructor.
-    //    if (documentedMethod.isConstructor()) {
-    //      for (Constructor<?> constructor : type.getDeclaredConstructors()) {
-    //        if (checkTypes(
-    //            documentedMethod.getParameters().toArray(new Parameter[0]),
-    //            constructor.getParameterTypes())) {
-    //          methodOrConstructor = constructor;
-    //          break;
-    //        }
-    //      }
-    //    } else {
-    //      for (Method method : type.getDeclaredMethods()) {
-    //        if (method.getName().equals(documentedMethod.getName())
-    //            && checkTypes(
-    //                documentedMethod.getParameters().toArray(new Parameter[0]),
-    //                method.getParameterTypes())) {
-    //          methodOrConstructor = method;
-    //          break;
-    //        }
-    //      }
-    //    }
-    //    if (methodOrConstructor != null) {
-    //      // Add method parameters as code elements.
-    //      for (int i = 0; i < methodOrConstructor.getParameters().length; i++) {
-    //        result.add(
-    //            new ParameterCodeElement(
-    //                methodOrConstructor.getParameters()[i],
-    //                documentedMethod.getParameters().get(i).getName(),
-    //                i));
-    //      }
-    //    } else {
-    //      log.error("Could not load method/constructor from DocumentedMethod " + documentedMethod);
-    //    }
-    //
-    //    // Add the class itself as a code element.
-    //    result.add(new ClassCodeElement(type));
-    //
-    //    // Add methods in containing class as code elements.
-    //    for (Method classMethod : type.getMethods()) {
-    //      if (classMethod.getParameterCount() == 0) {
-    //        // Only add no-arg instance methods.
-    //        result.add(new MethodCodeElement("target", classMethod));
-    //      } else if (Modifier.isStatic(classMethod.getModifiers())
-    //          && classMethod.getParameterCount() == 1
-    //          && classMethod.getParameterTypes()[0].equals(type)) {
-    //        // Only add static methods with 1 parameter of the same type as the target class.
-    //        result.add(new StaticMethodCodeElement(classMethod, "target"));
-    //      }
-    //    }
 
     return result;
   }
