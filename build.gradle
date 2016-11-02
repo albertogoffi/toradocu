@@ -28,10 +28,8 @@ jar {
   }
 }
 
-build.doLast {
-  tasks.checkCodeStyle.execute()
-  tasks.javadoc.execute()
-}
+/* Create Javadoc documentation before proceeding with the build */
+build.dependsOn javadoc
 
 javadoc {
   excludes += 'org/toradocu/doclet/**'
@@ -205,6 +203,7 @@ task checkCodeStyle(type: Exec) {
           "| xargs ./.run-google-java-format/check-google-java-format.py"
 }
 checkCodeStyle.dependsOn getCodeFormatScripts
+build.dependsOn checkCodeStyle
 
 /* Format the code according to the Google Java format code style */
 task formatCode(type: Exec) {
