@@ -12,7 +12,7 @@ public class MethodCodeElement extends CodeElement<Method> {
 
   /** The name of the class/object on which this method is called. */
   private final String receiver;
-
+  /** The actual parameters used to invoke this method. */
   private String[] parameters;
 
   /**

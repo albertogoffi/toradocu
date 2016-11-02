@@ -245,8 +245,76 @@ public class Matcher {
   }
 
   /**
-   * Attempts to match the given predicate to a simple Java expression (i.e. one containing only
-   * literals).
+   * <<<<<<< Updated upstream ======= Extracts and returns all {@code CodeElement}s associated with
+   * the given class and method.
+   *
+   * @param type the class to extract {@code CodeElement}s from
+   * @param documentedMethod the method to extract {@code ParameterCodeElement}s from
+   * @return all {@code CodeElement}s associated with the given class and method
+   */
+  private static Set<CodeElement<?>> extractCodeElements(
+      Class<?> type, DocumentedMethod documentedMethod) {
+    Set<CodeElement<?>> result = new LinkedHashSet<>();
+
+    result = JavaElementsCollector.collect(documentedMethod);
+
+    //    Executable methodOrConstructor = null;
+    //    // Load the DocumentedMethod as a reflection Method or Constructor.
+    //    if (documentedMethod.isConstructor()) {
+    //      for (Constructor<?> constructor : type.getDeclaredConstructors()) {
+    //        if (checkTypes(
+    //            documentedMethod.getParameters().toArray(new Parameter[0]),
+    //            constructor.getParameterTypes())) {
+    //          methodOrConstructor = constructor;
+    //          break;
+    //        }
+    //      }
+    //    } else {
+    //      for (Method method : type.getDeclaredMethods()) {
+    //        if (method.getName().equals(documentedMethod.getName())
+    //            && checkTypes(
+    //                documentedMethod.getParameters().toArray(new Parameter[0]),
+    //                method.getParameterTypes())) {
+    //          methodOrConstructor = method;
+    //          break;
+    //        }
+    //      }
+    //    }
+    //    if (methodOrConstructor != null) {
+    //      // Add method parameters as code elements.
+    //      for (int i = 0; i < methodOrConstructor.getParameters().length; i++) {
+    //        result.add(
+    //            new ParameterCodeElement(
+    //                methodOrConstructor.getParameters()[i],
+    //                documentedMethod.getParameters().get(i).getName(),
+    //                i));
+    //      }
+    //    } else {
+    //      log.error("Could not load method/constructor from DocumentedMethod " + documentedMethod);
+    //    }
+    //
+    //    // Add the class itself as a code element.
+    //    result.add(new ClassCodeElement(type));
+    //
+    //    // Add methods in containing class as code elements.
+    //    for (Method classMethod : type.getMethods()) {
+    //      if (classMethod.getParameterCount() == 0) {
+    //        // Only add no-arg instance methods.
+    //        result.add(new MethodCodeElement("target", classMethod));
+    //      } else if (Modifier.isStatic(classMethod.getModifiers())
+    //          && classMethod.getParameterCount() == 1
+    //          && classMethod.getParameterTypes()[0].equals(type)) {
+    //        // Only add static methods with 1 parameter of the same type as the target class.
+    //        result.add(new StaticMethodCodeElement(classMethod, "target"));
+    //      }
+    //    }
+
+    return result;
+  }
+
+  /**
+   * >>>>>>> Stashed changes Attempts to match the given predicate to a simple Java expression (i.e.
+   * one containing only literals).
    *
    * @param predicate the predicate to translate to a Java expression
    * @return a Java expression translation of the given predicate or null if the predicate could not
