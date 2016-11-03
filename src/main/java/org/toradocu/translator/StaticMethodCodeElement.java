@@ -21,11 +21,11 @@ public class StaticMethodCodeElement extends CodeElement<Method> {
    * class.
    *
    * @param method the static method that this code element identifies. Must have one parameter of
-   *               the same type as the method's containing class.
+   *     the same type as the method's containing class.
    * @param parameters actual parameter values used to build the Java expression corresponding to
-   *                   the invocation of this static method
+   *     the invocation of this static method
    * @throws IllegalArgumentException if method takes a number of parameters different than the
-   *                                  specified parameters
+   *     specified parameters
    */
   public StaticMethodCodeElement(Method method, String... parameters) {
     super(method);

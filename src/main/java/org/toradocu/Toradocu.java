@@ -184,9 +184,9 @@ public class Toradocu {
   }
 
   /**
-   * Prints (to standard output) line numbers for lines in the given JSON output string that
-   * contain Java expression translations of conditions. These lines can be altered to generate
-   * expected output files for the precision recall test suite.
+   * Prints (to standard output) line numbers for lines in the given JSON output string that contain
+   * Java expression translations of conditions. These lines can be altered to generate expected
+   * output files for the precision recall test suite.
    *
    * @param jsonOutput string containing output of condition translator in JSON format
    */
@@ -215,11 +215,11 @@ public class Toradocu {
 
   /**
    * This method populates the static field {@code methods} using {@code JavadocExtractor} when the
-   * given {@code classDoc} is the target class specified in {@code configuration}. This method is intended
-   * to be invoked by the Javadoc doclet.
+   * given {@code classDoc} is the target class specified in {@code configuration}. This method is
+   * intended to be invoked by the Javadoc doclet.
    *
    * @param classDoc the class from which methods are extracted, but only if it is the target class
-   * specified in {@code configuration}
+   *     specified in {@code configuration}
    * @param docletConfiguration configuration options for the Javadoc doclet
    * @throws IOException if there is an error while reading/generating class documentation
    */
@@ -232,9 +232,7 @@ public class Toradocu {
     methods.addAll(extractor.extract(classDoc));
   }
 
-  /**
-   * Deletes any temporary files created by Toradocu to store Javadoc output.
-   */
+  /** Deletes any temporary files created by Toradocu to store Javadoc output. */
   private static void deleteTemporaryFiles() {
     if (configuration.getJavadocOutputDir() != null) {
       try {

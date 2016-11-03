@@ -1,12 +1,9 @@
 package org.toradocu.extractor;
 
 import java.util.Objects;
-
 import org.toradocu.util.Checks;
 
-/**
- * This class represents a method parameter.
- */
+/** This class represents a method parameter. */
 public final class Parameter {
 
   /** The type of the parameter. */
@@ -22,7 +19,6 @@ public final class Parameter {
    * @param type the type of the parameter including its dimension
    * @param name the name of the parameter
    * @param nullable true if the parameter is nullable, false if nonnull and null if unspecified
-   *
    * @throws NullPointerException if type or name is null
    */
   public Parameter(Type type, String name, Boolean nullable) {
@@ -62,11 +58,11 @@ public final class Parameter {
   }
 
   /**
-   * Returns {@code true} if the parameter is nullable, {@code false} if it is nonnull, or
-   * {@code null} if its nullability is unspecified.
+   * Returns {@code true} if the parameter is nullable, {@code false} if it is nonnull, or {@code
+   * null} if its nullability is unspecified.
    *
-   * @return {@code true} if the parameter is nullable, {@code false} if it is nonnull, or
-   * {@code null} if its nullability is unspecified
+   * @return {@code true} if the parameter is nullable, {@code false} if it is nonnull, or {@code
+   *     null} if its nullability is unspecified
    */
   public Boolean getNullability() {
     return nullable;
@@ -99,9 +95,8 @@ public final class Parameter {
   }
 
   /**
-   * Returns a string representation of this parameter. The returned string is in the format
-   * "TYPE NAME" where TYPE is the fully qualified parameter type and NAME is the name of the
-   * parameter.
+   * Returns a string representation of this parameter. The returned string is in the format "TYPE
+   * NAME" where TYPE is the fully qualified parameter type and NAME is the name of the parameter.
    *
    * @return a string representation of this parameter
    */

@@ -12,6 +12,7 @@ public class TestSuiteStats {
 
   /** A list of statistics for individual test cases in a test suite. */
   private final List<TestCaseStats> tests = Collections.synchronizedList(new ArrayList<>());
+
   private double precision = 0, recall = 0, precisionStdDeviation = 0, recallStdDeviation = 0;
   private int totalNumConditions = 0;
 

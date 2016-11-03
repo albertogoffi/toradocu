@@ -4,11 +4,9 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-import java.util.List;
-
-import org.junit.Test;
-
 import edu.stanford.nlp.semgraph.SemanticGraph;
+import java.util.List;
+import org.junit.Test;
 
 public class PropositionSeriesTest {
 

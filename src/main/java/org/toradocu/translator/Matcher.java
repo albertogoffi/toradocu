@@ -25,17 +25,18 @@ import org.toradocu.extractor.Type;
 public class Matcher {
 
   /**
-   * Represents the threshold for the edit distance above which {@code CodeElement}s are
-   * considered to be not matching.
+   * Represents the threshold for the edit distance above which {@code CodeElement}s are considered
+   * to be not matching.
    */
   private static final int EDIT_DISTANCE_THRESHOLD = Toradocu.configuration.getDistanceThreshold();
+
   private static URLClassLoader classLoader;
   private static final Logger log = LoggerFactory.getLogger(Matcher.class);
 
   /**
    * Takes the subject of a proposition in a Javadoc comment and the {@code DocumentedMethod} that
-   * subject was extracted from. Then returns all {@code CodeElement}s that match (i.e.
-   * have a similar name to) the given subject string.
+   * subject was extracted from. Then returns all {@code CodeElement}s that match (i.e. have a
+   * similar name to) the given subject string.
    *
    * @param subject the subject of a proposition from a Javadoc comment
    * @param method the {@code DocumentedMethod} that the subject was extracted from
@@ -123,7 +124,7 @@ public class Matcher {
    * @param predicate the predicate of the proposition to translate
    * @param negate true if the given predicate should be negated, false otherwise
    * @return the translation (to a Java expression) of the predicate with the given subject and
-   * predicate, or null if no translation found
+   *     predicate, or null if no translation found
    */
   public static String predicateMatch(
       DocumentedMethod method, CodeElement<?> subject, String predicate, boolean negate) {
@@ -216,7 +217,7 @@ public class Matcher {
    * expression representations as the receiver of the field or method call.
    *
    * @param receiver the code element that calls the field or method in the Java expression
-   * representation of the return code elements
+   *     representation of the return code elements
    * @param type the class whose boolean-valued fields and methods to extract
    * @return the boolean-valued fields and methods in the given class as a set of code elements
    */
@@ -318,7 +319,7 @@ public class Matcher {
    *
    * @param predicate the predicate to translate to a Java expression
    * @return a Java expression translation of the given predicate or null if the predicate could not
-   * be matched
+   *     be matched
    */
   private static String simpleMatch(String predicate) {
     java.util.regex.Matcher isWord =
@@ -382,13 +383,13 @@ public class Matcher {
   }
 
   /**
-   * Check the type of all the specified parameters. Returns true if all the specified
-   * {@code parameters} have the types specified in the array {@code types}.
+   * Check the type of all the specified parameters. Returns true if all the specified {@code
+   * parameters} have the types specified in the array {@code types}.
    *
    * @param parameters the parameters whose type has to be checked
    * @param types the types that the parameters should have
    * @return true if all the specified {@code parameters} have the types specified in the array
-   * {@code types}. False otherwise.
+   *     {@code types}. False otherwise.
    */
   private static boolean checkTypes(Parameter[] parameters, Class<?>[] types) {
     if (types.length != parameters.length) {

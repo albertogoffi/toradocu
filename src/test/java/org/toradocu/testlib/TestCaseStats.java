@@ -54,16 +54,12 @@ public class TestCaseStats {
     this.numConditions = numConditions;
   }
 
-  /**
-   * Increments the number of true positives found.
-   */
+  /** Increments the number of true positives found. */
   public void incrementTP() {
     ++tp;
   }
 
-  /**
-   * Increments the number of false positives found.
-   */
+  /** Increments the number of false positives found. */
   public void incrementFP() {
     ++fp;
   }

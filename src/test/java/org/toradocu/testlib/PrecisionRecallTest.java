@@ -36,8 +36,7 @@ public class PrecisionRecallTest {
    * @param targetClass the fully qualified name of the class on which to run the test
    * @param srcPath the source path for the given targetClass
    * @param binPath the path to the binaries for the given targetClass
-   * @param goalOutputDir the path of the directory containing the goal output for the
-   * targetClass.
+   * @param goalOutputDir the path of the directory containing the goal output for the targetClass.
    * @return statistics for the test
    */
   public static TestCaseStats computePrecisionAndRecall(

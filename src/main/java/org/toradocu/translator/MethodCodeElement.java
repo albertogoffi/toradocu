@@ -3,8 +3,9 @@ package org.toradocu.translator;
 import java.lang.reflect.Method;
 
 /**
- * This class represents an instance method code element for use in translation. It holds String identifiers
- * for the instance method and a Java expression representation of the method to build Java conditions.
+ * This class represents an instance method code element for use in translation. It holds String
+ * identifiers for the instance method and a Java expression representation of the method to build
+ * Java conditions.
  */
 public class MethodCodeElement extends CodeElement<Method> {
 

@@ -10,5 +10,4 @@ import java.lang.annotation.Target;
 
 @Retention(CLASS)
 @Target({METHOD, PARAMETER, FIELD})
-public @interface NonNull {
-}
+public @interface NonNull {}

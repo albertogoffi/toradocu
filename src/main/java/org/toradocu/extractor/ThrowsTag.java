@@ -58,7 +58,7 @@ public class ThrowsTag {
    * if translation has not been attempted yet.
    *
    * @return the translated conditions for this throws tag if translation attempted, else empty
-   * optional
+   *     optional
    */
   public Optional<String> getCondition() {
     return Optional.ofNullable(condition);

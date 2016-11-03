@@ -2,9 +2,7 @@ package org.toradocu.extractor;
 
 import java.util.Objects;
 
-/**
- * This class represents a Java type.
- */
+/** This class represents a Java type. */
 public class Type {
 
   /**
@@ -87,8 +85,8 @@ public class Type {
   }
 
   /**
-   * Returns the dimension of this type. For example, the dimension of "Integer" is 0, the
-   * dimension of "String[]" is 1, the dimension of "String[][]" is 2.
+   * Returns the dimension of this type. For example, the dimension of "Integer" is 0, the dimension
+   * of "String[]" is 1, the dimension of "String[][]" is 2.
    *
    * @return the dimension of this type
    */

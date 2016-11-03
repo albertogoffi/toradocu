@@ -9,37 +9,38 @@ import java.util.List;
  * "PROPOSITION_A CONJUNCTION_AB PROPOSITION_B CONJUNCTION_BC PROPOSITION_C ...". It provides
  * methods to retrieve propositions and conjunctions between propositions.
  *
- * Propositions are represented using a series rather than a tree because is difficult to express
+ * <p>Propositions are represented using a series rather than a tree because is difficult to express
  * the precedence of conjunctions with natural language.
  */
 public class PropositionSeries {
 
   /**
-   * Propositions composing this {@code PropositionSeries}.
-   * {@literal Invariant: (propositions.size() = 0 && conjunctions.size() = 0) || propositions.size() = conjunctions.size() + 1}
+   * Propositions composing this {@code PropositionSeries}. {@literal Invariant:
+   * (propositions.size() = 0 && conjunctions.size() = 0) || propositions.size() =
+   * conjunctions.size() + 1}
    */
   private final List<Proposition> propositions;
   /**
-   * Conjunctions composing this {@code PropositionSeries}.
-   * Each conjunction links two propositions.
-   * {@literal Invariant: (propositions.size() = 0 && conjunctions.size() = 0) || conjunctions.size() = propositions.size() - 1}
+   * Conjunctions composing this {@code PropositionSeries}. Each conjunction links two propositions.
+   * {@literal Invariant: (propositions.size() = 0 && conjunctions.size() = 0) ||
+   * conjunctions.size() = propositions.size() - 1}
    */
   private final List<Conjunction> conjunctions;
 
-  /**
-   * Initializes an empty {@code PropositionSeries}.
-   */
+  /** Initializes an empty {@code PropositionSeries}. */
   public PropositionSeries() {
     propositions = new ArrayList<>();
     conjunctions = new ArrayList<>();
   }
 
   /**
-   * Initializes a {@code PropositionSeries} with the given propositions interlaced with the given conjunctions.
+   * Initializes a {@code PropositionSeries} with the given propositions interlaced with the given
+   * conjunctions.
    *
    * @param propositions the propositions contained in this series
    * @param conjunctions the conjunctions between the propositions
-   * @throws IllegalArgumentException if the number of conjunctions is not exactly 1 less than the number of propositions, unless both are empty
+   * @throws IllegalArgumentException if the number of conjunctions is not exactly 1 less than the
+   *     number of propositions, unless both are empty
    */
   public PropositionSeries(List<Proposition> propositions, List<Conjunction> conjunctions) {
     if (propositions.size() != 0
@@ -73,7 +74,7 @@ public class PropositionSeries {
    * to link the conjunction with).
    *
    * @param conjunction the conjunction between the formerly last proposition and the given
-   *        proposition
+   *     proposition
    * @param proposition the proposition to add to the end of the series
    * @throws IllegalStateException if there is not already at least one proposition in the series
    */
