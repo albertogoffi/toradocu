@@ -54,7 +54,7 @@
           "isArray": false
         },
         "comment": "if the denominator is zero.",
-        "condition": "den.signum()==0"
+        "condition": "args[0].signum()==0"
       },
       {
         "exception": {
@@ -814,7 +814,7 @@
           "isArray": false
         },
         "comment": "if the fraction to divide by is zero",
-        "condition": "args[0].numerator.signum()==0"
+        "condition": "args[0].abs()==0"
       },
       {
         "exception": {
@@ -1343,7 +1343,7 @@
           "isArray": false
         },
         "comment": "if this is zero",
-        "condition": "this.intValue()==0"
+        "condition": "target==0"
       }
     ],
     "signature": "reciprocal()"
