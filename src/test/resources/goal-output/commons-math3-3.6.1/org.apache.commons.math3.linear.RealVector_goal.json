@@ -354,7 +354,7 @@
           "isArray": false
         },
         "comment": "if the vectors do not have the same dimension.",
-        "condition": ""
+        "condition": "target.checkVectorsDimensions(args[0])"
       }
     ],
     "signature": "checkVectorDimensions(org.apache.commons.math3.linear.RealVector v)"
@@ -479,7 +479,7 @@
           "isArray": false
         },
         "comment": "if end < start",
-        "condition": ""
+        "condition": "args[1]<args[0]"
       }
     ],
     "signature": "checkIndices(int start,int end)"
@@ -515,7 +515,7 @@
           "isArray": false
         },
         "comment": "if v is not the same size as this vector.",
-        "condition": ""
+        "condition": "target.checkVectorDimensions(args[0])"
       }
     ],
     "signature": "add(org.apache.commons.math3.linear.RealVector v)"
@@ -551,7 +551,7 @@
           "isArray": false
         },
         "comment": "if v is not the same size as this vector.",
-        "condition": ""
+        "condition": "target.checkVectorsDimensions(args[0])"
       }
     ],
     "signature": "subtract(org.apache.commons.math3.linear.RealVector v)"
@@ -656,7 +656,7 @@
           "isArray": false
         },
         "comment": "if v is not the same size as this vector.",
-        "condition": ""
+        "condition": "target.checkVectorDimensions(args[0])"
       }
     ],
     "signature": "dotProduct(org.apache.commons.math3.linear.RealVector v)"
@@ -692,7 +692,7 @@
           "isArray": false
         },
         "comment": "if this or v is the null vector",
-        "condition": ""
+        "condition": "args[0]==null || target==null"
       },
       {
         "exception": {
@@ -701,7 +701,7 @@
           "isArray": false
         },
         "comment": "if the dimensions of this and v do not match",
-        "condition": ""
+        "condition": "target.getDimension() != args[0].getDimension()"
       }
     ],
     "signature": "cosine(org.apache.commons.math3.linear.RealVector v)"
@@ -737,7 +737,7 @@
           "isArray": false
         },
         "comment": "if v is not the same size as this vector.",
-        "condition": ""
+        "condition": "args[0].getDimension() != target.getDimension()"
       }
     ],
     "signature": "ebeDivide(org.apache.commons.math3.linear.RealVector v)"
@@ -773,7 +773,7 @@
           "isArray": false
         },
         "comment": "if v is not the same size as this vector.",
-        "condition": ""
+        "condition": "args[0].getDimension() != target.getDimension()"
       }
     ],
     "signature": "ebeMultiply(org.apache.commons.math3.linear.RealVector v)"
@@ -809,7 +809,7 @@
           "isArray": false
         },
         "comment": "if v is not the same size as this vector.",
-        "condition": ""
+        "condition": "args[0].getDimension() != target.getDimension()"
       }
     ],
     "signature": "getDistance(org.apache.commons.math3.linear.RealVector v)"
@@ -896,7 +896,7 @@
           "isArray": false
         },
         "comment": "if v is not the same size as this vector.",
-        "condition": ""
+        "condition": "args[0].getDimension() != target.getDimension()"
       }
     ],
     "signature": "getL1Distance(org.apache.commons.math3.linear.RealVector v)"
@@ -932,7 +932,7 @@
           "isArray": false
         },
         "comment": "if v is not the same size as this vector.",
-        "condition": ""
+        "condition": "args[0].getDimension() != target.getDimension()"
       }
     ],
     "signature": "getLInfDistance(org.apache.commons.math3.linear.RealVector v)"
@@ -1218,7 +1218,7 @@
           "isArray": false
         },
         "comment": "if v is not the same size as this vector.",
-        "condition": ""
+        "condition": "args[0].getDimension() != target.getDimension()"
       },
       {
         "exception": {
@@ -1227,7 +1227,7 @@
           "isArray": false
         },
         "comment": "if this or v is the null vector",
-        "condition": ""
+        "condition": "target==null || args[0]==null"
       }
     ],
     "signature": "projection(org.apache.commons.math3.linear.RealVector v)"
@@ -1467,7 +1467,7 @@
           "isArray": false
         },
         "comment": "if y is not the same size as this vector.",
-        "condition": ""
+        "condition": "args[2].getDimension() != target.getDimension()"
       }
     ],
     "signature": "combine(double a,double b,org.apache.commons.math3.linear.RealVector y)"
@@ -1519,7 +1519,7 @@
           "isArray": false
         },
         "comment": "if y is not the same size as this vector.",
-        "condition": ""
+        "condition": "args[2].getDimension() != target.getDimension()"
       }
     ],
     "signature": "combineToSelf(double a,double b,org.apache.commons.math3.linear.RealVector y)"
@@ -1597,7 +1597,7 @@
           "isArray": false
         },
         "comment": "if end < start.",
-        "condition": ""
+        "condition": "args[2]<args[1]"
       },
       {
         "exception": {
@@ -1684,7 +1684,7 @@
           "isArray": false
         },
         "comment": "if end < start.",
-        "condition": ""
+        "condition": "args[2]<args[1]"
       },
       {
         "exception": {
@@ -1771,7 +1771,7 @@
           "isArray": false
         },
         "comment": "if end < start.",
-        "condition": ""
+        "condition": "args[2]<args[1]"
       },
       {
         "exception": {
@@ -1858,7 +1858,7 @@
           "isArray": false
         },
         "comment": "if end < start.",
-        "condition": ""
+        "condition": "args[2]<args[1]"
       },
       {
         "exception": {
