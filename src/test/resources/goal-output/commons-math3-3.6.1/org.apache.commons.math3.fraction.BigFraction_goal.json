@@ -529,7 +529,7 @@
           "isArray": false
         },
         "comment": "if a is null.",
-        "condition": "target.abs()==null"
+        "condition": "args[0]==null"
       }
     ],
     "signature": "add(org.apache.commons.math3.fraction.BigFraction fraction)"
@@ -823,7 +823,7 @@
           "isArray": false
         },
         "comment": "if a is null.",
-        "condition": "target.abs()==null"
+        "condition": "args[0]==null"
       },
       {
         "exception": {
@@ -832,7 +832,7 @@
           "isArray": false
         },
         "comment": "if a is zero",
-        "condition": "target.abs()==0"
+        "condition": "args[0].equals(org.apache.commons.math3.fraction.BigFraction.ZERO)"
       }
     ],
     "signature": "divide(org.apache.commons.math3.fraction.BigFraction fraction)"

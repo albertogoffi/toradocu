@@ -47,7 +47,7 @@
           "isArray": false
         },
         "comment": "if the array has length 0",
-        "condition": "args[0].length"
+        "condition": "args[0].length==0"
       }
     ],
     "signature": "min(int[] a)"
@@ -88,7 +88,7 @@
           "isArray": false
         },
         "comment": "if the array has length 0",
-        "condition": "args[0].length"
+        "condition": "args[0].length==0"
       }
     ],
     "signature": "min(long[] a)"
@@ -129,7 +129,7 @@
           "isArray": false
         },
         "comment": "if the array has length 0",
-        "condition": "args[0].length"
+        "condition": "args[0].length==0"
       }
     ],
     "signature": "min(double[] a)"
@@ -170,7 +170,7 @@
           "isArray": false
         },
         "comment": "if the array has length 0",
-        "condition": "args[0].length"
+        "condition": "args[0].length==0"
       }
     ],
     "signature": "min(java.lang.Integer[] a)"
@@ -211,7 +211,7 @@
           "isArray": false
         },
         "comment": "if the array has length 0",
-        "condition": "args[0].length"
+        "condition": "args[0].length==0"
       }
     ],
     "signature": "min(java.lang.Long[] a)"
@@ -252,7 +252,7 @@
           "isArray": false
         },
         "comment": "if the array has length 0",
-        "condition": "args[0].length"
+        "condition": "args[0].length==0"
       }
     ],
     "signature": "min(java.lang.Double[] a)"
@@ -293,7 +293,7 @@
           "isArray": false
         },
         "comment": "if the array has length 0",
-        "condition": "args[0].length"
+        "condition": "args[0].length==0"
       }
     ],
     "signature": "max(int[] a)"
@@ -334,7 +334,7 @@
           "isArray": false
         },
         "comment": "if the array has length 0",
-        "condition": "args[0].length"
+        "condition": "args[0].length==0"
       }
     ],
     "signature": "max(long[] a)"
@@ -375,7 +375,7 @@
           "isArray": false
         },
         "comment": "if the array has length 0",
-        "condition": "args[0].length"
+        "condition": "args[0].length==0"
       }
     ],
     "signature": "max(double[] a)"
@@ -416,7 +416,7 @@
           "isArray": false
         },
         "comment": "if the array has length 0",
-        "condition": "args[0].length"
+        "condition": "args[0].length==0"
       }
     ],
     "signature": "max(java.lang.Integer[] a)"
@@ -457,7 +457,7 @@
           "isArray": false
         },
         "comment": "if the array has length 0",
-        "condition": "args[0].length"
+        "condition": "args[0].length==0"
       }
     ],
     "signature": "max(java.lang.Long[] a)"
@@ -498,7 +498,7 @@
           "isArray": false
         },
         "comment": "if the array has length 0",
-        "condition": "args[0].length"
+        "condition": "args[0].length==0"
       }
     ],
     "signature": "max(java.lang.Double[] a)"
@@ -544,7 +544,7 @@
           "isArray": false
         },
         "comment": "if the array has length 0",
-        "condition": "args[0].length"
+        "condition": "args[0].length==0"
       }
     ],
     "signature": "min_max(int[] a)"
@@ -590,7 +590,7 @@
           "isArray": false
         },
         "comment": "if the array has length 0",
-        "condition": "args[0].length"
+        "condition": "args[0].length==0"
       }
     ],
     "signature": "min_max(long[] a)"
@@ -631,7 +631,7 @@
           "isArray": false
         },
         "comment": "if the array has length 0",
-        "condition": "args[0].length"
+        "condition": "args[0].length==0"
       }
     ],
     "signature": "element_range(int[] a)"
@@ -672,7 +672,7 @@
           "isArray": false
         },
         "comment": "if the array has length 0",
-        "condition": "args[0].length"
+        "condition": "args[0].length==0"
       }
     ],
     "signature": "element_range(long[] a)"
@@ -4133,7 +4133,7 @@
           "isArray": false
         },
         "comment": "if obj is null or is not one of the types mentioned above.",
-        "condition": "args[0]==null || ! (args[0] instanceof boolean[] || args[0] instanceof double[] || args[0] instanceof int[] || args[0] instanceof long[] || args[0] instanceof Object[]"
+        "condition": "args[0]==null || ! (args[0] instanceof boolean[] || args[0] instanceof double[] || args[0] instanceof int[] || args[0] instanceof long[] || args[0] instanceof Object[])"
       }
     ],
     "signature": "toString(java.lang.Object obj)"
@@ -4169,7 +4169,7 @@
           "isArray": false
         },
         "comment": "if obj is null or is not one of the types mentioned above.",
-        "condition": "args[0]==null || ! (args[0] instanceof boolean[] || args[0] instanceof double[] || args[0] instanceof int[] || args[0] instanceof long[] || args[0] instanceof Object[]"
+        "condition": "args[0]==null || ! (args[0] instanceof boolean[] || args[0] instanceof double[] || args[0] instanceof int[] || args[0] instanceof long[] || args[0] instanceof Object[])"
       }
     ],
     "signature": "length(java.lang.Object obj)"
@@ -4812,7 +4812,7 @@
           "isArray": false
         },
         "comment": "if a value of a is outside of arange",
-        "condition": "min(a)<0 or max(a)>=arange"
+        "condition": "min(a)<0 || max(a)>=arange"
       },
       {
         "exception": {

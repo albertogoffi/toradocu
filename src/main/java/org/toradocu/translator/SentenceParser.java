@@ -35,7 +35,8 @@ public class SentenceParser {
       copulaRelations,
       complementRelations,
       conjunctionRelations,
-      negationRelations;
+      negationRelations,
+      numModifierRealations;
   /** Logger for this class. */
   private static final Logger log = LoggerFactory.getLogger(SentenceParser.class);
 
@@ -218,7 +219,15 @@ public class SentenceParser {
       return predicateWords;
     }
     predicateWords.add(governor);
-    predicateWords.add(complementEdge.get().getDependent());
+
+    IndexedWord complement = complementEdge.get().getDependent();
+    predicateWords.add(complement);
+
+    Optional<SemanticGraphEdge> numModifierEdge =
+        numModifierRealations.stream().filter(e -> e.getGovernor().equals(complement)).findFirst();
+    if (numModifierEdge.isPresent()) {
+      predicateWords.add(numModifierEdge.get().getDependent());
+    }
 
     return predicateWords;
   }
@@ -350,6 +359,7 @@ public class SentenceParser {
     complementRelations = getRelationsFromGraph("acomp", "xcomp", "dobj");
     conjunctionRelations = getRelationsFromGraph("conj");
     negationRelations = getRelationsFromGraph("neg");
+    numModifierRealations = getRelationsFromGraph("nummod");
   }
 
   /**
