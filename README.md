@@ -24,12 +24,11 @@ Building Toradocu requires Java JDK 1.8+.
 
 
 ## Running Toradocu
-Toradocu is a command-line tool.
-
-To get the list of all command-line parameters, execute
-
+Toradocu is a command-line tool. The list of all Toradocu command-line options is available [on the wiki](https://github.com/albertogoffi/toradocu/wiki/Command-Line-Options).
+To get a list of available command-line parameters, execute
+    
     java -jar build/libs/toradocu-1.0-all.jar --help
-
+    
 A typical Toradocu invocation looks like this:
 
     java -jar toradocu-1.0-all.jar \
