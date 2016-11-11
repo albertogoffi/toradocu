@@ -692,7 +692,7 @@
           "isArray": false
         },
         "comment": "if this or v is the null vector",
-        "condition": "args[0]==null || target==null"
+        "condition": "target.getNorm()==0 || args[0].getNorm()==0"
       },
       {
         "exception": {
@@ -1227,7 +1227,7 @@
           "isArray": false
         },
         "comment": "if this or v is the null vector",
-        "condition": "target==null || args[0]==null"
+        "condition": "target.getNorm()==0 || args[0].getNorm()==0"
       }
     ],
     "signature": "projection(org.apache.commons.math3.linear.RealVector v)"
