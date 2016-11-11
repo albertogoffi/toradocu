@@ -54,7 +54,7 @@
           "isArray": false
         },
         "comment": "if the denominator is zero.",
-        "condition": "den.signum()==0"
+        "condition": "args[1]==(org.apache.commons.math3.fraction.BigFraction.ZERO)"
       },
       {
         "exception": {
@@ -697,7 +697,7 @@
           "isArray": false
         },
         "comment": "if the fraction to divide by is zero",
-        "condition": "args[0].signum()==0"
+        "condition": "args[0]==(org.apache.commons.math3.fraction.BigFraction.ZERO)"
       }
     ],
     "signature": "divide(java.math.BigInteger bg)"
@@ -814,7 +814,7 @@
           "isArray": false
         },
         "comment": "if the fraction to divide by is zero",
-        "condition": "args[0].numerator.signum()==0"
+        "condition": "args[0]==(org.apache.commons.math3.fraction.BigFraction.ZERO)"
       },
       {
         "exception": {
@@ -1343,7 +1343,7 @@
           "isArray": false
         },
         "comment": "if this is zero",
-        "condition": "this.intValue()==0"
+        "condition": "target==(org.apache.commons.math3.fraction.BigFraction.ZERO)"
       }
     ],
     "signature": "reciprocal()"
