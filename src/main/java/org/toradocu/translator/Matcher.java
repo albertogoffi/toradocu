@@ -94,6 +94,16 @@ public class Matcher {
    */
   public static String predicateMatch(
       DocumentedMethod method, CodeElement<?> subject, String predicate, boolean negate) {
+
+    // Special case to handle predicates about arrays' length. We need a more general solution.
+    if (subject.getJavaCodeElement().toString().contains("[]")) {
+      java.util.regex.Matcher pattern = Pattern.compile("has length ([0-9]+)").matcher(predicate);
+      if (pattern.find()) {
+        return subject.getJavaExpression() + ".length==" + Integer.parseInt(pattern.group(1));
+      }
+    }
+
+    // General case
     String match = simpleMatch(predicate);
     if (match != null) {
       match = subject.getJavaExpression() + match;
@@ -215,39 +225,43 @@ public class Matcher {
   }
 
   /**
-   * >>>>>>> Stashed changes Attempts to match the given predicate to a simple Java expression (i.e.
-   * one containing only literals).
+   * Attempts to match the given predicate to a simple Java expression (i.e. one containing only
+   * literals). The visibility of this method is {@code protected} for testing purposes.
    *
-   * @param predicate the predicate to translate to a Java expression
+   * @param predicate the predicate to translate to a Java expression. Must not be {@code null}.
    * @return a Java expression translation of the given predicate or null if the predicate could not
    *     be matched
    */
-  private static String simpleMatch(String predicate) {
-    java.util.regex.Matcher isWord =
-        Pattern.compile(
-                "(is |are )?(==|=)? ??(true|false|null|zero|positive|strictly positive|negative|strictly negative)")
-            .matcher(predicate);
-    java.util.regex.Matcher isNotWord =
-        Pattern.compile(
-                "(is |are )?(!=) ?(true|false|null|zero|positive|strictly positive|negative|strictly negative)")
-            .matcher(predicate);
-    java.util.regex.Matcher numberRelation =
-        Pattern.compile("(is |are )?(<=|>=|<|>|!=|==|=)? ?(-?[0-9]+)").matcher(predicate);
+  protected static String simpleMatch(String predicate) {
+    String verbs = "(is|are|is equal to|are equal to|equals to) ?";
+    String predicates =
+        "(true|false|null|zero|positive|strictly positive|negative|strictly " + "negative)";
+
+    java.util.regex.Matcher isPattern =
+        Pattern.compile(verbs + "(==|=)? ?" + predicates).matcher(predicate);
+
+    java.util.regex.Matcher isNotPattern =
+        Pattern.compile(verbs + "(!=)? ?" + predicates).matcher(predicate);
+
+    java.util.regex.Matcher inequality =
+        Pattern.compile(verbs + "(<=|>=|<|>|!=|==|=)? ?(-?[0-9]+)").matcher(predicate);
+
     java.util.regex.Matcher instanceOf = Pattern.compile("(instanceof) (.*)").matcher(predicate);
-    if (isWord.find()) {
+
+    if (isPattern.find()) {
       // Get the last group in the regular expression.
-      String word = isWord.group(isWord.groupCount());
-      if (word.equals("true") || word.equals("false") || word.equals("null")) {
-        return "==" + word;
-      } else if (word.equals("zero")) {
+      String lastWord = isPattern.group(isPattern.groupCount());
+      if (lastWord.equals("true") || lastWord.equals("false") || lastWord.equals("null")) {
+        return "==" + lastWord;
+      } else if (lastWord.equals("zero")) {
         return "==0";
-      } else if (word.equals("positive") || word.equals("strictly positive")) {
+      } else if (lastWord.equals("positive") || lastWord.equals("strictly positive")) {
         return ">0";
       } else { // negative
         return "<0";
       }
-    } else if (isNotWord.find()) {
-      String word = isNotWord.group(isWord.groupCount());
+    } else if (isNotPattern.find()) {
+      String word = isNotPattern.group(isNotPattern.groupCount());
       if (word.equals("true") || word.equals("false") || word.equals("null")) {
         return "!=" + word;
       } else if (word.equals("zero")) {
@@ -257,26 +271,21 @@ public class Matcher {
       } else { // not negative
         return ">=0";
       }
-    } else if (numberRelation.find()) {
+    } else if (inequality.find()) {
       // Get the number from the last group of the regular expression.
-      String numberString = numberRelation.group(numberRelation.groupCount());
+      String numberString = inequality.group(inequality.groupCount());
       // Get the symbol from the regular expression.
-      String relation = numberRelation.group(2);
-      try {
-        int number = Integer.parseInt(numberString);
-        if (relation == null || relation.equals("=")) {
-          return "==" + number;
-        } else {
-          return relation + number;
-        }
-      } catch (NumberFormatException e) {
-        // Text following symbol is not a number.
-        return null;
+      String relation = inequality.group(2);
+      int number = Integer.parseInt(numberString);
+      // relation is null in predicates without inequalities. For example "is 0".
+      if (relation == null || relation.equals("=")) {
+        return "==" + number;
+      } else {
+        return relation + number;
       }
     } else if (predicate.equals("been set")) {
       return "!=null";
     } else if (instanceOf.find()) {
-      //If the comparator is instance of
       return " instanceof " + instanceOf.group(2);
     } else {
       return null;
