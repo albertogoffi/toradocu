@@ -1,6 +1,7 @@
 package org.toradocu.translator;
 
 import java.lang.reflect.Method;
+import java.util.List;
 
 /**
  * This class represents an instance method code element for use in translation. It holds String
@@ -11,6 +12,8 @@ public class MethodCodeElement extends CodeElement<Method> {
 
   /** The name of the class/object on which this method is called. */
   private final String receiver;
+  /** The actual parameters used to invoke this method. */
+  private String[] parameters;
 
   /**
    * Constructs and initializes a {@code MethodCodeElement} that identifies the given method. The
@@ -18,19 +21,12 @@ public class MethodCodeElement extends CodeElement<Method> {
    *
    * @param receiver the class/object in which the method is called
    * @param method the no-argument method that this code element identifies
-   * @throws IllegalArgumentException if method takes arguments
+   * @param parameters the actual parameters to use to invoke this method
    */
-  public MethodCodeElement(String receiver, Method method) {
+  public MethodCodeElement(String receiver, Method method, String... parameters) {
     super(method);
-    if (method.getParameterCount() > 0) {
-      throw new IllegalArgumentException(
-          "Method '"
-              + method.getName()
-              + "' has "
-              + method.getParameterCount()
-              + " parameters. Expected 0.");
-    }
     this.receiver = receiver;
+    this.parameters = parameters;
 
     // Add name identifier.
     String methodName = method.getName();
@@ -39,6 +35,16 @@ public class MethodCodeElement extends CodeElement<Method> {
     }
 
     addIdentifier(methodName);
+  }
+
+  /**
+   * Set the actual parameters to be used to invoke this method.
+   *
+   * @param parameters the actual parameters of this method
+   * @throws NullPointerException if {@code parameters} is null
+   */
+  public void setParameters(List<String> parameters) {
+    this.parameters = parameters.toArray(new String[0]);
   }
 
   /**

@@ -1,12 +1,8 @@
 package org.toradocu.translator;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Executable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -15,8 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
-import org.toradocu.extractor.Parameter;
-import org.toradocu.extractor.Type;
+import org.toradocu.util.Reflection;
 
 /**
  * The {@code Matcher} class translates subjects and predicates in Javadoc comments to Java
@@ -44,8 +39,8 @@ public class Matcher {
    */
   public static Set<CodeElement<?>> subjectMatch(String subject, DocumentedMethod method) {
     // Extract every CodeElement associated with the method and the containing class of the method.
-    Class<?> containingClass = getClass(method.getContainingClass().getQualifiedName());
-    Set<CodeElement<?>> codeElements = extractCodeElements(containingClass, method);
+    Class<?> containingClass = Reflection.getClass(method.getContainingClass().getQualifiedName());
+    Set<CodeElement<?>> codeElements = JavaElementsCollector.collect(method);
 
     // Clean the subject string by removing words and characters not related to its identity so that
     // they do not influence string matching.
@@ -87,35 +82,6 @@ public class Matcher {
   }
 
   /**
-   * Returns the {@code Class} object for the class with the given name or null if the class could
-   * not be retrieved.
-   *
-   * @param className the fully qualified name of a class
-   * @return the {@code Class} object for the given class
-   */
-  private static Class<?> getClass(String className) {
-    final String ERROR_MESSAGE = "Unable to load class " + className + ". Check the classpath.";
-    try {
-      URL classDir = Toradocu.configuration.getClassDir().toUri().toURL();
-      if (classLoader == null) {
-        classLoader = URLClassLoader.newInstance(new URL[] {classDir});
-      } else {
-        URL[] originalURLs = classLoader.getURLs();
-        URL[] newURLs = new URL[originalURLs.length + 1];
-        for (int i = 0; i < originalURLs.length; i++) {
-          newURLs[i] = originalURLs[i];
-        }
-        newURLs[newURLs.length - 1] = classDir;
-        classLoader = URLClassLoader.newInstance(newURLs);
-      }
-      return classLoader.loadClass(className);
-    } catch (MalformedURLException | ClassNotFoundException e) {
-      log.error(ERROR_MESSAGE);
-      return null;
-    }
-  }
-
-  /**
    * Returns the translation (to a Java expression) of the given subject and predicate. Returns null
    * if a translation could not be found.
    *
@@ -128,6 +94,16 @@ public class Matcher {
    */
   public static String predicateMatch(
       DocumentedMethod method, CodeElement<?> subject, String predicate, boolean negate) {
+
+    // Special case to handle predicates about arrays' length. We need a more general solution.
+    if (subject.getJavaCodeElement().toString().contains("[]")) {
+      java.util.regex.Matcher pattern = Pattern.compile("has length ([0-9]+)").matcher(predicate);
+      if (pattern.find()) {
+        return subject.getJavaExpression() + ".length==" + Integer.parseInt(pattern.group(1));
+      }
+    }
+
+    // General case
     String match = simpleMatch(predicate);
     if (match != null) {
       match = subject.getJavaExpression() + match;
@@ -138,7 +114,7 @@ public class Matcher {
         codeElements =
             extractBooleanCodeElements(
                 paramCodeElement, paramCodeElement.getJavaCodeElement().getType());
-        Class<?> targetClass = getClass(method.getContainingClass().getQualifiedName());
+        Class<?> targetClass = Reflection.getClass(method.getContainingClass().getQualifiedName());
         codeElements.addAll(extractStaticBooleanMethods(targetClass, paramCodeElement));
       } else if (subject instanceof ClassCodeElement) {
         ClassCodeElement classCodeElement = (ClassCodeElement) subject;
@@ -249,104 +225,43 @@ public class Matcher {
   }
 
   /**
-   * Extracts and returns all {@code CodeElement}s associated with the given class and method.
-   *
-   * @param type the class to extract {@code CodeElement}s from
-   * @param documentedMethod the method to extract {@code ParameterCodeElement}s from
-   * @return all {@code CodeElement}s associated with the given class and method
-   */
-  private static Set<CodeElement<?>> extractCodeElements(
-      Class<?> type, DocumentedMethod documentedMethod) {
-    Set<CodeElement<?>> result = new LinkedHashSet<>();
-
-    Executable methodOrConstructor = null;
-    // Load the DocumentedMethod as a reflection Method or Constructor.
-    if (documentedMethod.isConstructor()) {
-      for (Constructor<?> constructor : type.getDeclaredConstructors()) {
-        if (checkTypes(
-            documentedMethod.getParameters().toArray(new Parameter[0]),
-            constructor.getParameterTypes())) {
-          methodOrConstructor = constructor;
-          break;
-        }
-      }
-    } else {
-      for (Method method : type.getDeclaredMethods()) {
-        if (method.getName().equals(documentedMethod.getName())
-            && checkTypes(
-                documentedMethod.getParameters().toArray(new Parameter[0]),
-                method.getParameterTypes())) {
-          methodOrConstructor = method;
-          break;
-        }
-      }
-    }
-    if (methodOrConstructor != null) {
-      // Add method parameters as code elements.
-      for (int i = 0; i < methodOrConstructor.getParameters().length; i++) {
-        result.add(
-            new ParameterCodeElement(
-                methodOrConstructor.getParameters()[i],
-                documentedMethod.getParameters().get(i).getName(),
-                i));
-      }
-    } else {
-      log.error("Could not load method/constructor from DocumentedMethod " + documentedMethod);
-    }
-
-    // Add the class itself as a code element.
-    result.add(new ClassCodeElement(type));
-
-    // Add methods in containing class as code elements.
-    for (Method classMethod : type.getMethods()) {
-      if (classMethod.getParameterCount() == 0) {
-        // Only add no-arg instance methods.
-        result.add(new MethodCodeElement("target", classMethod));
-      } else if (Modifier.isStatic(classMethod.getModifiers())
-          && classMethod.getParameterCount() == 1
-          && classMethod.getParameterTypes()[0].equals(type)) {
-        // Only add static methods with 1 parameter of the same type as the target class.
-        result.add(new StaticMethodCodeElement(classMethod, "target"));
-      }
-    }
-
-    return result;
-  }
-
-  /**
    * Attempts to match the given predicate to a simple Java expression (i.e. one containing only
-   * literals).
+   * literals). The visibility of this method is {@code protected} for testing purposes.
    *
-   * @param predicate the predicate to translate to a Java expression
+   * @param predicate the predicate to translate to a Java expression. Must not be {@code null}.
    * @return a Java expression translation of the given predicate or null if the predicate could not
    *     be matched
    */
-  private static String simpleMatch(String predicate) {
-    java.util.regex.Matcher isWord =
-        Pattern.compile(
-                "(is |are )?(==|=)? ??(true|false|null|zero|positive|strictly positive|negative|strictly negative)")
-            .matcher(predicate);
-    java.util.regex.Matcher isNotWord =
-        Pattern.compile(
-                "(is |are )?(!=) ?(true|false|null|zero|positive|strictly positive|negative|strictly negative)")
-            .matcher(predicate);
-    java.util.regex.Matcher numberRelation =
-        Pattern.compile("(is |are )?(<=|>=|<|>|!=|==|=)? ?(-?[0-9]+)").matcher(predicate);
+  protected static String simpleMatch(String predicate) {
+    String verbs = "(is|are|is equal to|are equal to|equals to) ?";
+    String predicates =
+        "(true|false|null|zero|positive|strictly positive|negative|strictly " + "negative)";
+
+    java.util.regex.Matcher isPattern =
+        Pattern.compile(verbs + "(==|=)? ?" + predicates).matcher(predicate);
+
+    java.util.regex.Matcher isNotPattern =
+        Pattern.compile(verbs + "(!=)? ?" + predicates).matcher(predicate);
+
+    java.util.regex.Matcher inequality =
+        Pattern.compile(verbs + "(<=|>=|<|>|!=|==|=)? ?(-?[0-9]+)").matcher(predicate);
+
     java.util.regex.Matcher instanceOf = Pattern.compile("(instanceof) (.*)").matcher(predicate);
-    if (isWord.find()) {
+
+    if (isPattern.find()) {
       // Get the last group in the regular expression.
-      String word = isWord.group(isWord.groupCount());
-      if (word.equals("true") || word.equals("false") || word.equals("null")) {
-        return "==" + word;
-      } else if (word.equals("zero")) {
+      String lastWord = isPattern.group(isPattern.groupCount());
+      if (lastWord.equals("true") || lastWord.equals("false") || lastWord.equals("null")) {
+        return "==" + lastWord;
+      } else if (lastWord.equals("zero")) {
         return "==0";
-      } else if (word.equals("positive") || word.equals("strictly positive")) {
+      } else if (lastWord.equals("positive") || lastWord.equals("strictly positive")) {
         return ">0";
       } else { // negative
         return "<0";
       }
-    } else if (isNotWord.find()) {
-      String word = isNotWord.group(isWord.groupCount());
+    } else if (isNotPattern.find()) {
+      String word = isNotPattern.group(isNotPattern.groupCount());
       if (word.equals("true") || word.equals("false") || word.equals("null")) {
         return "!=" + word;
       } else if (word.equals("zero")) {
@@ -356,64 +271,24 @@ public class Matcher {
       } else { // not negative
         return ">=0";
       }
-    } else if (numberRelation.find()) {
+    } else if (inequality.find()) {
       // Get the number from the last group of the regular expression.
-      String numberString = numberRelation.group(numberRelation.groupCount());
+      String numberString = inequality.group(inequality.groupCount());
       // Get the symbol from the regular expression.
-      String relation = numberRelation.group(2);
-      try {
-        int number = Integer.parseInt(numberString);
-        if (relation == null || relation.equals("=")) {
-          return "==" + number;
-        } else {
-          return relation + number;
-        }
-      } catch (NumberFormatException e) {
-        // Text following symbol is not a number.
-        return null;
+      String relation = inequality.group(2);
+      int number = Integer.parseInt(numberString);
+      // relation is null in predicates without inequalities. For example "is 0".
+      if (relation == null || relation.equals("=")) {
+        return "==" + number;
+      } else {
+        return relation + number;
       }
     } else if (predicate.equals("been set")) {
       return "!=null";
     } else if (instanceOf.find()) {
-      //If the comparator is instance of
       return " instanceof " + instanceOf.group(2);
     } else {
       return null;
     }
-  }
-
-  /**
-   * Check the type of all the specified parameters. Returns true if all the specified {@code
-   * parameters} have the types specified in the array {@code types}.
-   *
-   * @param parameters the parameters whose type has to be checked
-   * @param types the types that the parameters should have
-   * @return true if all the specified {@code parameters} have the types specified in the array
-   *     {@code types}. False otherwise.
-   */
-  private static boolean checkTypes(Parameter[] parameters, Class<?>[] types) {
-    if (types.length != parameters.length) {
-      return false;
-    }
-
-    for (int i = 0; i < types.length; i++) {
-      final Type parameterType = parameters[i].getType();
-      if (parameterType.isArray() && types[i].isArray()) {
-        // Build the parameter type name (the name encodes the dimension of the array)
-        String parameterTypeName = "L" + parameterType.getComponentType().getQualifiedName();
-        for (int j = 0; j < parameterType.dimension(); j++) {
-          parameterTypeName = "[" + parameterTypeName;
-        }
-        // Compare the two type names
-        if (parameterTypeName.equals(types[i].getComponentType().getName())) {
-          return false;
-        }
-      } else {
-        if (!parameterType.equalsTo(types[i])) {
-          return false;
-        }
-      }
-    }
-    return true;
   }
 }

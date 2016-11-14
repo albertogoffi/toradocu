@@ -76,12 +76,12 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testBigFraction() throws Exception {
-    test("org.apache.commons.math3.fraction.BigFraction", 0.791, 0.703);
+    test("org.apache.commons.math3.fraction.BigFraction", 0.608, 0.518);
   }
 
   @Test
   public void testFraction() throws Exception {
-    test("org.apache.commons.math3.fraction.Fraction", 0.91, 0.87);
+    test("org.apache.commons.math3.fraction.Fraction", 0.714, 0.652);
   }
 
   @Test
