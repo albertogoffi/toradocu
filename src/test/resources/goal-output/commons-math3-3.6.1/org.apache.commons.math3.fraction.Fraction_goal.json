@@ -1,0 +1,986 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "Fraction",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.fraction.FractionConversionException",
+          "name": "FractionConversionException",
+          "isArray": false
+        },
+        "comment": "if the continued fraction failed to converge.",
+        "condition": ""
+      }
+    ],
+    "signature": "Fraction(double value)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "Fraction",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "value"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "epsilon"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxIterations"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.fraction.FractionConversionException",
+          "name": "FractionConversionException",
+          "isArray": false
+        },
+        "comment": "if the continued fraction failed to converge.",
+        "condition": ""
+      }
+    ],
+    "signature": "Fraction(double value,double epsilon,int maxIterations)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "Fraction",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "value"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxDenominator"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.fraction.FractionConversionException",
+          "name": "FractionConversionException",
+          "isArray": false
+        },
+        "comment": "if the continued fraction failed to converge",
+        "condition": ""
+      }
+    ],
+    "signature": "Fraction(double value,int maxDenominator)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "Fraction",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "value"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "epsilon"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxDenominator"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxIterations"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.fraction.FractionConversionException",
+          "name": "FractionConversionException",
+          "isArray": false
+        },
+        "comment": "if the continued fraction failed to converge.",
+        "condition": ""
+      }
+    ],
+    "signature": "Fraction(double value,double epsilon,int maxDenominator,int maxIterations)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "Fraction",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "num"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "Fraction(int num)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "Fraction",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "num"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "den"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
+        "comment": "if the denominator is zero",
+        "condition": "args[1]==0"
+      }
+    ],
+    "signature": "Fraction(int num,int den)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "abs",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "abs()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "compareTo",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+          "name": "Fraction",
+          "isArray": false
+        },
+        "name": "object"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "compareTo(org.apache.commons.math3.fraction.Fraction object)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "doubleValue",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "doubleValue()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "equals",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "other"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "equals(java.lang.Object other)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "floatValue",
+    "returnType": {
+      "qualifiedName": "float",
+      "name": "float",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "floatValue()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "getDenominator",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getDenominator()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "getNumerator",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getNumerator()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "hashCode",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "hashCode()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "intValue",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "intValue()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "longValue",
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "longValue()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "negate",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "negate()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "reciprocal",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
+        "comment": "if this is zero",
+        "condition": "target==(org.apache.commons.math3.fraction.BigFraction.ZERO)"
+      }
+    ],
+    "signature": "reciprocal()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "add",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+          "name": "Fraction",
+          "isArray": false
+        },
+        "name": "fraction"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "comment": "if the fraction is null",
+        "condition": "args[0]==null"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
+        "comment": "if the resulting numerator or denominator exceeds Integer.MAX_VALUE",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "comment": "if a is null.",
+        "condition": "target.abs()==null"
+      }
+    ],
+    "signature": "add(org.apache.commons.math3.fraction.Fraction fraction)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "add",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "i"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "add(int i)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "subtract",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+          "name": "Fraction",
+          "isArray": false
+        },
+        "name": "fraction"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "comment": "if the fraction is null",
+        "condition": "args[0]==null"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
+        "comment": "if the resulting numerator or denominator cannot be represented in an int.",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "comment": "if a is null.",
+        "condition": "target.abs()==null"
+      }
+    ],
+    "signature": "subtract(org.apache.commons.math3.fraction.Fraction fraction)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "subtract",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "i"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "subtract(int i)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "addSub",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+          "name": "Fraction",
+          "isArray": false
+        },
+        "name": "fraction"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "isAdd"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "comment": "if the fraction is null",
+        "condition": "args[0]==null"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
+        "comment": "if the resulting numerator or denominator cannot be represented in an int.",
+        "condition": ""
+      }
+    ],
+    "signature": "addSub(org.apache.commons.math3.fraction.Fraction fraction,boolean isAdd)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "multiply",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+          "name": "Fraction",
+          "isArray": false
+        },
+        "name": "fraction"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "comment": "if the fraction is null",
+        "condition": "args[0]==null"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
+        "comment": "if the resulting numerator or denominator exceeds Integer.MAX_VALUE",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "comment": "if a is null.",
+        "condition": "target.abs()==null"
+      }
+    ],
+    "signature": "multiply(org.apache.commons.math3.fraction.Fraction fraction)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "multiply",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "i"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "multiply(int i)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "divide",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+          "name": "Fraction",
+          "isArray": false
+        },
+        "name": "fraction"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "comment": "if the fraction is null",
+        "condition": "args[0]==null"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
+        "comment": "if the fraction to divide by is zero",
+        "condition": "args[0]==(org.apache.commons.math3.fraction.BigFraction.ZERO)"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
+        "comment": "if the resulting numerator or denominator exceeds Integer.MAX_VALUE",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "comment": "if a is null.",
+        "condition": "target.abs()==null"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
+        "comment": "if a is zero",
+        "condition": "target.abs()==0"
+      }
+    ],
+    "signature": "divide(org.apache.commons.math3.fraction.Fraction fraction)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "divide",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "i"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "divide(int i)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "percentageValue",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "percentageValue()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "getReducedFraction",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "numerator"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "denominator"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
+        "comment": "if the denominator is zero",
+        "condition": "args[1]==0"
+      }
+    ],
+    "signature": "getReducedFraction(int numerator,int denominator)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "toString",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "toString()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fraction.Fraction",
+      "name": "Fraction",
+      "isArray": false
+    },
+    "name": "getField",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.fraction.FractionField",
+      "name": "FractionField",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getField()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.lang.Number",
+      "name": "Number",
+      "isArray": false
+    },
+    "name": "byteValue",
+    "returnType": {
+      "qualifiedName": "byte",
+      "name": "byte",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "byteValue()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "java.lang.Number",
+      "name": "Number",
+      "isArray": false
+    },
+    "name": "shortValue",
+    "returnType": {
+      "qualifiedName": "short",
+      "name": "short",
+      "isArray": false
+    },
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "shortValue()"
+  }
+]

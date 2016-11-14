@@ -40,7 +40,7 @@ public class Aspect_Template {
   }
 
   private List<Class<?>> getExpectedExceptions(Object target, Object[] args) {
-    List<Class<?>> expectedExceptions = new ArrayList<>();
+    List<Class<?>> expectedExceptions = new ArrayList<Class<?>>();
   }
 
   private String getExpectedExceptionAsString(List<Class<?>> expectedExceptions) {

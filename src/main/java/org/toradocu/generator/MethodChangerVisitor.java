@@ -3,6 +3,8 @@ package org.toradocu.generator;
 import com.github.javaparser.ASTHelper;
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParseException;
+import com.github.javaparser.Position;
+import com.github.javaparser.Range;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.body.VariableDeclaratorId;
@@ -103,11 +105,16 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
           // to ignore.
           ClassOrInterfaceType nullPointerException =
               new ClassOrInterfaceType("java.lang.NullPointerException");
-          List<com.github.javaparser.ast.type.Type> types = new ArrayList<>();
-          types.add(nullPointerException);
+          Position position = new Position(0, 0);
+          Range range = new Range(position, position);
           CatchClause catchClause =
               new CatchClause(
-                  0, null, types, new VariableDeclaratorId("e"), JavaParser.parseBlock("{}"));
+                  range,
+                  0,
+                  null,
+                  nullPointerException,
+                  new VariableDeclaratorId("e"),
+                  JavaParser.parseBlock("{}"));
           List<CatchClause> catchClauses = new ArrayList<>();
           catchClauses.add(catchClause);
 
@@ -134,10 +141,10 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
   }
 
   /**
-   * Generates the AspectJ pointcut definition to be used to match the given
-   * {@code DocumentedMethod}. A pointcut definition looks like {@code call(void C.foo())}. Given a
-   * {@code DocumentedMethod} describing the method C.foo(), this method returns the string
-   * {@code call(void C.foo())}.
+   * Generates the AspectJ pointcut definition to be used to match the given {@code
+   * DocumentedMethod}. A pointcut definition looks like {@code call(void C.foo())}. Given a {@code
+   * DocumentedMethod} describing the method C.foo(), this method returns the string {@code
+   * call(void C.foo())}.
    *
    * @param method {@code DocumentedMethod} for which to generate the pointcut definition
    * @return the pointcut definition matching {@code method}
@@ -171,8 +178,8 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
   }
 
   /**
-   * Add the appropriate cast to each mention of a method argument or target in a given Java
-   * boolean condition.
+   * Add the appropriate cast to each mention of a method argument or target in a given Java boolean
+   * condition.
    *
    * @param condition the Java boolean condition to which add the casts
    * @param method the method to which the {@code condition} belongs

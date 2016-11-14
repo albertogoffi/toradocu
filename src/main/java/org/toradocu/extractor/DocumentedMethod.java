@@ -1,5 +1,8 @@
 package org.toradocu.extractor;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Executable;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -8,6 +11,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import org.toradocu.util.Checks;
+import org.toradocu.util.Reflection;
 
 /**
  * DocumentedMethod represents the Javadoc documentation for a method in a class. It identifies the
@@ -27,11 +31,11 @@ public final class DocumentedMethod {
   private final Type returnType;
   /** Method's parameters. */
   private final List<Parameter> parameters;
-  /** Flag indicating whether this method takes a variable number of arguments.  */
+  /** Flag indicating whether this method takes a variable number of arguments. */
   private final boolean isVarArgs;
   /**
-   * Throws tags specified in the method's Javadoc.
-   * Also, each throws tag can contain the translation of the comment as Java boolean condition.
+   * Throws tags specified in the method's Javadoc. Also, each throws tag can contain the
+   * translation of the comment as Java boolean condition.
    */
   private final Set<ThrowsTag> throwsTags;
   /** Method signature in the format method_name(type1 arg1, type2 arg2, ...). */
@@ -44,12 +48,11 @@ public final class DocumentedMethod {
    * @param containingClass class containing the {@code DocumentedMethod}
    * @param name the simple name of the {@code DocumentedMethod}
    * @param returnType the fully qualified return type of the method or the empty string if the
-   *        {@code DocumentedMethod} is a constructor
+   *     {@code DocumentedMethod} is a constructor
    * @param parameters the parameters of the {@code DocumentedMethod}
    * @param isVarArgs true if the {@code DocumentedMethod} takes a variable number of arguments,
-   *        false otherwise
+   *     false otherwise
    * @param throwsTags the {@code @throws tags} of the {@code DocumentedMethod}
-   *
    * @throws NullPointerException if {@code containingClass} or {@code name} is null
    */
   public DocumentedMethod(
@@ -103,7 +106,7 @@ public final class DocumentedMethod {
    * Returns true if this method takes a variable number of arguments, false otherwise.
    *
    * @return {@code true} if this method takes a variable number of arguments, {@code false}
-   *         otherwise
+   *     otherwise
    */
   public boolean isVarArgs() {
     return isVarArgs;
@@ -184,6 +187,29 @@ public final class DocumentedMethod {
       return true;
     }
     return false;
+  }
+
+  public Executable getExecutable() {
+    Class<?> containingClass = Reflection.getClass(getContainingClass().getQualifiedName());
+
+    // Load the DocumentedMethod as a reflection Method or Constructor.
+    if (isConstructor()) {
+      for (Constructor<?> constructor : containingClass.getDeclaredConstructors()) {
+        if (Reflection.checkTypes(
+            getParameters().toArray(new Parameter[0]), constructor.getParameterTypes())) {
+          return constructor;
+        }
+      }
+    } else {
+      for (Method method : containingClass.getDeclaredMethods()) {
+        if (method.getName().equals(getName())
+            && Reflection.checkTypes(
+                getParameters().toArray(new Parameter[0]), method.getParameterTypes())) {
+          return method;
+        }
+      }
+    }
+    return null;
   }
 
   /**

@@ -3,9 +3,7 @@ package org.toradocu.util;
 import java.io.IOException;
 import java.io.OutputStream;
 
-/**
- * This class is an output stream that does nothing.
- */
+/** This class is an output stream that does nothing. */
 public class NullOutputStream extends OutputStream {
 
   /**

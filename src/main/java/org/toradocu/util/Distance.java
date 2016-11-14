@@ -6,8 +6,8 @@ import java.util.List;
 import org.toradocu.Toradocu;
 
 /**
- * This utility class returns the edit distance between two strings based on character edits
- * and word deletions.
+ * This utility class returns the edit distance between two strings based on character edits and
+ * word deletions.
  */
 public class Distance {
 
@@ -17,11 +17,11 @@ public class Distance {
    * is specified by the field {@code org.toradocu.conf.Configuration.wordRemovalCost}.
    *
    * @param s0 the first string to use in calculating distance. Word deletions are not considered
-   *        for this string.
-   * @param s1 the second string to use in calculating distance. Word deletions are considered
-   *        for this string only.
-   * @return the edit distance between the two strings, taking into account character edits and
-   *         word deletions
+   *     for this string.
+   * @param s1 the second string to use in calculating distance. Word deletions are considered for
+   *     this string only.
+   * @return the edit distance between the two strings, taking into account character edits and word
+   *     deletions
    */
   public static int editDistance(String s0, String s1) {
     return editDistance(Toradocu.configuration.getWordRemovalCost(), s0, s1);
@@ -34,11 +34,11 @@ public class Distance {
    *
    * @param wordDeletionCost the cost of a single word deletion
    * @param s0 the first string to use in calculating distance. Word deletions are not considered
-   *        for this string.
-   * @param s1 the second string to use in calculating distance. Word deletions are considered
-   *        for this string only.
-   * @return the edit distance between the two strings, taking into account character edits and
-   *         word deletions
+   *     for this string.
+   * @param s1 the second string to use in calculating distance. Word deletions are considered for
+   *     this string only.
+   * @return the edit distance between the two strings, taking into account character edits and word
+   *     deletions
    */
   static int editDistance(int wordDeletionCost, String s0, String s1) {
     String[] words = s1.split(" ");
@@ -97,31 +97,23 @@ public class Distance {
   }
 
   /**
-   * <p>
    * This implementation comes from Apache Commons Text: <a href=
    * "https://github.com/apache/commons-text/blob/master/src/main/java/org/apache/commons/text/similarity/LevenshteinDistance.java"
    * >link</a>
-   * <p>
    *
    * <p>
-   * Find the Levenshtein distance between two Strings.
-   * </p>
    *
-   * <p>
-   * A higher score indicates a greater distance.
-   * </p>
+   * <p>Find the Levenshtein distance between two Strings.
    *
-   * <p>
-   * The previous implementation of the Levenshtein distance algorithm was from <a
+   * <p>A higher score indicates a greater distance.
+   *
+   * <p>The previous implementation of the Levenshtein distance algorithm was from <a
    * href="http://www.merriampark.com/ld.htm">http://www.merriampark.com/ld.htm</a>
-   * </p>
    *
-   * <p>
-   * Chas Emerick has written an implementation in Java, which avoids an OutOfMemoryError which can
-   * occur when my Java implementation is used with very large strings.<br>
+   * <p>Chas Emerick has written an implementation in Java, which avoids an OutOfMemoryError which
+   * can occur when my Java implementation is used with very large strings.<br>
    * This implementation of the Levenshtein distance algorithm is from <a
    * href="http://www.merriampark.com/ldjava.htm">http://www.merriampark.com/ldjava.htm</a>
-   * </p>
    *
    * <pre>
    * unlimitedCompare(null, *)             = IllegalArgumentException

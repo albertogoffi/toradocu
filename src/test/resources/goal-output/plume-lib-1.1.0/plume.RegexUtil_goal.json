@@ -1,0 +1,368 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "plume.RegexUtil",
+      "name": "RegexUtil",
+      "isArray": false
+    },
+    "name": "RegexUtil",
+    "parameters": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "RegexUtil()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.RegexUtil",
+      "name": "RegexUtil",
+      "isArray": false
+    },
+    "name": "isRegex",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "s"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "isRegex(java.lang.String s)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.RegexUtil",
+      "name": "RegexUtil",
+      "isArray": false
+    },
+    "name": "isRegex",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "s"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "groups"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "isRegex(java.lang.String s,int groups)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.RegexUtil",
+      "name": "RegexUtil",
+      "isArray": false
+    },
+    "name": "isRegex",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "char",
+          "name": "char",
+          "isArray": false
+        },
+        "name": "c"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "isRegex(char c)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.RegexUtil",
+      "name": "RegexUtil",
+      "isArray": false
+    },
+    "name": "regexError",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "s"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "regexError(java.lang.String s)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.RegexUtil",
+      "name": "RegexUtil",
+      "isArray": false
+    },
+    "name": "regexError",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "s"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "groups"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "regexError(java.lang.String s,int groups)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.RegexUtil",
+      "name": "RegexUtil",
+      "isArray": false
+    },
+    "name": "regexException",
+    "returnType": {
+      "qualifiedName": "java.util.regex.PatternSyntaxException",
+      "name": "PatternSyntaxException",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "s"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "regexException(java.lang.String s)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.RegexUtil",
+      "name": "RegexUtil",
+      "isArray": false
+    },
+    "name": "regexException",
+    "returnType": {
+      "qualifiedName": "java.util.regex.PatternSyntaxException",
+      "name": "PatternSyntaxException",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "s"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "groups"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "regexException(java.lang.String s,int groups)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.RegexUtil",
+      "name": "RegexUtil",
+      "isArray": false
+    },
+    "name": "asRegex",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "s"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.Error",
+          "name": "Error",
+          "isArray": false
+        },
+        "comment": "if argument is not a regex",
+        "condition": "(plume.RegexUtil.isRegex(args[0])) == false"
+      }
+    ],
+    "signature": "asRegex(java.lang.String s)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.RegexUtil",
+      "name": "RegexUtil",
+      "isArray": false
+    },
+    "name": "asRegex",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "s"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "groups"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.Error",
+          "name": "Error",
+          "isArray": false
+        },
+        "comment": "if argument is not a regex",
+        "condition": "(plume.RegexUtil.isRegex(args[0])) == false"
+      }
+    ],
+    "signature": "asRegex(java.lang.String s,int groups)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.RegexUtil",
+      "name": "RegexUtil",
+      "isArray": false
+    },
+    "name": "regexErrorMessage",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "s"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "expectedGroups"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "actualGroups"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "regexErrorMessage(java.lang.String s,int expectedGroups,int actualGroups)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "plume.RegexUtil",
+      "name": "RegexUtil",
+      "isArray": false
+    },
+    "name": "getGroupCount",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.regex.Pattern",
+          "name": "Pattern",
+          "isArray": false
+        },
+        "name": "p"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getGroupCount(java.util.regex.Pattern p)"
+  }
+]

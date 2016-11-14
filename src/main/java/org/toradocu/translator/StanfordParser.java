@@ -9,6 +9,9 @@ import edu.stanford.nlp.util.CoreMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.toradocu.Toradocu;
 
 /**
  * This class provides a method to get the semantic graph of a sentence produced by the Stanford
@@ -18,6 +21,7 @@ import java.util.Properties;
 public class StanfordParser {
 
   private static final StanfordCoreNLP pipeline;
+  private static final Logger log = LoggerFactory.getLogger(StanfordParser.class);
 
   static {
     // Creates a StanfordCoreNLP object, with POS tagging, lemmatization, NER, parsing, and
@@ -46,6 +50,14 @@ public class StanfordParser {
     // Add semantic graph for each sentence to result.
     for (CoreMap sentence : sentences) {
       result.add(sentence.get(CollapsedCCProcessedDependenciesAnnotation.class));
+      if (Toradocu.configuration.debug()) {
+        log.debug(
+            "Input sentence: "
+                + sentence
+                + "\n"
+                + "Semantic Graph:\n"
+                + result.get(result.size() - 1));
+      }
     }
 
     return result;

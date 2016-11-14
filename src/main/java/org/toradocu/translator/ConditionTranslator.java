@@ -23,8 +23,8 @@ public class ConditionTranslator {
   private static final Logger log = LoggerFactory.getLogger(ConditionTranslator.class);
 
   /**
-   * Translates the throws tags in the given methods. This method sets the field
-   * {@code ThrowsTag.condition} for each throws tags in the given methods.
+   * Translates the throws tags in the given methods. This method sets the field {@code
+   * ThrowsTag.condition} for each throws tags in the given methods.
    *
    * @param methods a list of {@code DocumentedMethod}s whose throws tags to translate
    */
@@ -95,6 +95,8 @@ public class ConditionTranslator {
         text.replace("greater than or equal to", ">=")
             .replace("less than or equal to", "<=")
             .replace("greater than", ">")
+            .replace("smaller than or equal to", "<=")
+            .replace("smaller than", "<")
             .replace("less than", "<")
             .replace("equal to", "==");
 
@@ -188,8 +190,8 @@ public class ConditionTranslator {
    * Translates the {@code Proposition}s in the given {@code propositionSeries} to Java expressions.
    *
    * @param propositionSeries the {@code Proposition}s to translate into Java expressions
-   * @param method the method the containing the Javadoc comment from which the
-   *        {@code propositionSeries} was extracted
+   * @param method the method the containing the Javadoc comment from which the {@code
+   *     propositionSeries} was extracted
    */
   private static void translatePropositions(
       PropositionSeries propositionSeries, DocumentedMethod method) {
@@ -206,7 +208,7 @@ public class ConditionTranslator {
       Map<CodeElement<?>, String> translations = new LinkedHashMap<>();
       for (CodeElement<?> subjectMatch : subjectMatches) {
         String currentTranslation =
-            Matcher.predicateMatch(subjectMatch, p.getPredicate(), p.isNegative());
+            Matcher.predicateMatch(method, subjectMatch, p.getPredicate(), p.isNegative());
         if (currentTranslation == null) {
           log.trace("Failed predicate translation for: " + p);
           continue;
@@ -289,7 +291,7 @@ public class ConditionTranslator {
    *
    * @param subject the subject of the {@code Proposition}
    * @return the conjunction that should be used to form the translation for the {@code Proposition}
-   *         with the given subject or null if no conjunction should be used
+   *     with the given subject or null if no conjunction should be used
    */
   private static String getConjunction(String subject) {
     if (subject.startsWith("either ") || subject.startsWith("any ")) {

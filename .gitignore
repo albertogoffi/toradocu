@@ -3,8 +3,11 @@
 /aspects/
 
 # Toradocu's test resources (test subjects' source code and binaries are downloaded automatically on gradle test)
-src/test/resources/src
-src/test/resources/bin
+/src/test/resources/src
+/src/test/resources/bin
+
+# Toradocu's tutorial generated or downloaded files
+/tutorial/aspects
 
 # Eclipse IDE
 /bin/
@@ -49,6 +52,4 @@ hs_err_pid*
 *~
 
 # Python scripts to check style
-check-google-java-format.py
-fixup-google-java-format.py
-run-google-java-format.py
+.run-google-java-format

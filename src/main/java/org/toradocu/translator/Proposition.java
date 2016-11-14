@@ -28,7 +28,7 @@ public class Proposition {
    * @param subject the subject of the proposition
    * @param predicate the predicate associated with the subject
    * @param isNegative true if this Proposition is the negation of the given predicate, false
-   * otherwise
+   *     otherwise
    */
   public Proposition(String subject, String predicate, boolean isNegative) {
     this.subject = Objects.requireNonNull(subject);
@@ -121,8 +121,8 @@ public class Proposition {
 
   /**
    * Returns a String representation of this proposition. The returned String is formatted as
-   * "(SUBJECT, PREDICATE) -&gt; TRANSLATION", or if no translation is present, "(SUBJECT, PREDICATE)".
-   * PREDICATE is formatted as "not (PREDICATE)" if this proposition is negative.
+   * "(SUBJECT, PREDICATE) -&gt; TRANSLATION", or if no translation is present, "(SUBJECT,
+   * PREDICATE)". PREDICATE is formatted as "not (PREDICATE)" if this proposition is negative.
    *
    * @return a string representation of this proposition
    */

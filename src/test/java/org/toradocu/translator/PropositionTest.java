@@ -3,7 +3,6 @@ package org.toradocu.translator;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.toradocu.translator.Proposition;
 
 public class PropositionTest {
 

@@ -8,12 +8,12 @@ import java.util.Objects;
 import org.toradocu.util.Distance;
 
 /**
- * This class wraps a Java code element (e.g., {@code java.lang.reflect.Parameter},
- * {@code java.lang.reflect.Field}, etc.) for use in translation.
- * This class contains String identifiers (sequences of words that can be used in Javadoc comments
- * to refer to this Java code element) for the code element and a Java
- * expression representation of the code element to build Java conditions.
- * A typical constructor invocation looks like this:
+ * This class wraps a Java code element (e.g., {@code java.lang.reflect.Parameter}, {@code
+ * java.lang.reflect.Field}, etc.) for use in translation. This class contains String identifiers
+ * (sequences of words that can be used in Javadoc comments to refer to this Java code element) for
+ * the code element and a Java expression representation of the code element to build Java
+ * conditions. A typical constructor invocation looks like this:
+ *
  * <p>{@code new CodeElement(parameter, "names", "array", "array names")}.
  *
  * @param <T> the type of code element that this class holds data on
@@ -26,10 +26,10 @@ public abstract class CodeElement<T> {
   private String javaExpression;
   // TODO Add a check on the type T so that a CodeElement can be only created with a supported type.
   /**
-   * The Java code element this object wraps. T can only be a Java code element like
-   * {@code java.lang.reflect.Parameter}. We don't know how to restrict this type since some
-   * classes in the Java reflection APIs like {@code java.lang.reflect.Parameter} inherit
-   * directly from {@code java.lang.Object}.
+   * The Java code element this object wraps. T can only be a Java code element like {@code
+   * java.lang.reflect.Parameter}. We don't know how to restrict this type since some classes in the
+   * Java reflection APIs like {@code java.lang.reflect.Parameter} inherit directly from {@code
+   * java.lang.Object}.
    */
   private T javaCodeElement;
 
@@ -87,21 +87,21 @@ public abstract class CodeElement<T> {
   }
 
   /**
-   * Builds and returns the Java expression representation of this code element.
-   * Clients should call {@link #getJavaExpression} instead.
+   * Builds and returns the Java expression representation of this code element. Clients should call
+   * {@link #getJavaExpression} instead.
    *
    * @return the Java expression representation of this code element after building it
    */
   protected abstract String buildJavaExpression();
 
   /**
-   * Returns the edit distance between this code element and the given string. The returned
-   * distance is the minimum distance calculated for all the identifiers of this code element.
+   * Returns the edit distance between this code element and the given string. The returned distance
+   * is the minimum distance calculated for all the identifiers of this code element.
    * Integer.MAX_VALUE is returned if this code element has no identifiers.
    *
    * @param s the string to get the edit distance from
-   * @return the minimum edit distance between the given string and the identifiers of this
-   * code element, or Integer.MAX_VALUE if this code element has no identifiers
+   * @return the minimum edit distance between the given string and the identifiers of this code
+   *     element, or Integer.MAX_VALUE if this code element has no identifiers
    */
   public int getEditDistanceFrom(String s) {
     return identifiers

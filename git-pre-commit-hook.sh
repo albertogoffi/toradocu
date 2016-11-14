@@ -3,15 +3,10 @@
 # Fail if any command fails
 set -e
 
-CHANGED_JAVA_FILES=`git diff --staged --name-only --diff-filter=ACM | grep -v 'src/test/resources/aspects/*' | grep '\.java$'` || true
+CHANGED_JAVA_FILES=`git diff --staged --name-only --diff-filter=ACM | grep -v 'src/test/resources/aspects/*' | grep -v 'src/main/resources/AspectTemplate.java' | grep '\.java$'` || true
 if [ ! -z "$CHANGED_JAVA_FILES" ]; then
-  SCRIPT_URL=https://raw.githubusercontent.com/mernst/plume-lib/master/bin/check-google-java-format.py
-  if [ `uname` = 'Darwin' ]; then
-    curl -O ${SCRIPT_URL}
-  else
-    wget -N ${SCRIPT_URL}
-  fi
-  python check-google-java-format.py ${CHANGED_JAVA_FILES}
+    git -C .run-google-java-format pull -q || git clone -q https://github.com/plume-lib/run-google-java-format.git .run-google-java-format
+    ./.run-google-java-format/check-google-java-format.py ${CHANGED_JAVA_FILES}
 fi
 
 # This is for non-.java files.
@@ -23,11 +18,3 @@ if [ ! -z "$CHANGED_STYLE_FILES" ]; then
       echo "Some files have trailing whitespace: ${FILES_WITH_TRAILING_SPACES}" && exit 1
     fi
 fi
-
-# # This is for non-.java files.
-# # May need to remove files that are allowed to have trailing whitespace.
-# CHANGED_STYLE_FILES=`git diff --staged --name-only --diff-filter=ACM` || true
-# if [ ! -z "$CHANGED_STYLE_FILES" ]; then
-#     # echo "CHANGED_STYLE_FILES: ${CHANGED_STYLE_FILES}"
-#     grep -q '[[:blank:]]$' ${CHANGED_STYLE_FILES} 2>&1 && (echo "Some files have trailing whitespace:" && grep -l '[[:blank:]]$' ${CHANGED_STYLE_FILES} && exit 1)
-# fi

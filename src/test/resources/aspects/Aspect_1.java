@@ -32,7 +32,7 @@ public class Aspect_1 {
     }
 
     private List<Class<?>> getExpectedExceptions(Object target, Object[] args) {
-        List<Class<?>> expectedExceptions = new ArrayList();
+        List<Class<?>> expectedExceptions = new ArrayList<Class<?>>();
         try {
             if (((int) args[0]) < 0 || ((int) args[1]) < 0) {
                 try {

@@ -18,33 +18,34 @@ import org.slf4j.LoggerFactory;
 
 /**
  * {@code SentenceParser} parses the {@code edu.stanford.nlp.semgraph.SemanticGraph} of a sentence
- * into a {@code PropositionSeries} through the method {@code getPropositionSeries}.
- * This class uses NLP to identify subjects, relations, conjunctions, and so on from the sentence.
+ * into a {@code PropositionSeries} through the method {@code getPropositionSeries}. This class uses
+ * NLP to identify subjects, relations, conjunctions, and so on from the sentence.
+ *
  * <p>This class makes an extensive use of the Stanford parser APIs. The basic thing to know is that
- * an {@code IndexedWord} represents a word in a sentence; a grammatical relation has a governor
- * (or a head) and a dependent. The sentence "she looks beautiful" contains a nsubj (subject)
- * relation between "she" and "looks", where "looks" is the governor and "she" is the dependent.
+ * an {@code IndexedWord} represents a word in a sentence; a grammatical relation has a governor (or
+ * a head) and a dependent. The sentence "she looks beautiful" contains a nsubj (subject) relation
+ * between "she" and "looks", where "looks" is the governor and "she" is the dependent.
  */
 public class SentenceParser {
 
   /** The semantic graph of the sentence from which the proposition series will be derived. */
   private SemanticGraph semanticGraph;
   /** Grammatical relations that are extracted from the semantic graph. */
-  private List<SemanticGraphEdge>
-      subjectRelations,
+  private List<SemanticGraphEdge> subjectRelations,
       copulaRelations,
       complementRelations,
       conjunctionRelations,
-      negationRelations;
+      negationRelations,
+      numModifierRealations;
   /** Logger for this class. */
   private static final Logger log = LoggerFactory.getLogger(SentenceParser.class);
 
   /**
-   * Constructs a {@code SentenceParser} object that will parse the given {@code SemanticGraph}
-   * into a {@code PropositionSeries}.
+   * Constructs a {@code SentenceParser} object that will parse the given {@code SemanticGraph} into
+   * a {@code PropositionSeries}.
    *
-   * @param semanticGraph the {@code SemanticGraph} that will be used to create the
-   * {@code PropositionSeries}
+   * @param semanticGraph the {@code SemanticGraph} that will be used to create the {@code
+   *     PropositionSeries}
    */
   public SentenceParser(SemanticGraph semanticGraph) {
     this.semanticGraph = semanticGraph;
@@ -163,7 +164,7 @@ public class SentenceParser {
    *
    * @param governor the governor for a subject relation
    * @return true if the predicate associated with the subject in the subject relation has a
-   * negation modifier, false otherwise
+   *     negation modifier, false otherwise
    */
   public boolean predicateIsNegative(IndexedWord governor) {
     // Return true if there are an odd number of negation modifiers.
@@ -218,7 +219,15 @@ public class SentenceParser {
       return predicateWords;
     }
     predicateWords.add(governor);
-    predicateWords.add(complementEdge.get().getDependent());
+
+    IndexedWord complement = complementEdge.get().getDependent();
+    predicateWords.add(complement);
+
+    Optional<SemanticGraphEdge> numModifierEdge =
+        numModifierRealations.stream().filter(e -> e.getGovernor().equals(complement)).findFirst();
+    if (numModifierEdge.isPresent()) {
+      predicateWords.add(numModifierEdge.get().getDependent());
+    }
 
     return predicateWords;
   }
@@ -340,9 +349,7 @@ public class SentenceParser {
     return result;
   }
 
-  /**
-   * Initializes the relations fields using the semantic graph.
-   */
+  /** Initializes the relations fields using the semantic graph. */
   private void initializeRelations() {
     subjectRelations = getRelationsFromGraph("nsubj", "nsubjpass");
     if (subjectRelations.isEmpty()) {
@@ -352,6 +359,7 @@ public class SentenceParser {
     complementRelations = getRelationsFromGraph("acomp", "xcomp", "dobj");
     conjunctionRelations = getRelationsFromGraph("conj");
     negationRelations = getRelationsFromGraph("neg");
+    numModifierRealations = getRelationsFromGraph("nummod");
   }
 
   /**
@@ -359,7 +367,7 @@ public class SentenceParser {
    *
    * @param relationShortNames the abbreviated names of the relations to retrieve
    * @return all the grammatical relations in the sentence (as graph edges) that match the specified
-   * relation names
+   *     relation names
    */
   private List<SemanticGraphEdge> getRelationsFromGraph(String... relationShortNames) {
     List<String> relations = Arrays.asList(relationShortNames);
