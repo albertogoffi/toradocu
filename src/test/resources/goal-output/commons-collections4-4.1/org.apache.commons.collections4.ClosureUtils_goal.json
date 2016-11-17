@@ -330,7 +330,7 @@
           "isArray": false
         },
         "comment": "if any closure in the array is null",
-        "condition": "Arrays.asList(args[0]).contains(null)"
+        "condition": "java.util.Arrays.stream(args[0]).anyMatch(e -> e==null)"
       }
     ],
     "signature": "chainedClosure(org.apache.commons.collections4.Closure[] closures)"
@@ -375,7 +375,7 @@
           "isArray": false
         },
         "comment": "if any closure in the collection is null",
-        "condition": "args[0].contains(null)"
+        "condition": "args[0].stream().anyMatch(e -> e==null)"
       },
       {
         "exception": {
@@ -533,7 +533,7 @@
           "isArray": false
         },
         "comment": "if any element in the arrays is null",
-        "condition": "Arrays.asList(args[0]).contains(null) || Arrays.asList(args[1]).contains(null)"
+        "condition": "java.util.Arrays.stream(args[0]).anyMatch(e -> e==null) || java.util.Arrays.stream(args[1]).anyMatch(e -> e==null)"
       },
       {
         "exception": {
@@ -603,7 +603,7 @@
           "isArray": false
         },
         "comment": "if any element in the arrays is null",
-        "condition": "Arrays.asList(args[0]).contains(null) || Arrays.asList(args[1]).contains(null)"
+        "condition": "java.util.Arrays.stream(args[0]).anyMatch(e -> e==null) || java.util.Arrays.stream(args[1]).anyMatch(e -> e==null)"
       },
       {
         "exception": {
@@ -657,7 +657,7 @@
           "isArray": false
         },
         "comment": "if any closure in the map is null",
-        "condition": "args[0].values().contains(null)"
+        "condition": "args[0].values().stream().anyMatch(e -> e==null)"
       },
       {
         "exception": {
@@ -720,7 +720,7 @@
           "isArray": false
         },
         "comment": "if any closure in the map is null",
-        "condition": "args[0].values().contains(null)"
+        "condition": "args[0].values().stream().anyMatch(e -> e==null)"
       },
       {
         "exception": {

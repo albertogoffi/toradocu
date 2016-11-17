@@ -4,15 +4,12 @@ import java.lang.reflect.Executable;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
-import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.util.Reflection;
 
@@ -21,9 +18,6 @@ import org.toradocu.util.Reflection;
  * collected through Java reflection.
  */
 public class JavaElementsCollector {
-
-  private static URLClassLoader classLoader;
-  private static final Logger log = LoggerFactory.getLogger(Matcher.class);
 
   public static Set<CodeElement<?>> collect(DocumentedMethod documentedMethod) {
     Set<CodeElement<?>> collectedElements = new LinkedHashSet<>();

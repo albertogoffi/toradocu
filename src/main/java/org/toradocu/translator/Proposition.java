@@ -8,9 +8,9 @@ import java.util.Optional;
  * translation of the proposition into a Java expression.
  */
 public class Proposition {
-
-  private String subject, predicate, translation;
-  private boolean isNegative;
+  private final String subject, container, predicate;
+  private String translation;
+  private final boolean isNegative;
 
   /**
    * Constructs and initializes a {@code Proposition} with the given subject and predicate.
@@ -19,20 +19,35 @@ public class Proposition {
    * @param predicate the predicate associated with the subject
    */
   public Proposition(String subject, String predicate) {
-    this(subject, predicate, false);
+    this(subject, "", predicate, false);
   }
 
   /**
-   * Constructs and initializes a {@code Proposition} with the given subject and predicate.
+   * Constructs and initializes a {@code Proposition} with the given subject, container, and
+   * predicate.
    *
    * @param subject the subject of the proposition
+   * @param container the container of the subject
+   * @param predicate the predicate associated with the subject
+   */
+  public Proposition(String subject, String container, String predicate) {
+    this(subject, container, predicate, false);
+  }
+
+  /**
+   * Constructs and initializes a {@code Proposition} with the given subject, container, and
+   * predicate.
+   *
+   * @param subject the subject of the proposition
+   * @param container the container of the subject
    * @param predicate the predicate associated with the subject
    * @param isNegative true if this Proposition is the negation of the given predicate, false
    *     otherwise
    */
-  public Proposition(String subject, String predicate, boolean isNegative) {
+  public Proposition(String subject, String container, String predicate, boolean isNegative) {
     this.subject = Objects.requireNonNull(subject);
     this.predicate = Objects.requireNonNull(predicate);
+    this.container = Objects.requireNonNull(container);
     this.isNegative = isNegative;
   }
 
@@ -43,6 +58,15 @@ public class Proposition {
    */
   public String getSubject() {
     return subject;
+  }
+
+  /**
+   * Returns the container of the proposition.
+   *
+   * @return the container of the proposition. Empty string if the container is not present.
+   */
+  public String getContainer() {
+    return container;
   }
 
   /**
@@ -129,6 +153,9 @@ public class Proposition {
   @Override
   public String toString() {
     StringBuilder result = new StringBuilder("(" + getSubject() + ", ");
+    if (!getContainer().isEmpty()) {
+      result.append(getContainer() + ", ");
+    }
     result.append(isNegative ? "not (" + predicate + ")" : predicate);
     result.append(")");
     if (getTranslation().isPresent()) {
