@@ -172,12 +172,18 @@ public class ConditionTranslator {
       for (Proposition placeholderProposition : series.getPropositions()) {
         String subject = placeholderProposition.getSubject();
         String predicate = placeholderProposition.getPredicate();
+
         for (int i = 0; i < inequalities.size(); i++) {
           subject = subject.replaceAll(PLACEHOLDER_PREFIX + i, inequalities.get(i));
           predicate = predicate.replaceAll(PLACEHOLDER_PREFIX + i, inequalities.get(i));
         }
+
         inequalityPropositions.add(
-            new Proposition(subject, predicate, placeholderProposition.isNegative()));
+            new Proposition(
+                subject,
+                placeholderProposition.getContainer(),
+                predicate,
+                placeholderProposition.isNegative()));
       }
       result.add(new PropositionSeries(inequalityPropositions, series.getConjunctions()));
     }
@@ -196,17 +202,38 @@ public class ConditionTranslator {
   private static void translatePropositions(
       PropositionSeries propositionSeries, DocumentedMethod method) {
     for (Proposition p : propositionSeries.getPropositions()) {
-      Set<CodeElement<?>> subjectMatches;
-      subjectMatches = Matcher.subjectMatch(p.getSubject(), method);
-      if (subjectMatches.isEmpty()) {
-        log.debug("Failed subject translation for: " + p);
-        return;
+      final Set<CodeElement<?>> matchingCodeElements = new LinkedHashSet<>();
+      final String container = p.getContainer();
+      if (container.isEmpty()) {
+        // Subject match
+        Set<CodeElement<?>> subjectMatches = Matcher.subjectMatch(p.getSubject(), method);
+        if (subjectMatches.isEmpty()) {
+          log.debug("Failed subject translation for: " + p);
+          return;
+        }
+        matchingCodeElements.addAll(subjectMatches);
+      } else {
+        // Container match
+        final CodeElement<?> containerMatch = Matcher.containerMatch(container, method);
+        if (containerMatch == null) {
+          log.trace("Failed container translation for: " + p);
+          continue;
+        }
+        try {
+          matchingCodeElements.add(
+              new ContainerElementsCodeElement(
+                  containerMatch.getJavaCodeElement(), containerMatch.getJavaExpression()));
+        } catch (IllegalArgumentException e) {
+          // The containerMatch is not supported by the current implementation of
+          // ContainerElementsCodeElement.
+          continue;
+        }
       }
 
-      // Maps each subject code element to the Java expression translation that uses
-      // that code element.
+      // Maps each subject code element to the Java expression translation that uses that code
+      // element.
       Map<CodeElement<?>, String> translations = new LinkedHashMap<>();
-      for (CodeElement<?> subjectMatch : subjectMatches) {
+      for (CodeElement<?> subjectMatch : matchingCodeElements) {
         String currentTranslation =
             Matcher.predicateMatch(method, subjectMatch, p.getPredicate(), p.isNegative());
         if (currentTranslation == null) {
@@ -224,7 +251,7 @@ public class ConditionTranslator {
       // The final translation.
       String result = null;
 
-      String conjunction = getConjunction(p.getSubject());
+      Conjunction conjunction = getConjunction(p.getSubject());
       if (conjunction != null) {
         // A single subject can refer to multiple elements (e.g., in "either value is null").
         // Therefore, translations for each subject code element should be merged using the
@@ -279,7 +306,7 @@ public class ConditionTranslator {
       Iterator<String> it = conditions.iterator();
       StringBuilder conditionsBuilder = new StringBuilder("(" + it.next() + ")");
       while (it.hasNext()) {
-        conditionsBuilder.append(" || (" + it.next() + ")");
+        conditionsBuilder.append(Conjunction.OR + "(" + it.next() + ")");
       }
       return conditionsBuilder.toString();
     }
@@ -293,11 +320,11 @@ public class ConditionTranslator {
    * @return the conjunction that should be used to form the translation for the {@code Proposition}
    *     with the given subject or null if no conjunction should be used
    */
-  private static String getConjunction(String subject) {
+  private static Conjunction getConjunction(String subject) {
     if (subject.startsWith("either ") || subject.startsWith("any ")) {
-      return " || ";
+      return Conjunction.OR;
     } else if (subject.startsWith("both ") || subject.startsWith("all ")) {
-      return " && ";
+      return Conjunction.AND;
     } else {
       return null;
     }

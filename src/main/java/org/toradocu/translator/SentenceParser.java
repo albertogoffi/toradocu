@@ -3,16 +3,16 @@ package org.toradocu.translator;
 import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphEdge;
+import edu.stanford.nlp.trees.GrammaticalRelation;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,7 +36,7 @@ public class SentenceParser {
       complementRelations,
       conjunctionRelations,
       negationRelations,
-      numModifierRealations;
+      numModifierRelations;
   /** Logger for this class. */
   private static final Logger log = LoggerFactory.getLogger(SentenceParser.class);
 
@@ -64,17 +64,18 @@ public class SentenceParser {
     // information).
     // This map is used to understand which propositions a conjunction is joining, since we have to
     // map a conjunction between two specific words to a conjunction between two propositions.
-    Map<List<IndexedWord>, Proposition> propositionMap = new HashMap<>();
+    Map<List<IndexedWord>, Proposition> propositionMap = new LinkedHashMap<>();
     // Proposition series that will be built and returned.
     PropositionSeries propositionSeries = new PropositionSeries();
 
     for (SemanticGraphEdge subjectRelation : subjectRelations) {
       // Stores the word marked as a subject word in the semantic graph.
-      IndexedWord subject = subjectRelation.getDependent();
+      IndexedWord subjectWord = subjectRelation.getDependent();
       // Stores the subject and associated words, such as any modifiers that come before it.
       // Words (but the subject) appear in the list in the same order as they appear in the
       // sentence. Subject is always the last word in the list.
-      List<IndexedWord> subjectWords = getSubjectWords(subject);
+      Subject subject = getSubject(subjectWord);
+      List<IndexedWord> subjectWords = subject.getSubject();
 
       // Get the words that make up the predicate.
       List<IndexedWord> predicateWords = getPredicateWords(subjectRelation.getGovernor());
@@ -86,12 +87,15 @@ public class SentenceParser {
       boolean negative = predicateIsNegative(subjectRelation.getGovernor());
 
       // Create a Proposition from the subject and predicate words.
-      String subjectWordsAsString =
-          subjectWords.stream().map(w -> w.word()).collect(Collectors.joining(" "));
       String predicateWordsAsString =
           predicateWords.stream().map(w -> w.word()).collect(Collectors.joining(" "));
       Proposition proposition =
-          new Proposition(subjectWordsAsString, predicateWordsAsString, negative);
+          new Proposition(
+              subject.getSubjectAsString(),
+              subject.getContainerAsString(),
+              predicateWordsAsString,
+              negative);
+
       // Add the Proposition and associated words to the propositionMap.
       List<IndexedWord> propositionWords = new ArrayList<>(subjectWords);
       propositionWords.addAll(predicateWords);
@@ -166,7 +170,7 @@ public class SentenceParser {
    * @return true if the predicate associated with the subject in the subject relation has a
    *     negation modifier, false otherwise
    */
-  public boolean predicateIsNegative(IndexedWord governor) {
+  private boolean predicateIsNegative(IndexedWord governor) {
     // Return true if there are an odd number of negation modifiers.
     long numNegEdges =
         negationRelations.stream().filter(e -> e.getGovernor().equals(governor)).count();
@@ -180,7 +184,7 @@ public class SentenceParser {
    * @param governor the governor for a subject relation
    * @return all words in the predicate associated with the subject in the subject relation
    */
-  public List<IndexedWord> getPredicateWords(IndexedWord governor) {
+  private List<IndexedWord> getPredicateWords(IndexedWord governor) {
     List<IndexedWord> result;
 
     result = tryCopulaPredicate(governor);
@@ -224,7 +228,7 @@ public class SentenceParser {
     predicateWords.add(complement);
 
     Optional<SemanticGraphEdge> numModifierEdge =
-        numModifierRealations.stream().filter(e -> e.getGovernor().equals(complement)).findFirst();
+        numModifierRelations.stream().filter(e -> e.getGovernor().equals(complement)).findFirst();
     if (numModifierEdge.isPresent()) {
       predicateWords.add(numModifierEdge.get().getDependent());
     }
@@ -327,26 +331,48 @@ public class SentenceParser {
   }
 
   /**
-   * Returns all the words that are associated with the subject of the predicate minus any articles.
-   * For example, in "the large numbers map is not null", the returned words associated with the
-   * subject word "map" are ["large", "numbers", "map"]. "the" is not in the returned words since it
-   * is a definite article.
+   * Returns the subject of a predicate minus any articles. The words composing the subject are
+   * collected starting from a given {@code subjectWord} (a word in a subject grammatical relation
+   * with a verb). For example, in "the large numbers map is not null", the returned words
+   * associated with the subject word "map" are ["large", "numbers", "map"]. "the" is not in the
+   * returned words since it is a definite article.
    *
-   * @param subject the subject word for which to return the associated words
-   * @return the words associated with the given subject (not including articles)
+   * @param subjectWord the subject word for which to return the associated words
+   * @return a {@code Subject} containing the words associated with the given subject (not including
+   *     articles)
    */
-  private List<IndexedWord> getSubjectWords(IndexedWord subject) {
-    List<String> ARTICLES = Arrays.asList("a", "an", "the");
-    List<IndexedWord> result =
+  private Subject getSubject(IndexedWord subjectWord) {
+    final List<String> ARTICLES = Collections.unmodifiableList(Arrays.asList("a", "an", "the"));
+
+    // Collect the words composing the subject in comments.
+    List<IndexedWord> subjectWords =
         getRelationsFromGraph("compound", "det", "advmod", "amod", "nmod:poss")
             .stream()
-            .filter(e -> e.getGovernor().equals(subject))
+            .filter(e -> e.getGovernor().equals(subjectWord))
             .filter(e -> !ARTICLES.contains(e.getDependent().word()))
             .map(e -> e.getDependent())
             .sorted((w1, w2) -> Integer.compare(w1.index(), w2.index()))
             .collect(Collectors.toList());
-    result.add(subject); // TODO: Why we assume that the subject is the last word?
-    return result;
+    subjectWords.add(subjectWord); // TODO: Why we assume that the subject is the last word?
+
+    // Collect the words composing the container. For example, in the comment "any value in the
+    // array is null", the subject is "any value", while the container is "array". At the moment
+    // we collect only one word as container. Extend the code to support containers composed of
+    // multiple words. For example in "any element in the entry set is null", the container is
+    // "entry set".
+    List<IndexedWord> containerWords = new ArrayList<>();
+    IndexedWord container =
+        getRelationsFromGraph("nmod:in")
+            .stream()
+            .filter(e -> e.getGovernor().equals(subjectWord))
+            .map(e -> e.getDependent())
+            .findFirst()
+            .orElse(null);
+    if (container != null) {
+      containerWords.add(container);
+    }
+
+    return new Subject(subjectWords, containerWords);
   }
 
   /** Initializes the relations fields using the semantic graph. */
@@ -357,24 +383,38 @@ public class SentenceParser {
     }
     copulaRelations = getRelationsFromGraph("cop");
     complementRelations = getRelationsFromGraph("acomp", "xcomp", "dobj");
-    conjunctionRelations = getRelationsFromGraph("conj");
+    conjunctionRelations = getRelationsFromGraph("conj:and", "conj:or");
     negationRelations = getRelationsFromGraph("neg");
-    numModifierRealations = getRelationsFromGraph("nummod");
+    numModifierRelations = getRelationsFromGraph("nummod");
   }
 
   /**
-   * Retrieves relations with the given names from the semantic graph.
+   * Retrieves relations with the given identifiers from the semantic graph. An identifier is a
+   * string of the form relation_short_name:specific. The :specific part is optional, but general
+   * matches are not possible, i.e., the identifier "conj" will not retrieve "conj:and" nor
+   * "conj:and". See {@code edu.stanford.nlp.trees.GrammaticalRelation#getShortName()} and {@code
+   * edu.stanford.nlp.trees.GrammaticalRelation#getSpecific()} for more information.
    *
-   * @param relationShortNames the abbreviated names of the relations to retrieve
+   * @param relationIdentifiers the identifiers of the relations to retrieve.
    * @return all the grammatical relations in the sentence (as graph edges) that match the specified
-   *     relation names
+   *     relation identifiers
    */
-  private List<SemanticGraphEdge> getRelationsFromGraph(String... relationShortNames) {
-    List<String> relations = Arrays.asList(relationShortNames);
-    Stream<SemanticGraphEdge> stream =
-        StreamSupport.stream(semanticGraph.edgeIterable().spliterator(), false);
-    return stream
-        .filter(e -> relations.contains(e.getRelation().getShortName()))
-        .collect(Collectors.toList());
+  private List<SemanticGraphEdge> getRelationsFromGraph(String... relationIdentifiers) {
+    final List<String> identifiers =
+        Collections.unmodifiableList(Arrays.asList(relationIdentifiers));
+    final List<SemanticGraphEdge> foundRelations = new ArrayList<>();
+
+    for (SemanticGraphEdge edge : semanticGraph.edgeIterable()) {
+      final GrammaticalRelation grammaticalRelation = edge.getRelation();
+      String identifier = grammaticalRelation.getShortName();
+      final String specific = grammaticalRelation.getSpecific();
+      if (specific != null) {
+        identifier += ":" + specific;
+      }
+      if (identifiers.contains(identifier)) {
+        foundRelations.add(edge);
+      }
+    }
+    return foundRelations;
   }
 }

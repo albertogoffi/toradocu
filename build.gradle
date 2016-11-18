@@ -41,9 +41,9 @@ distZip.enabled = false
 distTar.enabled = false
 assemble.enabled = false
 
-//compileJava {
-//  options.compilerArgs << '-Xlint:unchecked'
-//}
+compileJava {
+  options.compilerArgs << '-Xlint:unchecked'
+}
 
 /* Print standard output during tests execution. */
 test {
