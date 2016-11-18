@@ -251,7 +251,7 @@ public class ConditionTranslator {
       // The final translation.
       String result = null;
 
-      String conjunction = getConjunction(p.getSubject());
+      Conjunction conjunction = getConjunction(p.getSubject());
       if (conjunction != null) {
         // A single subject can refer to multiple elements (e.g., in "either value is null").
         // Therefore, translations for each subject code element should be merged using the
@@ -306,7 +306,7 @@ public class ConditionTranslator {
       Iterator<String> it = conditions.iterator();
       StringBuilder conditionsBuilder = new StringBuilder("(" + it.next() + ")");
       while (it.hasNext()) {
-        conditionsBuilder.append(" || (" + it.next() + ")");
+        conditionsBuilder.append(Conjunction.OR + "(" + it.next() + ")");
       }
       return conditionsBuilder.toString();
     }
@@ -320,11 +320,11 @@ public class ConditionTranslator {
    * @return the conjunction that should be used to form the translation for the {@code Proposition}
    *     with the given subject or null if no conjunction should be used
    */
-  private static String getConjunction(String subject) {
+  private static Conjunction getConjunction(String subject) {
     if (subject.startsWith("either ") || subject.startsWith("any ")) {
-      return " || ";
+      return Conjunction.OR;
     } else if (subject.startsWith("both ") || subject.startsWith("all ")) {
-      return " && ";
+      return Conjunction.AND;
     } else {
       return null;
     }
