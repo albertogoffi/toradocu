@@ -36,7 +36,7 @@ public class SentenceParser {
       complementRelations,
       conjunctionRelations,
       negationRelations,
-      numModifierRealations;
+      numModifierRelations;
   /** Logger for this class. */
   private static final Logger log = LoggerFactory.getLogger(SentenceParser.class);
 
@@ -228,7 +228,7 @@ public class SentenceParser {
     predicateWords.add(complement);
 
     Optional<SemanticGraphEdge> numModifierEdge =
-        numModifierRealations.stream().filter(e -> e.getGovernor().equals(complement)).findFirst();
+        numModifierRelations.stream().filter(e -> e.getGovernor().equals(complement)).findFirst();
     if (numModifierEdge.isPresent()) {
       predicateWords.add(numModifierEdge.get().getDependent());
     }
@@ -383,15 +383,16 @@ public class SentenceParser {
     }
     copulaRelations = getRelationsFromGraph("cop");
     complementRelations = getRelationsFromGraph("acomp", "xcomp", "dobj");
-    conjunctionRelations = getRelationsFromGraph("conj");
+    conjunctionRelations = getRelationsFromGraph("conj:and", "conj:or");
     negationRelations = getRelationsFromGraph("neg");
-    numModifierRealations = getRelationsFromGraph("nummod");
+    numModifierRelations = getRelationsFromGraph("nummod");
   }
 
   /**
    * Retrieves relations with the given identifiers from the semantic graph. An identifier is a
-   * string of the form relation_short_name:specific. See {@code
-   * edu.stanford.nlp.trees.GrammaticalRelation#getShortName()} and {@code
+   * string of the form relation_short_name:specific. The :specific part is optional, but general
+   * matches are not possible, i.e., the identifier "conj" will not retrieve "conj:and" nor
+   * "conj:and". See {@code edu.stanford.nlp.trees.GrammaticalRelation#getShortName()} and {@code
    * edu.stanford.nlp.trees.GrammaticalRelation#getSpecific()} for more information.
    *
    * @param relationIdentifiers the identifiers of the relations to retrieve.
