@@ -27,7 +27,7 @@ public class Proposition {
    * predicate.
    *
    * @param subject the subject of the proposition
-   * @param container the container of the subject
+   * @param container the container of the subject, empty string if container is not present
    * @param predicate the predicate associated with the subject
    */
   public Proposition(String subject, String container, String predicate) {
@@ -39,7 +39,7 @@ public class Proposition {
    * predicate.
    *
    * @param subject the subject of the proposition
-   * @param container the container of the subject
+   * @param container the container of the subject, empty string if container is not present
    * @param predicate the predicate associated with the subject
    * @param isNegative true if this Proposition is the negation of the given predicate, false
    *     otherwise
