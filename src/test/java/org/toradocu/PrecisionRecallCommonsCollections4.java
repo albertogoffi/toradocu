@@ -38,7 +38,7 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testPredicateUtils() throws Exception {
-    test("org.apache.commons.collections4.PredicateUtils", 0.733, 0.733);
+    test("org.apache.commons.collections4.PredicateUtils", 0.846, 0.733);
   }
 
   @Test
