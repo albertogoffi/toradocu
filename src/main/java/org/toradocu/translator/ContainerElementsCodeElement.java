@@ -4,7 +4,7 @@ import java.lang.reflect.Parameter;
 import java.util.Collection;
 import org.toradocu.util.Checks;
 
-public class ContainerElementsCodeElement extends CodeElement {
+public class ContainerElementsCodeElement extends CodeElement<Object> {
 
   private final String expression;
 
