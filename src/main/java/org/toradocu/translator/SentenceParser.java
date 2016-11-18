@@ -7,7 +7,7 @@ import edu.stanford.nlp.trees.GrammaticalRelation;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -64,7 +64,7 @@ public class SentenceParser {
     // information).
     // This map is used to understand which propositions a conjunction is joining, since we have to
     // map a conjunction between two specific words to a conjunction between two propositions.
-    Map<List<IndexedWord>, Proposition> propositionMap = new HashMap<>();
+    Map<List<IndexedWord>, Proposition> propositionMap = new LinkedHashMap<>();
     // Proposition series that will be built and returned.
     PropositionSeries propositionSeries = new PropositionSeries();
 
