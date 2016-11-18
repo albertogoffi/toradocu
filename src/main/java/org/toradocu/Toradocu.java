@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringReader;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -24,11 +25,15 @@ import org.toradocu.conf.Configuration;
 import org.toradocu.doclet.formats.html.ConfigurationImpl;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.JavadocExtractor;
+import org.toradocu.extractor.Parameter;
 import org.toradocu.generator.OracleGenerator;
 import org.toradocu.translator.ConditionTranslator;
+import org.toradocu.translator.Matcher;
+import org.toradocu.translator.ParameterCodeElement;
 import org.toradocu.util.GsonInstance;
 import org.toradocu.util.MethodStats;
 import org.toradocu.util.NullOutputStream;
+import org.toradocu.util.Reflection;
 import org.toradocu.util.Stats;
 
 /**
@@ -124,6 +129,30 @@ public class Toradocu {
     }
     if (configuration.debug()) {
       log.debug("Methods with Javadoc documentation found in source code: " + methods.toString());
+    }
+
+    // === @Param support ===
+
+    try {
+      String targetClass = configuration.getTargetClass();
+      Class c = Reflection.getClass(targetClass);
+      final Constructor targetMethod = c.getConstructor(Integer.class);
+
+      org.toradocu.extractor.Type clazz = new org.toradocu.extractor.Type(targetClass);
+      Parameter par =
+          new Parameter(new org.toradocu.extractor.Type("java.lang.Integer"), "sideLength");
+      List<Parameter> parameters = new ArrayList<>();
+      parameters.add(par);
+
+      DocumentedMethod documentedMethod =
+          new DocumentedMethod(clazz, "Square", null, parameters, false, null);
+      ParameterCodeElement parCodeElement =
+          new ParameterCodeElement(targetMethod.getParameters()[0], "sideLength", 0);
+      String match = Matcher.predicateMatch(documentedMethod, parCodeElement, "is locked", true);
+      System.out.println("Matching predicate: " + match);
+    } catch (NoSuchMethodException e) {
+      e.printStackTrace();
+      System.exit(-1);
     }
 
     // === Condition Translator ===
