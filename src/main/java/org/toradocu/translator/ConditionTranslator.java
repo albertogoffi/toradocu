@@ -104,6 +104,8 @@ public class ConditionTranslator {
 
     java.util.regex.Matcher matcherInstanceOf = Pattern.compile(INEQ_INSOF).matcher(text);
 
+    java.util.regex.Matcher matcherThis = Pattern.compile(INEQ_THIS).matcher(text);
+
     while (matcherInstanceOf.find()) {
       // Instance of added to the comparator list
       // Replace "[an] instance of" with "instanceof"
@@ -120,6 +122,27 @@ public class ConditionTranslator {
       // of the class
       inequalities.add(text.substring(matcherIOfProcessed.start(), matcherIOfProcessed.end()));
       placeholderText = placeholderText.replaceFirst(INEQ_INSOFPROCESSED, PLACEHOLDER_PREFIX + i++);
+    }
+
+    while (matcherThis.find()) {
+      inequalities.add(text.substring(matcherThis.start(), matcherThis.end()));
+      placeholderText = placeholderText.replaceFirst(INEQ_THIS, PLACEHOLDER_PREFIX + i);
+      // Verbs that could appear before the keyword this. One of these most be present
+      // and will be added otherwise.
+      String[] possibleVerbs = {"is", "is not", "isn't"};
+      boolean containsVerb = false;
+      for (String possibleVerb : possibleVerbs) {
+        if (placeholderText.contains(possibleVerb + PLACEHOLDER_PREFIX + i)) {
+          containsVerb = true;
+          break;
+        }
+      }
+      if (!containsVerb) {
+        // The verb is assumed to be "is" and will be added to the text.
+        placeholderText =
+            placeholderText.replaceFirst(PLACEHOLDER_PREFIX + i, " is" + PLACEHOLDER_PREFIX + i);
+      }
+      i++;
     }
 
     while (matcher.find()) {
@@ -152,6 +175,7 @@ public class ConditionTranslator {
   private static final String INEQ_INSOF = " *[an]* (instance of)"; // e.g "an instance of"
   private static final String INEQ_INSOFPROCESSED =
       " instanceof +[^ \\.]*"; // e.g. "instanceof BinaryMutation"
+  private static final String INEQ_THIS = " this\\."; // e.g "<object> is this."
 
   /** Stores the inequalities that are replaced by placeholders when addPlaceholders is called. */
   private static List<String> inequalities = new ArrayList<>();
