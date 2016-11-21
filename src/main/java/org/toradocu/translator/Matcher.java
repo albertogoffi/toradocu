@@ -247,7 +247,7 @@ public class Matcher {
   protected static String simpleMatch(String predicate) {
     String verbs = "(is|are|is equal to|are equal to|equals to) ?";
     String predicates =
-        "(true|false|null|zero|positive|strictly positive|negative|strictly " + "negative)";
+        "(true|false|null|this|zero|positive|strictly positive|negative|strictly " + "negative)";
 
     java.util.regex.Matcher isPattern =
         Pattern.compile(verbs + "(==|=)? ?" + predicates).matcher(predicate);
@@ -265,6 +265,9 @@ public class Matcher {
       String lastWord = isPattern.group(isPattern.groupCount());
       if (lastWord.equals("true") || lastWord.equals("false") || lastWord.equals("null")) {
         return "==" + lastWord;
+      } else if (lastWord.equals("this")) {
+        //the target object in the generated Aspect class
+        return "==" + "target";
       } else if (lastWord.equals("zero")) {
         return "==0";
       } else if (lastWord.equals("positive") || lastWord.equals("strictly positive")) {
