@@ -120,30 +120,32 @@ task downloadSources(type: Download) {
 }
 
 /* Extracts source archives of the systems used to measure Toradocu's precision and recall. */
-task extractSources(dependsOn: downloadSources) << {
-  file('src/test/resources/src').listFiles().findAll {
-    it.name.endsWith('.zip') || it.name.endsWith('.tar.gz') || it.name.endsWith('.jar')
-  }.each { file ->
-    if (file.name.endsWith('.zip')) {
-      copy {
-        from zipTree(file)
-        into 'src/test/resources/src/'
-        fileMode 0664
-      }
-    } else if (file.name.endsWith('.tar.gz')) {
-      copy {
-        from tarTree(resources.gzip(file))
-        into 'src/test/resources/src/'
-        fileMode 0664
-      }
-    } else if (file.name.endsWith('.jar')) {
-      def fileName = file.name
-      def index = fileName.lastIndexOf('.')
-      def fileBaseName = fileName.substring(0, index)
-      copy {
-        from zipTree(file)
-        into 'src/test/resources/src/' + fileBaseName
-        fileMode 0664
+task extractSources(dependsOn: downloadSources) {
+  doLast {
+    file('src/test/resources/src').listFiles().findAll {
+      it.name.endsWith('.zip') || it.name.endsWith('.tar.gz') || it.name.endsWith('.jar')
+    }.each { file ->
+      if (file.name.endsWith('.zip')) {
+        copy {
+          from zipTree(file)
+          into 'src/test/resources/src/'
+          fileMode 0664
+        }
+      } else if (file.name.endsWith('.tar.gz')) {
+        copy {
+          from tarTree(resources.gzip(file))
+          into 'src/test/resources/src/'
+          fileMode 0664
+        }
+      } else if (file.name.endsWith('.jar')) {
+        def fileName = file.name
+        def index = fileName.lastIndexOf('.')
+        def fileBaseName = fileName.substring(0, index)
+        copy {
+          from zipTree(file)
+          into 'src/test/resources/src/' + fileBaseName
+          fileMode 0664
+        }
       }
     }
   }
