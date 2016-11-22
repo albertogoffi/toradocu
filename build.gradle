@@ -1,19 +1,8 @@
-// Temporary workaround, see https://github.com/michel-kraemer/gradle-download-task/issues/56.
-buildscript {
-  repositories {
-    jcenter()
-  }
-  dependencies {
-    classpath 'de.undercouch:gradle-download-task:3.1.1'
-    classpath 'org.apache.httpcomponents:httpclient:4.5.2'
-  }
-}
-
 plugins {
   id 'java'
   id 'application'
   id 'com.github.johnrengelman.shadow' version '1.2.3' // For creating the fat JAR
-  id 'de.undercouch.download' version '3.1.1' // For the download tasks
+  id 'de.undercouch.download' version '3.1.2' // For the download tasks
   id 'eclipse' // Support for Eclipse projects
   id 'idea' // Support for IntelliJ IDEA projects
 }
@@ -72,7 +61,7 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '3.1'
+  gradleVersion = '3.2'
 }
 
 /* Copy resources needed for doclet API to build directory after compilation. */
