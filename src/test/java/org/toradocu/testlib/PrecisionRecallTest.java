@@ -107,27 +107,27 @@ public class PrecisionRecallTest {
 
           String goalCondition = goalTag.getCondition().get();
           String actualCondition = actualTag.getCondition().get();
-          numberOfComments++;
 
-          if (goalCondition.equals(actualCondition)) {
-            result.incrementTP();
-          } else {
-            errors = true;
-            if (actualCondition.isEmpty()) {
-              /* We do not consider any empty condition as correct. Empty conditions in goal
-               * output files mean that it was not possible to manually define a condition.
-               * This should not impact precision and recall. */
-              methodReport.append("Empty condition. Comment: " + goalTag.exceptionComment());
+          // Empty goal conditions are ignored and have effects on precision and recall.
+          if (!goalCondition.isEmpty()) {
+            numberOfComments++;
+            if (goalCondition.equals(actualCondition)) {
+              result.incrementTP();
             } else {
-              result.incrementFP();
-              methodReport.append("Wrong condition. Comment: " + goalTag.exceptionComment());
+              errors = true;
+              if (actualCondition.isEmpty()) {
+                methodReport.append("Empty condition. Comment: " + goalTag.exceptionComment());
+              } else {
+                result.incrementFP();
+                methodReport.append("Wrong condition. Comment: " + goalTag.exceptionComment());
+              }
+              methodReport.append(
+                  " | Goal condition: "
+                      + goalCondition
+                      + ". Actual condition: "
+                      + actualCondition
+                      + "\n");
             }
-            methodReport.append(
-                " | Goal condition: "
-                    + goalCondition
-                    + ". Actual condition: "
-                    + actualCondition
-                    + "\n");
           }
         }
 
