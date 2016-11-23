@@ -50,7 +50,7 @@ public class StanfordParser {
     // Add semantic graph for each sentence to result.
     for (CoreMap sentence : sentences) {
       result.add(sentence.get(CollapsedCCProcessedDependenciesAnnotation.class));
-      if (Toradocu.configuration.debug()) {
+      if (Toradocu.configuration != null && Toradocu.configuration.debug()) {
         log.debug(
             "Input sentence: "
                 + sentence
