@@ -31,6 +31,8 @@ public final class DocumentedMethod {
   private final Type returnType;
   /** Method's parameters. */
   private final List<Parameter> parameters;
+  /** Param tags specified in the method's Javadoc introduced in order. */
+  private final Set<ParamTag> paramTags;
   /** Flag indicating whether this method takes a variable number of arguments. */
   private final boolean isVarArgs;
   /**
@@ -50,6 +52,7 @@ public final class DocumentedMethod {
    * @param returnType the fully qualified return type of the method or the empty string if the
    *     {@code DocumentedMethod} is a constructor
    * @param parameters the parameters of the {@code DocumentedMethod}
+   * @param paramTags the {@code @param tags} of the {@code DocumentedMethod}
    * @param isVarArgs true if the {@code DocumentedMethod} takes a variable number of arguments,
    *     false otherwise
    * @param throwsTags the {@code @throws tags} of the {@code DocumentedMethod}
@@ -60,6 +63,7 @@ public final class DocumentedMethod {
       String name,
       Type returnType,
       List<Parameter> parameters,
+      Collection<ParamTag> paramTags,
       boolean isVarArgs,
       Collection<ThrowsTag> throwsTags) {
     Checks.nonNullParameter(containingClass, "containingClass");
@@ -76,6 +80,7 @@ public final class DocumentedMethod {
     this.name = name;
     this.returnType = returnType;
     this.parameters = parameters == null ? new ArrayList<>() : new ArrayList<>(parameters);
+    this.paramTags = paramTags == null ? new LinkedHashSet<>() : new LinkedHashSet<>(paramTags);
     this.isVarArgs = isVarArgs;
     this.throwsTags = throwsTags == null ? new LinkedHashSet<>() : new LinkedHashSet<>(throwsTags);
 
@@ -100,6 +105,15 @@ public final class DocumentedMethod {
    */
   public Set<ThrowsTag> throwsTags() {
     return Collections.unmodifiableSet(throwsTags);
+  }
+
+  /**
+   * Returns an unmodifiable view of the param tags in this method.
+   *
+   * @return an unmodifiable view of the param tags in this method.
+   */
+  public Set<ParamTag> paramTags() {
+    return Collections.unmodifiableSet(paramTags);
   }
 
   /**
@@ -183,7 +197,8 @@ public final class DocumentedMethod {
         && Objects.equals(this.returnType, that.returnType)
         && this.parameters.equals(that.parameters)
         && this.isVarArgs == that.isVarArgs
-        && this.throwsTags.equals(that.throwsTags)) {
+        && this.throwsTags.equals(that.throwsTags)
+        && this.paramTags.equals(that.paramTags)) {
       return true;
     }
     return false;
@@ -219,7 +234,7 @@ public final class DocumentedMethod {
    */
   @Override
   public int hashCode() {
-    return Objects.hash(containingClass, name, returnType, parameters, throwsTags);
+    return Objects.hash(containingClass, name, returnType, parameters, paramTags, throwsTags);
   }
 
   /**
