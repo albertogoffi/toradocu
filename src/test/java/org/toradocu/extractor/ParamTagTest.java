@@ -9,8 +9,6 @@ import org.junit.Test;
 
 public class ParamTagTest {
 
-
-
   @Test
   public void testBasics() {
     ParamTag tag = new ParamTag(new Parameter(new Type("int"), "elements"), "must not be null");
@@ -35,12 +33,7 @@ public class ParamTagTest {
     tag.setCondition("elements != null");
     assertThat(
         tag.toString(),
-        is(
-            "@param elements"
-                + " "
-                + "must not be null"
-                + " ==> "
-                + "elements != null"));
+        is("@param elements" + " " + "must not be null" + " ==> " + "elements != null"));
   }
 
   @Test
@@ -59,10 +52,13 @@ public class ParamTagTest {
     tag2.setCondition("elements == null");
     assertThat(tag1.equals(tag2), is(false));
 
-    ParamTag tag3 = new ParamTag(new Parameter(new Type("int"), "elements"), "must not be false");;
+    ParamTag tag3 = new ParamTag(new Parameter(new Type("int"), "elements"), "must not be false");
+    ;
     assertThat(tag1.equals(tag3), is(false));
 
-    ParamTag tag4 = new ParamTag(new Parameter(new Type("int"), "elements"), "must not be positive");;
+    ParamTag tag4 =
+        new ParamTag(new Parameter(new Type("int"), "elements"), "must not be positive");
+    ;
     assertThat(tag1.equals(tag4), is(false));
   }
 }
