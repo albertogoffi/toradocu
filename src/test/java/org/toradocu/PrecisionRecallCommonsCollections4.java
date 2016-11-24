@@ -6,7 +6,7 @@ import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallTestSuite {
 
   private static final String COMMONSCOLLECTIONS_4_SRC =
-      "src/test/resources/src/commons-collections4-4.1-src/src/main/java";
+      "src/test/resources/src/commons-collections4-4.1-src/src/main/java/";
   private static final String COMMONSCOLLECTIONS_4_BIN =
       "src/test/resources/bin/commons-collections4-4.1.jar";
   private static final String COMMONSCOLLECTIONS_4_GOAL_DIR =

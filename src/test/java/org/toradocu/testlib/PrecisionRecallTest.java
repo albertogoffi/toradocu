@@ -6,13 +6,11 @@ import static org.junit.Assert.fail;
 
 import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.Collection;
 import java.util.List;
 import org.toradocu.Toradocu;
@@ -54,6 +52,10 @@ public class PrecisionRecallTest {
           actualOutputFile,
           "--oracle-generation",
           "false",
+          "--expected-output",
+          goalOutputFile,
+          "--stats-file",
+          AbstractPrecisionRecallTestSuite.OUTPUT_DIR + "/results.csv",
           "--class-dir",
           binPath,
           "--source-dir",
@@ -77,12 +79,7 @@ public class PrecisionRecallTest {
     StringBuilder report = new StringBuilder(message + "\n");
 
     try (BufferedReader outFile = Files.newBufferedReader(Paths.get(outputFile));
-        BufferedReader goalFile = Files.newBufferedReader(Paths.get(goalOutputFile));
-        BufferedWriter resultsFile =
-            Files.newBufferedWriter(
-                Paths.get(AbstractPrecisionRecallTestSuite.OUTPUT_DIR + "/results.csv"),
-                StandardOpenOption.CREATE,
-                StandardOpenOption.APPEND)) {
+        BufferedReader goalFile = Files.newBufferedReader(Paths.get(goalOutputFile))) {
 
       Type collectionType = new TypeToken<Collection<DocumentedMethod>>() {}.getType();
       List<DocumentedMethod> actualResult = GsonInstance.gson().fromJson(outFile, collectionType);
@@ -139,10 +136,6 @@ public class PrecisionRecallTest {
       result.setNumConditions(numberOfComments);
       report.append(result);
       System.out.println(report);
-
-      resultsFile.append(result.asCSV());
-      resultsFile.newLine();
-
       return result;
     } catch (IOException e) {
       e.printStackTrace();
