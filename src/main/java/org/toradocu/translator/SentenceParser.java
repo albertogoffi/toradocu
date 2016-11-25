@@ -69,14 +69,6 @@ public class SentenceParser {
     PropositionSeries propositionSeries = new PropositionSeries();
 
     for (SemanticGraphEdge subjectRelation : subjectRelations) {
-      // Stores the word marked as a subject word in the semantic graph.
-      IndexedWord subjectWord = subjectRelation.getDependent();
-      // Stores the subject and associated words, such as any modifiers that come before it.
-      // Words (but the subject) appear in the list in the same order as they appear in the
-      // sentence. Subject is always the last word in the list.
-      Subject subject = getSubject(subjectWord);
-      List<IndexedWord> subjectWords = subject.getSubject();
-
       // Get the words that make up the predicate.
       List<IndexedWord> predicateWords = getPredicateWords(subjectRelation.getGovernor());
       if (predicateWords.isEmpty()) {
@@ -86,15 +78,17 @@ public class SentenceParser {
       // Check if the predicate should be negated.
       boolean negative = predicateIsNegative(subjectRelation.getGovernor());
 
+      // Stores the word marked as a subject word in the semantic graph.
+      IndexedWord subjectWord = subjectRelation.getDependent();
+      // Stores the subject and associated words, such as any modifiers that come before it.
+      // Words (but the subject) appear in the list in the same order as they appear in the
+      // sentence. Subject is always the last word in the list.
+      Subject subject = getSubject(subjectWord);
+      List<IndexedWord> subjectWords = subject.getSubjectWords();
       // Create a Proposition from the subject and predicate words.
       String predicateWordsAsString =
           predicateWords.stream().map(w -> w.word()).collect(Collectors.joining(" "));
-      Proposition proposition =
-          new Proposition(
-              subject.getSubjectAsString(),
-              subject.getContainerAsString(),
-              predicateWordsAsString,
-              negative);
+      Proposition proposition = new Proposition(subject, predicateWordsAsString, negative);
 
       // Add the Proposition and associated words to the propositionMap.
       List<IndexedWord> propositionWords = new ArrayList<>(subjectWords);

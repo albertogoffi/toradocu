@@ -4,7 +4,9 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.semgraph.SemanticGraph;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 
@@ -12,10 +14,30 @@ public class PropositionSeriesTest {
 
   @Test
   public void toStringTest() {
+    final IndexedWord subject1 = new IndexedWord();
+    subject1.setWord("subject1");
+    final IndexedWord predicate1 = new IndexedWord();
+    predicate1.setWord("predicate1");
+    final IndexedWord subject2 = new IndexedWord();
+    subject2.setWord("subject2");
+    final IndexedWord predicate2 = new IndexedWord();
+    predicate2.setWord("predicate2");
+    final IndexedWord subject3 = new IndexedWord();
+    subject3.setWord("subject3");
+    final IndexedWord predicate3 = new IndexedWord();
+    predicate3.setWord("predicate3");
+
+    List<IndexedWord> subject1Words = new ArrayList<>();
+    subject1Words.add(subject1);
+    List<IndexedWord> subject2Words = new ArrayList<>();
+    subject2Words.add(subject2);
+    List<IndexedWord> subject3Words = new ArrayList<>();
+    subject3Words.add(subject3);
+
     PropositionSeries propositions = new PropositionSeries();
-    propositions.add(new Proposition("subject1", "predicate1"));
-    propositions.add(Conjunction.OR, new Proposition("subject2", "predicate2"));
-    propositions.add(Conjunction.AND, new Proposition("subject3", "predicate3"));
+    propositions.add(new Proposition(new Subject(subject1Words), "predicate1"));
+    propositions.add(Conjunction.OR, new Proposition(new Subject(subject2Words), "predicate2"));
+    propositions.add(Conjunction.AND, new Proposition(new Subject(subject3Words), "predicate3"));
 
     assertThat(propositions.numberOfPropositions(), is(3));
     assertThat(

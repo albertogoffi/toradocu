@@ -68,7 +68,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testCycleCrossover() throws Exception {
-    test("org.apache.commons.math3.genetics.CycleCrossover", 0, 0);
+    test("org.apache.commons.math3.genetics.CycleCrossover", 1, 0.333);
   }
 
   @Test

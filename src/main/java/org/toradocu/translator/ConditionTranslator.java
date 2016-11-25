@@ -118,8 +118,8 @@ public class ConditionTranslator {
     int i = 0;
 
     while (matcherIOfProcessed.find()) {
-      //Specific case for the instance of placeholder. We put into inequalities the instanceof and the name
-      // of the class
+      // Specific case for the instance of placeholder. We put into inequalities the instanceof and
+      // the name of the class.
       inequalities.add(text.substring(matcherIOfProcessed.start(), matcherIOfProcessed.end()));
       placeholderText = placeholderText.replaceFirst(INEQ_INSOFPROCESSED, PLACEHOLDER_PREFIX + i++);
     }
@@ -194,20 +194,18 @@ public class ConditionTranslator {
     for (PropositionSeries series : seriesList) {
       List<Proposition> inequalityPropositions = new ArrayList<>();
       for (Proposition placeholderProposition : series.getPropositions()) {
-        String subject = placeholderProposition.getSubject();
+        Subject subject = placeholderProposition.getSubject();
+        String subjectAsString = subject.getSubject();
         String predicate = placeholderProposition.getPredicate();
 
         for (int i = 0; i < inequalities.size(); i++) {
-          subject = subject.replaceAll(PLACEHOLDER_PREFIX + i, inequalities.get(i));
+          subjectAsString = subjectAsString.replaceAll(PLACEHOLDER_PREFIX + i, inequalities.get(i));
           predicate = predicate.replaceAll(PLACEHOLDER_PREFIX + i, inequalities.get(i));
         }
+        subject.setSubject(subjectAsString); // Replace subject string representation.
 
         inequalityPropositions.add(
-            new Proposition(
-                subject,
-                placeholderProposition.getContainer(),
-                predicate,
-                placeholderProposition.isNegative()));
+            new Proposition(subject, predicate, placeholderProposition.isNegative()));
       }
       result.add(new PropositionSeries(inequalityPropositions, series.getConjunctions()));
     }
@@ -227,10 +225,11 @@ public class ConditionTranslator {
       PropositionSeries propositionSeries, DocumentedMethod method) {
     for (Proposition p : propositionSeries.getPropositions()) {
       final Set<CodeElement<?>> matchingCodeElements = new LinkedHashSet<>();
-      final String container = p.getContainer();
+      final String container = p.getSubject().getContainer();
       if (container.isEmpty()) {
         // Subject match
-        Set<CodeElement<?>> subjectMatches = Matcher.subjectMatch(p.getSubject(), method);
+        Set<CodeElement<?>> subjectMatches =
+            Matcher.subjectMatch(p.getSubject().getSubject(), method);
         if (subjectMatches.isEmpty()) {
           log.debug("Failed subject translation for: " + p);
           return;
@@ -321,7 +320,7 @@ public class ConditionTranslator {
    * @return a boolean Java expression that is true only if any of the given conditions is true
    */
   private static String mergeConditions(Set<String> conditions) {
-    conditions.removeIf(s -> s.isEmpty());
+    conditions.removeIf(String::isEmpty);
     if (conditions.size() == 0) {
       return "";
     } else if (conditions.size() == 1) {
@@ -344,11 +343,14 @@ public class ConditionTranslator {
    * @return the conjunction that should be used to form the translation for the {@code Proposition}
    *     with the given subject or null if no conjunction should be used
    */
-  private static Conjunction getConjunction(String subject) {
-    if (subject.startsWith("either ") || subject.startsWith("any ")) {
+  private static Conjunction getConjunction(Subject subject) {
+    String subjectAsString = subject.getSubject().toLowerCase();
+    if (subjectAsString.startsWith("either ") || subjectAsString.startsWith("any ")) {
       return Conjunction.OR;
-    } else if (subject.startsWith("both ") || subject.startsWith("all ")) {
+    } else if (subjectAsString.startsWith("both ") || subjectAsString.startsWith("all ")) {
       return Conjunction.AND;
+    } else if (!subject.isSingular()) {
+      return Conjunction.OR;
     } else {
       return null;
     }
