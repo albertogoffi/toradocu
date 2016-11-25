@@ -55,7 +55,7 @@ public class PrecisionRecallTest {
           "--expected-output",
           goalOutputFile,
           "--stats-file",
-          AbstractPrecisionRecallTestSuite.OUTPUT_DIR + "/results.csv",
+          "results.csv",
           "--class-dir",
           binPath,
           "--source-dir",
