@@ -7,7 +7,9 @@ import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation;
 import edu.stanford.nlp.util.CoreMap;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +23,7 @@ import org.toradocu.Toradocu;
 public class StanfordParser {
 
   private static final StanfordCoreNLP pipeline;
+  private static final Map<String, List<SemanticGraph>> cache;
   private static final Logger log = LoggerFactory.getLogger(StanfordParser.class);
 
   static {
@@ -30,6 +33,8 @@ public class StanfordParser {
     // Complete annotations list was "tokenize, ssplit, pos, lemma, ner, parse, dcoref".
     props.setProperty("annotators", "tokenize, ssplit, parse");
     pipeline = new StanfordCoreNLP(props);
+
+    cache = new Hashtable<>();
   }
 
   /**
@@ -39,6 +44,10 @@ public class StanfordParser {
    * @return a list of semantic graphs, one for each sentence in the text
    */
   public static List<SemanticGraph> getSemanticGraphs(String text) {
+    if (cache.containsKey(text)) {
+      return cache.get(text);
+    }
+
     List<SemanticGraph> result = new ArrayList<>();
 
     // Create an empty Annotation just with the given text.
