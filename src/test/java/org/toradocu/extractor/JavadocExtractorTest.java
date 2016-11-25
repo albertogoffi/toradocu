@@ -38,36 +38,45 @@ public class JavadocExtractorTest {
   public void exampleAClassTest() {
     List<Parameter> params = new ArrayList<>();
     List<ThrowsTag> tags = new ArrayList<>();
+    List<ParamTag> paramTags = new ArrayList<>();
     List<DocumentedMethod> expected = new ArrayList<>();
     Type aClass = new Type("example.AClass");
-
+    //First method
     tags.add(new ThrowsTag(npe, "always"));
-    expected.add(new DocumentedMethod(aClass, "AClass", null, null, false, tags));
-
+    expected.add(new DocumentedMethod(aClass, "AClass", null, null, null, false, tags));
+    //Second method
     params.add(new Parameter(new Type("java.lang.String"), "x"));
     tags.clear();
     tags.add(new ThrowsTag(npe, "if x is null"));
     tags.add(new ThrowsTag(new Type("example.exception.AnException"), "if x is empty"));
-    expected.add(new DocumentedMethod(aClass, "AClass", null, params, false, tags));
-
+    paramTags.add(new ParamTag(new Parameter(new Type("java.lang.String"), "x"),"must not be null nor empty"));
+    
+    expected.add(new DocumentedMethod(aClass, "AClass", null, params, paramTags, false, tags));
+    //Third method
     params.clear();
     params.add(new Parameter(new Type("int[]"), "array", true));
     tags.clear();
     tags.add(new ThrowsTag(npe, "if array is null"));
-    expected.add(new DocumentedMethod(aClass, "foo", doubleType, params, false, tags));
-
+    paramTags.clear();
+    paramTags.add(new ParamTag(new Parameter(new Type("int[]"), "array", true),"must not be null"));
+    expected.add(new DocumentedMethod(aClass, "foo", doubleType, params, null, false, tags));
+    //Fourth
     params.clear();
     params.add(new Parameter(objectType, "x", false));
     params.add(new Parameter(objectType, "y", false));
     tags.clear();
     tags.add(new ThrowsTag(iae, "if x is null"));
-    expected.add(new DocumentedMethod(aClass, "bar", doubleType, params, false, tags));
-
+    paramTags.clear();
+    paramTags.add(new ParamTag(new Parameter(objectType, "x", false),"must not be null"));
+    expected.add(new DocumentedMethod(aClass, "bar", doubleType, params, null, false, tags));
+    //Fifth
     params.clear();
     params.add(new Parameter(objectType, "x"));
     tags.clear();
     tags.add(new ThrowsTag(iae, "if x is null"));
-    expected.add(new DocumentedMethod(aClass, "baz", doubleType, params, false, tags));
+    paramTags.clear();
+    paramTags.add(new ParamTag(new Parameter(objectType, "x"),"must not be null"));
+    expected.add(new DocumentedMethod(aClass, "baz", doubleType, params, null, false, tags));
 
     test(
         "example.AClass",
@@ -90,26 +99,26 @@ public class JavadocExtractorTest {
 
     params.add(new Parameter(objectType, "z"));
     tags.add(new ThrowsTag(iae, "if z is null"));
-    expected.add(new DocumentedMethod(aChild, "baz", doubleType, params, false, tags));
+    expected.add(new DocumentedMethod(aChild, "baz", doubleType, params, null, false, tags));
 
     params.clear();
     params.add(new Parameter(objectArrayType, "x"));
     tags.clear();
     tags.add(new ThrowsTag(iae, "if x is null"));
-    expected.add(new DocumentedMethod(aChild, "vararg", doubleType, params, true, tags));
+    expected.add(new DocumentedMethod(aChild, "vararg", doubleType, params, null, true, tags));
 
     params.clear();
     params.add(new Parameter(new Type("int[]"), "array", true));
     tags.clear();
     tags.add(new ThrowsTag(npe, "if array is null"));
-    expected.add(new DocumentedMethod(aClass, "foo", doubleType, params, false, tags));
+    expected.add(new DocumentedMethod(aClass, "foo", doubleType, params, null, false, tags));
 
     params.clear();
     params.add(new Parameter(objectType, "x", false));
     params.add(new Parameter(objectType, "y", false));
     tags.clear();
     tags.add(new ThrowsTag(iae, "if x is null"));
-    expected.add(new DocumentedMethod(aClass, "bar", doubleType, params, false, tags));
+    expected.add(new DocumentedMethod(aClass, "bar", doubleType, params, null, false, tags));
 
     test(
         "example.AChild",
@@ -145,10 +154,10 @@ public class JavadocExtractorTest {
     } catch (IOException e) {
       fail(e.getMessage());
     }
-    try {
+   /*try {
       Files.delete(ouputFilePath);
     } catch (IOException e) {
       LOG.error("Error deleting the file: " + ouputFilePath);
-    }
+    }*/
   }
 }

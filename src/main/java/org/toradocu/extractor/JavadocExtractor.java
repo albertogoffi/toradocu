@@ -74,6 +74,8 @@ public final class JavadocExtractor {
       Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
       Collections.addAll(throwsTags, holder.tags("@throws"));
       Collections.addAll(throwsTags, holder.tags("@exception"));
+      // Param tag support //
+      Collections.addAll(paramTags, holder.tags("@param"));
 
       // Collect tags from method definitions in interfaces. This is not done by DocFinder.search
       // (at least in the way we use it).
@@ -83,7 +85,7 @@ public final class JavadocExtractor {
         for (MethodDoc implementedMethod : implementedMethods.build()) {
           Collections.addAll(throwsTags, implementedMethod.tags("@throws"));
           Collections.addAll(throwsTags, implementedMethod.tags("@exception"));
-          //Collections.addAll(paramTags, implementedMethods.tags("@param"));
+          Collections.addAll(paramTags, implementedMethod.tags("@param"));
         }
       }
 
@@ -142,8 +144,6 @@ public final class JavadocExtractor {
 
         boolean found = false; //Boolean for control
         for (int i = 0; !found && i < parameters.size(); i++) {
-          System.out.println(i);
-          System.out.println(parameters.size());
           if (parameters
               .get(i)
               .getName()
