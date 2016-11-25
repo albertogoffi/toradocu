@@ -49,8 +49,10 @@ public class JavadocExtractorTest {
     tags.clear();
     tags.add(new ThrowsTag(npe, "if x is null"));
     tags.add(new ThrowsTag(new Type("example.exception.AnException"), "if x is empty"));
-    paramTags.add(new ParamTag(new Parameter(new Type("java.lang.String"), "x"),"must not be null nor empty"));
-    
+    paramTags.add(
+        new ParamTag(
+            new Parameter(new Type("java.lang.String"), "x"), "must not be null nor empty"));
+
     expected.add(new DocumentedMethod(aClass, "AClass", null, params, paramTags, false, tags));
     //Third method
     params.clear();
@@ -58,7 +60,8 @@ public class JavadocExtractorTest {
     tags.clear();
     tags.add(new ThrowsTag(npe, "if array is null"));
     paramTags.clear();
-    paramTags.add(new ParamTag(new Parameter(new Type("int[]"), "array", true),"must not be null"));
+    paramTags.add(
+        new ParamTag(new Parameter(new Type("int[]"), "array", true), "must not be null"));
     expected.add(new DocumentedMethod(aClass, "foo", doubleType, params, null, false, tags));
     //Fourth
     params.clear();
@@ -67,7 +70,7 @@ public class JavadocExtractorTest {
     tags.clear();
     tags.add(new ThrowsTag(iae, "if x is null"));
     paramTags.clear();
-    paramTags.add(new ParamTag(new Parameter(objectType, "x", false),"must not be null"));
+    paramTags.add(new ParamTag(new Parameter(objectType, "x", false), "must not be null"));
     expected.add(new DocumentedMethod(aClass, "bar", doubleType, params, null, false, tags));
     //Fifth
     params.clear();
@@ -75,7 +78,7 @@ public class JavadocExtractorTest {
     tags.clear();
     tags.add(new ThrowsTag(iae, "if x is null"));
     paramTags.clear();
-    paramTags.add(new ParamTag(new Parameter(objectType, "x"),"must not be null"));
+    paramTags.add(new ParamTag(new Parameter(objectType, "x"), "must not be null"));
     expected.add(new DocumentedMethod(aClass, "baz", doubleType, params, null, false, tags));
 
     test(
@@ -154,7 +157,7 @@ public class JavadocExtractorTest {
     } catch (IOException e) {
       fail(e.getMessage());
     }
-   /*try {
+    /*try {
       Files.delete(ouputFilePath);
     } catch (IOException e) {
       LOG.error("Error deleting the file: " + ouputFilePath);

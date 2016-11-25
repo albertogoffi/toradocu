@@ -29,6 +29,7 @@ public class AClass implements Interface {
 
   /**
    * {@inheritDoc}
+   *
    * @see example.Interface#bar(java.lang.Object, java.lang.Object)
    */
   @Override
@@ -48,5 +49,3 @@ public class AClass implements Interface {
     return 0;
   }
 }
-
-
