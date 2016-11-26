@@ -206,8 +206,6 @@ task formatCode(type: Exec) {
           "-not -path \"src/test/resources/src/*\" " +
           "-not -path \"src/test/resources/aspects/*\" " +
           "-not -path \"src/main/resources/AspectTemplate.java\" " +
-          "| xargs ./.run-google-java-format/check-google-java-format.py " +
-          "| tr -d \" \" | cut -d ':' -f2 " +
           "| xargs ./.run-google-java-format/run-google-java-format.py"
 }
 formatCode.dependsOn getCodeFormatScripts
