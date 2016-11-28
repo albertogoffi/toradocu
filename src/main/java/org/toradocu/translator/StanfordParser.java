@@ -69,6 +69,7 @@ public class StanfordParser {
       }
     }
 
+    cache.put(text, result);
     return result;
   }
 }
