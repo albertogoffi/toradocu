@@ -33,11 +33,11 @@ fi
 
 # Collect information about target classes from precision/recall test suite and create target descriprtors
 TARGET_DESCRIPTORS=()
-for test_suite in `find src/test/java/org/toradocu -depth 1 -name '*.java'`; do
+for test_suite in `find src/test/java/org/toradocu -maxdepth 1 -name '*.java'`; do
     file_name=stats/`echo $test_suite | rev | cut -d '/' -f -1 | rev | cut -d '.' -f 1`".txt"
     TARGET_DESCRIPTORS+=($file_name)
     grep -o --max-count=3 "\".*\"" $test_suite | cut -d"\"" -f2 > $file_name
-    grep -o 'test(".*"' $test_suite | cut -d"\"" -f2 >> $file_name
+    grep -o '".*",' $test_suite | cut -d '"' -f 2 >> $file_name
 done
 
 # Run Toradocu for each target class and with each params configuration
@@ -58,7 +58,7 @@ for target_descriptor in "${TARGET_DESCRIPTORS[@]}"; do
     # Run Toradocu
     for (( j=0; j<${#targets[@]}; j++ )); do
     	for distance_threshold in `seq $MIN_DISTANCE $MAX_DISTANCE`; do
-	    word_removal_bound=$(( distance_threshold )) #+ 2 )) # Word deletion cost (always edit distance threshold + 2).
+	    word_removal_bound=$(( distance_threshold + 1 )) # Word deletion cost (always equals to edit distance threshold + 1).
     	    for word_removal_cost in `seq 0 $word_removal_bound`; do
     		echo "Executing Toradocu on ${targets[$j]} with threshold=$distance_threshold and word removal cost=$word_removal_cost"
     		java -jar build/libs/toradocu-1.0-all.jar \

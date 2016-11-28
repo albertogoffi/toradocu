@@ -7,18 +7,18 @@ if len(sys.argv) != 2:
     sys.exit(1)
 
 AGGREGATE_OVER = [
-	'DISTANCE THRESHOLD',
-	'REMOVAL COST',
+    'DISTANCE THRESHOLD',
+    'REMOVAL COST',
 ]
 
 AGGREGATE = [
-	'CORRECT CONDITIONS',
-	'WRONG CONDITIONS',
-	'MISSING CONDITIONS',
+    'CORRECT CONDITIONS',
+    'WRONG CONDITIONS',
+    'MISSING CONDITIONS',
 ]
 
 def extract(keys, d):
-	return [d[key] for key in keys]
+    return [d[key] for key in keys]
 
 with open(sys.argv[1], 'r') as stats_file:
     data = list(csv.DictReader(stats_file))
@@ -31,7 +31,7 @@ with open(sys.argv[1], 'r') as stats_file:
     	counters = results.setdefault(keys, [0] * len(values))
     	results[keys] = map(sum, zip(results[keys], values))
 
-    print "DISTANCE THRESHOLD,WORD REMOVAL COST,PRECISION,RECALL"
+    print "DISTANCE THRESHOLD,WORD REMOVAL COST,CORRECT CONDITIONS,WRONG CONDITIONS,MISSING CONDITIONS,PRECISION,RECALL"
     for key in sorted(results.keys()):
     	correct = results[key][AGGREGATE.index('CORRECT CONDITIONS')]
     	wrong = results[key][AGGREGATE.index('WRONG CONDITIONS')]
@@ -41,4 +41,4 @@ with open(sys.argv[1], 'r') as stats_file:
     	precision = float(correct) / (correct + wrong)
     	recall = float(correct) / (correct + wrong + missing)
 
-    	print "{},{},{}".format(ident, precision, recall)
+    	print "{}, {}, {}, {},{},{}".format(ident, correct, wrong, missing, precision, recall)
