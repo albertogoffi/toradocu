@@ -131,7 +131,7 @@ public class Proposition {
   @Override
   public String toString() {
     StringBuilder result = new StringBuilder("(" + getSubject() + ", ");
-    result.append(isNegative ? "not (" + predicate + ")" : predicate);
+    result.append(isNegative ? "not(" + predicate + ")" : predicate);
     result.append(")");
     if (getTranslation().isPresent()) {
       result.append(" -> " + getTranslation());

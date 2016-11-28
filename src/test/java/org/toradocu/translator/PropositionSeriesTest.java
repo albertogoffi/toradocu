@@ -60,7 +60,7 @@ public class PropositionSeriesTest {
 
     assertThat(propositions.numberOfPropositions(), is(1));
     assertThat(
-        propositions.getPropositions().get(0).toString(), is("(expectedKeys, not (is negative))"));
+        propositions.getPropositions().get(0).toString(), is("(expectedKeys, not(is negative))"));
     assertTrue(propositions.getConjunctions().isEmpty());
   }
 
@@ -70,7 +70,7 @@ public class PropositionSeriesTest {
 
     assertThat(propositions.numberOfPropositions(), is(1));
     assertThat(
-        propositions.getPropositions().get(0).toString(), is("(expectedKeys, not (was set))"));
+        propositions.getPropositions().get(0).toString(), is("(expectedKeys, not(was set))"));
     assertTrue(propositions.getConjunctions().isEmpty());
   }
 
@@ -173,6 +173,24 @@ public class PropositionSeriesTest {
     assertThat(propositions.getPropositions().get(0).toString(), is("(bar, is negative)"));
     assertThat(propositions.getPropositions().get(1).toString(), is("(foo, is null)"));
     assertThat(propositions.getPropositions().get(2).toString(), is("(baz, is empty)"));
+
+    assertThat(propositions.getConjunctions().size(), is(2));
+    assertThat(propositions.getConjunctions().get(0), is(Conjunction.AND));
+    assertThat(propositions.getConjunctions().get(1), is(Conjunction.AND));
+  }
+
+  @Test
+  public void testMultiplePropositions() {
+    PropositionSeries propositions =
+        getPropositions(
+            "the outputCollection is null and both inputCollection and transformer are not null.");
+
+    assertThat(propositions.numberOfPropositions(), is(3));
+    assertThat(propositions.getPropositions().get(0).toString(), is("(outputCollection, is null)"));
+    assertThat(
+        propositions.getPropositions().get(1).toString(), is("(inputCollection, not(are null))"));
+    assertThat(
+        propositions.getPropositions().get(2).toString(), is("(transformer, not(are null))"));
 
     assertThat(propositions.getConjunctions().size(), is(2));
     assertThat(propositions.getConjunctions().get(0), is(Conjunction.AND));

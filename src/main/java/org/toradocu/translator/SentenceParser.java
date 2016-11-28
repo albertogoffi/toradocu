@@ -109,6 +109,9 @@ public class SentenceParser {
         if (entry.getKey().contains(conjDependent)) {
           p2 = entry.getValue();
         }
+        if (p1 != null && p2 != null) {
+          break;
+        }
       }
 
       if (p1 != null && p2 != null) {
