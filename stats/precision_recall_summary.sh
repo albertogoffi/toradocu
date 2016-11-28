@@ -17,7 +17,7 @@ fi
 # Run Toradocu and collect statistics
 ./gradlew test --tests "org.toradocu.PrecisionRecall*"
 echo "TOTAL,,,=SUM(D1:INDIRECT(\"D\" & ROW()-1)),=SUM(E1:INDIRECT(\"E\" & ROW()-1)),=SUM(F1:INDIRECT(\"F\" & ROW()-1))" >> $STATS_FILE
-echo "NUMBER OF METHODS,=ROW()-2" >> $STATS_FILE
+echo "NUMBER OF METHODS,=ROW()-3" >> $STATS_FILE
 echo "NUMBER OF CONDITIONS,=INDIRECT(\"D\" & ROW()-2)+INDIRECT(\"E\" & ROW()-2)+INDIRECT(\"F\" & ROW()-2)" >> $STATS_FILE
 echo "PRECISION,=INDIRECT(\"D\" & ROW()-3)/(INDIRECT(\"D\" & ROW()-3) + INDIRECT(\"E\" & ROW()-3))" >> $STATS_FILE
 echo "RECALL,=INDIRECT(\"D\" & ROW()-4)/INDIRECT(\"B\" & ROW()-2)" >> $STATS_FILE
