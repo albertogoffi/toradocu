@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ParamTag;
 import org.toradocu.extractor.ThrowsTag;
 
 /**
@@ -63,6 +64,33 @@ public class ConditionTranslator {
         }
         tag.setCondition(mergeConditions(conditions));
       }
+
+      for (ParamTag tag : method.paramTags()) {
+
+        log.trace(
+            "Identifying propositions from: \""
+                + tag.parameterComment()
+                + "\" in "
+                + method.getSignature());
+
+        String comment = tag.parameterComment().trim();
+
+        // Add end-of-sentence period, if missing
+        if (!comment.endsWith(".")) {
+          comment += ".";
+        }
+
+        // Identify propositions in the comment. Each sentence in the comment is parsed into a
+        // PropositionSeries.
+        List<PropositionSeries> extractedPropositions = getPropositionSeries(comment);
+        Set<String> conditions = new LinkedHashSet<>();
+        // Identify Java code elements in propositions.
+        for (PropositionSeries propositions : extractedPropositions) {
+          translatePropositions(propositions, method);
+          conditions.add(propositions.getTranslation());
+        }
+        tag.setCondition(mergeConditions(conditions));
+      }
     }
   }
 
@@ -79,6 +107,7 @@ public class ConditionTranslator {
     for (SemanticGraph semanticGraph : StanfordParser.getSemanticGraphs(comment)) {
       result.add(new SentenceParser(semanticGraph).getPropositionSeries());
     }
+
     return removePlaceholders(result);
   }
 
@@ -202,7 +231,6 @@ public class ConditionTranslator {
         log.debug("Failed subject translation for: " + p);
         return;
       }
-
       // Maps each subject code element to the Java expression translation that uses
       // that code element.
       Map<CodeElement<?>, String> translations = new LinkedHashMap<>();
