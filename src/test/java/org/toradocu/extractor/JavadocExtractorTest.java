@@ -62,7 +62,7 @@ public class JavadocExtractorTest {
     paramTags.clear();
     paramTags.add(
         new ParamTag(new Parameter(new Type("int[]"), "array", true), "must not be null"));
-    expected.add(new DocumentedMethod(aClass, "foo", doubleType, params, null, false, tags));
+    expected.add(new DocumentedMethod(aClass, "foo", doubleType, params, paramTags, false, tags));
     //Fourth
     params.clear();
     params.add(new Parameter(objectType, "x", false));
@@ -71,7 +71,7 @@ public class JavadocExtractorTest {
     tags.add(new ThrowsTag(iae, "if x is null"));
     paramTags.clear();
     paramTags.add(new ParamTag(new Parameter(objectType, "x", false), "must not be null"));
-    expected.add(new DocumentedMethod(aClass, "bar", doubleType, params, null, false, tags));
+    expected.add(new DocumentedMethod(aClass, "bar", doubleType, params, paramTags, false, tags));
     //Fifth
     params.clear();
     params.add(new Parameter(objectType, "x"));
@@ -79,7 +79,7 @@ public class JavadocExtractorTest {
     tags.add(new ThrowsTag(iae, "if x is null"));
     paramTags.clear();
     paramTags.add(new ParamTag(new Parameter(objectType, "x"), "must not be null"));
-    expected.add(new DocumentedMethod(aClass, "baz", doubleType, params, null, false, tags));
+    expected.add(new DocumentedMethod(aClass, "baz", doubleType, params, paramTags, false, tags));
 
     test(
         "example.AClass",
@@ -96,31 +96,40 @@ public class JavadocExtractorTest {
   public void exampleAChildTest() {
     List<Parameter> params = new ArrayList<>();
     List<ThrowsTag> tags = new ArrayList<>();
+    List<ParamTag> paramTags = new ArrayList<>();
     List<DocumentedMethod> expected = new ArrayList<>();
     Type aClass = new Type("example.AClass");
     Type aChild = new Type("example.AChild");
 
     params.add(new Parameter(objectType, "z"));
     tags.add(new ThrowsTag(iae, "if z is null"));
-    expected.add(new DocumentedMethod(aChild, "baz", doubleType, params, null, false, tags));
+    paramTags.add(new ParamTag(new Parameter(objectType, "z"), "must not be null"));
+    expected.add(new DocumentedMethod(aChild, "baz", doubleType, params, paramTags, false, tags));
 
     params.clear();
     params.add(new Parameter(objectArrayType, "x"));
     tags.clear();
     tags.add(new ThrowsTag(iae, "if x is null"));
+    paramTags.clear();
+    paramTags.add(new ParamTag(new Parameter(objectArrayType, "x"), "must not be null"));
     expected.add(new DocumentedMethod(aChild, "vararg", doubleType, params, null, true, tags));
 
     params.clear();
     params.add(new Parameter(new Type("int[]"), "array", true));
     tags.clear();
     tags.add(new ThrowsTag(npe, "if array is null"));
-    expected.add(new DocumentedMethod(aClass, "foo", doubleType, params, null, false, tags));
+    paramTags.clear();
+    paramTags.add(
+        new ParamTag(new Parameter(new Type("int[]"), "array", true), "must not be null"));
+    expected.add(new DocumentedMethod(aClass, "foo", doubleType, params, paramTags, false, tags));
 
     params.clear();
     params.add(new Parameter(objectType, "x", false));
     params.add(new Parameter(objectType, "y", false));
     tags.clear();
     tags.add(new ThrowsTag(iae, "if x is null"));
+    paramTags.clear();
+    paramTags.add(new ParamTag(new Parameter(objectType, "x", false), "must not be null"));
     expected.add(new DocumentedMethod(aClass, "bar", doubleType, params, null, false, tags));
 
     test(
@@ -153,14 +162,14 @@ public class JavadocExtractorTest {
     Path ouputFilePath = Paths.get(actualOutput);
     try (BufferedReader reader = Files.newBufferedReader(ouputFilePath)) {
       List<DocumentedMethod> actual = gson.fromJson(reader, listType);
-      assertThat(actual, is(equalTo(expected)));
+      assertThat(actual.toString(), is(equalTo(expected.toString())));
     } catch (IOException e) {
       fail(e.getMessage());
     }
-    /*try {
+    try {
       Files.delete(ouputFilePath);
     } catch (IOException e) {
       LOG.error("Error deleting the file: " + ouputFilePath);
-    }*/
+    }
   }
 }
