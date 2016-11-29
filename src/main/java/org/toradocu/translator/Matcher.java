@@ -233,8 +233,7 @@ public class Matcher {
    *     be matched
    */
   protected static String simpleMatch(String predicate) {
-    String verbs =
-        "(is|are|must be|should be|will never be|cannot be|is equal to|are equal to|equals to) ?";
+    String verbs = "(is|are|be|is equal to|are equal to|equals to) ?";
     String predicates =
         "(true|false|null|zero|positive|strictly positive|negative|strictly " + "negative)";
 
