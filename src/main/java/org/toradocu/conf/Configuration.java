@@ -124,6 +124,14 @@ public class Configuration {
   )
   private File expectedOutput;
 
+  @Parameter(
+    names = "--remove-commas",
+    arity = 1,
+    description = "Remove commas before the input text is parsed",
+    hidden = true
+  )
+  private boolean removeCommas = true;
+
   // Aspect creation options
 
   @Parameter(
@@ -406,5 +414,15 @@ public class Configuration {
    */
   public File getStatsFile() {
     return statsFile;
+  }
+
+  /**
+   * Returns whether commas characters will be removed from the Javadoc comments, before they are
+   * parsed by the Stanford parser.
+   *
+   * @return true if the commas has to be removed, false otherwise
+   */
+  public boolean removeCommas() {
+    return removeCommas;
   }
 }

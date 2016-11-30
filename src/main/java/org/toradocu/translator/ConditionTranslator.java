@@ -11,6 +11,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.ThrowsTag;
 
@@ -39,17 +40,23 @@ public class ConditionTranslator {
 
         String comment = tag.exceptionComment().trim();
 
-        // Add end-of-sentence period, if missing
+        // Add end-of-sentence period, if missing.
         if (!comment.endsWith(".")) {
           comment += ".";
         }
 
-        // Sanitize exception comment: remove initial "if"
+        // Sanitize exception comment: remove initial "if".
         String lowerCaseComment = comment.toLowerCase();
         while (lowerCaseComment.startsWith("if ")) {
           comment = comment.substring(3);
           lowerCaseComment = comment.toLowerCase();
         }
+
+        // Remove commas from the comment if enabled.
+        if (Toradocu.configuration != null && Toradocu.configuration.removeCommas()) {
+          comment = comment.replace(",", " ");
+        }
+        comment = comment.replace("  ", " ");
 
         // Identify propositions in the comment. Each sentence in the comment is parsed into a
         // PropositionSeries.
