@@ -38,6 +38,8 @@ public final class DocumentedMethod {
    * translation of the comment as Java boolean condition.
    */
   private final Set<ThrowsTag> throwsTags;
+  /** Code tags specified in the method's Javadoc. For now stored as simple Strings. */
+  private final List<String> codeTags;
   /** Method signature in the format method_name(type1 arg1, type2 arg2, ...). */
   private final String signature;
 
@@ -61,7 +63,8 @@ public final class DocumentedMethod {
       Type returnType,
       List<Parameter> parameters,
       boolean isVarArgs,
-      Collection<ThrowsTag> throwsTags) {
+      Collection<ThrowsTag> throwsTags,
+      Collection<String> codeTags) {
     Checks.nonNullParameter(containingClass, "containingClass");
     Checks.nonNullParameter(name, "name");
 
@@ -78,6 +81,7 @@ public final class DocumentedMethod {
     this.parameters = parameters == null ? new ArrayList<>() : new ArrayList<>(parameters);
     this.isVarArgs = isVarArgs;
     this.throwsTags = throwsTags == null ? new LinkedHashSet<>() : new LinkedHashSet<>(throwsTags);
+    this.codeTags = codeTags == null ? new ArrayList<>() : new ArrayList<>(codeTags);
 
     // Create the method signature using the method name and parameters.
     StringBuilder signatureBuilder = new StringBuilder(name + "(");
@@ -164,6 +168,20 @@ public final class DocumentedMethod {
    */
   public Type getContainingClass() {
     return containingClass;
+  }
+
+  public List<String> getCodeTags() {
+    return codeTags;
+  }
+
+  /* This method will be used to check if in the code tags of the method's Javadoc
+   * there is at least an element of the list passed as argument
+   * (e.g. the list can contain some parameter's identifiers) */
+  public boolean findCodeTag(List<String> list) {
+    for (String identifier : list) {
+      if (this.codeTags.contains(identifier)) return true;
+    }
+    return false;
   }
 
   /**

@@ -290,10 +290,23 @@ public class ConditionTranslator {
         // Only one of the subject matches should be used.
         // Prefer parameters, followed by classes, methods and fields.
         CodeElement<?> preferredSubjectMatch = null;
+
+        boolean pickedFirst = false;
+
         for (CodeElement<?> subjectMatch : translations.keySet()) {
-          if (subjectMatch instanceof ParameterCodeElement) {
+          /* If the indecision is between two subject matches that are absolutely
+           * equal candidates, then the priority goes to the one which is also a
+           * code tag in the method's Javadoc: isCode checks this property. If no
+           * candidate is a code tag, for now the priority is assigned as usual.
+           */
+          boolean isCode = method.findCodeTag(subjectMatch.getIdentifiers());
+
+          if (subjectMatch instanceof ParameterCodeElement && isCode) {
             preferredSubjectMatch = subjectMatch;
             break;
+          } else if (subjectMatch instanceof ParameterCodeElement && !pickedFirst) {
+            preferredSubjectMatch = subjectMatch;
+            pickedFirst = true;
           } else if (subjectMatch instanceof ClassCodeElement) {
             preferredSubjectMatch = subjectMatch;
           } else if (subjectMatch instanceof MethodCodeElement
