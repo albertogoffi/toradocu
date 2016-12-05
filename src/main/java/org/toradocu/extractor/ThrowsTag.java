@@ -9,7 +9,7 @@ import org.toradocu.util.Checks;
  * comment, and can have an optional condition. A condition is the translation of the comment into a
  * Java boolean condition.
  */
-public class ThrowsTag {
+public class ThrowsTag implements InterfaceTag {
 
   /** The exception described in this {@code ThrowsTag}. */
   private final Type exception;
@@ -49,7 +49,7 @@ public class ThrowsTag {
    *
    * @return the comment associated with the exception in this throws tag
    */
-  public String exceptionComment() {
+  public String getComment() {
     return comment;
   }
 

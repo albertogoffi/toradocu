@@ -9,7 +9,7 @@ import org.toradocu.util.Checks;
  * and a brief description, which may contain a condition. A condition is the translation of the
  * comment into a Java boolean condition.
  */
-public class ParamTag {
+public class ParamTag implements InterfaceTag {
 
   /** The parameter associated with the param tag */
   private final Parameter parameter;
@@ -49,7 +49,7 @@ public class ParamTag {
    *
    * @return the comment associated with the exception in this param tag
    */
-  public String parameterComment() {
+  public String getComment() {
     return comment;
   }
 
