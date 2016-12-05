@@ -137,6 +137,7 @@ public final class JavadocExtractor {
         //The list of the parameters of the method that we'll use in order to match
         //the parameterName of the tag with the parameter itself
         List<Parameter> parameters = getParameters(member);
+        
 
         String name = null; //Name of the ParamTag that we'll introduce
         org.toradocu.extractor.Type type = null; //type of the parameter of the ParamTag
