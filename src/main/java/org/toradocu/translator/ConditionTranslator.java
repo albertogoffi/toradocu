@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.InterfaceTag;
 import org.toradocu.extractor.ParamTag;
 import org.toradocu.extractor.ThrowsTag;
 
@@ -34,11 +35,11 @@ public class ConditionTranslator {
       for (ThrowsTag tag : method.throwsTags()) {
         log.trace(
             "Identifying propositions from: \""
-                + tag.exceptionComment()
+                + tag.getComment()
                 + "\" in "
                 + method.getSignature());
 
-        String comment = tag.exceptionComment().trim();
+        String comment = tag.getComment().trim();
 
         // Add end-of-sentence period, if missing
         if (!comment.endsWith(".")) {
@@ -59,7 +60,7 @@ public class ConditionTranslator {
         Set<String> conditions = new LinkedHashSet<>();
         // Identify Java code elements in propositions.
         for (PropositionSeries propositions : extractedPropositions) {
-          translatePropositions(propositions, method);
+          translatePropositions(tag, propositions, method);
           conditions.add(propositions.getTranslation());
         }
         tag.setCondition(mergeConditions(conditions));
@@ -69,11 +70,11 @@ public class ConditionTranslator {
 
         log.trace(
             "Identifying propositions from: \""
-                + tag.parameterComment()
+                + tag.getComment()
                 + "\" in "
                 + method.getSignature());
 
-        String comment = tag.parameterComment().trim();
+        String comment = tag.getComment().trim();
 
         // Add end-of-sentence period, if missing
         if (!comment.endsWith(".")) {
@@ -86,7 +87,7 @@ public class ConditionTranslator {
         Set<String> conditions = new LinkedHashSet<>();
         // Identify Java code elements in propositions.
         for (PropositionSeries propositions : extractedPropositions) {
-          translatePropositions(propositions, method);
+          translatePropositions(tag, propositions, method);
           conditions.add(propositions.getTranslation());
         }
         tag.setCondition(mergeConditions(conditions));
@@ -223,14 +224,44 @@ public class ConditionTranslator {
    *     propositionSeries} was extracted
    */
   private static void translatePropositions(
-      PropositionSeries propositionSeries, DocumentedMethod method) {
+      InterfaceTag tag, PropositionSeries propositionSeries, DocumentedMethod method) {
     for (Proposition p : propositionSeries.getPropositions()) {
       Set<CodeElement<?>> subjectMatches;
       subjectMatches = Matcher.subjectMatch(p.getSubject(), method);
-      if (subjectMatches.isEmpty()) {
+      if (subjectMatches.isEmpty() && !(tag instanceof ParamTag)) {
         log.debug("Failed subject translation for: " + p);
         return;
       }
+
+      /*else{
+       //TODO: Get the index of the parameter
+       //Create a new ParameterCodeElement for being parsed.
+       Class<?> containingClass = Reflection.getClass(method.getContainingClass().getQualifiedName());
+       Method[] methods = containingClass.getMethods();
+       Method theMethod = null;
+       boolean found = false;
+       for(int i = 0; i < methods.length && !found; i++){
+        if(methods[i].getName().equals(method.getName())){
+      	  theMethod = methods[i];
+      	  found = true;
+        }
+       }
+
+       if(!found){
+        System.out.println("potato");
+       }
+
+       java.lang.reflect.Parameter[] parameters = theMethod.getParameters();
+
+       found=false;
+       for(int i = 0; i < parameters.length && !found; i++){
+        if(parameters[i].getName().equals(((ParamTag) tag).parameter().getName())){
+      	  subjectMatches.add(new ParameterCodeElement(parameters[i], parameters[i].getName(), i));
+        }
+       }
+
+      }  */
+
       // Maps each subject code element to the Java expression translation that uses
       // that code element.
       Map<CodeElement<?>, String> translations = new LinkedHashMap<>();
