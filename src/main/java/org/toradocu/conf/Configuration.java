@@ -117,8 +117,8 @@ public class Configuration {
     names = "--expected-output",
     description =
         "Condition extractor expected output file used to compute statistics about "
-            + "Toradocu's performance. Statistics are computed only if a valid expected output file is "
-            + "provided",
+            + "Toradocu's performance. Statistics are computed only if a valid expected output file"
+            + " is provided",
     converter = FileConverter.class,
     hidden = true
   )
@@ -131,6 +131,13 @@ public class Configuration {
     hidden = true
   )
   private boolean removeCommas = true;
+
+  @Parameter(
+    names = "--tcomment",
+    description = "Use @tComment to translate comments",
+    hidden = true
+  )
+  private boolean tcomment = false;
 
   // Aspect creation options
 
@@ -424,5 +431,15 @@ public class Configuration {
    */
   public boolean removeCommas() {
     return removeCommas;
+  }
+
+  /**
+   * Returns whether to use @tComment translation algorithm instead of the standard Toradocu
+   * condition translator.
+   *
+   * @return true if @tComment has to be used, false otherwise
+   */
+  public boolean useTComment() {
+    return tcomment;
   }
 }
