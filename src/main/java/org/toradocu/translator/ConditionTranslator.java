@@ -81,6 +81,9 @@ public class ConditionTranslator {
           comment += ".";
         }
 
+        //First attempt to introduce subject in the param tag
+        comment = ((ParamTag) tag).parameter().getName() + ", " + comment;
+
         // Identify propositions in the comment. Each sentence in the comment is parsed into a
         // PropositionSeries.
         List<PropositionSeries> extractedPropositions = getPropositionSeries(comment);
