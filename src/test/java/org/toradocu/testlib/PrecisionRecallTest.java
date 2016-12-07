@@ -117,10 +117,10 @@ public class PrecisionRecallTest {
               /* We do not consider any empty condition as correct. Empty conditions in goal
                * output files mean that it was not possible to manually define a condition.
                * This should not impact precision and recall. */
-              methodReport.append("Empty condition. Comment: " + goalTag.exceptionComment());
+              methodReport.append("Empty condition. Comment: " + goalTag.getComment());
             } else {
               result.incrementFP();
-              methodReport.append("Wrong condition. Comment: " + goalTag.exceptionComment());
+              methodReport.append("Wrong condition. Comment: " + goalTag.getComment());
             }
             methodReport.append(
                 " | Goal condition: "

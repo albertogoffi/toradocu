@@ -15,7 +15,7 @@ public class ThrowsTagTest {
   @Test
   public void testBasics() {
     ThrowsTag tag = new ThrowsTag(npe, "if x is null");
-    assertThat(tag.exceptionComment(), is("if x is null"));
+    assertThat(tag.getComment(), is("if x is null"));
     assertThat(tag.exception(), is(npe));
     assertThat(tag.getCondition().isPresent(), is(false));
 

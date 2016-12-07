@@ -13,7 +13,7 @@ public class ParamTagTest {
   public void testBasics() {
     ParamTag tag = new ParamTag(new Parameter(new Type("int"), "elements"), "must not be null");
     assertThat(tag.parameter(), is(new Parameter(new Type("int"), "elements")));
-    assertThat(tag.parameterComment(), is("must not be null"));
+    assertThat(tag.getComment(), is("must not be null"));
     assertThat(tag.getCondition().isPresent(), is(false));
 
     tag.setCondition("");
