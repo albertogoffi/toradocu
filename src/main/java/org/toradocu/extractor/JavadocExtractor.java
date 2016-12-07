@@ -17,6 +17,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import org.jsoup.Jsoup;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.toradocu.doclet.formats.html.ConfigurationImpl;
 import org.toradocu.doclet.formats.html.HtmlDocletWriter;
 import org.toradocu.doclet.internal.toolkit.taglets.TagletWriter;
@@ -33,6 +35,7 @@ public final class JavadocExtractor {
   /** Holds Javadoc doclet configuration options. */
   private final ConfigurationImpl configuration;
 
+  private static final Logger log = LoggerFactory.getLogger(JavadocExtractor.class);
   /**
    * Constructs a {@code JavadocExtractor} with the given doclet {@code configuration}.
    *
@@ -137,7 +140,6 @@ public final class JavadocExtractor {
         //The list of the parameters of the method that we'll use in order to match
         //the parameterName of the tag with the parameter itself
         List<Parameter> parameters = getParameters(member);
-        
 
         String name = null; //Name of the ParamTag that we'll introduce
         org.toradocu.extractor.Type type = null; //type of the parameter of the ParamTag
@@ -159,7 +161,7 @@ public final class JavadocExtractor {
         }
 
         if (!found) { //At the exit of the loop, if found == true, we didn't find anything
-          throw new IllegalStateException(
+          log.trace(
               tag
                   + " this param tag does not have a name that matches any of the parameters in the method.");
         } else { //if not, then, the variables will have the value we want
