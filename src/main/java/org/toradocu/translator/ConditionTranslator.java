@@ -236,35 +236,6 @@ public class ConditionTranslator {
         return;
       }
 
-      /*else{
-       //TODO: Get the index of the parameter
-       //Create a new ParameterCodeElement for being parsed.
-       Class<?> containingClass = Reflection.getClass(method.getContainingClass().getQualifiedName());
-       Method[] methods = containingClass.getMethods();
-       Method theMethod = null;
-       boolean found = false;
-       for(int i = 0; i < methods.length && !found; i++){
-        if(methods[i].getName().equals(method.getName())){
-      	  theMethod = methods[i];
-      	  found = true;
-        }
-       }
-
-       if(!found){
-        System.out.println("potato");
-       }
-
-       java.lang.reflect.Parameter[] parameters = theMethod.getParameters();
-
-       found=false;
-       for(int i = 0; i < parameters.length && !found; i++){
-        if(parameters[i].getName().equals(((ParamTag) tag).parameter().getName())){
-      	  subjectMatches.add(new ParameterCodeElement(parameters[i], parameters[i].getName(), i));
-        }
-       }
-
-      }  */
-
       // Maps each subject code element to the Java expression translation that uses
       // that code element.
       Map<CodeElement<?>, String> translations = new LinkedHashMap<>();
