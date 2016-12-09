@@ -84,6 +84,29 @@ public class ConditionTranslator {
         //First attempt to introduce subject in the param tag
         comment = ((ParamTag) tag).parameter().getName() + ", " + comment;
 
+        comment =
+            comment
+                .replace("must be", tag.parameter().getName() + " must be")
+                .replace("must not be", tag.parameter().getName() + " must not be")
+                .replace("will be", tag.parameter().getName() + " will be")
+                .replace("will not be", tag.parameter().getName() + " will not be")
+                .replace("can't be", tag.parameter().getName() + " can't be")
+                .replace("cannot be", tag.parameter().getName() + " cannot be")
+                .replace("should be", tag.parameter().getName() + " should be")
+                .replace("should not be", tag.parameter().getName() + " should not be")
+                .replace("shouldn't be", tag.parameter().getName() + " shouldn't be")
+                .replace("Must be", tag.parameter().getName() + " must be")
+                .replace("Must not be", tag.parameter().getName() + " must not be")
+                .replace("Will be", tag.parameter().getName() + " will be")
+                .replace("Will not be", tag.parameter().getName() + " will not be")
+                .replace("Can't be", tag.parameter().getName() + " can't be")
+                .replace("Cannot be", tag.parameter().getName() + " cannot be")
+                .replace("Should be", tag.parameter().getName() + " should be")
+                .replace("Should not be", tag.parameter().getName() + " should not be")
+                .replace("Shouldn't be", tag.parameter().getName() + " shouldn't be");
+
+        System.out.println(comment);
+
         // Identify propositions in the comment. Each sentence in the comment is parsed into a
         // PropositionSeries.
         List<PropositionSeries> extractedPropositions = getPropositionSeries(comment);
@@ -185,6 +208,8 @@ public class ConditionTranslator {
   private static final String INEQ_INSOF = " *[an]* (instance of)"; // e.g "an instance of"
   private static final String INEQ_INSOFPROCESSED =
       " instanceof +[^ \\.]*"; // e.g. "instanceof BinaryMutation"
+  //Regular expression for common patterns in @param
+  private static final String PARAM_PATTERNS = "(must be|should be|cannot be|can't be|will be)";
 
   /** Stores the inequalities that are replaced by placeholders when addPlaceholders is called. */
   private static List<String> inequalities = new ArrayList<>();
