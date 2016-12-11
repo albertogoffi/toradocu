@@ -3,15 +3,27 @@ package tcomment
 import org.toradocu.extractor.DocumentedMethod
 import org.toradocu.extractor.ThrowsTag
 
+/**
+ * Translates the tags in the given methods using @tComment algorithm. This method sets
+ * [ThrowsTag.condition][ThrowsTag] for each @throws tag of the given methods.
+ *
+ * @param methods a list of [DocumentedMethod]s whose throws tags has to be translated
+ */
 fun translate(methods: List<DocumentedMethod>) {
   // Translate @throws comments using @tComment algorithm.
   for (method in methods) {
     val parameters = method.parameters.map { it.name }
-    method.throwsTags().forEach { inferProperties(it, parameters) }
+    method.throwsTags().forEach { translateTagComment(it, parameters) }
   }
 }
 
-fun inferProperties(tag: ThrowsTag, parameterNames: List<String>) {
+/**
+ * Translates [tag] comment text into a Java boolean condition.
+ *
+ * @param tag the tag whose text has to be translated
+ * @param parameterNames names of the method's parameters to which [tag] belongs
+ */
+fun translateTagComment(tag: ThrowsTag, parameterNames: List<String>) {
   val commentWords = tag.exceptionComment().toLowerCase().replace(",", " ").split(" ")
   var condition = ""
   if (commentWords.contains("null")) {
@@ -20,6 +32,7 @@ fun inferProperties(tag: ThrowsTag, parameterNames: List<String>) {
         condition += " || "
       }
       condition += "args[${parameterNames.indexOf(it)}]==null"
+      if (!commentWords.contains("or") && !commentWords.contains("either")) return@forEach
     }
   }
   tag.setCondition(condition)
