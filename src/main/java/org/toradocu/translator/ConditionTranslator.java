@@ -111,8 +111,6 @@ public class ConditionTranslator {
                 .replace("Should not be", tag.parameter().getName() + " should not be")
                 .replace("Shouldn't be", tag.parameter().getName() + " shouldn't be");
 
-        System.out.println(comment);
-
         // Identify propositions in the comment. Each sentence in the comment is parsed into a
         // PropositionSeries.
         List<PropositionSeries> extractedPropositions = getPropositionSeries(comment);
