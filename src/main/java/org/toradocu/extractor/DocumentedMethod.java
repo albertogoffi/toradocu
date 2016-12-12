@@ -49,8 +49,8 @@ public final class DocumentedMethod {
    *
    * @param containingClass class containing the {@code DocumentedMethod}
    * @param name the simple name of the {@code DocumentedMethod}
-   * @param returnType the fully qualified return type of the method or the empty string if the
-   *     {@code DocumentedMethod} is a constructor
+   * @param returnType the fully qualified return type of the method or {@code null} if the {@code
+   *     DocumentedMethod} is a constructor
    * @param parameters the parameters of the {@code DocumentedMethod}
    * @param paramTags the {@code @param tags} of the {@code DocumentedMethod}
    * @param isVarArgs true if the {@code DocumentedMethod} takes a variable number of arguments,

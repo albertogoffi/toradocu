@@ -5,7 +5,7 @@ import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 
 public class PrecisionRecallPlumeLib extends AbstractPrecisionRecallTestSuite {
 
-  private static final String PLUMELIB_SRC = "src/test/resources/src/plume-lib-1.1.0/java/src";
+  private static final String PLUMELIB_SRC = "src/test/resources/src/plume-lib-1.1.0/java/src/";
   private static final String PLUMELIB_BIN = "src/test/resources/bin/plume-lib-1.1.0.jar";
   private static final String PLUMELIB_GOAL_DIR = "src/test/resources/goal-output/plume-lib-1.1.0/";
 
@@ -15,17 +15,17 @@ public class PrecisionRecallPlumeLib extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testArraysMDE() throws Exception {
-    test("plume.ArraysMDE", 0.888, 0.8);
+    test("plume.ArraysMDE", 0.888, 0.842);
   }
 
   @Test
   public void testRegexUtil() throws Exception {
-    test("plume.RegexUtil", 1.0, 1.0);
+    test("plume.RegexUtil", 1, 1);
   }
 
   @Test
   public void testFileCompiler() throws Exception {
-    test("plume.FileCompiler", 1.0, 0.5);
+    test("plume.FileCompiler", 0, 0);
   }
 
   @Test

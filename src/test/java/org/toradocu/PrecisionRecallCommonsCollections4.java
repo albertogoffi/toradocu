@@ -6,7 +6,7 @@ import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallTestSuite {
 
   private static final String COMMONSCOLLECTIONS_4_SRC =
-      "src/test/resources/src/commons-collections4-4.1-src/src/main/java";
+      "src/test/resources/src/commons-collections4-4.1-src/src/main/java/";
   private static final String COMMONSCOLLECTIONS_4_BIN =
       "src/test/resources/bin/commons-collections4-4.1.jar";
   private static final String COMMONSCOLLECTIONS_4_GOAL_DIR =
@@ -28,17 +28,17 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testClosureUtils() throws Exception {
-    test("org.apache.commons.collections4.ClosureUtils", 0.895, 0.68);
+    test("org.apache.commons.collections4.ClosureUtils", 0.888, 0.695);
   }
 
   @Test
   public void testCollectionUtils() throws Exception {
-    test("org.apache.commons.collections4.CollectionUtils", 0.914, 0.842);
+    test("org.apache.commons.collections4.CollectionUtils", 0.964, 0.870);
   }
 
   @Test
   public void testPredicateUtils() throws Exception {
-    test("org.apache.commons.collections4.PredicateUtils", 0.733, 0.733);
+    test("org.apache.commons.collections4.PredicateUtils", 0.84, 0.724);
   }
 
   @Test
@@ -48,7 +48,7 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testFixedOrderComparator() throws Exception {
-    test("org.apache.commons.collections4.comparators.FixedOrderComparator", 1.0, 0.666);
+    test("org.apache.commons.collections4.comparators.FixedOrderComparator", 1.0, 0.571);
   }
 
   @Test
@@ -58,17 +58,17 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testFluentIterable() throws Exception {
-    test("org.apache.commons.collections4.FluentIterable", 1.0, 0.875);
+    test("org.apache.commons.collections4.FluentIterable", 1.0, 0.866);
   }
 
   @Test
   public void testLRUMap() throws Exception {
-    test("org.apache.commons.collections4.map.LRUMap", 0.85, 0.531);
+    test("org.apache.commons.collections4.map.LRUMap", 0.824, 0.482);
   }
 
   @Test
   public void testAllPredicate() throws Exception {
-    test("org.apache.commons.collections4.functors.AllPredicate", 1.0, 0.714);
+    test("org.apache.commons.collections4.functors.AllPredicate", 1.0, 0.75);
   }
 
   @Test
@@ -78,6 +78,6 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testAnyPredicate() throws Exception {
-    test("org.apache.commons.collections4.functors.AnyPredicate", 0.833, 0.714);
+    test("org.apache.commons.collections4.functors.AnyPredicate", 1.0, 0.75);
   }
 }

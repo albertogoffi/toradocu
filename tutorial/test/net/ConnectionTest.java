@@ -12,4 +12,11 @@ public class ConnectionTest {
     connection.open();
     connection.open();
   }
+
+  @Test
+  public void send() throws Exception {
+    Connection connection = new Connection();
+    connection.open();
+    connection.send(null);
+  }
 }

@@ -4812,7 +4812,7 @@
           "isArray": false
         },
         "comment": "if a value of a is outside of arange",
-        "condition": "min(a)<0 || max(a)>=arange"
+        "condition": "min(args[0])<0 || max(args[0])>=args[1]"
       },
       {
         "exception": {
@@ -4821,7 +4821,7 @@
           "isArray": false
         },
         "comment": "when the function is not invertible",
-        "condition": "[hard to express]"
+        "condition": ""
       }
     ],
     "signature": "fn_inverse(int[] a,int arange)"

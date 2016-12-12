@@ -4,45 +4,52 @@
 set -e
 
 # Check command line arguments
-if [ $# -lt 2 ]; then
+if [ $# -ne 3 ]; then
     echo "No arguments supplied. This script accepts as arguments:"
     echo "1. File where to store statistics"
-    echo "2. A list of files of the following format:"
-    echo "Line 1: Path to the expected output directory"
-    echo "Line 2: Path to the target system binaries"
-    echo "Line 3: Path to the target system sources"
-    echo "Any following line: Fully qualified name of the target class."
+    echo "2. Distance threshold lower bound"
+    echo "3. Distance threshold upper bound"
     exit 1
 fi
 
 # Constants and variables initialization
-MAX_DISTANCE=2 # Edit distance threshold. Word deletion cost will be MAX_DISTANCE + 1
-EXPECTED_OUTPUT_FILE_SUFFIX="_expected.json"
 STATS_FILE=$1
+MIN_DISTANCE=$2
+MAX_DISTANCE=$3 # Edit distance threshold. Word deletion cost will be MAX_DISTANCE + 2
+EXPECTED_OUTPUT_FILE_SUFFIX="_goal.json"
 
 # Create Toradocu jar and target systems sources and binaries
 ./gradlew shadowJar extractSources extractBinaries
 
 # Remove old stats file (if user agrees)
-if [ -e $STATS_FILE ]; then
+if [ -f $STATS_FILE ]; then
     rm -i $STATS_FILE
 fi
 
 # Initialize a new stats file
-if [ ! -e $STATS_FILE ]; then
-    echo "METHOD,DISTANCE THRESHOLD,REMOVAL COST,CONDITIONS,PRECISION,RECALL" > $STATS_FILE
+if [ ! -f $STATS_FILE ]; then
+    echo "METHOD,DISTANCE THRESHOLD,REMOVAL COST,CORRECT CONDITIONS,WRONG CONDITIONS,MISSING CONDITIONS,PRECISION,RECALL" > $STATS_FILE
 fi
 
+# Collect information about target classes from precision/recall test suite and create target descriprtors
+TARGET_DESCRIPTORS=()
+for test_suite in `find src/test/java/org/toradocu -maxdepth 1 -name '*.java'`; do
+    file_name=stats/`echo $test_suite | rev | cut -d '/' -f -1 | rev | cut -d '.' -f 1`".txt"
+    TARGET_DESCRIPTORS+=($file_name)
+    grep -o --max-count=3 "\".*\"" $test_suite | cut -d"\"" -f2 > $file_name
+    grep -o '".*",' $test_suite | cut -d '"' -f 2 >> $file_name
+done
+
 # Run Toradocu for each target class and with each params configuration
-for targets_descriptor in $@; do
-    EXPECTED_FILE_DIR=`sed -n '1p' $targets_descriptor`
-    BIN=`sed -n '2p' $targets_descriptor`
-    SRC=`sed -n '3p' $targets_descriptor`
+for target_descriptor in "${TARGET_DESCRIPTORS[@]}"; do
+    SRC=`sed -n '1p' $target_descriptor`
+    BIN=`sed -n '2p' $target_descriptor`
+    EXPECTED_FILE_DIR=`sed -n '3p' $target_descriptor`
 
     # Initialize targets and expected arrays. targets array contains the target classes while
     # expected array contains the expected file path for each target class.
     i=0
-    for target in `tail -n +4 $targets_descriptor`; do
+    for target in `tail -n +4 $target_descriptor`; do
     	targets[$i]=$target
     	expected[$i]="$EXPECTED_FILE_DIR$target$EXPECTED_OUTPUT_FILE_SUFFIX"
     	i=$(( i+1 ))
@@ -50,8 +57,8 @@ for targets_descriptor in $@; do
 
     # Run Toradocu
     for (( j=0; j<${#targets[@]}; j++ )); do
-    	for distance_threshold in `seq 0 $MAX_DISTANCE`; do
-	    word_removal_bound=$(( distance_threshold + 1 )) # Word deletion cost. Is always edit distance threshold + 1.
+    	for distance_threshold in `seq $MIN_DISTANCE $MAX_DISTANCE`; do
+	    word_removal_bound=$(( distance_threshold + 1 )) # Word deletion cost (always equals to edit distance threshold + 1).
     	    for word_removal_cost in `seq 0 $word_removal_bound`; do
     		echo "Executing Toradocu on ${targets[$j]} with threshold=$distance_threshold and word removal cost=$word_removal_cost"
     		java -jar build/libs/toradocu-1.0-all.jar \
@@ -71,7 +78,3 @@ for targets_descriptor in $@; do
     targets=()
     expected=()
 done
-
-# Parse statistics
-echo ""
-python stats/stats.py $STATS_FILE
