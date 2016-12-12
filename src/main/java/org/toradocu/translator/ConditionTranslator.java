@@ -287,7 +287,7 @@ public class ConditionTranslator {
       PropositionSeries propositionSeries, DocumentedMethod method) {
     for (Proposition p : propositionSeries.getPropositions()) {
       Set<CodeElement<?>> subjectMatches;
-      subjectMatches = Matcher.subjectMatch(p.getSubject(), method);
+      subjectMatches = Matcher.subjectMatch(p.getSubject().getSubject(), method);
       if (subjectMatches.isEmpty()) {
         log.debug("Failed subject translation for: " + p);
         return;
@@ -296,8 +296,7 @@ public class ConditionTranslator {
       final String container = p.getSubject().getContainer();
       if (container.isEmpty()) {
         // Subject match
-        Set<CodeElement<?>> subjectMatches =
-            Matcher.subjectMatch(p.getSubject().getSubject(), method);
+        subjectMatches = Matcher.subjectMatch(p.getSubject().getSubject(), method);
         if (subjectMatches.isEmpty()) {
           log.debug("Failed subject translation for: " + p);
           return;

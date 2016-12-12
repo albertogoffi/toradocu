@@ -126,10 +126,10 @@ public class PrecisionRecallTest {
             } else {
               errors = true;
               if (actualCondition.isEmpty()) {
-                methodReport.append("Empty condition. Comment: " + goalTag.exceptionComment());
+                methodReport.append("Empty condition. Comment: " + goalTag.getComment());
               } else {
                 result.incrementFP();
-                methodReport.append("Wrong condition. Comment: " + goalTag.exceptionComment());
+                methodReport.append("Wrong condition. Comment: " + goalTag.getComment());
               }
               methodReport.append(
                   " | Goal condition: "
