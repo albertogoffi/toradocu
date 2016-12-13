@@ -41,11 +41,11 @@ the connection status, and `send` to send a message using the opened connection.
    false positive: a test failure with a *correct* code under test.
 
    At this point you have two options:
-   1. Remove the failing test case from the test suite. The downside is that the exceptional
-      behavior of the method `send` is no longer tested. Generally speaking, testing less (cover
-      less software behaviors) is not a good choice.
-   2. Fix the test case and/or the assertions in the test case, so that the `NullPointerException`
-      is the expected behavior and the test case does not fail any longer.
+     1. Remove the failing test case from the test suite. The downside is that the exceptional
+        behavior of the method `send` is no longer tested. Generally speaking, testing less (cover
+        less software behaviors) is not a good choice.
+     2. Fix the test case and/or the assertions in the test case, so that the `NullPointerException`
+        is the expected behavior and the test case does not fail any longer.
 
    Toradocu can fix your tests automatically.
 
