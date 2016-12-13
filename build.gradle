@@ -238,7 +238,7 @@ task tutorial(type: Download) {
     'http://central.maven.org/maven2/org/aspectj/aspectjweaver/1.8.9/aspectjweaver-1.8.9.jar',
     'http://central.maven.org/maven2/org/aspectj/aspectjrt/1.8.9/aspectjrt-1.8.9.jar'
   ])
-  dest 'src/tutorial'
+  dest 'tutorial'
   onlyIfNewer true
   overwrite false
 }

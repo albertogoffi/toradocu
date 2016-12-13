@@ -81,7 +81,7 @@ the connection status, and `send` to send a message using the opened connection.
 
 6. Compile the generated aspects and weave them into the test suite of the system under test
    ```
-   javac -g -cp aspectjrt-1.8.9.jar:src:junit-4.12.jar aspects/Aspect_1.java
+   javac -g -cp aspectjrt-1.8.9.jar:src:junit-4.12.jar aspects/Aspect_*.java
    java -cp aspectjtools-1.8.9.jar:aspectjweaver-1.8.9.jar:aspectjrt-1.8.9.jar:src org.aspectj.tools.ajc.Main -inpath aspects:test -outjar weaved_testsuite.jar -showWeaveInfo
    ```
    The AspectJ tool outputs some information starting with `Join point ...`.
@@ -102,9 +102,8 @@ the connection status, and `send` to send a message using the opened connection.
            ... [many more lines of output]
    ```
    As the report says, *wrongly* the method `net.Connection#open` did not raise any exception
-   even though an `IllegalStateException` was expected. The method `net.Connection#open` is 
+   even though an `IllegalStateException` was expected. The method `net.Connection#open` is
    supposed to throw an IllegalStateException if invoked on an open connection, but it does not.
-   In other words, Toradocu allowed you to discover a previously unknown bug in the software 
-   under test, transforming a test case that was not failing (false negative) into a failing 
+   In other words, Toradocu allowed you to discover a previously unknown bug in the software
+   under test, transforming a test case that was not failing (false negative) into a failing
    test case (true positive).
-   
