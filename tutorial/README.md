@@ -17,20 +17,6 @@ the connection status, and `send` to send a message using the opened connection.
 
    The method `net.Connection#open` is called by the test case `net.ConnectionTest#open`, while
    the method `net.Connection#send` is called by the test case `net.ConnectionTest#send`.
-<!--
-   There are several problems with this code.
-
-   1. The method `net.Connection#open` is supposed to throw an `IllegalStateException` if invoked
-      on an open connection, but it does not.
-
-   2. The test case `net.ConnectionTest#open` does not verify that `IllegalStateException` is raised.
-
-   3. The method `net.Connection#send` correctly throws a `NullPointerException` if invoked with an
-      empty message. The test case `net.ConnectionTest#send` does not verify that
-      `NullPointerException` is raised.
-
-   Toradocu will improve the test cases, and it will reveal the problem in the code.
--->
 
 3. Compile the source code of the system under test: `javac src/net/Connection.java`
 
@@ -107,7 +93,7 @@ the connection status, and `send` to send a message using the opened connection.
    The test suite execution still terminates with one failure, but this time is referring to a
    different test case. What happened is that fixing the assertions, *Toradocu eliminated the
    false positive failure* (transformed a false positive into a true negative), and let another
-   test case fail.
+   test case fail:
 
    ```
    There was 1 failure:
@@ -116,6 +102,9 @@ the connection status, and `send` to send a message using the opened connection.
            ... [many more lines of output]
    ```
    As the report says, *wrongly* the method `net.Connection#open` did not raise any exception
-   even though an `IllegalStateException` was expected. In other words, Toradocu allowed you to
-   discover a previously unknown bug in the software under test, transforming a test case that
-   was not failing (false negative) into a failing test case (true positive).
+   even though an `IllegalStateException` was expected. The method `net.Connection#open` is 
+   supposed to throw an IllegalStateException if invoked on an open connection, but it does not.
+   In other words, Toradocu allowed you to discover a previously unknown bug in the software 
+   under test, transforming a test case that was not failing (false negative) into a failing 
+   test case (true positive).
+   
