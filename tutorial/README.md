@@ -1,8 +1,8 @@
 # Tutorial
 
-This step-by-step tutorial illustrates how Toradocu can be used to discover
-faults in a software system under test, and to fix assertions in an existing test suite.
-This tutorial covers the test of a toy class `net.Connection` that represents a network
+This tutorial illustrates how Toradocu can discover
+faults in a software system or incorrect assertions it its test suite.
+In this tutorial, the software under test is a toy class `net.Connection` that represents a network
 connection. The class offers the method `open` to establish a new connection, `isOpen` to check
 the connection status, and `send` to send a message using the opened connection.
 
