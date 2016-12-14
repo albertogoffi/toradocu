@@ -126,30 +126,6 @@ public class Toradocu {
       log.debug("Methods with Javadoc documentation found in source code: " + methods.toString());
     }
 
-    // === @Param support ===
-    /*
-    try {
-      String targetClass = configuration.getTargetClass();
-      Class c = Reflection.getClass(targetClass);
-      final Constructor targetMethod = c.getConstructor(Integer.class);
-
-      org.toradocu.extractor.Type clazz = new org.toradocu.extractor.Type(targetClass);
-      Parameter par =
-          new Parameter(new org.toradocu.extractor.Type("java.lang.Integer"), "sideLength");
-      List<Parameter> parameters = new ArrayList<>();
-      parameters.add(par);
-
-      DocumentedMethod documentedMethod =
-          new DocumentedMethod(clazz, "Square", null, parameters, null, false, null);
-      ParameterCodeElement parCodeElement =
-          new ParameterCodeElement(targetMethod.getParameters()[0], "sideLength", 0);
-      String match = Matcher.predicateMatch(documentedMethod, parCodeElement, "will never be negative", true);
-      System.out.println("Matching predicate: " + match);
-    } catch (NoSuchMethodException e) {
-      e.printStackTrace();
-      System.exit(-1);
-    }*/
-
     // === Condition Translator ===
 
     if (configuration.isConditionTranslationEnabled()) {
