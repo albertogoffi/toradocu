@@ -57,7 +57,6 @@ public class ConditionTranslator {
         if (Toradocu.configuration != null && Toradocu.configuration.removeCommas()) {
           comment = comment.replace(",", " ");
         }
-        comment = comment.replace("  ", " ");
 
         // Identify propositions in the comment. Each sentence in the comment is parsed into a
         // PropositionSeries.
@@ -88,7 +87,11 @@ public class ConditionTranslator {
         }
 
         //First attempt to introduce subject in the param tag
-        comment = ((ParamTag) tag).parameter().getName() + ", " + comment;
+        if (comment.startsWith("the") || comment.startsWith("a")) {
+          comment = ((ParamTag) tag).parameter().getName() + " is " + comment;
+        } else {
+          comment = ((ParamTag) tag).parameter().getName() + " is the" + comment;
+        }
 
         comment =
             comment
