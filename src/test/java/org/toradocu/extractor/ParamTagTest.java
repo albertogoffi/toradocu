@@ -51,11 +51,9 @@ public class ParamTagTest {
     assertThat(tag1.equals(tag2), is(false));
 
     ParamTag tag3 = new ParamTag(new Parameter(new Type("int"), "elements"), "must not be false");
-
     assertThat(tag1.equals(tag3), is(false));
 
     ParamTag tag4 = new ParamTag(new Parameter(new Type("int"), "element"), "must not be null");
-
     assertThat(tag1.equals(tag4), is(false));
   }
 }
