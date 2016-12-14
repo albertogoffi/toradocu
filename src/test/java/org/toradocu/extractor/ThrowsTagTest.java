@@ -31,7 +31,7 @@ public class ThrowsTagTest {
   @Test
   public void testToString() {
     ThrowsTag tag = new ThrowsTag(npe, "if x is null");
-    assertThat(tag.toString(), is("@throws java.lang.NullPointerException" + " " + "if x is null"));
+    assertThat(tag.toString(), is("@throws java.lang.NullPointerException if x is null"));
 
     tag.setCondition("x == null");
     assertThat(

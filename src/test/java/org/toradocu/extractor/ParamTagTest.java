@@ -28,12 +28,10 @@ public class ParamTagTest {
   @Test
   public void testToString() {
     ParamTag tag = new ParamTag(new Parameter(new Type("int"), "elements"), "must not be null");
-    assertThat(tag.toString(), is("@param elements" + " " + "must not be null"));
+    assertThat(tag.toString(), is("@param elements must not be null"));
 
     tag.setCondition("elements != null");
-    assertThat(
-        tag.toString(),
-        is("@param elements" + " " + "must not be null" + " ==> " + "elements != null"));
+    assertThat(tag.toString(), is("@param elements must not be null ==> elements != null"));
   }
 
   @Test

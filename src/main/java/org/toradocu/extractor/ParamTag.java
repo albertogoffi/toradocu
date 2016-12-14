@@ -1,7 +1,6 @@
 package org.toradocu.extractor;
 
 import java.util.Objects;
-import java.util.Optional;
 import org.toradocu.util.Checks;
 
 /**
@@ -9,17 +8,10 @@ import org.toradocu.util.Checks;
  * and a brief description, which may contain a condition. A condition is the translation of the
  * comment into a Java boolean condition.
  */
-public class ParamTag implements InterfaceTag {
+public class ParamTag extends AbstractTag {
 
   /** The parameter associated with the param tag */
   private final Parameter parameter;
-  /** The comment associated to the parameter tag */
-  private final String comment;
-  /**
-   * Java boolean condition translated from the comment for this {@code ParamTag}. Null if
-   * translation not yet attempted. Empty string if no translations found.
-   */
-  private String condition;
 
   /**
    * Constructs a {@code ParamTag} with the given exception and comment.
@@ -29,9 +21,8 @@ public class ParamTag implements InterfaceTag {
    * @throws NullPointerException if parameter or comment is null
    */
   public ParamTag(Parameter parameter, String comment) {
+    super("@param", comment);
     Checks.nonNullParameter(parameter, "parameter");
-    Checks.nonNullParameter(comment, "comment");
-    this.comment = comment;
     this.parameter = parameter;
   }
 
@@ -45,37 +36,6 @@ public class ParamTag implements InterfaceTag {
   }
 
   /**
-   * Returns the comment associated with the parameter in this param tag.
-   *
-   * @return the comment associated with the exception in this param tag
-   */
-  public String getComment() {
-    return comment;
-  }
-
-  /**
-   * Returns the translated Java boolean condition for this param tag as an optional which is empty
-   * if translation has not been attempted yet.
-   *
-   * @return the translated conditions for this param tag if translation attempted, else empty
-   *     optional
-   */
-  public Optional<String> getCondition() {
-    return Optional.ofNullable(condition);
-  }
-
-  /**
-   * Sets the translated condition for this param tags to the given condition.
-   *
-   * @param condition the translated condition for this param tag (as a Java boolean condition)
-   * @throws NullPointerException if condition is null
-   */
-  public void setCondition(String condition) {
-    Checks.nonNullParameter(condition, "condition");
-    this.condition = condition;
-  }
-
-  /**
    * Returns true if this {@code ParamTag} and the specified object are equal.
    *
    * @param obj the object to test for equality
@@ -86,9 +46,7 @@ public class ParamTag implements InterfaceTag {
     if (!(obj instanceof ParamTag)) return false;
 
     ParamTag that = (ParamTag) obj;
-    return this.comment.equals(that.comment)
-        && this.parameter.equals(that.parameter)
-        && Objects.equals(this.condition, that.condition);
+    return this.parameter.equals(that.parameter) && super.equals(that);
   }
 
   /**
@@ -98,7 +56,7 @@ public class ParamTag implements InterfaceTag {
    */
   @Override
   public int hashCode() {
-    return Objects.hash(comment, parameter, condition);
+    return Objects.hash(super.hashCode(), parameter);
   }
 
   /**
@@ -112,9 +70,11 @@ public class ParamTag implements InterfaceTag {
    */
   @Override
   public String toString() {
-    String result = "@param " + parameter.getName() + " " + comment;
-    if (condition != null) {
-      result += " ==> " + condition;
+    String result = super.getKind() + " " + parameter.getName() + " " + super.getComment();
+    if (super.getCondition() != null
+        && super.getCondition().isPresent()
+        && !super.getCondition().get().isEmpty()) {
+      result += " ==> " + super.getCondition().get();
     }
     return result;
   }
