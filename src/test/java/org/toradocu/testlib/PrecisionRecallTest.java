@@ -6,13 +6,13 @@ import static org.junit.Assert.fail;
 
 import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.toradocu.Toradocu;
@@ -46,19 +46,42 @@ public class PrecisionRecallTest {
     String goalOutputFile = Paths.get(goalOutputDir, targetClass + "_goal.json").toString();
     String message = "=== Test " + targetClass + " ===";
 
-    Toradocu.main(
+    String[] toradocuArgs =
         new String[] {
           "--target-class",
           targetClass,
           "--condition-translator-output",
           actualOutputFile,
-          "--oracle-generation",
-          "false",
+          "--expected-output",
+          goalOutputFile,
           "--class-dir",
           binPath,
           "--source-dir",
           srcPath
-        });
+        };
+    final List<String> argsList = new ArrayList<>(Arrays.asList(toradocuArgs));
+
+    final String oracleGeneration = System.getProperty("org.toradocu.generator");
+    // Disable oracle generation unless the specific system property is set.
+    if (oracleGeneration != null && oracleGeneration.equals("true")) {
+      argsList.add("--aspects-output-dir");
+      argsList.add("aspects" + File.separator + targetClass);
+    } else {
+      argsList.add("--oracle-generation");
+      argsList.add("false");
+    }
+
+    final String translator = System.getProperty("org.toradocu.translator");
+    if (translator != null && translator.equals("tcomment")) {
+      argsList.add("--tcomment");
+      argsList.add("--stats-file");
+      argsList.add("tcomment_results.csv");
+    } else {
+      argsList.add("--stats-file");
+      argsList.add("results.csv");
+    }
+
+    Toradocu.main(argsList.toArray(new String[0]));
     return compare(targetClass, actualOutputFile, goalOutputFile, message);
   }
 
@@ -77,12 +100,7 @@ public class PrecisionRecallTest {
     StringBuilder report = new StringBuilder(message + "\n");
 
     try (BufferedReader outFile = Files.newBufferedReader(Paths.get(outputFile));
-        BufferedReader goalFile = Files.newBufferedReader(Paths.get(goalOutputFile));
-        BufferedWriter resultsFile =
-            Files.newBufferedWriter(
-                Paths.get(AbstractPrecisionRecallTestSuite.OUTPUT_DIR + "/results.csv"),
-                StandardOpenOption.CREATE,
-                StandardOpenOption.APPEND)) {
+        BufferedReader goalFile = Files.newBufferedReader(Paths.get(goalOutputFile))) {
 
       Type collectionType = new TypeToken<Collection<DocumentedMethod>>() {}.getType();
       List<DocumentedMethod> actualResult = GsonInstance.gson().fromJson(outFile, collectionType);
@@ -107,27 +125,27 @@ public class PrecisionRecallTest {
 
           String goalCondition = goalTag.getCondition().get();
           String actualCondition = actualTag.getCondition().get();
-          numberOfComments++;
 
-          if (goalCondition.equals(actualCondition)) {
-            result.incrementTP();
-          } else {
-            errors = true;
-            if (actualCondition.isEmpty()) {
-              /* We do not consider any empty condition as correct. Empty conditions in goal
-               * output files mean that it was not possible to manually define a condition.
-               * This should not impact precision and recall. */
-              methodReport.append("Empty condition. Comment: " + goalTag.exceptionComment());
+          // Empty goal conditions are ignored and have effects on precision and recall.
+          if (!goalCondition.isEmpty()) {
+            numberOfComments++;
+            if (goalCondition.equals(actualCondition)) {
+              result.incrementTP();
             } else {
-              result.incrementFP();
-              methodReport.append("Wrong condition. Comment: " + goalTag.exceptionComment());
+              errors = true;
+              if (actualCondition.isEmpty()) {
+                methodReport.append("Empty condition. Comment: " + goalTag.exceptionComment());
+              } else {
+                result.incrementFP();
+                methodReport.append("Wrong condition. Comment: " + goalTag.exceptionComment());
+              }
+              methodReport.append(
+                  " | Goal condition: "
+                      + goalCondition
+                      + ". Actual condition: "
+                      + actualCondition
+                      + "\n");
             }
-            methodReport.append(
-                " | Goal condition: "
-                    + goalCondition
-                    + ". Actual condition: "
-                    + actualCondition
-                    + "\n");
           }
         }
 
@@ -139,10 +157,6 @@ public class PrecisionRecallTest {
       result.setNumConditions(numberOfComments);
       report.append(result);
       System.out.println(report);
-
-      resultsFile.append(result.asCSV());
-      resultsFile.newLine();
-
       return result;
     } catch (IOException e) {
       e.printStackTrace();

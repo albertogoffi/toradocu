@@ -27,7 +27,7 @@ public abstract class AbstractPrecisionRecallTestSuite {
    * Fuzz factor for approximate equality. Has nothing to do with precision in the "precision and
    * recall" sense.
    */
-  protected static final double PRECISION = 0.001;
+  private static final double PRECISION = 0.001;
 
   public static final String OUTPUT_DIR = "build/test-results";
 

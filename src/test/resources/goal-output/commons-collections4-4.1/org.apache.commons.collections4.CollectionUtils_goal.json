@@ -1245,7 +1245,7 @@
           "isArray": false
         },
         "comment": "if the outputCollection is null and both, inputCollection and transformer are not null",
-        "condition": "(args[0]==null) == false && (args[1]==null) == false || args[2]==null"
+        "condition": "args[2]==null && (args[0]==null) == false && (args[1]==null) == false"
       }
     ],
     "signature": "collect(java.lang.Iterable inputCollection,org.apache.commons.collections4.Transformer transformer,R outputCollection)"
@@ -1297,7 +1297,7 @@
           "isArray": false
         },
         "comment": "if the output collection is null and both, inputIterator and transformer are not null",
-        "condition": "(args[0]==null) == false && (args[1]==null) == false || args[2]==null"
+        "condition": "args[2]==null && (args[0]==null) == false && (args[1]==null) == false"
       }
     ],
     "signature": "collect(java.util.Iterator inputIterator,org.apache.commons.collections4.Transformer transformer,R outputCollection)"

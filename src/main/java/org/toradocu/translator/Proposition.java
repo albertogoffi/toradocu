@@ -8,9 +8,10 @@ import java.util.Optional;
  * translation of the proposition into a Java expression.
  */
 public class Proposition {
-
-  private String subject, predicate, translation;
-  private boolean isNegative;
+  private final Subject subject;
+  private final String predicate;
+  private String translation;
+  private final boolean isNegative;
 
   /**
    * Constructs and initializes a {@code Proposition} with the given subject and predicate.
@@ -18,19 +19,20 @@ public class Proposition {
    * @param subject the subject of the proposition
    * @param predicate the predicate associated with the subject
    */
-  public Proposition(String subject, String predicate) {
+  public Proposition(Subject subject, String predicate) {
     this(subject, predicate, false);
   }
 
   /**
-   * Constructs and initializes a {@code Proposition} with the given subject and predicate.
+   * Constructs and initializes a {@code Proposition} with the given subject, container, and
+   * predicate.
    *
    * @param subject the subject of the proposition
    * @param predicate the predicate associated with the subject
    * @param isNegative true if this Proposition is the negation of the given predicate, false
    *     otherwise
    */
-  public Proposition(String subject, String predicate, boolean isNegative) {
+  public Proposition(Subject subject, String predicate, boolean isNegative) {
     this.subject = Objects.requireNonNull(subject);
     this.predicate = Objects.requireNonNull(predicate);
     this.isNegative = isNegative;
@@ -41,7 +43,7 @@ public class Proposition {
    *
    * @return the subject of the proposition
    */
-  public String getSubject() {
+  public Subject getSubject() {
     return subject;
   }
 
@@ -129,7 +131,7 @@ public class Proposition {
   @Override
   public String toString() {
     StringBuilder result = new StringBuilder("(" + getSubject() + ", ");
-    result.append(isNegative ? "not (" + predicate + ")" : predicate);
+    result.append(isNegative ? "not(" + predicate + ")" : predicate);
     result.append(")");
     if (getTranslation().isPresent()) {
       result.append(" -> " + getTranslation());

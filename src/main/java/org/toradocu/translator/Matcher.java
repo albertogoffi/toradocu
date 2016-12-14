@@ -3,12 +3,9 @@ package org.toradocu.translator;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.net.URLClassLoader;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.util.Reflection;
@@ -25,9 +22,6 @@ public class Matcher {
    */
   private static final int EDIT_DISTANCE_THRESHOLD = Toradocu.configuration.getDistanceThreshold();
 
-  private static URLClassLoader classLoader;
-  private static final Logger log = LoggerFactory.getLogger(Matcher.class);
-
   /**
    * Takes the subject of a proposition in a Javadoc comment and the {@code DocumentedMethod} that
    * subject was extracted from. Then returns all {@code CodeElement}s that match (i.e. have a
@@ -39,7 +33,6 @@ public class Matcher {
    */
   public static Set<CodeElement<?>> subjectMatch(String subject, DocumentedMethod method) {
     // Extract every CodeElement associated with the method and the containing class of the method.
-    Class<?> containingClass = Reflection.getClass(method.getContainingClass().getQualifiedName());
     Set<CodeElement<?>> codeElements = JavaElementsCollector.collect(method);
 
     // Clean the subject string by removing words and characters not related to its identity so that
@@ -56,10 +49,24 @@ public class Matcher {
   }
 
   /**
+   * Takes the container of a proposition in a Javadoc comment and the {@code DocumentedMethod} that
+   * container was extracted from. Then returns the {@code CodeElement} that matches (i.e. has a
+   * similar name to) the given container string.
+   *
+   * @param container the container of a proposition from a Javadoc comment
+   * @param method the {@code DocumentedMethod} that the subject was extracted from
+   * @return the {@code CodeElement} that has a similar name to the container
+   */
+  public static CodeElement<?> containerMatch(String container, DocumentedMethod method) {
+    final Set<CodeElement<?>> containers = subjectMatch(container, method);
+    return !containers.isEmpty() ? containers.iterator().next() : null;
+  }
+
+  /**
    * Returns the set of {@code CodeElement}s that match the given filter string.
    *
-   * @param filter the string to match {@CodeElement}s against
-   * @param codeElements the set of {@CodeElement}s to filter
+   * @param filter the string to match {@code CodeElement}s against
+   * @param codeElements the set of {@code CodeElement}s to filter
    * @return a set of {@code CodeElement}s that match the given string
    */
   private static Set<CodeElement<?>> filterMatchingCodeElements(
@@ -106,7 +113,12 @@ public class Matcher {
     // General case
     String match = simpleMatch(predicate);
     if (match != null) {
-      match = subject.getJavaExpression() + match;
+      if (subject instanceof ContainerElementsCodeElement) {
+        ContainerElementsCodeElement containerCodeElement = (ContainerElementsCodeElement) subject;
+        match = containerCodeElement.getJavaExpression(match);
+      } else {
+        match = subject.getJavaExpression() + match;
+      }
     } else {
       Set<CodeElement<?>> codeElements = null;
       if (subject instanceof ParameterCodeElement) {
@@ -234,8 +246,9 @@ public class Matcher {
    */
   protected static String simpleMatch(String predicate) {
     String verbs = "(is|are|is equal to|are equal to|equals to) ?";
+
     String predicates =
-        "(true|false|null|zero|positive|strictly positive|negative|strictly " + "negative)";
+        "(true|false|null|this|zero|positive|strictly positive|negative|strictly negative)";
 
     java.util.regex.Matcher isPattern =
         Pattern.compile(verbs + "(==|=)? ?" + predicates).matcher(predicate);
@@ -253,6 +266,9 @@ public class Matcher {
       String lastWord = isPattern.group(isPattern.groupCount());
       if (lastWord.equals("true") || lastWord.equals("false") || lastWord.equals("null")) {
         return "==" + lastWord;
+      } else if (lastWord.equals("this")) {
+        // The receiver object in the generated aspects.
+        return "==target";
       } else if (lastWord.equals("zero")) {
         return "==0";
       } else if (lastWord.equals("positive") || lastWord.equals("strictly positive")) {

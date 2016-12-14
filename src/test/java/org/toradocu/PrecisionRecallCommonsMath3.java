@@ -32,36 +32,33 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testSimpsonIntegrator() throws Exception {
-    test("org.apache.commons.math3.analysis.integration.SimpsonIntegrator", 1.0, 0.357);
+    test("org.apache.commons.math3.analysis.integration.SimpsonIntegrator", 1.0, 0.181);
   }
 
   @Test
   public void testStepFunction() throws Exception {
-    test("org.apache.commons.math3.analysis.function.StepFunction", 0.5, 0.4);
+    test("org.apache.commons.math3.analysis.function.StepFunction", 0.333, 0.25);
   }
 
   @Test
   public void testIterativeLegendreGaussIntegrator() throws Exception {
     test(
-        "org.apache.commons.math3.analysis.integration.IterativeLegendreGaussIntegrator",
-        1.0,
-        0.733);
+        "org.apache.commons.math3.analysis.integration.IterativeLegendreGaussIntegrator", 1.0, 0.5);
   }
 
   @Test
   public void testLinearInterpolator() throws Exception {
-    test("org.apache.commons.math3.analysis.interpolation.LinearInterpolator", 0.666, 0.4);
+    test("org.apache.commons.math3.analysis.interpolation.LinearInterpolator", 0, 0);
   }
 
   @Test
   public void testLoessInterpolator() throws Exception {
-    test("org.apache.commons.math3.analysis.interpolation.LoessInterpolator", 1.0, 0.6);
+    test("org.apache.commons.math3.analysis.interpolation.LoessInterpolator", 1.0, 0.111);
   }
 
   @Test
   public void testPolynomialFunctionNewtonForm() throws Exception {
-    test(
-        "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm", 0.625, 0.454);
+    test("org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm", 0.5, 0.333);
   }
 
   @Test
@@ -71,27 +68,27 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testCycleCrossover() throws Exception {
-    test("org.apache.commons.math3.genetics.CycleCrossover", 0.5, 0.25);
+    test("org.apache.commons.math3.genetics.CycleCrossover", 1, 0.333);
   }
 
   @Test
   public void testBigFraction() throws Exception {
-    test("org.apache.commons.math3.fraction.BigFraction", 0.608, 0.518);
+    test("org.apache.commons.math3.fraction.BigFraction", 0.5, 0.409);
   }
 
   @Test
   public void testFraction() throws Exception {
-    test("org.apache.commons.math3.fraction.Fraction", 0.714, 0.652);
+    test("org.apache.commons.math3.fraction.Fraction", 0.5, 0.428);
   }
 
   @Test
   public void testLine() throws Exception {
-    test("org.apache.commons.math3.geometry.euclidean.threed.Line", 0.0, 0.0);
+    test("org.apache.commons.math3.geometry.euclidean.threed.Line", 0, 0);
   }
 
   @Test
   public void testSubLine() throws Exception {
-    test("org.apache.commons.math3.geometry.euclidean.threed.SubLine", 1.0, 0.25);
+    test("org.apache.commons.math3.geometry.euclidean.threed.SubLine", 0, 0);
   }
 
   @Test
@@ -101,16 +98,16 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testS2Point() throws Exception {
-    test("org.apache.commons.math3.geometry.spherical.twod.S2Point", 0.666, 0.666);
+    test("org.apache.commons.math3.geometry.spherical.twod.S2Point", 0, 0);
   }
 
   @Test
   public void testFieldRotation() throws Exception {
-    test("org.apache.commons.math3.geometry.euclidean.threed.FieldRotation", 0.5, 0.375);
+    test("org.apache.commons.math3.geometry.euclidean.threed.FieldRotation", 0, 0);
   }
 
   @Test
   public void testRealVector() throws Exception {
-    test("org.apache.commons.math3.linear.RealVector", 1.0, 0.46);
+    test("org.apache.commons.math3.linear.RealVector", 1.0, 0.13);
   }
 }

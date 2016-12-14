@@ -70,7 +70,7 @@
           "isArray": false
         },
         "comment": "if any predicate in the array is null",
-        "condition": "Arrays.asList(args[0]).contains(null)==true"
+        "condition": "java.util.Arrays.stream(args[0]).anyMatch(e -> e==null)"
       }
     ],
     "signature": "anyPredicate(org.apache.commons.collections4.Predicate[] predicates)"
@@ -115,7 +115,7 @@
           "isArray": false
         },
         "comment": "if any predicate in the array is null",
-        "condition": "args[0].contains(null)==true"
+        "condition": "args[0].stream().anyMatch(e -> e==null)"
       }
     ],
     "signature": "anyPredicate(java.util.Collection predicates)"

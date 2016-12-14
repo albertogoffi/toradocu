@@ -25,9 +25,9 @@ public class MethodStats {
    *
    * @return the recall
    */
-  public double getRecall() {
+  private double getRecall() {
     if (getNumberOfConditions() == 0) {
-      return 0; // Toradocu did not translated any condition
+      return 0; // Toradocu did not translate any condition
     }
     return correctTranslations / (double) getNumberOfConditions();
   }
@@ -37,9 +37,9 @@ public class MethodStats {
    *
    * @return the precision of the test case
    */
-  public double getPrecision() {
+  private double getPrecision() {
     if (correctTranslations + wrongTranslation == 0) {
-      return 1; // Toradocu did not translated any condition
+      return 1; // Toradocu did not translate any condition
     }
     return correctTranslations / (double) (correctTranslations + wrongTranslation);
   }
@@ -94,7 +94,11 @@ public class MethodStats {
         + SEPARATOR
         + Toradocu.configuration.getWordRemovalCost()
         + SEPARATOR
-        + getNumberOfConditions()
+        + correctTranslations
+        + SEPARATOR
+        + wrongTranslation
+        + SEPARATOR
+        + missingTranslations
         + SEPARATOR
         + getPrecision()
         + SEPARATOR
