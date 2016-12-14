@@ -2,19 +2,20 @@
 
 This tutorial illustrates how Toradocu can discover
 faults in a software system or incorrect assertions it its test suite.
-In this tutorial, the software under test is a toy class `net.Connection` that represents a network
-connection. The class offers the method `open` to establish a new connection, `isOpen` to check
-the connection status, and `send` to send a message using the opened connection.
 
 1. Compile Toradocu and download required dependencies: `./gradlew tutorial`
 
 2. Move to the tutorial directory: `cd tutorial`
 
-   The directory `tutorial/src` contains the source code of the system under test,
-   while the directory `tutorial/test` contains the source code of the developer-written test
-   suite. Please, take some time to read the source code of the class `net.ConnectionTest` and of
-   the test suite `net.ConnectionTest`.
+   The directory `tutorial/src` contains the source code of the system
+   under test:  a toy class [`net.Connection`](https://github.com/albertogoffi/toradocu/blob/master/tutorial/src/net/Connection.java) that represents a network
+   connection.  The class offers the method `open` to establish a new
+   connection, `isOpen` to check the connection status, and `send` to send
+   a message using the opened connection.  Take a moment to read their
+   [Javadoc documentation](https://github.com/albertogoffi/toradocu/blob/master/tutorial/src/net/Connection.java).
 
+   The directory `tutorial/test` contains the developer-written test
+   suite.
    The method `net.Connection#open` is called by the test case `net.ConnectionTest#open`, while
    the method `net.Connection#send` is called by the test case `net.ConnectionTest#send`.
 
