@@ -52,8 +52,6 @@ public class PrecisionRecallTest {
           targetClass,
           "--condition-translator-output",
           actualOutputFile,
-          "--oracle-generation",
-          "false",
           "--expected-output",
           goalOutputFile,
           "--class-dir",
@@ -62,6 +60,16 @@ public class PrecisionRecallTest {
           srcPath
         };
     final List<String> argsList = new ArrayList<>(Arrays.asList(toradocuArgs));
+
+    final String oracleGeneration = System.getProperty("org.toradocu.generator");
+    // Disable oracle generation unless the specific system property is set.
+    if (oracleGeneration != null && oracleGeneration.equals("true")) {
+      argsList.add("--aspects-output-dir");
+      argsList.add("aspects" + File.separator + targetClass);
+    } else {
+      argsList.add("--oracle-generation");
+      argsList.add("false");
+    }
 
     final String translator = System.getProperty("org.toradocu.translator");
     if (translator != null && translator.equals("tcomment")) {

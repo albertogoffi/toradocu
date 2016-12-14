@@ -171,7 +171,7 @@ task extractSources(dependsOn: downloadSources) {
 }
 
 task removeTestOutputDirs(type: Delete) {
-  delete 'build/test-results'
+  delete 'build/test-results', 'aspects'
 }
 
 test.dependsOn removeTestOutputDirs, extractSources, extractBinaries

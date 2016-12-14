@@ -42,7 +42,7 @@ public class OracleGenerator {
     }
 
     String aspectDir = Toradocu.configuration.getAspectsOutputDir();
-    new File(aspectDir).mkdir();
+    new File(aspectDir).mkdirs();
 
     List<String> createdAspectNames = new ArrayList<>();
     int aspectNumber = 1;

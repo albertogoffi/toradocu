@@ -107,3 +107,18 @@ the connection status, and `send` to send a message using the opened connection.
    In other words, Toradocu allowed you to discover a previously unknown bug in the software
    under test, transforming a test case that was not failing (false negative) into a failing
    test case (true positive).
+
+## Run Toradocu on Multiple Classes
+
+Precision and recall of Toradocu are measured on a fairly large test suite. The test suite runs
+Toradocu on several classes of real open source projects like
+[Google Guava](https://github.com/google/guava) and
+[Apache Commons Math](https://commons.apache.org/proper/commons-math/). The total amount of Java
+methods whose comments are analyzed by Toradocu is around 300.
+
+The following command runs Toradocu precision/recall test suite keeping the aspects generation
+enabled (it is off by default during precision/recall measurement.)
+```
+./gradlew test --tests "org.toradocu.PrecisionRecall*" -Dorg.toradocu.generator=true
+```
+Generated aspects are saved in the folder `aspects` in the project root folder.
