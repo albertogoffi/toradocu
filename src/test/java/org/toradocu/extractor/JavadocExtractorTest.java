@@ -41,33 +41,33 @@ public class JavadocExtractorTest {
     List<DocumentedMethod> expected = new ArrayList<>();
     Type aClass = new Type("example.AClass");
 
-    tags.add(new ThrowsTag(npe, "always"));
-    expected.add(new DocumentedMethod(aClass, "AClass", null, null, false, tags, null));
+    tags.add(new ThrowsTag(npe, "always", null));
+    expected.add(new DocumentedMethod(aClass, "AClass", null, null, false, tags));
 
     params.add(new Parameter(new Type("java.lang.String"), "x"));
     tags.clear();
-    tags.add(new ThrowsTag(npe, "if x is null"));
-    tags.add(new ThrowsTag(new Type("example.exception.AnException"), "if x is empty"));
-    expected.add(new DocumentedMethod(aClass, "AClass", null, params, false, tags, null));
+    tags.add(new ThrowsTag(npe, "if x is null", null));
+    tags.add(new ThrowsTag(new Type("example.exception.AnException"), "if x is empty", null));
+    expected.add(new DocumentedMethod(aClass, "AClass", null, params, false, tags));
 
     params.clear();
     params.add(new Parameter(new Type("int[]"), "array", true));
     tags.clear();
-    tags.add(new ThrowsTag(npe, "if array is null"));
-    expected.add(new DocumentedMethod(aClass, "foo", doubleType, params, false, tags, null));
+    tags.add(new ThrowsTag(npe, "if array is null", null));
+    expected.add(new DocumentedMethod(aClass, "foo", doubleType, params, false, tags));
 
     params.clear();
     params.add(new Parameter(objectType, "x", false));
     params.add(new Parameter(objectType, "y", false));
     tags.clear();
-    tags.add(new ThrowsTag(iae, "if x is null"));
-    expected.add(new DocumentedMethod(aClass, "bar", doubleType, params, false, tags, null));
+    tags.add(new ThrowsTag(iae, "if x is null", null));
+    expected.add(new DocumentedMethod(aClass, "bar", doubleType, params, false, tags));
 
     params.clear();
     params.add(new Parameter(objectType, "x"));
     tags.clear();
-    tags.add(new ThrowsTag(iae, "if x is null"));
-    expected.add(new DocumentedMethod(aClass, "baz", doubleType, params, false, tags, null));
+    tags.add(new ThrowsTag(iae, "if x is null", null));
+    expected.add(new DocumentedMethod(aClass, "baz", doubleType, params, false, tags));
 
     test(
         "example.AClass",
@@ -89,27 +89,27 @@ public class JavadocExtractorTest {
     Type aChild = new Type("example.AChild");
 
     params.add(new Parameter(objectType, "z"));
-    tags.add(new ThrowsTag(iae, "if z is null"));
-    expected.add(new DocumentedMethod(aChild, "baz", doubleType, params, false, tags, null));
+    tags.add(new ThrowsTag(iae, "if z is null", null));
+    expected.add(new DocumentedMethod(aChild, "baz", doubleType, params, false, tags));
 
     params.clear();
     params.add(new Parameter(objectArrayType, "x"));
     tags.clear();
-    tags.add(new ThrowsTag(iae, "if x is null"));
-    expected.add(new DocumentedMethod(aChild, "vararg", doubleType, params, true, tags, null));
+    tags.add(new ThrowsTag(iae, "if x is null", null));
+    expected.add(new DocumentedMethod(aChild, "vararg", doubleType, params, true, tags));
 
     params.clear();
     params.add(new Parameter(new Type("int[]"), "array", true));
     tags.clear();
-    tags.add(new ThrowsTag(npe, "if array is null"));
-    expected.add(new DocumentedMethod(aClass, "foo", doubleType, params, false, tags, null));
+    tags.add(new ThrowsTag(npe, "if array is null", null));
+    expected.add(new DocumentedMethod(aClass, "foo", doubleType, params, false, tags));
 
     params.clear();
     params.add(new Parameter(objectType, "x", false));
     params.add(new Parameter(objectType, "y", false));
     tags.clear();
-    tags.add(new ThrowsTag(iae, "if x is null"));
-    expected.add(new DocumentedMethod(aClass, "bar", doubleType, params, false, tags, null));
+    tags.add(new ThrowsTag(iae, "if x is null", null));
+    expected.add(new DocumentedMethod(aClass, "bar", doubleType, params, false, tags));
 
     test(
         "example.AChild",

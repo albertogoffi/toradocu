@@ -1,5 +1,8 @@
 package org.toradocu.extractor;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import org.toradocu.util.Checks;
@@ -20,6 +23,8 @@ public class ThrowsTag {
    * translation not yet attempted. Empty string if no translations found.
    */
   private String condition;
+  /** Code tags specified in the method's Javadoc. For now stored as simple Strings. */
+  private final List<String> codeTags;
 
   /**
    * Constructs a {@code ThrowsTag} with the given exception and comment.
@@ -28,11 +33,12 @@ public class ThrowsTag {
    * @param comment the comment associated with the exception
    * @throws NullPointerException if exception or comment is null
    */
-  public ThrowsTag(Type exception, String comment) {
+  public ThrowsTag(Type exception, String comment, Collection<String> codeTags) {
     Checks.nonNullParameter(exception, "exception");
     Checks.nonNullParameter(comment, "comment");
     this.comment = comment;
     this.exception = exception;
+    this.codeTags = codeTags == null ? new ArrayList<>() : new ArrayList<>(codeTags);
   }
 
   /**
@@ -73,6 +79,20 @@ public class ThrowsTag {
   public void setCondition(String condition) {
     Checks.nonNullParameter(condition, "condition");
     this.condition = condition;
+  }
+
+  public List<String> getCodeTags() {
+    return codeTags;
+  }
+
+  /* This method will be used to check if in the code tags of the method's Javadoc
+   * there is at least an element of the list passed as argument
+   * (e.g. the list can contain some parameter's identifiers) */
+  public boolean findCodeTag(List<String> list) {
+    for (String identifier : list) {
+      if (this.codeTags.contains(identifier)) return true;
+    }
+    return false;
   }
 
   /**

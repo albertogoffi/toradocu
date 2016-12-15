@@ -299,7 +299,11 @@ public class ConditionTranslator {
            * code tag in the method's Javadoc: isCode checks this property. If no
            * candidate is a code tag, for now the priority is assigned as usual.
            */
-          boolean isCode = method.findCodeTag(subjectMatch.getIdentifiers());
+          Set<ThrowsTag> throwsTag = method.throwsTags();
+          boolean isCode = false;
+
+          for (ThrowsTag throwTag : throwsTag)
+            isCode = throwTag.findCodeTag(subjectMatch.getIdentifiers());
 
           if (subjectMatch instanceof ParameterCodeElement && isCode) {
             preferredSubjectMatch = subjectMatch;
