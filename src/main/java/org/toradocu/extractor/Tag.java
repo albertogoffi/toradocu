@@ -2,7 +2,7 @@ package org.toradocu.extractor;
 
 import java.util.Optional;
 
-interface Tag {
+public interface Tag {
 
   /**
    * Returns the kind of this tag (e.g., @throws, @param).
