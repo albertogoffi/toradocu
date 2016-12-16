@@ -21,7 +21,7 @@ faults in a software system or incorrect assertions in its test suite.
 
 3. Compile the source code of the system under test: `javac src/net/Connection.java`
 
-4. Compile and execute the test suite
+4. Compile and execute the test suite:
    ```
    javac -cp junit-4.12.jar:src test/net/ConnectionTest.java
    java -cp junit-4.12.jar:hamcrest-core-1.3.jar:test:src org.junit.runner.JUnitCore net.ConnectionTest
@@ -34,7 +34,7 @@ faults in a software system or incorrect assertions in its test suite.
            at net.Connection.send(Connection.java:29)
            ... [many more lines of output]
    ```
-  The failing test case invoked the method `send` with a `null` argument.
+   The failing test case invoked the method `send` with a `null` argument.
    A failing test usually reveals a bug in the system under test.
    However,
    inspecting the Javadoc for the `send` method indicates that it is correct:
@@ -46,7 +46,7 @@ faults in a software system or incorrect assertions in its test suite.
    Toradocu can fix the test automatically.
 
 5. Run Toradocu to convert Javadoc comments into assertions, where the
-   assertions are expressed as aspects in the directory `aspects`.
+   assertions are expressed as aspects in the directory `aspects`:
    ```
    java -jar ../build/libs/toradocu-1.0-all.jar \
    --target-class net.Connection \
@@ -75,21 +75,23 @@ faults in a software system or incorrect assertions in its test suite.
       ...
    ```
 
-6. Compile the generated aspects and weave them into the test suite of the system under test
+6. Compile the generated aspects and weave them into the test suite of the system under test:
    ```
    javac -g -cp aspectjrt-1.8.9.jar:src:junit-4.12.jar aspects/Aspect_*.java
    java -cp aspectjtools-1.8.9.jar:aspectjweaver-1.8.9.jar:aspectjrt-1.8.9.jar:src org.aspectj.tools.ajc.Main -inpath aspects:test -outjar weaved_testsuite.jar -showWeaveInfo
    ```
    The AspectJ tool outputs some information starting with `Join point ...`.
 
-7. Run the test suite augmented with Toradocu's oracles
+7. Run the test suite augmented with Toradocu's oracles:
    ```
    java -cp junit-4.12.jar:hamcrest-core-1.3.jar:src:weaved_testsuite.jar:aspectjrt-1.8.9.jar org.junit.runner.JUnitCore net.ConnectionTest
    ```
-   The test suite execution still terminates with one failure, but this time is referring to a
-   different test case. What happened is that fixing the assertions, *Toradocu eliminated the
-   false positive failure* (transformed a false positive into a true negative), and let another
-   test case fail:
+   There are two things to notice about the test results.
+    1. The test that previously failed incorrectly (a false positive alarm)
+       now passes:  Toradocu has corrected the incorrect test.
+    2. A different test fails.  That test case had been incorrect (a missed
+       alarm or false negative), but the test case is now correct,
+       and its failure indicates a defect in the program under test.
 
    ```
    There was 1 failure:
@@ -97,24 +99,21 @@ faults in a software system or incorrect assertions in its test suite.
    java.lang.AssertionError: Triggered aspect: Aspect_1 (ConnectionTest.java:13) -> Failure: Expected exception not thrown. Expected exceptions were: java.lang.IllegalStateException
            ... [many more lines of output]
    ```
-   As the report says, *wrongly* the method `net.Connection#open` did not raise any exception
-   even though an `IllegalStateException` was expected. The method `net.Connection#open` is
-   supposed to throw an IllegalStateException if invoked on an open connection, but it does not.
-   In other words, Toradocu allowed you to discover a previously unknown bug in the software
+   As the report says, the method `net.Connection#open` should have raised
+   an `IllegalStateException` when invoked on an open connection, according
+   to its Javadoc specification.
+   In other words, Toradocu discovered a previously unknown bug in the software
    under test, transforming a test case that was not failing (false negative) into a failing
    test case (true positive).
 
 ## Run Toradocu on Multiple Classes
 
-Precision and recall of Toradocu are measured on a fairly large test suite. The test suite runs
-Toradocu on several classes of real open source projects like
+You can run Toradocu on about 300 real-world methods taken from
+open source projects like
 [Google Guava](https://github.com/google/guava) and
-[Apache Commons Math](https://commons.apache.org/proper/commons-math/). The total amount of Java
-methods whose comments are analyzed by Toradocu is around 300.
+[Apache Commons Math](https://commons.apache.org/proper/commons-math/)
 
-The following command runs Toradocu precision/recall test suite keeping the aspects generation
-enabled (it is off by default during precision/recall measurement.)
+To generate aspects for these methods in directory `aspects/`, run:
 ```
 ./gradlew test --tests "org.toradocu.PrecisionRecall*" -Dorg.toradocu.generator=true
 ```
-Generated aspects are saved in the folder `aspects` in the project root folder.
