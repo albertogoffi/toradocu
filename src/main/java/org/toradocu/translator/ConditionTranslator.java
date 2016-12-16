@@ -13,6 +13,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ParamTag;
+import org.toradocu.extractor.Tag;
 import org.toradocu.extractor.ThrowsTag;
 
 /**
@@ -31,45 +33,10 @@ public class ConditionTranslator {
    */
   public static void translate(List<DocumentedMethod> methods) {
     for (DocumentedMethod method : methods) {
-      for (ThrowsTag tag : method.throwsTags()) {
-        log.trace(
-            "Identifying propositions from: \""
-                + tag.exceptionComment()
-                + "\" in "
-                + method.getSignature());
 
-        String comment = tag.exceptionComment().trim();
+      for (ThrowsTag tag : method.throwsTags()) processTag(tag, method);
 
-        // Add end-of-sentence period, if missing.
-        if (!comment.endsWith(".")) {
-          comment += ".";
-        }
-
-        // Sanitize exception comment: remove initial "if".
-        String lowerCaseComment = comment.toLowerCase();
-        while (lowerCaseComment.startsWith("if ")) {
-          comment = comment.substring(3);
-          lowerCaseComment = comment.toLowerCase();
-        }
-
-        // Remove commas from the comment if enabled.
-        if (Toradocu.configuration != null && Toradocu.configuration.removeCommas()) {
-          comment = comment.replace(",", " ");
-        }
-        comment = comment.replace("  ", " ");
-
-        // Identify propositions in the comment. Each sentence in the comment is parsed into a
-        // PropositionSeries.
-        List<PropositionSeries> extractedPropositions = getPropositionSeries(comment);
-
-        Set<String> conditions = new LinkedHashSet<>();
-        // Identify Java code elements in propositions.
-        for (PropositionSeries propositions : extractedPropositions) {
-          translatePropositions(propositions, method);
-          conditions.add(propositions.getTranslation());
-        }
-        tag.setCondition(mergeConditions(conditions));
-      }
+      for (ParamTag tag : method.paramTags()) processTag(tag, method);
     }
   }
 
@@ -86,6 +53,7 @@ public class ConditionTranslator {
     for (SemanticGraph semanticGraph : StanfordParser.getSemanticGraphs(comment)) {
       result.add(new SentenceParser(semanticGraph).getPropositionSeries());
     }
+
     return removePlaceholders(result);
   }
 
@@ -231,12 +199,17 @@ public class ConditionTranslator {
   private static void translatePropositions(
       PropositionSeries propositionSeries, DocumentedMethod method) {
     for (Proposition p : propositionSeries.getPropositions()) {
+      Set<CodeElement<?>> subjectMatches;
+      subjectMatches = Matcher.subjectMatch(p.getSubject().getSubject(), method);
+      if (subjectMatches.isEmpty()) {
+        log.debug("Failed subject translation for: " + p);
+        return;
+      }
       final Set<CodeElement<?>> matchingCodeElements = new LinkedHashSet<>();
       final String container = p.getSubject().getContainer();
       if (container.isEmpty()) {
         // Subject match
-        Set<CodeElement<?>> subjectMatches =
-            Matcher.subjectMatch(p.getSubject().getSubject(), method);
+        subjectMatches = Matcher.subjectMatch(p.getSubject().getSubject(), method);
         if (subjectMatches.isEmpty()) {
           log.debug("Failed subject translation for: " + p);
           return;
@@ -361,5 +334,65 @@ public class ConditionTranslator {
     } else {
       return null;
     }
+  }
+
+  /**
+   * Method that process the comment in the tag and extracts the propositions from it.
+   *
+   * @param tag the tag provided by the method. Must not be null.
+   * @param method the method that contains the tag to analize. Must not be null.
+   */
+  private static void processTag(Tag tag, DocumentedMethod method) {
+
+    log.trace(
+        "Identifying propositions from: \"" + tag.getComment() + "\" in " + method.getSignature());
+
+    String comment = tag.getComment().trim();
+
+    // Add end-of-sentence period, if missing.
+    if (!comment.endsWith(".")) {
+      comment += ".";
+    }
+
+    String lowerCaseComment = comment.toLowerCase();
+
+    // Remove commas from the comment if enabled.
+    if (Toradocu.configuration != null && Toradocu.configuration.removeCommas()) {
+      comment = comment.replace(",", " ");
+    }
+
+    //@throws modifications
+    if (tag.getKind() == "@throws") {
+      while (lowerCaseComment.startsWith("if ")) {
+        comment = comment.substring(3);
+        lowerCaseComment = comment.toLowerCase();
+      }
+    }
+
+    //@param modifications
+    if (tag.getKind() == "@param") {
+      comment =
+          comment
+              .replace("must be", ((ParamTag) tag).parameter().getName() + " must be")
+              .replace("must not be", ((ParamTag) tag).parameter().getName() + " must not be")
+              .replace("will be", ((ParamTag) tag).parameter().getName() + " will be")
+              .replace("will not be", ((ParamTag) tag).parameter().getName() + " will not be")
+              .replace("can't be", ((ParamTag) tag).parameter().getName() + " can't be")
+              .replace("cannot be", ((ParamTag) tag).parameter().getName() + " cannot be")
+              .replace("should be", ((ParamTag) tag).parameter().getName() + " should be")
+              .replace("should not be", ((ParamTag) tag).parameter().getName() + " should not be")
+              .replace("shouldn't be", ((ParamTag) tag).parameter().getName() + " shouldn't be");
+    }
+
+    // Identify propositions in the comment. Each sentence in the comment is parsed into a
+    // PropositionSeries.
+    List<PropositionSeries> extractedPropositions = getPropositionSeries(comment);
+    Set<String> conditions = new LinkedHashSet<>();
+    // Identify Java code elements in propositions.
+    for (PropositionSeries propositions : extractedPropositions) {
+      translatePropositions(propositions, method);
+      conditions.add(propositions.getTranslation());
+    }
+    tag.setCondition(mergeConditions(conditions));
   }
 }

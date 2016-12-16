@@ -24,7 +24,7 @@ fun translate(methods: List<DocumentedMethod>) {
  * @param parameterNames names of the method's parameters to which [tag] belongs
  */
 fun translateTagComment(tag: ThrowsTag, parameterNames: List<String>) {
-  val commentWords = tag.exceptionComment().toLowerCase().replace(",", " ").split(" ")
+  val commentWords = tag.getComment().toLowerCase().replace(",", " ").split(" ")
   var condition = ""
   if (commentWords.contains("null")) {
     commentWords.intersect(parameterNames).forEach {

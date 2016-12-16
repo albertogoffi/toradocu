@@ -137,7 +137,7 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
                   .filter(stm -> stm instanceof IfStmt)
                   .findFirst();
           if (ifCondition.isPresent()) {
-            String comment = " @throws " + tag.exception() + " " + tag.exceptionComment();
+            String comment = " " + tag.getKind() + " " + tag.exception() + " " + tag.getComment();
             ifCondition.get().setComment(new LineComment(comment));
           }
 
