@@ -1,7 +1,7 @@
 # Tutorial
 
 This tutorial illustrates how Toradocu can discover
-faults in a software system or incorrect assertions it its test suite.
+faults in a software system or incorrect assertions in its test suite.
 
 1. Compile Toradocu and download required dependencies: `./gradlew tutorial`
 
@@ -34,21 +34,16 @@ faults in a software system or incorrect assertions it its test suite.
            at net.Connection.send(Connection.java:29)
            ... [many more lines of output]
    ```
-   Without Toradocu, you would normally have to look at the code of the failing test case, and
-   inspect the code of the method under test to understand the cause of the problem. In this
-   case, the test case failed because the method `send` has been invoked with a `null` argument.
-   Inspecting the source code you can realize that the expected behavior is exactly to throw a
-   `NullPointerException` when its argument is `null`. In other words, the test suite produced a
-   false positive: a test failure with a *correct* code under test.
+  The failing test case invoked the method `send` with a `null` argument.
+   A failing test usually reveals a bug in the system under test.
+   However,
+   inspecting the Javadoc for the `send` method indicates that it is correct:
+   its intended behavior to throw a
+   `NullPointerException` when its argument is `null`.
+   In other words, the test failure is a
+   false positive: the test is incorrect but the code under test is correct.
 
-   At this point you have two options:
-     1. Remove the failing test case from the test suite. The downside is that the exceptional
-        behavior of the method `send` is no longer tested. Generally speaking, testing less (cover
-        less software behaviors) is not a good choice.
-     2. Fix the test case and/or the assertions in the test case, so that the `NullPointerException`
-        is the expected behavior and the test case does not fail any longer.
-
-   Toradocu can fix your tests automatically.
+   Toradocu can fix the test automatically.
 
 5. Run Toradocu to convert Javadoc comments into assertions, where the
    assertions are expressed as aspects in the directory `aspects`.
