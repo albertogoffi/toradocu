@@ -8,6 +8,7 @@ import com.github.javaparser.Range;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.body.VariableDeclaratorId;
+import com.github.javaparser.ast.comments.LineComment;
 import com.github.javaparser.ast.expr.AnnotationExpr;
 import com.github.javaparser.ast.expr.Expression;
 import com.github.javaparser.ast.expr.NameExpr;
@@ -15,12 +16,14 @@ import com.github.javaparser.ast.expr.SingleMemberAnnotationExpr;
 import com.github.javaparser.ast.expr.StringLiteralExpr;
 import com.github.javaparser.ast.stmt.CatchClause;
 import com.github.javaparser.ast.stmt.IfStmt;
+import com.github.javaparser.ast.stmt.Statement;
 import com.github.javaparser.ast.stmt.TryStmt;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
 import com.github.javaparser.ast.visitor.ModifierVisitorAdapter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
@@ -87,6 +90,7 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
         try {
           conditionExpression = JavaParser.parseExpression(condition);
           ifStmt.setCondition(conditionExpression);
+          ifStmt.setComment(new LineComment("FOOOO"));
           // Add a try-catch block to prevent runtime error when looking for an exception type
           // that is not on the classpath.
           String addExpectedException =
@@ -121,6 +125,21 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
           TryStmt nullCheckTryCatch = new TryStmt();
           nullCheckTryCatch.setTryBlock(JavaParser.parseBlock("{" + ifStmt.toString() + "}"));
           nullCheckTryCatch.setCatchs(catchClauses);
+
+          // Add comment to if condition. The comment is the original comment in the Java source
+          // code that has been translated by Toradocu in the commented boolean condition.
+          // Comment has to be added here, cause otherwise is ignored by JavaParser.parseBlock.
+          final Optional<Statement> ifCondition =
+              nullCheckTryCatch
+                  .getTryBlock()
+                  .getStmts()
+                  .stream()
+                  .filter(stm -> stm instanceof IfStmt)
+                  .findFirst();
+          if (ifCondition.isPresent()) {
+            String comment = " " + tag.getKind() + " " + tag.exception() + " " + tag.getComment();
+            ifCondition.get().setComment(new LineComment(comment));
+          }
 
           ASTHelper.addStmt(methodDeclaration.getBody(), nullCheckTryCatch);
         } catch (ParseException e) {

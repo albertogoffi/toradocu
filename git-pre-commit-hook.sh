@@ -5,7 +5,7 @@ set -e
 
 CHANGED_JAVA_FILES=`git diff --staged --name-only --diff-filter=ACM | grep -v 'src/test/resources/aspects/*' | grep -v 'src/main/resources/AspectTemplate.java' | grep '\.java$'` || true
 if [ ! -z "$CHANGED_JAVA_FILES" ]; then
-    git -C .run-google-java-format pull -q || git clone -q https://github.com/plume-lib/run-google-java-format.git .run-google-java-format
+    (cd .run-google-java-format && git pull -q) || git clone -q https://github.com/plume-lib/run-google-java-format.git .run-google-java-format
     ./.run-google-java-format/check-google-java-format.py ${CHANGED_JAVA_FILES}
 fi
 

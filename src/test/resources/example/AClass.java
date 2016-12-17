@@ -13,6 +13,7 @@ public class AClass implements Interface {
   }
 
   /**
+   * @param x must not be null nor empty
    * @throws NullPointerException if x is null
    * @throws AnException if x is empty
    */
@@ -38,6 +39,7 @@ public class AClass implements Interface {
   }
 
   /**
+   * @param x must not be null
    * @throws IllegalArgumentException if x is null
    * @see example.Interface#baz(java.lang.Object)
    */

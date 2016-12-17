@@ -6,7 +6,7 @@ import com.github.javaparser.ast.CompilationUnit;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
@@ -42,7 +42,7 @@ public class OracleGenerator {
     }
 
     String aspectDir = Toradocu.configuration.getAspectsOutputDir();
-    new File(aspectDir).mkdir();
+    new File(aspectDir).mkdirs();
 
     List<String> createdAspectNames = new ArrayList<>();
     int aspectNumber = 1;
@@ -74,10 +74,12 @@ public class OracleGenerator {
 
     String aspectPath = Toradocu.configuration.getAspectsOutputDir() + File.separator + aspectName;
 
-    try (InputStream template =
-            Object.class.getResourceAsStream("/" + Toradocu.configuration.getAspectTemplate());
+    try (InputStreamReader template =
+            new InputStreamReader(
+                Object.class.getResourceAsStream(
+                    "/" + Toradocu.configuration.getAspectTemplate()));
         FileOutputStream output = new FileOutputStream(new File(aspectPath + ".java"))) {
-      CompilationUnit cu = JavaParser.parse(template);
+      CompilationUnit cu = JavaParser.parse(template, true);
 
       new MethodChangerVisitor().visit(cu, method);
       new ClassChangerVisitor().visit(cu, aspectName);

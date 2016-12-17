@@ -129,7 +129,15 @@ public class Toradocu {
     // === Condition Translator ===
 
     if (configuration.isConditionTranslationEnabled()) {
-      ConditionTranslator.translate(methods);
+
+      // Use @tComment or the standard condition translator to translate comments.
+      if (configuration.useTComment()) {
+        tcomment.TcommentKt.translate(methods);
+      } else {
+        ConditionTranslator.translate(methods);
+      }
+
+      // Output the result on a file or on the standard output.
       if (configuration.getConditionTranslatorOutput() != null) {
         try (BufferedWriter writer =
             Files.newBufferedWriter(

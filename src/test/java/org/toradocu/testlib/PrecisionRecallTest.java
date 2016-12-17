@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.toradocu.Toradocu;
@@ -44,23 +46,42 @@ public class PrecisionRecallTest {
     String goalOutputFile = Paths.get(goalOutputDir, targetClass + "_goal.json").toString();
     String message = "=== Test " + targetClass + " ===";
 
-    Toradocu.main(
+    String[] toradocuArgs =
         new String[] {
           "--target-class",
           targetClass,
           "--condition-translator-output",
           actualOutputFile,
-          "--oracle-generation",
-          "false",
           "--expected-output",
           goalOutputFile,
-          "--stats-file",
-          "results.csv",
           "--class-dir",
           binPath,
           "--source-dir",
           srcPath
-        });
+        };
+    final List<String> argsList = new ArrayList<>(Arrays.asList(toradocuArgs));
+
+    final String oracleGeneration = System.getProperty("org.toradocu.generator");
+    // Disable oracle generation unless the specific system property is set.
+    if (oracleGeneration != null && oracleGeneration.equals("true")) {
+      argsList.add("--aspects-output-dir");
+      argsList.add("aspects" + File.separator + targetClass);
+    } else {
+      argsList.add("--oracle-generation");
+      argsList.add("false");
+    }
+
+    final String translator = System.getProperty("org.toradocu.translator");
+    if (translator != null && translator.equals("tcomment")) {
+      argsList.add("--tcomment");
+      argsList.add("--stats-file");
+      argsList.add("tcomment_results.csv");
+    } else {
+      argsList.add("--stats-file");
+      argsList.add("results.csv");
+    }
+
+    Toradocu.main(argsList.toArray(new String[0]));
     return compare(targetClass, actualOutputFile, goalOutputFile, message);
   }
 
@@ -113,10 +134,10 @@ public class PrecisionRecallTest {
             } else {
               errors = true;
               if (actualCondition.isEmpty()) {
-                methodReport.append("Empty condition. Comment: " + goalTag.exceptionComment());
+                methodReport.append("Empty condition. Comment: " + goalTag.getComment());
               } else {
                 result.incrementFP();
-                methodReport.append("Wrong condition. Comment: " + goalTag.exceptionComment());
+                methodReport.append("Wrong condition. Comment: " + goalTag.getComment());
               }
               methodReport.append(
                   " | Goal condition: "

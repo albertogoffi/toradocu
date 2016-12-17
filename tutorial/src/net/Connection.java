@@ -1,8 +1,14 @@
 package net;
 
+/** A network connection. */
 public class Connection {
 
   private boolean open = false;
+
+  /** @returns true if the connection is open, false otherwise */
+  public boolean isOpen() {
+    return open;
+  }
 
   /**
    * Establishes a new connection.
@@ -10,14 +16,26 @@ public class Connection {
    * @throws IllegalStateException if the connection is already open
    */
   public void open() {
-    // establish a new connection...
+    // Establish a new connection.
+
+    // ... code elided ...
+
     open = true;
   }
 
   /**
-   * @returns true if the connection is open, false otherwise
+   * Sends a message.
+   *
+   * @throws NullPointerException if message is null
    */
-  public boolean isOpen() {
-    return open;
+  public void send(String message) {
+    // Optimization: no action if message is empty.
+    if (message.isEmpty()) {
+      return;
+    }
+
+    // Send the message.
+
+    // ... code elided ...
   }
 }

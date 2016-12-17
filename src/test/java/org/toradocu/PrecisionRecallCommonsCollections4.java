@@ -28,12 +28,12 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testClosureUtils() throws Exception {
-    test("org.apache.commons.collections4.ClosureUtils", 0.888, 0.695);
+    test("org.apache.commons.collections4.ClosureUtils", 1.0, 0.695);
   }
 
   @Test
   public void testCollectionUtils() throws Exception {
-    test("org.apache.commons.collections4.CollectionUtils", 0.893, 0.806);
+    test("org.apache.commons.collections4.CollectionUtils", 0.964, 0.870);
   }
 
   @Test
