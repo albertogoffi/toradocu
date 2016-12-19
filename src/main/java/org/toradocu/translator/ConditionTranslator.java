@@ -283,7 +283,7 @@ public class ConditionTranslator {
           boolean isCode = false;
 
           for (ThrowsTag throwTag : throwsTag)
-            isCode = throwTag.findCodeTag(subjectMatch.getIdentifiers());
+            isCode = throwTag.intersect(subjectMatch.getIdentifiers());
 
           if (subjectMatch instanceof ParameterCodeElement && isCode) {
             preferredSubjectMatch = subjectMatch;

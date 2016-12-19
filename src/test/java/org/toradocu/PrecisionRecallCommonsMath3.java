@@ -27,7 +27,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testFunctionUtils() throws Exception {
-    test("org.apache.commons.math3.analysis.FunctionUtils", 0.0, 0.0);
+    test("org.apache.commons.math3.analysis.FunctionUtils", 1.0, 0.5);
   }
 
   @Test

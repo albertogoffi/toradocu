@@ -14,7 +14,7 @@ public class ThrowsTagTest {
 
   @Test
   public void testBasics() {
-    ThrowsTag tag = new ThrowsTag(npe, "if x is null", null);
+    ThrowsTag tag = new ThrowsTag(npe, "if x is null");
     assertThat(tag.getComment(), is("if x is null"));
     assertThat(tag.exception(), is(npe));
     assertThat(tag.getCondition().isPresent(), is(false));
@@ -30,7 +30,7 @@ public class ThrowsTagTest {
 
   @Test
   public void testToString() {
-    ThrowsTag tag = new ThrowsTag(npe, "if x is null", null);
+    ThrowsTag tag = new ThrowsTag(npe, "if x is null");
     assertThat(tag.toString(), is("@throws java.lang.NullPointerException if x is null"));
 
     tag.setCondition("x == null");
@@ -46,8 +46,8 @@ public class ThrowsTagTest {
 
   @Test
   public void testEquals() {
-    ThrowsTag tag1 = new ThrowsTag(npe, "if x is null", null);
-    ThrowsTag tag2 = new ThrowsTag(npe, "if x is null", null);
+    ThrowsTag tag1 = new ThrowsTag(npe, "if x is null");
+    ThrowsTag tag2 = new ThrowsTag(npe, "if x is null");
     assertThat(tag1.equals(tag2), is(true));
     assertThat(tag1.hashCode(), is(equalTo(tag2.hashCode())));
     assertThat(tag1.equals(new Object()), is(false));
@@ -60,10 +60,10 @@ public class ThrowsTagTest {
     tag2.setCondition("x == null || y == null");
     assertThat(tag1.equals(tag2), is(false));
 
-    ThrowsTag tag3 = new ThrowsTag(npe, "if y is null", null);
+    ThrowsTag tag3 = new ThrowsTag(npe, "if y is null");
     assertThat(tag1.equals(tag3), is(false));
 
-    ThrowsTag tag4 = new ThrowsTag(iae, "if x is null", null);
+    ThrowsTag tag4 = new ThrowsTag(iae, "if x is null");
     assertThat(tag1.equals(tag4), is(false));
   }
 }

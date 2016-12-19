@@ -19,10 +19,11 @@ public class ThrowsTag extends AbstractTag {
   private final List<String> codeTags;
 
   /**
-   * Constructs a {@code ThrowsTag} with the given exception and comment.
+   * Constructs a {@code ThrowsTag} with the given exception, comment, and words tagged with @code
    *
    * @param exception the exception type
    * @param comment the comment associated with the exception
+   * @param codeTags words tagged with @code
    * @throws NullPointerException if exception or comment is null
    */
   public ThrowsTag(Type exception, String comment, Collection<String> codeTags) {
@@ -30,6 +31,17 @@ public class ThrowsTag extends AbstractTag {
     Checks.nonNullParameter(exception, "exception");
     this.exception = exception;
     this.codeTags = codeTags == null ? new ArrayList<>() : new ArrayList<>(codeTags);
+  }
+
+  /**
+   * Constructs a {@code ThrowsTag} with the given exception and comment.
+   *
+   * @param exception the exception type
+   * @param comment the comment associated with the exception
+   * @throws NullPointerException if exception or comment is null
+   */
+  public ThrowsTag(Type exception, String comment) {
+    this(exception, comment, null);
   }
 
   /**
@@ -41,18 +53,25 @@ public class ThrowsTag extends AbstractTag {
     return exception;
   }
 
+  /**
+   * Returns the words tagged with @code in the comment of this ThrowsTag
+   *
+   * @return the words tagged with @code in the comment of this ThrowsTag
+   */
   public List<String> getCodeTags() {
     return codeTags;
   }
 
-  /* This method will be used to check if in the code tags of the method's Javadoc
-   * there is at least an element of the list passed as argument
-   * (e.g. the list can contain some parameter's identifiers) */
-  public boolean findCodeTag(List<String> list) {
-    for (String identifier : list) {
-      if (this.codeTags.contains(identifier)) return true;
-    }
-    return false;
+  /**
+   * Checks if in the code tags of this ThrowsTag there is at least an element of {@code
+   * wordsTaggedAsCode}.
+   *
+   * @param wordsTaggedAsCode words tagged with @code
+   * @return {@code true} if the intersection between the words tagged with @code and {@code
+   *     wordsTaggedAsCode} is note empty, {@code false} otherwise
+   */
+  public boolean intersect(List<String> wordsTaggedAsCode) {
+    return codeTags.stream().filter(wordsTaggedAsCode::contains).count() != 0;
   }
 
   /**
