@@ -270,10 +270,27 @@ public class ConditionTranslator {
         // Only one of the subject matches should be used.
         // Prefer parameters, followed by classes, methods and fields.
         CodeElement<?> preferredSubjectMatch = null;
+
+        boolean pickedFirst = false;
+
         for (CodeElement<?> subjectMatch : translations.keySet()) {
-          if (subjectMatch instanceof ParameterCodeElement) {
+          /* If the indecision is between two subject matches that are absolutely
+           * equal candidates, then the priority goes to the one which is also a
+           * code tag in the method's Javadoc: isCode checks this property. If no
+           * candidate is a code tag, for now the priority is assigned as usual.
+           */
+          Set<ThrowsTag> throwsTag = method.throwsTags();
+          boolean isCode = false;
+
+          for (ThrowsTag throwTag : throwsTag)
+            isCode = throwTag.intersect(subjectMatch.getIdentifiers());
+
+          if (subjectMatch instanceof ParameterCodeElement && isCode) {
             preferredSubjectMatch = subjectMatch;
             break;
+          } else if (subjectMatch instanceof ParameterCodeElement && !pickedFirst) {
+            preferredSubjectMatch = subjectMatch;
+            pickedFirst = true;
           } else if (subjectMatch instanceof ClassCodeElement) {
             preferredSubjectMatch = subjectMatch;
           } else if (subjectMatch instanceof MethodCodeElement
@@ -362,7 +379,7 @@ public class ConditionTranslator {
     }
 
     //@throws modifications
-    if (tag.getKind() == "@throws") {
+    if (tag.getKind() == Tag.Kind.THROWS) {
       while (lowerCaseComment.startsWith("if ")) {
         comment = comment.substring(3);
         lowerCaseComment = comment.toLowerCase();
@@ -370,7 +387,7 @@ public class ConditionTranslator {
     }
 
     //@param modifications
-    if (tag.getKind() == "@param") {
+    if (tag.getKind() == Tag.Kind.PARAM) {
       comment =
           comment
               .replace("must be", ((ParamTag) tag).parameter().getName() + " must be")
