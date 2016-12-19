@@ -7,6 +7,7 @@
     },
     "name": "Strings",
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "Strings()"
@@ -32,6 +33,21 @@
         },
         "name": "string",
         "nullable": true
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "string"
+        },
+        "comment": "the string to test and possibly return",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -61,6 +77,21 @@
         "nullable": true
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "string"
+        },
+        "comment": "the string to test and possibly return",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "emptyToNull(java.lang.String string)"
@@ -86,6 +117,21 @@
         },
         "name": "string",
         "nullable": true
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "string"
+        },
+        "comment": "a string reference to check",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -130,6 +176,47 @@
         "name": "padChar"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "string"
+        },
+        "comment": "the string which should appear at the end of the result",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "minLength"
+        },
+        "comment": "the minimum length the resulting string must have. Can be zero or negative, in which case the input string is always returned.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "char",
+            "name": "char",
+            "isArray": false
+          },
+          "name": "padChar"
+        },
+        "comment": "the character to insert at the beginning of the result until the minimum length is reached",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "padStart(java.lang.String string,int minLength,char padChar)"
@@ -172,6 +259,47 @@
         "name": "padChar"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "string"
+        },
+        "comment": "the string which should appear at the beginning of the result",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "minLength"
+        },
+        "comment": "the minimum length the resulting string must have. Can be zero or negative, in which case the input string is always returned.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "char",
+            "name": "char",
+            "isArray": false
+          },
+          "name": "padChar"
+        },
+        "comment": "the character to append to the end of the result until the minimum length is reached",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "padEnd(java.lang.String string,int minLength,char padChar)"
@@ -206,6 +334,34 @@
         "name": "count"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "string"
+        },
+        "comment": "any non-null string",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "count"
+        },
+        "comment": "the number of times to repeat it; a nonnegative integer",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -215,6 +371,7 @@
           "isArray": false
         },
         "comment": "if count is negative",
+        "kind": "@throws",
         "condition": "args[1]<0"
       }
     ],
@@ -250,6 +407,7 @@
         "name": "b"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "commonPrefix(java.lang.CharSequence a,java.lang.CharSequence b)"
@@ -284,6 +442,7 @@
         "name": "b"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "commonSuffix(java.lang.CharSequence a,java.lang.CharSequence b)"
@@ -318,6 +477,7 @@
         "name": "index"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "validSurrogatePairAt(java.lang.CharSequence string,int index)"

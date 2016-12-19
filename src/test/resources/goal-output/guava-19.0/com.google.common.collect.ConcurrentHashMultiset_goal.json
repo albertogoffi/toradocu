@@ -16,6 +16,21 @@
         "name": "countMap"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.concurrent.ConcurrentMap",
+            "name": "ConcurrentMap",
+            "isArray": false
+          },
+          "name": "countMap"
+        },
+        "comment": "backing map for storing the elements in the multiset and their counts. It must be empty.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -25,6 +40,7 @@
           "isArray": false
         },
         "comment": "if countMap is not empty",
+        "kind": "@throws",
         "condition": "(args[0].isEmpty()) == false"
       }
     ],
@@ -43,6 +59,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "create()"
@@ -67,6 +84,21 @@
           "isArray": false
         },
         "name": "elements"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "elements"
+        },
+        "comment": "the elements that the multiset should contain",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -95,6 +127,7 @@
         "name": "mapMaker"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "create(com.google.common.collect.MapMaker mapMaker)"
@@ -122,6 +155,34 @@
         "nullable": true
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "element"
+        },
+        "comment": "the element to look for",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "element"
+        },
+        "comment": "the element to count occurrences of",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "count(java.lang.Object element)"
@@ -139,6 +200,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "size()"
@@ -153,9 +215,15 @@
     "returnType": {
       "qualifiedName": "java.lang.Object[]",
       "name": "Object[]",
-      "isArray": true
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "java.lang.Object",
+        "name": "Object",
+        "isArray": false
+      }
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toArray()"
@@ -170,21 +238,32 @@
     "returnType": {
       "qualifiedName": "T[]",
       "name": "T[]",
-      "isArray": true
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "T",
+        "name": "T",
+        "isArray": false
+      }
     },
     "parameters": [
       {
         "type": {
-          "qualifiedName": "T[]",
-          "name": "T[]",
-          "isArray": true
+          "qualifiedName": "java.lang.Object[]",
+          "name": "Object[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          }
         },
         "name": "array"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "toArray(T[] array)"
+    "signature": "toArray(java.lang.Object[] array)"
   },
   {
     "containingClass": {
@@ -199,6 +278,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "snapshot()"
@@ -218,8 +298,8 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "E",
-          "name": "E",
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
           "isArray": false
         },
         "name": "element"
@@ -233,6 +313,60 @@
         "name": "occurrences"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "element"
+        },
+        "comment": "the element to add",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "occurrences"
+        },
+        "comment": "the number of occurrences to add",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "element"
+        },
+        "comment": "the element to add occurrences of; may be null only if explicitly allowed by the implementation",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "occurrences"
+        },
+        "comment": "the number of occurrences of the element to add. May be zero, in which case no change will be made.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -242,6 +376,7 @@
           "isArray": false
         },
         "comment": "if occurrences is negative, or if the resulting amount would exceed Integer.MAX_VALUE",
+        "kind": "@throws",
         "condition": "args[1]<0"
       },
       {
@@ -251,6 +386,7 @@
           "isArray": false
         },
         "comment": "if occurrences is negative, or if this operation would result in more than Integer.MAX_VALUE occurrences of the element",
+        "kind": "@throws",
         "condition": "args[1]<0"
       },
       {
@@ -260,10 +396,11 @@
           "isArray": false
         },
         "comment": "if element is null and this implementation does not permit null elements. Note that if occurrences is zero, the implementation may opt to return normally.",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
-    "signature": "add(E element,int occurrences)"
+    "signature": "add(java.lang.Object element,int occurrences)"
   },
   {
     "containingClass": {
@@ -296,6 +433,60 @@
         "name": "occurrences"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "element"
+        },
+        "comment": "the element whose occurrences should be removed",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "occurrences"
+        },
+        "comment": "the number of occurrences of the element to remove",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "element"
+        },
+        "comment": "the element to conditionally remove occurrences of",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "occurrences"
+        },
+        "comment": "the number of occurrences of the element to remove. May be zero, in which case no change will be made.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -305,6 +496,7 @@
           "isArray": false
         },
         "comment": "if occurrences is negative",
+        "kind": "@throws",
         "condition": "args[1]<0"
       }
     ],
@@ -341,6 +533,34 @@
         "name": "occurrences"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "element"
+        },
+        "comment": "the element to remove",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "occurrences"
+        },
+        "comment": "the number of occurrences of element to remove",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -350,6 +570,7 @@
           "isArray": false
         },
         "comment": "if occurrences is negative",
+        "kind": "@throws",
         "condition": "args[1]<0"
       }
     ],
@@ -370,8 +591,8 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "E",
-          "name": "E",
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
           "isArray": false
         },
         "name": "element"
@@ -385,6 +606,34 @@
         "name": "count"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "element"
+        },
+        "comment": "the element to add or remove occurrences of; may be null only if explicitly allowed by the implementation",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "count"
+        },
+        "comment": "the desired count of the element in this multiset",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -394,6 +643,7 @@
           "isArray": false
         },
         "comment": "if count is negative",
+        "kind": "@throws",
         "condition": "args[1]<0"
       },
       {
@@ -403,10 +653,11 @@
           "isArray": false
         },
         "comment": "if element is null and this implementation does not permit null elements. Note that if count is zero, the implementor may optionally return zero instead.",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
-    "signature": "setCount(E element,int count)"
+    "signature": "setCount(java.lang.Object element,int count)"
   },
   {
     "containingClass": {
@@ -423,8 +674,8 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "E",
-          "name": "E",
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
           "isArray": false
         },
         "name": "element"
@@ -446,6 +697,34 @@
         "name": "newCount"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "element"
+        },
+        "comment": "the element to conditionally set the count of; may be null only if explicitly allowed by the implementation",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "newCount"
+        },
+        "comment": "the desired count of the element in this multiset",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -455,6 +734,7 @@
           "isArray": false
         },
         "comment": "if expectedOldCount or newCount is negative",
+        "kind": "@throws",
         "condition": "args[1]<0 || args[2]<0"
       },
       {
@@ -464,6 +744,7 @@
           "isArray": false
         },
         "comment": "if oldCount or newCount is negative",
+        "kind": "@throws",
         "condition": "args[1]<0 || args[2]<0"
       },
       {
@@ -473,10 +754,11 @@
           "isArray": false
         },
         "comment": "if element is null and the implementation does not permit null elements. Note that if oldCount and newCount are both zero, the implementor may optionally return true instead.",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
-    "signature": "setCount(E element,int expectedOldCount,int newCount)"
+    "signature": "setCount(java.lang.Object element,int expectedOldCount,int newCount)"
   },
   {
     "containingClass": {
@@ -491,6 +773,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "createElementSet()"
@@ -508,6 +791,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "createEntrySet()"
@@ -525,6 +809,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "distinctElements()"
@@ -542,6 +827,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isEmpty()"
@@ -559,6 +845,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "entryIterator()"
@@ -576,6 +863,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "clear()"
@@ -602,6 +890,7 @@
         "name": "stream"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "writeObject(java.io.ObjectOutputStream stream)"
@@ -628,6 +917,7 @@
         "name": "stream"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "readObject(java.io.ObjectInputStream stream)"
@@ -655,6 +945,21 @@
         "nullable": true
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "element"
+        },
+        "comment": "the element to check for",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "contains(java.lang.Object element)"
@@ -672,6 +977,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "iterator()"
@@ -691,12 +997,27 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "E",
-          "name": "E",
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
           "isArray": false
         },
         "name": "element",
         "nullable": true
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "element"
+        },
+        "comment": "the element to add one occurrence of; may be null only if explicitly allowed by the implementation",
+        "kind": "@param",
+        "condition": "args[0]==null"
       }
     ],
     "isVarArgs": false,
@@ -708,6 +1029,7 @@
           "isArray": false
         },
         "comment": "if element is null and this implementation does not permit null elements",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -717,10 +1039,11 @@
           "isArray": false
         },
         "comment": "if Integer.MAX_VALUE occurrences of element are already contained in this multiset",
+        "kind": "@throws",
         "condition": "target.count(element)==Integer.MAX_VALUE"
       }
     ],
-    "signature": "add(E element)"
+    "signature": "add(java.lang.Object element)"
   },
   {
     "containingClass": {
@@ -743,6 +1066,21 @@
         },
         "name": "element",
         "nullable": true
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "element"
+        },
+        "comment": "the element to remove one occurrence of",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -771,6 +1109,7 @@
         "name": "elementsToAdd"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "addAll(java.util.Collection elementsToAdd)"
@@ -797,6 +1136,7 @@
         "name": "elementsToRemove"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeAll(java.util.Collection elementsToRemove)"
@@ -823,6 +1163,7 @@
         "name": "elementsToRetain"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "retainAll(java.util.Collection elementsToRetain)"
@@ -840,6 +1181,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "elementSet()"
@@ -857,6 +1199,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "entrySet()"
@@ -884,6 +1227,7 @@
         "nullable": true
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "equals(java.lang.Object object)"
@@ -901,6 +1245,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hashCode()"
@@ -918,6 +1263,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toString()"
@@ -932,14 +1278,24 @@
     "returnType": {
       "qualifiedName": "T[]",
       "name": "T[]",
-      "isArray": true
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "T",
+        "name": "T",
+        "isArray": false
+      }
     },
     "parameters": [
       {
         "type": {
-          "qualifiedName": "T[]",
-          "name": "T[]",
-          "isArray": true
+          "qualifiedName": "java.lang.Object[]",
+          "name": "Object[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          }
         },
         "name": "arg0"
       },
@@ -952,9 +1308,10 @@
         "name": "arg1"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "finishToArray(T[] arg0,java.util.Iterator arg1)"
+    "signature": "finishToArray(java.lang.Object[] arg0,java.util.Iterator arg1)"
   },
   {
     "containingClass": {
@@ -978,6 +1335,7 @@
         "name": "arg0"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hugeCapacity(int arg0)"
@@ -1004,6 +1362,7 @@
         "name": "arg0"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "containsAll(java.util.Collection arg0)"

@@ -7,6 +7,7 @@
     },
     "name": "Verify",
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "Verify()"
@@ -33,6 +34,7 @@
         "name": "expression"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -42,6 +44,7 @@
           "isArray": false
         },
         "comment": "if expression is false",
+        "kind": "@throws",
         "condition": "args[0]==false"
       }
     ],
@@ -81,10 +84,61 @@
         "type": {
           "qualifiedName": "java.lang.Object[]",
           "name": "Object[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          }
         },
         "name": "errorMessageArgs",
         "nullable": true
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "expression"
+        },
+        "comment": "a boolean expression",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "errorMessageTemplate"
+        },
+        "comment": "a template for the exception message should the check fail. The message is formed by replacing each %s placeholder in the template with an argument. These are matched by position - the first %s gets errorMessageArgs[0], etc. Unmatched arguments will be appended to the formatted message in square braces. Unmatched placeholders will be left as-is.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object[]",
+            "name": "Object[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.Object",
+              "name": "Object",
+              "isArray": false
+            }
+          },
+          "name": "errorMessageArgs"
+        },
+        "comment": "the arguments to be substituted into the message template. Arguments are converted to strings using String.valueOf(Object).",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": true,
@@ -96,6 +150,7 @@
           "isArray": false
         },
         "comment": "if expression is false",
+        "kind": "@throws",
         "condition": "args[0]==false"
       }
     ],
@@ -116,14 +171,15 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "T",
-          "name": "T",
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
           "isArray": false
         },
         "name": "reference",
         "nullable": true
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -133,10 +189,11 @@
           "isArray": false
         },
         "comment": "if reference is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
-    "signature": "verifyNotNull(T reference)"
+    "signature": "verifyNotNull(java.lang.Object reference)"
   },
   {
     "containingClass": {
@@ -153,8 +210,8 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "T",
-          "name": "T",
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
           "isArray": false
         },
         "name": "reference",
@@ -173,10 +230,48 @@
         "type": {
           "qualifiedName": "java.lang.Object[]",
           "name": "Object[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          }
         },
         "name": "errorMessageArgs",
         "nullable": true
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "errorMessageTemplate"
+        },
+        "comment": "a template for the exception message should the check fail. The message is formed by replacing each %s placeholder in the template with an argument. These are matched by position - the first %s gets errorMessageArgs[0], etc. Unmatched arguments will be appended to the formatted message in square braces. Unmatched placeholders will be left as-is.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object[]",
+            "name": "Object[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.Object",
+              "name": "Object",
+              "isArray": false
+            }
+          },
+          "name": "errorMessageArgs"
+        },
+        "comment": "the arguments to be substituted into the message template. Arguments are converted to strings using String.valueOf(Object).",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": true,
@@ -188,9 +283,10 @@
           "isArray": false
         },
         "comment": "if reference is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
-    "signature": "verifyNotNull(T reference,java.lang.String errorMessageTemplate,java.lang.Object[] errorMessageArgs)"
+    "signature": "verifyNotNull(java.lang.Object reference,java.lang.String errorMessageTemplate,java.lang.Object[] errorMessageArgs)"
   }
 ]
