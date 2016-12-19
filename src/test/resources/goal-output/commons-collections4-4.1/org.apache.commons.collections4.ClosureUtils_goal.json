@@ -7,6 +7,7 @@
     },
     "name": "ClosureUtils",
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "ClosureUtils()"
@@ -24,6 +25,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "exceptionClosure()"
@@ -41,6 +43,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "nopClosure()"
@@ -65,6 +68,21 @@
           "isArray": false
         },
         "name": "transformer"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Transformer",
+            "name": "Transformer",
+            "isArray": false
+          },
+          "name": "transformer"
+        },
+        "comment": "the transformer to run each time in the closure, null means nop",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -101,6 +119,34 @@
         "name": "closure"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "count"
+        },
+        "comment": "the number of times to loop",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Closure",
+            "name": "Closure",
+            "isArray": false
+          },
+          "name": "closure"
+        },
+        "comment": "the closure to call repeatedly",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "forClosure(int count,org.apache.commons.collections4.Closure closure)"
@@ -135,6 +181,34 @@
         "name": "closure"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate to use as an end of loop test, not null",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Closure",
+            "name": "Closure",
+            "isArray": false
+          },
+          "name": "closure"
+        },
+        "comment": "the closure to call repeatedly, not null",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -144,6 +218,7 @@
           "isArray": false
         },
         "comment": "if either argument is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -179,6 +254,34 @@
         "name": "predicate"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Closure",
+            "name": "Closure",
+            "isArray": false
+          },
+          "name": "closure"
+        },
+        "comment": "the closure to call repeatedly, not null",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate to use as an end of loop test, not null",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -188,6 +291,7 @@
           "isArray": false
         },
         "comment": "if either argument is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -215,6 +319,21 @@
         "name": "methodName"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "methodName"
+        },
+        "comment": "the name of the method",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -224,6 +343,7 @@
           "isArray": false
         },
         "comment": "if the method name is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -254,7 +374,12 @@
         "type": {
           "qualifiedName": "java.lang.Class[]",
           "name": "Class[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          }
         },
         "name": "paramTypes"
       },
@@ -262,9 +387,65 @@
         "type": {
           "qualifiedName": "java.lang.Object[]",
           "name": "Object[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          }
         },
         "name": "args"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "methodName"
+        },
+        "comment": "the name of the method",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class[]",
+            "name": "Class[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.Class",
+              "name": "Class",
+              "isArray": false
+            }
+          },
+          "name": "paramTypes"
+        },
+        "comment": "the parameter types",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object[]",
+            "name": "Object[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.Object",
+              "name": "Object",
+              "isArray": false
+            }
+          },
+          "name": "args"
+        },
+        "comment": "the arguments",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -276,6 +457,7 @@
           "isArray": false
         },
         "comment": "if the method name is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -285,6 +467,7 @@
           "isArray": false
         },
         "comment": "if the paramTypes and args don't match",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -307,9 +490,34 @@
         "type": {
           "qualifiedName": "org.apache.commons.collections4.Closure[]",
           "name": "Closure[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "org.apache.commons.collections4.Closure",
+            "name": "Closure",
+            "isArray": false
+          }
         },
         "name": "closures"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Closure[]",
+            "name": "Closure[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "org.apache.commons.collections4.Closure",
+              "name": "Closure",
+              "isArray": false
+            }
+          },
+          "name": "closures"
+        },
+        "comment": "an array of closures to chain",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": true,
@@ -321,6 +529,7 @@
           "isArray": false
         },
         "comment": "if the closures array is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -330,6 +539,7 @@
           "isArray": false
         },
         "comment": "if any closure in the array is null",
+        "kind": "@throws",
         "condition": "java.util.Arrays.stream(args[0]).anyMatch(e -> e==null)"
       }
     ],
@@ -357,6 +567,21 @@
         "name": "closures"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "closures"
+        },
+        "comment": "a collection of closures to chain",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -366,6 +591,7 @@
           "isArray": false
         },
         "comment": "if the closures collection is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -375,6 +601,7 @@
           "isArray": false
         },
         "comment": "if any closure in the collection is null",
+        "kind": "@throws",
         "condition": "args[0].stream().anyMatch(e -> e==null)"
       },
       {
@@ -384,6 +611,7 @@
           "isArray": false
         },
         "comment": "if the closures collection is empty",
+        "kind": "@throws",
         "condition": "args[0].isEmpty()"
       }
     ],
@@ -419,6 +647,34 @@
         "name": "trueClosure"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the validating predicate",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Closure",
+            "name": "Closure",
+            "isArray": false
+          },
+          "name": "trueClosure"
+        },
+        "comment": "the closure called if the predicate is true",
+        "kind": "@param",
+        "condition": "args[0]==true"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -428,6 +684,7 @@
           "isArray": false
         },
         "comment": "if the predicate or closure is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -471,6 +728,47 @@
         "name": "falseClosure"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate to switch on",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Closure",
+            "name": "Closure",
+            "isArray": false
+          },
+          "name": "trueClosure"
+        },
+        "comment": "the closure called if the predicate is true",
+        "kind": "@param",
+        "condition": "args[0]==true"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Closure",
+            "name": "Closure",
+            "isArray": false
+          },
+          "name": "falseClosure"
+        },
+        "comment": "the closure called if the predicate is false",
+        "kind": "@param",
+        "condition": "args[0]==false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -480,6 +778,7 @@
           "isArray": false
         },
         "comment": "if the predicate or either closure is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null || args[2]==null"
       }
     ],
@@ -502,7 +801,12 @@
         "type": {
           "qualifiedName": "org.apache.commons.collections4.Predicate[]",
           "name": "Predicate[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          }
         },
         "name": "predicates"
       },
@@ -510,9 +814,52 @@
         "type": {
           "qualifiedName": "org.apache.commons.collections4.Closure[]",
           "name": "Closure[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "org.apache.commons.collections4.Closure",
+            "name": "Closure",
+            "isArray": false
+          }
         },
         "name": "closures"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate[]",
+            "name": "Predicate[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "org.apache.commons.collections4.Predicate",
+              "name": "Predicate",
+              "isArray": false
+            }
+          },
+          "name": "predicates"
+        },
+        "comment": "an array of predicates to check, not null",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Closure[]",
+            "name": "Closure[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "org.apache.commons.collections4.Closure",
+              "name": "Closure",
+              "isArray": false
+            }
+          },
+          "name": "closures"
+        },
+        "comment": "an array of closures to call, not null",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -524,6 +871,7 @@
           "isArray": false
         },
         "comment": "if the either array is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       },
       {
@@ -533,6 +881,7 @@
           "isArray": false
         },
         "comment": "if any element in the arrays is null",
+        "kind": "@throws",
         "condition": "java.util.Arrays.stream(args[0]).anyMatch(e -> e==null) || java.util.Arrays.stream(args[1]).anyMatch(e -> e==null)"
       },
       {
@@ -542,6 +891,7 @@
           "isArray": false
         },
         "comment": "if the arrays have different sizes",
+        "kind": "@throws",
         "condition": "args[0].length != args[1].length"
       }
     ],
@@ -564,7 +914,12 @@
         "type": {
           "qualifiedName": "org.apache.commons.collections4.Predicate[]",
           "name": "Predicate[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          }
         },
         "name": "predicates"
       },
@@ -572,7 +927,12 @@
         "type": {
           "qualifiedName": "org.apache.commons.collections4.Closure[]",
           "name": "Closure[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "org.apache.commons.collections4.Closure",
+            "name": "Closure",
+            "isArray": false
+          }
         },
         "name": "closures"
       },
@@ -585,6 +945,57 @@
         "name": "defaultClosure"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate[]",
+            "name": "Predicate[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "org.apache.commons.collections4.Predicate",
+              "name": "Predicate",
+              "isArray": false
+            }
+          },
+          "name": "predicates"
+        },
+        "comment": "an array of predicates to check, not null",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Closure[]",
+            "name": "Closure[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "org.apache.commons.collections4.Closure",
+              "name": "Closure",
+              "isArray": false
+            }
+          },
+          "name": "closures"
+        },
+        "comment": "an array of closures to call, not null",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Closure",
+            "name": "Closure",
+            "isArray": false
+          },
+          "name": "defaultClosure"
+        },
+        "comment": "the default to call if no predicate matches",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -594,6 +1005,7 @@
           "isArray": false
         },
         "comment": "if the either array is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       },
       {
@@ -603,6 +1015,7 @@
           "isArray": false
         },
         "comment": "if any element in the arrays is null",
+        "kind": "@throws",
         "condition": "java.util.Arrays.stream(args[0]).anyMatch(e -> e==null) || java.util.Arrays.stream(args[1]).anyMatch(e -> e==null)"
       },
       {
@@ -612,6 +1025,7 @@
           "isArray": false
         },
         "comment": "if the arrays are different sizes",
+        "kind": "@throws",
         "condition": "args[0].length != args[1].length"
       }
     ],
@@ -639,6 +1053,21 @@
         "name": "predicatesAndClosures"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Map",
+            "name": "Map",
+            "isArray": false
+          },
+          "name": "predicatesAndClosures"
+        },
+        "comment": "a map of predicates to closures",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -648,6 +1077,7 @@
           "isArray": false
         },
         "comment": "if the map is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -657,6 +1087,7 @@
           "isArray": false
         },
         "comment": "if any closure in the map is null",
+        "kind": "@throws",
         "condition": "args[0].values().stream().anyMatch(e -> e==null)"
       },
       {
@@ -666,6 +1097,7 @@
           "isArray": false
         },
         "comment": "if the map is empty",
+        "kind": "@throws",
         "condition": "args[0].isEmpty()"
       },
       {
@@ -675,6 +1107,7 @@
           "isArray": false
         },
         "comment": "if the map elements are of the wrong type",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -702,6 +1135,21 @@
         "name": "objectsAndClosures"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Map",
+            "name": "Map",
+            "isArray": false
+          },
+          "name": "objectsAndClosures"
+        },
+        "comment": "a map of objects to closures",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -711,6 +1159,7 @@
           "isArray": false
         },
         "comment": "if the map is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -720,6 +1169,7 @@
           "isArray": false
         },
         "comment": "if any closure in the map is null",
+        "kind": "@throws",
         "condition": "args[0].values().stream().anyMatch(e -> e==null)"
       },
       {
@@ -729,6 +1179,7 @@
           "isArray": false
         },
         "comment": "if the map is empty",
+        "kind": "@throws",
         "condition": "args[0].isEmpty()"
       }
     ],

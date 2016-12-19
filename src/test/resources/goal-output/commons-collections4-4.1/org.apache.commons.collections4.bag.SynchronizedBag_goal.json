@@ -16,6 +16,21 @@
         "name": "bag"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Bag",
+            "name": "Bag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag to decorate, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -25,6 +40,7 @@
           "isArray": false
         },
         "comment": "if bag is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -55,6 +71,34 @@
         "name": "lock"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Bag",
+            "name": "Bag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag to decorate, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "lock"
+        },
+        "comment": "the lock to use, must not be null",
+        "kind": "@param",
+        "condition": "(args[1]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -64,6 +108,7 @@
           "isArray": false
         },
         "comment": "if bag or lock is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -91,6 +136,21 @@
         "name": "bag"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Bag",
+            "name": "Bag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag to decorate, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -100,6 +160,7 @@
           "isArray": false
         },
         "comment": "if bag is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -118,6 +179,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getBag()"
@@ -144,6 +206,7 @@
         "name": "object"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "equals(java.lang.Object object)"
@@ -161,6 +224,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hashCode()"
@@ -193,6 +257,21 @@
           "isArray": false
         },
         "name": "count"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "object"
+        },
+        "comment": "the object to add",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -229,6 +308,21 @@
         "name": "count"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "object"
+        },
+        "comment": "the object to remove",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "remove(java.lang.Object object,int count)"
@@ -246,6 +340,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "uniqueSet()"
@@ -270,6 +365,21 @@
           "isArray": false
         },
         "name": "object"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "object"
+        },
+        "comment": "the object to search for",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -298,6 +408,21 @@
         "name": "coll"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "coll"
+        },
+        "comment": "the collection to decorate, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -307,6 +432,7 @@
           "isArray": false
         },
         "comment": "if collection is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -325,6 +451,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "decorated()"
@@ -351,6 +478,7 @@
         "name": "object"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "add(java.lang.Object object)"
@@ -377,6 +505,7 @@
         "name": "coll"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "addAll(java.util.Collection coll)"
@@ -394,6 +523,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "clear()"
@@ -420,6 +550,7 @@
         "name": "object"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "contains(java.lang.Object object)"
@@ -446,6 +577,7 @@
         "name": "coll"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "containsAll(java.util.Collection coll)"
@@ -463,6 +595,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isEmpty()"
@@ -480,6 +613,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "iterator()"
@@ -502,6 +636,7 @@
       }
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toArray()"
@@ -538,6 +673,7 @@
         "name": "object"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toArray(java.lang.Object[] object)"
@@ -564,6 +700,7 @@
         "name": "object"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "remove(java.lang.Object object)"
@@ -590,6 +727,7 @@
         "name": "coll"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeAll(java.util.Collection coll)"
@@ -616,6 +754,7 @@
         "name": "coll"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "retainAll(java.util.Collection coll)"
@@ -633,6 +772,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "size()"
@@ -650,6 +790,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toString()"
