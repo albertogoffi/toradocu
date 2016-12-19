@@ -379,7 +379,7 @@ public class ConditionTranslator {
     }
 
     //@throws modifications
-    if (tag.getKind() == "@throws") {
+    if (tag.getKind() == Tag.Kind.THROWS) {
       while (lowerCaseComment.startsWith("if ")) {
         comment = comment.substring(3);
         lowerCaseComment = comment.toLowerCase();
@@ -387,7 +387,7 @@ public class ConditionTranslator {
     }
 
     //@param modifications
-    if (tag.getKind() == "@param") {
+    if (tag.getKind() == Tag.Kind.PARAM) {
       comment =
           comment
               .replace("must be", ((ParamTag) tag).parameter().getName() + " must be")

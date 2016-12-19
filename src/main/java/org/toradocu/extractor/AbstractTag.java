@@ -10,7 +10,7 @@ class AbstractTag implements Tag {
   private final String comment;
 
   /** The kind of this tag (e.g., @throws, @param). */
-  private final String kind;
+  private final Kind kind;
 
   /**
    * Java boolean condition translated from the comment for this {@code ThrowsTag}. Null if
@@ -24,7 +24,7 @@ class AbstractTag implements Tag {
    * @param comment the comment associated with the exception
    * @throws NullPointerException if comment is null
    */
-  public AbstractTag(String kind, String comment) {
+  public AbstractTag(Kind kind, String comment) {
     Checks.nonNullParameter(kind, "kind");
     Checks.nonNullParameter(comment, "comment");
     this.kind = kind;
@@ -32,7 +32,7 @@ class AbstractTag implements Tag {
   }
 
   @Override
-  public String getKind() {
+  public Kind getKind() {
     return kind;
   }
 

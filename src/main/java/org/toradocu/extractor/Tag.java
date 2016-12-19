@@ -4,12 +4,29 @@ import java.util.Optional;
 
 public interface Tag {
 
+  enum Kind {
+    THROWS,
+    PARAM;
+
+    @Override
+    public String toString() {
+      switch (name()) {
+        case "THROWS":
+          return "@throws";
+        case "PARAM":
+          return "@param";
+        default:
+          throw new IllegalStateException("The value " + name() + " has no string representation.");
+      }
+    }
+  }
+
   /**
    * Returns the kind of this tag (e.g., @throws, @param).
    *
    * @return the kind of this tag
    */
-  String getKind();
+  Kind getKind();
 
   /**
    * Returns the translated Java boolean condition for this tag as an optional which is empty if

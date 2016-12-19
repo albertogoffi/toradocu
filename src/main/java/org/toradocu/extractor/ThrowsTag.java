@@ -27,7 +27,7 @@ public class ThrowsTag extends AbstractTag {
    * @throws NullPointerException if exception or comment is null
    */
   public ThrowsTag(Type exception, String comment, Collection<String> codeTags) {
-    super("@throws", comment);
+    super(Kind.THROWS, comment);
     Checks.nonNullParameter(exception, "exception");
     this.exception = exception;
     this.codeTags = codeTags == null ? new ArrayList<>() : new ArrayList<>(codeTags);
