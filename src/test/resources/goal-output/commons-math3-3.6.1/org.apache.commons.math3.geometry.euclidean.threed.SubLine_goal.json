@@ -24,6 +24,34 @@
         "name": "remainingRegion"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+            "name": "Line",
+            "isArray": false
+          },
+          "name": "line"
+        },
+        "comment": "underlying line",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+            "name": "IntervalsSet",
+            "isArray": false
+          },
+          "name": "remainingRegion"
+        },
+        "comment": "remaining region of the line",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "SubLine(org.apache.commons.math3.geometry.euclidean.threed.Line line,org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet remainingRegion)"
@@ -61,6 +89,47 @@
         "name": "tolerance"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+            "name": "Vector3D",
+            "isArray": false
+          },
+          "name": "start"
+        },
+        "comment": "start point",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+            "name": "Vector3D",
+            "isArray": false
+          },
+          "name": "end"
+        },
+        "comment": "end point",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "tolerance"
+        },
+        "comment": "tolerance below which points are considered identical",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -70,7 +139,8 @@
           "isArray": false
         },
         "comment": "if the points are equal",
-        "condition": "args[0].equals(args[1])"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "SubLine(org.apache.commons.math3.geometry.euclidean.threed.Vector3D start,org.apache.commons.math3.geometry.euclidean.threed.Vector3D end,double tolerance)"
@@ -100,6 +170,34 @@
         "name": "end"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+            "name": "Vector3D",
+            "isArray": false
+          },
+          "name": "start"
+        },
+        "comment": "start point",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+            "name": "Vector3D",
+            "isArray": false
+          },
+          "name": "end"
+        },
+        "comment": "end point",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -109,7 +207,8 @@
           "isArray": false
         },
         "comment": "if the points are equal",
-        "condition": "args[0].equals(args[1])"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "SubLine(org.apache.commons.math3.geometry.euclidean.threed.Vector3D start,org.apache.commons.math3.geometry.euclidean.threed.Vector3D end)"
@@ -131,6 +230,21 @@
         "name": "segment"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Segment",
+            "name": "Segment",
+            "isArray": false
+          },
+          "name": "segment"
+        },
+        "comment": "single segment forming the sub-line",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -140,6 +254,7 @@
           "isArray": false
         },
         "comment": "if the segment endpoints are equal",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -158,6 +273,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getSegments()"
@@ -190,6 +306,34 @@
           "isArray": false
         },
         "name": "includeEndPoints"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
+            "name": "SubLine",
+            "isArray": false
+          },
+          "name": "subLine"
+        },
+        "comment": "other sub-line which may intersect instance",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "includeEndPoints"
+        },
+        "comment": "if true, endpoints are considered to belong to instance (i.e. they are closed sets) and may be returned, otherwise endpoints are considered to not belong to instance (i.e. they are open sets) and intersection occurring on endpoints lead to null being returned",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -234,6 +378,47 @@
         "name": "tolerance"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+            "name": "Vector3D",
+            "isArray": false
+          },
+          "name": "start"
+        },
+        "comment": "start point",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+            "name": "Vector3D",
+            "isArray": false
+          },
+          "name": "end"
+        },
+        "comment": "end point",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "tolerance"
+        },
+        "comment": "tolerance below which points are considered identical",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -243,7 +428,8 @@
           "isArray": false
         },
         "comment": "if the points are equal",
-        "condition": "args[0].equals(args[1])"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "buildIntervalSet(org.apache.commons.math3.geometry.euclidean.threed.Vector3D start,org.apache.commons.math3.geometry.euclidean.threed.Vector3D end,double tolerance)"

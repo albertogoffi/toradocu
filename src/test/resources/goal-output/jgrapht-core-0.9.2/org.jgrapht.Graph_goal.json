@@ -29,6 +29,34 @@
         "name": "targetVertex"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "sourceVertex"
+        },
+        "comment": "source vertex of the edge.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "targetVertex"
+        },
+        "comment": "target vertex of the edge.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getAllEdges(java.lang.Object sourceVertex,java.lang.Object targetVertex)"
@@ -63,6 +91,34 @@
         "name": "targetVertex"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "sourceVertex"
+        },
+        "comment": "source vertex of the edge.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "targetVertex"
+        },
+        "comment": "target vertex of the edge.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getEdge(java.lang.Object sourceVertex,java.lang.Object targetVertex)"
@@ -80,6 +136,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getEdgeFactory()"
@@ -114,6 +171,34 @@
         "name": "targetVertex"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "sourceVertex"
+        },
+        "comment": "source vertex of the edge.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "targetVertex"
+        },
+        "comment": "target vertex of the edge.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -123,7 +208,8 @@
           "isArray": false
         },
         "comment": "if source or target vertices are not found in the graph.",
-        "condition": "target.contains(arg[0])==false || target.contains(arg[1])==false"
+        "kind": "@throws",
+        "condition": ""
       },
       {
         "exception": {
@@ -132,7 +218,8 @@
           "isArray": false
         },
         "comment": "if any of the specified vertices is null.",
-        "condition": "args[0]==null || args[1]==null"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "addEdge(java.lang.Object sourceVertex,java.lang.Object targetVertex)"
@@ -175,6 +262,47 @@
         "name": "e"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "sourceVertex"
+        },
+        "comment": "source vertex of the edge.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "targetVertex"
+        },
+        "comment": "target vertex of the edge.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "edge to be added to this graph.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -184,7 +312,8 @@
           "isArray": false
         },
         "comment": "if source or target vertices are not found in the graph.",
-        "condition": "target.contains(arg[0])==false || target.contains(arg[1])==false"
+        "kind": "@throws",
+        "condition": ""
       },
       {
         "exception": {
@@ -193,6 +322,7 @@
           "isArray": false
         },
         "comment": "if the specified edge is not assignment compatible with the class of edges produced by the edge factory of this graph.",
+        "kind": "@throws",
         "condition": ""
       },
       {
@@ -202,7 +332,8 @@
           "isArray": false
         },
         "comment": "if any of the specified vertices is null.",
-        "condition": "args[0]==null || args[1]==null"
+        "kind": "@throws",
+        "condition": "args[2]==null"
       }
     ],
     "signature": "addEdge(java.lang.Object sourceVertex,java.lang.Object targetVertex,java.lang.Object e)"
@@ -229,6 +360,21 @@
         "name": "v"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "vertex to be added to this graph.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -238,7 +384,8 @@
           "isArray": false
         },
         "comment": "if the specified vertex is null.",
-        "condition": "args[0]==null"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "addVertex(java.lang.Object v)"
@@ -273,6 +420,34 @@
         "name": "targetVertex"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "sourceVertex"
+        },
+        "comment": "source vertex of the edge.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "targetVertex"
+        },
+        "comment": "target vertex of the edge.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "containsEdge(java.lang.Object sourceVertex,java.lang.Object targetVertex)"
@@ -297,6 +472,21 @@
           "isArray": false
         },
         "name": "e"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "edge whose presence in this graph is to be tested.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -325,6 +515,21 @@
         "name": "v"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "vertex whose presence in this graph is to be tested.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "containsVertex(java.lang.Object v)"
@@ -342,6 +547,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "edgeSet()"
@@ -368,6 +574,21 @@
         "name": "vertex"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "vertex"
+        },
+        "comment": "the vertex for which a set of touching edges is to be returned.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -377,7 +598,8 @@
           "isArray": false
         },
         "comment": "if vertex is not found in the graph.",
-        "condition": "target.contains(arg[0])==false"
+        "kind": "@throws",
+        "condition": ""
       },
       {
         "exception": {
@@ -386,6 +608,7 @@
           "isArray": false
         },
         "comment": "if vertex is null.",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -413,6 +636,21 @@
         "name": "edges"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "edges"
+        },
+        "comment": "edges to be removed from this graph.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -422,6 +660,7 @@
           "isArray": false
         },
         "comment": "if the specified edge collection is null.",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -457,6 +696,34 @@
         "name": "targetVertex"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "sourceVertex"
+        },
+        "comment": "source vertex of the edge.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "targetVertex"
+        },
+        "comment": "target vertex of the edge.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeAllEdges(java.lang.Object sourceVertex,java.lang.Object targetVertex)"
@@ -483,6 +750,21 @@
         "name": "vertices"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "vertices"
+        },
+        "comment": "vertices to be removed from this graph.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -492,6 +774,7 @@
           "isArray": false
         },
         "comment": "if the specified vertex collection is null.",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -527,6 +810,34 @@
         "name": "targetVertex"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "sourceVertex"
+        },
+        "comment": "source vertex of the edge.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "targetVertex"
+        },
+        "comment": "target vertex of the edge.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeEdge(java.lang.Object sourceVertex,java.lang.Object targetVertex)"
@@ -551,6 +862,21 @@
           "isArray": false
         },
         "name": "e"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "edge to be removed from this graph, if present.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -579,6 +905,21 @@
         "name": "v"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "vertex to be removed from this graph, if present.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeVertex(java.lang.Object v)"
@@ -596,6 +937,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "vertexSet()"
@@ -620,6 +962,21 @@
           "isArray": false
         },
         "name": "e"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "edge of interest",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -648,6 +1005,21 @@
         "name": "e"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "edge of interest",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getEdgeTarget(java.lang.Object e)"
@@ -672,6 +1044,21 @@
           "isArray": false
         },
         "name": "e"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "edge of interest",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,

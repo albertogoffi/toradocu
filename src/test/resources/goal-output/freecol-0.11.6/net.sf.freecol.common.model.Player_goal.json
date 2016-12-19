@@ -16,6 +16,21 @@
         "name": "game"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Game",
+            "name": "Game",
+            "isArray": false
+          },
+          "name": "game"
+        },
+        "comment": "The enclosing Game.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "Player(net.sf.freecol.common.model.Game game)"
@@ -43,6 +58,34 @@
           "isArray": false
         },
         "name": "e"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Game",
+            "name": "Game",
+            "isArray": false
+          },
+          "name": "game"
+        },
+        "comment": "The enclosing Game.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.w3c.dom.Element",
+            "name": "Element",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "An XML-element that will be used to initialize this object.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -74,6 +117,34 @@
         "name": "id"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Game",
+            "name": "Game",
+            "isArray": false
+          },
+          "name": "game"
+        },
+        "comment": "The Game this object belongs to.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "The object identifier.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "Player(net.sf.freecol.common.model.Game game,java.lang.String id)"
@@ -91,6 +162,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getName()"
@@ -117,6 +189,34 @@
         "name": "newName"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "newName"
+        },
+        "comment": "The new name value.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "newName"
+        },
+        "comment": "The new name for the Nameable.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setName(java.lang.String newName)"
@@ -134,6 +234,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getLabel()"
@@ -151,6 +252,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isUnknownEnemy()"
@@ -168,6 +270,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getIndependentNationName()"
@@ -194,6 +297,21 @@
         "name": "newIndependentNationName"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "newIndependentNationName"
+        },
+        "comment": "The new player name.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setIndependentNationName(java.lang.String newIndependentNationName)"
@@ -211,6 +329,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNewLandName()"
@@ -228,6 +347,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isNewLandNamed()"
@@ -254,6 +374,21 @@
         "name": "newLandName"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "newLandName"
+        },
+        "comment": "This Player's name for the new world.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setNewLandName(java.lang.String newLandName)"
@@ -271,6 +406,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNameForNewLand()"
@@ -288,6 +424,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getEuropeNameKey()"
@@ -305,6 +442,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNationResourceKey()"
@@ -322,6 +460,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNationLabel()"
@@ -339,6 +478,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getCountryLabel()"
@@ -356,6 +496,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getForcesLabel()"
@@ -373,6 +514,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getWaitingLabel()"
@@ -390,6 +532,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getDebugName()"
@@ -407,6 +550,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getRulerNameKey()"
@@ -424,6 +568,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getMonarchKey()"
@@ -441,6 +586,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getMarketName()"
@@ -465,6 +611,21 @@
           "isArray": false
         },
         "name": "random"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Random",
+            "name": "Random",
+            "isArray": false
+          },
+          "name": "random"
+        },
+        "comment": "An optional pseudo-random number source.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -493,6 +654,21 @@
         "name": "random"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Random",
+            "name": "Random",
+            "isArray": false
+          },
+          "name": "random"
+        },
+        "comment": "An optional pseudo-random number source.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getSettlementName(java.util.Random random)"
@@ -519,6 +695,21 @@
         "name": "name"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "name"
+        },
+        "comment": "A formerly suggested settlement name.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "putSettlementName(java.lang.String name)"
@@ -543,6 +734,21 @@
           "isArray": false
         },
         "name": "region"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Region",
+            "name": "Region",
+            "isArray": false
+          },
+          "name": "region"
+        },
+        "comment": "The Region to name.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -579,6 +785,34 @@
         "name": "random"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.UnitType",
+            "name": "UnitType",
+            "isArray": false
+          },
+          "name": "type"
+        },
+        "comment": "The UnitType to choose a name for.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Random",
+            "name": "Random",
+            "isArray": false
+          },
+          "name": "random"
+        },
+        "comment": "A pseudo-random number source.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNameForUnit(net.sf.freecol.common.model.UnitType type,java.util.Random random)"
@@ -596,6 +830,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getPlayerType()"
@@ -620,6 +855,21 @@
           "isArray": false
         },
         "name": "type"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Player.PlayerType",
+            "name": "PlayerType",
+            "isArray": false
+          },
+          "name": "type"
+        },
+        "comment": "The new player type.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -648,6 +898,21 @@
         "name": "type"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Player.PlayerType",
+            "name": "PlayerType",
+            "isArray": false
+          },
+          "name": "type"
+        },
+        "comment": "The new player type.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "changePlayerType(net.sf.freecol.common.model.Player.PlayerType type)"
@@ -665,6 +930,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isColonial()"
@@ -682,6 +948,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isEuropean()"
@@ -699,6 +966,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isIndian()"
@@ -716,6 +984,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isRebel()"
@@ -733,6 +1002,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isUndead()"
@@ -750,6 +1020,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isREF()"
@@ -774,6 +1045,21 @@
           "isArray": false
         },
         "name": "player"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Player",
+            "name": "Player",
+            "isArray": false
+          },
+          "name": "player"
+        },
+        "comment": "The Player to possibly declare war on.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -802,6 +1088,21 @@
         "name": "player"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Player",
+            "name": "Player",
+            "isArray": false
+          },
+          "name": "player"
+        },
+        "comment": "The Player to possibly declare peace with.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isPotentialFriend(net.sf.freecol.common.model.Player player)"
@@ -819,6 +1120,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNationType()"
@@ -843,6 +1145,21 @@
           "isArray": false
         },
         "name": "newNationType"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.NationType",
+            "name": "NationType",
+            "isArray": false
+          },
+          "name": "newNationType"
+        },
+        "comment": "The new NationType.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -871,6 +1188,21 @@
         "name": "newNationType"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.NationType",
+            "name": "NationType",
+            "isArray": false
+          },
+          "name": "newNationType"
+        },
+        "comment": "The new NationType.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "changeNationType(net.sf.freecol.common.model.NationType newNationType)"
@@ -888,6 +1220,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "canBuildColonies()"
@@ -905,6 +1238,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "canHaveFoundingFathers()"
@@ -922,6 +1256,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNationId()"
@@ -939,6 +1274,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNation()"
@@ -965,6 +1301,21 @@
         "name": "newNation"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Nation",
+            "name": "Nation",
+            "isArray": false
+          },
+          "name": "newNation"
+        },
+        "comment": "The new Nation.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setNation(net.sf.freecol.common.model.Nation newNation)"
@@ -982,6 +1333,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isAdmin()"
@@ -999,6 +1351,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isAI()"
@@ -1025,6 +1378,21 @@
         "name": "ai"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "ai"
+        },
+        "comment": "The AI player value.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setAI(boolean ai)"
@@ -1042,6 +1410,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isReady()"
@@ -1068,6 +1437,21 @@
         "name": "ready"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "ready"
+        },
+        "comment": "The new readiness state.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setReady(boolean ready)"
@@ -1085,6 +1469,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isDead()"
@@ -1102,6 +1487,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getDead()"
@@ -1128,6 +1514,21 @@
         "name": "dead"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "dead"
+        },
+        "comment": "The new death state.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setDead(boolean dead)"
@@ -1145,6 +1546,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getAttackedByPrivateers()"
@@ -1171,6 +1573,21 @@
         "name": "attacked"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "attacked"
+        },
+        "comment": "True if the player has been attacked by privateers.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setAttackedByPrivateers(boolean attacked)"
@@ -1188,6 +1605,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isWorkForREF()"
@@ -1205,6 +1623,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getRebels()"
@@ -1222,6 +1641,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getREFPlayer()"
@@ -1239,6 +1659,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNationColor()"
@@ -1256,6 +1677,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getScore()"
@@ -1282,6 +1704,21 @@
         "name": "score"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "score"
+        },
+        "comment": "The new score.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setScore(int score)"
@@ -1299,6 +1736,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getSpanishSuccessionScore()"
@@ -1316,6 +1754,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getGold()"
@@ -1340,6 +1779,21 @@
           "isArray": false
         },
         "name": "newGold"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "newGold"
+        },
+        "comment": "The new player gold value.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1368,6 +1822,21 @@
         "name": "amount"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "amount"
+        },
+        "comment": "The purchase price to check.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "checkGold(int amount)"
@@ -1394,6 +1863,21 @@
         "name": "amount"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "amount"
+        },
+        "comment": "The amount of gold to be added to this player.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "modifyGold(int amount)"
@@ -1411,6 +1895,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getBankrupt()"
@@ -1437,6 +1922,21 @@
         "name": "newBankrupt"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "newBankrupt"
+        },
+        "comment": "The new bankruptcy value.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setBankrupt(boolean newBankrupt)"
@@ -1454,6 +1954,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getImmigration()"
@@ -1480,6 +1981,21 @@
         "name": "immigration"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "immigration"
+        },
+        "comment": "The immigration value for this player.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setImmigration(int immigration)"
@@ -1497,6 +2013,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "reduceImmigration()"
@@ -1523,6 +2040,21 @@
         "name": "amount"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "amount"
+        },
+        "comment": "The amount to modify the immigration by.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "modifyImmigration(int amount)"
@@ -1540,6 +2072,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getImmigrationRequired()"
@@ -1566,6 +2099,21 @@
         "name": "immigrationRequired"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "immigrationRequired"
+        },
+        "comment": "The new number of immigration points.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setImmigrationRequired(int immigrationRequired)"
@@ -1583,6 +2131,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "updateImmigrationRequired()"
@@ -1600,6 +2149,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "checkEmigrate()"
@@ -1617,6 +2167,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getTotalImmigrationProduction()"
@@ -1643,6 +2194,21 @@
         "name": "unit"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Unit",
+            "name": "Unit",
+            "isArray": false
+          },
+          "name": "unit"
+        },
+        "comment": "The Unit that is migrating.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getEmigrationMessage(net.sf.freecol.common.model.Unit unit)"
@@ -1660,6 +2226,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getLiberty()"
@@ -1684,6 +2251,21 @@
           "isArray": false
         },
         "name": "liberty"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "liberty"
+        },
+        "comment": "The new amount of liberty.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1712,6 +2294,21 @@
         "name": "amount"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "amount"
+        },
+        "comment": "The amount of liberty to add.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "modifyLiberty(int amount)"
@@ -1729,6 +2326,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "recalculateBellsBonus()"
@@ -1746,6 +2344,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getLibertyProductionNextTurn()"
@@ -1763,6 +2362,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getSoL()"
@@ -1780,6 +2380,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getFathers()"
@@ -1806,6 +2407,21 @@
         "name": "someFather"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FoundingFather",
+            "name": "FoundingFather",
+            "isArray": false
+          },
+          "name": "someFather"
+        },
+        "comment": "The FoundingFather to check.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hasFather(net.sf.freecol.common.model.FoundingFather someFather)"
@@ -1823,6 +2439,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getFatherCount()"
@@ -1849,6 +2466,21 @@
         "name": "father"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FoundingFather",
+            "name": "FoundingFather",
+            "isArray": false
+          },
+          "name": "father"
+        },
+        "comment": "The FoundingFather to add.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "addFather(net.sf.freecol.common.model.FoundingFather father)"
@@ -1866,6 +2498,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getCurrentFather()"
@@ -1892,6 +2525,21 @@
         "name": "someFather"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FoundingFather",
+            "name": "FoundingFather",
+            "isArray": false
+          },
+          "name": "someFather"
+        },
+        "comment": "The FoundingFather to recruit.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setCurrentFather(net.sf.freecol.common.model.FoundingFather someFather)"
@@ -1909,6 +2557,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getOfferedFathers()"
@@ -1926,6 +2575,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "clearOfferedFathers()"
@@ -1952,6 +2602,21 @@
         "name": "fathers"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "fathers"
+        },
+        "comment": "A list of FoundingFathers to offer.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setOfferedFathers(java.util.List fathers)"
@@ -1969,6 +2634,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getRemainingFoundingFatherCost()"
@@ -1986,6 +2652,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getTotalFoundingFatherCost()"
@@ -2003,6 +2670,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getElectionTurns()"
@@ -2020,6 +2688,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "checkDeclareIndependence()"
@@ -2044,6 +2713,21 @@
           "isArray": false
         },
         "name": "naval"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "naval"
+        },
+        "comment": "If true consider naval units, otherwise land units.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -2072,6 +2756,21 @@
         "name": "naval"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "naval"
+        },
+        "comment": "If true consider naval units, otherwise land units.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getRebelStrengthRatio(boolean naval)"
@@ -2089,6 +2788,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getTax()"
@@ -2115,6 +2815,21 @@
         "name": "amount"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "amount"
+        },
+        "comment": "The new tax amount.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setTax(int amount)"
@@ -2132,6 +2847,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getMarket()"
@@ -2149,6 +2865,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "reinitialiseMarket()"
@@ -2183,6 +2900,34 @@
         "name": "what"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Location",
+            "name": "Location",
+            "isArray": false
+          },
+          "name": "where"
+        },
+        "comment": "The Location of the sale.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.GoodsType",
+            "name": "GoodsType",
+            "isArray": false
+          },
+          "name": "what"
+        },
+        "comment": "The GoodsType sold.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getLastSale(net.sf.freecol.common.model.Location where,net.sf.freecol.common.model.GoodsType what)"
@@ -2207,6 +2952,21 @@
           "isArray": false
         },
         "name": "sale"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.LastSale",
+            "name": "LastSale",
+            "isArray": false
+          },
+          "name": "sale"
+        },
+        "comment": "The LastSale to save.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -2243,6 +3003,34 @@
         "name": "what"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Location",
+            "name": "Location",
+            "isArray": false
+          },
+          "name": "where"
+        },
+        "comment": "The Location of the sale.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.GoodsType",
+            "name": "GoodsType",
+            "isArray": false
+          },
+          "name": "what"
+        },
+        "comment": "The GoodsType sold.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getLastSaleString(net.sf.freecol.common.model.Location where,net.sf.freecol.common.model.GoodsType what)"
@@ -2269,6 +3057,21 @@
         "name": "type"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.GoodsType",
+            "name": "GoodsType",
+            "isArray": false
+          },
+          "name": "type"
+        },
+        "comment": "The GoodsType to check.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getArrears(net.sf.freecol.common.model.GoodsType type)"
@@ -2293,6 +3096,21 @@
           "isArray": false
         },
         "name": "type"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.GoodsType",
+            "name": "GoodsType",
+            "isArray": false
+          },
+          "name": "type"
+        },
+        "comment": "The GoodsType to check.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -2329,6 +3147,34 @@
         "name": "access"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.GoodsType",
+            "name": "GoodsType",
+            "isArray": false
+          },
+          "name": "type"
+        },
+        "comment": "The GoodsType to check.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Market.Access",
+            "name": "Access",
+            "isArray": false
+          },
+          "name": "access"
+        },
+        "comment": "The way the goods are traded (Europe OR Custom)",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "canTrade(net.sf.freecol.common.model.GoodsType type,net.sf.freecol.common.model.Market.Access access)"
@@ -2353,6 +3199,21 @@
           "isArray": false
         },
         "name": "goodsType"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.GoodsType",
+            "name": "GoodsType",
+            "isArray": false
+          },
+          "name": "goodsType"
+        },
+        "comment": "The GoodsType to query.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -2389,6 +3250,34 @@
         "name": "amount"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.GoodsType",
+            "name": "GoodsType",
+            "isArray": false
+          },
+          "name": "goodsType"
+        },
+        "comment": "The GoodsType to modify.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "amount"
+        },
+        "comment": "The new sales.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "modifySales(net.sf.freecol.common.model.GoodsType goodsType,int amount)"
@@ -2415,6 +3304,21 @@
         "name": "goodsType"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.GoodsType",
+            "name": "GoodsType",
+            "isArray": false
+          },
+          "name": "goodsType"
+        },
+        "comment": "The GoodsType to check.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hasTraded(net.sf.freecol.common.model.GoodsType goodsType)"
@@ -2432,6 +3336,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getMostValuableGoods()"
@@ -2456,6 +3361,21 @@
           "isArray": false
         },
         "name": "goodsType"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.GoodsType",
+            "name": "GoodsType",
+            "isArray": false
+          },
+          "name": "goodsType"
+        },
+        "comment": "The GoodsType to query.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -2492,6 +3412,34 @@
         "name": "amount"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.GoodsType",
+            "name": "GoodsType",
+            "isArray": false
+          },
+          "name": "goodsType"
+        },
+        "comment": "The GoodsType to modify.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "amount"
+        },
+        "comment": "The new incomeBeforeTaxes.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "modifyIncomeBeforeTaxes(net.sf.freecol.common.model.GoodsType goodsType,int amount)"
@@ -2516,6 +3464,21 @@
           "isArray": false
         },
         "name": "goodsType"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.GoodsType",
+            "name": "GoodsType",
+            "isArray": false
+          },
+          "name": "goodsType"
+        },
+        "comment": "The GoodsType to query.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -2552,6 +3515,34 @@
         "name": "amount"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.GoodsType",
+            "name": "GoodsType",
+            "isArray": false
+          },
+          "name": "goodsType"
+        },
+        "comment": "The GoodsType to modify.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "amount"
+        },
+        "comment": "The new incomeAfterTaxes.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "modifyIncomeAfterTaxes(net.sf.freecol.common.model.GoodsType goodsType,int amount)"
@@ -2569,6 +3560,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getEurope()"
@@ -2595,6 +3587,21 @@
         "name": "europe"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Europe",
+            "name": "Europe",
+            "isArray": false
+          },
+          "name": "europe"
+        },
+        "comment": "The new Europe object.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setEurope(net.sf.freecol.common.model.Europe europe)"
@@ -2612,6 +3619,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "canMoveToEurope()"
@@ -2629,6 +3637,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getRecruitPrice()"
@@ -2655,6 +3664,21 @@
         "name": "au"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.AbstractUnit",
+            "name": "AbstractUnit",
+            "isArray": false
+          },
+          "name": "au"
+        },
+        "comment": "The proposed AbstractUnit.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getPrice(net.sf.freecol.common.model.AbstractUnit au)"
@@ -2672,6 +3696,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getMonarch()"
@@ -2696,6 +3721,21 @@
           "isArray": false
         },
         "name": "monarch"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Monarch",
+            "name": "Monarch",
+            "isArray": false
+          },
+          "name": "monarch"
+        },
+        "comment": "The new Monarch object.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -2724,6 +3764,21 @@
         "name": "unit"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Unit",
+            "name": "Unit",
+            "isArray": false
+          },
+          "name": "unit"
+        },
+        "comment": "The Unit to test.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hasUnit(net.sf.freecol.common.model.Unit unit)"
@@ -2741,6 +3796,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getUnits()"
@@ -2767,6 +3823,21 @@
         "name": "name"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "name"
+        },
+        "comment": "The name of the unit.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getUnitByName(java.lang.String name)"
@@ -2784,6 +3855,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getUnitIterator()"
@@ -2808,6 +3880,21 @@
           "isArray": false
         },
         "name": "newUnit"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Unit",
+            "name": "Unit",
+            "isArray": false
+          },
+          "name": "newUnit"
+        },
+        "comment": "The new Unit value.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -2836,6 +3923,21 @@
         "name": "oldUnit"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Unit",
+            "name": "Unit",
+            "isArray": false
+          },
+          "name": "oldUnit"
+        },
+        "comment": "The Unit to remove.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeUnit(net.sf.freecol.common.model.Unit oldUnit)"
@@ -2860,6 +3962,21 @@
           "isArray": false
         },
         "name": "unit"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Unit",
+            "name": "Unit",
+            "isArray": false
+          },
+          "name": "unit"
+        },
+        "comment": "The Unit to carry.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -2888,6 +4005,21 @@
         "name": "naval"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "naval"
+        },
+        "comment": "If true, count naval units, else count land units.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getUnitCount(boolean naval)"
@@ -2905,6 +4037,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNumberOfKingLandUnits()"
@@ -2931,6 +4064,21 @@
         "name": "typeId"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "typeId"
+        },
+        "comment": "The identifier for the unit type to check.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hasUnitType(java.lang.String typeId)"
@@ -2948,6 +4096,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNextActiveUnit()"
@@ -2974,6 +4123,21 @@
         "name": "unit"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Unit",
+            "name": "Unit",
+            "isArray": false
+          },
+          "name": "unit"
+        },
+        "comment": "A Unit to make the next one to be active.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setNextActiveUnit(net.sf.freecol.common.model.Unit unit)"
@@ -2991,6 +4155,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hasNextActiveUnit()"
@@ -3008,6 +4173,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNextGoingToUnit()"
@@ -3034,6 +4200,21 @@
         "name": "unit"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Unit",
+            "name": "Unit",
+            "isArray": false
+          },
+          "name": "unit"
+        },
+        "comment": "A Unit to make the next one to be active.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setNextGoingToUnit(net.sf.freecol.common.model.Unit unit)"
@@ -3051,6 +4232,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hasNextGoingToUnit()"
@@ -3068,6 +4250,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNextTradeRouteUnit()"
@@ -3085,6 +4268,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hasNextTradeRouteUnit()"
@@ -3102,6 +4286,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "resetIterators()"
@@ -3119,6 +4304,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getTradeRoutes()"
@@ -3143,6 +4329,21 @@
           "isArray": false
         },
         "name": "name"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "name"
+        },
+        "comment": "The trade route name.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -3171,6 +4372,21 @@
         "name": "newTradeRoutes"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "newTradeRoutes"
+        },
+        "comment": "The new list of TradeRoutes.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setTradeRoutes(java.util.List newTradeRoutes)"
@@ -3188,6 +4404,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNameForTradeRoute()"
@@ -3212,6 +4429,21 @@
           "isArray": false
         },
         "name": "o"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Ownable",
+            "name": "Ownable",
+            "isArray": false
+          },
+          "name": "o"
+        },
+        "comment": "The Ownable to add.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -3240,6 +4472,21 @@
         "name": "o"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Ownable",
+            "name": "Ownable",
+            "isArray": false
+          },
+          "name": "o"
+        },
+        "comment": "The Ownable to remove.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeOwnable(net.sf.freecol.common.model.Ownable o)"
@@ -3257,6 +4504,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getSettlements()"
@@ -3274,6 +4522,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNumberOfSettlements()"
@@ -3291,6 +4540,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNumberOfPorts()"
@@ -3308,6 +4558,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getPorts()"
@@ -3332,6 +4583,21 @@
           "isArray": false
         },
         "name": "settlement"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Settlement",
+            "name": "Settlement",
+            "isArray": false
+          },
+          "name": "settlement"
+        },
+        "comment": "The Settlement to check.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -3360,6 +4626,21 @@
         "name": "settlement"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Settlement",
+            "name": "Settlement",
+            "isArray": false
+          },
+          "name": "settlement"
+        },
+        "comment": "The Settlement to add.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "addSettlement(net.sf.freecol.common.model.Settlement settlement)"
@@ -3386,6 +4667,21 @@
         "name": "settlement"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Settlement",
+            "name": "Settlement",
+            "isArray": false
+          },
+          "name": "settlement"
+        },
+        "comment": "The Settlement to remove.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeSettlement(net.sf.freecol.common.model.Settlement settlement)"
@@ -3403,6 +4699,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getColoniesPopulation()"
@@ -3427,6 +4724,21 @@
           "isArray": false
         },
         "name": "name"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "name"
+        },
+        "comment": "The name of the Colony.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -3455,6 +4767,21 @@
         "name": "name"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "name"
+        },
+        "comment": "The name of the IndianSettlement.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getIndianSettlementByName(java.lang.String name)"
@@ -3472,6 +4799,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getColonies()"
@@ -3498,6 +4826,21 @@
         "name": "c"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Comparator",
+            "name": "Comparator",
+            "isArray": false
+          },
+          "name": "c"
+        },
+        "comment": "A comparator to operate on the colony list.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getSortedColonies(java.util.Comparator c)"
@@ -3515,6 +4858,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getIndianSettlements()"
@@ -3541,6 +4885,21 @@
         "name": "name"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "name"
+        },
+        "comment": "The name of the Settlement.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getSettlementByName(java.lang.String name)"
@@ -3558,6 +4917,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getClosestPortForEurope()"
@@ -3575,6 +4935,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getModelMessages()"
@@ -3592,6 +4953,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNewModelMessages()"
@@ -3616,6 +4978,21 @@
           "isArray": false
         },
         "name": "modelMessage"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.ModelMessage",
+            "name": "ModelMessage",
+            "isArray": false
+          },
+          "name": "modelMessage"
+        },
+        "comment": "The ModelMessage to add.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -3644,6 +5021,21 @@
         "name": "options"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.option.OptionGroup",
+            "name": "OptionGroup",
+            "isArray": false
+          },
+          "name": "options"
+        },
+        "comment": "The OptionGroup for message display to enforce.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "refilterModelMessages(net.sf.freecol.common.option.OptionGroup options)"
@@ -3661,6 +5053,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeDisplayedModelMessages()"
@@ -3678,6 +5071,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "clearModelMessages()"
@@ -3712,6 +5106,34 @@
         "name": "newSource"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FreeColGameObject",
+            "name": "FreeColGameObject",
+            "isArray": false
+          },
+          "name": "source"
+        },
+        "comment": "The source field that has become invalid.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FreeColGameObject",
+            "name": "FreeColGameObject",
+            "isArray": false
+          },
+          "name": "newSource"
+        },
+        "comment": "A new source field to replace the old with, or if null then remove the message",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "divertModelMessages(net.sf.freecol.common.model.FreeColGameObject source,net.sf.freecol.common.model.FreeColGameObject newSource)"
@@ -3729,6 +5151,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "addStartGameMessage()"
@@ -3746,6 +5169,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getHistory()"
@@ -3772,6 +5196,21 @@
         "name": "event"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.HistoryEvent",
+            "name": "HistoryEvent",
+            "isArray": false
+          },
+          "name": "event"
+        },
+        "comment": "The HistoryEvent to add.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "addHistory(net.sf.freecol.common.model.HistoryEvent event)"
@@ -3789,6 +5228,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getEntryLocation()"
@@ -3815,6 +5255,21 @@
         "name": "entryLocation"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Location",
+            "name": "Location",
+            "isArray": false
+          },
+          "name": "entryLocation"
+        },
+        "comment": "The new entry Location.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setEntryLocation(net.sf.freecol.common.model.Location entryLocation)"
@@ -3832,6 +5287,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getFallbackTile()"
@@ -3849,6 +5305,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getHighSeas()"
@@ -3866,6 +5323,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "initializeHighSeas()"
@@ -3892,6 +5350,21 @@
         "name": "tile"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Tile",
+            "name": "Tile",
+            "isArray": false
+          },
+          "name": "tile"
+        },
+        "comment": "The Tile to check.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "canSee(net.sf.freecol.common.model.Tile tile)"
@@ -3909,6 +5382,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "invalidateCanSeeTiles()"
@@ -3926,6 +5400,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "resetCanSeeTiles()"
@@ -3950,6 +5425,21 @@
           "isArray": false
         },
         "name": "tile"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Tile",
+            "name": "Tile",
+            "isArray": false
+          },
+          "name": "tile"
+        },
+        "comment": "The Tile to check.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -3983,6 +5473,21 @@
         "name": "map"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Map",
+            "name": "Map",
+            "isArray": false
+          },
+          "name": "map"
+        },
+        "comment": "The Map to use.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "makeCanSeeTiles(net.sf.freecol.common.model.Map map)"
@@ -4007,6 +5512,21 @@
           "isArray": false
         },
         "name": "player"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Player",
+            "name": "Player",
+            "isArray": false
+          },
+          "name": "player"
+        },
+        "comment": "The other Player.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -4043,6 +5563,34 @@
         "name": "newTension"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Player",
+            "name": "Player",
+            "isArray": false
+          },
+          "name": "player"
+        },
+        "comment": "The other Player.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Tension",
+            "name": "Tension",
+            "isArray": false
+          },
+          "name": "newTension"
+        },
+        "comment": "The new Tension.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setTension(net.sf.freecol.common.model.Player player,net.sf.freecol.common.model.Tension newTension)"
@@ -4067,6 +5615,21 @@
           "isArray": false
         },
         "name": "player"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Player",
+            "name": "Player",
+            "isArray": false
+          },
+          "name": "player"
+        },
+        "comment": "The Player to remove tension for.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -4095,6 +5658,21 @@
         "name": "player"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Player",
+            "name": "Player",
+            "isArray": false
+          },
+          "name": "player"
+        },
+        "comment": "The other Player to test.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "missionsBanned(net.sf.freecol.common.model.Player player)"
@@ -4119,6 +5697,21 @@
           "isArray": false
         },
         "name": "player"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Player",
+            "name": "Player",
+            "isArray": false
+          },
+          "name": "player"
+        },
+        "comment": "The Player to ban.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -4147,6 +5740,21 @@
         "name": "player"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Player",
+            "name": "Player",
+            "isArray": false
+          },
+          "name": "player"
+        },
+        "comment": "The Player to clear the ban for.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeMissionBan(net.sf.freecol.common.model.Player player)"
@@ -4171,6 +5779,21 @@
           "isArray": false
         },
         "name": "player"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Player",
+            "name": "Player",
+            "isArray": false
+          },
+          "name": "player"
+        },
+        "comment": "The other Player to check.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -4207,6 +5830,34 @@
         "name": "newStance"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Player",
+            "name": "Player",
+            "isArray": false
+          },
+          "name": "player"
+        },
+        "comment": "The Player to set the Stance for.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Stance",
+            "name": "Stance",
+            "isArray": false
+          },
+          "name": "newStance"
+        },
+        "comment": "The new Stance.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -4216,6 +5867,7 @@
           "isArray": false
         },
         "comment": "if player is null or this.",
+        "kind": "@throws",
         "condition": "args[0]==null || args[0]==target"
       }
     ],
@@ -4243,6 +5895,21 @@
         "name": "player"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Player",
+            "name": "Player",
+            "isArray": false
+          },
+          "name": "player"
+        },
+        "comment": "The other Player to check.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "atWarWith(net.sf.freecol.common.model.Player player)"
@@ -4260,6 +5927,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isAtWar()"
@@ -4286,6 +5954,21 @@
         "name": "player"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Player",
+            "name": "Player",
+            "isArray": false
+          },
+          "name": "player"
+        },
+        "comment": "The other Player to check.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hasContacted(net.sf.freecol.common.model.Player player)"
@@ -4303,6 +5986,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hasContactedEuropeans()"
@@ -4320,6 +6004,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hasContactedIndians()"
@@ -4354,6 +6039,34 @@
         "name": "player2"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Player",
+            "name": "Player",
+            "isArray": false
+          },
+          "name": "player1"
+        },
+        "comment": "One Player to check.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Player",
+            "name": "Player",
+            "isArray": false
+          },
+          "name": "player2"
+        },
+        "comment": "The other Player to check.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "makeContact(net.sf.freecol.common.model.Player player1,net.sf.freecol.common.model.Player player2)"
@@ -4380,6 +6093,21 @@
         "name": "tile"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Tile",
+            "name": "Tile",
+            "isArray": false
+          },
+          "name": "tile"
+        },
+        "comment": "The Tile to get the price for.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getLandPrice(net.sf.freecol.common.model.Tile tile)"
@@ -4404,6 +6132,21 @@
           "isArray": false
         },
         "name": "player"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Player",
+            "name": "Player",
+            "isArray": false
+          },
+          "name": "player"
+        },
+        "comment": "The Player to get the summary for.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -4440,6 +6183,34 @@
         "name": "ns"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Player",
+            "name": "Player",
+            "isArray": false
+          },
+          "name": "player"
+        },
+        "comment": "The Player to get the summary for.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.NationSummary",
+            "name": "NationSummary",
+            "isArray": false
+          },
+          "name": "ns"
+        },
+        "comment": "The new NationSummary for the player.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "putNationSummary(net.sf.freecol.common.model.Player player,net.sf.freecol.common.model.NationSummary ns)"
@@ -4457,6 +6228,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "clearNationCache()"
@@ -4489,6 +6261,34 @@
           "isArray": false
         },
         "name": "naval"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Player",
+            "name": "Player",
+            "isArray": false
+          },
+          "name": "other"
+        },
+        "comment": "The other Player.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "naval"
+        },
+        "comment": "If true, get the naval strength, else the land strength.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -4525,6 +6325,34 @@
         "name": "theirs"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "ours"
+        },
+        "comment": "The player strength.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "theirs"
+        },
+        "comment": "The enemy strength.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "strengthRatio(double ours,double theirs)"
@@ -4549,6 +6377,21 @@
           "isArray": false
         },
         "name": "tile"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Tile",
+            "name": "Tile",
+            "isArray": false
+          },
+          "name": "tile"
+        },
+        "comment": "The Tile to consider.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -4577,6 +6420,21 @@
         "name": "tile"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Tile",
+            "name": "Tile",
+            "isArray": false
+          },
+          "name": "tile"
+        },
+        "comment": "The Tile to consider.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "canOwnTileReason(net.sf.freecol.common.model.Tile tile)"
@@ -4601,6 +6459,21 @@
           "isArray": false
         },
         "name": "tile"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Tile",
+            "name": "Tile",
+            "isArray": false
+          },
+          "name": "tile"
+        },
+        "comment": "The Tile to try to claim.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -4629,6 +6502,21 @@
         "name": "tile"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Tile",
+            "name": "Tile",
+            "isArray": false
+          },
+          "name": "tile"
+        },
+        "comment": "The Tile to try to claim.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "canClaimForSettlementReason(net.sf.freecol.common.model.Tile tile)"
@@ -4653,6 +6541,21 @@
           "isArray": false
         },
         "name": "tile"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Tile",
+            "name": "Tile",
+            "isArray": false
+          },
+          "name": "tile"
+        },
+        "comment": "The Tile to try to claim.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -4681,6 +6584,21 @@
         "name": "tile"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Tile",
+            "name": "Tile",
+            "isArray": false
+          },
+          "name": "tile"
+        },
+        "comment": "The Tile to try to claim.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "canClaimToFoundSettlementReason(net.sf.freecol.common.model.Tile tile)"
@@ -4707,6 +6625,21 @@
         "name": "tile"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Tile",
+            "name": "Tile",
+            "isArray": false
+          },
+          "name": "tile"
+        },
+        "comment": "The Tile to try to claim.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "canClaimFreeCenterTile(net.sf.freecol.common.model.Tile tile)"
@@ -4724,6 +6657,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hasZeroSettlements()"
@@ -4750,6 +6684,21 @@
         "name": "tile"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Tile",
+            "name": "Tile",
+            "isArray": false
+          },
+          "name": "tile"
+        },
+        "comment": "The Tile to consider.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "canClaimForImprovement(net.sf.freecol.common.model.Tile tile)"
@@ -4774,6 +6723,21 @@
           "isArray": false
         },
         "name": "tile"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Tile",
+            "name": "Tile",
+            "isArray": false
+          },
+          "name": "tile"
+        },
+        "comment": "The Tile to consider.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -4810,6 +6774,34 @@
         "name": "radius"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Tile",
+            "name": "Tile",
+            "isArray": false
+          },
+          "name": "centerTile"
+        },
+        "comment": "The intended settlement center Tile.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "radius"
+        },
+        "comment": "The radius of the settlement.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getClaimableTiles(net.sf.freecol.common.model.Tile centerTile,int radius)"
@@ -4834,6 +6826,21 @@
           "isArray": false
         },
         "name": "tile"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Tile",
+            "name": "Tile",
+            "isArray": false
+          },
+          "name": "tile"
+        },
+        "comment": "The Tile",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -4862,6 +6869,21 @@
         "name": "tile"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Tile",
+            "name": "Tile",
+            "isArray": false
+          },
+          "name": "tile"
+        },
+        "comment": "The Tile",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getColonyValue(net.sf.freecol.common.model.Tile tile)"
@@ -4888,6 +6910,21 @@
         "name": "what"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "what"
+        },
+        "comment": "A description of the cheating.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "logCheat(java.lang.String what)"
@@ -4905,6 +6942,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getMaximumFoodConsumption()"
@@ -4929,6 +6967,21 @@
           "isArray": false
         },
         "name": "ownable"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Ownable",
+            "name": "Ownable",
+            "isArray": false
+          },
+          "name": "ownable"
+        },
+        "comment": "The Ownable to check.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -4965,6 +7018,34 @@
         "name": "returnClass"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "The object identifier.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          },
+          "name": "returnClass"
+        },
+        "comment": "The expected class of the object.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -4974,6 +7055,7 @@
           "isArray": false
         },
         "comment": "on failure to validate the object in any way.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -5001,6 +7083,7 @@
         "name": "fix"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "checkIntegrity(boolean fix)"
@@ -5018,6 +7101,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getFeatureContainer()"
@@ -5044,6 +7128,7 @@
         "name": "xw"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "writeAttributes(net.sf.freecol.common.io.FreeColXMLWriter xw)"
@@ -5070,6 +7155,7 @@
         "name": "xw"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "writeChildren(net.sf.freecol.common.io.FreeColXMLWriter xw)"
@@ -5096,6 +7182,7 @@
         "name": "xr"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "readAttributes(net.sf.freecol.common.io.FreeColXMLReader xr)"
@@ -5122,6 +7209,7 @@
         "name": "xr"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "readChildren(net.sf.freecol.common.io.FreeColXMLReader xr)"
@@ -5148,6 +7236,7 @@
         "name": "xr"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "readChild(net.sf.freecol.common.io.FreeColXMLReader xr)"
@@ -5165,6 +7254,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toString()"
@@ -5182,6 +7272,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getXMLTagName()"
@@ -5199,6 +7290,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getXMLElementTagName()"
@@ -5216,6 +7308,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getGame()"
@@ -5242,6 +7335,21 @@
         "name": "game"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Game",
+            "name": "Game",
+            "isArray": false
+          },
+          "name": "game"
+        },
+        "comment": "The Game to set.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setGame(net.sf.freecol.common.model.Game game)"
@@ -5259,6 +7367,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isUninitialized()"
@@ -5276,6 +7385,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isDisposed()"
@@ -5293,6 +7403,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getDisposeList()"
@@ -5310,6 +7421,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "fundamentalDispose()"
@@ -5327,6 +7439,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "disposeResources()"
@@ -5344,6 +7457,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "dispose()"
@@ -5368,6 +7482,21 @@
           "isArray": false
         },
         "name": "returnClass"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          },
+          "name": "returnClass"
+        },
+        "comment": "The class to clone.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -5396,6 +7525,21 @@
         "name": "player"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Player",
+            "name": "Player",
+            "isArray": false
+          },
+          "name": "player"
+        },
+        "comment": "The Player to make a link for.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getLinkTarget(net.sf.freecol.common.model.Player player)"
@@ -5422,6 +7566,21 @@
         "name": "newId"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "newId"
+        },
+        "comment": "The unique identifier of this object.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "internId(java.lang.String newId)"
@@ -5439,6 +7598,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getSpecification()"
@@ -5465,6 +7625,7 @@
         "name": "o"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "equals(java.lang.Object o)"
@@ -5482,6 +7643,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hashCode()"
@@ -5508,6 +7670,21 @@
         "name": "xr"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.io.FreeColXMLReader",
+            "name": "FreeColXMLReader",
+            "isArray": false
+          },
+          "name": "xr"
+        },
+        "comment": "The input FreeColXMLReader.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -5517,6 +7694,7 @@
           "isArray": false
         },
         "comment": "if there problems reading the stream.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -5535,6 +7713,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getId()"
@@ -5559,6 +7738,21 @@
           "isArray": false
         },
         "name": "newId"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "newId"
+        },
+        "comment": "The new object identifier.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -5587,6 +7781,21 @@
         "name": "prefix"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "prefix"
+        },
+        "comment": "The prefix to test.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getSuffix(java.lang.String prefix)"
@@ -5604,6 +7813,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getSuffix()"
@@ -5628,6 +7838,21 @@
           "isArray": false
         },
         "name": "specification"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Specification",
+            "name": "Specification",
+            "isArray": false
+          },
+          "name": "specification"
+        },
+        "comment": "The Specification to use.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -5656,6 +7881,7 @@
         "name": "id"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getIdType(java.lang.String id)"
@@ -5673,6 +7899,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getIdType()"
@@ -5690,6 +7917,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getIdNumber()"
@@ -5724,6 +7952,34 @@
         "name": "fco2"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FreeColObject",
+            "name": "FreeColObject",
+            "isArray": false
+          },
+          "name": "fco1"
+        },
+        "comment": "The first FreeColObject to compare.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FreeColObject",
+            "name": "FreeColObject",
+            "isArray": false
+          },
+          "name": "fco2"
+        },
+        "comment": "The second FreeColObject to compare.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "compareIds(net.sf.freecol.common.model.FreeColObject fco1,net.sf.freecol.common.model.FreeColObject fco2)"
@@ -5750,6 +8006,21 @@
         "name": "other"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FreeColObject",
+            "name": "FreeColObject",
+            "isArray": false
+          },
+          "name": "other"
+        },
+        "comment": "The other FreeColObject subclass to compare.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "compareTo(net.sf.freecol.common.model.FreeColObject other)"
@@ -5774,6 +8045,21 @@
           "isArray": false
         },
         "name": "c"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "c"
+        },
+        "comment": "The Collection to sort.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -5808,6 +8094,34 @@
           "isArray": false
         },
         "name": "lb"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "c"
+        },
+        "comment": "The Collection to log.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.util.LogBuilder",
+            "name": "LogBuilder",
+            "isArray": false
+          },
+          "name": "lb"
+        },
+        "comment": "A LogBuilder to log to.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -5852,6 +8166,47 @@
         "name": "defaultValue"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "methodName"
+        },
+        "comment": "The name of the method.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          },
+          "name": "returnClass"
+        },
+        "comment": "The class of the return value.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "defaultValue"
+        },
+        "comment": "The default value.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "invokeMethod(java.lang.String methodName,java.lang.Class returnClass,java.lang.Object defaultValue)"
@@ -5878,6 +8233,7 @@
         "name": "listener"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "addPropertyChangeListener(java.beans.PropertyChangeListener listener)"
@@ -5912,6 +8268,7 @@
         "name": "listener"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "addPropertyChangeListener(java.lang.String propertyName,java.beans.PropertyChangeListener listener)"
@@ -5962,6 +8319,7 @@
         "name": "newValue"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "fireIndexedPropertyChange(java.lang.String propertyName,int index,boolean oldValue,boolean newValue)"
@@ -6012,6 +8370,7 @@
         "name": "newValue"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "fireIndexedPropertyChange(java.lang.String propertyName,int index,int oldValue,int newValue)"
@@ -6062,6 +8421,7 @@
         "name": "newValue"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "fireIndexedPropertyChange(java.lang.String propertyName,int index,java.lang.Object oldValue,java.lang.Object newValue)"
@@ -6088,6 +8448,7 @@
         "name": "event"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "firePropertyChange(java.beans.PropertyChangeEvent event)"
@@ -6130,6 +8491,7 @@
         "name": "newValue"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "firePropertyChange(java.lang.String propertyName,boolean oldValue,boolean newValue)"
@@ -6172,6 +8534,7 @@
         "name": "newValue"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "firePropertyChange(java.lang.String propertyName,int oldValue,int newValue)"
@@ -6214,6 +8577,7 @@
         "name": "newValue"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "firePropertyChange(java.lang.String propertyName,java.lang.Object oldValue,java.lang.Object newValue)"
@@ -6236,6 +8600,7 @@
       }
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getPropertyChangeListeners()"
@@ -6267,6 +8632,7 @@
         "name": "propertyName"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getPropertyChangeListeners(java.lang.String propertyName)"
@@ -6293,6 +8659,7 @@
         "name": "propertyName"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hasListeners(java.lang.String propertyName)"
@@ -6319,6 +8686,7 @@
         "name": "listener"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removePropertyChangeListener(java.beans.PropertyChangeListener listener)"
@@ -6353,6 +8721,7 @@
         "name": "listener"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removePropertyChangeListener(java.lang.String propertyName,java.beans.PropertyChangeListener listener)"
@@ -6377,6 +8746,21 @@
           "isArray": false
         },
         "name": "id"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "The object identifier.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -6411,6 +8795,34 @@
           "isArray": false
         },
         "name": "fcgot"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "The object identifier.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FreeColGameObjectType",
+            "name": "FreeColGameObjectType",
+            "isArray": false
+          },
+          "name": "fcgot"
+        },
+        "comment": "An optional FreeColGameObjectType the ability applies to.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -6455,6 +8867,47 @@
         "name": "turn"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "The object identifier.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FreeColGameObjectType",
+            "name": "FreeColGameObjectType",
+            "isArray": false
+          },
+          "name": "fcgot"
+        },
+        "comment": "An optional FreeColGameObjectType the ability applies to.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Turn",
+            "name": "Turn",
+            "isArray": false
+          },
+          "name": "turn"
+        },
+        "comment": "An optional applicable Turn.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hasAbility(java.lang.String id,net.sf.freecol.common.model.FreeColGameObjectType fcgot,net.sf.freecol.common.model.Turn turn)"
@@ -6481,6 +8934,21 @@
         "name": "key"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "The key to check.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "containsAbilityKey(java.lang.String key)"
@@ -6498,6 +8966,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getSortedAbilities()"
@@ -6515,6 +8984,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getAbilities()"
@@ -6539,6 +9009,21 @@
           "isArray": false
         },
         "name": "id"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "The object identifier.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -6573,6 +9058,34 @@
           "isArray": false
         },
         "name": "fcgot"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "The object identifier.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FreeColGameObjectType",
+            "name": "FreeColGameObjectType",
+            "isArray": false
+          },
+          "name": "fcgot"
+        },
+        "comment": "An optional FreeColGameObjectType the ability applies to.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -6617,6 +9130,47 @@
         "name": "turn"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "The object identifier.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FreeColGameObjectType",
+            "name": "FreeColGameObjectType",
+            "isArray": false
+          },
+          "name": "fcgot"
+        },
+        "comment": "An optional FreeColGameObjectType the ability applies to.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Turn",
+            "name": "Turn",
+            "isArray": false
+          },
+          "name": "turn"
+        },
+        "comment": "An optional applicable Turn.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getAbilities(java.lang.String id,net.sf.freecol.common.model.FreeColGameObjectType fcgot,net.sf.freecol.common.model.Turn turn)"
@@ -6641,6 +9195,21 @@
           "isArray": false
         },
         "name": "ability"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Ability",
+            "name": "Ability",
+            "isArray": false
+          },
+          "name": "ability"
+        },
+        "comment": "An Ability to add.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -6669,6 +9238,21 @@
         "name": "ability"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Ability",
+            "name": "Ability",
+            "isArray": false
+          },
+          "name": "ability"
+        },
+        "comment": "An Ability to remove.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeAbility(net.sf.freecol.common.model.Ability ability)"
@@ -6695,6 +9279,21 @@
         "name": "id"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "The object identifier.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeAbilities(java.lang.String id)"
@@ -6719,6 +9318,21 @@
           "isArray": false
         },
         "name": "id"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "The object identifier.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -6753,6 +9367,34 @@
           "isArray": false
         },
         "name": "fcgot"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "The object identifier.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FreeColGameObjectType",
+            "name": "FreeColGameObjectType",
+            "isArray": false
+          },
+          "name": "fcgot"
+        },
+        "comment": "An optional FreeColGameObjectType the modifier applies to.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -6797,6 +9439,47 @@
         "name": "turn"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "The object identifier.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FreeColGameObjectType",
+            "name": "FreeColGameObjectType",
+            "isArray": false
+          },
+          "name": "fcgot"
+        },
+        "comment": "An optional FreeColGameObjectType the modifier applies to.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Turn",
+            "name": "Turn",
+            "isArray": false
+          },
+          "name": "turn"
+        },
+        "comment": "An optional applicable Turn.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hasModifier(java.lang.String id,net.sf.freecol.common.model.FreeColGameObjectType fcgot,net.sf.freecol.common.model.Turn turn)"
@@ -6823,6 +9506,21 @@
         "name": "key"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "The key to check.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "containsModifierKey(java.lang.String key)"
@@ -6840,6 +9538,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getSortedModifiers()"
@@ -6857,6 +9556,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getModifiers()"
@@ -6881,6 +9581,21 @@
           "isArray": false
         },
         "name": "id"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "The object identifier.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -6915,6 +9630,34 @@
           "isArray": false
         },
         "name": "fcgot"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "The object identifier.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FreeColGameObjectType",
+            "name": "FreeColGameObjectType",
+            "isArray": false
+          },
+          "name": "fcgot"
+        },
+        "comment": "An optional FreeColGameObjectType the modifier applies to.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -6959,6 +9702,47 @@
         "name": "turn"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "The object identifier.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FreeColGameObjectType",
+            "name": "FreeColGameObjectType",
+            "isArray": false
+          },
+          "name": "fcgot"
+        },
+        "comment": "An optional FreeColGameObjectType the modifier applies to.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Turn",
+            "name": "Turn",
+            "isArray": false
+          },
+          "name": "turn"
+        },
+        "comment": "An optional applicable Turn.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getModifiers(java.lang.String id,net.sf.freecol.common.model.FreeColGameObjectType fcgot,net.sf.freecol.common.model.Turn turn)"
@@ -6999,6 +9783,47 @@
           "isArray": false
         },
         "name": "id"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          },
+          "name": "number"
+        },
+        "comment": "The number to modify.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Turn",
+            "name": "Turn",
+            "isArray": false
+          },
+          "name": "turn"
+        },
+        "comment": "An optional applicable Turn.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "The object identifier.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -7051,6 +9876,60 @@
         "name": "fcgot"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          },
+          "name": "number"
+        },
+        "comment": "The number to modify.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Turn",
+            "name": "Turn",
+            "isArray": false
+          },
+          "name": "turn"
+        },
+        "comment": "An optional applicable Turn.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "The object identifier.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FreeColGameObjectType",
+            "name": "FreeColGameObjectType",
+            "isArray": false
+          },
+          "name": "fcgot"
+        },
+        "comment": "An optional FreeColGameObjectType the modifier applies to.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "applyModifiers(float number,net.sf.freecol.common.model.Turn turn,java.lang.String id,net.sf.freecol.common.model.FreeColGameObjectType fcgot)"
@@ -7093,6 +9972,47 @@
         "name": "mods"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          },
+          "name": "number"
+        },
+        "comment": "The number to modify.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Turn",
+            "name": "Turn",
+            "isArray": false
+          },
+          "name": "turn"
+        },
+        "comment": "An optional applicable Turn.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "mods"
+        },
+        "comment": "The Modifiers to apply.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "applyModifiers(float number,net.sf.freecol.common.model.Turn turn,java.util.Collection mods)"
@@ -7117,6 +10037,21 @@
           "isArray": false
         },
         "name": "modifier"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Modifier",
+            "name": "Modifier",
+            "isArray": false
+          },
+          "name": "modifier"
+        },
+        "comment": "An Modifier to add.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -7145,6 +10080,21 @@
         "name": "modifier"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Modifier",
+            "name": "Modifier",
+            "isArray": false
+          },
+          "name": "modifier"
+        },
+        "comment": "An Modifier to remove.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeModifier(net.sf.freecol.common.model.Modifier modifier)"
@@ -7169,6 +10119,21 @@
           "isArray": false
         },
         "name": "id"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "The object identifier.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -7197,6 +10162,21 @@
         "name": "fco"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FreeColObject",
+            "name": "FreeColObject",
+            "isArray": false
+          },
+          "name": "fco"
+        },
+        "comment": "The FreeColObject to add features from.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "addFeatures(net.sf.freecol.common.model.FreeColObject fco)"
@@ -7223,6 +10203,21 @@
         "name": "fco"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FreeColObject",
+            "name": "FreeColObject",
+            "isArray": false
+          },
+          "name": "fco"
+        },
+        "comment": "The FreeColObject to find features to remove in.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeFeatures(net.sf.freecol.common.model.FreeColObject fco)"
@@ -7240,6 +10235,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getDefenceModifiers()"
@@ -7264,6 +10260,21 @@
           "isArray": false
         },
         "name": "document"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.w3c.dom.Document",
+            "name": "Document",
+            "isArray": false
+          },
+          "name": "document"
+        },
+        "comment": "The Document.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -7300,6 +10311,34 @@
         "name": "player"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.w3c.dom.Document",
+            "name": "Document",
+            "isArray": false
+          },
+          "name": "document"
+        },
+        "comment": "The Document.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Player",
+            "name": "Player",
+            "isArray": false
+          },
+          "name": "player"
+        },
+        "comment": "The Player to write to.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toXMLElement(org.w3c.dom.Document document,net.sf.freecol.common.model.Player player)"
@@ -7332,6 +10371,34 @@
           "isArray": false
         },
         "name": "writeScope"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.w3c.dom.Document",
+            "name": "Document",
+            "isArray": false
+          },
+          "name": "document"
+        },
+        "comment": "The Document.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.io.FreeColXMLWriter.WriteScope",
+            "name": "WriteScope",
+            "isArray": false
+          },
+          "name": "writeScope"
+        },
+        "comment": "The WriteScope to apply.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -7371,6 +10438,39 @@
           }
         },
         "name": "fields"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.w3c.dom.Document",
+            "name": "Document",
+            "isArray": false
+          },
+          "name": "document"
+        },
+        "comment": "The Document.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String[]",
+            "name": "String[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.String",
+              "name": "String",
+              "isArray": false
+            }
+          },
+          "name": "fields"
+        },
+        "comment": "The fields to write.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": true,
@@ -7420,6 +10520,52 @@
         "name": "fields"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.w3c.dom.Document",
+            "name": "Document",
+            "isArray": false
+          },
+          "name": "document"
+        },
+        "comment": "The Document.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.io.FreeColXMLWriter.WriteScope",
+            "name": "WriteScope",
+            "isArray": false
+          },
+          "name": "writeScope"
+        },
+        "comment": "The WriteScope to apply.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String[]",
+            "name": "String[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.String",
+              "name": "String",
+              "isArray": false
+            }
+          },
+          "name": "fields"
+        },
+        "comment": "An array of field names, which if non-null indicates this should be a partial write.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toXMLElement(org.w3c.dom.Document document,net.sf.freecol.common.io.FreeColXMLWriter.WriteScope writeScope,java.lang.String[] fields)"
@@ -7444,6 +10590,21 @@
           "isArray": false
         },
         "name": "element"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.w3c.dom.Element",
+            "name": "Element",
+            "isArray": false
+          },
+          "name": "element"
+        },
+        "comment": "An element to read the id attribute from.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -7472,6 +10633,21 @@
         "name": "element"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.w3c.dom.Element",
+            "name": "Element",
+            "isArray": false
+          },
+          "name": "element"
+        },
+        "comment": "An XML-element that will be used to initialize this object.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "readFromXMLElement(org.w3c.dom.Element element)"
@@ -7489,6 +10665,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "dumpObject()"
@@ -7515,6 +10692,7 @@
         "name": "items"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "dumpCollection(java.util.Collection items)"
@@ -7541,6 +10719,21 @@
         "name": "file"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.File",
+            "name": "File",
+            "isArray": false
+          },
+          "name": "file"
+        },
+        "comment": "The File to write to.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -7550,6 +10743,7 @@
           "isArray": false
         },
         "comment": "",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -7585,6 +10779,34 @@
         "name": "scope"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.File",
+            "name": "File",
+            "isArray": false
+          },
+          "name": "file"
+        },
+        "comment": "The File to write to.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.io.FreeColXMLWriter.WriteScope",
+            "name": "WriteScope",
+            "isArray": false
+          },
+          "name": "scope"
+        },
+        "comment": "The WriteScope to use.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -7594,6 +10816,7 @@
           "isArray": false
         },
         "comment": "",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -7637,6 +10860,47 @@
         "name": "pretty"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.File",
+            "name": "File",
+            "isArray": false
+          },
+          "name": "file"
+        },
+        "comment": "The File to write to.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.io.FreeColXMLWriter.WriteScope",
+            "name": "WriteScope",
+            "isArray": false
+          },
+          "name": "scope"
+        },
+        "comment": "The WriteScope to use.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "pretty"
+        },
+        "comment": "Attempt to indent the output nicely.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -7646,6 +10910,7 @@
           "isArray": false
         },
         "comment": "",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -7689,6 +10954,47 @@
         "name": "pretty"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.OutputStream",
+            "name": "OutputStream",
+            "isArray": false
+          },
+          "name": "out"
+        },
+        "comment": "The OutputStream to write to.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.io.FreeColXMLWriter.WriteScope",
+            "name": "WriteScope",
+            "isArray": false
+          },
+          "name": "scope"
+        },
+        "comment": "The WriteScope to use.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "pretty"
+        },
+        "comment": "Attempt to indent the output nicely.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "save(java.io.OutputStream out,net.sf.freecol.common.io.FreeColXMLWriter.WriteScope scope,boolean pretty)"
@@ -7715,6 +11021,21 @@
         "name": "scope"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.io.FreeColXMLWriter.WriteScope",
+            "name": "WriteScope",
+            "isArray": false
+          },
+          "name": "scope"
+        },
+        "comment": "The write scope to use.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -7724,6 +11045,7 @@
           "isArray": false
         },
         "comment": "if there are any problems writing to the stream.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -7742,6 +11064,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -7751,6 +11074,7 @@
           "isArray": false
         },
         "comment": "if there are any problems writing to the stream.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -7786,6 +11110,34 @@
         "name": "returnClass"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Game",
+            "name": "Game",
+            "isArray": false
+          },
+          "name": "game"
+        },
+        "comment": "The Game to add the object to.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          },
+          "name": "returnClass"
+        },
+        "comment": "The required object class.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "copy(net.sf.freecol.common.model.Game game,java.lang.Class returnClass)"
@@ -7812,6 +11164,21 @@
         "name": "xw"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.io.FreeColXMLWriter",
+            "name": "FreeColXMLWriter",
+            "isArray": false
+          },
+          "name": "xw"
+        },
+        "comment": "The FreeColXMLWriter to write to.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -7821,6 +11188,7 @@
           "isArray": false
         },
         "comment": "if there are any problems writing to the stream.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -7856,6 +11224,34 @@
         "name": "tag"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.io.FreeColXMLWriter",
+            "name": "FreeColXMLWriter",
+            "isArray": false
+          },
+          "name": "xw"
+        },
+        "comment": "The FreeColXMLWriter to write to.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "tag"
+        },
+        "comment": "The tag to use.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -7865,6 +11261,7 @@
           "isArray": false
         },
         "comment": "if there are any problems writing to the stream.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -7905,6 +11302,39 @@
         "name": "fields"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.io.FreeColXMLWriter",
+            "name": "FreeColXMLWriter",
+            "isArray": false
+          },
+          "name": "xw"
+        },
+        "comment": "The FreeColXMLWriter to write to.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String[]",
+            "name": "String[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.String",
+              "name": "String",
+              "isArray": false
+            }
+          },
+          "name": "fields"
+        },
+        "comment": "The fields to write.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -7914,6 +11344,7 @@
           "isArray": false
         },
         "comment": "if there are any problems writing to the stream.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -7941,6 +11372,21 @@
         "name": "xr"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.io.FreeColXMLReader",
+            "name": "FreeColXMLReader",
+            "isArray": false
+          },
+          "name": "xr"
+        },
+        "comment": "The input stream with the XML.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -7950,6 +11396,7 @@
           "isArray": false
         },
         "comment": "if a problem was encountered during parsing.",
+        "kind": "@throws",
         "condition": ""
       }
     ],

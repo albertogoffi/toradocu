@@ -12,6 +12,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getDimension()"
@@ -38,6 +39,21 @@
         "name": "index"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "Index location of entry to be fetched.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -47,6 +63,7 @@
           "isArray": false
         },
         "comment": "if the index is not valid.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -82,6 +99,34 @@
         "name": "value"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "element index.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "new value for the element.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -91,6 +136,7 @@
           "isArray": false
         },
         "comment": "if the index is not valid.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -126,6 +172,34 @@
         "name": "increment"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "Index location of entry to be set.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "increment"
+        },
+        "comment": "Value to add to the vector entry.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -135,6 +209,7 @@
           "isArray": false
         },
         "comment": "if the index is not valid.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -162,6 +237,21 @@
         "name": "v"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "vector to append to this one.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "append(org.apache.commons.math3.linear.RealVector v)"
@@ -186,6 +276,21 @@
           "isArray": false
         },
         "name": "d"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d"
+        },
+        "comment": "double to append.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -222,6 +327,34 @@
         "name": "n"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "index of first element.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "number of elements to be retrieved.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -231,6 +364,7 @@
           "isArray": false
         },
         "comment": "if the index is not valid.",
+        "kind": "@throws",
         "condition": ""
       },
       {
@@ -240,6 +374,7 @@
           "isArray": false
         },
         "comment": "if the number of elements is not positive.",
+        "kind": "@throws",
         "condition": "(args[1]>0) == false"
       }
     ],
@@ -275,6 +410,34 @@
         "name": "v"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "index of first element to be set.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "vector containing the values to set.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -284,6 +447,7 @@
           "isArray": false
         },
         "comment": "if the index is not valid.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -302,6 +466,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isNaN()"
@@ -319,6 +484,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isInfinite()"
@@ -345,6 +511,21 @@
         "name": "v"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector to compare instance with.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -354,7 +535,8 @@
           "isArray": false
         },
         "comment": "if the vectors do not have the same dimension.",
-        "condition": "target.checkVectorsDimensions(args[0])"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "checkVectorDimensions(org.apache.commons.math3.linear.RealVector v)"
@@ -381,6 +563,21 @@
         "name": "n"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "Expected dimension.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -390,6 +587,7 @@
           "isArray": false
         },
         "comment": "if the dimension is inconsistent with the vector size.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -417,6 +615,21 @@
         "name": "index"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "Index to check.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -426,6 +639,7 @@
           "isArray": false
         },
         "comment": "if index is not valid.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -461,6 +675,34 @@
         "name": "end"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "start"
+        },
+        "comment": "the index of the first entry of the subvector",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "end"
+        },
+        "comment": "the index of the last entry of the subvector (inclusive)",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -470,6 +712,7 @@
           "isArray": false
         },
         "comment": "if start of end are not valid",
+        "kind": "@throws",
         "condition": ""
       },
       {
@@ -479,7 +722,8 @@
           "isArray": false
         },
         "comment": "if end < start",
-        "condition": "args[1]<args[0]"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "checkIndices(int start,int end)"
@@ -506,6 +750,21 @@
         "name": "v"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector to be added.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -515,7 +774,8 @@
           "isArray": false
         },
         "comment": "if v is not the same size as this vector.",
-        "condition": "target.checkVectorDimensions(args[0])"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "add(org.apache.commons.math3.linear.RealVector v)"
@@ -542,6 +802,21 @@
         "name": "v"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector to be subtracted.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -551,7 +826,8 @@
           "isArray": false
         },
         "comment": "if v is not the same size as this vector.",
-        "condition": "target.checkVectorsDimensions(args[0])"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "subtract(org.apache.commons.math3.linear.RealVector v)"
@@ -576,6 +852,21 @@
           "isArray": false
         },
         "name": "d"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d"
+        },
+        "comment": "Value to be added to each entry.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -604,6 +895,21 @@
         "name": "d"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d"
+        },
+        "comment": "Value to be added to each entry.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "mapAddToSelf(double d)"
@@ -621,6 +927,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "copy()"
@@ -647,6 +954,21 @@
         "name": "v"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector with which dot product should be computed",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -656,7 +978,8 @@
           "isArray": false
         },
         "comment": "if v is not the same size as this vector.",
-        "condition": "target.checkVectorDimensions(args[0])"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "dotProduct(org.apache.commons.math3.linear.RealVector v)"
@@ -683,6 +1006,21 @@
         "name": "v"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -692,7 +1030,8 @@
           "isArray": false
         },
         "comment": "if this or v is the null vector",
-        "condition": "target.getNorm()==0 || args[0].getNorm()==0"
+        "kind": "@throws",
+        "condition": ""
       },
       {
         "exception": {
@@ -701,7 +1040,8 @@
           "isArray": false
         },
         "comment": "if the dimensions of this and v do not match",
-        "condition": "target.getDimension() != args[0].getDimension()"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "cosine(org.apache.commons.math3.linear.RealVector v)"
@@ -728,6 +1068,21 @@
         "name": "v"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector by which instance elements must be divided.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -737,7 +1092,8 @@
           "isArray": false
         },
         "comment": "if v is not the same size as this vector.",
-        "condition": "args[0].getDimension() != target.getDimension()"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "ebeDivide(org.apache.commons.math3.linear.RealVector v)"
@@ -764,6 +1120,21 @@
         "name": "v"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector by which instance elements must be multiplied",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -773,7 +1144,8 @@
           "isArray": false
         },
         "comment": "if v is not the same size as this vector.",
-        "condition": "args[0].getDimension() != target.getDimension()"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "ebeMultiply(org.apache.commons.math3.linear.RealVector v)"
@@ -800,6 +1172,21 @@
         "name": "v"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector to which distance is requested.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -809,7 +1196,8 @@
           "isArray": false
         },
         "comment": "if v is not the same size as this vector.",
-        "condition": "args[0].getDimension() != target.getDimension()"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "getDistance(org.apache.commons.math3.linear.RealVector v)"
@@ -827,6 +1215,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNorm()"
@@ -844,6 +1233,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getL1Norm()"
@@ -861,6 +1251,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getLInfNorm()"
@@ -887,6 +1278,21 @@
         "name": "v"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector to which distance is requested.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -896,7 +1302,8 @@
           "isArray": false
         },
         "comment": "if v is not the same size as this vector.",
-        "condition": "args[0].getDimension() != target.getDimension()"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "getL1Distance(org.apache.commons.math3.linear.RealVector v)"
@@ -923,6 +1330,21 @@
         "name": "v"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector to which distance is requested.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -932,7 +1354,8 @@
           "isArray": false
         },
         "comment": "if v is not the same size as this vector.",
-        "condition": "args[0].getDimension() != target.getDimension()"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "getLInfDistance(org.apache.commons.math3.linear.RealVector v)"
@@ -950,6 +1373,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getMinIndex()"
@@ -967,6 +1391,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getMinValue()"
@@ -984,6 +1409,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getMaxIndex()"
@@ -1001,6 +1427,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getMaxValue()"
@@ -1025,6 +1452,21 @@
           "isArray": false
         },
         "name": "d"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d"
+        },
+        "comment": "Multiplication factor.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1053,6 +1495,21 @@
         "name": "d"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d"
+        },
+        "comment": "Multiplication factor.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "mapMultiplyToSelf(double d)"
@@ -1077,6 +1534,21 @@
           "isArray": false
         },
         "name": "d"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d"
+        },
+        "comment": "Value to be subtracted.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1105,6 +1577,21 @@
         "name": "d"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d"
+        },
+        "comment": "Value to be subtracted.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "mapSubtractToSelf(double d)"
@@ -1129,6 +1616,21 @@
           "isArray": false
         },
         "name": "d"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d"
+        },
+        "comment": "Value to divide by.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1157,6 +1659,21 @@
         "name": "d"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d"
+        },
+        "comment": "Value to divide by.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "mapDivideToSelf(double d)"
@@ -1181,6 +1698,21 @@
           "isArray": false
         },
         "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector with which outer product should be computed.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1209,6 +1741,21 @@
         "name": "v"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "vector onto which instance must be projected.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1218,7 +1765,8 @@
           "isArray": false
         },
         "comment": "if v is not the same size as this vector.",
-        "condition": "args[0].getDimension() != target.getDimension()"
+        "kind": "@throws",
+        "condition": ""
       },
       {
         "exception": {
@@ -1227,7 +1775,8 @@
           "isArray": false
         },
         "comment": "if this or v is the null vector",
-        "condition": "target.getNorm()==0 || args[0].getNorm()==0"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "projection(org.apache.commons.math3.linear.RealVector v)"
@@ -1254,6 +1803,21 @@
         "name": "value"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "Single value to set for all elements.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "set(double value)"
@@ -1276,6 +1840,7 @@
       }
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toArray()"
@@ -1293,6 +1858,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1302,6 +1868,7 @@
           "isArray": false
         },
         "comment": "if the norm is zero.",
+        "kind": "@throws",
         "condition": "target.getNorm()==0"
       }
     ],
@@ -1320,6 +1887,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1329,6 +1897,7 @@
           "isArray": false
         },
         "comment": "if the norm is zero.",
+        "kind": "@throws",
         "condition": "target.getNorm()==0"
       }
     ],
@@ -1347,6 +1916,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "sparseIterator()"
@@ -1364,6 +1934,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "iterator()"
@@ -1390,6 +1961,21 @@
         "name": "function"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+            "name": "UnivariateFunction",
+            "isArray": false
+          },
+          "name": "function"
+        },
+        "comment": "Function to apply to each entry.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "map(org.apache.commons.math3.analysis.UnivariateFunction function)"
@@ -1414,6 +2000,21 @@
           "isArray": false
         },
         "name": "function"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+            "name": "UnivariateFunction",
+            "isArray": false
+          },
+          "name": "function"
+        },
+        "comment": "Function to apply to each entry.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1458,6 +2059,47 @@
         "name": "y"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "Coefficient of this.",
+        "kind": "@param",
+        "condition": "args[0]==target || args[1]==target || args[2]==target"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "Coefficient of y.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "y"
+        },
+        "comment": "Vector with which this is linearly combined.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1467,7 +2109,8 @@
           "isArray": false
         },
         "comment": "if y is not the same size as this vector.",
-        "condition": "args[2].getDimension() != target.getDimension()"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "combine(double a,double b,org.apache.commons.math3.linear.RealVector y)"
@@ -1510,6 +2153,47 @@
         "name": "y"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "Weight of this.",
+        "kind": "@param",
+        "condition": "args[0]==target || args[1]==target || args[2]==target"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "Weight of y.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "y"
+        },
+        "comment": "Vector with which this is linearly combined.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1519,7 +2203,8 @@
           "isArray": false
         },
         "comment": "if y is not the same size as this vector.",
-        "condition": "args[2].getDimension() != target.getDimension()"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "combineToSelf(double a,double b,org.apache.commons.math3.linear.RealVector y)"
@@ -1544,6 +2229,21 @@
           "isArray": false
         },
         "name": "visitor"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVectorPreservingVisitor",
+            "name": "RealVectorPreservingVisitor",
+            "isArray": false
+          },
+          "name": "visitor"
+        },
+        "comment": "the visitor to be used to process the entries of this vector",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1588,6 +2288,47 @@
         "name": "end"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVectorPreservingVisitor",
+            "name": "RealVectorPreservingVisitor",
+            "isArray": false
+          },
+          "name": "visitor"
+        },
+        "comment": "visitor to be used to process the entries of this vector",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "start"
+        },
+        "comment": "the index of the first entry to be visited",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "end"
+        },
+        "comment": "the index of the last entry to be visited (inclusive)",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1597,7 +2338,8 @@
           "isArray": false
         },
         "comment": "if end < start.",
-        "condition": "args[2]<args[1]"
+        "kind": "@throws",
+        "condition": ""
       },
       {
         "exception": {
@@ -1606,6 +2348,7 @@
           "isArray": false
         },
         "comment": "if the indices are not valid.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -1631,6 +2374,21 @@
           "isArray": false
         },
         "name": "visitor"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVectorPreservingVisitor",
+            "name": "RealVectorPreservingVisitor",
+            "isArray": false
+          },
+          "name": "visitor"
+        },
+        "comment": "the visitor to be used to process the entries of this vector",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1675,6 +2433,47 @@
         "name": "end"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVectorPreservingVisitor",
+            "name": "RealVectorPreservingVisitor",
+            "isArray": false
+          },
+          "name": "visitor"
+        },
+        "comment": "visitor to be used to process the entries of this vector",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "start"
+        },
+        "comment": "the index of the first entry to be visited",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "end"
+        },
+        "comment": "the index of the last entry to be visited (inclusive)",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1684,7 +2483,8 @@
           "isArray": false
         },
         "comment": "if end < start.",
-        "condition": "args[2]<args[1]"
+        "kind": "@throws",
+        "condition": ""
       },
       {
         "exception": {
@@ -1693,6 +2493,7 @@
           "isArray": false
         },
         "comment": "if the indices are not valid.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -1718,6 +2519,21 @@
           "isArray": false
         },
         "name": "visitor"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVectorChangingVisitor",
+            "name": "RealVectorChangingVisitor",
+            "isArray": false
+          },
+          "name": "visitor"
+        },
+        "comment": "the visitor to be used to process and modify the entries of this vector",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1762,6 +2578,47 @@
         "name": "end"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVectorChangingVisitor",
+            "name": "RealVectorChangingVisitor",
+            "isArray": false
+          },
+          "name": "visitor"
+        },
+        "comment": "visitor to be used to process the entries of this vector",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "start"
+        },
+        "comment": "the index of the first entry to be visited",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "end"
+        },
+        "comment": "the index of the last entry to be visited (inclusive)",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1771,7 +2628,8 @@
           "isArray": false
         },
         "comment": "if end < start.",
-        "condition": "args[2]<args[1]"
+        "kind": "@throws",
+        "condition": ""
       },
       {
         "exception": {
@@ -1780,6 +2638,7 @@
           "isArray": false
         },
         "comment": "if the indices are not valid.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -1805,6 +2664,21 @@
           "isArray": false
         },
         "name": "visitor"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVectorChangingVisitor",
+            "name": "RealVectorChangingVisitor",
+            "isArray": false
+          },
+          "name": "visitor"
+        },
+        "comment": "the visitor to be used to process the entries of this vector",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1849,6 +2723,47 @@
         "name": "end"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVectorChangingVisitor",
+            "name": "RealVectorChangingVisitor",
+            "isArray": false
+          },
+          "name": "visitor"
+        },
+        "comment": "visitor to be used to process the entries of this vector",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "start"
+        },
+        "comment": "the index of the first entry to be visited",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "end"
+        },
+        "comment": "the index of the last entry to be visited (inclusive)",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1858,7 +2773,8 @@
           "isArray": false
         },
         "comment": "if end < start.",
-        "condition": "args[2]<args[1]"
+        "kind": "@throws",
+        "condition": ""
       },
       {
         "exception": {
@@ -1867,6 +2783,7 @@
           "isArray": false
         },
         "comment": "if the indices are not valid.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -1894,6 +2811,21 @@
         "name": "other"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "other"
+        },
+        "comment": "Object to test for equality.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1903,6 +2835,7 @@
           "isArray": false
         },
         "comment": "if this method is not overridden.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -1921,6 +2854,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1930,6 +2864,7 @@
           "isArray": false
         },
         "comment": "if this method is not overridden.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -1955,6 +2890,21 @@
           "isArray": false
         },
         "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector for which an unmodifiable view is to be returned.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,

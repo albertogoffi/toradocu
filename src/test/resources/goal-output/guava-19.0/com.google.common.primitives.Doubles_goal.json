@@ -7,6 +7,7 @@
     },
     "name": "Doubles",
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "Doubles()"
@@ -31,6 +32,21 @@
           "isArray": false
         },
         "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "a primitive double value",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -67,6 +83,34 @@
         "name": "b"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the first double to compare",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the second double to compare",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "compare(double a,double b)"
@@ -93,6 +137,7 @@
         "name": "value"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isFinite(double value)"
@@ -114,7 +159,12 @@
         "type": {
           "qualifiedName": "double[]",
           "name": "double[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
         },
         "name": "array"
       },
@@ -125,6 +175,39 @@
           "isArray": false
         },
         "name": "target"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "an array of double values, possibly empty",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "target"
+        },
+        "comment": "a primitive double value",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -148,7 +231,12 @@
         "type": {
           "qualifiedName": "double[]",
           "name": "double[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
         },
         "name": "array"
       },
@@ -159,6 +247,39 @@
           "isArray": false
         },
         "name": "target"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "an array of double values, possibly empty",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "target"
+        },
+        "comment": "a primitive double value",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -182,7 +303,12 @@
         "type": {
           "qualifiedName": "double[]",
           "name": "double[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
         },
         "name": "array"
       },
@@ -211,6 +337,7 @@
         "name": "end"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "indexOf(double[] array,double target,int start,int end)"
@@ -232,7 +359,12 @@
         "type": {
           "qualifiedName": "double[]",
           "name": "double[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
         },
         "name": "array"
       },
@@ -240,9 +372,52 @@
         "type": {
           "qualifiedName": "double[]",
           "name": "double[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
         },
         "name": "target"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "the array to search for the sequence target",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "target"
+        },
+        "comment": "the array to search for as a sub-sequence of array",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -266,7 +441,12 @@
         "type": {
           "qualifiedName": "double[]",
           "name": "double[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
         },
         "name": "array"
       },
@@ -277,6 +457,39 @@
           "isArray": false
         },
         "name": "target"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "an array of double values, possibly empty",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "target"
+        },
+        "comment": "a primitive double value",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -300,7 +513,12 @@
         "type": {
           "qualifiedName": "double[]",
           "name": "double[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
         },
         "name": "array"
       },
@@ -329,6 +547,7 @@
         "name": "end"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "lastIndexOf(double[] array,double target,int start,int end)"
@@ -350,9 +569,34 @@
         "type": {
           "qualifiedName": "double[]",
           "name": "double[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
         },
         "name": "array"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "a nonempty array of double values",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": true,
@@ -364,6 +608,7 @@
           "isArray": false
         },
         "comment": "if array is empty",
+        "kind": "@throws",
         "condition": "args[0].length==0"
       }
     ],
@@ -386,9 +631,34 @@
         "type": {
           "qualifiedName": "double[]",
           "name": "double[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
         },
         "name": "array"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "a nonempty array of double values",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": true,
@@ -400,6 +670,7 @@
           "isArray": false
         },
         "comment": "if array is empty",
+        "kind": "@throws",
         "condition": "args[0].length==0"
       }
     ],
@@ -415,21 +686,51 @@
     "returnType": {
       "qualifiedName": "double[]",
       "name": "double[]",
-      "isArray": true
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "double",
+        "name": "double",
+        "isArray": false
+      }
     },
     "parameters": [
       {
         "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true
+          "qualifiedName": "double[][]",
+          "name": "double[][]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
         },
         "name": "arrays"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[][]",
+            "name": "double[][]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "arrays"
+        },
+        "comment": "zero or more double arrays",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": true,
     "throwsTags": [],
-    "signature": "concat(double[] arrays)"
+    "signature": "concat(double[][] arrays)"
   },
   {
     "containingClass": {
@@ -444,6 +745,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "stringConverter()"
@@ -458,14 +760,24 @@
     "returnType": {
       "qualifiedName": "double[]",
       "name": "double[]",
-      "isArray": true
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "double",
+        "name": "double",
+        "isArray": false
+      }
     },
     "parameters": [
       {
         "type": {
           "qualifiedName": "double[]",
           "name": "double[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
         },
         "name": "array"
       },
@@ -486,6 +798,52 @@
         "name": "padding"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "the source array",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "minLength"
+        },
+        "comment": "the minimum length the returned array must guarantee",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "padding"
+        },
+        "comment": "an extra amount to \"grow\" the array by if growth is necessary",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -495,6 +853,7 @@
           "isArray": false
         },
         "comment": "if minLength or padding is negative",
+        "kind": "@throws",
         "condition": "args[1]<0 || args[2]<0"
       }
     ],
@@ -510,14 +869,24 @@
     "returnType": {
       "qualifiedName": "double[]",
       "name": "double[]",
-      "isArray": true
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "double",
+        "name": "double",
+        "isArray": false
+      }
     },
     "parameters": [
       {
         "type": {
           "qualifiedName": "double[]",
           "name": "double[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
         },
         "name": "original"
       },
@@ -530,6 +899,7 @@
         "name": "length"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "copyOf(double[] original,int length)"
@@ -559,9 +929,47 @@
         "type": {
           "qualifiedName": "double[]",
           "name": "double[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
         },
         "name": "array"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "separator"
+        },
+        "comment": "the text that should appear between consecutive values in the resulting string (but not at the start or end)",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "an array of double values, possibly empty",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": true,
@@ -581,6 +989,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "lexicographicalComparator()"
@@ -595,7 +1004,12 @@
     "returnType": {
       "qualifiedName": "double[]",
       "name": "double[]",
-      "isArray": true
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "double",
+        "name": "double",
+        "isArray": false
+      }
     },
     "parameters": [
       {
@@ -607,6 +1021,21 @@
         "name": "collection"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "a collection of Number instances",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -616,7 +1045,8 @@
           "isArray": false
         },
         "comment": "if collection or any of its elements is null",
-        "condition": "args[0]==null || args[0].contains(null)"
+        "kind": "@throws",
+        "condition": "args[0]==null"
       }
     ],
     "signature": "toArray(java.util.Collection collection)"
@@ -638,9 +1068,34 @@
         "type": {
           "qualifiedName": "double[]",
           "name": "double[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
         },
         "name": "backingArray"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "backingArray"
+        },
+        "comment": "the array to back the list",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": true,
@@ -660,6 +1115,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "fpPattern()"
@@ -684,6 +1140,21 @@
           "isArray": false
         },
         "name": "string"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "string"
+        },
+        "comment": "the string representation of a double value",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,

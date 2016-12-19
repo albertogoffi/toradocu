@@ -7,6 +7,7 @@
     },
     "name": "LRUMap",
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "LRUMap()"
@@ -28,6 +29,21 @@
         "name": "maxSize"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxSize"
+        },
+        "comment": "the maximum size of the map",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -37,7 +53,8 @@
           "isArray": false
         },
         "comment": "if the maximum size is less than one",
-        "condition": "args[0]<1"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "LRUMap(int maxSize)"
@@ -67,6 +84,34 @@
         "name": "initialSize"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxSize"
+        },
+        "comment": "the maximum size of the map",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "initialSize"
+        },
+        "comment": "the initial size of the map",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -76,7 +121,8 @@
           "isArray": false
         },
         "comment": "if the maximum size is less than one",
-        "condition": "args[0]<1"
+        "kind": "@throws",
+        "condition": ""
       },
       {
         "exception": {
@@ -85,7 +131,8 @@
           "isArray": false
         },
         "comment": "if the initial size is negative or larger than the maximum size",
-        "condition": "args[1]<0 || args[1]>args[0]"
+        "kind": "@throws",
+        "condition": "args[1]<0"
       }
     ],
     "signature": "LRUMap(int maxSize,int initialSize)"
@@ -115,6 +162,34 @@
         "name": "scanUntilRemovable"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxSize"
+        },
+        "comment": "the maximum size of the map",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "scanUntilRemovable"
+        },
+        "comment": "scan until a removeable entry is found, default false",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -124,7 +199,8 @@
           "isArray": false
         },
         "comment": "if the maximum size is less than one",
-        "condition": "args[0]<1"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "LRUMap(int maxSize,boolean scanUntilRemovable)"
@@ -154,6 +230,34 @@
         "name": "loadFactor"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxSize"
+        },
+        "comment": "the maximum size of the map",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          },
+          "name": "loadFactor"
+        },
+        "comment": "the load factor",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -163,7 +267,8 @@
           "isArray": false
         },
         "comment": "if the maximum size is less than one",
-        "condition": "args[0]<1"
+        "kind": "@throws",
+        "condition": ""
       },
       {
         "exception": {
@@ -172,7 +277,8 @@
           "isArray": false
         },
         "comment": "if the load factor is less than zero",
-        "condition": "args[1]<0"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "LRUMap(int maxSize,float loadFactor)"
@@ -210,6 +316,47 @@
         "name": "loadFactor"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxSize"
+        },
+        "comment": "the maximum size of the map",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "initialSize"
+        },
+        "comment": "the initial size of the map",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          },
+          "name": "loadFactor"
+        },
+        "comment": "the load factor",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -219,7 +366,8 @@
           "isArray": false
         },
         "comment": "if the maximum size is less than one",
-        "condition": "args[0]<1"
+        "kind": "@throws",
+        "condition": ""
       },
       {
         "exception": {
@@ -228,7 +376,8 @@
           "isArray": false
         },
         "comment": "if the initial size is negative or larger than the maximum size",
-        "condition": "args[1]<0 || args[1]>args[0]"
+        "kind": "@throws",
+        "condition": "args[1]<0"
       },
       {
         "exception": {
@@ -237,7 +386,8 @@
           "isArray": false
         },
         "comment": "if the load factor is less than zero",
-        "condition": "args[2]<0"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "LRUMap(int maxSize,int initialSize,float loadFactor)"
@@ -275,6 +425,47 @@
         "name": "scanUntilRemovable"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxSize"
+        },
+        "comment": "the maximum size of the map",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          },
+          "name": "loadFactor"
+        },
+        "comment": "the load factor",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "scanUntilRemovable"
+        },
+        "comment": "scan until a removeable entry is found, default false",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -284,7 +475,8 @@
           "isArray": false
         },
         "comment": "if the maximum size is less than one",
-        "condition": "args[0]<1"
+        "kind": "@throws",
+        "condition": ""
       },
       {
         "exception": {
@@ -293,7 +485,8 @@
           "isArray": false
         },
         "comment": "if the load factor is less than zero",
-        "condition": "args[1]<0"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "LRUMap(int maxSize,float loadFactor,boolean scanUntilRemovable)"
@@ -339,6 +532,60 @@
         "name": "scanUntilRemovable"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxSize"
+        },
+        "comment": "the maximum size of the map",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "initialSize"
+        },
+        "comment": "the initial size of the map",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          },
+          "name": "loadFactor"
+        },
+        "comment": "the load factor",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "scanUntilRemovable"
+        },
+        "comment": "scan until a removeable entry is found, default false",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -348,7 +595,8 @@
           "isArray": false
         },
         "comment": "if the maximum size is less than one",
-        "condition": "args[0]<1"
+        "kind": "@throws",
+        "condition": ""
       },
       {
         "exception": {
@@ -357,7 +605,8 @@
           "isArray": false
         },
         "comment": "if the initial size is negative or larger than the maximum size",
-        "condition": "args[1]<0 || args[1]>args[0]"
+        "kind": "@throws",
+        "condition": "args[1]<0"
       },
       {
         "exception": {
@@ -366,7 +615,8 @@
           "isArray": false
         },
         "comment": "if the load factor is less than zero",
-        "condition": "args[2]<0"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "LRUMap(int maxSize,int initialSize,float loadFactor,boolean scanUntilRemovable)"
@@ -388,6 +638,21 @@
         "name": "map"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Map",
+            "name": "Map",
+            "isArray": false
+          },
+          "name": "map"
+        },
+        "comment": "the map to copy",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -397,6 +662,7 @@
           "isArray": false
         },
         "comment": "if the map is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -406,6 +672,7 @@
           "isArray": false
         },
         "comment": "if the map is empty",
+        "kind": "@throws",
         "condition": "args[0].isEmpty()"
       }
     ],
@@ -436,6 +703,34 @@
         "name": "scanUntilRemovable"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Map",
+            "name": "Map",
+            "isArray": false
+          },
+          "name": "map"
+        },
+        "comment": "the map to copy",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "scanUntilRemovable"
+        },
+        "comment": "scan until a removeable entry is found, default false",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -445,6 +740,7 @@
           "isArray": false
         },
         "comment": "if the map is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -454,6 +750,7 @@
           "isArray": false
         },
         "comment": "if the map is empty",
+        "kind": "@throws",
         "condition": "args[0].isEmpty()"
       }
     ],
@@ -479,6 +776,21 @@
           "isArray": false
         },
         "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -515,6 +827,34 @@
         "name": "updateToMRU"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "updateToMRU"
+        },
+        "comment": "whether the key shall be updated to the most recently used position",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "get(java.lang.Object key,boolean updateToMRU)"
@@ -539,6 +879,21 @@
           "isArray": false
         },
         "name": "entry"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry",
+            "name": "LinkEntry",
+            "isArray": false
+          },
+          "name": "entry"
+        },
+        "comment": "the entry to update",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -573,6 +928,34 @@
           "isArray": false
         },
         "name": "newValue"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry",
+            "name": "HashEntry",
+            "isArray": false
+          },
+          "name": "entry"
+        },
+        "comment": "the entry to update",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "newValue"
+        },
+        "comment": "the new value to store",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -623,6 +1006,60 @@
           "isArray": false
         },
         "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "hashIndex"
+        },
+        "comment": "the index into the data array to store at",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "hashCode"
+        },
+        "comment": "the hash code of the key to add",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key to add",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "the value to add",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -683,6 +1120,73 @@
         "name": "value"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry",
+            "name": "LinkEntry",
+            "isArray": false
+          },
+          "name": "entry"
+        },
+        "comment": "the entry to reuse",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "hashIndex"
+        },
+        "comment": "the index into the data array to store at",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "hashCode"
+        },
+        "comment": "the hash code of the key to add",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key to add",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "the value to add",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "reuseMapping(org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry entry,int hashIndex,int hashCode,java.lang.Object key,java.lang.Object value)"
@@ -709,6 +1213,21 @@
         "name": "entry"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry",
+            "name": "LinkEntry",
+            "isArray": false
+          },
+          "name": "entry"
+        },
+        "comment": "the entry to be removed",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeLRU(org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry entry)"
@@ -726,6 +1245,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isFull()"
@@ -743,6 +1263,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "maxSize()"
@@ -760,6 +1281,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isScanUntilRemovable()"
@@ -777,6 +1299,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "clone()"
@@ -803,6 +1326,7 @@
         "name": "out"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "writeObject(java.io.ObjectOutputStream out)"
@@ -829,6 +1353,7 @@
         "name": "in"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "readObject(java.io.ObjectInputStream in)"
@@ -855,6 +1380,21 @@
         "name": "out"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.ObjectOutputStream",
+            "name": "ObjectOutputStream",
+            "isArray": false
+          },
+          "name": "out"
+        },
+        "comment": "the output stream",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -864,6 +1404,7 @@
           "isArray": false
         },
         "comment": "if an error occurs while writing to the stream",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -891,6 +1432,21 @@
         "name": "in"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.ObjectInputStream",
+            "name": "ObjectInputStream",
+            "isArray": false
+          },
+          "name": "in"
+        },
+        "comment": "the input stream",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -900,6 +1456,7 @@
           "isArray": false
         },
         "comment": "if an error occurs while reading from the stream",
+        "kind": "@throws",
         "condition": ""
       },
       {
@@ -909,6 +1466,7 @@
           "isArray": false
         },
         "comment": "if an object read from the stream can not be loaded",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -927,6 +1485,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "init()"
@@ -953,6 +1512,21 @@
         "name": "value"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "the value to search for",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "containsValue(java.lang.Object value)"
@@ -970,6 +1544,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "clear()"
@@ -987,6 +1562,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -996,6 +1572,7 @@
           "isArray": false
         },
         "comment": "if this map is empty",
+        "kind": "@throws",
         "condition": "target.isEmpty()"
       }
     ],
@@ -1014,6 +1591,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1023,6 +1601,7 @@
           "isArray": false
         },
         "comment": "if this map is empty",
+        "kind": "@throws",
         "condition": "target.isEmpty()"
       }
     ],
@@ -1048,6 +1627,34 @@
           "isArray": false
         },
         "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key to get after",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key to search for next from",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1076,6 +1683,21 @@
         "name": "key"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getEntry(java.lang.Object key)"
@@ -1100,6 +1722,34 @@
           "isArray": false
         },
         "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key to get before",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key to search for previous from",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1128,6 +1778,21 @@
         "name": "index"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "the index to retrieve",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1137,7 +1802,8 @@
           "isArray": false
         },
         "comment": "if the index is invalid",
-        "condition": "args[0]<0 || args[0]>=target.entrySet().size()"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "getEntry(int index)"
@@ -1170,6 +1836,34 @@
           "isArray": false
         },
         "name": "hashIndex"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry",
+            "name": "HashEntry",
+            "isArray": false
+          },
+          "name": "entry"
+        },
+        "comment": "the entry to add",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "hashIndex"
+        },
+        "comment": "the index into the data array to store at",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1222,6 +1916,60 @@
         "name": "value"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry",
+            "name": "HashEntry",
+            "isArray": false
+          },
+          "name": "next"
+        },
+        "comment": "the next entry in sequence",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "hashCode"
+        },
+        "comment": "the hash code to use",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key to store",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "the value to store",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "createEntry(org.apache.commons.collections4.map.AbstractHashedMap.HashEntry next,int hashCode,java.lang.Object key,java.lang.Object value)"
@@ -1264,6 +2012,47 @@
         "name": "previous"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry",
+            "name": "HashEntry",
+            "isArray": false
+          },
+          "name": "entry"
+        },
+        "comment": "the entry to remove",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "hashIndex"
+        },
+        "comment": "the index into the data structure",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry",
+            "name": "HashEntry",
+            "isArray": false
+          },
+          "name": "previous"
+        },
+        "comment": "the previous entry in the chain",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeEntry(org.apache.commons.collections4.map.AbstractHashedMap.HashEntry entry,int hashIndex,org.apache.commons.collections4.map.AbstractHashedMap.HashEntry previous)"
@@ -1290,6 +2079,21 @@
         "name": "entry"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry",
+            "name": "LinkEntry",
+            "isArray": false
+          },
+          "name": "entry"
+        },
+        "comment": "the entry to query, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1299,6 +2103,7 @@
           "isArray": false
         },
         "comment": "if the entry is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -1326,6 +2131,21 @@
         "name": "entry"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry",
+            "name": "LinkEntry",
+            "isArray": false
+          },
+          "name": "entry"
+        },
+        "comment": "the entry to query, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1335,6 +2155,7 @@
           "isArray": false
         },
         "comment": "if the entry is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -1353,6 +2174,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "mapIterator()"
@@ -1370,6 +2192,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "createEntrySetIterator()"
@@ -1387,6 +2210,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "createKeySetIterator()"
@@ -1404,6 +2228,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "createValuesIterator()"
@@ -1421,6 +2246,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "size()"
@@ -1438,6 +2264,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isEmpty()"
@@ -1462,6 +2289,21 @@
           "isArray": false
         },
         "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key to search for",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1498,6 +2340,34 @@
         "name": "value"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key to add",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "the value to add",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "put(java.lang.Object key,java.lang.Object value)"
@@ -1524,6 +2394,21 @@
         "name": "map"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Map",
+            "name": "Map",
+            "isArray": false
+          },
+          "name": "map"
+        },
+        "comment": "the map to add",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1533,6 +2418,7 @@
           "isArray": false
         },
         "comment": "if the map is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -1560,6 +2446,21 @@
         "name": "map"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Map",
+            "name": "Map",
+            "isArray": false
+          },
+          "name": "map"
+        },
+        "comment": "the map to add",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1569,6 +2470,7 @@
           "isArray": false
         },
         "comment": "if the map is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -1594,6 +2496,21 @@
           "isArray": false
         },
         "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the mapping to remove",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1622,6 +2539,21 @@
         "name": "key"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key convert",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "convertKey(java.lang.Object key)"
@@ -1646,6 +2578,21 @@
           "isArray": false
         },
         "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key to get a hash code for",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1682,6 +2629,34 @@
         "name": "key2"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key1"
+        },
+        "comment": "the first key to compare passed in from outside",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key2"
+        },
+        "comment": "the second key extracted from the entry via entry.key",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isEqualKey(java.lang.Object key1,java.lang.Object key2)"
@@ -1716,6 +2691,34 @@
         "name": "value2"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "value1"
+        },
+        "comment": "the first value to compare passed in from outside",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "value2"
+        },
+        "comment": "the second value extracted from the entry via getValue()",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isEqualValue(java.lang.Object value1,java.lang.Object value2)"
@@ -1748,6 +2751,34 @@
           "isArray": false
         },
         "name": "dataSize"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "hashCode"
+        },
+        "comment": "the hash code to use",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "dataSize"
+        },
+        "comment": "the size of the data to pick a bucket from",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1808,6 +2839,73 @@
         "name": "value"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry",
+            "name": "HashEntry",
+            "isArray": false
+          },
+          "name": "entry"
+        },
+        "comment": "the entry to update, not null",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "hashIndex"
+        },
+        "comment": "the index in the data array",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "hashCode"
+        },
+        "comment": "the hash code of the key to add",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key to add",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "the value to add",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "reuseEntry(org.apache.commons.collections4.map.AbstractHashedMap.HashEntry entry,int hashIndex,int hashCode,java.lang.Object key,java.lang.Object value)"
@@ -1850,6 +2948,47 @@
         "name": "previous"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry",
+            "name": "HashEntry",
+            "isArray": false
+          },
+          "name": "entry"
+        },
+        "comment": "the entry to remove",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "hashIndex"
+        },
+        "comment": "the index into the data structure",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry",
+            "name": "HashEntry",
+            "isArray": false
+          },
+          "name": "previous"
+        },
+        "comment": "the previous entry in the chain",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeMapping(org.apache.commons.collections4.map.AbstractHashedMap.HashEntry entry,int hashIndex,org.apache.commons.collections4.map.AbstractHashedMap.HashEntry previous)"
@@ -1876,6 +3015,21 @@
         "name": "entry"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry",
+            "name": "HashEntry",
+            "isArray": false
+          },
+          "name": "entry"
+        },
+        "comment": "the entry to destroy",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "destroyEntry(org.apache.commons.collections4.map.AbstractHashedMap.HashEntry entry)"
@@ -1893,6 +3047,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "checkCapacity()"
@@ -1919,6 +3074,21 @@
         "name": "newCapacity"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "newCapacity"
+        },
+        "comment": "the new capacity of the array (a power of two, less or equal to max)",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "ensureCapacity(int newCapacity)"
@@ -1943,6 +3113,21 @@
           "isArray": false
         },
         "name": "proposedCapacity"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "proposedCapacity"
+        },
+        "comment": "the proposed capacity",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1979,6 +3164,34 @@
         "name": "factor"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "newCapacity"
+        },
+        "comment": "the new capacity",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          },
+          "name": "factor"
+        },
+        "comment": "the load factor",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "calculateThreshold(int newCapacity,float factor)"
@@ -2005,6 +3218,21 @@
         "name": "entry"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry",
+            "name": "HashEntry",
+            "isArray": false
+          },
+          "name": "entry"
+        },
+        "comment": "the entry to query, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -2014,6 +3242,7 @@
           "isArray": false
         },
         "comment": "if the entry is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -2041,6 +3270,21 @@
         "name": "entry"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry",
+            "name": "HashEntry",
+            "isArray": false
+          },
+          "name": "entry"
+        },
+        "comment": "the entry to query, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -2050,6 +3294,7 @@
           "isArray": false
         },
         "comment": "if the entry is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -2077,6 +3322,21 @@
         "name": "entry"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry",
+            "name": "HashEntry",
+            "isArray": false
+          },
+          "name": "entry"
+        },
+        "comment": "the entry to query, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -2086,6 +3346,7 @@
           "isArray": false
         },
         "comment": "if the entry is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -2113,6 +3374,21 @@
         "name": "entry"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry",
+            "name": "HashEntry",
+            "isArray": false
+          },
+          "name": "entry"
+        },
+        "comment": "the entry to query, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -2122,6 +3398,7 @@
           "isArray": false
         },
         "comment": "if the entry is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -2140,6 +3417,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "entrySet()"
@@ -2157,6 +3435,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "keySet()"
@@ -2174,6 +3453,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "values()"
@@ -2200,6 +3480,21 @@
         "name": "obj"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "obj"
+        },
+        "comment": "the object to compare to",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "equals(java.lang.Object obj)"
@@ -2217,6 +3512,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hashCode()"
@@ -2234,6 +3530,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toString()"
@@ -2268,6 +3565,7 @@
         "name": "arg1"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "eq(java.lang.Object arg0,java.lang.Object arg1)"

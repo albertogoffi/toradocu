@@ -16,6 +16,21 @@
         "name": "num"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.math.BigInteger",
+            "name": "BigInteger",
+            "isArray": false
+          },
+          "name": "num"
+        },
+        "comment": "the numerator.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "BigFraction(java.math.BigInteger num)"
@@ -45,6 +60,34 @@
         "name": "den"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.math.BigInteger",
+            "name": "BigInteger",
+            "isArray": false
+          },
+          "name": "num"
+        },
+        "comment": "the numerator, must not be null.",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.math.BigInteger",
+            "name": "BigInteger",
+            "isArray": false
+          },
+          "name": "den"
+        },
+        "comment": "the denominator, must not be null.",
+        "kind": "@param",
+        "condition": "(args[1]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -54,7 +97,8 @@
           "isArray": false
         },
         "comment": "if the denominator is zero.",
-        "condition": "args[1]==(org.apache.commons.math3.fraction.BigFraction.ZERO)"
+        "kind": "@throws",
+        "condition": ""
       },
       {
         "exception": {
@@ -63,7 +107,8 @@
           "isArray": false
         },
         "comment": "if either of the arguments is null",
-        "condition": "args[0]==null || args[1]==null"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "BigFraction(java.math.BigInteger num,java.math.BigInteger den)"
@@ -85,6 +130,21 @@
         "name": "value"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "the double value to convert to a fraction.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -94,7 +154,8 @@
           "isArray": false
         },
         "comment": "if value is NaN or infinite",
-        "condition": "Double.isNaN(args[0]) || Double.isInfinite(args[0])"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "BigFraction(double value)"
@@ -132,6 +193,47 @@
         "name": "maxIterations"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "the double value to convert to a fraction.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "epsilon"
+        },
+        "comment": "maximum error allowed. The resulting fraction is within epsilon of value, in absolute terms.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxIterations"
+        },
+        "comment": "maximum number of convergents.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -141,6 +243,7 @@
           "isArray": false
         },
         "comment": "if the continued fraction failed to converge.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -187,6 +290,60 @@
         "name": "maxIterations"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "the double value to convert to a fraction.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "epsilon"
+        },
+        "comment": "maximum error allowed. The resulting fraction is within epsilon of value, in absolute terms.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxDenominator"
+        },
+        "comment": "maximum denominator value allowed.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxIterations"
+        },
+        "comment": "maximum number of convergents.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -196,6 +353,7 @@
           "isArray": false
         },
         "comment": "if the continued fraction failed to converge.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -226,6 +384,34 @@
         "name": "maxDenominator"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "the double value to convert to a fraction.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxDenominator"
+        },
+        "comment": "The maximum allowed value for denominator.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -235,6 +421,7 @@
           "isArray": false
         },
         "comment": "if the continued fraction failed to converge.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -255,6 +442,21 @@
           "isArray": false
         },
         "name": "num"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "num"
+        },
+        "comment": "the numerator.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -286,6 +488,34 @@
         "name": "den"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "num"
+        },
+        "comment": "the numerator.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "den"
+        },
+        "comment": "the denominator.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "BigFraction(int num,int den)"
@@ -305,6 +535,21 @@
           "isArray": false
         },
         "name": "num"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "num"
+        },
+        "comment": "the numerator.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -334,6 +579,34 @@
           "isArray": false
         },
         "name": "den"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "num"
+        },
+        "comment": "the numerator.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "den"
+        },
+        "comment": "the denominator.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -370,6 +643,34 @@
         "name": "denominator"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "numerator"
+        },
+        "comment": "the numerator, for example the three in 'three sevenths'.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "denominator"
+        },
+        "comment": "the denominator, for example the seven in 'three sevenths'.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -379,6 +680,7 @@
           "isArray": false
         },
         "comment": "if the denominator is zero.",
+        "kind": "@throws",
         "condition": "args[1]==0"
       }
     ],
@@ -397,6 +699,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "abs()"
@@ -423,6 +726,21 @@
         "name": "bg"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.math.BigInteger",
+            "name": "BigInteger",
+            "isArray": false
+          },
+          "name": "bg"
+        },
+        "comment": "the BigInteger to add, must'nt be null.",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -432,6 +750,7 @@
           "isArray": false
         },
         "comment": "if the BigInteger is null.",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -457,6 +776,21 @@
           "isArray": false
         },
         "name": "i"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "i"
+        },
+        "comment": "the integer to add.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -485,6 +819,21 @@
         "name": "l"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "l"
+        },
+        "comment": "the long to add.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "add(long l)"
@@ -511,6 +860,21 @@
         "name": "fraction"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
+            "name": "BigFraction",
+            "isArray": false
+          },
+          "name": "fraction"
+        },
+        "comment": "the BigFraction to add, must not be null.",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -520,6 +884,7 @@
           "isArray": false
         },
         "comment": "if the BigFraction is null.",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -529,7 +894,8 @@
           "isArray": false
         },
         "comment": "if a is null.",
-        "condition": "args[0]==null"
+        "kind": "@throws",
+        "condition": "target.add()==null || target.abs()==null"
       }
     ],
     "signature": "add(org.apache.commons.math3.fraction.BigFraction fraction)"
@@ -547,6 +913,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -556,6 +923,7 @@
           "isArray": false
         },
         "comment": "if the exact quotient does not have a terminating decimal expansion.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -583,6 +951,21 @@
         "name": "roundingMode"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "roundingMode"
+        },
+        "comment": "rounding mode to apply. see BigDecimal constants.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -592,6 +975,7 @@
           "isArray": false
         },
         "comment": "if roundingMode does not represent a valid rounding mode.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -627,6 +1011,34 @@
         "name": "roundingMode"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "scale"
+        },
+        "comment": "scale of the BigDecimal quotient to be returned. see BigDecimal for more information.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "roundingMode"
+        },
+        "comment": "rounding mode to apply. see BigDecimal constants.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "bigDecimalValue(int scale,int roundingMode)"
@@ -651,6 +1063,21 @@
           "isArray": false
         },
         "name": "object"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
+            "name": "BigFraction",
+            "isArray": false
+          },
+          "name": "object"
+        },
+        "comment": "the object to compare to, must not be null.",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
       }
     ],
     "isVarArgs": false,
@@ -679,6 +1106,21 @@
         "name": "bg"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.math.BigInteger",
+            "name": "BigInteger",
+            "isArray": false
+          },
+          "name": "bg"
+        },
+        "comment": "the BigInteger to divide by, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -688,6 +1130,7 @@
           "isArray": false
         },
         "comment": "if the BigInteger is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -697,7 +1140,8 @@
           "isArray": false
         },
         "comment": "if the fraction to divide by is zero",
-        "condition": "args[0]==(org.apache.commons.math3.fraction.BigFraction.ZERO)"
+        "kind": "@throws",
+        "condition": "target==0"
       }
     ],
     "signature": "divide(java.math.BigInteger bg)"
@@ -724,6 +1168,21 @@
         "name": "i"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "i"
+        },
+        "comment": "the int to divide by",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -733,7 +1192,8 @@
           "isArray": false
         },
         "comment": "if the fraction to divide by is zero",
-        "condition": "args[0]==0"
+        "kind": "@throws",
+        "condition": "target==0"
       }
     ],
     "signature": "divide(int i)"
@@ -760,6 +1220,21 @@
         "name": "l"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "l"
+        },
+        "comment": "the long to divide by",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -769,7 +1244,8 @@
           "isArray": false
         },
         "comment": "if the fraction to divide by is zero",
-        "condition": "args[0]==0"
+        "kind": "@throws",
+        "condition": "target==0"
       }
     ],
     "signature": "divide(long l)"
@@ -796,6 +1272,21 @@
         "name": "fraction"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
+            "name": "BigFraction",
+            "isArray": false
+          },
+          "name": "fraction"
+        },
+        "comment": "Fraction to divide by, must not be null.",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -805,6 +1296,7 @@
           "isArray": false
         },
         "comment": "if the fraction is null.",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -814,7 +1306,8 @@
           "isArray": false
         },
         "comment": "if the fraction to divide by is zero",
-        "condition": "args[0]==(org.apache.commons.math3.fraction.BigFraction.ZERO)"
+        "kind": "@throws",
+        "condition": "args[0]==0"
       },
       {
         "exception": {
@@ -823,7 +1316,8 @@
           "isArray": false
         },
         "comment": "if a is null.",
-        "condition": "args[0]==null"
+        "kind": "@throws",
+        "condition": "target.add()==null || target.abs()==null"
       },
       {
         "exception": {
@@ -832,7 +1326,8 @@
           "isArray": false
         },
         "comment": "if a is zero",
-        "condition": "args[0].equals(org.apache.commons.math3.fraction.BigFraction.ZERO)"
+        "kind": "@throws",
+        "condition": "target.add()==0 || target.abs()==0"
       }
     ],
     "signature": "divide(org.apache.commons.math3.fraction.BigFraction fraction)"
@@ -850,6 +1345,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "doubleValue()"
@@ -876,6 +1372,21 @@
         "name": "other"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "other"
+        },
+        "comment": "fraction to test for equality to this fraction, can be null.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "equals(java.lang.Object other)"
@@ -893,6 +1404,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "floatValue()"
@@ -910,6 +1422,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getDenominator()"
@@ -927,6 +1440,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getDenominatorAsInt()"
@@ -944,6 +1458,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getDenominatorAsLong()"
@@ -961,6 +1476,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNumerator()"
@@ -978,6 +1494,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNumeratorAsInt()"
@@ -995,6 +1512,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNumeratorAsLong()"
@@ -1012,6 +1530,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hashCode()"
@@ -1029,6 +1548,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "intValue()"
@@ -1046,6 +1566,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "longValue()"
@@ -1072,6 +1593,21 @@
         "name": "bg"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.math.BigInteger",
+            "name": "BigInteger",
+            "isArray": false
+          },
+          "name": "bg"
+        },
+        "comment": "the BigInteger to multiply by.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1081,6 +1617,7 @@
           "isArray": false
         },
         "comment": "if bg is null.",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -1106,6 +1643,21 @@
           "isArray": false
         },
         "name": "i"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "i"
+        },
+        "comment": "the int to multiply by.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1134,6 +1686,21 @@
         "name": "l"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "l"
+        },
+        "comment": "the long to multiply by.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "multiply(long l)"
@@ -1160,6 +1727,21 @@
         "name": "fraction"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
+            "name": "BigFraction",
+            "isArray": false
+          },
+          "name": "fraction"
+        },
+        "comment": "Fraction to multiply by, must not be null.",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1169,6 +1751,7 @@
           "isArray": false
         },
         "comment": "if fraction is null.",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -1178,7 +1761,8 @@
           "isArray": false
         },
         "comment": "if a is null.",
-        "condition": "target.abs()==null"
+        "kind": "@throws",
+        "condition": "target.add()==null || target.abs()==null"
       }
     ],
     "signature": "multiply(org.apache.commons.math3.fraction.BigFraction fraction)"
@@ -1196,6 +1780,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "negate()"
@@ -1213,6 +1798,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "percentageValue()"
@@ -1237,6 +1823,21 @@
           "isArray": false
         },
         "name": "exponent"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "exponent"
+        },
+        "comment": "exponent to which this BigFraction is to be raised.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1265,6 +1866,21 @@
         "name": "exponent"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "exponent"
+        },
+        "comment": "exponent to which this BigFraction is to be raised.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "pow(long exponent)"
@@ -1289,6 +1905,21 @@
           "isArray": false
         },
         "name": "exponent"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.math.BigInteger",
+            "name": "BigInteger",
+            "isArray": false
+          },
+          "name": "exponent"
+        },
+        "comment": "exponent to which this BigFraction is to be raised.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1317,6 +1948,21 @@
         "name": "exponent"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "exponent"
+        },
+        "comment": "exponent to which this BigFraction is to be raised.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "pow(double exponent)"
@@ -1334,6 +1980,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1343,7 +1990,8 @@
           "isArray": false
         },
         "comment": "if this is zero",
-        "condition": "target==(org.apache.commons.math3.fraction.BigFraction.ZERO)"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "reciprocal()"
@@ -1361,6 +2009,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "reduce()"
@@ -1387,6 +2036,21 @@
         "name": "bg"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.math.BigInteger",
+            "name": "BigInteger",
+            "isArray": false
+          },
+          "name": "bg"
+        },
+        "comment": "the BigInteger to subtract, cannot be null.",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1396,6 +2060,7 @@
           "isArray": false
         },
         "comment": "if the BigInteger is null.",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -1421,6 +2086,21 @@
           "isArray": false
         },
         "name": "i"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "i"
+        },
+        "comment": "the integer to subtract.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1449,6 +2129,21 @@
         "name": "l"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "l"
+        },
+        "comment": "the long to subtract.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "subtract(long l)"
@@ -1475,6 +2170,21 @@
         "name": "fraction"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
+            "name": "BigFraction",
+            "isArray": false
+          },
+          "name": "fraction"
+        },
+        "comment": "BigFraction to subtract, must not be null.",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1484,6 +2194,7 @@
           "isArray": false
         },
         "comment": "if the fraction is null.",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -1493,7 +2204,8 @@
           "isArray": false
         },
         "comment": "if a is null.",
-        "condition": "target.abs()==null"
+        "kind": "@throws",
+        "condition": "target.add()==null || target.abs()==null"
       }
     ],
     "signature": "subtract(org.apache.commons.math3.fraction.BigFraction fraction)"
@@ -1511,6 +2223,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toString()"
@@ -1528,6 +2241,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getField()"
@@ -1545,6 +2259,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "byteValue()"
@@ -1562,6 +2277,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "shortValue()"

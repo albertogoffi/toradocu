@@ -7,6 +7,7 @@
     },
     "name": "FileCompiler",
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "FileCompiler()"
@@ -41,6 +42,39 @@
         "name": "timeLimit"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String[]",
+            "name": "String[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.String",
+              "name": "String",
+              "isArray": false
+            }
+          },
+          "name": "compiler"
+        },
+        "comment": "an array of Strings representing a command that runs a Java compiler (it could be the full path name or whatever is used on the commandline), plus any command-line options.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "timeLimit"
+        },
+        "comment": "the maximum permitted compilation time, in msec",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "FileCompiler(java.lang.String[] compiler,long timeLimit)"
@@ -68,6 +102,34 @@
           "isArray": false
         },
         "name": "timeLimit"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.ArrayList",
+            "name": "ArrayList",
+            "isArray": false
+          },
+          "name": "compiler"
+        },
+        "comment": "a list of Strings representing a command that runs a Java compiler (it could be the full path name or whatever is used on the commandline), plus any command-line options.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "timeLimit"
+        },
+        "comment": "the maximum permitted compilation time, in msec",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -99,6 +161,34 @@
         "name": "timeLimit"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "compiler"
+        },
+        "comment": "a command that runs a Java compiler; for instance, it could be the full path name or whatever is used on the commandline. It may contain command-line arguments, and is split on spaces.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "timeLimit"
+        },
+        "comment": "the maximum permitted compilation time, in msec",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "FileCompiler(java.lang.String compiler,long timeLimit)"
@@ -125,6 +215,21 @@
         "name": "fileNames"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "fileNames"
+        },
+        "comment": "paths to the files to be compiled as Strings",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -134,6 +239,7 @@
           "isArray": false
         },
         "comment": "if there is a problem reading a file",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -161,6 +267,21 @@
         "name": "filenames"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "filenames"
+        },
+        "comment": "the paths of the Java source to be compiled as Strings",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -170,7 +291,8 @@
           "isArray": false
         },
         "comment": "if an empty list of filenames is provided.",
-        "condition": "args[0].isEmpty()"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "compile_source(java.util.List filenames)"
@@ -205,6 +327,34 @@
         "name": "errorString"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "fileNames"
+        },
+        "comment": "all the files that were attempted to be compiled",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "errorString"
+        },
+        "comment": "the error string that indicates which files could not be compiled",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "recompile_without_errors(java.util.List fileNames,java.lang.String errorString)"
@@ -231,6 +381,21 @@
         "name": "sourceFilePath"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "sourceFilePath"
+        },
+        "comment": "the path to the .java file",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getClassFilePath(java.lang.String sourceFilePath)"
@@ -255,6 +420,21 @@
           "isArray": false
         },
         "name": "pathName"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "pathName"
+        },
+        "comment": "path to check for existence",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,

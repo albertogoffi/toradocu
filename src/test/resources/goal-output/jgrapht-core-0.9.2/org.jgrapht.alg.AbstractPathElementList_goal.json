@@ -40,6 +40,47 @@
         "name": "edge"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxSize"
+        },
+        "comment": "maximum number of paths the list is able to store.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.alg.AbstractPathElementList",
+            "name": "AbstractPathElementList",
+            "isArray": false
+          },
+          "name": "elementList"
+        },
+        "comment": "paths, list of AbstractPathElement.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "edge"
+        },
+        "comment": "edge reaching the end vertex of the created paths.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -49,7 +90,8 @@
           "isArray": false
         },
         "comment": "if the specified prevPathElementList or edge is null.",
-        "condition": "args[2]==null || args[3]==null"
+        "kind": "@throws",
+        "condition": ""
       },
       {
         "exception": {
@@ -58,6 +100,7 @@
           "isArray": false
         },
         "comment": "if maxSize is negative or 0.",
+        "kind": "@throws",
         "condition": "args[1]<0 || args[1]==0"
       }
     ],
@@ -96,6 +139,21 @@
         "name": "pathElement"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxSize"
+        },
+        "comment": "maximum number of paths the list is able to store.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -105,6 +163,7 @@
           "isArray": false
         },
         "comment": "if the specified path-element is null.",
+        "kind": "@throws",
         "condition": "args[2]==null"
       },
       {
@@ -114,6 +173,7 @@
           "isArray": false
         },
         "comment": "if maxSize is negative or 0.",
+        "kind": "@throws",
         "condition": "args[1]<0 || args[1]==0"
       },
       {
@@ -123,7 +183,8 @@
           "isArray": false
         },
         "comment": "if pathElement is not empty.",
-        "condition": "args[2].getPrevEdge()!=null"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "AbstractPathElementList(org.jgrapht.Graph graph,int maxSize,org.jgrapht.alg.AbstractPathElement pathElement)"
@@ -161,6 +222,21 @@
         "name": "vertex"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxSize"
+        },
+        "comment": "maximum number of paths the list is able to store.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -170,6 +246,7 @@
           "isArray": false
         },
         "comment": "if maxSize is negative or 0.",
+        "kind": "@throws",
         "condition": "args[1]<0 || args[1]==0"
       }
     ],
@@ -197,6 +274,7 @@
         "name": "index"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "get(int index)"
@@ -214,6 +292,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getVertex()"
@@ -231,6 +310,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "size()"
@@ -257,6 +337,7 @@
         "name": "arg0"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "add(java.lang.Object arg0)"
@@ -291,6 +372,7 @@
         "name": "arg1"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "set(int arg0,java.lang.Object arg1)"
@@ -325,6 +407,7 @@
         "name": "arg1"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "add(int arg0,java.lang.Object arg1)"
@@ -351,6 +434,7 @@
         "name": "arg0"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "remove(int arg0)"
@@ -377,6 +461,7 @@
         "name": "arg0"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "indexOf(java.lang.Object arg0)"
@@ -403,6 +488,7 @@
         "name": "arg0"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "lastIndexOf(java.lang.Object arg0)"
@@ -420,6 +506,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "clear()"
@@ -454,6 +541,7 @@
         "name": "arg1"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "addAll(int arg0,java.util.Collection arg1)"
@@ -471,6 +559,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "iterator()"
@@ -488,6 +577,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "listIterator()"
@@ -514,6 +604,7 @@
         "name": "arg0"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "listIterator(int arg0)"
@@ -548,6 +639,7 @@
         "name": "arg1"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "subList(int arg0,int arg1)"
@@ -574,6 +666,7 @@
         "name": "arg0"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "equals(java.lang.Object arg0)"
@@ -591,6 +684,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hashCode()"
@@ -625,6 +719,7 @@
         "name": "arg1"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeRange(int arg0,int arg1)"
@@ -651,6 +746,7 @@
         "name": "arg0"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "rangeCheckForAdd(int arg0)"
@@ -677,6 +773,7 @@
         "name": "arg0"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "outOfBoundsMsg(int arg0)"
@@ -694,6 +791,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isEmpty()"
@@ -720,6 +818,7 @@
         "name": "arg0"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "contains(java.lang.Object arg0)"
@@ -742,6 +841,7 @@
       }
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toArray()"
@@ -778,6 +878,7 @@
         "name": "arg0"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toArray(java.lang.Object[] arg0)"
@@ -822,6 +923,7 @@
         "name": "arg1"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "finishToArray(java.lang.Object[] arg0,java.util.Iterator arg1)"
@@ -848,6 +950,7 @@
         "name": "arg0"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hugeCapacity(int arg0)"
@@ -874,6 +977,7 @@
         "name": "arg0"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "remove(java.lang.Object arg0)"
@@ -900,6 +1004,7 @@
         "name": "arg0"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "containsAll(java.util.Collection arg0)"
@@ -926,6 +1031,7 @@
         "name": "arg0"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "addAll(java.util.Collection arg0)"
@@ -952,6 +1058,7 @@
         "name": "arg0"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeAll(java.util.Collection arg0)"
@@ -978,6 +1085,7 @@
         "name": "arg0"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "retainAll(java.util.Collection arg0)"
@@ -995,6 +1103,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toString()"

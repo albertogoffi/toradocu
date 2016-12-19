@@ -48,6 +48,73 @@
         "name": "maximalIterationCount"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "Number of integration points.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "relativeAccuracy"
+        },
+        "comment": "Relative accuracy of the result.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "absoluteAccuracy"
+        },
+        "comment": "Absolute accuracy of the result.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "minimalIterationCount"
+        },
+        "comment": "Minimum number of iterations.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maximalIterationCount"
+        },
+        "comment": "Maximum number of iterations.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -57,7 +124,8 @@
           "isArray": false
         },
         "comment": "if minimal number of iterations or number of points are not strictly positive.",
-        "condition": "args[0]<=0 || args[3]<=0"
+        "kind": "@throws",
+        "condition": ""
       },
       {
         "exception": {
@@ -66,7 +134,8 @@
           "isArray": false
         },
         "comment": "if maximal number of iterations is smaller than or equal to the minimal number of iterations.",
-        "condition": "args[4]<=args[3]"
+        "kind": "@throws",
+        "condition": ""
       }
     ],
     "signature": "IterativeLegendreGaussIntegrator(int n,double relativeAccuracy,double absoluteAccuracy,int minimalIterationCount,int maximalIterationCount)"
@@ -104,6 +173,47 @@
         "name": "absoluteAccuracy"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "Number of integration points.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "relativeAccuracy"
+        },
+        "comment": "Relative accuracy of the result.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "absoluteAccuracy"
+        },
+        "comment": "Absolute accuracy of the result.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -113,6 +223,7 @@
           "isArray": false
         },
         "comment": "if n < 1.",
+        "kind": "@throws",
         "condition": "args[0]<1"
       }
     ],
@@ -151,6 +262,47 @@
         "name": "maximalIterationCount"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "Number of integration points.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "minimalIterationCount"
+        },
+        "comment": "Minimum number of iterations.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maximalIterationCount"
+        },
+        "comment": "Maximum number of iterations.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -160,7 +312,8 @@
           "isArray": false
         },
         "comment": "if minimal number of iterations is not strictly positive.",
-        "condition": "args[1]<=0"
+        "kind": "@throws",
+        "condition": ""
       },
       {
         "exception": {
@@ -169,7 +322,8 @@
           "isArray": false
         },
         "comment": "if maximal number of iterations is smaller than or equal to the minimal number of iterations.",
-        "condition": "args[2]<=args[1]"
+        "kind": "@throws",
+        "condition": ""
       },
       {
         "exception": {
@@ -178,6 +332,7 @@
           "isArray": false
         },
         "comment": "if n < 1.",
+        "kind": "@throws",
         "condition": "args[0]<1"
       }
     ],
@@ -196,6 +351,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "doIntegrate()"
@@ -222,6 +378,21 @@
         "name": "n"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "Number of steps.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -231,6 +402,7 @@
           "isArray": false
         },
         "comment": "if the maximum number of evaluations is exceeded.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -249,6 +421,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getRelativeAccuracy()"
@@ -266,6 +439,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getAbsoluteAccuracy()"
@@ -283,6 +457,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getMinimalIterationCount()"
@@ -300,6 +475,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getMaximalIterationCount()"
@@ -317,6 +493,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getEvaluations()"
@@ -334,6 +511,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getIterations()"
@@ -351,6 +529,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -360,6 +539,7 @@
           "isArray": false
         },
         "comment": "if the number of iterations exceeds the allowed maximum number",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -378,6 +558,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getMin()"
@@ -395,6 +576,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getMax()"
@@ -421,6 +603,21 @@
         "name": "point"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "point"
+        },
+        "comment": "Point at which the objective function must be evaluated.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -430,6 +627,7 @@
           "isArray": false
         },
         "comment": "if the maximal number of function evaluations is exceeded.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -481,6 +679,60 @@
         "name": "upper"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxEval"
+        },
+        "comment": "Maximum number of evaluations.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+            "name": "UnivariateFunction",
+            "isArray": false
+          },
+          "name": "f"
+        },
+        "comment": "the integrand function",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "lower"
+        },
+        "comment": "the min bound for the interval",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "upper"
+        },
+        "comment": "the upper bound for the interval",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -490,6 +742,7 @@
           "isArray": false
         },
         "comment": "if f is null.",
+        "kind": "@throws",
         "condition": "args[1]==null"
       },
       {
@@ -499,6 +752,7 @@
           "isArray": false
         },
         "comment": "if min >= max.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -550,6 +804,34 @@
         "name": "upper"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxEval"
+        },
+        "comment": "Maximum number of evaluations.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+            "name": "UnivariateFunction",
+            "isArray": false
+          },
+          "name": "f"
+        },
+        "comment": "the integrand function",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -559,6 +841,7 @@
           "isArray": false
         },
         "comment": "if the maximum number of function evaluations is exceeded",
+        "kind": "@throws",
         "condition": ""
       },
       {
@@ -568,6 +851,7 @@
           "isArray": false
         },
         "comment": "if the maximum iteration count is exceeded or the integrator detects convergence problems otherwise",
+        "kind": "@throws",
         "condition": ""
       },
       {
@@ -577,6 +861,7 @@
           "isArray": false
         },
         "comment": "if min > max or the endpoints do not satisfy the requirements specified by the integrator",
+        "kind": "@throws",
         "condition": ""
       },
       {
@@ -586,6 +871,7 @@
           "isArray": false
         },
         "comment": "if f is null.",
+        "kind": "@throws",
         "condition": "args[1]==null"
       }
     ],

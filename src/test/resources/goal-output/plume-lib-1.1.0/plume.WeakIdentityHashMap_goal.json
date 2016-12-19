@@ -24,6 +24,34 @@
         "name": "loadFactor"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "initialCapacity"
+        },
+        "comment": "the initial capacity of the WeakIdentityHashMap",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          },
+          "name": "loadFactor"
+        },
+        "comment": "the load factor of the WeakIdentityHashMap",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -33,7 +61,8 @@
           "isArray": false
         },
         "comment": "If the initial capacity is negative, or if the load factor is nonpositive.",
-        "condition": "args[0]<0 || args[1]<=0"
+        "kind": "@throws",
+        "condition": "args[0]<0"
       }
     ],
     "signature": "WeakIdentityHashMap(int initialCapacity,float loadFactor)"
@@ -55,6 +84,21 @@
         "name": "initialCapacity"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "initialCapacity"
+        },
+        "comment": "the initial capacity of the WeakIdentityHashMap",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -64,6 +108,7 @@
           "isArray": false
         },
         "comment": "If the initial capacity is negative.",
+        "kind": "@throws",
         "condition": "args[0]<0"
       }
     ],
@@ -77,6 +122,7 @@
     },
     "name": "WeakIdentityHashMap",
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "WeakIdentityHashMap()"
@@ -98,6 +144,21 @@
         "name": "t"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Map",
+            "name": "Map",
+            "isArray": false
+          },
+          "name": "t"
+        },
+        "comment": "the map whose mappings are to be placed in this map.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -107,6 +168,7 @@
           "isArray": false
         },
         "comment": "if the specified map is null.",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -134,6 +196,7 @@
         "name": "key"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "maskNull(java.lang.Object key)"
@@ -160,6 +223,7 @@
         "name": "key"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "unmaskNull(java.lang.Object key)"
@@ -194,6 +258,7 @@
         "name": "y"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "eq(java.lang.Object x,java.lang.Object y)"
@@ -220,6 +285,7 @@
         "name": "x"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hasher(java.lang.Object x)"
@@ -254,6 +320,7 @@
         "name": "length"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "indexFor(int h,int length)"
@@ -271,6 +338,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "expungeStaleEntries()"
@@ -293,6 +361,7 @@
       }
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getTable()"
@@ -310,6 +379,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "size()"
@@ -327,6 +397,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isEmpty()"
@@ -351,6 +422,21 @@
           "isArray": false
         },
         "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key whose associated value is to be returned.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -379,6 +465,21 @@
         "name": "key"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key whose presence in this map is to be tested",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "containsKey(java.lang.Object key)"
@@ -405,6 +506,7 @@
         "name": "key"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getEntry(java.lang.Object key)"
@@ -439,6 +541,34 @@
         "name": "value"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "key with which the specified value is to be associated.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "value to be associated with the specified key.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "put(java.lang.Object key,java.lang.Object value)"
@@ -463,6 +593,21 @@
           "isArray": false
         },
         "name": "newCapacity"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "newCapacity"
+        },
+        "comment": "the new capacity, MUST be a power of two; must be greater than current capacity unless current capacity is MAXIMUM_CAPACITY (in which case value is irrelevant).",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -509,6 +654,7 @@
         "name": "dest"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "transfer(plume.WeakIdentityHashMap.Entry[] src,plume.WeakIdentityHashMap.Entry[] dest)"
@@ -535,6 +681,21 @@
         "name": "m"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Map",
+            "name": "Map",
+            "isArray": false
+          },
+          "name": "m"
+        },
+        "comment": "mappings to be stored in this map.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -544,6 +705,7 @@
           "isArray": false
         },
         "comment": "if the specified map is null.",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -569,6 +731,21 @@
           "isArray": false
         },
         "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "key whose mapping is to be removed from the map.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -597,6 +774,7 @@
         "name": "o"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeMapping(java.lang.Object o)"
@@ -614,6 +792,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "clear()"
@@ -640,6 +819,21 @@
         "name": "value"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "value whose presence in this map is to be tested.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "containsValue(java.lang.Object value)"
@@ -657,6 +851,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "containsNullValue()"
@@ -674,6 +869,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "keySet()"
@@ -691,6 +887,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "values()"
@@ -708,6 +905,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "entrySet()"
@@ -734,6 +932,7 @@
         "name": "arg0"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "equals(java.lang.Object arg0)"
@@ -751,6 +950,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hashCode()"
@@ -768,6 +968,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toString()"
@@ -785,6 +986,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "clone()"
