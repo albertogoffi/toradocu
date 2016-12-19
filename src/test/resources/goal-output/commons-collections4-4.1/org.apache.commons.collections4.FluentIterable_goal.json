@@ -7,7 +7,6 @@
     },
     "name": "FluentIterable",
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "FluentIterable()"
@@ -29,21 +28,6 @@
         "name": "iterable"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Iterable",
-            "name": "Iterable",
-            "isArray": false
-          },
-          "name": "iterable"
-        },
-        "comment": "the iterable to wrap",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "FluentIterable(java.lang.Iterable iterable)"
@@ -61,7 +45,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "empty()"
@@ -86,21 +69,6 @@
           "isArray": false
         },
         "name": "singleton"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "singleton"
-        },
-        "comment": "the singleton element",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -134,26 +102,6 @@
         "name": "elements"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object[]",
-            "name": "Object[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "java.lang.Object",
-              "name": "Object",
-              "isArray": false
-            }
-          },
-          "name": "elements"
-        },
-        "comment": "the elements to be contained in the FluentIterable",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": true,
     "throwsTags": [],
     "signature": "of(java.lang.Object[] elements)"
@@ -180,21 +128,6 @@
         "name": "iterable"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Iterable",
-            "name": "Iterable",
-            "isArray": false
-          },
-          "name": "iterable"
-        },
-        "comment": "the iterable to wrap into a FluentIterable, may not be null",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -204,7 +137,6 @@
           "isArray": false
         },
         "comment": "if iterable is null",
-        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -237,26 +169,6 @@
         "name": "elements"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object[]",
-            "name": "Object[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "java.lang.Object",
-              "name": "Object",
-              "isArray": false
-            }
-          },
-          "name": "elements"
-        },
-        "comment": "the elements to append to the iterable",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": true,
     "throwsTags": [],
     "signature": "append(java.lang.Object[] elements)"
@@ -283,21 +195,6 @@
         "name": "other"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Iterable",
-            "name": "Iterable",
-            "isArray": false
-          },
-          "name": "other"
-        },
-        "comment": "the other iterable to combine, may not be null",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -307,7 +204,6 @@
           "isArray": false
         },
         "comment": "if other is null",
-        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -335,21 +231,6 @@
         "name": "other"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Iterable",
-            "name": "Iterable",
-            "isArray": false
-          },
-          "name": "other"
-        },
-        "comment": "the other iterable to collate, may not be null",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -359,7 +240,6 @@
           "isArray": false
         },
         "comment": "if other is null",
-        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -395,34 +275,6 @@
         "name": "comparator"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.Comparator",
-            "name": "Comparator",
-            "isArray": false
-          },
-          "name": "comparator"
-        },
-        "comment": "the comparator to define an ordering, may be null, in which case natural ordering will be used",
-        "kind": "@param",
-        "condition": "args[1]==null"
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Iterable",
-            "name": "Iterable",
-            "isArray": false
-          },
-          "name": "other"
-        },
-        "comment": "the other iterable to collate, may not be null",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -432,7 +284,6 @@
           "isArray": false
         },
         "comment": "if other is null",
-        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -451,7 +302,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "eval()"
@@ -478,21 +328,6 @@
         "name": "predicate"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.collections4.Predicate",
-            "name": "Predicate",
-            "isArray": false
-          },
-          "name": "predicate"
-        },
-        "comment": "the predicate used to filter elements",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -502,7 +337,6 @@
           "isArray": false
         },
         "comment": "if predicate is null",
-        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -530,21 +364,6 @@
         "name": "maxSize"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "long",
-            "name": "long",
-            "isArray": false
-          },
-          "name": "maxSize"
-        },
-        "comment": "the maximum number of elements",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -554,7 +373,6 @@
           "isArray": false
         },
         "comment": "if maxSize is negative",
-        "kind": "@throws",
         "condition": "args[0]<0"
       }
     ],
@@ -573,7 +391,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "loop()"
@@ -591,7 +408,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "reverse()"
@@ -618,21 +434,6 @@
         "name": "elementsToSkip"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "long",
-            "name": "long",
-            "isArray": false
-          },
-          "name": "elementsToSkip"
-        },
-        "comment": "the number of elements to skip",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -642,7 +443,6 @@
           "isArray": false
         },
         "comment": "if elementsToSkip is negative",
-        "kind": "@throws",
         "condition": "args[0]<0"
       }
     ],
@@ -670,21 +470,6 @@
         "name": "transformer"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.collections4.Transformer",
-            "name": "Transformer",
-            "isArray": false
-          },
-          "name": "transformer"
-        },
-        "comment": "the transformer applied to each element",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -694,7 +479,6 @@
           "isArray": false
         },
         "comment": "if transformer is null",
-        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -713,7 +497,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "unique()"
@@ -731,7 +514,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "unmodifiable()"
@@ -758,21 +540,6 @@
         "name": "other"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Iterable",
-            "name": "Iterable",
-            "isArray": false
-          },
-          "name": "other"
-        },
-        "comment": "the other iterable to interleave, may not be null",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -782,7 +549,6 @@
           "isArray": false
         },
         "comment": "if other is null",
-        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -815,26 +581,6 @@
         "name": "others"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Iterable[]",
-            "name": "Iterable[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "java.lang.Iterable",
-              "name": "Iterable",
-              "isArray": false
-            }
-          },
-          "name": "others"
-        },
-        "comment": "the iterables to interleave, may not be null",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": true,
     "throwsTags": [
       {
@@ -844,8 +590,7 @@
           "isArray": false
         },
         "comment": "if either of the provided iterables is null",
-        "kind": "@throws",
-        "condition": ""
+        "condition": "Arrays.asList(others).contains(null)"
       }
     ],
     "signature": "zip(java.lang.Iterable[] others)"
@@ -863,7 +608,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "iterator()"
@@ -881,7 +625,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "asEnumeration()"
@@ -908,21 +651,6 @@
         "name": "predicate"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.collections4.Predicate",
-            "name": "Predicate",
-            "isArray": false
-          },
-          "name": "predicate"
-        },
-        "comment": "the predicate to use, may not be null",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -932,7 +660,6 @@
           "isArray": false
         },
         "comment": "if predicate is null",
-        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -960,21 +687,6 @@
         "name": "predicate"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.collections4.Predicate",
-            "name": "Predicate",
-            "isArray": false
-          },
-          "name": "predicate"
-        },
-        "comment": "the predicate to use, may not be null",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -984,7 +696,6 @@
           "isArray": false
         },
         "comment": "if predicate is null",
-        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -1003,7 +714,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isEmpty()"
@@ -1028,21 +738,6 @@
           "isArray": false
         },
         "name": "object"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "object"
-        },
-        "comment": "the object to check",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1071,21 +766,6 @@
         "name": "closure"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.collections4.Closure",
-            "name": "Closure",
-            "isArray": false
-          },
-          "name": "closure"
-        },
-        "comment": "the closure to apply to each element, may not be null",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1095,7 +775,6 @@
           "isArray": false
         },
         "comment": "if closure is null",
-        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -1123,21 +802,6 @@
         "name": "position"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "position"
-        },
-        "comment": "the position of the element to return",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1147,8 +811,7 @@
           "isArray": false
         },
         "comment": "if the provided position is outside the valid range of this iterable: [0, size)",
-        "kind": "@throws",
-        "condition": ""
+        "condition": "args[0]<0 || args[0]>target.size()"
       }
     ],
     "signature": "get(int position)"
@@ -1166,7 +829,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "size()"
@@ -1193,21 +855,6 @@
         "name": "collection"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.Collection",
-            "name": "Collection",
-            "isArray": false
-          },
-          "name": "collection"
-        },
-        "comment": "the collection to add the elements",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1217,7 +864,6 @@
           "isArray": false
         },
         "comment": "if collection is null",
-        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -1250,21 +896,6 @@
         "name": "arrayClass"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Class",
-            "name": "Class",
-            "isArray": false
-          },
-          "name": "arrayClass"
-        },
-        "comment": "the class of array to create",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1274,7 +905,6 @@
           "isArray": false
         },
         "comment": "if arrayClass is invalid",
-        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -1293,7 +923,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toList()"
@@ -1311,7 +940,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toString()"

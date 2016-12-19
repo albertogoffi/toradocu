@@ -7,7 +7,6 @@
     },
     "name": "QueueUtils",
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "QueueUtils()"
@@ -34,21 +33,6 @@
         "name": "queue"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.Queue",
-            "name": "Queue",
-            "isArray": false
-          },
-          "name": "queue"
-        },
-        "comment": "the queue to make unmodifiable, must not be null",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -58,7 +42,6 @@
           "isArray": false
         },
         "comment": "if the queue is null",
-        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -94,34 +77,6 @@
         "name": "predicate"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.Queue",
-            "name": "Queue",
-            "isArray": false
-          },
-          "name": "queue"
-        },
-        "comment": "the queue to predicate, must not be null",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.collections4.Predicate",
-            "name": "Predicate",
-            "isArray": false
-          },
-          "name": "predicate"
-        },
-        "comment": "the predicate used to evaluate new elements, must not be null",
-        "kind": "@param",
-        "condition": "(args[1]==null) == false"
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -131,7 +86,6 @@
           "isArray": false
         },
         "comment": "if the queue or predicate is null",
-        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -167,34 +121,6 @@
         "name": "transformer"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.Queue",
-            "name": "Queue",
-            "isArray": false
-          },
-          "name": "queue"
-        },
-        "comment": "the queue to predicate, must not be null",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.collections4.Transformer",
-            "name": "Transformer",
-            "isArray": false
-          },
-          "name": "transformer"
-        },
-        "comment": "the transformer for the queue, must not be null",
-        "kind": "@param",
-        "condition": "(args[1]==null) == false"
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -204,7 +130,6 @@
           "isArray": false
         },
         "comment": "if the queue or transformer is null",
-        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -223,7 +148,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "emptyQueue()"

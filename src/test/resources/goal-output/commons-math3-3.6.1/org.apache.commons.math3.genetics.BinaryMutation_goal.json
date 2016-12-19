@@ -21,21 +21,6 @@
         "name": "original"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.genetics.Chromosome",
-            "name": "Chromosome",
-            "isArray": false
-          },
-          "name": "original"
-        },
-        "comment": "the original chromosome.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -45,7 +30,6 @@
           "isArray": false
         },
         "comment": "if original is not an instance of BinaryChromosome.",
-        "kind": "@throws",
         "condition": "(args[0] instanceof BinaryChromosome) == false"
       },
       {
@@ -55,7 +39,6 @@
           "isArray": false
         },
         "comment": "if the given chromosome is not compatible with this MutationPolicy",
-        "kind": "@throws",
         "condition": ""
       }
     ],

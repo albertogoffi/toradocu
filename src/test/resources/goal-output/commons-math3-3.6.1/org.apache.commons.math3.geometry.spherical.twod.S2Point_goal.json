@@ -24,34 +24,6 @@
         "name": "phi"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "theta"
-        },
-        "comment": "azimuthal angle \\( \\theta \\) in the x-y plane",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "phi"
-        },
-        "comment": "polar angle \\( \\varphi \\)",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -61,7 +33,6 @@
           "isArray": false
         },
         "comment": "if \\( \\varphi \\) is not in the [\\( 0; \\pi \\)] range",
-        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -84,21 +55,6 @@
         "name": "vector"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "vector"
-        },
-        "comment": "3D vector",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -108,8 +64,7 @@
           "isArray": false
         },
         "comment": "if vector norm is zero",
-        "kind": "@throws",
-        "condition": "args[0]==0"
+        "condition": "args[0].getNorm()==0"
       }
     ],
     "signature": "S2Point(org.apache.commons.math3.geometry.euclidean.threed.Vector3D vector)"
@@ -147,47 +102,6 @@
         "name": "vector"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "theta"
-        },
-        "comment": "azimuthal angle \\( \\theta \\) in the x-y plane",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "phi"
-        },
-        "comment": "polar angle \\( \\varphi \\)",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "vector"
-        },
-        "comment": "corresponding vector",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "S2Point(double theta,double phi,org.apache.commons.math3.geometry.euclidean.threed.Vector3D vector)"
@@ -222,34 +136,6 @@
         "name": "phi"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "theta"
-        },
-        "comment": "azimuthal angle \\( \\theta \\) in the x-y plane",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "phi"
-        },
-        "comment": "polar angle \\( \\varphi \\)",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -259,7 +145,6 @@
           "isArray": false
         },
         "comment": "if \\( \\varphi \\) is not in the [\\( 0; \\pi \\)] range",
-        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -278,7 +163,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getTheta()"
@@ -296,7 +180,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getPhi()"
@@ -314,7 +197,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getVector()"
@@ -332,7 +214,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getSpace()"
@@ -350,7 +231,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isNaN()"
@@ -368,7 +248,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "negate()"
@@ -395,7 +274,6 @@
         "name": "point"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "distance(org.apache.commons.math3.geometry.Point point)"
@@ -430,34 +308,6 @@
         "name": "p2"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
-            "name": "S2Point",
-            "isArray": false
-          },
-          "name": "p1"
-        },
-        "comment": "first vector",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
-            "name": "S2Point",
-            "isArray": false
-          },
-          "name": "p2"
-        },
-        "comment": "second vector",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "distance(org.apache.commons.math3.geometry.spherical.twod.S2Point p1,org.apache.commons.math3.geometry.spherical.twod.S2Point p2)"
@@ -484,21 +334,6 @@
         "name": "other"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "other"
-        },
-        "comment": "Object to test for equality to this",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "equals(java.lang.Object other)"
@@ -516,7 +351,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hashCode()"

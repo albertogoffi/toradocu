@@ -7,7 +7,6 @@
     },
     "name": "RegexUtil",
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "RegexUtil()"
@@ -32,21 +31,6 @@
           "isArray": false
         },
         "name": "s"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.String",
-            "name": "String",
-            "isArray": false
-          },
-          "name": "s"
-        },
-        "comment": "string to check for being a regular expression",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -83,34 +67,6 @@
         "name": "groups"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.String",
-            "name": "String",
-            "isArray": false
-          },
-          "name": "s"
-        },
-        "comment": "string to check for being a regular expression",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "groups"
-        },
-        "comment": "number of groups expected",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isRegex(java.lang.String s,int groups)"
@@ -137,21 +93,6 @@
         "name": "c"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "char",
-            "name": "char",
-            "isArray": false
-          },
-          "name": "c"
-        },
-        "comment": "char to check for being a regular expression",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isRegex(char c)"
@@ -176,21 +117,6 @@
           "isArray": false
         },
         "name": "s"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.String",
-            "name": "String",
-            "isArray": false
-          },
-          "name": "s"
-        },
-        "comment": "string to check for being a regular expression",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -227,34 +153,6 @@
         "name": "groups"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.String",
-            "name": "String",
-            "isArray": false
-          },
-          "name": "s"
-        },
-        "comment": "string to check for being a regular expression",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "groups"
-        },
-        "comment": "number of groups expected",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "regexError(java.lang.String s,int groups)"
@@ -279,21 +177,6 @@
           "isArray": false
         },
         "name": "s"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.String",
-            "name": "String",
-            "isArray": false
-          },
-          "name": "s"
-        },
-        "comment": "string to check for being a regular expression",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -330,34 +213,6 @@
         "name": "groups"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.String",
-            "name": "String",
-            "isArray": false
-          },
-          "name": "s"
-        },
-        "comment": "string to check for being a regular expression",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "groups"
-        },
-        "comment": "number of groups expected",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "regexException(java.lang.String s,int groups)"
@@ -384,21 +239,6 @@
         "name": "s"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.String",
-            "name": "String",
-            "isArray": false
-          },
-          "name": "s"
-        },
-        "comment": "string to check for being a regular expression",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -408,7 +248,6 @@
           "isArray": false
         },
         "comment": "if argument is not a regex",
-        "kind": "@throws",
         "condition": "(plume.RegexUtil.isRegex(args[0])) == false"
       }
     ],
@@ -444,34 +283,6 @@
         "name": "groups"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.String",
-            "name": "String",
-            "isArray": false
-          },
-          "name": "s"
-        },
-        "comment": "string to check for being a regular expression",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "groups"
-        },
-        "comment": "number of groups expected",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -481,7 +292,6 @@
           "isArray": false
         },
         "comment": "if argument is not a regex",
-        "kind": "@throws",
         "condition": "(plume.RegexUtil.isRegex(args[0])) == false"
       }
     ],
@@ -525,21 +335,6 @@
         "name": "actualGroups"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.String",
-            "name": "String",
-            "isArray": false
-          },
-          "name": "s"
-        },
-        "comment": "string to check for being a regular expression",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "regexErrorMessage(java.lang.String s,int expectedGroups,int actualGroups)"
@@ -564,21 +359,6 @@
           "isArray": false
         },
         "name": "p"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.regex.Pattern",
-            "name": "Pattern",
-            "isArray": false
-          },
-          "name": "p"
-        },
-        "comment": "pattern whose groups to count",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,

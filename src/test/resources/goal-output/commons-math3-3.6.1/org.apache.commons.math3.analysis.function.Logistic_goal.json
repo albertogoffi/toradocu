@@ -56,86 +56,6 @@
         "name": "n"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "k"
-        },
-        "comment": "If b > 0, value of the function for x going towards +∞. If b < 0, value of the function for x going towards -∞.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "m"
-        },
-        "comment": "Abscissa of maximum growth.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "b"
-        },
-        "comment": "Growth rate.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "q"
-        },
-        "comment": "Parameter that affects the position of the curve along the ordinate axis.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "a"
-        },
-        "comment": "If b > 0, value of the function for x going towards -∞. If b < 0, value of the function for x going towards +∞.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "n"
-        },
-        "comment": "Parameter that affects near which asymptote the maximum growth occurs.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -145,7 +65,6 @@
           "isArray": false
         },
         "comment": "if n <= 0.",
-        "kind": "@throws",
         "condition": "args[5]<=0"
       }
     ],
@@ -173,21 +92,6 @@
         "name": "x"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "x"
-        },
-        "comment": "Point at which the function value should be computed.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -197,7 +101,6 @@
           "isArray": false
         },
         "comment": "when the activated method itself can ascertain that a precondition, specified in the API expressed at the level of the activated method, has been violated. When Commons Math throws an IllegalArgumentException, it is usually the consequence of checking the actual parameters passed to the method.",
-        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -216,7 +119,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "derivative()"
@@ -283,86 +185,6 @@
         "name": "oneOverN"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "mMinusX"
-        },
-        "comment": "m - x.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "k"
-        },
-        "comment": "k.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "b"
-        },
-        "comment": "b.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "q"
-        },
-        "comment": "q.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "a"
-        },
-        "comment": "a.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "oneOverN"
-        },
-        "comment": "1 / n.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "value(double mMinusX,double k,double b,double q,double a,double oneOverN)"
@@ -389,21 +211,6 @@
         "name": "t"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.DerivativeStructure",
-            "name": "DerivativeStructure",
-            "isArray": false
-          },
-          "name": "t"
-        },
-        "comment": "function input value",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -413,7 +220,6 @@
           "isArray": false
         },
         "comment": "if t is inconsistent with the function's free parameters or order",
-        "kind": "@throws",
         "condition": ""
       }
     ],

@@ -16,21 +16,6 @@
         "name": "size"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "size"
-        },
-        "comment": "number of vertices to be generated",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -40,7 +25,6 @@
           "isArray": false
         },
         "comment": "if the specified size is negative.",
-        "kind": "@throws",
         "condition": "args[0]<0"
       }
     ],
@@ -82,47 +66,6 @@
           "isArray": false
         },
         "name": "resultMap"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.jgrapht.Graph",
-            "name": "Graph",
-            "isArray": false
-          },
-          "name": "target"
-        },
-        "comment": "receives the generated edges and vertices; if this is non-empty on entry, the result will be a disconnected graph since generated elements will not be connected to existing elements",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.jgrapht.VertexFactory",
-            "name": "VertexFactory",
-            "isArray": false
-          },
-          "name": "vertexFactory"
-        },
-        "comment": "called to produce new vertices",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.Map",
-            "name": "Map",
-            "isArray": false
-          },
-          "name": "resultMap"
-        },
-        "comment": "if non-null, receives implementation-specific mappings from String roles to graph elements (or collections of graph elements)",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,

@@ -7,7 +7,6 @@
     },
     "name": "ArrayStack",
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "ArrayStack()"
@@ -29,21 +28,6 @@
         "name": "initialSize"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "initialSize"
-        },
-        "comment": "the initial size to use",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -53,7 +37,6 @@
           "isArray": false
         },
         "comment": "if the specified initial size is negative",
-        "kind": "@throws",
         "condition": "args[0]<0"
       }
     ],
@@ -72,7 +55,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "empty()"
@@ -90,7 +72,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -100,7 +81,6 @@
           "isArray": false
         },
         "comment": "if the stack is empty",
-        "kind": "@throws",
         "condition": "target.empty()"
       }
     ],
@@ -128,21 +108,6 @@
         "name": "n"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "n"
-        },
-        "comment": "the number of items down to go",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -152,8 +117,7 @@
           "isArray": false
         },
         "comment": "if there are not enough items on the stack to satisfy this request",
-        "kind": "@throws",
-        "condition": ""
+        "condition": "target.size()<n"
       }
     ],
     "signature": "peek(int n)"
@@ -171,7 +135,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -181,7 +144,6 @@
           "isArray": false
         },
         "comment": "if the stack is empty",
-        "kind": "@throws",
         "condition": "target.empty()"
       }
     ],
@@ -202,31 +164,16 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
+          "qualifiedName": "E",
+          "name": "E",
           "isArray": false
         },
         "name": "item"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "item"
-        },
-        "comment": "the item to be added",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "push(java.lang.Object item)"
+    "signature": "push(E item)"
   },
   {
     "containingClass": {
@@ -250,21 +197,6 @@
         "name": "object"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "object"
-        },
-        "comment": "the object to be searched for",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "search(java.lang.Object object)"
@@ -282,7 +214,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "trimToSize()"
@@ -309,7 +240,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "ensureCapacity(int arg0)"
@@ -336,7 +266,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "ensureCapacityInternal(int arg0)"
@@ -363,7 +292,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "ensureExplicitCapacity(int arg0)"
@@ -390,7 +318,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "grow(int arg0)"
@@ -417,7 +344,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hugeCapacity(int arg0)"
@@ -435,7 +361,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "size()"
@@ -453,7 +378,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isEmpty()"
@@ -480,7 +404,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "contains(java.lang.Object arg0)"
@@ -507,7 +430,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "indexOf(java.lang.Object arg0)"
@@ -534,7 +456,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "lastIndexOf(java.lang.Object arg0)"
@@ -552,7 +473,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "clone()"
@@ -567,15 +487,9 @@
     "returnType": {
       "qualifiedName": "java.lang.Object[]",
       "name": "Object[]",
-      "isArray": true,
-      "componentType": {
-        "qualifiedName": "java.lang.Object",
-        "name": "Object",
-        "isArray": false
-      }
+      "isArray": true
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toArray()"
@@ -590,32 +504,21 @@
     "returnType": {
       "qualifiedName": "T[]",
       "name": "T[]",
-      "isArray": true,
-      "componentType": {
-        "qualifiedName": "T",
-        "name": "T",
-        "isArray": false
-      }
+      "isArray": true
     },
     "parameters": [
       {
         "type": {
-          "qualifiedName": "java.lang.Object[]",
-          "name": "Object[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          }
+          "qualifiedName": "T[]",
+          "name": "T[]",
+          "isArray": true
         },
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "toArray(java.lang.Object[] arg0)"
+    "signature": "toArray(T[] arg0)"
   },
   {
     "containingClass": {
@@ -639,7 +542,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "elementData(int arg0)"
@@ -666,7 +568,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "get(int arg0)"
@@ -694,17 +595,16 @@
       },
       {
         "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
+          "qualifiedName": "E",
+          "name": "E",
           "isArray": false
         },
         "name": "arg1"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "set(int arg0,java.lang.Object arg1)"
+    "signature": "set(int arg0,E arg1)"
   },
   {
     "containingClass": {
@@ -721,17 +621,16 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
+          "qualifiedName": "E",
+          "name": "E",
           "isArray": false
         },
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "add(java.lang.Object arg0)"
+    "signature": "add(E arg0)"
   },
   {
     "containingClass": {
@@ -756,17 +655,16 @@
       },
       {
         "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
+          "qualifiedName": "E",
+          "name": "E",
           "isArray": false
         },
         "name": "arg1"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "add(int arg0,java.lang.Object arg1)"
+    "signature": "add(int arg0,E arg1)"
   },
   {
     "containingClass": {
@@ -790,7 +688,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "remove(int arg0)"
@@ -817,7 +714,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "remove(java.lang.Object arg0)"
@@ -844,7 +740,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "fastRemove(int arg0)"
@@ -862,7 +757,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "clear()"
@@ -889,7 +783,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "addAll(java.util.Collection arg0)"
@@ -924,7 +817,6 @@
         "name": "arg1"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "addAll(int arg0,java.util.Collection arg1)"
@@ -959,7 +851,6 @@
         "name": "arg1"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeRange(int arg0,int arg1)"
@@ -986,7 +877,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "rangeCheck(int arg0)"
@@ -1013,7 +903,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "rangeCheckForAdd(int arg0)"
@@ -1040,7 +929,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "outOfBoundsMsg(int arg0)"
@@ -1067,7 +955,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeAll(java.util.Collection arg0)"
@@ -1094,7 +981,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "retainAll(java.util.Collection arg0)"
@@ -1129,7 +1015,6 @@
         "name": "arg1"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "batchRemove(java.util.Collection arg0,boolean arg1)"
@@ -1156,7 +1041,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "writeObject(java.io.ObjectOutputStream arg0)"
@@ -1183,7 +1067,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "readObject(java.io.ObjectInputStream arg0)"
@@ -1210,7 +1093,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "listIterator(int arg0)"
@@ -1228,7 +1110,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "listIterator()"
@@ -1246,7 +1127,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "iterator()"
@@ -1281,7 +1161,6 @@
         "name": "arg1"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "subList(int arg0,int arg1)"
@@ -1324,7 +1203,6 @@
         "name": "arg2"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "subListRangeCheck(int arg0,int arg1,int arg2)"
@@ -1351,7 +1229,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "forEach(java.util.function.Consumer arg0)"
@@ -1369,7 +1246,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "spliterator()"
@@ -1396,7 +1272,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeIf(java.util.function.Predicate arg0)"
@@ -1423,7 +1298,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "replaceAll(java.util.function.UnaryOperator arg0)"
@@ -1450,7 +1324,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "sort(java.util.Comparator arg0)"
@@ -1477,7 +1350,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "equals(java.lang.Object arg0)"
@@ -1495,7 +1367,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hashCode()"
@@ -1510,24 +1381,14 @@
     "returnType": {
       "qualifiedName": "T[]",
       "name": "T[]",
-      "isArray": true,
-      "componentType": {
-        "qualifiedName": "T",
-        "name": "T",
-        "isArray": false
-      }
+      "isArray": true
     },
     "parameters": [
       {
         "type": {
-          "qualifiedName": "java.lang.Object[]",
-          "name": "Object[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          }
+          "qualifiedName": "T[]",
+          "name": "T[]",
+          "isArray": true
         },
         "name": "arg0"
       },
@@ -1540,10 +1401,9 @@
         "name": "arg1"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "finishToArray(java.lang.Object[] arg0,java.util.Iterator arg1)"
+    "signature": "finishToArray(T[] arg0,java.util.Iterator arg1)"
   },
   {
     "containingClass": {
@@ -1567,7 +1427,6 @@
         "name": "arg0"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "containsAll(java.util.Collection arg0)"
@@ -1585,7 +1444,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toString()"

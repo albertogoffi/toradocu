@@ -7,7 +7,6 @@
     },
     "name": "FixedOrderComparator",
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "FixedOrderComparator()"
@@ -22,36 +21,11 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "java.lang.Object[]",
-          "name": "Object[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          }
+          "qualifiedName": "T[]",
+          "name": "T[]",
+          "isArray": true
         },
         "name": "items"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object[]",
-            "name": "Object[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "java.lang.Object",
-              "name": "Object",
-              "isArray": false
-            }
-          },
-          "name": "items"
-        },
-        "comment": "the items that the comparator can compare in order",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": true,
@@ -63,11 +37,10 @@
           "isArray": false
         },
         "comment": "if the array is null",
-        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
-    "signature": "FixedOrderComparator(java.lang.Object[] items)"
+    "signature": "FixedOrderComparator(T[] items)"
   },
   {
     "containingClass": {
@@ -86,21 +59,6 @@
         "name": "items"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.List",
-            "name": "List",
-            "isArray": false
-          },
-          "name": "items"
-        },
-        "comment": "the items that the comparator can compare in order",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -110,7 +68,6 @@
           "isArray": false
         },
         "comment": "if the list is null",
-        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -129,7 +86,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isLocked()"
@@ -147,7 +103,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -157,7 +112,6 @@
           "isArray": false
         },
         "comment": "if the comparator is locked",
-        "kind": "@throws",
         "condition": "target.isLocked()"
       }
     ],
@@ -176,7 +130,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getUnknownObjectBehavior()"
@@ -203,21 +156,6 @@
         "name": "unknownObjectBehavior"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator.UnknownObjectBehavior",
-            "name": "UnknownObjectBehavior",
-            "isArray": false
-          },
-          "name": "unknownObjectBehavior"
-        },
-        "comment": "the flag for unknown behaviour - UNKNOWN_AFTER, UNKNOWN_BEFORE or UNKNOWN_THROW_EXCEPTION",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -227,8 +165,7 @@
           "isArray": false
         },
         "comment": "if a comparison has been performed",
-        "kind": "@throws",
-        "condition": ""
+        "condition": "target.isLocked()"
       },
       {
         "exception": {
@@ -237,7 +174,6 @@
           "isArray": false
         },
         "comment": "if unknownObjectBehavior is null",
-        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -258,26 +194,11 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
+          "qualifiedName": "T",
+          "name": "T",
           "isArray": false
         },
         "name": "obj"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "obj"
-        },
-        "comment": "the item to be added to the Comparator.",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -289,11 +210,10 @@
           "isArray": false
         },
         "comment": "if a comparison has already been made",
-        "kind": "@throws",
-        "condition": ""
+        "condition": "target.isLocked()"
       }
     ],
-    "signature": "add(java.lang.Object obj)"
+    "signature": "add(T obj)"
   },
   {
     "containingClass": {
@@ -310,47 +230,19 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
+          "qualifiedName": "T",
+          "name": "T",
           "isArray": false
         },
         "name": "existingObj"
       },
       {
         "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
+          "qualifiedName": "T",
+          "name": "T",
           "isArray": false
         },
         "name": "newObj"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "existingObj"
-        },
-        "comment": "an item already in the Comparator's set of known objects",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "newObj"
-        },
-        "comment": "an item to be added to the Comparator's set of known objects",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -362,7 +254,6 @@
           "isArray": false
         },
         "comment": "if existingObject is not in the Comparator's set of known objects.",
-        "kind": "@throws",
         "condition": ""
       },
       {
@@ -372,11 +263,10 @@
           "isArray": false
         },
         "comment": "if a comparison has already been made",
-        "kind": "@throws",
-        "condition": ""
+        "condition": "target.isLocked()"
       }
     ],
-    "signature": "addAsEqual(java.lang.Object existingObj,java.lang.Object newObj)"
+    "signature": "addAsEqual(T existingObj,T newObj)"
   },
   {
     "containingClass": {
@@ -393,47 +283,19 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
+          "qualifiedName": "T",
+          "name": "T",
           "isArray": false
         },
         "name": "obj1"
       },
       {
         "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
+          "qualifiedName": "T",
+          "name": "T",
           "isArray": false
         },
         "name": "obj2"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "obj1"
-        },
-        "comment": "the first object to compare",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "obj2"
-        },
-        "comment": "the second object to compare",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -445,11 +307,10 @@
           "isArray": false
         },
         "comment": "if obj1 or obj2 are not known to this Comparator and an alternative behavior has not been set via setUnknownObjectBehavior(UnknownObjectBehavior).",
-        "kind": "@throws",
         "condition": ""
       }
     ],
-    "signature": "compare(java.lang.Object obj1,java.lang.Object obj2)"
+    "signature": "compare(T obj1,T obj2)"
   },
   {
     "containingClass": {
@@ -464,7 +325,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hashCode()"
@@ -489,21 +349,6 @@
           "isArray": false
         },
         "name": "object"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "object"
-        },
-        "comment": "the object to compare to",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,

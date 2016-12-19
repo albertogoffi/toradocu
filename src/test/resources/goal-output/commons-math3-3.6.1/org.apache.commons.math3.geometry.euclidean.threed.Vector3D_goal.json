@@ -32,47 +32,6 @@
         "name": "z"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "x"
-        },
-        "comment": "abscissa",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "y"
-        },
-        "comment": "ordinate",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "z"
-        },
-        "comment": "height",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "Vector3D(double x,double y,double z)"
@@ -99,26 +58,6 @@
         "name": "v"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "v"
-        },
-        "comment": "coordinates array",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -128,8 +67,7 @@
           "isArray": false
         },
         "comment": "if array does not have 3 elements",
-        "kind": "@throws",
-        "condition": ""
+        "condition": "(args[0].length==3)==false"
       }
     ],
     "signature": "Vector3D(double[] v)"
@@ -159,34 +97,6 @@
         "name": "delta"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "alpha"
-        },
-        "comment": "azimuth (α) around Z (0 is +X, π/2 is +Y, π is -X and 3π/2 is -Y)",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "delta"
-        },
-        "comment": "elevation (δ) above (XY) plane, from -π/2 to +π/2",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "Vector3D(double alpha,double delta)"
@@ -214,34 +124,6 @@
           "isArray": false
         },
         "name": "u"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "a"
-        },
-        "comment": "scale factor",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "u"
-        },
-        "comment": "base (unscaled) vector",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -287,60 +169,6 @@
           "isArray": false
         },
         "name": "u2"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "a1"
-        },
-        "comment": "first scale factor",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "u1"
-        },
-        "comment": "first base (unscaled) vector",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "a2"
-        },
-        "comment": "second scale factor",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "u2"
-        },
-        "comment": "second base (unscaled) vector",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -402,86 +230,6 @@
           "isArray": false
         },
         "name": "u3"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "a1"
-        },
-        "comment": "first scale factor",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "u1"
-        },
-        "comment": "first base (unscaled) vector",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "a2"
-        },
-        "comment": "second scale factor",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "u2"
-        },
-        "comment": "second base (unscaled) vector",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "a3"
-        },
-        "comment": "third scale factor",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "u3"
-        },
-        "comment": "third base (unscaled) vector",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -561,112 +309,6 @@
         "name": "u4"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "a1"
-        },
-        "comment": "first scale factor",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "u1"
-        },
-        "comment": "first base (unscaled) vector",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "a2"
-        },
-        "comment": "second scale factor",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "u2"
-        },
-        "comment": "second base (unscaled) vector",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "a3"
-        },
-        "comment": "third scale factor",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "u3"
-        },
-        "comment": "third base (unscaled) vector",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "a4"
-        },
-        "comment": "fourth scale factor",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "u4"
-        },
-        "comment": "fourth base (unscaled) vector",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "Vector3D(double a1,org.apache.commons.math3.geometry.euclidean.threed.Vector3D u1,double a2,org.apache.commons.math3.geometry.euclidean.threed.Vector3D u2,double a3,org.apache.commons.math3.geometry.euclidean.threed.Vector3D u3,double a4,org.apache.commons.math3.geometry.euclidean.threed.Vector3D u4)"
@@ -684,7 +326,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getX()"
@@ -702,7 +343,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getY()"
@@ -720,7 +360,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getZ()"
@@ -743,7 +382,6 @@
       }
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toArray()"
@@ -761,7 +399,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getSpace()"
@@ -779,7 +416,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getZero()"
@@ -797,7 +433,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNorm1()"
@@ -815,7 +450,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNorm()"
@@ -833,7 +467,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNormSq()"
@@ -851,7 +484,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getNormInf()"
@@ -869,7 +501,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getAlpha()"
@@ -887,7 +518,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getDelta()"
@@ -912,21 +542,6 @@
           "isArray": false
         },
         "name": "v"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.Vector",
-            "name": "Vector",
-            "isArray": false
-          },
-          "name": "v"
-        },
-        "comment": "vector to add",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -963,34 +578,6 @@
         "name": "v"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "factor"
-        },
-        "comment": "scale factor to apply to v before adding it",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.Vector",
-            "name": "Vector",
-            "isArray": false
-          },
-          "name": "v"
-        },
-        "comment": "vector to add",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "add(double factor,org.apache.commons.math3.geometry.Vector v)"
@@ -1015,21 +602,6 @@
           "isArray": false
         },
         "name": "v"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.Vector",
-            "name": "Vector",
-            "isArray": false
-          },
-          "name": "v"
-        },
-        "comment": "vector to subtract",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1066,34 +638,6 @@
         "name": "v"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "factor"
-        },
-        "comment": "scale factor to apply to v before subtracting it",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.Vector",
-            "name": "Vector",
-            "isArray": false
-          },
-          "name": "v"
-        },
-        "comment": "vector to subtract",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "subtract(double factor,org.apache.commons.math3.geometry.Vector v)"
@@ -1111,7 +655,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1121,7 +664,6 @@
           "isArray": false
         },
         "comment": "if the norm is zero",
-        "kind": "@throws",
         "condition": "target.getNorm()==0"
       }
     ],
@@ -1140,7 +682,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1150,7 +691,6 @@
           "isArray": false
         },
         "comment": "if the norm of the instance is null",
-        "kind": "@throws",
         "condition": "target.getNorm()==null"
       }
     ],
@@ -1186,34 +726,6 @@
         "name": "v2"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "v1"
-        },
-        "comment": "first vector",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "v2"
-        },
-        "comment": "second vector",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1223,8 +735,7 @@
           "isArray": false
         },
         "comment": "if either vector has a null norm",
-        "kind": "@throws",
-        "condition": ""
+        "condition": "args[0].getNorm()==null || args[1].getNorm()==null"
       }
     ],
     "signature": "angle(org.apache.commons.math3.geometry.euclidean.threed.Vector3D v1,org.apache.commons.math3.geometry.euclidean.threed.Vector3D v2)"
@@ -1242,7 +753,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "negate()"
@@ -1269,21 +779,6 @@
         "name": "a"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "a"
-        },
-        "comment": "scalar",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "scalarMultiply(double a)"
@@ -1301,7 +796,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isNaN()"
@@ -1319,7 +813,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isInfinite()"
@@ -1346,21 +839,6 @@
         "name": "other"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "other"
-        },
-        "comment": "Object to test for equality to this",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "equals(java.lang.Object other)"
@@ -1378,7 +856,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hashCode()"
@@ -1403,21 +880,6 @@
           "isArray": false
         },
         "name": "v"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.Vector",
-            "name": "Vector",
-            "isArray": false
-          },
-          "name": "v"
-        },
-        "comment": "second vector",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1446,21 +908,6 @@
         "name": "v"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.Vector",
-            "name": "Vector",
-            "isArray": false
-          },
-          "name": "v"
-        },
-        "comment": "other vector",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "crossProduct(org.apache.commons.math3.geometry.Vector v)"
@@ -1485,21 +932,6 @@
           "isArray": false
         },
         "name": "v"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.Vector",
-            "name": "Vector",
-            "isArray": false
-          },
-          "name": "v"
-        },
-        "comment": "second vector",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1528,21 +960,6 @@
         "name": "v"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.Vector",
-            "name": "Vector",
-            "isArray": false
-          },
-          "name": "v"
-        },
-        "comment": "second vector",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "distance(org.apache.commons.math3.geometry.Vector v)"
@@ -1569,7 +986,6 @@
         "name": "v"
       }
     ],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "distance(org.apache.commons.math3.geometry.Point v)"
@@ -1596,21 +1012,6 @@
         "name": "v"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.Vector",
-            "name": "Vector",
-            "isArray": false
-          },
-          "name": "v"
-        },
-        "comment": "second vector",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "distanceInf(org.apache.commons.math3.geometry.Vector v)"
@@ -1635,21 +1036,6 @@
           "isArray": false
         },
         "name": "v"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.Vector",
-            "name": "Vector",
-            "isArray": false
-          },
-          "name": "v"
-        },
-        "comment": "second vector",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1686,34 +1072,6 @@
         "name": "v2"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "v1"
-        },
-        "comment": "first vector",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "v2"
-        },
-        "comment": "second vector",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "dotProduct(org.apache.commons.math3.geometry.euclidean.threed.Vector3D v1,org.apache.commons.math3.geometry.euclidean.threed.Vector3D v2)"
@@ -1746,34 +1104,6 @@
           "isArray": false
         },
         "name": "v2"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "v1"
-        },
-        "comment": "first vector",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "v2"
-        },
-        "comment": "second vector",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1810,34 +1140,6 @@
         "name": "v2"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "v1"
-        },
-        "comment": "first vector",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "v2"
-        },
-        "comment": "second vector",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "distance1(org.apache.commons.math3.geometry.euclidean.threed.Vector3D v1,org.apache.commons.math3.geometry.euclidean.threed.Vector3D v2)"
@@ -1870,34 +1172,6 @@
           "isArray": false
         },
         "name": "v2"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "v1"
-        },
-        "comment": "first vector",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "v2"
-        },
-        "comment": "second vector",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1934,34 +1208,6 @@
         "name": "v2"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "v1"
-        },
-        "comment": "first vector",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "v2"
-        },
-        "comment": "second vector",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "distanceInf(org.apache.commons.math3.geometry.euclidean.threed.Vector3D v1,org.apache.commons.math3.geometry.euclidean.threed.Vector3D v2)"
@@ -1996,34 +1242,6 @@
         "name": "v2"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "v1"
-        },
-        "comment": "first vector",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "v2"
-        },
-        "comment": "second vector",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "distanceSq(org.apache.commons.math3.geometry.euclidean.threed.Vector3D v1,org.apache.commons.math3.geometry.euclidean.threed.Vector3D v2)"
@@ -2041,7 +1259,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toString()"
@@ -2066,21 +1283,6 @@
           "isArray": false
         },
         "name": "format"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.text.NumberFormat",
-            "name": "NumberFormat",
-            "isArray": false
-          },
-          "name": "format"
-        },
-        "comment": "the custom format for components",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,

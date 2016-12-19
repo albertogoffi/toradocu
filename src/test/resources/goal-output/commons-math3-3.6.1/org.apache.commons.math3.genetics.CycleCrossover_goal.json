@@ -7,7 +7,6 @@
     },
     "name": "CycleCrossover",
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "CycleCrossover()"
@@ -29,21 +28,6 @@
         "name": "randomStart"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "boolean",
-            "name": "boolean",
-            "isArray": false
-          },
-          "name": "randomStart"
-        },
-        "comment": "whether the start index shall be chosen randomly or be set to 0",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "CycleCrossover(boolean randomStart)"
@@ -61,7 +45,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isRandomStart()"
@@ -96,34 +79,6 @@
         "name": "second"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.genetics.Chromosome",
-            "name": "Chromosome",
-            "isArray": false
-          },
-          "name": "first"
-        },
-        "comment": "the first chromosome.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.genetics.Chromosome",
-            "name": "Chromosome",
-            "isArray": false
-          },
-          "name": "second"
-        },
-        "comment": "the second chromosome.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -133,7 +88,6 @@
           "isArray": false
         },
         "comment": "if the chromosomes are not an instance of AbstractListChromosome",
-        "kind": "@throws",
         "condition": "(args[0] instanceof AbstractListChromosome) == false || (args[1] instanceof AbstractListChromosome) == false"
       },
       {
@@ -143,8 +97,7 @@
           "isArray": false
         },
         "comment": "if the length of the two chromosomes is different",
-        "kind": "@throws",
-        "condition": ""
+        "condition": "(args[0].getLength() == args[1].getLength()) == false"
       },
       {
         "exception": {
@@ -153,7 +106,6 @@
           "isArray": false
         },
         "comment": "if the given chromosomes are not compatible with this CrossoverPolicy",
-        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -189,34 +141,6 @@
         "name": "second"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.genetics.AbstractListChromosome",
-            "name": "AbstractListChromosome",
-            "isArray": false
-          },
-          "name": "first"
-        },
-        "comment": "the first chromosome",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.genetics.AbstractListChromosome",
-            "name": "AbstractListChromosome",
-            "isArray": false
-          },
-          "name": "second"
-        },
-        "comment": "the second chromosome",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -226,8 +150,7 @@
           "isArray": false
         },
         "comment": "if the length of the two chromosomes is different",
-        "kind": "@throws",
-        "condition": ""
+        "condition": "(args[0].getLength() == args[1].getLength()) == false"
       }
     ],
     "signature": "mate(org.apache.commons.math3.genetics.AbstractListChromosome first,org.apache.commons.math3.genetics.AbstractListChromosome second)"

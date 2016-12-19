@@ -7,7 +7,6 @@
     },
     "name": "AbstractGraph",
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "AbstractGraph()"
@@ -42,34 +41,6 @@
         "name": "targetVertex"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "sourceVertex"
-        },
-        "comment": "source vertex of the edge.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "targetVertex"
-        },
-        "comment": "target vertex of the edge.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "containsEdge(java.lang.Object sourceVertex,java.lang.Object targetVertex)"
@@ -96,21 +67,6 @@
         "name": "edges"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.Collection",
-            "name": "Collection",
-            "isArray": false
-          },
-          "name": "edges"
-        },
-        "comment": "edges to be removed from this graph.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -120,7 +76,6 @@
           "isArray": false
         },
         "comment": "if the specified edge collection is null.",
-        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -156,34 +111,6 @@
         "name": "targetVertex"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "sourceVertex"
-        },
-        "comment": "source vertex of the edge.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "targetVertex"
-        },
-        "comment": "target vertex of the edge.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeAllEdges(java.lang.Object sourceVertex,java.lang.Object targetVertex)"
@@ -210,21 +137,6 @@
         "name": "vertices"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.Collection",
-            "name": "Collection",
-            "isArray": false
-          },
-          "name": "vertices"
-        },
-        "comment": "vertices to be removed from this graph.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -234,7 +146,6 @@
           "isArray": false
         },
         "comment": "if the specified vertex collection is null.",
-        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -253,7 +164,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toString()"
@@ -280,21 +190,6 @@
         "name": "v"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "v"
-        },
-        "comment": "vertex",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -304,8 +199,7 @@
           "isArray": false
         },
         "comment": "if specified vertex is null.",
-        "kind": "@throws",
-        "condition": ""
+        "condition": "args[0]==null"
       },
       {
         "exception": {
@@ -314,8 +208,7 @@
           "isArray": false
         },
         "comment": "if specified vertex does not exist in this graph.",
-        "kind": "@throws",
-        "condition": ""
+        "condition": "target.containsVertex(arg[0])==false"
       }
     ],
     "signature": "assertVertexExist(java.lang.Object v)"
@@ -345,26 +238,6 @@
           }
         },
         "name": "edges"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object[]",
-            "name": "Object[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "java.lang.Object",
-              "name": "Object",
-              "isArray": false
-            }
-          },
-          "name": "edges"
-        },
-        "comment": "edges to be removed from this graph.",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -409,47 +282,6 @@
         "name": "directed"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.Collection",
-            "name": "Collection",
-            "isArray": false
-          },
-          "name": "vertexSet"
-        },
-        "comment": "the vertex set V to be printed",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.Collection",
-            "name": "Collection",
-            "isArray": false
-          },
-          "name": "edgeSet"
-        },
-        "comment": "the edge set E to be printed",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "boolean",
-            "name": "boolean",
-            "isArray": false
-          },
-          "name": "directed"
-        },
-        "comment": "true to use parens for each edge (representing directed); false to use curly braces (representing undirected)",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toStringFromSets(java.util.Collection vertexSet,java.util.Collection edgeSet,boolean directed)"
@@ -467,7 +299,6 @@
       "isArray": false
     },
     "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hashCode()"
@@ -492,21 +323,6 @@
           "isArray": false
         },
         "name": "obj"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "obj"
-        },
-        "comment": "object to be compared for equality with this graph",
-        "kind": "@param",
-        "condition": ""
       }
     ],
     "isVarArgs": false,
