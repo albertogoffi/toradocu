@@ -61,23 +61,24 @@ public class DocumentedMethodTest {
     List<Parameter> params = new ArrayList<>();
     params.add(new Parameter(new Type("int"), "elements"));
     List<ThrowsTag> tags = new ArrayList<>();
-    tags.add(new ThrowsTag(npe, "if the array is empty"));
-    tags.add(new ThrowsTag(npe, "if the array is empty"));
+    tags.add(new ThrowsTag(npe, "if the array is empty", null));
+    tags.add(new ThrowsTag(npe, "if the array is empty", null));
 
     DocumentedMethod method =
         new DocumentedMethod(containingClass, "compute", Type.VOID, params, null, false, tags);
     assertThat(method.throwsTags().size(), is(1));
     assertThat(
-        method.throwsTags().iterator().next(), is(new ThrowsTag(npe, "if the array is empty")));
+        method.throwsTags().iterator().next(),
+        is(new ThrowsTag(npe, "if the array is empty", null)));
 
     tags.clear();
-    tags.add(new ThrowsTag(npe, "if the array is null"));
-    tags.add(new ThrowsTag(iae, "if the array is empty"));
+    tags.add(new ThrowsTag(npe, "if the array is null", null));
+    tags.add(new ThrowsTag(iae, "if the array is empty", null));
     method = new DocumentedMethod(containingClass, "compute", Type.VOID, params, null, false, tags);
     assertThat(method.throwsTags().size(), is(2));
     Iterator<ThrowsTag> iterator = method.throwsTags().iterator();
-    assertThat(iterator.next(), is(new ThrowsTag(npe, "if the array is null")));
-    assertThat(iterator.next(), is(new ThrowsTag(iae, "if the array is empty")));
+    assertThat(iterator.next(), is(new ThrowsTag(npe, "if the array is null", null)));
+    assertThat(iterator.next(), is(new ThrowsTag(iae, "if the array is empty", null)));
 
     //Param part
 
@@ -131,7 +132,7 @@ public class DocumentedMethodTest {
     List<ThrowsTag> tags = new ArrayList<>();
 
     params.add(new Parameter(arrayType, "array"));
-    tags.add(new ThrowsTag(npe, "if the array is empty"));
+    tags.add(new ThrowsTag(npe, "if the array is empty", null));
     DocumentedMethod method1 =
         new DocumentedMethod(containingClass, "compute", Type.VOID, params, null, false, tags);
 
@@ -154,7 +155,7 @@ public class DocumentedMethodTest {
     List<Parameter> params = new ArrayList<>();
     params.add(new Parameter(new Type("int"), "elements"));
     List<ThrowsTag> tags = new ArrayList<>();
-    tags.add(new ThrowsTag(npe, "if the array is empty"));
+    tags.add(new ThrowsTag(npe, "if the array is empty", null));
     List<ParamTag> paramTags = new ArrayList<>();
     paramTags.add(new ParamTag(new Parameter(new Type("int"), "elements"), "Comment to extract"));
 
