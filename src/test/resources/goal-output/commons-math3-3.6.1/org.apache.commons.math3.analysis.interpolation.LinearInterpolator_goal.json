@@ -39,6 +39,44 @@
         "name": "y"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "x"
+        },
+        "comment": "the arguments for the interpolation points",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "y"
+        },
+        "comment": "the values for the interpolation points",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -48,7 +86,8 @@
           "isArray": false
         },
         "comment": "if x and y have different sizes.",
-        "condition": "(args[0].length==args[1].length) == false"
+        "kind": "@throws",
+        "condition": "((args[0].length) == (args[1].length)) == false"
       },
       {
         "exception": {
@@ -57,6 +96,7 @@
           "isArray": false
         },
         "comment": "if x is not sorted in strict increasing order.",
+        "kind": "@throws",
         "condition": ""
       },
       {
@@ -66,6 +106,7 @@
           "isArray": false
         },
         "comment": "if the size of x is smaller than 2.",
+        "kind": "@throws",
         "condition": "args[0].length<2"
       },
       {
@@ -75,6 +116,7 @@
           "isArray": false
         },
         "comment": "if the arguments violate assumptions made by the interpolation algorithm.",
+        "kind": "@throws",
         "condition": ""
       },
       {
@@ -84,7 +126,8 @@
           "isArray": false
         },
         "comment": "if arrays lengthes do not match",
-        "condition": "(args[0].length==args[1].length) == false"
+        "kind": "@throws",
+        "condition": "((args[0].length) == (args[1].length)) == false"
       }
     ],
     "signature": "interpolate(double[] x,double[] y)"

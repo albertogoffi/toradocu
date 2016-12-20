@@ -34,6 +34,44 @@
         "name": "y"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "x"
+        },
+        "comment": "Domain values where the function changes value.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "y"
+        },
+        "comment": "Values of the function.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -43,6 +81,7 @@
           "isArray": false
         },
         "comment": "if the x array is not sorted in strictly increasing order.",
+        "kind": "@throws",
         "condition": "MathArrays.checkOrder(args[0])==false"
       },
       {
@@ -52,6 +91,7 @@
           "isArray": false
         },
         "comment": "if x or y are null.",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       },
       {
@@ -61,6 +101,7 @@
           "isArray": false
         },
         "comment": "if x or y are zero-length.",
+        "kind": "@throws",
         "condition": "args[0].length==0 || args[1].length==0"
       },
       {
@@ -70,6 +111,7 @@
           "isArray": false
         },
         "comment": "if x and y do not have the same length.",
+        "kind": "@throws",
         "condition": "((args[0].length) == (args[1].length)) == false"
       }
     ],
@@ -97,6 +139,21 @@
         "name": "x"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "x"
+        },
+        "comment": "Point at which the function value should be computed.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -106,6 +163,7 @@
           "isArray": false
         },
         "comment": "when the activated method itself can ascertain that a precondition, specified in the API expressed at the level of the activated method, has been violated. When Commons Math throws an IllegalArgumentException, it is usually the consequence of checking the actual parameters passed to the method.",
+        "kind": "@throws",
         "condition": ""
       }
     ],

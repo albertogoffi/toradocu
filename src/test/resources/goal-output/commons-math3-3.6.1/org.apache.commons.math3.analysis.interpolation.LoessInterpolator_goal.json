@@ -7,6 +7,7 @@
     },
     "name": "LoessInterpolator",
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "LoessInterpolator()"
@@ -34,6 +35,34 @@
           "isArray": false
         },
         "name": "robustnessIters"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "bandwidth"
+        },
+        "comment": "when computing the loess fit at a particular point, this fraction of source points closest to the current point is taken into account for computing a least-squares regression. A sensible value is usually 0.25 to 0.5, the default value is DEFAULT_BANDWIDTH.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "robustnessIters"
+        },
+        "comment": "This many robustness iterations are done. A sensible value is usually 0 (just the initial fit without any robustness iterations) to 4, the default value is DEFAULT_ROBUSTNESS_ITERS.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -73,6 +102,47 @@
         "name": "accuracy"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "bandwidth"
+        },
+        "comment": "when computing the loess fit at a particular point, this fraction of source points closest to the current point is taken into account for computing a least-squares regression. A sensible value is usually 0.25 to 0.5, the default value is DEFAULT_BANDWIDTH.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "robustnessIters"
+        },
+        "comment": "This many robustness iterations are done. A sensible value is usually 0 (just the initial fit without any robustness iterations) to 4, the default value is DEFAULT_ROBUSTNESS_ITERS.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "accuracy"
+        },
+        "comment": "If the median residual at a certain robustness iteration is less than this amount, no more iterations are done.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -82,6 +152,7 @@
           "isArray": false
         },
         "comment": "if bandwidth does not lie in the interval [0,1].",
+        "kind": "@throws",
         "condition": "args[0]<0 || args[0]>1"
       },
       {
@@ -91,6 +162,7 @@
           "isArray": false
         },
         "comment": "if robustnessIters is negative.",
+        "kind": "@throws",
         "condition": "args[1]<0"
       }
     ],
@@ -136,6 +208,80 @@
         "name": "yval"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "xval"
+        },
+        "comment": "the arguments for the interpolation points",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "yval"
+        },
+        "comment": "the values for the interpolation points",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "xval"
+        },
+        "comment": "Arguments for the interpolation points.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "yval"
+        },
+        "comment": "Values for the interpolation points.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -145,6 +291,7 @@
           "isArray": false
         },
         "comment": "if xval not sorted in strictly increasing order.",
+        "kind": "@throws",
         "condition": ""
       },
       {
@@ -154,7 +301,8 @@
           "isArray": false
         },
         "comment": "if xval and yval have different sizes.",
-        "condition": "(args[0].length==args[1].length) == false"
+        "kind": "@throws",
+        "condition": "((args[0].length) == (args[1].length)) == false"
       },
       {
         "exception": {
@@ -163,6 +311,7 @@
           "isArray": false
         },
         "comment": "if xval or yval has zero size.",
+        "kind": "@throws",
         "condition": "args[0].length==0 || args[1].length==0"
       },
       {
@@ -172,6 +321,7 @@
           "isArray": false
         },
         "comment": "if any of the arguments and values are not finite real numbers.",
+        "kind": "@throws",
         "condition": ""
       },
       {
@@ -181,6 +331,7 @@
           "isArray": false
         },
         "comment": "if the bandwidth is too small to accomodate the size of the input data (i.e. the bandwidth must be larger than 2/n).",
+        "kind": "@throws",
         "condition": ""
       },
       {
@@ -190,6 +341,7 @@
           "isArray": false
         },
         "comment": "if the arguments violate assumptions made by the interpolation algorithm.",
+        "kind": "@throws",
         "condition": ""
       },
       {
@@ -199,7 +351,8 @@
           "isArray": false
         },
         "comment": "if arrays lengthes do not match",
-        "condition": "(args[0].length==args[1].length) == false"
+        "kind": "@throws",
+        "condition": "((args[0].length) == (args[1].length)) == false"
       }
     ],
     "signature": "interpolate(double[] xval,double[] yval)"
@@ -262,6 +415,62 @@
         "name": "weights"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "xval"
+        },
+        "comment": "Arguments for the interpolation points.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "yval"
+        },
+        "comment": "Values for the interpolation points.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "weights"
+        },
+        "comment": "point weights: coefficients by which the robustness weight of a point is multiplied.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -271,6 +480,7 @@
           "isArray": false
         },
         "comment": "if xval not sorted in strictly increasing order.",
+        "kind": "@throws",
         "condition": ""
       },
       {
@@ -280,7 +490,8 @@
           "isArray": false
         },
         "comment": "if xval and yval have different sizes.",
-        "condition": "(args[0].length==args[1].length) == false"
+        "kind": "@throws",
+        "condition": "((args[0].length) == (args[1].length)) == false"
       },
       {
         "exception": {
@@ -289,6 +500,7 @@
           "isArray": false
         },
         "comment": "if xval or yval has zero size.",
+        "kind": "@throws",
         "condition": "args[0].length==0 || args[1].length==0"
       },
       {
@@ -298,6 +510,7 @@
           "isArray": false
         },
         "comment": "if any of the arguments and values are not finite real numbers.",
+        "kind": "@throws",
         "condition": ""
       },
       {
@@ -307,6 +520,7 @@
           "isArray": false
         },
         "comment": "if the bandwidth is too small to accomodate the size of the input data (i.e. the bandwidth must be larger than 2/n).",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -357,6 +571,44 @@
         "name": "yval"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "xval"
+        },
+        "comment": "the arguments for the interpolation points",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "yval"
+        },
+        "comment": "the values for the interpolation points",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -366,6 +618,7 @@
           "isArray": false
         },
         "comment": "if xval not sorted in strictly increasing order.",
+        "kind": "@throws",
         "condition": ""
       },
       {
@@ -375,7 +628,8 @@
           "isArray": false
         },
         "comment": "if xval and yval have different sizes.",
-        "condition": "(args[0].length==args[1].length) == false"
+        "kind": "@throws",
+        "condition": "((args[0].length) == (args[1].length)) == false"
       },
       {
         "exception": {
@@ -384,6 +638,7 @@
           "isArray": false
         },
         "comment": "if xval or yval has zero size.",
+        "kind": "@throws",
         "condition": "args[0].length==0 || args[1].length==0"
       },
       {
@@ -393,6 +648,7 @@
           "isArray": false
         },
         "comment": "if any of the arguments and values are not finite real numbers.",
+        "kind": "@throws",
         "condition": ""
       },
       {
@@ -402,6 +658,7 @@
           "isArray": false
         },
         "comment": "if the bandwidth is too small to accomodate the size of the input data (i.e. the bandwidth must be larger than 2/n).",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -468,6 +725,75 @@
         "name": "bandwidthInterval"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "xval"
+        },
+        "comment": "Arguments array.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "weights"
+        },
+        "comment": "Weights array.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "i"
+        },
+        "comment": "Index around which the new interval should be computed.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int[]",
+            "name": "int[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "int",
+              "name": "int",
+              "isArray": false
+            }
+          },
+          "name": "bandwidthInterval"
+        },
+        "comment": "a two-element array {left, right} such that: (left==0 or xval[i] - xval[left-1] > xval[right] - xval[i]) and (right==xval.length-1 or xval[right+1] - xval[i] > xval[i] - xval[left]). The array will be updated.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "updateBandwidthInterval(double[] xval,double[] weights,int i,int[] bandwidthInterval)"
@@ -507,6 +833,39 @@
         "name": "i"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "weights"
+        },
+        "comment": "Weights array.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "i"
+        },
+        "comment": "Index from which to start search.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "nextNonzero(double[] weights,int i)"
@@ -531,6 +890,21 @@
           "isArray": false
         },
         "name": "x"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "x"
+        },
+        "comment": "Argument.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -564,6 +938,26 @@
         "name": "values"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "values"
+        },
+        "comment": "Values array.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -573,6 +967,7 @@
           "isArray": false
         },
         "comment": "if one of the values is not a finite real number.",
+        "kind": "@throws",
         "condition": ""
       }
     ],
