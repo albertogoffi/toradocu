@@ -139,6 +139,15 @@ public class Configuration {
   )
   private boolean tcomment = false;
 
+  @Parameter(
+    names = "--export-conditions",
+    description =
+        "Path to folder where to export comment translations as Java boolean " + "conditions.",
+    converter = FileConverter.class,
+    hidden = true
+  )
+  private File exportAsJava;
+
   // Aspect creation options
 
   @Parameter(
@@ -441,5 +450,14 @@ public class Configuration {
    */
   public boolean useTComment() {
     return tcomment;
+  }
+
+  /**
+   * Returns the folder in which to export Java boolean conditions.
+   *
+   * @return the folder in which to export Java boolean conditions.
+   */
+  public File getExportAsJava() {
+    return exportAsJava;
   }
 }

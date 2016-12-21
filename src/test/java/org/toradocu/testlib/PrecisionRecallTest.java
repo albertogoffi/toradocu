@@ -71,6 +71,9 @@ public class PrecisionRecallTest {
       argsList.add("false");
     }
 
+    argsList.add("--export-conditions");
+    argsList.add("conditions");
+
     final String translator = System.getProperty("org.toradocu.translator");
     if (translator != null && translator.equals("tcomment")) {
       argsList.add("--tcomment");
