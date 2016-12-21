@@ -12,6 +12,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getGraph()"
@@ -38,6 +39,21 @@
         "name": "graph"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.DirectedGraph",
+            "name": "DirectedGraph",
+            "isArray": false
+          },
+          "name": "graph"
+        },
+        "comment": "the graph.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -47,6 +63,7 @@
           "isArray": false
         },
         "comment": "if the argument is null.",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -65,6 +82,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -74,6 +92,7 @@
           "isArray": false
         },
         "comment": "if the current graph is null.",
+        "kind": "@throws",
         "condition": "target.getGraph()==null"
       }
     ],

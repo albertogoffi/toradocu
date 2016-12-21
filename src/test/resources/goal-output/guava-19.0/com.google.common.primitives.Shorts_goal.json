@@ -7,6 +7,7 @@
     },
     "name": "Shorts",
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "Shorts()"
@@ -31,6 +32,21 @@
           "isArray": false
         },
         "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "a primitive short value",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -59,6 +75,21 @@
         "name": "value"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "any value in the range of the short type",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -68,6 +99,7 @@
           "isArray": false
         },
         "comment": "if value is greater than Short.MAX_VALUE or less than Short.MIN_VALUE",
+        "kind": "@throws",
         "condition": "args[0]>Short.MAX_VALUE || args[0]<Short.MIN_VALUE"
       }
     ],
@@ -93,6 +125,21 @@
           "isArray": false
         },
         "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "any long value",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -129,6 +176,34 @@
         "name": "b"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the first short to compare",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the second short to compare",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "compare(short a,short b)"
@@ -150,7 +225,12 @@
         "type": {
           "qualifiedName": "short[]",
           "name": "short[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
         },
         "name": "array"
       },
@@ -161,6 +241,39 @@
           "isArray": false
         },
         "name": "target"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short[]",
+            "name": "short[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "an array of short values, possibly empty",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          },
+          "name": "target"
+        },
+        "comment": "a primitive short value",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -184,7 +297,12 @@
         "type": {
           "qualifiedName": "short[]",
           "name": "short[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
         },
         "name": "array"
       },
@@ -195,6 +313,39 @@
           "isArray": false
         },
         "name": "target"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short[]",
+            "name": "short[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "an array of short values, possibly empty",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          },
+          "name": "target"
+        },
+        "comment": "a primitive short value",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -218,7 +369,12 @@
         "type": {
           "qualifiedName": "short[]",
           "name": "short[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
         },
         "name": "array"
       },
@@ -247,6 +403,7 @@
         "name": "end"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "indexOf(short[] array,short target,int start,int end)"
@@ -268,7 +425,12 @@
         "type": {
           "qualifiedName": "short[]",
           "name": "short[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
         },
         "name": "array"
       },
@@ -276,9 +438,52 @@
         "type": {
           "qualifiedName": "short[]",
           "name": "short[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
         },
         "name": "target"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short[]",
+            "name": "short[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "the array to search for the sequence target",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short[]",
+            "name": "short[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
+          },
+          "name": "target"
+        },
+        "comment": "the array to search for as a sub-sequence of array",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -302,7 +507,12 @@
         "type": {
           "qualifiedName": "short[]",
           "name": "short[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
         },
         "name": "array"
       },
@@ -313,6 +523,39 @@
           "isArray": false
         },
         "name": "target"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short[]",
+            "name": "short[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "an array of short values, possibly empty",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          },
+          "name": "target"
+        },
+        "comment": "a primitive short value",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -336,7 +579,12 @@
         "type": {
           "qualifiedName": "short[]",
           "name": "short[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
         },
         "name": "array"
       },
@@ -365,6 +613,7 @@
         "name": "end"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "lastIndexOf(short[] array,short target,int start,int end)"
@@ -386,9 +635,34 @@
         "type": {
           "qualifiedName": "short[]",
           "name": "short[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
         },
         "name": "array"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short[]",
+            "name": "short[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "a nonempty array of short values",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": true,
@@ -400,6 +674,7 @@
           "isArray": false
         },
         "comment": "if array is empty",
+        "kind": "@throws",
         "condition": "args[0].length==0"
       }
     ],
@@ -422,9 +697,34 @@
         "type": {
           "qualifiedName": "short[]",
           "name": "short[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
         },
         "name": "array"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short[]",
+            "name": "short[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "a nonempty array of short values",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": true,
@@ -436,6 +736,7 @@
           "isArray": false
         },
         "comment": "if array is empty",
+        "kind": "@throws",
         "condition": "args[0].length==0"
       }
     ],
@@ -451,21 +752,51 @@
     "returnType": {
       "qualifiedName": "short[]",
       "name": "short[]",
-      "isArray": true
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "short",
+        "name": "short",
+        "isArray": false
+      }
     },
     "parameters": [
       {
         "type": {
-          "qualifiedName": "short[]",
-          "name": "short[]",
-          "isArray": true
+          "qualifiedName": "short[][]",
+          "name": "short[][]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
         },
         "name": "arrays"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short[][]",
+            "name": "short[][]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
+          },
+          "name": "arrays"
+        },
+        "comment": "zero or more short arrays",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": true,
     "throwsTags": [],
-    "signature": "concat(short[] arrays)"
+    "signature": "concat(short[][] arrays)"
   },
   {
     "containingClass": {
@@ -477,7 +808,12 @@
     "returnType": {
       "qualifiedName": "byte[]",
       "name": "byte[]",
-      "isArray": true
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "byte",
+        "name": "byte",
+        "isArray": false
+      }
     },
     "parameters": [
       {
@@ -489,6 +825,7 @@
         "name": "value"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toByteArray(short value)"
@@ -510,11 +847,17 @@
         "type": {
           "qualifiedName": "byte[]",
           "name": "byte[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "byte",
+            "name": "byte",
+            "isArray": false
+          }
         },
         "name": "bytes"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -524,6 +867,7 @@
           "isArray": false
         },
         "comment": "if bytes has fewer than 2 elements",
+        "kind": "@throws",
         "condition": "args[0].length<2"
       }
     ],
@@ -559,6 +903,7 @@
         "name": "b2"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "fromBytes(byte b1,byte b2)"
@@ -576,6 +921,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "stringConverter()"
@@ -590,14 +936,24 @@
     "returnType": {
       "qualifiedName": "short[]",
       "name": "short[]",
-      "isArray": true
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "short",
+        "name": "short",
+        "isArray": false
+      }
     },
     "parameters": [
       {
         "type": {
           "qualifiedName": "short[]",
           "name": "short[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
         },
         "name": "array"
       },
@@ -618,6 +974,52 @@
         "name": "padding"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short[]",
+            "name": "short[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "the source array",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "minLength"
+        },
+        "comment": "the minimum length the returned array must guarantee",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "padding"
+        },
+        "comment": "an extra amount to \"grow\" the array by if growth is necessary",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -627,6 +1029,7 @@
           "isArray": false
         },
         "comment": "if minLength or padding is negative",
+        "kind": "@throws",
         "condition": "args[1]<0 || args[2]<0"
       }
     ],
@@ -642,14 +1045,24 @@
     "returnType": {
       "qualifiedName": "short[]",
       "name": "short[]",
-      "isArray": true
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "short",
+        "name": "short",
+        "isArray": false
+      }
     },
     "parameters": [
       {
         "type": {
           "qualifiedName": "short[]",
           "name": "short[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
         },
         "name": "original"
       },
@@ -662,6 +1075,7 @@
         "name": "length"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "copyOf(short[] original,int length)"
@@ -691,9 +1105,47 @@
         "type": {
           "qualifiedName": "short[]",
           "name": "short[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
         },
         "name": "array"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "separator"
+        },
+        "comment": "the text that should appear between consecutive values in the resulting string (but not at the start or end)",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short[]",
+            "name": "short[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "an array of short values, possibly empty",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": true,
@@ -713,6 +1165,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "lexicographicalComparator()"
@@ -727,7 +1180,12 @@
     "returnType": {
       "qualifiedName": "short[]",
       "name": "short[]",
-      "isArray": true
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "short",
+        "name": "short",
+        "isArray": false
+      }
     },
     "parameters": [
       {
@@ -739,6 +1197,21 @@
         "name": "collection"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "a collection of Number instances",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -748,6 +1221,7 @@
           "isArray": false
         },
         "comment": "if collection or any of its elements is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[0].contains(null)"
       }
     ],
@@ -770,9 +1244,34 @@
         "type": {
           "qualifiedName": "short[]",
           "name": "short[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
         },
         "name": "backingArray"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short[]",
+            "name": "short[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
+          },
+          "name": "backingArray"
+        },
+        "comment": "the array to back the list",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": true,

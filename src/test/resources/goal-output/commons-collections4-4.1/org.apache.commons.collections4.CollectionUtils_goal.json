@@ -7,6 +7,7 @@
     },
     "name": "CollectionUtils",
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "CollectionUtils()"
@@ -24,6 +25,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "emptyCollection()"
@@ -48,6 +50,21 @@
           "isArray": false
         },
         "name": "collection"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "the collection, possibly null",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -84,6 +101,34 @@
         "name": "b"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the first collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the second collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "union(java.lang.Iterable a,java.lang.Iterable b)"
@@ -116,6 +161,34 @@
           "isArray": false
         },
         "name": "b"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the first collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the second collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
       }
     ],
     "isVarArgs": false,
@@ -152,6 +225,34 @@
         "name": "b"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the first collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the second collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "disjunction(java.lang.Iterable a,java.lang.Iterable b)"
@@ -184,6 +285,34 @@
           "isArray": false
         },
         "name": "b"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the collection to subtract from, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the collection to subtract, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
       }
     ],
     "isVarArgs": false,
@@ -228,6 +357,47 @@
         "name": "p"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the collection to subtract from, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the collection to subtract, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "p"
+        },
+        "comment": "the condition used to determine which elements of b are subtracted.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "subtract(java.lang.Iterable a,java.lang.Iterable b,org.apache.commons.collections4.Predicate p)"
@@ -260,6 +430,34 @@
           "isArray": false
         },
         "name": "coll2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "coll1"
+        },
+        "comment": "the first collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "coll2"
+        },
+        "comment": "the second collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[1]==null) == false"
       }
     ],
     "isVarArgs": false,
@@ -296,6 +494,34 @@
         "name": "coll2"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "coll1"
+        },
+        "comment": "the first collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "coll2"
+        },
+        "comment": "the second collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[1]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "containsAny(java.util.Collection coll1,java.util.Collection coll2)"
@@ -320,6 +546,21 @@
           "isArray": false
         },
         "name": "coll"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "coll"
+        },
+        "comment": "the collection to get the cardinality map for, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
       }
     ],
     "isVarArgs": false,
@@ -356,6 +597,34 @@
         "name": "b"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the first (sub?) collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the second (super?) collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[1]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isSubCollection(java.util.Collection a,java.util.Collection b)"
@@ -390,6 +659,34 @@
         "name": "b"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the first (sub?) collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the second (super?) collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[1]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isProperSubCollection(java.util.Collection a,java.util.Collection b)"
@@ -422,6 +719,34 @@
           "isArray": false
         },
         "name": "b"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the first collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the second collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
       }
     ],
     "isVarArgs": false,
@@ -466,6 +791,47 @@
         "name": "equator"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the first collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the second collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Equator",
+            "name": "Equator",
+            "isArray": false
+          },
+          "name": "equator"
+        },
+        "comment": "the Equator used for testing equality",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -475,6 +841,7 @@
           "isArray": false
         },
         "comment": "if the equator is null",
+        "kind": "@throws",
         "condition": "args[2]==null"
       }
     ],
@@ -495,8 +862,8 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "O",
-          "name": "O",
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
           "isArray": false
         },
         "name": "obj"
@@ -510,6 +877,34 @@
         "name": "coll"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "obj"
+        },
+        "comment": "the object to find the cardinality of",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "coll"
+        },
+        "comment": "the Iterable to search",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -519,10 +914,11 @@
           "isArray": false
         },
         "comment": "if coll is null",
+        "kind": "@throws",
         "condition": "args[1]==null"
       }
     ],
-    "signature": "cardinality(O obj,java.lang.Iterable coll)"
+    "signature": "cardinality(java.lang.Object obj,java.lang.Iterable coll)"
   },
   {
     "containingClass": {
@@ -554,6 +950,34 @@
         "name": "predicate"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "the collection to search, may be null",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate to use, may be null",
+        "kind": "@param",
+        "condition": "args[1]==null"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "find(java.lang.Iterable collection,org.apache.commons.collections4.Predicate predicate)"
@@ -581,16 +1005,44 @@
       },
       {
         "type": {
-          "qualifiedName": "C",
-          "name": "C",
+          "qualifiedName": "org.apache.commons.collections4.Closure",
+          "name": "Closure",
           "isArray": false
         },
         "name": "closure"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "the collection to get the input from, may be null",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Closure",
+            "name": "Closure",
+            "isArray": false
+          },
+          "name": "closure"
+        },
+        "comment": "the closure to perform, may be null",
+        "kind": "@param",
+        "condition": "args[1]==null"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "forAllDo(java.lang.Iterable collection,C closure)"
+    "signature": "forAllDo(java.lang.Iterable collection,org.apache.commons.collections4.Closure closure)"
   },
   {
     "containingClass": {
@@ -615,16 +1067,44 @@
       },
       {
         "type": {
-          "qualifiedName": "C",
-          "name": "C",
+          "qualifiedName": "org.apache.commons.collections4.Closure",
+          "name": "Closure",
           "isArray": false
         },
         "name": "closure"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Iterator",
+            "name": "Iterator",
+            "isArray": false
+          },
+          "name": "iterator"
+        },
+        "comment": "the iterator to get the input from, may be null",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Closure",
+            "name": "Closure",
+            "isArray": false
+          },
+          "name": "closure"
+        },
+        "comment": "the closure to perform, may be null",
+        "kind": "@param",
+        "condition": "args[1]==null"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "forAllDo(java.util.Iterator iterator,C closure)"
+    "signature": "forAllDo(java.util.Iterator iterator,org.apache.commons.collections4.Closure closure)"
   },
   {
     "containingClass": {
@@ -649,16 +1129,44 @@
       },
       {
         "type": {
-          "qualifiedName": "C",
-          "name": "C",
+          "qualifiedName": "org.apache.commons.collections4.Closure",
+          "name": "Closure",
           "isArray": false
         },
         "name": "closure"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "the collection to get the input from, may be null",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Closure",
+            "name": "Closure",
+            "isArray": false
+          },
+          "name": "closure"
+        },
+        "comment": "the closure to perform, may be null",
+        "kind": "@param",
+        "condition": "args[1]==null"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "forAllButLastDo(java.lang.Iterable collection,C closure)"
+    "signature": "forAllButLastDo(java.lang.Iterable collection,org.apache.commons.collections4.Closure closure)"
   },
   {
     "containingClass": {
@@ -683,16 +1191,44 @@
       },
       {
         "type": {
-          "qualifiedName": "C",
-          "name": "C",
+          "qualifiedName": "org.apache.commons.collections4.Closure",
+          "name": "Closure",
           "isArray": false
         },
         "name": "closure"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Iterator",
+            "name": "Iterator",
+            "isArray": false
+          },
+          "name": "iterator"
+        },
+        "comment": "the iterator to get the input from, may be null",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Closure",
+            "name": "Closure",
+            "isArray": false
+          },
+          "name": "closure"
+        },
+        "comment": "the closure to perform, may be null",
+        "kind": "@param",
+        "condition": "args[1]==null"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "forAllButLastDo(java.util.Iterator iterator,C closure)"
+    "signature": "forAllButLastDo(java.util.Iterator iterator,org.apache.commons.collections4.Closure closure)"
   },
   {
     "containingClass": {
@@ -722,6 +1258,34 @@
           "isArray": false
         },
         "name": "predicate"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "the collection to get the input from, may be null",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate to use as a filter, may be null",
+        "kind": "@param",
+        "condition": "args[1]==null"
       }
     ],
     "isVarArgs": false,
@@ -758,6 +1322,34 @@
         "name": "predicate"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "the collection to get the input from, may be null",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate to use as a filter, may be null",
+        "kind": "@param",
+        "condition": "args[1]==null"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "filterInverse(java.lang.Iterable collection,org.apache.commons.collections4.Predicate predicate)"
@@ -790,6 +1382,34 @@
           "isArray": false
         },
         "name": "transformer"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "the Collection to get the input from, may be null",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Transformer",
+            "name": "Transformer",
+            "isArray": false
+          },
+          "name": "transformer"
+        },
+        "comment": "the transformer to perform, may be null",
+        "kind": "@param",
+        "condition": "args[1]==null"
       }
     ],
     "isVarArgs": false,
@@ -826,6 +1446,34 @@
         "name": "predicate"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "input"
+        },
+        "comment": "the Iterable to get the input from, may be null",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate to use, may be null",
+        "kind": "@param",
+        "condition": "args[1]==null"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "countMatches(java.lang.Iterable input,org.apache.commons.collections4.Predicate predicate)"
@@ -858,6 +1506,34 @@
           "isArray": false
         },
         "name": "predicate"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "input"
+        },
+        "comment": "the Iterable to get the input from, may be null",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate to use, may be null",
+        "kind": "@param",
+        "condition": "args[1]==null"
       }
     ],
     "isVarArgs": false,
@@ -894,6 +1570,34 @@
         "name": "predicate"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "input"
+        },
+        "comment": "the Iterable to get the input from, may be null",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate to use, may be null",
+        "kind": "@param",
+        "condition": "args[1]==null"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "matchesAll(java.lang.Iterable input,org.apache.commons.collections4.Predicate predicate)"
@@ -928,6 +1632,34 @@
         "name": "predicate"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "inputCollection"
+        },
+        "comment": "the collection to get the input from, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate to use, may be null",
+        "kind": "@param",
+        "condition": "args[1]==null"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -937,6 +1669,7 @@
           "isArray": false
         },
         "comment": "if the input collection is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -973,16 +1706,57 @@
       },
       {
         "type": {
-          "qualifiedName": "R",
-          "name": "R",
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
           "isArray": false
         },
         "name": "outputCollection"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "inputCollection"
+        },
+        "comment": "the collection to get the input from, may be null",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate to use, may be null",
+        "kind": "@param",
+        "condition": "args[1]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "outputCollection"
+        },
+        "comment": "the collection to output into, may not be null if the inputCollection and predicate or not null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "select(java.lang.Iterable inputCollection,org.apache.commons.collections4.Predicate predicate,R outputCollection)"
+    "signature": "select(java.lang.Iterable inputCollection,org.apache.commons.collections4.Predicate predicate,java.util.Collection outputCollection)"
   },
   {
     "containingClass": {
@@ -1015,24 +1789,78 @@
       },
       {
         "type": {
-          "qualifiedName": "R",
-          "name": "R",
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
           "isArray": false
         },
         "name": "outputCollection"
       },
       {
         "type": {
-          "qualifiedName": "R",
-          "name": "R",
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
           "isArray": false
         },
         "name": "rejectedCollection"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "inputCollection"
+        },
+        "comment": "the collection to get the input from, may be null",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate to use, may be null",
+        "kind": "@param",
+        "condition": "args[1]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "outputCollection"
+        },
+        "comment": "the collection to output selected elements into, may not be null if the inputCollection and predicate are not null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false && (args[1]==null) == false || (args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "rejectedCollection"
+        },
+        "comment": "the collection to output rejected elements into, may not be null if the inputCollection or predicate are not null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false || (args[1]==null) == false || (args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "select(java.lang.Iterable inputCollection,org.apache.commons.collections4.Predicate predicate,R outputCollection,R rejectedCollection)"
+    "signature": "select(java.lang.Iterable inputCollection,org.apache.commons.collections4.Predicate predicate,java.util.Collection outputCollection,java.util.Collection rejectedCollection)"
   },
   {
     "containingClass": {
@@ -1064,6 +1892,34 @@
         "name": "predicate"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "inputCollection"
+        },
+        "comment": "the collection to get the input from, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate to use, may be null",
+        "kind": "@param",
+        "condition": "args[1]==null"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1073,6 +1929,7 @@
           "isArray": false
         },
         "comment": "if the input collection is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -1109,16 +1966,57 @@
       },
       {
         "type": {
-          "qualifiedName": "R",
-          "name": "R",
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
           "isArray": false
         },
         "name": "outputCollection"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "inputCollection"
+        },
+        "comment": "the collection to get the input from, may be null",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate to use, may be null",
+        "kind": "@param",
+        "condition": "args[1]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "outputCollection"
+        },
+        "comment": "the collection to output into, may not be null if the inputCollection and predicate or not null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "selectRejected(java.lang.Iterable inputCollection,org.apache.commons.collections4.Predicate predicate,R outputCollection)"
+    "signature": "selectRejected(java.lang.Iterable inputCollection,org.apache.commons.collections4.Predicate predicate,java.util.Collection outputCollection)"
   },
   {
     "containingClass": {
@@ -1150,6 +2048,34 @@
         "name": "transformer"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "inputCollection"
+        },
+        "comment": "the collection to get the input from, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Transformer",
+            "name": "Transformer",
+            "isArray": false
+          },
+          "name": "transformer"
+        },
+        "comment": "the transformer to use, may be null",
+        "kind": "@param",
+        "condition": "args[1]==null"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1159,6 +2085,7 @@
           "isArray": false
         },
         "comment": "if the input collection is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -1192,6 +2119,34 @@
           "isArray": false
         },
         "name": "transformer"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Iterator",
+            "name": "Iterator",
+            "isArray": false
+          },
+          "name": "inputIterator"
+        },
+        "comment": "the iterator to get the input from, may be null",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Transformer",
+            "name": "Transformer",
+            "isArray": false
+          },
+          "name": "transformer"
+        },
+        "comment": "the transformer to use, may be null",
+        "kind": "@param",
+        "condition": "args[1]==null"
       }
     ],
     "isVarArgs": false,
@@ -1229,11 +2184,52 @@
       },
       {
         "type": {
-          "qualifiedName": "R",
-          "name": "R",
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
           "isArray": false
         },
         "name": "outputCollection"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "inputCollection"
+        },
+        "comment": "the collection to get the input from, may be null",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Transformer",
+            "name": "Transformer",
+            "isArray": false
+          },
+          "name": "transformer"
+        },
+        "comment": "the transformer to use, may be null",
+        "kind": "@param",
+        "condition": "args[1]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "outputCollection"
+        },
+        "comment": "the collection to output into, may not be null if inputCollection and transformer are not null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false && (args[1]==null) == false || (args[0]==null) == false"
       }
     ],
     "isVarArgs": false,
@@ -1245,10 +2241,11 @@
           "isArray": false
         },
         "comment": "if the outputCollection is null and both, inputCollection and transformer are not null",
+        "kind": "@throws",
         "condition": "args[2]==null && (args[0]==null) == false && (args[1]==null) == false"
       }
     ],
-    "signature": "collect(java.lang.Iterable inputCollection,org.apache.commons.collections4.Transformer transformer,R outputCollection)"
+    "signature": "collect(java.lang.Iterable inputCollection,org.apache.commons.collections4.Transformer transformer,java.util.Collection outputCollection)"
   },
   {
     "containingClass": {
@@ -1281,11 +2278,52 @@
       },
       {
         "type": {
-          "qualifiedName": "R",
-          "name": "R",
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
           "isArray": false
         },
         "name": "outputCollection"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Iterator",
+            "name": "Iterator",
+            "isArray": false
+          },
+          "name": "inputIterator"
+        },
+        "comment": "the iterator to get the input from, may be null",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Transformer",
+            "name": "Transformer",
+            "isArray": false
+          },
+          "name": "transformer"
+        },
+        "comment": "the transformer to use, may be null",
+        "kind": "@param",
+        "condition": "args[1]==null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "outputCollection"
+        },
+        "comment": "the collection to output into, may not be null if inputIterator and transformer are not null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false && (args[1]==null) == false || (args[2]==null) == false"
       }
     ],
     "isVarArgs": false,
@@ -1297,10 +2335,11 @@
           "isArray": false
         },
         "comment": "if the output collection is null and both, inputIterator and transformer are not null",
+        "kind": "@throws",
         "condition": "args[2]==null && (args[0]==null) == false && (args[1]==null) == false"
       }
     ],
-    "signature": "collect(java.util.Iterator inputIterator,org.apache.commons.collections4.Transformer transformer,R outputCollection)"
+    "signature": "collect(java.util.Iterator inputIterator,org.apache.commons.collections4.Transformer transformer,java.util.Collection outputCollection)"
   },
   {
     "containingClass": {
@@ -1325,11 +2364,39 @@
       },
       {
         "type": {
-          "qualifiedName": "T",
-          "name": "T",
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
           "isArray": false
         },
         "name": "object"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "the collection to add to, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "object"
+        },
+        "comment": "the object to add, if null it will not be added",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1341,10 +2408,11 @@
           "isArray": false
         },
         "comment": "if the collection is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
-    "signature": "addIgnoreNull(java.util.Collection collection,T object)"
+    "signature": "addIgnoreNull(java.util.Collection collection,java.lang.Object object)"
   },
   {
     "containingClass": {
@@ -1376,6 +2444,34 @@
         "name": "iterable"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "the collection to add to, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "iterable"
+        },
+        "comment": "the iterable of elements to add, must not be null",
+        "kind": "@param",
+        "condition": "(args[1]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1385,6 +2481,7 @@
           "isArray": false
         },
         "comment": "if the collection or iterator is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -1420,6 +2517,34 @@
         "name": "iterator"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "the collection to add to, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Iterator",
+            "name": "Iterator",
+            "isArray": false
+          },
+          "name": "iterator"
+        },
+        "comment": "the iterator of elements to add, must not be null",
+        "kind": "@param",
+        "condition": "(args[1]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1429,6 +2554,7 @@
           "isArray": false
         },
         "comment": "if the collection or iterator is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -1464,6 +2590,34 @@
         "name": "enumeration"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "the collection to add to, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Enumeration",
+            "name": "Enumeration",
+            "isArray": false
+          },
+          "name": "enumeration"
+        },
+        "comment": "the enumeration of elements to add, must not be null",
+        "kind": "@param",
+        "condition": "(args[1]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1473,6 +2627,7 @@
           "isArray": false
         },
         "comment": "if the collection or enumeration is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -1501,11 +2656,49 @@
       },
       {
         "type": {
-          "qualifiedName": "C[]",
-          "name": "C[]",
-          "isArray": true
+          "qualifiedName": "java.lang.Object[]",
+          "name": "Object[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          }
         },
         "name": "elements"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "the collection to add to, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object[]",
+            "name": "Object[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.Object",
+              "name": "Object",
+              "isArray": false
+            }
+          },
+          "name": "elements"
+        },
+        "comment": "the array of elements to add, must not be null",
+        "kind": "@param",
+        "condition": "(args[1]==null) == false"
       }
     ],
     "isVarArgs": false,
@@ -1517,10 +2710,11 @@
           "isArray": false
         },
         "comment": "if the collection or array is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
-    "signature": "addAll(java.util.Collection collection,C[] elements)"
+    "signature": "addAll(java.util.Collection collection,java.lang.Object[] elements)"
   },
   {
     "containingClass": {
@@ -1552,6 +2746,34 @@
         "name": "index"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Iterator",
+            "name": "Iterator",
+            "isArray": false
+          },
+          "name": "iterator"
+        },
+        "comment": "the iterator to get a value from",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "the index to get",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1561,6 +2783,7 @@
           "isArray": false
         },
         "comment": "if the index is invalid",
+        "kind": "@throws",
         "condition": ""
       },
       {
@@ -1570,6 +2793,7 @@
           "isArray": false
         },
         "comment": "if the object type is invalid",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -1597,6 +2821,21 @@
         "name": "index"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "the index to check.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1606,6 +2845,7 @@
           "isArray": false
         },
         "comment": "if the index is negative.",
+        "kind": "@throws",
         "condition": "args[0]<0"
       }
     ],
@@ -1641,6 +2881,34 @@
         "name": "index"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "iterable"
+        },
+        "comment": "the Iterable to get a value from",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "the index to get",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1650,6 +2918,7 @@
           "isArray": false
         },
         "comment": "if the index is invalid",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -1685,6 +2954,34 @@
         "name": "index"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "object"
+        },
+        "comment": "the object to get a value from",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "the index to get",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1694,6 +2991,7 @@
           "isArray": false
         },
         "comment": "if the index is invalid",
+        "kind": "@throws",
         "condition": ""
       },
       {
@@ -1703,6 +3001,7 @@
           "isArray": false
         },
         "comment": "if the object type is invalid",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -1738,6 +3037,34 @@
         "name": "index"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Map",
+            "name": "Map",
+            "isArray": false
+          },
+          "name": "map"
+        },
+        "comment": "the object to get a value from",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "the index to get",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1747,6 +3074,7 @@
           "isArray": false
         },
         "comment": "if the index is invalid",
+        "kind": "@throws",
         "condition": "map.entrySet().size()<args[1] || args[1]<0"
       }
     ],
@@ -1774,6 +3102,21 @@
         "name": "object"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "object"
+        },
+        "comment": "the object to get the size of, may be null",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1783,6 +3126,7 @@
           "isArray": false
         },
         "comment": "thrown if object is not recognised",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -1810,6 +3154,21 @@
         "name": "object"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "object"
+        },
+        "comment": "the object to get the size of, may be null",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1819,6 +3178,7 @@
           "isArray": false
         },
         "comment": "thrown if object is not recognised",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -1844,6 +3204,21 @@
           "isArray": false
         },
         "name": "coll"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "coll"
+        },
+        "comment": "the collection to check, may be null",
+        "kind": "@param",
+        "condition": "args[0]==null"
       }
     ],
     "isVarArgs": false,
@@ -1872,6 +3247,21 @@
         "name": "coll"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "coll"
+        },
+        "comment": "the collection to check, may be null",
+        "kind": "@param",
+        "condition": "args[0]==null"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isNotEmpty(java.util.Collection coll)"
@@ -1893,9 +3283,34 @@
         "type": {
           "qualifiedName": "java.lang.Object[]",
           "name": "Object[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          }
         },
         "name": "array"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object[]",
+            "name": "Object[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.Object",
+              "name": "Object",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "the array to reverse",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -1924,6 +3339,21 @@
         "name": "coll"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "coll"
+        },
+        "comment": "the collection to check",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1933,6 +3363,7 @@
           "isArray": false
         },
         "comment": "if the collection is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -1960,6 +3391,21 @@
         "name": "coll"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "coll"
+        },
+        "comment": "the collection to check",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1969,6 +3415,7 @@
           "isArray": false
         },
         "comment": "if the collection is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -2004,6 +3451,34 @@
         "name": "b"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the first collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the second collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -2013,6 +3488,7 @@
           "isArray": false
         },
         "comment": "if either collection is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -2056,6 +3532,47 @@
         "name": "includeDuplicates"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the first collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the second collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "includeDuplicates"
+        },
+        "comment": "if true duplicate elements will be retained, otherwise they will be removed in the output collection",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -2065,6 +3582,7 @@
           "isArray": false
         },
         "comment": "if either collection is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -2108,6 +3626,47 @@
         "name": "c"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the first collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the second collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Comparator",
+            "name": "Comparator",
+            "isArray": false
+          },
+          "name": "c"
+        },
+        "comment": "the comparator to use for the merge.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -2117,6 +3676,7 @@
           "isArray": false
         },
         "comment": "if either collection or the comparator is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null || args[2]==null"
       }
     ],
@@ -2168,6 +3728,60 @@
         "name": "includeDuplicates"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the first collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the second collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Comparator",
+            "name": "Comparator",
+            "isArray": false
+          },
+          "name": "c"
+        },
+        "comment": "the comparator to use for the merge.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "includeDuplicates"
+        },
+        "comment": "if true duplicate elements will be retained, otherwise they will be removed in the output collection",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -2177,6 +3791,7 @@
           "isArray": false
         },
         "comment": "if either collection or the comparator is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null || args[2]==null"
       }
     ],
@@ -2204,6 +3819,21 @@
         "name": "collection"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "the collection to create permutations for, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -2213,6 +3843,7 @@
           "isArray": false
         },
         "comment": "if collection is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -2248,6 +3879,34 @@
         "name": "retain"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "the collection whose contents are the target of the #retailAll operation",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "retain"
+        },
+        "comment": "the collection containing the elements to be retained in the returned collection",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -2257,6 +3916,7 @@
           "isArray": false
         },
         "comment": "if either parameter is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -2300,6 +3960,47 @@
         "name": "equator"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "the collection whose contents are the target of the retainAll operation",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "retain"
+        },
+        "comment": "the collection containing the elements to be retained in the returned collection",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Equator",
+            "name": "Equator",
+            "isArray": false
+          },
+          "name": "equator"
+        },
+        "comment": "the Equator used for testing equality",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -2309,6 +4010,7 @@
           "isArray": false
         },
         "comment": "if any of the parameters is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null || args[2]==null"
       }
     ],
@@ -2344,6 +4046,34 @@
         "name": "remove"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "the collection from which items are removed (in the returned collection)",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "remove"
+        },
+        "comment": "the items to be removed from the returned collection",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -2353,6 +4083,7 @@
           "isArray": false
         },
         "comment": "if either parameter is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -2396,6 +4127,47 @@
         "name": "equator"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "the collection from which items are removed (in the returned collection)",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "remove"
+        },
+        "comment": "the items to be removed from the returned collection",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Equator",
+            "name": "Equator",
+            "isArray": false
+          },
+          "name": "equator"
+        },
+        "comment": "the Equator used for testing equality",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -2405,6 +4177,7 @@
           "isArray": false
         },
         "comment": "if any of the parameters is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null || args[2]==null"
       }
     ],
@@ -2432,6 +4205,21 @@
         "name": "collection"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "the collection to synchronize, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -2441,6 +4229,7 @@
           "isArray": false
         },
         "comment": "if the collection is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -2468,6 +4257,21 @@
         "name": "collection"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "the collection to make unmodifiable, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -2477,6 +4281,7 @@
           "isArray": false
         },
         "comment": "if the collection is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -2512,6 +4317,34 @@
         "name": "predicate"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "the collection to predicate, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate for the collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[1]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -2521,6 +4354,7 @@
           "isArray": false
         },
         "comment": "if the Collection is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -2556,6 +4390,34 @@
         "name": "transformer"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "the collection to predicate, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Transformer",
+            "name": "Transformer",
+            "isArray": false
+          },
+          "name": "transformer"
+        },
+        "comment": "the transformer for the collection, must not be null",
+        "kind": "@param",
+        "condition": "(args[1]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -2565,6 +4427,7 @@
           "isArray": false
         },
         "comment": "if the Collection or Transformer is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -2592,6 +4455,21 @@
         "name": "collection"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "to read",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -2601,6 +4479,7 @@
           "isArray": false
         },
         "comment": "if collection is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -2610,6 +4489,7 @@
           "isArray": false
         },
         "comment": "if collection is empty or contains more than one element",
+        "kind": "@throws",
         "condition": "args[0].isEmpty() || args[0].size()>1"
       }
     ],

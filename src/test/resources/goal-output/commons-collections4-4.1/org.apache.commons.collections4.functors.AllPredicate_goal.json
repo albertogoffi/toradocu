@@ -21,6 +21,26 @@
         "name": "predicates"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate[]",
+            "name": "Predicate[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "org.apache.commons.collections4.Predicate",
+              "name": "Predicate",
+              "isArray": false
+            }
+          },
+          "name": "predicates"
+        },
+        "comment": "the predicates to check, not cloned, not null",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": true,
     "throwsTags": [],
     "signature": "AllPredicate(org.apache.commons.collections4.Predicate[] predicates)"
@@ -52,6 +72,26 @@
         "name": "predicates"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate[]",
+            "name": "Predicate[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "org.apache.commons.collections4.Predicate",
+              "name": "Predicate",
+              "isArray": false
+            }
+          },
+          "name": "predicates"
+        },
+        "comment": "the predicates to check, cloned, not null",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": true,
     "throwsTags": [
       {
@@ -61,6 +101,7 @@
           "isArray": false
         },
         "comment": "if the predicates array is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -70,6 +111,7 @@
           "isArray": false
         },
         "comment": "if any predicate in the array is null",
+        "kind": "@throws",
         "condition": "java.util.Arrays.stream(args[0]).anyMatch(e -> e==null)"
       }
     ],
@@ -97,6 +139,21 @@
         "name": "predicates"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "predicates"
+        },
+        "comment": "the predicates to check, cloned, not null",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -106,6 +163,7 @@
           "isArray": false
         },
         "comment": "if the predicates array is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -115,6 +173,7 @@
           "isArray": false
         },
         "comment": "if any predicate in the array is null",
+        "kind": "@throws",
         "condition": "args[0].stream().anyMatch(e -> e==null)"
       }
     ],
@@ -142,6 +201,34 @@
         "name": "object"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "object"
+        },
+        "comment": "the input object",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "object"
+        },
+        "comment": "the object to evaluate, should not be changed",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -151,6 +238,7 @@
           "isArray": false
         },
         "comment": "(runtime) if the input is the wrong class",
+        "kind": "@throws",
         "condition": ""
       },
       {
@@ -160,6 +248,7 @@
           "isArray": false
         },
         "comment": "(runtime) if the input is invalid",
+        "kind": "@throws",
         "condition": ""
       },
       {
@@ -169,6 +258,7 @@
           "isArray": false
         },
         "comment": "(runtime) if the predicate encounters a problem",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -192,6 +282,7 @@
       }
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "getPredicates()"

@@ -7,6 +7,7 @@
     },
     "name": "MoreObjects",
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "MoreObjects()"
@@ -26,8 +27,8 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "T",
-          "name": "T",
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
           "isArray": false
         },
         "name": "first",
@@ -35,14 +36,15 @@
       },
       {
         "type": {
-          "qualifiedName": "T",
-          "name": "T",
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
           "isArray": false
         },
         "name": "second",
         "nullable": true
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -52,10 +54,11 @@
           "isArray": false
         },
         "comment": "if both first and second are null",
+        "kind": "@throws",
         "condition": "args[0]==null && args[1]==null"
       }
     ],
-    "signature": "firstNonNull(T first,T second)"
+    "signature": "firstNonNull(java.lang.Object first,java.lang.Object second)"
   },
   {
     "containingClass": {
@@ -77,6 +80,21 @@
           "isArray": false
         },
         "name": "self"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "self"
+        },
+        "comment": "the object to generate the string for (typically this), used only for its class name",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -105,6 +123,21 @@
         "name": "clazz"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          },
+          "name": "clazz"
+        },
+        "comment": "the Class of the instance",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toStringHelper(java.lang.Class clazz)"
@@ -129,6 +162,21 @@
           "isArray": false
         },
         "name": "className"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "className"
+        },
+        "comment": "the name of the instance type",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,

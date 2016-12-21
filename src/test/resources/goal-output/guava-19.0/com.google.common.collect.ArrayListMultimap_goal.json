@@ -7,6 +7,7 @@
     },
     "name": "ArrayListMultimap",
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "ArrayListMultimap()"
@@ -36,6 +37,7 @@
         "name": "expectedValuesPerKey"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "ArrayListMultimap(int expectedKeys,int expectedValuesPerKey)"
@@ -57,6 +59,7 @@
         "name": "multimap"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "ArrayListMultimap(com.google.common.collect.Multimap multimap)"
@@ -74,6 +77,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "create()"
@@ -108,6 +112,34 @@
         "name": "expectedValuesPerKey"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "expectedKeys"
+        },
+        "comment": "the expected number of distinct keys",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "expectedValuesPerKey"
+        },
+        "comment": "the expected average number of values per key",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -117,6 +149,7 @@
           "isArray": false
         },
         "comment": "if expectedKeys or expectedValuesPerKey is negative",
+        "kind": "@throws",
         "condition": "args[0]<0 || args[1]<0"
       }
     ],
@@ -144,6 +177,21 @@
         "name": "multimap"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "com.google.common.collect.Multimap",
+            "name": "Multimap",
+            "isArray": false
+          },
+          "name": "multimap"
+        },
+        "comment": "the multimap whose contents are copied to this multimap",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "create(com.google.common.collect.Multimap multimap)"
@@ -161,6 +209,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "createCollection()"
@@ -178,6 +227,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "trimToSize()"
@@ -204,6 +254,7 @@
         "name": "stream"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "writeObject(java.io.ObjectOutputStream stream)"
@@ -230,6 +281,7 @@
         "name": "stream"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "readObject(java.io.ObjectInputStream stream)"
@@ -247,6 +299,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "createUnmodifiableEmptyCollection()"
@@ -266,17 +319,18 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "K",
-          "name": "K",
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
           "isArray": false
         },
         "name": "key",
         "nullable": true
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "get(K key)"
+    "signature": "get(java.lang.Object key)"
   },
   {
     "containingClass": {
@@ -301,6 +355,7 @@
         "nullable": true
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeAll(java.lang.Object key)"
@@ -320,8 +375,8 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "K",
-          "name": "K",
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
           "isArray": false
         },
         "name": "key",
@@ -336,9 +391,10 @@
         "name": "values"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "replaceValues(K key,java.lang.Iterable values)"
+    "signature": "replaceValues(java.lang.Object key,java.lang.Iterable values)"
   },
   {
     "containingClass": {
@@ -355,8 +411,8 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "K",
-          "name": "K",
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
           "isArray": false
         },
         "name": "key",
@@ -364,17 +420,45 @@
       },
       {
         "type": {
-          "qualifiedName": "V",
-          "name": "V",
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
           "isArray": false
         },
         "name": "value",
         "nullable": true
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "key to store in the multimap",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "value to store in the multimap",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "put(K key,V value)"
+    "signature": "put(java.lang.Object key,java.lang.Object value)"
   },
   {
     "containingClass": {
@@ -389,6 +473,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "asMap()"
@@ -416,6 +501,7 @@
         "nullable": true
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "equals(java.lang.Object object)"
@@ -442,6 +528,7 @@
         "name": "map"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "setMap(java.util.Map map)"
@@ -461,17 +548,32 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "K",
-          "name": "K",
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
           "isArray": false
         },
         "name": "key",
         "nullable": true
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "key to associate with values in the collection",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "createCollection(K key)"
+    "signature": "createCollection(java.lang.Object key)"
   },
   {
     "containingClass": {
@@ -486,6 +588,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "backingMap()"
@@ -503,6 +606,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "size()"
@@ -530,6 +634,7 @@
         "nullable": true
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "containsKey(java.lang.Object key)"
@@ -549,17 +654,18 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "K",
-          "name": "K",
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
           "isArray": false
         },
         "name": "key",
         "nullable": true
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "getOrCreateCollection(K key)"
+    "signature": "getOrCreateCollection(java.lang.Object key)"
   },
   {
     "containingClass": {
@@ -583,6 +689,7 @@
         "name": "collection"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "unmodifiableCollectionSubclass(java.util.Collection collection)"
@@ -600,6 +707,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "clear()"
@@ -619,8 +727,8 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "K",
-          "name": "K",
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
           "isArray": false
         },
         "name": "key",
@@ -635,9 +743,10 @@
         "name": "collection"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "wrapCollection(K key,java.util.Collection collection)"
+    "signature": "wrapCollection(java.lang.Object key,java.util.Collection collection)"
   },
   {
     "containingClass": {
@@ -654,8 +763,8 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "K",
-          "name": "K",
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
           "isArray": false
         },
         "name": "key",
@@ -679,9 +788,10 @@
         "nullable": true
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "wrapList(K key,java.util.List list,com.google.common.collect.AbstractMapBasedMultimap.WrappedCollection ancestor)"
+    "signature": "wrapList(java.lang.Object key,java.util.List list,com.google.common.collect.AbstractMapBasedMultimap.WrappedCollection ancestor)"
   },
   {
     "containingClass": {
@@ -705,6 +815,7 @@
         "name": "collection"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "iteratorOrListIterator(java.util.Collection collection)"
@@ -722,6 +833,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "createKeySet()"
@@ -748,6 +860,7 @@
         "name": "key"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "removeValuesForKey(java.lang.Object key)"
@@ -765,6 +878,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "values()"
@@ -782,6 +896,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "valueIterator()"
@@ -799,6 +914,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "entries()"
@@ -816,6 +932,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "entryIterator()"
@@ -833,6 +950,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "createAsMap()"
@@ -850,6 +968,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "isEmpty()"
@@ -877,6 +996,7 @@
         "nullable": true
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "containsValue(java.lang.Object value)"
@@ -913,6 +1033,7 @@
         "nullable": true
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "containsEntry(java.lang.Object key,java.lang.Object value)"
@@ -949,6 +1070,7 @@
         "nullable": true
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "remove(java.lang.Object key,java.lang.Object value)"
@@ -968,8 +1090,8 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "K",
-          "name": "K",
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
           "isArray": false
         },
         "name": "key",
@@ -984,9 +1106,10 @@
         "name": "values"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "putAll(K key,java.lang.Iterable values)"
+    "signature": "putAll(java.lang.Object key,java.lang.Iterable values)"
   },
   {
     "containingClass": {
@@ -1010,6 +1133,7 @@
         "name": "multimap"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "putAll(com.google.common.collect.Multimap multimap)"
@@ -1027,6 +1151,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "createEntries()"
@@ -1044,6 +1169,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "keySet()"
@@ -1061,6 +1187,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "keys()"
@@ -1078,6 +1205,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "createKeys()"
@@ -1095,6 +1223,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "createValues()"
@@ -1112,6 +1241,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "hashCode()"
@@ -1129,6 +1259,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "toString()"

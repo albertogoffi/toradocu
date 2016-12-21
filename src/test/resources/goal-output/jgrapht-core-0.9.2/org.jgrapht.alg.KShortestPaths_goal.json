@@ -32,6 +32,47 @@
         "name": "k"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.Graph",
+            "name": "Graph",
+            "isArray": false
+          },
+          "name": "graph"
+        },
+        "comment": "",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "startVertex"
+        },
+        "comment": "",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "k"
+        },
+        "comment": "number of paths to be computed.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "KShortestPaths(org.jgrapht.Graph graph,java.lang.Object startVertex,int k)"
@@ -77,6 +118,60 @@
         "name": "nMaxHops"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.Graph",
+            "name": "Graph",
+            "isArray": false
+          },
+          "name": "graph"
+        },
+        "comment": "graph on which shortest paths are searched.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "startVertex"
+        },
+        "comment": "start vertex of the calculated paths.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "nPaths"
+        },
+        "comment": "number of ranking paths between the start vertex and an end vertex.",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "nMaxHops"
+        },
+        "comment": "maximum number of edges of the calculated paths.",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -86,6 +181,7 @@
           "isArray": false
         },
         "comment": "if the specified graph or startVertex is null.",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       },
       {
@@ -95,6 +191,7 @@
           "isArray": false
         },
         "comment": "if nPaths is negative or 0.",
+        "kind": "@throws",
         "condition": "args[2]<0 || args[2]==0"
       },
       {
@@ -104,6 +201,7 @@
           "isArray": false
         },
         "comment": "if nMaxHops is negative or 0.",
+        "kind": "@throws",
         "condition": "args[3]<0 || args[3]==0"
       }
     ],
@@ -129,6 +227,21 @@
           "isArray": false
         },
         "name": "endVertex"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "endVertex"
+        },
+        "comment": "target vertex of the calculated paths.",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -157,6 +270,7 @@
         "name": "endVertex"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "assertGetPaths(java.lang.Object endVertex)"
@@ -207,6 +321,7 @@
         "name": "nMaxHops"
       }
     ],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "assertKShortestPathsFinder(org.jgrapht.Graph graph,java.lang.Object startVertex,int nPaths,int nMaxHops)"

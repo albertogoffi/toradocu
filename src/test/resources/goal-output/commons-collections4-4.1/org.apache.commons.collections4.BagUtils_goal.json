@@ -7,6 +7,7 @@
     },
     "name": "BagUtils",
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "BagUtils()"
@@ -33,6 +34,21 @@
         "name": "bag"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Bag",
+            "name": "Bag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag to synchronize, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -42,6 +58,7 @@
           "isArray": false
         },
         "comment": "if the Bag is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -69,6 +86,21 @@
         "name": "bag"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Bag",
+            "name": "Bag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag whose unmodifiable view is to be returned, must not be null",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -78,6 +110,7 @@
           "isArray": false
         },
         "comment": "if the Bag is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -113,6 +146,34 @@
         "name": "predicate"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Bag",
+            "name": "Bag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag to predicate, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate for the bag, must not be null",
+        "kind": "@param",
+        "condition": "(args[1]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -122,6 +183,7 @@
           "isArray": false
         },
         "comment": "if the Bag or Predicate is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -157,6 +219,34 @@
         "name": "transformer"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Bag",
+            "name": "Bag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag to predicate, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Transformer",
+            "name": "Transformer",
+            "isArray": false
+          },
+          "name": "transformer"
+        },
+        "comment": "the transformer for the bag, must not be null",
+        "kind": "@param",
+        "condition": "(args[1]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -166,6 +256,7 @@
           "isArray": false
         },
         "comment": "if the Bag or Transformer is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -193,6 +284,21 @@
         "name": "bag"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Bag",
+            "name": "Bag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag to decorate, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -202,6 +308,7 @@
           "isArray": false
         },
         "comment": "if bag is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -229,6 +336,21 @@
         "name": "bag"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.SortedBag",
+            "name": "SortedBag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag to synchronize, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -238,6 +360,7 @@
           "isArray": false
         },
         "comment": "if the SortedBag is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -265,6 +388,21 @@
         "name": "bag"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.SortedBag",
+            "name": "SortedBag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag whose unmodifiable view is to be returned, must not be null",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -274,6 +412,7 @@
           "isArray": false
         },
         "comment": "if the SortedBag is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -309,6 +448,34 @@
         "name": "predicate"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.SortedBag",
+            "name": "SortedBag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the sorted bag to predicate, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate for the bag, must not be null",
+        "kind": "@param",
+        "condition": "(args[1]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -318,6 +485,7 @@
           "isArray": false
         },
         "comment": "if the SortedBag or Predicate is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -353,6 +521,34 @@
         "name": "transformer"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.SortedBag",
+            "name": "SortedBag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag to predicate, must not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Transformer",
+            "name": "Transformer",
+            "isArray": false
+          },
+          "name": "transformer"
+        },
+        "comment": "the transformer for the bag, must not be null",
+        "kind": "@param",
+        "condition": "(args[1]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -362,6 +558,7 @@
           "isArray": false
         },
         "comment": "if the Bag or Transformer is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -380,6 +577,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "emptyBag()"
@@ -397,6 +595,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "emptySortedBag()"

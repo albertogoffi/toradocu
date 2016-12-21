@@ -7,6 +7,7 @@
     },
     "name": "PredicateUtils",
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "PredicateUtils()"
@@ -24,6 +25,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "exceptionPredicate()"
@@ -41,6 +43,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "truePredicate()"
@@ -58,6 +61,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "falsePredicate()"
@@ -75,6 +79,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "nullPredicate()"
@@ -92,6 +97,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "notNullPredicate()"
@@ -111,16 +117,31 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "T",
-          "name": "T",
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
           "isArray": false
         },
         "name": "value"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "the value to compare against",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "equalPredicate(T value)"
+    "signature": "equalPredicate(java.lang.Object value)"
   },
   {
     "containingClass": {
@@ -137,16 +158,31 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "T",
-          "name": "T",
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
           "isArray": false
         },
         "name": "value"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "the value to compare against",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [],
-    "signature": "identityPredicate(T value)"
+    "signature": "identityPredicate(java.lang.Object value)"
   },
   {
     "containingClass": {
@@ -170,6 +206,21 @@
         "name": "type"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          },
+          "name": "type"
+        },
+        "comment": "the type to check for, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -179,6 +230,7 @@
           "isArray": false
         },
         "comment": "if the class is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -197,6 +249,7 @@
       "isArray": false
     },
     "parameters": [],
+    "paramTags": [],
     "isVarArgs": false,
     "throwsTags": [],
     "signature": "uniquePredicate()"
@@ -223,6 +276,21 @@
         "name": "methodName"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "methodName"
+        },
+        "comment": "the method name to call on the input object, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -232,6 +300,7 @@
           "isArray": false
         },
         "comment": "if the methodName is null.",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -262,7 +331,12 @@
         "type": {
           "qualifiedName": "java.lang.Class[]",
           "name": "Class[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          }
         },
         "name": "paramTypes"
       },
@@ -270,9 +344,65 @@
         "type": {
           "qualifiedName": "java.lang.Object[]",
           "name": "Object[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          }
         },
         "name": "args"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "methodName"
+        },
+        "comment": "the method name to call on the input object, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class[]",
+            "name": "Class[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.Class",
+              "name": "Class",
+              "isArray": false
+            }
+          },
+          "name": "paramTypes"
+        },
+        "comment": "the parameter types",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object[]",
+            "name": "Object[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.Object",
+              "name": "Object",
+              "isArray": false
+            }
+          },
+          "name": "args"
+        },
+        "comment": "the arguments",
+        "kind": "@param",
+        "condition": ""
       }
     ],
     "isVarArgs": false,
@@ -284,6 +414,7 @@
           "isArray": false
         },
         "comment": "if the method name is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -293,6 +424,7 @@
           "isArray": false
         },
         "comment": "if the paramTypes and args don't match",
+        "kind": "@throws",
         "condition": ""
       }
     ],
@@ -328,6 +460,34 @@
         "name": "predicate2"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate1"
+        },
+        "comment": "the first predicate, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate2"
+        },
+        "comment": "the second predicate, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -337,6 +497,7 @@
           "isArray": false
         },
         "comment": "if either predicate is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -359,9 +520,34 @@
         "type": {
           "qualifiedName": "org.apache.commons.collections4.Predicate[]",
           "name": "Predicate[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          }
         },
         "name": "predicates"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate[]",
+            "name": "Predicate[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "org.apache.commons.collections4.Predicate",
+              "name": "Predicate",
+              "isArray": false
+            }
+          },
+          "name": "predicates"
+        },
+        "comment": "an array of predicates to check, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
       }
     ],
     "isVarArgs": true,
@@ -373,6 +559,7 @@
           "isArray": false
         },
         "comment": "if the predicates array is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -382,6 +569,7 @@
           "isArray": false
         },
         "comment": "if any predicate in the array is null",
+        "kind": "@throws",
         "condition": "Arrays.asList(args[0]).contains(null)"
       }
     ],
@@ -409,6 +597,21 @@
         "name": "predicates"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "predicates"
+        },
+        "comment": "a collection of predicates to check, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -418,6 +621,7 @@
           "isArray": false
         },
         "comment": "if the predicates collection is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -427,6 +631,7 @@
           "isArray": false
         },
         "comment": "if any predicate in the collection is null",
+        "kind": "@throws",
         "condition": "args[0].contains(null)"
       }
     ],
@@ -462,6 +667,34 @@
         "name": "predicate2"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate1"
+        },
+        "comment": "the first predicate, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate2"
+        },
+        "comment": "the second predicate, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -471,6 +704,7 @@
           "isArray": false
         },
         "comment": "if either predicate is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -493,9 +727,34 @@
         "type": {
           "qualifiedName": "org.apache.commons.collections4.Predicate[]",
           "name": "Predicate[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          }
         },
         "name": "predicates"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate[]",
+            "name": "Predicate[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "org.apache.commons.collections4.Predicate",
+              "name": "Predicate",
+              "isArray": false
+            }
+          },
+          "name": "predicates"
+        },
+        "comment": "an array of predicates to check, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
       }
     ],
     "isVarArgs": true,
@@ -507,6 +766,7 @@
           "isArray": false
         },
         "comment": "if the predicates array is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -516,6 +776,7 @@
           "isArray": false
         },
         "comment": "if any predicate in the array is null",
+        "kind": "@throws",
         "condition": "Arrays.asList(args[0]).contains(null)"
       }
     ],
@@ -543,6 +804,21 @@
         "name": "predicates"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "predicates"
+        },
+        "comment": "a collection of predicates to check, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -552,6 +828,7 @@
           "isArray": false
         },
         "comment": "if the predicates collection is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -561,6 +838,7 @@
           "isArray": false
         },
         "comment": "if any predicate in the collection is null",
+        "kind": "@throws",
         "condition": "args[0].contains(null)"
       }
     ],
@@ -596,6 +874,34 @@
         "name": "predicate2"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate1"
+        },
+        "comment": "the first predicate, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate2"
+        },
+        "comment": "the second predicate, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -605,6 +911,7 @@
           "isArray": false
         },
         "comment": "if either predicate is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -627,9 +934,34 @@
         "type": {
           "qualifiedName": "org.apache.commons.collections4.Predicate[]",
           "name": "Predicate[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          }
         },
         "name": "predicates"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate[]",
+            "name": "Predicate[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "org.apache.commons.collections4.Predicate",
+              "name": "Predicate",
+              "isArray": false
+            }
+          },
+          "name": "predicates"
+        },
+        "comment": "an array of predicates to check, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
       }
     ],
     "isVarArgs": true,
@@ -641,6 +973,7 @@
           "isArray": false
         },
         "comment": "if the predicates array is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -650,6 +983,7 @@
           "isArray": false
         },
         "comment": "if any predicate in the array is null",
+        "kind": "@throws",
         "condition": "Arrays.asList(args[0]).contains(null)"
       }
     ],
@@ -677,6 +1011,21 @@
         "name": "predicates"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "predicates"
+        },
+        "comment": "a collection of predicates to check, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -686,6 +1035,7 @@
           "isArray": false
         },
         "comment": "if the predicates collection is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -695,6 +1045,7 @@
           "isArray": false
         },
         "comment": "if any predicate in the collection is null",
+        "kind": "@throws",
         "condition": "args[0].contains(null)"
       }
     ],
@@ -730,6 +1081,34 @@
         "name": "predicate2"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate1"
+        },
+        "comment": "the first predicate, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate2"
+        },
+        "comment": "the second predicate, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -739,6 +1118,7 @@
           "isArray": false
         },
         "comment": "if either predicate is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
@@ -761,9 +1141,34 @@
         "type": {
           "qualifiedName": "org.apache.commons.collections4.Predicate[]",
           "name": "Predicate[]",
-          "isArray": true
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          }
         },
         "name": "predicates"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate[]",
+            "name": "Predicate[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "org.apache.commons.collections4.Predicate",
+              "name": "Predicate",
+              "isArray": false
+            }
+          },
+          "name": "predicates"
+        },
+        "comment": "an array of predicates to check, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
       }
     ],
     "isVarArgs": true,
@@ -775,6 +1180,7 @@
           "isArray": false
         },
         "comment": "if the predicates array is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -784,6 +1190,7 @@
           "isArray": false
         },
         "comment": "if any predicate in the array is null",
+        "kind": "@throws",
         "condition": "Arrays.asList(args[0]).contains(null)"
       }
     ],
@@ -811,6 +1218,21 @@
         "name": "predicates"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "predicates"
+        },
+        "comment": "a collection of predicates to check, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -820,6 +1242,7 @@
           "isArray": false
         },
         "comment": "if the predicates collection is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       },
       {
@@ -829,6 +1252,7 @@
           "isArray": false
         },
         "comment": "if any predicate in the collection is null",
+        "kind": "@throws",
         "condition": "args[0].contains(null)"
       }
     ],
@@ -856,6 +1280,21 @@
         "name": "predicate"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate to not",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -865,6 +1304,7 @@
           "isArray": false
         },
         "comment": "if the predicate is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -892,6 +1332,21 @@
         "name": "transformer"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Transformer",
+            "name": "Transformer",
+            "isArray": false
+          },
+          "name": "transformer"
+        },
+        "comment": "the transformer to wrap, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -901,6 +1356,7 @@
           "isArray": false
         },
         "comment": "if the transformer is null",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -928,6 +1384,21 @@
         "name": "predicate"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate to wrap, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -937,6 +1408,7 @@
           "isArray": false
         },
         "comment": "if the predicate is null.",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -964,6 +1436,21 @@
         "name": "predicate"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate to wrap, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -973,6 +1460,7 @@
           "isArray": false
         },
         "comment": "if the predicate is null.",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -1000,6 +1488,21 @@
         "name": "predicate"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate to wrap, may not be null",
+        "kind": "@param",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1009,6 +1512,7 @@
           "isArray": false
         },
         "comment": "if the predicate is null.",
+        "kind": "@throws",
         "condition": "args[0]==null"
       }
     ],
@@ -1044,6 +1548,34 @@
         "name": "predicate"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Transformer",
+            "name": "Transformer",
+            "isArray": false
+          },
+          "name": "transformer"
+        },
+        "comment": "the transformer to call first",
+        "kind": "@param",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate to call with the result of the transform",
+        "kind": "@param",
+        "condition": ""
+      }
+    ],
     "isVarArgs": false,
     "throwsTags": [
       {
@@ -1053,6 +1585,7 @@
           "isArray": false
         },
         "comment": "if the transformer or the predicate is null",
+        "kind": "@throws",
         "condition": "args[0]==null || args[1]==null"
       }
     ],
