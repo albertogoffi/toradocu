@@ -13,8 +13,8 @@ class AbstractTag implements Tag {
   private final Kind kind;
 
   /**
-   * Java boolean condition translated from the comment for this {@code ThrowsTag}. Null if
-   * translation not yet attempted. Empty string if no translations found.
+   * Java boolean condition translated from the comment for this {@code Tag}. Null if translation
+   * not yet attempted. Empty string if no translations found.
    */
   private String condition;
 
@@ -24,7 +24,7 @@ class AbstractTag implements Tag {
    * @param comment the comment associated with the exception
    * @throws NullPointerException if comment is null
    */
-  public AbstractTag(Kind kind, String comment) {
+  AbstractTag(Kind kind, String comment) {
     Checks.nonNullParameter(kind, "kind");
     Checks.nonNullParameter(comment, "comment");
     this.kind = kind;

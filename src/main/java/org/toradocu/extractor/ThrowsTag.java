@@ -9,7 +9,7 @@ import org.toradocu.util.Checks;
 /**
  * This class represents a throws tag in a method. Each @throws tag consists of an exception, a
  * comment, and can have an optional condition. A condition is the translation of the comment into a
- * Java boolean condition.
+ * Java boolean condition. When the condition evaluates to {@code true}, an exception is expected.
  */
 public class ThrowsTag extends AbstractTag {
 
@@ -51,15 +51,6 @@ public class ThrowsTag extends AbstractTag {
    */
   public Type exception() {
     return exception;
-  }
-
-  /**
-   * Returns the words tagged with @code in the comment of this ThrowsTag
-   *
-   * @return the words tagged with @code in the comment of this ThrowsTag
-   */
-  public List<String> getCodeTags() {
-    return codeTags;
   }
 
   /**
