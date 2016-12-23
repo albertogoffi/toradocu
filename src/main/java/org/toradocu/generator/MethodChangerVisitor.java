@@ -220,4 +220,16 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
     condition = condition.replace("target.", "((" + method.getContainingClass() + ") target).");
     return condition;
   }
+
+  public static String convertToParamNames(String condition, DocumentedMethod method) {
+    Checks.nonNullParameter(condition, "condition");
+    Checks.nonNullParameter(method, "method");
+
+    for (int index = 0; index < method.getParameters().size(); index++) {
+      String paramName = method.getParameters().get(index).getName();
+      condition = condition.replace("args[" + index + "]", paramName);
+    }
+
+    return condition;
+  }
 }

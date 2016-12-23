@@ -29,6 +29,7 @@ import org.toradocu.conf.Configuration;
 import org.toradocu.doclet.formats.html.ConfigurationImpl;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.JavadocExtractor;
+import org.toradocu.extractor.Parameter;
 import org.toradocu.extractor.Tag;
 import org.toradocu.generator.MethodChangerVisitor;
 import org.toradocu.generator.OracleGenerator;
@@ -274,11 +275,12 @@ public class Toradocu {
           }
           conditionsClass
               .append(typedTagIndex)
-              .append("(Object receiver, Object... args) {")
+              .append(buildConditionSignatureString(method) + " {")
               .append("\n// ")
               .append(tag);
-          String conditionWithCastings = MethodChangerVisitor.addCasting(condition.get(), method);
-          conditionsClass.append("\nreturn ").append(conditionWithCastings).append(";").append("}");
+          String conditionString =
+              MethodChangerVisitor.convertToParamNames(condition.get(), method);
+          conditionsClass.append("\nreturn ").append(conditionString).append(";").append("}");
         }
       }
     }
@@ -291,6 +293,24 @@ public class Toradocu {
       e.printStackTrace();
       return "";
     }
+  }
+
+  public static String buildConditionSignatureString(DocumentedMethod method) {
+    StringBuilder signatureBuilder = new StringBuilder("(");
+    signatureBuilder.append(method.getContainingClass());
+    if (method.getParameters().size() > 0) {
+      signatureBuilder.append(",");
+    }
+    for (Parameter param : method.getParameters()) {
+      signatureBuilder.append(param);
+      signatureBuilder.append(",");
+    }
+    // Remove last comma when needed.
+    if (signatureBuilder.charAt(signatureBuilder.length() - 1) == ',') {
+      signatureBuilder.deleteCharAt(signatureBuilder.length() - 1);
+    }
+    signatureBuilder.append(")");
+    return signatureBuilder.toString();
   }
 
   /**
