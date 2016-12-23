@@ -72,7 +72,7 @@ public final class JavadocExtractor {
       // overwriting the Javadoc documentation.
       Collections.addAll(throwsTags, member.tags("@throws"));
       Collections.addAll(throwsTags, member.tags("@exception"));
-      // Param tag support //
+      // Param tag support
       Collections.addAll(paramTags, member.tags("@param"));
 
       // Collect tags that are automatically inherited (i.e., when there is no comment for a method
@@ -80,7 +80,7 @@ public final class JavadocExtractor {
       Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
       Collections.addAll(throwsTags, holder.tags("@throws"));
       Collections.addAll(throwsTags, holder.tags("@exception"));
-      // Param tag support //
+      // Param tag support
       Collections.addAll(paramTags, holder.tags("@param"));
 
       // Collect tags from method definitions in interfaces. This is not done by DocFinder.search
