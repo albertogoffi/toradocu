@@ -251,7 +251,7 @@ public class Toradocu {
 
       for (Tag tag : tags) {
         final Optional<String> condition = tag.getCondition();
-        int typedTagIndex = -1;
+        int typedTagIndex;
         if (condition.isPresent() && !condition.get().isEmpty()) {
           conditionsClass.append("\n// ").append(method);
           conditionsClass.append("\npublic static boolean m").append(methodIndex);
@@ -297,7 +297,7 @@ public class Toradocu {
 
   public static String buildConditionSignatureString(DocumentedMethod method) {
     StringBuilder signatureBuilder = new StringBuilder("(");
-    signatureBuilder.append(method.getContainingClass());
+    signatureBuilder.append(method.getContainingClass()).append(" target");
     if (method.getParameters().size() > 0) {
       signatureBuilder.append(",");
     }
@@ -323,9 +323,9 @@ public class Toradocu {
   private static void printConditionLines(String jsonOutput) {
     BufferedReader reader = new BufferedReader(new StringReader(jsonOutput));
     String fileName = configuration.getConditionTranslatorOutput().toString();
-    String line = null;
     int lineNumber = 1;
     try {
+      String line;
       while ((line = reader.readLine()) != null) {
         line = line.trim();
         if (line.startsWith("\"comment\"") || line.startsWith("\"condition\"")) {
