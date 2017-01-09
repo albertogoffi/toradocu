@@ -19,13 +19,14 @@ import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.ThrowsTag;
 import org.toradocu.util.GsonInstance;
+import org.toradocu.util.Stats;
 
 /**
  * PrecisionRecallTest contains static methods to perform a precision recall test using Toradocu.
  */
 public class PrecisionRecallTest {
 
-  public static TestCaseStats test(
+  public static Stats test(
       String targetClass, String srcPath, String binPath, String goalOutputDir) {
     return computePrecisionAndRecall(targetClass, srcPath, binPath, goalOutputDir);
   }
@@ -39,7 +40,7 @@ public class PrecisionRecallTest {
    * @param goalOutputDir the path of the directory containing the goal output for the targetClass.
    * @return statistics for the test
    */
-  public static TestCaseStats computePrecisionAndRecall(
+  static Stats computePrecisionAndRecall(
       String targetClass, String srcPath, String binPath, String goalOutputDir) {
     String actualOutputFile =
         AbstractPrecisionRecallTestSuite.OUTPUT_DIR + File.separator + targetClass + "_out.json";
@@ -95,7 +96,7 @@ public class PrecisionRecallTest {
    * @param message a message to print before all other output
    * @return statistics on precision and recall for the test
    */
-  private static TestCaseStats compare(
+  private static Stats compare(
       String targetClass, String outputFile, String goalOutputFile, String message) {
     StringBuilder report = new StringBuilder(message + "\n");
 
@@ -108,8 +109,7 @@ public class PrecisionRecallTest {
 
       assertThat(actualResult.size(), is(goalResult.size()));
 
-      TestCaseStats result = new TestCaseStats(targetClass);
-      int numberOfComments = 0;
+      Stats result = new Stats(targetClass);
       for (int methodIndex = 0; methodIndex < goalResult.size(); methodIndex++) {
         DocumentedMethod method = goalResult.get(methodIndex);
         ThrowsTag[] goalMethodTags = method.throwsTags().toArray(new ThrowsTag[0]);
@@ -126,17 +126,17 @@ public class PrecisionRecallTest {
           String goalCondition = goalTag.getCondition().get();
           String actualCondition = actualTag.getCondition().get();
 
-          // Empty goal conditions are ignored and have effects on precision and recall.
+          // Empty goal conditions are ignored and have no effects on precision and recall.
           if (!goalCondition.isEmpty()) {
-            numberOfComments++;
             if (goalCondition.equals(actualCondition)) {
-              result.incrementTP();
+              result.addCorrectTranslation();
             } else {
               errors = true;
               if (actualCondition.isEmpty()) {
+                result.addMissingTranslation();
                 methodReport.append("Empty condition. Comment: " + goalTag.getComment());
               } else {
-                result.incrementFP();
+                result.addWrongTranslation();
                 methodReport.append("Wrong condition. Comment: " + goalTag.getComment());
               }
               methodReport.append(
@@ -154,7 +154,6 @@ public class PrecisionRecallTest {
         }
       }
 
-      result.setNumConditions(numberOfComments);
       report.append(result);
       System.out.println(report);
       return result;

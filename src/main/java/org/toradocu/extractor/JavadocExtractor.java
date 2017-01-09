@@ -72,7 +72,7 @@ public final class JavadocExtractor {
       // overwriting the Javadoc documentation.
       Collections.addAll(throwsTags, member.tags("@throws"));
       Collections.addAll(throwsTags, member.tags("@exception"));
-      // Param tag support //
+      // Param tag support
       Collections.addAll(paramTags, member.tags("@param"));
 
       // Collect tags that are automatically inherited (i.e., when there is no comment for a method
@@ -80,7 +80,7 @@ public final class JavadocExtractor {
       Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
       Collections.addAll(throwsTags, holder.tags("@throws"));
       Collections.addAll(throwsTags, holder.tags("@exception"));
-      // Param tag support //
+      // Param tag support
       Collections.addAll(paramTags, holder.tags("@param"));
 
       // Collect tags from method definitions in interfaces. This is not done by DocFinder.search
@@ -158,7 +158,6 @@ public final class JavadocExtractor {
 
         String name = null; //Name of the ParamTag that we'll introduce
         org.toradocu.extractor.Type type = null; //type of the parameter of the ParamTag
-        boolean nullability = false; //Nullability of the parameter of the ParamTag
 
         boolean found = false; //Boolean for control
         for (int i = 0; !found && i < parameters.size(); i++) {
@@ -209,9 +208,9 @@ public final class JavadocExtractor {
    *     {@code classDoc}
    */
   private List<ExecutableMemberDoc> getConstructorsAndMethods(ClassDoc classDoc) {
-    /** Constructors of the class {@code classDoc} to be returned by this method */
+    /* Constructors of the class {@code classDoc} to be returned by this method */
     List<ExecutableMemberDoc> constructors = new ArrayList<>();
-    /** Methods of the class {@code classDoc} to be returned by this method */
+    /* Methods of the class {@code classDoc} to be returned by this method */
     Map<String, ExecutableMemberDoc> methods = new LinkedHashMap<>();
 
     // Collect non-default constructors.
@@ -240,7 +239,7 @@ public final class JavadocExtractor {
       currentClass = currentClass.superclass();
     }
 
-    List<ExecutableMemberDoc> constructorsAndMethods = constructors;
+    List<ExecutableMemberDoc> constructorsAndMethods = new ArrayList<>(constructors);
     constructorsAndMethods.addAll(methods.values());
     return constructorsAndMethods;
   }
@@ -300,18 +299,26 @@ public final class JavadocExtractor {
    * @return the qualified name (with dimension information) of the specified parameter type
    */
   private String getParameterType(Type parameterType) {
-    String qualifiedName;
+    String qualifiedName = "";
 
     TypeVariable pTypeAsTypeVariable = parameterType.asTypeVariable();
-    /* If the parameter is a type variable. Example: C foo where C refers to <C extends java.lang.Collection>. */
-    if (pTypeAsTypeVariable != null) {
-      Type[] bounds = pTypeAsTypeVariable.bounds();
-      if (bounds.length == 0) {
-        qualifiedName = "java.lang.Object";
-      } else {
-        /* FIXME What if the parameter type has multiple bounds? (e.g., <T extends B1 & B2>) */
-        qualifiedName = bounds[0].qualifiedTypeName();
-      }
+    // If the parameter is a type variable.
+    if (pTypeAsTypeVariable != null) { // pTypeAsTypeVarialble can be like <E extends T>
+      Type[] bounds = pTypeAsTypeVariable.bounds(); // bounds[0] is "T"
+      do {
+        if (bounds.length == 0) {
+          qualifiedName = "java.lang.Object";
+        } else {
+          // FIXME What if the parameter type has multiple bounds? (e.g., <T extends B1 & B2>)
+          TypeVariable boundType = bounds[0].asTypeVariable(); // boundType is "T"
+          if (boundType == null) {
+            qualifiedName = bounds[0].qualifiedTypeName();
+            break;
+          } else {
+            bounds = boundType.bounds();
+          }
+        }
+      } while (qualifiedName.isEmpty());
     } else {
       qualifiedName = parameterType.qualifiedTypeName();
     }
@@ -328,9 +335,9 @@ public final class JavadocExtractor {
    * @param member the method to which this throws tag belongs
    * @return the name of the exception in the throws tag (qualified, if possible)
    */
-  @SuppressWarnings(
-      "deprecation") // We use deprecated method in Javadoc API. No alternative solution is documented.
+  @SuppressWarnings("deprecation")
   private String getExceptionName(com.sun.javadoc.ThrowsTag throwsTag, ExecutableMemberDoc member) {
+    // We use deprecated method in Javadoc API. No alternative solution is documented.
     Type exceptionType = throwsTag.exceptionType();
     if (exceptionType != null) {
       return exceptionType.qualifiedTypeName();

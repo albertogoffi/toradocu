@@ -35,7 +35,6 @@ import org.toradocu.generator.MethodChangerVisitor;
 import org.toradocu.generator.OracleGenerator;
 import org.toradocu.translator.ConditionTranslator;
 import org.toradocu.util.GsonInstance;
-import org.toradocu.util.MethodStats;
 import org.toradocu.util.NullOutputStream;
 import org.toradocu.util.Stats;
 
@@ -175,8 +174,8 @@ public class Toradocu {
                     StandardOpenOption.APPEND)) {
           List<DocumentedMethod> expectedResult =
               GsonInstance.gson().fromJson(reader, collectionType);
-          List<MethodStats> targetClassResults = Stats.getStats(methods, expectedResult);
-          for (MethodStats result : targetClassResults) {
+          List<Stats> targetClassResults = Stats.getStats(methods, expectedResult);
+          for (Stats result : targetClassResults) {
             if (result.getNumberOfConditions() != 0) { // Ignore methods with no @throws tag
               resultsFile.write(result.asCSV());
               resultsFile.newLine();

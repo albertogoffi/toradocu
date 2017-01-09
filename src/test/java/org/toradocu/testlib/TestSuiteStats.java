@@ -3,15 +3,16 @@ package org.toradocu.testlib;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import org.toradocu.util.Stats;
 
 /**
  * TestSuiteStats computes the mean and standard deviation of the precision and recall of a
- * collection of tests.
+ * collection of testStats.
  */
-public class TestSuiteStats {
+class TestSuiteStats {
 
   /** A list of statistics for individual test cases in a test suite. */
-  private final List<TestCaseStats> tests = Collections.synchronizedList(new ArrayList<>());
+  private final List<Stats> testStats = Collections.synchronizedList(new ArrayList<>());
 
   private double precision = 0, recall = 0, precisionStdDeviation = 0, recallStdDeviation = 0;
   private int totalNumConditions = 0;
@@ -22,14 +23,14 @@ public class TestSuiteStats {
    *
    * @param stats the statistics for the test case
    */
-  public void addStats(TestCaseStats stats) {
-    tests.add(stats);
+  void addStats(Stats stats) {
+    testStats.add(stats);
   }
 
   /**
    * Computes statistics for this test suite, incorporating statistics from any added test cases.
    */
-  public void computeResults() {
+  void computeResults() {
     this.precision = computePrecision();
     this.precisionStdDeviation = computePrecisionStdDeviation();
     this.recall = computeRecall();
@@ -38,129 +39,121 @@ public class TestSuiteStats {
   }
 
   /**
-   * Returns the average precision of the tests.
+   * Returns the average precision of the testStats.
    *
-   * @return the average precision of the tests
+   * @return the average precision of the testStats
    */
-  public double getPrecision() {
+  double getPrecision() {
     return precision;
   }
 
   /**
-   * Returns the average recall of the tests.
+   * Returns the average recall of the testStats.
    *
-   * @return the average recall of the tests
+   * @return the average recall of the testStats
    */
-  public double getRecall() {
+  double getRecall() {
     return recall;
   }
 
   /**
-   * Returns the standard deviation of the precision of the tests.
+   * Returns the standard deviation of the precision of the testStats.
    *
-   * @return the standard deviation of the precision of the tests
+   * @return the standard deviation of the precision of the testStats
    */
-  public double getPrecisionStdDeviation() {
+  double getPrecisionStdDeviation() {
     return precisionStdDeviation;
   }
 
   /**
-   * Returns the standard deviation of the recall of the tests.
+   * Returns the standard deviation of the recall of the testStats.
    *
-   * @return the standard deviation of the recall of the tests
+   * @return the standard deviation of the recall of the testStats
    */
-  public double getRecallStdDeviation() {
+  double getRecallStdDeviation() {
     return recallStdDeviation;
   }
 
   /**
-   * Returns the F-measure of the tests.
+   * Returns the F-measure of the testStats.
    *
-   * @return the F-measure of the tests
+   * @return the F-measure of the testStats
    */
-  public double getFMeasure() {
+  double getFMeasure() {
     return (2 * getPrecision() * getRecall()) / (getPrecision() + getRecall());
   }
 
   /**
-   * Returns the total number of conditions in the tests.
+   * Returns the total number of conditions in the testStats.
    *
-   * @return the total number of conditions in the tests
+   * @return the total number of conditions in the testStats
    */
-  public int getTotalNumConditions() {
+  int getTotalNumConditions() {
     return totalNumConditions;
   }
 
   /**
-   * Computes and returns the average precision of the tests.
+   * Computes and returns the average precision of the testStats.
    *
-   * @return the average precision of the tests
+   * @return the average precision of the testStats
    */
   private double computePrecision() {
     double precision = 0;
-    for (TestCaseStats test : tests) {
-      precision += test.getPrecision();
+    for (Stats testStat : testStats) {
+      precision += testStat.getPrecision();
     }
-    return precision / tests.size();
+    return precision / testStats.size();
   }
 
   /**
-   * Computes and returns the average recall of the tests.
+   * Computes and returns the average recall of the testStats.
    *
-   * @return the average recall of the tests
+   * @return the average recall of the testStats
    */
   private double computeRecall() {
     double recall = 0;
-    for (TestCaseStats test : tests) {
-      recall += test.getRecall();
+    for (Stats testStat : testStats) {
+      recall += testStat.getRecall();
     }
-    return recall / tests.size();
+    return recall / testStats.size();
   }
 
   /**
-   * Computes and returns the standard deviation of the precision of the tests.
+   * Computes and returns the standard deviation of the precision of the testStats.
    *
-   * @return the standard deviation of the precision of the tests
+   * @return the standard deviation of the precision of the testStats
    */
   private double computePrecisionStdDeviation() {
     double deviation = 0;
-    for (TestCaseStats test : tests) {
-      deviation += Math.pow(test.getPrecision() - precision, 2);
+    for (Stats testStat : testStats) {
+      deviation += Math.pow(testStat.getPrecision() - precision, 2);
     }
-    return Math.sqrt(deviation / tests.size());
+    return Math.sqrt(deviation / testStats.size());
   }
 
   /**
-   * Computes and returns the standard deviation of the recall of the tests.
+   * Computes and returns the standard deviation of the recall of the testStats.
    *
-   * @return the standard deviation of the recall of the tests
+   * @return the standard deviation of the recall of the testStats
    */
   private double computeRecallStdDeviation() {
     double deviation = 0;
-    for (TestCaseStats test : tests) {
-      deviation += Math.pow(test.getRecall() - recall, 2);
+    for (Stats testStat : testStats) {
+      deviation += Math.pow(testStat.getRecall() - recall, 2);
     }
-    return Math.sqrt(deviation / tests.size());
+    return Math.sqrt(deviation / testStats.size());
   }
 
   /**
-   * Computes and returns the total number of conditions in the tests.
+   * Computes and returns the total number of conditions in the testStats.
    *
-   * @return the total number of conditions in the tests
+   * @return the total number of conditions in the testStats
    */
   private int computeTotalNumConditions() {
     int conditions = 0;
-    for (TestCaseStats test : tests) {
-      conditions += test.getNumConditions();
+    for (Stats testStat : testStats) {
+      conditions += testStat.getNumberOfConditions();
     }
     return conditions;
-  }
-
-  public String asCSV() {
-    StringBuilder result = new StringBuilder();
-    for (TestCaseStats test : tests) {
-      result.append(test + "\n");
-    }
-    return result.toString();
   }
 }

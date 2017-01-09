@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.toradocu.util.Stats;
 
 /**
  * Represents an abstract test suite that uses precision and recall to measure relevance.
@@ -15,11 +16,11 @@ import org.junit.BeforeClass;
  * `org.toradocu.testlib.AbstractPrecisionRecallTestSuite`.
  *
  * <p>In the newly created class, create a method for each target class. In the method add the
- * following line of code to execute Toradocu on the target class: {@code TestCaseStats stats =
- * test(<qualified_class_name>)}. A TestCaseStats object contains the results (e.g., precision,
- * recall, ...) of the execution of Toradocu on a given class. You probably want to add assertions
- * on the precision/recall values obtained. The existing test suites have examples of assertions on
- * the precision/recall values.
+ * following line of code to execute Toradocu on the target class: {@code Stats stats =
+ * test(<qualified_class_name>)}. A Stats object contains the results (e.g., precision, recall, ...)
+ * of the execution of Toradocu on a given class. You probably want to add assertions on the
+ * precision/recall values obtained. The existing test suites have examples of assertions on the
+ * precision/recall values.
  */
 public abstract class AbstractPrecisionRecallTestSuite {
 
@@ -29,7 +30,8 @@ public abstract class AbstractPrecisionRecallTestSuite {
    */
   private static final double PRECISION = 0.001;
 
-  public static final String OUTPUT_DIR = "build/test-results";
+  /** Directory where test results are saved. */
+  static final String OUTPUT_DIR = "build/test-results";
 
   /** Keeps track of statistics on currently run tests. */
   private static final TestSuiteStats testSuiteStats = new TestSuiteStats();
@@ -82,28 +84,18 @@ public abstract class AbstractPrecisionRecallTestSuite {
   }
 
   /**
-   * Computes precision and recall for the given target class.
-   *
-   * @param targetClass the fully qualified name of the class on which to run the test
-   * @return the statistics for the test
-   */
-  protected TestCaseStats computePrecisionAndRecall(String targetClass) {
-    TestCaseStats stats =
-        PrecisionRecallTest.computePrecisionAndRecall(
-            targetClass, sourceDirPath, binDirPath, goalOutputDirPath);
-    testSuiteStats.addStats(stats);
-    return stats;
-  }
-
-  /**
-   * Tests that precision and recall are as expected for the given target class.
+   * Computes precision and recall for the given target class and tests that precision and recall
+   * are as expected for the given target class.
    *
    * @param targetClass the fully qualified name of the class on which to run the test
    * @param precision the expected precision
    * @param recall the expected recall
    */
   protected void test(String targetClass, double precision, double recall) {
-    TestCaseStats stats = computePrecisionAndRecall(targetClass);
+    Stats stats =
+        PrecisionRecallTest.computePrecisionAndRecall(
+            targetClass, sourceDirPath, binDirPath, goalOutputDirPath);
+    testSuiteStats.addStats(stats);
     assertThat(
         "Precision is different than expected",
         stats.getPrecision(),
