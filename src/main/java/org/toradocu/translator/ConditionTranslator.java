@@ -26,16 +26,14 @@ public class ConditionTranslator {
   private static final Logger log = LoggerFactory.getLogger(ConditionTranslator.class);
 
   /**
-   * Translates the throws tags in the given methods. This method sets the field {@code
-   * ThrowsTag.condition} for each throws tags in the given methods.
+   * Translates throws an param tags in the given methods. This method sets the field {@code
+   * AbstractTag.condition} for each tag in the given methods.
    *
    * @param methods a list of {@code DocumentedMethod}s whose throws tags to translate
    */
   public static void translate(List<DocumentedMethod> methods) {
     for (DocumentedMethod method : methods) {
-
       for (ThrowsTag tag : method.throwsTags()) processTag(tag, method);
-
       for (ParamTag tag : method.paramTags()) processTag(tag, method);
     }
   }
