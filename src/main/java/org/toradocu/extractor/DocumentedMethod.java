@@ -204,6 +204,12 @@ public final class DocumentedMethod {
     return false;
   }
 
+  /**
+   * Returns the {@code java.lang.reflect.Executable} corresponding to this DocumentedMethod.
+   *
+   * @return the {@code java.lang.reflect.Executable} corresponding to this DocumentedMethod.
+   *     Returns null if no corresponding Executable is found.
+   */
   public Executable getExecutable() {
     Class<?> containingClass = Reflection.getClass(getContainingClass().getQualifiedName());
 
