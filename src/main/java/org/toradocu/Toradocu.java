@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringReader;
+import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -251,10 +252,19 @@ public class Toradocu {
         .append(configuration.getTargetClass().replace(".", "_"))
         .append(" {");
 
-    // Add (condition-checking) methods
-    for (int methodIndex = 0; methodIndex < methods.size(); methodIndex++) {
+    // Filter out private and protected methods
+    final List<DocumentedMethod> accessibleMethods = new ArrayList<>();
+    for (DocumentedMethod method : methods) {
+      final int METHOD_MODIFIERS = method.getExecutable().getModifiers();
+      if (!Modifier.isPrivate(METHOD_MODIFIERS) && !Modifier.isProtected(METHOD_MODIFIERS)) {
+        accessibleMethods.add(method);
+      }
+    }
+
+    // Add (condition-checking) methods.
+    for (int methodIndex = 0; methodIndex < accessibleMethods.size(); methodIndex++) {
       // Generate one method for each translated (with non-empty translation) tag.
-      final DocumentedMethod method = methods.get(methodIndex);
+      final DocumentedMethod method = accessibleMethods.get(methodIndex);
       final List<Tag> throwsTags = new ArrayList<>(method.throwsTags());
       final List<Tag> paramTags = new ArrayList<>(method.paramTags());
       final List<Tag> tags = new ArrayList<>(throwsTags);
