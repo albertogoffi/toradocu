@@ -236,10 +236,22 @@ public class Toradocu {
    * @return a Java class containing methods to check the conditions
    */
   private static String convertConditionsToJava() {
-    final StringBuilder conditionsClass =
-        new StringBuilder(
-            "public class " + configuration.getTargetClass().replace(".", "_") + " {");
+    final StringBuilder conditionsClass = new StringBuilder();
+    final String targetClass = configuration.getTargetClass();
 
+    // Add package declaration
+    String packageName = org.toradocu.extractor.Type.getPackage(targetClass);
+    if (packageName != null) {
+      conditionsClass.append("package ").append(packageName).append(";\n");
+    }
+
+    // Add class declaration
+    conditionsClass
+        .append("public class ")
+        .append(configuration.getTargetClass().replace(".", "_"))
+        .append(" {");
+
+    // Add (condition-checking) methods
     for (int methodIndex = 0; methodIndex < methods.size(); methodIndex++) {
       // Generate one method for each translated (with non-empty translation) tag.
       final DocumentedMethod method = methods.get(methodIndex);
@@ -294,7 +306,7 @@ public class Toradocu {
     }
   }
 
-  public static String buildConditionSignatureString(DocumentedMethod method) {
+  private static String buildConditionSignatureString(DocumentedMethod method) {
     StringBuilder signatureBuilder = new StringBuilder("(");
     signatureBuilder.append(method.getContainingClass()).append(" target");
     if (method.getParameters().size() > 0) {
