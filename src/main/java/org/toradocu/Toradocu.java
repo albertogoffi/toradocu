@@ -240,23 +240,23 @@ public class Toradocu {
     final StringBuilder conditionsClass = new StringBuilder();
     final String targetClass = configuration.getTargetClass();
 
-    // Add package declaration
+    // Add package declaration. The package is the same as the target class.
     String packageName = org.toradocu.extractor.Type.getPackage(targetClass);
     if (packageName != null) {
       conditionsClass.append("package ").append(packageName).append(";\n");
     }
 
-    // Add class declaration
+    // Add class declaration.
     conditionsClass
         .append("public class ")
         .append(configuration.getTargetClass().replace(".", "_"))
         .append(" {");
 
-    // Filter out private and protected methods
+    // Filter out private methods (they cannot be invoked from the outside of the class.)
     final List<DocumentedMethod> accessibleMethods = new ArrayList<>();
     for (DocumentedMethod method : methods) {
       final int METHOD_MODIFIERS = method.getExecutable().getModifiers();
-      if (!Modifier.isPrivate(METHOD_MODIFIERS) && !Modifier.isProtected(METHOD_MODIFIERS)) {
+      if (!Modifier.isPrivate(METHOD_MODIFIERS)) {
         accessibleMethods.add(method);
       }
     }
