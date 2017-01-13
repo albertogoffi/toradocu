@@ -19,10 +19,23 @@ import org.toradocu.util.Reflection;
  */
 public class JavaElementsCollector {
 
+  /**
+   * Collects all the Java code elements that can be used for the condition translation. The code
+   * elements are collected using reflection starting from the given method.
+   *
+   * @param documentedMethod the method from which to start to collect the code elements
+   * @return the collected code elements
+   */
   public static Set<CodeElement<?>> collect(DocumentedMethod documentedMethod) {
     Set<CodeElement<?>> collectedElements = new LinkedHashSet<>();
     Class<?> containingClass =
         Reflection.getClass(documentedMethod.getContainingClass().getQualifiedName());
+
+    // The containing class cannot be loaded. Return an empty set of code elements.
+    if (containingClass == null) {
+      return collectedElements;
+    }
+
     List<Type> inScopeTypes = new ArrayList<>();
     inScopeTypes.add(containingClass);
 
