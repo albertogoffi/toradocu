@@ -200,12 +200,13 @@ public class Toradocu {
           try (BufferedWriter writer =
               Files.newBufferedWriter(
                   destinationPath, StandardOpenOption.WRITE, StandardOpenOption.CREATE)) {
-            writer.write(convertConditionsToJava());
-          } catch (IOException e) {
-            e.printStackTrace();
+            final String conditionCheckingClass = convertConditionsToJava();
+            if (!conditionCheckingClass.isEmpty()) {
+              writer.write(conditionCheckingClass);
+            }
           }
         } catch (IOException e) {
-          e.printStackTrace();
+          log.error("Error occurred during the export of conditions", e);
         }
       }
     }
@@ -234,7 +235,8 @@ public class Toradocu {
    * <p>{@code tagID} is the index of the tag in the specific tag list. Specific tag list can be
    * retrieved with {@code DocumentedMethod.throwsTags()} and {@code DocumentedMethod.paramTags()}.
    *
-   * @return a Java class containing methods to check the conditions
+   * @return a Java class containing methods to check the conditions, or an empty string if the
+   *     generation of the class failed
    */
   private static String convertConditionsToJava() {
     final StringBuilder conditionsClass = new StringBuilder();
@@ -311,7 +313,7 @@ public class Toradocu {
     try (StringReader reader = new StringReader(conditionsClass.toString())) {
       return JavaParser.parse(reader, true).toString();
     } catch (ParseException e) {
-      e.printStackTrace();
+      log.error("Error during conditions export", e);
       return "";
     }
   }
