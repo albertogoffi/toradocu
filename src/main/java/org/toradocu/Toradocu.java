@@ -192,10 +192,22 @@ public class Toradocu {
       if (destinationFolder != null) {
         try {
           // Create destination folder and any parent folder if needed.
-          Files.createDirectories(destinationFolder.toPath());
+          String packageName =
+              org.toradocu.extractor.Type.getPackage(configuration.getTargetClass());
+          Path destinationFolderPath = destinationFolder.toPath();
+          if (packageName != null) {
+            if (packageName.contains(".")) {
+              destinationFolderPath =
+                  Paths.get(destinationFolderPath.toString(), packageName.split("."));
+            } else {
+              destinationFolderPath = Paths.get(destinationFolderPath.toString(), packageName);
+            }
+          }
+
+          Files.createDirectories(destinationFolderPath);
           Path destinationPath =
               Paths.get(
-                  destinationFolder.getPath(),
+                  destinationFolderPath.toString(),
                   configuration.getTargetClass().replace(".", "_").concat(".java"));
           try (BufferedWriter writer =
               Files.newBufferedWriter(
