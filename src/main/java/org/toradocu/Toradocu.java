@@ -203,12 +203,16 @@ public class Toradocu {
               destinationFolderPath = Paths.get(destinationFolderPath.toString(), packageName);
             }
           }
-
           Files.createDirectories(destinationFolderPath);
+
+          // Create conditions class file.
+          String targetClass = configuration.getTargetClass();
+          String targetClassName = targetClass;
+          if (targetClass.contains(".")) {
+            targetClassName = targetClass.substring(targetClass.lastIndexOf(".") + 1);
+          }
           Path destinationPath =
-              Paths.get(
-                  destinationFolderPath.toString(),
-                  configuration.getTargetClass().replace(".", "_").concat(".java"));
+              Paths.get(destinationFolderPath.toString(), targetClassName.concat(".java"));
           try (BufferedWriter writer =
               Files.newBufferedWriter(
                   destinationPath, StandardOpenOption.WRITE, StandardOpenOption.CREATE)) {
@@ -261,10 +265,11 @@ public class Toradocu {
     }
 
     // Add class declaration.
-    conditionsClass
-        .append("public class ")
-        .append(configuration.getTargetClass().replace(".", "_"))
-        .append(" {");
+    String targetClassName = targetClass;
+    if (targetClass.contains(".")) {
+      targetClassName = targetClass.substring(targetClass.lastIndexOf(".") + 1);
+    }
+    conditionsClass.append("public class ").append(targetClassName).append(" {");
 
     // Filter out private methods (they cannot be invoked from the outside of the class.)
     final List<DocumentedMethod> accessibleMethods = new ArrayList<>();
