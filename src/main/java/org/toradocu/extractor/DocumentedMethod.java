@@ -10,6 +10,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import org.toradocu.Toradocu;
 import org.toradocu.util.Checks;
 import org.toradocu.util.Reflection;
 
@@ -42,6 +43,9 @@ public final class DocumentedMethod {
   private final Set<ThrowsTag> throwsTags;
   /** Method signature in the format method_name(type1 arg1, type2 arg2, ...). */
   private final String signature;
+
+  /** Target class passed to Toradocu with the option --target-class. */
+  private final String targetClass;
 
   /**
    * Constructs a {@code DocumentedMethod} contained in a given {@code containingClass} with the
@@ -96,6 +100,9 @@ public final class DocumentedMethod {
     }
     signatureBuilder.append(")");
     signature = signatureBuilder.toString();
+
+    // Set the target class if command line options have been parsed.
+    targetClass = Toradocu.configuration != null ? Toradocu.configuration.getTargetClass() : null;
   }
 
   /**
@@ -231,6 +238,16 @@ public final class DocumentedMethod {
       }
     }
     return null;
+  }
+
+  /**
+   * Returns the target class as specified with the command line option --target-class.
+   *
+   * @return the target class as specified with the command line option --target-class. Null if the
+   *     command line options have not been parsed.
+   */
+  public String getTargetClass() {
+    return targetClass;
   }
 
   /**
