@@ -39,6 +39,7 @@ public final class JavadocExtractor {
   private final ConfigurationImpl configuration;
 
   private static final Logger log = LoggerFactory.getLogger(JavadocExtractor.class);
+
   /**
    * Constructs a {@code JavadocExtractor} with the given doclet {@code configuration}.
    *
@@ -75,13 +76,15 @@ public final class JavadocExtractor {
       // Param tag support
       Collections.addAll(paramTags, member.tags("@param"));
 
+      Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
+
       // Collect tags that are automatically inherited (i.e., when there is no comment for a method
       // overriding another one).
-      Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
       Collections.addAll(throwsTags, holder.tags("@throws"));
       Collections.addAll(throwsTags, holder.tags("@exception"));
-      // Param tag support
-      Collections.addAll(paramTags, holder.tags("@param"));
+      if (member.getRawCommentText().isEmpty()) {
+        Collections.addAll(paramTags, holder.tags("@param"));
+      }
 
       // Collect tags from method definitions in interfaces. This is not done by DocFinder.search
       // (at least in the way we use it).
@@ -161,13 +164,10 @@ public final class JavadocExtractor {
 
         boolean found = false; //Boolean for control
         for (int i = 0; !found && i < parameters.size(); i++) {
-          if (parameters
-              .get(i)
-              .getName()
-              .equals(
-                  paramsTag
-                      .parameterName())) { //If the tag parameterName matches any parameter name in the method, then
-            found = true; //we stop the loop
+          if (parameters.get(i).getName().equals(paramsTag.parameterName())) {
+            // If the tag parameterName matches any parameter name in the method, then we stop the
+            // loop.
+            found = true;
             name = parameters.get(i).getName(); //then we assign values to the variables
             type = parameters.get(i).getType();
           }
@@ -176,7 +176,8 @@ public final class JavadocExtractor {
         if (!found) { //At the exit of the loop, if found == true, we didn't find anything
           log.trace(
               tag
-                  + " this param tag does not have a name that matches any of the parameters in the method.");
+                  + " this param tag does not have a name that matches any of the parameters in "
+                  + "the method.");
         } else { //if not, then, the variables will have the value we want
 
           ParamTag tagToProcess = new ParamTag(new Parameter(type, name), comment);

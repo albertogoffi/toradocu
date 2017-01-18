@@ -215,7 +215,10 @@ public class Toradocu {
               Paths.get(destinationFolderPath.toString(), targetClassName.concat(".java"));
           try (BufferedWriter writer =
               Files.newBufferedWriter(
-                  destinationPath, StandardOpenOption.WRITE, StandardOpenOption.CREATE)) {
+                  destinationPath,
+                  StandardOpenOption.WRITE,
+                  StandardOpenOption.TRUNCATE_EXISTING,
+                  StandardOpenOption.CREATE)) {
             final String conditionCheckingClass = convertConditionsToJava();
             if (!conditionCheckingClass.isEmpty()) {
               writer.write(conditionCheckingClass);
