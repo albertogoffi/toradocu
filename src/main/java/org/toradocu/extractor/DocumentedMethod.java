@@ -4,12 +4,14 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Executable;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import org.toradocu.Toradocu;
 import org.toradocu.util.Checks;
 import org.toradocu.util.Reflection;
@@ -223,8 +225,18 @@ public final class DocumentedMethod {
     // Load the DocumentedMethod as a reflection Method or Constructor.
     if (isConstructor()) {
       for (Constructor<?> constructor : containingClass.getDeclaredConstructors()) {
+        List<Class<?>> params =
+            Arrays.stream(constructor.getParameterTypes()).collect(Collectors.toList());
+
+        // The first two parameters of enum constructors are synthetic and must be removed to
+        // reflect the source code.
+        if (containingClass.isEnum()) {
+          params.remove(0);
+          params.remove(0);
+        }
+
         if (Reflection.checkTypes(
-            getParameters().toArray(new Parameter[0]), constructor.getParameterTypes())) {
+            getParameters().toArray(new Parameter[0]), params.toArray(new Class<?>[0]))) {
           return constructor;
         }
       }

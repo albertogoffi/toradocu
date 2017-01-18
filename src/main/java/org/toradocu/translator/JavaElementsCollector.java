@@ -3,6 +3,7 @@ package org.toradocu.translator;
 import java.lang.reflect.Executable;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.lang.reflect.Parameter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,7 +46,16 @@ public class JavaElementsCollector {
     // Add parameters of the documented method.
     final Executable executable = documentedMethod.getExecutable();
     int paramIndex = 0;
-    for (java.lang.reflect.Parameter par : executable.getParameters()) {
+    List<Parameter> parameters = new ArrayList<>(Arrays.asList(executable.getParameters()));
+
+    // The first two parameters of enum constructors are synthetic and must be removed to
+    // reflect the source code.
+    if (containingClass.isEnum() && documentedMethod.isConstructor()) {
+      parameters.remove(0);
+      parameters.remove(0);
+    }
+
+    for (java.lang.reflect.Parameter par : parameters) {
       collectedElements.add(
           new ParameterCodeElement(
               par, documentedMethod.getParameters().get(paramIndex).getName(), paramIndex));
