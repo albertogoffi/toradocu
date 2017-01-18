@@ -10,12 +10,14 @@ import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.body.VariableDeclaratorId;
 import com.github.javaparser.ast.comments.LineComment;
 import com.github.javaparser.ast.expr.AnnotationExpr;
+import com.github.javaparser.ast.expr.BooleanLiteralExpr;
 import com.github.javaparser.ast.expr.Expression;
 import com.github.javaparser.ast.expr.NameExpr;
 import com.github.javaparser.ast.expr.SingleMemberAnnotationExpr;
 import com.github.javaparser.ast.expr.StringLiteralExpr;
 import com.github.javaparser.ast.stmt.CatchClause;
 import com.github.javaparser.ast.stmt.IfStmt;
+import com.github.javaparser.ast.stmt.ReturnStmt;
 import com.github.javaparser.ast.stmt.Statement;
 import com.github.javaparser.ast.stmt.TryStmt;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
@@ -29,6 +31,7 @@ import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
 import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ParamTag;
 import org.toradocu.extractor.Parameter;
 import org.toradocu.extractor.ThrowsTag;
 import org.toradocu.util.Checks;
@@ -59,7 +62,7 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
     Checks.nonNullParameter(documentedMethod, "documentedMethod");
 
     if (methodDeclaration.getName().equals("advice")) {
-      String pointcut = "";
+      String pointcut;
 
       if (documentedMethod.isConstructor()) {
         pointcut = "execution(" + getPointcut(documentedMethod) + ")";
@@ -90,7 +93,6 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
         try {
           conditionExpression = JavaParser.parseExpression(condition);
           ifStmt.setCondition(conditionExpression);
-          ifStmt.setComment(new LineComment("FOOOO"));
           // Add a try-catch block to prevent runtime error when looking for an exception type
           // that is not on the classpath.
           String addExpectedException =
@@ -155,7 +157,31 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
         log.error("Parsing error during the aspect creation.", e);
         e.printStackTrace();
       }
+    } else if (methodDeclaration.getName().equals("paramTagsSatisfied")) {
+      for (ParamTag tag : documentedMethod.paramTags()) {
+        String condition = tag.getCondition().orElse("");
+        if (condition.isEmpty()) {
+          continue;
+        }
+        condition = addCasting(condition, documentedMethod);
+        IfStmt ifStmt = new IfStmt();
+        Expression conditionExpression;
+        try {
+          conditionExpression = JavaParser.parseExpression(condition);
+          ifStmt.setCondition(conditionExpression);
+          ifStmt.setThenStmt(JavaParser.parseBlock("{return true;}"));
+          ifStmt.setComment(new LineComment(" " + tag));
+          methodDeclaration.getBody().getStmts().add(ifStmt);
+        } catch (ParseException e) {
+          log.error("Parsing error during the aspect creation.", e);
+          e.printStackTrace();
+        }
+      }
+      ReturnStmt returnTrueStmt = new ReturnStmt();
+      returnTrueStmt.setExpr(new BooleanLiteralExpr(false));
+      methodDeclaration.getBody().getStmts().add(returnTrueStmt);
     }
+
     return methodDeclaration;
   }
 

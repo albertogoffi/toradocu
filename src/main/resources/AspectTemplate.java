@@ -11,13 +11,20 @@ import org.aspectj.lang.annotation.Aspect;
 public class Aspect_Template {
 
   public Object advice(ProceedingJoinPoint jp) throws Throwable {
-    boolean expectedExceptionsComplete = false;
     String output =
         "Triggered aspect: " + this.getClass().getName() + " (" + jp.getSourceLocation() + ")";
     Object target = jp.getTarget();
     Object[] args = jp.getArgs();
-    List<Class<?>> expectedExceptions = getExpectedExceptions(target, args);
-    if (!expectedExceptions.isEmpty()) {
+
+    if (!paramTagsSatisfied(target, args)) {
+      System.err.println(output + " -> Ignored test case: inputs violate pre-conditions");
+      throw new TestCaseAspect.InvalidParamException();
+    } else {
+      List<Class<?>> expectedExceptions = getExpectedExceptions(target, args);
+      if (expectedExceptions.isEmpty()) {
+        return jp.proceed(args);
+      }
+
       try {
         jp.proceed(args);
       } catch (Throwable e) {
@@ -28,16 +35,18 @@ public class Aspect_Template {
                   + e.getClass().getCanonicalName());
         } else {
           System.err.println(output + " -> Success: Expected exception caught");
-          return null;
+          throw new TestCaseAspect.ExpectedException();
         }
       }
       fail(
           output
               + " -> Failure: Expected exception not thrown. Expected exceptions were: "
               + getExpectedExceptionAsString(expectedExceptions));
+      return null;
     }
-    return jp.proceed(args);
   }
+
+  private boolean paramTagsSatisfied(Object target, Object[] args) {}
 
   private List<Class<?>> getExpectedExceptions(Object target, Object[] args) {
     List<Class<?>> expectedExceptions = new ArrayList<Class<?>>();

@@ -163,6 +163,9 @@ public class Configuration {
   /** File used as template for generated aspects. */
   private static final String ASPECT_TEMPLATE = "AspectTemplate.java";
 
+  /** Aspect to instrument JUnit test cases. */
+  private static final String JUNIT_TC_ASPECT = "TestCaseAspect.java";
+
   /** Command-line options passed to the Javadoc tool. */
   private List<String> javadocOptions = new ArrayList<>();
 
@@ -251,6 +254,15 @@ public class Configuration {
    */
   public String getAspectTemplate() {
     return ASPECT_TEMPLATE;
+  }
+
+  /**
+   * Returns the name of the aspect used to instrument JUnit test cases.
+   *
+   * @return the name of the aspect used to instrument JUnit test cases
+   */
+  public String getJUnitTestCaseAspect() {
+    return JUNIT_TC_ASPECT;
   }
 
   /**

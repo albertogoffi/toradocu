@@ -1,5 +1,7 @@
 package org.toradocu.generator;
 
+import static org.toradocu.Toradocu.configuration;
+
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParseException;
 import com.github.javaparser.ast.CompilationUnit;
@@ -11,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.ThrowsTag;
 import org.toradocu.util.Checks;
@@ -32,7 +33,7 @@ public class OracleGenerator {
    * @param methods the {@code List} of methods to create aspects for. Must not be null.
    */
   public static void createAspects(List<DocumentedMethod> methods) {
-    if (!Toradocu.configuration.isOracleGenerationEnabled()) {
+    if (!configuration.isOracleGenerationEnabled()) {
       log.info("Oracle generator disabled: skipped aspect generation.");
       return;
     }
@@ -41,10 +42,26 @@ public class OracleGenerator {
       return;
     }
 
-    String aspectDir = Toradocu.configuration.getAspectsOutputDir();
+    String aspectDir = configuration.getAspectsOutputDir();
     new File(aspectDir).mkdirs();
 
-    List<String> createdAspectNames = new ArrayList<>();
+    final String junitAspect = configuration.getJUnitTestCaseAspect();
+    final String aspectPath = configuration.getAspectsOutputDir() + File.separator + junitAspect;
+    try (InputStreamReader template =
+            new InputStreamReader(
+                Object.class.getResourceAsStream("/" + configuration.getJUnitTestCaseAspect()));
+        FileOutputStream output = new FileOutputStream(new File(aspectPath))) {
+      CompilationUnit cu = JavaParser.parse(template, true);
+      new JUnitTestCaseAspectChangerVisitor().visit(cu, null);
+      output.write(cu.toString().getBytes());
+    } catch (IOException | ParseException e) {
+      log.error("Oracle generation stopped: Impossible to create file " + aspectPath);
+      return;
+    }
+
+    final List<String> createdAspectNames = new ArrayList<>();
+    final String junitAspectName = junitAspect.substring(0, junitAspect.lastIndexOf("."));
+    createdAspectNames.add(junitAspectName);
     int aspectNumber = 1;
     for (DocumentedMethod method : methods) {
       for (ThrowsTag throwTag : method.throwsTags()) {
@@ -72,12 +89,11 @@ public class OracleGenerator {
     Checks.nonNullParameter(method, "method");
     Checks.nonNullParameter(aspectName, "aspectName");
 
-    String aspectPath = Toradocu.configuration.getAspectsOutputDir() + File.separator + aspectName;
+    String aspectPath = configuration.getAspectsOutputDir() + File.separator + aspectName;
 
     try (InputStreamReader template =
             new InputStreamReader(
-                Object.class.getResourceAsStream(
-                    "/" + Toradocu.configuration.getAspectTemplate()));
+                Object.class.getResourceAsStream("/" + configuration.getAspectTemplate()));
         FileOutputStream output = new FileOutputStream(new File(aspectPath + ".java"))) {
       CompilationUnit cu = JavaParser.parse(template, true);
 
@@ -102,7 +118,7 @@ public class OracleGenerator {
     final String FOOTER = "\t</aspects>\n</aspectj>";
     StringBuilder content = new StringBuilder(HEADER);
     for (String aspect : createdAspects) {
-      content.append("\t\t<aspect name=\"" + aspect + "\"/>\n");
+      content.append("\t\t<aspect name=\"").append(aspect).append("\"/>\n");
     }
     content.append(FOOTER);
     try (FileOutputStream output =
