@@ -346,7 +346,7 @@
         },
         "comment": "any non-null string",
         "kind": "@param",
-        "condition": ""
+        "condition": "(args[0]==null) == false"
       },
       {
         "parameter": {
@@ -359,7 +359,7 @@
         },
         "comment": "the number of times to repeat it; a nonnegative integer",
         "kind": "@param",
-        "condition": ""
+        "condition": "(args[1]<0) == false"
       }
     ],
     "isVarArgs": false,

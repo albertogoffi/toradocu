@@ -1,0 +1,1460 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils",
+      "name": "UnivariateSolverUtils",
+      "isArray": false
+    },
+    "name": "UnivariateSolverUtils",
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "UnivariateSolverUtils()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils",
+      "name": "UnivariateSolverUtils",
+      "isArray": false
+    },
+    "name": "solve",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+          "name": "UnivariateFunction",
+          "isArray": false
+        },
+        "name": "function"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "x0"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "x1"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+            "name": "UnivariateFunction",
+            "isArray": false
+          },
+          "name": "function"
+        },
+        "comment": "Function.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "x0"
+        },
+        "comment": "Lower bound for the interval.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "x1"
+        },
+        "comment": "Upper bound for the interval.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NoBracketingException",
+          "name": "NoBracketingException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the function has the same sign at the endpoints.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "codeTags": [
+          "function",
+          "null"
+        ],
+        "comment": "if function is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "solve(org.apache.commons.math3.analysis.UnivariateFunction function,double x0,double x1)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils",
+      "name": "UnivariateSolverUtils",
+      "isArray": false
+    },
+    "name": "solve",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+          "name": "UnivariateFunction",
+          "isArray": false
+        },
+        "name": "function"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "x0"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "x1"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "absoluteAccuracy"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+            "name": "UnivariateFunction",
+            "isArray": false
+          },
+          "name": "function"
+        },
+        "comment": "Function.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "x0"
+        },
+        "comment": "Lower bound for the interval.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "x1"
+        },
+        "comment": "Upper bound for the interval.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "absoluteAccuracy"
+        },
+        "comment": "Accuracy to be used by the solver.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NoBracketingException",
+          "name": "NoBracketingException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the function has the same sign at the endpoints.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "codeTags": [
+          "function",
+          "null"
+        ],
+        "comment": "if function is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "solve(org.apache.commons.math3.analysis.UnivariateFunction function,double x0,double x1,double absoluteAccuracy)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils",
+      "name": "UnivariateSolverUtils",
+      "isArray": false
+    },
+    "name": "forceSide",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxEval"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+          "name": "UnivariateFunction",
+          "isArray": false
+        },
+        "name": "f"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.solvers.BracketedUnivariateSolver",
+          "name": "BracketedUnivariateSolver",
+          "isArray": false
+        },
+        "name": "bracketing"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "baseRoot"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "min"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "max"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.solvers.AllowedSolution",
+          "name": "AllowedSolution",
+          "isArray": false
+        },
+        "name": "allowedSolution"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxEval"
+        },
+        "comment": "maximal number of new evaluations of the function (evaluations already done for finding the root should have already been subtracted from this number)",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+            "name": "UnivariateFunction",
+            "isArray": false
+          },
+          "name": "f"
+        },
+        "comment": "function to solve",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.analysis.solvers.BracketedUnivariateSolver",
+            "name": "BracketedUnivariateSolver",
+            "isArray": false
+          },
+          "name": "bracketing"
+        },
+        "comment": "bracketing solver to use for shifting the root",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "baseRoot"
+        },
+        "comment": "original root found by a previous non-bracketing solver",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "min"
+        },
+        "comment": "minimal bound of the search interval",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "max"
+        },
+        "comment": "maximal bound of the search interval",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.analysis.solvers.AllowedSolution",
+            "name": "AllowedSolution",
+            "isArray": false
+          },
+          "name": "allowedSolution"
+        },
+        "comment": "the kind of solutions that the root-finding algorithm may accept as solutions.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NoBracketingException",
+          "name": "NoBracketingException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the function has the same sign at the endpoints.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ],
+    "signature": "forceSide(int maxEval,org.apache.commons.math3.analysis.UnivariateFunction f,org.apache.commons.math3.analysis.solvers.BracketedUnivariateSolver bracketing,double baseRoot,double min,double max,org.apache.commons.math3.analysis.solvers.AllowedSolution allowedSolution)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils",
+      "name": "UnivariateSolverUtils",
+      "isArray": false
+    },
+    "name": "bracket",
+    "returnType": {
+      "qualifiedName": "double[]",
+      "name": "double[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "double",
+        "name": "double",
+        "isArray": false
+      }
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+          "name": "UnivariateFunction",
+          "isArray": false
+        },
+        "name": "function"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "initial"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "lowerBound"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "upperBound"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+            "name": "UnivariateFunction",
+            "isArray": false
+          },
+          "name": "function"
+        },
+        "comment": "Function.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "initial"
+        },
+        "comment": "Initial midpoint of interval being expanded to bracket a root.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "lowerBound"
+        },
+        "comment": "Lower bound (a is never lower than this value)",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "upperBound"
+        },
+        "comment": "Upper bound (b never is greater than this value).",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NoBracketingException",
+          "name": "NoBracketingException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if a root cannot be bracketted.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
+        "codeTags": [
+          "maximumIterations <= 0"
+        ],
+        "comment": "if maximumIterations <= 0.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "codeTags": [
+          "function",
+          "null"
+        ],
+        "comment": "if function is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "bracket(org.apache.commons.math3.analysis.UnivariateFunction function,double initial,double lowerBound,double upperBound)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils",
+      "name": "UnivariateSolverUtils",
+      "isArray": false
+    },
+    "name": "bracket",
+    "returnType": {
+      "qualifiedName": "double[]",
+      "name": "double[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "double",
+        "name": "double",
+        "isArray": false
+      }
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+          "name": "UnivariateFunction",
+          "isArray": false
+        },
+        "name": "function"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "initial"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "lowerBound"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "upperBound"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maximumIterations"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+            "name": "UnivariateFunction",
+            "isArray": false
+          },
+          "name": "function"
+        },
+        "comment": "Function.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "initial"
+        },
+        "comment": "Initial midpoint of interval being expanded to bracket a root.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "lowerBound"
+        },
+        "comment": "Lower bound (a is never lower than this value).",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "upperBound"
+        },
+        "comment": "Upper bound (b never is greater than this value).",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maximumIterations"
+        },
+        "comment": "Maximum number of iterations to perform",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NoBracketingException",
+          "name": "NoBracketingException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the algorithm fails to find a and b satisfying the desired conditions.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
+        "codeTags": [
+          "maximumIterations <= 0"
+        ],
+        "comment": "if maximumIterations <= 0.",
+        "kind": "THROWS",
+        "condition": "args[4]<=0"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "codeTags": [
+          "function",
+          "null"
+        ],
+        "comment": "if function is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "bracket(org.apache.commons.math3.analysis.UnivariateFunction function,double initial,double lowerBound,double upperBound,int maximumIterations)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils",
+      "name": "UnivariateSolverUtils",
+      "isArray": false
+    },
+    "name": "bracket",
+    "returnType": {
+      "qualifiedName": "double[]",
+      "name": "double[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "double",
+        "name": "double",
+        "isArray": false
+      }
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+          "name": "UnivariateFunction",
+          "isArray": false
+        },
+        "name": "function"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "initial"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "lowerBound"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "upperBound"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "q"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "r"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maximumIterations"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+            "name": "UnivariateFunction",
+            "isArray": false
+          },
+          "name": "function"
+        },
+        "comment": "function to check",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "initial"
+        },
+        "comment": "Initial midpoint of interval being expanded to bracket a root.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "lowerBound"
+        },
+        "comment": "Lower bound (a is never lower than this value).",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "upperBound"
+        },
+        "comment": "Upper bound (b never is greater than this value).",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "q"
+        },
+        "comment": "additive offset used to compute bounds sequence (must be strictly positive)",
+        "kind": "PARAM",
+        "condition": "args[4]>0"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "r"
+        },
+        "comment": "multiplicative factor used to compute bounds sequence",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maximumIterations"
+        },
+        "comment": "Maximum number of iterations to perform",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NoBracketingException",
+          "name": "NoBracketingException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if function cannot be bracketed in the search interval",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ],
+    "signature": "bracket(org.apache.commons.math3.analysis.UnivariateFunction function,double initial,double lowerBound,double upperBound,double q,double r,int maximumIterations)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils",
+      "name": "UnivariateSolverUtils",
+      "isArray": false
+    },
+    "name": "midpoint",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "first value.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "second value.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "midpoint(double a,double b)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils",
+      "name": "UnivariateSolverUtils",
+      "isArray": false
+    },
+    "name": "isBracketing",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+          "name": "UnivariateFunction",
+          "isArray": false
+        },
+        "name": "function"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "lower"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "upper"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+            "name": "UnivariateFunction",
+            "isArray": false
+          },
+          "name": "function"
+        },
+        "comment": "Function.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "lower"
+        },
+        "comment": "Lower endpoint.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "upper"
+        },
+        "comment": "Upper endpoint.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "codeTags": [
+          "function",
+          "null"
+        ],
+        "comment": "if function is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "isBracketing(org.apache.commons.math3.analysis.UnivariateFunction function,double lower,double upper)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils",
+      "name": "UnivariateSolverUtils",
+      "isArray": false
+    },
+    "name": "isSequence",
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "start"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "mid"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "end"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "start"
+        },
+        "comment": "First number.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "mid"
+        },
+        "comment": "Second number.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "end"
+        },
+        "comment": "Third number.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "isSequence(double start,double mid,double end)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils",
+      "name": "UnivariateSolverUtils",
+      "isArray": false
+    },
+    "name": "verifyInterval",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "lower"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "upper"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "lower"
+        },
+        "comment": "Lower endpoint.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "upper"
+        },
+        "comment": "Upper endpoint.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException",
+          "name": "NumberIsTooLargeException",
+          "isArray": false
+        },
+        "codeTags": [
+          "lower >= upper"
+        ],
+        "comment": "if lower >= upper.",
+        "kind": "THROWS",
+        "condition": "args[0]>=args[1] "
+      }
+    ],
+    "signature": "verifyInterval(double lower,double upper)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils",
+      "name": "UnivariateSolverUtils",
+      "isArray": false
+    },
+    "name": "verifySequence",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "lower"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "initial"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "upper"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "lower"
+        },
+        "comment": "Lower endpoint.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "initial"
+        },
+        "comment": "Initial value.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "upper"
+        },
+        "comment": "Upper endpoint.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException",
+          "name": "NumberIsTooLargeException",
+          "isArray": false
+        },
+        "codeTags": [
+          "lower >= initial",
+          "initial >= upper"
+        ],
+        "comment": "if lower >= initial or initial >= upper.",
+        "kind": "THROWS",
+        "condition": "args[0]>=args[1] || args[1]>=args[2]"
+      }
+    ],
+    "signature": "verifySequence(double lower,double initial,double upper)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils",
+      "name": "UnivariateSolverUtils",
+      "isArray": false
+    },
+    "name": "verifyBracketing",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+          "name": "UnivariateFunction",
+          "isArray": false
+        },
+        "name": "function"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "lower"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "upper"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+            "name": "UnivariateFunction",
+            "isArray": false
+          },
+          "name": "function"
+        },
+        "comment": "Function.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "lower"
+        },
+        "comment": "Lower endpoint.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "upper"
+        },
+        "comment": "Upper endpoint.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NoBracketingException",
+          "name": "NoBracketingException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the function has the same sign at the endpoints.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "codeTags": [
+          "function",
+          "null"
+        ],
+        "comment": "if function is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      }
+    ],
+    "signature": "verifyBracketing(org.apache.commons.math3.analysis.UnivariateFunction function,double lower,double upper)"
+  }
+]

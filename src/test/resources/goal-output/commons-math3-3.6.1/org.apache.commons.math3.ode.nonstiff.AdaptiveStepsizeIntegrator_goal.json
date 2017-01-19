@@ -1,0 +1,2201 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.AdaptiveStepsizeIntegrator",
+      "name": "AdaptiveStepsizeIntegrator",
+      "isArray": false
+    },
+    "name": "AdaptiveStepsizeIntegrator",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "name"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "minStep"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "maxStep"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "scalAbsoluteTolerance"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "scalRelativeTolerance"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "name"
+        },
+        "comment": "name of the method",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "minStep"
+        },
+        "comment": "minimal step (sign is irrelevant, regardless of integration direction, forward or backward), the last step can be smaller than this",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "maxStep"
+        },
+        "comment": "maximal step (sign is irrelevant, regardless of integration direction, forward or backward), the last step can be smaller than this",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "scalAbsoluteTolerance"
+        },
+        "comment": "allowed absolute error",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "scalRelativeTolerance"
+        },
+        "comment": "allowed relative error",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "AdaptiveStepsizeIntegrator(java.lang.String name,double minStep,double maxStep,double scalAbsoluteTolerance,double scalRelativeTolerance)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.AdaptiveStepsizeIntegrator",
+      "name": "AdaptiveStepsizeIntegrator",
+      "isArray": false
+    },
+    "name": "AdaptiveStepsizeIntegrator",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "name"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "minStep"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "maxStep"
+      },
+      {
+        "type": {
+          "qualifiedName": "double[]",
+          "name": "double[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "vecAbsoluteTolerance"
+      },
+      {
+        "type": {
+          "qualifiedName": "double[]",
+          "name": "double[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "vecRelativeTolerance"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "name"
+        },
+        "comment": "name of the method",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "minStep"
+        },
+        "comment": "minimal step (sign is irrelevant, regardless of integration direction, forward or backward), the last step can be smaller than this",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "maxStep"
+        },
+        "comment": "maximal step (sign is irrelevant, regardless of integration direction, forward or backward), the last step can be smaller than this",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "vecAbsoluteTolerance"
+        },
+        "comment": "allowed absolute error",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "vecRelativeTolerance"
+        },
+        "comment": "allowed relative error",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "AdaptiveStepsizeIntegrator(java.lang.String name,double minStep,double maxStep,double[] vecAbsoluteTolerance,double[] vecRelativeTolerance)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.AdaptiveStepsizeIntegrator",
+      "name": "AdaptiveStepsizeIntegrator",
+      "isArray": false
+    },
+    "name": "setStepSizeControl",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "minimalStep"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "maximalStep"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "absoluteTolerance"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "relativeTolerance"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "minimalStep"
+        },
+        "comment": "minimal step (must be positive even for backward integration), the last step can be smaller than this",
+        "kind": "PARAM",
+        "condition": "args[0]>0"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "maximalStep"
+        },
+        "comment": "maximal step (must be positive even for backward integration)",
+        "kind": "PARAM",
+        "condition": "args[1]>0"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "absoluteTolerance"
+        },
+        "comment": "allowed absolute error",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "relativeTolerance"
+        },
+        "comment": "allowed relative error",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "setStepSizeControl(double minimalStep,double maximalStep,double absoluteTolerance,double relativeTolerance)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.AdaptiveStepsizeIntegrator",
+      "name": "AdaptiveStepsizeIntegrator",
+      "isArray": false
+    },
+    "name": "setStepSizeControl",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "minimalStep"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "maximalStep"
+      },
+      {
+        "type": {
+          "qualifiedName": "double[]",
+          "name": "double[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "absoluteTolerance"
+      },
+      {
+        "type": {
+          "qualifiedName": "double[]",
+          "name": "double[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "relativeTolerance"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "minimalStep"
+        },
+        "comment": "minimal step (must be positive even for backward integration), the last step can be smaller than this",
+        "kind": "PARAM",
+        "condition": "args[0]>0"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "maximalStep"
+        },
+        "comment": "maximal step (must be positive even for backward integration)",
+        "kind": "PARAM",
+        "condition": "args[1]>0"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "absoluteTolerance"
+        },
+        "comment": "allowed absolute error",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "relativeTolerance"
+        },
+        "comment": "allowed relative error",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "setStepSizeControl(double minimalStep,double maximalStep,double[] absoluteTolerance,double[] relativeTolerance)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.AdaptiveStepsizeIntegrator",
+      "name": "AdaptiveStepsizeIntegrator",
+      "isArray": false
+    },
+    "name": "setInitialStepSize",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "initialStepSize"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "initialStepSize"
+        },
+        "comment": "initial step size to use (must be positive even for backward integration ; providing a negative value or a value outside of the min/max step interval will lead the integrator to ignore the value and compute the initial step size by itself)",
+        "kind": "PARAM",
+        "condition": "args[0]>0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "setInitialStepSize(double initialStepSize)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.AdaptiveStepsizeIntegrator",
+      "name": "AdaptiveStepsizeIntegrator",
+      "isArray": false
+    },
+    "name": "sanityChecks",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.ode.ExpandableStatefulODE",
+          "name": "ExpandableStatefulODE",
+          "isArray": false
+        },
+        "name": "equations"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "t"
+      }
+    ],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "sanityChecks(org.apache.commons.math3.ode.ExpandableStatefulODE equations,double t)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.AdaptiveStepsizeIntegrator",
+      "name": "AdaptiveStepsizeIntegrator",
+      "isArray": false
+    },
+    "name": "initializeStep",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "forward"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "order"
+      },
+      {
+        "type": {
+          "qualifiedName": "double[]",
+          "name": "double[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "scale"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "t0"
+      },
+      {
+        "type": {
+          "qualifiedName": "double[]",
+          "name": "double[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "y0"
+      },
+      {
+        "type": {
+          "qualifiedName": "double[]",
+          "name": "double[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "yDot0"
+      },
+      {
+        "type": {
+          "qualifiedName": "double[]",
+          "name": "double[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "y1"
+      },
+      {
+        "type": {
+          "qualifiedName": "double[]",
+          "name": "double[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "yDot1"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "forward"
+        },
+        "comment": "forward integration indicator",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "order"
+        },
+        "comment": "order of the method",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "scale"
+        },
+        "comment": "scaling vector for the state vector (can be shorter than state vector)",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "t0"
+        },
+        "comment": "start time",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "y0"
+        },
+        "comment": "state vector at t0",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "yDot0"
+        },
+        "comment": "first time derivative of y0",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "y1"
+        },
+        "comment": "work array for a state vector",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "yDot1"
+        },
+        "comment": "work array for the first time derivative of y1",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MaxCountExceededException",
+          "name": "MaxCountExceededException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the number of functions evaluations is exceeded",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
+          "name": "DimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if arrays dimensions do not match equations settings",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ],
+    "signature": "initializeStep(boolean forward,int order,double[] scale,double t0,double[] y0,double[] yDot0,double[] y1,double[] yDot1)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.AdaptiveStepsizeIntegrator",
+      "name": "AdaptiveStepsizeIntegrator",
+      "isArray": false
+    },
+    "name": "filterStep",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "h"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "forward"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "acceptSmall"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "h"
+        },
+        "comment": "signed step",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "forward"
+        },
+        "comment": "forward integration indicator",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "acceptSmall"
+        },
+        "comment": "if true, steps smaller than the minimal value are silently increased up to this value, if false such small steps generate an exception",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException",
+          "name": "NumberIsTooSmallException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the step is too small and acceptSmall is false",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ],
+    "signature": "filterStep(double h,boolean forward,boolean acceptSmall)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.AdaptiveStepsizeIntegrator",
+      "name": "AdaptiveStepsizeIntegrator",
+      "isArray": false
+    },
+    "name": "integrate",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.ode.ExpandableStatefulODE",
+          "name": "ExpandableStatefulODE",
+          "isArray": false
+        },
+        "name": "equations"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "t"
+      }
+    ],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "integrate(org.apache.commons.math3.ode.ExpandableStatefulODE equations,double t)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.AdaptiveStepsizeIntegrator",
+      "name": "AdaptiveStepsizeIntegrator",
+      "isArray": false
+    },
+    "name": "getCurrentStepStart",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getCurrentStepStart()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.AdaptiveStepsizeIntegrator",
+      "name": "AdaptiveStepsizeIntegrator",
+      "isArray": false
+    },
+    "name": "resetInternalState",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "resetInternalState()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.AdaptiveStepsizeIntegrator",
+      "name": "AdaptiveStepsizeIntegrator",
+      "isArray": false
+    },
+    "name": "getMinStep",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getMinStep()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.AdaptiveStepsizeIntegrator",
+      "name": "AdaptiveStepsizeIntegrator",
+      "isArray": false
+    },
+    "name": "getMaxStep",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getMaxStep()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.AbstractIntegrator",
+      "name": "AbstractIntegrator",
+      "isArray": false
+    },
+    "name": "getName",
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getName()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.AbstractIntegrator",
+      "name": "AbstractIntegrator",
+      "isArray": false
+    },
+    "name": "addStepHandler",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.ode.sampling.StepHandler",
+          "name": "StepHandler",
+          "isArray": false
+        },
+        "name": "handler"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.ode.sampling.StepHandler",
+            "name": "StepHandler",
+            "isArray": false
+          },
+          "name": "handler"
+        },
+        "comment": "handler for the accepted steps",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "addStepHandler(org.apache.commons.math3.ode.sampling.StepHandler handler)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.AbstractIntegrator",
+      "name": "AbstractIntegrator",
+      "isArray": false
+    },
+    "name": "getStepHandlers",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getStepHandlers()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.AbstractIntegrator",
+      "name": "AbstractIntegrator",
+      "isArray": false
+    },
+    "name": "clearStepHandlers",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "clearStepHandlers()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.AbstractIntegrator",
+      "name": "AbstractIntegrator",
+      "isArray": false
+    },
+    "name": "addEventHandler",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.ode.events.EventHandler",
+          "name": "EventHandler",
+          "isArray": false
+        },
+        "name": "handler"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "maxCheckInterval"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "convergence"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxIterationCount"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.ode.events.EventHandler",
+            "name": "EventHandler",
+            "isArray": false
+          },
+          "name": "handler"
+        },
+        "comment": "event handler",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "maxCheckInterval"
+        },
+        "comment": "maximal time interval between switching function checks (this interval prevents missing sign changes in case the integration steps becomes very large)",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "convergence"
+        },
+        "comment": "convergence threshold in the event time search",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxIterationCount"
+        },
+        "comment": "upper limit of the iteration count in the event time search",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "addEventHandler(org.apache.commons.math3.ode.events.EventHandler handler,double maxCheckInterval,double convergence,int maxIterationCount)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.AbstractIntegrator",
+      "name": "AbstractIntegrator",
+      "isArray": false
+    },
+    "name": "addEventHandler",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.ode.events.EventHandler",
+          "name": "EventHandler",
+          "isArray": false
+        },
+        "name": "handler"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "maxCheckInterval"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "convergence"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxIterationCount"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.solvers.UnivariateSolver",
+          "name": "UnivariateSolver",
+          "isArray": false
+        },
+        "name": "solver"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.ode.events.EventHandler",
+            "name": "EventHandler",
+            "isArray": false
+          },
+          "name": "handler"
+        },
+        "comment": "event handler",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "maxCheckInterval"
+        },
+        "comment": "maximal time interval between switching function checks (this interval prevents missing sign changes in case the integration steps becomes very large)",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "convergence"
+        },
+        "comment": "convergence threshold in the event time search",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxIterationCount"
+        },
+        "comment": "upper limit of the iteration count in the event time search",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.analysis.solvers.UnivariateSolver",
+            "name": "UnivariateSolver",
+            "isArray": false
+          },
+          "name": "solver"
+        },
+        "comment": "The root-finding algorithm to use to detect the state events.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "addEventHandler(org.apache.commons.math3.ode.events.EventHandler handler,double maxCheckInterval,double convergence,int maxIterationCount,org.apache.commons.math3.analysis.solvers.UnivariateSolver solver)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.AbstractIntegrator",
+      "name": "AbstractIntegrator",
+      "isArray": false
+    },
+    "name": "getEventHandlers",
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getEventHandlers()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.AbstractIntegrator",
+      "name": "AbstractIntegrator",
+      "isArray": false
+    },
+    "name": "clearEventHandlers",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "clearEventHandlers()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.AbstractIntegrator",
+      "name": "AbstractIntegrator",
+      "isArray": false
+    },
+    "name": "getCurrentSignedStepsize",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getCurrentSignedStepsize()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.AbstractIntegrator",
+      "name": "AbstractIntegrator",
+      "isArray": false
+    },
+    "name": "setMaxEvaluations",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxEvaluations"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxEvaluations"
+        },
+        "comment": "maximal number of function evaluations (negative values are silently converted to maximal integer value, thus representing almost unlimited evaluations)",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "setMaxEvaluations(int maxEvaluations)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.AbstractIntegrator",
+      "name": "AbstractIntegrator",
+      "isArray": false
+    },
+    "name": "getMaxEvaluations",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getMaxEvaluations()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.AbstractIntegrator",
+      "name": "AbstractIntegrator",
+      "isArray": false
+    },
+    "name": "getEvaluations",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getEvaluations()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.AbstractIntegrator",
+      "name": "AbstractIntegrator",
+      "isArray": false
+    },
+    "name": "initIntegration",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "t0"
+      },
+      {
+        "type": {
+          "qualifiedName": "double[]",
+          "name": "double[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "y0"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "t"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "t0"
+        },
+        "comment": "start value of the independent time variable",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "y0"
+        },
+        "comment": "array containing the start value of the state vector",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "t"
+        },
+        "comment": "target time for the integration",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "initIntegration(double t0,double[] y0,double t)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.AbstractIntegrator",
+      "name": "AbstractIntegrator",
+      "isArray": false
+    },
+    "name": "setEquations",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.ode.ExpandableStatefulODE",
+          "name": "ExpandableStatefulODE",
+          "isArray": false
+        },
+        "name": "equations"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.ode.ExpandableStatefulODE",
+            "name": "ExpandableStatefulODE",
+            "isArray": false
+          },
+          "name": "equations"
+        },
+        "comment": "equations to set",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "setEquations(org.apache.commons.math3.ode.ExpandableStatefulODE equations)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.AbstractIntegrator",
+      "name": "AbstractIntegrator",
+      "isArray": false
+    },
+    "name": "getExpandable",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.ode.ExpandableStatefulODE",
+      "name": "ExpandableStatefulODE",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getExpandable()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.AbstractIntegrator",
+      "name": "AbstractIntegrator",
+      "isArray": false
+    },
+    "name": "getEvaluationsCounter",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.util.Incrementor",
+      "name": "Incrementor",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getEvaluationsCounter()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.AbstractIntegrator",
+      "name": "AbstractIntegrator",
+      "isArray": false
+    },
+    "name": "getCounter",
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.util.IntegerSequence.Incrementor",
+      "name": "Incrementor",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "getCounter()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.AbstractIntegrator",
+      "name": "AbstractIntegrator",
+      "isArray": false
+    },
+    "name": "integrate",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.ode.FirstOrderDifferentialEquations",
+          "name": "FirstOrderDifferentialEquations",
+          "isArray": false
+        },
+        "name": "equations"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "t0"
+      },
+      {
+        "type": {
+          "qualifiedName": "double[]",
+          "name": "double[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "y0"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "t"
+      },
+      {
+        "type": {
+          "qualifiedName": "double[]",
+          "name": "double[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "y"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.ode.FirstOrderDifferentialEquations",
+            "name": "FirstOrderDifferentialEquations",
+            "isArray": false
+          },
+          "name": "equations"
+        },
+        "comment": "differential equations to integrate",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "t0"
+        },
+        "comment": "initial time",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "y0"
+        },
+        "comment": "initial value of the state vector at t0",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "t"
+        },
+        "comment": "target time for the integration (can be set to a value smaller than t0 for backward integration)",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "y"
+        },
+        "comment": "placeholder where to put the state vector at each successful step (and hence at the end of integration), can be the same object as y0",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
+          "name": "DimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if arrays dimension do not match equations settings",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException",
+          "name": "NumberIsTooSmallException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if integration step is too small",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MaxCountExceededException",
+          "name": "MaxCountExceededException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the number of functions evaluations is exceeded",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NoBracketingException",
+          "name": "NoBracketingException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the location of an event cannot be bracketed",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ],
+    "signature": "integrate(org.apache.commons.math3.ode.FirstOrderDifferentialEquations equations,double t0,double[] y0,double t,double[] y)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.AbstractIntegrator",
+      "name": "AbstractIntegrator",
+      "isArray": false
+    },
+    "name": "computeDerivatives",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "t"
+      },
+      {
+        "type": {
+          "qualifiedName": "double[]",
+          "name": "double[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "y"
+      },
+      {
+        "type": {
+          "qualifiedName": "double[]",
+          "name": "double[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "yDot"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "t"
+        },
+        "comment": "current value of the independent time variable",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "y"
+        },
+        "comment": "array containing the current value of the state vector",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "yDot"
+        },
+        "comment": "placeholder array where to put the time derivative of the state vector",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MaxCountExceededException",
+          "name": "MaxCountExceededException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the number of functions evaluations is exceeded",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
+          "name": "DimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if arrays dimensions do not match equations settings",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "codeTags": [
+          "AbstractIntegrator.integrate(ExpandableStatefulODE, double)",
+          "AbstractIntegrator.integrate(FirstOrderDifferentialEquations, double, double[], double, double[])"
+        ],
+        "comment": "if the ODE equations have not been set (i.e. if this method is called outside of a call to AbstractIntegrator.integrate(ExpandableStatefulODE, double) or AbstractIntegrator.integrate(FirstOrderDifferentialEquations, double, double[], double, double[]))",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ],
+    "signature": "computeDerivatives(double t,double[] y,double[] yDot)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.AbstractIntegrator",
+      "name": "AbstractIntegrator",
+      "isArray": false
+    },
+    "name": "setStateInitialized",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "stateInitialized"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "stateInitialized"
+        },
+        "comment": "new value for the flag",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "setStateInitialized(boolean stateInitialized)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.AbstractIntegrator",
+      "name": "AbstractIntegrator",
+      "isArray": false
+    },
+    "name": "acceptStep",
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.ode.sampling.AbstractStepInterpolator",
+          "name": "AbstractStepInterpolator",
+          "isArray": false
+        },
+        "name": "interpolator"
+      },
+      {
+        "type": {
+          "qualifiedName": "double[]",
+          "name": "double[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "y"
+      },
+      {
+        "type": {
+          "qualifiedName": "double[]",
+          "name": "double[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "yDot"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "tEnd"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.ode.sampling.AbstractStepInterpolator",
+            "name": "AbstractStepInterpolator",
+            "isArray": false
+          },
+          "name": "interpolator"
+        },
+        "comment": "step interpolator",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "y"
+        },
+        "comment": "state vector at step end time, must be reset if an event asks for resetting or if an events stops integration during the step",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "yDot"
+        },
+        "comment": "placeholder array where to put the time derivative of the state vector",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "tEnd"
+        },
+        "comment": "final integration time",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MaxCountExceededException",
+          "name": "MaxCountExceededException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the interpolator throws one because the number of functions evaluations is exceeded",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NoBracketingException",
+          "name": "NoBracketingException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the location of an event cannot be bracketed",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
+          "name": "DimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if arrays dimensions do not match equations settings",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ],
+    "signature": "acceptStep(org.apache.commons.math3.ode.sampling.AbstractStepInterpolator interpolator,double[] y,double[] yDot,double tEnd)"
+  }
+]
