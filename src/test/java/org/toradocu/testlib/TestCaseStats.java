@@ -1,26 +1,34 @@
 package org.toradocu.testlib;
 
 public class TestCaseStats {
-	
-	private int tp = 0, fp = 0, total = 0;
-	
-	public TestCaseStats(int total) {
-		this.total = total;
-	}
-	
-	public float getRecall() {
-		return tp / (float) total;
-	}
 
-	public float getPrecision() {
-		return tp / (float) (tp + fp);
-	}
+  private int correct = 0, wrong = 0, missing = 0;
 
-	public void incrementTP() {
-		++tp;
-	}
-	
-	public void incrementFP() {
-		++fp;
-	}
+  public void incrementCorrect() {
+    ++correct;
+  }
+
+  public void incrementWrong() {
+    ++wrong;
+  }
+
+  public void incrementMissig() {
+    missing++;
+  }
+
+  public int getCorrect() {
+    return correct;
+  }
+
+  public int getMissing() {
+    return missing;
+  }
+
+  public int getWrong() {
+    return wrong;
+  }
+
+  public int numberOfConditions() {
+    return correct + wrong + missing;
+  }
 }
