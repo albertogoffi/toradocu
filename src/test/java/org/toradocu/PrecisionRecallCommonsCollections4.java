@@ -20,7 +20,7 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
   public void testArrayStack() throws Exception {
     test("org.apache.commons.collections4.ArrayStack", 1.0, 0.75);
   }
-  
+
   @Test
   public void testBagUtils() throws Exception {
     test("org.apache.commons.collections4.BagUtils", 1.0, 1.0);
