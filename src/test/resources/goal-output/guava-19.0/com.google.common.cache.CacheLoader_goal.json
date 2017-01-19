@@ -1,0 +1,354 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.cache.CacheLoader",
+      "name": "CacheLoader",
+      "isArray": false
+    },
+    "name": "CacheLoader",
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "CacheLoader()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.cache.CacheLoader",
+      "name": "CacheLoader",
+      "isArray": false
+    },
+    "name": "load",
+    "returnType": {
+      "qualifiedName": "V",
+      "name": "V",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the non-null key whose value should be loaded",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.Exception",
+          "name": "Exception",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if unable to load the result",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.InterruptedException",
+          "name": "InterruptedException",
+          "isArray": false
+        },
+        "codeTags": [
+          "InterruptedException",
+          "Exception"
+        ],
+        "comment": "if this method is interrupted. InterruptedException is treated like any other Exception in all respects except that, when it is caught, the thread's interrupt status is set",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ],
+    "signature": "load(java.lang.Object key)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.cache.CacheLoader",
+      "name": "CacheLoader",
+      "isArray": false
+    },
+    "name": "reload",
+    "returnType": {
+      "qualifiedName": "com.google.common.util.concurrent.ListenableFuture",
+      "name": "ListenableFuture",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "oldValue"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the non-null key whose value should be loaded",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "oldValue"
+        },
+        "comment": "the non-null old value corresponding to key",
+        "kind": "PARAM",
+        "condition": "(args[1]==null) == false"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.Exception",
+          "name": "Exception",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if unable to reload the result",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.InterruptedException",
+          "name": "InterruptedException",
+          "isArray": false
+        },
+        "codeTags": [
+          "InterruptedException",
+          "Exception"
+        ],
+        "comment": "if this method is interrupted. InterruptedException is treated like any other Exception in all respects except that, when it is caught, the thread's interrupt status is set",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ],
+    "signature": "reload(java.lang.Object key,java.lang.Object oldValue)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.cache.CacheLoader",
+      "name": "CacheLoader",
+      "isArray": false
+    },
+    "name": "loadAll",
+    "returnType": {
+      "qualifiedName": "java.util.Map",
+      "name": "Map",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "keys"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Iterable",
+            "name": "Iterable",
+            "isArray": false
+          },
+          "name": "keys"
+        },
+        "comment": "the unique, non-null keys whose values should be loaded",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.Exception",
+          "name": "Exception",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if unable to load the result",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.InterruptedException",
+          "name": "InterruptedException",
+          "isArray": false
+        },
+        "codeTags": [
+          "InterruptedException",
+          "Exception"
+        ],
+        "comment": "if this method is interrupted. InterruptedException is treated like any other Exception in all respects except that, when it is caught, the thread's interrupt status is set",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ],
+    "signature": "loadAll(java.lang.Iterable keys)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.cache.CacheLoader",
+      "name": "CacheLoader",
+      "isArray": false
+    },
+    "name": "from",
+    "returnType": {
+      "qualifiedName": "com.google.common.cache.CacheLoader",
+      "name": "CacheLoader",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "com.google.common.base.Function",
+          "name": "Function",
+          "isArray": false
+        },
+        "name": "function"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "com.google.common.base.Function",
+            "name": "Function",
+            "isArray": false
+          },
+          "name": "function"
+        },
+        "comment": "the function to be used for loading values; must never return null",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "from(com.google.common.base.Function function)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.cache.CacheLoader",
+      "name": "CacheLoader",
+      "isArray": false
+    },
+    "name": "from",
+    "returnType": {
+      "qualifiedName": "com.google.common.cache.CacheLoader",
+      "name": "CacheLoader",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "com.google.common.base.Supplier",
+          "name": "Supplier",
+          "isArray": false
+        },
+        "name": "supplier"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "com.google.common.base.Supplier",
+            "name": "Supplier",
+            "isArray": false
+          },
+          "name": "supplier"
+        },
+        "comment": "the supplier to be used for loading values; must never return null",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "from(com.google.common.base.Supplier supplier)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.cache.CacheLoader",
+      "name": "CacheLoader",
+      "isArray": false
+    },
+    "name": "asyncReloading",
+    "returnType": {
+      "qualifiedName": "com.google.common.cache.CacheLoader",
+      "name": "CacheLoader",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "com.google.common.cache.CacheLoader",
+          "name": "CacheLoader",
+          "isArray": false
+        },
+        "name": "loader"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.concurrent.Executor",
+          "name": "Executor",
+          "isArray": false
+        },
+        "name": "executor"
+      }
+    ],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "asyncReloading(com.google.common.cache.CacheLoader loader,java.util.concurrent.Executor executor)"
+  }
+]

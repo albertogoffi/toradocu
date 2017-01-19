@@ -21,6 +21,56 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
   }
 
   @Test
+  public void testUnivariateSolverUtils() throws Exception {
+    test("org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils", 1.0, 0.777);
+  }
+
+  @Test
+  public void testComplex() throws Exception {
+    test("org.apache.commons.math3.complex.Complex", 1.0, 0.916);
+  }
+
+  @Test
+  public void testSimpleCurveFitter() throws Exception {
+    test("org.apache.commons.math3.fitting.SimpleCurveFitter", 1.0, 1.0);
+  }
+
+  @Test
+  public void testAdaptiveStepsizeIntegrator() throws Exception {
+    test("org.apache.commons.math3.ode.nonstiff.AdaptiveStepsizeIntegrator", 1.0, 1.0);
+  }
+
+  @Test
+  public void testPrimes() throws Exception {
+    test("org.apache.commons.math3.primes.Primes", 1.0, 1.0);
+  }
+
+  @Test
+  public void testBitsStreamGenerator() throws Exception {
+    test("org.apache.commons.math3.random.BitsStreamGenerator", 1.0, 0.5);
+  }
+
+  @Test
+  public void testRandomAdaptor() throws Exception {
+    test("org.apache.commons.math3.random.RandomAdaptor", 1.0, 1.0);
+  }
+
+  @Test
+  public void testRandomDataGenerator() throws Exception {
+    test("org.apache.commons.math3.random.RandomDataGenerator", 0.777, 0.5);
+  }
+
+  @Test
+  public void testArithmeticUtils() throws Exception {
+    test("org.apache.commons.math3.util.ArithmeticUtils", 1.0, 0.421);
+  }
+
+  @Test
+  public void testFastMath() throws Exception {
+    test("org.apache.commons.math3.util.FastMath", 1.0, 1.0);
+  }
+
+  @Test
   public void testLogistic() throws Exception {
     test("org.apache.commons.math3.analysis.function.Logistic", 1.0, 1.0);
   }

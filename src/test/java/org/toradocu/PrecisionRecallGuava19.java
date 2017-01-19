@@ -19,6 +19,50 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
+  public void testCharMatcher() throws Exception {
+    test("com.google.common.base.CharMatcher", 0.0, 0.0);
+  }
+
+  @Test
+  public void testConverter() throws Exception {
+    test("com.google.common.base.Converter", 1.0, 1.0);
+  }
+
+  @Test
+  public void testSplitter() throws Exception {
+    test("com.google.common.base.Splitter", 1.0, 1.0);
+  }
+
+  @Test
+  public void testThrowables() throws Exception {
+    test("com.google.common.base.Throwables", 1.0, 1.0);
+  }
+
+  @Test
+  public void testCacheLoader() throws Exception {
+    test("com.google.common.cache.CacheLoader", 1.0, 1.0);
+  }
+
+  @Test
+  public void testIterators() throws Exception {
+    test("com.google.common.collect.Iterators", 1.0, 0.6);
+  }
+
+  public void testOrdering() throws Exception {
+    test("com.google.common.collect.Ordering", 1.0, 1.0);
+  }
+
+  @Test
+  public void testBloomFilter() throws Exception {
+    test("com.google.common.hash.BloomFilter", 1.0, 0.5);
+  }
+
+  @Test
+  public void testHashing() throws Exception {
+    test("com.google.common.hash.Hashing", 1.0, 0.0);
+  }
+
+  @Test
   public void testConcurrentHashMultiset() throws Exception {
     test("com.google.common.collect.ConcurrentHashMultiset", 0.818, 0.692);
   }

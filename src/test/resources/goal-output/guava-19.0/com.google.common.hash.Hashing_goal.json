@@ -1,0 +1,632 @@
+[
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "Hashing",
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "Hashing()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "goodFastHash",
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.HashFunction",
+      "name": "HashFunction",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "minimumBits"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "minimumBits"
+        },
+        "comment": "a positive integer (can be arbitrarily large)",
+        "kind": "PARAM",
+        "condition": "args[0]>0"
+      }
+    ],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "goodFastHash(int minimumBits)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "murmur3_32",
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.HashFunction",
+      "name": "HashFunction",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "seed"
+      }
+    ],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "murmur3_32(int seed)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "murmur3_32",
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.HashFunction",
+      "name": "HashFunction",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "murmur3_32()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "murmur3_128",
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.HashFunction",
+      "name": "HashFunction",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "seed"
+      }
+    ],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "murmur3_128(int seed)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "murmur3_128",
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.HashFunction",
+      "name": "HashFunction",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "murmur3_128()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "sipHash24",
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.HashFunction",
+      "name": "HashFunction",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "sipHash24()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "sipHash24",
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.HashFunction",
+      "name": "HashFunction",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "k0"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "k1"
+      }
+    ],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "sipHash24(long k0,long k1)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "md5",
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.HashFunction",
+      "name": "HashFunction",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "md5()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "sha1",
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.HashFunction",
+      "name": "HashFunction",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "sha1()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "sha256",
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.HashFunction",
+      "name": "HashFunction",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "sha256()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "sha384",
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.HashFunction",
+      "name": "HashFunction",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "sha384()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "sha512",
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.HashFunction",
+      "name": "HashFunction",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "sha512()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "crc32c",
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.HashFunction",
+      "name": "HashFunction",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "crc32c()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "crc32",
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.HashFunction",
+      "name": "HashFunction",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "crc32()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "adler32",
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.HashFunction",
+      "name": "HashFunction",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "adler32()"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "checksumHashFunction",
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.HashFunction",
+      "name": "HashFunction",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "com.google.common.hash.Hashing.ChecksumType",
+          "name": "ChecksumType",
+          "isArray": false
+        },
+        "name": "type"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "toString"
+      }
+    ],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "checksumHashFunction(com.google.common.hash.Hashing.ChecksumType type,java.lang.String toString)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "consistentHash",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "com.google.common.hash.HashCode",
+          "name": "HashCode",
+          "isArray": false
+        },
+        "name": "hashCode"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "buckets"
+      }
+    ],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "consistentHash(com.google.common.hash.HashCode hashCode,int buckets)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "consistentHash",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "input"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "buckets"
+      }
+    ],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "consistentHash(long input,int buckets)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "combineOrdered",
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.HashCode",
+      "name": "HashCode",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "hashCodes"
+      }
+    ],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [
+          "hashCodes"
+        ],
+        "comment": "if hashCodes is empty, or the hash codes do not all have the same bit length",
+        "kind": "THROWS",
+        "condition": "args[0].isEmpty()"
+      }
+    ],
+    "signature": "combineOrdered(java.lang.Iterable hashCodes)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "combineUnordered",
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.HashCode",
+      "name": "HashCode",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "hashCodes"
+      }
+    ],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [
+          "hashCodes"
+        ],
+        "comment": "if hashCodes is empty, or the hash codes do not all have the same bit length",
+        "kind": "THROWS",
+        "condition": "args[0].isEmpty()"
+      }
+    ],
+    "signature": "combineUnordered(java.lang.Iterable hashCodes)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "checkPositiveAndMakeMultipleOf32",
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "bits"
+      }
+    ],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "checkPositiveAndMakeMultipleOf32(int bits)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "concatenating",
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.HashFunction",
+      "name": "HashFunction",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "com.google.common.hash.HashFunction",
+          "name": "HashFunction",
+          "isArray": false
+        },
+        "name": "first"
+      },
+      {
+        "type": {
+          "qualifiedName": "com.google.common.hash.HashFunction",
+          "name": "HashFunction",
+          "isArray": false
+        },
+        "name": "second"
+      },
+      {
+        "type": {
+          "qualifiedName": "com.google.common.hash.HashFunction[]",
+          "name": "HashFunction[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "com.google.common.hash.HashFunction",
+            "name": "HashFunction",
+            "isArray": false
+          }
+        },
+        "name": "rest"
+      }
+    ],
+    "paramTags": [],
+    "isVarArgs": true,
+    "throwsTags": [],
+    "signature": "concatenating(com.google.common.hash.HashFunction first,com.google.common.hash.HashFunction second,com.google.common.hash.HashFunction[] rest)"
+  },
+  {
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.Hashing",
+      "name": "Hashing",
+      "isArray": false
+    },
+    "name": "concatenating",
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.HashFunction",
+      "name": "HashFunction",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "hashFunctions"
+      }
+    ],
+    "paramTags": [],
+    "isVarArgs": false,
+    "throwsTags": [],
+    "signature": "concatenating(java.lang.Iterable hashFunctions)"
+  }
+]
