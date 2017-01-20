@@ -196,12 +196,8 @@ public class Toradocu {
               org.toradocu.extractor.Type.getPackage(configuration.getTargetClass());
           Path destinationFolderPath = destinationFolder.toPath();
           if (packageName != null) {
-            if (packageName.contains(".")) {
-              destinationFolderPath =
-                  Paths.get(destinationFolderPath.toString(), packageName.split("."));
-            } else {
-              destinationFolderPath = Paths.get(destinationFolderPath.toString(), packageName);
-            }
+            String packagePath = packageName.replace('.', File.separatorChar);
+            destinationFolderPath = destinationFolderPath.resolve(packagePath);
           }
           Files.createDirectories(destinationFolderPath);
 
