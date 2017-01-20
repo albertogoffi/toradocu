@@ -212,7 +212,8 @@ public class Toradocu {
             targetClassName = targetClass.substring(targetClass.lastIndexOf(".") + 1);
           }
           Path destinationPath =
-              Paths.get(destinationFolderPath.toString(), targetClassName.concat(".java"));
+              Paths.get(
+                  destinationFolderPath.toString(), targetClassName.concat("Conditions.java"));
           try (BufferedWriter writer =
               Files.newBufferedWriter(
                   destinationPath,
@@ -272,7 +273,11 @@ public class Toradocu {
     if (targetClass.contains(".")) {
       targetClassName = targetClass.substring(targetClass.lastIndexOf(".") + 1);
     }
-    conditionsClass.append("public class ").append(targetClassName).append(" {");
+    conditionsClass
+        .append("public class ")
+        .append(targetClassName)
+        .append("Conditions")
+        .append(" {");
 
     // Filter out private methods (they cannot be invoked from the outside of the class.)
     final List<DocumentedMethod> accessibleMethods = new ArrayList<>();
