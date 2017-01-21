@@ -4,12 +4,15 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Executable;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
+import org.toradocu.Toradocu;
 import org.toradocu.util.Checks;
 import org.toradocu.util.Reflection;
 
@@ -42,6 +45,9 @@ public final class DocumentedMethod {
   private final Set<ThrowsTag> throwsTags;
   /** Method signature in the format method_name(type1 arg1, type2 arg2, ...). */
   private final String signature;
+
+  /** Target class passed to Toradocu with the option --target-class. */
+  private final String targetClass;
 
   /**
    * Constructs a {@code DocumentedMethod} contained in a given {@code containingClass} with the
@@ -96,6 +102,9 @@ public final class DocumentedMethod {
     }
     signatureBuilder.append(")");
     signature = signatureBuilder.toString();
+
+    // Set the target class if command line options have been parsed.
+    targetClass = Toradocu.configuration != null ? Toradocu.configuration.getTargetClass() : null;
   }
 
   /**
@@ -204,14 +213,30 @@ public final class DocumentedMethod {
     return false;
   }
 
+  /**
+   * Returns the {@code java.lang.reflect.Executable} corresponding to this DocumentedMethod.
+   *
+   * @return the {@code java.lang.reflect.Executable} corresponding to this DocumentedMethod.
+   *     Returns null if no corresponding Executable is found.
+   */
   public Executable getExecutable() {
     Class<?> containingClass = Reflection.getClass(getContainingClass().getQualifiedName());
 
     // Load the DocumentedMethod as a reflection Method or Constructor.
     if (isConstructor()) {
       for (Constructor<?> constructor : containingClass.getDeclaredConstructors()) {
+        List<Class<?>> params =
+            Arrays.stream(constructor.getParameterTypes()).collect(Collectors.toList());
+
+        // The first two parameters of enum constructors are synthetic and must be removed to
+        // reflect the source code.
+        if (containingClass.isEnum()) {
+          params.remove(0);
+          params.remove(0);
+        }
+
         if (Reflection.checkTypes(
-            getParameters().toArray(new Parameter[0]), constructor.getParameterTypes())) {
+            getParameters().toArray(new Parameter[0]), params.toArray(new Class<?>[0]))) {
           return constructor;
         }
       }
@@ -225,6 +250,16 @@ public final class DocumentedMethod {
       }
     }
     return null;
+  }
+
+  /**
+   * Returns the target class as specified with the command line option --target-class.
+   *
+   * @return the target class as specified with the command line option --target-class. Null if the
+   *     command line options have not been parsed.
+   */
+  public String getTargetClass() {
+    return targetClass;
   }
 
   /**

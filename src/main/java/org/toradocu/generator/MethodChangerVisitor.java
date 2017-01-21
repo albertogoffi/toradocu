@@ -194,7 +194,7 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
    * @param method {@code DocumentedMethod} for which to generate the pointcut definition
    * @return the pointcut definition matching {@code method}
    */
-  private String getPointcut(DocumentedMethod method) {
+  private static String getPointcut(DocumentedMethod method) {
     StringBuilder pointcut = new StringBuilder();
 
     if (method.isConstructor()) { // Constructors
@@ -231,7 +231,7 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
    * @return the input condition with casted method arguments and target
    * @throws NullPointerException if {@code condition} or {@code method} is null
    */
-  private String addCasting(String condition, DocumentedMethod method) {
+  public static String addCasting(String condition, DocumentedMethod method) {
     Checks.nonNullParameter(condition, "condition");
     Checks.nonNullParameter(method, "method");
 
@@ -244,6 +244,18 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
 
     // Casting of target object in condition
     condition = condition.replace("target.", "((" + method.getContainingClass() + ") target).");
+    return condition;
+  }
+
+  public static String convertToParamNames(String condition, DocumentedMethod method) {
+    Checks.nonNullParameter(condition, "condition");
+    Checks.nonNullParameter(method, "method");
+
+    for (int index = 0; index < method.getParameters().size(); index++) {
+      String paramName = method.getParameters().get(index).getName();
+      condition = condition.replace("args[" + index + "]", paramName);
+    }
+
     return condition;
   }
 }

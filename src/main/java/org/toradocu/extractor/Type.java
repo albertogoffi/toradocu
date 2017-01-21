@@ -161,4 +161,17 @@ public class Type {
     }
     return typeDimension;
   }
+
+  /**
+   * Returns the package of the given {@code type}. For example, if type is "java.lang.String" the
+   * output is "java.lang", while if type is "String" this method returns null.
+   *
+   * @param type a fully qualified type name (e.g. "java.lang.String")
+   * @return the fully qualified name of the type's package (or null if {@code type}'s package is
+   *     the default package).
+   */
+  public static String getPackage(String type) {
+    final int lastSeparatorIndex = type.lastIndexOf(SEPARATOR);
+    return lastSeparatorIndex == -1 ? null : type.substring(0, lastSeparatorIndex);
+  }
 }
