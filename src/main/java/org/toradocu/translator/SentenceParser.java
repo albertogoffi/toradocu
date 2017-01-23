@@ -151,6 +151,7 @@ public class SentenceParser {
         operator = Conjunction.OR;
         break;
       case "and":
+      case "but":
         operator = Conjunction.AND;
         break;
       default:
@@ -380,7 +381,7 @@ public class SentenceParser {
     }
     copulaRelations = getRelationsFromGraph("cop");
     complementRelations = getRelationsFromGraph("acomp", "xcomp", "dobj");
-    conjunctionRelations = getRelationsFromGraph("conj:and", "conj:or");
+    conjunctionRelations = getRelationsFromGraph("conj:and", "conj:or", "conj:but");
     negationRelations = getRelationsFromGraph("neg");
     numModifierRelations = getRelationsFromGraph("nummod");
   }
