@@ -1,6 +1,7 @@
 package tcomment
 
 import org.toradocu.extractor.DocumentedMethod
+import org.toradocu.extractor.ParamTag
 import org.toradocu.extractor.ThrowsTag
 
 /**
@@ -10,9 +11,10 @@ import org.toradocu.extractor.ThrowsTag
  * @param methods a list of [DocumentedMethod]s whose throws tags has to be translated
  */
 fun translate(methods: List<DocumentedMethod>) {
-  // Translate @throws comments using @tComment algorithm.
+  // Translate @param and @throws comments using @tComment algorithm.
   for (method in methods) {
     val parameters = method.parameters.map { it.name }
+    method.paramTags().forEach { translateTagComment(it, parameters) }
     method.throwsTags().forEach { translateTagComment(it, parameters) }
   }
 }
@@ -23,8 +25,22 @@ fun translate(methods: List<DocumentedMethod>) {
  * @param tag the tag whose text has to be translated
  * @param parameterNames names of the method's parameters to which [tag] belongs
  */
-fun translateTagComment(tag: ThrowsTag, parameterNames: List<String>) {
-  val commentWords = tag.getComment().toLowerCase().replace(",", " ").split(" ")
+private fun translateTagComment(tag: ParamTag, parameterNames: List<String>) {
+  val parameterName = tag.parameter().name
+  if (mustBeNotNull(tag.comment)) {
+    val condition = "(args[${parameterNames.indexOf(parameterName)}]==null)==false"
+    tag.setCondition(condition)
+  }
+}
+
+/**
+ * Translates [tag] comment text into a Java boolean condition.
+ *
+ * @param tag the tag whose text has to be translated
+ * @param parameterNames names of the method's parameters to which [tag] belongs
+ */
+private fun translateTagComment(tag: ThrowsTag, parameterNames: List<String>) {
+  val commentWords = getWords(tag.comment)
   var condition = ""
   if (commentWords.contains("null")) {
     commentWords.intersect(parameterNames).forEach {
@@ -38,32 +54,31 @@ fun translateTagComment(tag: ThrowsTag, parameterNames: List<String>) {
   tag.setCondition(condition)
 }
 
-//fun nullAnyCheck(commentWords: List<String>): PropertyType {
-//  for ((index, word) in commentWords.withIndex()) {
-//    if (word.equals("null")) {
-//      var i = index - 1
-//      while (i >= 0 && i >= index - 3) {
-//        if (commentWords[i] == "not" || commentWords[i] == "never")
-//          return PropertyType .NULL_ANY_EXCEPTION
-//        --i
-//      }
-//      var j = index + 1
-//      while (j <= index + 3 && j < commentWords.size) {
-//        if (commentWords[j] == "not" || commentWords[i] == "never")
-//          return PropertyType.NULL_ANY_EXCEPTION
-//        ++j
-//      }
-//    }
-//  }
-//  return PropertyType.NULL_NORMAL
-//}
+/**
+ * Checks whether [comment] is expressing a non-null pre-condition, for example: "must not be null".
+ *
+ * @param comment the words composing the comment
+ * @return true if the comment is expressing a non-null pre-condition, false otherwise
+ */
+private fun mustBeNotNull(comment: String): Boolean {
+  val commentWords = getWords(comment)
+  for ((index, word) in commentWords.withIndex()) {
+    if (word == "null") {
+      var i = index - 1
+      while (i >= 0 && i >= index - 3) {
+        if (commentWords[i] == "not" || commentWords[i] == "never")
+          return true
+        --i
+      }
+      var j = index + 1
+      while (j <= index + 3 && j < commentWords.size) {
+        if (commentWords[j] == "not" || commentWords[i] == "never")
+          return true
+        ++j
+      }
+    }
+  }
+  return false
+}
 
-//data class Property(val parameter: String, val type: PropertyType, val exception: String = "")
-//
-//enum class PropertyType {
-//  NULL_NORMAL, NULL_ANY_EXCEPTION, NULL_SPECIFIC_EXCEPTION, NULL_UNKNOWN
-//}
-//
-//enum class Tag {
-//  PARAM, THROWS
-//}
+private fun getWords(sentence: String) = sentence.toLowerCase().replace(",", " ").split(" ")
