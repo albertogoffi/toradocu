@@ -3,16 +3,21 @@ package org.toradocu.testlib;
 public class TestCaseStats {
 
   private int correct = 0, wrong = 0, missing = 0;
+  private final String identifier;
 
-  public void incrementCorrect() {
+  TestCaseStats(String identifier) {
+    this.identifier = identifier;
+  }
+
+  void incrementCorrect() {
     ++correct;
   }
 
-  public void incrementWrong() {
+  void incrementWrong() {
     ++wrong;
   }
 
-  public void incrementMissig() {
+  void incrementMissig() {
     missing++;
   }
 

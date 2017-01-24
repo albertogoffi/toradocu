@@ -2,15 +2,17 @@ package org.toradocu.testlib;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TestSuiteStats {
 
-  private final List<TestCaseStats> tests = Collections.synchronizedList(new ArrayList<>());
-  private float precision = 0, recall = 0, precisionStdDeviation = 0, recallStdDeviation = 0;
+  private final Map<String, TestCaseStats> tests = Collections.synchronizedMap(new HashMap<>());
+//  private float precision = 0, recall = 0, precisionStdDeviation = 0, recallStdDeviation = 0;
 
-  public void addTest(TestCaseStats test) {
-    tests.add(test);
+  public void addTest(Map<String, TestCaseStats> test) {
+    tests.putAll(test);
   }
 
 //  public void computeResults() {
@@ -40,16 +42,21 @@ public class TestSuiteStats {
 //    return (2 * getPrecision() * getRecall()) / (getPrecision() + getRecall());
 //  }
 
-  public int getCorrectTranslations() {
-    return tests.stream().mapToInt(TestCaseStats::getCorrect).sum();
+
+  public Map<String, TestCaseStats> getTests() {
+    return tests;
   }
 
-  public int getWrongTranslations() {
-    return tests.stream().mapToInt(TestCaseStats::getWrong).sum();
+  int getCorrectTranslations() {
+    return tests.values().stream().mapToInt(TestCaseStats::getCorrect).sum();
   }
 
-  public int getMissingTranslations() {
-    return tests.stream().mapToInt(TestCaseStats::getMissing).sum();
+  int getWrongTranslations() {
+    return tests.values().stream().mapToInt(TestCaseStats::getWrong).sum();
+  }
+
+  int getMissingTranslations() {
+    return tests.values().stream().mapToInt(TestCaseStats::getMissing).sum();
   }
 
 //  private float computePrecision() {

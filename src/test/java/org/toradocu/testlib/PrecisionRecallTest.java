@@ -5,7 +5,6 @@ import org.toradocu.Toradocu;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Parameter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -17,11 +16,10 @@ import static org.junit.Assert.fail;
 
 public class PrecisionRecallTest {
 
-  public static TestCaseStats test(String targetClass, String srcPath, String expectedOutputDir) {
+  public static Map<String, TestCaseStats> test(String targetClass, String srcPath, String expectedOutputDir) {
     String className = getClassName(targetClass);
     String actualOutputFile = "tmp" + File.separator + className + "_out.txt";
     String expectedOutputFile = expectedOutputDir + className + "_expected.txt";
-    String message = "=== Test " + targetClass + " ===";
 
     Toradocu.main(
         new String[] {
@@ -40,18 +38,15 @@ public class PrecisionRecallTest {
           "-J-d=tmp",
           "-J-quiet="
         });
-    return compare(actualOutputFile, expectedOutputFile, message);
+    return compare(actualOutputFile, expectedOutputFile);
   }
 
   private static String getClassName(String qualifiedClassName) {
     return qualifiedClassName.substring(qualifiedClassName.lastIndexOf(".") + 1);
   }
 
-  private static TestCaseStats compare(
-      String outputFile, String expectedOutputFile, String message) {
-    StringBuilder report = new StringBuilder();
+  private static Map<String, TestCaseStats> compare(String outputFile, String expectedOutputFile) {
 
-    report.append(message + "\n");
     try (BufferedReader outFile = Files.newBufferedReader(Paths.get(outputFile));
         BufferedReader expFile = Files.newBufferedReader(Paths.get(expectedOutputFile))) {
       List<String> output = outFile.lines().collect(Collectors.toList());
@@ -62,11 +57,14 @@ public class PrecisionRecallTest {
         expectedTranslations.put(tokens[0], tokens[1]);
       }
 
-      TestCaseStats result = new TestCaseStats();
+      Map<String, TestCaseStats> methodResults = new HashMap<>();
       for (String line : output) {
         final String[] tokens = line.split("==>");
         final String condition = tokens[0];
         final String translation = tokens[1];
+
+        final String method = condition.substring(0, condition.indexOf(") throws ") + 1);
+        TestCaseStats result = methodResults.computeIfAbsent(method, TestCaseStats::new);
 
         final String expectedTranslation = expectedTranslations.get(condition);
         // Ignore results when expected translation is empty.
@@ -75,22 +73,14 @@ public class PrecisionRecallTest {
             result.incrementCorrect();
           } else {
             if (translation.equals(" []")) {
-              result.incrementMissig();
-              report.append("Missing condition:" + line + "\n");
+              result.incrementMissig(); // Toradocu did not produce any translation.
             } else {
-              result.incrementWrong();
-              report.append("Wrong condition: " + line + "\n");
+              result.incrementWrong(); // Translation produced by Toradocu is wrong.
             }
           }
         }
       }
-//      float precision = result.getPrecision();
-//      float recall = result.getRecall();
-//      report.append("Conditions: " + expected.size() + "\n");
-//      report.append("Precision: " + precision + "\n");
-//      report.append("Recall: " + recall + "\n");
-//      System.out.println(report);
-      return result;
+      return methodResults;
     } catch (IOException e) {
       fail(e.getMessage());
       return null;
