@@ -52,11 +52,18 @@ compileJava {
   options.compilerArgs << '-Xlint:unchecked'
 }
 
-/* Print standard output during tests execution. */
 test {
+  exclude 'org/toradocu/v01/**'
+
+  // Print standard output during tests execution.
   testLogging {
     events = ['STANDARD_OUT']
   }
+}
+
+task precisionRecallV01(type: Test) {
+  description 'Run precision/recall test suite of Toradocu v0.1'
+  include 'org/toradocu/v01/**'
 }
 
 repositories {
