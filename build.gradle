@@ -182,6 +182,7 @@ task removeTestOutputDirs(type: Delete) {
 }
 
 test.dependsOn removeTestOutputDirs, extractSources, extractBinaries
+precisionRecallV01.dependsOn removeTestOutputDirs, extractSources, extractBinaries
 
 /* Make Emacs TAGS table */
 task tags(type: Exec) {
