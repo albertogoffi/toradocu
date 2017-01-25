@@ -63,12 +63,12 @@ public class PrecisionRecallTest {
         final String condition = tokens[0];
         final String translation = tokens[1];
 
-        final String method = condition.substring(0, condition.indexOf(") throws ") + 1);
-        TestCaseStats result = methodResults.computeIfAbsent(method, TestCaseStats::new);
-
         final String expectedTranslation = expectedTranslations.get(condition);
         // Ignore results when expected translation is empty.
         if (!expectedTranslation.endsWith(" []") && !expectedTranslation.endsWith(" [???]")) {
+          final String method = condition.substring(0, condition.indexOf(") throws ") + 1);
+          TestCaseStats result = methodResults.computeIfAbsent(method, TestCaseStats::new);
+
           if (translation.equals(expectedTranslation)) {
             result.incrementCorrect();
           } else {
