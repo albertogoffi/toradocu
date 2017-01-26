@@ -48,10 +48,6 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
     test("com.google.common.collect.Iterators", 1.0, 0.6);
   }
 
-  public void testOrdering() throws Exception {
-    test("com.google.common.collect.Ordering", 1.0, 1.0);
-  }
-
   @Test
   public void testBloomFilter() throws Exception {
     test("com.google.common.hash.BloomFilter", 1.0, 0.5);
