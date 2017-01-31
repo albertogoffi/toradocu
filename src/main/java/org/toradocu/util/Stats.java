@@ -134,11 +134,11 @@ public class Stats {
       if (expectedMethodTags.length != actualMethodTags.length) {
         throw new IllegalArgumentException(
             "The number of @throws ("
-                + expectedMethodTags.length
+                + actualMethodTags.length
                 + ") of method "
                 + actualMethod
                 + " is different than expected ("
-                + actualMethodTags.length
+                + expectedMethodTags.length
                 + ")");
       }
 
