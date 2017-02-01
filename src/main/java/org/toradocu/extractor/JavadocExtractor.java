@@ -68,13 +68,16 @@ public final class JavadocExtractor {
       // List that will contain all the paramTags in the method
       List<Tag> paramTags = new ArrayList<>();
 
+      // Map parameter name -> @param tag
+      Map<String, Tag> paramTagsMap = new LinkedHashMap<>();
+
       // Collect tags in the current method's documentation. This is needed because DocFinder.search
       // does not load tags of a method when the method overrides a superclass' method also
       // overwriting the Javadoc documentation.
       Collections.addAll(throwsTags, member.tags("@throws"));
       Collections.addAll(throwsTags, member.tags("@exception"));
       // Param tag support
-      Collections.addAll(paramTags, member.tags("@param"));
+      paramTagsMap.putAll(getParamTags(member.tags("@param")));
 
       Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
 
@@ -82,9 +85,7 @@ public final class JavadocExtractor {
       // overriding another one).
       Collections.addAll(throwsTags, holder.tags("@throws"));
       Collections.addAll(throwsTags, holder.tags("@exception"));
-      if (member.getRawCommentText().isEmpty()) {
-        Collections.addAll(paramTags, holder.tags("@param"));
-      }
+      paramTagsMap.putAll(getParamTags(holder.tags("@param")));
 
       // Collect tags from method definitions in interfaces. This is not done by DocFinder.search
       // (at least in the way we use it).
@@ -94,7 +95,8 @@ public final class JavadocExtractor {
         for (MethodDoc implementedMethod : implementedMethods.build()) {
           Collections.addAll(throwsTags, implementedMethod.tags("@throws"));
           Collections.addAll(throwsTags, implementedMethod.tags("@exception"));
-          Collections.addAll(paramTags, implementedMethod.tags("@param"));
+          //param
+          paramTagsMap.putAll(getParamTags(implementedMethod.tags("@param")));
         }
       }
 
@@ -134,6 +136,7 @@ public final class JavadocExtractor {
       }
 
       // List that will contain the ParamTags of the method
+      paramTags.addAll(paramTagsMap.values());
       List<ParamTag> memberParamTags = new ArrayList<>();
       for (Tag tag : paramTags) { //For each of the tags in paramTags
         if (!(tag instanceof com.sun.javadoc.ParamTag)) { //If it is not an instanceof ParamTag
@@ -352,5 +355,21 @@ public final class JavadocExtractor {
     }
     // If fully qualified exception's name cannot be collected from import statements, return the simple name
     return exceptionName;
+  }
+
+  /**
+   * Given a set of @{code ParamTag} tags, returns a map that associates a parameter with its
+   * {@code @param} comment. The key of the map is the parameter name.
+   *
+   * @param tags an array of {@code ParamTag}s
+   * @return a map, parameter name -> @param comment
+   */
+  private Map<String, Tag> getParamTags(Tag[] tags) {
+    Map<String, Tag> paramTags = new LinkedHashMap<>();
+    for (Tag tag : tags) {
+      com.sun.javadoc.ParamTag paramTag = (com.sun.javadoc.ParamTag) tag;
+      paramTags.putIfAbsent(paramTag.parameterName(), paramTag);
+    }
+    return paramTags;
   }
 }
