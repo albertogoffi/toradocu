@@ -20,4 +20,14 @@ public class AChild extends AClass {
     // TODO Auto-generated method stub
     return 0;
   }
+
+  @Override
+  public double testParam(double x, double y) {
+    return 0;
+  }
+
+  /** @see example.AClass#testParam2 */
+  public double testParam2(double x, double y) {
+    return 0;
+  }
 }

@@ -28,7 +28,7 @@ public class JavadocExtractorTest {
   private final Type objectArrayType = new Type("java.lang.Object[]");
   private final Type npe = new Type("java.lang.NullPointerException");
   private final Type iae = new Type("java.lang.IllegalArgumentException");
-  private final Logger LOG = LoggerFactory.getLogger(JavadocExtractorTest.class);
+  private final Logger log = LoggerFactory.getLogger(JavadocExtractorTest.class);
 
   /**
    * Tests {@code JavadocExtractor} on the example class example.AClass in
@@ -37,49 +37,100 @@ public class JavadocExtractorTest {
   @Test
   public void exampleAClassTest() {
     List<Parameter> params = new ArrayList<>();
-    List<ThrowsTag> tags = new ArrayList<>();
+    List<ThrowsTag> throwsTags = new ArrayList<>();
     List<ParamTag> paramTags = new ArrayList<>();
     List<DocumentedMethod> expected = new ArrayList<>();
     Type aClass = new Type("example.AClass");
-    //First method
-    tags.add(new ThrowsTag(npe, "always"));
-    expected.add(new DocumentedMethod(aClass, "AClass", null, null, null, false, tags));
-    //Second method
+
+    // Method: AClass().
+    params.clear();
+    paramTags.clear();
+    throwsTags.clear();
+    throwsTags.add(new ThrowsTag(npe, "always"));
+    expected.add(new DocumentedMethod(aClass, "AClass", null, null, null, false, throwsTags));
+
+    // Method: AClass(String).
+    params.clear();
+    paramTags.clear();
+    throwsTags.clear();
     params.add(new Parameter(new Type("java.lang.String"), "x"));
-    tags.clear();
-    tags.add(new ThrowsTag(npe, "if x is null"));
-    tags.add(new ThrowsTag(new Type("example.exception.AnException"), "if x is empty"));
+    throwsTags.add(new ThrowsTag(npe, "if x is null"));
+    throwsTags.add(new ThrowsTag(new Type("example.exception.AnException"), "if x is empty"));
     paramTags.add(
         new ParamTag(
             new Parameter(new Type("java.lang.String"), "x"), "must not be null nor empty"));
+    expected.add(
+        new DocumentedMethod(aClass, "AClass", null, params, paramTags, false, throwsTags));
 
-    expected.add(new DocumentedMethod(aClass, "AClass", null, params, paramTags, false, tags));
-    //Third method
+    // Method: foo(int[])
     params.clear();
-    params.add(new Parameter(new Type("int[]"), "array", true));
-    tags.clear();
-    tags.add(new ThrowsTag(npe, "if array is null"));
     paramTags.clear();
-    paramTags.add(
-        new ParamTag(new Parameter(new Type("int[]"), "array", true), "must not be null"));
-    expected.add(new DocumentedMethod(aClass, "foo", doubleType, params, paramTags, false, tags));
-    //Fourth
+    throwsTags.clear();
+    Parameter par1 = new Parameter(new Type("int[]"), "array", true);
+    params.add(par1);
+    paramTags.add(new ParamTag(par1, "must not be null"));
+    throwsTags.add(new ThrowsTag(npe, "if array is null"));
+    expected.add(
+        new DocumentedMethod(aClass, "foo", doubleType, params, paramTags, false, throwsTags));
+
+    // Method: bar(Object, Object).
     params.clear();
+    paramTags.clear();
+    throwsTags.clear();
     params.add(new Parameter(objectType, "x", false));
     params.add(new Parameter(objectType, "y", false));
-    tags.clear();
-    tags.add(new ThrowsTag(iae, "if x is null"));
-    paramTags.clear();
+    throwsTags.add(new ThrowsTag(iae, "if x is null"));
     paramTags.add(new ParamTag(new Parameter(objectType, "x", false), "must not be null"));
-    expected.add(new DocumentedMethod(aClass, "bar", doubleType, params, paramTags, false, tags));
-    //Fifth
+    expected.add(
+        new DocumentedMethod(aClass, "bar", doubleType, params, paramTags, false, throwsTags));
+
+    // Method: baz(Object).
     params.clear();
-    params.add(new Parameter(objectType, "x"));
-    tags.clear();
-    tags.add(new ThrowsTag(iae, "if x is null"));
     paramTags.clear();
+    throwsTags.clear();
+    params.add(new Parameter(objectType, "x"));
+    throwsTags.add(new ThrowsTag(iae, "if x is null"));
     paramTags.add(new ParamTag(new Parameter(objectType, "x"), "must not be null"));
-    expected.add(new DocumentedMethod(aClass, "baz", doubleType, params, paramTags, false, tags));
+    expected.add(
+        new DocumentedMethod(aClass, "baz", doubleType, params, paramTags, false, throwsTags));
+
+    // Method: testParam(double, double)
+    params.clear();
+    paramTags.clear();
+    throwsTags.clear();
+    params.add(new Parameter(doubleType, "x"));
+    params.add(new Parameter(doubleType, "y"));
+    paramTags.add(
+        new ParamTag(new Parameter(doubleType, "x"), "the first number, must be positive"));
+    paramTags.add(
+        new ParamTag(new Parameter(doubleType, "y"), "the second number, must be " + "positive"));
+    expected.add(
+        new DocumentedMethod(
+            aClass, "testParam", doubleType, params, paramTags, false, throwsTags));
+
+    // Method: testParam2(double, double)
+    params.clear();
+    paramTags.clear();
+    throwsTags.clear();
+    params.add(new Parameter(doubleType, "x"));
+    params.add(new Parameter(doubleType, "y"));
+    paramTags.add(
+        new ParamTag(new Parameter(doubleType, "x"), "the first number, must be positive"));
+    paramTags.add(
+        new ParamTag(new Parameter(doubleType, "y"), "the second number, must be " + "positive"));
+    expected.add(
+        new DocumentedMethod(
+            aClass, "testParam2", doubleType, params, paramTags, false, throwsTags));
+
+    // Method: testParam3(double)
+    params.clear();
+    paramTags.clear();
+    throwsTags.clear();
+    params.add(new Parameter(doubleType, "x"));
+    paramTags.add(new ParamTag(new Parameter(doubleType, "x"), "must be positive"));
+    expected.add(
+        new DocumentedMethod(
+            aClass, "testParam3", doubleType, params, paramTags, false, throwsTags));
 
     test(
         "example.AClass",
@@ -95,47 +146,130 @@ public class JavadocExtractorTest {
   @Test
   public void exampleAChildTest() {
     List<Parameter> params = new ArrayList<>();
-    List<ThrowsTag> tags = new ArrayList<>();
+    List<ThrowsTag> throwsTags = new ArrayList<>();
     List<ParamTag> paramTags = new ArrayList<>();
     List<DocumentedMethod> expected = new ArrayList<>();
     Type aClass = new Type("example.AClass");
     Type aChild = new Type("example.AChild");
 
+    // Method: baz(Object)
+    params.clear();
+    paramTags.clear();
+    throwsTags.clear();
     params.add(new Parameter(objectType, "z"));
-    tags.add(new ThrowsTag(iae, "if z is null"));
+    throwsTags.add(new ThrowsTag(iae, "if z is null"));
     paramTags.add(new ParamTag(new Parameter(objectType, "z"), "must not be null"));
-    expected.add(new DocumentedMethod(aChild, "baz", doubleType, params, paramTags, false, tags));
+    expected.add(
+        new DocumentedMethod(aChild, "baz", doubleType, params, paramTags, false, throwsTags));
 
+    // Method: vararg(Object...)
     params.clear();
+    paramTags.clear();
+    throwsTags.clear();
     params.add(new Parameter(objectArrayType, "x"));
-    tags.clear();
-    tags.add(new ThrowsTag(iae, "if x is null"));
-    paramTags.clear();
+    throwsTags.add(new ThrowsTag(iae, "if x is null"));
     paramTags.add(new ParamTag(new Parameter(objectArrayType, "x"), "must not be null"));
-    expected.add(new DocumentedMethod(aChild, "vararg", doubleType, params, null, true, tags));
+    expected.add(
+        new DocumentedMethod(aChild, "vararg", doubleType, params, paramTags, true, throwsTags));
 
+    // Method: testParam(double, double)
     params.clear();
-    params.add(new Parameter(new Type("int[]"), "array", true));
-    tags.clear();
-    tags.add(new ThrowsTag(npe, "if array is null"));
     paramTags.clear();
+    throwsTags.clear();
+    params.add(new Parameter(doubleType, "x"));
+    params.add(new Parameter(doubleType, "y"));
     paramTags.add(
-        new ParamTag(new Parameter(new Type("int[]"), "array", true), "must not be null"));
-    expected.add(new DocumentedMethod(aClass, "foo", doubleType, params, paramTags, false, tags));
+        new ParamTag(new Parameter(doubleType, "x"), "the first number, must be positive"));
+    paramTags.add(
+        new ParamTag(new Parameter(doubleType, "y"), "the second number, must be " + "positive"));
+    expected.add(
+        new DocumentedMethod(
+            aChild, "testParam", doubleType, params, paramTags, false, throwsTags));
 
+    // Method: testParam2(double, double)
     params.clear();
+    paramTags.clear();
+    throwsTags.clear();
+    params.add(new Parameter(doubleType, "x"));
+    params.add(new Parameter(doubleType, "y"));
+    paramTags.add(
+        new ParamTag(new Parameter(doubleType, "x"), "the first number, must be positive"));
+    paramTags.add(
+        new ParamTag(new Parameter(doubleType, "y"), "the second number, must be " + "positive"));
+    expected.add(
+        new DocumentedMethod(
+            aChild, "testParam2", doubleType, params, paramTags, false, throwsTags));
+
+    // Method: AClass.foo(int[])
+    params.clear();
+    paramTags.clear();
+    throwsTags.clear();
+    Parameter par1 = new Parameter(new Type("int[]"), "array", true);
+    params.add(par1);
+    throwsTags.add(new ThrowsTag(npe, "if array is null"));
+    paramTags.add(new ParamTag(par1, "must not be null"));
+    expected.add(
+        new DocumentedMethod(aClass, "foo", doubleType, params, paramTags, false, throwsTags));
+
+    // Method: AClass.bar(Object, Object).
+    params.clear();
+    paramTags.clear();
+    throwsTags.clear();
     params.add(new Parameter(objectType, "x", false));
     params.add(new Parameter(objectType, "y", false));
-    tags.clear();
-    tags.add(new ThrowsTag(iae, "if x is null"));
-    paramTags.clear();
+    throwsTags.add(new ThrowsTag(iae, "if x is null"));
     paramTags.add(new ParamTag(new Parameter(objectType, "x", false), "must not be null"));
-    expected.add(new DocumentedMethod(aClass, "bar", doubleType, params, null, false, tags));
+    expected.add(
+        new DocumentedMethod(aClass, "bar", doubleType, params, paramTags, false, throwsTags));
+
+    // Method: AClass.testParam3(double)
+    params.clear();
+    paramTags.clear();
+    throwsTags.clear();
+    params.add(new Parameter(doubleType, "x"));
+    paramTags.add(new ParamTag(new Parameter(doubleType, "x"), "must be positive"));
+    expected.add(
+        new DocumentedMethod(
+            aClass, "testParam3", doubleType, params, paramTags, false, throwsTags));
 
     test(
         "example.AChild",
         expected,
         testResources + "/example.AChild_extractor_output.txt",
+        testResources);
+  }
+
+  @Test
+  public void paramInheritanceInAbstractClassTest() {
+    List<Parameter> params = new ArrayList<>();
+    List<ThrowsTag> throwsTags = new ArrayList<>();
+    List<ParamTag> paramTags = new ArrayList<>();
+    List<DocumentedMethod> expected = new ArrayList<>();
+    Type abstractClass = new Type("example.AbstractClass");
+
+    Parameter par1 = new Parameter(new Type("V"), "sourceVertex");
+    Parameter par2 = new Parameter(new Type("V"), "targetVertex");
+
+    params.add(par1);
+    params.add(par2);
+
+    paramTags.add(new ParamTag(par1, "source vertex of the edge."));
+    paramTags.add(new ParamTag(par2, "target vertex of the edge."));
+
+    expected.add(
+        new DocumentedMethod(
+            abstractClass,
+            "containsEdge",
+            new Type("boolean"),
+            params,
+            paramTags,
+            false,
+            throwsTags));
+
+    test(
+        "example.AbstractClass",
+        expected,
+        testResources + "/example.AbstractClass_extractor_output.txt",
         testResources);
   }
 
@@ -162,14 +296,20 @@ public class JavadocExtractorTest {
     Path ouputFilePath = Paths.get(actualOutput);
     try (BufferedReader reader = Files.newBufferedReader(ouputFilePath)) {
       List<DocumentedMethod> actual = gson.fromJson(reader, listType);
-      assertThat(actual.toString(), is(equalTo(expected.toString())));
+      assertThat(actual.size(), is(equalTo(expected.size())));
+
+      for (int i = 0; i < actual.size(); i++) {
+        DocumentedMethod actualValue = actual.get(i);
+        DocumentedMethod expectedValue = expected.get(i);
+        assertThat(actualValue, is(equalTo(expectedValue)));
+      }
     } catch (IOException e) {
       fail(e.getMessage());
     }
     try {
       Files.delete(ouputFilePath);
     } catch (IOException e) {
-      LOG.error("Error deleting the file: " + ouputFilePath);
+      log.error("Error deleting the file: " + ouputFilePath);
     }
   }
 }

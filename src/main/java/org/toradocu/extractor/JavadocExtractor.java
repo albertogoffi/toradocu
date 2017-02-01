@@ -164,6 +164,7 @@ public final class JavadocExtractor {
 
         String name = null; //Name of the ParamTag that we'll introduce
         org.toradocu.extractor.Type type = null; //type of the parameter of the ParamTag
+        Boolean nullable = null; // Nullability of the parameter.
 
         boolean found = false; //Boolean for control
         for (int i = 0; !found && i < parameters.size(); i++) {
@@ -173,6 +174,7 @@ public final class JavadocExtractor {
             found = true;
             name = parameters.get(i).getName(); //then we assign values to the variables
             type = parameters.get(i).getType();
+            nullable = parameters.get(i).getNullability();
           }
         }
 
@@ -182,8 +184,7 @@ public final class JavadocExtractor {
                   + " this param tag does not have a name that matches any of the parameters in "
                   + "the method.");
         } else { //if not, then, the variables will have the value we want
-
-          ParamTag tagToProcess = new ParamTag(new Parameter(type, name), comment);
+          ParamTag tagToProcess = new ParamTag(new Parameter(type, name, nullable), comment);
           memberParamTags.add(tagToProcess); //And then, we'll add it in the list we had before
         }
       }

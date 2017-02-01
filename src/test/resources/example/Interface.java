@@ -15,4 +15,11 @@ public interface Interface {
   public double bar(Object x, Object y);
 
   public double baz(Object x);
+
+  /**
+   * Method to test @param inheritance.
+   *
+   * @param x must be positive
+   */
+  public double testParam3(double x);
 }

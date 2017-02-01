@@ -5,6 +5,8 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
 import org.junit.Test;
 
 public class ParamTagTest {
@@ -55,5 +57,17 @@ public class ParamTagTest {
 
     ParamTag tag4 = new ParamTag(new Parameter(new Type("int"), "element"), "must not be null");
     assertThat(tag1.equals(tag4), is(false));
+  }
+
+  @Test
+  public void testHashCode() {
+    ParamTag tag1 = new ParamTag(new Parameter(new Type("int"), "elements"), "must not be null");
+    ParamTag tag2 = new ParamTag(new Parameter(new Type("int"), "elements"), "must not be null");
+    Set<ParamTag> set1 = new LinkedHashSet<>();
+    Set<ParamTag> set2 = new LinkedHashSet<>();
+    set1.add(tag1);
+    set2.add(tag2);
+
+    assertThat(set1, is(equalTo(set2)));
   }
 }

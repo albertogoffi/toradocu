@@ -48,4 +48,30 @@ public class AClass implements Interface {
     // TODO Auto-generated method stub
     return 0;
   }
+
+  /**
+   * Method to test @param inheritance
+   *
+   * @param x the first number, must be positive
+   * @param y the second number, must be positive
+   */
+  public double testParam(double x, double y) {
+    return 0;
+  }
+
+  /**
+   * Another method to test @param inheritance
+   *
+   * @param x the first number, must be positive
+   * @param y the second number, must be positive
+   */
+  public double testParam2(double x, double y) {
+    return 0;
+  }
+
+  /** @see example.Interface#testParam3(double) */
+  @Override
+  public double testParam3(double x) {
+    return 0;
+  }
 }
