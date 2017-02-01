@@ -298,14 +298,16 @@ public class Toradocu {
         int typedTagIndex;
         if (condition.isPresent() && !condition.get().isEmpty()) {
           conditionsClass.append("\n// ").append(method);
-          conditionsClass.append("\npublic static boolean m").append(methodIndex);
+          conditionsClass.append("\npublic static boolean m");
+          StringBuilder methodSuffix = new StringBuilder();
+          methodSuffix.append(methodIndex);
           switch (tag.getKind()) {
             case PARAM:
-              conditionsClass.append("_p");
+              methodSuffix.append("_p");
               typedTagIndex = paramTags.indexOf(tag);
               break;
             case THROWS:
-              conditionsClass.append("_t");
+              methodSuffix.append("_t");
               typedTagIndex = throwsTags.indexOf(tag);
               break;
             default:
@@ -317,13 +319,16 @@ public class Toradocu {
                     + "positive value, but actual value was "
                     + typedTagIndex);
           }
+          methodSuffix.append(typedTagIndex);
+          String suffix = methodSuffix.toString();
+          String receiverName = "receiver" + suffix;
           conditionsClass
-              .append(typedTagIndex)
-              .append(buildConditionSignatureString(method) + " {")
+              .append(suffix)
+              .append(buildConditionSignatureString(method, receiverName) + " {")
               .append("\n// ")
               .append(tag);
           String conditionString =
-              MethodChangerVisitor.convertToParamNames(condition.get(), method);
+              MethodChangerVisitor.convertToParamNames(condition.get(), method, receiverName);
           conditionsClass.append("\nreturn ").append(conditionString).append(";").append("}");
         }
       }
@@ -339,9 +344,10 @@ public class Toradocu {
     }
   }
 
-  private static String buildConditionSignatureString(DocumentedMethod method) {
+  private static String buildConditionSignatureString(
+      DocumentedMethod method, String receiverName) {
     StringBuilder signatureBuilder = new StringBuilder("(");
-    signatureBuilder.append(method.getContainingClass()).append(" target");
+    signatureBuilder.append(method.getContainingClass()).append(" ").append(receiverName);
     if (method.getParameters().size() > 0) {
       signatureBuilder.append(",");
     }
