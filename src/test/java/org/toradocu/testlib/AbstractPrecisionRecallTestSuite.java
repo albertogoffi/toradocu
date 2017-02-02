@@ -5,8 +5,10 @@ import static org.junit.Assert.assertThat;
 
 import java.io.File;
 import java.io.IOException;
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.toradocu.Toradocu;
 import org.toradocu.extractor.Tag;
 import org.toradocu.util.Stats;
 
@@ -79,6 +81,11 @@ public abstract class AbstractPrecisionRecallTestSuite {
             + String.format("%.2f", testSuiteStats.getPrecision(Tag.Kind.THROWS))
             + "\nAverage recall on @throws: "
             + String.format("%.2f", testSuiteStats.getRecall(Tag.Kind.THROWS)));
+  }
+
+  @After
+  public void clearToradocuMethods() {
+    Toradocu.clearMethods();
   }
 
   /**

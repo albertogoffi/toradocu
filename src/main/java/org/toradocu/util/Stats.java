@@ -44,6 +44,7 @@ public class Stats {
   /**
    * Returns the recall for the specified tag kind.
    *
+   * @param kind the kind of the tag
    * @return the recall for the specified {@code Tag.Kind}
    */
   public double getRecall(Tag.Kind kind) {
@@ -299,6 +300,7 @@ public class Stats {
    * @param targetClass the class for which collect statistics
    * @param actualMethodList methods with tags translated by Toradocu
    * @param expectedMethodList methods with tags manually translated
+   * @param output the output message to be populated
    * @throws IllegalArgumentException if {@code actualMethodList} and {@code expectedMethodList} are
    *     not of the same size
    * @return statistics for each method of the given lists, aggregated per class

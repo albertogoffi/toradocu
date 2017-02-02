@@ -235,7 +235,7 @@ public class Toradocu {
     // Needed for testing: multiple executions (tests) of Toradocu run in the same JVM.
     // This can be improved making {@code methods} non-static and changing the way Toradocu
     // interacts with the javadoc tool.
-    methods.clear();
+    clearMethods();
   }
 
   /**
@@ -404,6 +404,15 @@ public class Toradocu {
     }
     JavadocExtractor extractor = new JavadocExtractor(docletConfiguration);
     methods.addAll(extractor.extract(classDoc));
+  }
+
+  /**
+   * Clears the list of methods that are extracted and processed by Toradocu. This method is used
+   * when multiple sequential Toradocu executions are performed (e.g., during the precision/recall
+   * test suite execution).
+   */
+  public static void clearMethods() {
+    methods.clear();
   }
 
   /** Deletes any temporary files created by Toradocu to store Javadoc output. */
