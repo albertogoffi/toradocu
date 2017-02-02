@@ -141,8 +141,7 @@ public class Configuration {
 
   @Parameter(
     names = "--export-conditions",
-    description =
-        "Path to folder where to export comment translations as Java boolean " + "conditions.",
+    description = "Path to folder where to export comment translations as Java boolean conditions.",
     converter = FileConverter.class,
     hidden = true
   )
