@@ -1,7 +1,5 @@
 package org.toradocu.testlib;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 import com.google.gson.reflect.TypeToken;
@@ -17,19 +15,13 @@ import java.util.Collection;
 import java.util.List;
 import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
-import org.toradocu.extractor.ThrowsTag;
 import org.toradocu.util.GsonInstance;
 import org.toradocu.util.Stats;
 
 /**
  * PrecisionRecallTest contains static methods to perform a precision recall test using Toradocu.
  */
-public class PrecisionRecallTest {
-
-  public static Stats test(
-      String targetClass, String srcPath, String binPath, String goalOutputDir) {
-    return computePrecisionAndRecall(targetClass, srcPath, binPath, goalOutputDir);
-  }
+class PrecisionRecallTest {
 
   /**
    * Runs Toradocu on the given class and collects data on its precision and recall.
@@ -106,57 +98,9 @@ public class PrecisionRecallTest {
       Type collectionType = new TypeToken<Collection<DocumentedMethod>>() {}.getType();
       List<DocumentedMethod> actualResult = GsonInstance.gson().fromJson(outFile, collectionType);
       List<DocumentedMethod> goalResult = GsonInstance.gson().fromJson(goalFile, collectionType);
-
-      assertThat(actualResult.size(), is(goalResult.size()));
-
-      Stats result = new Stats(targetClass);
-      for (int methodIndex = 0; methodIndex < goalResult.size(); methodIndex++) {
-        DocumentedMethod method = goalResult.get(methodIndex);
-        ThrowsTag[] goalMethodTags = method.throwsTags().toArray(new ThrowsTag[0]);
-        ThrowsTag[] actualMethodTags =
-            actualResult.get(methodIndex).throwsTags().toArray(new ThrowsTag[0]);
-        assertThat(goalMethodTags.length, is(actualMethodTags.length));
-        StringBuilder methodReport = new StringBuilder(method.getSignature() + ":\n");
-        boolean errors = false;
-
-        for (int tagIndex = 0; tagIndex < goalMethodTags.length; tagIndex++) {
-          ThrowsTag goalTag = goalMethodTags[tagIndex];
-          ThrowsTag actualTag = actualMethodTags[tagIndex];
-
-          String goalCondition = goalTag.getCondition().get();
-          String actualCondition = actualTag.getCondition().get();
-
-          // Empty goal conditions are ignored and have no effects on precision and recall.
-          if (!goalCondition.isEmpty()) {
-            if (goalCondition.equals(actualCondition)) {
-              result.addCorrectTranslation();
-            } else {
-              errors = true;
-              if (actualCondition.isEmpty()) {
-                result.addMissingTranslation();
-                methodReport.append("Empty condition. Comment: " + goalTag.getComment());
-              } else {
-                result.addWrongTranslation();
-                methodReport.append("Wrong condition. Comment: " + goalTag.getComment());
-              }
-              methodReport.append(
-                  " | Goal condition: "
-                      + goalCondition
-                      + ". Actual condition: "
-                      + actualCondition
-                      + "\n");
-            }
-          }
-        }
-
-        if (errors) {
-          report.append(methodReport.toString());
-        }
-      }
-
-      report.append(result);
+      final Stats stats = Stats.getStats(targetClass, actualResult, goalResult, report);
       System.out.println(report);
-      return result;
+      return stats;
     } catch (IOException e) {
       e.printStackTrace();
       fail(e.getMessage());

@@ -177,7 +177,7 @@ public class Toradocu {
               GsonInstance.gson().fromJson(reader, collectionType);
           List<Stats> targetClassResults = Stats.getStats(methods, expectedResult);
           for (Stats result : targetClassResults) {
-            if (result.getNumberOfConditions() != 0) { // Ignore methods with no @throws tag
+            if (result.numberOfConditions() != 0) { // Ignore methods with no tags.
               resultsFile.write(result.asCSV());
               resultsFile.newLine();
             }
