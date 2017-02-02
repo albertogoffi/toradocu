@@ -18,36 +18,36 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testArrayStack() throws Exception {
-    test("org.apache.commons.collections4.ArrayStack", 1.0, 0.75);
+    test("org.apache.commons.collections4.ArrayStack", 1, 0.75, 1, 1);
   }
 
   @Test
   public void testBagUtils() throws Exception {
-    test("org.apache.commons.collections4.BagUtils", 1.0, 1.0);
+    test("org.apache.commons.collections4.BagUtils", 1, 1, 1, 1);
   }
 
   @Test
   public void testClosureUtils() throws Exception {
-    test("org.apache.commons.collections4.ClosureUtils", 1.0, 0.695);
+    test("org.apache.commons.collections4.ClosureUtils", 1, 0.695, 1, 1);
   }
 
   @Test
   public void testCollectionUtils() throws Exception {
-    test("org.apache.commons.collections4.CollectionUtils", 0.964, 0.870);
+    test("org.apache.commons.collections4.CollectionUtils", 0.964, 0.870, 1, 1);
   }
 
   @Test
   public void testQueueUtils() throws Exception {
-    test("org.apache.commons.collections4.QueueUtils", 1.0, 1.0);
+    test("org.apache.commons.collections4.QueueUtils", 1, 1, 1, 1);
   }
 
   @Test
   public void testPredicateUtils() throws Exception {
-    test("org.apache.commons.collections4.PredicateUtils", 0.84, 0.724);
+    test("org.apache.commons.collections4.PredicateUtils", 0.84, 0.724, 1, 1);
   }
 
   @Test
   public void testFixedOrderComparator() throws Exception {
-    test("org.apache.commons.collections4.comparators.FixedOrderComparator", 1.0, 0.571);
+    test("org.apache.commons.collections4.comparators.FixedOrderComparator", 1, 0.571, 1, 1);
   }
 }

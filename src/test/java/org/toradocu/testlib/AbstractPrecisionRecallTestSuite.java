@@ -5,8 +5,11 @@ import static org.junit.Assert.assertThat;
 
 import java.io.File;
 import java.io.IOException;
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.toradocu.Toradocu;
+import org.toradocu.extractor.Tag;
 import org.toradocu.util.Stats;
 
 /**
@@ -66,40 +69,60 @@ public abstract class AbstractPrecisionRecallTestSuite {
   /** Prints the results (i.e. statistics) of the test suite. */
   @AfterClass
   public static void tearDown() {
-    testSuiteStats.computeResults();
     System.out.println(
         "=== Test Suite ==="
             + "\nNumber of conditions: "
             + testSuiteStats.getTotalNumConditions()
-            + "\nAverage precision: "
-            + String.format("%.2f", testSuiteStats.getPrecision())
-            + ", Std deviation: "
-            + String.format("%.2f", testSuiteStats.getPrecisionStdDeviation())
-            + "\nAverage recall: "
-            + String.format("%.2f", testSuiteStats.getRecall())
-            + ", Std deviation: "
-            + String.format("%.2f", testSuiteStats.getRecallStdDeviation())
-            + "\nF-measure: "
-            + String.format("%.2f", testSuiteStats.getFMeasure()));
+            + "\nAverage precision on @param: "
+            + String.format("%.2f", testSuiteStats.getPrecision(Tag.Kind.PARAM))
+            + "\nAverage recall on @param: "
+            + String.format("%.2f", testSuiteStats.getRecall(Tag.Kind.PARAM))
+            + "\nAverage precision on @throws: "
+            + String.format("%.2f", testSuiteStats.getPrecision(Tag.Kind.THROWS))
+            + "\nAverage recall on @throws: "
+            + String.format("%.2f", testSuiteStats.getRecall(Tag.Kind.THROWS)));
+  }
+
+  @After
+  public void clearToradocuMethods() {
+    Toradocu.clearMethods();
   }
 
   /**
-   * Computes precision and recall for the given target class and tests that precision and recall
-   * are as expected for the given target class.
+   * Computes precision and recall for the given target class and checks that precision and recall
+   * are as expected for the given target class (for both @param and @throws tags).
    *
    * @param targetClass the fully qualified name of the class on which to run the test
-   * @param precision the expected precision
-   * @param recall the expected recall
+   * @param throwsPrecision the expected precision for @throws tag translations
+   * @param throwsRecall the expected recall for @throws tag translations
+   * @param paramPrecision the expected precision for @param tag translations
+   * @param paramRecall the expected recall for @param tag translations
    */
-  protected void test(String targetClass, double precision, double recall) {
-    Stats stats =
+  protected void test(
+      String targetClass,
+      double throwsPrecision,
+      double throwsRecall,
+      double paramPrecision,
+      double paramRecall) {
+    final Stats stats =
         PrecisionRecallTest.computePrecisionAndRecall(
             targetClass, sourceDirPath, binDirPath, goalOutputDirPath);
     testSuiteStats.addStats(stats);
     assertThat(
-        "Precision is different than expected",
-        stats.getPrecision(),
-        closeTo(precision, PRECISION));
-    assertThat("Recall is different than expected", stats.getRecall(), closeTo(recall, PRECISION));
+        "@throws precision is different than expected",
+        stats.getPrecision(Tag.Kind.THROWS),
+        closeTo(throwsPrecision, PRECISION));
+    assertThat(
+        "@throws recall is different than expected",
+        stats.getRecall(Tag.Kind.THROWS),
+        closeTo(throwsRecall, PRECISION));
+    assertThat(
+        "@param precision is different than expected",
+        stats.getPrecision(Tag.Kind.PARAM),
+        closeTo(paramPrecision, PRECISION));
+    assertThat(
+        "@param recall is different than expected",
+        stats.getRecall(Tag.Kind.PARAM),
+        closeTo(paramRecall, PRECISION));
   }
 }
