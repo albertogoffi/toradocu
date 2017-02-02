@@ -14,7 +14,7 @@ import org.toradocu.util.Reflection;
  * The {@code Matcher} class translates subjects and predicates in Javadoc comments to Java
  * expressions containing Java code elements.
  */
-public class Matcher {
+class Matcher {
 
   /**
    * Represents the threshold for the edit distance above which {@code CodeElement}s are considered
@@ -31,7 +31,7 @@ public class Matcher {
    * @param method the {@code DocumentedMethod} that the subject was extracted from
    * @return a set of {@code CodeElement}s that have a similar name to the subject
    */
-  public static Set<CodeElement<?>> subjectMatch(String subject, DocumentedMethod method) {
+  static Set<CodeElement<?>> subjectMatch(String subject, DocumentedMethod method) {
     // Extract every CodeElement associated with the method and the containing class of the method.
     Set<CodeElement<?>> codeElements = JavaElementsCollector.collect(method);
 
@@ -57,7 +57,7 @@ public class Matcher {
    * @param method the {@code DocumentedMethod} that the subject was extracted from
    * @return the {@code CodeElement} that has a similar name to the container
    */
-  public static CodeElement<?> containerMatch(String container, DocumentedMethod method) {
+  static CodeElement<?> containerMatch(String container, DocumentedMethod method) {
     final Set<CodeElement<?>> containers = subjectMatch(container, method);
     return !containers.isEmpty() ? containers.iterator().next() : null;
   }
@@ -99,7 +99,7 @@ public class Matcher {
    * @return the translation (to a Java expression) of the predicate with the given subject and
    *     predicate, or null if no translation found
    */
-  public static String predicateMatch(
+  static String predicateMatch(
       DocumentedMethod method, CodeElement<?> subject, String predicate, boolean negate) {
 
     // Special case to handle predicates about arrays' length. We need a more general solution.
@@ -111,7 +111,7 @@ public class Matcher {
     }
 
     // General case
-    String match = simpleMatch(predicate);
+    String match = simpleMatch(subject, predicate);
     if (match != null) {
       if (subject instanceof ContainerElementsCodeElement) {
         ContainerElementsCodeElement containerCodeElement = (ContainerElementsCodeElement) subject;
@@ -120,7 +120,7 @@ public class Matcher {
         match = subject.getJavaExpression() + match;
       }
     } else {
-      Set<CodeElement<?>> codeElements = null;
+      Set<CodeElement<?>> codeElements;
       if (subject instanceof ParameterCodeElement) {
         ParameterCodeElement paramCodeElement = (ParameterCodeElement) subject;
         codeElements =
@@ -240,11 +240,12 @@ public class Matcher {
    * Attempts to match the given predicate to a simple Java expression (i.e. one containing only
    * literals). The visibility of this method is {@code protected} for testing purposes.
    *
+   * @param subject
    * @param predicate the predicate to translate to a Java expression. Must not be {@code null}.
    * @return a Java expression translation of the given predicate or null if the predicate could not
    *     be matched
    */
-  protected static String simpleMatch(String predicate) {
+  private static String simpleMatch(CodeElement<?> subject, String predicate) {
     String verbs = "(is|are|be|is equal to|are equal to|equals to) ?";
 
     String predicates =
@@ -261,31 +262,54 @@ public class Matcher {
 
     java.util.regex.Matcher instanceOf = Pattern.compile("(instanceof) (.*)").matcher(predicate);
 
+    String predicateTranslation;
     if (isPattern.find()) {
       // Get the last group in the regular expression.
       String lastWord = isPattern.group(isPattern.groupCount());
-      if (lastWord.equals("true") || lastWord.equals("false") || lastWord.equals("null")) {
-        return "==" + lastWord;
-      } else if (lastWord.equals("this")) {
-        // The receiver object in the generated aspects.
-        return "==target";
-      } else if (lastWord.equals("zero")) {
-        return "==0";
-      } else if (lastWord.equals("positive") || lastWord.equals("strictly positive")) {
-        return ">0";
-      } else { // negative
-        return "<0";
+      switch (lastWord) {
+        case "true":
+        case "false":
+        case "null":
+          predicateTranslation = "==" + lastWord;
+          break;
+        case "this":
+          predicateTranslation = "==target"; // The receiver object in the generated aspects.
+          break;
+        case "zero":
+          predicateTranslation = "==0";
+          break;
+        case "positive":
+        case "strictly positive":
+          predicateTranslation = ">0";
+          break;
+        case "negative":
+        case "strictly negative":
+          predicateTranslation = "<0";
+          break;
+        default:
+          predicateTranslation = null;
       }
     } else if (isNotPattern.find()) {
       String word = isNotPattern.group(isNotPattern.groupCount());
-      if (word.equals("true") || word.equals("false") || word.equals("null")) {
-        return "!=" + word;
-      } else if (word.equals("zero")) {
-        return "!=0";
-      } else if (word.equals("positive") || word.equals("strictly positive")) {
-        return "<0";
-      } else { // not negative
-        return ">=0";
+      switch (word) {
+        case "true":
+        case "false":
+        case "null":
+          predicateTranslation = "!=" + word;
+          break;
+        case "zero":
+          predicateTranslation = "!=0";
+          break;
+        case "positive":
+        case "strictly positive":
+          predicateTranslation = "<0";
+          break;
+        case "negative":
+        case "strictly negative":
+          predicateTranslation = "<0";
+          break;
+        default:
+          predicateTranslation = null;
       }
     } else if (inequality.find()) {
       // Get the number from the last group of the regular expression.
@@ -295,16 +319,17 @@ public class Matcher {
       int number = Integer.parseInt(numberString);
       // relation is null in predicates without inequalities. For example "is 0".
       if (relation == null || relation.equals("=")) {
-        return "==" + number;
+        predicateTranslation = "==" + number;
       } else {
-        return relation + number;
+        predicateTranslation = relation + number;
       }
     } else if (predicate.equals("been set")) {
-      return "!=null";
+      predicateTranslation = "!=null";
     } else if (instanceOf.find()) {
-      return " instanceof " + instanceOf.group(2);
+      predicateTranslation = " instanceof " + instanceOf.group(2);
     } else {
-      return null;
+      predicateTranslation = null;
     }
+    return predicateTranslation;
   }
 }
