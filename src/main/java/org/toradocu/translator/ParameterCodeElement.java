@@ -54,4 +54,50 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
   public String buildJavaExpression() {
     return "args[" + index + "]";
   }
+
+  @Override
+  boolean isCompatibleWith(String predicateTranslation) {
+    final Parameter subject = getJavaCodeElement();
+    final Class<?> subjectType = subject.getType();
+
+    // Boolean or boolean
+    if (subjectType.equals(boolean.class) || subjectType.equals(Boolean.class)) {
+      return predicateTranslation.equals("==true") || predicateTranslation.equals("==false");
+    }
+
+    // Primitives and their wrappers (boolean excluded)
+    if (subjectType.isPrimitive()) {
+      return predicateTranslation.startsWith("<")
+          || predicateTranslation.startsWith("<=")
+          || predicateTranslation.startsWith(">")
+          || predicateTranslation.startsWith(">=")
+          || (predicateTranslation.startsWith("==") && !predicateTranslation.equals("==null"));
+    }
+    if (subjectType.equals(Byte.class)
+        || subjectType.equals(Short.class)
+        || subjectType.equals(Integer.class)
+        || subjectType.equals(Long.class)
+        || subjectType.equals(Float.class)
+        || subjectType.equals(Double.class)) {
+      return predicateTranslation.startsWith("<")
+          || predicateTranslation.startsWith("<=")
+          || predicateTranslation.startsWith(">")
+          || predicateTranslation.startsWith(">=")
+          || predicateTranslation.startsWith("==");
+    }
+
+    // Non-primitives
+    if (!subjectType.isPrimitive()
+        && !predicateTranslation.equals("==null")
+        && !predicateTranslation.equals("==target")
+        && (predicateTranslation.startsWith("==")
+            || predicateTranslation.startsWith("<")
+            || predicateTranslation.startsWith("<=")
+            || predicateTranslation.startsWith(">")
+            || predicateTranslation.startsWith(">="))) {
+      return false;
+    }
+
+    return true;
+  }
 }

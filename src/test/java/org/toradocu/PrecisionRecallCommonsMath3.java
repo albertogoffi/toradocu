@@ -87,7 +87,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testStepFunction() throws Exception {
-    test("org.apache.commons.math3.analysis.function.StepFunction", 0.333, 0.25, 1, 1);
+    test("org.apache.commons.math3.analysis.function.StepFunction", 0.666, 0.5, 1, 1);
   }
 
   @Test
@@ -102,7 +102,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testLinearInterpolator() throws Exception {
-    test("org.apache.commons.math3.analysis.interpolation.LinearInterpolator", 0, 0, 1, 1);
+    test("org.apache.commons.math3.analysis.interpolation.LinearInterpolator", 1, 0, 1, 1);
   }
 
   @Test
@@ -114,8 +114,8 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
   public void testPolynomialFunctionNewtonForm() throws Exception {
     test(
         "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
-        0.5,
-        0.333,
+        1,
+        0.666,
         1,
         1);
   }
@@ -157,12 +157,12 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testS2Point() throws Exception {
-    test("org.apache.commons.math3.geometry.spherical.twod.S2Point", 0, 0, 1, 1);
+    test("org.apache.commons.math3.geometry.spherical.twod.S2Point", 1, 0, 1, 1);
   }
 
   @Test
   public void testFieldRotation() throws Exception {
-    test("org.apache.commons.math3.geometry.euclidean.threed.FieldRotation", 0, 0, 1, 1);
+    test("org.apache.commons.math3.geometry.euclidean.threed.FieldRotation", 1, 0, 1, 1);
   }
 
   @Test

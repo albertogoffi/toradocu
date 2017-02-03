@@ -162,4 +162,20 @@ public abstract class CodeElement<T> {
   public String toString() {
     return getJavaExpression() + ": " + getIdentifiers();
   }
+
+  /**
+   * Checks whether the given predicate translation is compatible with this code element. For
+   * example, if this code element refers to a parameter of type boolean, the predicate translation
+   * "==0" would be incompatible, and this method would return false.
+   *
+   * <p>The default implementation of this method do nothing and returns true. To effectively
+   * perform a check, subclasses must override this method.
+   *
+   * @param predicateTranslation the translation of the predicate whose compatibility with this code
+   *     element hase to be checked
+   * @return true if the predicate translation is compatible, false otherwise
+   */
+  boolean isCompatibleWith(String predicateTranslation) {
+    return true;
+  }
 }

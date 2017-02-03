@@ -104,15 +104,25 @@ class Matcher {
 
     // Special case to handle predicates about arrays' length. We need a more general solution.
     if (subject.getJavaCodeElement().toString().contains("[]")) {
-      java.util.regex.Matcher pattern = Pattern.compile("has length ([0-9]+)").matcher(predicate);
-      if (pattern.find()) {
-        return subject.getJavaExpression() + ".length==" + Integer.parseInt(pattern.group(1));
+      final java.util.regex.Matcher lengthPatter =
+          Pattern.compile("has length ([0-9]+|zero)").matcher(predicate);
+      if (lengthPatter.find()) {
+        final String lengthString = lengthPatter.group(1);
+        final int length = lengthString.equals("zero") ? 0 : Integer.parseInt(lengthString);
+        return subject.getJavaExpression() + ".length==" + length;
+      }
+
+      // "zero-length" special case handling.
+      java.util.regex.Matcher zeroLengthPattern =
+          Pattern.compile("(is|are|has|have) zero-?length").matcher(predicate);
+      if (zeroLengthPattern.find()) {
+        return subject.getJavaExpression() + ".length==0";
       }
     }
 
     // General case
-    String match = simpleMatch(subject, predicate);
-    if (match != null) {
+    String match = simpleMatch(predicate);
+    if (match != null && subject.isCompatibleWith(match)) {
       if (subject instanceof ContainerElementsCodeElement) {
         ContainerElementsCodeElement containerCodeElement = (ContainerElementsCodeElement) subject;
         match = containerCodeElement.getJavaExpression(match);
@@ -240,12 +250,11 @@ class Matcher {
    * Attempts to match the given predicate to a simple Java expression (i.e. one containing only
    * literals). The visibility of this method is {@code protected} for testing purposes.
    *
-   * @param subject
    * @param predicate the predicate to translate to a Java expression. Must not be {@code null}.
    * @return a Java expression translation of the given predicate or null if the predicate could not
    *     be matched
    */
-  private static String simpleMatch(CodeElement<?> subject, String predicate) {
+  private static String simpleMatch(String predicate) {
     String verbs = "(is|are|be|is equal to|are equal to|equals to) ?";
 
     String predicates =
