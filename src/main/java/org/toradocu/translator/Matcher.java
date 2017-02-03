@@ -225,7 +225,6 @@ class Matcher {
 
     if (type.isArray()) {
       result.add(new GeneralCodeElement(receiver.getJavaExpression() + ".length==0", "isEmpty"));
-      result.add(new GeneralCodeElement(receiver.getJavaExpression() + ".length", "length"));
       return result;
     }
 

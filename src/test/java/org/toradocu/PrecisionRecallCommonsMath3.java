@@ -87,7 +87,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testStepFunction() throws Exception {
-    test("org.apache.commons.math3.analysis.function.StepFunction", 0.666, 0.5, 1, 1);
+    test("org.apache.commons.math3.analysis.function.StepFunction", 1, 0.5, 1, 1);
   }
 
   @Test
