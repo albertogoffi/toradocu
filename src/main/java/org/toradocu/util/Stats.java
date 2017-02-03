@@ -360,33 +360,25 @@ public class Stats {
       if (!expectedCondition.isEmpty()) {
         if (expectedCondition.equals(actualCondition)) {
           stats.addCorrectTranslation(kind);
-          outputMessage
-              .append("Correct ")
-              .append(kind)
-              .append(" condition. Comment: ")
-              .append(expectedTag.getComment())
-              .append(" ==> ")
-              .append(actualCondition);
+          outputMessage.append("Correct ");
         } else {
           if (actualCondition.isEmpty()) {
             stats.addMissingTranslation(kind);
-            outputMessage
-                .append("Empty ")
-                .append(kind)
-                .append(" condition. Comment: ")
-                .append(expectedTag.getComment());
+            outputMessage.append("Empty ");
           } else {
             stats.addWrongTranslation(kind);
-            outputMessage
-                .append("Wrong ")
-                .append(kind)
-                .append(" condition. Comment: ")
-                .append(expectedTag.getComment())
-                .append(" ==> ")
-                .append(actualCondition);
+            outputMessage.append("Wrong ");
           }
         }
-        outputMessage.append("\n");
+        outputMessage
+            .append(kind)
+            .append(" condition. Comment: ")
+            .append(expectedTag.getComment())
+            .append("\n\tExpected condition: ")
+            .append(expectedCondition)
+            .append("\n\tActual condition: ")
+            .append(actualCondition)
+            .append("\n");
       }
     }
     return outputMessage;
