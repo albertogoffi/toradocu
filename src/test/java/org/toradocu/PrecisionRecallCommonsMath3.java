@@ -169,4 +169,14 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
   public void testRealVector() throws Exception {
     test("org.apache.commons.math3.linear.RealVector", 1, 0.13, 1, 1);
   }
+
+  @Test
+  public void testDivideDifferenceInterpolator() throws Exception {
+    test(
+        "org.apache.commons.math3.analysis.interpolation.DividedDifferenceInterpolator",
+        1,
+        0,
+        1,
+        1);
+  }
 }
