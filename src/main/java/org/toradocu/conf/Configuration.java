@@ -58,6 +58,13 @@ public class Configuration {
   )
   private File statsFile;
 
+  @Parameter(
+    names = "--silent",
+    description = "Do not generate any output if no translation has been made",
+    hidden = true
+  )
+  private boolean silent = false;
+
   // Javadoc extractor options
 
   @Parameter(
@@ -466,9 +473,19 @@ public class Configuration {
   /**
    * Returns the folder in which to export Java boolean conditions.
    *
-   * @return the folder in which to export Java boolean conditions.
+   * @return the folder in which to export Java boolean conditions
    */
   public File getExportAsJava() {
     return exportAsJava;
+  }
+
+  /**
+   * Returns whether Toradocu generates or not output when it has not been able to translate any
+   * comment.
+   *
+   * @return true if no output has to be generated when there is no translation, false otherwise
+   */
+  public boolean isSilent() {
+    return silent;
   }
 }

@@ -145,22 +145,25 @@ public class Toradocu {
         ConditionTranslator.translate(methods);
       }
 
-      // Output the result on a file or on the standard output.
-      if (configuration.getConditionTranslatorOutput() != null) {
-        try (BufferedWriter writer =
-            Files.newBufferedWriter(
-                configuration.getConditionTranslatorOutput().toPath(), StandardCharsets.UTF_8)) {
-          String jsonOutput = GsonInstance.gson().toJson(methods);
-          writer.write(jsonOutput);
-          printConditionLines(jsonOutput);
-        } catch (Exception e) {
-          log.error(
-              "Unable to write the output on file "
-                  + configuration.getConditionTranslatorOutput().getAbsolutePath(),
-              e);
+      // Output the result on a file or on the standard output, if silent mode is disabled.
+      if (!configuration.isSilent() || configuration.isSilent() && translationsPresentIn(methods)) {
+        if (configuration.getConditionTranslatorOutput() != null) {
+          try (BufferedWriter writer =
+              Files.newBufferedWriter(
+                  configuration.getConditionTranslatorOutput().toPath(), StandardCharsets.UTF_8)) {
+            String jsonOutput = GsonInstance.gson().toJson(methods);
+            writer.write(jsonOutput);
+            printConditionLines(jsonOutput);
+          } catch (Exception e) {
+            log.error(
+                "Unable to write the output on file "
+                    + configuration.getConditionTranslatorOutput().getAbsolutePath(),
+                e);
+          }
+        } else {
+          System.out.println(
+              "Condition translator output:\n" + GsonInstance.gson().toJson(methods));
         }
-      } else {
-        System.out.println("Condition translator output:\n" + GsonInstance.gson().toJson(methods));
       }
 
       // Create statistics.
@@ -189,7 +192,10 @@ public class Toradocu {
 
       // Export conditions to Java files.
       File destinationFolder = configuration.getExportAsJava();
-      if (destinationFolder != null) {
+      if ((!configuration.isSilent() && destinationFolder != null)
+          || (configuration.isSilent()
+              && translationsPresentIn(methods)
+              && destinationFolder != null)) {
         try {
           // Create destination folder and any parent folder if needed.
           String packageName =
@@ -430,5 +436,24 @@ public class Toradocu {
         log.warn("Unable to delete temporary Javadoc output", e);
       }
     }
+  }
+
+  /**
+   * Checks whether there is at least one nonempty translation for the comments of {@code methods}.
+   *
+   * @param methods the list of methods to inspect
+   * @return true if there is at least one nonempty translation, false otherwise
+   */
+  private static boolean translationsPresentIn(List<DocumentedMethod> methods) {
+    return methods
+        .stream()
+        .map(
+            m -> {
+              List<Tag> tags = new ArrayList<>(m.paramTags());
+              tags.addAll(m.throwsTags());
+              return tags;
+            })
+        .flatMap(List::stream)
+        .anyMatch(t -> t.getCondition().isPresent() && !t.getCondition().get().isEmpty());
   }
 }
