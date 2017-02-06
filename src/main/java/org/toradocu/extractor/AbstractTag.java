@@ -89,7 +89,7 @@ class AbstractTag implements Tag {
    */
   @Override
   public String toString() {
-    String result = kind + comment;
+    String result = kind + " " + comment;
     if (condition != null) {
       result += " ==> " + condition;
     }
