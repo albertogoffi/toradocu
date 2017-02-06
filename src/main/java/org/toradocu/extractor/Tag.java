@@ -6,7 +6,8 @@ public interface Tag {
 
   enum Kind {
     THROWS,
-    PARAM;
+    PARAM,
+    RETURN;
 
     @Override
     public String toString() {
