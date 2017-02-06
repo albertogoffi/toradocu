@@ -32,7 +32,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testSimpleCurveFitter() throws Exception {
-    test("org.apache.commons.math3.fitting.SimpleCurveFitter", 1, 1, 1, 0);
+    test("org.apache.commons.math3.fitting.SimpleCurveFitter", 1, 1, 1, 1);
   }
 
   @Test
@@ -47,17 +47,17 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testBitsStreamGenerator() throws Exception {
-    test("org.apache.commons.math3.random.BitsStreamGenerator", 1, 0.5, 1, 0);
+    test("org.apache.commons.math3.random.BitsStreamGenerator", 1, 0.5, 1, 0.8);
   }
 
   @Test
   public void testRandomAdaptor() throws Exception {
-    test("org.apache.commons.math3.random.RandomAdaptor", 1, 1, 1, 0);
+    test("org.apache.commons.math3.random.RandomAdaptor", 1, 1, 1, 0.5);
   }
 
   @Test
   public void testRandomDataGenerator() throws Exception {
-    test("org.apache.commons.math3.random.RandomDataGenerator", 0.777, 0.5, 1, 0);
+    test("org.apache.commons.math3.random.RandomDataGenerator", 0.777, 0.5, 1, 1);
   }
 
   @Test
@@ -67,7 +67,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testFastMath() throws Exception {
-    test("org.apache.commons.math3.util.FastMath", 1, 1, 0.5, 0.5);
+    test("org.apache.commons.math3.util.FastMath", 1, 1, 1, 1);
   }
 
   @Test
