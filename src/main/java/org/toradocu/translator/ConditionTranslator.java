@@ -385,18 +385,64 @@ public class ConditionTranslator {
     }
 
     //@param modifications
+    final String DELIMITATORS = "\\(.*";
+
+    java.util.regex.Matcher matcher = Pattern.compile(DELIMITATORS).matcher(comment);
+
     if (tag.getKind() == Tag.Kind.PARAM) {
-      comment =
-          comment
-              .replace("must be", ((ParamTag) tag).parameter().getName() + " must be")
-              .replace("must not be", ((ParamTag) tag).parameter().getName() + " must not be")
-              .replace("will be", ((ParamTag) tag).parameter().getName() + " will be")
-              .replace("will not be", ((ParamTag) tag).parameter().getName() + " will not be")
-              .replace("can't be", ((ParamTag) tag).parameter().getName() + " can't be")
-              .replace("cannot be", ((ParamTag) tag).parameter().getName() + " cannot be")
-              .replace("should be", ((ParamTag) tag).parameter().getName() + " should be")
-              .replace("should not be", ((ParamTag) tag).parameter().getName() + " should not be")
-              .replace("shouldn't be", ((ParamTag) tag).parameter().getName() + " shouldn't be");
+
+      if (matcher.find()) {
+        comment =
+            comment
+                .replace("must be", " " + ((ParamTag) tag).parameter().getName() + " must be")
+                .replace(
+                    "must not be", " " + ((ParamTag) tag).parameter().getName() + " must not be")
+                .replace("will be", " " + ((ParamTag) tag).parameter().getName() + " will be")
+                .replace(
+                    "will not be", " " + ((ParamTag) tag).parameter().getName() + " will not be")
+                .replace("can't be", " " + ((ParamTag) tag).parameter().getName() + " can't be")
+                .replace("cannot be", " " + ((ParamTag) tag).parameter().getName() + " cannot be")
+                .replace("should be", " " + ((ParamTag) tag).parameter().getName() + " should be")
+                .replace(
+                    "should not be",
+                    " " + ((ParamTag) tag).parameter().getName() + " should not be")
+                .replace(
+                    "shouldn't be", " " + ((ParamTag) tag).parameter().getName() + " shouldn't be");
+      } else {
+
+        comment =
+            comment
+                .replace("must be", ". " + ((ParamTag) tag).parameter().getName() + " must be")
+                .replace(
+                    "must not be", ". " + ((ParamTag) tag).parameter().getName() + " must not be")
+                .replace("will be", ". " + ((ParamTag) tag).parameter().getName() + " will be")
+                .replace(
+                    "will not be", ". " + ((ParamTag) tag).parameter().getName() + " will not be")
+                .replace("can't be", ". " + ((ParamTag) tag).parameter().getName() + " can't be")
+                .replace("cannot be", ". " + ((ParamTag) tag).parameter().getName() + " cannot be")
+                .replace("should be", ". " + ((ParamTag) tag).parameter().getName() + " should be")
+                .replace(
+                    "should not be",
+                    ". " + ((ParamTag) tag).parameter().getName() + " should not be")
+                .replace(
+                    "shouldn't be", ". " + ((ParamTag) tag).parameter().getName() + " shouldn't be")
+                /*UpperCase*/ .replace(
+                    "Must be", ". " + ((ParamTag) tag).parameter().getName() + " must be")
+                .replace(
+                    "Must not be", ". " + ((ParamTag) tag).parameter().getName() + " must not be")
+                .replace("Will be", ". " + ((ParamTag) tag).parameter().getName() + " will be")
+                .replace(
+                    "Will not be", ". " + ((ParamTag) tag).parameter().getName() + " will not be")
+                .replace("Can't be", ". " + ((ParamTag) tag).parameter().getName() + " can't be")
+                .replace("Cannot be", ". " + ((ParamTag) tag).parameter().getName() + " cannot be")
+                .replace("Should be", ". " + ((ParamTag) tag).parameter().getName() + " should be")
+                .replace(
+                    "Should not be",
+                    ". " + ((ParamTag) tag).parameter().getName() + " should not be")
+                .replace(
+                    "Shouldn't be",
+                    ". " + ((ParamTag) tag).parameter().getName() + " shouldn't be");
+      }
     }
 
     // Identify propositions in the comment. Each sentence in the comment is parsed into a
