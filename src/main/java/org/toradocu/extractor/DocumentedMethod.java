@@ -50,6 +50,12 @@ public final class DocumentedMethod {
   private final String targetClass;
 
   /**
+   * return tags specified in the method's Javadoc introduced in order. (If more than one, but
+   * that's weird)
+   */
+  private final Set<ReturnTag> returnTags;
+
+  /**
    * Constructs a {@code DocumentedMethod} contained in a given {@code containingClass} with the
    * given {@code name}, {@code returnType}, {@code parameters}, and {@code throwsTags}.
    *
@@ -71,7 +77,8 @@ public final class DocumentedMethod {
       List<Parameter> parameters,
       Collection<ParamTag> paramTags,
       boolean isVarArgs,
-      Collection<ThrowsTag> throwsTags) {
+      Collection<ThrowsTag> throwsTags,
+      Collection<ReturnTag> returnTags) {
     Checks.nonNullParameter(containingClass, "containingClass");
     Checks.nonNullParameter(name, "name");
 
@@ -89,6 +96,7 @@ public final class DocumentedMethod {
     this.paramTags = paramTags == null ? new LinkedHashSet<>() : new LinkedHashSet<>(paramTags);
     this.isVarArgs = isVarArgs;
     this.throwsTags = throwsTags == null ? new LinkedHashSet<>() : new LinkedHashSet<>(throwsTags);
+    this.returnTags = returnTags == null ? new LinkedHashSet<>() : new LinkedHashSet<>(returnTags);
 
     // Create the method signature using the method name and parameters.
     StringBuilder signatureBuilder = new StringBuilder(name + "(");
