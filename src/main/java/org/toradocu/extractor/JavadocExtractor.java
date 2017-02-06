@@ -254,6 +254,14 @@ public final class JavadocExtractor {
     return paramTags;
   }
 
+  /**
+   * This method extracts the throwsTags from the class we want.
+   *
+   * @param member
+   * @param classDoc the class that we use to extract the tags
+   * @return the list that contains the ThrowsTags of the class we gave
+   * @throws IOException
+   */
   private List<ThrowsTag> extractThrowsTags(ExecutableMemberDoc member, ClassDoc classDoc)
       throws IOException {
     // list that will contain the throws tags
@@ -321,6 +329,12 @@ public final class JavadocExtractor {
     return memberThrowsTags;
   }
 
+  /**
+   * @param member
+   * @param classDoc the class that we use to extract the tags
+   * @return the list that contains the ParamTags of the class we gave
+   * @throws IOException
+   */
   private List<ParamTag> extractParamTags(ExecutableMemberDoc member, ClassDoc classDoc)
       throws IOException {
 
