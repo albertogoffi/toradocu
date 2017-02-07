@@ -433,27 +433,30 @@ public final class JavadocExtractor {
    */
   private List<ReturnTag> extractReturnTags(ExecutableMemberDoc member, ClassDoc classDoc)
       throws IOException {
-    // list that will contain the return tags
+    // List that will contain the return tags and will be returned by this method.
     List<Tag> returnTags = new ArrayList<>();
+    final String TAG_NAME = "@return";
 
     // Collect tags in the current method's documentation. This is needed because DocFinder.search
     // does not load tags of a method when the method overrides a superclass' method also
     // overwriting the Javadoc documentation.
-    Collections.addAll(returnTags, member.tags("@return"));
+    Collections.addAll(returnTags, member.tags(TAG_NAME));
 
-    Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
+    if (returnTags.isEmpty()) { // Inherit @return comments if necessary.
+      Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
 
-    // Collect tags that are automatically inherited (i.e., when there is no comment for a method
-    // overriding another one).
-    Collections.addAll(returnTags, holder.tags("@throws"));
+      // Collect tags that are automatically inherited (i.e., when there is no comment for a method
+      // overriding another one).
+      Collections.addAll(returnTags, holder.tags(TAG_NAME));
 
-    // Collect tags from method definitions in interfaces. This is not done by DocFinder.search
-    // (at least in the way we use it).
-    if (holder instanceof MethodDoc) {
-      ImplementedMethods implementedMethods =
-          new ImplementedMethods((MethodDoc) holder, configuration);
-      for (MethodDoc implementedMethod : implementedMethods.build()) {
-        Collections.addAll(returnTags, implementedMethod.tags("@throws"));
+      // Collect tags from method definitions in interfaces. This is not done by DocFinder.search
+      // (at least in the way we use it).
+      if (holder instanceof MethodDoc) {
+        ImplementedMethods implementedMethods =
+            new ImplementedMethods((MethodDoc) holder, configuration);
+        for (MethodDoc implementedMethod : implementedMethods.build()) {
+          Collections.addAll(returnTags, implementedMethod.tags(TAG_NAME));
+        }
       }
     }
 
