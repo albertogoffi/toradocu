@@ -80,8 +80,4 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
   public void testAnyPredicate() throws Exception {
     test("org.apache.commons.collections4.functors.AnyPredicate", 1, 0.75, 1, 1);
   }
-
-  public void testPassiveExpiringMap() throws Exception {
-    test("org.apache.commons.collections4.map.PassiveExpiringMap", 1, 0.75, 1, 1);
-  }
 }
