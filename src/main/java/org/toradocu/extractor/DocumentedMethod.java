@@ -69,6 +69,7 @@ public final class DocumentedMethod {
    * @param isVarArgs true if the {@code DocumentedMethod} takes a variable number of arguments,
    *     false otherwise
    * @param throwsTags the {@code @throws tags} of the {@code DocumentedMethod}
+   * @param returnTags the {@code @return tags} of the {@code DocumentedMethod}
    * @throws NullPointerException if {@code containingClass} or {@code name} is null
    */
   public DocumentedMethod(
