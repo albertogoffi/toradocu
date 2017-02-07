@@ -23,10 +23,19 @@ import org.toradocu.util.Reflection;
  */
 public final class DocumentedMethod {
 
-  /** Class in which the method is contained. */
-  private final Type containingClass;
+  /** Method signature in the format method_name(type1 arg1, type2 arg2, ...). */
+  private final String signature;
   /** Simple name of the method. */
   private final String name;
+  /** Class in which the method is contained. */
+  private final Type containingClass;
+  /**
+   * Target class passed to Toradocu with the option --target-class. (Information needed for Randoop
+   * integration.)
+   */
+  private final String targetClass;
+  /** Flag indicating whether this method takes a variable number of arguments. */
+  private final boolean isVarArgs;
   /**
    * Return type of the method. {@code null} if this DocumentedMethod represents a constructor.
    * {@code Type.VOID} if the return type is void.
@@ -36,24 +45,16 @@ public final class DocumentedMethod {
   private final List<Parameter> parameters;
   /** Param tags specified in the method's Javadoc introduced in order. */
   private final Set<ParamTag> paramTags;
-  /** Flag indicating whether this method takes a variable number of arguments. */
-  private final boolean isVarArgs;
-  /**
-   * Throws tags specified in the method's Javadoc. Also, each throws tag can contain the
-   * translation of the comment as Java boolean condition.
-   */
-  private final Set<ThrowsTag> throwsTags;
-  /** Method signature in the format method_name(type1 arg1, type2 arg2, ...). */
-  private final String signature;
-
-  /** Target class passed to Toradocu with the option --target-class. */
-  private final String targetClass;
-
   /**
    * return tags specified in the method's Javadoc introduced in order. (If more than one, but
    * that's weird)
    */
   private final Set<ReturnTag> returnTags;
+  /**
+   * Throws tags specified in the method's Javadoc. Also, each throws tag can contain the
+   * translation of the comment as Java boolean condition.
+   */
+  private final Set<ThrowsTag> throwsTags;
 
   /**
    * Constructs a {@code DocumentedMethod} contained in a given {@code containingClass} with the
@@ -131,6 +132,15 @@ public final class DocumentedMethod {
    */
   public Set<ParamTag> paramTags() {
     return Collections.unmodifiableSet(paramTags);
+  }
+
+  /**
+   * Returns an unmodifiable view of the return tags in this method.
+   *
+   * @return an unmodifiable view of the return tags in this method
+   */
+  public Set<ReturnTag> returnTags() {
+    return Collections.unmodifiableSet(returnTags);
   }
 
   /**
