@@ -54,7 +54,7 @@ public class Toradocu {
   /** Logger of this class. */
   private static Logger log;
   /** Documented methods that will be processed by the condition translator. */
-  private static final List<DocumentedMethod> methods = new ArrayList<>();
+  private static List<DocumentedMethod> methods;
 
   /**
    * Entry point for Toradocu. Takes several command-line arguments that configure its behavior.
@@ -109,6 +109,7 @@ public class Toradocu {
       // List of methods to analyze are read from a file specified with a command line option.
       try (BufferedReader reader =
           Files.newBufferedReader(configuration.getConditionTranslatorInput().toPath())) {
+        methods = new ArrayList<>();
         methods.addAll(
             GsonInstance.gson()
                 .fromJson(reader, new TypeToken<List<DocumentedMethod>>() {}.getType()));
@@ -116,6 +117,23 @@ public class Toradocu {
         log.error("Unable to read the file: " + configuration.getConditionTranslatorInput(), e);
         System.exit(1);
       }
+    }
+
+    if (methods == null) {
+      log.error(
+          "Unable to find the target class: "
+              + configuration.getTargetClass()
+              + "\nPossible reasons for the error are:"
+              + "\n1. The qualified name of the target class is wrong: "
+              + configuration.getTargetClass()
+              + "\n2. The path to the source code of your system is wrong: "
+              + configuration.getSourceDir()
+              + "\n3. The path to the binaries of your system is wrong: "
+              + configuration.getClassDir()
+              + "\nPlease, check the correctness of the command line arguments."
+              + "\nIf the error persists, report the issue at "
+              + "https://github.com/albertogoffi/toradocu/issues");
+      System.exit(1);
     }
 
     if (configuration.getJavadocExtractorOutput() != null) { // Print collection to the output file.
@@ -414,6 +432,7 @@ public class Toradocu {
     if (!classDoc.qualifiedName().equals(configuration.getTargetClass())) {
       return;
     }
+    methods = new ArrayList<>();
     JavadocExtractor extractor = new JavadocExtractor(docletConfiguration);
     methods.addAll(extractor.extract(classDoc));
   }
