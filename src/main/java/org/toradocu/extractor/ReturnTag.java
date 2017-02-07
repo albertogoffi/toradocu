@@ -1,6 +1,5 @@
 package org.toradocu.extractor;
 
-
 /**
  * This class represents a throws tag in a method. Each @throws tag consists of an exception, a
  * comment, and can have an optional condition. A condition is the translation of the comment into a
