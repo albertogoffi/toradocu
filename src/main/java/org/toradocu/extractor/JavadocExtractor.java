@@ -341,18 +341,18 @@ public final class JavadocExtractor {
   private List<ParamTag> extractParamTags(ExecutableMemberDoc member, ClassDoc classDoc)
       throws IOException {
 
-    // List that will contain all the paramTags in the method
+    // List that will contain all the paramTags in the method.
     List<Tag> paramTags = new ArrayList<>();
 
-    // Map parameter name -> @param tag
+    // Map parameter name -> @param tag.
     Map<String, Tag> paramTagsMap = new LinkedHashMap<>();
 
-    // Param tag support
+    // Param tag support.
     paramTagsMap.putAll(getParamTags(member.tags("@param")));
 
     Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
 
-    //Extract the inherited tags
+    // Extract the inherited tags.
     paramTagsMap.putAll(getParamTags(holder.tags("@param")));
 
     // Collect tags from method definitions in interfaces. This is not done by DocFinder.search
@@ -366,17 +366,17 @@ public final class JavadocExtractor {
       }
     }
 
-    // List that will contain the ParamTags of the method
+    // List that will contain the ParamTags of the method.
     paramTags.addAll(paramTagsMap.values());
     List<ParamTag> memberParamTags = new ArrayList<>();
-    for (Tag tag : paramTags) { //For each of the tags in paramTags
-      if (!(tag instanceof com.sun.javadoc.ParamTag)) { //If it is not an instanceof ParamTag
+    for (Tag tag : paramTags) { // For each of the tags in paramTags.
+      if (!(tag instanceof com.sun.javadoc.ParamTag)) { // If it is not an instanceof ParamTag.
         throw new IllegalStateException(
             tag
                 + " is not a @param tag. This should not happen. Toradocu only considers @param and @throws tags.");
       }
 
-      //We create a paramsTag that will be the cast of tag to ParamTag in order to work with it
+      // We create a paramsTag that will be the cast of tag to ParamTag in order to work with it.
       com.sun.javadoc.ParamTag paramsTag = (com.sun.javadoc.ParamTag) tag;
 
       // Handle inline taglets such as {@inheritDoc}.
