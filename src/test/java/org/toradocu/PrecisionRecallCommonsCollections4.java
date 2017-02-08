@@ -28,7 +28,7 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testClosureUtils() throws Exception {
-    test("org.apache.commons.collections4.ClosureUtils", 1, 0.695, 1, 1);
+    test("org.apache.commons.collections4.ClosureUtils", 1, 0.695, 1, 0);
   }
 
   @Test
@@ -63,21 +63,21 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testLRUMap() throws Exception {
-    test("org.apache.commons.collections4.map.LRUMap", 0.824, 0.482, 1, 1);
+    test("org.apache.commons.collections4.map.LRUMap", 0.824, 0.482, 1, 0.857);
   }
 
   @Test
   public void testAllPredicate() throws Exception {
-    test("org.apache.commons.collections4.functors.AllPredicate", 1, 0.75, 1, 1);
+    test("org.apache.commons.collections4.functors.AllPredicate", 1, 0.75, 1, 0);
   }
 
   @Test
   public void testAndPredicate() throws Exception {
-    test("org.apache.commons.collections4.functors.AndPredicate", 1, 1, 1, 1);
+    test("org.apache.commons.collections4.functors.AndPredicate", 1, 1, 1, 0);
   }
 
   @Test
   public void testAnyPredicate() throws Exception {
-    test("org.apache.commons.collections4.functors.AnyPredicate", 1, 0.75, 1, 1);
+    test("org.apache.commons.collections4.functors.AnyPredicate", 1, 0.75, 1, 0);
   }
 }

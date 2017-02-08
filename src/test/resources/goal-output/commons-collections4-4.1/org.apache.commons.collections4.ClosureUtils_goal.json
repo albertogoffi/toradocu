@@ -193,7 +193,7 @@
         },
         "comment": "the predicate to use as an end of loop test, not null",
         "kind": "@param",
-        "condition": ""
+        "condition": "(args[0]==null) == false"
       },
       {
         "parameter": {
@@ -206,7 +206,7 @@
         },
         "comment": "the closure to call repeatedly, not null",
         "kind": "@param",
-        "condition": ""
+        "condition": "(args[1]==null) == false"
       }
     ],
     "isVarArgs": false,
@@ -266,7 +266,7 @@
         },
         "comment": "the closure to call repeatedly, not null",
         "kind": "@param",
-        "condition": ""
+        "condition": "(args[0]==null) == false"
       },
       {
         "parameter": {
@@ -279,7 +279,7 @@
         },
         "comment": "the predicate to use as an end of loop test, not null",
         "kind": "@param",
-        "condition": ""
+        "condition": "(args[1]==null) == false"
       }
     ],
     "isVarArgs": false,
@@ -841,7 +841,7 @@
         },
         "comment": "an array of predicates to check, not null",
         "kind": "@param",
-        "condition": ""
+        "condition": "(args[0]==null) == false"
       },
       {
         "parameter": {
@@ -859,7 +859,7 @@
         },
         "comment": "an array of closures to call, not null",
         "kind": "@param",
-        "condition": ""
+        "condition": "(args[1]==null) == false"
       }
     ],
     "isVarArgs": false,
@@ -962,7 +962,7 @@
         },
         "comment": "an array of predicates to check, not null",
         "kind": "@param",
-        "condition": ""
+        "condition": "(args[0]==null) == false"
       },
       {
         "parameter": {
@@ -980,7 +980,7 @@
         },
         "comment": "an array of closures to call, not null",
         "kind": "@param",
-        "condition": ""
+        "condition": "(args[1]==null) == false"
       },
       {
         "parameter": {
