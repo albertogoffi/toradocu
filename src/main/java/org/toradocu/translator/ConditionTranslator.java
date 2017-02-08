@@ -35,6 +35,7 @@ public class ConditionTranslator {
     for (DocumentedMethod method : methods) {
       for (ThrowsTag tag : method.throwsTags()) processTag(tag, method);
       for (ParamTag tag : method.paramTags()) processTag(tag, method);
+      if (method.returnTag() != null) processTag(method.returnTag(), method);
     }
   }
 
@@ -443,6 +444,8 @@ public class ConditionTranslator {
                     "Shouldn't be",
                     ". " + ((ParamTag) tag).parameter().getName() + " shouldn't be");
       }
+
+      if (tag.getKind() == Tag.Kind.RETURN) {}
     }
 
     // Identify propositions in the comment. Each sentence in the comment is parsed into a

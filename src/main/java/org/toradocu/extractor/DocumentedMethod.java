@@ -49,7 +49,7 @@ public final class DocumentedMethod {
    * return tags specified in the method's Javadoc introduced in order. (If more than one, but
    * that's weird)
    */
-  private final Set<ReturnTag> returnTags;
+  private final ReturnTag returnTag;
   /**
    * Throws tags specified in the method's Javadoc. Also, each throws tag can contain the
    * translation of the comment as Java boolean condition.
@@ -69,7 +69,7 @@ public final class DocumentedMethod {
    * @param isVarArgs true if the {@code DocumentedMethod} takes a variable number of arguments,
    *     false otherwise
    * @param throwsTags the {@code @throws tags} of the {@code DocumentedMethod}
-   * @param returnTags the {@code @return tags} of the {@code DocumentedMethod}
+   * @param returnTag the {@code @return tag} of the {@code DocumentedMethod}
    * @throws NullPointerException if {@code containingClass} or {@code name} is null
    */
   public DocumentedMethod(
@@ -80,7 +80,7 @@ public final class DocumentedMethod {
       Collection<ParamTag> paramTags,
       boolean isVarArgs,
       Collection<ThrowsTag> throwsTags,
-      Collection<ReturnTag> returnTags) {
+      ReturnTag returnTag) {
     Checks.nonNullParameter(containingClass, "containingClass");
     Checks.nonNullParameter(name, "name");
 
@@ -98,7 +98,7 @@ public final class DocumentedMethod {
     this.paramTags = paramTags == null ? new LinkedHashSet<>() : new LinkedHashSet<>(paramTags);
     this.isVarArgs = isVarArgs;
     this.throwsTags = throwsTags == null ? new LinkedHashSet<>() : new LinkedHashSet<>(throwsTags);
-    this.returnTags = returnTags == null ? new LinkedHashSet<>() : new LinkedHashSet<>(returnTags);
+    this.returnTag = returnTag;
 
     // Create the method signature using the method name and parameters.
     StringBuilder signatureBuilder = new StringBuilder(name + "(");
@@ -136,12 +136,12 @@ public final class DocumentedMethod {
   }
 
   /**
-   * Returns an unmodifiable view of the return tags in this method.
+   * Returns the return tags in this method.
    *
-   * @return an unmodifiable view of the return tags in this method
+   * @return the return tags in this method
    */
-  public Set<ReturnTag> returnTags() {
-    return Collections.unmodifiableSet(returnTags);
+  public ReturnTag returnTag() {
+    return returnTag;
   }
 
   /**

@@ -67,7 +67,10 @@ public final class JavadocExtractor {
 
       List<ThrowsTag> memberThrowsTags = extractThrowsTags(member, classDoc);
       List<ParamTag> memberParamTags = extractParamTags(member, classDoc);
-      List<ReturnTag> memberReturnTags = extractReturnTags(member, classDoc);
+      List<ReturnTag> memberReturnTags = extractReturnTag(member, classDoc);
+
+      ReturnTag finalReturnTag = null;
+      if (!memberReturnTags.isEmpty()) finalReturnTag = memberReturnTags.get(0);
 
       methods.add(
           new DocumentedMethod(
@@ -78,7 +81,7 @@ public final class JavadocExtractor {
               memberParamTags,
               member.isVarArgs(),
               memberThrowsTags,
-              memberReturnTags));
+              finalReturnTag));
     }
 
     return methods;
@@ -431,7 +434,7 @@ public final class JavadocExtractor {
    * @throws IOException if the method encounters an error while reading/generating class
    *     documentation
    */
-  private List<ReturnTag> extractReturnTags(ExecutableMemberDoc member, ClassDoc classDoc)
+  private List<ReturnTag> extractReturnTag(ExecutableMemberDoc member, ClassDoc classDoc)
       throws IOException {
     // List that will contain the return tags and will be returned by this method.
     List<Tag> returnTags = new ArrayList<>();
@@ -477,12 +480,13 @@ public final class JavadocExtractor {
        * because they contain information that can be exploited. */
       comment = taggedComment.text();
 
-      // Words tagged with <code></code> (@code) found in the Javadoc comment of the parsed method
-      List<String> stringCodeTags =
-          taggedComment.select("code").stream().map(Element::text).collect(Collectors.toList());
-
       ReturnTag tagToProcess = new ReturnTag(comment);
       memberReturnTags.add(tagToProcess);
+    }
+
+    if (memberReturnTags.size() > 1) {
+      log.trace(
+          "There are more than one return tag in this method. This is not handled by Toradocu");
     }
 
     return memberReturnTags;
