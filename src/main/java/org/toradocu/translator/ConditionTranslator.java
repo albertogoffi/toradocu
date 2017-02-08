@@ -35,7 +35,7 @@ public class ConditionTranslator {
     for (DocumentedMethod method : methods) {
       for (ThrowsTag tag : method.throwsTags()) processTag(tag, method);
       for (ParamTag tag : method.paramTags()) processTag(tag, method);
-      if (method.returnTags() != null) processTag(method.returnTags(), method);
+      if (method.returnTag() != null) processTag(method.returnTag(), method);
     }
   }
 
