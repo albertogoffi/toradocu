@@ -296,7 +296,8 @@ public class ConditionTranslator {
             preferredSubjectMatch = subjectMatch;
           } else if (subjectMatch instanceof FieldCodeElement && preferredSubjectMatch == null) {
             preferredSubjectMatch = subjectMatch;
-          } else if (subjectMatch instanceof StaticMethodCodeElement) {
+          } else if (subjectMatch instanceof StaticMethodCodeElement
+              && preferredSubjectMatch == null) {
             preferredSubjectMatch = subjectMatch;
           }
         }
@@ -408,7 +409,9 @@ public class ConditionTranslator {
                     "should not be",
                     " " + ((ParamTag) tag).parameter().getName() + " should not be")
                 .replace(
-                    "shouldn't be", " " + ((ParamTag) tag).parameter().getName() + " shouldn't be");
+                    "shouldn't be", " " + ((ParamTag) tag).parameter().getName() + " shouldn't be")
+                .replace(
+                    "may not be", " " + ((ParamTag) tag).parameter().getName() + " may not be");
       } else {
 
         comment =
@@ -427,6 +430,8 @@ public class ConditionTranslator {
                     ". " + ((ParamTag) tag).parameter().getName() + " should not be")
                 .replace(
                     "shouldn't be", ". " + ((ParamTag) tag).parameter().getName() + " shouldn't be")
+                .replace(
+                    "may not be", ". " + ((ParamTag) tag).parameter().getName() + " may not be")
                 /*UpperCase*/ .replace(
                     "Must be", ". " + ((ParamTag) tag).parameter().getName() + " must be")
                 .replace(
@@ -441,8 +446,9 @@ public class ConditionTranslator {
                     "Should not be",
                     ". " + ((ParamTag) tag).parameter().getName() + " should not be")
                 .replace(
-                    "Shouldn't be",
-                    ". " + ((ParamTag) tag).parameter().getName() + " shouldn't be");
+                    "Shouldn't be", ". " + ((ParamTag) tag).parameter().getName() + " shouldn't be")
+                .replace(
+                    "May not be", ". " + ((ParamTag) tag).parameter().getName() + " may not be");
       }
 
       if (tag.getKind() == Tag.Kind.RETURN) {}

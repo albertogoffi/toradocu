@@ -14,7 +14,7 @@ public class PrecisionRecallFreeCol extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void testBinaryMutation() throws Exception {
+  public void testPlayer() throws Exception {
     test("net.sf.freecol.common.model.Player", 1, 1, 1, 1);
   }
 }
