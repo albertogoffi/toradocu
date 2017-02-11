@@ -2,6 +2,7 @@ package org.toradocu.translator;
 
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
@@ -265,43 +267,37 @@ public class ConditionTranslator {
             result += conjunction + translation;
           }
         }
-      } else {
-        // TODO Refactor the following code segment that is hard to read and understand.
+      } else { // Only one of the matching subjects should be used.
+        CodeElement<?> match = null;
 
-        // Only one of the subject matches should be used.
-        // Prefer parameters, followed by classes, methods and fields.
-        CodeElement<?> preferredSubjectMatch = null;
-        boolean pickedFirst = false;
-        for (CodeElement<?> subjectMatch : translations.keySet()) {
+        // Sort matching subjects according to their priorities (defined in CodeElement#compareTo).
+        List<CodeElement<?>> matchingSubjects = new ArrayList<>();
+        matchingSubjects.addAll(translations.keySet());
+        matchingSubjects.sort(Collections.reverseOrder());
+        // Get all the matching subjects with the same priority (i.e., of the same type).
+        final List<CodeElement<?>> samePriorityElements =
+            matchingCodeElements
+                .stream()
+                .filter(c -> matchingSubjects.get(0).getClass().equals(c.getClass()))
+                .collect(Collectors.toList());
+        // Get the first matching subject tagged with {@code} or the first at all.
+        for (CodeElement<?> matchingSubject : samePriorityElements) {
           // If the indecision is between two subject matches that are absolutely equal
-          // candidates, then the priority goes to the one which is also a code tag in the
-          // method's Javadoc: isCode checks this property. If no candidate is a code tag, the
-          // priority is assigned as usual.
-          boolean isCode = false;
+          // candidates, then the priority goes to the one which is also a {@code} tag in the
+          // method's Javadoc: isTaggedAsCode checks this property.
+          boolean isTaggedAsCode = false;
           for (ThrowsTag throwTag : method.throwsTags()) {
-            isCode = throwTag.intersect(subjectMatch.getIdentifiers());
+            isTaggedAsCode = throwTag.intersect(matchingSubject.getIdentifiers());
           }
-
-          if (subjectMatch instanceof ParameterCodeElement && isCode) {
-            preferredSubjectMatch = subjectMatch;
+          if (isTaggedAsCode) {
+            match = matchingSubject;
             break;
-          } else if (subjectMatch instanceof ParameterCodeElement && !pickedFirst) {
-            preferredSubjectMatch = subjectMatch;
-            pickedFirst = true;
-          } else if (subjectMatch instanceof ClassCodeElement) {
-            preferredSubjectMatch = subjectMatch;
-          } else if (subjectMatch instanceof MethodCodeElement
-              && (preferredSubjectMatch == null
-                  || preferredSubjectMatch instanceof FieldCodeElement)) {
-            preferredSubjectMatch = subjectMatch;
-          } else if (subjectMatch instanceof FieldCodeElement && preferredSubjectMatch == null) {
-            preferredSubjectMatch = subjectMatch;
-          } else if (subjectMatch instanceof StaticMethodCodeElement
-              && preferredSubjectMatch == null) {
-            preferredSubjectMatch = subjectMatch;
           }
         }
-        result = translations.get(preferredSubjectMatch);
+        if (match == null) {
+          match = samePriorityElements.get(0);
+        }
+        result = translations.get(match);
       }
 
       log.trace("Translated proposition " + p + " as: " + result);
@@ -357,7 +353,7 @@ public class ConditionTranslator {
    * Method that process the comment in the tag and extracts the propositions from it.
    *
    * @param tag the tag provided by the method. Must not be null.
-   * @param method the method that contains the tag to analize. Must not be null.
+   * @param method the method that contains the tag to analyze. Must not be null.
    */
   private static void processTag(Tag tag, DocumentedMethod method) {
 
@@ -371,28 +367,24 @@ public class ConditionTranslator {
       comment += ".";
     }
 
-    String lowerCaseComment = comment.toLowerCase();
-
     // Remove commas from the comment if enabled.
     if (Toradocu.configuration != null && Toradocu.configuration.removeCommas()) {
       comment = comment.replace(",", " ");
     }
 
-    //@throws modifications
+    // @throws modifications.
     if (tag.getKind() == Tag.Kind.THROWS) {
+      String lowerCaseComment = comment.toLowerCase();
       while (lowerCaseComment.startsWith("if ")) {
-        comment = comment.substring(3);
+        comment = comment.substring(3); // Remove initial "if"s.
         lowerCaseComment = comment.toLowerCase();
       }
     }
 
-    //@param modifications
+    // @param modifications.
     final String DELIMITATORS = "\\(.*";
-
     java.util.regex.Matcher matcher = Pattern.compile(DELIMITATORS).matcher(comment);
-
     if (tag.getKind() == Tag.Kind.PARAM) {
-
       if (matcher.find()) {
         comment =
             comment
@@ -413,7 +405,6 @@ public class ConditionTranslator {
                 .replace(
                     "may not be", " " + ((ParamTag) tag).parameter().getName() + " may not be");
       } else {
-
         comment =
             comment
                 .replace("must be", ". " + ((ParamTag) tag).parameter().getName() + " must be")
@@ -451,7 +442,9 @@ public class ConditionTranslator {
                     "May not be", ". " + ((ParamTag) tag).parameter().getName() + " may not be");
       }
 
-      if (tag.getKind() == Tag.Kind.RETURN) {}
+      if (tag.getKind() == Tag.Kind.RETURN) {
+        // TODO Translate the @return tag.
+      }
     }
 
     // Identify propositions in the comment. Each sentence in the comment is parsed into a

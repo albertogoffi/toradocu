@@ -18,7 +18,7 @@ import org.toradocu.util.Distance;
  *
  * @param <T> the type of code element that this class holds data on
  */
-public abstract class CodeElement<T> {
+public abstract class CodeElement<T> implements Comparable<CodeElement<?>> {
 
   /** Strings that can be used to refer to this code element in Javadoc comments. */
   private List<String> identifiers;
@@ -177,5 +177,22 @@ public abstract class CodeElement<T> {
    */
   boolean isCompatibleWith(String predicateTranslation) {
     return true;
+  }
+
+  @Override
+  public int compareTo(CodeElement<?> o) {
+    // Is this the best design? (We consider subclasses in this superclass.)
+
+    // A lower index (position) in the priority list means a lower priority.
+    List<Class> priorityList = new ArrayList<>();
+    priorityList.add(GeneralCodeElement.class);
+    priorityList.add(ContainerElementsCodeElement.class);
+    priorityList.add(MethodCodeElement.class);
+    priorityList.add(StaticMethodCodeElement.class);
+    priorityList.add(FieldCodeElement.class);
+    priorityList.add(ClassCodeElement.class);
+    priorityList.add(ParameterCodeElement.class);
+
+    return priorityList.indexOf(this.getClass()) - priorityList.indexOf(o.getClass());
   }
 }
