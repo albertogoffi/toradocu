@@ -193,7 +193,7 @@ task tags(type: Exec) {
 
 /* Install the git pre-commit hook */
 task installhook(type: Exec) {
-  commandLine 'bash', '-c' , 'if [ ! -f .git/hooks/pre-commit ]; then ln -s ../../git-pre-commit-hook.sh .git/hooks/pre-commit; fi'
+  commandLine 'bash', '-c' , 'if [ -e .git -a ! -f .git/hooks/pre-commit ]; then ln -s ../../git-pre-commit-hook.sh .git/hooks/pre-commit; fi'
 }
 
 gradle.taskGraph.beforeTask { Task task ->
