@@ -275,15 +275,13 @@ public final class JavadocExtractor {
     // Collect tags in the current method's documentation. This is needed because DocFinder.search
     // does not load tags of a method when the method overrides a superclass' method also
     // overwriting the Javadoc documentation.
-    Collections.addAll(throwsTags, member.tags("@throws"));
-    Collections.addAll(throwsTags, member.tags("@exception"));
+    throwsTags.addAll(throwsTagsOf(member));
 
     Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
 
     // Collect tags that are automatically inherited (i.e., when there is no comment for a method
     // overriding another one).
-    Collections.addAll(throwsTags, holder.tags("@throws"));
-    Collections.addAll(throwsTags, holder.tags("@exception"));
+    throwsTags.addAll(throwsTagsOf(holder));
 
     // Collect tags from method definitions in interfaces. This is not done by DocFinder.search
     // (at least in the way we use it).
@@ -291,8 +289,7 @@ public final class JavadocExtractor {
       ImplementedMethods implementedMethods =
           new ImplementedMethods((MethodDoc) holder, configuration);
       for (MethodDoc implementedMethod : implementedMethods.build()) {
-        Collections.addAll(throwsTags, implementedMethod.tags("@throws"));
-        Collections.addAll(throwsTags, implementedMethod.tags("@exception"));
+        throwsTags.addAll(throwsTagsOf(implementedMethod));
       }
     }
 
@@ -332,6 +329,19 @@ public final class JavadocExtractor {
     }
 
     return memberThrowsTags;
+  }
+
+  /**
+   * Returns all the @throws and @exception tags in the documentation of the given class member.
+   *
+   * @param member a class member
+   * @return a list with all the @throws and @exception tags of member
+   */
+  private static List<Tag> throwsTagsOf(Doc member) {
+    final List<Tag> throwsTags = new ArrayList<>();
+    Collections.addAll(throwsTags, member.tags("@exception"));
+    Collections.addAll(throwsTags, member.tags("@throws"));
+    return throwsTags;
   }
 
   /**
