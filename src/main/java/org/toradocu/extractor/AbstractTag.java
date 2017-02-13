@@ -19,8 +19,9 @@ class AbstractTag implements Tag {
   private String condition;
 
   /**
-   * Constructs a {@code Tag} with the given comment.
+   * Constructs a {@code Tag} of the specific kind, with the given comment.
    *
+   * @param kind the comment kind. See {@code Tag.Kind} for the available kinds.
    * @param comment the comment associated with the exception
    * @throws NullPointerException if comment is null
    */
