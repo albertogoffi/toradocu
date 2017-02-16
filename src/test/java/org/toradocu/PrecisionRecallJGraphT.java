@@ -16,41 +16,41 @@ public class PrecisionRecallJGraphT extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testAbstractGraph() throws Exception {
-    test("org.jgrapht.graph.AbstractGraph", 1, 0.5, 1, 1);
+    test("org.jgrapht.graph.AbstractGraph", 1, 0.5, 1, 1, 0, 0);
   }
 
   @Test
   public void testGraph() throws Exception {
-    test("org.jgrapht.Graph", 0.75, 0.333, 1, 1);
+    test("org.jgrapht.Graph", 0.75, 0.333, 1, 1, 0, 0);
   }
 
   @Test
   public void testGraphs() throws Exception {
-    test("org.jgrapht.Graphs", 1, 0, 1, 1);
+    test("org.jgrapht.Graphs", 1, 0, 1, 1, 0, 0);
   }
 
   @Test
   public void testLinearGraphGenerator() throws Exception {
-    test("org.jgrapht.generate.LinearGraphGenerator", 1, 1, 1, 1);
+    test("org.jgrapht.generate.LinearGraphGenerator", 1, 1, 1, 1, 0, 0);
   }
 
   @Test
   public void testEmptyGraphGenerator() throws Exception {
-    test("org.jgrapht.generate.EmptyGraphGenerator", 1, 1, 1, 1);
+    test("org.jgrapht.generate.EmptyGraphGenerator", 1, 1, 1, 1, 0, 0);
   }
 
   @Test
   public void testKShortestPaths() throws Exception {
-    test("org.jgrapht.alg.KShortestPaths", 1, 1, 1, 1);
+    test("org.jgrapht.alg.KShortestPaths", 1, 1, 1, 1, 0, 0);
   }
 
   @Test
   public void testDirectedSimpleCycles() throws Exception {
-    test("org.jgrapht.alg.cycle.DirectedSimpleCycles", 1, 1, 1, 1);
+    test("org.jgrapht.alg.cycle.DirectedSimpleCycles", 1, 1, 1, 1, 0, 0);
   }
 
   @Test
   public void testAbstractPathElementList() throws Exception {
-    test("org.jgrapht.alg.AbstractPathElementList", 1, 0.666, 1, 1);
+    test("org.jgrapht.alg.AbstractPathElementList", 1, 0.666, 1, 1, 0, 0);
   }
 }
