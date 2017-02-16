@@ -493,7 +493,7 @@ public class ConditionTranslator {
 
   private static String translateFirstPart(String text) {
     String lowerCaseText = text.trim().toLowerCase();
-    switch (text) {
+    switch (lowerCaseText) {
       case "true":
       case "false":
         return "result.equals(" + lowerCaseText + ")";
