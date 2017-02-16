@@ -431,50 +431,51 @@ public class ConditionTranslator {
     if (tag.getKind() == Tag.Kind.RETURN) {
       // Assumption: the comment is composed of a single sentence. We should probably split multiple
       // sentence comments using the Stanford Parser, and then work on each single sentence.
+      String translation = "";
 
       // 1. Split the sentence in two parts: predicate + condition.
       // TODO Naive splitting. Make the split more reliable.
       final int splitPoint = comment.indexOf(" if ");
-      if (splitPoint == -1) {
-        return;
-      }
-      String predicate = comment.substring(0, splitPoint);
-      String condition = comment.substring(splitPoint + 3);
+      if (splitPoint != -1) {
+        String predicate = comment.substring(0, splitPoint);
+        String condition = comment.substring(splitPoint + 3);
 
-      if (!predicate.isEmpty() && !condition.isEmpty()) {
-        try {
-          String predicateTranslation = translateFirstPart(predicate);
-          String conditionTranslation = translateSecondPart(condition, method);
-          tag.setCondition(predicateTranslation + " @ " + conditionTranslation);
+        if (!predicate.isEmpty() && !condition.isEmpty()) {
+          try {
+            String predicateTranslation = translateFirstPart(predicate);
+            String conditionTranslation = translateSecondPart(condition, method);
+            translation = predicateTranslation + " @ " + conditionTranslation;
 
-          /* To validate the return values of the method under test we will have a code similar
-           * to this in the generated aspect:
-           *
-           * if ( conditionTranslation ) {
-           *   return predicate;
-           * else {
-           *   ??? <= how to express this? We can use c ? x : y.
-           * }
-           *
-           * Example: @return true if the values are equal.
-           * predicate: true
-           * condition: args[0].equals(args[1])
-           * translation: true @ args[0].equals(args[1])
-           *
-           * if (args[0].equals(args[1])) {
-           *   return result.equals(true);
-           * }
-           *
-           * We use the character '@' to separate the two parts of the translation. We need that
-           * because the translation is currently a plain a String.
-           */
-        } catch (IllegalArgumentException e) {
-          //TODO: Change the exception with one more meaningful.
-          // Pattern not supported.
-          log.warn("Unable to translate: \"" + comment + "\"");
+            /* To validate the return values of the method under test we will have a code similar
+             * to this in the generated aspect:
+             *
+             * if ( conditionTranslation ) {
+             *   return predicate;
+             * else {
+             *   ??? <= how to express this? We can use c ? x : y.
+             * }
+             *
+             * Example: @return true if the values are equal.
+             * predicate: true
+             * condition: args[0].equals(args[1])
+             * translation: true @ args[0].equals(args[1])
+             *
+             * if (args[0].equals(args[1])) {
+             *   return result.equals(true);
+             * }
+             *
+             * We use the character '@' to separate the two parts of the translation. We need that
+             * because the translation is currently a plain a String.
+             */
+          } catch (IllegalArgumentException e) {
+            //TODO: Change the exception with one more meaningful.
+            // Pattern not supported.
+            log.warn("Unable to translate: \"" + comment + "\"");
+          }
         }
+        // Else: do nothing. How can we support different forms of @return tags?
       }
-      // Else: do nothing. How can we support different forms of @return tags?
+      tag.setCondition(translation);
     }
   }
 
