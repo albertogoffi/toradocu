@@ -73,6 +73,10 @@ public abstract class AbstractPrecisionRecallTestSuite {
         "=== Test Suite ==="
             + "\nNumber of conditions: "
             + testSuiteStats.getTotalNumConditions()
+            + "\nAverage precision on @return: "
+            + String.format("%.2f", testSuiteStats.getPrecision(Tag.Kind.RETURN))
+            + "\nAverage recall on @return: "
+            + String.format("%.2f", testSuiteStats.getRecall(Tag.Kind.PARAM))
             + "\nAverage precision on @param: "
             + String.format("%.2f", testSuiteStats.getPrecision(Tag.Kind.PARAM))
             + "\nAverage recall on @param: "
@@ -103,7 +107,9 @@ public abstract class AbstractPrecisionRecallTestSuite {
       double throwsPrecision,
       double throwsRecall,
       double paramPrecision,
-      double paramRecall) {
+      double paramRecall,
+      double returnPrecision,
+      double returnRecall) {
     final Stats stats =
         PrecisionRecallTest.computePrecisionAndRecall(
             targetClass, sourceDirPath, binDirPath, goalOutputDirPath);
@@ -124,5 +130,13 @@ public abstract class AbstractPrecisionRecallTestSuite {
         "@param recall is different than expected",
         stats.getRecall(Tag.Kind.PARAM),
         closeTo(paramRecall, PRECISION));
+    assertThat(
+        "@return precision is different than expected",
+        stats.getPrecision(Tag.Kind.RETURN),
+        closeTo(returnPrecision, PRECISION));
+    assertThat(
+        "@return recall is different than expected",
+        stats.getRecall(Tag.Kind.RETURN),
+        closeTo(returnRecall, PRECISION));
   }
 }

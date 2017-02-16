@@ -1,64 +1,70 @@
 [
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.genetics.BinaryMutation",
+      "isArray": false,
       "name": "BinaryMutation",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.genetics.BinaryMutation"
     },
+    "isVarArgs": false,
     "name": "mutate",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.genetics.Chromosome",
-      "name": "Chromosome",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.genetics.Chromosome",
-          "name": "Chromosome",
-          "isArray": false
-        },
-        "name": "original"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.genetics.Chromosome",
-            "name": "Chromosome",
-            "isArray": false
-          },
-          "name": "original"
-        },
         "comment": "the original chromosome.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "original",
+          "type": {
+            "isArray": false,
+            "name": "Chromosome",
+            "qualifiedName": "org.apache.commons.math3.genetics.Chromosome"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "original",
+        "type": {
+          "isArray": false,
+          "name": "Chromosome",
+          "qualifiedName": "org.apache.commons.math3.genetics.Chromosome"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the mutated chromosome.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Chromosome",
+      "qualifiedName": "org.apache.commons.math3.genetics.Chromosome"
+    },
+    "signature": "mutate(org.apache.commons.math3.genetics.Chromosome original)",
+    "targetClass": "org.apache.commons.math3.genetics.BinaryMutation",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException",
-          "name": "MathIllegalArgumentException",
-          "isArray": false
-        },
         "comment": "if original is not an instance of BinaryChromosome.",
-        "kind": "@throws",
-        "condition": "(args[0] instanceof BinaryChromosome) == false"
+        "condition": "(args[0] instanceof BinaryChromosome) == false",
+        "exception": {
+          "isArray": false,
+          "name": "MathIllegalArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException"
+        },
+        "kind": "@throws"
       },
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException",
-          "name": "MathIllegalArgumentException",
-          "isArray": false
-        },
         "comment": "if the given chromosome is not compatible with this MutationPolicy",
-        "kind": "@throws",
-        "condition": ""
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "MathIllegalArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException"
+        },
+        "kind": "@throws"
       }
-    ],
-    "signature": "mutate(org.apache.commons.math3.genetics.Chromosome original)"
+    ]
   }
 ]

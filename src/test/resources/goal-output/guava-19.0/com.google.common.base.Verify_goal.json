@@ -1,292 +1,307 @@
 [
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.base.Verify",
+      "isArray": false,
       "name": "Verify",
-      "isArray": false
+      "qualifiedName": "com.google.common.base.Verify"
     },
+    "isVarArgs": false,
     "name": "Verify",
+    "paramTags": [],
     "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "Verify()"
+    "signature": "Verify()",
+    "targetClass": "com.google.common.base.Verify",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.base.Verify",
+      "isArray": false,
       "name": "Verify",
-      "isArray": false
+      "qualifiedName": "com.google.common.base.Verify"
     },
+    "isVarArgs": false,
     "name": "verify",
-    "returnType": {
-      "qualifiedName": "void",
-      "name": "void",
-      "isArray": false
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "expression",
         "type": {
-          "qualifiedName": "boolean",
+          "isArray": false,
           "name": "boolean",
-          "isArray": false
-        },
-        "name": "expression"
+          "qualifiedName": "boolean"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
+    "returnType": {
+      "isArray": false,
+      "name": "void",
+      "qualifiedName": "void"
+    },
+    "signature": "verify(boolean expression)",
+    "targetClass": "com.google.common.base.Verify",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "com.google.common.base.VerifyException",
-          "name": "VerifyException",
-          "isArray": false
-        },
         "comment": "if expression is false",
-        "kind": "@throws",
-        "condition": "args[0]==false"
+        "condition": "args[0]==false",
+        "exception": {
+          "isArray": false,
+          "name": "VerifyException",
+          "qualifiedName": "com.google.common.base.VerifyException"
+        },
+        "kind": "@throws"
       }
-    ],
-    "signature": "verify(boolean expression)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.base.Verify",
+      "isArray": false,
       "name": "Verify",
-      "isArray": false
+      "qualifiedName": "com.google.common.base.Verify"
     },
+    "isVarArgs": true,
     "name": "verify",
-    "returnType": {
-      "qualifiedName": "void",
-      "name": "void",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "boolean",
-          "name": "boolean",
-          "isArray": false
-        },
-        "name": "expression"
-      },
-      {
-        "type": {
-          "qualifiedName": "java.lang.String",
-          "name": "String",
-          "isArray": false
-        },
-        "name": "errorMessageTemplate",
-        "nullable": true
-      },
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object[]",
-          "name": "Object[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          }
-        },
-        "name": "errorMessageArgs",
-        "nullable": true
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "boolean",
-            "name": "boolean",
-            "isArray": false
-          },
-          "name": "expression"
-        },
         "comment": "a boolean expression",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
-      },
-      {
         "parameter": {
+          "name": "expression",
           "type": {
-            "qualifiedName": "java.lang.String",
-            "name": "String",
-            "isArray": false
-          },
-          "name": "errorMessageTemplate"
-        },
-        "comment": "a template for the exception message should the check fail. The message is formed by replacing each %s placeholder in the template with an argument. These are matched by position - the first %s gets errorMessageArgs[0], etc. Unmatched arguments will be appended to the formatted message in square braces. Unmatched placeholders will be left as-is.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object[]",
-            "name": "Object[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "java.lang.Object",
-              "name": "Object",
-              "isArray": false
-            }
-          },
-          "name": "errorMessageArgs"
-        },
-        "comment": "the arguments to be substituted into the message template. Arguments are converted to strings using String.valueOf(Object).",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": true,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "com.google.common.base.VerifyException",
-          "name": "VerifyException",
-          "isArray": false
-        },
-        "comment": "if expression is false",
-        "kind": "@throws",
-        "condition": "args[0]==false"
-      }
-    ],
-    "signature": "verify(boolean expression,java.lang.String errorMessageTemplate,java.lang.Object[] errorMessageArgs)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.base.Verify",
-      "name": "Verify",
-      "isArray": false
-    },
-    "name": "verifyNotNull",
-    "returnType": {
-      "qualifiedName": "T",
-      "name": "T",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "reference",
-        "nullable": true
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "com.google.common.base.VerifyException",
-          "name": "VerifyException",
-          "isArray": false
-        },
-        "comment": "if reference is null",
-        "kind": "@throws",
-        "condition": "args[0]==null"
-      }
-    ],
-    "signature": "verifyNotNull(java.lang.Object reference)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.base.Verify",
-      "name": "Verify",
-      "isArray": false
-    },
-    "name": "verifyNotNull",
-    "returnType": {
-      "qualifiedName": "T",
-      "name": "T",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "reference",
-        "nullable": true
-      },
-      {
-        "type": {
-          "qualifiedName": "java.lang.String",
-          "name": "String",
-          "isArray": false
-        },
-        "name": "errorMessageTemplate",
-        "nullable": true
-      },
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object[]",
-          "name": "Object[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
+            "isArray": false,
+            "name": "boolean",
+            "qualifiedName": "boolean"
           }
-        },
-        "name": "errorMessageArgs",
-        "nullable": true
+        }
+      },
+      {
+        "comment": "a template for the exception message should the check fail. The message is formed by replacing each %s placeholder in the template with an argument. These are matched by position - the first %s gets errorMessageArgs[0], etc. Unmatched arguments will be appended to the formatted message in square braces. Unmatched placeholders will be left as-is.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "errorMessageTemplate",
+          "type": {
+            "isArray": false,
+            "name": "String",
+            "qualifiedName": "java.lang.String"
+          }
+        }
+      },
+      {
+        "comment": "the arguments to be substituted into the message template. Arguments are converted to strings using String.valueOf(Object).",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "errorMessageArgs",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "Object",
+              "qualifiedName": "java.lang.Object"
+            },
+            "isArray": true,
+            "name": "Object[]",
+            "qualifiedName": "java.lang.Object[]"
+          }
+        }
       }
     ],
+    "parameters": [
+      {
+        "name": "expression",
+        "type": {
+          "isArray": false,
+          "name": "boolean",
+          "qualifiedName": "boolean"
+        }
+      },
+      {
+        "name": "errorMessageTemplate",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "String",
+          "qualifiedName": "java.lang.String"
+        }
+      },
+      {
+        "name": "errorMessageArgs",
+        "nullable": true,
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "Object",
+            "qualifiedName": "java.lang.Object"
+          },
+          "isArray": true,
+          "name": "Object[]",
+          "qualifiedName": "java.lang.Object[]"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "void",
+      "qualifiedName": "void"
+    },
+    "signature": "verify(boolean expression,java.lang.String errorMessageTemplate,java.lang.Object[] errorMessageArgs)",
+    "targetClass": "com.google.common.base.Verify",
+    "throwsTags": [
+      {
+        "comment": "if expression is false",
+        "condition": "args[0]==false",
+        "exception": {
+          "isArray": false,
+          "name": "VerifyException",
+          "qualifiedName": "com.google.common.base.VerifyException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Verify",
+      "qualifiedName": "com.google.common.base.Verify"
+    },
+    "isVarArgs": false,
+    "name": "verifyNotNull",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "reference",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "reference, guaranteed to be non-null, for convenience",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "T",
+      "qualifiedName": "T"
+    },
+    "signature": "verifyNotNull(java.lang.Object reference)",
+    "targetClass": "com.google.common.base.Verify",
+    "throwsTags": [
+      {
+        "comment": "if reference is null",
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "VerifyException",
+          "qualifiedName": "com.google.common.base.VerifyException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Verify",
+      "qualifiedName": "com.google.common.base.Verify"
+    },
+    "isVarArgs": true,
+    "name": "verifyNotNull",
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.String",
-            "name": "String",
-            "isArray": false
-          },
-          "name": "errorMessageTemplate"
-        },
         "comment": "a template for the exception message should the check fail. The message is formed by replacing each %s placeholder in the template with an argument. These are matched by position - the first %s gets errorMessageArgs[0], etc. Unmatched arguments will be appended to the formatted message in square braces. Unmatched placeholders will be left as-is.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "errorMessageTemplate",
+          "type": {
+            "isArray": false,
+            "name": "String",
+            "qualifiedName": "java.lang.String"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object[]",
-            "name": "Object[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "java.lang.Object",
-              "name": "Object",
-              "isArray": false
-            }
-          },
-          "name": "errorMessageArgs"
-        },
         "comment": "the arguments to be substituted into the message template. Arguments are converted to strings using String.valueOf(Object).",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "errorMessageArgs",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "Object",
+              "qualifiedName": "java.lang.Object"
+            },
+            "isArray": true,
+            "name": "Object[]",
+            "qualifiedName": "java.lang.Object[]"
+          }
+        }
       }
     ],
-    "isVarArgs": true,
+    "parameters": [
+      {
+        "name": "reference",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      },
+      {
+        "name": "errorMessageTemplate",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "String",
+          "qualifiedName": "java.lang.String"
+        }
+      },
+      {
+        "name": "errorMessageArgs",
+        "nullable": true,
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "Object",
+            "qualifiedName": "java.lang.Object"
+          },
+          "isArray": true,
+          "name": "Object[]",
+          "qualifiedName": "java.lang.Object[]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "reference, guaranteed to be non-null, for convenience",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "T",
+      "qualifiedName": "T"
+    },
+    "signature": "verifyNotNull(java.lang.Object reference,java.lang.String errorMessageTemplate,java.lang.Object[] errorMessageArgs)",
+    "targetClass": "com.google.common.base.Verify",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "com.google.common.base.VerifyException",
-          "name": "VerifyException",
-          "isArray": false
-        },
         "comment": "if reference is null",
-        "kind": "@throws",
-        "condition": "args[0]==null"
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "VerifyException",
+          "qualifiedName": "com.google.common.base.VerifyException"
+        },
+        "kind": "@throws"
       }
-    ],
-    "signature": "verifyNotNull(java.lang.Object reference,java.lang.String errorMessageTemplate,java.lang.Object[] errorMessageArgs)"
+    ]
   }
 ]

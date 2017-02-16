@@ -1,231 +1,256 @@
 [
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.QueueUtils",
+      "isArray": false,
       "name": "QueueUtils",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.collections4.QueueUtils"
     },
+    "isVarArgs": false,
     "name": "QueueUtils",
-    "parameters": [],
     "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "QueueUtils()"
+    "parameters": [],
+    "signature": "QueueUtils()",
+    "targetClass": "org.apache.commons.collections4.QueueUtils",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.QueueUtils",
+      "isArray": false,
       "name": "QueueUtils",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.collections4.QueueUtils"
     },
+    "isVarArgs": false,
     "name": "unmodifiableQueue",
-    "returnType": {
-      "qualifiedName": "java.util.Queue",
-      "name": "Queue",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.util.Queue",
-          "name": "Queue",
-          "isArray": false
-        },
-        "name": "queue"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.Queue",
-            "name": "Queue",
-            "isArray": false
-          },
-          "name": "queue"
-        },
         "comment": "the queue to make unmodifiable, must not be null",
+        "condition": "(args[0]==null) == false",
         "kind": "@param",
-        "condition": "(args[0]==null) == false"
+        "parameter": {
+          "name": "queue",
+          "type": {
+            "isArray": false,
+            "name": "Queue",
+            "qualifiedName": "java.util.Queue"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "queue",
+        "type": {
+          "isArray": false,
+          "name": "Queue",
+          "qualifiedName": "java.util.Queue"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "an unmodifiable queue backed by that queue",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Queue",
+      "qualifiedName": "java.util.Queue"
+    },
+    "signature": "unmodifiableQueue(java.util.Queue queue)",
+    "targetClass": "org.apache.commons.collections4.QueueUtils",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "java.lang.NullPointerException",
-          "name": "NullPointerException",
-          "isArray": false
-        },
         "comment": "if the queue is null",
-        "kind": "@throws",
-        "condition": "args[0]==null"
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullPointerException",
+          "qualifiedName": "java.lang.NullPointerException"
+        },
+        "kind": "@throws"
       }
-    ],
-    "signature": "unmodifiableQueue(java.util.Queue queue)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.QueueUtils",
+      "isArray": false,
       "name": "QueueUtils",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.collections4.QueueUtils"
     },
+    "isVarArgs": false,
     "name": "predicatedQueue",
-    "returnType": {
-      "qualifiedName": "java.util.Queue",
-      "name": "Queue",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.util.Queue",
-          "name": "Queue",
-          "isArray": false
-        },
-        "name": "queue"
-      },
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.collections4.Predicate",
-          "name": "Predicate",
-          "isArray": false
-        },
-        "name": "predicate"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.Queue",
-            "name": "Queue",
-            "isArray": false
-          },
-          "name": "queue"
-        },
         "comment": "the queue to predicate, must not be null",
+        "condition": "(args[0]==null) == false",
         "kind": "@param",
-        "condition": "(args[0]==null) == false"
+        "parameter": {
+          "name": "queue",
+          "type": {
+            "isArray": false,
+            "name": "Queue",
+            "qualifiedName": "java.util.Queue"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.collections4.Predicate",
-            "name": "Predicate",
-            "isArray": false
-          },
-          "name": "predicate"
-        },
         "comment": "the predicate used to evaluate new elements, must not be null",
+        "condition": "(args[1]==null) == false",
         "kind": "@param",
-        "condition": "(args[1]==null) == false"
+        "parameter": {
+          "name": "predicate",
+          "type": {
+            "isArray": false,
+            "name": "Predicate",
+            "qualifiedName": "org.apache.commons.collections4.Predicate"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.NullPointerException",
-          "name": "NullPointerException",
-          "isArray": false
-        },
-        "comment": "if the queue or predicate is null",
-        "kind": "@throws",
-        "condition": "args[0]==null || args[1]==null"
-      }
-    ],
-    "signature": "predicatedQueue(java.util.Queue queue,org.apache.commons.collections4.Predicate predicate)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.QueueUtils",
-      "name": "QueueUtils",
-      "isArray": false
-    },
-    "name": "transformingQueue",
-    "returnType": {
-      "qualifiedName": "java.util.Queue",
-      "name": "Queue",
-      "isArray": false
-    },
     "parameters": [
       {
+        "name": "queue",
         "type": {
-          "qualifiedName": "java.util.Queue",
+          "isArray": false,
           "name": "Queue",
-          "isArray": false
-        },
-        "name": "queue"
+          "qualifiedName": "java.util.Queue"
+        }
       },
       {
+        "name": "predicate",
         "type": {
-          "qualifiedName": "org.apache.commons.collections4.Transformer",
-          "name": "Transformer",
-          "isArray": false
-        },
-        "name": "transformer"
+          "isArray": false,
+          "name": "Predicate",
+          "qualifiedName": "org.apache.commons.collections4.Predicate"
+        }
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.Queue",
-            "name": "Queue",
-            "isArray": false
-          },
-          "name": "queue"
-        },
-        "comment": "the queue to predicate, must not be null",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.collections4.Transformer",
-            "name": "Transformer",
-            "isArray": false
-          },
-          "name": "transformer"
-        },
-        "comment": "the transformer for the queue, must not be null",
-        "kind": "@param",
-        "condition": "(args[1]==null) == false"
-      }
-    ],
-    "isVarArgs": false,
+    "returnTag": {
+      "comment": "a predicated queue",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Queue",
+      "qualifiedName": "java.util.Queue"
+    },
+    "signature": "predicatedQueue(java.util.Queue queue,org.apache.commons.collections4.Predicate predicate)",
+    "targetClass": "org.apache.commons.collections4.QueueUtils",
     "throwsTags": [
       {
+        "comment": "if the queue or predicate is null",
+        "condition": "args[0]==null || args[1]==null",
         "exception": {
-          "qualifiedName": "java.lang.NullPointerException",
+          "isArray": false,
           "name": "NullPointerException",
-          "isArray": false
+          "qualifiedName": "java.lang.NullPointerException"
         },
-        "comment": "if the queue or transformer is null",
-        "kind": "@throws",
-        "condition": "args[0]==null || args[1]==null"
+        "kind": "@throws"
       }
-    ],
-    "signature": "transformingQueue(java.util.Queue queue,org.apache.commons.collections4.Transformer transformer)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.QueueUtils",
+      "isArray": false,
       "name": "QueueUtils",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.collections4.QueueUtils"
     },
-    "name": "emptyQueue",
-    "returnType": {
-      "qualifiedName": "java.util.Queue",
-      "name": "Queue",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "emptyQueue()"
+    "name": "transformingQueue",
+    "paramTags": [
+      {
+        "comment": "the queue to predicate, must not be null",
+        "condition": "(args[0]==null) == false",
+        "kind": "@param",
+        "parameter": {
+          "name": "queue",
+          "type": {
+            "isArray": false,
+            "name": "Queue",
+            "qualifiedName": "java.util.Queue"
+          }
+        }
+      },
+      {
+        "comment": "the transformer for the queue, must not be null",
+        "condition": "(args[1]==null) == false",
+        "kind": "@param",
+        "parameter": {
+          "name": "transformer",
+          "type": {
+            "isArray": false,
+            "name": "Transformer",
+            "qualifiedName": "org.apache.commons.collections4.Transformer"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "queue",
+        "type": {
+          "isArray": false,
+          "name": "Queue",
+          "qualifiedName": "java.util.Queue"
+        }
+      },
+      {
+        "name": "transformer",
+        "type": {
+          "isArray": false,
+          "name": "Transformer",
+          "qualifiedName": "org.apache.commons.collections4.Transformer"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a transformed queue backed by the given queue",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Queue",
+      "qualifiedName": "java.util.Queue"
+    },
+    "signature": "transformingQueue(java.util.Queue queue,org.apache.commons.collections4.Transformer transformer)",
+    "targetClass": "org.apache.commons.collections4.QueueUtils",
+    "throwsTags": [
+      {
+        "comment": "if the queue or transformer is null",
+        "condition": "args[0]==null || args[1]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullPointerException",
+          "qualifiedName": "java.lang.NullPointerException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "QueueUtils",
+      "qualifiedName": "org.apache.commons.collections4.QueueUtils"
+    },
+    "isVarArgs": false,
+    "name": "emptyQueue",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "an empty Queue",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Queue",
+      "qualifiedName": "java.util.Queue"
+    },
+    "signature": "emptyQueue()",
+    "targetClass": "org.apache.commons.collections4.QueueUtils",
+    "throwsTags": []
   }
 ]

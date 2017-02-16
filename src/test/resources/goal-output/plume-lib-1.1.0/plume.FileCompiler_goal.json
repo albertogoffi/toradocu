@@ -1,444 +1,473 @@
 [
   {
     "containingClass": {
-      "qualifiedName": "plume.FileCompiler",
+      "isArray": false,
       "name": "FileCompiler",
-      "isArray": false
+      "qualifiedName": "plume.FileCompiler"
     },
+    "isVarArgs": false,
     "name": "FileCompiler",
-    "parameters": [],
     "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "FileCompiler()"
+    "parameters": [],
+    "signature": "FileCompiler()",
+    "targetClass": "plume.FileCompiler",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "plume.FileCompiler",
+      "isArray": false,
       "name": "FileCompiler",
-      "isArray": false
+      "qualifiedName": "plume.FileCompiler"
     },
+    "isVarArgs": false,
     "name": "FileCompiler",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.String[]",
-          "name": "String[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "java.lang.String",
-            "name": "String",
-            "isArray": false
-          }
-        },
-        "name": "compiler"
-      },
-      {
-        "type": {
-          "qualifiedName": "long",
-          "name": "long",
-          "isArray": false
-        },
-        "name": "timeLimit"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.String[]",
-            "name": "String[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "java.lang.String",
-              "name": "String",
-              "isArray": false
-            }
-          },
-          "name": "compiler"
-        },
         "comment": "an array of Strings representing a command that runs a Java compiler (it could be the full path name or whatever is used on the commandline), plus any command-line options.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "compiler",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "String",
+              "qualifiedName": "java.lang.String"
+            },
+            "isArray": true,
+            "name": "String[]",
+            "qualifiedName": "java.lang.String[]"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "long",
-            "name": "long",
-            "isArray": false
-          },
-          "name": "timeLimit"
-        },
         "comment": "the maximum permitted compilation time, in msec",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "timeLimit",
+          "type": {
+            "isArray": false,
+            "name": "long",
+            "qualifiedName": "long"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "FileCompiler(java.lang.String[] compiler,long timeLimit)"
+    "parameters": [
+      {
+        "name": "compiler",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "String",
+            "qualifiedName": "java.lang.String"
+          },
+          "isArray": true,
+          "name": "String[]",
+          "qualifiedName": "java.lang.String[]"
+        }
+      },
+      {
+        "name": "timeLimit",
+        "type": {
+          "isArray": false,
+          "name": "long",
+          "qualifiedName": "long"
+        }
+      }
+    ],
+    "signature": "FileCompiler(java.lang.String[] compiler,long timeLimit)",
+    "targetClass": "plume.FileCompiler",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "plume.FileCompiler",
+      "isArray": false,
       "name": "FileCompiler",
-      "isArray": false
+      "qualifiedName": "plume.FileCompiler"
     },
+    "isVarArgs": false,
     "name": "FileCompiler",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.util.ArrayList",
-          "name": "ArrayList",
-          "isArray": false
-        },
-        "name": "compiler"
-      },
-      {
-        "type": {
-          "qualifiedName": "long",
-          "name": "long",
-          "isArray": false
-        },
-        "name": "timeLimit"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.ArrayList",
-            "name": "ArrayList",
-            "isArray": false
-          },
-          "name": "compiler"
-        },
         "comment": "a list of Strings representing a command that runs a Java compiler (it could be the full path name or whatever is used on the commandline), plus any command-line options.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "compiler",
+          "type": {
+            "isArray": false,
+            "name": "ArrayList",
+            "qualifiedName": "java.util.ArrayList"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "long",
-            "name": "long",
-            "isArray": false
-          },
-          "name": "timeLimit"
-        },
         "comment": "the maximum permitted compilation time, in msec",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "timeLimit",
+          "type": {
+            "isArray": false,
+            "name": "long",
+            "qualifiedName": "long"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "FileCompiler(java.util.ArrayList compiler,long timeLimit)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "plume.FileCompiler",
-      "name": "FileCompiler",
-      "isArray": false
-    },
-    "name": "FileCompiler",
     "parameters": [
       {
+        "name": "compiler",
         "type": {
-          "qualifiedName": "java.lang.String",
-          "name": "String",
-          "isArray": false
-        },
-        "name": "compiler"
+          "isArray": false,
+          "name": "ArrayList",
+          "qualifiedName": "java.util.ArrayList"
+        }
       },
       {
+        "name": "timeLimit",
         "type": {
-          "qualifiedName": "long",
+          "isArray": false,
           "name": "long",
-          "isArray": false
-        },
-        "name": "timeLimit"
+          "qualifiedName": "long"
+        }
       }
     ],
+    "signature": "FileCompiler(java.util.ArrayList compiler,long timeLimit)",
+    "targetClass": "plume.FileCompiler",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FileCompiler",
+      "qualifiedName": "plume.FileCompiler"
+    },
+    "isVarArgs": false,
+    "name": "FileCompiler",
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.String",
-            "name": "String",
-            "isArray": false
-          },
-          "name": "compiler"
-        },
         "comment": "a command that runs a Java compiler; for instance, it could be the full path name or whatever is used on the commandline. It may contain command-line arguments, and is split on spaces.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "compiler",
+          "type": {
+            "isArray": false,
+            "name": "String",
+            "qualifiedName": "java.lang.String"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "long",
-            "name": "long",
-            "isArray": false
-          },
-          "name": "timeLimit"
-        },
         "comment": "the maximum permitted compilation time, in msec",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "timeLimit",
+          "type": {
+            "isArray": false,
+            "name": "long",
+            "qualifiedName": "long"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "FileCompiler(java.lang.String compiler,long timeLimit)"
+    "parameters": [
+      {
+        "name": "compiler",
+        "type": {
+          "isArray": false,
+          "name": "String",
+          "qualifiedName": "java.lang.String"
+        }
+      },
+      {
+        "name": "timeLimit",
+        "type": {
+          "isArray": false,
+          "name": "long",
+          "qualifiedName": "long"
+        }
+      }
+    ],
+    "signature": "FileCompiler(java.lang.String compiler,long timeLimit)",
+    "targetClass": "plume.FileCompiler",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "plume.FileCompiler",
+      "isArray": false,
       "name": "FileCompiler",
-      "isArray": false
+      "qualifiedName": "plume.FileCompiler"
     },
+    "isVarArgs": false,
     "name": "compileFiles",
-    "returnType": {
-      "qualifiedName": "java.lang.String",
-      "name": "String",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.util.List",
-          "name": "List",
-          "isArray": false
-        },
-        "name": "fileNames"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.List",
-            "name": "List",
-            "isArray": false
-          },
-          "name": "fileNames"
-        },
         "comment": "paths to the files to be compiled as Strings",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "fileNames",
+          "type": {
+            "isArray": false,
+            "name": "List",
+            "qualifiedName": "java.util.List"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.io.IOException",
-          "name": "IOException",
-          "isArray": false
-        },
-        "comment": "if there is a problem reading a file",
-        "kind": "@throws",
-        "condition": ""
-      }
-    ],
-    "signature": "compileFiles(java.util.List fileNames)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "plume.FileCompiler",
-      "name": "FileCompiler",
-      "isArray": false
-    },
-    "name": "compile_source",
-    "returnType": {
-      "qualifiedName": "plume.TimeLimitProcess",
-      "name": "TimeLimitProcess",
-      "isArray": false
-    },
     "parameters": [
       {
+        "name": "fileNames",
         "type": {
-          "qualifiedName": "java.util.List",
+          "isArray": false,
           "name": "List",
-          "isArray": false
-        },
-        "name": "filenames"
+          "qualifiedName": "java.util.List"
+        }
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.List",
-            "name": "List",
-            "isArray": false
-          },
-          "name": "filenames"
-        },
-        "comment": "the paths of the Java source to be compiled as Strings",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.Error",
-          "name": "Error",
-          "isArray": false
-        },
-        "comment": "if an empty list of filenames is provided.",
-        "kind": "@throws",
-        "condition": "args[0].isEmpty()"
-      }
-    ],
-    "signature": "compile_source(java.util.List filenames)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "plume.FileCompiler",
-      "name": "FileCompiler",
-      "isArray": false
+    "returnTag": {
+      "comment": "the error output from compiling the files",
+      "condition": "",
+      "kind": "RETURN"
     },
-    "name": "recompile_without_errors",
     "returnType": {
-      "qualifiedName": "void",
-      "name": "void",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.util.List",
-          "name": "List",
-          "isArray": false
-        },
-        "name": "fileNames"
-      },
-      {
-        "type": {
-          "qualifiedName": "java.lang.String",
-          "name": "String",
-          "isArray": false
-        },
-        "name": "errorString"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.List",
-            "name": "List",
-            "isArray": false
-          },
-          "name": "fileNames"
-        },
-        "comment": "all the files that were attempted to be compiled",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.String",
-            "name": "String",
-            "isArray": false
-          },
-          "name": "errorString"
-        },
-        "comment": "the error string that indicates which files could not be compiled",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "recompile_without_errors(java.util.List fileNames,java.lang.String errorString)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "plume.FileCompiler",
-      "name": "FileCompiler",
-      "isArray": false
-    },
-    "name": "getClassFilePath",
-    "returnType": {
-      "qualifiedName": "java.lang.String",
+      "isArray": false,
       "name": "String",
-      "isArray": false
+      "qualifiedName": "java.lang.String"
     },
-    "parameters": [
+    "signature": "compileFiles(java.util.List fileNames)",
+    "targetClass": "plume.FileCompiler",
+    "throwsTags": [
       {
-        "type": {
-          "qualifiedName": "java.lang.String",
-          "name": "String",
-          "isArray": false
+        "comment": "if there is a problem reading a file",
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "IOException",
+          "qualifiedName": "java.io.IOException"
         },
-        "name": "sourceFilePath"
+        "kind": "@throws"
       }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.String",
-            "name": "String",
-            "isArray": false
-          },
-          "name": "sourceFilePath"
-        },
-        "comment": "the path to the .java file",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getClassFilePath(java.lang.String sourceFilePath)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "plume.FileCompiler",
+      "isArray": false,
       "name": "FileCompiler",
-      "isArray": false
+      "qualifiedName": "plume.FileCompiler"
     },
-    "name": "fileExists",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.String",
-          "name": "String",
-          "isArray": false
-        },
-        "name": "pathName"
-      }
-    ],
+    "isVarArgs": false,
+    "name": "compile_source",
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.String",
-            "name": "String",
-            "isArray": false
-          },
-          "name": "pathName"
-        },
-        "comment": "path to check for existence",
+        "comment": "the paths of the Java source to be compiled as Strings",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "filenames",
+          "type": {
+            "isArray": false,
+            "name": "List",
+            "qualifiedName": "java.util.List"
+          }
+        }
       }
     ],
+    "parameters": [
+      {
+        "name": "filenames",
+        "type": {
+          "isArray": false,
+          "name": "List",
+          "qualifiedName": "java.util.List"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the process that executed the external compile command",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "TimeLimitProcess",
+      "qualifiedName": "plume.TimeLimitProcess"
+    },
+    "signature": "compile_source(java.util.List filenames)",
+    "targetClass": "plume.FileCompiler",
+    "throwsTags": [
+      {
+        "comment": "if an empty list of filenames is provided.",
+        "condition": "args[0].isEmpty()",
+        "exception": {
+          "isArray": false,
+          "name": "Error",
+          "qualifiedName": "java.lang.Error"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FileCompiler",
+      "qualifiedName": "plume.FileCompiler"
+    },
     "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "fileExists(java.lang.String pathName)"
+    "name": "recompile_without_errors",
+    "paramTags": [
+      {
+        "comment": "all the files that were attempted to be compiled",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "fileNames",
+          "type": {
+            "isArray": false,
+            "name": "List",
+            "qualifiedName": "java.util.List"
+          }
+        }
+      },
+      {
+        "comment": "the error string that indicates which files could not be compiled",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "errorString",
+          "type": {
+            "isArray": false,
+            "name": "String",
+            "qualifiedName": "java.lang.String"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "fileNames",
+        "type": {
+          "isArray": false,
+          "name": "List",
+          "qualifiedName": "java.util.List"
+        }
+      },
+      {
+        "name": "errorString",
+        "type": {
+          "isArray": false,
+          "name": "String",
+          "qualifiedName": "java.lang.String"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "void",
+      "qualifiedName": "void"
+    },
+    "signature": "recompile_without_errors(java.util.List fileNames,java.lang.String errorString)",
+    "targetClass": "plume.FileCompiler",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FileCompiler",
+      "qualifiedName": "plume.FileCompiler"
+    },
+    "isVarArgs": false,
+    "name": "getClassFilePath",
+    "paramTags": [
+      {
+        "comment": "the path to the .java file",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "sourceFilePath",
+          "type": {
+            "isArray": false,
+            "name": "String",
+            "qualifiedName": "java.lang.String"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "sourceFilePath",
+        "type": {
+          "isArray": false,
+          "name": "String",
+          "qualifiedName": "java.lang.String"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the path to the corresponding .class file",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "String",
+      "qualifiedName": "java.lang.String"
+    },
+    "signature": "getClassFilePath(java.lang.String sourceFilePath)",
+    "targetClass": "plume.FileCompiler",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FileCompiler",
+      "qualifiedName": "plume.FileCompiler"
+    },
+    "isVarArgs": false,
+    "name": "fileExists",
+    "paramTags": [
+      {
+        "comment": "path to check for existence",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "pathName",
+          "type": {
+            "isArray": false,
+            "name": "String",
+            "qualifiedName": "java.lang.String"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "pathName",
+        "type": {
+          "isArray": false,
+          "name": "String",
+          "qualifiedName": "java.lang.String"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "true iff the file exists",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "fileExists(java.lang.String pathName)",
+    "targetClass": "plume.FileCompiler",
+    "throwsTags": []
   }
 ]

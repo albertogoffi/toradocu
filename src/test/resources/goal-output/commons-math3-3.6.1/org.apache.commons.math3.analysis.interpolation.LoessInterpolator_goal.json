@@ -1,940 +1,975 @@
 [
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator",
+      "isArray": false,
       "name": "LoessInterpolator",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator"
     },
+    "isVarArgs": false,
     "name": "LoessInterpolator",
-    "parameters": [],
     "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "LoessInterpolator()"
+    "parameters": [],
+    "signature": "LoessInterpolator()",
+    "targetClass": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator",
+      "isArray": false,
       "name": "LoessInterpolator",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator"
     },
+    "isVarArgs": false,
     "name": "LoessInterpolator",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "bandwidth"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "robustnessIters"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "bandwidth"
-        },
         "comment": "when computing the loess fit at a particular point, this fraction of source points closest to the current point is taken into account for computing a least-squares regression. A sensible value is usually 0.25 to 0.5, the default value is DEFAULT_BANDWIDTH.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "bandwidth",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "robustnessIters"
-        },
         "comment": "This many robustness iterations are done. A sensible value is usually 0 (just the initial fit without any robustness iterations) to 4, the default value is DEFAULT_ROBUSTNESS_ITERS.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "robustnessIters",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "LoessInterpolator(double bandwidth,int robustnessIters)"
+    "parameters": [
+      {
+        "name": "bandwidth",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "robustnessIters",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "signature": "LoessInterpolator(double bandwidth,int robustnessIters)",
+    "targetClass": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator",
+      "isArray": false,
       "name": "LoessInterpolator",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator"
     },
+    "isVarArgs": false,
     "name": "LoessInterpolator",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "bandwidth"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "robustnessIters"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "accuracy"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "bandwidth"
-        },
         "comment": "when computing the loess fit at a particular point, this fraction of source points closest to the current point is taken into account for computing a least-squares regression. A sensible value is usually 0.25 to 0.5, the default value is DEFAULT_BANDWIDTH.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
-      },
-      {
         "parameter": {
+          "name": "bandwidth",
           "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "robustnessIters"
-        },
-        "comment": "This many robustness iterations are done. A sensible value is usually 0 (just the initial fit without any robustness iterations) to 4, the default value is DEFAULT_ROBUSTNESS_ITERS.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
+            "isArray": false,
             "name": "double",
-            "isArray": false
-          },
-          "name": "accuracy"
-        },
+            "qualifiedName": "double"
+          }
+        }
+      },
+      {
+        "comment": "This many robustness iterations are done. A sensible value is usually 0 (just the initial fit without any robustness iterations) to 4, the default value is DEFAULT_ROBUSTNESS_ITERS.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "robustnessIters",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
+      },
+      {
         "comment": "If the median residual at a certain robustness iteration is less than this amount, no more iterations are done.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "accuracy",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException",
-          "name": "OutOfRangeException",
-          "isArray": false
-        },
-        "comment": "if bandwidth does not lie in the interval [0,1].",
-        "kind": "@throws",
-        "condition": "args[0]<0 || args[0]>1"
-      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException",
-          "name": "NotPositiveException",
-          "isArray": false
-        },
-        "comment": "if robustnessIters is negative.",
-        "kind": "@throws",
-        "condition": "args[1]<0"
-      }
-    ],
-    "signature": "LoessInterpolator(double bandwidth,int robustnessIters,double accuracy)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator",
-      "name": "LoessInterpolator",
-      "isArray": false
-    },
-    "name": "interpolate",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction",
-      "name": "PolynomialSplineFunction",
-      "isArray": false
-    },
     "parameters": [
       {
+        "name": "bandwidth",
         "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "xval"
-      },
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "yval"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "xval"
-        },
-        "comment": "the arguments for the interpolation points",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "yval"
-        },
-        "comment": "the values for the interpolation points",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NonMonotonicSequenceException",
-          "name": "NonMonotonicSequenceException",
-          "isArray": false
-        },
-        "comment": "if xval not sorted in strictly increasing order.",
-        "kind": "@throws",
-        "condition": ""
-      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
-          "name": "DimensionMismatchException",
-          "isArray": false
-        },
-        "comment": "if xval and yval have different sizes.",
-        "kind": "@throws",
-        "condition": "((args[0].length) == (args[1].length)) == false"
-      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NoDataException",
-          "name": "NoDataException",
-          "isArray": false
-        },
-        "comment": "if xval or yval has zero size.",
-        "kind": "@throws",
-        "condition": "args[0].length==0 || args[1].length==0"
-      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NotFiniteNumberException",
-          "name": "NotFiniteNumberException",
-          "isArray": false
-        },
-        "comment": "if any of the arguments and values are not finite real numbers.",
-        "kind": "@throws",
-        "condition": ""
-      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException",
-          "name": "NumberIsTooSmallException",
-          "isArray": false
-        },
-        "comment": "if the bandwidth is too small to accomodate the size of the input data (i.e. the bandwidth must be larger than 2/n).",
-        "kind": "@throws",
-        "condition": ""
-      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException",
-          "name": "MathIllegalArgumentException",
-          "isArray": false
-        },
-        "comment": "if the arguments violate assumptions made by the interpolation algorithm.",
-        "kind": "@throws",
-        "condition": ""
-      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
-          "name": "DimensionMismatchException",
-          "isArray": false
-        },
-        "comment": "if arrays lengthes do not match",
-        "kind": "@throws",
-        "condition": "((args[0].length) == (args[1].length)) == false"
-      }
-    ],
-    "signature": "interpolate(double[] xval,double[] yval)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator",
-      "name": "LoessInterpolator",
-      "isArray": false
-    },
-    "name": "smooth",
-    "returnType": {
-      "qualifiedName": "double[]",
-      "name": "double[]",
-      "isArray": true,
-      "componentType": {
-        "qualifiedName": "double",
-        "name": "double",
-        "isArray": false
-      }
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "xval"
-      },
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "yval"
-      },
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "weights"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "xval"
-        },
-        "comment": "Arguments for the interpolation points.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "yval"
-        },
-        "comment": "Values for the interpolation points.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "weights"
-        },
-        "comment": "point weights: coefficients by which the robustness weight of a point is multiplied.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NonMonotonicSequenceException",
-          "name": "NonMonotonicSequenceException",
-          "isArray": false
-        },
-        "comment": "if xval not sorted in strictly increasing order.",
-        "kind": "@throws",
-        "condition": ""
-      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
-          "name": "DimensionMismatchException",
-          "isArray": false
-        },
-        "comment": "if xval and yval have different sizes.",
-        "kind": "@throws",
-        "condition": "((args[0].length) == (args[1].length)) == false"
-      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NoDataException",
-          "name": "NoDataException",
-          "isArray": false
-        },
-        "comment": "if xval or yval has zero size.",
-        "kind": "@throws",
-        "condition": "args[0].length==0 || args[1].length==0"
-      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NotFiniteNumberException",
-          "name": "NotFiniteNumberException",
-          "isArray": false
-        },
-        "comment": "if any of the arguments and values are not finite real numbers.",
-        "kind": "@throws",
-        "condition": ""
-      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException",
-          "name": "NumberIsTooSmallException",
-          "isArray": false
-        },
-        "comment": "if the bandwidth is too small to accomodate the size of the input data (i.e. the bandwidth must be larger than 2/n).",
-        "kind": "@throws",
-        "condition": ""
-      }
-    ],
-    "signature": "smooth(double[] xval,double[] yval,double[] weights)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator",
-      "name": "LoessInterpolator",
-      "isArray": false
-    },
-    "name": "smooth",
-    "returnType": {
-      "qualifiedName": "double[]",
-      "name": "double[]",
-      "isArray": true,
-      "componentType": {
-        "qualifiedName": "double",
-        "name": "double",
-        "isArray": false
-      }
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "xval"
-      },
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "yval"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "xval"
-        },
-        "comment": "the arguments for the interpolation points",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "yval"
-        },
-        "comment": "the values for the interpolation points",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NonMonotonicSequenceException",
-          "name": "NonMonotonicSequenceException",
-          "isArray": false
-        },
-        "comment": "if xval not sorted in strictly increasing order.",
-        "kind": "@throws",
-        "condition": ""
-      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
-          "name": "DimensionMismatchException",
-          "isArray": false
-        },
-        "comment": "if xval and yval have different sizes.",
-        "kind": "@throws",
-        "condition": "((args[0].length) == (args[1].length)) == false"
-      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NoDataException",
-          "name": "NoDataException",
-          "isArray": false
-        },
-        "comment": "if xval or yval has zero size.",
-        "kind": "@throws",
-        "condition": "args[0].length==0 || args[1].length==0"
-      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NotFiniteNumberException",
-          "name": "NotFiniteNumberException",
-          "isArray": false
-        },
-        "comment": "if any of the arguments and values are not finite real numbers.",
-        "kind": "@throws",
-        "condition": ""
-      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException",
-          "name": "NumberIsTooSmallException",
-          "isArray": false
-        },
-        "comment": "if the bandwidth is too small to accomodate the size of the input data (i.e. the bandwidth must be larger than 2/n).",
-        "kind": "@throws",
-        "condition": ""
-      }
-    ],
-    "signature": "smooth(double[] xval,double[] yval)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator",
-      "name": "LoessInterpolator",
-      "isArray": false
-    },
-    "name": "updateBandwidthInterval",
-    "returnType": {
-      "qualifiedName": "void",
-      "name": "void",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "xval"
-      },
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "weights"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "i"
-      },
-      {
-        "type": {
-          "qualifiedName": "int[]",
-          "name": "int[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          }
-        },
-        "name": "bandwidthInterval"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "xval"
-        },
-        "comment": "Arguments array.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "weights"
-        },
-        "comment": "Weights array.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "i"
-        },
-        "comment": "Index around which the new interval should be computed.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int[]",
-            "name": "int[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "int",
-              "name": "int",
-              "isArray": false
-            }
-          },
-          "name": "bandwidthInterval"
-        },
-        "comment": "a two-element array {left, right} such that: (left==0 or xval[i] - xval[left-1] > xval[right] - xval[i]) and (right==xval.length-1 or xval[right+1] - xval[i] > xval[i] - xval[left]). The array will be updated.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "updateBandwidthInterval(double[] xval,double[] weights,int i,int[] bandwidthInterval)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator",
-      "name": "LoessInterpolator",
-      "isArray": false
-    },
-    "name": "nextNonzero",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "weights"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "i"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "weights"
-        },
-        "comment": "Weights array.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "i"
-        },
-        "comment": "Index from which to start search.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "nextNonzero(double[] weights,int i)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator",
-      "name": "LoessInterpolator",
-      "isArray": false
-    },
-    "name": "tricube",
-    "returnType": {
-      "qualifiedName": "double",
-      "name": "double",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
+          "isArray": false,
           "name": "double",
-          "isArray": false
-        },
-        "name": "x"
-      }
-    ],
-    "paramTags": [
+          "qualifiedName": "double"
+        }
+      },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "x"
-        },
-        "comment": "Argument.",
-        "kind": "@param",
-        "condition": ""
+        "name": "robustnessIters",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      },
+      {
+        "name": "accuracy",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "tricube(double x)"
+    "signature": "LoessInterpolator(double bandwidth,int robustnessIters,double accuracy)",
+    "targetClass": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator",
+    "throwsTags": [
+      {
+        "comment": "if bandwidth does not lie in the interval [0,1].",
+        "condition": "args[0]<0 || args[0]>1",
+        "exception": {
+          "isArray": false,
+          "name": "OutOfRangeException",
+          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if robustnessIters is negative.",
+        "condition": "args[1]<0",
+        "exception": {
+          "isArray": false,
+          "name": "NotPositiveException",
+          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException"
+        },
+        "kind": "@throws"
+      }
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator",
+      "isArray": false,
       "name": "LoessInterpolator",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator"
     },
-    "name": "checkAllFiniteReal",
-    "returnType": {
-      "qualifiedName": "void",
-      "name": "void",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "values"
-      }
-    ],
+    "isVarArgs": false,
+    "name": "interpolate",
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "values"
-        },
-        "comment": "Values array.",
+        "comment": "the arguments for the interpolation points",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "xval",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
+      },
+      {
+        "comment": "the values for the interpolation points",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "yval",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "xval",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      },
+      {
+        "name": "yval",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "A cubic spline built upon a loess fit to the data at the original abscissae",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "PolynomialSplineFunction",
+      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction"
+    },
+    "signature": "interpolate(double[] xval,double[] yval)",
+    "targetClass": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator",
     "throwsTags": [
       {
+        "comment": "if xval not sorted in strictly increasing order.",
+        "condition": "",
         "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NotFiniteNumberException",
-          "name": "NotFiniteNumberException",
-          "isArray": false
+          "isArray": false,
+          "name": "NonMonotonicSequenceException",
+          "qualifiedName": "org.apache.commons.math3.exception.NonMonotonicSequenceException"
         },
-        "comment": "if one of the values is not a finite real number.",
-        "kind": "@throws",
-        "condition": ""
+        "kind": "@throws"
+      },
+      {
+        "comment": "if xval and yval have different sizes.",
+        "condition": "((args[0].length) == (args[1].length)) == false",
+        "exception": {
+          "isArray": false,
+          "name": "DimensionMismatchException",
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if xval or yval has zero size.",
+        "condition": "args[0].length==0 || args[1].length==0",
+        "exception": {
+          "isArray": false,
+          "name": "NoDataException",
+          "qualifiedName": "org.apache.commons.math3.exception.NoDataException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if any of the arguments and values are not finite real numbers.",
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "NotFiniteNumberException",
+          "qualifiedName": "org.apache.commons.math3.exception.NotFiniteNumberException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if the bandwidth is too small to accomodate the size of the input data (i.e. the bandwidth must be larger than 2/n).",
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "NumberIsTooSmallException",
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if the arguments violate assumptions made by the interpolation algorithm.",
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "MathIllegalArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if arrays lengthes do not match",
+        "condition": "((args[0].length) == (args[1].length)) == false",
+        "exception": {
+          "isArray": false,
+          "name": "DimensionMismatchException",
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "LoessInterpolator",
+      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator"
+    },
+    "isVarArgs": false,
+    "name": "smooth",
+    "paramTags": [
+      {
+        "comment": "Arguments for the interpolation points.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "xval",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
+      },
+      {
+        "comment": "Values for the interpolation points.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "yval",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
+      },
+      {
+        "comment": "point weights: coefficients by which the robustness weight of a point is multiplied.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "weights",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
       }
     ],
-    "signature": "checkAllFiniteReal(double[] values)"
+    "parameters": [
+      {
+        "name": "xval",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      },
+      {
+        "name": "yval",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      },
+      {
+        "name": "weights",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the values of the loess fit at corresponding original abscissae.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "componentType": {
+        "isArray": false,
+        "name": "double",
+        "qualifiedName": "double"
+      },
+      "isArray": true,
+      "name": "double[]",
+      "qualifiedName": "double[]"
+    },
+    "signature": "smooth(double[] xval,double[] yval,double[] weights)",
+    "targetClass": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator",
+    "throwsTags": [
+      {
+        "comment": "if xval not sorted in strictly increasing order.",
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "NonMonotonicSequenceException",
+          "qualifiedName": "org.apache.commons.math3.exception.NonMonotonicSequenceException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if xval and yval have different sizes.",
+        "condition": "((args[0].length) == (args[1].length)) == false",
+        "exception": {
+          "isArray": false,
+          "name": "DimensionMismatchException",
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if xval or yval has zero size.",
+        "condition": "args[0].length==0 || args[1].length==0",
+        "exception": {
+          "isArray": false,
+          "name": "NoDataException",
+          "qualifiedName": "org.apache.commons.math3.exception.NoDataException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if any of the arguments and values are not finite real numbers.",
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "NotFiniteNumberException",
+          "qualifiedName": "org.apache.commons.math3.exception.NotFiniteNumberException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if the bandwidth is too small to accomodate the size of the input data (i.e. the bandwidth must be larger than 2/n).",
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "NumberIsTooSmallException",
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "LoessInterpolator",
+      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator"
+    },
+    "isVarArgs": false,
+    "name": "smooth",
+    "paramTags": [
+      {
+        "comment": "the arguments for the interpolation points",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "xval",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
+      },
+      {
+        "comment": "the values for the interpolation points",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "yval",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "xval",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      },
+      {
+        "name": "yval",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "values of the loess fit at corresponding original abscissae",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "componentType": {
+        "isArray": false,
+        "name": "double",
+        "qualifiedName": "double"
+      },
+      "isArray": true,
+      "name": "double[]",
+      "qualifiedName": "double[]"
+    },
+    "signature": "smooth(double[] xval,double[] yval)",
+    "targetClass": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator",
+    "throwsTags": [
+      {
+        "comment": "if xval not sorted in strictly increasing order.",
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "NonMonotonicSequenceException",
+          "qualifiedName": "org.apache.commons.math3.exception.NonMonotonicSequenceException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if xval and yval have different sizes.",
+        "condition": "((args[0].length) == (args[1].length)) == false",
+        "exception": {
+          "isArray": false,
+          "name": "DimensionMismatchException",
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if xval or yval has zero size.",
+        "condition": "args[0].length==0 || args[1].length==0",
+        "exception": {
+          "isArray": false,
+          "name": "NoDataException",
+          "qualifiedName": "org.apache.commons.math3.exception.NoDataException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if any of the arguments and values are not finite real numbers.",
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "NotFiniteNumberException",
+          "qualifiedName": "org.apache.commons.math3.exception.NotFiniteNumberException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if the bandwidth is too small to accomodate the size of the input data (i.e. the bandwidth must be larger than 2/n).",
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "NumberIsTooSmallException",
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "LoessInterpolator",
+      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator"
+    },
+    "isVarArgs": false,
+    "name": "updateBandwidthInterval",
+    "paramTags": [
+      {
+        "comment": "Arguments array.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "xval",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
+      },
+      {
+        "comment": "Weights array.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "weights",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
+      },
+      {
+        "comment": "Index around which the new interval should be computed.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "i",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
+      },
+      {
+        "comment": "a two-element array {left, right} such that: (left==0 or xval[i] - xval[left-1] > xval[right] - xval[i]) and (right==xval.length-1 or xval[right+1] - xval[i] > xval[i] - xval[left]). The array will be updated.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "bandwidthInterval",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "int",
+              "qualifiedName": "int"
+            },
+            "isArray": true,
+            "name": "int[]",
+            "qualifiedName": "int[]"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "xval",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      },
+      {
+        "name": "weights",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      },
+      {
+        "name": "i",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      },
+      {
+        "name": "bandwidthInterval",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          },
+          "isArray": true,
+          "name": "int[]",
+          "qualifiedName": "int[]"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "void",
+      "qualifiedName": "void"
+    },
+    "signature": "updateBandwidthInterval(double[] xval,double[] weights,int i,int[] bandwidthInterval)",
+    "targetClass": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "LoessInterpolator",
+      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator"
+    },
+    "isVarArgs": false,
+    "name": "nextNonzero",
+    "paramTags": [
+      {
+        "comment": "Weights array.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "weights",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
+      },
+      {
+        "comment": "Index from which to start search.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "i",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "weights",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      },
+      {
+        "name": "i",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the smallest compliant index.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "nextNonzero(double[] weights,int i)",
+    "targetClass": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "LoessInterpolator",
+      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator"
+    },
+    "isVarArgs": false,
+    "name": "tricube",
+    "paramTags": [
+      {
+        "comment": "Argument.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "x",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "x",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "(1 - |x|3)3 for |x| < 1, 0 otherwise.",
+      "condition": "args[0]==0",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "double",
+      "qualifiedName": "double"
+    },
+    "signature": "tricube(double x)",
+    "targetClass": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "LoessInterpolator",
+      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator"
+    },
+    "isVarArgs": false,
+    "name": "checkAllFiniteReal",
+    "paramTags": [
+      {
+        "comment": "Values array.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "values",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "values",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "void",
+      "qualifiedName": "void"
+    },
+    "signature": "checkAllFiniteReal(double[] values)",
+    "targetClass": "org.apache.commons.math3.analysis.interpolation.LoessInterpolator",
+    "throwsTags": [
+      {
+        "comment": "if one of the values is not a finite real number.",
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "NotFiniteNumberException",
+          "qualifiedName": "org.apache.commons.math3.exception.NotFiniteNumberException"
+        },
+        "kind": "@throws"
+      }
+    ]
   }
 ]

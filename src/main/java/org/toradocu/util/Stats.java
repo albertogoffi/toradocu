@@ -1,10 +1,12 @@
 package org.toradocu.util;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ReturnTag;
 import org.toradocu.extractor.Tag;
 
 /**
@@ -31,6 +33,13 @@ public class Stats {
   /** Number of @param conditions not translated at all by Toradocu (false negatives). */
   private int missingTranslationsParam = 0;
 
+  /** Number of @return conditions correctly translated by Toradocu (true positives). */
+  private int correctTranslationsReturn = 0;
+  /** Number of @return conditions wrongly translated by Toradocu (false positives). */
+  private int wrongTranslationReturn = 0;
+  /** Number of @return conditions not translated at all by Toradocu (false negatives). */
+  private int missingTranslationsReturn = 0;
+
   /**
    * Creates new stats for a given element with specified identifier. For example, identifier could
    * be a class name or a method name.
@@ -54,6 +63,8 @@ public class Stats {
         return conditions == 0 ? 1 : correctTranslationsThrows / (double) conditions;
       case PARAM:
         return conditions == 0 ? 1 : correctTranslationsParam / (double) conditions;
+      case RETURN:
+        return conditions == 0 ? 1 : correctTranslationsReturn / (double) conditions;
       default:
         throw new IllegalStateException("Unsupported Tag.Kind " + kind);
     }
@@ -73,6 +84,9 @@ public class Stats {
       case PARAM:
         translated = correctTranslationsParam + wrongTranslationParam;
         return translated == 0 ? 1 : correctTranslationsParam / (double) translated;
+      case RETURN:
+        translated = correctTranslationsReturn + wrongTranslationReturn;
+        return translated == 0 ? 1 : correctTranslationsReturn / (double) translated;
       default:
         throw new IllegalStateException("Unsupported Tag.Kind " + kind);
     }
@@ -109,6 +123,8 @@ public class Stats {
         return correctTranslationsThrows + wrongTranslationThrows + missingTranslationsThrows;
       case PARAM:
         return correctTranslationsParam + wrongTranslationParam + missingTranslationsParam;
+      case RETURN:
+        return correctTranslationsReturn + wrongTranslationReturn + missingTranslationsReturn;
       default:
         throw new IllegalStateException("Unsupported Tag.Kind " + kind);
     }
@@ -169,6 +185,9 @@ public class Stats {
       case PARAM:
         ++correctTranslationsParam;
         break;
+      case RETURN:
+        ++correctTranslationsReturn;
+        break;
       default:
         throw new IllegalStateException("Unsupported Tag.Kind " + kind);
     }
@@ -186,6 +205,8 @@ public class Stats {
         break;
       case PARAM:
         ++wrongTranslationParam;
+      case RETURN:
+        ++wrongTranslationReturn;
         break;
       default:
         throw new IllegalStateException("Unsupported Tag.Kind " + kind);
@@ -204,6 +225,8 @@ public class Stats {
         break;
       case PARAM:
         ++missingTranslationsParam;
+      case RETURN:
+        ++missingTranslationsReturn;
         break;
       default:
         throw new IllegalStateException("Unsupported Tag.Kind " + kind);
@@ -244,6 +267,16 @@ public class Stats {
         + getPrecision(Tag.Kind.PARAM)
         + SEPARATOR
         + getRecall(Tag.Kind.PARAM)
+        + SEPARATOR
+        + correctTranslationsReturn
+        + SEPARATOR
+        + wrongTranslationReturn
+        + SEPARATOR
+        + missingTranslationsReturn
+        + SEPARATOR
+        + getPrecision(Tag.Kind.RETURN)
+        + SEPARATOR
+        + getRecall(Tag.Kind.RETURN)
         + SEPARATOR
         + numberOfCorrectTranslations()
         + SEPARATOR
@@ -286,6 +319,14 @@ public class Stats {
       collectStats(
           methodStats, actualMethod.paramTags(), expectedMethod.paramTags(), Tag.Kind.PARAM);
 
+      Set<ReturnTag> actualMethodReturnTag = new LinkedHashSet<>();
+      Set<ReturnTag> expectedMethodReturnTag = new LinkedHashSet<>();
+
+      actualMethodReturnTag.add(actualMethod.returnTag());
+      expectedMethodReturnTag.add(expectedMethod.returnTag());
+
+      collectStats(methodStats, actualMethodReturnTag, expectedMethodReturnTag, Tag.Kind.RETURN);
+
       stats.add(methodStats);
     }
     return stats;
@@ -320,13 +361,21 @@ public class Stats {
       DocumentedMethod actualMethod = actualMethodList.get(methodIndex);
       DocumentedMethod expectedMethod = expectedMethodList.get(methodIndex);
 
+      Set<ReturnTag> actualMethodReturnTag = new LinkedHashSet<>();
+      Set<ReturnTag> expectedMethodReturnTag = new LinkedHashSet<>();
+
+      actualMethodReturnTag.add(actualMethod.returnTag());
+      expectedMethodReturnTag.add(expectedMethod.returnTag());
+
       output
           .append(
               collectStats(
                   stats, actualMethod.throwsTags(), expectedMethod.throwsTags(), Tag.Kind.THROWS))
           .append(
               collectStats(
-                  stats, actualMethod.paramTags(), expectedMethod.paramTags(), Tag.Kind.PARAM));
+                  stats, actualMethod.paramTags(), expectedMethod.paramTags(), Tag.Kind.PARAM))
+          .append(
+              collectStats(stats, actualMethodReturnTag, expectedMethodReturnTag, Tag.Kind.RETURN));
     }
     return stats;
   }
@@ -353,32 +402,36 @@ public class Stats {
     for (int tagIndex = 0; tagIndex < actualTagsArray.length; tagIndex++) {
       Tag actualTag = actualTagsArray[tagIndex];
       Tag expectedTag = expectedTagsArray[tagIndex];
-      String actualCondition = actualTag.getCondition().get();
-      String expectedCondition = expectedTag.getCondition().get();
 
-      // Ignore conditions for which there is no known translation.
-      if (!expectedCondition.isEmpty()) {
-        if (expectedCondition.equals(actualCondition)) {
-          stats.addCorrectTranslation(kind);
-          outputMessage.append("Correct ");
-        } else {
-          if (actualCondition.isEmpty()) {
-            stats.addMissingTranslation(kind);
-            outputMessage.append("Empty ");
+      if (actualTag != null && expectedTag != null) {
+
+        String actualCondition = actualTag.getCondition().get();
+        String expectedCondition = expectedTag.getCondition().get();
+
+        // Ignore conditions for which there is no known translation.
+        if (!expectedCondition.isEmpty()) {
+          if (expectedCondition.equals(actualCondition)) {
+            stats.addCorrectTranslation(kind);
+            outputMessage.append("Correct ");
           } else {
-            stats.addWrongTranslation(kind);
-            outputMessage.append("Wrong ");
+            if (actualCondition.isEmpty()) {
+              stats.addMissingTranslation(kind);
+              outputMessage.append("Empty ");
+            } else {
+              stats.addWrongTranslation(kind);
+              outputMessage.append("Wrong ");
+            }
           }
+          outputMessage
+              .append(kind)
+              .append(" condition. Comment: ")
+              .append(expectedTag.getComment())
+              .append("\n\tExpected condition: ")
+              .append(expectedCondition)
+              .append("\n\tActual condition: ")
+              .append(actualCondition)
+              .append("\n");
         }
-        outputMessage
-            .append(kind)
-            .append(" condition. Comment: ")
-            .append(expectedTag.getComment())
-            .append("\n\tExpected condition: ")
-            .append(expectedCondition)
-            .append("\n\tActual condition: ")
-            .append(actualCondition)
-            .append("\n");
       }
     }
     return outputMessage;

@@ -16,6 +16,8 @@ public interface Tag {
           return "@throws";
         case "PARAM":
           return "@param";
+        case "RETURN":
+          return "@return";
         default:
           throw new IllegalStateException("The value " + name() + " has no string representation.");
       }

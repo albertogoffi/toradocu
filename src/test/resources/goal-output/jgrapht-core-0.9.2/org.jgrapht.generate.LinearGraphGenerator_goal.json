@@ -1,132 +1,134 @@
 [
   {
     "containingClass": {
-      "qualifiedName": "org.jgrapht.generate.LinearGraphGenerator",
+      "isArray": false,
       "name": "LinearGraphGenerator",
-      "isArray": false
+      "qualifiedName": "org.jgrapht.generate.LinearGraphGenerator"
     },
+    "isVarArgs": false,
     "name": "LinearGraphGenerator",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "size"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "size"
-        },
         "comment": "number of vertices to be generated",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "size",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "size",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "signature": "LinearGraphGenerator(int size)",
+    "targetClass": "org.jgrapht.generate.LinearGraphGenerator",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "java.lang.IllegalArgumentException",
-          "name": "IllegalArgumentException",
-          "isArray": false
-        },
         "comment": "if the specified size is negative.",
-        "kind": "@throws",
-        "condition": "args[0]<0"
+        "condition": "args[0]<0",
+        "exception": {
+          "isArray": false,
+          "name": "IllegalArgumentException",
+          "qualifiedName": "java.lang.IllegalArgumentException"
+        },
+        "kind": "@throws"
       }
-    ],
-    "signature": "LinearGraphGenerator(int size)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.jgrapht.generate.LinearGraphGenerator",
+      "isArray": false,
       "name": "LinearGraphGenerator",
-      "isArray": false
+      "qualifiedName": "org.jgrapht.generate.LinearGraphGenerator"
     },
+    "isVarArgs": false,
     "name": "generateGraph",
-    "returnType": {
-      "qualifiedName": "void",
-      "name": "void",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.jgrapht.Graph",
-          "name": "Graph",
-          "isArray": false
-        },
-        "name": "target"
-      },
-      {
-        "type": {
-          "qualifiedName": "org.jgrapht.VertexFactory",
-          "name": "VertexFactory",
-          "isArray": false
-        },
-        "name": "vertexFactory"
-      },
-      {
-        "type": {
-          "qualifiedName": "java.util.Map",
-          "name": "Map",
-          "isArray": false
-        },
-        "name": "resultMap"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.jgrapht.Graph",
-            "name": "Graph",
-            "isArray": false
-          },
-          "name": "target"
-        },
         "comment": "receives the generated edges and vertices; if this is non-empty on entry, the result will be a disconnected graph since generated elements will not be connected to existing elements",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "target",
+          "type": {
+            "isArray": false,
+            "name": "Graph",
+            "qualifiedName": "org.jgrapht.Graph"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.jgrapht.VertexFactory",
-            "name": "VertexFactory",
-            "isArray": false
-          },
-          "name": "vertexFactory"
-        },
         "comment": "called to produce new vertices",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "vertexFactory",
+          "type": {
+            "isArray": false,
+            "name": "VertexFactory",
+            "qualifiedName": "org.jgrapht.VertexFactory"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.Map",
-            "name": "Map",
-            "isArray": false
-          },
-          "name": "resultMap"
-        },
         "comment": "if non-null, receives implementation-specific mappings from String roles to graph elements (or collections of graph elements)",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "resultMap",
+          "type": {
+            "isArray": false,
+            "name": "Map",
+            "qualifiedName": "java.util.Map"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "generateGraph(org.jgrapht.Graph target,org.jgrapht.VertexFactory vertexFactory,java.util.Map resultMap)"
+    "parameters": [
+      {
+        "name": "target",
+        "type": {
+          "isArray": false,
+          "name": "Graph",
+          "qualifiedName": "org.jgrapht.Graph"
+        }
+      },
+      {
+        "name": "vertexFactory",
+        "type": {
+          "isArray": false,
+          "name": "VertexFactory",
+          "qualifiedName": "org.jgrapht.VertexFactory"
+        }
+      },
+      {
+        "name": "resultMap",
+        "type": {
+          "isArray": false,
+          "name": "Map",
+          "qualifiedName": "java.util.Map"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "void",
+      "qualifiedName": "void"
+    },
+    "signature": "generateGraph(org.jgrapht.Graph target,org.jgrapht.VertexFactory vertexFactory,java.util.Map resultMap)",
+    "targetClass": "org.jgrapht.generate.LinearGraphGenerator",
+    "throwsTags": []
   }
 ]

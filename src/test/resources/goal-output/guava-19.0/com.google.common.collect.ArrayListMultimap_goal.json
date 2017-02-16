@@ -1,1267 +1,1360 @@
 [
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.collect.ArrayListMultimap",
+      "isArray": false,
       "name": "ArrayListMultimap",
-      "isArray": false
+      "qualifiedName": "com.google.common.collect.ArrayListMultimap"
     },
-    "name": "ArrayListMultimap",
-    "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "ArrayListMultimap()"
+    "name": "ArrayListMultimap",
+    "paramTags": [],
+    "parameters": [],
+    "signature": "ArrayListMultimap()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.collect.ArrayListMultimap",
+      "isArray": false,
       "name": "ArrayListMultimap",
-      "isArray": false
+      "qualifiedName": "com.google.common.collect.ArrayListMultimap"
     },
+    "isVarArgs": false,
     "name": "ArrayListMultimap",
+    "paramTags": [],
     "parameters": [
       {
+        "name": "expectedKeys",
         "type": {
-          "qualifiedName": "int",
+          "isArray": false,
           "name": "int",
-          "isArray": false
-        },
-        "name": "expectedKeys"
+          "qualifiedName": "int"
+        }
       },
       {
+        "name": "expectedValuesPerKey",
         "type": {
-          "qualifiedName": "int",
+          "isArray": false,
           "name": "int",
-          "isArray": false
-        },
-        "name": "expectedValuesPerKey"
+          "qualifiedName": "int"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "ArrayListMultimap(int expectedKeys,int expectedValuesPerKey)"
+    "signature": "ArrayListMultimap(int expectedKeys,int expectedValuesPerKey)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.collect.ArrayListMultimap",
+      "isArray": false,
       "name": "ArrayListMultimap",
-      "isArray": false
+      "qualifiedName": "com.google.common.collect.ArrayListMultimap"
     },
+    "isVarArgs": false,
     "name": "ArrayListMultimap",
+    "paramTags": [],
     "parameters": [
       {
+        "name": "multimap",
         "type": {
-          "qualifiedName": "com.google.common.collect.Multimap",
+          "isArray": false,
           "name": "Multimap",
-          "isArray": false
-        },
-        "name": "multimap"
+          "qualifiedName": "com.google.common.collect.Multimap"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "ArrayListMultimap(com.google.common.collect.Multimap multimap)"
+    "signature": "ArrayListMultimap(com.google.common.collect.Multimap multimap)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.collect.ArrayListMultimap",
+      "isArray": false,
       "name": "ArrayListMultimap",
-      "isArray": false
+      "qualifiedName": "com.google.common.collect.ArrayListMultimap"
     },
+    "isVarArgs": false,
     "name": "create",
-    "returnType": {
-      "qualifiedName": "com.google.common.collect.ArrayListMultimap",
-      "name": "ArrayListMultimap",
-      "isArray": false
-    },
+    "paramTags": [],
     "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "create()"
+    "returnType": {
+      "isArray": false,
+      "name": "ArrayListMultimap",
+      "qualifiedName": "com.google.common.collect.ArrayListMultimap"
+    },
+    "signature": "create()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.collect.ArrayListMultimap",
+      "isArray": false,
       "name": "ArrayListMultimap",
-      "isArray": false
+      "qualifiedName": "com.google.common.collect.ArrayListMultimap"
     },
+    "isVarArgs": false,
     "name": "create",
-    "returnType": {
-      "qualifiedName": "com.google.common.collect.ArrayListMultimap",
-      "name": "ArrayListMultimap",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "expectedKeys"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "expectedValuesPerKey"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "expectedKeys"
-        },
         "comment": "the expected number of distinct keys",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "expectedKeys",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "expectedValuesPerKey"
-        },
         "comment": "the expected average number of values per key",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "expectedValuesPerKey",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "expectedKeys",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      },
+      {
+        "name": "expectedValuesPerKey",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "ArrayListMultimap",
+      "qualifiedName": "com.google.common.collect.ArrayListMultimap"
+    },
+    "signature": "create(int expectedKeys,int expectedValuesPerKey)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "java.lang.IllegalArgumentException",
-          "name": "IllegalArgumentException",
-          "isArray": false
-        },
         "comment": "if expectedKeys or expectedValuesPerKey is negative",
-        "kind": "@throws",
-        "condition": "args[0]<0 || args[1]<0"
+        "condition": "args[0]<0 || args[1]<0",
+        "exception": {
+          "isArray": false,
+          "name": "IllegalArgumentException",
+          "qualifiedName": "java.lang.IllegalArgumentException"
+        },
+        "kind": "@throws"
       }
-    ],
-    "signature": "create(int expectedKeys,int expectedValuesPerKey)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.collect.ArrayListMultimap",
+      "isArray": false,
       "name": "ArrayListMultimap",
-      "isArray": false
+      "qualifiedName": "com.google.common.collect.ArrayListMultimap"
     },
+    "isVarArgs": false,
     "name": "create",
-    "returnType": {
-      "qualifiedName": "com.google.common.collect.ArrayListMultimap",
-      "name": "ArrayListMultimap",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "com.google.common.collect.Multimap",
-          "name": "Multimap",
-          "isArray": false
-        },
-        "name": "multimap"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "com.google.common.collect.Multimap",
-            "name": "Multimap",
-            "isArray": false
-          },
-          "name": "multimap"
-        },
         "comment": "the multimap whose contents are copied to this multimap",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "create(com.google.common.collect.Multimap multimap)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.ArrayListMultimap",
-      "name": "ArrayListMultimap",
-      "isArray": false
-    },
-    "name": "createCollection",
-    "returnType": {
-      "qualifiedName": "java.util.List",
-      "name": "List",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "createCollection()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.ArrayListMultimap",
-      "name": "ArrayListMultimap",
-      "isArray": false
-    },
-    "name": "trimToSize",
-    "returnType": {
-      "qualifiedName": "void",
-      "name": "void",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "trimToSize()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.ArrayListMultimap",
-      "name": "ArrayListMultimap",
-      "isArray": false
-    },
-    "name": "writeObject",
-    "returnType": {
-      "qualifiedName": "void",
-      "name": "void",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.io.ObjectOutputStream",
-          "name": "ObjectOutputStream",
-          "isArray": false
-        },
-        "name": "stream"
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "writeObject(java.io.ObjectOutputStream stream)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.ArrayListMultimap",
-      "name": "ArrayListMultimap",
-      "isArray": false
-    },
-    "name": "readObject",
-    "returnType": {
-      "qualifiedName": "void",
-      "name": "void",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.io.ObjectInputStream",
-          "name": "ObjectInputStream",
-          "isArray": false
-        },
-        "name": "stream"
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "readObject(java.io.ObjectInputStream stream)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractListMultimap",
-      "name": "AbstractListMultimap",
-      "isArray": false
-    },
-    "name": "createUnmodifiableEmptyCollection",
-    "returnType": {
-      "qualifiedName": "java.util.List",
-      "name": "List",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "createUnmodifiableEmptyCollection()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractListMultimap",
-      "name": "AbstractListMultimap",
-      "isArray": false
-    },
-    "name": "get",
-    "returnType": {
-      "qualifiedName": "java.util.List",
-      "name": "List",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "key",
-        "nullable": true
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "get(java.lang.Object key)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractListMultimap",
-      "name": "AbstractListMultimap",
-      "isArray": false
-    },
-    "name": "removeAll",
-    "returnType": {
-      "qualifiedName": "java.util.List",
-      "name": "List",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "key",
-        "nullable": true
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "removeAll(java.lang.Object key)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractListMultimap",
-      "name": "AbstractListMultimap",
-      "isArray": false
-    },
-    "name": "replaceValues",
-    "returnType": {
-      "qualifiedName": "java.util.List",
-      "name": "List",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "key",
-        "nullable": true
-      },
-      {
-        "type": {
-          "qualifiedName": "java.lang.Iterable",
-          "name": "Iterable",
-          "isArray": false
-        },
-        "name": "values"
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "replaceValues(java.lang.Object key,java.lang.Iterable values)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractListMultimap",
-      "name": "AbstractListMultimap",
-      "isArray": false
-    },
-    "name": "put",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "key",
-        "nullable": true
-      },
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "value",
-        "nullable": true
-      }
-    ],
-    "paramTags": [
-      {
         "parameter": {
+          "name": "multimap",
           "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "key"
-        },
-        "comment": "key to store in the multimap",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "value"
-        },
-        "comment": "value to store in the multimap",
-        "kind": "@param",
-        "condition": ""
+            "isArray": false,
+            "name": "Multimap",
+            "qualifiedName": "com.google.common.collect.Multimap"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "put(java.lang.Object key,java.lang.Object value)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractListMultimap",
-      "name": "AbstractListMultimap",
-      "isArray": false
-    },
-    "name": "asMap",
-    "returnType": {
-      "qualifiedName": "java.util.Map",
-      "name": "Map",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "asMap()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractListMultimap",
-      "name": "AbstractListMultimap",
-      "isArray": false
-    },
-    "name": "equals",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
     "parameters": [
       {
+        "name": "multimap",
         "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "object",
-        "nullable": true
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "equals(java.lang.Object object)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap",
-      "name": "AbstractMapBasedMultimap",
-      "isArray": false
-    },
-    "name": "setMap",
-    "returnType": {
-      "qualifiedName": "void",
-      "name": "void",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.util.Map",
-          "name": "Map",
-          "isArray": false
-        },
-        "name": "map"
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "setMap(java.util.Map map)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap",
-      "name": "AbstractMapBasedMultimap",
-      "isArray": false
-    },
-    "name": "createCollection",
-    "returnType": {
-      "qualifiedName": "java.util.Collection",
-      "name": "Collection",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "key",
-        "nullable": true
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "key"
-        },
-        "comment": "key to associate with values in the collection",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "createCollection(java.lang.Object key)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap",
-      "name": "AbstractMapBasedMultimap",
-      "isArray": false
-    },
-    "name": "backingMap",
-    "returnType": {
-      "qualifiedName": "java.util.Map",
-      "name": "Map",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "backingMap()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap",
-      "name": "AbstractMapBasedMultimap",
-      "isArray": false
-    },
-    "name": "size",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "size()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap",
-      "name": "AbstractMapBasedMultimap",
-      "isArray": false
-    },
-    "name": "containsKey",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "key",
-        "nullable": true
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "containsKey(java.lang.Object key)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap",
-      "name": "AbstractMapBasedMultimap",
-      "isArray": false
-    },
-    "name": "getOrCreateCollection",
-    "returnType": {
-      "qualifiedName": "java.util.Collection",
-      "name": "Collection",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "key",
-        "nullable": true
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getOrCreateCollection(java.lang.Object key)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap",
-      "name": "AbstractMapBasedMultimap",
-      "isArray": false
-    },
-    "name": "unmodifiableCollectionSubclass",
-    "returnType": {
-      "qualifiedName": "java.util.Collection",
-      "name": "Collection",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.util.Collection",
-          "name": "Collection",
-          "isArray": false
-        },
-        "name": "collection"
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "unmodifiableCollectionSubclass(java.util.Collection collection)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap",
-      "name": "AbstractMapBasedMultimap",
-      "isArray": false
-    },
-    "name": "clear",
-    "returnType": {
-      "qualifiedName": "void",
-      "name": "void",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "clear()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap",
-      "name": "AbstractMapBasedMultimap",
-      "isArray": false
-    },
-    "name": "wrapCollection",
-    "returnType": {
-      "qualifiedName": "java.util.Collection",
-      "name": "Collection",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "key",
-        "nullable": true
-      },
-      {
-        "type": {
-          "qualifiedName": "java.util.Collection",
-          "name": "Collection",
-          "isArray": false
-        },
-        "name": "collection"
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "wrapCollection(java.lang.Object key,java.util.Collection collection)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap",
-      "name": "AbstractMapBasedMultimap",
-      "isArray": false
-    },
-    "name": "wrapList",
-    "returnType": {
-      "qualifiedName": "java.util.List",
-      "name": "List",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "key",
-        "nullable": true
-      },
-      {
-        "type": {
-          "qualifiedName": "java.util.List",
-          "name": "List",
-          "isArray": false
-        },
-        "name": "list"
-      },
-      {
-        "type": {
-          "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap.WrappedCollection",
-          "name": "WrappedCollection",
-          "isArray": false
-        },
-        "name": "ancestor",
-        "nullable": true
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "wrapList(java.lang.Object key,java.util.List list,com.google.common.collect.AbstractMapBasedMultimap.WrappedCollection ancestor)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap",
-      "name": "AbstractMapBasedMultimap",
-      "isArray": false
-    },
-    "name": "iteratorOrListIterator",
-    "returnType": {
-      "qualifiedName": "java.util.Iterator",
-      "name": "Iterator",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.util.Collection",
-          "name": "Collection",
-          "isArray": false
-        },
-        "name": "collection"
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "iteratorOrListIterator(java.util.Collection collection)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap",
-      "name": "AbstractMapBasedMultimap",
-      "isArray": false
-    },
-    "name": "createKeySet",
-    "returnType": {
-      "qualifiedName": "java.util.Set",
-      "name": "Set",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "createKeySet()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap",
-      "name": "AbstractMapBasedMultimap",
-      "isArray": false
-    },
-    "name": "removeValuesForKey",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "key"
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "removeValuesForKey(java.lang.Object key)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap",
-      "name": "AbstractMapBasedMultimap",
-      "isArray": false
-    },
-    "name": "values",
-    "returnType": {
-      "qualifiedName": "java.util.Collection",
-      "name": "Collection",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "values()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap",
-      "name": "AbstractMapBasedMultimap",
-      "isArray": false
-    },
-    "name": "valueIterator",
-    "returnType": {
-      "qualifiedName": "java.util.Iterator",
-      "name": "Iterator",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "valueIterator()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap",
-      "name": "AbstractMapBasedMultimap",
-      "isArray": false
-    },
-    "name": "entries",
-    "returnType": {
-      "qualifiedName": "java.util.Collection",
-      "name": "Collection",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "entries()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap",
-      "name": "AbstractMapBasedMultimap",
-      "isArray": false
-    },
-    "name": "entryIterator",
-    "returnType": {
-      "qualifiedName": "java.util.Iterator",
-      "name": "Iterator",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "entryIterator()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap",
-      "name": "AbstractMapBasedMultimap",
-      "isArray": false
-    },
-    "name": "createAsMap",
-    "returnType": {
-      "qualifiedName": "java.util.Map",
-      "name": "Map",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "createAsMap()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMultimap",
-      "name": "AbstractMultimap",
-      "isArray": false
-    },
-    "name": "isEmpty",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "isEmpty()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMultimap",
-      "name": "AbstractMultimap",
-      "isArray": false
-    },
-    "name": "containsValue",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "value",
-        "nullable": true
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "containsValue(java.lang.Object value)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMultimap",
-      "name": "AbstractMultimap",
-      "isArray": false
-    },
-    "name": "containsEntry",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "key",
-        "nullable": true
-      },
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "value",
-        "nullable": true
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "containsEntry(java.lang.Object key,java.lang.Object value)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMultimap",
-      "name": "AbstractMultimap",
-      "isArray": false
-    },
-    "name": "remove",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "key",
-        "nullable": true
-      },
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "value",
-        "nullable": true
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "remove(java.lang.Object key,java.lang.Object value)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMultimap",
-      "name": "AbstractMultimap",
-      "isArray": false
-    },
-    "name": "putAll",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "key",
-        "nullable": true
-      },
-      {
-        "type": {
-          "qualifiedName": "java.lang.Iterable",
-          "name": "Iterable",
-          "isArray": false
-        },
-        "name": "values"
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "putAll(java.lang.Object key,java.lang.Iterable values)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMultimap",
-      "name": "AbstractMultimap",
-      "isArray": false
-    },
-    "name": "putAll",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "com.google.common.collect.Multimap",
+          "isArray": false,
           "name": "Multimap",
-          "isArray": false
-        },
-        "name": "multimap"
+          "qualifiedName": "com.google.common.collect.Multimap"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "putAll(com.google.common.collect.Multimap multimap)"
+    "returnType": {
+      "isArray": false,
+      "name": "ArrayListMultimap",
+      "qualifiedName": "com.google.common.collect.ArrayListMultimap"
+    },
+    "signature": "create(com.google.common.collect.Multimap multimap)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMultimap",
-      "name": "AbstractMultimap",
-      "isArray": false
+      "isArray": false,
+      "name": "ArrayListMultimap",
+      "qualifiedName": "com.google.common.collect.ArrayListMultimap"
     },
-    "name": "createEntries",
+    "isVarArgs": false,
+    "name": "createCollection",
+    "paramTags": [],
+    "parameters": [],
     "returnType": {
-      "qualifiedName": "java.util.Collection",
+      "isArray": false,
+      "name": "List",
+      "qualifiedName": "java.util.List"
+    },
+    "signature": "createCollection()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "ArrayListMultimap",
+      "qualifiedName": "com.google.common.collect.ArrayListMultimap"
+    },
+    "isVarArgs": false,
+    "name": "trimToSize",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "void",
+      "qualifiedName": "void"
+    },
+    "signature": "trimToSize()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "ArrayListMultimap",
+      "qualifiedName": "com.google.common.collect.ArrayListMultimap"
+    },
+    "isVarArgs": false,
+    "name": "writeObject",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "stream",
+        "type": {
+          "isArray": false,
+          "name": "ObjectOutputStream",
+          "qualifiedName": "java.io.ObjectOutputStream"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "void",
+      "qualifiedName": "void"
+    },
+    "signature": "writeObject(java.io.ObjectOutputStream stream)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "ArrayListMultimap",
+      "qualifiedName": "com.google.common.collect.ArrayListMultimap"
+    },
+    "isVarArgs": false,
+    "name": "readObject",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "stream",
+        "type": {
+          "isArray": false,
+          "name": "ObjectInputStream",
+          "qualifiedName": "java.io.ObjectInputStream"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "void",
+      "qualifiedName": "void"
+    },
+    "signature": "readObject(java.io.ObjectInputStream stream)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractListMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractListMultimap"
+    },
+    "isVarArgs": false,
+    "name": "createUnmodifiableEmptyCollection",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "List",
+      "qualifiedName": "java.util.List"
+    },
+    "signature": "createUnmodifiableEmptyCollection()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractListMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractListMultimap"
+    },
+    "isVarArgs": false,
+    "name": "get",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "key",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "List",
+      "qualifiedName": "java.util.List"
+    },
+    "signature": "get(java.lang.Object key)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractListMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractListMultimap"
+    },
+    "isVarArgs": false,
+    "name": "removeAll",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "key",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the values that were removed (possibly empty). The returned collection may be modifiable, but updating it will have no effect on the multimap.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "List",
+      "qualifiedName": "java.util.List"
+    },
+    "signature": "removeAll(java.lang.Object key)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractListMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractListMultimap"
+    },
+    "isVarArgs": false,
+    "name": "replaceValues",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "key",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      },
+      {
+        "name": "values",
+        "type": {
+          "isArray": false,
+          "name": "Iterable",
+          "qualifiedName": "java.lang.Iterable"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the collection of replaced values, or an empty collection if no values were previously associated with the key. The collection may be modifiable, but updating it will have no effect on the multimap.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "List",
+      "qualifiedName": "java.util.List"
+    },
+    "signature": "replaceValues(java.lang.Object key,java.lang.Iterable values)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractListMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractListMultimap"
+    },
+    "isVarArgs": false,
+    "name": "put",
+    "paramTags": [
+      {
+        "comment": "key to store in the multimap",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "key",
+          "type": {
+            "isArray": false,
+            "name": "Object",
+            "qualifiedName": "java.lang.Object"
+          }
+        }
+      },
+      {
+        "comment": "value to store in the multimap",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "value",
+          "type": {
+            "isArray": false,
+            "name": "Object",
+            "qualifiedName": "java.lang.Object"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "key",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      },
+      {
+        "name": "value",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "true always",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "put(java.lang.Object key,java.lang.Object value)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractListMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractListMultimap"
+    },
+    "isVarArgs": false,
+    "name": "asMap",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "Map",
+      "qualifiedName": "java.util.Map"
+    },
+    "signature": "asMap()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractListMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractListMultimap"
+    },
+    "isVarArgs": false,
+    "name": "equals",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "object",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "equals(java.lang.Object object)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMapBasedMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap"
+    },
+    "isVarArgs": false,
+    "name": "setMap",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "map",
+        "type": {
+          "isArray": false,
+          "name": "Map",
+          "qualifiedName": "java.util.Map"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "void",
+      "qualifiedName": "void"
+    },
+    "signature": "setMap(java.util.Map map)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMapBasedMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap"
+    },
+    "isVarArgs": false,
+    "name": "createCollection",
+    "paramTags": [
+      {
+        "comment": "key to associate with values in the collection",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "key",
+          "type": {
+            "isArray": false,
+            "name": "Object",
+            "qualifiedName": "java.lang.Object"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "key",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "an empty collection of values",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
       "name": "Collection",
-      "isArray": false
+      "qualifiedName": "java.util.Collection"
     },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "createEntries()"
+    "signature": "createCollection(java.lang.Object key)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMultimap",
-      "name": "AbstractMultimap",
-      "isArray": false
+      "isArray": false,
+      "name": "AbstractMapBasedMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap"
     },
-    "name": "keySet",
-    "returnType": {
-      "qualifiedName": "java.util.Set",
-      "name": "Set",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "keySet()"
+    "name": "backingMap",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "Map",
+      "qualifiedName": "java.util.Map"
+    },
+    "signature": "backingMap()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMultimap",
-      "name": "AbstractMultimap",
-      "isArray": false
+      "isArray": false,
+      "name": "AbstractMapBasedMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap"
     },
-    "name": "keys",
-    "returnType": {
-      "qualifiedName": "com.google.common.collect.Multiset",
-      "name": "Multiset",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "keys()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMultimap",
-      "name": "AbstractMultimap",
-      "isArray": false
-    },
-    "name": "createKeys",
-    "returnType": {
-      "qualifiedName": "com.google.common.collect.Multiset",
-      "name": "Multiset",
-      "isArray": false
-    },
-    "parameters": [],
+    "name": "size",
     "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "createKeys()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMultimap",
-      "name": "AbstractMultimap",
-      "isArray": false
-    },
-    "name": "createValues",
-    "returnType": {
-      "qualifiedName": "java.util.Collection",
-      "name": "Collection",
-      "isArray": false
-    },
     "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "createValues()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMultimap",
-      "name": "AbstractMultimap",
-      "isArray": false
-    },
-    "name": "hashCode",
     "returnType": {
-      "qualifiedName": "int",
+      "isArray": false,
       "name": "int",
-      "isArray": false
+      "qualifiedName": "int"
     },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "hashCode()"
+    "signature": "size()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.collect.AbstractMultimap",
-      "name": "AbstractMultimap",
-      "isArray": false
+      "isArray": false,
+      "name": "AbstractMapBasedMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap"
     },
-    "name": "toString",
-    "returnType": {
-      "qualifiedName": "java.lang.String",
-      "name": "String",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "toString()"
+    "name": "containsKey",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "key",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "containsKey(java.lang.Object key)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMapBasedMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap"
+    },
+    "isVarArgs": false,
+    "name": "getOrCreateCollection",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "key",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "Collection",
+      "qualifiedName": "java.util.Collection"
+    },
+    "signature": "getOrCreateCollection(java.lang.Object key)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMapBasedMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap"
+    },
+    "isVarArgs": false,
+    "name": "unmodifiableCollectionSubclass",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "collection",
+        "type": {
+          "isArray": false,
+          "name": "Collection",
+          "qualifiedName": "java.util.Collection"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "Collection",
+      "qualifiedName": "java.util.Collection"
+    },
+    "signature": "unmodifiableCollectionSubclass(java.util.Collection collection)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMapBasedMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap"
+    },
+    "isVarArgs": false,
+    "name": "clear",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "void",
+      "qualifiedName": "void"
+    },
+    "signature": "clear()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMapBasedMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap"
+    },
+    "isVarArgs": false,
+    "name": "wrapCollection",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "key",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      },
+      {
+        "name": "collection",
+        "type": {
+          "isArray": false,
+          "name": "Collection",
+          "qualifiedName": "java.util.Collection"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "Collection",
+      "qualifiedName": "java.util.Collection"
+    },
+    "signature": "wrapCollection(java.lang.Object key,java.util.Collection collection)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMapBasedMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap"
+    },
+    "isVarArgs": false,
+    "name": "wrapList",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "key",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      },
+      {
+        "name": "list",
+        "type": {
+          "isArray": false,
+          "name": "List",
+          "qualifiedName": "java.util.List"
+        }
+      },
+      {
+        "name": "ancestor",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "WrappedCollection",
+          "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap.WrappedCollection"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "List",
+      "qualifiedName": "java.util.List"
+    },
+    "signature": "wrapList(java.lang.Object key,java.util.List list,com.google.common.collect.AbstractMapBasedMultimap.WrappedCollection ancestor)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMapBasedMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap"
+    },
+    "isVarArgs": false,
+    "name": "iteratorOrListIterator",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "collection",
+        "type": {
+          "isArray": false,
+          "name": "Collection",
+          "qualifiedName": "java.util.Collection"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "Iterator",
+      "qualifiedName": "java.util.Iterator"
+    },
+    "signature": "iteratorOrListIterator(java.util.Collection collection)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMapBasedMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap"
+    },
+    "isVarArgs": false,
+    "name": "createKeySet",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "Set",
+      "qualifiedName": "java.util.Set"
+    },
+    "signature": "createKeySet()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMapBasedMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap"
+    },
+    "isVarArgs": false,
+    "name": "removeValuesForKey",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "key",
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "removeValuesForKey(java.lang.Object key)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMapBasedMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap"
+    },
+    "isVarArgs": false,
+    "name": "values",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "Collection",
+      "qualifiedName": "java.util.Collection"
+    },
+    "signature": "values()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMapBasedMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap"
+    },
+    "isVarArgs": false,
+    "name": "valueIterator",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "Iterator",
+      "qualifiedName": "java.util.Iterator"
+    },
+    "signature": "valueIterator()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMapBasedMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap"
+    },
+    "isVarArgs": false,
+    "name": "entries",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "Collection",
+      "qualifiedName": "java.util.Collection"
+    },
+    "signature": "entries()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMapBasedMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap"
+    },
+    "isVarArgs": false,
+    "name": "entryIterator",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "an iterator across map entries",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Iterator",
+      "qualifiedName": "java.util.Iterator"
+    },
+    "signature": "entryIterator()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMapBasedMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMapBasedMultimap"
+    },
+    "isVarArgs": false,
+    "name": "createAsMap",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "Map",
+      "qualifiedName": "java.util.Map"
+    },
+    "signature": "createAsMap()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMultimap"
+    },
+    "isVarArgs": false,
+    "name": "isEmpty",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "isEmpty()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMultimap"
+    },
+    "isVarArgs": false,
+    "name": "containsValue",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "value",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "containsValue(java.lang.Object value)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMultimap"
+    },
+    "isVarArgs": false,
+    "name": "containsEntry",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "key",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      },
+      {
+        "name": "value",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "containsEntry(java.lang.Object key,java.lang.Object value)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMultimap"
+    },
+    "isVarArgs": false,
+    "name": "remove",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "key",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      },
+      {
+        "name": "value",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "true if the multimap changed",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "remove(java.lang.Object key,java.lang.Object value)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMultimap"
+    },
+    "isVarArgs": false,
+    "name": "putAll",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "key",
+        "nullable": true,
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      },
+      {
+        "name": "values",
+        "type": {
+          "isArray": false,
+          "name": "Iterable",
+          "qualifiedName": "java.lang.Iterable"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "true if the multimap changed",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "putAll(java.lang.Object key,java.lang.Iterable values)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMultimap"
+    },
+    "isVarArgs": false,
+    "name": "putAll",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "multimap",
+        "type": {
+          "isArray": false,
+          "name": "Multimap",
+          "qualifiedName": "com.google.common.collect.Multimap"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "true if the multimap changed",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "putAll(com.google.common.collect.Multimap multimap)",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMultimap"
+    },
+    "isVarArgs": false,
+    "name": "createEntries",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "Collection",
+      "qualifiedName": "java.util.Collection"
+    },
+    "signature": "createEntries()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMultimap"
+    },
+    "isVarArgs": false,
+    "name": "keySet",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "Set",
+      "qualifiedName": "java.util.Set"
+    },
+    "signature": "keySet()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMultimap"
+    },
+    "isVarArgs": false,
+    "name": "keys",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "Multiset",
+      "qualifiedName": "com.google.common.collect.Multiset"
+    },
+    "signature": "keys()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMultimap"
+    },
+    "isVarArgs": false,
+    "name": "createKeys",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "Multiset",
+      "qualifiedName": "com.google.common.collect.Multiset"
+    },
+    "signature": "createKeys()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMultimap"
+    },
+    "isVarArgs": false,
+    "name": "createValues",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "Collection",
+      "qualifiedName": "java.util.Collection"
+    },
+    "signature": "createValues()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMultimap"
+    },
+    "isVarArgs": false,
+    "name": "hashCode",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "hashCode()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractMultimap",
+      "qualifiedName": "com.google.common.collect.AbstractMultimap"
+    },
+    "isVarArgs": false,
+    "name": "toString",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "a string representation of the multimap",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "String",
+      "qualifiedName": "java.lang.String"
+    },
+    "signature": "toString()",
+    "targetClass": "com.google.common.collect.ArrayListMultimap",
+    "throwsTags": []
   }
 ]

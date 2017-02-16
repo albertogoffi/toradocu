@@ -1,563 +1,611 @@
 [
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
+      "isArray": false,
       "name": "PolynomialFunctionNewtonForm",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm"
     },
+    "isVarArgs": false,
     "name": "PolynomialFunctionNewtonForm",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "a"
-      },
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "c"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "a"
-        },
         "comment": "Coefficients in Newton form formula.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "a",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "c"
-        },
         "comment": "Centers.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "c",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "a",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      },
+      {
+        "name": "c",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      }
+    ],
+    "signature": "PolynomialFunctionNewtonForm(double[] a,double[] c)",
+    "targetClass": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
         "comment": "if any argument is null.",
-        "kind": "@throws",
-        "condition": "args[0]==null || args[1]==null"
+        "condition": "args[0]==null || args[1]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "@throws"
       },
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NoDataException",
-          "name": "NoDataException",
-          "isArray": false
-        },
         "comment": "if any array has zero length.",
-        "kind": "@throws",
-	      "condition": "args[0].length==0 || args[1].length==0"      },
-      {
+        "condition": "args[0].length==0 || args[1].length==0",
         "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
-          "name": "DimensionMismatchException",
-          "isArray": false
+          "isArray": false,
+          "name": "NoDataException",
+          "qualifiedName": "org.apache.commons.math3.exception.NoDataException"
         },
+        "kind": "@throws"
+      },
+      {
         "comment": "if the size difference between a and c is not equal to 1.",
-        "kind": "@throws",
-        "condition": "((args[0].length - args[1].length) == 1) == false"
+        "condition": "((args[0].length - args[1].length) == 1) == false",
+        "exception": {
+          "isArray": false,
+          "name": "DimensionMismatchException",
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+        },
+        "kind": "@throws"
       }
-    ],
-    "signature": "PolynomialFunctionNewtonForm(double[] a,double[] c)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
+      "isArray": false,
       "name": "PolynomialFunctionNewtonForm",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm"
     },
+    "isVarArgs": false,
     "name": "value",
-    "returnType": {
-      "qualifiedName": "double",
-      "name": "double",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "z"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "z"
-        },
         "comment": "Point at which the function value is to be computed.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "z",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "z",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the function value.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "double",
+      "qualifiedName": "double"
+    },
+    "signature": "value(double z)",
+    "targetClass": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "java.lang.IllegalArgumentException",
-          "name": "IllegalArgumentException",
-          "isArray": false
-        },
         "comment": "when the activated method itself can ascertain that a precondition, specified in the API expressed at the level of the activated method, has been violated. When Commons Math throws an IllegalArgumentException, it is usually the consequence of checking the actual parameters passed to the method.",
-        "kind": "@throws",
-        "condition": ""
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "IllegalArgumentException",
+          "qualifiedName": "java.lang.IllegalArgumentException"
+        },
+        "kind": "@throws"
       }
-    ],
-    "signature": "value(double z)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
+      "isArray": false,
       "name": "PolynomialFunctionNewtonForm",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm"
     },
+    "isVarArgs": false,
     "name": "value",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.differentiation.DerivativeStructure",
-      "name": "DerivativeStructure",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.differentiation.DerivativeStructure",
-          "name": "DerivativeStructure",
-          "isArray": false
-        },
-        "name": "t"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.DerivativeStructure",
-            "name": "DerivativeStructure",
-            "isArray": false
-          },
-          "name": "t"
-        },
         "comment": "function input value",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "t",
+          "type": {
+            "isArray": false,
+            "name": "DerivativeStructure",
+            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.DerivativeStructure"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "t",
+        "type": {
+          "isArray": false,
+          "name": "DerivativeStructure",
+          "qualifiedName": "org.apache.commons.math3.analysis.differentiation.DerivativeStructure"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "function result",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "DerivativeStructure",
+      "qualifiedName": "org.apache.commons.math3.analysis.differentiation.DerivativeStructure"
+    },
+    "signature": "value(org.apache.commons.math3.analysis.differentiation.DerivativeStructure t)",
+    "targetClass": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
-          "name": "DimensionMismatchException",
-          "isArray": false
-        },
         "comment": "if t is inconsistent with the function's free parameters or order",
-        "kind": "@throws",
-        "condition": ""
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "DimensionMismatchException",
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+        },
+        "kind": "@throws"
       }
-    ],
-    "signature": "value(org.apache.commons.math3.analysis.differentiation.DerivativeStructure t)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
+      "isArray": false,
       "name": "PolynomialFunctionNewtonForm",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm"
     },
+    "isVarArgs": false,
     "name": "degree",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the degree of the polynomial",
+      "condition": "",
+      "kind": "RETURN"
+    },
     "returnType": {
-      "qualifiedName": "int",
+      "isArray": false,
       "name": "int",
-      "isArray": false
+      "qualifiedName": "int"
     },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "degree()"
+    "signature": "degree()",
+    "targetClass": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
+      "isArray": false,
       "name": "PolynomialFunctionNewtonForm",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm"
     },
+    "isVarArgs": false,
     "name": "getNewtonCoefficients",
-    "returnType": {
-      "qualifiedName": "double[]",
-      "name": "double[]",
-      "isArray": true,
-      "componentType": {
-        "qualifiedName": "double",
-        "name": "double",
-        "isArray": false
-      }
-    },
-    "parameters": [],
     "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getNewtonCoefficients()"
+    "parameters": [],
+    "returnTag": {
+      "comment": "a fresh copy of coefficients in Newton form formula",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "componentType": {
+        "isArray": false,
+        "name": "double",
+        "qualifiedName": "double"
+      },
+      "isArray": true,
+      "name": "double[]",
+      "qualifiedName": "double[]"
+    },
+    "signature": "getNewtonCoefficients()",
+    "targetClass": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
+      "isArray": false,
       "name": "PolynomialFunctionNewtonForm",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm"
     },
+    "isVarArgs": false,
     "name": "getCenters",
-    "returnType": {
-      "qualifiedName": "double[]",
-      "name": "double[]",
-      "isArray": true,
-      "componentType": {
-        "qualifiedName": "double",
-        "name": "double",
-        "isArray": false
-      }
-    },
-    "parameters": [],
     "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getCenters()"
+    "parameters": [],
+    "returnTag": {
+      "comment": "a fresh copy of the centers array.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "componentType": {
+        "isArray": false,
+        "name": "double",
+        "qualifiedName": "double"
+      },
+      "isArray": true,
+      "name": "double[]",
+      "qualifiedName": "double[]"
+    },
+    "signature": "getCenters()",
+    "targetClass": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
+      "isArray": false,
       "name": "PolynomialFunctionNewtonForm",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm"
     },
+    "isVarArgs": false,
     "name": "getCoefficients",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "a fresh copy of the coefficients array.",
+      "condition": "",
+      "kind": "RETURN"
+    },
     "returnType": {
-      "qualifiedName": "double[]",
-      "name": "double[]",
-      "isArray": true,
       "componentType": {
-        "qualifiedName": "double",
+        "isArray": false,
         "name": "double",
-        "isArray": false
-      }
+        "qualifiedName": "double"
+      },
+      "isArray": true,
+      "name": "double[]",
+      "qualifiedName": "double[]"
     },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getCoefficients()"
+    "signature": "getCoefficients()",
+    "targetClass": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
+      "isArray": false,
       "name": "PolynomialFunctionNewtonForm",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm"
     },
+    "isVarArgs": false,
     "name": "evaluate",
-    "returnType": {
-      "qualifiedName": "double",
-      "name": "double",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "a"
-      },
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "c"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "z"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "a"
-        },
         "comment": "Coefficients in Newton form formula.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
-      },
-      {
         "parameter": {
+          "name": "a",
           "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
             "componentType": {
-              "qualifiedName": "double",
+              "isArray": false,
               "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "c"
-        },
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
+      },
+      {
         "comment": "Centers.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
-      },
-      {
         "parameter": {
+          "name": "c",
           "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "z"
-        },
-        "comment": "Point at which the function value is to be computed.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
-        "comment": "if any argument is null.",
-        "kind": "@throws",
-        "condition": "args[0]==null || args[1]==null"
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
       },
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NoDataException",
-          "name": "NoDataException",
-          "isArray": false
-        },
-        "comment": "if any array has zero length.",
-        "kind": "@throws",
-	      "condition": "args[0].length==0 || args[1].length==0"      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
-          "name": "DimensionMismatchException",
-          "isArray": false
-        },
-        "comment": "if the size difference between a and c is not equal to 1.",
-        "kind": "@throws",
-        "condition": "((args[0].lenght - args[1].length)==1) == false"
+        "comment": "Point at which the function value is to be computed.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "z",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "signature": "evaluate(double[] a,double[] c,double z)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
-      "name": "PolynomialFunctionNewtonForm",
-      "isArray": false
-    },
-    "name": "computeCoefficients",
-    "returnType": {
-      "qualifiedName": "void",
-      "name": "void",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "computeCoefficients()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
-      "name": "PolynomialFunctionNewtonForm",
-      "isArray": false
-    },
-    "name": "verifyInputArray",
-    "returnType": {
-      "qualifiedName": "void",
-      "name": "void",
-      "isArray": false
-    },
     "parameters": [
       {
+        "name": "a",
         "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
           "componentType": {
-            "qualifiedName": "double",
+            "isArray": false,
             "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "a"
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
       },
       {
+        "name": "c",
         "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
           "componentType": {
-            "qualifiedName": "double",
+            "isArray": false,
             "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "c"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
+            "qualifiedName": "double"
           },
-          "name": "a"
-        },
-        "comment": "the coefficients in Newton form formula",
-        "kind": "@param",
-        "condition": ""
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "c"
-        },
-        "comment": "the centers",
-        "kind": "@param",
-        "condition": ""
+        "name": "z",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
       }
     ],
-    "isVarArgs": false,
+    "returnTag": {
+      "comment": "the function value.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "double",
+      "qualifiedName": "double"
+    },
+    "signature": "evaluate(double[] a,double[] c,double z)",
+    "targetClass": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
         "comment": "if any argument is null.",
-        "kind": "@throws",
-        "condition": "args[0]==null || args[1]==null"
+        "condition": "args[0]==null || args[1]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "@throws"
       },
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NoDataException",
-          "name": "NoDataException",
-          "isArray": false
-        },
         "comment": "if any array has zero length.",
-        "kind": "@throws",
-	      "condition": "args[0].length==0 || args[1].length==0"      },
-      {
+        "condition": "args[0].length==0 || args[1].length==0",
         "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
-          "name": "DimensionMismatchException",
-          "isArray": false
+          "isArray": false,
+          "name": "NoDataException",
+          "qualifiedName": "org.apache.commons.math3.exception.NoDataException"
         },
+        "kind": "@throws"
+      },
+      {
         "comment": "if the size difference between a and c is not equal to 1.",
-        "kind": "@throws",
-        "condition": "((args[0].length - args[1].length)==1) == false"
+        "condition": "((args[0].lenght - args[1].length)==1) == false",
+        "exception": {
+          "isArray": false,
+          "name": "DimensionMismatchException",
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "PolynomialFunctionNewtonForm",
+      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm"
+    },
+    "isVarArgs": false,
+    "name": "computeCoefficients",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "void",
+      "qualifiedName": "void"
+    },
+    "signature": "computeCoefficients()",
+    "targetClass": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "PolynomialFunctionNewtonForm",
+      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm"
+    },
+    "isVarArgs": false,
+    "name": "verifyInputArray",
+    "paramTags": [
+      {
+        "comment": "the coefficients in Newton form formula",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "a",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
+      },
+      {
+        "comment": "the centers",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "c",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
       }
     ],
-    "signature": "verifyInputArray(double[] a,double[] c)"
+    "parameters": [
+      {
+        "name": "a",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      },
+      {
+        "name": "c",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "void",
+      "qualifiedName": "void"
+    },
+    "signature": "verifyInputArray(double[] a,double[] c)",
+    "targetClass": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
+    "throwsTags": [
+      {
+        "comment": "if any argument is null.",
+        "condition": "args[0]==null || args[1]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if any array has zero length.",
+        "condition": "args[0].length==0 || args[1].length==0",
+        "exception": {
+          "isArray": false,
+          "name": "NoDataException",
+          "qualifiedName": "org.apache.commons.math3.exception.NoDataException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if the size difference between a and c is not equal to 1.",
+        "condition": "((args[0].length - args[1].length)==1) == false",
+        "exception": {
+          "isArray": false,
+          "name": "DimensionMismatchException",
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+        },
+        "kind": "@throws"
+      }
+    ]
   }
 ]
