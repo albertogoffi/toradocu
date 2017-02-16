@@ -2,6 +2,9 @@ package org.toradocu;
 
 import org.junit.Test;
 
+/**
+ * Collects tests that expose bugs. These tests should be moved to the precision/recall test suite.
+ */
 public class RegressionTests {
 
   @Test
@@ -15,7 +18,8 @@ public class RegressionTests {
           "--source-dir",
           "src/test/resources/src/commons-math3-3.6.1-src/src/main/java",
           "--oracle-generation",
-          "false"
+          "false",
+          "--debug"
         };
     Toradocu.main(toradocuArgs);
   }

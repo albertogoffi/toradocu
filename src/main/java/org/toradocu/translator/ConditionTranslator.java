@@ -300,8 +300,13 @@ public class ConditionTranslator {
         result = translations.get(match);
       }
 
-      log.trace("Translated proposition " + p + " as: " + result);
-      p.setTranslation(result);
+      if (result == null) {
+        log.warn("Failed translation for proposition " + p);
+        p.setTranslation("");
+      } else {
+        log.trace("Translated proposition " + p + " as: " + result);
+        p.setTranslation(result);
+      }
     }
   }
 
