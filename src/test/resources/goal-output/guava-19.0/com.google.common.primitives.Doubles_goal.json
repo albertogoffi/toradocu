@@ -1,1164 +1,1246 @@
 [
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
+      "isArray": false,
       "name": "Doubles",
-      "isArray": false
+      "qualifiedName": "com.google.common.primitives.Doubles"
     },
+    "isVarArgs": false,
     "name": "Doubles",
-    "parameters": [],
     "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "Doubles()"
+    "parameters": [],
+    "signature": "Doubles()",
+    "targetClass": "com.google.common.primitives.Doubles",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
+      "isArray": false,
       "name": "Doubles",
-      "isArray": false
+      "qualifiedName": "com.google.common.primitives.Doubles"
     },
+    "isVarArgs": false,
     "name": "hashCode",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "value"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "value"
-        },
         "comment": "a primitive double value",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "value",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "hashCode(double value)"
+    "parameters": [
+      {
+        "name": "value",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a hash code for the value",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "hashCode(double value)",
+    "targetClass": "com.google.common.primitives.Doubles",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
+      "isArray": false,
       "name": "Doubles",
-      "isArray": false
+      "qualifiedName": "com.google.common.primitives.Doubles"
     },
+    "isVarArgs": false,
     "name": "compare",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "a"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "b"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "a"
-        },
         "comment": "the first double to compare",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "a",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "b"
-        },
         "comment": "the second double to compare",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "b",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "compare(double a,double b)"
+    "parameters": [
+      {
+        "name": "a",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "b",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a negative value if a is less than b; a positive value if a is greater than b; or zero if they are equal",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "compare(double a,double b)",
+    "targetClass": "com.google.common.primitives.Doubles",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
+      "isArray": false,
       "name": "Doubles",
-      "isArray": false
+      "qualifiedName": "com.google.common.primitives.Doubles"
     },
+    "isVarArgs": false,
     "name": "isFinite",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "value",
         "type": {
-          "qualifiedName": "double",
+          "isArray": false,
           "name": "double",
-          "isArray": false
-        },
-        "name": "value"
+          "qualifiedName": "double"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "isFinite(double value)"
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "isFinite(double value)",
+    "targetClass": "com.google.common.primitives.Doubles",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
+      "isArray": false,
       "name": "Doubles",
-      "isArray": false
+      "qualifiedName": "com.google.common.primitives.Doubles"
     },
+    "isVarArgs": false,
     "name": "contains",
+    "paramTags": [
+      {
+        "comment": "an array of double values, possibly empty",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "array",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
+      },
+      {
+        "comment": "a primitive double value",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "target",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "array",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      },
+      {
+        "name": "target",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "true if array[i] == target for some value of i",
+      "condition": "",
+      "kind": "RETURN"
+    },
     "returnType": {
-      "qualifiedName": "boolean",
+      "isArray": false,
       "name": "boolean",
-      "isArray": false
+      "qualifiedName": "boolean"
     },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "array"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "target"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "array"
-        },
-        "comment": "an array of double values, possibly empty",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "target"
-        },
-        "comment": "a primitive double value",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "contains(double[] array,double target)"
+    "signature": "contains(double[] array,double target)",
+    "targetClass": "com.google.common.primitives.Doubles",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
+      "isArray": false,
       "name": "Doubles",
-      "isArray": false
+      "qualifiedName": "com.google.common.primitives.Doubles"
     },
+    "isVarArgs": false,
     "name": "indexOf",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "array"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "target"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "array"
-        },
         "comment": "an array of double values, possibly empty",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "array",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "target"
-        },
         "comment": "a primitive double value",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "target",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "indexOf(double[] array,double target)"
+    "parameters": [
+      {
+        "name": "array",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      },
+      {
+        "name": "target",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the least index i for which array[i] == target, or -1 if no such index exists.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "indexOf(double[] array,double target)",
+    "targetClass": "com.google.common.primitives.Doubles",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
+      "isArray": false,
       "name": "Doubles",
-      "isArray": false
+      "qualifiedName": "com.google.common.primitives.Doubles"
     },
+    "isVarArgs": false,
     "name": "indexOf",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "array"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "target"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "start"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "end"
-      }
-    ],
     "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "indexOf(double[] array,double target,int start,int end)"
+    "parameters": [
+      {
+        "name": "array",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      },
+      {
+        "name": "target",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "start",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      },
+      {
+        "name": "end",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "indexOf(double[] array,double target,int start,int end)",
+    "targetClass": "com.google.common.primitives.Doubles",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
+      "isArray": false,
       "name": "Doubles",
-      "isArray": false
+      "qualifiedName": "com.google.common.primitives.Doubles"
     },
+    "isVarArgs": false,
     "name": "indexOf",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "array"
-      },
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "target"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "array"
-        },
         "comment": "the array to search for the sequence target",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "array",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "target"
-        },
         "comment": "the array to search for as a sub-sequence of array",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "target",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "indexOf(double[] array,double[] target)"
+    "parameters": [
+      {
+        "name": "array",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      },
+      {
+        "name": "target",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "indexOf(double[] array,double[] target)",
+    "targetClass": "com.google.common.primitives.Doubles",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
+      "isArray": false,
       "name": "Doubles",
-      "isArray": false
+      "qualifiedName": "com.google.common.primitives.Doubles"
     },
+    "isVarArgs": false,
     "name": "lastIndexOf",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "array"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "target"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "array"
-        },
         "comment": "an array of double values, possibly empty",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "array",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "target"
-        },
         "comment": "a primitive double value",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "target",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "lastIndexOf(double[] array,double target)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
-      "name": "Doubles",
-      "isArray": false
-    },
-    "name": "lastIndexOf",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
     "parameters": [
       {
+        "name": "array",
         "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
           "componentType": {
-            "qualifiedName": "double",
+            "isArray": false,
             "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "array"
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
       },
       {
+        "name": "target",
         "type": {
-          "qualifiedName": "double",
+          "isArray": false,
           "name": "double",
-          "isArray": false
-        },
-        "name": "target"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "start"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "end"
+          "qualifiedName": "double"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "lastIndexOf(double[] array,double target,int start,int end)"
+    "returnTag": {
+      "comment": "the greatest index i for which array[i] == target, or -1 if no such index exists.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "lastIndexOf(double[] array,double target)",
+    "targetClass": "com.google.common.primitives.Doubles",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
+      "isArray": false,
       "name": "Doubles",
-      "isArray": false
+      "qualifiedName": "com.google.common.primitives.Doubles"
     },
+    "isVarArgs": false,
+    "name": "lastIndexOf",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "array",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      },
+      {
+        "name": "target",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "start",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      },
+      {
+        "name": "end",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "lastIndexOf(double[] array,double target,int start,int end)",
+    "targetClass": "com.google.common.primitives.Doubles",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Doubles",
+      "qualifiedName": "com.google.common.primitives.Doubles"
+    },
+    "isVarArgs": true,
     "name": "min",
-    "returnType": {
-      "qualifiedName": "double",
-      "name": "double",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "array"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "array"
-        },
         "comment": "a nonempty array of double values",
+        "condition": "(args[0].length==0) == false",
         "kind": "@param",
-        "condition": "(args[0].length==0) == false"
+        "parameter": {
+          "name": "array",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
       }
     ],
-    "isVarArgs": true,
+    "parameters": [
+      {
+        "name": "array",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the value present in array that is less than or equal to every other value in the array",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "double",
+      "qualifiedName": "double"
+    },
+    "signature": "min(double[] array)",
+    "targetClass": "com.google.common.primitives.Doubles",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "java.lang.IllegalArgumentException",
-          "name": "IllegalArgumentException",
-          "isArray": false
-        },
         "comment": "if array is empty",
-        "kind": "@throws",
-        "condition": "args[0].length==0"
+        "condition": "args[0].length==0",
+        "exception": {
+          "isArray": false,
+          "name": "IllegalArgumentException",
+          "qualifiedName": "java.lang.IllegalArgumentException"
+        },
+        "kind": "@throws"
       }
-    ],
-    "signature": "min(double[] array)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
+      "isArray": false,
       "name": "Doubles",
-      "isArray": false
+      "qualifiedName": "com.google.common.primitives.Doubles"
     },
+    "isVarArgs": true,
     "name": "max",
-    "returnType": {
-      "qualifiedName": "double",
-      "name": "double",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "array"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "array"
-        },
         "comment": "a nonempty array of double values",
+        "condition": "(args[0].length==0) == false",
         "kind": "@param",
-        "condition": "(args[0].length==0) == false"
+        "parameter": {
+          "name": "array",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
       }
     ],
-    "isVarArgs": true,
+    "parameters": [
+      {
+        "name": "array",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the value present in array that is greater than or equal to every other value in the array",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "double",
+      "qualifiedName": "double"
+    },
+    "signature": "max(double[] array)",
+    "targetClass": "com.google.common.primitives.Doubles",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "java.lang.IllegalArgumentException",
-          "name": "IllegalArgumentException",
-          "isArray": false
-        },
         "comment": "if array is empty",
-        "kind": "@throws",
-        "condition": "args[0].length==0"
-      }
-    ],
-    "signature": "max(double[] array)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
-      "name": "Doubles",
-      "isArray": false
-    },
-    "name": "concat",
-    "returnType": {
-      "qualifiedName": "double[]",
-      "name": "double[]",
-      "isArray": true,
-      "componentType": {
-        "qualifiedName": "double",
-        "name": "double",
-        "isArray": false
-      }
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double[][]",
-          "name": "double[][]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "arrays"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[][]",
-            "name": "double[][]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "arrays"
-        },
-        "comment": "zero or more double arrays",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": true,
-    "throwsTags": [],
-    "signature": "concat(double[][] arrays)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
-      "name": "Doubles",
-      "isArray": false
-    },
-    "name": "stringConverter",
-    "returnType": {
-      "qualifiedName": "com.google.common.base.Converter",
-      "name": "Converter",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "stringConverter()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
-      "name": "Doubles",
-      "isArray": false
-    },
-    "name": "ensureCapacity",
-    "returnType": {
-      "qualifiedName": "double[]",
-      "name": "double[]",
-      "isArray": true,
-      "componentType": {
-        "qualifiedName": "double",
-        "name": "double",
-        "isArray": false
-      }
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "array"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "minLength"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "padding"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "array"
-        },
-        "comment": "the source array",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "minLength"
-        },
-        "comment": "the minimum length the returned array must guarantee",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "padding"
-        },
-        "comment": "an extra amount to \"grow\" the array by if growth is necessary",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
+        "condition": "args[0].length==0",
         "exception": {
-          "qualifiedName": "java.lang.IllegalArgumentException",
+          "isArray": false,
           "name": "IllegalArgumentException",
-          "isArray": false
+          "qualifiedName": "java.lang.IllegalArgumentException"
         },
-        "comment": "if minLength or padding is negative",
-        "kind": "@throws",
-        "condition": "args[1]<0 || args[2]<0"
+        "kind": "@throws"
       }
-    ],
-    "signature": "ensureCapacity(double[] array,int minLength,int padding)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
+      "isArray": false,
       "name": "Doubles",
-      "isArray": false
+      "qualifiedName": "com.google.common.primitives.Doubles"
     },
-    "name": "copyOf",
-    "returnType": {
-      "qualifiedName": "double[]",
-      "name": "double[]",
-      "isArray": true,
-      "componentType": {
-        "qualifiedName": "double",
-        "name": "double",
-        "isArray": false
-      }
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "original"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "length"
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "copyOf(double[] original,int length)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
-      "name": "Doubles",
-      "isArray": false
-    },
-    "name": "join",
-    "returnType": {
-      "qualifiedName": "java.lang.String",
-      "name": "String",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.String",
-          "name": "String",
-          "isArray": false
-        },
-        "name": "separator"
-      },
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "array"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.String",
-            "name": "String",
-            "isArray": false
-          },
-          "name": "separator"
-        },
-        "comment": "the text that should appear between consecutive values in the resulting string (but not at the start or end)",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "array"
-        },
-        "comment": "an array of double values, possibly empty",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
     "isVarArgs": true,
-    "throwsTags": [],
-    "signature": "join(java.lang.String separator,double[] array)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
-      "name": "Doubles",
-      "isArray": false
-    },
-    "name": "lexicographicalComparator",
-    "returnType": {
-      "qualifiedName": "java.util.Comparator",
-      "name": "Comparator",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "lexicographicalComparator()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
-      "name": "Doubles",
-      "isArray": false
-    },
-    "name": "toArray",
-    "returnType": {
-      "qualifiedName": "double[]",
-      "name": "double[]",
-      "isArray": true,
-      "componentType": {
-        "qualifiedName": "double",
-        "name": "double",
-        "isArray": false
-      }
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.util.Collection",
-          "name": "Collection",
-          "isArray": false
-        },
-        "name": "collection"
-      }
-    ],
+    "name": "concat",
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.Collection",
-            "name": "Collection",
-            "isArray": false
-          },
-          "name": "collection"
-        },
-        "comment": "a collection of Number instances",
+        "comment": "zero or more double arrays",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "arrays",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[][]",
+            "qualifiedName": "double[][]"
+          }
+        }
       }
     ],
+    "parameters": [
+      {
+        "name": "arrays",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[][]",
+          "qualifiedName": "double[][]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a single array containing all the values from the source arrays, in order",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "componentType": {
+        "isArray": false,
+        "name": "double",
+        "qualifiedName": "double"
+      },
+      "isArray": true,
+      "name": "double[]",
+      "qualifiedName": "double[]"
+    },
+    "signature": "concat(double[][] arrays)",
+    "targetClass": "com.google.common.primitives.Doubles",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Doubles",
+      "qualifiedName": "com.google.common.primitives.Doubles"
+    },
     "isVarArgs": false,
+    "name": "stringConverter",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "Converter",
+      "qualifiedName": "com.google.common.base.Converter"
+    },
+    "signature": "stringConverter()",
+    "targetClass": "com.google.common.primitives.Doubles",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Doubles",
+      "qualifiedName": "com.google.common.primitives.Doubles"
+    },
+    "isVarArgs": false,
+    "name": "ensureCapacity",
+    "paramTags": [
+      {
+        "comment": "the source array",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "array",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
+      },
+      {
+        "comment": "the minimum length the returned array must guarantee",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "minLength",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
+      },
+      {
+        "comment": "an extra amount to \"grow\" the array by if growth is necessary",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "padding",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "array",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      },
+      {
+        "name": "minLength",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      },
+      {
+        "name": "padding",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "an array containing the values of array, with guaranteed minimum length minLength",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "componentType": {
+        "isArray": false,
+        "name": "double",
+        "qualifiedName": "double"
+      },
+      "isArray": true,
+      "name": "double[]",
+      "qualifiedName": "double[]"
+    },
+    "signature": "ensureCapacity(double[] array,int minLength,int padding)",
+    "targetClass": "com.google.common.primitives.Doubles",
     "throwsTags": [
       {
+        "comment": "if minLength or padding is negative",
+        "condition": "args[1]<0 || args[2]<0",
         "exception": {
-          "qualifiedName": "java.lang.NullPointerException",
-          "name": "NullPointerException",
-          "isArray": false
+          "isArray": false,
+          "name": "IllegalArgumentException",
+          "qualifiedName": "java.lang.IllegalArgumentException"
         },
-        "comment": "if collection or any of its elements is null",
-        "kind": "@throws",
-        "condition": "args[0]==null || args[0].contains(null)"
+        "kind": "@throws"
       }
-    ],
-    "signature": "toArray(java.util.Collection collection)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
+      "isArray": false,
       "name": "Doubles",
-      "isArray": false
+      "qualifiedName": "com.google.common.primitives.Doubles"
     },
-    "name": "asList",
-    "returnType": {
-      "qualifiedName": "java.util.List",
-      "name": "List",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "backingArray"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "backingArray"
-        },
-        "comment": "the array to back the list",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": true,
-    "throwsTags": [],
-    "signature": "asList(double[] backingArray)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
-      "name": "Doubles",
-      "isArray": false
-    },
-    "name": "fpPattern",
-    "returnType": {
-      "qualifiedName": "java.util.regex.Pattern",
-      "name": "Pattern",
-      "isArray": false
-    },
-    "parameters": [],
+    "isVarArgs": false,
+    "name": "copyOf",
     "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "fpPattern()"
+    "parameters": [
+      {
+        "name": "original",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      },
+      {
+        "name": "length",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "returnType": {
+      "componentType": {
+        "isArray": false,
+        "name": "double",
+        "qualifiedName": "double"
+      },
+      "isArray": true,
+      "name": "double[]",
+      "qualifiedName": "double[]"
+    },
+    "signature": "copyOf(double[] original,int length)",
+    "targetClass": "com.google.common.primitives.Doubles",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "com.google.common.primitives.Doubles",
+      "isArray": false,
       "name": "Doubles",
-      "isArray": false
+      "qualifiedName": "com.google.common.primitives.Doubles"
     },
-    "name": "tryParse",
-    "returnType": {
-      "qualifiedName": "java.lang.Double",
-      "name": "Double",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.String",
-          "name": "String",
-          "isArray": false
-        },
-        "name": "string"
-      }
-    ],
+    "isVarArgs": true,
+    "name": "join",
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.String",
-            "name": "String",
-            "isArray": false
-          },
-          "name": "string"
-        },
-        "comment": "the string representation of a double value",
+        "comment": "the text that should appear between consecutive values in the resulting string (but not at the start or end)",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "separator",
+          "type": {
+            "isArray": false,
+            "name": "String",
+            "qualifiedName": "java.lang.String"
+          }
+        }
+      },
+      {
+        "comment": "an array of double values, possibly empty",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "array",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
       }
     ],
+    "parameters": [
+      {
+        "name": "separator",
+        "type": {
+          "isArray": false,
+          "name": "String",
+          "qualifiedName": "java.lang.String"
+        }
+      },
+      {
+        "name": "array",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "String",
+      "qualifiedName": "java.lang.String"
+    },
+    "signature": "join(java.lang.String separator,double[] array)",
+    "targetClass": "com.google.common.primitives.Doubles",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Doubles",
+      "qualifiedName": "com.google.common.primitives.Doubles"
+    },
     "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "tryParse(java.lang.String string)"
+    "name": "lexicographicalComparator",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "Comparator",
+      "qualifiedName": "java.util.Comparator"
+    },
+    "signature": "lexicographicalComparator()",
+    "targetClass": "com.google.common.primitives.Doubles",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Doubles",
+      "qualifiedName": "com.google.common.primitives.Doubles"
+    },
+    "isVarArgs": false,
+    "name": "toArray",
+    "paramTags": [
+      {
+        "comment": "a collection of Number instances",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "collection",
+          "type": {
+            "isArray": false,
+            "name": "Collection",
+            "qualifiedName": "java.util.Collection"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "collection",
+        "type": {
+          "isArray": false,
+          "name": "Collection",
+          "qualifiedName": "java.util.Collection"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "an array containing the same values as collection, in the same order, converted to primitives",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "componentType": {
+        "isArray": false,
+        "name": "double",
+        "qualifiedName": "double"
+      },
+      "isArray": true,
+      "name": "double[]",
+      "qualifiedName": "double[]"
+    },
+    "signature": "toArray(java.util.Collection collection)",
+    "targetClass": "com.google.common.primitives.Doubles",
+    "throwsTags": [
+      {
+        "comment": "if collection or any of its elements is null",
+        "condition": "args[0]==null || args[0].contains(null)",
+        "exception": {
+          "isArray": false,
+          "name": "NullPointerException",
+          "qualifiedName": "java.lang.NullPointerException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Doubles",
+      "qualifiedName": "com.google.common.primitives.Doubles"
+    },
+    "isVarArgs": true,
+    "name": "asList",
+    "paramTags": [
+      {
+        "comment": "the array to back the list",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "backingArray",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "backingArray",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a list view of the array",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "List",
+      "qualifiedName": "java.util.List"
+    },
+    "signature": "asList(double[] backingArray)",
+    "targetClass": "com.google.common.primitives.Doubles",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Doubles",
+      "qualifiedName": "com.google.common.primitives.Doubles"
+    },
+    "isVarArgs": false,
+    "name": "fpPattern",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "Pattern",
+      "qualifiedName": "java.util.regex.Pattern"
+    },
+    "signature": "fpPattern()",
+    "targetClass": "com.google.common.primitives.Doubles",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Doubles",
+      "qualifiedName": "com.google.common.primitives.Doubles"
+    },
+    "isVarArgs": false,
+    "name": "tryParse",
+    "paramTags": [
+      {
+        "comment": "the string representation of a double value",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "string",
+          "type": {
+            "isArray": false,
+            "name": "String",
+            "qualifiedName": "java.lang.String"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "string",
+        "type": {
+          "isArray": false,
+          "name": "String",
+          "qualifiedName": "java.lang.String"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the floating point value represented by string, or null if string has a length of zero or cannot be parsed as a double value",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Double",
+      "qualifiedName": "java.lang.Double"
+    },
+    "signature": "tryParse(java.lang.String string)",
+    "targetClass": "com.google.common.primitives.Doubles",
+    "throwsTags": []
   }
 ]

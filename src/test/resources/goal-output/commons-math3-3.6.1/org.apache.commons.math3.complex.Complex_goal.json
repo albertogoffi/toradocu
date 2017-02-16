@@ -1,1743 +1,2016 @@
 [
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
+      "isArray": false,
       "name": "Complex",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
     },
+    "isVarArgs": false,
     "name": "Complex",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "real"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "real"
-        },
         "comment": "Real part.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "real",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "Complex(double real)"
+    "parameters": [
+      {
+        "name": "real",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      }
+    ],
+    "signature": "Complex(double real)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
+      "isArray": false,
       "name": "Complex",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
     },
+    "isVarArgs": false,
     "name": "Complex",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "real"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "imaginary"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "real"
-        },
         "comment": "Real part.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "real",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "imaginary"
-        },
         "comment": "Imaginary part.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "imaginary",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "Complex(double real,double imaginary)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "abs",
-    "returnType": {
-      "qualifiedName": "double",
-      "name": "double",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "abs()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "add",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
     "parameters": [
       {
+        "name": "real",
         "type": {
-          "qualifiedName": "org.apache.commons.math3.complex.Complex",
-          "name": "Complex",
-          "isArray": false
-        },
-        "name": "addend"
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "imaginary",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
       }
     ],
+    "signature": "Complex(double real,double imaginary)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "abs",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the absolute value.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "double",
+      "qualifiedName": "double"
+    },
+    "signature": "abs()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "add",
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.complex.Complex",
-            "name": "Complex",
-            "isArray": false
-          },
-          "name": "addend"
-        },
         "comment": "Value to be added to this Complex.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "addend",
+          "type": {
+            "isArray": false,
+            "name": "Complex",
+            "qualifiedName": "org.apache.commons.math3.complex.Complex"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "addend",
+        "type": {
+          "isArray": false,
+          "name": "Complex",
+          "qualifiedName": "org.apache.commons.math3.complex.Complex"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "this + addend.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "add(org.apache.commons.math3.complex.Complex addend)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
         "codeTags": [
           "addend",
           "null"
         ],
         "comment": "if addend is null.",
-        "kind": "THROWS",
-        "condition": "args[0]==null"
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "THROWS"
       },
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
         "codeTags": [
           "a",
           "null"
         ],
         "comment": "if a is null.",
-        "kind": "THROWS",
-        "condition": "target.add()==null || target.abs()==null || target.tan()==null"
+        "condition": "target.add()==null || target.abs()==null || target.tan()==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "THROWS"
       }
-    ],
-    "signature": "add(org.apache.commons.math3.complex.Complex addend)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
+      "isArray": false,
       "name": "Complex",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
     },
+    "isVarArgs": false,
     "name": "add",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "addend"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "addend"
-        },
         "comment": "Value to be added to this Complex.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "addend",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "add(double addend)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "conjugate",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "conjugate()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "divide",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
     "parameters": [
       {
+        "name": "addend",
         "type": {
-          "qualifiedName": "org.apache.commons.math3.complex.Complex",
-          "name": "Complex",
-          "isArray": false
-        },
-        "name": "divisor"
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
       }
     ],
+    "returnTag": {
+      "comment": "this + addend.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "add(double addend)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "conjugate",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the conjugate of this Complex object.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "conjugate()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "divide",
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.complex.Complex",
-            "name": "Complex",
-            "isArray": false
-          },
-          "name": "divisor"
-        },
         "comment": "Value by which this Complex is to be divided.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "divisor",
+          "type": {
+            "isArray": false,
+            "name": "Complex",
+            "qualifiedName": "org.apache.commons.math3.complex.Complex"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "divisor",
+        "type": {
+          "isArray": false,
+          "name": "Complex",
+          "qualifiedName": "org.apache.commons.math3.complex.Complex"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "this / divisor.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "divide(org.apache.commons.math3.complex.Complex divisor)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
         "codeTags": [
           "divisor",
           "null"
         ],
         "comment": "if divisor is null.",
-        "kind": "THROWS",
-        "condition": "args[0]==null"
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "THROWS"
       },
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
         "codeTags": [
           "a",
           "null"
         ],
         "comment": "if a is null.",
-        "kind": "THROWS",
-        "condition": "target.add()==null || target.abs()==null || target.tan()==null"
+        "condition": "target.add()==null || target.abs()==null || target.tan()==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "THROWS"
       },
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
-          "name": "MathArithmeticException",
-          "isArray": false
-        },
         "codeTags": [
           "a"
         ],
         "comment": "if a is zero",
-        "kind": "THROWS",
-        "condition": "target.add()==0 || target.abs()==0 || target.tan()==0"
+        "condition": "target.add()==0 || target.abs()==0 || target.tan()==0",
+        "exception": {
+          "isArray": false,
+          "name": "MathArithmeticException",
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
+        },
+        "kind": "THROWS"
       }
-    ],
-    "signature": "divide(org.apache.commons.math3.complex.Complex divisor)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
+      "isArray": false,
       "name": "Complex",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
     },
+    "isVarArgs": false,
     "name": "divide",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "divisor"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "divisor"
-        },
         "comment": "Value by which this Complex is to be divided.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "divisor",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "divide(double divisor)"
+    "parameters": [
+      {
+        "name": "divisor",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "this / divisor.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "divide(double divisor)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
+      "isArray": false,
       "name": "Complex",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
     },
-    "name": "reciprocal",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
+    "name": "reciprocal",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the inverse of this.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "reciprocal()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
-          "name": "MathArithmeticException",
-          "isArray": false
-        },
         "codeTags": [
           "this"
         ],
         "comment": "if this is zero",
-        "kind": "THROWS",
-        "condition": "target.abs()==0"
+        "condition": "target.abs()==0",
+        "exception": {
+          "isArray": false,
+          "name": "MathArithmeticException",
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
+        },
+        "kind": "THROWS"
       }
-    ],
-    "signature": "reciprocal()"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
+      "isArray": false,
       "name": "Complex",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
     },
+    "isVarArgs": false,
     "name": "equals",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "other"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "other"
-        },
         "comment": "Object to test for equality with this instance.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "other",
+          "type": {
+            "isArray": false,
+            "name": "Object",
+            "qualifiedName": "java.lang.Object"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "equals(java.lang.Object other)"
+    "parameters": [
+      {
+        "name": "other",
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "true if the objects are equal, false if object is null, not an instance of Complex, or not equal to this instance.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "equals(java.lang.Object other)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
+      "isArray": false,
       "name": "Complex",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
     },
+    "isVarArgs": false,
     "name": "equals",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.complex.Complex",
-          "name": "Complex",
-          "isArray": false
-        },
-        "name": "x"
-      },
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.complex.Complex",
-          "name": "Complex",
-          "isArray": false
-        },
-        "name": "y"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "maxUlps"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.complex.Complex",
-            "name": "Complex",
-            "isArray": false
-          },
-          "name": "x"
-        },
         "comment": "First value (cannot be null).",
+        "condition": "(args[0]==null) == false",
         "kind": "PARAM",
-        "condition": "(args[0]==null) == false"
-      },
-      {
         "parameter": {
+          "name": "x",
           "type": {
-            "qualifiedName": "org.apache.commons.math3.complex.Complex",
+            "isArray": false,
             "name": "Complex",
-            "isArray": false
-          },
-          "name": "y"
-        },
-        "comment": "Second value (cannot be null).",
-        "kind": "PARAM",
-        "condition": "(args[1]==null) == false"
+            "qualifiedName": "org.apache.commons.math3.complex.Complex"
+          }
+        }
       },
       {
+        "comment": "Second value (cannot be null).",
+        "condition": "(args[1]==null) == false",
+        "kind": "PARAM",
         "parameter": {
+          "name": "y",
           "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "maxUlps"
-        },
+            "isArray": false,
+            "name": "Complex",
+            "qualifiedName": "org.apache.commons.math3.complex.Complex"
+          }
+        }
+      },
+      {
         "comment": "(maxUlps - 1) is the number of floating point values between the real (resp. imaginary) parts of x and y.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "maxUlps",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "equals(org.apache.commons.math3.complex.Complex x,org.apache.commons.math3.complex.Complex y,int maxUlps)"
+    "parameters": [
+      {
+        "name": "x",
+        "type": {
+          "isArray": false,
+          "name": "Complex",
+          "qualifiedName": "org.apache.commons.math3.complex.Complex"
+        }
+      },
+      {
+        "name": "y",
+        "type": {
+          "isArray": false,
+          "name": "Complex",
+          "qualifiedName": "org.apache.commons.math3.complex.Complex"
+        }
+      },
+      {
+        "name": "maxUlps",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "true if there are fewer than maxUlps floating point values between the real (resp. imaginary) parts of x and y.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "equals(org.apache.commons.math3.complex.Complex x,org.apache.commons.math3.complex.Complex y,int maxUlps)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
+      "isArray": false,
       "name": "Complex",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
     },
+    "isVarArgs": false,
     "name": "equals",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.complex.Complex",
-          "name": "Complex",
-          "isArray": false
-        },
-        "name": "x"
-      },
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.complex.Complex",
-          "name": "Complex",
-          "isArray": false
-        },
-        "name": "y"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.complex.Complex",
-            "name": "Complex",
-            "isArray": false
-          },
-          "name": "x"
-        },
         "comment": "First value (cannot be null).",
+        "condition": "(args[0]==null) == false",
         "kind": "PARAM",
-        "condition": "(args[0]==null) == false"
+        "parameter": {
+          "name": "x",
+          "type": {
+            "isArray": false,
+            "name": "Complex",
+            "qualifiedName": "org.apache.commons.math3.complex.Complex"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.complex.Complex",
-            "name": "Complex",
-            "isArray": false
-          },
-          "name": "y"
-        },
         "comment": "Second value (cannot be null).",
+        "condition": "(args[1]==null) == false",
         "kind": "PARAM",
-        "condition": "(args[1]==null) == false"
+        "parameter": {
+          "name": "y",
+          "type": {
+            "isArray": false,
+            "name": "Complex",
+            "qualifiedName": "org.apache.commons.math3.complex.Complex"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "equals(org.apache.commons.math3.complex.Complex x,org.apache.commons.math3.complex.Complex y)"
+    "parameters": [
+      {
+        "name": "x",
+        "type": {
+          "isArray": false,
+          "name": "Complex",
+          "qualifiedName": "org.apache.commons.math3.complex.Complex"
+        }
+      },
+      {
+        "name": "y",
+        "type": {
+          "isArray": false,
+          "name": "Complex",
+          "qualifiedName": "org.apache.commons.math3.complex.Complex"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "true if the values are equal.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "equals(org.apache.commons.math3.complex.Complex x,org.apache.commons.math3.complex.Complex y)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
+      "isArray": false,
       "name": "Complex",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
     },
+    "isVarArgs": false,
     "name": "equals",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.complex.Complex",
-          "name": "Complex",
-          "isArray": false
-        },
-        "name": "x"
-      },
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.complex.Complex",
-          "name": "Complex",
-          "isArray": false
-        },
-        "name": "y"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "eps"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.complex.Complex",
-            "name": "Complex",
-            "isArray": false
-          },
-          "name": "x"
-        },
         "comment": "First value (cannot be null).",
+        "condition": "(args[0]==null) == false",
         "kind": "PARAM",
-        "condition": "(args[0]==null) == false"
-      },
-      {
         "parameter": {
+          "name": "x",
           "type": {
-            "qualifiedName": "org.apache.commons.math3.complex.Complex",
+            "isArray": false,
             "name": "Complex",
-            "isArray": false
-          },
-          "name": "y"
-        },
-        "comment": "Second value (cannot be null).",
-        "kind": "PARAM",
-        "condition": "(args[1]==null) == false"
+            "qualifiedName": "org.apache.commons.math3.complex.Complex"
+          }
+        }
       },
       {
+        "comment": "Second value (cannot be null).",
+        "condition": "(args[1]==null) == false",
+        "kind": "PARAM",
         "parameter": {
+          "name": "y",
           "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "eps"
-        },
+            "isArray": false,
+            "name": "Complex",
+            "qualifiedName": "org.apache.commons.math3.complex.Complex"
+          }
+        }
+      },
+      {
         "comment": "Amount of allowed absolute error.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "equals(org.apache.commons.math3.complex.Complex x,org.apache.commons.math3.complex.Complex y,double eps)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "equalsWithRelativeTolerance",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.complex.Complex",
-          "name": "Complex",
-          "isArray": false
-        },
-        "name": "x"
-      },
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.complex.Complex",
-          "name": "Complex",
-          "isArray": false
-        },
-        "name": "y"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "eps"
-      }
-    ],
-    "paramTags": [
-      {
         "parameter": {
+          "name": "eps",
           "type": {
-            "qualifiedName": "org.apache.commons.math3.complex.Complex",
-            "name": "Complex",
-            "isArray": false
-          },
-          "name": "x"
-        },
-        "comment": "First value (cannot be null).",
-        "kind": "PARAM",
-        "condition": "(args[0]==null) == false"
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.complex.Complex",
-            "name": "Complex",
-            "isArray": false
-          },
-          "name": "y"
-        },
-        "comment": "Second value (cannot be null).",
-        "kind": "PARAM",
-        "condition": "(args[1]==null) == false"
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
+            "isArray": false,
             "name": "double",
-            "isArray": false
-          },
-          "name": "eps"
-        },
-        "comment": "Amount of allowed relative error.",
-        "kind": "PARAM",
-        "condition": ""
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "equalsWithRelativeTolerance(org.apache.commons.math3.complex.Complex x,org.apache.commons.math3.complex.Complex y,double eps)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "hashCode",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "hashCode()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "getImaginary",
-    "returnType": {
-      "qualifiedName": "double",
-      "name": "double",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getImaginary()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "getReal",
-    "returnType": {
-      "qualifiedName": "double",
-      "name": "double",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getReal()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "isNaN",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "isNaN()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "isInfinite",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "isInfinite()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "multiply",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
     "parameters": [
       {
+        "name": "x",
         "type": {
-          "qualifiedName": "org.apache.commons.math3.complex.Complex",
+          "isArray": false,
           "name": "Complex",
-          "isArray": false
-        },
-        "name": "factor"
+          "qualifiedName": "org.apache.commons.math3.complex.Complex"
+        }
+      },
+      {
+        "name": "y",
+        "type": {
+          "isArray": false,
+          "name": "Complex",
+          "qualifiedName": "org.apache.commons.math3.complex.Complex"
+        }
+      },
+      {
+        "name": "eps",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
       }
     ],
+    "returnTag": {
+      "comment": "true if the values are two adjacent floating point numbers or they are within range of each other.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "equals(org.apache.commons.math3.complex.Complex x,org.apache.commons.math3.complex.Complex y,double eps)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "equalsWithRelativeTolerance",
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.complex.Complex",
-            "name": "Complex",
-            "isArray": false
-          },
-          "name": "factor"
-        },
-        "comment": "value to be multiplied by this Complex.",
+        "comment": "First value (cannot be null).",
+        "condition": "(args[0]==null) == false",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "x",
+          "type": {
+            "isArray": false,
+            "name": "Complex",
+            "qualifiedName": "org.apache.commons.math3.complex.Complex"
+          }
+        }
+      },
+      {
+        "comment": "Second value (cannot be null).",
+        "condition": "(args[1]==null) == false",
+        "kind": "PARAM",
+        "parameter": {
+          "name": "y",
+          "type": {
+            "isArray": false,
+            "name": "Complex",
+            "qualifiedName": "org.apache.commons.math3.complex.Complex"
+          }
+        }
+      },
+      {
+        "comment": "Amount of allowed relative error.",
+        "condition": "",
+        "kind": "PARAM",
+        "parameter": {
+          "name": "eps",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
+    "parameters": [
+      {
+        "name": "x",
+        "type": {
+          "isArray": false,
+          "name": "Complex",
+          "qualifiedName": "org.apache.commons.math3.complex.Complex"
+        }
+      },
+      {
+        "name": "y",
+        "type": {
+          "isArray": false,
+          "name": "Complex",
+          "qualifiedName": "org.apache.commons.math3.complex.Complex"
+        }
+      },
+      {
+        "name": "eps",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "true if the values are two adjacent floating point numbers or they are within range of each other.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "equalsWithRelativeTolerance(org.apache.commons.math3.complex.Complex x,org.apache.commons.math3.complex.Complex y,double eps)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
     "isVarArgs": false,
+    "name": "hashCode",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "a hash code value for this object.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "hashCode()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "getImaginary",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the imaginary part.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "double",
+      "qualifiedName": "double"
+    },
+    "signature": "getImaginary()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "getReal",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the real part.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "double",
+      "qualifiedName": "double"
+    },
+    "signature": "getReal()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "isNaN",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "true if either or both parts of this complex number is NaN; false otherwise.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "isNaN()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "isInfinite",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "true if one or both parts of this complex number are infinite and neither part is NaN.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "isInfinite()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "multiply",
+    "paramTags": [
+      {
+        "comment": "value to be multiplied by this Complex.",
+        "condition": "",
+        "kind": "PARAM",
+        "parameter": {
+          "name": "factor",
+          "type": {
+            "isArray": false,
+            "name": "Complex",
+            "qualifiedName": "org.apache.commons.math3.complex.Complex"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "factor",
+        "type": {
+          "isArray": false,
+          "name": "Complex",
+          "qualifiedName": "org.apache.commons.math3.complex.Complex"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "this * factor.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "multiply(org.apache.commons.math3.complex.Complex factor)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
         "codeTags": [
           "factor",
           "null"
         ],
         "comment": "if factor is null.",
-        "kind": "THROWS",
-        "condition": "args[0]==null"
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "THROWS"
       },
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
         "codeTags": [
           "a",
           "null"
         ],
         "comment": "if a is null.",
-        "kind": "THROWS",
-        "condition": "target.add()==null || target.abs()==null || target.tan()==null"
+        "condition": "target.add()==null || target.abs()==null || target.tan()==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "THROWS"
       }
-    ],
-    "signature": "multiply(org.apache.commons.math3.complex.Complex factor)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
+      "isArray": false,
       "name": "Complex",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
     },
+    "isVarArgs": false,
     "name": "multiply",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "factor"
-      }
-    ],
     "paramTags": [
       {
+        "comment": "value to be multiplied by this Complex.",
+        "condition": "",
+        "kind": "PARAM",
         "parameter": {
+          "name": "factor",
           "type": {
-            "qualifiedName": "int",
+            "isArray": false,
             "name": "int",
-            "isArray": false
-          },
-          "name": "factor"
-        },
-        "comment": "value to be multiplied by this Complex.",
-        "kind": "PARAM",
-        "condition": ""
+            "qualifiedName": "int"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "multiply(int factor)"
+    "parameters": [
+      {
+        "name": "factor",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "this * factor.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "multiply(int factor)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
+      "isArray": false,
       "name": "Complex",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
     },
+    "isVarArgs": false,
     "name": "multiply",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "factor"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "factor"
-        },
         "comment": "value to be multiplied by this Complex.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "factor",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "multiply(double factor)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "negate",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "negate()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "subtract",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
     "parameters": [
       {
+        "name": "factor",
         "type": {
-          "qualifiedName": "org.apache.commons.math3.complex.Complex",
-          "name": "Complex",
-          "isArray": false
-        },
-        "name": "subtrahend"
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
       }
     ],
+    "returnTag": {
+      "comment": "this * factor.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "multiply(double factor)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "negate",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "-this.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "negate()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "subtract",
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.complex.Complex",
-            "name": "Complex",
-            "isArray": false
-          },
-          "name": "subtrahend"
-        },
         "comment": "value to be subtracted from this Complex.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "subtrahend",
+          "type": {
+            "isArray": false,
+            "name": "Complex",
+            "qualifiedName": "org.apache.commons.math3.complex.Complex"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "subtrahend",
+        "type": {
+          "isArray": false,
+          "name": "Complex",
+          "qualifiedName": "org.apache.commons.math3.complex.Complex"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "this - subtrahend.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "subtract(org.apache.commons.math3.complex.Complex subtrahend)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
         "codeTags": [
           "subtrahend",
           "null"
         ],
         "comment": "if subtrahend is null.",
-        "kind": "THROWS",
-        "condition": "args[0]==null"
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "THROWS"
       },
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
         "codeTags": [
           "a",
           "null"
         ],
         "comment": "if a is null.",
-        "kind": "THROWS",
-        "condition": "target.add()==null || target.abs()==null || target.tan()==null"
+        "condition": "target.add()==null || target.abs()==null || target.tan()==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "THROWS"
       }
-    ],
-    "signature": "subtract(org.apache.commons.math3.complex.Complex subtrahend)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
+      "isArray": false,
       "name": "Complex",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
     },
+    "isVarArgs": false,
     "name": "subtract",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "subtrahend"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "subtrahend"
-        },
         "comment": "value to be subtracted from this Complex.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "subtrahend",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "subtract(double subtrahend)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "acos",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "acos()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "asin",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "asin()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "atan",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "atan()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "cos",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "cos()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "cosh",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "cosh()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "exp",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "exp()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "log",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "log()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "pow",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
     "parameters": [
       {
+        "name": "subtrahend",
         "type": {
-          "qualifiedName": "org.apache.commons.math3.complex.Complex",
-          "name": "Complex",
-          "isArray": false
-        },
-        "name": "x"
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
       }
     ],
+    "returnTag": {
+      "comment": "this - subtrahend.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "subtract(double subtrahend)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "acos",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the inverse cosine of this complex number.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "acos()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "asin",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the inverse sine of this complex number.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "asin()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "atan",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the inverse tangent of this complex number",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "atan()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "cos",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the cosine of this complex number.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "cos()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "cosh",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the hyperbolic cosine of this complex number.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "cosh()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "exp",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "ethis.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "exp()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "log",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the value ln \u00a0 this, the natural logarithm of this.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "log()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "pow",
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.complex.Complex",
-            "name": "Complex",
-            "isArray": false
-          },
-          "name": "x"
-        },
         "comment": "exponent to which this Complex is to be raised.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "x",
+          "type": {
+            "isArray": false,
+            "name": "Complex",
+            "qualifiedName": "org.apache.commons.math3.complex.Complex"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "x",
+        "type": {
+          "isArray": false,
+          "name": "Complex",
+          "qualifiedName": "org.apache.commons.math3.complex.Complex"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "thisx.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "pow(org.apache.commons.math3.complex.Complex x)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
         "codeTags": [
           "null"
         ],
         "comment": "if x is null.",
-        "kind": "THROWS",
-        "condition": "args[0]==null"
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "THROWS"
       }
-    ],
-    "signature": "pow(org.apache.commons.math3.complex.Complex x)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
+      "isArray": false,
       "name": "Complex",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
     },
+    "isVarArgs": false,
     "name": "pow",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "x"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "x"
-        },
         "comment": "exponent to which this Complex is to be raised.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "x",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "pow(double x)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "sin",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "sin()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "sinh",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "sinh()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "sqrt",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "sqrt()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "sqrt1z",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "sqrt1z()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "tan",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "tan()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "tanh",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "tanh()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "getArgument",
-    "returnType": {
-      "qualifiedName": "double",
-      "name": "double",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getArgument()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "nthRoot",
-    "returnType": {
-      "qualifiedName": "java.util.List",
-      "name": "List",
-      "isArray": false
-    },
     "parameters": [
       {
+        "name": "x",
         "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "n"
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
       }
     ],
+    "returnTag": {
+      "comment": "thisx.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "pow(double x)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "sin",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the sine of this complex number.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "sin()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "sinh",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the hyperbolic sine of this.",
+      "condition": "target.sin()==target",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "sinh()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "sqrt",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the square root of this.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "sqrt()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "sqrt1z",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the square root of 1 - this2.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "sqrt1z()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "tan",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the tangent of this.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "tan()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "tanh",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the hyperbolic tangent of this.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "tanh()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "getArgument",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the argument of this.",
+      "condition": "target.getArgument()==target",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "double",
+      "qualifiedName": "double"
+    },
+    "signature": "getArgument()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
+    "name": "nthRoot",
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "n"
-        },
         "comment": "Degree of root.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "n",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "n",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a List of all n-th roots of this.",
+      "condition": "args[0]==target",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "List",
+      "qualifiedName": "java.util.List"
+    },
+    "signature": "nthRoot(int n)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException",
-          "name": "NotPositiveException",
-          "isArray": false
-        },
         "codeTags": [
           "n <= 0"
         ],
         "comment": "if n <= 0.",
-        "kind": "THROWS",
-        "condition": "args[0]<=0"
+        "condition": "args[0]<=0",
+        "exception": {
+          "isArray": false,
+          "name": "NotPositiveException",
+          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException"
+        },
+        "kind": "THROWS"
       }
-    ],
-    "signature": "nthRoot(int n)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
+      "isArray": false,
       "name": "Complex",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
     },
+    "isVarArgs": false,
     "name": "createComplex",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "realPart"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "imaginaryPart"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "realPart"
-        },
         "comment": "Real part.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "realPart",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "imaginaryPart"
-        },
         "comment": "Imaginary part.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "imaginaryPart",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "createComplex(double realPart,double imaginaryPart)"
+    "parameters": [
+      {
+        "name": "realPart",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "imaginaryPart",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a new complex number instance.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "createComplex(double realPart,double imaginaryPart)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
+      "isArray": false,
       "name": "Complex",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
     },
+    "isVarArgs": false,
     "name": "valueOf",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "realPart"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "imaginaryPart"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "realPart"
-        },
         "comment": "Real part.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "realPart",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "imaginaryPart"
-        },
         "comment": "Imaginary part.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "imaginaryPart",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "valueOf(double realPart,double imaginaryPart)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
-    "name": "valueOf",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
-      "name": "Complex",
-      "isArray": false
-    },
     "parameters": [
       {
+        "name": "realPart",
         "type": {
-          "qualifiedName": "double",
+          "isArray": false,
           "name": "double",
-          "isArray": false
-        },
-        "name": "realPart"
-      }
-    ],
-    "paramTags": [
+          "qualifiedName": "double"
+        }
+      },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "realPart"
-        },
-        "comment": "Real part.",
-        "kind": "PARAM",
-        "condition": ""
+        "name": "imaginaryPart",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "valueOf(double realPart)"
+    "returnTag": {
+      "comment": "a Complex instance.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "valueOf(double realPart,double imaginaryPart)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
+      "isArray": false,
       "name": "Complex",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
     },
+    "isVarArgs": false,
+    "name": "valueOf",
+    "paramTags": [
+      {
+        "comment": "Real part.",
+        "condition": "",
+        "kind": "PARAM",
+        "parameter": {
+          "name": "realPart",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "realPart",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a Complex instance.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "signature": "valueOf(double realPart)",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Complex",
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
+    },
+    "isVarArgs": false,
     "name": "readResolve",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "A Complex instance with all fields resolved.",
+      "condition": "",
+      "kind": "RETURN"
+    },
     "returnType": {
-      "qualifiedName": "java.lang.Object",
+      "isArray": false,
       "name": "Object",
-      "isArray": false
+      "qualifiedName": "java.lang.Object"
     },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "readResolve()"
+    "signature": "readResolve()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
+      "isArray": false,
       "name": "Complex",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
     },
+    "isVarArgs": false,
     "name": "getField",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.complex.ComplexField",
-      "name": "ComplexField",
-      "isArray": false
-    },
-    "parameters": [],
     "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getField()"
+    "parameters": [],
+    "returnTag": {
+      "comment": "Field to which the instance belongs",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "ComplexField",
+      "qualifiedName": "org.apache.commons.math3.complex.ComplexField"
+    },
+    "signature": "getField()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.complex.Complex",
+      "isArray": false,
       "name": "Complex",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.complex.Complex"
     },
-    "name": "toString",
-    "returnType": {
-      "qualifiedName": "java.lang.String",
-      "name": "String",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "toString()"
+    "name": "toString",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "String",
+      "qualifiedName": "java.lang.String"
+    },
+    "signature": "toString()",
+    "targetClass": "org.apache.commons.math3.complex.Complex",
+    "throwsTags": []
   }
 ]

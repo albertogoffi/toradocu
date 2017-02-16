@@ -187,6 +187,7 @@ public class Stats {
         break;
       case RETURN:
         ++correctTranslationsReturn;
+        break;
       default:
         throw new IllegalStateException("Unsupported Tag.Kind " + kind);
     }
@@ -401,32 +402,36 @@ public class Stats {
     for (int tagIndex = 0; tagIndex < actualTagsArray.length; tagIndex++) {
       Tag actualTag = actualTagsArray[tagIndex];
       Tag expectedTag = expectedTagsArray[tagIndex];
-      String actualCondition = actualTag.getCondition().get();
-      String expectedCondition = expectedTag.getCondition().get();
 
-      // Ignore conditions for which there is no known translation.
-      if (!expectedCondition.isEmpty()) {
-        if (expectedCondition.equals(actualCondition)) {
-          stats.addCorrectTranslation(kind);
-          outputMessage.append("Correct ");
-        } else {
-          if (actualCondition.isEmpty()) {
-            stats.addMissingTranslation(kind);
-            outputMessage.append("Empty ");
+      if (actualTag != null && expectedTag != null) {
+
+        String actualCondition = actualTag.getCondition().get();
+        String expectedCondition = expectedTag.getCondition().get();
+
+        // Ignore conditions for which there is no known translation.
+        if (!expectedCondition.isEmpty()) {
+          if (expectedCondition.equals(actualCondition)) {
+            stats.addCorrectTranslation(kind);
+            outputMessage.append("Correct ");
           } else {
-            stats.addWrongTranslation(kind);
-            outputMessage.append("Wrong ");
+            if (actualCondition.isEmpty()) {
+              stats.addMissingTranslation(kind);
+              outputMessage.append("Empty ");
+            } else {
+              stats.addWrongTranslation(kind);
+              outputMessage.append("Wrong ");
+            }
           }
+          outputMessage
+              .append(kind)
+              .append(" condition. Comment: ")
+              .append(expectedTag.getComment())
+              .append("\n\tExpected condition: ")
+              .append(expectedCondition)
+              .append("\n\tActual condition: ")
+              .append(actualCondition)
+              .append("\n");
         }
-        outputMessage
-            .append(kind)
-            .append(" condition. Comment: ")
-            .append(expectedTag.getComment())
-            .append("\n\tExpected condition: ")
-            .append(expectedCondition)
-            .append("\n\tActual condition: ")
-            .append(actualCondition)
-            .append("\n");
       }
     }
     return outputMessage;

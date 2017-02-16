@@ -1,1111 +1,1146 @@
 [
   {
     "containingClass": {
-      "qualifiedName": "org.jgrapht.alg.AbstractPathElementList",
+      "isArray": false,
       "name": "AbstractPathElementList",
-      "isArray": false
+      "qualifiedName": "org.jgrapht.alg.AbstractPathElementList"
     },
+    "isVarArgs": false,
     "name": "AbstractPathElementList",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.jgrapht.Graph",
-          "name": "Graph",
-          "isArray": false
-        },
-        "name": "graph"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "maxSize"
-      },
-      {
-        "type": {
-          "qualifiedName": "org.jgrapht.alg.AbstractPathElementList",
-          "name": "AbstractPathElementList",
-          "isArray": false
-        },
-        "name": "elementList"
-      },
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "edge"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "maxSize"
-        },
         "comment": "maximum number of paths the list is able to store.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "maxSize",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.jgrapht.alg.AbstractPathElementList",
-            "name": "AbstractPathElementList",
-            "isArray": false
-          },
-          "name": "elementList"
-        },
         "comment": "paths, list of AbstractPathElement.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "elementList",
+          "type": {
+            "isArray": false,
+            "name": "AbstractPathElementList",
+            "qualifiedName": "org.jgrapht.alg.AbstractPathElementList"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "edge"
-        },
         "comment": "edge reaching the end vertex of the created paths.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "edge",
+          "type": {
+            "isArray": false,
+            "name": "Object",
+            "qualifiedName": "java.lang.Object"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "graph",
+        "type": {
+          "isArray": false,
+          "name": "Graph",
+          "qualifiedName": "org.jgrapht.Graph"
+        }
+      },
+      {
+        "name": "maxSize",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      },
+      {
+        "name": "elementList",
+        "type": {
+          "isArray": false,
+          "name": "AbstractPathElementList",
+          "qualifiedName": "org.jgrapht.alg.AbstractPathElementList"
+        }
+      },
+      {
+        "name": "edge",
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      }
+    ],
+    "signature": "AbstractPathElementList(org.jgrapht.Graph graph,int maxSize,org.jgrapht.alg.AbstractPathElementList elementList,java.lang.Object edge)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "java.lang.NullPointerException",
-          "name": "NullPointerException",
-          "isArray": false
-        },
         "comment": "if the specified prevPathElementList or edge is null.",
-        "kind": "@throws",
-        "condition": "args[2]==null || args[3]==null"
-      },
-      {
+        "condition": "args[2]==null || args[3]==null",
         "exception": {
-          "qualifiedName": "java.lang.IllegalArgumentException",
-          "name": "IllegalArgumentException",
-          "isArray": false
-        },
-        "comment": "if maxSize is negative or 0.",
-        "kind": "@throws",
-        "condition": "args[1]<0 || args[1]==0"
-      }
-    ],
-    "signature": "AbstractPathElementList(org.jgrapht.Graph graph,int maxSize,org.jgrapht.alg.AbstractPathElementList elementList,java.lang.Object edge)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.jgrapht.alg.AbstractPathElementList",
-      "name": "AbstractPathElementList",
-      "isArray": false
-    },
-    "name": "AbstractPathElementList",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.jgrapht.Graph",
-          "name": "Graph",
-          "isArray": false
-        },
-        "name": "graph"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "maxSize"
-      },
-      {
-        "type": {
-          "qualifiedName": "org.jgrapht.alg.AbstractPathElement",
-          "name": "AbstractPathElement",
-          "isArray": false
-        },
-        "name": "pathElement"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "maxSize"
-        },
-        "comment": "maximum number of paths the list is able to store.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.NullPointerException",
+          "isArray": false,
           "name": "NullPointerException",
-          "isArray": false
+          "qualifiedName": "java.lang.NullPointerException"
         },
-        "comment": "if the specified path-element is null.",
-        "kind": "@throws",
-        "condition": "args[2]==null"
+        "kind": "@throws"
       },
       {
-        "exception": {
-          "qualifiedName": "java.lang.IllegalArgumentException",
-          "name": "IllegalArgumentException",
-          "isArray": false
-        },
         "comment": "if maxSize is negative or 0.",
-        "kind": "@throws",
-        "condition": "args[1]<0 || args[1]==0"
-      },
-      {
+        "condition": "args[1]<0 || args[1]==0",
         "exception": {
-          "qualifiedName": "java.lang.IllegalArgumentException",
+          "isArray": false,
           "name": "IllegalArgumentException",
-          "isArray": false
+          "qualifiedName": "java.lang.IllegalArgumentException"
         },
-        "comment": "if pathElement is not empty.",
-        "kind": "@throws",
-        "condition": "args[2].getPrevEdge()!=null"
+        "kind": "@throws"
       }
-    ],
-    "signature": "AbstractPathElementList(org.jgrapht.Graph graph,int maxSize,org.jgrapht.alg.AbstractPathElement pathElement)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.jgrapht.alg.AbstractPathElementList",
+      "isArray": false,
       "name": "AbstractPathElementList",
-      "isArray": false
+      "qualifiedName": "org.jgrapht.alg.AbstractPathElementList"
     },
+    "isVarArgs": false,
     "name": "AbstractPathElementList",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.jgrapht.Graph",
-          "name": "Graph",
-          "isArray": false
-        },
-        "name": "graph"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "maxSize"
-      },
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "vertex"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "maxSize"
-        },
         "comment": "maximum number of paths the list is able to store.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "maxSize",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "graph",
+        "type": {
+          "isArray": false,
+          "name": "Graph",
+          "qualifiedName": "org.jgrapht.Graph"
+        }
+      },
+      {
+        "name": "maxSize",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      },
+      {
+        "name": "pathElement",
+        "type": {
+          "isArray": false,
+          "name": "AbstractPathElement",
+          "qualifiedName": "org.jgrapht.alg.AbstractPathElement"
+        }
+      }
+    ],
+    "signature": "AbstractPathElementList(org.jgrapht.Graph graph,int maxSize,org.jgrapht.alg.AbstractPathElement pathElement)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
     "throwsTags": [
       {
+        "comment": "if the specified path-element is null.",
+        "condition": "args[2]==null",
         "exception": {
-          "qualifiedName": "java.lang.IllegalArgumentException",
-          "name": "IllegalArgumentException",
-          "isArray": false
+          "isArray": false,
+          "name": "NullPointerException",
+          "qualifiedName": "java.lang.NullPointerException"
         },
+        "kind": "@throws"
+      },
+      {
         "comment": "if maxSize is negative or 0.",
-        "kind": "@throws",
-        "condition": "args[1]<0 || args[1]==0"
+        "condition": "args[1]<0 || args[1]==0",
+        "exception": {
+          "isArray": false,
+          "name": "IllegalArgumentException",
+          "qualifiedName": "java.lang.IllegalArgumentException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if pathElement is not empty.",
+        "condition": "args[2].getPrevEdge()!=null",
+        "exception": {
+          "isArray": false,
+          "name": "IllegalArgumentException",
+          "qualifiedName": "java.lang.IllegalArgumentException"
+        },
+        "kind": "@throws"
       }
-    ],
-    "signature": "AbstractPathElementList(org.jgrapht.Graph graph,int maxSize,java.lang.Object vertex)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.jgrapht.alg.AbstractPathElementList",
+      "isArray": false,
       "name": "AbstractPathElementList",
-      "isArray": false
+      "qualifiedName": "org.jgrapht.alg.AbstractPathElementList"
     },
+    "isVarArgs": false,
+    "name": "AbstractPathElementList",
+    "paramTags": [
+      {
+        "comment": "maximum number of paths the list is able to store.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "maxSize",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "graph",
+        "type": {
+          "isArray": false,
+          "name": "Graph",
+          "qualifiedName": "org.jgrapht.Graph"
+        }
+      },
+      {
+        "name": "maxSize",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      },
+      {
+        "name": "vertex",
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      }
+    ],
+    "signature": "AbstractPathElementList(org.jgrapht.Graph graph,int maxSize,java.lang.Object vertex)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": [
+      {
+        "comment": "if maxSize is negative or 0.",
+        "condition": "args[1]<0 || args[1]==0",
+        "exception": {
+          "isArray": false,
+          "name": "IllegalArgumentException",
+          "qualifiedName": "java.lang.IllegalArgumentException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractPathElementList",
+      "qualifiedName": "org.jgrapht.alg.AbstractPathElementList"
+    },
+    "isVarArgs": false,
     "name": "get",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "index",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
     "returnType": {
-      "qualifiedName": "T",
+      "isArray": false,
       "name": "T",
-      "isArray": false
+      "qualifiedName": "T"
     },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "index"
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "get(int index)"
+    "signature": "get(int index)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.jgrapht.alg.AbstractPathElementList",
+      "isArray": false,
       "name": "AbstractPathElementList",
-      "isArray": false
+      "qualifiedName": "org.jgrapht.alg.AbstractPathElementList"
     },
+    "isVarArgs": false,
     "name": "getVertex",
+    "paramTags": [],
+    "parameters": [],
     "returnType": {
-      "qualifiedName": "V",
+      "isArray": false,
       "name": "V",
-      "isArray": false
+      "qualifiedName": "V"
     },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getVertex()"
+    "signature": "getVertex()",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.jgrapht.alg.AbstractPathElementList",
+      "isArray": false,
       "name": "AbstractPathElementList",
-      "isArray": false
+      "qualifiedName": "org.jgrapht.alg.AbstractPathElementList"
     },
+    "isVarArgs": false,
     "name": "size",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
-    "parameters": [],
     "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "size()"
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "size()",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractList",
+      "isArray": false,
       "name": "AbstractList",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractList"
     },
+    "isVarArgs": false,
     "name": "add",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "arg0",
         "type": {
-          "qualifiedName": "java.lang.Object",
+          "isArray": false,
           "name": "Object",
-          "isArray": false
-        },
-        "name": "arg0"
+          "qualifiedName": "java.lang.Object"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "add(java.lang.Object arg0)"
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "add(java.lang.Object arg0)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractList",
+      "isArray": false,
       "name": "AbstractList",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractList"
     },
+    "isVarArgs": false,
     "name": "set",
-    "returnType": {
-      "qualifiedName": "E",
-      "name": "E",
-      "isArray": false
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "arg0",
         "type": {
-          "qualifiedName": "int",
+          "isArray": false,
           "name": "int",
-          "isArray": false
-        },
-        "name": "arg0"
+          "qualifiedName": "int"
+        }
       },
       {
+        "name": "arg1",
         "type": {
-          "qualifiedName": "java.lang.Object",
+          "isArray": false,
           "name": "Object",
-          "isArray": false
-        },
-        "name": "arg1"
+          "qualifiedName": "java.lang.Object"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "set(int arg0,java.lang.Object arg1)"
+    "returnType": {
+      "isArray": false,
+      "name": "E",
+      "qualifiedName": "E"
+    },
+    "signature": "set(int arg0,java.lang.Object arg1)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractList",
+      "isArray": false,
       "name": "AbstractList",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractList"
     },
+    "isVarArgs": false,
     "name": "add",
-    "returnType": {
-      "qualifiedName": "void",
-      "name": "void",
-      "isArray": false
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "arg0",
         "type": {
-          "qualifiedName": "int",
+          "isArray": false,
           "name": "int",
-          "isArray": false
-        },
-        "name": "arg0"
+          "qualifiedName": "int"
+        }
       },
       {
+        "name": "arg1",
         "type": {
-          "qualifiedName": "java.lang.Object",
+          "isArray": false,
           "name": "Object",
-          "isArray": false
-        },
-        "name": "arg1"
+          "qualifiedName": "java.lang.Object"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "add(int arg0,java.lang.Object arg1)"
+    "returnType": {
+      "isArray": false,
+      "name": "void",
+      "qualifiedName": "void"
+    },
+    "signature": "add(int arg0,java.lang.Object arg1)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractList",
+      "isArray": false,
       "name": "AbstractList",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractList"
     },
+    "isVarArgs": false,
     "name": "remove",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "arg0",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
     "returnType": {
-      "qualifiedName": "E",
+      "isArray": false,
       "name": "E",
-      "isArray": false
+      "qualifiedName": "E"
     },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "arg0"
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "remove(int arg0)"
+    "signature": "remove(int arg0)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractList",
+      "isArray": false,
       "name": "AbstractList",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractList"
     },
+    "isVarArgs": false,
     "name": "indexOf",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "arg0",
         "type": {
-          "qualifiedName": "java.lang.Object",
+          "isArray": false,
           "name": "Object",
-          "isArray": false
-        },
-        "name": "arg0"
+          "qualifiedName": "java.lang.Object"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "indexOf(java.lang.Object arg0)"
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "indexOf(java.lang.Object arg0)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractList",
+      "isArray": false,
       "name": "AbstractList",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractList"
     },
+    "isVarArgs": false,
     "name": "lastIndexOf",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "arg0",
         "type": {
-          "qualifiedName": "java.lang.Object",
+          "isArray": false,
           "name": "Object",
-          "isArray": false
-        },
-        "name": "arg0"
+          "qualifiedName": "java.lang.Object"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "lastIndexOf(java.lang.Object arg0)"
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "lastIndexOf(java.lang.Object arg0)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractList",
+      "isArray": false,
       "name": "AbstractList",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractList"
     },
+    "isVarArgs": false,
     "name": "clear",
-    "returnType": {
-      "qualifiedName": "void",
-      "name": "void",
-      "isArray": false
-    },
-    "parameters": [],
     "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "clear()"
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "void",
+      "qualifiedName": "void"
+    },
+    "signature": "clear()",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractList",
+      "isArray": false,
       "name": "AbstractList",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractList"
     },
+    "isVarArgs": false,
     "name": "addAll",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "arg0",
         "type": {
-          "qualifiedName": "int",
+          "isArray": false,
           "name": "int",
-          "isArray": false
-        },
-        "name": "arg0"
+          "qualifiedName": "int"
+        }
       },
       {
+        "name": "arg1",
         "type": {
-          "qualifiedName": "java.util.Collection",
+          "isArray": false,
           "name": "Collection",
-          "isArray": false
-        },
-        "name": "arg1"
+          "qualifiedName": "java.util.Collection"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "addAll(int arg0,java.util.Collection arg1)"
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "addAll(int arg0,java.util.Collection arg1)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractList",
+      "isArray": false,
       "name": "AbstractList",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractList"
     },
+    "isVarArgs": false,
     "name": "iterator",
+    "paramTags": [],
+    "parameters": [],
     "returnType": {
-      "qualifiedName": "java.util.Iterator",
+      "isArray": false,
       "name": "Iterator",
-      "isArray": false
+      "qualifiedName": "java.util.Iterator"
     },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "iterator()"
+    "signature": "iterator()",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractList",
+      "isArray": false,
       "name": "AbstractList",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractList"
     },
-    "name": "listIterator",
-    "returnType": {
-      "qualifiedName": "java.util.ListIterator",
-      "name": "ListIterator",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "listIterator()"
+    "name": "listIterator",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "ListIterator",
+      "qualifiedName": "java.util.ListIterator"
+    },
+    "signature": "listIterator()",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractList",
+      "isArray": false,
       "name": "AbstractList",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractList"
     },
+    "isVarArgs": false,
     "name": "listIterator",
-    "returnType": {
-      "qualifiedName": "java.util.ListIterator",
-      "name": "ListIterator",
-      "isArray": false
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "arg0",
         "type": {
-          "qualifiedName": "int",
+          "isArray": false,
           "name": "int",
-          "isArray": false
-        },
-        "name": "arg0"
+          "qualifiedName": "int"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "listIterator(int arg0)"
+    "returnType": {
+      "isArray": false,
+      "name": "ListIterator",
+      "qualifiedName": "java.util.ListIterator"
+    },
+    "signature": "listIterator(int arg0)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractList",
+      "isArray": false,
       "name": "AbstractList",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractList"
     },
+    "isVarArgs": false,
     "name": "subList",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "arg0",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      },
+      {
+        "name": "arg1",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
     "returnType": {
-      "qualifiedName": "java.util.List",
+      "isArray": false,
       "name": "List",
-      "isArray": false
+      "qualifiedName": "java.util.List"
     },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "arg0"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "arg1"
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "subList(int arg0,int arg1)"
+    "signature": "subList(int arg0,int arg1)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractList",
+      "isArray": false,
       "name": "AbstractList",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractList"
     },
+    "isVarArgs": false,
     "name": "equals",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "arg0",
         "type": {
-          "qualifiedName": "java.lang.Object",
+          "isArray": false,
           "name": "Object",
-          "isArray": false
-        },
-        "name": "arg0"
+          "qualifiedName": "java.lang.Object"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "equals(java.lang.Object arg0)"
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "equals(java.lang.Object arg0)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractList",
+      "isArray": false,
       "name": "AbstractList",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractList"
     },
+    "isVarArgs": false,
     "name": "hashCode",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
-    "parameters": [],
     "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "hashCode()"
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "hashCode()",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractList",
+      "isArray": false,
       "name": "AbstractList",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractList"
     },
+    "isVarArgs": false,
     "name": "removeRange",
-    "returnType": {
-      "qualifiedName": "void",
-      "name": "void",
-      "isArray": false
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "arg0",
         "type": {
-          "qualifiedName": "int",
+          "isArray": false,
           "name": "int",
-          "isArray": false
-        },
-        "name": "arg0"
+          "qualifiedName": "int"
+        }
       },
       {
+        "name": "arg1",
         "type": {
-          "qualifiedName": "int",
+          "isArray": false,
           "name": "int",
-          "isArray": false
-        },
-        "name": "arg1"
+          "qualifiedName": "int"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "removeRange(int arg0,int arg1)"
+    "returnType": {
+      "isArray": false,
+      "name": "void",
+      "qualifiedName": "void"
+    },
+    "signature": "removeRange(int arg0,int arg1)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractList",
+      "isArray": false,
       "name": "AbstractList",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractList"
     },
+    "isVarArgs": false,
     "name": "rangeCheckForAdd",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "arg0",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
     "returnType": {
-      "qualifiedName": "void",
+      "isArray": false,
       "name": "void",
-      "isArray": false
+      "qualifiedName": "void"
     },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "arg0"
-      }
-    ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "rangeCheckForAdd(int arg0)"
+    "signature": "rangeCheckForAdd(int arg0)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractList",
+      "isArray": false,
       "name": "AbstractList",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractList"
     },
+    "isVarArgs": false,
     "name": "outOfBoundsMsg",
-    "returnType": {
-      "qualifiedName": "java.lang.String",
-      "name": "String",
-      "isArray": false
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "arg0",
         "type": {
-          "qualifiedName": "int",
+          "isArray": false,
           "name": "int",
-          "isArray": false
-        },
-        "name": "arg0"
+          "qualifiedName": "int"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "outOfBoundsMsg(int arg0)"
+    "returnType": {
+      "isArray": false,
+      "name": "String",
+      "qualifiedName": "java.lang.String"
+    },
+    "signature": "outOfBoundsMsg(int arg0)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractCollection",
+      "isArray": false,
       "name": "AbstractCollection",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractCollection"
     },
+    "isVarArgs": false,
     "name": "isEmpty",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [],
     "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "isEmpty()"
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "isEmpty()",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractCollection",
+      "isArray": false,
       "name": "AbstractCollection",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractCollection"
     },
+    "isVarArgs": false,
     "name": "contains",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "arg0",
         "type": {
-          "qualifiedName": "java.lang.Object",
+          "isArray": false,
           "name": "Object",
-          "isArray": false
-        },
-        "name": "arg0"
+          "qualifiedName": "java.lang.Object"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "contains(java.lang.Object arg0)"
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "contains(java.lang.Object arg0)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractCollection",
+      "isArray": false,
       "name": "AbstractCollection",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractCollection"
     },
+    "isVarArgs": false,
     "name": "toArray",
-    "returnType": {
-      "qualifiedName": "java.lang.Object[]",
-      "name": "Object[]",
-      "isArray": true,
-      "componentType": {
-        "qualifiedName": "java.lang.Object",
-        "name": "Object",
-        "isArray": false
-      }
-    },
+    "paramTags": [],
     "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "toArray()"
+    "returnType": {
+      "componentType": {
+        "isArray": false,
+        "name": "Object",
+        "qualifiedName": "java.lang.Object"
+      },
+      "isArray": true,
+      "name": "Object[]",
+      "qualifiedName": "java.lang.Object[]"
+    },
+    "signature": "toArray()",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractCollection",
+      "isArray": false,
       "name": "AbstractCollection",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractCollection"
     },
+    "isVarArgs": false,
     "name": "toArray",
-    "returnType": {
-      "qualifiedName": "T[]",
-      "name": "T[]",
-      "isArray": true,
-      "componentType": {
-        "qualifiedName": "T",
-        "name": "T",
-        "isArray": false
-      }
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "arg0",
         "type": {
-          "qualifiedName": "java.lang.Object[]",
-          "name": "Object[]",
-          "isArray": true,
           "componentType": {
-            "qualifiedName": "java.lang.Object",
+            "isArray": false,
             "name": "Object",
-            "isArray": false
-          }
-        },
-        "name": "arg0"
+            "qualifiedName": "java.lang.Object"
+          },
+          "isArray": true,
+          "name": "Object[]",
+          "qualifiedName": "java.lang.Object[]"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "toArray(java.lang.Object[] arg0)"
+    "returnType": {
+      "componentType": {
+        "isArray": false,
+        "name": "T",
+        "qualifiedName": "T"
+      },
+      "isArray": true,
+      "name": "T[]",
+      "qualifiedName": "T[]"
+    },
+    "signature": "toArray(java.lang.Object[] arg0)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractCollection",
+      "isArray": false,
       "name": "AbstractCollection",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractCollection"
     },
+    "isVarArgs": false,
     "name": "finishToArray",
-    "returnType": {
-      "qualifiedName": "T[]",
-      "name": "T[]",
-      "isArray": true,
-      "componentType": {
-        "qualifiedName": "T",
-        "name": "T",
-        "isArray": false
-      }
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "arg0",
         "type": {
-          "qualifiedName": "java.lang.Object[]",
-          "name": "Object[]",
-          "isArray": true,
           "componentType": {
-            "qualifiedName": "java.lang.Object",
+            "isArray": false,
             "name": "Object",
-            "isArray": false
-          }
-        },
-        "name": "arg0"
+            "qualifiedName": "java.lang.Object"
+          },
+          "isArray": true,
+          "name": "Object[]",
+          "qualifiedName": "java.lang.Object[]"
+        }
       },
       {
+        "name": "arg1",
         "type": {
-          "qualifiedName": "java.util.Iterator",
+          "isArray": false,
           "name": "Iterator",
-          "isArray": false
-        },
-        "name": "arg1"
+          "qualifiedName": "java.util.Iterator"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "finishToArray(java.lang.Object[] arg0,java.util.Iterator arg1)"
+    "returnType": {
+      "componentType": {
+        "isArray": false,
+        "name": "T",
+        "qualifiedName": "T"
+      },
+      "isArray": true,
+      "name": "T[]",
+      "qualifiedName": "T[]"
+    },
+    "signature": "finishToArray(java.lang.Object[] arg0,java.util.Iterator arg1)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractCollection",
+      "isArray": false,
       "name": "AbstractCollection",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractCollection"
     },
+    "isVarArgs": false,
     "name": "hugeCapacity",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "arg0",
         "type": {
-          "qualifiedName": "int",
+          "isArray": false,
           "name": "int",
-          "isArray": false
-        },
-        "name": "arg0"
+          "qualifiedName": "int"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "hugeCapacity(int arg0)"
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "hugeCapacity(int arg0)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractCollection",
+      "isArray": false,
       "name": "AbstractCollection",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractCollection"
     },
+    "isVarArgs": false,
     "name": "remove",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "arg0",
         "type": {
-          "qualifiedName": "java.lang.Object",
+          "isArray": false,
           "name": "Object",
-          "isArray": false
-        },
-        "name": "arg0"
+          "qualifiedName": "java.lang.Object"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "remove(java.lang.Object arg0)"
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "remove(java.lang.Object arg0)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractCollection",
+      "isArray": false,
       "name": "AbstractCollection",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractCollection"
     },
+    "isVarArgs": false,
     "name": "containsAll",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "arg0",
         "type": {
-          "qualifiedName": "java.util.Collection",
+          "isArray": false,
           "name": "Collection",
-          "isArray": false
-        },
-        "name": "arg0"
+          "qualifiedName": "java.util.Collection"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "containsAll(java.util.Collection arg0)"
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "containsAll(java.util.Collection arg0)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractCollection",
+      "isArray": false,
       "name": "AbstractCollection",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractCollection"
     },
+    "isVarArgs": false,
     "name": "addAll",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "arg0",
         "type": {
-          "qualifiedName": "java.util.Collection",
+          "isArray": false,
           "name": "Collection",
-          "isArray": false
-        },
-        "name": "arg0"
+          "qualifiedName": "java.util.Collection"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "addAll(java.util.Collection arg0)"
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "addAll(java.util.Collection arg0)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractCollection",
+      "isArray": false,
       "name": "AbstractCollection",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractCollection"
     },
+    "isVarArgs": false,
     "name": "removeAll",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "arg0",
         "type": {
-          "qualifiedName": "java.util.Collection",
+          "isArray": false,
           "name": "Collection",
-          "isArray": false
-        },
-        "name": "arg0"
+          "qualifiedName": "java.util.Collection"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "removeAll(java.util.Collection arg0)"
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "removeAll(java.util.Collection arg0)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractCollection",
+      "isArray": false,
       "name": "AbstractCollection",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractCollection"
     },
+    "isVarArgs": false,
     "name": "retainAll",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "arg0",
         "type": {
-          "qualifiedName": "java.util.Collection",
+          "isArray": false,
           "name": "Collection",
-          "isArray": false
-        },
-        "name": "arg0"
+          "qualifiedName": "java.util.Collection"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "retainAll(java.util.Collection arg0)"
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "retainAll(java.util.Collection arg0)",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.util.AbstractCollection",
+      "isArray": false,
       "name": "AbstractCollection",
-      "isArray": false
+      "qualifiedName": "java.util.AbstractCollection"
     },
-    "name": "toString",
-    "returnType": {
-      "qualifiedName": "java.lang.String",
-      "name": "String",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "toString()"
+    "name": "toString",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "String",
+      "qualifiedName": "java.lang.String"
+    },
+    "signature": "toString()",
+    "targetClass": "org.jgrapht.alg.AbstractPathElementList",
+    "throwsTags": []
   }
 ]

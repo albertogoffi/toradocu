@@ -1,2285 +1,2561 @@
 [
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
+      "isArray": false,
       "name": "BigFraction",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
     },
+    "isVarArgs": false,
     "name": "BigFraction",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.math.BigInteger",
-          "name": "BigInteger",
-          "isArray": false
-        },
-        "name": "num"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.math.BigInteger",
-            "name": "BigInteger",
-            "isArray": false
-          },
-          "name": "num"
-        },
         "comment": "the numerator.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "num",
+          "type": {
+            "isArray": false,
+            "name": "BigInteger",
+            "qualifiedName": "java.math.BigInteger"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "BigFraction(java.math.BigInteger num)"
+    "parameters": [
+      {
+        "name": "num",
+        "type": {
+          "isArray": false,
+          "name": "BigInteger",
+          "qualifiedName": "java.math.BigInteger"
+        }
+      }
+    ],
+    "signature": "BigFraction(java.math.BigInteger num)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
+      "isArray": false,
       "name": "BigFraction",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
     },
+    "isVarArgs": false,
     "name": "BigFraction",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.math.BigInteger",
-          "name": "BigInteger",
-          "isArray": false
-        },
-        "name": "num"
-      },
-      {
-        "type": {
-          "qualifiedName": "java.math.BigInteger",
-          "name": "BigInteger",
-          "isArray": false
-        },
-        "name": "den"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.math.BigInteger",
-            "name": "BigInteger",
-            "isArray": false
-          },
-          "name": "num"
-        },
         "comment": "the numerator, must not be null.",
+        "condition": "(args[0]==null) == false",
         "kind": "@param",
-        "condition": "(args[0]==null) == false"
+        "parameter": {
+          "name": "num",
+          "type": {
+            "isArray": false,
+            "name": "BigInteger",
+            "qualifiedName": "java.math.BigInteger"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.math.BigInteger",
-            "name": "BigInteger",
-            "isArray": false
-          },
-          "name": "den"
-        },
         "comment": "the denominator, must not be null.",
+        "condition": "(args[1]==null) == false",
         "kind": "@param",
-        "condition": "(args[1]==null) == false"
+        "parameter": {
+          "name": "den",
+          "type": {
+            "isArray": false,
+            "name": "BigInteger",
+            "qualifiedName": "java.math.BigInteger"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "num",
+        "type": {
+          "isArray": false,
+          "name": "BigInteger",
+          "qualifiedName": "java.math.BigInteger"
+        }
+      },
+      {
+        "name": "den",
+        "type": {
+          "isArray": false,
+          "name": "BigInteger",
+          "qualifiedName": "java.math.BigInteger"
+        }
+      }
+    ],
+    "signature": "BigFraction(java.math.BigInteger num,java.math.BigInteger den)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
     "throwsTags": [
       {
+        "comment": "if the denominator is zero.",
+        "condition": "args[1]==(org.apache.commons.math3.fraction.BigFraction.ZERO)",
         "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.ZeroException",
+          "isArray": false,
           "name": "ZeroException",
-          "isArray": false
+          "qualifiedName": "org.apache.commons.math3.exception.ZeroException"
         },
-        "comment": "if the denominator is zero.",
-        "kind": "@throws",
-        "condition": "args[1]==(org.apache.commons.math3.fraction.BigFraction.ZERO)"
+        "kind": "@throws"
       },
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
         "comment": "if either of the arguments is null",
-        "kind": "@throws",
-        "condition": "args[0]==null || args[1]==null"
+        "condition": "args[0]==null || args[1]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "@throws"
       }
-    ],
-    "signature": "BigFraction(java.math.BigInteger num,java.math.BigInteger den)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
+      "isArray": false,
       "name": "BigFraction",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
     },
+    "isVarArgs": false,
     "name": "BigFraction",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "value"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "value"
-        },
         "comment": "the double value to convert to a fraction.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "value",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "value",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      }
+    ],
+    "signature": "BigFraction(double value)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException",
-          "name": "MathIllegalArgumentException",
-          "isArray": false
-        },
         "comment": "if value is NaN or infinite",
-        "kind": "@throws",
-        "condition": "Double.isNaN(args[0]) || Double.isInfinite(args[0])"
+        "condition": "Double.isNaN(args[0]) || Double.isInfinite(args[0])",
+        "exception": {
+          "isArray": false,
+          "name": "MathIllegalArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException"
+        },
+        "kind": "@throws"
       }
-    ],
-    "signature": "BigFraction(double value)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
+      "isArray": false,
       "name": "BigFraction",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
     },
+    "isVarArgs": false,
     "name": "BigFraction",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "value"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "epsilon"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "maxIterations"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "value"
-        },
         "comment": "the double value to convert to a fraction.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
-      },
-      {
         "parameter": {
+          "name": "value",
           "type": {
-            "qualifiedName": "double",
+            "isArray": false,
             "name": "double",
-            "isArray": false
-          },
-          "name": "epsilon"
-        },
-        "comment": "maximum error allowed. The resulting fraction is within epsilon of value, in absolute terms.",
-        "kind": "@param",
-        "condition": ""
+            "qualifiedName": "double"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "maxIterations"
-        },
-        "comment": "maximum number of convergents.",
+        "comment": "maximum error allowed. The resulting fraction is within epsilon of value, in absolute terms.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "epsilon",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
+      },
+      {
+        "comment": "maximum number of convergents.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "maxIterations",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "value",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "epsilon",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "maxIterations",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "signature": "BigFraction(double value,double epsilon,int maxIterations)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.fraction.FractionConversionException",
-          "name": "FractionConversionException",
-          "isArray": false
-        },
         "comment": "if the continued fraction failed to converge.",
-        "kind": "@throws",
-        "condition": ""
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "FractionConversionException",
+          "qualifiedName": "org.apache.commons.math3.fraction.FractionConversionException"
+        },
+        "kind": "@throws"
       }
-    ],
-    "signature": "BigFraction(double value,double epsilon,int maxIterations)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
+      "isArray": false,
       "name": "BigFraction",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
     },
+    "isVarArgs": false,
     "name": "BigFraction",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "value"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "epsilon"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "maxDenominator"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "maxIterations"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "value"
-        },
         "comment": "the double value to convert to a fraction.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
-      },
-      {
         "parameter": {
+          "name": "value",
           "type": {
-            "qualifiedName": "double",
+            "isArray": false,
             "name": "double",
-            "isArray": false
-          },
-          "name": "epsilon"
-        },
-        "comment": "maximum error allowed. The resulting fraction is within epsilon of value, in absolute terms.",
-        "kind": "@param",
-        "condition": ""
+            "qualifiedName": "double"
+          }
+        }
       },
       {
+        "comment": "maximum error allowed. The resulting fraction is within epsilon of value, in absolute terms.",
+        "condition": "",
+        "kind": "@param",
         "parameter": {
+          "name": "epsilon",
           "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "maxDenominator"
-        },
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
+      },
+      {
         "comment": "maximum denominator value allowed.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "maxDenominator",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "maxIterations"
-        },
         "comment": "maximum number of convergents.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "maxIterations",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "value",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "epsilon",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "maxDenominator",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      },
+      {
+        "name": "maxIterations",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "signature": "BigFraction(double value,double epsilon,int maxDenominator,int maxIterations)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.fraction.FractionConversionException",
-          "name": "FractionConversionException",
-          "isArray": false
-        },
         "comment": "if the continued fraction failed to converge.",
-        "kind": "@throws",
-        "condition": ""
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "FractionConversionException",
+          "qualifiedName": "org.apache.commons.math3.fraction.FractionConversionException"
+        },
+        "kind": "@throws"
       }
-    ],
-    "signature": "BigFraction(double value,double epsilon,int maxDenominator,int maxIterations)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
+      "isArray": false,
       "name": "BigFraction",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
     },
+    "isVarArgs": false,
     "name": "BigFraction",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "value"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "maxDenominator"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "value"
-        },
         "comment": "the double value to convert to a fraction.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
-      },
-      {
         "parameter": {
+          "name": "value",
           "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "maxDenominator"
-        },
-        "comment": "The maximum allowed value for denominator.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.fraction.FractionConversionException",
-          "name": "FractionConversionException",
-          "isArray": false
-        },
-        "comment": "if the continued fraction failed to converge.",
-        "kind": "@throws",
-        "condition": ""
-      }
-    ],
-    "signature": "BigFraction(double value,int maxDenominator)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "BigFraction",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "num"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "num"
-        },
-        "comment": "the numerator.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "BigFraction(int num)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "BigFraction",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "num"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "den"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "num"
-        },
-        "comment": "the numerator.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "den"
-        },
-        "comment": "the denominator.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "BigFraction(int num,int den)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "BigFraction",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "long",
-          "name": "long",
-          "isArray": false
-        },
-        "name": "num"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "long",
-            "name": "long",
-            "isArray": false
-          },
-          "name": "num"
-        },
-        "comment": "the numerator.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "BigFraction(long num)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "BigFraction",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "long",
-          "name": "long",
-          "isArray": false
-        },
-        "name": "num"
-      },
-      {
-        "type": {
-          "qualifiedName": "long",
-          "name": "long",
-          "isArray": false
-        },
-        "name": "den"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "long",
-            "name": "long",
-            "isArray": false
-          },
-          "name": "num"
-        },
-        "comment": "the numerator.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "long",
-            "name": "long",
-            "isArray": false
-          },
-          "name": "den"
-        },
-        "comment": "the denominator.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "BigFraction(long num,long den)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "getReducedFraction",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "numerator"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "denominator"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "numerator"
-        },
-        "comment": "the numerator, for example the three in 'three sevenths'.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "denominator"
-        },
-        "comment": "the denominator, for example the seven in 'three sevenths'.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.ArithmeticException",
-          "name": "ArithmeticException",
-          "isArray": false
-        },
-        "comment": "if the denominator is zero.",
-        "kind": "@throws",
-        "condition": "args[1]==0"
-      }
-    ],
-    "signature": "getReducedFraction(int numerator,int denominator)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "abs",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "abs()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "add",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.math.BigInteger",
-          "name": "BigInteger",
-          "isArray": false
-        },
-        "name": "bg"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.math.BigInteger",
-            "name": "BigInteger",
-            "isArray": false
-          },
-          "name": "bg"
-        },
-        "comment": "the BigInteger to add, must'nt be null.",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
-        "comment": "if the BigInteger is null.",
-        "kind": "@throws",
-        "condition": "args[0]==null"
-      }
-    ],
-    "signature": "add(java.math.BigInteger bg)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "add",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "i"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "i"
-        },
-        "comment": "the integer to add.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "add(int i)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "add",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "long",
-          "name": "long",
-          "isArray": false
-        },
-        "name": "l"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "long",
-            "name": "long",
-            "isArray": false
-          },
-          "name": "l"
-        },
-        "comment": "the long to add.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "add(long l)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "add",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-          "name": "BigFraction",
-          "isArray": false
-        },
-        "name": "fraction"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-            "name": "BigFraction",
-            "isArray": false
-          },
-          "name": "fraction"
-        },
-        "comment": "the BigFraction to add, must not be null.",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
-        "comment": "if the BigFraction is null.",
-        "kind": "@throws",
-        "condition": "args[0]==null"
-      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
-        "comment": "if a is null.",
-        "kind": "@throws",
-        "condition": "args[0]==null"
-      }
-    ],
-    "signature": "add(org.apache.commons.math3.fraction.BigFraction fraction)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "bigDecimalValue",
-    "returnType": {
-      "qualifiedName": "java.math.BigDecimal",
-      "name": "BigDecimal",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.ArithmeticException",
-          "name": "ArithmeticException",
-          "isArray": false
-        },
-        "comment": "if the exact quotient does not have a terminating decimal expansion.",
-        "kind": "@throws",
-        "condition": ""
-      }
-    ],
-    "signature": "bigDecimalValue()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "bigDecimalValue",
-    "returnType": {
-      "qualifiedName": "java.math.BigDecimal",
-      "name": "BigDecimal",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "roundingMode"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "roundingMode"
-        },
-        "comment": "rounding mode to apply. see BigDecimal constants.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.IllegalArgumentException",
-          "name": "IllegalArgumentException",
-          "isArray": false
-        },
-        "comment": "if roundingMode does not represent a valid rounding mode.",
-        "kind": "@throws",
-        "condition": ""
-      }
-    ],
-    "signature": "bigDecimalValue(int roundingMode)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "bigDecimalValue",
-    "returnType": {
-      "qualifiedName": "java.math.BigDecimal",
-      "name": "BigDecimal",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "scale"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "roundingMode"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "scale"
-        },
-        "comment": "scale of the BigDecimal quotient to be returned. see BigDecimal for more information.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "roundingMode"
-        },
-        "comment": "rounding mode to apply. see BigDecimal constants.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "bigDecimalValue(int scale,int roundingMode)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "compareTo",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-          "name": "BigFraction",
-          "isArray": false
-        },
-        "name": "object"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-            "name": "BigFraction",
-            "isArray": false
-          },
-          "name": "object"
-        },
-        "comment": "the object to compare to, must not be null.",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "compareTo(org.apache.commons.math3.fraction.BigFraction object)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "divide",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.math.BigInteger",
-          "name": "BigInteger",
-          "isArray": false
-        },
-        "name": "bg"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.math.BigInteger",
-            "name": "BigInteger",
-            "isArray": false
-          },
-          "name": "bg"
-        },
-        "comment": "the BigInteger to divide by, must not be null",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
-        "comment": "if the BigInteger is null",
-        "kind": "@throws",
-        "condition": "args[0]==null"
-      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
-          "name": "MathArithmeticException",
-          "isArray": false
-        },
-        "comment": "if the fraction to divide by is zero",
-        "kind": "@throws",
-        "condition": "args[0]==(org.apache.commons.math3.fraction.BigFraction.ZERO)"
-      }
-    ],
-    "signature": "divide(java.math.BigInteger bg)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "divide",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "i"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "i"
-        },
-        "comment": "the int to divide by",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
-          "name": "MathArithmeticException",
-          "isArray": false
-        },
-        "comment": "if the fraction to divide by is zero",
-        "kind": "@throws",
-        "condition": "args[0]==0"
-      }
-    ],
-    "signature": "divide(int i)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "divide",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "long",
-          "name": "long",
-          "isArray": false
-        },
-        "name": "l"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "long",
-            "name": "long",
-            "isArray": false
-          },
-          "name": "l"
-        },
-        "comment": "the long to divide by",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
-          "name": "MathArithmeticException",
-          "isArray": false
-        },
-        "comment": "if the fraction to divide by is zero",
-        "kind": "@throws",
-        "condition": "args[0]==0"
-      }
-    ],
-    "signature": "divide(long l)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "divide",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-          "name": "BigFraction",
-          "isArray": false
-        },
-        "name": "fraction"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-            "name": "BigFraction",
-            "isArray": false
-          },
-          "name": "fraction"
-        },
-        "comment": "Fraction to divide by, must not be null.",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
-        "comment": "if the fraction is null.",
-        "kind": "@throws",
-        "condition": "args[0]==null"
-      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
-          "name": "MathArithmeticException",
-          "isArray": false
-        },
-        "comment": "if the fraction to divide by is zero",
-        "kind": "@throws",
-        "condition": "args[0]==(org.apache.commons.math3.fraction.BigFraction.ZERO)"
-      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
-        "comment": "if a is null.",
-        "kind": "@throws",
-        "condition": "args[0]==null"
-      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
-          "name": "MathArithmeticException",
-          "isArray": false
-        },
-        "comment": "if a is zero",
-        "kind": "@throws",
-        "condition": "args[0].equals(org.apache.commons.math3.fraction.BigFraction.ZERO)"
-      }
-    ],
-    "signature": "divide(org.apache.commons.math3.fraction.BigFraction fraction)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "doubleValue",
-    "returnType": {
-      "qualifiedName": "double",
-      "name": "double",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "doubleValue()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "equals",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "other"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "other"
-        },
-        "comment": "fraction to test for equality to this fraction, can be null.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "equals(java.lang.Object other)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "floatValue",
-    "returnType": {
-      "qualifiedName": "float",
-      "name": "float",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "floatValue()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "getDenominator",
-    "returnType": {
-      "qualifiedName": "java.math.BigInteger",
-      "name": "BigInteger",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getDenominator()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "getDenominatorAsInt",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getDenominatorAsInt()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "getDenominatorAsLong",
-    "returnType": {
-      "qualifiedName": "long",
-      "name": "long",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getDenominatorAsLong()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "getNumerator",
-    "returnType": {
-      "qualifiedName": "java.math.BigInteger",
-      "name": "BigInteger",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getNumerator()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "getNumeratorAsInt",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getNumeratorAsInt()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "getNumeratorAsLong",
-    "returnType": {
-      "qualifiedName": "long",
-      "name": "long",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getNumeratorAsLong()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "hashCode",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "hashCode()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "intValue",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "intValue()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "longValue",
-    "returnType": {
-      "qualifiedName": "long",
-      "name": "long",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "longValue()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "multiply",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.math.BigInteger",
-          "name": "BigInteger",
-          "isArray": false
-        },
-        "name": "bg"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.math.BigInteger",
-            "name": "BigInteger",
-            "isArray": false
-          },
-          "name": "bg"
-        },
-        "comment": "the BigInteger to multiply by.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
-        "comment": "if bg is null.",
-        "kind": "@throws",
-        "condition": "args[0]==null"
-      }
-    ],
-    "signature": "multiply(java.math.BigInteger bg)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "multiply",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "i"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "i"
-        },
-        "comment": "the int to multiply by.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "multiply(int i)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "multiply",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "long",
-          "name": "long",
-          "isArray": false
-        },
-        "name": "l"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "long",
-            "name": "long",
-            "isArray": false
-          },
-          "name": "l"
-        },
-        "comment": "the long to multiply by.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "multiply(long l)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "multiply",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-          "name": "BigFraction",
-          "isArray": false
-        },
-        "name": "fraction"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-            "name": "BigFraction",
-            "isArray": false
-          },
-          "name": "fraction"
-        },
-        "comment": "Fraction to multiply by, must not be null.",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
-        "comment": "if fraction is null.",
-        "kind": "@throws",
-        "condition": "args[0]==null"
-      },
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
-        "comment": "if a is null.",
-        "kind": "@throws",
-        "condition": "target.abs()==null"
-      }
-    ],
-    "signature": "multiply(org.apache.commons.math3.fraction.BigFraction fraction)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "negate",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "negate()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "percentageValue",
-    "returnType": {
-      "qualifiedName": "double",
-      "name": "double",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "percentageValue()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "pow",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "exponent"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "exponent"
-        },
-        "comment": "exponent to which this BigFraction is to be raised.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "pow(int exponent)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "pow",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "long",
-          "name": "long",
-          "isArray": false
-        },
-        "name": "exponent"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "long",
-            "name": "long",
-            "isArray": false
-          },
-          "name": "exponent"
-        },
-        "comment": "exponent to which this BigFraction is to be raised.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "pow(long exponent)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "pow",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.math.BigInteger",
-          "name": "BigInteger",
-          "isArray": false
-        },
-        "name": "exponent"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.math.BigInteger",
-            "name": "BigInteger",
-            "isArray": false
-          },
-          "name": "exponent"
-        },
-        "comment": "exponent to which this BigFraction is to be raised.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "pow(java.math.BigInteger exponent)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "pow",
-    "returnType": {
-      "qualifiedName": "double",
-      "name": "double",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "exponent"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
+            "isArray": false,
             "name": "double",
-            "isArray": false
-          },
-          "name": "exponent"
-        },
-        "comment": "exponent to which this BigFraction is to be raised.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "pow(double exponent)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "reciprocal",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
-          "name": "MathArithmeticException",
-          "isArray": false
-        },
-        "comment": "if this is zero",
-        "kind": "@throws",
-        "condition": "target==(org.apache.commons.math3.fraction.BigFraction.ZERO)"
-      }
-    ],
-    "signature": "reciprocal()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "reduce",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "reduce()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "subtract",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.math.BigInteger",
-          "name": "BigInteger",
-          "isArray": false
-        },
-        "name": "bg"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.math.BigInteger",
-            "name": "BigInteger",
-            "isArray": false
-          },
-          "name": "bg"
-        },
-        "comment": "the BigInteger to subtract, cannot be null.",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
-        "comment": "if the BigInteger is null.",
-        "kind": "@throws",
-        "condition": "args[0]==null"
-      }
-    ],
-    "signature": "subtract(java.math.BigInteger bg)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "subtract",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "i"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "i"
-        },
-        "comment": "the integer to subtract.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "subtract(int i)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "subtract",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "long",
-          "name": "long",
-          "isArray": false
-        },
-        "name": "l"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "long",
-            "name": "long",
-            "isArray": false
-          },
-          "name": "l"
-        },
-        "comment": "the long to subtract.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "subtract(long l)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "name": "subtract",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-      "name": "BigFraction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-          "name": "BigFraction",
-          "isArray": false
-        },
-        "name": "fraction"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
-            "name": "BigFraction",
-            "isArray": false
-          },
-          "name": "fraction"
-        },
-        "comment": "BigFraction to subtract, must not be null.",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
-        "comment": "if the fraction is null.",
-        "kind": "@throws",
-        "condition": "args[0]==null"
+            "qualifiedName": "double"
+          }
+        }
       },
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
-          "name": "NullArgumentException",
-          "isArray": false
-        },
-        "comment": "if a is null.",
-        "kind": "@throws",
-        "condition": "target.abs()==null"
+        "comment": "The maximum allowed value for denominator.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "maxDenominator",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
       }
     ],
-    "signature": "subtract(org.apache.commons.math3.fraction.BigFraction fraction)"
+    "parameters": [
+      {
+        "name": "value",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "maxDenominator",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "signature": "BigFraction(double value,int maxDenominator)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": [
+      {
+        "comment": "if the continued fraction failed to converge.",
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "FractionConversionException",
+          "qualifiedName": "org.apache.commons.math3.fraction.FractionConversionException"
+        },
+        "kind": "@throws"
+      }
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
+      "isArray": false,
       "name": "BigFraction",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
     },
+    "isVarArgs": false,
+    "name": "BigFraction",
+    "paramTags": [
+      {
+        "comment": "the numerator.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "num",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "num",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "signature": "BigFraction(int num)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "BigFraction",
+    "paramTags": [
+      {
+        "comment": "the numerator.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "num",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
+      },
+      {
+        "comment": "the denominator.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "den",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "num",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      },
+      {
+        "name": "den",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "signature": "BigFraction(int num,int den)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "BigFraction",
+    "paramTags": [
+      {
+        "comment": "the numerator.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "num",
+          "type": {
+            "isArray": false,
+            "name": "long",
+            "qualifiedName": "long"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "num",
+        "type": {
+          "isArray": false,
+          "name": "long",
+          "qualifiedName": "long"
+        }
+      }
+    ],
+    "signature": "BigFraction(long num)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "BigFraction",
+    "paramTags": [
+      {
+        "comment": "the numerator.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "num",
+          "type": {
+            "isArray": false,
+            "name": "long",
+            "qualifiedName": "long"
+          }
+        }
+      },
+      {
+        "comment": "the denominator.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "den",
+          "type": {
+            "isArray": false,
+            "name": "long",
+            "qualifiedName": "long"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "num",
+        "type": {
+          "isArray": false,
+          "name": "long",
+          "qualifiedName": "long"
+        }
+      },
+      {
+        "name": "den",
+        "type": {
+          "isArray": false,
+          "name": "long",
+          "qualifiedName": "long"
+        }
+      }
+    ],
+    "signature": "BigFraction(long num,long den)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "getReducedFraction",
+    "paramTags": [
+      {
+        "comment": "the numerator, for example the three in 'three sevenths'.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "numerator",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
+      },
+      {
+        "comment": "the denominator, for example the seven in 'three sevenths'.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "denominator",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "numerator",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      },
+      {
+        "name": "denominator",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a new fraction instance, with the numerator and denominator reduced.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "getReducedFraction(int numerator,int denominator)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": [
+      {
+        "comment": "if the denominator is zero.",
+        "condition": "args[1]==0",
+        "exception": {
+          "isArray": false,
+          "name": "ArithmeticException",
+          "qualifiedName": "java.lang.ArithmeticException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "abs",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the absolute value as a BigFraction.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "abs()",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "add",
+    "paramTags": [
+      {
+        "comment": "the BigInteger to add, must'nt be null.",
+        "condition": "(args[0]==null) == false",
+        "kind": "@param",
+        "parameter": {
+          "name": "bg",
+          "type": {
+            "isArray": false,
+            "name": "BigInteger",
+            "qualifiedName": "java.math.BigInteger"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "bg",
+        "type": {
+          "isArray": false,
+          "name": "BigInteger",
+          "qualifiedName": "java.math.BigInteger"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a BigFraction instance with the resulting values.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "add(java.math.BigInteger bg)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": [
+      {
+        "comment": "if the BigInteger is null.",
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "add",
+    "paramTags": [
+      {
+        "comment": "the integer to add.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "i",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "i",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a BigFraction instance with the resulting values.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "add(int i)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "add",
+    "paramTags": [
+      {
+        "comment": "the long to add.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "l",
+          "type": {
+            "isArray": false,
+            "name": "long",
+            "qualifiedName": "long"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "l",
+        "type": {
+          "isArray": false,
+          "name": "long",
+          "qualifiedName": "long"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a BigFraction instance with the resulting values.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "add(long l)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "add",
+    "paramTags": [
+      {
+        "comment": "the BigFraction to add, must not be null.",
+        "condition": "(args[0]==null) == false",
+        "kind": "@param",
+        "parameter": {
+          "name": "fraction",
+          "type": {
+            "isArray": false,
+            "name": "BigFraction",
+            "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "fraction",
+        "type": {
+          "isArray": false,
+          "name": "BigFraction",
+          "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a BigFraction instance with the resulting values.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "add(org.apache.commons.math3.fraction.BigFraction fraction)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": [
+      {
+        "comment": "if the BigFraction is null.",
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if a is null.",
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "bigDecimalValue",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the fraction as a BigDecimal.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigDecimal",
+      "qualifiedName": "java.math.BigDecimal"
+    },
+    "signature": "bigDecimalValue()",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": [
+      {
+        "comment": "if the exact quotient does not have a terminating decimal expansion.",
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "ArithmeticException",
+          "qualifiedName": "java.lang.ArithmeticException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "bigDecimalValue",
+    "paramTags": [
+      {
+        "comment": "rounding mode to apply. see BigDecimal constants.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "roundingMode",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "roundingMode",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the fraction as a BigDecimal.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigDecimal",
+      "qualifiedName": "java.math.BigDecimal"
+    },
+    "signature": "bigDecimalValue(int roundingMode)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": [
+      {
+        "comment": "if roundingMode does not represent a valid rounding mode.",
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "IllegalArgumentException",
+          "qualifiedName": "java.lang.IllegalArgumentException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "bigDecimalValue",
+    "paramTags": [
+      {
+        "comment": "scale of the BigDecimal quotient to be returned. see BigDecimal for more information.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "scale",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
+      },
+      {
+        "comment": "rounding mode to apply. see BigDecimal constants.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "roundingMode",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "scale",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      },
+      {
+        "name": "roundingMode",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the fraction as a BigDecimal.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigDecimal",
+      "qualifiedName": "java.math.BigDecimal"
+    },
+    "signature": "bigDecimalValue(int scale,int roundingMode)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "compareTo",
+    "paramTags": [
+      {
+        "comment": "the object to compare to, must not be null.",
+        "condition": "(args[0]==null) == false",
+        "kind": "@param",
+        "parameter": {
+          "name": "object",
+          "type": {
+            "isArray": false,
+            "name": "BigFraction",
+            "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "object",
+        "type": {
+          "isArray": false,
+          "name": "BigFraction",
+          "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "-1 if this is less than object, +1 if this is greater than object, 0 if they are equal.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "compareTo(org.apache.commons.math3.fraction.BigFraction object)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "divide",
+    "paramTags": [
+      {
+        "comment": "the BigInteger to divide by, must not be null",
+        "condition": "(args[0]==null) == false",
+        "kind": "@param",
+        "parameter": {
+          "name": "bg",
+          "type": {
+            "isArray": false,
+            "name": "BigInteger",
+            "qualifiedName": "java.math.BigInteger"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "bg",
+        "type": {
+          "isArray": false,
+          "name": "BigInteger",
+          "qualifiedName": "java.math.BigInteger"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a BigFraction instance with the resulting values",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "divide(java.math.BigInteger bg)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": [
+      {
+        "comment": "if the BigInteger is null",
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if the fraction to divide by is zero",
+        "condition": "args[0]==(org.apache.commons.math3.fraction.BigFraction.ZERO)",
+        "exception": {
+          "isArray": false,
+          "name": "MathArithmeticException",
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "divide",
+    "paramTags": [
+      {
+        "comment": "the int to divide by",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "i",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "i",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a BigFraction instance with the resulting values",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "divide(int i)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": [
+      {
+        "comment": "if the fraction to divide by is zero",
+        "condition": "args[0]==0",
+        "exception": {
+          "isArray": false,
+          "name": "MathArithmeticException",
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "divide",
+    "paramTags": [
+      {
+        "comment": "the long to divide by",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "l",
+          "type": {
+            "isArray": false,
+            "name": "long",
+            "qualifiedName": "long"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "l",
+        "type": {
+          "isArray": false,
+          "name": "long",
+          "qualifiedName": "long"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a BigFraction instance with the resulting values",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "divide(long l)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": [
+      {
+        "comment": "if the fraction to divide by is zero",
+        "condition": "args[0]==0",
+        "exception": {
+          "isArray": false,
+          "name": "MathArithmeticException",
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "divide",
+    "paramTags": [
+      {
+        "comment": "Fraction to divide by, must not be null.",
+        "condition": "(args[0]==null) == false",
+        "kind": "@param",
+        "parameter": {
+          "name": "fraction",
+          "type": {
+            "isArray": false,
+            "name": "BigFraction",
+            "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "fraction",
+        "type": {
+          "isArray": false,
+          "name": "BigFraction",
+          "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a BigFraction instance with the resulting values.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "divide(org.apache.commons.math3.fraction.BigFraction fraction)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": [
+      {
+        "comment": "if the fraction is null.",
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if the fraction to divide by is zero",
+        "condition": "args[0]==(org.apache.commons.math3.fraction.BigFraction.ZERO)",
+        "exception": {
+          "isArray": false,
+          "name": "MathArithmeticException",
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if a is null.",
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if a is zero",
+        "condition": "args[0].equals(org.apache.commons.math3.fraction.BigFraction.ZERO)",
+        "exception": {
+          "isArray": false,
+          "name": "MathArithmeticException",
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "doubleValue",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the fraction as a double",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "double",
+      "qualifiedName": "double"
+    },
+    "signature": "doubleValue()",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "equals",
+    "paramTags": [
+      {
+        "comment": "fraction to test for equality to this fraction, can be null.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "other",
+          "type": {
+            "isArray": false,
+            "name": "Object",
+            "qualifiedName": "java.lang.Object"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "other",
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "true if two fractions are equal, false if object is null, not an instance of BigFraction, or not equal to this fraction instance.",
+      "condition": "target==false || args[0]==null",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "equals(java.lang.Object other)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "floatValue",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the fraction as a float.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "float",
+      "qualifiedName": "float"
+    },
+    "signature": "floatValue()",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "getDenominator",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the denominator as a BigInteger.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigInteger",
+      "qualifiedName": "java.math.BigInteger"
+    },
+    "signature": "getDenominator()",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "getDenominatorAsInt",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the denominator as a int.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "getDenominatorAsInt()",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "getDenominatorAsLong",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the denominator as a long.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "long",
+      "qualifiedName": "long"
+    },
+    "signature": "getDenominatorAsLong()",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "getNumerator",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the numerator as a BigInteger.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigInteger",
+      "qualifiedName": "java.math.BigInteger"
+    },
+    "signature": "getNumerator()",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "getNumeratorAsInt",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the numerator as a int.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "getNumeratorAsInt()",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "getNumeratorAsLong",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the numerator as a long.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "long",
+      "qualifiedName": "long"
+    },
+    "signature": "getNumeratorAsLong()",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "hashCode",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "a hash code value for this object.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "hashCode()",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "intValue",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the whole number fraction part.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "intValue()",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "longValue",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the whole number fraction part.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "long",
+      "qualifiedName": "long"
+    },
+    "signature": "longValue()",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "multiply",
+    "paramTags": [
+      {
+        "comment": "the BigInteger to multiply by.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "bg",
+          "type": {
+            "isArray": false,
+            "name": "BigInteger",
+            "qualifiedName": "java.math.BigInteger"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "bg",
+        "type": {
+          "isArray": false,
+          "name": "BigInteger",
+          "qualifiedName": "java.math.BigInteger"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a BigFraction instance with the resulting values.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "multiply(java.math.BigInteger bg)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": [
+      {
+        "comment": "if bg is null.",
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "multiply",
+    "paramTags": [
+      {
+        "comment": "the int to multiply by.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "i",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "i",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a BigFraction instance with the resulting values.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "multiply(int i)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "multiply",
+    "paramTags": [
+      {
+        "comment": "the long to multiply by.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "l",
+          "type": {
+            "isArray": false,
+            "name": "long",
+            "qualifiedName": "long"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "l",
+        "type": {
+          "isArray": false,
+          "name": "long",
+          "qualifiedName": "long"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a BigFraction instance with the resulting values.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "multiply(long l)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "multiply",
+    "paramTags": [
+      {
+        "comment": "Fraction to multiply by, must not be null.",
+        "condition": "(args[0]==null) == false",
+        "kind": "@param",
+        "parameter": {
+          "name": "fraction",
+          "type": {
+            "isArray": false,
+            "name": "BigFraction",
+            "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "fraction",
+        "type": {
+          "isArray": false,
+          "name": "BigFraction",
+          "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a BigFraction instance with the resulting values.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "multiply(org.apache.commons.math3.fraction.BigFraction fraction)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": [
+      {
+        "comment": "if fraction is null.",
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if a is null.",
+        "condition": "target.abs()==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "negate",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the negation of this fraction.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "negate()",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "percentageValue",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the fraction percentage as a double.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "double",
+      "qualifiedName": "double"
+    },
+    "signature": "percentageValue()",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "pow",
+    "paramTags": [
+      {
+        "comment": "exponent to which this BigFraction is to be raised.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "exponent",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "exponent",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "thisexponent.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "pow(int exponent)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "pow",
+    "paramTags": [
+      {
+        "comment": "exponent to which this BigFraction is to be raised.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "exponent",
+          "type": {
+            "isArray": false,
+            "name": "long",
+            "qualifiedName": "long"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "exponent",
+        "type": {
+          "isArray": false,
+          "name": "long",
+          "qualifiedName": "long"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "thisexponent as a BigFraction.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "pow(long exponent)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "pow",
+    "paramTags": [
+      {
+        "comment": "exponent to which this BigFraction is to be raised.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "exponent",
+          "type": {
+            "isArray": false,
+            "name": "BigInteger",
+            "qualifiedName": "java.math.BigInteger"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "exponent",
+        "type": {
+          "isArray": false,
+          "name": "BigInteger",
+          "qualifiedName": "java.math.BigInteger"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "thisexponent as a BigFraction.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "pow(java.math.BigInteger exponent)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "pow",
+    "paramTags": [
+      {
+        "comment": "exponent to which this BigFraction is to be raised.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "exponent",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "exponent",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "thisexponent.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "double",
+      "qualifiedName": "double"
+    },
+    "signature": "pow(double exponent)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "reciprocal",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the reciprocal fraction.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "reciprocal()",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": [
+      {
+        "comment": "if this is zero",
+        "condition": "target==(org.apache.commons.math3.fraction.BigFraction.ZERO)",
+        "exception": {
+          "isArray": false,
+          "name": "MathArithmeticException",
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "reduce",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the reduced BigFraction. It doesn't change anything if the fraction can be reduced.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "reduce()",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "subtract",
+    "paramTags": [
+      {
+        "comment": "the BigInteger to subtract, cannot be null.",
+        "condition": "(args[0]==null) == false",
+        "kind": "@param",
+        "parameter": {
+          "name": "bg",
+          "type": {
+            "isArray": false,
+            "name": "BigInteger",
+            "qualifiedName": "java.math.BigInteger"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "bg",
+        "type": {
+          "isArray": false,
+          "name": "BigInteger",
+          "qualifiedName": "java.math.BigInteger"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a BigFraction instance with the resulting values.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "subtract(java.math.BigInteger bg)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": [
+      {
+        "comment": "if the BigInteger is null.",
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "subtract",
+    "paramTags": [
+      {
+        "comment": "the integer to subtract.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "i",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "i",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a BigFraction instance with the resulting values.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "subtract(int i)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "subtract",
+    "paramTags": [
+      {
+        "comment": "the long to subtract.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "l",
+          "type": {
+            "isArray": false,
+            "name": "long",
+            "qualifiedName": "long"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "l",
+        "type": {
+          "isArray": false,
+          "name": "long",
+          "qualifiedName": "long"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a BigFraction instance with the resulting values.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "subtract(long l)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
+    "name": "subtract",
+    "paramTags": [
+      {
+        "comment": "BigFraction to subtract, must not be null.",
+        "condition": "(args[0]==null) == false",
+        "kind": "@param",
+        "parameter": {
+          "name": "fraction",
+          "type": {
+            "isArray": false,
+            "name": "BigFraction",
+            "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "fraction",
+        "type": {
+          "isArray": false,
+          "name": "BigFraction",
+          "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a BigFraction instance with the resulting values",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "signature": "subtract(org.apache.commons.math3.fraction.BigFraction fraction)",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": [
+      {
+        "comment": "if the fraction is null.",
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "@throws"
+      },
+      {
+        "comment": "if a is null.",
+        "condition": "target.abs()==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullArgumentException",
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "BigFraction",
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
+    },
+    "isVarArgs": false,
     "name": "toString",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "a string representation of the fraction.",
+      "condition": "",
+      "kind": "RETURN"
+    },
     "returnType": {
-      "qualifiedName": "java.lang.String",
+      "isArray": false,
       "name": "String",
-      "isArray": false
+      "qualifiedName": "java.lang.String"
     },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "toString()"
+    "signature": "toString()",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction",
+      "isArray": false,
       "name": "BigFraction",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFraction"
     },
+    "isVarArgs": false,
     "name": "getField",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "Field to which the instance belongs",
+      "condition": "",
+      "kind": "RETURN"
+    },
     "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fraction.BigFractionField",
+      "isArray": false,
       "name": "BigFractionField",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.fraction.BigFractionField"
     },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getField()"
+    "signature": "getField()",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.lang.Number",
+      "isArray": false,
       "name": "Number",
-      "isArray": false
+      "qualifiedName": "java.lang.Number"
     },
+    "isVarArgs": false,
     "name": "byteValue",
-    "returnType": {
-      "qualifiedName": "byte",
-      "name": "byte",
-      "isArray": false
-    },
-    "parameters": [],
     "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "byteValue()"
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "byte",
+      "qualifiedName": "byte"
+    },
+    "signature": "byteValue()",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "java.lang.Number",
+      "isArray": false,
       "name": "Number",
-      "isArray": false
+      "qualifiedName": "java.lang.Number"
     },
-    "name": "shortValue",
-    "returnType": {
-      "qualifiedName": "short",
-      "name": "short",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "shortValue()"
+    "name": "shortValue",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "short",
+      "qualifiedName": "short"
+    },
+    "signature": "shortValue()",
+    "targetClass": "org.apache.commons.math3.fraction.BigFraction",
+    "throwsTags": []
   }
 ]

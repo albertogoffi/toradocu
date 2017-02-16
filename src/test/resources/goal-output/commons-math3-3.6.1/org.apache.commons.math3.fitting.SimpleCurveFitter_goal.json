@@ -1,345 +1,377 @@
 [
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fitting.SimpleCurveFitter",
+      "isArray": false,
       "name": "SimpleCurveFitter",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.fitting.SimpleCurveFitter"
     },
+    "isVarArgs": false,
     "name": "SimpleCurveFitter",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.ParametricUnivariateFunction",
-          "name": "ParametricUnivariateFunction",
-          "isArray": false
-        },
-        "name": "function"
-      },
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "initialGuess"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "maxIter"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.ParametricUnivariateFunction",
-            "name": "ParametricUnivariateFunction",
-            "isArray": false
-          },
-          "name": "function"
-        },
         "comment": "Function to fit.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "function",
+          "type": {
+            "isArray": false,
+            "name": "ParametricUnivariateFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.ParametricUnivariateFunction"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "initialGuess"
-        },
         "comment": "Initial guess. Cannot be null. Its length must be consistent with the number of parameters of the function to fit.",
+        "condition": "(args[1]==null) == false",
         "kind": "PARAM",
-        "condition": "(args[1]==null) == false"
+        "parameter": {
+          "name": "initialGuess",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "maxIter"
-        },
         "comment": "Maximum number of iterations of the optimization algorithm.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "SimpleCurveFitter(org.apache.commons.math3.analysis.ParametricUnivariateFunction function,double[] initialGuess,int maxIter)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fitting.SimpleCurveFitter",
-      "name": "SimpleCurveFitter",
-      "isArray": false
-    },
-    "name": "create",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fitting.SimpleCurveFitter",
-      "name": "SimpleCurveFitter",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.ParametricUnivariateFunction",
-          "name": "ParametricUnivariateFunction",
-          "isArray": false
-        },
-        "name": "f"
-      },
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "start"
-      }
-    ],
-    "paramTags": [
-      {
         "parameter": {
+          "name": "maxIter",
           "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.ParametricUnivariateFunction",
-            "name": "ParametricUnivariateFunction",
-            "isArray": false
-          },
-          "name": "f"
-        },
-        "comment": "Function to fit.",
-        "kind": "PARAM",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "start"
-        },
-        "comment": "Initial guess for the parameters. Cannot be null. Its length must be consistent with the number of parameters of the function to fit.",
-        "kind": "PARAM",
-        "condition": "(args[1]==null) == false"
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "create(org.apache.commons.math3.analysis.ParametricUnivariateFunction f,double[] start)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fitting.SimpleCurveFitter",
-      "name": "SimpleCurveFitter",
-      "isArray": false
-    },
-    "name": "withStartPoint",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fitting.SimpleCurveFitter",
-      "name": "SimpleCurveFitter",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double[]",
-          "name": "double[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          }
-        },
-        "name": "newStart"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double[]",
-            "name": "double[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "double",
-              "name": "double",
-              "isArray": false
-            }
-          },
-          "name": "newStart"
-        },
-        "comment": "new start point (initial guess)",
-        "kind": "PARAM",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "withStartPoint(double[] newStart)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fitting.SimpleCurveFitter",
-      "name": "SimpleCurveFitter",
-      "isArray": false
-    },
-    "name": "withMaxIterations",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fitting.SimpleCurveFitter",
-      "name": "SimpleCurveFitter",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "newMaxIter"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
+            "isArray": false,
             "name": "int",
-            "isArray": false
+            "qualifiedName": "int"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "function",
+        "type": {
+          "isArray": false,
+          "name": "ParametricUnivariateFunction",
+          "qualifiedName": "org.apache.commons.math3.analysis.ParametricUnivariateFunction"
+        }
+      },
+      {
+        "name": "initialGuess",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
           },
-          "name": "newMaxIter"
-        },
-        "comment": "maximum number of iterations",
-        "kind": "PARAM",
-        "condition": ""
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      },
+      {
+        "name": "maxIter",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "withMaxIterations(int newMaxIter)"
+    "signature": "SimpleCurveFitter(org.apache.commons.math3.analysis.ParametricUnivariateFunction function,double[] initialGuess,int maxIter)",
+    "targetClass": "org.apache.commons.math3.fitting.SimpleCurveFitter",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fitting.SimpleCurveFitter",
+      "isArray": false,
       "name": "SimpleCurveFitter",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.fitting.SimpleCurveFitter"
     },
-    "name": "getProblem",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fitting.leastsquares.LeastSquaresProblem",
-      "name": "LeastSquaresProblem",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.util.Collection",
-          "name": "Collection",
-          "isArray": false
-        },
-        "name": "observations"
-      }
-    ],
-    "paramTags": [],
     "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getProblem(java.util.Collection observations)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fitting.AbstractCurveFitter",
-      "name": "AbstractCurveFitter",
-      "isArray": false
-    },
-    "name": "fit",
-    "returnType": {
-      "qualifiedName": "double[]",
-      "name": "double[]",
-      "isArray": true,
-      "componentType": {
-        "qualifiedName": "double",
-        "name": "double",
-        "isArray": false
-      }
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.util.Collection",
-          "name": "Collection",
-          "isArray": false
-        },
-        "name": "points"
-      }
-    ],
+    "name": "create",
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.Collection",
-            "name": "Collection",
-            "isArray": false
-          },
-          "name": "points"
-        },
-        "comment": "Observations.",
+        "comment": "Function to fit.",
+        "condition": "",
         "kind": "PARAM",
-        "condition": ""
+        "parameter": {
+          "name": "f",
+          "type": {
+            "isArray": false,
+            "name": "ParametricUnivariateFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.ParametricUnivariateFunction"
+          }
+        }
+      },
+      {
+        "comment": "Initial guess for the parameters. Cannot be null. Its length must be consistent with the number of parameters of the function to fit.",
+        "condition": "(args[1]==null) == false",
+        "kind": "PARAM",
+        "parameter": {
+          "name": "start",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "fit(java.util.Collection points)"
+    "parameters": [
+      {
+        "name": "f",
+        "type": {
+          "isArray": false,
+          "name": "ParametricUnivariateFunction",
+          "qualifiedName": "org.apache.commons.math3.analysis.ParametricUnivariateFunction"
+        }
+      },
+      {
+        "name": "start",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a curve fitter.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "SimpleCurveFitter",
+      "qualifiedName": "org.apache.commons.math3.fitting.SimpleCurveFitter"
+    },
+    "signature": "create(org.apache.commons.math3.analysis.ParametricUnivariateFunction f,double[] start)",
+    "targetClass": "org.apache.commons.math3.fitting.SimpleCurveFitter",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.fitting.AbstractCurveFitter",
-      "name": "AbstractCurveFitter",
-      "isArray": false
+      "isArray": false,
+      "name": "SimpleCurveFitter",
+      "qualifiedName": "org.apache.commons.math3.fitting.SimpleCurveFitter"
     },
-    "name": "getOptimizer",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.fitting.leastsquares.LeastSquaresOptimizer",
-      "name": "LeastSquaresOptimizer",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getOptimizer()"
+    "name": "withStartPoint",
+    "paramTags": [
+      {
+        "comment": "new start point (initial guess)",
+        "condition": "",
+        "kind": "PARAM",
+        "parameter": {
+          "name": "newStart",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "double",
+              "qualifiedName": "double"
+            },
+            "isArray": true,
+            "name": "double[]",
+            "qualifiedName": "double[]"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "newStart",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          },
+          "isArray": true,
+          "name": "double[]",
+          "qualifiedName": "double[]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a new instance.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "SimpleCurveFitter",
+      "qualifiedName": "org.apache.commons.math3.fitting.SimpleCurveFitter"
+    },
+    "signature": "withStartPoint(double[] newStart)",
+    "targetClass": "org.apache.commons.math3.fitting.SimpleCurveFitter",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "SimpleCurveFitter",
+      "qualifiedName": "org.apache.commons.math3.fitting.SimpleCurveFitter"
+    },
+    "isVarArgs": false,
+    "name": "withMaxIterations",
+    "paramTags": [
+      {
+        "comment": "maximum number of iterations",
+        "condition": "",
+        "kind": "PARAM",
+        "parameter": {
+          "name": "newMaxIter",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "newMaxIter",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a new instance.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "SimpleCurveFitter",
+      "qualifiedName": "org.apache.commons.math3.fitting.SimpleCurveFitter"
+    },
+    "signature": "withMaxIterations(int newMaxIter)",
+    "targetClass": "org.apache.commons.math3.fitting.SimpleCurveFitter",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "SimpleCurveFitter",
+      "qualifiedName": "org.apache.commons.math3.fitting.SimpleCurveFitter"
+    },
+    "isVarArgs": false,
+    "name": "getProblem",
+    "paramTags": [],
+    "parameters": [
+      {
+        "name": "observations",
+        "type": {
+          "isArray": false,
+          "name": "Collection",
+          "qualifiedName": "java.util.Collection"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "LeastSquaresProblem",
+      "qualifiedName": "org.apache.commons.math3.fitting.leastsquares.LeastSquaresProblem"
+    },
+    "signature": "getProblem(java.util.Collection observations)",
+    "targetClass": "org.apache.commons.math3.fitting.SimpleCurveFitter",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractCurveFitter",
+      "qualifiedName": "org.apache.commons.math3.fitting.AbstractCurveFitter"
+    },
+    "isVarArgs": false,
+    "name": "fit",
+    "paramTags": [
+      {
+        "comment": "Observations.",
+        "condition": "",
+        "kind": "PARAM",
+        "parameter": {
+          "name": "points",
+          "type": {
+            "isArray": false,
+            "name": "Collection",
+            "qualifiedName": "java.util.Collection"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "points",
+        "type": {
+          "isArray": false,
+          "name": "Collection",
+          "qualifiedName": "java.util.Collection"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the fitted parameters.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "componentType": {
+        "isArray": false,
+        "name": "double",
+        "qualifiedName": "double"
+      },
+      "isArray": true,
+      "name": "double[]",
+      "qualifiedName": "double[]"
+    },
+    "signature": "fit(java.util.Collection points)",
+    "targetClass": "org.apache.commons.math3.fitting.SimpleCurveFitter",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "AbstractCurveFitter",
+      "qualifiedName": "org.apache.commons.math3.fitting.AbstractCurveFitter"
+    },
+    "isVarArgs": false,
+    "name": "getOptimizer",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the optimizer to use for fitting the curve to the given points.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "LeastSquaresOptimizer",
+      "qualifiedName": "org.apache.commons.math3.fitting.leastsquares.LeastSquaresOptimizer"
+    },
+    "signature": "getOptimizer()",
+    "targetClass": "org.apache.commons.math3.fitting.SimpleCurveFitter",
+    "throwsTags": []
   }
 ]

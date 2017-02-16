@@ -1,1319 +1,1493 @@
 [
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
+      "isArray": false,
       "name": "FluentIterable",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
     },
-    "name": "FluentIterable",
-    "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "FluentIterable()"
+    "name": "FluentIterable",
+    "paramTags": [],
+    "parameters": [],
+    "signature": "FluentIterable()",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
+      "isArray": false,
       "name": "FluentIterable",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
     },
+    "isVarArgs": false,
     "name": "FluentIterable",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Iterable",
-          "name": "Iterable",
-          "isArray": false
-        },
-        "name": "iterable"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Iterable",
-            "name": "Iterable",
-            "isArray": false
-          },
-          "name": "iterable"
-        },
         "comment": "the iterable to wrap",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "iterable",
+          "type": {
+            "isArray": false,
+            "name": "Iterable",
+            "qualifiedName": "java.lang.Iterable"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "FluentIterable(java.lang.Iterable iterable)"
+    "parameters": [
+      {
+        "name": "iterable",
+        "type": {
+          "isArray": false,
+          "name": "Iterable",
+          "qualifiedName": "java.lang.Iterable"
+        }
+      }
+    ],
+    "signature": "FluentIterable(java.lang.Iterable iterable)",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
+      "isArray": false,
       "name": "FluentIterable",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
     },
+    "isVarArgs": false,
     "name": "empty",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "parameters": [],
     "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "empty()"
+    "parameters": [],
+    "returnTag": {
+      "comment": "a new empty FluentIterable",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "signature": "empty()",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
+      "isArray": false,
       "name": "FluentIterable",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
     },
+    "isVarArgs": false,
     "name": "of",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "singleton"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "singleton"
-        },
         "comment": "the singleton element",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "of(java.lang.Object singleton)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "of",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object[]",
-          "name": "Object[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "java.lang.Object",
+        "parameter": {
+          "name": "singleton",
+          "type": {
+            "isArray": false,
             "name": "Object",
-            "isArray": false
+            "qualifiedName": "java.lang.Object"
           }
-        },
-        "name": "elements"
+        }
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object[]",
-            "name": "Object[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "java.lang.Object",
-              "name": "Object",
-              "isArray": false
-            }
-          },
-          "name": "elements"
-        },
-        "comment": "the elements to be contained in the FluentIterable",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": true,
-    "throwsTags": [],
-    "signature": "of(java.lang.Object[] elements)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "of",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
     "parameters": [
       {
+        "name": "singleton",
         "type": {
-          "qualifiedName": "java.lang.Iterable",
-          "name": "Iterable",
-          "isArray": false
-        },
-        "name": "iterable"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Iterable",
-            "name": "Iterable",
-            "isArray": false
-          },
-          "name": "iterable"
-        },
-        "comment": "the iterable to wrap into a FluentIterable, may not be null",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.NullPointerException",
-          "name": "NullPointerException",
-          "isArray": false
-        },
-        "comment": "if iterable is null",
-        "kind": "@throws",
-        "condition": "args[0]==null"
-      }
-    ],
-    "signature": "of(java.lang.Iterable iterable)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "append",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object[]",
-          "name": "Object[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          }
-        },
-        "name": "elements"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object[]",
-            "name": "Object[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "java.lang.Object",
-              "name": "Object",
-              "isArray": false
-            }
-          },
-          "name": "elements"
-        },
-        "comment": "the elements to append to the iterable",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": true,
-    "throwsTags": [],
-    "signature": "append(java.lang.Object[] elements)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "append",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Iterable",
-          "name": "Iterable",
-          "isArray": false
-        },
-        "name": "other"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Iterable",
-            "name": "Iterable",
-            "isArray": false
-          },
-          "name": "other"
-        },
-        "comment": "the other iterable to combine, may not be null",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.NullPointerException",
-          "name": "NullPointerException",
-          "isArray": false
-        },
-        "comment": "if other is null",
-        "kind": "@throws",
-        "condition": "args[0]==null"
-      }
-    ],
-    "signature": "append(java.lang.Iterable other)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "collate",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Iterable",
-          "name": "Iterable",
-          "isArray": false
-        },
-        "name": "other"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Iterable",
-            "name": "Iterable",
-            "isArray": false
-          },
-          "name": "other"
-        },
-        "comment": "the other iterable to collate, may not be null",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.NullPointerException",
-          "name": "NullPointerException",
-          "isArray": false
-        },
-        "comment": "if other is null",
-        "kind": "@throws",
-        "condition": "args[0]==null"
-      }
-    ],
-    "signature": "collate(java.lang.Iterable other)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "collate",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Iterable",
-          "name": "Iterable",
-          "isArray": false
-        },
-        "name": "other"
-      },
-      {
-        "type": {
-          "qualifiedName": "java.util.Comparator",
-          "name": "Comparator",
-          "isArray": false
-        },
-        "name": "comparator"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.Comparator",
-            "name": "Comparator",
-            "isArray": false
-          },
-          "name": "comparator"
-        },
-        "comment": "the comparator to define an ordering, may be null, in which case natural ordering will be used",
-        "kind": "@param",
-        "condition": "args[1]==null"
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Iterable",
-            "name": "Iterable",
-            "isArray": false
-          },
-          "name": "other"
-        },
-        "comment": "the other iterable to collate, may not be null",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.NullPointerException",
-          "name": "NullPointerException",
-          "isArray": false
-        },
-        "comment": "if other is null",
-        "kind": "@throws",
-        "condition": "args[0]==null"
-      }
-    ],
-    "signature": "collate(java.lang.Iterable other,java.util.Comparator comparator)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "eval",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "eval()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "filter",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.collections4.Predicate",
-          "name": "Predicate",
-          "isArray": false
-        },
-        "name": "predicate"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.collections4.Predicate",
-            "name": "Predicate",
-            "isArray": false
-          },
-          "name": "predicate"
-        },
-        "comment": "the predicate used to filter elements",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.NullPointerException",
-          "name": "NullPointerException",
-          "isArray": false
-        },
-        "comment": "if predicate is null",
-        "kind": "@throws",
-        "condition": "args[0]==null"
-      }
-    ],
-    "signature": "filter(org.apache.commons.collections4.Predicate predicate)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "limit",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "long",
-          "name": "long",
-          "isArray": false
-        },
-        "name": "maxSize"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "long",
-            "name": "long",
-            "isArray": false
-          },
-          "name": "maxSize"
-        },
-        "comment": "the maximum number of elements",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.IllegalArgumentException",
-          "name": "IllegalArgumentException",
-          "isArray": false
-        },
-        "comment": "if maxSize is negative",
-        "kind": "@throws",
-        "condition": "args[0]<0"
-      }
-    ],
-    "signature": "limit(long maxSize)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "loop",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "loop()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "reverse",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "reverse()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "skip",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "long",
-          "name": "long",
-          "isArray": false
-        },
-        "name": "elementsToSkip"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "long",
-            "name": "long",
-            "isArray": false
-          },
-          "name": "elementsToSkip"
-        },
-        "comment": "the number of elements to skip",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.IllegalArgumentException",
-          "name": "IllegalArgumentException",
-          "isArray": false
-        },
-        "comment": "if elementsToSkip is negative",
-        "kind": "@throws",
-        "condition": "args[0]<0"
-      }
-    ],
-    "signature": "skip(long elementsToSkip)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "transform",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.collections4.Transformer",
-          "name": "Transformer",
-          "isArray": false
-        },
-        "name": "transformer"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.collections4.Transformer",
-            "name": "Transformer",
-            "isArray": false
-          },
-          "name": "transformer"
-        },
-        "comment": "the transformer applied to each element",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.NullPointerException",
-          "name": "NullPointerException",
-          "isArray": false
-        },
-        "comment": "if transformer is null",
-        "kind": "@throws",
-        "condition": "args[0]==null"
-      }
-    ],
-    "signature": "transform(org.apache.commons.collections4.Transformer transformer)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "unique",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "unique()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "unmodifiable",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "unmodifiable()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "zip",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Iterable",
-          "name": "Iterable",
-          "isArray": false
-        },
-        "name": "other"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Iterable",
-            "name": "Iterable",
-            "isArray": false
-          },
-          "name": "other"
-        },
-        "comment": "the other iterable to interleave, may not be null",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.NullPointerException",
-          "name": "NullPointerException",
-          "isArray": false
-        },
-        "comment": "if other is null",
-        "kind": "@throws",
-        "condition": "args[0]==null"
-      }
-    ],
-    "signature": "zip(java.lang.Iterable other)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "zip",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Iterable[]",
-          "name": "Iterable[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "java.lang.Iterable",
-            "name": "Iterable",
-            "isArray": false
-          }
-        },
-        "name": "others"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Iterable[]",
-            "name": "Iterable[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "java.lang.Iterable",
-              "name": "Iterable",
-              "isArray": false
-            }
-          },
-          "name": "others"
-        },
-        "comment": "the iterables to interleave, may not be null",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": true,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.NullPointerException",
-          "name": "NullPointerException",
-          "isArray": false
-        },
-        "comment": "if either of the provided iterables is null",
-        "kind": "@throws",
-        "condition": "Arrays.asList(others).contains(null)"
-      }
-    ],
-    "signature": "zip(java.lang.Iterable[] others)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "iterator",
-    "returnType": {
-      "qualifiedName": "java.util.Iterator",
-      "name": "Iterator",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "iterator()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "asEnumeration",
-    "returnType": {
-      "qualifiedName": "java.util.Enumeration",
-      "name": "Enumeration",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "asEnumeration()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "allMatch",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.collections4.Predicate",
-          "name": "Predicate",
-          "isArray": false
-        },
-        "name": "predicate"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.collections4.Predicate",
-            "name": "Predicate",
-            "isArray": false
-          },
-          "name": "predicate"
-        },
-        "comment": "the predicate to use, may not be null",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.NullPointerException",
-          "name": "NullPointerException",
-          "isArray": false
-        },
-        "comment": "if predicate is null",
-        "kind": "@throws",
-        "condition": "args[0]==null"
-      }
-    ],
-    "signature": "allMatch(org.apache.commons.collections4.Predicate predicate)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "anyMatch",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.collections4.Predicate",
-          "name": "Predicate",
-          "isArray": false
-        },
-        "name": "predicate"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.collections4.Predicate",
-            "name": "Predicate",
-            "isArray": false
-          },
-          "name": "predicate"
-        },
-        "comment": "the predicate to use, may not be null",
-        "kind": "@param",
-        "condition": "(args[0]==null) == false"
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.NullPointerException",
-          "name": "NullPointerException",
-          "isArray": false
-        },
-        "comment": "if predicate is null",
-        "kind": "@throws",
-        "condition": "args[0]==null"
-      }
-    ],
-    "signature": "anyMatch(org.apache.commons.collections4.Predicate predicate)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "isEmpty",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "isEmpty()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "contains",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Object",
+          "isArray": false,
           "name": "Object",
-          "isArray": false
-        },
-        "name": "object"
+          "qualifiedName": "java.lang.Object"
+        }
       }
     ],
+    "returnTag": {
+      "comment": "a new FluentIterable containing the singleton",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "signature": "of(java.lang.Object singleton)",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": true,
+    "name": "of",
     "paramTags": [
       {
+        "comment": "the elements to be contained in the FluentIterable",
+        "condition": "",
+        "kind": "@param",
         "parameter": {
+          "name": "elements",
           "type": {
-            "qualifiedName": "java.lang.Object",
+            "componentType": {
+              "isArray": false,
+              "name": "Object",
+              "qualifiedName": "java.lang.Object"
+            },
+            "isArray": true,
+            "name": "Object[]",
+            "qualifiedName": "java.lang.Object[]"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "elements",
+        "type": {
+          "componentType": {
+            "isArray": false,
             "name": "Object",
-            "isArray": false
+            "qualifiedName": "java.lang.Object"
           },
-          "name": "object"
+          "isArray": true,
+          "name": "Object[]",
+          "qualifiedName": "java.lang.Object[]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a new FluentIterable containing the provided elements",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "signature": "of(java.lang.Object[] elements)",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "of",
+    "paramTags": [
+      {
+        "comment": "the iterable to wrap into a FluentIterable, may not be null",
+        "condition": "(args[0]==null) == false",
+        "kind": "@param",
+        "parameter": {
+          "name": "iterable",
+          "type": {
+            "isArray": false,
+            "name": "Iterable",
+            "qualifiedName": "java.lang.Iterable"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "iterable",
+        "type": {
+          "isArray": false,
+          "name": "Iterable",
+          "qualifiedName": "java.lang.Iterable"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a new FluentIterable wrapping the provided iterable",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "signature": "of(java.lang.Iterable iterable)",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": [
+      {
+        "comment": "if iterable is null",
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullPointerException",
+          "qualifiedName": "java.lang.NullPointerException"
         },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": true,
+    "name": "append",
+    "paramTags": [
+      {
+        "comment": "the elements to append to the iterable",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "elements",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "Object",
+              "qualifiedName": "java.lang.Object"
+            },
+            "isArray": true,
+            "name": "Object[]",
+            "qualifiedName": "java.lang.Object[]"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "elements",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "Object",
+            "qualifiedName": "java.lang.Object"
+          },
+          "isArray": true,
+          "name": "Object[]",
+          "qualifiedName": "java.lang.Object[]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a new iterable, combining this iterable with the elements",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "signature": "append(java.lang.Object[] elements)",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "append",
+    "paramTags": [
+      {
+        "comment": "the other iterable to combine, may not be null",
+        "condition": "(args[0]==null) == false",
+        "kind": "@param",
+        "parameter": {
+          "name": "other",
+          "type": {
+            "isArray": false,
+            "name": "Iterable",
+            "qualifiedName": "java.lang.Iterable"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "other",
+        "type": {
+          "isArray": false,
+          "name": "Iterable",
+          "qualifiedName": "java.lang.Iterable"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a new iterable, combining this iterable with other",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "signature": "append(java.lang.Iterable other)",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": [
+      {
+        "comment": "if other is null",
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullPointerException",
+          "qualifiedName": "java.lang.NullPointerException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "collate",
+    "paramTags": [
+      {
+        "comment": "the other iterable to collate, may not be null",
+        "condition": "(args[0]==null) == false",
+        "kind": "@param",
+        "parameter": {
+          "name": "other",
+          "type": {
+            "isArray": false,
+            "name": "Iterable",
+            "qualifiedName": "java.lang.Iterable"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "other",
+        "type": {
+          "isArray": false,
+          "name": "Iterable",
+          "qualifiedName": "java.lang.Iterable"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a new iterable, collating this iterable with the other in natural order",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "signature": "collate(java.lang.Iterable other)",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": [
+      {
+        "comment": "if other is null",
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullPointerException",
+          "qualifiedName": "java.lang.NullPointerException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "collate",
+    "paramTags": [
+      {
+        "comment": "the comparator to define an ordering, may be null, in which case natural ordering will be used",
+        "condition": "args[1]==null",
+        "kind": "@param",
+        "parameter": {
+          "name": "comparator",
+          "type": {
+            "isArray": false,
+            "name": "Comparator",
+            "qualifiedName": "java.util.Comparator"
+          }
+        }
+      },
+      {
+        "comment": "the other iterable to collate, may not be null",
+        "condition": "(args[0]==null) == false",
+        "kind": "@param",
+        "parameter": {
+          "name": "other",
+          "type": {
+            "isArray": false,
+            "name": "Iterable",
+            "qualifiedName": "java.lang.Iterable"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "other",
+        "type": {
+          "isArray": false,
+          "name": "Iterable",
+          "qualifiedName": "java.lang.Iterable"
+        }
+      },
+      {
+        "name": "comparator",
+        "type": {
+          "isArray": false,
+          "name": "Comparator",
+          "qualifiedName": "java.util.Comparator"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a new iterable, collating this iterable with the other in natural order",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "signature": "collate(java.lang.Iterable other,java.util.Comparator comparator)",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": [
+      {
+        "comment": "if other is null",
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullPointerException",
+          "qualifiedName": "java.lang.NullPointerException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "eval",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "a new iterable with the same contents as this iterable",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "signature": "eval()",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "filter",
+    "paramTags": [
+      {
+        "comment": "the predicate used to filter elements",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "predicate",
+          "type": {
+            "isArray": false,
+            "name": "Predicate",
+            "qualifiedName": "org.apache.commons.collections4.Predicate"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "predicate",
+        "type": {
+          "isArray": false,
+          "name": "Predicate",
+          "qualifiedName": "org.apache.commons.collections4.Predicate"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a new iterable, providing a filtered view of this iterable",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "signature": "filter(org.apache.commons.collections4.Predicate predicate)",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": [
+      {
+        "comment": "if predicate is null",
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullPointerException",
+          "qualifiedName": "java.lang.NullPointerException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "limit",
+    "paramTags": [
+      {
+        "comment": "the maximum number of elements",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "maxSize",
+          "type": {
+            "isArray": false,
+            "name": "long",
+            "qualifiedName": "long"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "maxSize",
+        "type": {
+          "isArray": false,
+          "name": "long",
+          "qualifiedName": "long"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a new iterable, providing a bounded view of this iterable",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "signature": "limit(long maxSize)",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": [
+      {
+        "comment": "if maxSize is negative",
+        "condition": "args[0]<0",
+        "exception": {
+          "isArray": false,
+          "name": "IllegalArgumentException",
+          "qualifiedName": "java.lang.IllegalArgumentException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "loop",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "a new iterable, providing a looping view of this iterable",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "signature": "loop()",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "reverse",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "a new iterable, providing a reversed view of this iterable",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "signature": "reverse()",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "skip",
+    "paramTags": [
+      {
+        "comment": "the number of elements to skip",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "elementsToSkip",
+          "type": {
+            "isArray": false,
+            "name": "long",
+            "qualifiedName": "long"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "elementsToSkip",
+        "type": {
+          "isArray": false,
+          "name": "long",
+          "qualifiedName": "long"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a new iterable, providing a view of this iterable by skipping the first N elements",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "signature": "skip(long elementsToSkip)",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": [
+      {
+        "comment": "if elementsToSkip is negative",
+        "condition": "args[0]<0",
+        "exception": {
+          "isArray": false,
+          "name": "IllegalArgumentException",
+          "qualifiedName": "java.lang.IllegalArgumentException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "transform",
+    "paramTags": [
+      {
+        "comment": "the transformer applied to each element",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "transformer",
+          "type": {
+            "isArray": false,
+            "name": "Transformer",
+            "qualifiedName": "org.apache.commons.collections4.Transformer"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "transformer",
+        "type": {
+          "isArray": false,
+          "name": "Transformer",
+          "qualifiedName": "org.apache.commons.collections4.Transformer"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a new iterable, providing a transformed view of this iterable",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "signature": "transform(org.apache.commons.collections4.Transformer transformer)",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": [
+      {
+        "comment": "if transformer is null",
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullPointerException",
+          "qualifiedName": "java.lang.NullPointerException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "unique",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "a new iterable, providing a unique view of this iterable",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "signature": "unique()",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "unmodifiable",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "a new iterable, providing an unmodifiable view of this iterable",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "signature": "unmodifiable()",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "zip",
+    "paramTags": [
+      {
+        "comment": "the other iterable to interleave, may not be null",
+        "condition": "(args[0]==null) == false",
+        "kind": "@param",
+        "parameter": {
+          "name": "other",
+          "type": {
+            "isArray": false,
+            "name": "Iterable",
+            "qualifiedName": "java.lang.Iterable"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "other",
+        "type": {
+          "isArray": false,
+          "name": "Iterable",
+          "qualifiedName": "java.lang.Iterable"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a new iterable, interleaving this iterable with others",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "signature": "zip(java.lang.Iterable other)",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": [
+      {
+        "comment": "if other is null",
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullPointerException",
+          "qualifiedName": "java.lang.NullPointerException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": true,
+    "name": "zip",
+    "paramTags": [
+      {
+        "comment": "the iterables to interleave, may not be null",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "others",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "Iterable",
+              "qualifiedName": "java.lang.Iterable"
+            },
+            "isArray": true,
+            "name": "Iterable[]",
+            "qualifiedName": "java.lang.Iterable[]"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "others",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "Iterable",
+            "qualifiedName": "java.lang.Iterable"
+          },
+          "isArray": true,
+          "name": "Iterable[]",
+          "qualifiedName": "java.lang.Iterable[]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a new iterable, interleaving this iterable with others",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "signature": "zip(java.lang.Iterable[] others)",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": [
+      {
+        "comment": "if either of the provided iterables is null",
+        "condition": "Arrays.asList(others).contains(null)",
+        "exception": {
+          "isArray": false,
+          "name": "NullPointerException",
+          "qualifiedName": "java.lang.NullPointerException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "iterator",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "Iterator",
+      "qualifiedName": "java.util.Iterator"
+    },
+    "signature": "iterator()",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "asEnumeration",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "an Enumeration over the elements of this iterable",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Enumeration",
+      "qualifiedName": "java.util.Enumeration"
+    },
+    "signature": "asEnumeration()",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "allMatch",
+    "paramTags": [
+      {
+        "comment": "the predicate to use, may not be null",
+        "condition": "(args[0]==null) == false",
+        "kind": "@param",
+        "parameter": {
+          "name": "predicate",
+          "type": {
+            "isArray": false,
+            "name": "Predicate",
+            "qualifiedName": "org.apache.commons.collections4.Predicate"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "predicate",
+        "type": {
+          "isArray": false,
+          "name": "Predicate",
+          "qualifiedName": "org.apache.commons.collections4.Predicate"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "true if all elements contained in this iterable match the predicate, false otherwise",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "allMatch(org.apache.commons.collections4.Predicate predicate)",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": [
+      {
+        "comment": "if predicate is null",
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullPointerException",
+          "qualifiedName": "java.lang.NullPointerException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "anyMatch",
+    "paramTags": [
+      {
+        "comment": "the predicate to use, may not be null",
+        "condition": "(args[0]==null) == false",
+        "kind": "@param",
+        "parameter": {
+          "name": "predicate",
+          "type": {
+            "isArray": false,
+            "name": "Predicate",
+            "qualifiedName": "org.apache.commons.collections4.Predicate"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "predicate",
+        "type": {
+          "isArray": false,
+          "name": "Predicate",
+          "qualifiedName": "org.apache.commons.collections4.Predicate"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "true if at least one element contained in this iterable matches the predicate, false otherwise",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "anyMatch(org.apache.commons.collections4.Predicate predicate)",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": [
+      {
+        "comment": "if predicate is null",
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullPointerException",
+          "qualifiedName": "java.lang.NullPointerException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "isEmpty",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "true if this iterable does not contain any elements, false otherwise",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "isEmpty()",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "contains",
+    "paramTags": [
+      {
         "comment": "the object to check",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "object",
+          "type": {
+            "isArray": false,
+            "name": "Object",
+            "qualifiedName": "java.lang.Object"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "contains(java.lang.Object object)"
+    "parameters": [
+      {
+        "name": "object",
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "true if the object is contained in this iterable, false otherwise",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "contains(java.lang.Object object)",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
+      "isArray": false,
       "name": "FluentIterable",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
     },
+    "isVarArgs": false,
     "name": "forEach",
-    "returnType": {
-      "qualifiedName": "void",
-      "name": "void",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.collections4.Closure",
-          "name": "Closure",
-          "isArray": false
-        },
-        "name": "closure"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.collections4.Closure",
-            "name": "Closure",
-            "isArray": false
-          },
-          "name": "closure"
-        },
         "comment": "the closure to apply to each element, may not be null",
+        "condition": "(args[0]==null) == false",
         "kind": "@param",
-        "condition": "(args[0]==null) == false"
+        "parameter": {
+          "name": "closure",
+          "type": {
+            "isArray": false,
+            "name": "Closure",
+            "qualifiedName": "org.apache.commons.collections4.Closure"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.NullPointerException",
-          "name": "NullPointerException",
-          "isArray": false
-        },
-        "comment": "if closure is null",
-        "kind": "@throws",
-        "condition": "args[0]==null"
-      }
-    ],
-    "signature": "forEach(org.apache.commons.collections4.Closure closure)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "get",
-    "returnType": {
-      "qualifiedName": "E",
-      "name": "E",
-      "isArray": false
-    },
     "parameters": [
       {
+        "name": "closure",
         "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "position"
+          "isArray": false,
+          "name": "Closure",
+          "qualifiedName": "org.apache.commons.collections4.Closure"
+        }
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "position"
-        },
-        "comment": "the position of the element to return",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.IndexOutOfBoundsException",
-          "name": "IndexOutOfBoundsException",
-          "isArray": false
-        },
-        "comment": "if the provided position is outside the valid range of this iterable: [0, size)",
-        "kind": "@throws",
-        "condition": "args[0]<0 || args[0]>target.size()"
-      }
-    ],
-    "signature": "get(int position)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "size",
     "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "size()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
-      "name": "FluentIterable",
-      "isArray": false
-    },
-    "name": "copyInto",
-    "returnType": {
-      "qualifiedName": "void",
+      "isArray": false,
       "name": "void",
-      "isArray": false
+      "qualifiedName": "void"
     },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.util.Collection",
-          "name": "Collection",
-          "isArray": false
-        },
-        "name": "collection"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.util.Collection",
-            "name": "Collection",
-            "isArray": false
-          },
-          "name": "collection"
-        },
-        "comment": "the collection to add the elements",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
+    "signature": "forEach(org.apache.commons.collections4.Closure closure)",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
     "throwsTags": [
       {
+        "comment": "if closure is null",
+        "condition": "args[0]==null",
         "exception": {
-          "qualifiedName": "java.lang.NullPointerException",
+          "isArray": false,
           "name": "NullPointerException",
-          "isArray": false
+          "qualifiedName": "java.lang.NullPointerException"
         },
-        "comment": "if collection is null",
-        "kind": "@throws",
-        "condition": "args[0]==null"
+        "kind": "@throws"
       }
-    ],
-    "signature": "copyInto(java.util.Collection collection)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
+      "isArray": false,
       "name": "FluentIterable",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
     },
-    "name": "toArray",
-    "returnType": {
-      "qualifiedName": "E[]",
-      "name": "E[]",
-      "isArray": true,
-      "componentType": {
-        "qualifiedName": "E",
-        "name": "E",
-        "isArray": false
-      }
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "java.lang.Class",
-          "name": "Class",
-          "isArray": false
-        },
-        "name": "arrayClass"
-      }
-    ],
+    "isVarArgs": false,
+    "name": "get",
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Class",
-            "name": "Class",
-            "isArray": false
-          },
-          "name": "arrayClass"
-        },
-        "comment": "the class of array to create",
+        "comment": "the position of the element to return",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "position",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "position",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the element",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "E",
+      "qualifiedName": "E"
+    },
+    "signature": "get(int position)",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
     "throwsTags": [
       {
+        "comment": "if the provided position is outside the valid range of this iterable: [0, size)",
+        "condition": "args[0]<0 || args[0]>target.size()",
         "exception": {
-          "qualifiedName": "java.lang.ArrayStoreException",
-          "name": "ArrayStoreException",
-          "isArray": false
+          "isArray": false,
+          "name": "IndexOutOfBoundsException",
+          "qualifiedName": "java.lang.IndexOutOfBoundsException"
         },
-        "comment": "if arrayClass is invalid",
-        "kind": "@throws",
-        "condition": ""
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "size",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the size of this iterable",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "size()",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
+    "name": "copyInto",
+    "paramTags": [
+      {
+        "comment": "the collection to add the elements",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "collection",
+          "type": {
+            "isArray": false,
+            "name": "Collection",
+            "qualifiedName": "java.util.Collection"
+          }
+        }
       }
     ],
-    "signature": "toArray(java.lang.Class arrayClass)"
+    "parameters": [
+      {
+        "name": "collection",
+        "type": {
+          "isArray": false,
+          "name": "Collection",
+          "qualifiedName": "java.util.Collection"
+        }
+      }
+    ],
+    "returnType": {
+      "isArray": false,
+      "name": "void",
+      "qualifiedName": "void"
+    },
+    "signature": "copyInto(java.util.Collection collection)",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": [
+      {
+        "comment": "if collection is null",
+        "condition": "args[0]==null",
+        "exception": {
+          "isArray": false,
+          "name": "NullPointerException",
+          "qualifiedName": "java.lang.NullPointerException"
+        },
+        "kind": "@throws"
+      }
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
+      "isArray": false,
       "name": "FluentIterable",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
     },
+    "isVarArgs": false,
+    "name": "toArray",
+    "paramTags": [
+      {
+        "comment": "the class of array to create",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "arrayClass",
+          "type": {
+            "isArray": false,
+            "name": "Class",
+            "qualifiedName": "java.lang.Class"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "arrayClass",
+        "type": {
+          "isArray": false,
+          "name": "Class",
+          "qualifiedName": "java.lang.Class"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "an array of the iterable contents",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "componentType": {
+        "isArray": false,
+        "name": "E",
+        "qualifiedName": "E"
+      },
+      "isArray": true,
+      "name": "E[]",
+      "qualifiedName": "E[]"
+    },
+    "signature": "toArray(java.lang.Class arrayClass)",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": [
+      {
+        "comment": "if arrayClass is invalid",
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "ArrayStoreException",
+          "qualifiedName": "java.lang.ArrayStoreException"
+        },
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FluentIterable",
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
+    },
+    "isVarArgs": false,
     "name": "toList",
-    "returnType": {
-      "qualifiedName": "java.util.List",
-      "name": "List",
-      "isArray": false
-    },
-    "parameters": [],
     "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "toList()"
+    "parameters": [],
+    "returnTag": {
+      "comment": "a list of the iterable contents",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "List",
+      "qualifiedName": "java.util.List"
+    },
+    "signature": "toList()",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.collections4.FluentIterable",
+      "isArray": false,
       "name": "FluentIterable",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.collections4.FluentIterable"
     },
-    "name": "toString",
-    "returnType": {
-      "qualifiedName": "java.lang.String",
-      "name": "String",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "toString()"
+    "name": "toString",
+    "paramTags": [],
+    "parameters": [],
+    "returnType": {
+      "isArray": false,
+      "name": "String",
+      "qualifiedName": "java.lang.String"
+    },
+    "signature": "toString()",
+    "targetClass": "org.apache.commons.collections4.FluentIterable",
+    "throwsTags": []
   }
 ]

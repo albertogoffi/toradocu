@@ -15,46 +15,46 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testArrayListMultimap() throws Exception {
-    test("com.google.common.collect.ArrayListMultimap", 1, 1, 1, 1);
+    test("com.google.common.collect.ArrayListMultimap", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
   public void testConcurrentHashMultiset() throws Exception {
-    test("com.google.common.collect.ConcurrentHashMultiset", 0.818, 0.692, 1, 1);
+    test("com.google.common.collect.ConcurrentHashMultiset", 0.818, 0.692, 1, 1, 1, 1);
   }
 
   @Test
   public void testDoubles() throws Exception {
-    test("com.google.common.primitives.Doubles", 0.75, 0.75, 1, 0);
+    test("com.google.common.primitives.Doubles", 0.75, 0.75, 1, 0, 1, 0);
   }
 
   @Test
   public void testFloats() throws Exception {
-    test("com.google.common.primitives.Floats", 0.75, 0.75, 1, 1);
+    test("com.google.common.primitives.Floats", 0.75, 0.75, 1, 1, 1, 1);
   }
 
   @Test
   public void testShorts() throws Exception {
-    test("com.google.common.primitives.Shorts", 0.75, 0.5, 1, 0);
+    test("com.google.common.primitives.Shorts", 0.75, 0.5, 1, 0, 1, 0);
   }
 
   @Test
   public void testAtomicDoubleArray() throws Exception {
-    test("com.google.common.util.concurrent.AtomicDoubleArray", 1, 1, 1, 1);
+    test("com.google.common.util.concurrent.AtomicDoubleArray", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
   public void testMoreObjects() throws Exception {
-    test("com.google.common.base.MoreObjects", 1, 1, 1, 1);
+    test("com.google.common.base.MoreObjects", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
   public void testStrings() throws Exception {
-    test("com.google.common.base.Strings", 1, 1, 1, 0);
+    test("com.google.common.base.Strings", 1, 1, 1, 0, 1, 0.333);
   }
 
   @Test
   public void testVerify() throws Exception {
-    test("com.google.common.base.Verify", 1, 1, 1, 1);
+    test("com.google.common.base.Verify", 1, 1, 1, 1, 1, 1);
   }
 }

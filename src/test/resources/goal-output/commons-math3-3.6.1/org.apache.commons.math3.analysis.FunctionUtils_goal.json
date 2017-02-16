@@ -1,1202 +1,1329 @@
 [
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
+      "isArray": false,
       "name": "FunctionUtils",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
     },
+    "isVarArgs": false,
     "name": "FunctionUtils",
-    "parameters": [],
     "paramTags": [],
+    "parameters": [],
+    "signature": "FunctionUtils()",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FunctionUtils",
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
+    },
+    "isVarArgs": true,
+    "name": "compose",
+    "paramTags": [
+      {
+        "comment": "List of functions.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "f",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "UnivariateFunction",
+              "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
+            },
+            "isArray": true,
+            "name": "UnivariateFunction[]",
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction[]"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "f",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "UnivariateFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
+          },
+          "isArray": true,
+          "name": "UnivariateFunction[]",
+          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction[]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the composite function.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "UnivariateFunction",
+      "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
+    },
+    "signature": "compose(org.apache.commons.math3.analysis.UnivariateFunction[] f)",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FunctionUtils",
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
+    },
+    "isVarArgs": true,
+    "name": "compose",
+    "paramTags": [
+      {
+        "comment": "List of functions.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "f",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "UnivariateDifferentiableFunction",
+              "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction"
+            },
+            "isArray": true,
+            "name": "UnivariateDifferentiableFunction[]",
+            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction[]"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "f",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "UnivariateDifferentiableFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction"
+          },
+          "isArray": true,
+          "name": "UnivariateDifferentiableFunction[]",
+          "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction[]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the composite function.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "UnivariateDifferentiableFunction",
+      "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction"
+    },
+    "signature": "compose(org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction[] f)",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FunctionUtils",
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
+    },
+    "isVarArgs": true,
+    "name": "compose",
+    "paramTags": [
+      {
+        "comment": "List of functions.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "f",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "DifferentiableUnivariateFunction",
+              "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction"
+            },
+            "isArray": true,
+            "name": "DifferentiableUnivariateFunction[]",
+            "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction[]"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "f",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "DifferentiableUnivariateFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction"
+          },
+          "isArray": true,
+          "name": "DifferentiableUnivariateFunction[]",
+          "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction[]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the composite function.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "DifferentiableUnivariateFunction",
+      "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction"
+    },
+    "signature": "compose(org.apache.commons.math3.analysis.DifferentiableUnivariateFunction[] f)",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FunctionUtils",
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
+    },
+    "isVarArgs": true,
+    "name": "add",
+    "paramTags": [
+      {
+        "comment": "List of functions.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "f",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "UnivariateFunction",
+              "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
+            },
+            "isArray": true,
+            "name": "UnivariateFunction[]",
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction[]"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "f",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "UnivariateFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
+          },
+          "isArray": true,
+          "name": "UnivariateFunction[]",
+          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction[]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a function that computes the sum of the functions.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "UnivariateFunction",
+      "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
+    },
+    "signature": "add(org.apache.commons.math3.analysis.UnivariateFunction[] f)",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FunctionUtils",
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
+    },
+    "isVarArgs": true,
+    "name": "add",
+    "paramTags": [
+      {
+        "comment": "List of functions.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "f",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "UnivariateDifferentiableFunction",
+              "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction"
+            },
+            "isArray": true,
+            "name": "UnivariateDifferentiableFunction[]",
+            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction[]"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "f",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "UnivariateDifferentiableFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction"
+          },
+          "isArray": true,
+          "name": "UnivariateDifferentiableFunction[]",
+          "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction[]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a function that computes the sum of the functions.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "UnivariateDifferentiableFunction",
+      "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction"
+    },
+    "signature": "add(org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction[] f)",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FunctionUtils",
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
+    },
+    "isVarArgs": true,
+    "name": "add",
+    "paramTags": [
+      {
+        "comment": "List of functions.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "f",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "DifferentiableUnivariateFunction",
+              "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction"
+            },
+            "isArray": true,
+            "name": "DifferentiableUnivariateFunction[]",
+            "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction[]"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "f",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "DifferentiableUnivariateFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction"
+          },
+          "isArray": true,
+          "name": "DifferentiableUnivariateFunction[]",
+          "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction[]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a function that computes the sum of the functions.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "DifferentiableUnivariateFunction",
+      "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction"
+    },
+    "signature": "add(org.apache.commons.math3.analysis.DifferentiableUnivariateFunction[] f)",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FunctionUtils",
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
+    },
+    "isVarArgs": true,
+    "name": "multiply",
+    "paramTags": [
+      {
+        "comment": "List of functions.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "f",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "UnivariateFunction",
+              "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
+            },
+            "isArray": true,
+            "name": "UnivariateFunction[]",
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction[]"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "f",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "UnivariateFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
+          },
+          "isArray": true,
+          "name": "UnivariateFunction[]",
+          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction[]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a function that computes the product of the functions.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "UnivariateFunction",
+      "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
+    },
+    "signature": "multiply(org.apache.commons.math3.analysis.UnivariateFunction[] f)",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FunctionUtils",
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
+    },
+    "isVarArgs": true,
+    "name": "multiply",
+    "paramTags": [
+      {
+        "comment": "List of functions.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "f",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "UnivariateDifferentiableFunction",
+              "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction"
+            },
+            "isArray": true,
+            "name": "UnivariateDifferentiableFunction[]",
+            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction[]"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "f",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "UnivariateDifferentiableFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction"
+          },
+          "isArray": true,
+          "name": "UnivariateDifferentiableFunction[]",
+          "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction[]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a function that computes the product of the functions.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "UnivariateDifferentiableFunction",
+      "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction"
+    },
+    "signature": "multiply(org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction[] f)",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FunctionUtils",
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
+    },
+    "isVarArgs": true,
+    "name": "multiply",
+    "paramTags": [
+      {
+        "comment": "List of functions.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "f",
+          "type": {
+            "componentType": {
+              "isArray": false,
+              "name": "DifferentiableUnivariateFunction",
+              "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction"
+            },
+            "isArray": true,
+            "name": "DifferentiableUnivariateFunction[]",
+            "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction[]"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "f",
+        "type": {
+          "componentType": {
+            "isArray": false,
+            "name": "DifferentiableUnivariateFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction"
+          },
+          "isArray": true,
+          "name": "DifferentiableUnivariateFunction[]",
+          "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction[]"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a function that computes the product of the functions.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "DifferentiableUnivariateFunction",
+      "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction"
+    },
+    "signature": "multiply(org.apache.commons.math3.analysis.DifferentiableUnivariateFunction[] f)",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FunctionUtils",
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
+    },
     "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "FunctionUtils()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
-      "name": "FunctionUtils",
-      "isArray": false
-    },
-    "name": "compose",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
-      "name": "UnivariateFunction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction[]",
-          "name": "UnivariateFunction[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
-            "name": "UnivariateFunction",
-            "isArray": false
-          }
-        },
-        "name": "f"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction[]",
-            "name": "UnivariateFunction[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
-              "name": "UnivariateFunction",
-              "isArray": false
-            }
-          },
-          "name": "f"
-        },
-        "comment": "List of functions.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": true,
-    "throwsTags": [],
-    "signature": "compose(org.apache.commons.math3.analysis.UnivariateFunction[] f)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
-      "name": "FunctionUtils",
-      "isArray": false
-    },
-    "name": "compose",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction",
-      "name": "UnivariateDifferentiableFunction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction[]",
-          "name": "UnivariateDifferentiableFunction[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction",
-            "name": "UnivariateDifferentiableFunction",
-            "isArray": false
-          }
-        },
-        "name": "f"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction[]",
-            "name": "UnivariateDifferentiableFunction[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction",
-              "name": "UnivariateDifferentiableFunction",
-              "isArray": false
-            }
-          },
-          "name": "f"
-        },
-        "comment": "List of functions.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": true,
-    "throwsTags": [],
-    "signature": "compose(org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction[] f)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
-      "name": "FunctionUtils",
-      "isArray": false
-    },
-    "name": "compose",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction",
-      "name": "DifferentiableUnivariateFunction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction[]",
-          "name": "DifferentiableUnivariateFunction[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction",
-            "name": "DifferentiableUnivariateFunction",
-            "isArray": false
-          }
-        },
-        "name": "f"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction[]",
-            "name": "DifferentiableUnivariateFunction[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction",
-              "name": "DifferentiableUnivariateFunction",
-              "isArray": false
-            }
-          },
-          "name": "f"
-        },
-        "comment": "List of functions.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": true,
-    "throwsTags": [],
-    "signature": "compose(org.apache.commons.math3.analysis.DifferentiableUnivariateFunction[] f)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
-      "name": "FunctionUtils",
-      "isArray": false
-    },
-    "name": "add",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
-      "name": "UnivariateFunction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction[]",
-          "name": "UnivariateFunction[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
-            "name": "UnivariateFunction",
-            "isArray": false
-          }
-        },
-        "name": "f"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction[]",
-            "name": "UnivariateFunction[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
-              "name": "UnivariateFunction",
-              "isArray": false
-            }
-          },
-          "name": "f"
-        },
-        "comment": "List of functions.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": true,
-    "throwsTags": [],
-    "signature": "add(org.apache.commons.math3.analysis.UnivariateFunction[] f)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
-      "name": "FunctionUtils",
-      "isArray": false
-    },
-    "name": "add",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction",
-      "name": "UnivariateDifferentiableFunction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction[]",
-          "name": "UnivariateDifferentiableFunction[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction",
-            "name": "UnivariateDifferentiableFunction",
-            "isArray": false
-          }
-        },
-        "name": "f"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction[]",
-            "name": "UnivariateDifferentiableFunction[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction",
-              "name": "UnivariateDifferentiableFunction",
-              "isArray": false
-            }
-          },
-          "name": "f"
-        },
-        "comment": "List of functions.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": true,
-    "throwsTags": [],
-    "signature": "add(org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction[] f)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
-      "name": "FunctionUtils",
-      "isArray": false
-    },
-    "name": "add",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction",
-      "name": "DifferentiableUnivariateFunction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction[]",
-          "name": "DifferentiableUnivariateFunction[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction",
-            "name": "DifferentiableUnivariateFunction",
-            "isArray": false
-          }
-        },
-        "name": "f"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction[]",
-            "name": "DifferentiableUnivariateFunction[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction",
-              "name": "DifferentiableUnivariateFunction",
-              "isArray": false
-            }
-          },
-          "name": "f"
-        },
-        "comment": "List of functions.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": true,
-    "throwsTags": [],
-    "signature": "add(org.apache.commons.math3.analysis.DifferentiableUnivariateFunction[] f)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
-      "name": "FunctionUtils",
-      "isArray": false
-    },
-    "name": "multiply",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
-      "name": "UnivariateFunction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction[]",
-          "name": "UnivariateFunction[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
-            "name": "UnivariateFunction",
-            "isArray": false
-          }
-        },
-        "name": "f"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction[]",
-            "name": "UnivariateFunction[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
-              "name": "UnivariateFunction",
-              "isArray": false
-            }
-          },
-          "name": "f"
-        },
-        "comment": "List of functions.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": true,
-    "throwsTags": [],
-    "signature": "multiply(org.apache.commons.math3.analysis.UnivariateFunction[] f)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
-      "name": "FunctionUtils",
-      "isArray": false
-    },
-    "name": "multiply",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction",
-      "name": "UnivariateDifferentiableFunction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction[]",
-          "name": "UnivariateDifferentiableFunction[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction",
-            "name": "UnivariateDifferentiableFunction",
-            "isArray": false
-          }
-        },
-        "name": "f"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction[]",
-            "name": "UnivariateDifferentiableFunction[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction",
-              "name": "UnivariateDifferentiableFunction",
-              "isArray": false
-            }
-          },
-          "name": "f"
-        },
-        "comment": "List of functions.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": true,
-    "throwsTags": [],
-    "signature": "multiply(org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction[] f)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
-      "name": "FunctionUtils",
-      "isArray": false
-    },
-    "name": "multiply",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction",
-      "name": "DifferentiableUnivariateFunction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction[]",
-          "name": "DifferentiableUnivariateFunction[]",
-          "isArray": true,
-          "componentType": {
-            "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction",
-            "name": "DifferentiableUnivariateFunction",
-            "isArray": false
-          }
-        },
-        "name": "f"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction[]",
-            "name": "DifferentiableUnivariateFunction[]",
-            "isArray": true,
-            "componentType": {
-              "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction",
-              "name": "DifferentiableUnivariateFunction",
-              "isArray": false
-            }
-          },
-          "name": "f"
-        },
-        "comment": "List of functions.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": true,
-    "throwsTags": [],
-    "signature": "multiply(org.apache.commons.math3.analysis.DifferentiableUnivariateFunction[] f)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
-      "name": "FunctionUtils",
-      "isArray": false
-    },
     "name": "combine",
+    "paramTags": [
+      {
+        "comment": "Combiner function.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "combiner",
+          "type": {
+            "isArray": false,
+            "name": "BivariateFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.BivariateFunction"
+          }
+        }
+      },
+      {
+        "comment": "Function.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "f",
+          "type": {
+            "isArray": false,
+            "name": "UnivariateFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
+          }
+        }
+      },
+      {
+        "comment": "Function.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "g",
+          "type": {
+            "isArray": false,
+            "name": "UnivariateFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "combiner",
+        "type": {
+          "isArray": false,
+          "name": "BivariateFunction",
+          "qualifiedName": "org.apache.commons.math3.analysis.BivariateFunction"
+        }
+      },
+      {
+        "name": "f",
+        "type": {
+          "isArray": false,
+          "name": "UnivariateFunction",
+          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
+        }
+      },
+      {
+        "name": "g",
+        "type": {
+          "isArray": false,
+          "name": "UnivariateFunction",
+          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the composite function.",
+      "condition": "",
+      "kind": "RETURN"
+    },
     "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+      "isArray": false,
       "name": "UnivariateFunction",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
     },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.BivariateFunction",
-          "name": "BivariateFunction",
-          "isArray": false
-        },
-        "name": "combiner"
-      },
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
-          "name": "UnivariateFunction",
-          "isArray": false
-        },
-        "name": "f"
-      },
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
-          "name": "UnivariateFunction",
-          "isArray": false
-        },
-        "name": "g"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.BivariateFunction",
-            "name": "BivariateFunction",
-            "isArray": false
-          },
-          "name": "combiner"
-        },
-        "comment": "Combiner function.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
-            "name": "UnivariateFunction",
-            "isArray": false
-          },
-          "name": "f"
-        },
-        "comment": "Function.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
-            "name": "UnivariateFunction",
-            "isArray": false
-          },
-          "name": "g"
-        },
-        "comment": "Function.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "combine(org.apache.commons.math3.analysis.BivariateFunction combiner,org.apache.commons.math3.analysis.UnivariateFunction f,org.apache.commons.math3.analysis.UnivariateFunction g)"
+    "signature": "combine(org.apache.commons.math3.analysis.BivariateFunction combiner,org.apache.commons.math3.analysis.UnivariateFunction f,org.apache.commons.math3.analysis.UnivariateFunction g)",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
+      "isArray": false,
       "name": "FunctionUtils",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
     },
+    "isVarArgs": false,
     "name": "collector",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.MultivariateFunction",
-      "name": "MultivariateFunction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.BivariateFunction",
-          "name": "BivariateFunction",
-          "isArray": false
-        },
-        "name": "combiner"
-      },
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
-          "name": "UnivariateFunction",
-          "isArray": false
-        },
-        "name": "f"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "initialValue"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.BivariateFunction",
-            "name": "BivariateFunction",
-            "isArray": false
-          },
-          "name": "combiner"
-        },
         "comment": "Combiner function.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "combiner",
+          "type": {
+            "isArray": false,
+            "name": "BivariateFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.BivariateFunction"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
-            "name": "UnivariateFunction",
-            "isArray": false
-          },
-          "name": "f"
-        },
         "comment": "Function.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "f",
+          "type": {
+            "isArray": false,
+            "name": "UnivariateFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "initialValue"
-        },
         "comment": "Initial value.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "initialValue",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "collector(org.apache.commons.math3.analysis.BivariateFunction combiner,org.apache.commons.math3.analysis.UnivariateFunction f,double initialValue)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
-      "name": "FunctionUtils",
-      "isArray": false
-    },
-    "name": "collector",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.MultivariateFunction",
-      "name": "MultivariateFunction",
-      "isArray": false
-    },
     "parameters": [
       {
+        "name": "combiner",
         "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.BivariateFunction",
+          "isArray": false,
           "name": "BivariateFunction",
-          "isArray": false
-        },
-        "name": "combiner"
+          "qualifiedName": "org.apache.commons.math3.analysis.BivariateFunction"
+        }
       },
       {
+        "name": "f",
         "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "initialValue"
-      }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.BivariateFunction",
-            "name": "BivariateFunction",
-            "isArray": false
-          },
-          "name": "combiner"
-        },
-        "comment": "Combiner function.",
-        "kind": "@param",
-        "condition": ""
+          "isArray": false,
+          "name": "UnivariateFunction",
+          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "initialValue"
-        },
-        "comment": "Initial value.",
-        "kind": "@param",
-        "condition": ""
+        "name": "initialValue",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "collector(org.apache.commons.math3.analysis.BivariateFunction combiner,double initialValue)"
+    "returnTag": {
+      "comment": "a collector function.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "MultivariateFunction",
+      "qualifiedName": "org.apache.commons.math3.analysis.MultivariateFunction"
+    },
+    "signature": "collector(org.apache.commons.math3.analysis.BivariateFunction combiner,org.apache.commons.math3.analysis.UnivariateFunction f,double initialValue)",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
+      "isArray": false,
       "name": "FunctionUtils",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
     },
+    "isVarArgs": false,
+    "name": "collector",
+    "paramTags": [
+      {
+        "comment": "Combiner function.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "combiner",
+          "type": {
+            "isArray": false,
+            "name": "BivariateFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.BivariateFunction"
+          }
+        }
+      },
+      {
+        "comment": "Initial value.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "initialValue",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "combiner",
+        "type": {
+          "isArray": false,
+          "name": "BivariateFunction",
+          "qualifiedName": "org.apache.commons.math3.analysis.BivariateFunction"
+        }
+      },
+      {
+        "name": "initialValue",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "a collector function.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "MultivariateFunction",
+      "qualifiedName": "org.apache.commons.math3.analysis.MultivariateFunction"
+    },
+    "signature": "collector(org.apache.commons.math3.analysis.BivariateFunction combiner,double initialValue)",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FunctionUtils",
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
+    },
+    "isVarArgs": false,
     "name": "fix1stArgument",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
-      "name": "UnivariateFunction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.BivariateFunction",
-          "name": "BivariateFunction",
-          "isArray": false
-        },
-        "name": "f"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "fixed"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.BivariateFunction",
-            "name": "BivariateFunction",
-            "isArray": false
-          },
-          "name": "f"
-        },
         "comment": "Binary function.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "f",
+          "type": {
+            "isArray": false,
+            "name": "BivariateFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.BivariateFunction"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "fixed"
-        },
         "comment": "value to which the first argument of f is set.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "fixed",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "fix1stArgument(org.apache.commons.math3.analysis.BivariateFunction f,double fixed)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
-      "name": "FunctionUtils",
-      "isArray": false
-    },
-    "name": "fix2ndArgument",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
-      "name": "UnivariateFunction",
-      "isArray": false
-    },
     "parameters": [
       {
+        "name": "f",
         "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.BivariateFunction",
+          "isArray": false,
           "name": "BivariateFunction",
-          "isArray": false
-        },
-        "name": "f"
+          "qualifiedName": "org.apache.commons.math3.analysis.BivariateFunction"
+        }
       },
       {
+        "name": "fixed",
         "type": {
-          "qualifiedName": "double",
+          "isArray": false,
           "name": "double",
-          "isArray": false
-        },
-        "name": "fixed"
+          "qualifiedName": "double"
+        }
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.BivariateFunction",
-            "name": "BivariateFunction",
-            "isArray": false
-          },
-          "name": "f"
-        },
-        "comment": "Binary function.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "fixed"
-        },
-        "comment": "value to which the second argument of f is set.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "fix2ndArgument(org.apache.commons.math3.analysis.BivariateFunction f,double fixed)"
+    "returnTag": {
+      "comment": "the unary function h(x) = f(fixed, x)",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "UnivariateFunction",
+      "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
+    },
+    "signature": "fix1stArgument(org.apache.commons.math3.analysis.BivariateFunction f,double fixed)",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
+      "isArray": false,
       "name": "FunctionUtils",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
     },
-    "name": "sample",
-    "returnType": {
-      "qualifiedName": "double[]",
-      "name": "double[]",
-      "isArray": true,
-      "componentType": {
-        "qualifiedName": "double",
-        "name": "double",
-        "isArray": false
-      }
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
-          "name": "UnivariateFunction",
-          "isArray": false
-        },
-        "name": "f"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "min"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "max"
-      },
-      {
-        "type": {
-          "qualifiedName": "int",
-          "name": "int",
-          "isArray": false
-        },
-        "name": "n"
-      }
-    ],
+    "isVarArgs": false,
+    "name": "fix2ndArgument",
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
-            "name": "UnivariateFunction",
-            "isArray": false
-          },
-          "name": "f"
-        },
-        "comment": "Function to be sampled",
+        "comment": "Binary function.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "f",
+          "type": {
+            "isArray": false,
+            "name": "BivariateFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.BivariateFunction"
+          }
+        }
       },
       {
+        "comment": "value to which the second argument of f is set.",
+        "condition": "",
+        "kind": "@param",
         "parameter": {
+          "name": "fixed",
           "type": {
-            "qualifiedName": "double",
+            "isArray": false,
             "name": "double",
-            "isArray": false
-          },
-          "name": "min"
-        },
-        "comment": "Lower bound of the interval (included).",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "max"
-        },
-        "comment": "Upper bound of the interval (excluded).",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "int",
-            "name": "int",
-            "isArray": false
-          },
-          "name": "n"
-        },
-        "comment": "Number of sample points.",
-        "kind": "@param",
-        "condition": ""
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
+    "parameters": [
+      {
+        "name": "f",
+        "type": {
+          "isArray": false,
+          "name": "BivariateFunction",
+          "qualifiedName": "org.apache.commons.math3.analysis.BivariateFunction"
+        }
+      },
+      {
+        "name": "fixed",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the unary function h(x) = f(x, fixed)",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "UnivariateFunction",
+      "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
+    },
+    "signature": "fix2ndArgument(org.apache.commons.math3.analysis.BivariateFunction f,double fixed)",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "FunctionUtils",
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
+    },
     "isVarArgs": false,
+    "name": "sample",
+    "paramTags": [
+      {
+        "comment": "Function to be sampled",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "f",
+          "type": {
+            "isArray": false,
+            "name": "UnivariateFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
+          }
+        }
+      },
+      {
+        "comment": "Lower bound of the interval (included).",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "min",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
+      },
+      {
+        "comment": "Upper bound of the interval (excluded).",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "max",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
+      },
+      {
+        "comment": "Number of sample points.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "n",
+          "type": {
+            "isArray": false,
+            "name": "int",
+            "qualifiedName": "int"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "f",
+        "type": {
+          "isArray": false,
+          "name": "UnivariateFunction",
+          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
+        }
+      },
+      {
+        "name": "min",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "max",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "n",
+        "type": {
+          "isArray": false,
+          "name": "int",
+          "qualifiedName": "int"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the array of samples.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "componentType": {
+        "isArray": false,
+        "name": "double",
+        "qualifiedName": "double"
+      },
+      "isArray": true,
+      "name": "double[]",
+      "qualifiedName": "double[]"
+    },
+    "signature": "sample(org.apache.commons.math3.analysis.UnivariateFunction f,double min,double max,int n)",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException",
-          "name": "NumberIsTooLargeException",
-          "isArray": false
-        },
         "comment": "if the lower bound min is greater than, or equal to the upper bound max.",
-        "kind": "@throws",
-        "condition": "args[1]<=args[2]"
+        "condition": "args[1]<=args[2]",
+        "exception": {
+          "isArray": false,
+          "name": "NumberIsTooLargeException",
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException"
+        },
+        "kind": "@throws"
       },
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
-          "name": "NotStrictlyPositiveException",
-          "isArray": false
-        },
         "comment": "if the number of sample points n is negative.",
-        "kind": "@throws",
-        "condition": "args[3]<0"
+        "condition": "args[3]<0",
+        "exception": {
+          "isArray": false,
+          "name": "NotStrictlyPositiveException",
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
+        },
+        "kind": "@throws"
       }
-    ],
-    "signature": "sample(org.apache.commons.math3.analysis.UnivariateFunction f,double min,double max,int n)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
+      "isArray": false,
       "name": "FunctionUtils",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
     },
+    "isVarArgs": false,
     "name": "toDifferentiableUnivariateFunction",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction",
-      "name": "DifferentiableUnivariateFunction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction",
-          "name": "UnivariateDifferentiableFunction",
-          "isArray": false
-        },
-        "name": "f"
-      }
-    ],
     "paramTags": [
       {
+        "comment": "function to convert",
+        "condition": "",
+        "kind": "@param",
         "parameter": {
+          "name": "f",
           "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction",
+            "isArray": false,
             "name": "UnivariateDifferentiableFunction",
-            "isArray": false
-          },
-          "name": "f"
-        },
-        "comment": "function to convert",
-        "kind": "@param",
-        "condition": ""
+            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "toDifferentiableUnivariateFunction(org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction f)"
+    "parameters": [
+      {
+        "name": "f",
+        "type": {
+          "isArray": false,
+          "name": "UnivariateDifferentiableFunction",
+          "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "converted function",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "DifferentiableUnivariateFunction",
+      "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction"
+    },
+    "signature": "toDifferentiableUnivariateFunction(org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction f)",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
+      "isArray": false,
       "name": "FunctionUtils",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
     },
+    "isVarArgs": false,
     "name": "toUnivariateDifferential",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction",
-      "name": "UnivariateDifferentiableFunction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction",
-          "name": "DifferentiableUnivariateFunction",
-          "isArray": false
-        },
-        "name": "f"
-      }
-    ],
     "paramTags": [
       {
+        "comment": "function to convert",
+        "condition": "",
+        "kind": "@param",
         "parameter": {
+          "name": "f",
           "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction",
+            "isArray": false,
             "name": "DifferentiableUnivariateFunction",
-            "isArray": false
-          },
-          "name": "f"
-        },
-        "comment": "function to convert",
-        "kind": "@param",
-        "condition": ""
+            "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "toUnivariateDifferential(org.apache.commons.math3.analysis.DifferentiableUnivariateFunction f)"
+    "parameters": [
+      {
+        "name": "f",
+        "type": {
+          "isArray": false,
+          "name": "DifferentiableUnivariateFunction",
+          "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableUnivariateFunction"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "converted function",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "UnivariateDifferentiableFunction",
+      "qualifiedName": "org.apache.commons.math3.analysis.differentiation.UnivariateDifferentiableFunction"
+    },
+    "signature": "toUnivariateDifferential(org.apache.commons.math3.analysis.DifferentiableUnivariateFunction f)",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
+      "isArray": false,
       "name": "FunctionUtils",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
     },
+    "isVarArgs": false,
     "name": "toDifferentiableMultivariateFunction",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableMultivariateFunction",
-      "name": "DifferentiableMultivariateFunction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.differentiation.MultivariateDifferentiableFunction",
-          "name": "MultivariateDifferentiableFunction",
-          "isArray": false
-        },
-        "name": "f"
-      }
-    ],
     "paramTags": [
       {
+        "comment": "function to convert",
+        "condition": "",
+        "kind": "@param",
         "parameter": {
+          "name": "f",
           "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.MultivariateDifferentiableFunction",
+            "isArray": false,
             "name": "MultivariateDifferentiableFunction",
-            "isArray": false
-          },
-          "name": "f"
-        },
-        "comment": "function to convert",
-        "kind": "@param",
-        "condition": ""
+            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.MultivariateDifferentiableFunction"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "toDifferentiableMultivariateFunction(org.apache.commons.math3.analysis.differentiation.MultivariateDifferentiableFunction f)"
+    "parameters": [
+      {
+        "name": "f",
+        "type": {
+          "isArray": false,
+          "name": "MultivariateDifferentiableFunction",
+          "qualifiedName": "org.apache.commons.math3.analysis.differentiation.MultivariateDifferentiableFunction"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "converted function",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "DifferentiableMultivariateFunction",
+      "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableMultivariateFunction"
+    },
+    "signature": "toDifferentiableMultivariateFunction(org.apache.commons.math3.analysis.differentiation.MultivariateDifferentiableFunction f)",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
+      "isArray": false,
       "name": "FunctionUtils",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
     },
+    "isVarArgs": false,
     "name": "toMultivariateDifferentiableFunction",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.differentiation.MultivariateDifferentiableFunction",
-      "name": "MultivariateDifferentiableFunction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableMultivariateFunction",
-          "name": "DifferentiableMultivariateFunction",
-          "isArray": false
-        },
-        "name": "f"
-      }
-    ],
     "paramTags": [
       {
+        "comment": "function to convert",
+        "condition": "",
+        "kind": "@param",
         "parameter": {
+          "name": "f",
           "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableMultivariateFunction",
+            "isArray": false,
             "name": "DifferentiableMultivariateFunction",
-            "isArray": false
-          },
-          "name": "f"
-        },
-        "comment": "function to convert",
-        "kind": "@param",
-        "condition": ""
+            "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableMultivariateFunction"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "toMultivariateDifferentiableFunction(org.apache.commons.math3.analysis.DifferentiableMultivariateFunction f)"
+    "parameters": [
+      {
+        "name": "f",
+        "type": {
+          "isArray": false,
+          "name": "DifferentiableMultivariateFunction",
+          "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableMultivariateFunction"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "converted function",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "MultivariateDifferentiableFunction",
+      "qualifiedName": "org.apache.commons.math3.analysis.differentiation.MultivariateDifferentiableFunction"
+    },
+    "signature": "toMultivariateDifferentiableFunction(org.apache.commons.math3.analysis.DifferentiableMultivariateFunction f)",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
+      "isArray": false,
       "name": "FunctionUtils",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
     },
+    "isVarArgs": false,
     "name": "toDifferentiableMultivariateVectorFunction",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableMultivariateVectorFunction",
-      "name": "DifferentiableMultivariateVectorFunction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.differentiation.MultivariateDifferentiableVectorFunction",
-          "name": "MultivariateDifferentiableVectorFunction",
-          "isArray": false
-        },
-        "name": "f"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.MultivariateDifferentiableVectorFunction",
-            "name": "MultivariateDifferentiableVectorFunction",
-            "isArray": false
-          },
-          "name": "f"
-        },
         "comment": "function to convert",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "f",
+          "type": {
+            "isArray": false,
+            "name": "MultivariateDifferentiableVectorFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.MultivariateDifferentiableVectorFunction"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "toDifferentiableMultivariateVectorFunction(org.apache.commons.math3.analysis.differentiation.MultivariateDifferentiableVectorFunction f)"
+    "parameters": [
+      {
+        "name": "f",
+        "type": {
+          "isArray": false,
+          "name": "MultivariateDifferentiableVectorFunction",
+          "qualifiedName": "org.apache.commons.math3.analysis.differentiation.MultivariateDifferentiableVectorFunction"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "converted function",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "DifferentiableMultivariateVectorFunction",
+      "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableMultivariateVectorFunction"
+    },
+    "signature": "toDifferentiableMultivariateVectorFunction(org.apache.commons.math3.analysis.differentiation.MultivariateDifferentiableVectorFunction f)",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils",
+      "isArray": false,
       "name": "FunctionUtils",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.FunctionUtils"
     },
+    "isVarArgs": false,
     "name": "toMultivariateDifferentiableVectorFunction",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.differentiation.MultivariateDifferentiableVectorFunction",
-      "name": "MultivariateDifferentiableVectorFunction",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableMultivariateVectorFunction",
-          "name": "DifferentiableMultivariateVectorFunction",
-          "isArray": false
-        },
-        "name": "f"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableMultivariateVectorFunction",
-            "name": "DifferentiableMultivariateVectorFunction",
-            "isArray": false
-          },
-          "name": "f"
-        },
         "comment": "function to convert",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "f",
+          "type": {
+            "isArray": false,
+            "name": "DifferentiableMultivariateVectorFunction",
+            "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableMultivariateVectorFunction"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "toMultivariateDifferentiableVectorFunction(org.apache.commons.math3.analysis.DifferentiableMultivariateVectorFunction f)"
+    "parameters": [
+      {
+        "name": "f",
+        "type": {
+          "isArray": false,
+          "name": "DifferentiableMultivariateVectorFunction",
+          "qualifiedName": "org.apache.commons.math3.analysis.DifferentiableMultivariateVectorFunction"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "converted function",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "MultivariateDifferentiableVectorFunction",
+      "qualifiedName": "org.apache.commons.math3.analysis.differentiation.MultivariateDifferentiableVectorFunction"
+    },
+    "signature": "toMultivariateDifferentiableVectorFunction(org.apache.commons.math3.analysis.DifferentiableMultivariateVectorFunction f)",
+    "targetClass": "org.apache.commons.math3.analysis.FunctionUtils",
+    "throwsTags": []
   }
 ]

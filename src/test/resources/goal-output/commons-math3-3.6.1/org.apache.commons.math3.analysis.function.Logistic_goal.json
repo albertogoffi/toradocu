@@ -1,422 +1,447 @@
 [
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.function.Logistic",
+      "isArray": false,
       "name": "Logistic",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.function.Logistic"
     },
+    "isVarArgs": false,
     "name": "Logistic",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "k"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "m"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "b"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "q"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "a"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "n"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "k"
-        },
-        "comment": "If b > 0, value of the function for x going towards +∞. If b < 0, value of the function for x going towards -∞.",
+        "comment": "If b > 0, value of the function for x going towards +\u221e. If b < 0, value of the function for x going towards -\u221e.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "k",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "m"
-        },
         "comment": "Abscissa of maximum growth.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "m",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "b"
-        },
         "comment": "Growth rate.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "b",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "q"
-        },
         "comment": "Parameter that affects the position of the curve along the ordinate axis.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "q",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "a"
-        },
-        "comment": "If b > 0, value of the function for x going towards -∞. If b < 0, value of the function for x going towards +∞.",
+        "comment": "If b > 0, value of the function for x going towards -\u221e. If b < 0, value of the function for x going towards +\u221e.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "a",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "n"
-        },
         "comment": "Parameter that affects near which asymptote the maximum growth occurs.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "n",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "k",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "m",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "b",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "q",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "a",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "n",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      }
+    ],
+    "signature": "Logistic(double k,double m,double b,double q,double a,double n)",
+    "targetClass": "org.apache.commons.math3.analysis.function.Logistic",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
-          "name": "NotStrictlyPositiveException",
-          "isArray": false
-        },
         "comment": "if n <= 0.",
-        "kind": "@throws",
-        "condition": "args[5]<=0"
+        "condition": "args[5]<=0",
+        "exception": {
+          "isArray": false,
+          "name": "NotStrictlyPositiveException",
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
+        },
+        "kind": "@throws"
       }
-    ],
-    "signature": "Logistic(double k,double m,double b,double q,double a,double n)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.function.Logistic",
+      "isArray": false,
       "name": "Logistic",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.function.Logistic"
     },
+    "isVarArgs": false,
     "name": "value",
-    "returnType": {
-      "qualifiedName": "double",
-      "name": "double",
-      "isArray": false
-    },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "x"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "x"
-        },
         "comment": "Point at which the function value should be computed.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "x",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [
+    "parameters": [
       {
-        "exception": {
-          "qualifiedName": "java.lang.IllegalArgumentException",
-          "name": "IllegalArgumentException",
-          "isArray": false
-        },
-        "comment": "when the activated method itself can ascertain that a precondition, specified in the API expressed at the level of the activated method, has been violated. When Commons Math throws an IllegalArgumentException, it is usually the consequence of checking the actual parameters passed to the method.",
-        "kind": "@throws",
-        "condition": ""
+        "name": "x",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
       }
     ],
-    "signature": "value(double x)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.function.Logistic",
-      "name": "Logistic",
-      "isArray": false
+    "returnTag": {
+      "comment": "the value of the function.",
+      "condition": "",
+      "kind": "RETURN"
     },
-    "name": "derivative",
     "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
-      "name": "UnivariateFunction",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "derivative()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.function.Logistic",
-      "name": "Logistic",
-      "isArray": false
-    },
-    "name": "value",
-    "returnType": {
-      "qualifiedName": "double",
+      "isArray": false,
       "name": "double",
-      "isArray": false
+      "qualifiedName": "double"
     },
-    "parameters": [
+    "signature": "value(double x)",
+    "targetClass": "org.apache.commons.math3.analysis.function.Logistic",
+    "throwsTags": [
       {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
+        "comment": "when the activated method itself can ascertain that a precondition, specified in the API expressed at the level of the activated method, has been violated. When Commons Math throws an IllegalArgumentException, it is usually the consequence of checking the actual parameters passed to the method.",
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "IllegalArgumentException",
+          "qualifiedName": "java.lang.IllegalArgumentException"
         },
-        "name": "mMinusX"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "k"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "b"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "q"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "a"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "oneOverN"
+        "kind": "@throws"
       }
-    ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "mMinusX"
-        },
-        "comment": "m - x.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "k"
-        },
-        "comment": "k.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "b"
-        },
-        "comment": "b.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "q"
-        },
-        "comment": "q.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "a"
-        },
-        "comment": "a.",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "oneOverN"
-        },
-        "comment": "1 / n.",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "value(double mMinusX,double k,double b,double q,double a,double oneOverN)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.analysis.function.Logistic",
+      "isArray": false,
       "name": "Logistic",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.analysis.function.Logistic"
     },
-    "name": "value",
+    "isVarArgs": false,
+    "name": "derivative",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "the derivative function",
+      "condition": "",
+      "kind": "RETURN"
+    },
     "returnType": {
-      "qualifiedName": "org.apache.commons.math3.analysis.differentiation.DerivativeStructure",
-      "name": "DerivativeStructure",
-      "isArray": false
+      "isArray": false,
+      "name": "UnivariateFunction",
+      "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
     },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.analysis.differentiation.DerivativeStructure",
-          "name": "DerivativeStructure",
-          "isArray": false
-        },
-        "name": "t"
-      }
-    ],
+    "signature": "derivative()",
+    "targetClass": "org.apache.commons.math3.analysis.function.Logistic",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Logistic",
+      "qualifiedName": "org.apache.commons.math3.analysis.function.Logistic"
+    },
+    "isVarArgs": false,
+    "name": "value",
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.DerivativeStructure",
-            "name": "DerivativeStructure",
-            "isArray": false
-          },
-          "name": "t"
-        },
-        "comment": "function input value",
+        "comment": "m - x.",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "mMinusX",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
+      },
+      {
+        "comment": "k.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "k",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
+      },
+      {
+        "comment": "b.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "b",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
+      },
+      {
+        "comment": "q.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "q",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
+      },
+      {
+        "comment": "a.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "a",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
+      },
+      {
+        "comment": "1 / n.",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "oneOverN",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
+    "parameters": [
+      {
+        "name": "mMinusX",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "k",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "b",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "q",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "a",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "oneOverN",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "the value of the function.",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "double",
+      "qualifiedName": "double"
+    },
+    "signature": "value(double mMinusX,double k,double b,double q,double a,double oneOverN)",
+    "targetClass": "org.apache.commons.math3.analysis.function.Logistic",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "Logistic",
+      "qualifiedName": "org.apache.commons.math3.analysis.function.Logistic"
+    },
     "isVarArgs": false,
+    "name": "value",
+    "paramTags": [
+      {
+        "comment": "function input value",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "t",
+          "type": {
+            "isArray": false,
+            "name": "DerivativeStructure",
+            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.DerivativeStructure"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "t",
+        "type": {
+          "isArray": false,
+          "name": "DerivativeStructure",
+          "qualifiedName": "org.apache.commons.math3.analysis.differentiation.DerivativeStructure"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "function result",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "DerivativeStructure",
+      "qualifiedName": "org.apache.commons.math3.analysis.differentiation.DerivativeStructure"
+    },
+    "signature": "value(org.apache.commons.math3.analysis.differentiation.DerivativeStructure t)",
+    "targetClass": "org.apache.commons.math3.analysis.function.Logistic",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
-          "name": "DimensionMismatchException",
-          "isArray": false
-        },
         "comment": "if t is inconsistent with the function's free parameters or order",
-        "kind": "@throws",
-        "condition": ""
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "DimensionMismatchException",
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+        },
+        "kind": "@throws"
       }
-    ],
-    "signature": "value(org.apache.commons.math3.analysis.differentiation.DerivativeStructure t)"
+    ]
   }
 ]

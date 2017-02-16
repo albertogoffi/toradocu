@@ -1,524 +1,593 @@
 [
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
+      "isArray": false,
       "name": "S2Point",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point"
     },
+    "isVarArgs": false,
     "name": "S2Point",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "theta"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "phi"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "theta"
-        },
         "comment": "azimuthal angle \\( \\theta \\) in the x-y plane",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "theta",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "phi"
-        },
         "comment": "polar angle \\( \\varphi \\)",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "phi",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
+    "parameters": [
+      {
+        "name": "theta",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "phi",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      }
+    ],
+    "signature": "S2Point(double theta,double phi)",
+    "targetClass": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
     "throwsTags": [
       {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException",
-          "name": "OutOfRangeException",
-          "isArray": false
-        },
         "comment": "if \\( \\varphi \\) is not in the [\\( 0; \\pi \\)] range",
-        "kind": "@throws",
-        "condition": ""
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "OutOfRangeException",
+          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException"
+        },
+        "kind": "@throws"
       }
-    ],
-    "signature": "S2Point(double theta,double phi)"
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
+      "isArray": false,
       "name": "S2Point",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point"
     },
+    "isVarArgs": false,
     "name": "S2Point",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-          "name": "Vector3D",
-          "isArray": false
-        },
-        "name": "vector"
-      }
-    ],
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-            "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "vector"
-        },
         "comment": "3D vector",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
-          "name": "MathArithmeticException",
-          "isArray": false
-        },
-        "comment": "if vector norm is zero",
-        "kind": "@throws",
-        "condition": "args[0].getNorm()==0"
-      }
-    ],
-    "signature": "S2Point(org.apache.commons.math3.geometry.euclidean.threed.Vector3D vector)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
-      "name": "S2Point",
-      "isArray": false
-    },
-    "name": "S2Point",
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "theta"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "phi"
-      },
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-          "name": "Vector3D",
-          "isArray": false
-        },
-        "name": "vector"
-      }
-    ],
-    "paramTags": [
-      {
         "parameter": {
+          "name": "vector",
           "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "theta"
-        },
-        "comment": "azimuthal angle \\( \\theta \\) in the x-y plane",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "phi"
-        },
-        "comment": "polar angle \\( \\varphi \\)",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+            "isArray": false,
             "name": "Vector3D",
-            "isArray": false
-          },
-          "name": "vector"
-        },
-        "comment": "corresponding vector",
-        "kind": "@param",
-        "condition": ""
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "S2Point(double theta,double phi,org.apache.commons.math3.geometry.euclidean.threed.Vector3D vector)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
-      "name": "S2Point",
-      "isArray": false
-    },
-    "name": "vector",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
-      "name": "Vector3D",
-      "isArray": false
-    },
     "parameters": [
       {
+        "name": "vector",
         "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "theta"
-      },
-      {
-        "type": {
-          "qualifiedName": "double",
-          "name": "double",
-          "isArray": false
-        },
-        "name": "phi"
+          "isArray": false,
+          "name": "Vector3D",
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
+        }
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "theta"
-        },
-        "comment": "azimuthal angle \\( \\theta \\) in the x-y plane",
-        "kind": "@param",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "double",
-            "name": "double",
-            "isArray": false
-          },
-          "name": "phi"
-        },
-        "comment": "polar angle \\( \\varphi \\)",
-        "kind": "@param",
-        "condition": ""
-      }
-    ],
-    "isVarArgs": false,
+    "signature": "S2Point(org.apache.commons.math3.geometry.euclidean.threed.Vector3D vector)",
+    "targetClass": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
     "throwsTags": [
       {
+        "comment": "if vector norm is zero",
+        "condition": "args[0].getNorm()==0",
         "exception": {
-          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException",
-          "name": "OutOfRangeException",
-          "isArray": false
+          "isArray": false,
+          "name": "MathArithmeticException",
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
         },
-        "comment": "if \\( \\varphi \\) is not in the [\\( 0; \\pi \\)] range",
-        "kind": "@throws",
-        "condition": ""
+        "kind": "@throws"
+      }
+    ]
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "S2Point",
+      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point"
+    },
+    "isVarArgs": false,
+    "name": "S2Point",
+    "paramTags": [
+      {
+        "comment": "azimuthal angle \\( \\theta \\) in the x-y plane",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "theta",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
+      },
+      {
+        "comment": "polar angle \\( \\varphi \\)",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "phi",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
+      },
+      {
+        "comment": "corresponding vector",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "vector",
+          "type": {
+            "isArray": false,
+            "name": "Vector3D",
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
+          }
+        }
       }
     ],
-    "signature": "vector(double theta,double phi)"
+    "parameters": [
+      {
+        "name": "theta",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "phi",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "vector",
+        "type": {
+          "isArray": false,
+          "name": "Vector3D",
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
+        }
+      }
+    ],
+    "signature": "S2Point(double theta,double phi,org.apache.commons.math3.geometry.euclidean.threed.Vector3D vector)",
+    "targetClass": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
+      "isArray": false,
       "name": "S2Point",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point"
     },
-    "name": "getTheta",
-    "returnType": {
-      "qualifiedName": "double",
-      "name": "double",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getTheta()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
-      "name": "S2Point",
-      "isArray": false
+    "name": "vector",
+    "paramTags": [
+      {
+        "comment": "azimuthal angle \\( \\theta \\) in the x-y plane",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "theta",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
+      },
+      {
+        "comment": "polar angle \\( \\varphi \\)",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "phi",
+          "type": {
+            "isArray": false,
+            "name": "double",
+            "qualifiedName": "double"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "theta",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      },
+      {
+        "name": "phi",
+        "type": {
+          "isArray": false,
+          "name": "double",
+          "qualifiedName": "double"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "normalized vector",
+      "condition": "",
+      "kind": "RETURN"
     },
-    "name": "getPhi",
     "returnType": {
-      "qualifiedName": "double",
-      "name": "double",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getPhi()"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
-      "name": "S2Point",
-      "isArray": false
-    },
-    "name": "getVector",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+      "isArray": false,
       "name": "Vector3D",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
     },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getVector()"
+    "signature": "vector(double theta,double phi)",
+    "targetClass": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
+    "throwsTags": [
+      {
+        "comment": "if \\( \\varphi \\) is not in the [\\( 0; \\pi \\)] range",
+        "condition": "",
+        "exception": {
+          "isArray": false,
+          "name": "OutOfRangeException",
+          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException"
+        },
+        "kind": "@throws"
+      }
+    ]
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
+      "isArray": false,
       "name": "S2Point",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point"
     },
+    "isVarArgs": false,
+    "name": "getTheta",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "azimuthal angle \\( \\theta \\) in the x-y plane",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "double",
+      "qualifiedName": "double"
+    },
+    "signature": "getTheta()",
+    "targetClass": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "S2Point",
+      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point"
+    },
+    "isVarArgs": false,
+    "name": "getPhi",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "polar angle \\( \\varphi \\)",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "double",
+      "qualifiedName": "double"
+    },
+    "signature": "getPhi()",
+    "targetClass": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "S2Point",
+      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point"
+    },
+    "isVarArgs": false,
+    "name": "getVector",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "normalized vector",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "Vector3D",
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
+    },
+    "signature": "getVector()",
+    "targetClass": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "S2Point",
+      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point"
+    },
+    "isVarArgs": false,
     "name": "getSpace",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "containing space",
+      "condition": "",
+      "kind": "RETURN"
+    },
     "returnType": {
-      "qualifiedName": "org.apache.commons.math3.geometry.Space",
+      "isArray": false,
       "name": "Space",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.geometry.Space"
     },
-    "parameters": [],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "getSpace()"
+    "signature": "getSpace()",
+    "targetClass": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
+      "isArray": false,
       "name": "S2Point",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point"
     },
+    "isVarArgs": false,
     "name": "isNaN",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
-    "parameters": [],
     "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "isNaN()"
+    "parameters": [],
+    "returnTag": {
+      "comment": "true if any coordinate of this point is NaN; false otherwise",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "isNaN()",
+    "targetClass": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
+      "isArray": false,
       "name": "S2Point",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point"
     },
+    "isVarArgs": false,
     "name": "negate",
-    "returnType": {
-      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
-      "name": "S2Point",
-      "isArray": false
-    },
-    "parameters": [],
     "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "negate()"
+    "parameters": [],
+    "returnTag": {
+      "comment": "a new vector which is opposite to the instance",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "S2Point",
+      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point"
+    },
+    "signature": "negate()",
+    "targetClass": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
+      "isArray": false,
       "name": "S2Point",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point"
     },
+    "isVarArgs": false,
     "name": "distance",
-    "returnType": {
-      "qualifiedName": "double",
-      "name": "double",
-      "isArray": false
-    },
+    "paramTags": [],
     "parameters": [
       {
+        "name": "point",
         "type": {
-          "qualifiedName": "org.apache.commons.math3.geometry.Point",
+          "isArray": false,
           "name": "Point",
-          "isArray": false
-        },
-        "name": "point"
+          "qualifiedName": "org.apache.commons.math3.geometry.Point"
+        }
       }
     ],
-    "paramTags": [],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "distance(org.apache.commons.math3.geometry.Point point)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
-      "name": "S2Point",
-      "isArray": false
+    "returnTag": {
+      "comment": "the distance between the instance and p",
+      "condition": "",
+      "kind": "RETURN"
     },
-    "name": "distance",
     "returnType": {
-      "qualifiedName": "double",
+      "isArray": false,
       "name": "double",
-      "isArray": false
+      "qualifiedName": "double"
     },
-    "parameters": [
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
-          "name": "S2Point",
-          "isArray": false
-        },
-        "name": "p1"
-      },
-      {
-        "type": {
-          "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
-          "name": "S2Point",
-          "isArray": false
-        },
-        "name": "p2"
-      }
-    ],
+    "signature": "distance(org.apache.commons.math3.geometry.Point point)",
+    "targetClass": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "S2Point",
+      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point"
+    },
+    "isVarArgs": false,
+    "name": "distance",
     "paramTags": [
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
-            "name": "S2Point",
-            "isArray": false
-          },
-          "name": "p1"
-        },
         "comment": "first vector",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "p1",
+          "type": {
+            "isArray": false,
+            "name": "S2Point",
+            "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point"
+          }
+        }
       },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
-            "name": "S2Point",
-            "isArray": false
-          },
-          "name": "p2"
-        },
         "comment": "second vector",
+        "condition": "",
         "kind": "@param",
-        "condition": ""
+        "parameter": {
+          "name": "p2",
+          "type": {
+            "isArray": false,
+            "name": "S2Point",
+            "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point"
+          }
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "distance(org.apache.commons.math3.geometry.spherical.twod.S2Point p1,org.apache.commons.math3.geometry.spherical.twod.S2Point p2)"
-  },
-  {
-    "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
-      "name": "S2Point",
-      "isArray": false
-    },
-    "name": "equals",
-    "returnType": {
-      "qualifiedName": "boolean",
-      "name": "boolean",
-      "isArray": false
-    },
     "parameters": [
       {
+        "name": "p1",
         "type": {
-          "qualifiedName": "java.lang.Object",
-          "name": "Object",
-          "isArray": false
-        },
-        "name": "other"
-      }
-    ],
-    "paramTags": [
+          "isArray": false,
+          "name": "S2Point",
+          "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point"
+        }
+      },
       {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "other"
-        },
-        "comment": "Object to test for equality to this",
-        "kind": "@param",
-        "condition": ""
+        "name": "p2",
+        "type": {
+          "isArray": false,
+          "name": "S2Point",
+          "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point"
+        }
       }
     ],
-    "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "equals(java.lang.Object other)"
+    "returnTag": {
+      "comment": "the angular separation between p1 and p2",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "double",
+      "qualifiedName": "double"
+    },
+    "signature": "distance(org.apache.commons.math3.geometry.spherical.twod.S2Point p1,org.apache.commons.math3.geometry.spherical.twod.S2Point p2)",
+    "targetClass": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
+    "throwsTags": []
   },
   {
     "containingClass": {
-      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
+      "isArray": false,
       "name": "S2Point",
-      "isArray": false
+      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point"
     },
-    "name": "hashCode",
-    "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
-      "isArray": false
-    },
-    "parameters": [],
-    "paramTags": [],
     "isVarArgs": false,
-    "throwsTags": [],
-    "signature": "hashCode()"
+    "name": "equals",
+    "paramTags": [
+      {
+        "comment": "Object to test for equality to this",
+        "condition": "",
+        "kind": "@param",
+        "parameter": {
+          "name": "other",
+          "type": {
+            "isArray": false,
+            "name": "Object",
+            "qualifiedName": "java.lang.Object"
+          }
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "other",
+        "type": {
+          "isArray": false,
+          "name": "Object",
+          "qualifiedName": "java.lang.Object"
+        }
+      }
+    ],
+    "returnTag": {
+      "comment": "true if two points on the 2-sphere objects are equal, false if object is null, not an instance of S2Point, or not equal to this S2Point instance",
+      "condition": "target==false || args[0]==null",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "boolean",
+      "qualifiedName": "boolean"
+    },
+    "signature": "equals(java.lang.Object other)",
+    "targetClass": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
+    "throwsTags": []
+  },
+  {
+    "containingClass": {
+      "isArray": false,
+      "name": "S2Point",
+      "qualifiedName": "org.apache.commons.math3.geometry.spherical.twod.S2Point"
+    },
+    "isVarArgs": false,
+    "name": "hashCode",
+    "paramTags": [],
+    "parameters": [],
+    "returnTag": {
+      "comment": "a hash code value for this object",
+      "condition": "",
+      "kind": "RETURN"
+    },
+    "returnType": {
+      "isArray": false,
+      "name": "int",
+      "qualifiedName": "int"
+    },
+    "signature": "hashCode()",
+    "targetClass": "org.apache.commons.math3.geometry.spherical.twod.S2Point",
+    "throwsTags": []
   }
 ]
