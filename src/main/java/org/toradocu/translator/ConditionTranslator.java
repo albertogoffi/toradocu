@@ -379,11 +379,12 @@ public class ConditionTranslator {
 
     // Comment preprocessing for @throws tags.
     if (tag.getKind() == Tag.Kind.THROWS) {
-      String lowerCaseComment = comment.toLowerCase();
-      while (lowerCaseComment.startsWith("if ")) {
-        comment = comment.substring(3); // Remove initial "if"s.
-        lowerCaseComment = comment.toLowerCase();
-      }
+      //      String lowerCaseComment = comment.toLowerCase();
+      //      while (lowerCaseComment.startsWith("if ")) {
+      //        comment = comment.substring(3); // Remove initial "if"s.
+      //        lowerCaseComment = comment.toLowerCase();
+      //      }
+      comment = removeInitial(comment, "if");
     }
 
     // Comment preprocessing for @param tags.
@@ -449,7 +450,12 @@ public class ConditionTranslator {
           try {
             String predicateTranslation = translateFirstPart(predicate);
             String conditionTranslation = translateSecondPart(condition, method);
-            translation = predicateTranslation + " @ " + conditionTranslation;
+            String elsePredicate = translateLastPart(condition, method);
+
+            translation = predicateTranslation + " ? " + conditionTranslation;
+            if (elsePredicate != null) {
+              translation = translation + " : " + elsePredicate;
+            }
 
             /* To validate the return values of the method under test we will have a code similar
              * to this in the generated aspect:
@@ -469,8 +475,8 @@ public class ConditionTranslator {
              *   return result.equals(true);
              * }
              *
-             * We use the character '@' to separate the two parts of the translation. We need that
-             * because the translation is currently a plain a String.
+             * We use the characters '?' and ':' to separate the different parts of the translation
+             * . We need that because the translation is currently a plain a String.
              */
           } catch (IllegalArgumentException e) {
             //TODO: Change the exception with one more meaningful.
@@ -484,9 +490,34 @@ public class ConditionTranslator {
     }
   }
 
+  /**
+   * Translates the given {@code text} that is the second part of an @return Javadoc comment. Here
+   * "second part" means every word of the conditional clause. Example: {@code @return true if the
+   * parameter is positive, false otherwise}. In this comment the second part is "if the parameter
+   * is positive, false otherwise". This method translates only the "false otherwise" part.
+   *
+   * @param text words representing the second part of an @return comment
+   * @param method the method to which the @return tag belongs to
+   * @return the translation of the given {@code text}
+   */
+  private static String translateLastPart(String text, DocumentedMethod method) {
+    // TODO Implement this method
+    return null;
+  }
+
+  /**
+   * Translates the given {@code text} that is the second part of an @return Javadoc comment. Here
+   * "second part" means every word of the conditional clause. Example: {@code @return true if the
+   * parameter is null}. In this comment the second part is "if the parameter is null".
+   *
+   * @param text words representing the second part of an @return comment
+   * @param method the method to which the @return tag belongs to
+   * @return the translation of the given {@code text}
+   */
   private static String translateSecondPart(String text, DocumentedMethod method) {
     // Identify propositions in the comment. Each sentence in the comment is parsed into a
     // PropositionSeries.
+    text = removeInitial(text, "if");
     List<PropositionSeries> extractedPropositions = getPropositionSeries(text);
     Set<String> conditions = new LinkedHashSet<>();
     // Identify Java code elements in propositions.
@@ -497,6 +528,15 @@ public class ConditionTranslator {
     return mergeConditions(conditions);
   }
 
+  /**
+   * Translates the given {@code text} that is the first part of an @return Javadoc comment. Here
+   * "first part" means every word before the start of the conditional clause. Example:
+   * {@code @return true if the parameter is null}. In this comment the first part is "true".
+   *
+   * @param text words representing the first part of an @return comment
+   * @return the translation of the given {@code text}
+   * @throws IllegalArgumentException if the given {@code text} cannot be translated
+   */
   private static String translateFirstPart(String text) {
     String lowerCaseText = text.trim().toLowerCase();
     switch (lowerCaseText) {
@@ -506,5 +546,24 @@ public class ConditionTranslator {
     }
     //TODO: Change the exception with one more meaningful.
     throw new IllegalArgumentException(text + " cannot be translated: Pattern not supported");
+  }
+
+  /**
+   * Removes one or more occurrences of {@code wordToRemove} at the beginning of {@code text}. This
+   * method ignores the case of wordToRemove, i.e., occurrences are searched and removed ignoring
+   * the case.
+   *
+   * @param text string from which remove occurences of {@code wordToRemove}
+   * @param wordToRemove word to remove from {@code text}
+   * @return the given {@code text} with initial occurrences of {@code wordToRemove} deleted
+   */
+  private static String removeInitial(String text, String wordToRemove) {
+    wordToRemove = wordToRemove.toLowerCase();
+    String lowerCaseComment = text.toLowerCase();
+    while (lowerCaseComment.startsWith(wordToRemove + " ")) {
+      text = text.substring(wordToRemove.length() + 1);
+      lowerCaseComment = text.toLowerCase();
+    }
+    return text;
   }
 }
