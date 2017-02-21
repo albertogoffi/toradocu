@@ -18,7 +18,7 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testArrayStack() throws Exception {
-    test("org.apache.commons.collections4.ArrayStack", 1, 0.75, 1, 1, 1, 1);
+    test("org.apache.commons.collections4.ArrayStack", 1, 0.75, 1, 1, 0, 0);
   }
 
   @Test
@@ -28,12 +28,12 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testClosureUtils() throws Exception {
-    test("org.apache.commons.collections4.ClosureUtils", 1, 0.695, 1, 1, 1, 1);
+    test("org.apache.commons.collections4.ClosureUtils", 1, 0.695, 1, 0, 1, 0);
   }
 
   @Test
   public void testCollectionUtils() throws Exception {
-    test("org.apache.commons.collections4.CollectionUtils", 0.964, 0.870, 1, 1, 1, 1);
+    test("org.apache.commons.collections4.CollectionUtils", 0.964, 0.870, 0.969, 0.969, 0, 0);
   }
 
   @Test
