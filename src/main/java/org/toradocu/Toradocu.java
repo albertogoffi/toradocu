@@ -325,8 +325,6 @@ public class Toradocu {
         final Optional<String> condition = tag.getCondition();
         int typedTagIndex;
         if (condition.isPresent() && !condition.get().isEmpty()) {
-          conditionsClass.append("\n// ").append(method);
-          conditionsClass.append("\npublic static boolean m");
           StringBuilder methodSuffix = new StringBuilder();
           methodSuffix.append(methodIndex);
           switch (tag.getKind()) {
@@ -353,22 +351,38 @@ public class Toradocu {
           }
           methodSuffix.append(typedTagIndex);
           String suffix = methodSuffix.toString();
+
           String receiverName = "receiver" + suffix;
-          String returnValueName = tag.getKind().equals(Tag.Kind.RETURN) ? "result" + suffix : "";
-          conditionsClass
-              .append(suffix)
-              .append(buildConditionSignatureString(method, receiverName, returnValueName))
-              .append(" {")
-              .append("\n// ")
-              .append(tag);
+          String returnValueName = "";
           String conditionString = condition.get();
-          if (tag.getKind() == Tag.Kind.RETURN && !conditionString.contains(":")) {
-            conditionString += " : true"; // Add no-effect else check if not specified.
+
+          if (tag.getKind() == Tag.Kind.RETURN) {
+            returnValueName = "result" + suffix;
+            // return tag conditions should be ternary: pre ? true-post : false-post
+            String[] toks = conditionString.split("[?:]");
+            assert toks.length == 2 || toks.length == 3;
+            String methodName = "m" + "_pre" + suffix;
+            addConditionMethod(
+                conditionsClass, method, methodName, receiverName, returnValueName, tag, toks[0]);
+            methodName = "m" + "_truepost" + suffix;
+            addConditionMethod(
+                conditionsClass, method, methodName, receiverName, returnValueName, tag, toks[1]);
+            if (toks.length == 3) {
+              methodName = "m" + "_falsepost" + suffix;
+              addConditionMethod(
+                  conditionsClass, method, methodName, receiverName, returnValueName, tag, toks[2]);
+            }
+          } else {
+            String methodName = "m" + suffix;
+            addConditionMethod(
+                conditionsClass,
+                method,
+                methodName,
+                receiverName,
+                returnValueName,
+                tag,
+                conditionString);
           }
-          conditionString =
-              MethodChangerVisitor.convertToParamNames(
-                  conditionString, method, receiverName, returnValueName);
-          conditionsClass.append("\nreturn ").append(conditionString).append(";").append("}");
         }
       }
     }
@@ -381,6 +395,27 @@ public class Toradocu {
       log.error("Error during conditions export", e);
       return "";
     }
+  }
+
+  private static void addConditionMethod(
+      StringBuilder conditionsClass,
+      DocumentedMethod method,
+      String methodName,
+      String receiverName,
+      String returnValueName,
+      Tag tag,
+      String conditionString) {
+    conditionsClass.append("\n// ").append(method);
+    conditionsClass.append("\npublic static boolean ").append(methodName);
+    conditionsClass
+        .append(buildConditionSignatureString(method, receiverName, returnValueName))
+        .append(" {")
+        .append("\n// ")
+        .append(tag);
+    conditionString =
+        MethodChangerVisitor.convertToParamNames(
+            conditionString, method, receiverName, returnValueName);
+    conditionsClass.append("\nreturn ").append(conditionString).append(";").append("}");
   }
 
   /**
@@ -402,9 +437,11 @@ public class Toradocu {
     // Add method arguments.
     method.getParameters().forEach(param -> signature.append(",").append(param));
     // Add method return value as second parameter.
-    String returnType = method.getReturnType().getQualifiedName();
-    if (!returnType.equals("void") && !returnValueName.isEmpty()) {
-      signature.append(",").append(returnType).append(" ").append(returnValueName);
+    if (method.getReturnType() != null) {
+      String returnType = method.getReturnType().getQualifiedName();
+      if (!returnType.equals("void") && !returnValueName.isEmpty()) {
+        signature.append(",").append(returnType).append(" ").append(returnValueName);
+      }
     }
 
     signature.append(")");
