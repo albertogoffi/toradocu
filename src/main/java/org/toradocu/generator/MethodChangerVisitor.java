@@ -248,12 +248,14 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
   }
 
   public static String convertToParamNames(
-      String condition, DocumentedMethod method, String receiverName) {
+      String condition, DocumentedMethod method, String receiverName, String returnValueName) {
     Checks.nonNullParameter(condition, "condition");
     Checks.nonNullParameter(method, "method");
     Checks.nonNullParameter(receiverName, "receiver");
+    Checks.nonNullParameter(returnValueName, "returnValueName");
 
     condition = condition.replace("target", receiverName);
+    condition = condition.replace("result", returnValueName);
     for (int index = 0; index < method.getParameters().size(); index++) {
       String paramName = method.getParameters().get(index).getName();
       condition = condition.replace("args[" + index + "]", paramName);

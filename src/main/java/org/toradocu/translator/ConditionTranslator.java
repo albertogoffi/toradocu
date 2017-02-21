@@ -540,7 +540,7 @@ public class ConditionTranslator {
     switch (lowerCaseText) {
       case "true":
       case "false":
-        return "result.equals(" + lowerCaseText + ")";
+        return "result == " + lowerCaseText;
     }
     //TODO: Change the exception with one more meaningful.
     throw new IllegalArgumentException(text + " cannot be translated: Pattern not supported");
