@@ -20,7 +20,7 @@ public class PrecisionRecallPlumeLib extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testRegexUtil() throws Exception {
-    test("plume.RegexUtil", 1, 1, 1, 1, 1, 1);
+    test("plume.RegexUtil", 1, 1, 1, 1, 1, 0);
   }
 
   @Test

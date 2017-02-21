@@ -300,8 +300,13 @@ public class ConditionTranslator {
         result = translations.get(match);
       }
 
-      log.trace("Translated proposition " + p + " as: " + result);
-      p.setTranslation(result);
+      if (result == null) {
+        log.warn("Failed translation for proposition " + p);
+        p.setTranslation("");
+      } else {
+        log.trace("Translated proposition " + p + " as: " + result);
+        p.setTranslation(result);
+      }
     }
   }
 
@@ -374,11 +379,12 @@ public class ConditionTranslator {
 
     // Comment preprocessing for @throws tags.
     if (tag.getKind() == Tag.Kind.THROWS) {
-      String lowerCaseComment = comment.toLowerCase();
-      while (lowerCaseComment.startsWith("if ")) {
-        comment = comment.substring(3); // Remove initial "if"s.
-        lowerCaseComment = comment.toLowerCase();
-      }
+      //      String lowerCaseComment = comment.toLowerCase();
+      //      while (lowerCaseComment.startsWith("if ")) {
+      //        comment = comment.substring(3); // Remove initial "if"s.
+      //        lowerCaseComment = comment.toLowerCase();
+      //      }
+      comment = removeInitial(comment, "if");
     }
 
     // Comment preprocessing for @param tags.
@@ -414,18 +420,150 @@ public class ConditionTranslator {
       }
     }
 
-    // TODO Translate the @return tag.
-    //    if (tag.getKind() == Tag.Kind.RETURN) {}
+    if (tag.getKind() == Tag.Kind.PARAM || tag.getKind() == Tag.Kind.THROWS) {
+      // Identify propositions in the comment. Each sentence in the comment is parsed into a
+      // PropositionSeries.
+      List<PropositionSeries> extractedPropositions = getPropositionSeries(comment);
+      Set<String> conditions = new LinkedHashSet<>();
+      // Identify Java code elements in propositions.
+      for (PropositionSeries propositions : extractedPropositions) {
+        translatePropositions(propositions, method);
+        conditions.add(propositions.getTranslation());
+      }
+      tag.setCondition(mergeConditions(conditions));
+    }
 
+    // @return tag translation.
+    if (tag.getKind() == Tag.Kind.RETURN) {
+      // Assumption: the comment is composed of a single sentence. We should probably split multiple
+      // sentence comments using the Stanford Parser, and then work on each single sentence.
+      String translation = "";
+
+      // 1. Split the sentence in two parts: predicate + condition.
+      // TODO Naive splitting. Make the split more reliable.
+      final int splitPoint = comment.indexOf(" if ");
+      if (splitPoint != -1) {
+        String predicate = comment.substring(0, splitPoint);
+        String condition = comment.substring(splitPoint + 3);
+
+        if (!predicate.isEmpty() && !condition.isEmpty()) {
+          try {
+            String predicateTranslation = translateFirstPart(predicate);
+            String conditionTranslation = translateSecondPart(condition, method);
+            String elsePredicate = translateLastPart(condition, method);
+
+            translation = predicateTranslation + " ? " + conditionTranslation;
+            if (elsePredicate != null) {
+              translation = translation + " : " + elsePredicate;
+            }
+
+            /* To validate the return values of the method under test we will have a code similar
+             * to this in the generated aspect:
+             *
+             * if ( conditionTranslation ) {
+             *   return predicate;
+             * else {
+             *   ??? <= how to express this? We can use c ? x : y.
+             * }
+             *
+             * Example: @return true if the values are equal.
+             * predicate: true
+             * condition: args[0].equals(args[1])
+             * translation: true @ args[0].equals(args[1])
+             *
+             * if (args[0].equals(args[1])) {
+             *   return result.equals(true);
+             * }
+             *
+             * We use the characters '?' and ':' to separate the different parts of the translation
+             * . We need that because the translation is currently a plain a String.
+             */
+          } catch (IllegalArgumentException e) {
+            //TODO: Change the exception with one more meaningful.
+            // Pattern not supported.
+            log.warn("Unable to translate: \"" + comment + "\"");
+          }
+        }
+        // Else: do nothing. How can we support different forms of @return tags?
+      }
+      tag.setCondition(translation);
+    }
+  }
+
+  /**
+   * Translates the given {@code text} that is the second part of an @return Javadoc comment. Here
+   * "second part" means every word of the conditional clause. Example: {@code @return true if the
+   * parameter is positive, false otherwise}. In this comment the second part is "if the parameter
+   * is positive, false otherwise". This method translates only the "false otherwise" part.
+   *
+   * @param text words representing the second part of an @return comment
+   * @param method the method to which the @return tag belongs to
+   * @return the translation of the given {@code text}
+   */
+  private static String translateLastPart(String text, DocumentedMethod method) {
+    // TODO Implement this method
+    return null;
+  }
+
+  /**
+   * Translates the given {@code text} that is the second part of an @return Javadoc comment. Here
+   * "second part" means every word of the conditional clause. Example: {@code @return true if the
+   * parameter is null}. In this comment the second part is "if the parameter is null".
+   *
+   * @param text words representing the second part of an @return comment
+   * @param method the method to which the @return tag belongs to
+   * @return the translation of the given {@code text}
+   */
+  private static String translateSecondPart(String text, DocumentedMethod method) {
     // Identify propositions in the comment. Each sentence in the comment is parsed into a
     // PropositionSeries.
-    List<PropositionSeries> extractedPropositions = getPropositionSeries(comment);
+    text = removeInitial(text, "if");
+    List<PropositionSeries> extractedPropositions = getPropositionSeries(text);
     Set<String> conditions = new LinkedHashSet<>();
     // Identify Java code elements in propositions.
     for (PropositionSeries propositions : extractedPropositions) {
       translatePropositions(propositions, method);
       conditions.add(propositions.getTranslation());
     }
-    tag.setCondition(mergeConditions(conditions));
+    return mergeConditions(conditions);
+  }
+
+  /**
+   * Translates the given {@code text} that is the first part of an @return Javadoc comment. Here
+   * "first part" means every word before the start of the conditional clause. Example:
+   * {@code @return true if the parameter is null}. In this comment the first part is "true".
+   *
+   * @param text words representing the first part of an @return comment
+   * @return the translation of the given {@code text}
+   * @throws IllegalArgumentException if the given {@code text} cannot be translated
+   */
+  private static String translateFirstPart(String text) {
+    String lowerCaseText = text.trim().toLowerCase();
+    switch (lowerCaseText) {
+      case "true":
+      case "false":
+        return "result.equals(" + lowerCaseText + ")";
+    }
+    //TODO: Change the exception with one more meaningful.
+    throw new IllegalArgumentException(text + " cannot be translated: Pattern not supported");
+  }
+
+  /**
+   * Removes one or more occurrences of {@code wordToRemove} at the beginning of {@code text}. This
+   * method ignores the case of wordToRemove, i.e., occurrences are searched and removed ignoring
+   * the case.
+   *
+   * @param text string from which remove occurences of {@code wordToRemove}
+   * @param wordToRemove word to remove from {@code text}
+   * @return the given {@code text} with initial occurrences of {@code wordToRemove} deleted
+   */
+  private static String removeInitial(String text, String wordToRemove) {
+    wordToRemove = wordToRemove.toLowerCase();
+    String lowerCaseComment = text.toLowerCase();
+    while (lowerCaseComment.startsWith(wordToRemove + " ")) {
+      text = text.substring(wordToRemove.length() + 1);
+      lowerCaseComment = text.toLowerCase();
+    }
+    return text;
   }
 }
