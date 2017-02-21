@@ -1252,7 +1252,7 @@
     ],
     "returnTag": {
       "comment": "true",
-      "condition": "",
+      "condition": "true ? true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1276,7 +1276,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "true if the map is full",
-      "condition": "target.isFull()",
+      "condition": "target.isFull() ? true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -2391,7 +2391,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "true if the map is currently size zero",
-      "condition": "",
+      "condition": "target.size()==0 ? true : false",
       "kind": "RETURN"
     },
     "returnType": {
