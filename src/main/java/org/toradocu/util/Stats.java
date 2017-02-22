@@ -149,7 +149,7 @@ public class Stats {
    * @return the total number of correct translations
    */
   private int numberOfCorrectTranslations() {
-    return correctTranslationsParam + correctTranslationsThrows;
+    return correctTranslationsParam + correctTranslationsThrows + correctTranslationsReturn;
   }
 
   /**
@@ -159,7 +159,7 @@ public class Stats {
    * @return the total number of wrong translations
    */
   private int numberOfWrongTranslations() {
-    return wrongTranslationParam + wrongTranslationThrows;
+    return wrongTranslationParam + wrongTranslationThrows + wrongTranslationReturn;
   }
 
   /**
@@ -169,7 +169,7 @@ public class Stats {
    * @return the total number of missing translations
    */
   private int numberOfMissingTranslations() {
-    return missingTranslationsParam + missingTranslationsThrows;
+    return missingTranslationsParam + missingTranslationsThrows + missingTranslationsReturn;
   }
 
   /**
@@ -205,6 +205,7 @@ public class Stats {
         break;
       case PARAM:
         ++wrongTranslationParam;
+        break;
       case RETURN:
         ++wrongTranslationReturn;
         break;
@@ -225,6 +226,7 @@ public class Stats {
         break;
       case PARAM:
         ++missingTranslationsParam;
+        break;
       case RETURN:
         ++missingTranslationsReturn;
         break;
