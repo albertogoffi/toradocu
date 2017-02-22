@@ -1959,7 +1959,7 @@
       },
       {
         "comment": "the collection to output selected elements into, may not be null if the inputCollection and predicate are not null",
-        "condition": "(args[0]==null) == false && (args[1]==null) == false || (args[0]==null) == false",
+        "condition": "(args[0]==null) == false && (args[1]==null) == false || (args[2]==null) == false",
         "kind": "@param",
         "parameter": {
           "name": "outputCollection",
@@ -1972,7 +1972,7 @@
       },
       {
         "comment": "the collection to output rejected elements into, may not be null if the inputCollection or predicate are not null",
-        "condition": "(args[0]==null) == false || (args[1]==null) == false || (args[0]==null) == false",
+        "condition": "(args[0]==null) == false || (args[1]==null) == false || (args[3]==null) == false",
         "kind": "@param",
         "parameter": {
           "name": "rejectedCollection",
@@ -2384,7 +2384,7 @@
       },
       {
         "comment": "the collection to output into, may not be null if inputCollection and transformer are not null",
-        "condition": "(args[0]==null) == false && (args[1]==null) == false || (args[0]==null) == false",
+        "condition": "(args[0]==null) == false && (args[1]==null) == false || (args[2]==null) == false",
         "kind": "@param",
         "parameter": {
           "name": "outputCollection",
