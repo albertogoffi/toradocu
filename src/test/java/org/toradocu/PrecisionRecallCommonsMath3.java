@@ -27,7 +27,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testComplex() throws Exception {
-    test("org.apache.commons.math3.complex.Complex", 1, 0.916, 1, 1, 1, 0);
+    test("org.apache.commons.math3.complex.Complex", 1, 0.916, 1, 1, 1, 1);
   }
 
   @Test
@@ -136,12 +136,12 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testBigFraction() throws Exception {
-    test("org.apache.commons.math3.fraction.BigFraction", 0.5, 0.409, 1, 1, 0, 0);
+    test("org.apache.commons.math3.fraction.BigFraction", 0.5, 0.409, 1, 1, 1, 1);
   }
 
   @Test
   public void testFraction() throws Exception {
-    test("org.apache.commons.math3.fraction.Fraction", 0.5, 0.428, 1, 1, 0, 0);
+    test("org.apache.commons.math3.fraction.Fraction", 0.5, 0.428, 1, 1, 1, 1);
   }
 
   @Test
@@ -156,12 +156,12 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testVector3D() throws Exception {
-    test("org.apache.commons.math3.geometry.euclidean.threed.Vector3D", 1, 0.5, 1, 1, 0, 0);
+    test("org.apache.commons.math3.geometry.euclidean.threed.Vector3D", 1, 0.5, 1, 1, 1, 0);
   }
 
   @Test
   public void testS2Point() throws Exception {
-    test("org.apache.commons.math3.geometry.spherical.twod.S2Point", 1, 0, 1, 1, 0, 0);
+    test("org.apache.commons.math3.geometry.spherical.twod.S2Point", 1, 0, 1, 1, 1, 1);
   }
 
   @Test
@@ -171,7 +171,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testRealVector() throws Exception {
-    test("org.apache.commons.math3.linear.RealVector", 1, 0.13, 1, 1, 0, 0);
+    test("org.apache.commons.math3.linear.RealVector", 1, 0.13, 1, 1, 1, 1);
   }
 
   @Test
