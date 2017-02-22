@@ -126,9 +126,13 @@ public class Type {
    */
   public boolean equalsTo(Class<?> type) {
     if (!isArray() && !type.isArray()) {
+      // Compare simple names instead of qualified names if no qualified name is extracted from the
+      // source code. This happens when the source code of a given type is not available (e.g.,
+      // it comes from a dependency of the target class.)
+      String typeName = qualifiedName.equals(name) ? type.getSimpleName() : type.getName();
       /* Replacement of '$' with '.' needed for nested classes. Toradocu Type uses '.' while
        * Java reflection uses '$' as specified by the Java Language Specification. */
-      return getQualifiedName().equals(type.getName().replace("$", "."));
+      return getQualifiedName().equals(typeName.replace("$", "."));
     }
     return isArray() == type.isArray()
         && dimension() == getDimension(type.getName())

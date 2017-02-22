@@ -136,9 +136,9 @@ public final class DocumentedMethod {
   }
 
   /**
-   * Returns the return tags in this method.
+   * Returns the return tag in this method.
    *
-   * @return the return tags in this method
+   * @return the return tag in this method. Null if there is no @return comment
    */
   public ReturnTag returnTag() {
     return returnTag;

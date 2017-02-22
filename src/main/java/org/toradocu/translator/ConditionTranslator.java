@@ -452,7 +452,7 @@ public class ConditionTranslator {
             String conditionTranslation = translateSecondPart(condition, method);
             String elsePredicate = translateLastPart(condition, method);
 
-            translation = predicateTranslation + " ? " + conditionTranslation;
+            translation = conditionTranslation + " ? " + predicateTranslation;
             if (elsePredicate != null) {
               translation = translation + " : " + elsePredicate;
             }
@@ -460,23 +460,21 @@ public class ConditionTranslator {
             /* To validate the return values of the method under test we will have a code similar
              * to this in the generated aspect:
              *
-             * if ( conditionTranslation ) {
-             *   return predicate;
+             * if ( condition ) {
+             *   return check;
              * else {
-             *   ??? <= how to express this? We can use c ? x : y.
+             *   return anotherCheck;
              * }
              *
              * Example: @return true if the values are equal.
-             * predicate: true
-             * condition: args[0].equals(args[1])
-             * translation: true @ args[0].equals(args[1])
+             * translation: args[0].equals(args[1]) ? true
              *
              * if (args[0].equals(args[1])) {
              *   return result.equals(true);
              * }
              *
-             * We use the characters '?' and ':' to separate the different parts of the translation
-             * . We need that because the translation is currently a plain a String.
+             * We use the characters '?' and ':' to separate the different parts of the translation.
+             * We need that because the translation is currently a plain a String.
              */
           } catch (IllegalArgumentException e) {
             //TODO: Change the exception with one more meaningful.
@@ -501,7 +499,12 @@ public class ConditionTranslator {
    * @return the translation of the given {@code text}
    */
   private static String translateLastPart(String text, DocumentedMethod method) {
-    // TODO Implement this method
+    final String lowerCaseText = text.toLowerCase();
+    if (lowerCaseText.contains("true")) {
+      return "result == true";
+    } else if (lowerCaseText.contains("false")) {
+      return "result == false";
+    }
     return null;
   }
 
@@ -542,7 +545,7 @@ public class ConditionTranslator {
     switch (lowerCaseText) {
       case "true":
       case "false":
-        return "result.equals(" + lowerCaseText + ")";
+        return "result == " + lowerCaseText;
     }
     //TODO: Change the exception with one more meaningful.
     throw new IllegalArgumentException(text + " cannot be translated: Pattern not supported");

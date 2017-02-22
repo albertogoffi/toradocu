@@ -55,4 +55,36 @@ public class RegressionTests {
         };
     Toradocu.main(toradocuArgs);
   }
+
+  @Test
+  public void BCEUtilTest() {
+    String[] toradocuArgs =
+        new String[] {
+          "--target-class",
+          "plume.BCELUtil",
+          "--class-dir",
+          "src/test/resources/bin/plume-lib-1.1.0.jar",
+          "--source-dir",
+          "src/test/resources/src/plume-lib-1.1.0/java/src",
+          "--oracle-generation",
+          "false"
+        };
+    Toradocu.main(toradocuArgs);
+  }
+
+  // Issue #81. Still to fix.
+  public void freeColTest() {
+    String[] toradocuArgs =
+        new String[] {
+          "--target-class",
+          "net.sf.freecol.FreeCol",
+          "--class-dir",
+          "src/test/resources/bin/freecol-0.11.6.jar",
+          "--source-dir",
+          "src/test/resources/src/freecol-0.11.6/src",
+          "--oracle-generation",
+          "false"
+        };
+    Toradocu.main(toradocuArgs);
+  }
 }

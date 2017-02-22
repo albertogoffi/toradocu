@@ -23,6 +23,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.StringJoiner;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +31,7 @@ import org.toradocu.conf.Configuration;
 import org.toradocu.doclet.formats.html.ConfigurationImpl;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.JavadocExtractor;
-import org.toradocu.extractor.Parameter;
+import org.toradocu.extractor.ReturnTag;
 import org.toradocu.extractor.Tag;
 import org.toradocu.generator.MethodChangerVisitor;
 import org.toradocu.generator.OracleGenerator;
@@ -316,13 +317,15 @@ public class Toradocu {
       final List<Tag> paramTags = new ArrayList<>(method.paramTags());
       final List<Tag> tags = new ArrayList<>(throwsTags);
       tags.addAll(paramTags);
+      final ReturnTag returnTag = method.returnTag();
+      if (returnTag != null) {
+        tags.add(returnTag);
+      }
 
       for (Tag tag : tags) {
         final Optional<String> condition = tag.getCondition();
         int typedTagIndex;
         if (condition.isPresent() && !condition.get().isEmpty()) {
-          conditionsClass.append("\n// ").append(method);
-          conditionsClass.append("\npublic static boolean m");
           StringBuilder methodSuffix = new StringBuilder();
           methodSuffix.append(methodIndex);
           switch (tag.getKind()) {
@@ -333,6 +336,10 @@ public class Toradocu {
             case THROWS:
               methodSuffix.append("_t");
               typedTagIndex = throwsTags.indexOf(tag);
+              break;
+            case RETURN:
+              methodSuffix.append("_r");
+              typedTagIndex = 0;
               break;
             default:
               throw new IllegalStateException("Tag class " + tag.getClass() + " not supported.");
@@ -345,15 +352,45 @@ public class Toradocu {
           }
           methodSuffix.append(typedTagIndex);
           String suffix = methodSuffix.toString();
+
           String receiverName = "receiver" + suffix;
-          conditionsClass
-              .append(suffix)
-              .append(buildConditionSignatureString(method, receiverName) + " {")
-              .append("\n// ")
-              .append(tag);
-          String conditionString =
-              MethodChangerVisitor.convertToParamNames(condition.get(), method, receiverName);
-          conditionsClass.append("\nreturn ").append(conditionString).append(";").append("}");
+          String returnValueName = "";
+          String conditionString = condition.get();
+
+          if (tag.getKind() == Tag.Kind.RETURN) {
+            returnValueName = "result" + suffix;
+            // return tag conditions should be ternary: pre ? true-post : false-post
+            String[] toks = conditionString.split("[?:]");
+            if ((toks.length == 2 || toks.length == 3) && !toks[0].trim().isEmpty()) {
+              String methodName = "m" + "_pre" + suffix;
+              addConditionMethod(
+                  conditionsClass, method, methodName, receiverName, returnValueName, tag, toks[0]);
+              methodName = "m" + "_truepost" + suffix;
+              addConditionMethod(
+                  conditionsClass, method, methodName, receiverName, returnValueName, tag, toks[1]);
+              if (toks.length == 3) {
+                methodName = "m" + "_falsepost" + suffix;
+                addConditionMethod(
+                    conditionsClass,
+                    method,
+                    methodName,
+                    receiverName,
+                    returnValueName,
+                    tag,
+                    toks[2]);
+              }
+            }
+          } else {
+            String methodName = "m" + suffix;
+            addConditionMethod(
+                conditionsClass,
+                method,
+                methodName,
+                receiverName,
+                returnValueName,
+                tag,
+                conditionString);
+          }
         }
       }
     }
@@ -368,23 +405,56 @@ public class Toradocu {
     }
   }
 
+  private static void addConditionMethod(
+      StringBuilder conditionsClass,
+      DocumentedMethod method,
+      String methodName,
+      String receiverName,
+      String returnValueName,
+      Tag tag,
+      String conditionString) {
+    conditionsClass.append("\n// ").append(method);
+    conditionsClass.append("\npublic static boolean ").append(methodName);
+    conditionsClass
+        .append(buildConditionSignatureString(method, receiverName, returnValueName))
+        .append(" {")
+        .append("\n// ")
+        .append(tag);
+    conditionString =
+        MethodChangerVisitor.convertToParamNames(
+            conditionString, method, receiverName, returnValueName);
+    conditionsClass.append("\nreturn ").append(conditionString).append(";").append("}");
+  }
+
+  /**
+   * Builds the arguments part of the method signature of the condition checking method
+   * corresponding to {@code method}.
+   *
+   * @param method the DocumentedMethod for which build the signature
+   * @param receiverName the parameter name of the parameter representing the receiver object
+   * @param returnValueName the parameter name of the parameter representing the return value of
+   *     {@code method}. Empty string if the return parameter should not be added to the signature
+   * @return the arguments part of the method signature of the condition checking method
+   *     corresponding to {@code method}.
+   */
   private static String buildConditionSignatureString(
-      DocumentedMethod method, String receiverName) {
-    StringBuilder signatureBuilder = new StringBuilder("(");
-    signatureBuilder.append(method.getContainingClass()).append(" ").append(receiverName);
-    if (method.getParameters().size() > 0) {
-      signatureBuilder.append(",");
+      DocumentedMethod method, String receiverName, String returnValueName) {
+    List<String> paramList = new ArrayList<>();
+
+    if (!method.isConstructor()) {
+      // Add receiver object as first parameter.
+      paramList.add(method.getContainingClass() + " " + receiverName);
     }
-    for (Parameter param : method.getParameters()) {
-      signatureBuilder.append(param);
-      signatureBuilder.append(",");
+    method.getParameters().forEach(param -> paramList.add(param.toString()));
+    if (!method.isConstructor()) {
+      String returnType = method.getReturnType().getQualifiedName();
+      if (!returnType.equals("void") && !returnValueName.isEmpty()) {
+        paramList.add(returnType + " " + returnValueName);
+      }
     }
-    // Remove last comma when needed.
-    if (signatureBuilder.charAt(signatureBuilder.length() - 1) == ',') {
-      signatureBuilder.deleteCharAt(signatureBuilder.length() - 1);
-    }
-    signatureBuilder.append(")");
-    return signatureBuilder.toString();
+    StringJoiner paramJoiner = new StringJoiner(",", "(", ")");
+    paramList.forEach(param -> paramJoiner.add(param));
+    return paramJoiner.toString();
   }
 
   /**
