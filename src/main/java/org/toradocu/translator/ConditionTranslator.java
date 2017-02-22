@@ -499,7 +499,12 @@ public class ConditionTranslator {
    * @return the translation of the given {@code text}
    */
   private static String translateLastPart(String text, DocumentedMethod method) {
-    // TODO Implement this method
+    final String lowerCaseText = text.toLowerCase();
+    if (lowerCaseText.contains("true")) {
+      return "result == true";
+    } else if (lowerCaseText.contains("false")) {
+      return "result == false";
+    }
     return null;
   }
 
