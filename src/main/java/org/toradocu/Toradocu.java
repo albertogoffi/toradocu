@@ -23,6 +23,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.StringJoiner;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -325,8 +326,6 @@ public class Toradocu {
         final Optional<String> condition = tag.getCondition();
         int typedTagIndex;
         if (condition.isPresent() && !condition.get().isEmpty()) {
-          conditionsClass.append("\n// ").append(method);
-          conditionsClass.append("\npublic static boolean m");
           StringBuilder methodSuffix = new StringBuilder();
           methodSuffix.append(methodIndex);
           switch (tag.getKind()) {
@@ -353,22 +352,45 @@ public class Toradocu {
           }
           methodSuffix.append(typedTagIndex);
           String suffix = methodSuffix.toString();
+
           String receiverName = "receiver" + suffix;
-          String returnValueName = tag.getKind().equals(Tag.Kind.RETURN) ? "result" + suffix : "";
-          conditionsClass
-              .append(suffix)
-              .append(buildConditionSignatureString(method, receiverName, returnValueName))
-              .append(" {")
-              .append("\n// ")
-              .append(tag);
+          String returnValueName = "";
           String conditionString = condition.get();
-          if (tag.getKind() == Tag.Kind.RETURN && !conditionString.contains(":")) {
-            conditionString += " : true"; // Add no-effect else check if not specified.
+
+          if (tag.getKind() == Tag.Kind.RETURN) {
+            returnValueName = "result" + suffix;
+            // return tag conditions should be ternary: pre ? true-post : false-post
+            String[] toks = conditionString.split("[?:]");
+            if ((toks.length == 2 || toks.length == 3) && !toks[0].trim().isEmpty()) {
+              String methodName = "m" + "_pre" + suffix;
+              addConditionMethod(
+                  conditionsClass, method, methodName, receiverName, returnValueName, tag, toks[0]);
+              methodName = "m" + "_truepost" + suffix;
+              addConditionMethod(
+                  conditionsClass, method, methodName, receiverName, returnValueName, tag, toks[1]);
+              if (toks.length == 3) {
+                methodName = "m" + "_falsepost" + suffix;
+                addConditionMethod(
+                    conditionsClass,
+                    method,
+                    methodName,
+                    receiverName,
+                    returnValueName,
+                    tag,
+                    toks[2]);
+              }
+            }
+          } else {
+            String methodName = "m" + suffix;
+            addConditionMethod(
+                conditionsClass,
+                method,
+                methodName,
+                receiverName,
+                returnValueName,
+                tag,
+                conditionString);
           }
-          conditionString =
-              MethodChangerVisitor.convertToParamNames(
-                  conditionString, method, receiverName, returnValueName);
-          conditionsClass.append("\nreturn ").append(conditionString).append(";").append("}");
         }
       }
     }
@@ -381,6 +403,27 @@ public class Toradocu {
       log.error("Error during conditions export", e);
       return "";
     }
+  }
+
+  private static void addConditionMethod(
+      StringBuilder conditionsClass,
+      DocumentedMethod method,
+      String methodName,
+      String receiverName,
+      String returnValueName,
+      Tag tag,
+      String conditionString) {
+    conditionsClass.append("\n// ").append(method);
+    conditionsClass.append("\npublic static boolean ").append(methodName);
+    conditionsClass
+        .append(buildConditionSignatureString(method, receiverName, returnValueName))
+        .append(" {")
+        .append("\n// ")
+        .append(tag);
+    conditionString =
+        MethodChangerVisitor.convertToParamNames(
+            conditionString, method, receiverName, returnValueName);
+    conditionsClass.append("\nreturn ").append(conditionString).append(";").append("}");
   }
 
   /**
@@ -396,19 +439,22 @@ public class Toradocu {
    */
   private static String buildConditionSignatureString(
       DocumentedMethod method, String receiverName, String returnValueName) {
-    StringBuilder signature = new StringBuilder("(");
-    // Add receiver object as first parameter.
-    signature.append(method.getContainingClass()).append(" ").append(receiverName);
-    // Add method arguments.
-    method.getParameters().forEach(param -> signature.append(",").append(param));
-    // Add method return value as second parameter.
-    String returnType = method.getReturnType().getQualifiedName();
-    if (!returnType.equals("void") && !returnValueName.isEmpty()) {
-      signature.append(",").append(returnType).append(" ").append(returnValueName);
-    }
+    List<String> paramList = new ArrayList<>();
 
-    signature.append(")");
-    return signature.toString();
+    if (!method.isConstructor()) {
+      // Add receiver object as first parameter.
+      paramList.add(method.getContainingClass() + " " + receiverName);
+    }
+    method.getParameters().forEach(param -> paramList.add(param.toString()));
+    if (!method.isConstructor()) {
+      String returnType = method.getReturnType().getQualifiedName();
+      if (!returnType.equals("void") && !returnValueName.isEmpty()) {
+        paramList.add(returnType + " " + returnValueName);
+      }
+    }
+    StringJoiner paramJoiner = new StringJoiner(",", "(", ")");
+    paramList.forEach(param -> paramJoiner.add(param));
+    return paramJoiner.toString();
   }
 
   /**
