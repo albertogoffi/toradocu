@@ -27,10 +27,12 @@ fun translate(methods: List<DocumentedMethod>) {
  */
 private fun translateTagComment(tag: ParamTag, parameterNames: List<String>) {
   val parameterName = tag.parameter().name
-  if (mustBeNotNull(tag.comment)) {
-    val condition = "(args[${parameterNames.indexOf(parameterName)}]==null)==false"
-    tag.setCondition(condition)
+  val condition = if (mustBeNotNull(tag.comment)) {
+    "(args[${parameterNames.indexOf(parameterName)}]==null)==false"
+  } else {
+    ""
   }
+  tag.setCondition(condition)
 }
 
 /**
