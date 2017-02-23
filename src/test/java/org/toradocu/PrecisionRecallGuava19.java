@@ -20,7 +20,7 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testCharMatcher() throws Exception {
-    test("com.google.common.base.CharMatcher", 0, 0, 1, 0, 1, 0);
+    test("com.google.common.base.CharMatcher", 0, 0, 1, 0, 1, 1);
   }
 
   @Test
@@ -30,17 +30,17 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testSplitter() throws Exception {
-    test("com.google.common.base.Splitter", 1, 1, 1, 0, 1, 0);
+    test("com.google.common.base.Splitter", 1, 1, 1, 0, 1, 1);
   }
 
   @Test
   public void testThrowables() throws Exception {
-    test("com.google.common.base.Throwables", 1, 1, 1, 0, 1, 0);
+    test("com.google.common.base.Throwables", 1, 1, 1, 0, 1, 1);
   }
 
   @Test
   public void testCacheLoader() throws Exception {
-    test("com.google.common.cache.CacheLoader", 1, 1, 1, 0, 1, 0);
+    test("com.google.common.cache.CacheLoader", 1, 1, 1, 0, 1, 1);
   }
 
   @Test
@@ -50,12 +50,12 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testBloomFilter() throws Exception {
-    test("com.google.common.hash.BloomFilter", 1, 0.5, 0.777, 0.777, 0, 0);
+    test("com.google.common.hash.BloomFilter", 1, 0.5, 0.777, 0.777, 1, 1);
   }
 
   @Test
   public void testHashing() throws Exception {
-    test("com.google.common.hash.Hashing", 1, 0, 1, 0, 1, 0);
+    test("com.google.common.hash.Hashing", 1, 0, 1, 0, 1, 1);
   }
 
   @Test
@@ -65,7 +65,7 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testDoubles() throws Exception {
-    test("com.google.common.primitives.Doubles", 0.75, 0.75, 1, 0, 1, 0);
+    test("com.google.common.primitives.Doubles", 0.75, 0.75, 1, 0, 1, 1);
   }
 
   @Test
@@ -80,7 +80,7 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testShorts() throws Exception {
-    test("com.google.common.primitives.Shorts", 0.75, 0.5, 1, 0, 1, 0);
+    test("com.google.common.primitives.Shorts", 0.75, 0.5, 1, 0, 1, 1);
   }
 
   @Test
