@@ -372,18 +372,15 @@ public class ConditionTranslator {
       comment += ".";
     }
 
-    // Remove commas from the comment if enabled.
-    if (Toradocu.configuration != null && Toradocu.configuration.removeCommas()) {
+    // Remove commas from the comment if enabled. (Do not remove commas when dealing with @return.)
+    if (Toradocu.configuration != null
+        && Toradocu.configuration.removeCommas()
+        && !tag.getKind().equals(Tag.Kind.RETURN)) {
       comment = comment.replace(",", " ");
     }
 
     // Comment preprocessing for @throws tags.
     if (tag.getKind() == Tag.Kind.THROWS) {
-      //      String lowerCaseComment = comment.toLowerCase();
-      //      while (lowerCaseComment.startsWith("if ")) {
-      //        comment = comment.substring(3); // Remove initial "if"s.
-      //        lowerCaseComment = comment.toLowerCase();
-      //      }
       comment = removeInitial(comment, "if");
     }
 
@@ -439,24 +436,25 @@ public class ConditionTranslator {
       // sentence comments using the Stanford Parser, and then work on each single sentence.
       String translation = "";
 
-      // 1. Split the sentence in two parts: predicate + condition.
+      // Split the sentence in three parts: predicate + true case + false case.
       // TODO Naive splitting. Make the split more reliable.
-      final int splitPoint = comment.indexOf(" if ");
-      if (splitPoint != -1) {
-        String predicate = comment.substring(0, splitPoint);
-        String condition = comment.substring(splitPoint + 3);
+      final int predicateSplitPoint = comment.indexOf(" if ");
+      if (predicateSplitPoint != -1) {
+        String predicate = comment.substring(0, predicateSplitPoint);
+        final String[] tokens = comment.substring(predicateSplitPoint + 3).split(",", 2);
+        String trueCase = tokens[0];
+        String falseCase = tokens.length > 1 ? tokens[1] : "";
 
-        if (!predicate.isEmpty() && !condition.isEmpty()) {
+        if (!predicate.isEmpty() && !trueCase.isEmpty()) {
           try {
             String predicateTranslation = translateFirstPart(predicate);
-            String conditionTranslation = translateSecondPart(condition, method);
-            String elsePredicate = translateLastPart(condition, method);
-
+            String conditionTranslation = translateSecondPart(trueCase, method);
             translation = conditionTranslation + " ? " + predicateTranslation;
+            // Else case might not be present.
+            String elsePredicate = translateLastPart(falseCase, method);
             if (elsePredicate != null) {
               translation = translation + " : " + elsePredicate;
             }
-
             /* To validate the return values of the method under test we will have a code similar
              * to this in the generated aspect:
              *
