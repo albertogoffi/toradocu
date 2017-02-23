@@ -358,13 +358,15 @@ public class Toradocu {
           String conditionString = condition.get();
 
           if (tag.getKind() == Tag.Kind.RETURN) {
-            returnValueName = "result" + suffix;
+
             // return tag conditions should be ternary: pre ? true-post : false-post
             String[] toks = conditionString.split("[?:]");
             if ((toks.length == 2 || toks.length == 3) && !toks[0].trim().isEmpty()) {
               String methodName = "m" + "_pre" + suffix;
               addConditionMethod(
                   conditionsClass, method, methodName, receiverName, returnValueName, tag, toks[0]);
+              returnValueName =
+                  "result" + suffix; //post-conditions should have return value argument
               methodName = "m" + "_truepost" + suffix;
               addConditionMethod(
                   conditionsClass, method, methodName, receiverName, returnValueName, tag, toks[1]);
