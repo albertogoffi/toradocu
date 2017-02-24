@@ -410,13 +410,13 @@ public class Stats {
           && expectedTag != null
           && expectedTag.getCondition() != null) {
 
-        String expectedCondition = expectedTag.getCondition().get();
+        String expectedCondition = expectedTag.getCondition().get().replace(" ", "");
         if (Toradocu.configuration.useTComment()
             && actualTag.getKind().equals(Tag.Kind.RETURN)
             && !actualTag.getCondition().isPresent()) {
           continue; // Ignore not translated @return tags when using @tComment engine.
         }
-        String actualCondition = actualTag.getCondition().get();
+        String actualCondition = actualTag.getCondition().get().replace(" ", "");
 
         // Ignore conditions for which there is no known translation.
         if (!expectedCondition.isEmpty()) {
