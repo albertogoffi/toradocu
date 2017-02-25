@@ -73,7 +73,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "true if the stack is currently empty",
-      "condition": "target.empty() ? true : false",
+      "condition": "target.empty() ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -97,7 +97,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "the top item on the stack",
-      "condition": "",
+      "condition": "true ? result.equals(target.peek())",
       "kind": "RETURN"
     },
     "returnType": {
@@ -155,7 +155,7 @@
     ],
     "returnTag": {
       "comment": "the n'th item on the stack, zero relative",
-      "condition": "",
+      "condition": "true ? result.equals(target.peek(args[0]))",
       "kind": "RETURN"
     },
     "returnType": {
@@ -248,7 +248,7 @@
     ],
     "returnTag": {
       "comment": "the item just pushed",
-      "condition": "",
+      "condition": "true ? result.equals(args[0])",
       "kind": "RETURN"
     },
     "returnType": {
@@ -295,7 +295,7 @@
     ],
     "returnTag": {
       "comment": "the 1-based depth into the stack of the object, or -1 if not found",
-      "condition": "",
+      "condition": "target.contains(args[0]) ? result==target.indexOf(args[0])+1 : result==-1",
       "kind": "RETURN"
     },
     "returnType": {
