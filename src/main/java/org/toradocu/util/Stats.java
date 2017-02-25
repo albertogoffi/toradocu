@@ -77,9 +77,10 @@ public class Stats {
    * @return the precision for the given kind of tag
    */
   public double getPrecision(Tag.Kind kind) {
+    int translated;
     switch (kind) {
       case THROWS:
-        int translated = correctTranslationsThrows + wrongTranslationThrows;
+        translated = correctTranslationsThrows + wrongTranslationThrows;
         return translated == 0 ? 1 : correctTranslationsThrows / (double) translated;
       case PARAM:
         translated = correctTranslationsParam + wrongTranslationParam;
