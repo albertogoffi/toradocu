@@ -1252,7 +1252,7 @@
     ],
     "returnTag": {
       "comment": "true",
-      "condition": "true ? true",
+      "condition": "true ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1276,7 +1276,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "true if the map is full",
-      "condition": "target.isFull() ? true",
+      "condition": "target.isFull() ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1300,7 +1300,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "the maximum number of elements the map can hold",
-      "condition": "",
+      "condition": "true ? result==target.maxSize()",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1586,7 +1586,7 @@
     ],
     "returnTag": {
       "comment": "true if the map contains the value",
-      "condition": "",
+      "condition": "target.containsValue(args[0]) ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1769,7 +1769,7 @@
     ],
     "returnTag": {
       "comment": "the entry, null if no match",
-      "condition": "",
+      "condition": "target.getEntry()==null ? result==null : result.equals(target.getEntry())",
       "kind": "RETURN"
     },
     "returnType": {
@@ -2367,7 +2367,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "the size",
-      "condition": "",
+      "condition": "true ? result==target.size()",
       "kind": "RETURN"
     },
     "returnType": {
@@ -2391,7 +2391,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "true if the map is currently size zero",
-      "condition": "target.size()==0 ? true : false",
+      "condition": "target.size()==0 ? result==true : result==false",
       "kind": "RETURN"
     },
     "returnType": {
@@ -2438,7 +2438,7 @@
     ],
     "returnTag": {
       "comment": "true if the map contains the key",
-      "condition": "",
+      "condition": "target.containsKey(args[0]) ? result==true : result==false",
       "kind": "RETURN"
     },
     "returnType": {
@@ -3736,7 +3736,7 @@
     ],
     "returnTag": {
       "comment": "true if equal",
-      "condition": "",
+      "condition": "target.equals(args[0]) ? result==true : result==false",
       "kind": "RETURN"
     },
     "returnType": {

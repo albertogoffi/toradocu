@@ -449,11 +449,14 @@ public class ConditionTranslator {
           try {
             String predicateTranslation = translateFirstPart(predicate);
             String conditionTranslation = translateSecondPart(trueCase, method);
-            translation = conditionTranslation + " ? " + predicateTranslation;
-            // Else case might not be present.
-            String elsePredicate = translateLastPart(falseCase, method);
-            if (elsePredicate != null) {
-              translation = translation + " : " + elsePredicate;
+
+            if (!predicateTranslation.isEmpty() && !conditionTranslation.isEmpty()) {
+              translation = conditionTranslation + " ? " + predicateTranslation;
+              // Else case might not be present.
+              String elsePredicate = translateLastPart(falseCase, method);
+              if (elsePredicate != null) {
+                translation = translation + " : " + elsePredicate;
+              }
             }
             /* To validate the return values of the method under test we will have a code similar
              * to this in the generated aspect:

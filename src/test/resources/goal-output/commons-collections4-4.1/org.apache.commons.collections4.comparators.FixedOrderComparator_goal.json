@@ -185,7 +185,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "FixedOrderComparator.UnknownObjectBehavior",
-      "condition": "",
+      "condition": "true ? result.equals(org.apache.commons.collections4.comparators.FixedOrderComparator.UnknownObjectBehavior)",
       "kind": "RETURN"
     },
     "returnType": {
@@ -545,7 +545,7 @@
     ],
     "returnTag": {
       "comment": "true if equal",
-      "condition": "",
+      "condition": "target.equals(args[0]) ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
