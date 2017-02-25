@@ -27,7 +27,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testComplex() throws Exception {
-    test("org.apache.commons.math3.complex.Complex", 1, 0.916, 1, 1, 1, 1);
+    test("org.apache.commons.math3.complex.Complex", 1, 0.916, 1, 1, 1, 0);
   }
 
   @Test
@@ -62,7 +62,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testArithmeticUtils() throws Exception {
-    test("org.apache.commons.math3.util.ArithmeticUtils", 1, 0.421, 1, 0, 1, 1);
+    test("org.apache.commons.math3.util.ArithmeticUtils", 1, 0.421, 1, 0, 1, 0);
   }
 
   @Test
@@ -109,7 +109,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testLoessInterpolator() throws Exception {
-    test("org.apache.commons.math3.analysis.interpolation.LoessInterpolator", 1, 0.111, 1, 1, 1, 0);
+    test("org.apache.commons.math3.analysis.interpolation.LoessInterpolator", 1, 0.111, 1, 1, 1, 1);
   }
 
   @Test
