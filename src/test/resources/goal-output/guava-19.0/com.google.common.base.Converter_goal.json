@@ -118,7 +118,7 @@
     ],
     "returnTag": {
       "comment": "the converted instance; must not be null",
-      "condition": "",
+      "condition": "true ? (result==null)==false",
       "kind": "RETURN"
     },
     "returnType": {
@@ -168,7 +168,7 @@
     ],
     "returnTag": {
       "comment": "the converted value; is null if and only if a is null",
-      "condition": "",
+      "condition": "args[0]==null ? result==null",
       "kind": "RETURN"
     },
     "returnType": {

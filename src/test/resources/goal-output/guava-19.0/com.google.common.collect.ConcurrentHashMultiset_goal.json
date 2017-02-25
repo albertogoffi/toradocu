@@ -1012,7 +1012,7 @@
     ],
     "returnTag": {
       "comment": "true always, since this call is required to modify the multiset, unlike other Collection types",
-      "condition": "",
+      "condition": "true ? result==true",
       "kind": "RETURN"
     },
     "returnType": {

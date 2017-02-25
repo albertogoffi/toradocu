@@ -48,7 +48,7 @@
     ],
     "returnTag": {
       "comment": "the value associated with key; must not be null",
-      "condition": "",
+      "condition": "true ? (result==null)==false",
       "kind": "RETURN"
     },
     "returnType": {
@@ -142,7 +142,7 @@
     ],
     "returnTag": {
       "comment": "the future new value associated with key; must not be null, must not return null",
-      "condition": "",
+      "condition": "true ? (result==null)==false",
       "kind": "RETURN"
     },
     "returnType": {

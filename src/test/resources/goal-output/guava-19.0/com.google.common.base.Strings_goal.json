@@ -49,7 +49,7 @@
     ],
     "returnTag": {
       "comment": "string itself if it is non-null; \"\" if it is null",
-      "condition": "",
+      "condition": "args[0]==null ? result.equals(\"\") : result.equals(args[0]) ",
       "kind": "RETURN"
     },
     "returnType": {
@@ -97,7 +97,7 @@
     ],
     "returnTag": {
       "comment": "string itself if it is nonempty; null if it is empty or null",
-      "condition": "",
+      "condition": "args[0]==null || args[0].isEmpty() ? result==null : result.equals(args[0])",
       "kind": "RETURN"
     },
     "returnType": {
@@ -145,7 +145,7 @@
     ],
     "returnTag": {
       "comment": "true if the string is null or is the empty string",
-      "condition": "args[0]==null || args[0].isEmpty() ? true",
+      "condition": "args[0]==null || args[0].isEmpty() ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -391,7 +391,7 @@
     ],
     "returnTag": {
       "comment": "a string containing string repeated count times (the empty string if count is zero)",
-      "condition": "",
+      "condition": "args[1]==0 ? result.equals(\"\")",
       "kind": "RETURN"
     },
     "returnType": {

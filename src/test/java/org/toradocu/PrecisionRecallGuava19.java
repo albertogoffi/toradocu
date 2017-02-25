@@ -25,7 +25,7 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testConverter() throws Exception {
-    test("com.google.common.base.Converter", 1, 1, 1, 1, 1, 1);
+    test("com.google.common.base.Converter", 1, 1, 1, 1, 1, 0);
   }
 
   @Test
@@ -40,7 +40,7 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testCacheLoader() throws Exception {
-    test("com.google.common.cache.CacheLoader", 1, 1, 1, 0, 1, 1);
+    test("com.google.common.cache.CacheLoader", 1, 1, 1, 0, 1, 0);
   }
 
   @Test
@@ -60,7 +60,7 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testConcurrentHashMultiset() throws Exception {
-    test("com.google.common.collect.ConcurrentHashMultiset", 0.818, 0.692, 1, 1, 1, 1);
+    test("com.google.common.collect.ConcurrentHashMultiset", 0.818, 0.692, 1, 1, 1, 0);
   }
 
   @Test
@@ -75,7 +75,7 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testMoreObjects() throws Exception {
-    test("com.google.common.base.MoreObjects", 1, 1, 1, 1, 1, 1);
+    test("com.google.common.base.MoreObjects", 1, 1, 1, 1, 1, 0);
   }
 
   @Test
@@ -90,7 +90,7 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testVerify() throws Exception {
-    test("com.google.common.base.Verify", 1, 1, 1, 1, 1, 1);
+    test("com.google.common.base.Verify", 1, 1, 1, 1, 1, 0);
   }
 
   @Test

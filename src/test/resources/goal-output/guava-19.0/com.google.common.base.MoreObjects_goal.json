@@ -44,7 +44,7 @@
     ],
     "returnTag": {
       "comment": "first if it is non-null; otherwise second if it is non-null",
-      "condition": "",
+      "condition": "args[0]==null ? result==args[0] : result==args[1]",
       "kind": "RETURN"
     },
     "returnType": {
