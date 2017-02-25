@@ -25,7 +25,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "immutable empty collection",
-      "condition": "",
+      "condition": "true ? result.isEmpty()==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -72,7 +72,7 @@
     ],
     "returnTag": {
       "comment": "an empty collection if the argument is null",
-      "condition": "args[0]==null",
+      "condition": "args[0]==null ? result.isEmpty()==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -820,7 +820,7 @@
     ],
     "returnTag": {
       "comment": "true iff the collections contain the same elements with the same cardinalities.",
-      "condition": "",
+      "condition": "args[0].equals(args[1]) ? result==true : result==false",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1271,7 +1271,7 @@
     ],
     "returnTag": {
       "comment": "the last element in the collection, or null if either collection or closure is null",
-      "condition": "args[0]==null || args[1]==null ? null",
+      "condition": "args[0]==null || args[1]==null ? result==null",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1339,7 +1339,7 @@
     ],
     "returnTag": {
       "comment": "the last element in the collection, or null if either iterator or closure is null",
-      "condition": "args[0]==null || args[1]==null ? null",
+      "condition": "args[0]==null || args[1]==null ? result==null",
       "kind": "RETURN"
     },
     "returnType": {
@@ -3376,7 +3376,7 @@
     ],
     "returnTag": {
       "comment": "the size of the specified collection or 0 if the object was null",
-      "condition": "",
+      "condition": "args[0]==null ? result == 0",
       "kind": "RETURN"
     },
     "returnType": {
@@ -3434,7 +3434,7 @@
     ],
     "returnTag": {
       "comment": "true if empty or null",
-      "condition": "",
+      "condition": "args[0]==null || args[0].isEmpty() ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -3492,7 +3492,7 @@
     ],
     "returnTag": {
       "comment": "true if empty or null",
-      "condition": "",
+      "condition": "args[0]==null || args[0].isEmpty() ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -3539,7 +3539,7 @@
     ],
     "returnTag": {
       "comment": "true if non-null and non-empty",
-      "condition": "",
+      "condition": "(args[0]==null)==false && (args[0].isEmpty())==false ? true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -3775,7 +3775,7 @@
     ],
     "returnTag": {
       "comment": "a new sorted List, containing the elements of Collection a and b",
-      "condition": "",
+      "condition": "true ? result.containsAll(args[0]) && result.containsAll(args[1])",
       "kind": "RETURN"
     },
     "returnType": {
@@ -3875,7 +3875,7 @@
     ],
     "returnTag": {
       "comment": "a new sorted List, containing the elements of Collection a and b",
-      "condition": "",
+      "condition": "true ? result.containsAll(args[0])",
       "kind": "RETURN"
     },
     "returnType": {

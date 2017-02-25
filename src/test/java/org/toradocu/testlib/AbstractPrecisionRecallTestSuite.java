@@ -76,7 +76,7 @@ public abstract class AbstractPrecisionRecallTestSuite {
             + "\nAverage precision on @return: "
             + String.format("%.2f", testSuiteStats.getPrecision(Tag.Kind.RETURN))
             + "\nAverage recall on @return: "
-            + String.format("%.2f", testSuiteStats.getRecall(Tag.Kind.PARAM))
+            + String.format("%.2f", testSuiteStats.getRecall(Tag.Kind.RETURN))
             + "\nAverage precision on @param: "
             + String.format("%.2f", testSuiteStats.getPrecision(Tag.Kind.PARAM))
             + "\nAverage recall on @param: "
