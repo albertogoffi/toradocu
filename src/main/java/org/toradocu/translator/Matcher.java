@@ -1,11 +1,15 @@
 package org.toradocu.translator;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.util.Reflection;
@@ -228,13 +232,18 @@ class Matcher {
       return result;
     }
 
-    for (Field field : type.getFields()) {
+    // Important: Sort members to make result deterministic!
+    Comparator<Member> byName = Comparator.comparing(Member::getName);
+
+    for (Field field :
+        Arrays.stream(type.getFields()).sorted(byName).collect(Collectors.toList())) {
       if (field.getType().equals(Boolean.class) || field.getType().equals(boolean.class)) {
         result.add(new FieldCodeElement(receiver.getJavaExpression(), field));
       }
     }
 
-    for (Method method : type.getMethods()) {
+    for (Method method :
+        Arrays.stream(type.getMethods()).sorted(byName).collect(Collectors.toList())) {
       if (method.getParameterCount() == 0
           && (method.getReturnType().equals(Boolean.class)
               || method.getReturnType().equals(boolean.class))) {
