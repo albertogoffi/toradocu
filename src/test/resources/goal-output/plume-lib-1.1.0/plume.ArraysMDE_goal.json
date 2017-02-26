@@ -9651,7 +9651,7 @@
     ],
     "returnTag": {
       "comment": "true iff some element of a is null (false if a is zero-sized)",
-      "condition": "",
+      "condition": "java.util.Arrays.contains(null) ? result == true : result == false",
       "kind": "RETURN"
     },
     "returnType": {
@@ -9708,7 +9708,7 @@
     ],
     "returnTag": {
       "comment": "true iff all elements of a are null (unspecified result if a is zero-sized)",
-      "condition": "",
+      "condition": "java.util.Arrays.asList(args[0]).stream().allMatch(e -> e==null)?result==true : result==false",
       "kind": "RETURN"
     },
     "returnType": {
@@ -9755,7 +9755,7 @@
     ],
     "returnTag": {
       "comment": "true iff some element of a is null (false if a is zero-sized)",
-      "condition": "",
+      "condition": "java.util.Arrays.asList(array).stream().anyMatch(e -> e==null) ? result==true: result==false",
       "kind": "RETURN"
     },
     "returnType": {
@@ -9802,7 +9802,7 @@
     ],
     "returnTag": {
       "comment": "true iff all elements of a are null (unspecified result if a is zero-sized)",
-      "condition": "",
+      "condition": "args[0].stream().allMatch(e -> e==null) ? result==true : result==false",
       "kind": "RETURN"
     },
     "returnType": {
