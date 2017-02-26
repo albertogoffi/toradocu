@@ -16,7 +16,7 @@ public class PrecisionRecallJGraphT extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testAbstractGraph() throws Exception {
-    test("org.jgrapht.graph.AbstractGraph", 1, 0.5, 1, 1, 1, 1);
+    test("org.jgrapht.graph.AbstractGraph", 1, 0.5, 1, 1, 1, 0);
   }
 
   @Test
@@ -26,7 +26,7 @@ public class PrecisionRecallJGraphT extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testGraphs() throws Exception {
-    test("org.jgrapht.Graphs", 1, 0, 1, 1, 1, 1);
+    test("org.jgrapht.Graphs", 1, 0, 1, 1, 1, 0);
   }
 
   @Test
@@ -46,7 +46,7 @@ public class PrecisionRecallJGraphT extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testDirectedSimpleCycles() throws Exception {
-    test("org.jgrapht.alg.cycle.DirectedSimpleCycles", 1, 1, 1, 1, 1, 1);
+    test("org.jgrapht.alg.cycle.DirectedSimpleCycles", 1, 1, 1, 1, 1, 0);
   }
 
   @Test

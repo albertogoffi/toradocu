@@ -1057,7 +1057,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "True if this player is colonial.",
-      "condition": "target.isColonial()==true ? result==true",
+      "condition": "target.isColonial() ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1081,7 +1081,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "True if this player is European.",
-      "condition": "target.isEuropean()==true ? result==true",
+      "condition": "target.isEuropean() ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1105,7 +1105,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "True if this player is a native player.",
-      "condition": "target.isIndian()==true ? result==true",
+      "condition": "target.isIndian() ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1129,7 +1129,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "True if this player is a rebel player.",
-      "condition": "target.isRebel()==true ? result==true",
+      "condition": "target.isRebel() ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1153,7 +1153,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "True if this player is undead.",
-      "condition": "target.isUndead()==true ? result==true",
+      "condition": "target.isUndead() ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1177,7 +1177,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "True if this is a REF player.",
-      "condition": "target.isREF()==true ? result==true",
+      "condition": "target.isREF() ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1403,7 +1403,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "True if this player can found colonies.",
-      "condition": "target.canBuildColonies()==true ? result==true",
+      "condition": "target.canBuildColonies() ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1427,7 +1427,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "True if this player can recruit founding fathers.",
-      "condition": "target.canHaveFoundingFathers()==true ? result==true",
+      "condition": "target.canHaveFoundingFathers() ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1541,7 +1541,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "True if the player is an admin.",
-      "condition": "target.isAdmin()==true ? result==true",
+      "condition": "target.isAdmin() ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1565,7 +1565,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "True if this is an AI player.",
-      "condition": "target.isAI()==true ? result==true",
+      "condition": "target.isAI() ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1631,7 +1631,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "True if this Player is ready to start the game.",
-      "condition": "target.isReady()==true ? result==true",
+      "condition": "target.isReady() ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1697,7 +1697,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "True if this Player is dead.",
-      "condition": "target.isDead()==true ? result==true",
+      "condition": "target.isDead() ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1721,7 +1721,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "True if this Player is dead.",
-      "condition": "target.isDead()==true ? result==true",
+      "condition": "target.isDead() ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1787,7 +1787,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "True if this player has been attacked by privateers.",
-      "condition": "target.getAttackedByPrivateers==true ? result==true",
+      "condition": "target.getAttackedByPrivateers() ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -2199,7 +2199,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "True if this player is bankrupt.",
-      "condition": "target.getBankrupt()",
+      "condition": "target.getBankrupt() ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -4080,7 +4080,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "The Europe object, or null if the player is not European or indpendent.",
-      "condition": "(target.isEuropean()) == false ? true",
+      "condition": "(target.isEuropean()) == false ? result==null",
       "kind": "RETURN"
     },
     "returnType": {
@@ -6803,7 +6803,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "True if this player is at war with any other.",
-      "condition": "target.isAtWar() ? true",
+      "condition": "target.isAtWar() ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -8413,7 +8413,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "True if this object is not initialized.",
-      "condition": "(target.isUninitialized()) == false ? true",
+      "condition": "(target.isUninitialized()) == false ? result==true",
       "kind": "RETURN"
     },
     "returnType": {

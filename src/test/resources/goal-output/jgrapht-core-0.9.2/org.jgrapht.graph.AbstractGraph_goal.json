@@ -562,7 +562,7 @@
     ],
     "returnTag": {
       "comment": "true if the specified object is equal to this graph",
-      "condition": "",
+      "condition": "target.equals(args[0])==true ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
