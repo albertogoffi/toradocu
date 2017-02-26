@@ -325,10 +325,14 @@ public class Stats {
 
       Set<ReturnTag> actualMethodReturnTag = new LinkedHashSet<>();
       Set<ReturnTag> expectedMethodReturnTag = new LinkedHashSet<>();
-
-      actualMethodReturnTag.add(actualMethod.returnTag());
-      expectedMethodReturnTag.add(expectedMethod.returnTag());
-
+      final Type methodReturnType = expectedMethod.getReturnType();
+      final String typeSimpleName =
+          methodReturnType != null ? methodReturnType.getSimpleName() : "";
+      if (typeSimpleName.equals("boolean") || typeSimpleName.equals("Boolean")) {
+        // Consider @return only for methods with
+        actualMethodReturnTag.add(actualMethod.returnTag());
+        expectedMethodReturnTag.add(expectedMethod.returnTag());
+      }
       collectStats(methodStats, actualMethodReturnTag, expectedMethodReturnTag, Tag.Kind.RETURN);
 
       stats.add(methodStats);
