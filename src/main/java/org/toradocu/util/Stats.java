@@ -8,6 +8,7 @@ import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.ReturnTag;
 import org.toradocu.extractor.Tag;
+import org.toradocu.extractor.Type;
 
 /**
  * Represents Toradocu precision/recall for a given Java element (for example, it can be a class or
@@ -366,9 +367,14 @@ public class Stats {
 
       Set<ReturnTag> actualMethodReturnTag = new LinkedHashSet<>();
       Set<ReturnTag> expectedMethodReturnTag = new LinkedHashSet<>();
-
-      actualMethodReturnTag.add(actualMethod.returnTag());
-      expectedMethodReturnTag.add(expectedMethod.returnTag());
+      final Type methodReturnType = expectedMethod.getReturnType();
+      final String typeSimpleName =
+          methodReturnType != null ? methodReturnType.getSimpleName() : "";
+      if (typeSimpleName.equals("boolean") || typeSimpleName.equals("Boolean")) {
+        // Consider @return only for methods with
+        actualMethodReturnTag.add(actualMethod.returnTag());
+        expectedMethodReturnTag.add(expectedMethod.returnTag());
+      }
 
       output
           .append(

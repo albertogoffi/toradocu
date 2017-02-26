@@ -62,12 +62,12 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testArithmeticUtils() throws Exception {
-    test("org.apache.commons.math3.util.ArithmeticUtils", 1, 0.421, 1, 0, 1, 0);
+    test("org.apache.commons.math3.util.ArithmeticUtils", 1, 0.421, 1, 0, 1, 1);
   }
 
   @Test
   public void testFastMath() throws Exception {
-    test("org.apache.commons.math3.util.FastMath", 1, 1, 1, 1, 1, 0);
+    test("org.apache.commons.math3.util.FastMath", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
@@ -156,7 +156,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testVector3D() throws Exception {
-    test("org.apache.commons.math3.geometry.euclidean.threed.Vector3D", 1, 0.5, 1, 1, 1, 0);
+    test("org.apache.commons.math3.geometry.euclidean.threed.Vector3D", 1, 0.5, 1, 1, 1, 1);
   }
 
   @Test
