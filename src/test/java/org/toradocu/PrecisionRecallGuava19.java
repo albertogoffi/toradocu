@@ -15,7 +15,7 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testArrayListMultimap() throws Exception {
-    test("com.google.common.collect.ArrayListMultimap", 1, 1, 1, 1, 1, 0);
+    test("com.google.common.collect.ArrayListMultimap", 1, 1, 1, 1, 1, 1);
   }
 
   @Test

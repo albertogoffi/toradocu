@@ -484,6 +484,10 @@ public class ConditionTranslator {
           }
         }
         // Else: do nothing. How can we support different forms of @return tags?
+      } else {
+        if (comment.equals("true always.") || comment.equals("true.") || comment.equals("false.")) {
+          translation = "true?result==true";
+        }
       }
       tag.setCondition(translation);
     }

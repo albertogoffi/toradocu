@@ -63,7 +63,7 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testLRUMap() throws Exception {
-    test("org.apache.commons.collections4.map.LRUMap", 0.824, 0.482, 1, 0.857, 1, 0.167);
+    test("org.apache.commons.collections4.map.LRUMap", 0.824, 0.482, 1, 0.857, 1, 0.333);
   }
 
   @Test
