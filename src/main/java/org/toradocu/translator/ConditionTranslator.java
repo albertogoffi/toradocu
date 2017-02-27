@@ -2,6 +2,7 @@ package org.toradocu.translator;
 
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -484,6 +485,27 @@ public class ConditionTranslator {
           }
         }
         // Else: do nothing. How can we support different forms of @return tags?
+      } else {
+        final String[] truePatterns = {"true", "true always"};
+        final String[] falsePatterns = {"false", "false always"};
+        final String commentToTranslate = comment;
+
+        // Comments always end with a period (added by Toradocu where missing). Therefore, we
+        // have to add period(s) here.
+        final boolean truePatternsMatch =
+            Arrays.stream(truePatterns)
+                .map(p -> p.concat("."))
+                .anyMatch(p -> p.equalsIgnoreCase(commentToTranslate));
+        final boolean falsePatternsMatch =
+            Arrays.stream(falsePatterns)
+                .map(p -> p.concat("."))
+                .anyMatch(p -> p.equalsIgnoreCase(commentToTranslate));
+
+        if (truePatternsMatch) {
+          translation = "true ? result==true";
+        } else if (falsePatternsMatch) {
+          translation = "true ? result==false";
+        }
       }
       tag.setCondition(translation);
     }
