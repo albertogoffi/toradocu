@@ -39,7 +39,7 @@ public class Configuration {
     converter = PathConverter.class,
     required = true
   )
-  private Path classDir;
+  public Path classDir;
 
   @Parameter(names = "--debug", description = "Enable fine-grained logging", hidden = true)
   private boolean debug = false;
