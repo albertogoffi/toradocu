@@ -2,7 +2,6 @@ package org.toradocu.util;
 
 import static org.junit.Assert.fail;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,11 +11,18 @@ import org.junit.Test;
 
 public class GoalFileConverterTest {
 
-  private static final String OUTPUT_DIR = "converted-goal-files";
+  private static final String OUTPUT_DIR = "converted-goal-files/";
   private static final String EXPECTED_OUTPUT_DIR = "src/test/resources/v01-goal-output/";
+
   private static final String GUAVA_BIN = "src/test/resources/bin/guava-19.0.jar";
   private static final String GUAVA_JSON_DIR = "src/test/resources/goal-output/guava-19.0/";
-  private static final String GUAVA_EXPECTED_OUTPUT_DIR = EXPECTED_OUTPUT_DIR + "Guava-19";
+  private static final String GUAVA_EXPECTED_OUTPUT_DIR = EXPECTED_OUTPUT_DIR + "Guava-19/";
+
+  private static final String COMM_COLL_BIN = "src/test/resources/bin/commons-collections4-4.1.jar";
+  private static final String COMM_COLL_JSON_DIR =
+      "src/test/resources/goal-output/commons-collections4-4.1/";
+  private static final String COMM_COLL_EXPECTED_OUTPUT_DIR =
+      EXPECTED_OUTPUT_DIR + "CommonsCollections-4.1/";
 
   @BeforeClass
   public static void setup() throws IOException {
@@ -107,8 +113,71 @@ public class GoalFileConverterTest {
         GUAVA_BIN);
   }
 
+  @Test
+  public void arrayStack() {
+    test(
+        COMM_COLL_JSON_DIR,
+        "org.apache.commons.collections4.ArrayStack_goal.json",
+        COMM_COLL_EXPECTED_OUTPUT_DIR,
+        COMM_COLL_BIN);
+  }
+
+  @Test
+  public void bagUtils() {
+    test(
+        COMM_COLL_JSON_DIR,
+        "org.apache.commons.collections4.BagUtils_goal.json",
+        COMM_COLL_EXPECTED_OUTPUT_DIR,
+        COMM_COLL_BIN);
+  }
+
+  @Test
+  public void closureUtils() {
+    test(
+        COMM_COLL_JSON_DIR,
+        "org.apache.commons.collections4.ClosureUtils_goal.json",
+        COMM_COLL_EXPECTED_OUTPUT_DIR,
+        COMM_COLL_BIN);
+  }
+
+  @Test
+  public void collectionUtils() {
+    test(
+        COMM_COLL_JSON_DIR,
+        "org.apache.commons.collections4.CollectionUtils_goal.json",
+        COMM_COLL_EXPECTED_OUTPUT_DIR,
+        COMM_COLL_BIN);
+  }
+
+  @Test
+  public void fixedOrderComparator() {
+    test(
+        COMM_COLL_JSON_DIR,
+        "org.apache.commons.collections4.comparators.FixedOrderComparator_goal.json",
+        COMM_COLL_EXPECTED_OUTPUT_DIR,
+        COMM_COLL_BIN);
+  }
+
+  @Test
+  public void predicateUtils() {
+    test(
+        COMM_COLL_JSON_DIR,
+        "org.apache.commons.collections4.PredicateUtils_goal.json",
+        COMM_COLL_EXPECTED_OUTPUT_DIR,
+        COMM_COLL_BIN);
+  }
+
+  @Test
+  public void QueueUtils() {
+    test(
+        COMM_COLL_JSON_DIR,
+        "org.apache.commons.collections4.QueueUtils_goal.json",
+        COMM_COLL_EXPECTED_OUTPUT_DIR,
+        COMM_COLL_BIN);
+  }
+
   private static String getGoalFilePath(String jsonFilePath) {
-    return OUTPUT_DIR + File.separator + getGoalFileName(jsonFilePath);
+    return OUTPUT_DIR + getGoalFileName(jsonFilePath);
   }
 
   private static String getGoalFileName(String jsonFilePath) {
@@ -119,7 +188,7 @@ public class GoalFileConverterTest {
   private static void test(
       String jsonDir, String jsonFileName, String expectedOutputDir, String binDir) {
     String jsonFile = jsonDir + jsonFileName;
-    String expectedOutput = expectedOutputDir + File.separator + getGoalFileName(jsonFile);
+    String expectedOutput = expectedOutputDir + getGoalFileName(jsonFile);
 
     String[] args = {jsonFile, getGoalFilePath(jsonFile), binDir, expectedOutput};
     try {

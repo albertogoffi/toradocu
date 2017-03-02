@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Objects;
+import java.util.StringJoiner;
 import org.toradocu.Toradocu;
 import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.DocumentedMethod;
@@ -58,7 +59,8 @@ public class GoalFileConverter {
           continue;
         }
 
-        if (!Modifier.isPublic(executable.getModifiers())) {
+        final int memberModifiers = executable.getModifiers();
+        if (!Modifier.isPublic(memberModifiers) && !Modifier.isProtected(memberModifiers)) {
           continue;
         }
 
@@ -120,7 +122,7 @@ public class GoalFileConverter {
       expected = expected.substring(0, expected.lastIndexOf("==>"));
 
       if (!Objects.equals(actual, expected)) {
-        System.out.println("Converted result is different than expected:");
+        System.out.println("\nConverted result is different than expected:");
         System.out.println("ACTUAL: " + actual);
         System.out.println("EXPECTED: " + expected);
         correct = false;
@@ -151,47 +153,32 @@ public class GoalFileConverter {
   }
 
   private static String parametersOf(Executable member) {
-    StringBuilder parameters = new StringBuilder();
-    boolean firstArgument = true;
+    StringJoiner paramsJoiner = new StringJoiner(", ");
 
     for (Parameter parameter : member.getParameters()) {
-      if (!firstArgument) {
-        parameters.append(", ");
-      }
-
-      final Class<?> parameterType = parameter.getType();
-      if (parameterType.isArray()) {
-        final String typeName = parameterType.getTypeName();
-        if (parameter.isVarArgs()) {
-          parameters.append(typeName.substring(0, typeName.lastIndexOf("["))).append("...");
-        } else {
-          parameters.append(typeName);
+      String parameterizedType = parameter.getParameterizedType().toString();
+      if (parameterizedType.contains("<")) {
+        if (parameter.isVarArgs() && parameterizedType.endsWith("[]")) {
+          parameterizedType = parameterizedType.substring(0, parameterizedType.lastIndexOf("["));
+          parameterizedType += "...";
         }
+        paramsJoiner.add(parameterizedType);
       } else {
-        parameters.append(parameter.getParameterizedType().getTypeName());
+        final String param = parameter.toString();
+        String paramType = param.substring(0, param.lastIndexOf(" "));
+        paramType = paramType.replace("$", ".");
+        paramsJoiner.add(paramType);
       }
-
-      firstArgument = false;
     }
-    return parameters.toString();
+    return paramsJoiner.toString();
   }
 
   private static String typeArgumentOf(Executable member) {
-    StringBuilder typeArgs = new StringBuilder();
-
-    boolean firstTypeParam = true;
-    for (TypeVariable typeParam : member.getTypeParameters()) {
-      if (firstTypeParam) {
-        typeArgs.append("<");
-      } else {
-        typeArgs.append(", ");
-      }
-      typeArgs.append(typeParam.getName());
-      firstTypeParam = false;
+    StringJoiner joiner = new StringJoiner(", ", "<", ">");
+    joiner.setEmptyValue("");
+    for (TypeVariable typeParameter : member.getTypeParameters()) {
+      joiner.add(typeParameter.getName());
     }
-    if (typeArgs.length() != 0) {
-      typeArgs.append(">");
-    }
-    return typeArgs.toString();
+    return joiner.toString();
   }
 }
