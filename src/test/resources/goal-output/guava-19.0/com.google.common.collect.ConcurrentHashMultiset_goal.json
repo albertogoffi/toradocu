@@ -1035,7 +1035,7 @@
       },
       {
         "comment": "if Integer.MAX_VALUE occurrences of element are already contained in this multiset",
-        "condition": "target.count(element)==Integer.MAX_VALUE",
+        "condition": "target.count(args[0])==Integer.MAX_VALUE",
         "exception": {
           "isArray": false,
           "name": "IllegalArgumentException",
