@@ -61,9 +61,39 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
   @Test
   public void fixedOrderComparatorTest() throws Exception {
     Map<String, TestCaseStats> stats =
-        test("org.apache.commons.collections4.comparators" + ".FixedOrderComparator");
+        test("org.apache.commons.collections4.comparators.FixedOrderComparator");
     //		assertEquals(1, stats.getPrecision(), 0);
     //		assertEquals(0.66, stats.getRecall(), PRECISION);
+  }
+
+  @Test
+  public void allPredicateTest() throws Exception {
+    test("org.apache.commons.collections4.functors.AllPredicate");
+  }
+
+  @Test
+  public void andPredicateTest() throws Exception {
+    test("org.apache.commons.collections4.functors.AndPredicate");
+  }
+
+  @Test
+  public void anyPredicateTest() throws Exception {
+    test("org.apache.commons.collections4.functors.AnyPredicate");
+  }
+
+  @Test
+  public void fluentIterableTest() throws Exception {
+    test("org.apache.commons.collections4.FluentIterable");
+  }
+
+  @Test
+  public void lruMapTest() throws Exception {
+    test("org.apache.commons.collections4.map.LRUMap");
+  }
+
+  @Test
+  public void synchronizedBagTest() throws Exception {
+    test("org.apache.commons.collections4.bag.SynchronizedBag");
   }
 
   private Map<String, TestCaseStats> test(String targetClass) {

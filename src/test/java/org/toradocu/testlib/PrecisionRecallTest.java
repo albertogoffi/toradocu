@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
 public class PrecisionRecallTest {
@@ -29,7 +30,7 @@ public class PrecisionRecallTest {
           actualOutputFile,
           "--oracleGeneration", "false",
           "--aspectTemplate",
-          "/Users/alberto/git/toradocu/src/main/resources/AspectTemplate.java",
+          "src/main/resources/AspectTemplate.java",
           "--testClass",
           "foo",
           // "--debug",
@@ -64,20 +65,27 @@ public class PrecisionRecallTest {
         final String translation = tokens[1];
 
         final String expectedTranslation = expectedTranslations.get(condition);
+        assertNotNull("Method " + condition.substring(0, condition.indexOf(" throws "))
+                + " not found in expected output file.", expectedTranslation);
         // Ignore results when expected translation is empty.
         if (!expectedTranslation.endsWith(" []") && !expectedTranslation.endsWith(" [???]")) {
           final String method = condition.substring(0, condition.indexOf(") throws ") + 1);
           TestCaseStats result = methodResults.computeIfAbsent(method, TestCaseStats::new);
 
           if (translation.equals(expectedTranslation)) {
+            System.out.print("Correct ");
             result.incrementCorrect();
           } else {
             if (translation.equals(" []")) {
+              System.out.print("Missing ");
               result.incrementMissig(); // Toradocu did not produce any translation.
             } else {
+              System.out.print("Wrong ");
               result.incrementWrong(); // Translation produced by Toradocu is wrong.
             }
           }
+          System.out.printf("condition.%nExpected: %s%nActual: %s%n%n", expectedTranslation,
+              translation);
         }
       }
       return methodResults;

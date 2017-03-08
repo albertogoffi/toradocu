@@ -1,0 +1,4 @@
+com.google.common.base.Splitter.on(java.util.regex.Pattern) throws java.lang.IllegalArgumentException if separatorPattern matches the empty string ==> []
+com.google.common.base.Splitter.onPattern(java.lang.String) throws java.util.regex.PatternSyntaxException if separatorPattern is a malformed expression ==> []
+com.google.common.base.Splitter.onPattern(java.lang.String) throws java.lang.IllegalArgumentException if separatorPattern matches the empty string ==> []
+com.google.common.base.Splitter.fixedLength(int) throws java.lang.IllegalArgumentException if length is zero or negative ==> [args[0]==0||args[0]<0]

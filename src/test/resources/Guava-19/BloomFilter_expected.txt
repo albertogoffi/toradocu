@@ -1,0 +1,3 @@
+com.google.common.hash.BloomFilter.apply(T) throws java.lang.NullPointerException if input is null and this predicate does not accept null arguments ==> [args[0]==null]
+com.google.common.hash.BloomFilter.putAll(com.google.common.hash.BloomFilter<T>) throws java.lang.IllegalArgumentException if isCompatible(that) == false ==> [target.isCompatible(args[0])==false]
+com.google.common.hash.BloomFilter.<T>readFrom(java.io.InputStream, com.google.common.hash.Funnel<T>) throws java.io.IOException if the InputStream throws an IOException, or if its data does not appear to be a BloomFilter serialized using the writeTo(OutputStream) method. ==> []
