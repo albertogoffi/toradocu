@@ -3,7 +3,7 @@ plugins {
 	id 'application'
 	id 'eclipse'
 	id 'com.github.johnrengelman.shadow' version '1.2.3'
-	id 'de.undercouch.download' version '2.1.0'
+	id 'de.undercouch.download' version '3.1.2'
 }
 
 sourceCompatibility = 1.8
@@ -33,7 +33,7 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-     gradleVersion = '2.12'
+	gradleVersion = '3.2.1'
 }
 
 task copyDocletResources1(type: Copy) {
@@ -127,8 +127,9 @@ task extractJGraphTSrc(type: Copy, dependsOn: downloadJGraphTSrc) {
 }
 
 task extractPlumeLibSrc(type: Copy, dependsOn: downloadPlumeLibSrc) {
-	from tarTree('src/test/resources/plume-lib-1.1.0.tar.gz')
+	from tarTree(resources.gzip('src/test/resources/plume-lib-1.1.0.tar.gz'))
 	into 'src/test/resources/'
+	fileMode 0664
 }
 
 test.dependsOn extractGuavaSrc, extractCommonsCollectionsSrc, extractCommonsMathSrc,
