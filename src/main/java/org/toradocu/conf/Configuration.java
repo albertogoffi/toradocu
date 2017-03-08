@@ -101,6 +101,9 @@ public class Configuration {
 		if (!arguments.contains("-quiet")) {
 			arguments.add("-quiet");
 		}
+		if (!arguments.contains("-private")) {
+			arguments.add("-private");
+		}
 		arguments.add(getTargetPackage());
 		return arguments.toArray(new String[0]);
 	}

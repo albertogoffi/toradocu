@@ -8,7 +8,8 @@ import org.junit.runners.Suite;
 	PrecisionRecallGuava19.class,
 	PrecisionRecallCommonsCollections4.class,
 	PrecisionRecallCommonsMath3.class,
-	PrecisionRecallFreeCol.class
+	PrecisionRecallFreeCol.class,
+	PrecisionRecallJGraphT.class
 })
 public class PrecisionRecallTestSuite {
 

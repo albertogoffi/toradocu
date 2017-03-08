@@ -1,5 +1,6 @@
 org.apache.commons.math3.fraction.Fraction(double) throws org.apache.commons.math3.fraction.FractionConversionException if the continued fraction failed to converge. ==> []
 org.apache.commons.math3.fraction.Fraction(double, double, int) throws org.apache.commons.math3.fraction.FractionConversionException if the continued fraction failed to converge. ==> []
+org.apache.commons.math3.fraction.Fraction(double, double, int, int) throws org.apache.commons.math3.fraction.FractionConversionException if the continued fraction failed to converge. ==> []
 org.apache.commons.math3.fraction.Fraction(double, int) throws org.apache.commons.math3.fraction.FractionConversionException if the continued fraction failed to converge ==> []
 org.apache.commons.math3.fraction.Fraction(int, int) throws org.apache.commons.math3.exception.MathArithmeticException if the denominator is zero ==> [args[1]==0]
 org.apache.commons.math3.fraction.Fraction.reciprocal() throws org.apache.commons.math3.exception.MathArithmeticException if this is zero ==> [target==(org.apache.commons.math3.fraction.BigFraction.ZERO)]
@@ -18,3 +19,5 @@ org.apache.commons.math3.fraction.Fraction.divide(org.apache.commons.math3.fract
 org.apache.commons.math3.fraction.Fraction.divide(org.apache.commons.math3.fraction.Fraction) throws org.apache.commons.math3.exception.NullArgumentException if a is null. ==> [target.abs()==null]
 org.apache.commons.math3.fraction.Fraction.divide(org.apache.commons.math3.fraction.Fraction) throws org.apache.commons.math3.exception.MathArithmeticException if a is zero ==> [target.abs()==0]
 org.apache.commons.math3.fraction.Fraction.getReducedFraction(int, int) throws org.apache.commons.math3.exception.MathArithmeticException if the denominator is zero ==> [args[1]==0]
+org.apache.commons.math3.fraction.Fraction.addSub(org.apache.commons.math3.fraction.Fraction, boolean) throws org.apache.commons.math3.exception.MathArithmeticException if the resulting numerator or denominator cannot be represented in an int. ==> []
+org.apache.commons.math3.fraction.Fraction.addSub(org.apache.commons.math3.fraction.Fraction, boolean) throws org.apache.commons.math3.exception.NullArgumentException if the fraction is null ==> [args[0]==null]

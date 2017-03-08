@@ -2,6 +2,7 @@ org.apache.commons.math3.random.RandomDataGenerator.nextHexString(int) throws or
 org.apache.commons.math3.random.RandomDataGenerator.nextHexString(int) throws org.apache.commons.math3.exception.NotStrictlyPositiveException if len <= 0 ==> [args[0]<=0]
 org.apache.commons.math3.random.RandomDataGenerator.nextInt(int, int) throws org.apache.commons.math3.exception.NumberIsTooLargeException if lower >= upper ==> [args[0]>=args[1]]
 org.apache.commons.math3.random.RandomDataGenerator.nextLong(long, long) throws org.apache.commons.math3.exception.NumberIsTooLargeException if lower >= upper ==> [args[0]>=args[1]]
+org.apache.commons.math3.random.RandomDataGenerator.nextLong(org.apache.commons.math3.random.RandomGenerator, long) throws java.lang.IllegalArgumentException if n is not positive. ==> [args[1]<=0]
 org.apache.commons.math3.random.RandomDataGenerator.nextSecureHexString(int) throws org.apache.commons.math3.exception.NotStrictlyPositiveException if len <= 0 ==> [args[0]<=0]
 org.apache.commons.math3.random.RandomDataGenerator.nextSecureInt(int, int) throws org.apache.commons.math3.exception.NumberIsTooLargeException if lower >= upper. ==> [args[0]>=args[1]]
 org.apache.commons.math3.random.RandomDataGenerator.nextSecureLong(long, long) throws org.apache.commons.math3.exception.NumberIsTooLargeException if lower >= upper. ==> [args[0]>=args[1]]

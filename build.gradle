@@ -79,6 +79,11 @@ task downloadFreeColSrc(type: Download) {
 	dest 'src/test/resources/freecol-0.11.6-src.zip'
 }
 
+task downloadJGraphTSrc(type: Download) {
+	src 'http://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2-sources.jar'
+	dest 'src/test/resources/jgrapht-core-0.9.2-sources.jar'
+}
+
 task extractGuavaSrc(type: Copy, dependsOn: downloadGuavaSrc) {
 	from zipTree('src/test/resources/guava-19.0-sources.jar')
 	into 'src/test/resources/guava-19.0-sources'
@@ -99,7 +104,13 @@ task extractFreeColSrc(type: Copy, dependsOn: downloadFreeColSrc) {
 	into 'src/test/resources/'
 }
 
-test.dependsOn extractGuavaSrc, extractCommonsCollectionsSrc, extractCommonsMathSrc, extractFreeColSrc
+task extractJGraphTSrc(type: Copy, dependsOn: downloadJGraphTSrc) {
+	from zipTree('src/test/resources/jgrapht-core-0.9.2-sources.jar')
+	into 'src/test/resources/JGraphT'
+}
+
+test.dependsOn extractGuavaSrc, extractCommonsCollectionsSrc, extractCommonsMathSrc,
+		extractFreeColSrc, extractJGraphTSrc
 
 task removeDefaultOutpuDir(type: Delete) {
 	delete 'tmp', 'aspects'

@@ -1,5 +1,6 @@
 org.apache.commons.math3.analysis.interpolation.LoessInterpolator(double, int, double) throws org.apache.commons.math3.exception.OutOfRangeException if bandwidth does not lie in the interval [0,1]. ==> [args[0]<0||args[0]>1]
 org.apache.commons.math3.analysis.interpolation.LoessInterpolator(double, int, double) throws org.apache.commons.math3.exception.NotPositiveException if robustnessIters is negative. ==> [args[1]<0]
+org.apache.commons.math3.analysis.interpolation.LoessInterpolator.checkAllFiniteReal(double[]) throws org.apache.commons.math3.exception.NotFiniteNumberException if one of the values is not a finite real number. ==> []
 org.apache.commons.math3.analysis.interpolation.LoessInterpolator.interpolate(double[], double[]) throws org.apache.commons.math3.exception.NonMonotonicSequenceException if xval not sorted in strictly increasing order. ==> []
 org.apache.commons.math3.analysis.interpolation.LoessInterpolator.interpolate(double[], double[]) throws org.apache.commons.math3.exception.DimensionMismatchException if xval and yval have different sizes. ==> [((args[0].length)==(args[1].length))==false]
 org.apache.commons.math3.analysis.interpolation.LoessInterpolator.interpolate(double[], double[]) throws org.apache.commons.math3.exception.NoDataException if xval or yval has zero size. ==> [args[0].length==0||args[1].length==0]
