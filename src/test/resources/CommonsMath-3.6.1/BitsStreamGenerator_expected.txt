@@ -1,0 +1,4 @@
+org.apache.commons.math3.random.BitsStreamGenerator.nextInt(int) throws java.lang.IllegalArgumentException if n is not positive. ==> [(args[0]>0)==false]
+org.apache.commons.math3.random.BitsStreamGenerator.nextLong(long) throws java.lang.IllegalArgumentException if n is not positive. ==> [(args[0]>0)==false]
+org.apache.commons.math3.random.BitsStreamGenerator.nextBytes(byte[], int, int) throws org.apache.commons.math3.exception.OutOfRangeException if start < 0 or start >= bytes.length. ==> [args[1]<0||args[1]>=args[0].length]
+org.apache.commons.math3.random.BitsStreamGenerator.nextBytes(byte[], int, int) throws org.apache.commons.math3.exception.OutOfRangeException if len < 0 or len > bytes.length - start. ==> [args[2]<0||args[2]>(args[0].length-args[1])]

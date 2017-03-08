@@ -1,0 +1,4 @@
+org.apache.commons.math3.geometry.euclidean.threed.Vector3D(double[]) throws org.apache.commons.math3.exception.DimensionMismatchException if array does not have 3 elements ==> [(args[0].length==3)==false]
+org.apache.commons.math3.geometry.euclidean.threed.Vector3D.normalize() throws org.apache.commons.math3.exception.MathArithmeticException if the norm is zero ==> [target.getNorm()==0]
+org.apache.commons.math3.geometry.euclidean.threed.Vector3D.orthogonal() throws org.apache.commons.math3.exception.MathArithmeticException if the norm of the instance is null ==> [target.getNorm()==null]
+org.apache.commons.math3.geometry.euclidean.threed.Vector3D.angle(org.apache.commons.math3.geometry.euclidean.threed.Vector3D, org.apache.commons.math3.geometry.euclidean.threed.Vector3D) throws org.apache.commons.math3.exception.MathArithmeticException if either vector has a null norm ==> [args[0].getNorm()==null||args[1].getNorm()==null]

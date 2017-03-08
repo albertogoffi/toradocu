@@ -69,6 +69,11 @@ task downloadCommonsCollectionsSrc(type: Download) {
 	dest 'src/test/resources/commons-collections4-4.1-src.zip'
 }
 
+task downloadCommonsMathSrc(type: Download) {
+	src 'https://www.apache.org/dist/commons/math/source/commons-math3-3.6.1-src.zip'
+	dest 'src/test/resources/commons-math3-3.6.1-src.zip'
+}
+
 task extractGuavaSrc(type: Copy, dependsOn: downloadGuavaSrc) {
 	from zipTree('src/test/resources/guava-19.0-sources.jar')
 	into 'src/test/resources/guava-19.0-sources'
@@ -79,7 +84,12 @@ task extractCommonsCollectionsSrc(type: Copy, dependsOn: downloadCommonsCollecti
 	into 'src/test/resources/'
 }
 
-test.dependsOn extractGuavaSrc, extractCommonsCollectionsSrc
+task extractCommonsMathSrc(type: Copy, dependsOn: downloadCommonsMathSrc) {
+	from zipTree('src/test/resources/commons-math3-3.6.1-src.zip')
+	into 'src/test/resources/'
+}
+
+test.dependsOn extractGuavaSrc, extractCommonsCollectionsSrc, extractCommonsMathSrc
 
 task removeDefaultOutpuDir(type: Delete) {
 	delete 'tmp', 'aspects'

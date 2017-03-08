@@ -90,7 +90,8 @@ public class PrecisionRecallTest {
       }
       return methodResults;
     } catch (IOException e) {
-      fail(e.getMessage());
+      e.printStackTrace();
+      fail();
       return null;
     }
   }
