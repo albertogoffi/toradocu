@@ -7,7 +7,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	PrecisionRecallGuava19.class,
 	PrecisionRecallCommonsCollections4.class,
-	PrecisionRecallCommonsMath3.class
+	PrecisionRecallCommonsMath3.class,
+	PrecisionRecallFreeCol.class
 })
 public class PrecisionRecallTestSuite {
 
