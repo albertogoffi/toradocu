@@ -1,0 +1,4 @@
+plume.WeakIdentityHashMap(int, float) throws java.lang.IllegalArgumentException If the initial capacity is negative, or if the load factor is nonpositive. ==> [args[0]<0||args[1]<=0]
+plume.WeakIdentityHashMap(int) throws java.lang.IllegalArgumentException If the initial capacity is negative. ==> [args[0]<0]
+plume.WeakIdentityHashMap(java.util.Map<? extends K, ? extends V>) throws java.lang.NullPointerException if the specified map is null. ==> [args[0]==null]
+plume.WeakIdentityHashMap.putAll(java.util.Map<? extends K, ? extends V>) throws java.lang.NullPointerException if the specified map is null. ==> [args[0]==null]

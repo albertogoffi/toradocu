@@ -9,7 +9,8 @@ import org.junit.runners.Suite;
 	PrecisionRecallCommonsCollections4.class,
 	PrecisionRecallCommonsMath3.class,
 	PrecisionRecallFreeCol.class,
-	PrecisionRecallJGraphT.class
+	PrecisionRecallJGraphT.class,
+	PrecisionRecallPlumeLib.class
 })
 public class PrecisionRecallTestSuite {
 
