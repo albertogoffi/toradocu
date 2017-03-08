@@ -53,8 +53,7 @@ public class Toradocu {
 		 * org.toradocu.doclet.formats.html.HtmlDoclet invokes the method
 		 * Toradocu.process defined below.
 		 */  
-//		PrintWriter nullPrintWriter = new PrintWriter(new NullOutputStream());
-		PrintWriter nullPrintWriter = new PrintWriter(System.out);
+		PrintWriter nullPrintWriter = new PrintWriter(new NullOutputStream());
 		Main.execute(PROGRAM_NAME + " - Javadoc Extractor", nullPrintWriter, nullPrintWriter, nullPrintWriter, DOCLET, CONF.getJavadocOptions());
 	}
 	
