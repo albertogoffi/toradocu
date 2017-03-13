@@ -1,26 +1,24 @@
 # This script produces precision/recall stats.
-# It must be invoked with a parameter with value "current" or "v01" or "tcomment".
+# It must be invoked with a parameter with value "current" or "tcomment".
 # "current": statistics about the current Toradocu version.
-# "v01": statistics about the current Toradocu version 0.1.
 # "tcomment": statistics using @tComment as translation engine.
 
 # Parse command line argument and set variables
-if [ $# -ge 1 ]; then
+if [ $# -eq 1 ]; then
     if [ "$1" = "current" ]; then
 	COMMAND='./gradlew test --tests "org.toradocu.PrecisionRecall*"'
 	STATS_FILE=results.csv
 	STATS_FILE_TO_SAVE=results_current.csv
-    elif [ "$1" = "v01" ]; then
-	COMMAND='./gradlew precisionRecallV01 --rerun-tasks'
-	STATS_FILE=results.csv
-	STATS_FILE_TO_SAVE=results_v01.csv
     elif [ "$1" = "tcomment" ]; then
 	COMMAND='./gradlew -Dorg.toradocu.translator=tcomment test --tests "org.toradocu.PrecisionRecall*"'
 	STATS_FILE=tcomment_results.csv
 	STATS_FILE_TO_SAVE=results_tcomment.csv
+    else
+	echo 'Script must be invoked with one parameter: either "current" or "tcomment"'
+	exit 1
     fi
 else
-    echo 'Script must be invoked with one parameter: either "current" or "v01" or "tcomment"'
+    echo 'Script must be invoked with one parameter: either "current" or "tcomment"'
     exit 1
 fi
 
