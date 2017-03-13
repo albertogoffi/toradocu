@@ -53,17 +53,10 @@ compileJava {
 }
 
 test {
-  exclude 'org/toradocu/v01/**'
-
   // Print standard output during tests execution.
   testLogging {
     events = ['STANDARD_OUT']
   }
-}
-
-task precisionRecallV01(type: Test) {
-  description 'Run precision/recall test suite of Toradocu v0.1'
-  include 'org/toradocu/v01/**'
 }
 
 repositories {
@@ -182,7 +175,6 @@ task removeTestOutputDirs(type: Delete) {
 }
 
 test.dependsOn removeTestOutputDirs, extractSources, extractBinaries
-precisionRecallV01.dependsOn removeTestOutputDirs, extractSources, extractBinaries
 
 /* Make Emacs TAGS table */
 task tags(type: Exec) {
