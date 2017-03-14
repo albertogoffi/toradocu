@@ -57,7 +57,7 @@ public class RegressionTests {
   }
 
   @Test
-  public void BCEUtilTest() {
+  public void bceUtilTest() {
     String[] toradocuArgs =
         new String[] {
           "--target-class",
@@ -68,6 +68,40 @@ public class RegressionTests {
           "src/test/resources/src/plume-lib-1.1.0/java/src",
           "--oracle-generation",
           "false"
+        };
+    Toradocu.main(toradocuArgs);
+  }
+
+  @Test
+  public void issue79() {
+    // https://github.com/albertogoffi/toradocu/issues/79
+    String[] toradocuArgs =
+        new String[] {
+          "--target-class",
+          "com.google.common.base.SmallCharMatcher",
+          "--class-dir",
+          "src/test/resources/bin/guava-19.0.jar",
+          "--source-dir",
+          "src/test/resources/src/guava-19.0-sources",
+          "--oracle-generation",
+          "false",
+          "--export-conditions",
+          "conditions"
+        };
+    Toradocu.main(toradocuArgs);
+
+    toradocuArgs =
+        new String[] {
+          "--target-class",
+          "com.google.common.collect.HashBiMap",
+          "--class-dir",
+          "src/test/resources/bin/guava-19.0.jar",
+          "--source-dir",
+          "src/test/resources/src/guava-19.0-sources",
+          "--oracle-generation",
+          "false",
+          "--export-conditions",
+          "conditions"
         };
     Toradocu.main(toradocuArgs);
   }
