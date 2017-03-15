@@ -1,4 +1,4 @@
-#! bin/bash
+#!/bin/bash
 
 # Fail if any command fails
 set -e
@@ -82,3 +82,5 @@ for target_descriptor in "${TARGET_DESCRIPTORS[@]}"; do
     targets=()
     expected=()
 done
+
+python parameters_check.py "$1"
