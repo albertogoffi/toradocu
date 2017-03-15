@@ -234,9 +234,15 @@ public final class JavadocExtractor {
     if (exceptionType != null) {
       return exceptionType.qualifiedTypeName();
     }
-    // Try to collect the exception's name from the import declarations
+    // Try to collect the exception's name from the import declarations.
     String exceptionName = throwsTag.exceptionName();
-    for (ClassDoc importedClass : member.containingClass().importedClasses()) {
+    ClassDoc[] importedClasses;
+    try {
+      importedClasses = member.containingClass().importedClasses();
+    } catch (NullPointerException e) {
+      importedClasses = new ClassDoc[0];
+    }
+    for (ClassDoc importedClass : importedClasses) {
       if (importedClass.name().equals(exceptionName)) {
         return importedClass.qualifiedName();
       }

@@ -121,4 +121,21 @@ public class RegressionTests {
         };
     Toradocu.main(toradocuArgs);
   }
+
+  @Test
+  public void futuresTest() {
+    // Issue #85: https://github.com/albertogoffi/toradocu/issues/85
+    String[] toradocuArgs =
+        new String[] {
+          "--target-class",
+          "com.google.common.util.concurrent.Futures",
+          "--class-dir",
+          "src/test/resources/bin/guava-19.0.jar",
+          "--source-dir",
+          "src/test/resources/src/guava-19.0-sources",
+          "--oracle-generation",
+          "false"
+        };
+    Toradocu.main(toradocuArgs);
+  }
 }
