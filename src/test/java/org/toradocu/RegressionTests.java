@@ -106,14 +106,15 @@ public class RegressionTests {
     Toradocu.main(toradocuArgs);
   }
 
-  // Issue #81. Still to fix.
+  @Test
   public void freeColTest() {
+    // Issue #81: https://github.com/albertogoffi/toradocu/issues/81
     String[] toradocuArgs =
         new String[] {
           "--target-class",
           "net.sf.freecol.FreeCol",
           "--class-dir",
-          "src/test/resources/bin/freecol-0.11.6.jar",
+          "src/test/resources/bin/freecol-0.11.6.jar:src/test/resources/bin/commons-cli-1.3.1.jar",
           "--source-dir",
           "src/test/resources/src/freecol-0.11.6/src",
           "--oracle-generation",

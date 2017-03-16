@@ -3,6 +3,8 @@ package org.toradocu.util;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.nio.file.Paths;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
@@ -11,8 +13,10 @@ import org.toradocu.extractor.Type;
 
 public class Reflection {
 
-  private static URLClassLoader classLoader;
   private static final Logger log = LoggerFactory.getLogger(Reflection.class);
+
+  /** Makes constructor private to prevent the instantiation of this class objects. */
+  private Reflection() {}
 
   /**
    * Returns the {@code Class} object for the class with the given name or null if the class could
@@ -22,23 +26,11 @@ public class Reflection {
    * @return the {@code Class} object for the given class or null if the class cannot be found
    */
   public static Class<?> getClass(String className) {
-    final String ERROR_MESSAGE = "Unable to load class " + className + ". Check the classpath.";
     try {
-      URL classDir = Toradocu.configuration.getClassDir().toUri().toURL();
-      if (classLoader == null) {
-        classLoader = URLClassLoader.newInstance(new URL[] {classDir});
-      } else {
-        URL[] originalURLs = classLoader.getURLs();
-        URL[] newURLs = new URL[originalURLs.length + 1];
-        for (int i = 0; i < originalURLs.length; i++) {
-          newURLs[i] = originalURLs[i];
-        }
-        newURLs[newURLs.length - 1] = classDir;
-        classLoader = URLClassLoader.newInstance(newURLs);
-      }
-      return classLoader.loadClass(className);
-    } catch (MalformedURLException | ClassNotFoundException e) {
-      log.error(ERROR_MESSAGE);
+      return getClassLoader().loadClass(className);
+    } catch (ClassNotFoundException e) {
+      log.error("Unable to load class " + className + ". Check the classpath.");
+      // TODO Does it make sense to continue or rather would be better to stop the execution?
       return null;
     }
   }
@@ -76,5 +68,25 @@ public class Reflection {
       }
     }
     return true;
+  }
+
+  private static ClassLoader getClassLoader() {
+    List<String> binariesPaths = Toradocu.configuration.getClassDir();
+    URL[] urls = new URL[binariesPaths.size()];
+    for (int i = 0; i < urls.length; i++) {
+      try {
+        urls[i] = Paths.get(binariesPaths.get(i)).toUri().toURL();
+      } catch (MalformedURLException e) {
+        // TODO Move this check in the configuration to validate the input from the beginning.
+        // TODO Notice that we don't take any particular action if any provided path is wrong.
+        log.error(
+            "Impossible to load binaries from "
+                + binariesPaths.get(i)
+                + ". Check the "
+                + "correctness of the path provided with option --class-dir.",
+            e);
+      }
+    }
+    return URLClassLoader.newInstance(urls, ClassLoader.getSystemClassLoader());
   }
 }
