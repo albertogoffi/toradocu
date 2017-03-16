@@ -37,7 +37,7 @@ fi
 
 # Collect information about target classes from precision/recall test suite and create target descriprtors
 TARGET_DESCRIPTORS=()
-for test_suite in `find src/test/java/org/toradocu -maxdepth 1 -name '*.java'`; do
+for test_suite in `find src/test/java/org/toradocu -maxdepth 1 -name 'PrecisionRecall*.java'`; do
     file_name=stats/`echo $test_suite | rev | cut -d '/' -f -1 | rev | cut -d '.' -f 1`".txt"
     TARGET_DESCRIPTORS+=($file_name)
     grep -o --max-count=3 "\".*\"" $test_suite | cut -d"\"" -f2 > $file_name
