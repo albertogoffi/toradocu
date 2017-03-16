@@ -1674,7 +1674,7 @@
     "returnTag": {
       "comment": "The carrier this unit is aboard, or null if none.",
       "kind": "RETURN",
-      "condition": "!target.isOnCarrier() ? null"
+      "condition": "!target.isOnCarrier() ? result==null"
     },
     "throwsTags": []
   },
@@ -7328,7 +7328,7 @@
     "returnTag": {
       "comment": "The resulting unit type or null if there is no change suitable.",
       "kind": "RETURN",
-      "condition": "true ? target.getType().getTargetType(args[0], args[1])"
+      "condition": "true ? result==target.getType().getTargetType(args[0], args[1])"
     },
     "throwsTags": []
   },
