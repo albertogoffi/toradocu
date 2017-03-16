@@ -845,7 +845,7 @@
     "returnTag": {
       "comment": "True if this unit can carry goods or other units.",
       "kind": "RETURN",
-      "condition": "target.unitType.canCarryGoods() || target.unitType.canCarryUnits()"
+      "condition": "target.unitType.canCarryGoods() || target.unitType.canCarryUnits() ? result==true"
     },
     "throwsTags": []
   },
