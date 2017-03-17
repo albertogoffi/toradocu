@@ -89,7 +89,7 @@
         },
         "comment": "If true (and strict checking is false), nodes are automatically created when referenced when creating a edge, even if not yet inserted in the graph.",
         "kind": "PARAM",
-        "condition": "args[1]==false"
+        "condition": ""
       },
       {
         "parameter": {
@@ -194,7 +194,7 @@
         },
         "comment": "If true (and strict checking is false), nodes are automatically created when referenced when creating a edge, even if not yet inserted in the graph.",
         "kind": "PARAM",
-        "condition": "args[1]==false"
+        "condition": ""
       }
     ],
     "throwsTags": []
@@ -5336,7 +5336,7 @@
     "returnTag": {
       "comment": "The object bound to the given key or null if no object match this attribute name.",
       "kind": "RETURN",
-      "condition": "true ? result.equals(target.attributes.get(args[0]))"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -5461,7 +5461,7 @@
     "returnTag": {
       "comment": "The object bound to the given key or null if no object match this attribute.",
       "kind": "RETURN",
-      "condition": "true ? result.equals(target.attributes.get(args[0]))"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -5586,7 +5586,7 @@
     "returnTag": {
       "comment": "The label string value or null if not found.",
       "kind": "RETURN",
-      "condition": "true ? result.equals(target.attributes.get(args[0]))"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -5633,7 +5633,7 @@
     "returnTag": {
       "comment": "The number value or NaN if not found.",
       "kind": "RETURN",
-      "condition": "target.attributes.get(args[0])!=null ? result.equals(target.attributes.get(args[0])) : result==Double.NaN"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -5680,7 +5680,7 @@
     "returnTag": {
       "comment": "The vector of numbers or null if not found.",
       "kind": "RETURN",
-      "condition": "true ? result.equals(target.attributes.get(args[0]))"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -5732,7 +5732,7 @@
     "returnTag": {
       "comment": "The array of objects or null if not found.",
       "kind": "RETURN",
-      "condition": "true ? result.equals(target.attributes.get(args[0]))"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -5779,7 +5779,7 @@
     "returnTag": {
       "comment": "The hash or null if not found.",
       "kind": "RETURN",
-      "condition": "true ? result.equals(target.attributes.get(args[0]))"
+      "condition": ""
     },
     "throwsTags": []
   },
