@@ -466,7 +466,7 @@
     "returnTag": {
       "comment": "The searched edge or null if not found.",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true ? result.equals(target.edgeMap.get(args[0]))==true"
     },
     "throwsTags": []
   },
@@ -527,7 +527,7 @@
         ],
         "comment": "if the index is less than 0 or greater than getNodeCount() - 1.",
         "kind": "THROWS",
-        "condition": "args[0]<0"
+        "condition": "args[0]<0 || args[0]>(target.getNodeCount() - 1)"
       }
     ]
   },
@@ -598,7 +598,7 @@
     "returnTag": {
       "comment": "The searched node or null if not found.",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true ? result.equals(target.edgeMap.get(args[0]))==true"
     },
     "throwsTags": []
   },
@@ -659,7 +659,7 @@
         ],
         "comment": "If the index is negative or greater than getNodeCount() - 1.",
         "kind": "THROWS",
-        "condition": ""
+        "condition": "args[0]<0 || args[0]>(target.getNodeCount() - 1)"
       }
     ]
   },
@@ -860,7 +860,7 @@
     "returnTag": {
       "comment": "True if exceptions must be thrown when accessing a null attribute.",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true ? result==target.nullAttributesAreErrors"
     },
     "throwsTags": []
   },
@@ -1121,7 +1121,7 @@
     "returnTag": {
       "comment": "True if enabled.",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true ? result==target.strictChecking"
     },
     "throwsTags": []
   },
@@ -1145,7 +1145,7 @@
     "returnTag": {
       "comment": "True if enabled.",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true ? result==target.autoCreate"
     },
     "throwsTags": []
   },
@@ -1415,7 +1415,7 @@
         "codeTags": [],
         "comment": "If strict checking is enabled the identifier is already used.",
         "kind": "THROWS",
-        "condition": ""
+        "condition": "target.strictChecking == true"
       }
     ]
   },
@@ -1516,7 +1516,7 @@
         "codeTags": [],
         "comment": "If an edge with the same id already exists and strict checking is enabled.",
         "kind": "THROWS",
-        "condition": ""
+        "condition": "target.getEdge(args[0])!=null && target.strictChecking==true"
       },
       {
         "exception": {
@@ -1527,7 +1527,7 @@
         "codeTags": [],
         "comment": "If strict checking is enabled, and 'node1' or 'node2' are not registered in the graph.",
         "kind": "THROWS",
-        "condition": ""
+        "condition": "(target.strictChecking==true) && (target.getNode(args[1])==null || target.getNode(args[2])==null)"
       },
       {
         "exception": {
@@ -1634,7 +1634,7 @@
         "codeTags": [],
         "comment": "If an edge with the same id already exists and strict checking is enabled.",
         "kind": "THROWS",
-        "condition": ""
+        "condition": "target.getEdge(args[0])!=null && target.strictChecking==true"
       },
       {
         "exception": {
@@ -1645,7 +1645,7 @@
         "codeTags": [],
         "comment": "If strict checking is enabled, and 'node1' or 'node2' are not registered in the graph.",
         "kind": "THROWS",
-        "condition": ""
+        "condition": "(target.strictChecking==true) && (target.getNode(args[1])==null || target.getNode(args[2])==null)"
       },
       {
         "exception": {
@@ -1759,7 +1759,7 @@
         ],
         "comment": "If node indices are negative or greater than getNodeCount() - 1",
         "kind": "THROWS",
-        "condition": "target.getNode()<0 || target.getNode()<0"
+        "condition": "args[1]<0 || args[2]<0 || args[1]>(target.getNodeCount() - 1) || args[2]>(target.getNodeCount() - 1)"
       },
       {
         "exception": {
@@ -1770,7 +1770,7 @@
         "codeTags": [],
         "comment": "If an edge with the same id already exists and strict checking is enabled.",
         "kind": "THROWS",
-        "condition": ""
+        "condition": "target.getEdge(args[0])!=null && target.strictChecking==true"
       },
       {
         "exception": {
@@ -1905,7 +1905,7 @@
         ],
         "comment": "If node indices are negative or greater than getNodeCount() - 1",
         "kind": "THROWS",
-        "condition": "target.getNode()<0 || target.getNode()<0"
+        "condition": " args[1]<0 || args[2]<0 || args[1]>(target.getNodeCount() - 1) || args[2]>(target.getNodeCount() - 1)"
       },
       {
         "exception": {
@@ -1916,7 +1916,7 @@
         "codeTags": [],
         "comment": "If an edge with the same id already exists and strict checking is enabled.",
         "kind": "THROWS",
-        "condition": ""
+        "condition": "target.getEdge(args[0])!=null && target.strictChecking==true"
       },
       {
         "exception": {
@@ -2028,7 +2028,7 @@
         "codeTags": [],
         "comment": "If an edge with the same id already exists and strict checking is enabled.",
         "kind": "THROWS",
-        "condition": ""
+        "condition": "target.getEdge(args[0])!=null && target.strictChecking==true"
       },
       {
         "exception": {
@@ -2161,7 +2161,7 @@
         "codeTags": [],
         "comment": "If an edge with the same id already exists and strict checking is enabled.",
         "kind": "THROWS",
-        "condition": ""
+        "condition": "target.getEdge(args[0])!=null && target.strictChecking==true"
       },
       {
         "exception": {
@@ -2231,7 +2231,7 @@
         "codeTags": [],
         "comment": "If no node matches the given identifier and strict checking is enabled.",
         "kind": "THROWS",
-        "condition": ""
+        "condition": "target.getNode(args[0])==null && target.strictChecking"
       }
     ]
   },
@@ -2292,7 +2292,7 @@
         ],
         "comment": "if the index is negative or greater than getNodeCount() - 1.",
         "kind": "THROWS",
-        "condition": ""
+        "condition": "args[0]<0 || args[0]>(target.getNodeCount() - 1)"
       }
     ]
   },
@@ -2386,7 +2386,7 @@
     "returnTag": {
       "comment": "The removed edge, or null if strict checking is disabled and the edge does not exist.",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "!target.strictChecking && target.getEdge(args[0])==null ? result==null"
     },
     "throwsTags": [
       {
@@ -2398,7 +2398,7 @@
         "codeTags": [],
         "comment": "If no edge matches the identifier and strict checking is enabled.",
         "kind": "THROWS",
-        "condition": ""
+        "condition": "target.strictChecking && target.getEdge(args[0])==null"
       }
     ]
   },
@@ -2459,7 +2459,7 @@
         ],
         "comment": "if the index is negative or greater than getEdgeCount() - 1",
         "kind": "THROWS",
-        "condition": ""
+        "condition": "args[0]<0 || args[0]>(target.getNodeCount() - 1)"
       }
     ]
   },
@@ -2574,7 +2574,7 @@
     "returnTag": {
       "comment": "The removed edge, or null if strict checking is disabled and at least one of the two given nodes does not exist or there is no edge between them",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "!target.strictChecking && (target.getNode(args[0])==null || target.getNode(args[1])==null || args[0].getEdgeToward(args[1])==null) ? result==null"
     },
     "throwsTags": [
       {
@@ -2586,7 +2586,7 @@
         "codeTags": [],
         "comment": "If the 'from' or 'to' node is not registered in the graph or not connected and strict checking is enabled.",
         "kind": "THROWS",
-        "condition": ""
+        "condition": "target.strictChecking && (target.getNode(args[0])==null || target.getNode(args[1])==null || target.getNode(args[0]).getEdgeToward(target.getNode(args[1]))==null)"
       }
     ]
   },
@@ -2668,7 +2668,7 @@
         ],
         "comment": "If one of the node indices is negative or greater than getNodeCount() - 1.",
         "kind": "THROWS",
-        "condition": ""
+        "condition": "args[0]<0 || args[1]<0 || args[0]>(target.getNodeCount() - 1) || args[1]>(target.getNodeCount() - 1)"
       },
       {
         "exception": {
@@ -2679,7 +2679,7 @@
         "codeTags": [],
         "comment": "if strict checking is enabled and there is no edge between the two nodes.",
         "kind": "THROWS",
-        "condition": ""
+        "condition": "target.strictChecking && target.getNode(args[0]).getEdgeToward(target.getNode(args[1]))==null"
       }
     ]
   },
@@ -2759,7 +2759,7 @@
         "codeTags": [],
         "comment": "if strict checking is enabled and there is no edge between the two nodes.",
         "kind": "THROWS",
-        "condition": ""
+        "condition": "target.strictChecking && args[0].getEdgeToward(args[1])==null"
       }
     ]
   },
@@ -4203,7 +4203,7 @@
         },
         "comment": "If true, the edge is directed.",
         "kind": "PARAM",
-        "condition": "target.getEdge().isDirected()"
+        "condition": "target.getEdge(args[2]).isDirected()"
       }
     ],
     "throwsTags": []
@@ -5336,7 +5336,7 @@
     "returnTag": {
       "comment": "The object bound to the given key or null if no object match this attribute name.",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true ? result.equals(target.attributes.get(args[0]))"
     },
     "throwsTags": []
   },
@@ -5461,7 +5461,7 @@
     "returnTag": {
       "comment": "The object bound to the given key or null if no object match this attribute.",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true ? result.equals(target.attributes.get(args[0]))"
     },
     "throwsTags": []
   },
@@ -5586,7 +5586,7 @@
     "returnTag": {
       "comment": "The label string value or null if not found.",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true ? result.equals(target.attributes.get(args[0]))"
     },
     "throwsTags": []
   },
@@ -5633,7 +5633,7 @@
     "returnTag": {
       "comment": "The number value or NaN if not found.",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "target.attributes.get(args[0])!=null ? result.equals(target.attributes.get(args[0])) : result==Double.NaN"
     },
     "throwsTags": []
   },
@@ -5680,7 +5680,7 @@
     "returnTag": {
       "comment": "The vector of numbers or null if not found.",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true ? result.equals(target.attributes.get(args[0]))"
     },
     "throwsTags": []
   },
@@ -5732,7 +5732,7 @@
     "returnTag": {
       "comment": "The array of objects or null if not found.",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true ? result.equals(target.attributes.get(args[0]))"
     },
     "throwsTags": []
   },
@@ -5779,7 +5779,7 @@
     "returnTag": {
       "comment": "The hash or null if not found.",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true ? result.equals(target.attributes.get(args[0]))"
     },
     "throwsTags": []
   },
@@ -5826,7 +5826,7 @@
     "returnTag": {
       "comment": "True if a value is present for this attribute.",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true ? result==target.attributes.containsKey(args[0])"
     },
     "throwsTags": []
   },
@@ -5894,7 +5894,7 @@
     "returnTag": {
       "comment": "True if a value is present for this attribute.",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true ? result==target.attributes.containsKey(args[0])"
     },
     "throwsTags": []
   },
@@ -5941,7 +5941,7 @@
     "returnTag": {
       "comment": "True if a value is present for this attribute and implements CharSequence.",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "target.attributes.containsKey(args[0]) && target.attributes.get(args[0]) instanceof CharSequence ? result==true : result==false"
     },
     "throwsTags": []
   },
@@ -5988,7 +5988,7 @@
     "returnTag": {
       "comment": "True if a value is present for this attribute and can contain a double (inherits from Number).",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "target.attributes.containsKey(args[0]) && target.attributes.get(args[0]) instanceof Number ? result==true : result==false"
     },
     "throwsTags": []
   },
@@ -6082,7 +6082,7 @@
     "returnTag": {
       "comment": "True if a value is present for this attribute and can contain an array object.",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "target.attributes.containsKey(args[0]) && target.attributes.get(args[0]) instanceof Object[] ? result==true : result==false"
     },
     "throwsTags": []
   },
