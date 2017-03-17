@@ -82,5 +82,3 @@ for target_descriptor in "${TARGET_DESCRIPTORS[@]}"; do
     targets=()
     expected=()
 done
-
-python parameters_check.py "$1"
