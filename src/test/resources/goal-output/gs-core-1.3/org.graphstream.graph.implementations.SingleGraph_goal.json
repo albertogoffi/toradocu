@@ -89,7 +89,7 @@
         },
         "comment": "If true (and strict checking is false), nodes are automatically created when referenced when creating a edge, even if not yet inserted in the graph.",
         "kind": "PARAM",
-        "condition": ""
+        "condition": "args[1]==false"
       },
       {
         "parameter": {
@@ -194,7 +194,7 @@
         },
         "comment": "If true (and strict checking is false), nodes are automatically created when referenced when creating a edge, even if not yet inserted in the graph.",
         "kind": "PARAM",
-        "condition": ""
+        "condition": "args[1]==false"
       }
     ],
     "throwsTags": []
@@ -1616,7 +1616,7 @@
         },
         "comment": "Is the edge directed?",
         "kind": "PARAM",
-        "condition": "target.getEdge().isDirected()"
+        "condition": "target.getEdge(args[0]).isDirected()"
       }
     ],
     "returnTag": {
@@ -1885,7 +1885,7 @@
         },
         "comment": "Is the edge directed?",
         "kind": "PARAM",
-        "condition": "target.getEdge().isDirected()"
+        "condition": "target.getEdge(args[0]).isDirected()"
       }
     ],
     "returnTag": {
@@ -2143,7 +2143,7 @@
         },
         "comment": "Is the edge directed?",
         "kind": "PARAM",
-        "condition": "target.getEdge().isDirected()"
+        "condition": "target.getEdge(args[0]).isDirected()"
       }
     ],
     "returnTag": {
