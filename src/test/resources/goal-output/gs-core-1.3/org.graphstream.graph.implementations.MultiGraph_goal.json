@@ -527,7 +527,7 @@
         ],
         "comment": "if the index is less than 0 or greater than getNodeCount() - 1.",
         "kind": "THROWS",
-        "condition": "args[0]<0"
+        "condition": "args[0]<0 || args[0]>(target.getNodeCount() - 1)"
       }
     ]
   },
@@ -1616,7 +1616,7 @@
         },
         "comment": "Is the edge directed?",
         "kind": "PARAM",
-        "condition": "target.getEdge().isDirected()"
+        "condition": "target.getEdge(args[0]).isDirected()"
       }
     ],
     "returnTag": {
@@ -1759,7 +1759,7 @@
         ],
         "comment": "If node indices are negative or greater than getNodeCount() - 1",
         "kind": "THROWS",
-        "condition": "target.getNode()<0 || target.getNode()<0"
+        "condition": "args[1]<0 || args[2]<0 || args[1]>(target.getNodeCount() - 1) || args[2]>(target.getNodeCount() - 1)"
       },
       {
         "exception": {
@@ -1885,7 +1885,7 @@
         },
         "comment": "Is the edge directed?",
         "kind": "PARAM",
-        "condition": "target.getEdge().isDirected()"
+        "condition": "target.getEdge(args[0]).isDirected()"
       }
     ],
     "returnTag": {
@@ -1905,7 +1905,7 @@
         ],
         "comment": "If node indices are negative or greater than getNodeCount() - 1",
         "kind": "THROWS",
-        "condition": "target.getNode()<0 || target.getNode()<0"
+        "condition": "args[1]<0 || args[2]<0 || args[1]>(target.getNodeCount() - 1) || args[2]>(target.getNodeCount() - 1)"
       },
       {
         "exception": {
@@ -2143,7 +2143,7 @@
         },
         "comment": "Is the edge directed?",
         "kind": "PARAM",
-        "condition": "target.getEdge().isDirected()"
+        "condition": "target.getEdge(args[0]).isDirected()"
       }
     ],
     "returnTag": {
@@ -4203,7 +4203,7 @@
         },
         "comment": "If true, the edge is directed.",
         "kind": "PARAM",
-        "condition": "target.getEdge().isDirected()"
+        "condition": "target.getEdge(args[2]).isDirected()"
       }
     ],
     "throwsTags": []
