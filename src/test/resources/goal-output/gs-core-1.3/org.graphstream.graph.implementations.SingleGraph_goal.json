@@ -598,7 +598,7 @@
     "returnTag": {
       "comment": "The searched node or null if not found.",
       "kind": "RETURN",
-      "condition": "true ? result.equals(target.edgeMap.get(args[0]))==true"
+      "condition": "true ? result.equals(target.nodeMap.get(args[0]))==true"
     },
     "throwsTags": []
   },
@@ -5826,7 +5826,7 @@
     "returnTag": {
       "comment": "True if a value is present for this attribute.",
       "kind": "RETURN",
-      "condition": "true ? result==target.attributes.containsKey(args[0])"
+      "condition": "target.attributes.get(args[0])!=null ? result==true : result==false"
     },
     "throwsTags": []
   },
@@ -5894,7 +5894,7 @@
     "returnTag": {
       "comment": "True if a value is present for this attribute.",
       "kind": "RETURN",
-      "condition": "true ? result==target.attributes.containsKey(args[0])"
+      "condition": "target.attributes.get(args[0])!=null ? result==true : result==false"
     },
     "throwsTags": []
   },
@@ -5988,7 +5988,7 @@
     "returnTag": {
       "comment": "True if a value is present for this attribute and can contain a double (inherits from Number).",
       "kind": "RETURN",
-      "condition": "target.attributes.containsKey(args[0]) && target.attributes.get(args[0]) instanceof Number ? result==true : result==false"
+      "condition": "target.attributes.get(args[0])!=null && target.attributes.get(args[0]) instanceof Number ? result==true : result==false"
     },
     "throwsTags": []
   },
@@ -6082,7 +6082,7 @@
     "returnTag": {
       "comment": "True if a value is present for this attribute and can contain an array object.",
       "kind": "RETURN",
-      "condition": "target.attributes.containsKey(args[0]) && target.attributes.get(args[0]) instanceof Object[] ? result==true : result==false"
+      "condition": "target.attributes.get(args[0])!=null && target.attributes.get(args[0]) instanceof Object[] ? result==true : result==false"
     },
     "throwsTags": []
   },
