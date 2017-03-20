@@ -57,7 +57,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testRandomDataGenerator() throws Exception {
-    test("org.apache.commons.math3.random.RandomDataGenerator", 0.777, 0.5, 1, 1, 1, 1);
+    test("org.apache.commons.math3.random.RandomDataGenerator", 0.765, 0.464, 1, 1, 1, 1);
   }
 
   @Test
@@ -77,12 +77,12 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testFunctionUtils() throws Exception {
-    test("org.apache.commons.math3.analysis.FunctionUtils", 1, 0.5, 1, 1, 1, 1);
+    test("org.apache.commons.math3.analysis.FunctionUtils", 1, 0, 1, 1, 1, 1);
   }
 
   @Test
   public void testSimpsonIntegrator() throws Exception {
-    test("org.apache.commons.math3.analysis.integration.SimpsonIntegrator", 1, 0.181, 1, 0, 1, 1);
+    test("org.apache.commons.math3.analysis.integration.SimpsonIntegrator", 0.5, 0.181, 1, 0, 1, 1);
   }
 
   @Test
@@ -94,7 +94,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
   public void testIterativeLegendreGaussIntegrator() throws Exception {
     test(
         "org.apache.commons.math3.analysis.integration.IterativeLegendreGaussIntegrator",
-        1,
+        0.8,
         0.5,
         1,
         1,
@@ -136,7 +136,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testBigFraction() throws Exception {
-    test("org.apache.commons.math3.fraction.BigFraction", 0.5, 0.409, 1, 1, 1, 1);
+    test("org.apache.commons.math3.fraction.BigFraction", 0.526, 0.454, 1, 1, 1, 1);
   }
 
   @Test
@@ -171,7 +171,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testRealVector() throws Exception {
-    test("org.apache.commons.math3.linear.RealVector", 1, 0.13, 1, 1, 1, 1);
+    test("org.apache.commons.math3.linear.RealVector", 1, 0.087, 1, 1, 1, 1);
   }
 
   @Test
