@@ -836,7 +836,7 @@
       },
       {
         "comment": "if a is null.",
-        "condition": "target.abs()==null",
+        "condition": "args[0]==null",
         "exception": {
           "isArray": false,
           "name": "NullArgumentException",
@@ -961,7 +961,7 @@
       },
       {
         "comment": "if a is null.",
-        "condition": "target.abs()==null",
+        "condition": "args[0]==null",
         "exception": {
           "isArray": false,
           "name": "NullArgumentException",
@@ -1175,7 +1175,7 @@
       },
       {
         "comment": "if a is null.",
-        "condition": "target.abs()==null",
+        "condition": "args[0]==null",
         "exception": {
           "isArray": false,
           "name": "NullArgumentException",
@@ -1290,7 +1290,7 @@
       },
       {
         "comment": "if the fraction to divide by is zero",
-        "condition": "args[0]==(org.apache.commons.math3.fraction.BigFraction.ZERO)",
+        "condition": "args[0]==(org.apache.commons.math3.fraction.Fraction.ZERO)",
         "exception": {
           "isArray": false,
           "name": "MathArithmeticException",
@@ -1310,7 +1310,7 @@
       },
       {
         "comment": "if a is null.",
-        "condition": "target.abs()==null",
+        "condition": "args[0]==null",
         "exception": {
           "isArray": false,
           "name": "NullArgumentException",
@@ -1320,7 +1320,7 @@
       },
       {
         "comment": "if a is zero",
-        "condition": "target.abs()==0",
+        "condition": "args[0]==(org.apache.commons.math3.fraction.Fraction.ZERO)",
         "exception": {
           "isArray": false,
           "name": "MathArithmeticException",
