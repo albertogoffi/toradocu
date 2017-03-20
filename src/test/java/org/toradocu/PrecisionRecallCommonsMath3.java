@@ -27,7 +27,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testComplex() throws Exception {
-    test("org.apache.commons.math3.complex.Complex", 1, 0.916, 1, 1, 1, 0);
+    test("org.apache.commons.math3.complex.Complex", 0.5, 0.5, 1, 1, 1, 0);
   }
 
   @Test
@@ -136,12 +136,12 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testBigFraction() throws Exception {
-    test("org.apache.commons.math3.fraction.BigFraction", 0.5, 0.409, 1, 1, 1, 1);
+    test("org.apache.commons.math3.fraction.BigFraction", 0.474, 0.409, 1, 1, 1, 1);
   }
 
   @Test
   public void testFraction() throws Exception {
-    test("org.apache.commons.math3.fraction.Fraction", 0.5, 0.428, 1, 1, 1, 1);
+    test("org.apache.commons.math3.fraction.Fraction", 0.462, 0.429, 1, 1, 1, 1);
   }
 
   @Test
