@@ -1,0 +1,6592 @@
+[
+  {
+    "signature": "MultiGraph(java.lang.String id,boolean strictChecking,boolean autoCreate,int initialNodeCapacity,int initialEdgeCapacity)",
+    "name": "MultiGraph",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.MultiGraph",
+      "name": "MultiGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "id"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "strictChecking"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "autoCreate"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "initialNodeCapacity"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "initialEdgeCapacity"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "Unique identifier of the graph.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "strictChecking"
+        },
+        "comment": "If true any non-fatal error throws an exception.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "autoCreate"
+        },
+        "comment": "If true (and strict checking is false), nodes are automatically created when referenced when creating a edge, even if not yet inserted in the graph.",
+        "kind": "PARAM",
+        "condition": "args[1]==false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "initialNodeCapacity"
+        },
+        "comment": "Initial capacity of the node storage data structures. Use this if you know the approximate maximum number of nodes of the graph. The graph can grow beyond this limit, but storage reallocation is expensive operation.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "initialEdgeCapacity"
+        },
+        "comment": "Initial capacity of the edge storage data structures. Use this if you know the approximate maximum number of edges of the graph. The graph can grow beyond this limit, but storage reallocation is expensive operation.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "MultiGraph(java.lang.String id,boolean strictChecking,boolean autoCreate)",
+    "name": "MultiGraph",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.MultiGraph",
+      "name": "MultiGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "id"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "strictChecking"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "autoCreate"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "Unique identifier of the graph.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "strictChecking"
+        },
+        "comment": "If true any non-fatal error throws an exception.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "autoCreate"
+        },
+        "comment": "If true (and strict checking is false), nodes are automatically created when referenced when creating a edge, even if not yet inserted in the graph.",
+        "kind": "PARAM",
+        "condition": "args[1]==false"
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "MultiGraph(java.lang.String id)",
+    "name": "MultiGraph",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.MultiGraph",
+      "name": "MultiGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "id"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "Unique identifier of the graph.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "addEdgeCallback(org.graphstream.graph.implementations.AbstractEdge edge)",
+    "name": "addEdgeCallback",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AdjacencyListGraph",
+      "name": "AdjacencyListGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.implementations.AbstractEdge",
+          "name": "AbstractEdge",
+          "isArray": false
+        },
+        "name": "edge"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.implementations.AbstractEdge",
+            "name": "AbstractEdge",
+            "isArray": false
+          },
+          "name": "edge"
+        },
+        "comment": "the edge to be added",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "addNodeCallback(org.graphstream.graph.implementations.AbstractNode node)",
+    "name": "addNodeCallback",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AdjacencyListGraph",
+      "name": "AdjacencyListGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.implementations.AbstractNode",
+          "name": "AbstractNode",
+          "isArray": false
+        },
+        "name": "node"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.implementations.AbstractNode",
+            "name": "AbstractNode",
+            "isArray": false
+          },
+          "name": "node"
+        },
+        "comment": "the node to be added",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "removeEdgeCallback(org.graphstream.graph.implementations.AbstractEdge edge)",
+    "name": "removeEdgeCallback",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AdjacencyListGraph",
+      "name": "AdjacencyListGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.implementations.AbstractEdge",
+          "name": "AbstractEdge",
+          "isArray": false
+        },
+        "name": "edge"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.implementations.AbstractEdge",
+            "name": "AbstractEdge",
+            "isArray": false
+          },
+          "name": "edge"
+        },
+        "comment": "the edge to be removed",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "removeNodeCallback(org.graphstream.graph.implementations.AbstractNode node)",
+    "name": "removeNodeCallback",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AdjacencyListGraph",
+      "name": "AdjacencyListGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.implementations.AbstractNode",
+          "name": "AbstractNode",
+          "isArray": false
+        },
+        "name": "node"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.implementations.AbstractNode",
+            "name": "AbstractNode",
+            "isArray": false
+          },
+          "name": "node"
+        },
+        "comment": "the node to be removed",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "clearCallback()",
+    "name": "clearCallback",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AdjacencyListGraph",
+      "name": "AdjacencyListGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getEdge(java.lang.String id)",
+    "name": "getEdge",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AdjacencyListGraph",
+      "name": "AdjacencyListGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "id"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "Identifier of the edge to find.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The searched edge or null if not found.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getEdge(int index)",
+    "name": "getEdge",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AdjacencyListGraph",
+      "name": "AdjacencyListGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "The index of the edge to find.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The edge with the given index",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IndexOutOfBoundsException",
+          "name": "IndexOutOfBoundsException",
+          "isArray": false
+        },
+        "codeTags": [
+          "getNodeCount() - 1"
+        ],
+        "comment": "if the index is less than 0 or greater than getNodeCount() - 1.",
+        "kind": "THROWS",
+        "condition": "args[0]<0 || args[0]>(target.getNodeCount() - 1)"
+      }
+    ]
+  },
+  {
+    "signature": "getEdgeCount()",
+    "name": "getEdgeCount",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AdjacencyListGraph",
+      "name": "AdjacencyListGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The number of edges.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getNode(java.lang.String id)",
+    "name": "getNode",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AdjacencyListGraph",
+      "name": "AdjacencyListGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "id"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "Identifier of the node to find.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The searched node or null if not found.",
+      "kind": "RETURN",
+      "condition": "true ? result.equals(target.nodeMap.get(args[0]))==true"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getNode(int index)",
+    "name": "getNode",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AdjacencyListGraph",
+      "name": "AdjacencyListGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "Index of the node to find.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The node with the given index",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IndexOutOfBoundsException",
+          "name": "IndexOutOfBoundsException",
+          "isArray": false
+        },
+        "codeTags": [
+          "getNodeCount() - 1"
+        ],
+        "comment": "If the index is negative or greater than getNodeCount() - 1.",
+        "kind": "THROWS",
+        "condition": "args[0]<0 || args[0]>(target.getNodeCount() - 1)"
+      }
+    ]
+  },
+  {
+    "signature": "getNodeCount()",
+    "name": "getNodeCount",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AdjacencyListGraph",
+      "name": "AdjacencyListGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The number of nodes.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getEdgeIterator()",
+    "name": "getEdgeIterator",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AdjacencyListGraph",
+      "name": "AdjacencyListGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The iterator.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getNodeIterator()",
+    "name": "getNodeIterator",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AdjacencyListGraph",
+      "name": "AdjacencyListGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The iterator.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "attributeChanged(org.graphstream.graph.implementations.AbstractElement.AttributeChangeEvent event,java.lang.String attribute,java.lang.Object oldValue,java.lang.Object newValue)",
+    "name": "attributeChanged",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.implementations.AbstractElement.AttributeChangeEvent",
+          "name": "AttributeChangeEvent",
+          "isArray": false
+        },
+        "name": "event"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "attribute"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "oldValue"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "newValue"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "attribute"
+        },
+        "comment": "The attribute name that changed.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.implementations.AbstractElement.AttributeChangeEvent",
+            "name": "AttributeChangeEvent",
+            "isArray": false
+          },
+          "name": "event"
+        },
+        "comment": "The type of event among ADD, CHANGE and REMOVE.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "oldValue"
+        },
+        "comment": "The old value of the attribute, null if the attribute was added.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "newValue"
+        },
+        "comment": "The new value of the attribute, null if the attribute is about to be removed.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "nullAttributesAreErrors()",
+    "name": "nullAttributesAreErrors",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "True if exceptions must be thrown when accessing a null attribute.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getEachNode()",
+    "name": "getEachNode",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.Iterable",
+      "name": "Iterable",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "An \"iterable\" view of the set of nodes.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getEachEdge()",
+    "name": "getEachEdge",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.Iterable",
+      "name": "Iterable",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "An \"iterable\" view of the set of edges.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getNodeSet()",
+    "name": "getNodeSet",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "A set of nodes that can only be read, not changed.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getEdgeSet()",
+    "name": "getEdgeSet",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "A set of edges that can only be read, not changed.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "iterator()",
+    "name": "iterator",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "nodeFactory()",
+    "name": "nodeFactory",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.graphstream.graph.NodeFactory",
+      "name": "NodeFactory",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "edgeFactory()",
+    "name": "edgeFactory",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.graphstream.graph.EdgeFactory",
+      "name": "EdgeFactory",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "setNodeFactory(org.graphstream.graph.NodeFactory nf)",
+    "name": "setNodeFactory",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.NodeFactory",
+          "name": "NodeFactory",
+          "isArray": false
+        },
+        "name": "nf"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.NodeFactory",
+            "name": "NodeFactory",
+            "isArray": false
+          },
+          "name": "nf"
+        },
+        "comment": "the new NodeFactory",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "setEdgeFactory(org.graphstream.graph.EdgeFactory ef)",
+    "name": "setEdgeFactory",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.EdgeFactory",
+          "name": "EdgeFactory",
+          "isArray": false
+        },
+        "name": "ef"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.EdgeFactory",
+            "name": "EdgeFactory",
+            "isArray": false
+          },
+          "name": "ef"
+        },
+        "comment": "the new EdgeFactory",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "isStrict()",
+    "name": "isStrict",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "True if enabled.",
+      "kind": "RETURN",
+      "condition": "true ? result==target.strictChecking"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "isAutoCreationEnabled()",
+    "name": "isAutoCreationEnabled",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "True if enabled.",
+      "kind": "RETURN",
+      "condition": "true ? result==target.autoCreate"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getStep()",
+    "name": "getStep",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The step.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setNullAttributesAreErrors(boolean on)",
+    "name": "setNullAttributesAreErrors",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "on"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "on"
+        },
+        "comment": "if true, exceptions will be thrown when accessing a non existing attribute.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "setStrict(boolean on)",
+    "name": "setStrict",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "on"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "on"
+        },
+        "comment": "True or false.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "setAutoCreate(boolean on)",
+    "name": "setAutoCreate",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "on"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "on"
+        },
+        "comment": "True or false.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "stepBegins(double time)",
+    "name": "stepBegins",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "time"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "time"
+        },
+        "comment": "A numerical value that may give a timestamp to track the evolution of the graph over the time.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "clear()",
+    "name": "clear",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "addNode(java.lang.String id)",
+    "name": "addNode",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "id"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "Arbitrary and unique string identifying the node.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The created node (or the already existing node).",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.IdAlreadyInUseException",
+          "name": "IdAlreadyInUseException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If strict checking is enabled the identifier is already used.",
+        "kind": "THROWS",
+        "condition": "target.strictChecking == true"
+      }
+    ]
+  },
+  {
+    "signature": "addEdge(java.lang.String id,java.lang.String node1,java.lang.String node2)",
+    "name": "addEdge",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "id"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "node1"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "node2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "Unique and arbitrary string identifying the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "node1"
+        },
+        "comment": "The first node identifier.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "node2"
+        },
+        "comment": "The second node identifier.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The newly created edge, an existing edge or null (see the detailed description above)",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.IdAlreadyInUseException",
+          "name": "IdAlreadyInUseException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If an edge with the same id already exists and strict checking is enabled.",
+        "kind": "THROWS",
+        "condition": "target.getEdge(args[0])!=null && target.strictChecking==true"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.ElementNotFoundException",
+          "name": "ElementNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If strict checking is enabled, and 'node1' or 'node2' are not registered in the graph.",
+        "kind": "THROWS",
+        "condition": "target.strictChecking==true && (target.getNode(args[1])==null || target.getNode(args[2])==null)"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.EdgeRejectedException",
+          "name": "EdgeRejectedException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If strict checking is enabled and the edge is not accepted.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "addEdge(java.lang.String id,java.lang.String from,java.lang.String to,boolean directed)",
+    "name": "addEdge",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "id"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "from"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "to"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "directed"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "Unique and arbitrary string identifying the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "directed"
+        },
+        "comment": "Is the edge directed?",
+        "kind": "PARAM",
+        "condition": "target.getEdge(args[0]).isDirected()"
+      }
+    ],
+    "returnTag": {
+      "comment": "The newly created edge, an existing edge or null (see the detailed description above)",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.IdAlreadyInUseException",
+          "name": "IdAlreadyInUseException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If an edge with the same id already exists and strict checking is enabled.",
+        "kind": "THROWS",
+        "condition": "target.getEdge(args[0])!=null && target.strictChecking==true"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.ElementNotFoundException",
+          "name": "ElementNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If strict checking is enabled, and 'node1' or 'node2' are not registered in the graph.",
+        "kind": "THROWS",
+        "condition": "target.strictChecking==true && (target.getNode(args[1])==null || target.getNode(args[2])==null)"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.EdgeRejectedException",
+          "name": "EdgeRejectedException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If strict checking is enabled and the edge is not accepted.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "addEdge(java.lang.String id,int index1,int index2)",
+    "name": "addEdge",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "id"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index1"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "Unique and arbitrary string identifying the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index1"
+        },
+        "comment": "The first node index",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index2"
+        },
+        "comment": "The second node index",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The newly created edge, an existing edge or null",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IndexOutOfBoundsException",
+          "name": "IndexOutOfBoundsException",
+          "isArray": false
+        },
+        "codeTags": [
+          "getNodeCount() - 1"
+        ],
+        "comment": "If node indices are negative or greater than getNodeCount() - 1",
+        "kind": "THROWS",
+        "condition": "args[1]<0 || args[2]<0 || args[1]>(target.getNodeCount() - 1) || args[2]>(target.getNodeCount() - 1)"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.IdAlreadyInUseException",
+          "name": "IdAlreadyInUseException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If an edge with the same id already exists and strict checking is enabled.",
+        "kind": "THROWS",
+        "condition": "target.getEdge(args[0])!=null && target.strictChecking==true"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.EdgeRejectedException",
+          "name": "EdgeRejectedException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If strict checking is enabled and the edge is not accepted.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "addEdge(java.lang.String id,int fromIndex,int toIndex,boolean directed)",
+    "name": "addEdge",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "id"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "fromIndex"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "toIndex"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "directed"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "Unique and arbitrary string identifying the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "toIndex"
+        },
+        "comment": "The first node index",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "fromIndex"
+        },
+        "comment": "The second node index",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "directed"
+        },
+        "comment": "Is the edge directed?",
+        "kind": "PARAM",
+        "condition": "target.getEdge(args[0]).isDirected()"
+      }
+    ],
+    "returnTag": {
+      "comment": "The newly created edge, an existing edge or null",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IndexOutOfBoundsException",
+          "name": "IndexOutOfBoundsException",
+          "isArray": false
+        },
+        "codeTags": [
+          "getNodeCount() - 1"
+        ],
+        "comment": "If node indices are negative or greater than getNodeCount() - 1",
+        "kind": "THROWS",
+        "condition": "args[1]<0 || args[2]<0 || args[1]>(target.getNodeCount() - 1) || args[2]>(target.getNodeCount() - 1)"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.IdAlreadyInUseException",
+          "name": "IdAlreadyInUseException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If an edge with the same id already exists and strict checking is enabled.",
+        "kind": "THROWS",
+        "condition": "target.getEdge(args[0])!=null && target.strictChecking==true"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.EdgeRejectedException",
+          "name": "EdgeRejectedException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If strict checking is enabled and the edge is not accepted.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "addEdge(java.lang.String id,org.graphstream.graph.Node node1,org.graphstream.graph.Node node2)",
+    "name": "addEdge",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "id"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.Node",
+          "name": "Node",
+          "isArray": false
+        },
+        "name": "node1"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.Node",
+          "name": "Node",
+          "isArray": false
+        },
+        "name": "node2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "Unique and arbitrary string identifying the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.Node",
+            "name": "Node",
+            "isArray": false
+          },
+          "name": "node1"
+        },
+        "comment": "The first node",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.Node",
+            "name": "Node",
+            "isArray": false
+          },
+          "name": "node2"
+        },
+        "comment": "The second node",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The newly created edge, an existing edge or null",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.IdAlreadyInUseException",
+          "name": "IdAlreadyInUseException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If an edge with the same id already exists and strict checking is enabled.",
+        "kind": "THROWS",
+        "condition": "target.getEdge(args[0])!=null && target.strictChecking==true"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.EdgeRejectedException",
+          "name": "EdgeRejectedException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If strict checking is enabled and the edge is not accepted.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "addEdge(java.lang.String id,org.graphstream.graph.Node from,org.graphstream.graph.Node to,boolean directed)",
+    "name": "addEdge",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "id"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.Node",
+          "name": "Node",
+          "isArray": false
+        },
+        "name": "from"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.Node",
+          "name": "Node",
+          "isArray": false
+        },
+        "name": "to"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "directed"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "Unique and arbitrary string identifying the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.Node",
+            "name": "Node",
+            "isArray": false
+          },
+          "name": "from"
+        },
+        "comment": "The first node",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.Node",
+            "name": "Node",
+            "isArray": false
+          },
+          "name": "to"
+        },
+        "comment": "The second node",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "directed"
+        },
+        "comment": "Is the edge directed?",
+        "kind": "PARAM",
+        "condition": "target.getEdge(args[0]).isDirected()"
+      }
+    ],
+    "returnTag": {
+      "comment": "The newly created edge, an existing edge or null",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.IdAlreadyInUseException",
+          "name": "IdAlreadyInUseException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If an edge with the same id already exists and strict checking is enabled.",
+        "kind": "THROWS",
+        "condition": "target.getEdge(args[0])!=null && target.strictChecking==true"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.EdgeRejectedException",
+          "name": "EdgeRejectedException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If strict checking is enabled and the edge is not accepted.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "removeNode(java.lang.String id)",
+    "name": "removeNode",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "id"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "The unique identifier of the node to remove.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The removed node. If strict checking is disabled, it can return null if the node to remove does not exist.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.ElementNotFoundException",
+          "name": "ElementNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If no node matches the given identifier and strict checking is enabled.",
+        "kind": "THROWS",
+        "condition": "target.getNode(args[0])==null && target.strictChecking"
+      }
+    ]
+  },
+  {
+    "signature": "removeNode(int index)",
+    "name": "removeNode",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "The index of the node to be removed",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The removed node",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IndexOutOfBoundsException",
+          "name": "IndexOutOfBoundsException",
+          "isArray": false
+        },
+        "codeTags": [
+          "getNodeCount() - 1"
+        ],
+        "comment": "if the index is negative or greater than getNodeCount() - 1.",
+        "kind": "THROWS",
+        "condition": "args[0]<0 || args[0]>(target.getNodeCount() - 1)"
+      }
+    ]
+  },
+  {
+    "signature": "removeNode(org.graphstream.graph.Node node)",
+    "name": "removeNode",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.Node",
+          "name": "Node",
+          "isArray": false
+        },
+        "name": "node"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.Node",
+            "name": "Node",
+            "isArray": false
+          },
+          "name": "node"
+        },
+        "comment": "The node to be removed",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The removed node",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "removeEdge(java.lang.String id)",
+    "name": "removeEdge",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "id"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "Identifier of the edge to remove.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The removed edge, or null if strict checking is disabled and the edge does not exist.",
+      "kind": "RETURN",
+      "condition": "!target.strictChecking && target.getEdge(args[0])==null ? result==null"
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.ElementNotFoundException",
+          "name": "ElementNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If no edge matches the identifier and strict checking is enabled.",
+        "kind": "THROWS",
+        "condition": "target.strictChecking && target.getEdge(args[0])==null"
+      }
+    ]
+  },
+  {
+    "signature": "removeEdge(int index)",
+    "name": "removeEdge",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "The index of the edge to be removed.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The removed edge",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IndexOutOfBoundsException",
+          "name": "IndexOutOfBoundsException",
+          "isArray": false
+        },
+        "codeTags": [
+          "getEdgeCount() - 1"
+        ],
+        "comment": "if the index is negative or greater than getEdgeCount() - 1",
+        "kind": "THROWS",
+        "condition": "args[0]<0 || args[0]>(target.getNodeCount() - 1)"
+      }
+    ]
+  },
+  {
+    "signature": "removeEdge(org.graphstream.graph.Edge edge)",
+    "name": "removeEdge",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.Edge",
+          "name": "Edge",
+          "isArray": false
+        },
+        "name": "edge"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.Edge",
+            "name": "Edge",
+            "isArray": false
+          },
+          "name": "edge"
+        },
+        "comment": "The edge to be removed",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The removed edge",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "removeEdge(java.lang.String from,java.lang.String to)",
+    "name": "removeEdge",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "from"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "to"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "from"
+        },
+        "comment": "The origin node identifier to select the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "to"
+        },
+        "comment": "The destination node identifier to select the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The removed edge, or null if strict checking is disabled and at least one of the two given nodes does not exist or there is no edge between them",
+      "kind": "RETURN",
+      "condition": "!target.strictChecking && (target.getNode(args[0])==null || target.getNode(args[1])==null || args[0].getEdgeToward(args[1])==null) ? result==null"
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.ElementNotFoundException",
+          "name": "ElementNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If the 'from' or 'to' node is not registered in the graph or not connected and strict checking is enabled.",
+        "kind": "THROWS",
+        "condition": "target.strictChecking && (target.getNode(args[0])==null || target.getNode(args[1])==null || target.getNode(args[0]).getEdgeToward(target.getNode(args[1]))==null)"
+      }
+    ]
+  },
+  {
+    "signature": "removeEdge(int fromIndex,int toIndex)",
+    "name": "removeEdge",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "fromIndex"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "toIndex"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "fromIndex"
+        },
+        "comment": "the index of the source node",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "toIndex"
+        },
+        "comment": "the index of the target node",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the removed edge or null if no edge is removed",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IndexOutOfBoundsException",
+          "name": "IndexOutOfBoundsException",
+          "isArray": false
+        },
+        "codeTags": [
+          "getNodeCount() - 1"
+        ],
+        "comment": "If one of the node indices is negative or greater than getNodeCount() - 1.",
+        "kind": "THROWS",
+        "condition": "args[0]<0 || args[1]<0 || args[0]>(target.getNodeCount() - 1) || args[1]>(target.getNodeCount() - 1)"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.ElementNotFoundException",
+          "name": "ElementNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if strict checking is enabled and there is no edge between the two nodes.",
+        "kind": "THROWS",
+        "condition": "target.strictChecking && target.getNode(args[0]).getEdgeToward(target.getNode(args[1]))==null"
+      }
+    ]
+  },
+  {
+    "signature": "removeEdge(org.graphstream.graph.Node node1,org.graphstream.graph.Node node2)",
+    "name": "removeEdge",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.Node",
+          "name": "Node",
+          "isArray": false
+        },
+        "name": "node1"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.Node",
+          "name": "Node",
+          "isArray": false
+        },
+        "name": "node2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.Node",
+            "name": "Node",
+            "isArray": false
+          },
+          "name": "node1"
+        },
+        "comment": "the first node",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.Node",
+            "name": "Node",
+            "isArray": false
+          },
+          "name": "node2"
+        },
+        "comment": "the second node",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the removed edge or null if no edge is removed",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.ElementNotFoundException",
+          "name": "ElementNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if strict checking is enabled and there is no edge between the two nodes.",
+        "kind": "THROWS",
+        "condition": "target.strictChecking && target.getNode(args[0]).getEdgeToward(target.getNode(args[1]))==null"
+      }
+    ]
+  },
+  {
+    "signature": "attributeSinks()",
+    "name": "attributeSinks",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.Iterable",
+      "name": "Iterable",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the set of AttributeSink under the form of an iterable object.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "elementSinks()",
+    "name": "elementSinks",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.Iterable",
+      "name": "Iterable",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the list of ElementSink under the form of an iterable object.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "addAttributeSink(org.graphstream.stream.AttributeSink sink)",
+    "name": "addAttributeSink",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.stream.AttributeSink",
+          "name": "AttributeSink",
+          "isArray": false
+        },
+        "name": "sink"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.stream.AttributeSink",
+            "name": "AttributeSink",
+            "isArray": false
+          },
+          "name": "sink"
+        },
+        "comment": "The sink to register.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "addElementSink(org.graphstream.stream.ElementSink sink)",
+    "name": "addElementSink",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.stream.ElementSink",
+          "name": "ElementSink",
+          "isArray": false
+        },
+        "name": "sink"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.stream.ElementSink",
+            "name": "ElementSink",
+            "isArray": false
+          },
+          "name": "sink"
+        },
+        "comment": "The sink to register.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "addSink(org.graphstream.stream.Sink sink)",
+    "name": "addSink",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.stream.Sink",
+          "name": "Sink",
+          "isArray": false
+        },
+        "name": "sink"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.stream.Sink",
+            "name": "Sink",
+            "isArray": false
+          },
+          "name": "sink"
+        },
+        "comment": "The sink to register.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "clearAttributeSinks()",
+    "name": "clearAttributeSinks",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "clearElementSinks()",
+    "name": "clearElementSinks",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "clearSinks()",
+    "name": "clearSinks",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "removeAttributeSink(org.graphstream.stream.AttributeSink sink)",
+    "name": "removeAttributeSink",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.stream.AttributeSink",
+          "name": "AttributeSink",
+          "isArray": false
+        },
+        "name": "sink"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.stream.AttributeSink",
+            "name": "AttributeSink",
+            "isArray": false
+          },
+          "name": "sink"
+        },
+        "comment": "The sink to remove, if it does not exist, this is ignored silently.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "removeElementSink(org.graphstream.stream.ElementSink sink)",
+    "name": "removeElementSink",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.stream.ElementSink",
+          "name": "ElementSink",
+          "isArray": false
+        },
+        "name": "sink"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.stream.ElementSink",
+            "name": "ElementSink",
+            "isArray": false
+          },
+          "name": "sink"
+        },
+        "comment": "The sink to remove, if it does not exist, this is ignored silently.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "removeSink(org.graphstream.stream.Sink sink)",
+    "name": "removeSink",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.stream.Sink",
+          "name": "Sink",
+          "isArray": false
+        },
+        "name": "sink"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.stream.Sink",
+            "name": "Sink",
+            "isArray": false
+          },
+          "name": "sink"
+        },
+        "comment": "The sink to remove, if it does not exist, this is ignored silently.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "edgeAttributeAdded(java.lang.String sourceId,long timeId,java.lang.String edgeId,java.lang.String attribute,java.lang.Object value)",
+    "name": "edgeAttributeAdded",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "sourceId"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "timeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "edgeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "attribute"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "sourceId"
+        },
+        "comment": "Identifier of the graph where the change occurred.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "edgeId"
+        },
+        "comment": "Identifier of the edge whose attribute changed.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "attribute"
+        },
+        "comment": "The attribute name.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "The attribute new value.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "edgeAttributeChanged(java.lang.String sourceId,long timeId,java.lang.String edgeId,java.lang.String attribute,java.lang.Object oldValue,java.lang.Object newValue)",
+    "name": "edgeAttributeChanged",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "sourceId"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "timeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "edgeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "attribute"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "oldValue"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "newValue"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "sourceId"
+        },
+        "comment": "Identifier of the graph where the change occurred.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "edgeId"
+        },
+        "comment": "Identifier of the edge whose attribute changed.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "attribute"
+        },
+        "comment": "The attribute name.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "oldValue"
+        },
+        "comment": "The attribute old value.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "newValue"
+        },
+        "comment": "The attribute new value.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "edgeAttributeRemoved(java.lang.String sourceId,long timeId,java.lang.String edgeId,java.lang.String attribute)",
+    "name": "edgeAttributeRemoved",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "sourceId"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "timeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "edgeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "attribute"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "sourceId"
+        },
+        "comment": "Identifier of the graph where the attribute was removed.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "edgeId"
+        },
+        "comment": "Identifier of the edge whose attribute was removed.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "attribute"
+        },
+        "comment": "The removed attribute name.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "graphAttributeAdded(java.lang.String sourceId,long timeId,java.lang.String attribute,java.lang.Object value)",
+    "name": "graphAttributeAdded",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "sourceId"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "timeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "attribute"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "sourceId"
+        },
+        "comment": "Identifier of the graph where the attribute changed.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "attribute"
+        },
+        "comment": "The attribute name.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "The attribute new value.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "graphAttributeChanged(java.lang.String sourceId,long timeId,java.lang.String attribute,java.lang.Object oldValue,java.lang.Object newValue)",
+    "name": "graphAttributeChanged",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "sourceId"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "timeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "attribute"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "oldValue"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "newValue"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "sourceId"
+        },
+        "comment": "Identifier of the graph where the attribute changed.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "attribute"
+        },
+        "comment": "The attribute name.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "oldValue"
+        },
+        "comment": "The attribute old value.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "newValue"
+        },
+        "comment": "The attribute new value.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "graphAttributeRemoved(java.lang.String sourceId,long timeId,java.lang.String attribute)",
+    "name": "graphAttributeRemoved",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "sourceId"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "timeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "attribute"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "sourceId"
+        },
+        "comment": "Identifier of the graph where the attribute was removed.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "attribute"
+        },
+        "comment": "The removed attribute name.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "nodeAttributeAdded(java.lang.String sourceId,long timeId,java.lang.String nodeId,java.lang.String attribute,java.lang.Object value)",
+    "name": "nodeAttributeAdded",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "sourceId"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "timeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "nodeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "attribute"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "sourceId"
+        },
+        "comment": "Identifier of the graph where the change occurred.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "nodeId"
+        },
+        "comment": "Identifier of the node whose attribute changed.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "attribute"
+        },
+        "comment": "The attribute name.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "The attribute new value.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "nodeAttributeChanged(java.lang.String sourceId,long timeId,java.lang.String nodeId,java.lang.String attribute,java.lang.Object oldValue,java.lang.Object newValue)",
+    "name": "nodeAttributeChanged",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "sourceId"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "timeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "nodeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "attribute"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "oldValue"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "newValue"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "sourceId"
+        },
+        "comment": "Identifier of the graph where the change occurred.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "nodeId"
+        },
+        "comment": "Identifier of the node whose attribute changed.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "attribute"
+        },
+        "comment": "The attribute name.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "oldValue"
+        },
+        "comment": "The attribute old value.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "newValue"
+        },
+        "comment": "The attribute new value.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "nodeAttributeRemoved(java.lang.String sourceId,long timeId,java.lang.String nodeId,java.lang.String attribute)",
+    "name": "nodeAttributeRemoved",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "sourceId"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "timeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "nodeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "attribute"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "sourceId"
+        },
+        "comment": "Identifier of the graph where the attribute was removed.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "nodeId"
+        },
+        "comment": "Identifier of the node whose attribute was removed.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "attribute"
+        },
+        "comment": "The removed attribute name.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "edgeAdded(java.lang.String sourceId,long timeId,java.lang.String edgeId,java.lang.String fromNodeId,java.lang.String toNodeId,boolean directed)",
+    "name": "edgeAdded",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "sourceId"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "timeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "edgeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "fromNodeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "toNodeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "directed"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "sourceId"
+        },
+        "comment": "Identifier of the graph where the edge was added.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "edgeId"
+        },
+        "comment": "Identifier of the added edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "fromNodeId"
+        },
+        "comment": "Identifier of the first node of the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "toNodeId"
+        },
+        "comment": "Identifier of the second node of the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "directed"
+        },
+        "comment": "If true, the edge is directed.",
+        "kind": "PARAM",
+        "condition": "target.getEdge(args[2]).isDirected()"
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "edgeRemoved(java.lang.String sourceId,long timeId,java.lang.String edgeId)",
+    "name": "edgeRemoved",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "sourceId"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "timeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "edgeId"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "sourceId"
+        },
+        "comment": "The graph where the edge will be removed.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "edgeId"
+        },
+        "comment": "The edge that will be removed.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "graphCleared(java.lang.String sourceId,long timeId)",
+    "name": "graphCleared",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "sourceId"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "timeId"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "sourceId"
+        },
+        "comment": "The graph cleared.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "nodeAdded(java.lang.String sourceId,long timeId,java.lang.String nodeId)",
+    "name": "nodeAdded",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "sourceId"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "timeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "nodeId"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "sourceId"
+        },
+        "comment": "Identifier of the graph where the node was added.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "nodeId"
+        },
+        "comment": "Identifier of the added node.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "nodeRemoved(java.lang.String sourceId,long timeId,java.lang.String nodeId)",
+    "name": "nodeRemoved",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "sourceId"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "timeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "nodeId"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "sourceId"
+        },
+        "comment": "Identifier of the graph where the node will be removed.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "nodeId"
+        },
+        "comment": "Identifier of the removed node.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "stepBegins(java.lang.String sourceId,long timeId,double step)",
+    "name": "stepBegins",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "sourceId"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "timeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "step"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "sourceId"
+        },
+        "comment": "Identifier of the graph where the step starts.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "timeId"
+        },
+        "comment": "A numerical value that may give a timestamp to track the evolution of the graph over the time.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "display()",
+    "name": "display",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.graphstream.ui.view.Viewer",
+      "name": "Viewer",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "a graph viewer that allows to command the viewer (it often run in another thread).",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "display(boolean autoLayout)",
+    "name": "display",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.graphstream.ui.view.Viewer",
+      "name": "Viewer",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "autoLayout"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "autoLayout"
+        },
+        "comment": "If true a layout algorithm is launched in its own thread to compute best node positions.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a graph viewer that allows to command the viewer (it often run in another thread).",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "read(org.graphstream.stream.file.FileSource input,java.lang.String filename)",
+    "name": "read",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.stream.file.FileSource",
+          "name": "FileSource",
+          "isArray": false
+        },
+        "name": "input"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.stream.file.FileSource",
+            "name": "FileSource",
+            "isArray": false
+          },
+          "name": "input"
+        },
+        "comment": "An appropriate reader for the filename.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "The graph filename (or URL).",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.ElementNotFoundException",
+          "name": "ElementNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If the file cannot be found or if the format is not recognised.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.stream.GraphParseException",
+          "name": "GraphParseException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If there is a parsing error while reading the file.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If an input/output error occurs during the graph reading.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "read(java.lang.String filename)",
+    "name": "read",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "The graph filename (or URL).",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.graph.ElementNotFoundException",
+          "name": "ElementNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If the file cannot be found or if the format is not recognized.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.graphstream.stream.GraphParseException",
+          "name": "GraphParseException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If there is a parsing error while reading the file.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If an input output error occurs during the graph reading.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "write(org.graphstream.stream.file.FileSink output,java.lang.String filename)",
+    "name": "write",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.stream.file.FileSink",
+          "name": "FileSink",
+          "isArray": false
+        },
+        "name": "output"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "The file that will contain the saved graph (or URL).",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.stream.file.FileSink",
+            "name": "FileSink",
+            "isArray": false
+          },
+          "name": "output"
+        },
+        "comment": "The output format to use.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If an input/output error occurs during the graph writing.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "write(java.lang.String filename)",
+    "name": "write",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "The file that will contain the saved graph (or URL).",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If an input/output error occurs during the graph writing.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "getReplayController()",
+    "name": "getReplayController",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.graphstream.stream.Replayable.Controller",
+      "name": "Controller",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "a new replay controller",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "addEdge(java.lang.String edgeId,org.graphstream.graph.implementations.AbstractNode src,java.lang.String srcId,org.graphstream.graph.implementations.AbstractNode dst,java.lang.String dstId,boolean directed)",
+    "name": "addEdge",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "edgeId"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.implementations.AbstractNode",
+          "name": "AbstractNode",
+          "isArray": false
+        },
+        "name": "src"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "srcId"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.implementations.AbstractNode",
+          "name": "AbstractNode",
+          "isArray": false
+        },
+        "name": "dst"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "dstId"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "directed"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "removeAllEdges(org.graphstream.graph.implementations.AbstractNode node)",
+    "name": "removeAllEdges",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.implementations.AbstractNode",
+          "name": "AbstractNode",
+          "isArray": false
+        },
+        "name": "node"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "removeNode(org.graphstream.graph.implementations.AbstractNode node,boolean graphCallback)",
+    "name": "removeNode",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.implementations.AbstractNode",
+          "name": "AbstractNode",
+          "isArray": false
+        },
+        "name": "node"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "graphCallback"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.implementations.AbstractNode",
+            "name": "AbstractNode",
+            "isArray": false
+          },
+          "name": "node"
+        },
+        "comment": "the node to be removed",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "graphCallback"
+        },
+        "comment": "if false, removeNodeCallback(node) is not called",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "removeEdge(org.graphstream.graph.implementations.AbstractEdge edge,boolean graphCallback,boolean sourceCallback,boolean targetCallback)",
+    "name": "removeEdge",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.implementations.AbstractEdge",
+          "name": "AbstractEdge",
+          "isArray": false
+        },
+        "name": "edge"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "graphCallback"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "sourceCallback"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "targetCallback"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.implementations.AbstractEdge",
+            "name": "AbstractEdge",
+            "isArray": false
+          },
+          "name": "edge"
+        },
+        "comment": "the edge to be removed",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "graphCallback"
+        },
+        "comment": "if false, AbstractGraph.removeEdgeCallback(AbstractEdge) of the graph is not called",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "sourceCallback"
+        },
+        "comment": "if false, AbstractNode.removeEdgeCallback(AbstractEdge) is not called for the source node of the edge",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "targetCallback"
+        },
+        "comment": "if false, AbstractNode.removeEdgeCallback(AbstractEdge) is not called for the target node of the edge",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "getId()",
+    "name": "getId",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The identifier value.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getIndex()",
+    "name": "getIndex",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The index value",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setIndex(int index)",
+    "name": "setIndex",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "the new index",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "getAttribute(java.lang.String key)",
+    "name": "getAttribute",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "Name of the attribute to search.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The object bound to the given key or null if no object match this attribute name.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getFirstAttributeOf(java.lang.String[] keys)",
+    "name": "getFirstAttributeOf",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": true,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String[]",
+          "name": "String[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          }
+        },
+        "name": "keys"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String[]",
+            "name": "String[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.String",
+              "name": "String",
+              "isArray": false
+            }
+          },
+          "name": "keys"
+        },
+        "comment": "Several strings naming attributes.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The first attribute that exists.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getAttribute(java.lang.String key,java.lang.Class clazz)",
+    "name": "getAttribute",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "key"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Class",
+          "name": "Class",
+          "isArray": false
+        },
+        "name": "clazz"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "The attribute name to search.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          },
+          "name": "clazz"
+        },
+        "comment": "The expected attribute class.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The object bound to the given key or null if no object match this attribute.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getFirstAttributeOf(java.lang.Class clazz,java.lang.String[] keys)",
+    "name": "getFirstAttributeOf",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": true,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Class",
+          "name": "Class",
+          "isArray": false
+        },
+        "name": "clazz"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String[]",
+          "name": "String[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          }
+        },
+        "name": "keys"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          },
+          "name": "clazz"
+        },
+        "comment": "The class the attribute must be instance of.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String[]",
+            "name": "String[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.String",
+              "name": "String",
+              "isArray": false
+            }
+          },
+          "name": "keys"
+        },
+        "comment": "Several string naming attributes.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The first attribute that exists.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getLabel(java.lang.String key)",
+    "name": "getLabel",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "The label to search.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The label string value or null if not found.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getNumber(java.lang.String key)",
+    "name": "getNumber",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "The name of the number to search.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The number value or NaN if not found.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getVector(java.lang.String key)",
+    "name": "getVector",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "The name of the number to search.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The vector of numbers or null if not found.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getArray(java.lang.String key)",
+    "name": "getArray",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.Object[]",
+      "name": "Object[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "java.lang.Object",
+        "name": "Object",
+        "isArray": false
+      }
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "The name of the array to search.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The array of objects or null if not found.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getHash(java.lang.String key)",
+    "name": "getHash",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.HashMap",
+      "name": "HashMap",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "The name of the hash to search.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The hash or null if not found.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hasAttribute(java.lang.String key)",
+    "name": "hasAttribute",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "The name of the attribute to search.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "True if a value is present for this attribute.",
+      "kind": "RETURN",
+      "condition": "target.attributes.get(args[0])!=null ? result==true : result==false"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hasAttribute(java.lang.String key,java.lang.Class clazz)",
+    "name": "hasAttribute",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "key"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Class",
+          "name": "Class",
+          "isArray": false
+        },
+        "name": "clazz"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "The name of the attribute to search.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          },
+          "name": "clazz"
+        },
+        "comment": "The expected class of the attribute value.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "True if a value is present for this attribute.",
+      "kind": "RETURN",
+      "condition": "target.attributes.get(args[0])!=null ? result==true : result==false"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hasLabel(java.lang.String key)",
+    "name": "hasLabel",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "The name of the label.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "True if a value is present for this attribute and implements CharSequence.",
+      "kind": "RETURN",
+      "condition": "target.attributes.get(args[0])!=null && target.attributes.get(args[0]) instanceof CharSequence ? result==true : result==false"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hasNumber(java.lang.String key)",
+    "name": "hasNumber",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "The name of the number.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "True if a value is present for this attribute and can contain a double (inherits from Number).",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hasVector(java.lang.String key)",
+    "name": "hasVector",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "The name of the vector.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "True if a value is present for this attribute and can contain a sequence of numbers.",
+      "kind": "RETURN",
+      "condition": "target.attributes.get(args[0])!=null && target.attributes.get(args[0]) instanceof Number ? result==true : result==false"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hasArray(java.lang.String key)",
+    "name": "hasArray",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "The name of the array.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "True if a value is present for this attribute and can contain an array object.",
+      "kind": "RETURN",
+      "condition": "target.attributes.get(args[0])!=null && target.attributes.get(args[0]) instanceof Object[] ? result==true : result==false"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hasHash(java.lang.String key)",
+    "name": "hasHash",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "The name of the hash.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "True if a value is present for this attribute and can contain a hash.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getAttributeKeyIterator()",
+    "name": "getAttributeKeyIterator",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "An iterator on the key set of attributes.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getEachAttributeKey()",
+    "name": "getEachAttributeKey",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.Iterable",
+      "name": "Iterable",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "an iterable view on attribute keys.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getAttributeKeySet()",
+    "name": "getAttributeKeySet",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "an unmodifiable collection containing the attribute keys.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "toString()",
+    "name": "toString",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getAttributeCount()",
+    "name": "getAttributeCount",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the number of attributes.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "clearAttributes()",
+    "name": "clearAttributes",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "clearAttributesWithNoEvent()",
+    "name": "clearAttributesWithNoEvent",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "addAttribute(java.lang.String attribute,java.lang.Object[] values)",
+    "name": "addAttribute",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": true,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "attribute"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object[]",
+          "name": "Object[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          }
+        },
+        "name": "values"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "attribute"
+        },
+        "comment": "The attribute name.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object[]",
+            "name": "Object[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.Object",
+              "name": "Object",
+              "isArray": false
+            }
+          },
+          "name": "values"
+        },
+        "comment": "The attribute value or set of values.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "changeAttribute(java.lang.String attribute,java.lang.Object[] values)",
+    "name": "changeAttribute",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": true,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "attribute"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object[]",
+          "name": "Object[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          }
+        },
+        "name": "values"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "attribute"
+        },
+        "comment": "The attribute name.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object[]",
+            "name": "Object[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.Object",
+              "name": "Object",
+              "isArray": false
+            }
+          },
+          "name": "values"
+        },
+        "comment": "The attribute value or array of values.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "setAttribute(java.lang.String attribute,java.lang.Object[] values)",
+    "name": "setAttribute",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": true,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "attribute"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object[]",
+          "name": "Object[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          }
+        },
+        "name": "values"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "attribute"
+        },
+        "comment": "The attribute name.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object[]",
+            "name": "Object[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.Object",
+              "name": "Object",
+              "isArray": false
+            }
+          },
+          "name": "values"
+        },
+        "comment": "The attribute value or array of values.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "addAttributes(java.util.Map attributes)",
+    "name": "addAttributes",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Map",
+          "name": "Map",
+          "isArray": false
+        },
+        "name": "attributes"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Map",
+            "name": "Map",
+            "isArray": false
+          },
+          "name": "attributes"
+        },
+        "comment": "A set of (key,value) pairs.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "removeAttribute(java.lang.String attribute)",
+    "name": "removeAttribute",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.AbstractElement",
+      "name": "AbstractElement",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.MultiGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "attribute"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "attribute"
+        },
+        "comment": "Name of the attribute to remove.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  }
+]
