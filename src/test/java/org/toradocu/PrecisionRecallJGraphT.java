@@ -53,4 +53,9 @@ public class PrecisionRecallJGraphT extends AbstractPrecisionRecallTestSuite {
   public void testAbstractPathElementList() throws Exception {
     test("org.jgrapht.alg.AbstractPathElementList", 1, 0.666, 1, 1, 1, 1);
   }
+
+  @Test
+  public void testDirectedAcyclicGraph() throws Exception {
+    test("org.jgrapht.experimental.dag.DirectedAcyclicGraph", 1, 0.428, 1, 1, 1, 0);
+  }
 }

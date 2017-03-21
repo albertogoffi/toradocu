@@ -1,4 +1,4 @@
-#! bin/bash
+#!/bin/bash
 
 # Fail if any command fails
 set -e
@@ -28,12 +28,16 @@ fi
 
 # Initialize a new stats file
 if [ ! -f $STATS_FILE ]; then
-    echo "METHOD,DISTANCE THRESHOLD,REMOVAL COST,CORRECT CONDITIONS,WRONG CONDITIONS,MISSING CONDITIONS,PRECISION,RECALL" > $STATS_FILE
+    echo "METHOD,DISTANCE THRESHOLD,REMOVAL COST,\
+CORRECT THROWS CONDITIONS,WRONG THROWS CONDITIONS,MISSING THROWS CONDITIONS,THROWS PRECISION,THROWS RECALL,\
+CORRECT PARAM CONDITIONS,WRONG PARAM CONDITIONS,MISSING PARAM CONDITIONS,PARAM PRECISION,PARAM RECALL,\
+CORRECT RETURN CONDITIONS,WRONG RETURN CONDITIONS,MISSING RETURN CONDITIONS,RETURN PRECISION,RETURN RECALL,\
+CORRECT CONDITIONS,WRONG CONDITIONS,MISSING CONDITIONS,PRECISION,RECALL" > $STATS_FILE
 fi
 
 # Collect information about target classes from precision/recall test suite and create target descriprtors
 TARGET_DESCRIPTORS=()
-for test_suite in `find src/test/java/org/toradocu -maxdepth 1 -name '*.java'`; do
+for test_suite in `find src/test/java/org/toradocu -maxdepth 1 -name 'PrecisionRecall*.java'`; do
     file_name=stats/`echo $test_suite | rev | cut -d '/' -f -1 | rev | cut -d '.' -f 1`".txt"
     TARGET_DESCRIPTORS+=($file_name)
     grep -o --max-count=3 "\".*\"" $test_suite | cut -d"\"" -f2 > $file_name

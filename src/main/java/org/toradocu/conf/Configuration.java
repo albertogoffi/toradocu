@@ -9,9 +9,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /** This class holds the configuration options (particularly command-line options) for Toradocu. */
 public class Configuration {
@@ -35,11 +37,12 @@ public class Configuration {
 
   @Parameter(
     names = "--class-dir",
-    description = "Specifies a JAR file or a directory containing binaries of the target class",
-    converter = PathConverter.class,
+    description =
+        "Specifies JAR files or directories containing binaries of the target class and"
+            + " its dependencies. Use the standard classpath separator to separate different paths.",
     required = true
   )
-  public Path classDir;
+  public String classDirs;
 
   @Parameter(names = "--debug", description = "Enable fine-grained logging", hidden = true)
   private boolean debug = false;
@@ -317,12 +320,21 @@ public class Configuration {
   }
 
   /**
-   * Returns the path to a JAR file or a directory containing binaries of the target class.
+   * Returns paths to JAR files or directories containing binaries of the target class and its
+   * dependencies.
    *
-   * @return the path to a JAR file or a directory containing binaries of the target class
+   * @return paths to JAR files or directories containing binaries of the target class and its
+   *     dependencies
    */
-  public Path getClassDir() {
-    return classDir;
+  public List<String> getClassDir() {
+    final List<String> paths = new ArrayList<>();
+    final String separator = File.pathSeparator;
+    if (classDirs.contains(separator)) {
+      paths.addAll(Arrays.asList(classDirs.split(Pattern.quote(separator))));
+    } else {
+      paths.add(classDirs);
+    }
+    return paths;
   }
 
   /**

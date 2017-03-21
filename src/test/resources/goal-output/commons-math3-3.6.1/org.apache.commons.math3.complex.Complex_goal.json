@@ -184,7 +184,7 @@
           "null"
         ],
         "comment": "if a is null.",
-        "condition": "target.add()==null || target.abs()==null || target.tan()==null",
+        "condition": "args[0]==null",
         "exception": {
           "isArray": false,
           "name": "NullArgumentException",
@@ -331,7 +331,7 @@
           "null"
         ],
         "comment": "if a is null.",
-        "condition": "target.add()==null || target.abs()==null || target.tan()==null",
+        "condition": "args[0]==null",
         "exception": {
           "isArray": false,
           "name": "NullArgumentException",
@@ -344,7 +344,7 @@
           "a"
         ],
         "comment": "if a is zero",
-        "condition": "target.add()==0 || target.abs()==0 || target.tan()==0",
+        "condition": "args[0].equals(org.apache.commons.math3.complex.Complex.ZERO)",
         "exception": {
           "isArray": false,
           "name": "MathArithmeticException",
@@ -1007,7 +1007,7 @@
           "null"
         ],
         "comment": "if a is null.",
-        "condition": "target.add()==null || target.abs()==null || target.tan()==null",
+        "condition": "args[0]==null",
         "exception": {
           "isArray": false,
           "name": "NullArgumentException",
@@ -1201,7 +1201,7 @@
           "null"
         ],
         "comment": "if a is null.",
-        "condition": "target.add()==null || target.abs()==null || target.tan()==null",
+        "condition": "args[0]==null",
         "exception": {
           "isArray": false,
           "name": "NullArgumentException",

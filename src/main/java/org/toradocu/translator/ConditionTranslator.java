@@ -288,7 +288,7 @@ public class ConditionTranslator {
           // method's Javadoc: isTaggedAsCode checks this property.
           boolean isTaggedAsCode = false;
           for (ThrowsTag throwTag : method.throwsTags()) {
-            isTaggedAsCode = throwTag.intersect(matchingSubject.getIdentifiers());
+            isTaggedAsCode = throwTag.intersect(new ArrayList<>(matchingSubject.getIdentifiers()));
           }
           if (isTaggedAsCode) {
             match = matchingSubject;

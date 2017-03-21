@@ -3,8 +3,10 @@ package org.toradocu.translator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import org.toradocu.util.Distance;
 
 /**
@@ -21,7 +23,7 @@ import org.toradocu.util.Distance;
 public abstract class CodeElement<T> implements Comparable<CodeElement<?>> {
 
   /** Strings that can be used to refer to this code element in Javadoc comments. */
-  private List<String> identifiers;
+  private Set<String> identifiers;
   /** String used to build Java conditions. */
   private String javaExpression;
   // TODO Add a check on the type T so that a CodeElement can be only created with a supported type.
@@ -52,7 +54,7 @@ public abstract class CodeElement<T> implements Comparable<CodeElement<?>> {
    */
   protected CodeElement(T javaCodeElement) {
     this.javaCodeElement = javaCodeElement;
-    identifiers = new ArrayList<>();
+    identifiers = new HashSet<>();
   }
 
   /**
@@ -60,7 +62,7 @@ public abstract class CodeElement<T> implements Comparable<CodeElement<?>> {
    *
    * @param identifier a string that identifies this code element
    */
-  public void addIdentifier(String identifier) {
+  void addIdentifier(String identifier) {
     identifiers.add(identifier);
   }
 
@@ -69,7 +71,7 @@ public abstract class CodeElement<T> implements Comparable<CodeElement<?>> {
    *
    * @return a list of strings that identify this code element
    */
-  public List<String> getIdentifiers() {
+  public Set<String> getIdentifiers() {
     return identifiers;
   }
 
@@ -79,7 +81,7 @@ public abstract class CodeElement<T> implements Comparable<CodeElement<?>> {
    *
    * @return the Java expression representation of this code element
    */
-  public String getJavaExpression() {
+  String getJavaExpression() {
     if (javaExpression == null) {
       javaExpression = buildJavaExpression();
     }
@@ -103,7 +105,7 @@ public abstract class CodeElement<T> implements Comparable<CodeElement<?>> {
    * @return the minimum edit distance between the given string and the identifiers of this code
    *     element, or Integer.MAX_VALUE if this code element has no identifiers
    */
-  public int getEditDistanceFrom(String s) {
+  int getEditDistanceFrom(String s) {
     return identifiers
         .stream()
         .map(identifier -> Distance.editDistance(identifier, s))
@@ -116,7 +118,7 @@ public abstract class CodeElement<T> implements Comparable<CodeElement<?>> {
    *
    * @return the wrapped code element that this object holds data on
    */
-  public T getJavaCodeElement() {
+  T getJavaCodeElement() {
     return javaCodeElement;
   }
 

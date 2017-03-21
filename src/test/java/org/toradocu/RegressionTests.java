@@ -57,7 +57,7 @@ public class RegressionTests {
   }
 
   @Test
-  public void BCEUtilTest() {
+  public void bceUtilTest() {
     String[] toradocuArgs =
         new String[] {
           "--target-class",
@@ -72,16 +72,68 @@ public class RegressionTests {
     Toradocu.main(toradocuArgs);
   }
 
-  // Issue #81. Still to fix.
+  @Test
+  public void issue79() {
+    // https://github.com/albertogoffi/toradocu/issues/79
+    String[] toradocuArgs =
+        new String[] {
+          "--target-class",
+          "com.google.common.base.SmallCharMatcher",
+          "--class-dir",
+          "src/test/resources/bin/guava-19.0.jar",
+          "--source-dir",
+          "src/test/resources/src/guava-19.0-sources",
+          "--oracle-generation",
+          "false",
+          "--export-conditions",
+          "conditions"
+        };
+    Toradocu.main(toradocuArgs);
+
+    toradocuArgs =
+        new String[] {
+          "--target-class",
+          "com.google.common.collect.HashBiMap",
+          "--class-dir",
+          "src/test/resources/bin/guava-19.0.jar",
+          "--source-dir",
+          "src/test/resources/src/guava-19.0-sources",
+          "--oracle-generation",
+          "false",
+          "--export-conditions",
+          "conditions"
+        };
+    Toradocu.main(toradocuArgs);
+  }
+
+  @Test
   public void freeColTest() {
+    // Issue #81: https://github.com/albertogoffi/toradocu/issues/81
     String[] toradocuArgs =
         new String[] {
           "--target-class",
           "net.sf.freecol.FreeCol",
           "--class-dir",
-          "src/test/resources/bin/freecol-0.11.6.jar",
+          "src/test/resources/bin/freecol-0.11.6.jar:src/test/resources/bin/commons-cli-1.3.1.jar",
           "--source-dir",
           "src/test/resources/src/freecol-0.11.6/src",
+          "--oracle-generation",
+          "false"
+        };
+    Toradocu.main(toradocuArgs);
+  }
+
+  @Test
+  public void futuresTest() {
+    // Issue #85: https://github.com/albertogoffi/toradocu/issues/85
+    String[] toradocuArgs =
+        new String[] {
+          "--target-class",
+          "com.google.common.util.concurrent.Futures",
+          "--class-dir",
+          "src/test/resources/bin/guava-19.0.jar",
+          "--source-dir",
+          "src/test/resources/src/guava-19.0-sources",
           "--oracle-generation",
           "false"
         };

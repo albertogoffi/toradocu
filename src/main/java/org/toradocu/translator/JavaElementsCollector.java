@@ -63,10 +63,13 @@ public class JavaElementsCollector {
       paramIndex++;
     }
 
-    // Add methods of the target class.
+    // Add methods of the target class (all but the method corresponding to documentedMethod).
     final List<Method> methods =
         Arrays.stream(containingClass.getMethods())
-            .filter(m -> checkCompatibility(m, inScopeTypes))
+            .filter(
+                m ->
+                    !m.toGenericString().equals(executable.toGenericString())
+                        && checkCompatibility(m, inScopeTypes))
             .collect(Collectors.toList());
     for (Method method : methods) {
       if (Modifier.isStatic(method.getModifiers())) {

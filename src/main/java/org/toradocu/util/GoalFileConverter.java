@@ -44,7 +44,7 @@ public class GoalFileConverter {
 
     // We use Toradocu code to load reflection information.
     Toradocu.configuration = new Configuration();
-    Toradocu.configuration.classDir = Paths.get(binPath);
+    Toradocu.configuration.classDirs = binPath;
 
     java.lang.reflect.Type listType = new TypeToken<List<DocumentedMethod>>() {}.getType();
 

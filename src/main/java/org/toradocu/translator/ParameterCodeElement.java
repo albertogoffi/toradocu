@@ -1,6 +1,7 @@
 package org.toradocu.translator;
 
 import java.lang.reflect.Parameter;
+import java.util.StringJoiner;
 
 /**
  * This class represents a parameter code element for use in translation. It holds String
@@ -30,6 +31,13 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
     addIdentifier(name);
     addIdentifier(parameter.getType().getSimpleName() + " " + name);
     addIdentifier(name + " " + parameter.getType().getSimpleName());
+    // Add name identifier splitting camel case name into different words.
+    StringJoiner joiner = new StringJoiner(" ");
+    for (String word : name.split("(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])")) {
+      joiner.add(word);
+    }
+    addIdentifier(joiner.toString().toLowerCase());
+
     // Add type identifiers
     if (parameter.getType().isArray()) {
       addIdentifier("array");

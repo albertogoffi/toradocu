@@ -22,6 +22,7 @@ public class ClassCodeElement extends CodeElement<Class<?>> {
     String className = backingClass.getSimpleName();
     addIdentifier(className);
     addIdentifier("this " + className);
+    addIdentifier("this");
     // Add last word in class name as identifier.
     for (int i = className.length() - 1; i > 0; i--) {
       if (Character.isUpperCase(className.charAt(i))) {
