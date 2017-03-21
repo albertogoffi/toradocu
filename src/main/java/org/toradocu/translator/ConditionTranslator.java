@@ -70,7 +70,9 @@ public class ConditionTranslator {
     // Replace written out inequalities with symbols.
     text =
         text.replace("greater than or equal to", ">=")
+            .replace("≥", ">=")
             .replace("less than or equal to", "<=")
+            .replace("≤", "<=")
             .replace("greater than", ">")
             .replace("smaller than or equal to", "<=")
             .replace("smaller than", "<")
@@ -147,7 +149,8 @@ public class ConditionTranslator {
     return placeholderText;
   }
 
-  private static final String INEQUALITY_NUMBER_REGEX = " *(([<>=]=?)|(!=)) ?-?[0-9]+";
+  private static final String INEQUALITY_NUMBER_REGEX =
+      " *((([<>=]=?)|(!=)) ?)-?([0-9]+|zero|one|two|three|four|five|six|seven|eight|nine)";
   private static final String PLACEHOLDER_PREFIX = " INEQUALITY_";
   private static final String INEQ_INSOF = " *[an]* (instance of)"; // e.g "an instance of"
   private static final String INEQ_INSOFPROCESSED =
