@@ -1,0 +1,7622 @@
+[
+  {
+    "signature": "UtilMDE()",
+    "name": "UtilMDE",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "intersectionCardinalityAtLeast(java.util.BitSet a,java.util.BitSet b,int i)",
+    "name": "intersectionCardinalityAtLeast",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.BitSet",
+          "name": "BitSet",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.BitSet",
+          "name": "BitSet",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "i"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.BitSet",
+            "name": "BitSet",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the first BitSet to intersect",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.BitSet",
+            "name": "BitSet",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the second BitSet to intersect",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "i"
+        },
+        "comment": "the cardinality bound",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true iff size(a intersect b) ≥ i",
+      "kind": "RETURN",
+      "condition": "target.intersectionCardinality(args[0],args[1])>=args[2] ? result==true"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "intersectionCardinalityAtLeast(java.util.BitSet a,java.util.BitSet b,java.util.BitSet c,int i)",
+    "name": "intersectionCardinalityAtLeast",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.BitSet",
+          "name": "BitSet",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.BitSet",
+          "name": "BitSet",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.BitSet",
+          "name": "BitSet",
+          "isArray": false
+        },
+        "name": "c"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "i"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.BitSet",
+            "name": "BitSet",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the first BitSet to intersect",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.BitSet",
+            "name": "BitSet",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the second BitSet to intersect",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.BitSet",
+            "name": "BitSet",
+            "isArray": false
+          },
+          "name": "c"
+        },
+        "comment": "the third BitSet to intersect",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "i"
+        },
+        "comment": "the cardinality bound",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true iff size(a intersect b intersect c) ≥ i",
+      "kind": "RETURN",
+      "condition": "target.intersectionCardinality(args[0],args[1],args[2])>=args[3] ? result==true"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "intersectionCardinality(java.util.BitSet a,java.util.BitSet b)",
+    "name": "intersectionCardinality",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.BitSet",
+          "name": "BitSet",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.BitSet",
+          "name": "BitSet",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.BitSet",
+            "name": "BitSet",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the first BitSet to intersect",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.BitSet",
+            "name": "BitSet",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the second BitSet to intersect",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "size(a intersect b)",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "intersectionCardinality(java.util.BitSet a,java.util.BitSet b,java.util.BitSet c)",
+    "name": "intersectionCardinality",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.BitSet",
+          "name": "BitSet",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.BitSet",
+          "name": "BitSet",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.BitSet",
+          "name": "BitSet",
+          "isArray": false
+        },
+        "name": "c"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.BitSet",
+            "name": "BitSet",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the first BitSet to intersect",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.BitSet",
+            "name": "BitSet",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the second BitSet to intersect",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.BitSet",
+            "name": "BitSet",
+            "isArray": false
+          },
+          "name": "c"
+        },
+        "comment": "the third BitSet to intersect",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "size(a intersect b intersect c)",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "fileInputStream(java.io.File file)",
+    "name": "fileInputStream",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.io.InputStream",
+      "name": "InputStream",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.File",
+          "name": "File",
+          "isArray": false
+        },
+        "name": "file"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.File",
+            "name": "File",
+            "isArray": false
+          },
+          "name": "file"
+        },
+        "comment": "the possibly-compressed file to read",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "an InputStream for file",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is trouble reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "fileReader(java.lang.String filename)",
+    "name": "fileReader",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.io.InputStreamReader",
+      "name": "InputStreamReader",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "the possibly-compressed file to read",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "an InputStream for filename",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is trouble reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.io.FileNotFoundException",
+          "name": "FileNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the file is not found",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "fileReader(java.io.File file)",
+    "name": "fileReader",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.io.InputStreamReader",
+      "name": "InputStreamReader",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.File",
+          "name": "File",
+          "isArray": false
+        },
+        "name": "file"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.File",
+            "name": "File",
+            "isArray": false
+          },
+          "name": "file"
+        },
+        "comment": "the possibly-compressed file to read",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "an InputStreamReader for file",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.FileNotFoundException",
+          "name": "FileNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the file cannot be found",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is trouble reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "fileReader(java.io.File file,java.lang.String charsetName)",
+    "name": "fileReader",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.io.InputStreamReader",
+      "name": "InputStreamReader",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.File",
+          "name": "File",
+          "isArray": false
+        },
+        "name": "file"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "charsetName"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.File",
+            "name": "File",
+            "isArray": false
+          },
+          "name": "file"
+        },
+        "comment": "the possibly-compressed file to read",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "charsetName"
+        },
+        "comment": "null, or the name of a Charset to use when reading the file",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "an InputStreamReader for file",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.FileNotFoundException",
+          "name": "FileNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the file cannot be found",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is trouble reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "bufferedFileReader(java.lang.String filename)",
+    "name": "bufferedFileReader",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.io.BufferedReader",
+      "name": "BufferedReader",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "the possibly-compressed file to read",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a BufferedReader for file",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.FileNotFoundException",
+          "name": "FileNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the file cannot be found",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is trouble reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "bufferedFileReader(java.io.File file)",
+    "name": "bufferedFileReader",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.io.BufferedReader",
+      "name": "BufferedReader",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.File",
+          "name": "File",
+          "isArray": false
+        },
+        "name": "file"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.File",
+            "name": "File",
+            "isArray": false
+          },
+          "name": "file"
+        },
+        "comment": "the possibility-compressed file to read",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a BufferedReader for file",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.FileNotFoundException",
+          "name": "FileNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the file cannot be found",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is trouble reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "bufferedFileReader(java.lang.String filename,java.lang.String charsetName)",
+    "name": "bufferedFileReader",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.io.BufferedReader",
+      "name": "BufferedReader",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "charsetName"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "the possibly-compressed file to read",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "charsetName"
+        },
+        "comment": "the character set to use when reading the file",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a BufferedReader for filename",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.FileNotFoundException",
+          "name": "FileNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the file cannot be found",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is trouble reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "bufferedFileReader(java.io.File file,java.lang.String charsetName)",
+    "name": "bufferedFileReader",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.io.BufferedReader",
+      "name": "BufferedReader",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.File",
+          "name": "File",
+          "isArray": false
+        },
+        "name": "file"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "charsetName"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.File",
+            "name": "File",
+            "isArray": false
+          },
+          "name": "file"
+        },
+        "comment": "the possibly-compressed file to read",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "charsetName"
+        },
+        "comment": "the character set to use when reading the file",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a BufferedReader for file",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.FileNotFoundException",
+          "name": "FileNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the file cannot be found",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is trouble reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "lineNumberFileReader(java.lang.String filename)",
+    "name": "lineNumberFileReader",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.io.LineNumberReader",
+      "name": "LineNumberReader",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "the possibly-compressed file to read",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a LineNumberReader for filename",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.FileNotFoundException",
+          "name": "FileNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the file cannot be found",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is trouble reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "lineNumberFileReader(java.io.File file)",
+    "name": "lineNumberFileReader",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.io.LineNumberReader",
+      "name": "LineNumberReader",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.File",
+          "name": "File",
+          "isArray": false
+        },
+        "name": "file"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.File",
+            "name": "File",
+            "isArray": false
+          },
+          "name": "file"
+        },
+        "comment": "the possibly-compressed file to read",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a LineNumberReader for file",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.FileNotFoundException",
+          "name": "FileNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the file cannot be found",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is trouble reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "bufferedFileWriter(java.lang.String filename)",
+    "name": "bufferedFileWriter",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.io.BufferedWriter",
+      "name": "BufferedWriter",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "the possibly-compressed file to write",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a BufferedWriter for filename",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is trouble writing the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "bufferedFileWriter(java.lang.String filename,boolean append)",
+    "name": "bufferedFileWriter",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.io.BufferedWriter",
+      "name": "BufferedWriter",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "append"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "the possibly-compressed file to write",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "append"
+        },
+        "comment": "if true, the resulting BufferedWriter appends to the end of the file instead of the beginning",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a BufferedWriter for filename",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is trouble writing the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "bufferedFileOutputStream(java.lang.String filename,boolean append)",
+    "name": "bufferedFileOutputStream",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.io.BufferedOutputStream",
+      "name": "BufferedOutputStream",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "append"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "the possibly-compressed file to write",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "append"
+        },
+        "comment": "if true, the resulting BufferedOutputStream appends to the end of the file instead of the beginning",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a BufferedOutputStream for filename",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is trouble writing the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "isSubtype(java.lang.Class sub,java.lang.Class sup)",
+    "name": "isSubtype",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Class",
+          "name": "Class",
+          "isArray": false
+        },
+        "name": "sub"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Class",
+          "name": "Class",
+          "isArray": false
+        },
+        "name": "sup"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          },
+          "name": "sub"
+        },
+        "comment": "class to test for being a subtype",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          },
+          "name": "sup"
+        },
+        "comment": "class to test for being a supertype",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true iff sub is a subtype of sup",
+      "kind": "RETURN",
+      "condition": "target.isSubtype(args[0], args[1]) ? result==true"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "classForName(java.lang.String className)",
+    "name": "classForName",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.Class",
+      "name": "Class",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "className"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "className"
+        },
+        "comment": "name of the class",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the Class corresponding to className",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.ClassNotFoundException",
+          "name": "ClassNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the class is not found",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "binaryNameToFieldDescriptor(java.lang.String classname)",
+    "name": "binaryNameToFieldDescriptor",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "classname"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "classname"
+        },
+        "comment": "name of the class, in binary class name format",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "name of the class, in field descriptor format",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "primitiveTypeNameToFieldDescriptor(java.lang.String primitive_name)",
+    "name": "primitiveTypeNameToFieldDescriptor",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "primitive_name"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "primitive_name"
+        },
+        "comment": "name of the type, in Java format",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "name of the type, in field descriptor format",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if primitive_name is not a valid primitive type name.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "binaryNameToClassGetName(java.lang.String bn)",
+    "name": "binaryNameToClassGetName",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "bn"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "bn"
+        },
+        "comment": "the binary name to convert",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the class name, in Class.getName format",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "fieldDescriptorToClassGetName(java.lang.String fd)",
+    "name": "fieldDescriptorToClassGetName",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "fd"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "fd"
+        },
+        "comment": "the class, in field descriptor format",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the class name, in Class.getName format",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "arglistToJvm(java.lang.String arglist)",
+    "name": "arglistToJvm",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "arglist"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "arglist"
+        },
+        "comment": "an argument list, in Java format",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "argument list, in JVML format",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "fieldDescriptorToBinaryName(java.lang.String classname)",
+    "name": "fieldDescriptorToBinaryName",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "classname"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "classname"
+        },
+        "comment": "name of the type, in JVML format",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "name of the type, in Java format",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "arglistFromJvm(java.lang.String arglist)",
+    "name": "arglistFromJvm",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "arglist"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "arglist"
+        },
+        "comment": "an argument list, in JVML format",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "argument list, in Java format",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "defineClassFromFile(java.lang.String className,java.lang.String pathname)",
+    "name": "defineClassFromFile",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.Class",
+      "name": "Class",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "className"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "pathname"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "className"
+        },
+        "comment": "the name of the class to define, or null if not known",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "pathname"
+        },
+        "comment": "the pathname of a .class file",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a Java Object corresponding to the Class defined in the .class file",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.FileNotFoundException",
+          "name": "FileNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the file cannot be found",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is trouble reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "addToClasspath(java.lang.String dir)",
+    "name": "addToClasspath",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "dir"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "dir"
+        },
+        "comment": "directory to add to the system classpath",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "count_lines(java.lang.String filename)",
+    "name": "count_lines",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "file whose size to count",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "number of lines in filename",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is trouble reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "inferLineSeparator(java.lang.String filename)",
+    "name": "inferLineSeparator",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "the file to infer a line separator from",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the inferred line separator used in filename",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is trouble reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "inferLineSeparator(java.io.File file)",
+    "name": "inferLineSeparator",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.File",
+          "name": "File",
+          "isArray": false
+        },
+        "name": "file"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.File",
+            "name": "File",
+            "isArray": false
+          },
+          "name": "file"
+        },
+        "comment": "the file to infer a line separator from",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the inferred line separator used in filename",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is trouble reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "equalFiles(java.lang.String file1,java.lang.String file2)",
+    "name": "equalFiles",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "file1"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "file2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "file1"
+        },
+        "comment": "first file to compare",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "file2"
+        },
+        "comment": "second file to compare",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true iff the files have the same contents",
+      "kind": "RETURN",
+      "condition": "target.equalFiles(args[0],args[1]) ? result==true"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "equalFiles(java.lang.String file1,java.lang.String file2,boolean trimLines)",
+    "name": "equalFiles",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "file1"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "file2"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "trimLines"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "file1"
+        },
+        "comment": "first file to compare",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "file2"
+        },
+        "comment": "second file to compare",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "trimLines"
+        },
+        "comment": "if true, call String.trim on each line before comparing",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true iff the files have the same contents",
+      "kind": "RETURN",
+      "condition": "target.equalFiles(args[0], args[1], args[2]) ? result == true"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "canCreateAndWrite(java.io.File file)",
+    "name": "canCreateAndWrite",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.File",
+          "name": "File",
+          "isArray": false
+        },
+        "name": "file"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.File",
+            "name": "File",
+            "isArray": false
+          },
+          "name": "file"
+        },
+        "comment": "the file to create and write",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true iff the file can be created and written",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "createTempDir(java.lang.String prefix,java.lang.String suffix)",
+    "name": "createTempDir",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.io.File",
+      "name": "File",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "prefix"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "suffix"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "prefix"
+        },
+        "comment": "the prefix string to be used in generating the file's name; must be at least three characters long",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "suffix"
+        },
+        "comment": "the suffix string to be used in generating the file's name; may be null, in which case the suffix \".tmp\" will be used Returns: An abstract pathname denoting a newly-created empty file",
+        "kind": "PARAM",
+        "condition": "args[1]==null"
+      }
+    ],
+    "returnTag": {
+      "comment": "a File representing the newly-created temporary directory",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If the prefix argument contains fewer than three characters",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If a file could not be created",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.SecurityException",
+          "name": "SecurityException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If a security manager exists and its SecurityManager.checkWrite(java.lang.String) method does not allow a file to be created",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "deleteDir(java.lang.String dirName)",
+    "name": "deleteDir",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "dirName"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "dirName"
+        },
+        "comment": "the directory to delete",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if and only if the file or directory is successfully deleted; false otherwise",
+      "kind": "RETURN",
+      "condition": "target.deleteDir(args[0]) ? result == true : result == false"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "deleteDir(java.io.File dir)",
+    "name": "deleteDir",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.File",
+          "name": "File",
+          "isArray": false
+        },
+        "name": "dir"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.File",
+            "name": "File",
+            "isArray": false
+          },
+          "name": "dir"
+        },
+        "comment": "the directory to delete",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if and only if the file or directory is successfully deleted; false otherwise",
+      "kind": "RETURN",
+      "condition": "target.deleteDir(args[0]) ? result == true : result == false"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "expandFilename(java.io.File name)",
+    "name": "expandFilename",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.io.File",
+      "name": "File",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.File",
+          "name": "File",
+          "isArray": false
+        },
+        "name": "name"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.File",
+            "name": "File",
+            "isArray": false
+          },
+          "name": "name"
+        },
+        "comment": "file whose name to expand",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "file with expanded file",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "expandFilename(java.lang.String name)",
+    "name": "expandFilename",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "name"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "name"
+        },
+        "comment": "filename to expand",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "expanded filename",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "java_source(java.io.File name)",
+    "name": "java_source",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.File",
+          "name": "File",
+          "isArray": false
+        },
+        "name": "name"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.File",
+            "name": "File",
+            "isArray": false
+          },
+          "name": "name"
+        },
+        "comment": "file to quote",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a string version of the name that can be used in Java source",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "writeObject(java.lang.Object o,java.io.File file)",
+    "name": "writeObject",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "o"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.io.File",
+          "name": "File",
+          "isArray": false
+        },
+        "name": "file"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "o"
+        },
+        "comment": "the object to write",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.File",
+            "name": "File",
+            "isArray": false
+          },
+          "name": "file"
+        },
+        "comment": "the file to which to write the object",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is trouble writing the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "readObject(java.io.File file)",
+    "name": "readObject",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.Object",
+      "name": "Object",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.File",
+          "name": "File",
+          "isArray": false
+        },
+        "name": "file"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.File",
+            "name": "File",
+            "isArray": false
+          },
+          "name": "file"
+        },
+        "comment": "the file from which to read",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the object read from the file",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is trouble reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.ClassNotFoundException",
+          "name": "ClassNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the object's class cannot be found",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "readerContents(java.io.Reader r)",
+    "name": "readerContents",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.Reader",
+          "name": "Reader",
+          "isArray": false
+        },
+        "name": "r"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.Reader",
+            "name": "Reader",
+            "isArray": false
+          },
+          "name": "r"
+        },
+        "comment": "the Reader to read",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the entire contents of the reader, as a string",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "readFile(java.io.File file)",
+    "name": "readFile",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.File",
+          "name": "File",
+          "isArray": false
+        },
+        "name": "file"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.File",
+            "name": "File",
+            "isArray": false
+          },
+          "name": "file"
+        },
+        "comment": "the file to read",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the entire contents of the reader, as a string",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "writeFile(java.io.File file,java.lang.String contents)",
+    "name": "writeFile",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.File",
+          "name": "File",
+          "isArray": false
+        },
+        "name": "file"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "contents"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.File",
+            "name": "File",
+            "isArray": false
+          },
+          "name": "file"
+        },
+        "comment": "the file to write to",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "contents"
+        },
+        "comment": "the text to put in the file",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "hash(double x)",
+    "name": "hash",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "x"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "x"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a hash of the arguments",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hash(double a,double b)",
+    "name": "hash",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a hash of the arguments",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hash(double a,double b,double c)",
+    "name": "hash",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "c"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "c"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a hash of the arguments",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hash(double[] a)",
+    "name": "hash",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double[]",
+          "name": "double[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "a"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "a"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a hash of the arguments",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hash(double[] a,double[] b)",
+    "name": "hash",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double[]",
+          "name": "double[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "double[]",
+          "name": "double[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "b"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "a"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "b"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a hash of the arguments",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hash(long l)",
+    "name": "hash",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "l"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "l"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a hash of the arguments",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hash(long a,long b)",
+    "name": "hash",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a hash of the arguments",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hash(long a,long b,long c)",
+    "name": "hash",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "c"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "c"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a hash of the arguments",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hash(long[] a)",
+    "name": "hash",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "long[]",
+          "name": "long[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          }
+        },
+        "name": "a"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long[]",
+            "name": "long[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "long",
+              "name": "long",
+              "isArray": false
+            }
+          },
+          "name": "a"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a hash of the arguments",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hash(long[] a,long[] b)",
+    "name": "hash",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "long[]",
+          "name": "long[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          }
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "long[]",
+          "name": "long[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          }
+        },
+        "name": "b"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long[]",
+            "name": "long[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "long",
+              "name": "long",
+              "isArray": false
+            }
+          },
+          "name": "a"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long[]",
+            "name": "long[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "long",
+              "name": "long",
+              "isArray": false
+            }
+          },
+          "name": "b"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a hash of the arguments",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hash(java.lang.String a)",
+    "name": "hash",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "a"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a hash of the arguments",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hash(java.lang.String a,java.lang.String b)",
+    "name": "hash",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a hash of the arguments",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hash(java.lang.String a,java.lang.String b,java.lang.String c)",
+    "name": "hash",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "c"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "c"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a hash of the arguments",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hash(java.lang.String[] a)",
+    "name": "hash",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String[]",
+          "name": "String[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          }
+        },
+        "name": "a"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String[]",
+            "name": "String[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.String",
+              "name": "String",
+              "isArray": false
+            }
+          },
+          "name": "a"
+        },
+        "comment": "value to be hashed",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a hash of the arguments",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "randomElements(java.util.Iterator itor,int num_elts)",
+    "name": "randomElements",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "itor"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "num_elts"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Iterator",
+            "name": "Iterator",
+            "isArray": false
+          },
+          "name": "itor"
+        },
+        "comment": "elements to be randomly selected from",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "num_elts"
+        },
+        "comment": "number of elements to select",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "list of num_elts elements from itor",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "randomElements(java.util.Iterator itor,int num_elts,java.util.Random random)",
+    "name": "randomElements",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "itor"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "num_elts"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Random",
+          "name": "Random",
+          "isArray": false
+        },
+        "name": "random"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Iterator",
+            "name": "Iterator",
+            "isArray": false
+          },
+          "name": "itor"
+        },
+        "comment": "elements to be randomly selected from",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "num_elts"
+        },
+        "comment": "number of elements to select",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Random",
+            "name": "Random",
+            "isArray": false
+          },
+          "name": "random"
+        },
+        "comment": "the Random instance to use to make selections",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "list of num_elts elements from itor",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "incrementMap(java.util.Map m,java.lang.Object key,int count)",
+    "name": "incrementMap",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.Integer",
+      "name": "Integer",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Map",
+          "name": "Map",
+          "isArray": false
+        },
+        "name": "m"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "count"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Map",
+            "name": "Map",
+            "isArray": false
+          },
+          "name": "m"
+        },
+        "comment": "map to have one of its values incremented",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key for the element whose value will be incremented",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "count"
+        },
+        "comment": "how much to increment the value by",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the old value, before it was incremented",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.Error",
+          "name": "Error",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the key is in the Map but maps to a non-Integer.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "mapToString(java.util.Map m)",
+    "name": "mapToString",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Map",
+          "name": "Map",
+          "isArray": false
+        },
+        "name": "m"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Map",
+            "name": "Map",
+            "isArray": false
+          },
+          "name": "m"
+        },
+        "comment": "map to be converted to a string",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a multi-line string representation of m",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "mapToString(java.lang.Appendable sb,java.util.Map m,java.lang.String linePrefix)",
+    "name": "mapToString",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Appendable",
+          "name": "Appendable",
+          "isArray": false
+        },
+        "name": "sb"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Map",
+          "name": "Map",
+          "isArray": false
+        },
+        "name": "m"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "linePrefix"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Appendable",
+            "name": "Appendable",
+            "isArray": false
+          },
+          "name": "sb"
+        },
+        "comment": "an Appendable (such as StringBuilder) to which to write a multi-line string representation of m",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Map",
+            "name": "Map",
+            "isArray": false
+          },
+          "name": "m"
+        },
+        "comment": "map to be converted to a string",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "linePrefix"
+        },
+        "comment": "prefix to write at the beginning of each line",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "sortedKeySet(java.util.Map m)",
+    "name": "sortedKeySet",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Map",
+          "name": "Map",
+          "isArray": false
+        },
+        "name": "m"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Map",
+            "name": "Map",
+            "isArray": false
+          },
+          "name": "m"
+        },
+        "comment": "a map whose keyset will be sorted",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a sorted version of m.keySet()",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "sortedKeySet(java.util.Map m,java.util.Comparator comparator)",
+    "name": "sortedKeySet",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Collection",
+      "name": "Collection",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Map",
+          "name": "Map",
+          "isArray": false
+        },
+        "name": "m"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Comparator",
+          "name": "Comparator",
+          "isArray": false
+        },
+        "name": "comparator"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Map",
+            "name": "Map",
+            "isArray": false
+          },
+          "name": "m"
+        },
+        "comment": "a map whose keyset will be sorted",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Comparator",
+            "name": "Comparator",
+            "isArray": false
+          },
+          "name": "comparator"
+        },
+        "comment": "the Comparator to use for sorting",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a sorted version of m.keySet()",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "methodForName(java.lang.String method)",
+    "name": "methodForName",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.reflect.Method",
+      "name": "Method",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "method"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "method"
+        },
+        "comment": "a method signature",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the method corresponding to the given signature",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.ClassNotFoundException",
+          "name": "ClassNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the class is not found",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NoSuchMethodException",
+          "name": "NoSuchMethodException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the method is not found",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "methodForName(java.lang.String classname,java.lang.String methodname,java.lang.Class[] params)",
+    "name": "methodForName",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.reflect.Method",
+      "name": "Method",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "classname"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "methodname"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Class[]",
+          "name": "Class[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          }
+        },
+        "name": "params"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "classname"
+        },
+        "comment": "class in which to find the method",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "methodname"
+        },
+        "comment": "the method name",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class[]",
+            "name": "Class[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.Class",
+              "name": "Class",
+              "isArray": false
+            }
+          },
+          "name": "params"
+        },
+        "comment": "the parameters of the method",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the method named classname.methodname with parameters params",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.ClassNotFoundException",
+          "name": "ClassNotFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the class is not found",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NoSuchMethodException",
+          "name": "NoSuchMethodException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the method is not found",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "backticks(java.lang.String[] command)",
+    "name": "backticks",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": true,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String[]",
+          "name": "String[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          }
+        },
+        "name": "command"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String[]",
+            "name": "String[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.String",
+              "name": "String",
+              "isArray": false
+            }
+          },
+          "name": "command"
+        },
+        "comment": "a command to execute on the command line",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "all the output of the command",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "backticks(java.util.List command)",
+    "name": "backticks",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "command"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "command"
+        },
+        "comment": "a command to execute on the command line, as a list of strings (the command, then its arguments)",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "all the output of the command",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "propertyIsTrue(java.util.Properties p,java.lang.String key)",
+    "name": "propertyIsTrue",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Properties",
+          "name": "Properties",
+          "isArray": false
+        },
+        "name": "p"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Properties",
+            "name": "Properties",
+            "isArray": false
+          },
+          "name": "p"
+        },
+        "comment": "a Properties object in which to look up the property",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "name of the property to look up",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true iff the property has value \"true\", \"yes\", or \"1\"",
+      "kind": "RETURN",
+      "condition": "args[0].getProperty(args[1]).equals("true") || args[0].getProperty(args[1]).equals("yes") || args[0].getProperty(args[1]).equals("1") ? result == true"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "appendProperty(java.util.Properties p,java.lang.String key,java.lang.String value)",
+    "name": "appendProperty",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Properties",
+          "name": "Properties",
+          "isArray": false
+        },
+        "name": "p"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "key"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Properties",
+            "name": "Properties",
+            "isArray": false
+          },
+          "name": "p"
+        },
+        "comment": "a Properties object in which to look up the property",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "name of the property to look up",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "value to concatenate to the previous value of the property",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the previous value of the property",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setDefaultMaybe(java.util.Properties p,java.lang.String key,java.lang.String value)",
+    "name": "setDefaultMaybe",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Properties",
+          "name": "Properties",
+          "isArray": false
+        },
+        "name": "p"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "key"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Properties",
+            "name": "Properties",
+            "isArray": false
+          },
+          "name": "p"
+        },
+        "comment": "a Properties object in which to look up the property",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "name of the property to look up",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "value to set the property to, if it is not already set",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the previous value of the property",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setFinalField(java.lang.Object o,java.lang.String fieldName,java.lang.Object value)",
+    "name": "setFinalField",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "o"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "fieldName"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "o"
+        },
+        "comment": "object in which to set the field",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "fieldName"
+        },
+        "comment": "name of field to set",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "new value of field",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NoSuchFieldException",
+          "name": "NoSuchFieldException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the field does not exist in the object",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "getPrivateField(java.lang.Object o,java.lang.String fieldName)",
+    "name": "getPrivateField",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.Object",
+      "name": "Object",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "o"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "fieldName"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "o"
+        },
+        "comment": "object in which to set the field",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "fieldName"
+        },
+        "comment": "name of field to set",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "new value of field",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NoSuchFieldException",
+          "name": "NoSuchFieldException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the field does not exist in the object",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "getFromSet(java.util.Set set,java.lang.Object key)",
+    "name": "getFromSet",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.Object",
+      "name": "Object",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Set",
+          "name": "Set",
+          "isArray": false
+        },
+        "name": "set"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Set",
+            "name": "Set",
+            "isArray": false
+          },
+          "name": "set"
+        },
+        "comment": "a set in which to look up the value",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the value to look up in the set",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the object in this set that is equal to key, or null",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "streamCopy(java.io.InputStream from,java.io.OutputStream to)",
+    "name": "streamCopy",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.InputStream",
+          "name": "InputStream",
+          "isArray": false
+        },
+        "name": "from"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.io.OutputStream",
+          "name": "OutputStream",
+          "isArray": false
+        },
+        "name": "to"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.InputStream",
+            "name": "InputStream",
+            "isArray": false
+          },
+          "name": "from"
+        },
+        "comment": "input stream",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.OutputStream",
+            "name": "OutputStream",
+            "isArray": false
+          },
+          "name": "to"
+        },
+        "comment": "output stream",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "streamString(java.io.InputStream is)",
+    "name": "streamString",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.InputStream",
+          "name": "InputStream",
+          "isArray": false
+        },
+        "name": "is"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.InputStream",
+            "name": "InputStream",
+            "isArray": false
+          },
+          "name": "is"
+        },
+        "comment": "input stream to read",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a String containing all the characters from the input stream",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "replaceString(java.lang.String target,java.lang.String oldStr,java.lang.String newStr)",
+    "name": "replaceString",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "target"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "oldStr"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "newStr"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "target"
+        },
+        "comment": "the string to do replacement in",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "oldStr"
+        },
+        "comment": "the substring to replace",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "newStr"
+        },
+        "comment": "the replacement",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "target with all instances of oldStr replaced by newStr",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "split(java.lang.String s,char delim)",
+    "name": "split",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String[]",
+      "name": "String[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "java.lang.String",
+        "name": "String",
+        "isArray": false
+      }
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "s"
+      },
+      {
+        "type": {
+          "qualifiedName": "char",
+          "name": "char",
+          "isArray": false
+        },
+        "name": "delim"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "s"
+        },
+        "comment": "the string to split",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "char",
+            "name": "char",
+            "isArray": false
+          },
+          "name": "delim"
+        },
+        "comment": "delimiter to split the string on",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "array of length at least 1, containing s split on delimiter",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "split(java.lang.String s,java.lang.String delim)",
+    "name": "split",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String[]",
+      "name": "String[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "java.lang.String",
+        "name": "String",
+        "isArray": false
+      }
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "s"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "delim"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "s"
+        },
+        "comment": "the string to split",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "delim"
+        },
+        "comment": "delimiter to split the string on",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "array of length at least 1, containing s split on delimiter",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "splitLines(java.lang.String s)",
+    "name": "splitLines",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String[]",
+      "name": "String[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "java.lang.String",
+        "name": "String",
+        "isArray": false
+      }
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "s"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "s"
+        },
+        "comment": "the string to split",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "an array of Strings, one for each line in the argument",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "join(java.lang.Object[] a,java.lang.String delim)",
+    "name": "join",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object[]",
+          "name": "Object[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          }
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "delim"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object[]",
+            "name": "Object[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.Object",
+              "name": "Object",
+              "isArray": false
+            }
+          },
+          "name": "a"
+        },
+        "comment": "array of values to concatenate",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "delim"
+        },
+        "comment": "delimiter to place between printed representations",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the concatenation of the string representations of the values, with the delimiter between",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "joinLines(java.lang.Object[] a)",
+    "name": "joinLines",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": true,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object[]",
+          "name": "Object[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          }
+        },
+        "name": "a"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object[]",
+            "name": "Object[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.Object",
+              "name": "Object",
+              "isArray": false
+            }
+          },
+          "name": "a"
+        },
+        "comment": "array of values to concatenate",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the concatenation of the string representations of the values, each on its own line",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "join(java.util.List v,java.lang.String delim)",
+    "name": "join",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "v"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "delim"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "list of values to concatenate",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "delim"
+        },
+        "comment": "delimiter to place between printed representations",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the concatenation of the string representations of the values, with the delimiter between",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "joinLines(java.util.List v)",
+    "name": "joinLines",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "list of values to concatenate",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the concatenation of the string representations of the values, each on its own line",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "escapeNonJava(java.lang.String orig)",
+    "name": "escapeNonJava",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "orig"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "orig"
+        },
+        "comment": "string to quote",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "quoted version of orig",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "escapeNonJava(java.lang.Character ch)",
+    "name": "escapeNonJava",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Character",
+          "name": "Character",
+          "isArray": false
+        },
+        "name": "ch"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Character",
+            "name": "Character",
+            "isArray": false
+          },
+          "name": "ch"
+        },
+        "comment": "character to quote",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "quoted version och ch",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "escapeNonASCII(java.lang.String orig)",
+    "name": "escapeNonASCII",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "orig"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "orig"
+        },
+        "comment": "string to quote",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "quoted version of orig",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "escapeNonASCII(char c)",
+    "name": "escapeNonASCII",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "char",
+          "name": "char",
+          "isArray": false
+        },
+        "name": "c"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "char",
+            "name": "char",
+            "isArray": false
+          },
+          "name": "c"
+        },
+        "comment": "character to quote",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "quoted version of c",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "unescapeNonJava(java.lang.String orig)",
+    "name": "unescapeNonJava",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "orig"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "orig"
+        },
+        "comment": "string to quoto",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "quoted version of orig",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "removeWhitespaceAround(java.lang.String arg,java.lang.String delimiter)",
+    "name": "removeWhitespaceAround",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "arg"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "delimiter"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "arg"
+        },
+        "comment": "string to remove whitespace in",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "delimiter"
+        },
+        "comment": "string to remove whitespace abutting",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "version of arg, with whitespace abutting delimiter removed",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "removeWhitespaceAfter(java.lang.String arg,java.lang.String delimiter)",
+    "name": "removeWhitespaceAfter",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "arg"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "delimiter"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "arg"
+        },
+        "comment": "string to remove whitespace in",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "delimiter"
+        },
+        "comment": "string to remove whitespace after",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "version of arg, with whitespace after delimiter removed",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "removeWhitespaceBefore(java.lang.String arg,java.lang.String delimiter)",
+    "name": "removeWhitespaceBefore",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "arg"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "delimiter"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "arg"
+        },
+        "comment": "string to remove whitespace in",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "delimiter"
+        },
+        "comment": "string to remove whitespace before",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "version of arg, with whitespace before delimiter removed",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "nplural(int n,java.lang.String noun)",
+    "name": "nplural",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "n"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "noun"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "count of nouns",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "noun"
+        },
+        "comment": "word being counted",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "noun, if n==1; otherwise, pluralization of noun",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "lpad(java.lang.String s,int length)",
+    "name": "lpad",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "s"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "length"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "s"
+        },
+        "comment": "string to truncate or pad",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "length"
+        },
+        "comment": "goal length",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "s truncated or padded to length characters",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "rpad(java.lang.String s,int length)",
+    "name": "rpad",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "s"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "length"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "s"
+        },
+        "comment": "string to truncate or pad",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "length"
+        },
+        "comment": "goal length",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "s truncated or padded to length characters",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "rpad(int num,int length)",
+    "name": "rpad",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "num"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "length"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "num"
+        },
+        "comment": "int whose string representation to truncate or pad",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "length"
+        },
+        "comment": "goal length",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a string representation of num truncated or padded to length characters",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "rpad(double num,int length)",
+    "name": "rpad",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "num"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "length"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "num"
+        },
+        "comment": "double whose string representation to truncate or pad",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "length"
+        },
+        "comment": "goal length",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a string representation of num truncated or padded to length characters",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "count(java.lang.String s,int ch)",
+    "name": "count",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "s"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "ch"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "s"
+        },
+        "comment": "string to search in",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "ch"
+        },
+        "comment": "character to search for",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "number of times the character appears in the string",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "count(java.lang.String s,java.lang.String sub)",
+    "name": "count",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "s"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "sub"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "s"
+        },
+        "comment": "string to search in",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "sub"
+        },
+        "comment": "string to search for",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "number of times the substring appears in the string",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "tokens(java.lang.String str,java.lang.String delim,boolean returnDelims)",
+    "name": "tokens",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "str"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "delim"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "returnDelims"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "str"
+        },
+        "comment": "a string to be parsed",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "delim"
+        },
+        "comment": "the delimiters",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "returnDelims"
+        },
+        "comment": "flag indicating whether to return the delimiters as tokens",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "vector of strings resulting from tokenization",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "tokens(java.lang.String str,java.lang.String delim)",
+    "name": "tokens",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "str"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "delim"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "str"
+        },
+        "comment": "a string to be parsed",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "delim"
+        },
+        "comment": "the delimiters",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "vector of strings resulting from tokenization",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "tokens(java.lang.String str)",
+    "name": "tokens",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "str"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "str"
+        },
+        "comment": "a string to be parsed",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "vector of strings resulting from tokenization",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "backTrace(java.lang.Throwable t)",
+    "name": "backTrace",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Throwable",
+          "name": "Throwable",
+          "isArray": false
+        },
+        "name": "t"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Throwable",
+            "name": "Throwable",
+            "isArray": false
+          },
+          "name": "t"
+        },
+        "comment": "the Throwable to obtain a backtrace of",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a String representation of the backtrace of the given Throwable",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "sortList(java.util.List l,java.util.Comparator c)",
+    "name": "sortList",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "l"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Comparator",
+          "name": "Comparator",
+          "isArray": false
+        },
+        "name": "c"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "l"
+        },
+        "comment": "a list to sort",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Comparator",
+            "name": "Comparator",
+            "isArray": false
+          },
+          "name": "c"
+        },
+        "comment": "a sorted version of the list",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a sorted version of the list",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "removeDuplicates(java.util.List l)",
+    "name": "removeDuplicates",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "l"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "l"
+        },
+        "comment": "a list to remove duplicates from",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a copy of the list with duplicates removed",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "deepEquals(java.lang.Object o1,java.lang.Object o2)",
+    "name": "deepEquals",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "o1"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "o2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "o1"
+        },
+        "comment": "first value to compare",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "o2"
+        },
+        "comment": "second value to comare",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true iff o1 and o2 are deeply equal",
+      "kind": "RETURN",
+      "condition": "target.deepEquals(args[0],args[1]) ? result == true"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "makeVector(java.util.Enumeration e)",
+    "name": "makeVector",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Enumeration",
+          "name": "Enumeration",
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Enumeration",
+            "name": "Enumeration",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "an enumeration to convert to a Vector",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a vector containing the elements of the enumeration",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "create_combinations(int dims,int start,java.util.List objs)",
+    "name": "create_combinations",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "dims"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "start"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "objs"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "dims"
+        },
+        "comment": "number of dimensions: that is, size of each innermost list",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "start"
+        },
+        "comment": "initial index",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "objs"
+        },
+        "comment": "list of elements to",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "list of lists of length dims, each of which combines elements from objs",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "create_combinations(int arity,int start,int cnt)",
+    "name": "create_combinations",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.ArrayList",
+      "name": "ArrayList",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "arity"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "start"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "cnt"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "arity"
+        },
+        "comment": "size of each innermost list",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "start"
+        },
+        "comment": "initial value",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "cnt"
+        },
+        "comment": "maximum element value",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "list of lists of length arity, each of which combines integers from start to cnt",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "unqualified_name(java.lang.String qualified_name)",
+    "name": "unqualified_name",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "qualified_name"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "qualified_name"
+        },
+        "comment": "the fully-qualified name of a class",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the simple unqualified name of the class",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "fullyQualifiedNameToSimpleName(java.lang.String qualified_name)",
+    "name": "fullyQualifiedNameToSimpleName",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "qualified_name"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "qualified_name"
+        },
+        "comment": "the fully-qualified name of a class",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the simple unqualified name of the class",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "unqualified_name(java.lang.Class cls)",
+    "name": "unqualified_name",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Class",
+          "name": "Class",
+          "isArray": false
+        },
+        "name": "cls"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          },
+          "name": "cls"
+        },
+        "comment": "a class",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the simple unqualified name of the class",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "abbreviateNumber(long val)",
+    "name": "abbreviateNumber",
+    "containingClass": {
+      "qualifiedName": "plume.UtilMDE",
+      "name": "UtilMDE",
+      "isArray": false
+    },
+    "targetClass": "plume.UtilMDE",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "val"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "val"
+        },
+        "comment": "a numeric value",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "an abbreviated string representation of the value",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  }
+]
