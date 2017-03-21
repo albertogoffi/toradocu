@@ -278,7 +278,7 @@
       },
       {
         "comment": "if the load factor is less than zero",
-        "condition": "args[1]<1",
+        "condition": "args[1]<0",
         "exception": {
           "isArray": false,
           "name": "IllegalArgumentException",
@@ -488,7 +488,7 @@
       },
       {
         "comment": "if the load factor is less than zero",
-        "condition": "args[1]<1",
+        "condition": "args[1]<0",
         "exception": {
           "isArray": false,
           "name": "IllegalArgumentException",
