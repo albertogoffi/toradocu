@@ -348,7 +348,7 @@ class Matcher {
       String numberString = inequality.group(inequality.groupCount());
       // Get the symbol from the regular expression.
       String relation = inequality.group(2);
-      String numberWord = isNumberWord(numberString);
+      String numberWord = numberWordToDigit(numberString);
       int number =
           (!numberWord.equals(""))
               ? number = Integer.parseInt(numberWord)
@@ -369,7 +369,7 @@ class Matcher {
     return predicateTranslation;
   }
 
-  private static String isNumberWord(String numberString) {
+  private static String numberWordToDigit(String numberString) {
     switch (numberString) {
       case "zero":
         return "0";
