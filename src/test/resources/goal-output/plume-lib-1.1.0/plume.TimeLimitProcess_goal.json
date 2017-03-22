@@ -1,0 +1,452 @@
+[
+  {
+    "signature": "TimeLimitProcess(java.lang.Process p,long timeLimit)",
+    "name": "TimeLimitProcess",
+    "containingClass": {
+      "qualifiedName": "plume.TimeLimitProcess",
+      "name": "TimeLimitProcess",
+      "isArray": false
+    },
+    "targetClass": "plume.TimeLimitProcess",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Process",
+          "name": "Process",
+          "isArray": false
+        },
+        "name": "p"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "timeLimit"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Process",
+            "name": "Process",
+            "isArray": false
+          },
+          "name": "p"
+        },
+        "comment": "non-null Process to limit the execution of",
+        "kind": "PARAM",
+        "condition": "args[0]!=null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "timeLimit"
+        },
+        "comment": "in milliseconds",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "TimeLimitProcess(java.lang.Process p,long timeLimit,boolean cacheStdout)",
+    "name": "TimeLimitProcess",
+    "containingClass": {
+      "qualifiedName": "plume.TimeLimitProcess",
+      "name": "TimeLimitProcess",
+      "isArray": false
+    },
+    "targetClass": "plume.TimeLimitProcess",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Process",
+          "name": "Process",
+          "isArray": false
+        },
+        "name": "p"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "timeLimit"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "cacheStdout"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Process",
+            "name": "Process",
+            "isArray": false
+          },
+          "name": "p"
+        },
+        "comment": "non-null Process to limit the execution of",
+        "kind": "PARAM",
+        "condition": "args[0]!=null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "timeLimit"
+        },
+        "comment": "in milliseconds",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "cacheStdout"
+        },
+        "comment": "If true, causes the TimeLimitProcess to consume the standard output of the underlying process, and to cache it. After the process terminates (on its own or by being timed out), the output is available via the cached_stdout method. This is necessary because when a Java process is terminated, its standard output is no longer available.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "timed_out()",
+    "name": "timed_out",
+    "containingClass": {
+      "qualifiedName": "plume.TimeLimitProcess",
+      "name": "TimeLimitProcess",
+      "isArray": false
+    },
+    "targetClass": "plume.TimeLimitProcess",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "true iff the process has timed out",
+      "kind": "RETURN",
+      "condition": "true ? target.timed_out"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "timeout_msecs()",
+    "name": "timeout_msecs",
+    "containingClass": {
+      "qualifiedName": "plume.TimeLimitProcess",
+      "name": "TimeLimitProcess",
+      "isArray": false
+    },
+    "targetClass": "plume.TimeLimitProcess",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the timeout time in msecs",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "destroy()",
+    "name": "destroy",
+    "containingClass": {
+      "qualifiedName": "plume.TimeLimitProcess",
+      "name": "TimeLimitProcess",
+      "isArray": false
+    },
+    "targetClass": "plume.TimeLimitProcess",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "exitValue()",
+    "name": "exitValue",
+    "containingClass": {
+      "qualifiedName": "plume.TimeLimitProcess",
+      "name": "TimeLimitProcess",
+      "isArray": false
+    },
+    "targetClass": "plume.TimeLimitProcess",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the exit value for the subprocess",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getErrorStream()",
+    "name": "getErrorStream",
+    "containingClass": {
+      "qualifiedName": "plume.TimeLimitProcess",
+      "name": "TimeLimitProcess",
+      "isArray": false
+    },
+    "targetClass": "plume.TimeLimitProcess",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.io.InputStream",
+      "name": "InputStream",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the error stream",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getInputStream()",
+    "name": "getInputStream",
+    "containingClass": {
+      "qualifiedName": "plume.TimeLimitProcess",
+      "name": "TimeLimitProcess",
+      "isArray": false
+    },
+    "targetClass": "plume.TimeLimitProcess",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.io.InputStream",
+      "name": "InputStream",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the input stream",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "stringToInputStream(java.lang.String text)",
+    "name": "stringToInputStream",
+    "containingClass": {
+      "qualifiedName": "plume.TimeLimitProcess",
+      "name": "TimeLimitProcess",
+      "isArray": false
+    },
+    "targetClass": "plume.TimeLimitProcess",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.io.InputStream",
+      "name": "InputStream",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "text"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getOutputStream()",
+    "name": "getOutputStream",
+    "containingClass": {
+      "qualifiedName": "plume.TimeLimitProcess",
+      "name": "TimeLimitProcess",
+      "isArray": false
+    },
+    "targetClass": "plume.TimeLimitProcess",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.io.OutputStream",
+      "name": "OutputStream",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the output stream",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "waitFor()",
+    "name": "waitFor",
+    "containingClass": {
+      "qualifiedName": "plume.TimeLimitProcess",
+      "name": "TimeLimitProcess",
+      "isArray": false
+    },
+    "targetClass": "plume.TimeLimitProcess",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the exit value of the subprocess",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "finished()",
+    "name": "finished",
+    "containingClass": {
+      "qualifiedName": "plume.TimeLimitProcess",
+      "name": "TimeLimitProcess",
+      "isArray": false
+    },
+    "targetClass": "plume.TimeLimitProcess",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "true if the process if finished, false otherwise",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "waitFor(long arg0,java.util.concurrent.TimeUnit arg1)",
+    "name": "waitFor",
+    "containingClass": {
+      "qualifiedName": "java.lang.Process",
+      "name": "Process",
+      "isArray": false
+    },
+    "targetClass": "plume.TimeLimitProcess",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "arg0"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.concurrent.TimeUnit",
+          "name": "TimeUnit",
+          "isArray": false
+        },
+        "name": "arg1"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "destroyForcibly()",
+    "name": "destroyForcibly",
+    "containingClass": {
+      "qualifiedName": "java.lang.Process",
+      "name": "Process",
+      "isArray": false
+    },
+    "targetClass": "plume.TimeLimitProcess",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.Process",
+      "name": "Process",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "isAlive()",
+    "name": "isAlive",
+    "containingClass": {
+      "qualifiedName": "java.lang.Process",
+      "name": "Process",
+      "isArray": false
+    },
+    "targetClass": "plume.TimeLimitProcess",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  }
+]
