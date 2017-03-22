@@ -1,0 +1,183 @@
+[
+  {
+    "signature": "PatonCycleBase()",
+    "name": "PatonCycleBase",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.cycle.PatonCycleBase",
+      "name": "PatonCycleBase",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.alg.cycle.PatonCycleBase",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "PatonCycleBase(org.jgrapht.UndirectedGraph graph)",
+    "name": "PatonCycleBase",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.cycle.PatonCycleBase",
+      "name": "PatonCycleBase",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.alg.cycle.PatonCycleBase",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.UndirectedGraph",
+          "name": "UndirectedGraph",
+          "isArray": false
+        },
+        "name": "graph"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.UndirectedGraph",
+            "name": "UndirectedGraph",
+            "isArray": false
+          },
+          "name": "graph"
+        },
+        "comment": "- the DirectedGraph in which to find cycles.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [
+          "null"
+        ],
+        "comment": "if the graph argument is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      }
+    ]
+  },
+  {
+    "signature": "getGraph()",
+    "name": "getGraph",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.cycle.PatonCycleBase",
+      "name": "PatonCycleBase",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.alg.cycle.PatonCycleBase",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.jgrapht.UndirectedGraph",
+      "name": "UndirectedGraph",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The graph.",
+      "kind": "RETURN",
+      "condition": "true ? result==target.graph"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setGraph(org.jgrapht.UndirectedGraph graph)",
+    "name": "setGraph",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.cycle.PatonCycleBase",
+      "name": "PatonCycleBase",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.alg.cycle.PatonCycleBase",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.UndirectedGraph",
+          "name": "UndirectedGraph",
+          "isArray": false
+        },
+        "name": "graph"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.UndirectedGraph",
+            "name": "UndirectedGraph",
+            "isArray": false
+          },
+          "name": "graph"
+        },
+        "comment": "the graph.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [
+          "null"
+        ],
+        "comment": "if the argument is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      }
+    ]
+  },
+  {
+    "signature": "findCycleBase()",
+    "name": "findCycleBase",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.cycle.PatonCycleBase",
+      "name": "PatonCycleBase",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.alg.cycle.PatonCycleBase",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "A list of cycles constituting a cycle base for the graph. Possibly empty but never null.",
+      "kind": "RETURN",
+      "condition": "true ? result != null"
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the current graph is null.",
+        "kind": "THROWS",
+        "condition": "target.getGraph()==null"
+      }
+    ]
+  }
+]
