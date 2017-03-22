@@ -7,6 +7,7 @@ import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -41,10 +42,12 @@ class Matcher {
 
     // Clean the subject string by removing words and characters not related to its identity so that
     // they do not influence string matching.
-    if (subject.startsWith("either ")) {
-      subject = subject.replaceFirst("either ", "");
-    } else if (subject.startsWith("both ")) {
-      subject = subject.replaceFirst("both ", "");
+    List<String> wordsToRemove = Arrays.asList("either", "both", "any");
+    for (String word : wordsToRemove) {
+      String wordToReplace = word + " ";
+      if (subject.startsWith(wordToReplace)) {
+        subject = subject.replaceFirst(wordToReplace, "");
+      }
     }
     subject = subject.trim();
 

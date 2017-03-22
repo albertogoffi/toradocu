@@ -197,6 +197,17 @@ public class PropositionSeriesTest {
     assertThat(propositions.getConjunctions().get(1), is(Conjunction.AND));
   }
 
+  @Test
+  public void testIssue90() {
+    // https://github.com/albertogoffi/toradocu/issues/90
+    PropositionSeries propositions = getPropositions("Any of the specified vertices is null.");
+
+    assertThat(propositions.numberOfPropositions(), is(1));
+    assertThat(
+        propositions.getPropositions().get(0).toString(), is("(Any specified vertices, is null)"));
+    assertTrue(propositions.getConjunctions().isEmpty());
+  }
+
   private PropositionSeries getPropositions(String sentence) {
     List<SemanticGraph> semanticGraphs = StanfordParser.getSemanticGraphs(sentence);
     assertThat(semanticGraphs.size(), is(1));
