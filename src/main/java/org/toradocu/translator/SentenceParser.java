@@ -343,8 +343,6 @@ public class SentenceParser {
    *     articles)
    */
   private Subject getSubject(IndexedWord subjectWord) {
-    final List<String> ARTICLES = Collections.unmodifiableList(Arrays.asList("a", "an", "the"));
-
     // Collect the words composing the container. For example, in the comment "any value in the
     // array is null", the subject is "any value", while the container is "array". At the moment
     // we collect only one word as container. Extend the code to support containers composed of
@@ -408,6 +406,14 @@ public class SentenceParser {
     return foundRelations;
   }
 
+  /**
+   * Collects all the words composing a subject in a proposition, given the node that is marked as
+   * subject by the Stanford parser. Subject words appear in the returned list in the order they
+   * appear in the input sentence.
+   *
+   * @param subject the subject node
+   * @return a list of words representing the subject of a proposition
+   */
   private List<IndexedWord> extractSubjectWords(IndexedWord subject) {
     List<IndexedWord> subjectWords = new ArrayList<>();
     Queue<IndexedWord> nodeQueue = new LinkedList<>();
@@ -425,6 +431,15 @@ public class SentenceParser {
     return subjectWords;
   }
 
+  /**
+   * Returns the list of children of {@code node} in the semantic graph produce by the Stanford
+   * parser. The list of children only contains nodes that are connected with {@code node} with the
+   * grammatical relations listed in {@code relationIdentifiers}. Also, nodes containing a stopword
+   * (e.g., "a", "an", "the") are ignored.
+   *
+   * @param node a node in the semantic graph
+   * @return the filtered list of children
+   */
   private List<IndexedWord> getChildren(IndexedWord node) {
     List<String> relationIdentifiers =
         Arrays.asList("compound", "advmod", "amod", "det", "nmod:poss", "nmod:of");
