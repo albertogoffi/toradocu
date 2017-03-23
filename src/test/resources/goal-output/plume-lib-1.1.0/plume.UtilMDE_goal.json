@@ -1404,7 +1404,7 @@
     "returnTag": {
       "comment": "true iff sub is a subtype of sup",
       "kind": "RETURN",
-      "condition": "target.isSubtype(args[0], args[1]) ? result==true"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -2182,7 +2182,7 @@
     "returnTag": {
       "comment": "true iff the files have the same contents",
       "kind": "RETURN",
-      "condition": "target.equalFiles(args[0],args[1]) ? result==true"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -2271,7 +2271,7 @@
     "returnTag": {
       "comment": "true iff the files have the same contents",
       "kind": "RETURN",
-      "condition": "target.equalFiles(args[0], args[1], args[2]) ? result == true"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -2467,7 +2467,7 @@
     "returnTag": {
       "comment": "true if and only if the file or directory is successfully deleted; false otherwise",
       "kind": "RETURN",
-      "condition": "target.deleteDir(args[0]) ? result == true : result == false"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -2514,7 +2514,7 @@
     "returnTag": {
       "comment": "true if and only if the file or directory is successfully deleted; false otherwise",
       "kind": "RETURN",
-      "condition": "target.deleteDir(args[0]) ? result == true : result == false"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -7202,7 +7202,7 @@
     "returnTag": {
       "comment": "true iff o1 and o2 are deeply equal",
       "kind": "RETURN",
-      "condition": "target.deepEquals(args[0],args[1]) ? result == true"
+      "condition": ""
     },
     "throwsTags": []
   },
