@@ -1,0 +1,428 @@
+[
+  {
+    "signature": "StrTok(java.lang.String s)",
+    "name": "StrTok",
+    "containingClass": {
+      "qualifiedName": "plume.StrTok",
+      "name": "StrTok",
+      "isArray": false
+    },
+    "targetClass": "plume.StrTok",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "s"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "s"
+        },
+        "comment": "string to tokenize",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "StrTok(java.lang.String s,plume.StrTok.ErrorHandler e)",
+    "name": "StrTok",
+    "containingClass": {
+      "qualifiedName": "plume.StrTok",
+      "name": "StrTok",
+      "isArray": false
+    },
+    "targetClass": "plume.StrTok",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "s"
+      },
+      {
+        "type": {
+          "qualifiedName": "plume.StrTok.ErrorHandler",
+          "name": "ErrorHandler",
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "s"
+        },
+        "comment": "string to tokenize",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "plume.StrTok.ErrorHandler",
+            "name": "ErrorHandler",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "error handler",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "nextToken()",
+    "name": "nextToken",
+    "containingClass": {
+      "qualifiedName": "plume.StrTok",
+      "name": "StrTok",
+      "isArray": false
+    },
+    "targetClass": "plume.StrTok",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the next token",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "pushBack()",
+    "name": "pushBack",
+    "containingClass": {
+      "qualifiedName": "plume.StrTok",
+      "name": "StrTok",
+      "isArray": false
+    },
+    "targetClass": "plume.StrTok",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "token()",
+    "name": "token",
+    "containingClass": {
+      "qualifiedName": "plume.StrTok",
+      "name": "StrTok",
+      "isArray": false
+    },
+    "targetClass": "plume.StrTok",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the current token",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "commentChar(int ch)",
+    "name": "commentChar",
+    "containingClass": {
+      "qualifiedName": "plume.StrTok",
+      "name": "StrTok",
+      "isArray": false
+    },
+    "targetClass": "plume.StrTok",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "ch"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "ch"
+        },
+        "comment": "the comment character",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "quoteChar(int ch)",
+    "name": "quoteChar",
+    "containingClass": {
+      "qualifiedName": "plume.StrTok",
+      "name": "StrTok",
+      "isArray": false
+    },
+    "targetClass": "plume.StrTok",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "ch"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "ch"
+        },
+        "comment": "the quoting character",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "ttype()",
+    "name": "ttype",
+    "containingClass": {
+      "qualifiedName": "plume.StrTok",
+      "name": "StrTok",
+      "isArray": false
+    },
+    "targetClass": "plume.StrTok",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the type of the current token",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "isWord()",
+    "name": "isWord",
+    "containingClass": {
+      "qualifiedName": "plume.StrTok",
+      "name": "StrTok",
+      "isArray": false
+    },
+    "targetClass": "plume.StrTok",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "true iff the current token is a word (identifier)",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "isQString()",
+    "name": "isQString",
+    "containingClass": {
+      "qualifiedName": "plume.StrTok",
+      "name": "StrTok",
+      "isArray": false
+    },
+    "targetClass": "plume.StrTok",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "true iff the current token is a quoted string",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "set_error_handler(plume.StrTok.ErrorHandler errorHandler)",
+    "name": "set_error_handler",
+    "containingClass": {
+      "qualifiedName": "plume.StrTok",
+      "name": "StrTok",
+      "isArray": false
+    },
+    "targetClass": "plume.StrTok",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "plume.StrTok.ErrorHandler",
+          "name": "ErrorHandler",
+          "isArray": false
+        },
+        "name": "errorHandler"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "plume.StrTok.ErrorHandler",
+            "name": "ErrorHandler",
+            "isArray": false
+          },
+          "name": "errorHandler"
+        },
+        "comment": "the new error handler",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "need(java.lang.String tok)",
+    "name": "need",
+    "containingClass": {
+      "qualifiedName": "plume.StrTok",
+      "name": "StrTok",
+      "isArray": false
+    },
+    "targetClass": "plume.StrTok",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "tok"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "tok"
+        },
+        "comment": "string to check next token against",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "need_word()",
+    "name": "need_word",
+    "containingClass": {
+      "qualifiedName": "plume.StrTok",
+      "name": "StrTok",
+      "isArray": false
+    },
+    "targetClass": "plume.StrTok",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "next token, if if it a word; otherwise calls the error handling routine",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  }
+]

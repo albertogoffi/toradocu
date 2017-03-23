@@ -42,4 +42,24 @@ public class PrecisionRecallPlumeLib extends AbstractPrecisionRecallTestSuite {
   public void testWeakHasherMap() throws Exception {
     test("plume.WeakHasherMap", 1, 1, 1, 1, 1, 1);
   }
+
+  @Test
+  public void testEntryReader() throws Exception {
+    test("plume.EntryReader", 1, 1, 1, 0, 1, 1);
+  }
+
+  @Test
+  public void testMathMDE() throws Exception {
+    test("plume.MathMDE", 1, 1, 1, 0, 1, 1);
+  }
+
+  @Test
+  public void testStrTok() throws Exception {
+    test("plume.StrTok", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testUtilMDE() throws Exception {
+    test("plume.UtilMDE", 1, 1, 1, 1, 1, 0);
+  }
 }
