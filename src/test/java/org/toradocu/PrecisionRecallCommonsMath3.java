@@ -22,7 +22,14 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testUnivariateSolverUtils() throws Exception {
-    test("org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils", 1, 0.777, 1, 0, 1, 1);
+    test(
+        "org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils",
+        0.889,
+        0.889,
+        1,
+        0,
+        1,
+        1);
   }
 
   @Test
@@ -47,7 +54,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testBitsStreamGenerator() throws Exception {
-    test("org.apache.commons.math3.random.BitsStreamGenerator", 1, 0.5, 1, 0.8, 1, 1);
+    test("org.apache.commons.math3.random.BitsStreamGenerator", 0.5, 0.5, 1, 0.8, 1, 1);
   }
 
   @Test
@@ -57,12 +64,12 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testRandomDataGenerator() throws Exception {
-    test("org.apache.commons.math3.random.RandomDataGenerator", 0.765, 0.464, 1, 1, 1, 1);
+    test("org.apache.commons.math3.random.RandomDataGenerator", 0.769, 0.714, 1, 1, 1, 1);
   }
 
   @Test
   public void testArithmeticUtils() throws Exception {
-    test("org.apache.commons.math3.util.ArithmeticUtils", 1, 0.421, 1, 0, 1, 1);
+    test("org.apache.commons.math3.util.ArithmeticUtils", 1, 0.631, 1, 0, 1, 1);
   }
 
   @Test
@@ -82,7 +89,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testSimpsonIntegrator() throws Exception {
-    test("org.apache.commons.math3.analysis.integration.SimpsonIntegrator", 0.5, 0.181, 1, 0, 1, 1);
+    test("org.apache.commons.math3.analysis.integration.SimpsonIntegrator", 0.4, 0.181, 1, 0, 1, 1);
   }
 
   @Test
@@ -94,8 +101,8 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
   public void testIterativeLegendreGaussIntegrator() throws Exception {
     test(
         "org.apache.commons.math3.analysis.integration.IterativeLegendreGaussIntegrator",
-        0.8,
-        0.5,
+        1,
+        0.625,
         1,
         1,
         1,
@@ -171,7 +178,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testRealVector() throws Exception {
-    test("org.apache.commons.math3.linear.RealVector", 1, 0.087, 1, 1, 1, 1);
+    test("org.apache.commons.math3.linear.RealVector", 1, 0.304, 1, 1, 1, 1);
   }
 
   @Test

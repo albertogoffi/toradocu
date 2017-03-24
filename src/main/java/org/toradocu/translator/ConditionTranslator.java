@@ -108,21 +108,7 @@ public class ConditionTranslator {
     while (matcherThis.find()) {
       inequalities.add(text.substring(matcherThis.start(), matcherThis.end()));
       placeholderText = placeholderText.replaceFirst(INEQ_THIS, PLACEHOLDER_PREFIX + i);
-      // Verbs that could appear before the keyword this. One of these most be present
-      // and will be added otherwise.
-      String[] possibleVerbs = {"is", "is not", "isn't"};
-      boolean containsVerb = false;
-      for (String possibleVerb : possibleVerbs) {
-        if (placeholderText.contains(possibleVerb + PLACEHOLDER_PREFIX + i)) {
-          containsVerb = true;
-          break;
-        }
-      }
-      if (!containsVerb) {
-        // The verb is assumed to be "is" and will be added to the text.
-        placeholderText =
-            placeholderText.replaceFirst(PLACEHOLDER_PREFIX + i, " is" + PLACEHOLDER_PREFIX + i);
-      }
+      placeholderText = findVerb(placeholderText, i);
       i++;
     }
 
@@ -130,45 +116,36 @@ public class ConditionTranslator {
       inequalities.add(text.substring(matcher.start(), matcher.end()));
       placeholderText =
           placeholderText.replaceFirst(INEQUALITY_NUMBER_REGEX, PLACEHOLDER_PREFIX + i);
-      // Verbs that could appear before the inequality. One of these most be present
-      // and will be added otherwise.
-      String[] possibleVerbs = {"is", "is not", "isn't", "are", "are not", "aren't"};
-      boolean containsVerb = false;
-      for (String possibleVerb : possibleVerbs) {
-        if (placeholderText.contains(possibleVerb + PLACEHOLDER_PREFIX + i)) {
-          containsVerb = true;
-          break;
-        }
-      }
-      if (!containsVerb) {
-        // The verb is assumed to be "is" and will be added to the text.
-        placeholderText =
-            placeholderText.replaceFirst(PLACEHOLDER_PREFIX + i, " is" + PLACEHOLDER_PREFIX + i);
-      }
+      placeholderText = findVerb(placeholderText, i);
       i++;
     }
 
     while (matcherVarComp.find()) {
       inequalities.add(text.substring(matcherVarComp.start(), matcherVarComp.end()));
       placeholderText = placeholderText.replaceFirst(INEQUALITY_VAR_REGEX, PLACEHOLDER_PREFIX + i);
-      // Verbs that could appear before the inequality. One of these most be present
-      // and will be added otherwise.
-      String[] possibleVerbs = {"is", "is not", "isn't", "are", "are not", "aren't"};
-      boolean containsVerb = false;
-      for (String possibleVerb : possibleVerbs) {
-        if (placeholderText.contains(possibleVerb + PLACEHOLDER_PREFIX + i)) {
-          containsVerb = true;
-          break;
-        }
-      }
-      if (!containsVerb) {
-        // The verb is assumed to be "is" and will be added to the text.
-        placeholderText =
-            placeholderText.replaceFirst(PLACEHOLDER_PREFIX + i, " is" + PLACEHOLDER_PREFIX + i);
-      }
+      placeholderText = findVerb(placeholderText, i);
       i++;
     }
 
+    return placeholderText;
+  }
+
+  private static String findVerb(String placeholderText, int i) {
+    // Verbs that could appear before (the inequality, or the keyword this, etc.).
+    //One of these most be present and will be added otherwise.
+    String[] possibleVerbs = {"is", "is not", "isn't"};
+    boolean containsVerb = false;
+    for (String possibleVerb : possibleVerbs) {
+      if (placeholderText.contains(possibleVerb + PLACEHOLDER_PREFIX + i)) {
+        containsVerb = true;
+        break;
+      }
+    }
+    if (!containsVerb) {
+      // The verb is assumed to be "is" and will be added to the text.
+      placeholderText =
+          placeholderText.replaceFirst(PLACEHOLDER_PREFIX + i, " is" + PLACEHOLDER_PREFIX + i);
+    }
     return placeholderText;
   }
 
