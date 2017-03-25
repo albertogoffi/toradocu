@@ -64,7 +64,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testRandomDataGenerator() throws Exception {
-    test("org.apache.commons.math3.random.RandomDataGenerator", 0.769, 0.714, 1, 1, 1, 1);
+    test("org.apache.commons.math3.random.RandomDataGenerator", 0.808, 0.75, 1, 1, 1, 1);
   }
 
   @Test

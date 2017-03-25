@@ -367,11 +367,13 @@ class Matcher {
       }
     } else if (inequalityVar.find()) {
       // Get the variable from the last group of the regular expression.
-      String variable = inequalityVar.group(inequalityVar.groupCount());
+      String variable = inequalityVar.group(3);
       // Get the symbol from the regular expression.
       String relation = inequalityVar.group(2);
       // Now we have the variable name, but who is it in the code? We'll have to find it.
       predicateTranslation = relation + "{" + variable + "}";
+      if (predicate.contains(variable + "."))
+        predicateTranslation += predicate.substring(predicate.indexOf("."));
     } else if (predicate.equals("been set")) {
       predicateTranslation = "!=null";
     } else if (instanceOf.find()) {

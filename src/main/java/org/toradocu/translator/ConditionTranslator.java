@@ -151,7 +151,8 @@ public class ConditionTranslator {
 
   private static final String INEQUALITY_NUMBER_REGEX =
       " *((([<>=]=?)|(!=)) ?)-?([0-9]+|zero|one|two|three|four|five|six|seven|eight|nine)";
-  private static final String INEQUALITY_VAR_REGEX = " *((([<>=]=?)|(!=)) ?)[a-z]+";
+  private static final String INEQUALITY_VAR_REGEX =
+      " *((([<>=]=?)|(!=)) ?)([a-z]+(.[a-z]+\\(*\\))?)";
   private static final String PLACEHOLDER_PREFIX = " INEQUALITY_";
   private static final String INEQ_INSOF = " *[an]* (instance of)"; // e.g "an instance of"
   private static final String INEQ_INSOFPROCESSED =
@@ -213,8 +214,8 @@ public class ConditionTranslator {
       }
       final Set<CodeElement<?>> matchingCodeElements = new LinkedHashSet<>();
       String loop = findMatchingCodeElements(p, subjectMatches, method, matchingCodeElements);
-      if (loop.equals("return")) return;
-      if (loop.equals("continue")) continue;
+      if (loop.equals(LOOP_RETURN)) return;
+      if (loop.equals(LOOP_CONTINUE)) continue;
 
       // Maps each subject code element to the Java expression translation that uses that code
       // element.
@@ -238,6 +239,7 @@ public class ConditionTranslator {
           } else {
             Iterator<CodeElement<?>> it = argMatches.iterator();
             String replaceTarget = "{" + argument + "}";
+            //Naive solution: picks the first match from the list.
             String replacement = it.next().getJavaExpression();
             currentTranslation = currentTranslation.replace(replaceTarget, replacement);
           }
@@ -319,7 +321,7 @@ public class ConditionTranslator {
       subjectMatches = Matcher.subjectMatch(p.getSubject().getSubject(), method);
       if (subjectMatches.isEmpty()) {
         log.debug("Failed subject translation for: " + p);
-        return "return";
+        return LOOP_RETURN;
       }
       matchingCodeElements.addAll(subjectMatches);
     } else {
@@ -328,7 +330,7 @@ public class ConditionTranslator {
       if (containerMatch == null) {
         log.trace("Failed container translation for: " + p);
         matchingCodeElements.clear();
-        return "continue";
+        return LOOP_CONTINUE;
       }
       try {
         matchingCodeElements.add(
@@ -338,12 +340,15 @@ public class ConditionTranslator {
         // The containerMatch is not supported by the current implementation of
         // ContainerElementsCodeElement.
         matchingCodeElements.clear();
-        return "continue";
+        return LOOP_CONTINUE;
       }
     }
-    return "OK";
+    return LOOP_OK;
   }
 
+  private static final String LOOP_OK = "OK";
+  private static final String LOOP_CONTINUE = "continue";
+  private static final String LOOP_RETURN = "return";
   /**
    * Returns a boolean Java expression that merges the conditions from the given set of conditions.
    * Each condition in the set is combined using an || conjunction.
