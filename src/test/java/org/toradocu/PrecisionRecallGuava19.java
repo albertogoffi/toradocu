@@ -80,7 +80,7 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testShorts() throws Exception {
-    test("com.google.common.primitives.Shorts", 0.75, 0.5, 1, 0, 1, 1);
+    test("com.google.common.primitives.Shorts", 0.6, 0.5, 1, 0, 1, 1);
   }
 
   @Test

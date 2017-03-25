@@ -284,7 +284,7 @@ class Matcher {
             .matcher(predicate);
 
     java.util.regex.Matcher inequalityVar =
-        Pattern.compile(verbs + "(<=|>=|<|>|!=|==|=) ?([a-z]+)").matcher(predicate);
+        Pattern.compile(verbs + "(<=|>=|<|>|!=|==|=) ?(([a-zA-Z]+_?)+)").matcher(predicate);
 
     java.util.regex.Matcher instanceOf = Pattern.compile("(instanceof) (.*)").matcher(predicate);
 

@@ -89,7 +89,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testSimpsonIntegrator() throws Exception {
-    test("org.apache.commons.math3.analysis.integration.SimpsonIntegrator", 0.4, 0.181, 1, 0, 1, 1);
+    test("org.apache.commons.math3.analysis.integration.SimpsonIntegrator", 0.8, 0.364, 1, 0, 1, 1);
   }
 
   @Test

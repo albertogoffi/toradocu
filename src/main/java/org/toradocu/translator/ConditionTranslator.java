@@ -133,7 +133,7 @@ public class ConditionTranslator {
   private static String findVerb(String placeholderText, int i) {
     // Verbs that could appear before (the inequality, or the keyword this, etc.).
     //One of these most be present and will be added otherwise.
-    String[] possibleVerbs = {"is", "is not", "isn't"};
+    String[] possibleVerbs = {"is", "is not", "isn't", "are", "are not", "aren't"};
     boolean containsVerb = false;
     for (String possibleVerb : possibleVerbs) {
       if (placeholderText.contains(possibleVerb + PLACEHOLDER_PREFIX + i)) {
@@ -152,7 +152,7 @@ public class ConditionTranslator {
   private static final String INEQUALITY_NUMBER_REGEX =
       " *((([<>=]=?)|(!=)) ?)-?([0-9]+|zero|one|two|three|four|five|six|seven|eight|nine)";
   private static final String INEQUALITY_VAR_REGEX =
-      " *((([<>=]=?)|(!=)) ?)([a-z]+(.[a-z]+\\(*\\))?)";
+      " *((([<>=]=?)|(!=)) ?)(?!this)(([a-zA-Z]+_?)+(.[a-zA-Z]+(\\(*\\))?)?)";
   private static final String PLACEHOLDER_PREFIX = " INEQUALITY_";
   private static final String INEQ_INSOF = " *[an]* (instance of)"; // e.g "an instance of"
   private static final String INEQ_INSOFPROCESSED =
@@ -236,6 +236,7 @@ public class ConditionTranslator {
           argMatches = Matcher.subjectMatch(argument, method);
           if (argMatches.isEmpty()) {
             log.trace("Failed predicate translation for: " + p + " due to variable not found.");
+            continue;
           } else {
             Iterator<CodeElement<?>> it = argMatches.iterator();
             String replaceTarget = "{" + argument + "}";
