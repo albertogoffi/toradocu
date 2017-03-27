@@ -198,15 +198,15 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
     StringBuilder pointcut = new StringBuilder();
 
     if (method.isConstructor()) { // Constructors
-      pointcut.append(method.getContainingClass() + ".new(");
+      pointcut.append(method.getContainingClass()).append(".new(");
     } else { // Regular methods
-      pointcut.append(
-          method.getReturnType()
-              + " "
-              + method.getContainingClass()
-              + "."
-              + method.getName()
-              + "(");
+      pointcut
+          .append(method.getReturnType())
+          .append(" ")
+          .append(method.getContainingClass())
+          .append(".")
+          .append(method.getName())
+          .append("(");
     }
 
     Iterator<Parameter> parametersIterator = method.getParameters().iterator();
@@ -231,7 +231,7 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
    * @return the input condition with casted method arguments and target
    * @throws NullPointerException if {@code condition} or {@code method} is null
    */
-  public static String addCasting(String condition, DocumentedMethod method) {
+  private static String addCasting(String condition, DocumentedMethod method) {
     Checks.nonNullParameter(condition, "condition");
     Checks.nonNullParameter(method, "method");
 
@@ -244,23 +244,6 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
 
     // Casting of target object in condition
     condition = condition.replace("target.", "((" + method.getContainingClass() + ") target).");
-    return condition;
-  }
-
-  public static String convertToParamNames(
-      String condition, DocumentedMethod method, String receiverName, String returnValueName) {
-    Checks.nonNullParameter(condition, "condition");
-    Checks.nonNullParameter(method, "method");
-    Checks.nonNullParameter(receiverName, "receiver");
-    Checks.nonNullParameter(returnValueName, "returnValueName");
-
-    condition = condition.replace("target", receiverName);
-    condition = condition.replace("result", returnValueName);
-    for (int index = 0; index < method.getParameters().size(); index++) {
-      String paramName = method.getParameters().get(index).getName();
-      condition = condition.replace("args[" + index + "]", paramName);
-    }
-
     return condition;
   }
 }

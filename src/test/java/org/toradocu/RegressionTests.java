@@ -85,8 +85,8 @@ public class RegressionTests {
           "src/test/resources/src/guava-19.0-sources",
           "--oracle-generation",
           "false",
-          "--export-conditions",
-          "conditions"
+          "--randoop-specs",
+          "randoop-specs/1.txt"
         };
     Toradocu.main(toradocuArgs);
 
@@ -100,8 +100,8 @@ public class RegressionTests {
           "src/test/resources/src/guava-19.0-sources",
           "--oracle-generation",
           "false",
-          "--export-conditions",
-          "conditions"
+          "--randoop-specs",
+          "randoop-specs/2.txt"
         };
     Toradocu.main(toradocuArgs);
   }
