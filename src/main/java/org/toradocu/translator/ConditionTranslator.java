@@ -130,6 +130,14 @@ public class ConditionTranslator {
     return placeholderText;
   }
 
+  /**
+   * Verifies if the comment contains a verb among the {@code possibleVerbs}. If it doesn't, the
+   * verb is assumed to be "is" and is added to the comment.
+   *
+   * @param placeholderText the comment text containing placeholders
+   * @param i counter of the placeholders in the text
+   * @return the placeholderText, updated with the added verb or as it was if it already had one
+   */
   private static String findVerb(String placeholderText, int i) {
     // Verbs that could appear before (the inequality, or the keyword this, etc.).
     //One of these most be present and will be added otherwise.
@@ -311,6 +319,18 @@ public class ConditionTranslator {
     }
   }
 
+  /**
+   * Find a set of {@code CodeElement}s that match the subject of the {@code Proposition} relative
+   * to the {@code DocumentedMethod}, updating the set {@code matchingCodeElements}.
+   *
+   * @param p the proposition
+   * @param subjectMatches CodeElements matches for subject
+   * @param method the DocumentedMethod under analysis
+   * @param matchingCodeElements the set of matching CodeElements to update
+   * @return a String defining whether the loop in the method translatePropositions has to continue
+   *     to the next iteration (LOOP_CONTINUE), to stop (LOOP_RETURN) or go on executing the rest of
+   *     the body (LOOP_OK)
+   */
   private static String findMatchingCodeElements(
       Proposition p,
       Set<CodeElement<?>> subjectMatches,
