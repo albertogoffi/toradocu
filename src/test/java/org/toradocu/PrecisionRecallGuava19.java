@@ -20,7 +20,7 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testCharMatcher() throws Exception {
-    test("com.google.common.base.CharMatcher", 0, 0, 1, 0, 1, 1);
+    test("com.google.common.base.CharMatcher", 0, 0, 0, 0, 1, 1);
   }
 
   @Test
@@ -45,7 +45,7 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testIterators() throws Exception {
-    test("com.google.common.collect.Iterators", 1, 0.6, 1, 1, 1, 1);
+    test("com.google.common.collect.Iterators", 1, 1, 1, 1, 1, 1);
   }
 
   @Test

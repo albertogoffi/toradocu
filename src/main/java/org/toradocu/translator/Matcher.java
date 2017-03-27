@@ -7,6 +7,7 @@ import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -41,10 +42,12 @@ class Matcher {
 
     // Clean the subject string by removing words and characters not related to its identity so that
     // they do not influence string matching.
-    if (subject.startsWith("either ")) {
-      subject = subject.replaceFirst("either ", "");
-    } else if (subject.startsWith("both ")) {
-      subject = subject.replaceFirst("both ", "");
+    List<String> wordsToRemove = Arrays.asList("either", "both", "any");
+    for (String word : wordsToRemove) {
+      String wordToReplace = word + " ";
+      if (subject.startsWith(wordToReplace)) {
+        subject = subject.replaceFirst(wordToReplace, "");
+      }
     }
     subject = subject.trim();
 
@@ -266,7 +269,7 @@ class Matcher {
     String verbs = "(is|are|be|is equal to|are equal to|equals to) ?";
 
     String predicates =
-        "(true|false|null|this|zero|positive|strictly positive|negative|strictly negative)";
+        "(true|false|null|this|zero|positive|strictly positive|negative|strictly negative|nonnegative|nonpositive)";
 
     java.util.regex.Matcher isPattern =
         Pattern.compile(verbs + "(==|=)? ?" + predicates).matcher(predicate);
@@ -275,7 +278,10 @@ class Matcher {
         Pattern.compile(verbs + "(!=)? ?" + predicates).matcher(predicate);
 
     java.util.regex.Matcher inequality =
-        Pattern.compile(verbs + "(<=|>=|<|>|!=|==|=)? ?(-?[0-9]+)").matcher(predicate);
+        Pattern.compile(
+                verbs
+                    + "(<=|>=|<|>|!=|==|=)? ?(-?([0-9]+|zero|one|two|three|four|five|six|seven|eight|nine))")
+            .matcher(predicate);
 
     java.util.regex.Matcher instanceOf = Pattern.compile("(instanceof) (.*)").matcher(predicate);
 
@@ -303,6 +309,12 @@ class Matcher {
         case "strictly negative":
           predicateTranslation = "<0";
           break;
+        case "nonnegative":
+          predicateTranslation = ">=0";
+          break;
+        case "nonpositive":
+          predicateTranslation = "<=0";
+          break;
         default:
           predicateTranslation = null;
       }
@@ -319,11 +331,17 @@ class Matcher {
           break;
         case "positive":
         case "strictly positive":
-          predicateTranslation = "<0";
+          predicateTranslation = ">0";
           break;
         case "negative":
         case "strictly negative":
           predicateTranslation = "<0";
+          break;
+        case "nonnegative":
+          predicateTranslation = ">=0";
+          break;
+        case "nonpositive":
+          predicateTranslation = "<=0";
           break;
         default:
           predicateTranslation = null;
@@ -333,7 +351,11 @@ class Matcher {
       String numberString = inequality.group(inequality.groupCount());
       // Get the symbol from the regular expression.
       String relation = inequality.group(2);
-      int number = Integer.parseInt(numberString);
+      String numberWord = numberWordToDigit(numberString);
+      int number =
+          (!numberWord.equals(""))
+              ? number = Integer.parseInt(numberWord)
+              : Integer.parseInt(numberString);
       // relation is null in predicates without inequalities. For example "is 0".
       if (relation == null || relation.equals("=")) {
         predicateTranslation = "==" + number;
@@ -348,5 +370,32 @@ class Matcher {
       predicateTranslation = null;
     }
     return predicateTranslation;
+  }
+
+  private static String numberWordToDigit(String numberString) {
+    switch (numberString) {
+      case "zero":
+        return "0";
+      case "one":
+        return "1";
+      case "two":
+        return "2";
+      case "three":
+        return "3";
+      case "four":
+        return "4";
+      case "five":
+        return "5";
+      case "six":
+        return "6";
+      case "seven":
+        return "7";
+      case "eight":
+        return "8";
+      case "nine":
+        return "9";
+    }
+
+    return "";
   }
 }
