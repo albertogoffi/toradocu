@@ -644,7 +644,7 @@
       },
       {
         "comment": "if any predicate in the array is null",
-        "condition": "Arrays.asList(args[0]).contains(null)",
+        "condition": "java.util.Arrays.stream(args[0]).anyMatch(e->e==null)",
         "exception": {
           "isArray": false,
           "name": "NullPointerException",
@@ -869,7 +869,7 @@
       },
       {
         "comment": "if any predicate in the array is null",
-        "condition": "Arrays.asList(args[0]).contains(null)",
+        "condition": "java.util.Arrays.stream(args[0]).anyMatch(e->e==null)",
         "exception": {
           "isArray": false,
           "name": "NullPointerException",
@@ -1094,7 +1094,7 @@
       },
       {
         "comment": "if any predicate in the array is null",
-        "condition": "Arrays.asList(args[0]).contains(null)",
+        "condition": "java.util.Arrays.stream(args[0]).anyMatch(e->e==null)",
         "exception": {
           "isArray": false,
           "name": "NullPointerException",
@@ -1319,7 +1319,7 @@
       },
       {
         "comment": "if any predicate in the array is null",
-        "condition": "Arrays.asList(args[0]).contains(null)",
+        "condition": "java.util.Arrays.stream(args[0]).anyMatch(e->e==null)",
         "exception": {
           "isArray": false,
           "name": "NullPointerException",
