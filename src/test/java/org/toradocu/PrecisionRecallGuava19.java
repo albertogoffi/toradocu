@@ -20,7 +20,7 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testCharMatcher() throws Exception {
-    test("com.google.common.base.CharMatcher", 0, 0, 0, 0, 1, 1);
+    test("com.google.common.base.CharMatcher", 1, 1, 0, 0, 1, 1);
   }
 
   @Test
@@ -50,7 +50,7 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testBloomFilter() throws Exception {
-    test("com.google.common.hash.BloomFilter", 1, 0.5, 0.777, 0.777, 1, 1);
+    test("com.google.common.hash.BloomFilter", 0.5, 0.5, 0.777, 0.777, 1, 1);
   }
 
   @Test
@@ -80,7 +80,7 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testShorts() throws Exception {
-    test("com.google.common.primitives.Shorts", 0.75, 0.5, 1, 0, 1, 1);
+    test("com.google.common.primitives.Shorts", 0.6, 0.5, 1, 0, 1, 1);
   }
 
   @Test
