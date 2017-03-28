@@ -277,11 +277,14 @@ class Matcher {
     java.util.regex.Matcher isNotPattern =
         Pattern.compile(verbs + "(!=)? ?" + predicates).matcher(predicate);
 
-    java.util.regex.Matcher inequality =
+    java.util.regex.Matcher inequalityNumber =
         Pattern.compile(
                 verbs
                     + "(<=|>=|<|>|!=|==|=)? ?(-?([0-9]+|zero|one|two|three|four|five|six|seven|eight|nine))")
             .matcher(predicate);
+
+    java.util.regex.Matcher inequalityVar =
+        Pattern.compile(verbs + "(<=|>=|<|>|!=|==|=) ?(([a-zA-Z]+_?)+)").matcher(predicate);
 
     java.util.regex.Matcher instanceOf = Pattern.compile("(instanceof) (.*)").matcher(predicate);
 
@@ -346,11 +349,11 @@ class Matcher {
         default:
           predicateTranslation = null;
       }
-    } else if (inequality.find()) {
+    } else if (inequalityNumber.find()) {
       // Get the number from the last group of the regular expression.
-      String numberString = inequality.group(inequality.groupCount());
+      String numberString = inequalityNumber.group(inequalityNumber.groupCount());
       // Get the symbol from the regular expression.
-      String relation = inequality.group(2);
+      String relation = inequalityNumber.group(2);
       String numberWord = numberWordToDigit(numberString);
       int number =
           (!numberWord.equals(""))
@@ -362,6 +365,15 @@ class Matcher {
       } else {
         predicateTranslation = relation + number;
       }
+    } else if (inequalityVar.find()) {
+      // Get the variable from the last group of the regular expression.
+      String variable = inequalityVar.group(3);
+      // Get the symbol from the regular expression.
+      String relation = inequalityVar.group(2);
+      // Now we have the variable name, but who is it in the code? We'll have to find it.
+      predicateTranslation = relation + "{" + variable + "}";
+      if (predicate.contains(variable + "."))
+        predicateTranslation += predicate.substring(predicate.indexOf("."));
     } else if (predicate.equals("been set")) {
       predicateTranslation = "!=null";
     } else if (instanceOf.find()) {

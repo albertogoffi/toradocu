@@ -311,7 +311,7 @@
     "throwsTags": [
       {
         "comment": "if minimal number of iterations is not strictly positive.",
-        "condition": "args[1]<=0",
+        "condition": "(args[1]>0)==false",
         "exception": {
           "isArray": false,
           "name": "NotStrictlyPositiveException",

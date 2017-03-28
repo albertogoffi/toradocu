@@ -1749,7 +1749,7 @@
           "lower >= upper"
         ],
         "comment": "if lower >= upper",
-        "condition": "args[0]<args[1]",
+        "condition": "args[0]>=args[1]",
         "exception": {
           "isArray": false,
           "name": "NumberIsTooLargeException",
@@ -1874,7 +1874,7 @@
           "lower >= upper"
         ],
         "comment": "if lower >= upper",
-        "condition": "args[0]>args[1]",
+        "condition": "args[0]>=args[1]",
         "exception": {
           "isArray": false,
           "name": "NumberIsTooLargeException",
