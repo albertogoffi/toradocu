@@ -160,6 +160,24 @@ class Matcher {
       } else {
         return null;
       }
+
+      // Filter collected code elements that refer to the documented method under analysis.
+      // This avoids to generate specifications mentioning the method whose behavior they specify.
+      codeElements =
+          codeElements
+              .stream()
+              .filter(
+                  e -> {
+                    if (e instanceof MethodCodeElement) {
+                      Method m = ((MethodCodeElement) e).getJavaCodeElement();
+                      if (m.toGenericString().equals(method.getExecutable().toGenericString())) {
+                        return false;
+                      }
+                    }
+                    return true;
+                  })
+              .collect(Collectors.toSet());
+
       Set<CodeElement<?>> matches = filterMatchingCodeElements(predicate, codeElements);
       if (matches.isEmpty()) {
         return null;

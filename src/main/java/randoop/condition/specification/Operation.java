@@ -126,7 +126,7 @@ public class Operation {
   private static List<String> getTypeNames(Class<?>[] classes) {
     List<String> parameterTypes = new ArrayList<>();
     for (Class<?> aClass : classes) {
-      parameterTypes.add(aClass.getCanonicalName());
+      parameterTypes.add(aClass.getName());
     }
     return parameterTypes;
   }

@@ -1,6 +1,19 @@
 package org.toradocu;
 
+import static org.junit.Assert.assertTrue;
+
+import com.google.gson.reflect.TypeToken;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 import org.junit.Test;
+import org.toradocu.util.GsonInstance;
+import randoop.condition.specification.Operation;
+import randoop.condition.specification.OperationSpecification;
+import randoop.condition.specification.ReturnSpecification;
 
 /**
  * Collects tests that expose bugs. These tests should be moved to the precision/recall test suite.
@@ -138,5 +151,40 @@ public class RegressionTests {
           "false"
         };
     Toradocu.main(toradocuArgs);
+  }
+
+  @Test
+  public void issue98() throws IOException {
+    // Issue #98: https://github.com/albertogoffi/toradocu/issues/98
+    final String RANDOOP_SPEC = "randoop_specs_issue98.json";
+    String[] toradocuArgs =
+        new String[] {
+          "--target-class",
+          "org.apache.commons.collections4.BoundedMap",
+          "--class-dir",
+          "src/test/resources/bin/commons-collections4-4.1.jar",
+          "--source-dir",
+          "src/test/resources/src/commons-collections4-4.1-src/src/main/java/",
+          "--oracle-generation",
+          "false",
+          "--randoop-specs",
+          RANDOOP_SPEC
+        };
+    Toradocu.main(toradocuArgs);
+    try (BufferedReader reader = Files.newBufferedReader(Paths.get(RANDOOP_SPEC))) {
+      Type type = new TypeToken<List<OperationSpecification>>() {}.getType();
+      List<OperationSpecification> specs = GsonInstance.gson().fromJson(reader, type);
+
+      for (OperationSpecification spec : specs) {
+        Operation operation = spec.getOperation();
+        if (operation.getName().equals("isFull")) {
+          List<ReturnSpecification> returnSpecifications = spec.getReturnSpecifications();
+          assertTrue(returnSpecifications.isEmpty());
+          break;
+        }
+      }
+    } finally {
+      Files.delete(Paths.get(RANDOOP_SPEC));
+    }
   }
 }

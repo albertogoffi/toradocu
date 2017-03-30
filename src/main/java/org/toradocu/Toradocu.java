@@ -227,21 +227,23 @@ public class Toradocu {
   private static void generateRandoopSpecs(List<DocumentedMethod> methods) {
     File randoopSpecsFile = configuration.randoopSpecsFile();
     if (!configuration.isSilent() && randoopSpecsFile != null) {
-      List<OperationSpecification> specs = null;
       if (!randoopSpecsFile.exists()) {
         try {
-          Files.createDirectories(randoopSpecsFile.getParentFile().toPath());
-          specs =
-              methods
-                  .stream()
-                  .map(RandoopSpecs::translate)
-                  .filter(spec -> !spec.isEmpty())
-                  .collect(Collectors.toList());
+          File parentDir = randoopSpecsFile.getParentFile();
+          if (parentDir != null) {
+            Files.createDirectories(parentDir.toPath());
+          }
+
         } catch (IOException e) {
           log.error("Error occurred during creation of the file " + randoopSpecsFile.getPath(), e);
         }
       }
-
+      List<OperationSpecification> specs =
+          methods
+              .stream()
+              .map(RandoopSpecs::translate)
+              .filter(spec -> !spec.isEmpty())
+              .collect(Collectors.toList());
       if (specs != null && !specs.isEmpty()) {
         try (BufferedWriter writer =
             Files.newBufferedWriter(
