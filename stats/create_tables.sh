@@ -1,7 +1,11 @@
 #!/bin/sh
 
+# This script takes no input and produces latex tables reporting subjects and precision/recall values.
+# Generated tables are saved in the path indicated by variable $SUBJECTS_TABLE.
+
 OUTPUT_DIR=latex_tables
 SUBJECTS_TABLE="$OUTPUT_DIR"/subject-classes-table.tex
+RESULTS_TABLE="$OUTPUT_DIR"/accuracy-table.tex
 
 numberOfClasses() {
     echo $(find "$1" -name "*.java" -type f | wc -l | tr -d " ")
@@ -122,5 +126,23 @@ echo 'Plume-lib 1.1 \\newline\n\\footnotesize\\url{http://mernst.github.io/plume
 echo '\\midrule' >> "$SUBJECTS_TABLE"
 echo 'Total & '${TOTAL[0]}' & '${TOTAL[1]}' & '${TOTAL[2]}' & '${TOTAL[3]}' & '${TOTAL[4]}' & '${TOTAL[5]}' \\\\' >> "$SUBJECTS_TABLE"
 
-# Info messgage
 echo "Created table: $SUBJECTS_TABLE"
+
+# Crate results table
+echo "Creating results table..."
+
+cat results_tcomment.csv | tail -r | tail -n +15 | tail -r > results_tcomment_truncated.csv
+echo '@tComment & '`python stats/results_table.py results_tcomment_truncated.csv` > "$RESULTS_TABLE"
+rm results_tcomment_truncated.csv
+
+cat results_toradocu.csv | tail -r | tail -n +6 | tail -r | tail -n +2 > results_toradocu_truncated.csv
+echo '"METHOD","CORRECT THROWS CONDITIONS","WRONG THROWS CONDITIONS","MISSING THROWS CONDITIONS"' > results_toradocu_truncated2.csv
+cat results_toradocu_truncated.csv >> results_toradocu_truncated2.csv
+echo 'Toradocu & '`python stats/results_table.py results_toradocu_truncated2.csv` >> "$RESULTS_TABLE"
+rm results_toradocu_truncated.csv results_toradocu_truncated2.csv
+
+cat results_current.csv | tail -r | tail -n +15 | tail -r > results_current_truncated.csv
+echo '\ToradocuPlus & '`python stats/results_table.py results_current_truncated.csv` >> "$RESULTS_TABLE"
+rm results_current_truncated.csv
+
+echo "Created table: $RESULTS_TABLE"
