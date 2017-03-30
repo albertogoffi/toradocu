@@ -14,9 +14,9 @@ import org.toradocu.extractor.ReturnTag;
 import org.toradocu.extractor.ThrowsTag;
 import org.toradocu.extractor.Type;
 import randoop.condition.specification.Guard;
-import randoop.condition.specification.ParamSpecification;
+import randoop.condition.specification.PostSpecification;
+import randoop.condition.specification.PreSpecification;
 import randoop.condition.specification.Property;
-import randoop.condition.specification.ReturnSpecification;
 import randoop.condition.specification.ThrowsSpecification;
 
 public class RandoopSpecsTest {
@@ -25,7 +25,7 @@ public class RandoopSpecsTest {
   public void paramSpecTest() throws Exception {
     DocumentedMethod m = createMethod();
     ParamTag paramTag = new ArrayList<>(m.paramTags()).get(0);
-    ParamSpecification spec = RandoopSpecs.translate(paramTag, m);
+    PreSpecification spec = RandoopSpecs.translate(paramTag, m);
     assertThat(spec.getDescription(), is("must not be null"));
     Guard guard = spec.getGuard();
     assertThat(guard.getConditionText(), is("(x==null)==false"));
@@ -36,10 +36,10 @@ public class RandoopSpecsTest {
   public void returnSpecsTest() throws Exception {
     DocumentedMethod m = createMethod();
     ReturnTag tag = m.returnTag();
-    List<ReturnSpecification> specs = RandoopSpecs.translate(tag, m);
+    List<PostSpecification> specs = RandoopSpecs.translate(tag, m);
     assertThat(specs.size(), is(2));
 
-    ReturnSpecification spec1 = specs.get(0);
+    PostSpecification spec1 = specs.get(0);
     assertThat(spec1.getDescription(), is("return true iff x is positive"));
     Guard guard1 = spec1.getGuard();
     assertThat(guard1.getDescription(), is(""));
@@ -48,7 +48,7 @@ public class RandoopSpecsTest {
     assertThat(prop1.getDescription(), is("true iff x is positive"));
     assertThat(prop1.getConditionText(), is("result==true"));
 
-    ReturnSpecification spec2 = specs.get(1);
+    PostSpecification spec2 = specs.get(1);
     assertThat(spec2.getDescription(), is("return true iff x is positive"));
     Guard guard2 = spec2.getGuard();
     assertEquals(guard1, guard2);

@@ -15,9 +15,9 @@ import randoop.condition.specification.Guard;
 import randoop.condition.specification.Identifiers;
 import randoop.condition.specification.Operation;
 import randoop.condition.specification.OperationSpecification;
-import randoop.condition.specification.ParamSpecification;
+import randoop.condition.specification.PostSpecification;
+import randoop.condition.specification.PreSpecification;
 import randoop.condition.specification.Property;
-import randoop.condition.specification.ReturnSpecification;
 import randoop.condition.specification.ThrowsSpecification;
 
 /**
@@ -41,7 +41,7 @@ public class RandoopSpecs {
     Identifiers identifiers =
         new Identifiers(params, Configuration.RECEIVER, Configuration.RETURN_VALUE);
 
-    List<ParamSpecification> paramSpecs =
+    List<PreSpecification> paramSpecs =
         method
             .paramTags()
             .stream()
@@ -55,7 +55,7 @@ public class RandoopSpecs {
             .map(t -> RandoopSpecs.translate(t, method))
             .filter(Objects::nonNull)
             .collect(Collectors.toList());
-    List<ReturnSpecification> returnSpecs = new ArrayList<>();
+    List<PostSpecification> returnSpecs = new ArrayList<>();
     ReturnTag returnTag = method.returnTag();
     if (returnTag != null) {
       returnSpecs = RandoopSpecs.translate(returnTag, method);
@@ -74,11 +74,11 @@ public class RandoopSpecs {
    * @return the Randoop {@code param} specification, or {@code null} if the tag comment has not
    *     been translated by Toradocu, or if the translation is empty
    */
-  public static ParamSpecification translate(ParamTag tag, DocumentedMethod method) {
+  public static PreSpecification translate(ParamTag tag, DocumentedMethod method) {
     String condition = tag.getCondition().orElse("");
     return condition.isEmpty()
         ? null
-        : new ParamSpecification(
+        : new PreSpecification(
             tag.getComment(), new Guard(tag.getComment(), processCondition(condition, method)));
   }
 
@@ -90,7 +90,7 @@ public class RandoopSpecs {
    * @return the Randoop {@code return} specification, or {@code null} if the tag comment has not
    *     been translated by Toradocu, or if the translation is empty
    */
-  public static List<ReturnSpecification> translate(ReturnTag tag, DocumentedMethod method) {
+  public static List<PostSpecification> translate(ReturnTag tag, DocumentedMethod method) {
     String condition = tag.getCondition().orElse("");
     if (condition.isEmpty()) {
       return null;
@@ -105,15 +105,15 @@ public class RandoopSpecs {
     String tagKind = format(tag.getKind());
     String description = tagKind + " " + tag.getComment();
 
-    List<ReturnSpecification> specs = new ArrayList<>();
+    List<PostSpecification> specs = new ArrayList<>();
     String propertiesStr = condition.substring(condition.indexOf("?") + 1, condition.length());
     String[] properties = propertiesStr.split(":", 2);
     Property property = new Property(tag.getComment(), processCondition(properties[0], method));
-    specs.add(new ReturnSpecification(description, guard, property));
+    specs.add(new PostSpecification(description, guard, property));
     if (properties.length > 1) {
       Property elseProperty =
           new Property(tag.getComment(), processCondition(properties[1], method));
-      specs.add(new ReturnSpecification(description, guard, elseProperty));
+      specs.add(new PostSpecification(description, guard, elseProperty));
     }
     return specs;
   }

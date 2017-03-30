@@ -231,13 +231,18 @@ public class Toradocu {
       if (!randoopSpecsFile.exists()) {
         try {
           Files.createDirectories(randoopSpecsFile.getParentFile().toPath());
-          specs = methods.stream().map(RandoopSpecs::translate).collect(Collectors.toList());
+          specs =
+              methods
+                  .stream()
+                  .map(RandoopSpecs::translate)
+                  .filter(spec -> !spec.isEmpty())
+                  .collect(Collectors.toList());
         } catch (IOException e) {
           log.error("Error occurred during creation of the file " + randoopSpecsFile.getPath(), e);
         }
       }
 
-      if (specs != null) {
+      if (specs != null && !specs.isEmpty()) {
         try (BufferedWriter writer =
             Files.newBufferedWriter(
                 randoopSpecsFile.toPath(),
