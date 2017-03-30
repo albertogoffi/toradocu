@@ -5,9 +5,9 @@ package randoop.condition.specification;
  * an operation (e.g., a method or constructor). The identifiers refer to the values before the
  * operation is called.
  *
- * <p>The JSON serialization of this class is used by Randoop to read the specifications for an
- * operation given using the {@code --specifications} command-line option. The JSON should include a
- * JSON object labeled by the name of each field of this class, as in
+ * <p>The JSON serialization of this class is used to read the specifications for an operation given
+ * using the {@link randoop.main.GenInputsAbstract#specifications} command-line option. The JSON
+ * should include a JSON object labeled by the name of each field of this class, as in
  *
  * <pre>
  *   {
@@ -19,7 +19,7 @@ package randoop.condition.specification;
  * <p>where {@code code} is a declared identifier in the specification.
  *
  * <p>The identifiers in the property should be given in the {@link Identifiers} for the {@link
- * OperationSpecification} containing the {@link ReturnSpecification} where the property occurs.
+ * OperationSpecification} containing the {@link PostSpecification} where the property occurs.
  *
  * @see Specification
  */

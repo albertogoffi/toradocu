@@ -7,9 +7,9 @@ package randoop.condition.specification;
  * not be invoked on the arguments. This means that the sequence with the particular call should be
  * classified as invalid, and discarded.
  *
- * <p>The JSON serialization of this class is used by Randoop to read the specifications for an
- * operation given using the {@code --specifications} command-line option. The JSON should include a
- * JSON object labeled by the name of each field of this class, as in
+ * <p>The JSON serialization of this class is used to read the specifications for an operation given
+ * using the {@link randoop.main.GenInputsAbstract#specifications} command-line option. The JSON
+ * should include a JSON object labeled by the name of each field of this class, as in
  *
  * <pre>
  *   {
@@ -23,15 +23,20 @@ package randoop.condition.specification;
  *
  * See {@link Guard} for details on specifying guards.
  */
-public class ParamSpecification extends Specification {
+public class PreSpecification extends Specification {
 
   /**
-   * Create a {@link ParamSpecification} with the given {@link Guard}.
+   * Create a {@link PreSpecification} with the given {@link Guard}.
    *
    * @param description the text description of the param-specification
    * @param guard the guard for the param-specification
    */
-  public ParamSpecification(String description, Guard guard) {
+  public PreSpecification(String description, Guard guard) {
     super(description, guard);
+  }
+
+  @Override
+  public String toString() {
+    return "{ guard: " + getGuard() + " }";
   }
 }
