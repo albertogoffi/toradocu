@@ -17,24 +17,12 @@ public class FieldCodeElement extends CodeElement<Field> {
    * @param receiver the class/object in which this field is contained
    * @param field the field that this code element identifies
    */
-  public FieldCodeElement(String receiver, Field field) {
+  FieldCodeElement(String receiver, Field field) {
     super(field);
     this.receiver = receiver;
 
     // Add name identifier.
     addIdentifier(field.getName());
-    // Add type identifiers
-    Class<?> type = field.getType();
-    if (type.isArray()) {
-      addIdentifier("array");
-      addIdentifier(type.getSimpleName() + " array");
-    } else {
-      addIdentifier(type.getSimpleName());
-      if (type.getName().equals("java.lang.Iterable")) {
-        addIdentifier("iterator");
-        addIdentifier("collection");
-      }
-    }
   }
 
   @Override

@@ -1,8 +1,9 @@
 package org.toradocu.translator;
 
-import edu.stanford.nlp.ling.CoreAnnotations;
+import edu.stanford.nlp.ling.CoreAnnotations.PartOfSpeechAnnotation;
 import edu.stanford.nlp.ling.IndexedWord;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -101,16 +102,17 @@ public class Subject {
   }
 
   /**
-   * Returns true if this subject is singular, false otherwise.
+   * Returns true if this subject is singular, false otherwise. A word is considered singular iff it
+   * is marked as "NN" (noun, singular or mass) or "NNP" (proper noun, singular) by the Stanford
+   * Parser.
    *
    * @return true if this subject is singular, false otherwise
    */
   public boolean isSingular() {
+    final String[] singularPOSTags = new String[] {"NN", "NNP"};
     final IndexedWord mainSubjectWord = subjectWords.get(subjectWords.size() - 1);
-    return mainSubjectWord
-        .backingLabel()
-        .get(CoreAnnotations.PartOfSpeechAnnotation.class)
-        .equals("NN");
+    String subjectPOSTag = mainSubjectWord.backingLabel().get(PartOfSpeechAnnotation.class);
+    return Arrays.asList(singularPOSTags).contains(subjectPOSTag);
   }
 
   @Override

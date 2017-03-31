@@ -1,6 +1,7 @@
 package org.toradocu.translator;
 
 import java.lang.reflect.Executable;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
@@ -77,6 +78,11 @@ public class JavaElementsCollector {
       } else if (!documentedMethod.isConstructor()) {
         collectedElements.add(new MethodCodeElement("target", method));
       }
+    }
+
+    // Add fields of the target class.
+    for (Field field : containingClass.getFields()) {
+      collectedElements.add(new FieldCodeElement("target", field));
     }
 
     return collectedElements;
