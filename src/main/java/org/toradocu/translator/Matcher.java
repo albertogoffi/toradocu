@@ -7,6 +7,7 @@ import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -41,10 +42,12 @@ class Matcher {
 
     // Clean the subject string by removing words and characters not related to its identity so that
     // they do not influence string matching.
-    if (subject.startsWith("either ")) {
-      subject = subject.replaceFirst("either ", "");
-    } else if (subject.startsWith("both ")) {
-      subject = subject.replaceFirst("both ", "");
+    List<String> wordsToRemove = Arrays.asList("either", "both", "any");
+    for (String word : wordsToRemove) {
+      String wordToReplace = word + " ";
+      if (subject.startsWith(wordToReplace)) {
+        subject = subject.replaceFirst(wordToReplace, "");
+      }
     }
     subject = subject.trim();
 
@@ -292,11 +295,14 @@ class Matcher {
     java.util.regex.Matcher isNotPattern =
         Pattern.compile(verbs + "(!=)? ?" + predicates).matcher(predicate);
 
-    java.util.regex.Matcher inequality =
+    java.util.regex.Matcher inequalityNumber =
         Pattern.compile(
                 verbs
                     + "(<=|>=|<|>|!=|==|=)? ?(-?([0-9]+|zero|one|two|three|four|five|six|seven|eight|nine))")
             .matcher(predicate);
+
+    java.util.regex.Matcher inequalityVar =
+        Pattern.compile(verbs + "(<=|>=|<|>|!=|==|=) ?(([a-zA-Z0-9]+_?)+)").matcher(predicate);
 
     java.util.regex.Matcher instanceOf = Pattern.compile("(instanceof) (.*)").matcher(predicate);
 
@@ -361,11 +367,11 @@ class Matcher {
         default:
           predicateTranslation = null;
       }
-    } else if (inequality.find()) {
+    } else if (inequalityNumber.find()) {
       // Get the number from the last group of the regular expression.
-      String numberString = inequality.group(inequality.groupCount());
+      String numberString = inequalityNumber.group(inequalityNumber.groupCount());
       // Get the symbol from the regular expression.
-      String relation = inequality.group(2);
+      String relation = inequalityNumber.group(2);
       String numberWord = numberWordToDigit(numberString);
       int number =
           (!numberWord.equals(""))
@@ -377,6 +383,17 @@ class Matcher {
       } else {
         predicateTranslation = relation + number;
       }
+    } else if (inequalityVar.find()) {
+      // Get the variable from the last group of the regular expression.
+      String variable = inequalityVar.group(3);
+      // Get the symbol from the regular expression.
+      String relation = inequalityVar.group(2);
+      // Now we have the variable name, but who is it in the code? We'll have to find it.
+      if (relation == null || relation.equals("="))
+        predicateTranslation = "==" + "{" + variable + "}";
+      else predicateTranslation = relation + "{" + variable + "}";
+      if (predicate.contains(variable + "."))
+        predicateTranslation += predicate.substring(predicate.indexOf("."));
     } else if (predicate.equals("been set")) {
       predicateTranslation = "!=null";
     } else if (instanceOf.find()) {

@@ -49,7 +49,7 @@
       },
       {
         "comment": "maximum number of iterations (must be less than or equal to SIMPSON_MAX_ITERATIONS_COUNT)",
-        "condition": "args[3]<=SIMPSON_MAX_ITERATIONS_COUNT",
+        "condition": "args[3]<=target.SIMPSON_MAX_ITERATIONS_COUNT",
         "kind": "@param",
         "parameter": {
           "name": "maximalIterationCount",
@@ -100,7 +100,7 @@
     "throwsTags": [
       {
         "comment": "if minimal number of iterations is not strictly positive",
-        "condition": "args[2]<=0",
+        "condition": "(args[2]>0)==false",
         "exception": {
           "isArray": false,
           "name": "NotStrictlyPositiveException",
@@ -154,7 +154,7 @@
       },
       {
         "comment": "maximum number of iterations (must be less than or equal to SIMPSON_MAX_ITERATIONS_COUNT)",
-        "condition": "args[1]<=SIMPSON_MAX_ITERATIONS_COUNT",
+        "condition": "args[1]<=target.SIMPSON_MAX_ITERATIONS_COUNT",
         "kind": "@param",
         "parameter": {
           "name": "maximalIterationCount",
@@ -189,7 +189,7 @@
     "throwsTags": [
       {
         "comment": "if minimal number of iterations is not strictly positive",
-        "condition": "args[0]<=0",
+        "condition": "(args[0]>0)==false",
         "exception": {
           "isArray": false,
           "name": "NotStrictlyPositiveException",

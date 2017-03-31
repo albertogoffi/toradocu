@@ -1137,7 +1137,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "true if this iterable does not contain any elements, false otherwise",
-      "condition": "target.isEmpty() ? true : false",
+      "condition": "target.isEmpty() ? result==true : result==false",
       "kind": "RETURN"
     },
     "returnType": {

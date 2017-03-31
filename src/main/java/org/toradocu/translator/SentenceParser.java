@@ -7,11 +7,14 @@ import edu.stanford.nlp.trees.GrammaticalRelation;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
+import java.util.Queue;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -87,7 +90,7 @@ public class SentenceParser {
       List<IndexedWord> subjectWords = subject.getSubjectWords();
       // Create a Proposition from the subject and predicate words.
       String predicateWordsAsString =
-          predicateWords.stream().map(w -> w.word()).collect(Collectors.joining(" "));
+          predicateWords.stream().map(IndexedWord::word).collect(Collectors.joining(" "));
       Proposition proposition = new Proposition(subject, predicateWordsAsString, negative);
 
       // Add the Proposition and associated words to the propositionMap.
@@ -340,19 +343,6 @@ public class SentenceParser {
    *     articles)
    */
   private Subject getSubject(IndexedWord subjectWord) {
-    final List<String> ARTICLES = Collections.unmodifiableList(Arrays.asList("a", "an", "the"));
-
-    // Collect the words composing the subject in comments.
-    List<IndexedWord> subjectWords =
-        getRelationsFromGraph("compound", "det", "advmod", "amod", "nmod:poss")
-            .stream()
-            .filter(e -> e.getGovernor().equals(subjectWord))
-            .filter(e -> !ARTICLES.contains(e.getDependent().word()))
-            .map(e -> e.getDependent())
-            .sorted((w1, w2) -> Integer.compare(w1.index(), w2.index()))
-            .collect(Collectors.toList());
-    subjectWords.add(subjectWord); // TODO: Why we assume that the subject is the last word?
-
     // Collect the words composing the container. For example, in the comment "any value in the
     // array is null", the subject is "any value", while the container is "array". At the moment
     // we collect only one word as container. Extend the code to support containers composed of
@@ -363,14 +353,14 @@ public class SentenceParser {
         getRelationsFromGraph("nmod:in")
             .stream()
             .filter(e -> e.getGovernor().equals(subjectWord))
-            .map(e -> e.getDependent())
+            .map(SemanticGraphEdge::getDependent)
             .findFirst()
             .orElse(null);
     if (container != null) {
       containerWords.add(container);
     }
 
-    return new Subject(subjectWords, containerWords);
+    return new Subject(extractSubjectWords(subjectWord), containerWords);
   }
 
   /** Initializes the relations fields using the semantic graph. */
@@ -414,5 +404,62 @@ public class SentenceParser {
       }
     }
     return foundRelations;
+  }
+
+  /**
+   * Collects all the words composing a subject in a proposition, given the node that is marked as
+   * subject by the Stanford parser. Subject words appear in the returned list in the order they
+   * appear in the input sentence.
+   *
+   * @param subject the subject node
+   * @return a list of words representing the subject of a proposition
+   */
+  private List<IndexedWord> extractSubjectWords(IndexedWord subject) {
+    List<IndexedWord> subjectWords = new ArrayList<>();
+    Queue<IndexedWord> nodeQueue = new LinkedList<>();
+    nodeQueue.add(subject);
+    subjectWords.add(subject);
+
+    while (!nodeQueue.isEmpty()) {
+      IndexedWord currentNode = nodeQueue.poll();
+      for (IndexedWord child : getChildren(currentNode)) {
+        subjectWords.add(child);
+        nodeQueue.add(child);
+      }
+    }
+    subjectWords.sort(Comparator.comparingInt(IndexedWord::index));
+    return subjectWords;
+  }
+
+  /**
+   * Returns the list of children of {@code node} in the semantic graph produce by the Stanford
+   * parser. The list of children only contains nodes that are connected with {@code node} with the
+   * grammatical relations listed in {@code relationIdentifiers}. Also, nodes containing a stopword
+   * (e.g., "a", "an", "the") are ignored.
+   *
+   * @param node a node in the semantic graph
+   * @return the filtered list of children
+   */
+  private List<IndexedWord> getChildren(IndexedWord node) {
+    List<String> relationIdentifiers =
+        Arrays.asList("compound", "advmod", "amod", "det", "nmod:poss", "nmod:of");
+    List<String> stopwords = Arrays.asList("a", "an", "the");
+
+    return semanticGraph
+        .getOutEdgesSorted(node)
+        .stream()
+        .filter(
+            edge -> {
+              GrammaticalRelation grammaticalRelation = edge.getRelation();
+              String identifier = grammaticalRelation.getShortName();
+              final String specific = grammaticalRelation.getSpecific();
+              if (specific != null) {
+                identifier += ":" + specific;
+              }
+              return relationIdentifiers.contains(identifier);
+            })
+        .map(SemanticGraphEdge::getTarget)
+        .filter(word -> !stopwords.contains(word.word().toLowerCase()))
+        .collect(Collectors.toList());
   }
 }

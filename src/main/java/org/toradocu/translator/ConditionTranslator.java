@@ -85,6 +85,8 @@ public class ConditionTranslator {
 
     java.util.regex.Matcher matcherThis = Pattern.compile(INEQ_THIS).matcher(text);
 
+    java.util.regex.Matcher matcherVarComp = Pattern.compile(INEQUALITY_VAR_REGEX).matcher(text);
+
     while (matcherInstanceOf.find()) {
       // Instance of added to the comparator list
       // Replace "[an] instance of" with "instanceof"
@@ -106,21 +108,7 @@ public class ConditionTranslator {
     while (matcherThis.find()) {
       inequalities.add(text.substring(matcherThis.start(), matcherThis.end()));
       placeholderText = placeholderText.replaceFirst(INEQ_THIS, PLACEHOLDER_PREFIX + i);
-      // Verbs that could appear before the keyword this. One of these most be present
-      // and will be added otherwise.
-      String[] possibleVerbs = {"is", "is not", "isn't"};
-      boolean containsVerb = false;
-      for (String possibleVerb : possibleVerbs) {
-        if (placeholderText.contains(possibleVerb + PLACEHOLDER_PREFIX + i)) {
-          containsVerb = true;
-          break;
-        }
-      }
-      if (!containsVerb) {
-        // The verb is assumed to be "is" and will be added to the text.
-        placeholderText =
-            placeholderText.replaceFirst(PLACEHOLDER_PREFIX + i, " is" + PLACEHOLDER_PREFIX + i);
-      }
+      placeholderText = findVerb(placeholderText, i);
       i++;
     }
 
@@ -128,29 +116,51 @@ public class ConditionTranslator {
       inequalities.add(text.substring(matcher.start(), matcher.end()));
       placeholderText =
           placeholderText.replaceFirst(INEQUALITY_NUMBER_REGEX, PLACEHOLDER_PREFIX + i);
-      // Verbs that could appear before the inequality. One of these most be present
-      // and will be added otherwise.
-      String[] possibleVerbs = {"is", "is not", "isn't", "are", "are not", "aren't"};
-      boolean containsVerb = false;
-      for (String possibleVerb : possibleVerbs) {
-        if (placeholderText.contains(possibleVerb + PLACEHOLDER_PREFIX + i)) {
-          containsVerb = true;
-          break;
-        }
-      }
-      if (!containsVerb) {
-        // The verb is assumed to be "is" and will be added to the text.
-        placeholderText =
-            placeholderText.replaceFirst(PLACEHOLDER_PREFIX + i, " is" + PLACEHOLDER_PREFIX + i);
-      }
+      placeholderText = findVerb(placeholderText, i);
+      i++;
+    }
+
+    while (matcherVarComp.find()) {
+      inequalities.add(text.substring(matcherVarComp.start(), matcherVarComp.end()));
+      placeholderText = placeholderText.replaceFirst(INEQUALITY_VAR_REGEX, PLACEHOLDER_PREFIX + i);
+      placeholderText = findVerb(placeholderText, i);
       i++;
     }
 
     return placeholderText;
   }
 
+  /**
+   * Verifies if the comment contains a verb among the {@code possibleVerbs}. If it doesn't, the
+   * verb is assumed to be "is" and is added to the comment.
+   *
+   * @param placeholderText the comment text containing placeholders
+   * @param i counter of the placeholders in the text
+   * @return the placeholderText, updated with the added verb or as it was if it already had one
+   */
+  private static String findVerb(String placeholderText, int i) {
+    // Verbs that could appear before (the inequality, or the keyword this, etc.).
+    //One of these most be present and will be added otherwise.
+    String[] possibleVerbs = {"is", "is not", "isn't", "are", "are not", "aren't"};
+    boolean containsVerb = false;
+    for (String possibleVerb : possibleVerbs) {
+      if (placeholderText.contains(possibleVerb + PLACEHOLDER_PREFIX + i)) {
+        containsVerb = true;
+        break;
+      }
+    }
+    if (!containsVerb) {
+      // The verb is assumed to be "is" and will be added to the text.
+      placeholderText =
+          placeholderText.replaceFirst(PLACEHOLDER_PREFIX + i, " is" + PLACEHOLDER_PREFIX + i);
+    }
+    return placeholderText;
+  }
+
   private static final String INEQUALITY_NUMBER_REGEX =
       " *((([<>=]=?)|(!=)) ?)-?([0-9]+|zero|one|two|three|four|five|six|seven|eight|nine)";
+  private static final String INEQUALITY_VAR_REGEX =
+      " *((([<>=]=?)|(!=)) ?)(?!this)(([a-zA-Z]+_?)+(.[a-zA-Z0-9]+(\\(*\\))?)?)";
   private static final String PLACEHOLDER_PREFIX = " INEQUALITY_";
   private static final String INEQ_INSOF = " *[an]* (instance of)"; // e.g "an instance of"
   private static final String INEQ_INSOFPROCESSED =
@@ -211,32 +221,9 @@ public class ConditionTranslator {
         return;
       }
       final Set<CodeElement<?>> matchingCodeElements = new LinkedHashSet<>();
-      final String container = p.getSubject().getContainer();
-      if (container.isEmpty()) {
-        // Subject match
-        subjectMatches = Matcher.subjectMatch(p.getSubject().getSubject(), method);
-        if (subjectMatches.isEmpty()) {
-          log.debug("Failed subject translation for: " + p);
-          return;
-        }
-        matchingCodeElements.addAll(subjectMatches);
-      } else {
-        // Container match
-        final CodeElement<?> containerMatch = Matcher.containerMatch(container, method);
-        if (containerMatch == null) {
-          log.trace("Failed container translation for: " + p);
-          continue;
-        }
-        try {
-          matchingCodeElements.add(
-              new ContainerElementsCodeElement(
-                  containerMatch.getJavaCodeElement(), containerMatch.getJavaExpression()));
-        } catch (IllegalArgumentException e) {
-          // The containerMatch is not supported by the current implementation of
-          // ContainerElementsCodeElement.
-          continue;
-        }
-      }
+      String loop = findMatchingCodeElements(p, subjectMatches, method, matchingCodeElements);
+      if (loop.equals(LOOP_RETURN)) return;
+      if (loop.equals(LOOP_CONTINUE)) continue;
 
       // Maps each subject code element to the Java expression translation that uses that code
       // element.
@@ -247,6 +234,24 @@ public class ConditionTranslator {
         if (currentTranslation == null) {
           log.trace("Failed predicate translation for: " + p);
           continue;
+        }
+        if (currentTranslation.contains("{") && currentTranslation.contains("}")) {
+          String argument =
+              currentTranslation.substring(
+                  currentTranslation.indexOf("{") + 1, currentTranslation.indexOf("}"));
+
+          Set<CodeElement<?>> argMatches;
+          argMatches = Matcher.subjectMatch(argument, method);
+          if (argMatches.isEmpty()) {
+            log.trace("Failed predicate translation for: " + p + " due to variable not found.");
+            continue;
+          } else {
+            Iterator<CodeElement<?>> it = argMatches.iterator();
+            String replaceTarget = "{" + argument + "}";
+            //Naive solution: picks the first match from the list.
+            String replacement = it.next().getJavaExpression();
+            currentTranslation = currentTranslation.replace(replaceTarget, replacement);
+          }
         }
         translations.put(subjectMatch, currentTranslation);
       }
@@ -314,6 +319,57 @@ public class ConditionTranslator {
     }
   }
 
+  /**
+   * Find a set of {@code CodeElement}s that match the subject of the {@code Proposition} relative
+   * to the {@code DocumentedMethod}, updating the set {@code matchingCodeElements}.
+   *
+   * @param p the proposition
+   * @param subjectMatches CodeElements matches for subject
+   * @param method the DocumentedMethod under analysis
+   * @param matchingCodeElements the set of matching CodeElements to update
+   * @return a String defining whether the loop in the method translatePropositions has to continue
+   *     to the next iteration (LOOP_CONTINUE), to stop (LOOP_RETURN) or go on executing the rest of
+   *     the body (LOOP_OK)
+   */
+  private static String findMatchingCodeElements(
+      Proposition p,
+      Set<CodeElement<?>> subjectMatches,
+      DocumentedMethod method,
+      Set<CodeElement<?>> matchingCodeElements) {
+    final String container = p.getSubject().getContainer();
+    if (container.isEmpty()) {
+      // Subject match
+      subjectMatches = Matcher.subjectMatch(p.getSubject().getSubject(), method);
+      if (subjectMatches.isEmpty()) {
+        log.debug("Failed subject translation for: " + p);
+        return LOOP_RETURN;
+      }
+      matchingCodeElements.addAll(subjectMatches);
+    } else {
+      // Container match
+      final CodeElement<?> containerMatch = Matcher.containerMatch(container, method);
+      if (containerMatch == null) {
+        log.trace("Failed container translation for: " + p);
+        matchingCodeElements.clear();
+        return LOOP_CONTINUE;
+      }
+      try {
+        matchingCodeElements.add(
+            new ContainerElementsCodeElement(
+                containerMatch.getJavaCodeElement(), containerMatch.getJavaExpression()));
+      } catch (IllegalArgumentException e) {
+        // The containerMatch is not supported by the current implementation of
+        // ContainerElementsCodeElement.
+        matchingCodeElements.clear();
+        return LOOP_CONTINUE;
+      }
+    }
+    return LOOP_OK;
+  }
+
+  private static final String LOOP_OK = "OK";
+  private static final String LOOP_CONTINUE = "continue";
+  private static final String LOOP_RETURN = "return";
   /**
    * Returns a boolean Java expression that merges the conditions from the given set of conditions.
    * Each condition in the set is combined using an || conjunction.

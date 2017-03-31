@@ -31,9 +31,11 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
     addIdentifier(name);
     addIdentifier(parameter.getType().getSimpleName() + " " + name);
     addIdentifier(name + " " + parameter.getType().getSimpleName());
-    // Add name identifier splitting camel case name into different words.
+    // Add name identifier splitting camel case name into different words. We consider as
+    // identifier the single words, and a string composed by the words separated by whitespace.
     StringJoiner joiner = new StringJoiner(" ");
     for (String word : name.split("(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])")) {
+      addIdentifier(word);
       joiner.add(word);
     }
     addIdentifier(joiner.toString().toLowerCase());
