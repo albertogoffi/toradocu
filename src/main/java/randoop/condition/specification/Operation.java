@@ -44,6 +44,13 @@ public class Operation {
   /** The list of fully-qualified type names for the parameters of this operation */
   private final List<String> parameterTypes;
 
+  /** A default constructor is expected for Gson serialization. */
+  private Operation() {
+    this.classname = "";
+    this.name = "";
+    this.parameterTypes = new ArrayList<>();
+  }
+
   /**
    * Create an {@link Operation} object given the names of the declaring class, method or
    * constructor, the parameter types, parameter names, receiver name and return value name.
@@ -108,13 +115,8 @@ public class Operation {
 
   @Override
   public String toString() {
-    return "{ classname: "
-        + classname
-        + ", name: "
-        + name
-        + ", parameterTypes: "
-        + parameterTypes
-        + " }";
+    return String.format(
+        "{%n classname: %s,%n name: %s,%n parameterTypes: %s%n}", classname, name, parameterTypes);
   }
 
   /**

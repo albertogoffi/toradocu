@@ -13,7 +13,7 @@ import org.junit.Test;
 import org.toradocu.util.GsonInstance;
 import randoop.condition.specification.Operation;
 import randoop.condition.specification.OperationSpecification;
-import randoop.condition.specification.ReturnSpecification;
+import randoop.condition.specification.PostSpecification;
 
 /**
  * Collects tests that expose bugs. These tests should be moved to the precision/recall test suite.
@@ -178,7 +178,7 @@ public class RegressionTests {
       for (OperationSpecification spec : specs) {
         Operation operation = spec.getOperation();
         if (operation.getName().equals("isFull")) {
-          List<ReturnSpecification> returnSpecifications = spec.getReturnSpecifications();
+          List<PostSpecification> returnSpecifications = spec.getPostSpecifications();
           assertTrue(returnSpecifications.isEmpty());
           break;
         }

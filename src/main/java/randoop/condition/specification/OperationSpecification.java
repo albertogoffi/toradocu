@@ -1,5 +1,6 @@
 package randoop.condition.specification;
 
+import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -56,13 +57,25 @@ public class OperationSpecification {
   private final Identifiers identifiers;
 
   /** The specification of expected exceptions for the operation */
+  @SerializedName("throws")
   private final List<ThrowsSpecification> throwsSpecifications;
 
   /** The list of post-conditions on the return value of the operation */
+  @SerializedName("post")
   private final List<PostSpecification> postSpecifications;
 
   /** The list of pre-conditions on the parameters of the operation */
+  @SerializedName("pre")
   private final List<PreSpecification> preSpecifications;
+
+  /** Default constructor is needed for Gson serialization */
+  private OperationSpecification() {
+    this.operation = null;
+    this.identifiers = new Identifiers();
+    this.throwsSpecifications = new ArrayList<>();
+    this.postSpecifications = new ArrayList<>();
+    this.preSpecifications = new ArrayList<>();
+  }
 
   /**
    * Creates an {@link OperationSpecification} for the given operation with no specifications and
@@ -154,18 +167,39 @@ public class OperationSpecification {
         + " }";
   }
 
+  /**
+   * Adds {@link ThrowsSpecification} objects from the list to this {@link OperationSpecification}.
+   *
+   * @param specifications the list of {@link ThrowsSpecification} objects
+   */
   public void addThrowsSpecifications(List<ThrowsSpecification> specifications) {
     throwsSpecifications.addAll(specifications);
   }
 
+  /**
+   * Adds {@link PostSpecification} objects from the list to this {@link OperationSpecification}.
+   *
+   * @param specifications the list of {@link PostSpecification} objects
+   */
   public void addReturnSpecifications(List<PostSpecification> specifications) {
     postSpecifications.addAll(specifications);
   }
 
+  /**
+   * Adds {@link PreSpecification} objects from the list to this {@link OperationSpecification}.
+   *
+   * @param specifications the list of {@link PreSpecification} objects
+   */
   public void addParamSpecifications(List<PreSpecification> specifications) {
     preSpecifications.addAll(specifications);
   }
 
+  /**
+   * Indicates whether this {@link OperationSpecification} contains any pre-, post- or
+   * throws-specifications.
+   *
+   * @return {@code true} if there are no pre-, post- or throws-specifications, false otherwise
+   */
   public boolean isEmpty() {
     return throwsSpecifications.isEmpty()
         && postSpecifications.isEmpty()
@@ -191,7 +225,7 @@ public class OperationSpecification {
   }
 
   /**
-   * Return the list of {@link Specification} objects for this operation specification.
+   * Return the list of {@link ThrowsSpecification} objects for this {@link OperationSpecification}.
    *
    * @return the list of specifications for this operation specification, is non-null
    */
@@ -199,10 +233,20 @@ public class OperationSpecification {
     return throwsSpecifications;
   }
 
+  /**
+   * Return the list of {@link PostSpecification} objects for this {@link OperationSpecification}.
+   *
+   * @return the list of {@link PostSpecification} objects for this specification
+   */
   public List<PostSpecification> getPostSpecifications() {
     return postSpecifications;
   }
 
+  /**
+   * Return the list of {@link PreSpecification} objects for this {@link OperationSpecification}.
+   *
+   * @return the list of {@link PreSpecification} objects for this specification
+   */
   public List<PreSpecification> getPreSpecifications() {
     return preSpecifications;
   }
