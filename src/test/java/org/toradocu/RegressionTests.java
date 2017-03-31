@@ -2,18 +2,10 @@ package org.toradocu;
 
 import static org.junit.Assert.assertTrue;
 
-import com.google.gson.reflect.TypeToken;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 import org.junit.Test;
-import org.toradocu.util.GsonInstance;
-import randoop.condition.specification.Operation;
-import randoop.condition.specification.OperationSpecification;
-import randoop.condition.specification.PostSpecification;
 
 /**
  * Collects tests that expose bugs. These tests should be moved to the precision/recall test suite.
@@ -171,20 +163,7 @@ public class RegressionTests {
           RANDOOP_SPEC
         };
     Toradocu.main(toradocuArgs);
-    try (BufferedReader reader = Files.newBufferedReader(Paths.get(RANDOOP_SPEC))) {
-      Type type = new TypeToken<List<OperationSpecification>>() {}.getType();
-      List<OperationSpecification> specs = GsonInstance.gson().fromJson(reader, type);
-
-      for (OperationSpecification spec : specs) {
-        Operation operation = spec.getOperation();
-        if (operation.getName().equals("isFull")) {
-          List<PostSpecification> returnSpecifications = spec.getPostSpecifications();
-          assertTrue(returnSpecifications.isEmpty());
-          break;
-        }
-      }
-    } finally {
-      Files.delete(Paths.get(RANDOOP_SPEC));
-    }
+    // There are no specifications in the file, and so file should not be written
+    assertTrue("file should not be written", Files.notExists(Paths.get(RANDOOP_SPEC)));
   }
 }
