@@ -18,6 +18,11 @@ import java.util.regex.Pattern;
 /** This class holds the configuration options (particularly command-line options) for Toradocu. */
 public class Configuration {
 
+  /** Keyword that identifies receiver object in generated specifications. */
+  public static final String RECEIVER = "target";
+  /** Keyword that identifies method result in generated specifications. */
+  public static final String RETURN_VALUE = "result";
+
   // General options
 
   @Parameter(
@@ -150,12 +155,12 @@ public class Configuration {
   private boolean tcomment = false;
 
   @Parameter(
-    names = "--export-conditions",
-    description = "Path to folder where to export comment translations as Java boolean conditions.",
+    names = "--randoop-specs",
+    description = "Path to file where to export comment translations as Randoop specifications.",
     converter = FileConverter.class,
     hidden = true
   )
-  private File exportAsJava;
+  private File randoopSpecs;
 
   // Aspect creation options
 
@@ -483,12 +488,12 @@ public class Configuration {
   }
 
   /**
-   * Returns the folder in which to export Java boolean conditions.
+   * Returns the file where to export Toradocu generated specifications as Randoop specifications.
    *
-   * @return the folder in which to export Java boolean conditions
+   * @return the file where to export Toradocu generated specifications as Randoop specifications
    */
-  public File getExportAsJava() {
-    return exportAsJava;
+  public File randoopSpecsFile() {
+    return randoopSpecs;
   }
 
   /**

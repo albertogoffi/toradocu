@@ -29,7 +29,7 @@ Options marked with an asterisk (`*`) are mandatory.
 | `--condition-translator-output` | File path where to save the condition translator output in JSON format. If not provided the result of the condition translation phase is printed on the standard output. |
 | `--expected-output` | Condition translator goal output file (in JSON format) used to compute Toradocu precision and recall. |
 | `--tcomment` | Instead of the standard Toradocu's condition translator, use @tComment as translation algorithm for translating the Javadoc comments. |
-| `--export-conditions` | Export generated Java boolean conditions into a Java class that is stored in the specified directory. |
+| `--randoop-specs` | Export to the specified file path the generated specifications as JSON Randoop input specifications. (NOOP if --silent is specified.) |
 
 ## Oracle Generator Options
 | Option | Description |
