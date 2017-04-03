@@ -33,6 +33,7 @@ import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.ParamTag;
 import org.toradocu.extractor.Parameter;
+import org.toradocu.extractor.ReturnTag;
 import org.toradocu.extractor.ThrowsTag;
 import org.toradocu.util.Checks;
 
@@ -61,128 +62,206 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
     Checks.nonNullParameter(methodDeclaration, "methodDeclaration");
     Checks.nonNullParameter(documentedMethod, "documentedMethod");
 
-    if (methodDeclaration.getName().equals("advice")) {
-      String pointcut;
+    switch (methodDeclaration.getName()) {
+      case "advice":
+        adviceChanger(methodDeclaration, documentedMethod);
+        break;
+      case "getExpectedExceptions":
+        getExpectedExceptionChanger(methodDeclaration, documentedMethod);
+        break;
+      case "paramTagsSatisfied":
+        paramTagSatisfiedChanger(methodDeclaration, documentedMethod);
+        break;
+      case "checkResult":
+        checkResultChanger(methodDeclaration, documentedMethod);
+        break;
+    }
+    return methodDeclaration;
+  }
 
-      if (documentedMethod.isConstructor()) {
-        pointcut = "execution(" + getPointcut(documentedMethod) + ")";
-      } else {
-        pointcut = "call(" + getPointcut(documentedMethod) + ")";
-        String testClassName = conf.getTestClass();
-        if (testClassName != null) {
-          pointcut += " && within(" + testClassName + ")";
-        }
+  private void checkResultChanger(
+      MethodDeclaration methodDeclaration, DocumentedMethod documentedMethod) {
+    ReturnTag tag = documentedMethod.returnTag();
+
+    ReturnStmt returnResultStmt = new ReturnStmt();
+    returnResultStmt.setExpr(new NameExpr("result"));
+
+    if (tag == null || tag.getCondition().orElse("").isEmpty()) {
+      methodDeclaration.getBody().getStmts().add(returnResultStmt);
+      return;
+    }
+
+    // Remove whitespaces to do not influence parsing.
+    String spec = tag.getCondition().get().replace(" ", "");
+
+    String guardCondition = addCasting(spec.substring(0, spec.indexOf("?")), documentedMethod);
+    String propertiesStr = spec.substring(spec.indexOf("?") + 1);
+    String[] properties = propertiesStr.split(":", 2);
+    String castedProperty = addCasting(properties[0], documentedMethod);
+    String thenBlock = createBlock("if ((" + castedProperty + ")==false) { fail(\"Error!\"); }");
+
+    IfStmt ifStmt;
+    if (properties.length > 1) {
+      String castedProperty1 = addCasting(properties[1], documentedMethod);
+      String elseBlock = createBlock("if ((" + castedProperty1 + ")==false) { fail(\"Error!\"); }");
+      ifStmt = createIfStmt(guardCondition, tag.getComment(), thenBlock, elseBlock);
+    } else {
+      ifStmt = createIfStmt(guardCondition, tag.getComment(), thenBlock);
+    }
+    methodDeclaration.getBody().getStmts().add(ifStmt);
+    methodDeclaration.getBody().getStmts().add(returnResultStmt);
+  }
+
+  private void paramTagSatisfiedChanger(
+      MethodDeclaration methodDeclaration, DocumentedMethod documentedMethod) {
+    boolean returnStmtNeeded = true;
+    for (ParamTag tag : documentedMethod.paramTags()) {
+      String condition = tag.getCondition().orElse("");
+      if (condition.isEmpty()) {
+        continue;
+      }
+      condition = addCasting(condition, documentedMethod);
+      String thenBlock = createBlock("return true;");
+      String elseBlock = createBlock("return false;");
+      IfStmt ifStmt = createIfStmt(condition, tag.toString(), thenBlock, elseBlock);
+      methodDeclaration.getBody().getStmts().add(ifStmt);
+      returnStmtNeeded = false;
+    }
+
+    if (returnStmtNeeded) {
+      ReturnStmt returnTrueStmt = new ReturnStmt();
+      returnTrueStmt.setExpr(new BooleanLiteralExpr(true));
+      methodDeclaration.getBody().getStmts().add(returnTrueStmt);
+    }
+  }
+
+  private void getExpectedExceptionChanger(
+      MethodDeclaration methodDeclaration, DocumentedMethod documentedMethod) {
+    for (ThrowsTag tag : documentedMethod.throwsTags()) {
+      String condition = tag.getCondition().orElse("");
+      if (condition.isEmpty()) {
+        continue;
       }
 
-      AnnotationExpr annotation =
-          new SingleMemberAnnotationExpr(new NameExpr("Around"), new StringLiteralExpr(pointcut));
-      List<AnnotationExpr> annotations = methodDeclaration.getAnnotations();
-      annotations.add(annotation);
-      methodDeclaration.setAnnotations(annotations);
-    } else if (methodDeclaration.getName().equals("getExpectedExceptions")) {
-      for (ThrowsTag tag : documentedMethod.throwsTags()) {
-        String condition = tag.getCondition().orElse("");
-        if (condition.isEmpty()) {
-          continue;
-        }
+      condition = addCasting(condition, documentedMethod);
 
-        condition = addCasting(condition, documentedMethod);
-
-        IfStmt ifStmt = new IfStmt();
-        Expression conditionExpression;
-        try {
-          conditionExpression = JavaParser.parseExpression(condition);
-          ifStmt.setCondition(conditionExpression);
-          // Add a try-catch block to prevent runtime error when looking for an exception type
-          // that is not on the classpath.
-          String addExpectedException =
-              "{try{expectedExceptions.add("
-                  + "Class.forName(\""
-                  + tag.exception()
-                  + "\")"
-                  + ");} catch (ClassNotFoundException e) {"
-                  + "System.err.println(\"Class not found!\" + e);}}";
-          ifStmt.setThenStmt(JavaParser.parseBlock(addExpectedException));
-
-          // Add a try-catch block to avoid NullPointerException to be raised while evaluating a
-          // boolean condition generated by Toradocu. For example, suppose that the first argument
-          // of a method is null, and that Toradocu generates a condition like
-          // args[0].isEmpty()==true. The condition generates a NullPointerException that we want
-          // to ignore.
-          ClassOrInterfaceType nullPointerException =
-              new ClassOrInterfaceType("java.lang.NullPointerException");
-          Position position = new Position(0, 0);
-          Range range = new Range(position, position);
-          CatchClause catchClause =
-              new CatchClause(
-                  range,
-                  0,
-                  null,
-                  nullPointerException,
-                  new VariableDeclaratorId("e"),
-                  JavaParser.parseBlock("{}"));
-          List<CatchClause> catchClauses = new ArrayList<>();
-          catchClauses.add(catchClause);
-
-          TryStmt nullCheckTryCatch = new TryStmt();
-          nullCheckTryCatch.setTryBlock(JavaParser.parseBlock("{" + ifStmt.toString() + "}"));
-          nullCheckTryCatch.setCatchs(catchClauses);
-
-          // Add comment to if condition. The comment is the original comment in the Java source
-          // code that has been translated by Toradocu in the commented boolean condition.
-          // Comment has to be added here, cause otherwise is ignored by JavaParser.parseBlock.
-          final Optional<Statement> ifCondition =
-              nullCheckTryCatch
-                  .getTryBlock()
-                  .getStmts()
-                  .stream()
-                  .filter(stm -> stm instanceof IfStmt)
-                  .findFirst();
-          if (ifCondition.isPresent()) {
-            String comment = " " + tag.getKind() + " " + tag.exception() + " " + tag.getComment();
-            ifCondition.get().setComment(new LineComment(comment));
-          }
-
-          ASTHelper.addStmt(methodDeclaration.getBody(), nullCheckTryCatch);
-        } catch (ParseException e) {
-          log.error("Parsing error during the aspect creation.", e);
-          e.printStackTrace();
-        }
-      }
-
+      IfStmt ifStmt = new IfStmt();
+      Expression conditionExpression;
       try {
-        ASTHelper.addStmt(
-            methodDeclaration.getBody(), JavaParser.parseStatement("return expectedExceptions;"));
+        conditionExpression = JavaParser.parseExpression(condition);
+        ifStmt.setCondition(conditionExpression);
+        // Add a try-catch block to prevent runtime error when looking for an exception type
+        // that is not on the classpath.
+        String addExpectedException =
+            "{try{expectedExceptions.add("
+                + "Class.forName(\""
+                + tag.exception()
+                + "\")"
+                + ");} catch (ClassNotFoundException e) {"
+                + "System.err.println(\"Class not found!\" + e);}}";
+        ifStmt.setThenStmt(JavaParser.parseBlock(addExpectedException));
+
+        // Add a try-catch block to avoid NullPointerException to be raised while evaluating a
+        // boolean condition generated by Toradocu. For example, suppose that the first argument
+        // of a method is null, and that Toradocu generates a condition like
+        // args[0].isEmpty()==true. The condition generates a NullPointerException that we want
+        // to ignore.
+        ClassOrInterfaceType nullPointerException =
+            new ClassOrInterfaceType("java.lang.NullPointerException");
+        Position position = new Position(0, 0);
+        Range range = new Range(position, position);
+        CatchClause catchClause =
+            new CatchClause(
+                range,
+                0,
+                null,
+                nullPointerException,
+                new VariableDeclaratorId("e"),
+                JavaParser.parseBlock("{}"));
+        List<CatchClause> catchClauses = new ArrayList<>();
+        catchClauses.add(catchClause);
+
+        TryStmt nullCheckTryCatch = new TryStmt();
+        nullCheckTryCatch.setTryBlock(JavaParser.parseBlock("{" + ifStmt.toString() + "}"));
+        nullCheckTryCatch.setCatchs(catchClauses);
+
+        // Add comment to if condition. The comment is the original comment in the Java source
+        // code that has been translated by Toradocu in the commented boolean condition.
+        // Comment has to be added here, cause otherwise is ignored by JavaParser.parseBlock.
+        final Optional<Statement> ifCondition =
+            nullCheckTryCatch
+                .getTryBlock()
+                .getStmts()
+                .stream()
+                .filter(stm -> stm instanceof IfStmt)
+                .findFirst();
+        if (ifCondition.isPresent()) {
+          String comment = " " + tag.getKind() + " " + tag.exception() + " " + tag.getComment();
+          ifCondition.get().setComment(new LineComment(comment));
+        }
+
+        ASTHelper.addStmt(methodDeclaration.getBody(), nullCheckTryCatch);
       } catch (ParseException e) {
         log.error("Parsing error during the aspect creation.", e);
         e.printStackTrace();
       }
-    } else if (methodDeclaration.getName().equals("paramTagsSatisfied")) {
-      for (ParamTag tag : documentedMethod.paramTags()) {
-        String condition = tag.getCondition().orElse("");
-        if (condition.isEmpty()) {
-          continue;
-        }
-        condition = addCasting(condition, documentedMethod);
-        IfStmt ifStmt = new IfStmt();
-        Expression conditionExpression;
-        try {
-          conditionExpression = JavaParser.parseExpression(condition);
-          ifStmt.setCondition(conditionExpression);
-          ifStmt.setThenStmt(JavaParser.parseBlock("{return true;}"));
-          ifStmt.setComment(new LineComment(" " + tag));
-          methodDeclaration.getBody().getStmts().add(ifStmt);
-        } catch (ParseException e) {
-          log.error("Parsing error during the aspect creation.", e);
-          e.printStackTrace();
-        }
-      }
-      ReturnStmt returnTrueStmt = new ReturnStmt();
-      returnTrueStmt.setExpr(new BooleanLiteralExpr(false));
-      methodDeclaration.getBody().getStmts().add(returnTrueStmt);
     }
 
-    return methodDeclaration;
+    try {
+      ASTHelper.addStmt(
+          methodDeclaration.getBody(), JavaParser.parseStatement("return expectedExceptions;"));
+    } catch (ParseException e) {
+      log.error("Parsing error during the aspect creation.", e);
+      e.printStackTrace();
+    }
+  }
+
+  private void adviceChanger(
+      MethodDeclaration methodDeclaration, DocumentedMethod documentedMethod) {
+    String pointcut;
+
+    if (documentedMethod.isConstructor()) {
+      pointcut = "execution(" + getPointcut(documentedMethod) + ")";
+    } else {
+      pointcut = "call(" + getPointcut(documentedMethod) + ")";
+      String testClassName = conf.getTestClass();
+      if (testClassName != null) {
+        pointcut += " && within(" + testClassName + ")";
+      }
+    }
+
+    AnnotationExpr annotation =
+        new SingleMemberAnnotationExpr(new NameExpr("Around"), new StringLiteralExpr(pointcut));
+    List<AnnotationExpr> annotations = methodDeclaration.getAnnotations();
+    annotations.add(annotation);
+    methodDeclaration.setAnnotations(annotations);
+  }
+
+  private static String createBlock(String content) {
+    return "{" + content + "}";
+  }
+
+  private static IfStmt createIfStmt(String condition, String comment, String thenBlock) {
+    return createIfStmt(condition, comment, thenBlock, "");
+  }
+
+  private static IfStmt createIfStmt(
+      String condition, String comment, String thenBlock, String elseBlock) {
+    IfStmt ifStmt = new IfStmt();
+    Expression conditionExpression;
+    try {
+      conditionExpression = JavaParser.parseExpression(condition);
+      ifStmt.setCondition(conditionExpression);
+      ifStmt.setThenStmt(JavaParser.parseBlock(thenBlock));
+      if (!elseBlock.isEmpty()) {
+        ifStmt.setElseStmt(JavaParser.parseBlock(elseBlock));
+      }
+      ifStmt.setComment(new LineComment(" " + comment));
+    } catch (ParseException e) {
+      log.error("Parsing error during the aspect creation.", e);
+      e.printStackTrace();
+    }
+    return ifStmt;
   }
 
   /**
@@ -242,7 +321,13 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
       index++;
     }
 
-    // Casting of target object in condition
+    // Casting of result object in condition.
+    String returnType = method.getReturnType().toString();
+    if (returnType != null && !returnType.equals("void")) {
+      condition = condition.replace("result", "((" + method.getReturnType() + ") result)");
+    }
+
+    // Casting of target object in condition.
     condition = condition.replace("target.", "((" + method.getContainingClass() + ") target).");
     return condition;
   }

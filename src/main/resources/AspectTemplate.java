@@ -22,20 +22,21 @@ public class Aspect_Template {
     } else {
       List<Class<?>> expectedExceptions = getExpectedExceptions(target, args);
       if (expectedExceptions.isEmpty()) {
-        return jp.proceed(args);
-      }
-
-      try {
-        jp.proceed(args);
-      } catch (Throwable e) {
-        if (!expectedExceptions.contains(e.getClass())) {
-          fail(
-              output
-                  + " -> Failure: Unexpected exception thrown: "
-                  + e.getClass().getCanonicalName());
-        } else {
-          System.err.println(output + " -> Success: Expected exception caught");
-          throw new TestCaseAspect.ExpectedException();
+        Object result = jp.proceed(args);
+        return checkResult(result, target, args);
+      } else {
+        try {
+          jp.proceed(args);
+        } catch (Throwable e) {
+          if (!expectedExceptions.contains(e.getClass())) {
+            fail(
+                output
+                    + " -> Failure: Unexpected exception thrown: "
+                    + e.getClass().getCanonicalName());
+          } else {
+            System.err.println(output + " -> Success: Expected exception caught");
+            throw new TestCaseAspect.ExpectedException();
+          }
         }
       }
       fail(
@@ -47,6 +48,8 @@ public class Aspect_Template {
   }
 
   private boolean paramTagsSatisfied(Object target, Object[] args) {}
+
+  private Object checkResult(Object result, Object target, Object[] args) {}
 
   private List<Class<?>> getExpectedExceptions(Object target, Object[] args) {
     List<Class<?>> expectedExceptions = new ArrayList<Class<?>>();
