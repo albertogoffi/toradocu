@@ -471,9 +471,21 @@ public class ConditionTranslator {
       };
       java.util.regex.Matcher matcher = Pattern.compile("\\(.*").matcher(comment);
       String separator = matcher.find() ? " " : ".";
+      boolean noReplacedYet = true; //Tells if there was already a replacement in the phrase
       for (String pattern : patterns) {
-        String replacement = separator + parameterName + " " + pattern;
-        comment = comment.replace(pattern, replacement);
+        if (comment.contains(pattern)) {
+          String replacement = separator + parameterName + " " + pattern;
+          comment = comment.replace(pattern, replacement);
+          noReplacedYet = false;
+        }
+      }
+
+      String[] patternsWithoutVerb = {"not null"};
+      if (noReplacedYet) { //Looks for the other patterns.
+        for (String pattern : patternsWithoutVerb) {
+          String replacement = ". " + parameterName + " is " + pattern;
+          comment = comment.replace(pattern, replacement);
+        }
       }
     }
 
@@ -602,6 +614,7 @@ public class ConditionTranslator {
   private static String translateSecondPart(String text, DocumentedMethod method) {
     // Identify propositions in the comment. Each sentence in the comment is parsed into a
     // PropositionSeries.
+
     text = removeInitial(text, "if");
     List<PropositionSeries> extractedPropositions = getPropositionSeries(text);
     Set<String> conditions = new LinkedHashSet<>();
