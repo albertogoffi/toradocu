@@ -14,7 +14,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.extractor.DocumentedMethod;
-import org.toradocu.extractor.ThrowsTag;
+import org.toradocu.extractor.ReturnTag;
+import org.toradocu.extractor.Tag;
 import org.toradocu.util.Checks;
 
 /**
@@ -64,15 +65,21 @@ public class OracleGenerator {
     createdAspectNames.add(junitAspectName);
     int aspectNumber = 1;
     for (DocumentedMethod method : methods) {
-      for (ThrowsTag throwTag : method.throwsTags()) {
-        // Create an aspect for each method that has at least one translated comment (condition)
-        if (!throwTag.getCondition().orElse("").isEmpty()) {
-          String aspectName = "Aspect_" + aspectNumber;
-          createAspect(method, aspectName);
-          createdAspectNames.add(aspectName);
-          aspectNumber++;
-          break;
+      List<Tag> tags = new ArrayList<>(method.paramTags());
+      tags.addAll(method.throwsTags());
+      ReturnTag returnTag = method.returnTag();
+      if (returnTag != null && returnTag.getCondition() != null) {
+        String condition = returnTag.getCondition().orElse("");
+        if (!condition.isEmpty()) {
+          tags.add(returnTag);
         }
+      }
+      boolean match = tags.stream().anyMatch(tag -> !tag.getCondition().orElse("").isEmpty());
+      if (match) {
+        String aspectName = "Aspect_" + aspectNumber;
+        createAspect(method, aspectName);
+        createdAspectNames.add(aspectName);
+        aspectNumber++;
       }
     }
     createAopXml(aspectDir, createdAspectNames);

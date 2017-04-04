@@ -1300,7 +1300,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "the maximum number of elements the map can hold",
-      "condition": "true ? result==target.maxSize()",
+      "condition": "",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1586,7 +1586,7 @@
     ],
     "returnTag": {
       "comment": "true if the map contains the value",
-      "condition": "target.containsValue(args[0]) ? result==true",
+      "condition": "",
       "kind": "RETURN"
     },
     "returnType": {
@@ -1769,7 +1769,7 @@
     ],
     "returnTag": {
       "comment": "the entry, null if no match",
-      "condition": "target.getEntry()==null ? result==null : result.equals(target.getEntry())",
+      "condition": "",
       "kind": "RETURN"
     },
     "returnType": {
@@ -2367,7 +2367,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "the size",
-      "condition": "true ? result==target.size()",
+      "condition": "",
       "kind": "RETURN"
     },
     "returnType": {
@@ -2438,7 +2438,7 @@
     ],
     "returnTag": {
       "comment": "true if the map contains the key",
-      "condition": "target.containsKey(args[0]) ? result==true",
+      "condition": "",
       "kind": "RETURN"
     },
     "returnType": {
@@ -3736,7 +3736,7 @@
     ],
     "returnTag": {
       "comment": "true if equal",
-      "condition": "target.equals(args[0]) ? result==true : result==false",
+      "condition": "",
       "kind": "RETURN"
     },
     "returnType": {

@@ -163,6 +163,24 @@ class Matcher {
       } else {
         return null;
       }
+
+      // Filter collected code elements that refer to the documented method under analysis.
+      // This avoids to generate specifications mentioning the method whose behavior they specify.
+      codeElements =
+          codeElements
+              .stream()
+              .filter(
+                  e -> {
+                    if (e instanceof MethodCodeElement) {
+                      Method m = ((MethodCodeElement) e).getJavaCodeElement();
+                      if (m.toGenericString().equals(method.getExecutable().toGenericString())) {
+                        return false;
+                      }
+                    }
+                    return true;
+                  })
+              .collect(Collectors.toSet());
+
       Set<CodeElement<?>> matches = filterMatchingCodeElements(predicate, codeElements);
       if (matches.isEmpty()) {
         return null;
@@ -284,7 +302,7 @@ class Matcher {
             .matcher(predicate);
 
     java.util.regex.Matcher inequalityVar =
-        Pattern.compile(verbs + "(<=|>=|<|>|!=|==|=) ?(([a-zA-Z]+_?)+)").matcher(predicate);
+        Pattern.compile(verbs + "(<=|>=|<|>|!=|==|=) ?(([a-zA-Z0-9]+_?)+)").matcher(predicate);
 
     java.util.regex.Matcher instanceOf = Pattern.compile("(instanceof) (.*)").matcher(predicate);
 
@@ -371,7 +389,9 @@ class Matcher {
       // Get the symbol from the regular expression.
       String relation = inequalityVar.group(2);
       // Now we have the variable name, but who is it in the code? We'll have to find it.
-      predicateTranslation = relation + "{" + variable + "}";
+      if (relation == null || relation.equals("="))
+        predicateTranslation = "==" + "{" + variable + "}";
+      else predicateTranslation = relation + "{" + variable + "}";
       if (predicate.contains(variable + "."))
         predicateTranslation += predicate.substring(predicate.indexOf("."));
     } else if (predicate.equals("been set")) {

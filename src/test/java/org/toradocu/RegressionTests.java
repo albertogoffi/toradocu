@@ -1,5 +1,10 @@
 package org.toradocu;
 
+import static org.junit.Assert.assertTrue;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import org.junit.Test;
 
 /**
@@ -85,8 +90,8 @@ public class RegressionTests {
           "src/test/resources/src/guava-19.0-sources",
           "--oracle-generation",
           "false",
-          "--export-conditions",
-          "conditions"
+          "--randoop-specs",
+          "randoop-specs/1.txt"
         };
     Toradocu.main(toradocuArgs);
 
@@ -100,8 +105,8 @@ public class RegressionTests {
           "src/test/resources/src/guava-19.0-sources",
           "--oracle-generation",
           "false",
-          "--export-conditions",
-          "conditions"
+          "--randoop-specs",
+          "randoop-specs/2.txt"
         };
     Toradocu.main(toradocuArgs);
   }
@@ -138,5 +143,27 @@ public class RegressionTests {
           "false"
         };
     Toradocu.main(toradocuArgs);
+  }
+
+  @Test
+  public void issue98() throws IOException {
+    // Issue #98: https://github.com/albertogoffi/toradocu/issues/98
+    final String RANDOOP_SPEC = "randoop_specs_issue98.json";
+    String[] toradocuArgs =
+        new String[] {
+          "--target-class",
+          "org.apache.commons.collections4.BoundedMap",
+          "--class-dir",
+          "src/test/resources/bin/commons-collections4-4.1.jar",
+          "--source-dir",
+          "src/test/resources/src/commons-collections4-4.1-src/src/main/java/",
+          "--oracle-generation",
+          "false",
+          "--randoop-specs",
+          RANDOOP_SPEC
+        };
+    Toradocu.main(toradocuArgs);
+    // There are no specifications in the file, and so file should not be written
+    assertTrue("file should not be written", Files.notExists(Paths.get(RANDOOP_SPEC)));
   }
 }

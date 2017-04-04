@@ -10,7 +10,8 @@ public class TestCaseAspect {
     try {
       return jp.proceed();
     } catch (InvalidParamException | ExpectedException e) {
-      // NOP: The advised method has been invoked with an improper input. Ignore the test case.
+      // NOP: The advised method has been invoked with an improper input or, as expected, throws an
+      // exception. Ignore the test case (make it a pass).
       return null;
     }
   }
