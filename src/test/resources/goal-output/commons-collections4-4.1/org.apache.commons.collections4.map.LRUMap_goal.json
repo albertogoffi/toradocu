@@ -2391,7 +2391,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "true if the map is currently size zero",
-      "condition": "target.size()==0 ? result==true : result==false",
+      "condition": "target.size()==0 ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -2438,7 +2438,7 @@
     ],
     "returnTag": {
       "comment": "true if the map contains the key",
-      "condition": "target.containsKey(args[0]) ? result==true : result==false",
+      "condition": "target.containsKey(args[0]) ? result==true",
       "kind": "RETURN"
     },
     "returnType": {

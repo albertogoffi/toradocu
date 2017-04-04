@@ -3434,7 +3434,7 @@
     ],
     "returnTag": {
       "comment": "true if empty or null",
-      "condition": "args[0]==null || args[0].isEmpty() ? result==true",
+      "condition": "args[0].isEmpty() || args[0]==null ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -3492,7 +3492,7 @@
     ],
     "returnTag": {
       "comment": "true if empty or null",
-      "condition": "args[0]==null || args[0].isEmpty() ? result==true",
+      "condition": "args[0].isEmpty() || args[0]==null ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
