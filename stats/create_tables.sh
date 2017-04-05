@@ -131,17 +131,22 @@ echo "Created table: $SUBJECTS_TABLE"
 # Crate results table
 echo "Creating results table..."
 
-cat results_tcomment.csv | tail -r | tail -n +15 | tail -r > results_tcomment_truncated.csv
+TAC="tac"
+if [ `uname` == "Darwin" ]; then
+    TAC="tail -r"
+fi
+
+cat results_tcomment.csv | $TAC | tail -n +15 | $TAC > results_tcomment_truncated.csv
 echo '@tComment & '`python stats/results_table.py results_tcomment_truncated.csv` > "$RESULTS_TABLE"
 rm results_tcomment_truncated.csv
 
-cat results_toradocu.csv | tail -r | tail -n +6 | tail -r | tail -n +2 > results_toradocu_truncated.csv
+cat results_toradocu.csv | $TAC | tail -n +6 | $TAC | tail -n +2 > results_toradocu_truncated.csv
 echo '"METHOD","CORRECT THROWS CONDITIONS","WRONG THROWS CONDITIONS","MISSING THROWS CONDITIONS"' > results_toradocu_truncated2.csv
 cat results_toradocu_truncated.csv >> results_toradocu_truncated2.csv
 echo 'Toradocu & '`python stats/results_table.py results_toradocu_truncated2.csv` >> "$RESULTS_TABLE"
 rm results_toradocu_truncated.csv results_toradocu_truncated2.csv
 
-cat results_current.csv | tail -r | tail -n +15 | tail -r > results_current_truncated.csv
+cat results_current.csv | $TAC | tail -n +15 | $TAC > results_current_truncated.csv
 echo '\ToradocuPlus & '`python stats/results_table.py results_current_truncated.csv` >> "$RESULTS_TABLE"
 rm results_current_truncated.csv
 
