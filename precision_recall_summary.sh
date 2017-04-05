@@ -6,8 +6,9 @@ set -e
 # Stats file used is the default for Toradocu
 STATS_FILE=results.csv
 
+# Backup the old result file if present
 if [ -f $STATS_FILE ]; then
-    rm -i $STATS_FILE # Remove old stats file (if user agrees)
+    mv -f $STATS_FILE $STATS_FILE-$(date -r $STATS_FILE +%Y%m%d)
 fi
 
 if [ ! -f $STATS_FILE ]; then
