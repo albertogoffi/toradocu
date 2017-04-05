@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # This script takes no input and produces latex tables reporting subjects and precision/recall values.
 # Generated tables are saved in the path indicated by variable $SUBJECTS_TABLE.
@@ -143,7 +143,7 @@ rm results_tcomment_truncated.csv
 cat results_toradocu.csv | $TAC | tail -n +6 | $TAC | tail -n +2 > results_toradocu_truncated.csv
 echo '"METHOD","CORRECT THROWS CONDITIONS","WRONG THROWS CONDITIONS","MISSING THROWS CONDITIONS"' > results_toradocu_truncated2.csv
 cat results_toradocu_truncated.csv >> results_toradocu_truncated2.csv
-echo 'Toradocu & '`python stats/results_table.py results_toradocu_truncated2.csv` >> "$RESULTS_TABLE"
+echo '\OldToradocu & '`python stats/results_table.py results_toradocu_truncated2.csv` >> "$RESULTS_TABLE"
 rm results_toradocu_truncated.csv results_toradocu_truncated2.csv
 
 cat results_current.csv | $TAC | tail -n +15 | $TAC > results_current_truncated.csv

@@ -60,4 +60,4 @@ overall_wrong = wrong_param + wrong_return + wrong_throws
 overall_precision = 0 if overall_correct == 0 else float(overall_correct) / (overall_correct + overall_wrong)
 overall_recall = 0 if overall_correct == 0 else float(overall_correct) / (overall_correct + overall_wrong + overall_missing)
 
-print "{:.2f} & {:.2f} && {:.2f} & {:.2f} && {:.2f} & {:.2f} && {:.2f} & {:.2f} \\\\\\".format(param_precision, param_recall, return_precision, return_recall, throws_precision, throws_recall, overall_precision, overall_recall)
+print "{:.2f} & {:.2f} && {:.2f} & {:.2f} && {:.2f} & {:.2f} && {:.2f} & {:.2f} \\\\".format(param_precision, param_recall, return_precision, return_recall, throws_precision, throws_recall, overall_precision, overall_recall)
