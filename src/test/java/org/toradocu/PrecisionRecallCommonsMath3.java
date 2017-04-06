@@ -22,14 +22,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testUnivariateSolverUtils() throws Exception {
-    test(
-        "org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils",
-        0.889,
-        0.889,
-        1,
-        0,
-        1,
-        1);
+    test("org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils", 1, 1, 1, 0, 1, 1);
   }
 
   @Test
@@ -44,7 +37,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testAdaptiveStepsizeIntegrator() throws Exception {
-    test("org.apache.commons.math3.ode.nonstiff.AdaptiveStepsizeIntegrator", 1, 1, 1, 1, 1, 1);
+    test("org.apache.commons.math3.ode.nonstiff.AdaptiveStepsizeIntegrator", 1, 1, 1, 0.8, 1, 1);
   }
 
   @Test
@@ -54,7 +47,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testBitsStreamGenerator() throws Exception {
-    test("org.apache.commons.math3.random.BitsStreamGenerator", 0.5, 0.5, 1, 0.8, 1, 1);
+    test("org.apache.commons.math3.random.BitsStreamGenerator", 1, 0.75, 1, 0.8, 1, 1);
   }
 
   @Test
@@ -64,12 +57,12 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testRandomDataGenerator() throws Exception {
-    test("org.apache.commons.math3.random.RandomDataGenerator", 0.808, 0.75, 1, 1, 1, 1);
+    test("org.apache.commons.math3.random.RandomDataGenerator", 1, 0.928, 1, 1, 1, 1);
   }
 
   @Test
   public void testArithmeticUtils() throws Exception {
-    test("org.apache.commons.math3.util.ArithmeticUtils", 1, 0.631, 1, 0, 1, 1);
+    test("org.apache.commons.math3.util.ArithmeticUtils", 1, 0.947, 1, 0.666, 1, 1);
   }
 
   @Test
