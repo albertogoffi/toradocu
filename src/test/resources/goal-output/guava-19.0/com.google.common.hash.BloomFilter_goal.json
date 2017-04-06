@@ -389,7 +389,7 @@
       },
       {
         "comment": "the desired false positive probability (must be positive and less than 1.0)",
-        "condition": "args[2]>0 || args[2]<1.0",
+        "condition": "args[2]>0 && args[2]<1.0",
         "kind": "PARAM",
         "parameter": {
           "name": "fpp",
@@ -478,7 +478,7 @@
       },
       {
         "comment": "the desired false positive probability (must be positive and less than 1.0)",
-        "condition": "args[2]>0 || args[2]<1.0",
+        "condition": "args[2]>0 && args[2]<1.0",
         "kind": "PARAM",
         "parameter": {
           "name": "fpp",
