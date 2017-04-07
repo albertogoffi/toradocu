@@ -192,9 +192,9 @@ public class ConditionTranslator {
   }
 
   private static final String INEQUALITY_NUMBER_REGEX =
-      " *((([<>=]=?)|(!=)) ?)-?([0-9]+|zero|one|two|three|four|five|six|seven|eight|nine)";
+      " *((([<>=]=?)|(!=)) ?)-?([0-9]+(?!/)(.[0-9]+)?|zero|one|two|three|four|five|six|seven|eight|nine)";
   private static final String INEQUALITY_VAR_REGEX =
-      " *((([<>=]=?)|(!=)) ?)(?!this)(([a-zA-Z0-9]+_?(?! ))+(.[a-zA-Z0-9]+(\\(*\\))?)?)";
+      " *((([<>=]=?)|(!=)) ?)(?!this)((([a-zA-Z]+([0-9]?))+_?(?! ))+(.([a-zA-Z]+([0-9]?))+(\\(*\\))?)?)";
   private static final String PLACEHOLDER_PREFIX = " INEQUALITY_";
   private static final String INEQ_INSOF = " *[an]* (instance of)"; // e.g "an instance of"
   private static final String INEQ_INSOFPROCESSED =
