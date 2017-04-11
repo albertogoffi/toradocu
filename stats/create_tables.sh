@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # This script takes no input and produces latex tables reporting subjects and precision/recall values.
 # Generated tables are saved in the path indicated by variable $SUBJECTS_TABLE.
@@ -61,12 +61,12 @@ POST[1]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/commons-m
 EXC_POST[1]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/commons-math3-3.6.1)
 
 # Collect info for FreeCol
-CLASSES[2]=$(numberOfClasses src/test/resources/src/freecol-0.11.6/src/)
-SELECTED_CLASSES[2]=$(numberOfAnalyzedClasses src/test/java/org/toradocu/PrecisionRecallFreeCol.java)
-METHODS[2]=$(numberOfAnalyzedMethods net.sf.freecol)
-PRE[2]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/freecol-0.11.6)
-POST[2]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/freecol-0.11.6)
-EXC_POST[2]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/freecol-0.11.6)
+# CLASSES[2]=$(numberOfClasses src/test/resources/src/freecol-0.11.6/src/)
+# SELECTED_CLASSES[2]=$(numberOfAnalyzedClasses src/test/java/org/toradocu/PrecisionRecallFreeCol.java)
+# METHODS[2]=$(numberOfAnalyzedMethods net.sf.freecol)
+# PRE[2]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/freecol-0.11.6)
+# POST[2]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/freecol-0.11.6)
+# EXC_POST[2]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/freecol-0.11.6)
 
 # Collect info for Guava
 CLASSES[3]=$(numberOfClasses src/test/resources/src/guava-19.0-sources)
@@ -93,12 +93,12 @@ POST[5]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/plume-lib
 EXC_POST[5]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/plume-lib-1.1.0)
 
 # Collect info for GraphStream
-CLASSES[6]=$(numberOfClasses src/test/resources/src/gs-core-1.3-sources)
-SELECTED_CLASSES[6]=$(numberOfAnalyzedClasses src/test/java/org/toradocu/PrecisionRecallGraphStream.java)
-METHODS[6]=$(numberOfAnalyzedMethods org.graphstream)
-PRE[6]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/gs-core-1.3)
-POST[6]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/gs-core-1.3)
-EXC_POST[6]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/gs-core-1.3)
+# CLASSES[6]=$(numberOfClasses src/test/resources/src/gs-core-1.3-sources)
+# SELECTED_CLASSES[6]=$(numberOfAnalyzedClasses src/test/java/org/toradocu/PrecisionRecallGraphStream.java)
+# METHODS[6]=$(numberOfAnalyzedMethods org.graphstream)
+# PRE[6]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/gs-core-1.3)
+# POST[6]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/gs-core-1.3)
+# EXC_POST[6]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/gs-core-1.3)
 
 # Compute totals
 TOTAL[0]=$(arraySum CLASSES)
@@ -113,10 +113,10 @@ echo 'Commons Collections 4.1 \\newline\n\\footnotesize\\url{https://commons.apa
      '& '${CLASSES[0]}' & '${SELECTED_CLASSES[0]}' & '${METHODS[0]}' & '${PRE[0]}' & '${POST[0]}' & '${EXC_POST[0]}' \\\\' > "$SUBJECTS_TABLE"
 echo 'Commons Math 3.6.1 \\newline\n\\footnotesize\\url{https://commons.apache.org/math}' \
      '& '${CLASSES[1]}' & '${SELECTED_CLASSES[1]}' & '${METHODS[1]}' & '${PRE[1]}' & '${POST[1]}' & '${EXC_POST[1]}' \\\\' >> "$SUBJECTS_TABLE"
-echo 'FreeCol 0.11.6 \\newline\n\\footnotesize\\url{http://www.freecol.org}' \
-     '& '${CLASSES[2]}' & '${SELECTED_CLASSES[2]}' & '${METHODS[2]}' & '${PRE[2]}' & '${POST[2]}' & '${EXC_POST[2]}' \\\\' >> "$SUBJECTS_TABLE"
-echo 'GraphStream 1.3 \\newline\n\\footnotesize\\url{http://graphstream-project.org}' \
-     '& '${CLASSES[6]}' & '${SELECTED_CLASSES[6]}' & '${METHODS[6]}' & '${PRE[6]}' & '${POST[6]}' & '${EXC_POST[6]}' \\\\' >> "$SUBJECTS_TABLE"
+#echo 'FreeCol 0.11.6 \\newline\n\\footnotesize\\url{http://www.freecol.org}' \
+#     '& '${CLASSES[2]}' & '${SELECTED_CLASSES[2]}' & '${METHODS[2]}' & '${PRE[2]}' & '${POST[2]}' & '${EXC_POST[2]}' \\\\' >> "$SUBJECTS_TABLE"
+#echo 'GraphStream 1.3 \\newline\n\\footnotesize\\url{http://graphstream-project.org}' \
+#     '& '${CLASSES[6]}' & '${SELECTED_CLASSES[6]}' & '${METHODS[6]}' & '${PRE[6]}' & '${POST[6]}' & '${EXC_POST[6]}' \\\\' >> "$SUBJECTS_TABLE"
 echo 'Guava 19 \\newline\n\\footnotesize\\url{http://github.com/google/guava}' \
      '& '${CLASSES[3]}' & '${SELECTED_CLASSES[3]}' & '${METHODS[3]}' & '${PRE[3]}' & '${POST[3]}' & '${EXC_POST[3]}' \\\\' >> "$SUBJECTS_TABLE"
 echo 'JGraphT 0.9.2 \\newline\n\\footnotesize\\url{http://jgrapht.org}' \
@@ -131,17 +131,22 @@ echo "Created table: $SUBJECTS_TABLE"
 # Crate results table
 echo "Creating results table..."
 
-cat results_tcomment.csv | tail -r | tail -n +15 | tail -r > results_tcomment_truncated.csv
+TAC="tac"
+if [ `uname` == "Darwin" ]; then
+    TAC="tail -r"
+fi
+
+cat results_tcomment.csv | $TAC | tail -n +15 | $TAC > results_tcomment_truncated.csv
 echo '@tComment & '`python stats/results_table.py results_tcomment_truncated.csv` > "$RESULTS_TABLE"
 rm results_tcomment_truncated.csv
 
-cat results_toradocu.csv | tail -r | tail -n +6 | tail -r | tail -n +2 > results_toradocu_truncated.csv
+cat results_toradocu.csv | $TAC | tail -n +6 | $TAC | tail -n +2 > results_toradocu_truncated.csv
 echo '"METHOD","CORRECT THROWS CONDITIONS","WRONG THROWS CONDITIONS","MISSING THROWS CONDITIONS"' > results_toradocu_truncated2.csv
 cat results_toradocu_truncated.csv >> results_toradocu_truncated2.csv
-echo 'Toradocu & '`python stats/results_table.py results_toradocu_truncated2.csv` >> "$RESULTS_TABLE"
+echo '\OldToradocu & '`python stats/results_table.py results_toradocu_truncated2.csv` >> "$RESULTS_TABLE"
 rm results_toradocu_truncated.csv results_toradocu_truncated2.csv
 
-cat results_current.csv | tail -r | tail -n +15 | tail -r > results_current_truncated.csv
+cat results_current.csv | $TAC | tail -n +15 | $TAC > results_current_truncated.csv
 echo '\ToradocuPlus & '`python stats/results_table.py results_current_truncated.csv` >> "$RESULTS_TABLE"
 rm results_current_truncated.csv
 

@@ -25,6 +25,9 @@ fi
 if [ -f $STATS_FILE ]; then
     rm -i $STATS_FILE # Remove old stats file (if user agrees)
 fi
+if [ -f $STATS_FILE_TO_SAVE ]; then
+    rm -i $STATS_FILE_TO_SAVE # Remove old stats file (if user agrees)
+fi
 
 if [ ! -f $STATS_FILE ]; then
         echo "METHOD,DISTANCE THRESHOLD,REMOVAL COST,\
@@ -35,7 +38,8 @@ CORRECT CONDITIONS,WRONG CONDITIONS,MISSING CONDITIONS,PRECISION,RECALL" > $STAT
 fi
 
 # Run Toradocu and collect statistics
-eval $COMMAND
+eval "$COMMAND"
+
 echo "TOTAL,,,\
 =SUM(D1:INDIRECT(\"D\" & ROW()-1)),=SUM(E1:INDIRECT(\"E\" & ROW()-1)),=SUM(F1:INDIRECT(\"F\" & ROW()-1)),,,\
 =SUM(I1:INDIRECT(\"I\" & ROW()-1)),=SUM(J1:INDIRECT(\"J\" & ROW()-1)),=SUM(K1:INDIRECT(\"K\" & ROW()-1)),,,\
