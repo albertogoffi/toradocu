@@ -4,6 +4,19 @@
 
 # Troadocu precision/recall results
 results.csv
+results_current.csv
+results_tcomment.csv
+results_toradocu.csv
+config_check_results.csv
+
+# Scripts for code formatting
+/.run-google-java-format/
+
+# Generated latex tables
+/latex_tables/
+
+# Generated Randoop specifications
+/randoop-specs/
 
 # Toradocu's test resources (downloaded automatically on gradle test)
 /src/test/resources/*.zip
@@ -15,6 +28,7 @@ results.csv
 !/src/test/resources/FreeCol
 !/src/test/resources/JGrapht-0.9.2
 !/src/test/resources/PlumeLib-1.1.0
+/converted-goal-files/
 
 # Emacs backup files
 *~
