@@ -32,6 +32,12 @@ dependencies {
 	testCompile 'junit:junit:4.12'
 }
 
+/* Disable unneeded tasks. */
+startScripts.enabled = false
+distZip.enabled = false
+distTar.enabled = false
+assemble.enabled = false
+
 task wrapper(type: Wrapper) {
 	gradleVersion = '3.2.1'
 }
