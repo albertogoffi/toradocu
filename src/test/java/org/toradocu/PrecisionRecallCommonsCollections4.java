@@ -48,7 +48,7 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testFixedOrderComparator() throws Exception {
-    test("org.apache.commons.collections4.comparators.FixedOrderComparator", 1, 0.571, 1, 1, 1, 0);
+    test("org.apache.commons.collections4.comparators.FixedOrderComparator", 1, 0.571, 1, 1, 1, 1);
   }
 
   @Test
@@ -58,7 +58,7 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testFluentIterable() throws Exception {
-    test("org.apache.commons.collections4.FluentIterable", 1, 0.866, 1, 1, 1, 0);
+    test("org.apache.commons.collections4.FluentIterable", 1, 0.866, 1, 1, 1, 1);
   }
 
   @Test
