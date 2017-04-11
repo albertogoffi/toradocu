@@ -6,11 +6,11 @@
 # Parse command line argument and set variables
 if [ $# -eq 1 ]; then
     if [ "$1" = "current" ]; then
-	COMMAND='./gradlew test --tests "org.toradocu.PrecisionRecall*"'
+	COMMAND="./gradlew test --tests org.toradocu.PrecisionRecall*"
 	STATS_FILE=results.csv
 	STATS_FILE_TO_SAVE=results_current.csv
     elif [ "$1" = "tcomment" ]; then
-	COMMAND='./gradlew -Dorg.toradocu.translator=tcomment test --tests "org.toradocu.PrecisionRecall*"'
+	COMMAND="./gradlew -Dorg.toradocu.translator=tcomment test --tests org.toradocu.PrecisionRecall*"
 	STATS_FILE=tcomment_results.csv
 	STATS_FILE_TO_SAVE=results_tcomment.csv
     else
@@ -38,7 +38,7 @@ CORRECT CONDITIONS,WRONG CONDITIONS,MISSING CONDITIONS,PRECISION,RECALL" > $STAT
 fi
 
 # Run Toradocu and collect statistics
-eval "$COMMAND"
+$COMMAND
 
 echo "TOTAL,,,\
 =SUM(D1:INDIRECT(\"D\" & ROW()-1)),=SUM(E1:INDIRECT(\"E\" & ROW()-1)),=SUM(F1:INDIRECT(\"F\" & ROW()-1)),,,\
