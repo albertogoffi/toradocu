@@ -34,7 +34,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testComplex() throws Exception {
-    test("org.apache.commons.math3.complex.Complex", 0.5, 0.5, 1, 1, 1, 0);
+    test("org.apache.commons.math3.complex.Complex", 0.5, 0.5, 1, 1, 1, 1);
   }
 
   @Test

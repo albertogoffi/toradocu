@@ -56,7 +56,7 @@ public class PrecisionRecallJGraphT extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testDirectedAcyclicGraph() throws Exception {
-    test("org.jgrapht.experimental.dag.DirectedAcyclicGraph", 1, 0.428, 1, 1, 1, 0);
+    test("org.jgrapht.experimental.dag.DirectedAcyclicGraph", 1, 0.428, 1, 1, 1, 1);
   }
 
   @Test
