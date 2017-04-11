@@ -137,13 +137,13 @@ if [ `uname` == "Darwin" ]; then
 fi
 
 cat results_tcomment.csv | $TAC | tail -n +15 | $TAC > results_tcomment_truncated.csv
-echo '@tComment & '`python stats/results_table.py results_tcomment_truncated.csv` > "$RESULTS_TABLE"
+echo '@tComment     & '`python stats/results_table.py results_tcomment_truncated.csv` > "$RESULTS_TABLE"
 rm results_tcomment_truncated.csv
 
 cat results_toradocu.csv | $TAC | tail -n +6 | $TAC | tail -n +2 > results_toradocu_truncated.csv
 echo '"METHOD","CORRECT THROWS CONDITIONS","WRONG THROWS CONDITIONS","MISSING THROWS CONDITIONS"' > results_toradocu_truncated2.csv
 cat results_toradocu_truncated.csv >> results_toradocu_truncated2.csv
-echo '\OldToradocu & '`python stats/results_table.py results_toradocu_truncated2.csv` >> "$RESULTS_TABLE"
+echo '\OldToradocu  & '`python stats/results_table.py results_toradocu_truncated2.csv` >> "$RESULTS_TABLE"
 rm results_toradocu_truncated.csv results_toradocu_truncated2.csv
 
 cat results_current.csv | $TAC | tail -n +15 | $TAC > results_current_truncated.csv
