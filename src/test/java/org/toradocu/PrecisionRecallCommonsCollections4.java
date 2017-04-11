@@ -68,7 +68,7 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testAllPredicate() throws Exception {
-    test("org.apache.commons.collections4.functors.AllPredicate", 1, 0.75, 0.333, 0.333, 1, 1);
+    test("org.apache.commons.collections4.functors.AllPredicate", 1, 0.75, 0.666, 0.666, 1, 1);
   }
 
   @Test
@@ -78,6 +78,6 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testAnyPredicate() throws Exception {
-    test("org.apache.commons.collections4.functors.AnyPredicate", 1, 0.75, 0.333, 0.333, 1, 1);
+    test("org.apache.commons.collections4.functors.AnyPredicate", 1, 0.75, 1, 1, 1, 1);
   }
 }
