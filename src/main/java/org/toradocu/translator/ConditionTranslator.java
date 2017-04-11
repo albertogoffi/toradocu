@@ -1,6 +1,9 @@
 package org.toradocu.translator;
 
+import edu.stanford.nlp.ling.HasWord;
+import edu.stanford.nlp.process.DocumentPreprocessor;
 import edu.stanford.nlp.semgraph.SemanticGraph;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,6 +20,7 @@ import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.ParamTag;
+import org.toradocu.extractor.Parameter;
 import org.toradocu.extractor.Tag;
 import org.toradocu.extractor.ThrowsTag;
 
@@ -47,16 +51,46 @@ public class ConditionTranslator {
    * each sentence in the comment.
    *
    * @param comment the text of a Javadoc comment
+   * @param method the DocumentedMethod under analysis
    * @return a list of {@code PropositionSeries} objects, one for each sentence in the comment
    */
-  private static List<PropositionSeries> getPropositionSeries(String comment) {
+  private static List<PropositionSeries> getPropositionSeries(
+      String comment, DocumentedMethod method) {
     comment = addPlaceholders(comment);
     List<PropositionSeries> result = new ArrayList<>();
-    for (SemanticGraph semanticGraph : StanfordParser.getSemanticGraphs(comment)) {
+
+    for (SemanticGraph semanticGraph : customPOStag(comment, method))
       result.add(new SentenceParser(semanticGraph).getPropositionSeries());
-    }
 
     return removePlaceholders(result);
+  }
+
+  /**
+   * Before asking for the SemanticGraph to the parser, manually tag code elements as NN and
+   * inequalities placehodlers as JJ
+   *
+   * @param comment the String comment of the condition
+   * @param method the DocumentedMethod under analysis
+   * @return the list of SemanticGraphs produced by the parser
+   */
+  private static List<SemanticGraph> customPOStag(String comment, DocumentedMethod method) {
+    Iterable<List<HasWord>> hasWordComment = new DocumentPreprocessor(new StringReader(comment));
+
+    ArrayList<List<HasWord>> sentences = new ArrayList<List<HasWord>>();
+    hasWordComment.forEach(sentences::add);
+    List<SemanticGraph> result = new ArrayList<SemanticGraph>();
+    List<HasWord> codeElements = new ArrayList<HasWord>();
+    List<String> arguments = new ArrayList<String>();
+
+    for (Parameter arg : method.getParameters()) arguments.add(arg.getName());
+
+    for (List<HasWord> sentence : sentences) {
+      for (HasWord word : sentence) if (arguments.contains(word.toString())) codeElements.add(word);
+
+      result.add(CustomStanfordParser.getSemanticGraph(sentence, codeElements));
+    }
+
+    return result;
   }
 
   /**
@@ -158,9 +192,9 @@ public class ConditionTranslator {
   }
 
   private static final String INEQUALITY_NUMBER_REGEX =
-      " *((([<>=]=?)|(!=)) ?)-?([0-9]+|zero|one|two|three|four|five|six|seven|eight|nine)";
+      " *((([<>=]=?)|(!=)) ?)-?([0-9]+(?!/)(.[0-9]+)?|zero|one|two|three|four|five|six|seven|eight|nine)";
   private static final String INEQUALITY_VAR_REGEX =
-      " *((([<>=]=?)|(!=)) ?)(?!this)(([a-zA-Z]+_?)+(.[a-zA-Z0-9]+(\\(*\\))?)?)";
+      " *((([<>=]=?)|(!=)) ?)(?!this)((([a-zA-Z]+([0-9]?))+_?(?! ))+(.([a-zA-Z]+([0-9]?))+(\\(*\\))?)?)";
   private static final String PLACEHOLDER_PREFIX = " INEQUALITY_";
   private static final String INEQ_INSOF = " *[an]* (instance of)"; // e.g "an instance of"
   private static final String INEQ_INSOFPROCESSED =
@@ -492,7 +526,7 @@ public class ConditionTranslator {
     if (tag.getKind() == Tag.Kind.PARAM || tag.getKind() == Tag.Kind.THROWS) {
       // Identify propositions in the comment. Each sentence in the comment is parsed into a
       // PropositionSeries.
-      List<PropositionSeries> extractedPropositions = getPropositionSeries(comment);
+      List<PropositionSeries> extractedPropositions = getPropositionSeries(comment, method);
       Set<String> conditions = new LinkedHashSet<>();
       // Identify Java code elements in propositions.
       for (PropositionSeries propositions : extractedPropositions) {
@@ -616,7 +650,7 @@ public class ConditionTranslator {
     // PropositionSeries.
 
     text = removeInitial(text, "if");
-    List<PropositionSeries> extractedPropositions = getPropositionSeries(text);
+    List<PropositionSeries> extractedPropositions = getPropositionSeries(text, method);
     Set<String> conditions = new LinkedHashSet<>();
     // Identify Java code elements in propositions.
     for (PropositionSeries propositions : extractedPropositions) {

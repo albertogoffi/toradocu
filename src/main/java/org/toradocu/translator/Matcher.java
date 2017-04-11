@@ -298,11 +298,12 @@ class Matcher {
     java.util.regex.Matcher inequalityNumber =
         Pattern.compile(
                 verbs
-                    + "(<=|>=|<|>|!=|==|=)? ?(-?([0-9]+|zero|one|two|three|four|five|six|seven|eight|nine))")
+                    + "(<=|>=|<|>|!=|==|=)? ?(-?([0-9]+(.[0-9]+)?|zero|one|two|three|four|five|six|seven|eight|nine))")
             .matcher(predicate);
 
     java.util.regex.Matcher inequalityVar =
-        Pattern.compile(verbs + "(<=|>=|<|>|!=|==|=) ?(([a-zA-Z0-9]+_?)+)").matcher(predicate);
+        Pattern.compile(verbs + "(<=|>=|<|>|!=|==|=) ?((([a-zA-Z]+[0-9]?)+_?)+)")
+            .matcher(predicate);
 
     java.util.regex.Matcher instanceOf = Pattern.compile("(instanceof) (.*)").matcher(predicate);
 
@@ -369,19 +370,30 @@ class Matcher {
       }
     } else if (inequalityNumber.find()) {
       // Get the number from the last group of the regular expression.
-      String numberString = inequalityNumber.group(inequalityNumber.groupCount());
+      String numberString = inequalityNumber.group(3);
       // Get the symbol from the regular expression.
       String relation = inequalityNumber.group(2);
       String numberWord = numberWordToDigit(numberString);
-      int number =
-          (!numberWord.equals(""))
-              ? number = Integer.parseInt(numberWord)
-              : Integer.parseInt(numberString);
+
+      int intNumber = 0;
+      float floatNumber = 0;
+      boolean isIntNumber = false;
+
+      if (!numberString.contains(".")) { //the number is an int
+        intNumber =
+            (!numberWord.equals(""))
+                ? intNumber = Integer.parseInt(numberWord)
+                : Integer.parseInt(numberString);
+
+        isIntNumber = true;
+      } else {
+        floatNumber = Float.parseFloat(numberString);
+      }
       // relation is null in predicates without inequalities. For example "is 0".
       if (relation == null || relation.equals("=")) {
-        predicateTranslation = "==" + number;
+        predicateTranslation = (isIntNumber) ? ("==" + intNumber) : ("==" + floatNumber);
       } else {
-        predicateTranslation = relation + number;
+        predicateTranslation = (isIntNumber) ? (relation + intNumber) : (relation + floatNumber);
       }
     } else if (inequalityVar.find()) {
       // Get the variable from the last group of the regular expression.

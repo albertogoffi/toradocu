@@ -55,7 +55,10 @@ compileJava {
 test {
   // Print standard output during tests execution.
   testLogging {
-    events = ['STANDARD_OUT']
+    showExceptions = true
+    showCauses = true
+    showStackTraces = true
+    events = ['FAILED', 'STANDARD_OUT', 'STANDARD_ERROR']
   }
 }
 
@@ -80,7 +83,7 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '3.2.1'
+  gradleVersion = '3.5'
 }
 
 /* Copy resources needed for doclet API to build directory after compilation. */

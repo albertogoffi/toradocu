@@ -50,7 +50,7 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testBloomFilter() throws Exception {
-    test("com.google.common.hash.BloomFilter", 0.5, 0.5, 0.777, 0.777, 1, 1);
+    test("com.google.common.hash.BloomFilter", 0.5, 0.5, 1, 1, 1, 1);
   }
 
   @Test
