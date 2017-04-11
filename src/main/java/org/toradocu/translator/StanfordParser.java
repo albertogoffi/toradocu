@@ -1,40 +1,44 @@
 package org.toradocu.translator;
 
-import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
-import edu.stanford.nlp.pipeline.Annotation;
-import edu.stanford.nlp.pipeline.StanfordCoreNLP;
+import static java.util.stream.Collectors.toList;
+
+import edu.stanford.nlp.ling.HasWord;
+import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
+import edu.stanford.nlp.process.DocumentPreprocessor;
 import edu.stanford.nlp.semgraph.SemanticGraph;
-import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation;
-import edu.stanford.nlp.util.CoreMap;
+import edu.stanford.nlp.trees.GrammaticalStructure;
+import edu.stanford.nlp.trees.GrammaticalStructureFactory;
+import edu.stanford.nlp.trees.Tree;
+import edu.stanford.nlp.trees.TreebankLanguagePack;
+import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
-import java.util.Map;
-import java.util.Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
+import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.Parameter;
 
 /**
  * This class provides a method to get the semantic graph of a sentence produced by the Stanford
  * parser. To optimize execution time, the Stanford parser is initialized once in the static block
  * to ensure that its initialization phase is done only once.
  */
-public class StanfordParser {
+class StanfordParser {
 
-  private static final StanfordCoreNLP pipeline;
-  private static final Map<String, List<SemanticGraph>> cache;
+  private static final LexicalizedParser LEXICALIZED_PARSER;
+  private static final GrammaticalStructureFactory GSF;
   private static final Logger log = LoggerFactory.getLogger(StanfordParser.class);
 
   static {
-    // Creates a StanfordCoreNLP object, with POS tagging, lemmatization, NER, parsing, and
-    // coreference resolution.
-    Properties props = new Properties();
-    // Complete annotations list was "tokenize, ssplit, pos, lemma, ner, parse, dcoref".
-    props.setProperty("annotators", "tokenize, ssplit, parse");
-    pipeline = new StanfordCoreNLP(props);
-
-    cache = new Hashtable<>();
+    LEXICALIZED_PARSER = LexicalizedParser.loadModel();
+    // tlp is the PennTreebankLanguagePack for English.
+    TreebankLanguagePack tlp = LEXICALIZED_PARSER.treebankLanguagePack();
+    if (!tlp.supportsGrammaticalStructures()) {
+      throw new RuntimeException(
+          "Error in the Stanford Parser configuration. Are models available?");
+    }
+    GSF = tlp.grammaticalStructureFactory();
   }
 
   /**
@@ -43,33 +47,55 @@ public class StanfordParser {
    * @param text the text to return the semantic graphs for
    * @return a list of semantic graphs, one for each sentence in the text
    */
-  public static List<SemanticGraph> getSemanticGraphs(String text) {
-    if (cache.containsKey(text)) {
-      return cache.get(text);
-    }
+  static List<SemanticGraph> getSemanticGraphs(String text) {
+    return getSemanticGraphs(text, null);
+  }
 
+  /**
+   * Before asking for the SemanticGraph to the parser, manually tag code elements as NN and
+   * inequalities placeholders as JJ.
+   *
+   * @param comment the String comment of the condition
+   * @param method the DocumentedMethod under analysis
+   * @return the list of SemanticGraphs produced by the parser
+   */
+  static List<SemanticGraph> getSemanticGraphs(String comment, DocumentedMethod method) {
+    Iterable<List<HasWord>> hasWordComment = new DocumentPreprocessor(new StringReader(comment));
+
+    ArrayList<List<HasWord>> sentences = new ArrayList<>();
+    hasWordComment.forEach(sentences::add);
     List<SemanticGraph> result = new ArrayList<>();
+    List<HasWord> codeElements = new ArrayList<>();
+    List<String> arguments = new ArrayList<>();
 
-    // Create an empty Annotation just with the given text.
-    Annotation document = new Annotation(text);
-    // Run all Annotators on this text.
-    pipeline.annotate(document);
-    // Retrieve sentences in text.
-    List<CoreMap> sentences = document.get(SentencesAnnotation.class);
-    // Add semantic graph for each sentence to result.
-    for (CoreMap sentence : sentences) {
-      result.add(sentence.get(CollapsedCCProcessedDependenciesAnnotation.class));
-      if (Toradocu.configuration != null && Toradocu.configuration.debug()) {
-        log.debug(
-            "Input sentence: "
-                + sentence
-                + "\n"
-                + "Semantic Graph:\n"
-                + result.get(result.size() - 1));
-      }
+    if (method != null) {
+      arguments = method.getParameters().stream().map(Parameter::getName).collect(toList());
     }
 
-    cache.put(text, result);
+    for (List<HasWord> sentence : sentences) {
+      for (HasWord word : sentence) {
+        if (arguments.contains(word.toString())) {
+          codeElements.add(word);
+        }
+      }
+
+      result.add(getSemanticGraph(sentence, codeElements));
+    }
     return result;
+  }
+
+  private static SemanticGraph getSemanticGraph(
+      List<HasWord> sentence, List<HasWord> codeElements) {
+    // Parse the sentence.
+    Tree tree = LEXICALIZED_PARSER.parse(new POSTagger().tagWords(sentence, codeElements));
+    GrammaticalStructure gs = GSF.newGrammaticalStructure(tree);
+    // Build the semantic graph.
+    SemanticGraph semanticGraph = new SemanticGraph(gs.typedDependenciesCCprocessed());
+
+    if (Toradocu.configuration != null && Toradocu.configuration.debug()) {
+      log.debug("Input sentence: " + sentence + "\nSemantic Graph:\n" + semanticGraph);
+    }
+
+    return semanticGraph;
   }
 }
