@@ -59,12 +59,12 @@ overall_missing = missing_param + missing_return + missing_throws
 overall_wrong = wrong_param + wrong_return + wrong_throws
 overall_precision = 0 if overall_correct == 0 else float(overall_correct) / (overall_correct + overall_wrong)
 overall_recall = 0 if overall_correct == 0 else float(overall_correct) / (overall_correct + overall_wrong + overall_missing)
+fmeasure = (2 * overall_precision * overall_recall) / (overall_precision + overall_recall)
 
-output = "{:.2f}" if (correct_param + wrong_param) > 0 else "n.a." # param_precision
-output += " & {:.2f} && " # param_recall
-output += "{:.2f}" if (correct_return + wrong_return) > 0 else "n.a." # return_precision
-output += " & {:.2f} && " # return_recall
-output += "{:.2f}" if (correct_throws + wrong_throws) > 0 else "n.a." # throws_precision
-output += " & {:.2f} && {:.2f} & {:.2f} & \\tdq \\\\" # throws_recall + overall precision and recall
-
-print output.format(param_precision, param_recall, return_precision, return_recall, throws_precision, throws_recall, overall_precision, overall_recall)
+output = "{:.2f}".format(param_precision) if (correct_param + wrong_param) > 0 else "n.a." # param_precision
+output += " & {:.2f} && ".format(param_recall) # param_recall
+output += "{:.2f}".format(return_precision) if (correct_return + wrong_return) > 0 else "n.a." # return_precision
+output += " & {:.2f} && ".format(return_recall) # return_recall
+output += "{:.2f}".format(throws_precision) if (correct_throws + wrong_throws) > 0 else "n.a." # throws_precision
+output += " & {:.2f} && {:.2f} & {:.2f} & {:.2f} \\\\".format(throws_recall, overall_precision, overall_recall, fmeasure) # throws_recall,  overall precision, recall, and fmeasure
+print output
