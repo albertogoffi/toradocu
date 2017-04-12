@@ -109,22 +109,22 @@ TOTAL[4]=$(arraySum POST)
 TOTAL[5]=$(arraySum EXC_POST)
 
 # Create the table
-echo 'Commons Collections 4.1 \\newline\n\\footnotesize\\url{https://commons.apache.org/collections}' \
-     '& '${CLASSES[0]}' & '${SELECTED_CLASSES[0]}' & '${METHODS[0]}' & '${PRE[0]}' & '${POST[0]}' & '${EXC_POST[0]}' \\\\' > "$SUBJECTS_TABLE"
-echo 'Commons Math 3.6.1 \\newline\n\\footnotesize\\url{https://commons.apache.org/math}' \
-     '& '${CLASSES[1]}' & '${SELECTED_CLASSES[1]}' & '${METHODS[1]}' & '${PRE[1]}' & '${POST[1]}' & '${EXC_POST[1]}' \\\\' >> "$SUBJECTS_TABLE"
+echo 'Commons Collections 4.1 \newline\footnotesize\url{https://commons.apache.org/collections}' \
+     '& '${CLASSES[0]}' & '${SELECTED_CLASSES[0]}' & \tdq & '${METHODS[0]}' & '${PRE[0]}' & '${POST[0]}' & '${EXC_POST[0]}' \\' > "$SUBJECTS_TABLE"
+echo 'Commons Math 3.6.1 \newline\footnotesize\url{https://commons.apache.org/math}' \
+     '& '${CLASSES[1]}' & '${SELECTED_CLASSES[1]}' & \tdq & '${METHODS[1]}' & '${PRE[1]}' & '${POST[1]}' & '${EXC_POST[1]}' \\' >> "$SUBJECTS_TABLE"
 #echo 'FreeCol 0.11.6 \\newline\n\\footnotesize\\url{http://www.freecol.org}' \
 #     '& '${CLASSES[2]}' & '${SELECTED_CLASSES[2]}' & '${METHODS[2]}' & '${PRE[2]}' & '${POST[2]}' & '${EXC_POST[2]}' \\\\' >> "$SUBJECTS_TABLE"
 #echo 'GraphStream 1.3 \\newline\n\\footnotesize\\url{http://graphstream-project.org}' \
 #     '& '${CLASSES[6]}' & '${SELECTED_CLASSES[6]}' & '${METHODS[6]}' & '${PRE[6]}' & '${POST[6]}' & '${EXC_POST[6]}' \\\\' >> "$SUBJECTS_TABLE"
-echo 'Guava 19 \\newline\n\\footnotesize\\url{http://github.com/google/guava}' \
-     '& '${CLASSES[3]}' & '${SELECTED_CLASSES[3]}' & '${METHODS[3]}' & '${PRE[3]}' & '${POST[3]}' & '${EXC_POST[3]}' \\\\' >> "$SUBJECTS_TABLE"
-echo 'JGraphT 0.9.2 \\newline\n\\footnotesize\\url{http://jgrapht.org}' \
-     '& '${CLASSES[4]}' & '${SELECTED_CLASSES[4]}' & '${METHODS[4]}' & '${PRE[4]}' & '${POST[4]}' & '${EXC_POST[4]}' \\\\' >> "$SUBJECTS_TABLE"
-echo 'Plume-lib 1.1 \\newline\n\\footnotesize\\url{http://mernst.github.io/plume-lib}' \
-     '& '${CLASSES[5]}' & '${SELECTED_CLASSES[5]}' & '${METHODS[5]}' & '${PRE[5]}' & '${POST[5]}' & '${EXC_POST[5]}' \\\\' >> "$SUBJECTS_TABLE"
-echo '\\midrule' >> "$SUBJECTS_TABLE"
-echo 'Total & '${TOTAL[0]}' & '${TOTAL[1]}' & '${TOTAL[2]}' & '${TOTAL[3]}' & '${TOTAL[4]}' & '${TOTAL[5]}' \\\\' >> "$SUBJECTS_TABLE"
+echo 'Guava 19 \newline\footnotesize\url{http://github.com/google/guava}' \
+     '& '${CLASSES[3]}' & '${SELECTED_CLASSES[3]}' & \tdq & '${METHODS[3]}' & '${PRE[3]}' & '${POST[3]}' & '${EXC_POST[3]}' \\' >> "$SUBJECTS_TABLE"
+echo 'JGraphT 0.9.2 \newline\footnotesize\url{http://jgrapht.org}' \
+     '& '${CLASSES[4]}' & '${SELECTED_CLASSES[4]}' & \tdq & '${METHODS[4]}' & '${PRE[4]}' & '${POST[4]}' & '${EXC_POST[4]}' \\' >> "$SUBJECTS_TABLE"
+echo 'Plume-lib 1.1 \newline\footnotesize\url{http://mernst.github.io/plume-lib}' \
+     '& '${CLASSES[5]}' & '${SELECTED_CLASSES[5]}' & \tdq & '${METHODS[5]}' & '${PRE[5]}' & '${POST[5]}' & '${EXC_POST[5]}' \\' >> "$SUBJECTS_TABLE"
+echo '\midrule' >> "$SUBJECTS_TABLE"
+echo 'Total & '${TOTAL[0]}' & '${TOTAL[1]}' & \tdq & '${TOTAL[2]}' & '${TOTAL[3]}' & '${TOTAL[4]}' & '${TOTAL[5]}' \\' >> "$SUBJECTS_TABLE"
 
 echo "Created table: $SUBJECTS_TABLE"
 
