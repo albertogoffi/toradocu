@@ -37,6 +37,7 @@ public class PrecisionRecallTest {
           "-J-sourcepath=" + srcPath,
           "-J-docletpath=build/classes/main",
           "-J-d=tmp",
+	  "-J-encoding=UTF-8",
           "-J-quiet="
         });
     return compare(actualOutputFile, expectedOutputFile);
