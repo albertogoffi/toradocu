@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class PrecisionRecallJGraphT extends AbstractPrecisionRecallTestSuite {
 
-  private static final String JGRAPHT_SRC = "src/test/resources/JGrapht";
+  private static final String JGRAPHT_SRC = "src/test/resources/JGraphT";
   private static final String JGRAPHT_EXPECTED_DIR = "src/test/resources/JGrapht-0.9.2/";
 
   @Test
