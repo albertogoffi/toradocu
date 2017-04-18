@@ -167,14 +167,23 @@ echo "Created table: $RESULTS_TABLE"
 
 # Create macros
 echo "Creating macros..."
+
 echo '\newcommand{\tCommentPrecision}{'`fgrep @tComment "$RESULTS_TABLE" | cut -d "&" -f 11 | xargs | cut -d "." -f 2`'\%\xspace}' > "$MACROS" # xargs trims whitespaces
 echo '\newcommand{\tCommentRecall}{'`fgrep @tComment "$RESULTS_TABLE" | cut -d "&" -f 12 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
 echo '\newcommand{\tCommentFMeasure}{'`fgrep @tComment "$RESULTS_TABLE" | cut -d "&" -f 13 | xargs | cut -d ' ' -f 1 | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
+
 echo '\newcommand{\OldToradocuPrecision}{'`fgrep \OldToradocu "$RESULTS_TABLE" | cut -d "&" -f 11 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
 echo '\newcommand{\OldToradocuRecall}{'`fgrep \OldToradocu "$RESULTS_TABLE" | cut -d "&" -f 12 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
 echo '\newcommand{\OldToradocuFMeasure}{'`fgrep \OldToradocu "$RESULTS_TABLE" | cut -d "&" -f 13 | xargs | cut -d ' ' -f 1 | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
+
 echo '\newcommand{\ToradocuPlusPrecision}{'`fgrep \ToradocuPlus "$RESULTS_TABLE" | cut -d "&" -f 11 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
 echo '\newcommand{\ToradocuPlusRecall}{'`fgrep \ToradocuPlus "$RESULTS_TABLE" | cut -d "&" -f 12 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
 echo '\newcommand{\ToradocuPlusFMeasure}{'`fgrep \ToradocuPlus "$RESULTS_TABLE" | cut -d "&" -f 13 | xargs | cut -d ' ' -f 1 | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
+
+CONDITIONS=0
+CONDITIONS=$((CONDITIONS+${TOTAL[4]}))
+CONDITIONS=$((CONDITIONS+${TOTAL[5]}))
+CONDITIONS=$((CONDITIONS+${TOTAL[6]}))
+echo '\newcommand{\totalConditions}{'$CONDITIONS'}' >> "$MACROS"
 
 echo "Created macros: $MACROS"
