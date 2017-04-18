@@ -1,6 +1,7 @@
 package org.toradocu.translator;
 
 import java.lang.reflect.Parameter;
+import java.util.Set;
 import java.util.StringJoiner;
 
 /**
@@ -19,8 +20,9 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
    * @param parameter the backing parameter that this code element identifies
    * @param name the name of the parameter
    * @param index the 0-based index of the parameter in the parameter list of its associated method
+   * @param ids the alternative IDs extracted from the param comment
    */
-  public ParameterCodeElement(Parameter parameter, String name, int index) {
+  public ParameterCodeElement(Parameter parameter, String name, int index, Set<String> ids) {
     super(parameter);
     this.index = index;
 
@@ -31,6 +33,7 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
     addIdentifier(name);
     addIdentifier(parameter.getType().getSimpleName() + " " + name);
     addIdentifier(name + " " + parameter.getType().getSimpleName());
+    for (String id : ids) addIdentifier(id);
     // Add name identifier splitting camel case name into different words. We consider as
     // identifier the single words, and a string composed by the words separated by whitespace.
     StringJoiner joiner = new StringJoiner(" ");

@@ -1,5 +1,6 @@
 package org.toradocu.translator;
 
+import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.lang.reflect.Executable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -8,11 +9,13 @@ import java.lang.reflect.Parameter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ParamTag;
 import org.toradocu.util.Reflection;
 
 /**
@@ -57,9 +60,15 @@ public class JavaElementsCollector {
     }
 
     for (java.lang.reflect.Parameter par : parameters) {
+      // Extract identifiers from param comment
+      Set<String> ids = new HashSet<String>();
+      //      if(documentedMethod.getParameters().get(paramIndex).getName().length()==1)
+      ids =
+          extractIdsFromParams(
+              documentedMethod, documentedMethod.getParameters().get(paramIndex).getName());
       collectedElements.add(
           new ParameterCodeElement(
-              par, documentedMethod.getParameters().get(paramIndex).getName(), paramIndex));
+              par, documentedMethod.getParameters().get(paramIndex).getName(), paramIndex, ids));
       inScopeTypes.add(par.getType());
       paramIndex++;
     }
@@ -86,6 +95,19 @@ public class JavaElementsCollector {
     }
 
     return collectedElements;
+  }
+
+  private static Set<String> extractIdsFromParams(DocumentedMethod method, String param) {
+    Set<ParamTag> paramTags = method.paramTags();
+    Set<String> ids = new HashSet<String>();
+    for (ParamTag pt : paramTags) {
+      String bohboh = pt.parameter().getName();
+      if (bohboh.equals(param)) {
+        List<SemanticGraph> sgs = StanfordParser.getSemanticGraphs(pt.getComment());
+        for (SemanticGraph sg : sgs) ids.add(sg.getFirstRoot().word());
+      }
+    }
+    return ids;
   }
 
   private static boolean checkCompatibility(Method m, List<Type> inScopeTypes) {
