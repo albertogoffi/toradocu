@@ -70,6 +70,11 @@ public class Reflection {
     return true;
   }
 
+  /**
+   * Returns a new class loader that load classes from paths specified with option --class-dir.
+   *
+   * @return a new class loader that load classes from paths specified with option --class-dir
+   */
   private static ClassLoader getClassLoader() {
     List<String> binariesPaths = Toradocu.configuration.getClassDir();
     URL[] urls = new URL[binariesPaths.size()];
@@ -82,8 +87,7 @@ public class Reflection {
         log.error(
             "Impossible to load binaries from "
                 + binariesPaths.get(i)
-                + ". Check the "
-                + "correctness of the path provided with option --class-dir.",
+                + ". Check the correctness of the path provided with option --class-dir.",
             e);
       }
     }
