@@ -14,6 +14,8 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
   /** The 0-based index of this parameter in its associated method's parameter list. */
   private int index;
 
+  /** Additional identifiers coming directly from param comments. */
+  private Set<String> otherIdentifiers;
   /**
    * Constructs and initializes a {@code ParameterCodeElement} that identifies the given parameter.
    *
@@ -25,6 +27,7 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
   public ParameterCodeElement(Parameter parameter, String name, int index, Set<String> ids) {
     super(parameter);
     this.index = index;
+    this.otherIdentifiers = ids;
 
     // Add name identifiers.
     addIdentifier("parameter");
@@ -33,7 +36,6 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
     addIdentifier(name);
     addIdentifier(parameter.getType().getSimpleName() + " " + name);
     addIdentifier(name + " " + parameter.getType().getSimpleName());
-    for (String id : ids) addIdentifier(id);
     // Add name identifier splitting camel case name into different words. We consider as
     // identifier the single words, and a string composed by the words separated by whitespace.
     StringJoiner joiner = new StringJoiner(" ");
@@ -56,6 +58,27 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
     }
   }
 
+  /**
+   * Returns a list of strings that identify this code element.
+   *
+   * @return a list of strings that identify this code element
+   */
+  public Set<String> getOtherIdentifiers() {
+    return otherIdentifiers;
+  }
+
+  /**
+   * Remove a string identifier for the code element that this object represents.
+   *
+   * @param identifier a string that identifies this code element
+   */
+  public void removeIdentifier(String identifier) {
+    otherIdentifiers.remove(identifier);
+  }
+
+  public void mergeIdentifiers() {
+    getIdentifiers().addAll(otherIdentifiers);
+  }
   /**
    * Builds and returns the Java expression representation of this parameter code element. The
    * returned string is formatted as "args[i]" where i is the index of this parameter in a parameter

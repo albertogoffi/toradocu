@@ -9,9 +9,11 @@ import java.lang.reflect.Parameter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.toradocu.extractor.DocumentedMethod;
@@ -59,6 +61,9 @@ public class JavaElementsCollector {
       parameters.remove(0);
     }
 
+    HashMap<String, Integer> countIds = new HashMap<String, Integer>();
+    Set<ParameterCodeElement> params = new HashSet<ParameterCodeElement>();
+
     for (java.lang.reflect.Parameter par : parameters) {
       // Extract identifiers from param comment
       Set<String> ids = new HashSet<String>();
@@ -66,11 +71,31 @@ public class JavaElementsCollector {
       ids =
           extractIdsFromParams(
               documentedMethod, documentedMethod.getParameters().get(paramIndex).getName());
-      collectedElements.add(
+
+      for (String id : ids) {
+        Integer oldValue = countIds.get(id);
+        if (oldValue == null) countIds.put(id, 0);
+        else countIds.put(id, ++oldValue);
+      }
+
+      ParameterCodeElement p =
           new ParameterCodeElement(
-              par, documentedMethod.getParameters().get(paramIndex).getName(), paramIndex, ids));
+              par, documentedMethod.getParameters().get(paramIndex).getName(), paramIndex, ids);
+      collectedElements.add(p);
+      params.add(p);
+
       inScopeTypes.add(par.getType());
       paramIndex++;
+    }
+
+    for (ParameterCodeElement p : params) {
+      Set<String> ids = ((ParameterCodeElement) p).getOtherIdentifiers();
+      for (Entry<String, Integer> countId : countIds.entrySet()) {
+        if (ids.contains(countId.getKey()) && countId.getValue() > 0) {
+          ((ParameterCodeElement) p).removeIdentifier(countId.getKey());
+        }
+      }
+      ((ParameterCodeElement) p).mergeIdentifiers();
     }
 
     // Add methods of the target class (all but the method corresponding to documentedMethod).
