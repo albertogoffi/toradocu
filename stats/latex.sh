@@ -3,9 +3,10 @@
 # This script takes no input and produces latex tables reporting subjects and precision/recall values.
 # Generated tables are saved in the path indicated by variable $SUBJECTS_TABLE.
 
-OUTPUT_DIR=latex_tables
+OUTPUT_DIR=latex
 SUBJECTS_TABLE="$OUTPUT_DIR"/subject-classes-table.tex
 RESULTS_TABLE="$OUTPUT_DIR"/accuracy-table.tex
+MACROS="$OUTPUT_DIR"/macros.tex
 
 numberOfClasses() {
     echo $(find "$1" -name "*.java" -type f | wc -l | tr -d " ")
@@ -13,6 +14,16 @@ numberOfClasses() {
 
 numberOfAnalyzedClasses() {
     echo $(fgrep -c "@Test" "$1")
+}
+
+numberOfMethods() {
+    # 1st arg is the path of the test suite from which derive the target class.
+    # 2nd arg is the jar containing the target class.
+    local count=0
+    for class in `fgrep "test(\"" $1 | cut -d '"' -f 2`; do
+	count=$((count + $(java -cp "$2":build/classes/main org.toradocu.util.ExecutableMembers $class)))
+    done
+    echo $count
 }
 
 numberOfAnalyzedMethods() {
@@ -47,7 +58,8 @@ echo "Creating subjects table..."
 # Collect info for Commons Collections
 CLASSES[0]=$(numberOfClasses src/test/resources/src/commons-collections4-4.1-src/src/main/java)
 SELECTED_CLASSES[0]=$(numberOfAnalyzedClasses src/test/java/org/toradocu/PrecisionRecallCommonsCollections4.java)
-METHODS[0]=$(numberOfAnalyzedMethods org.apache.commons.collections4)
+METHODS[0]=$(numberOfMethods src/test/java/org/toradocu/PrecisionRecallCommonsCollections4.java src/test/resources/bin/commons-collections4-4.1.jar)
+DOCUMENTED_METHODS[0]=$(numberOfAnalyzedMethods org.apache.commons.collections4)
 PRE[0]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/commons-collections4-4.1)
 POST[0]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/commons-collections4-4.1)
 EXC_POST[0]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/commons-collections4-4.1)
@@ -55,7 +67,8 @@ EXC_POST[0]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/common
 # Collect info for Commons Math
 CLASSES[1]=$(numberOfClasses src/test/resources/src/commons-math3-3.6.1-src/src/main/java)
 SELECTED_CLASSES[1]=$(numberOfAnalyzedClasses src/test/java/org/toradocu/PrecisionRecallCommonsMath3.java)
-METHODS[1]=$(numberOfAnalyzedMethods org.apache.commons.math3)
+METHODS[1]=$(numberOfMethods src/test/java/org/toradocu/PrecisionRecallCommonsMath3.java src/test/resources/bin/commons-math3-3.6.1.jar)
+DOCUMENTED_METHODS[1]=$(numberOfAnalyzedMethods org.apache.commons.math3)
 PRE[1]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/commons-math3-3.6.1)
 POST[1]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/commons-math3-3.6.1)
 EXC_POST[1]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/commons-math3-3.6.1)
@@ -71,7 +84,8 @@ EXC_POST[1]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/common
 # Collect info for Guava
 CLASSES[3]=$(numberOfClasses src/test/resources/src/guava-19.0-sources)
 SELECTED_CLASSES[3]=$(numberOfAnalyzedClasses src/test/java/org/toradocu/PrecisionRecallGuava19.java)
-METHODS[3]=$(numberOfAnalyzedMethods com.google.common)
+METHODS[3]=$(numberOfMethods src/test/java/org/toradocu/PrecisionRecallGuava19.java src/test/resources/bin/guava-19.0.jar)
+DOCUMENTED_METHODS[3]=$(numberOfAnalyzedMethods com.google.common)
 PRE[3]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/guava-19.0)
 POST[3]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/guava-19.0)
 EXC_POST[3]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/guava-19.0)
@@ -79,7 +93,8 @@ EXC_POST[3]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/guava-
 # Collect info for JGraphT
 CLASSES[4]=$(numberOfClasses src/test/resources/src/jgrapht-core-0.9.2-sources)
 SELECTED_CLASSES[4]=$(numberOfAnalyzedClasses src/test/java/org/toradocu/PrecisionRecallJGraphT.java)
-METHODS[4]=$(numberOfAnalyzedMethods org.jgrapht)
+METHODS[4]=$(numberOfMethods src/test/java/org/toradocu/PrecisionRecallJGraphT.java src/test/resources/bin/jgrapht-core-0.9.2.jar)
+DOCUMENTED_METHODS[4]=$(numberOfAnalyzedMethods org.jgrapht)
 PRE[4]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/jgrapht-core-0.9.2)
 POST[4]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/jgrapht-core-0.9.2)
 EXC_POST[4]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/jgrapht-core-0.9.2)
@@ -87,7 +102,8 @@ EXC_POST[4]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/jgraph
 # Collect info for Plume-lib
 CLASSES[5]=$(numberOfClasses src/test/resources/src/plume-lib-1.1.0/java/src)
 SELECTED_CLASSES[5]=$(numberOfAnalyzedClasses src/test/java/org/toradocu/PrecisionRecallPlumeLib.java)
-METHODS[5]=$(numberOfAnalyzedMethods plume.)
+METHODS[5]=$(numberOfMethods src/test/java/org/toradocu//PrecisionRecallPlumeLib.java src/test/resources/bin/plume-lib-1.1.0.jar)
+DOCUMENTED_METHODS[5]=$(numberOfAnalyzedMethods plume.)
 PRE[5]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/plume-lib-1.1.0)
 POST[5]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/plume-lib-1.1.0)
 EXC_POST[5]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/plume-lib-1.1.0)
@@ -104,31 +120,28 @@ EXC_POST[5]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/plume-
 TOTAL[0]=$(arraySum CLASSES)
 TOTAL[1]=$(arraySum SELECTED_CLASSES)
 TOTAL[2]=$(arraySum METHODS)
-TOTAL[3]=$(arraySum PRE)
-TOTAL[4]=$(arraySum POST)
-TOTAL[5]=$(arraySum EXC_POST)
+TOTAL[3]=$(arraySum DOCUMENTED_METHODS)
+TOTAL[4]=$(arraySum PRE)
+TOTAL[5]=$(arraySum POST)
+TOTAL[6]=$(arraySum EXC_POST)
 
 # Create the table
 echo 'Commons Collections 4.1 \newline\footnotesize\url{https://commons.apache.org/collections}' \
-     '& '${CLASSES[0]}' & '${SELECTED_CLASSES[0]}' & \tdq & '${METHODS[0]}' & '${PRE[0]}' & '${POST[0]}' & '${EXC_POST[0]}' \\' > "$SUBJECTS_TABLE"
+     '& '${CLASSES[0]}' & '${SELECTED_CLASSES[0]}' & '${METHODS[0]}' & '${DOCUMENTED_METHODS[0]}' & '${PRE[0]}' & '${POST[0]}' & '${EXC_POST[0]}' \\' > "$SUBJECTS_TABLE"
 echo 'Commons Math 3.6.1 \newline\footnotesize\url{https://commons.apache.org/math}' \
-     '& '${CLASSES[1]}' & '${SELECTED_CLASSES[1]}' & \tdq & '${METHODS[1]}' & '${PRE[1]}' & '${POST[1]}' & '${EXC_POST[1]}' \\' >> "$SUBJECTS_TABLE"
-#echo 'FreeCol 0.11.6 \\newline\n\\footnotesize\\url{http://www.freecol.org}' \
-#     '& '${CLASSES[2]}' & '${SELECTED_CLASSES[2]}' & '${METHODS[2]}' & '${PRE[2]}' & '${POST[2]}' & '${EXC_POST[2]}' \\\\' >> "$SUBJECTS_TABLE"
-#echo 'GraphStream 1.3 \\newline\n\\footnotesize\\url{http://graphstream-project.org}' \
-#     '& '${CLASSES[6]}' & '${SELECTED_CLASSES[6]}' & '${METHODS[6]}' & '${PRE[6]}' & '${POST[6]}' & '${EXC_POST[6]}' \\\\' >> "$SUBJECTS_TABLE"
+     '& '${CLASSES[1]}' & '${SELECTED_CLASSES[1]}' & '${METHODS[1]}' & '${DOCUMENTED_METHODS[1]}' &'${PRE[1]}' & '${POST[1]}' & '${EXC_POST[1]}' \\' >> "$SUBJECTS_TABLE"
 echo 'Guava 19 \newline\footnotesize\url{http://github.com/google/guava}' \
-     '& '${CLASSES[3]}' & '${SELECTED_CLASSES[3]}' & \tdq & '${METHODS[3]}' & '${PRE[3]}' & '${POST[3]}' & '${EXC_POST[3]}' \\' >> "$SUBJECTS_TABLE"
+     '& '${CLASSES[3]}' & '${SELECTED_CLASSES[3]}' & '${METHODS[3]}' & '${DOCUMENTED_METHODS[3]}' & '${PRE[3]}' & '${POST[3]}' & '${EXC_POST[3]}' \\' >> "$SUBJECTS_TABLE"
 echo 'JGraphT 0.9.2 \newline\footnotesize\url{http://jgrapht.org}' \
-     '& '${CLASSES[4]}' & '${SELECTED_CLASSES[4]}' & \tdq & '${METHODS[4]}' & '${PRE[4]}' & '${POST[4]}' & '${EXC_POST[4]}' \\' >> "$SUBJECTS_TABLE"
+     '& '${CLASSES[4]}' & '${SELECTED_CLASSES[4]}' & '${METHODS[4]}' & '${DOCUMENTED_METHODS[4]}' & '${PRE[4]}' & '${POST[4]}' & '${EXC_POST[4]}' \\' >> "$SUBJECTS_TABLE"
 echo 'Plume-lib 1.1 \newline\footnotesize\url{http://mernst.github.io/plume-lib}' \
-     '& '${CLASSES[5]}' & '${SELECTED_CLASSES[5]}' & \tdq & '${METHODS[5]}' & '${PRE[5]}' & '${POST[5]}' & '${EXC_POST[5]}' \\' >> "$SUBJECTS_TABLE"
+     '& '${CLASSES[5]}' & '${SELECTED_CLASSES[5]}' & '${METHODS[5]}' & '${DOCUMENTED_METHODS[5]}' & '${PRE[5]}' & '${POST[5]}' & '${EXC_POST[5]}' \\' >> "$SUBJECTS_TABLE"
 echo '\midrule' >> "$SUBJECTS_TABLE"
-echo 'Total & '${TOTAL[0]}' & '${TOTAL[1]}' & \tdq & '${TOTAL[2]}' & '${TOTAL[3]}' & '${TOTAL[4]}' & '${TOTAL[5]}' \\' >> "$SUBJECTS_TABLE"
+echo 'Total & '${TOTAL[0]}' & '${TOTAL[1]}' & '${TOTAL[2]}' & '${TOTAL[3]}' & '${TOTAL[4]}' & '${TOTAL[5]}' & '${TOTAL[6]}' \\' >> "$SUBJECTS_TABLE"
 
 echo "Created table: $SUBJECTS_TABLE"
 
-# Crate results table
+# Create results table
 echo "Creating results table..."
 
 TAC="tac"
@@ -151,3 +164,14 @@ echo '\ToradocuPlus & '`python stats/results_table.py results_current_truncated.
 rm results_current_truncated.csv
 
 echo "Created table: $RESULTS_TABLE"
+
+# Create macros
+echo '\newcommand{\tCommentPrecision}{\tdq\xspace}' > "$MACROS"
+echo '\newcommand{\tCommentRecall}{\tdq\xspace}' >> "$MACROS"
+echo '\newcommand{\tCommentFMeasure}{\tdq\xspace}' >> "$MACROS"
+echo '\newcommand{\OldToradocuPrecision}{\tdq\xspace}' >> "$MACROS"
+echo '\newcommand{\OldToradocuRecall}{\tdq\xspace}' >> "$MACROS"
+echo '\newcommand{\OldToradocuFMeasure}{\tdq\xspace}' >> "$MACROS"
+echo '\newcommand{\ToradocuPlusPrecision}{92\%\xspace}' >> "$MACROS"
+echo '\newcommand{\ToradocuPlusRecall}{64\%\xspace}' >> "$MACROS"
+echo '\newcommand{\ToradocuPlusFMeasure}{75\%\xspace}' >> "$MACROS"
