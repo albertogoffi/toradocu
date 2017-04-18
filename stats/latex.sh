@@ -166,12 +166,15 @@ rm results_current_truncated.csv
 echo "Created table: $RESULTS_TABLE"
 
 # Create macros
-echo '\newcommand{\tCommentPrecision}{\tdq\xspace}' > "$MACROS"
-echo '\newcommand{\tCommentRecall}{\tdq\xspace}' >> "$MACROS"
-echo '\newcommand{\tCommentFMeasure}{\tdq\xspace}' >> "$MACROS"
-echo '\newcommand{\OldToradocuPrecision}{\tdq\xspace}' >> "$MACROS"
-echo '\newcommand{\OldToradocuRecall}{\tdq\xspace}' >> "$MACROS"
-echo '\newcommand{\OldToradocuFMeasure}{\tdq\xspace}' >> "$MACROS"
-echo '\newcommand{\ToradocuPlusPrecision}{92\%\xspace}' >> "$MACROS"
-echo '\newcommand{\ToradocuPlusRecall}{64\%\xspace}' >> "$MACROS"
-echo '\newcommand{\ToradocuPlusFMeasure}{75\%\xspace}' >> "$MACROS"
+echo "Creating macros..."
+echo '\newcommand{\tCommentPrecision}{'`fgrep @tComment "$RESULTS_TABLE" | cut -d "&" -f 11 | xargs | cut -d "." -f 2`'\%\xspace}' > "$MACROS" # xargs trims whitespaces
+echo '\newcommand{\tCommentRecall}{'`fgrep @tComment "$RESULTS_TABLE" | cut -d "&" -f 12 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
+echo '\newcommand{\tCommentFMeasure}{'`fgrep @tComment "$RESULTS_TABLE" | cut -d "&" -f 13 | xargs | cut -d ' ' -f 1 | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
+echo '\newcommand{\OldToradocuPrecision}{'`fgrep \OldToradocu "$RESULTS_TABLE" | cut -d "&" -f 11 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
+echo '\newcommand{\OldToradocuRecall}{'`fgrep \OldToradocu "$RESULTS_TABLE" | cut -d "&" -f 12 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
+echo '\newcommand{\OldToradocuFMeasure}{'`fgrep \OldToradocu "$RESULTS_TABLE" | cut -d "&" -f 13 | xargs | cut -d ' ' -f 1 | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
+echo '\newcommand{\ToradocuPlusPrecision}{'`fgrep \ToradocuPlus "$RESULTS_TABLE" | cut -d "&" -f 11 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
+echo '\newcommand{\ToradocuPlusRecall}{'`fgrep \ToradocuPlus "$RESULTS_TABLE" | cut -d "&" -f 12 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
+echo '\newcommand{\ToradocuPlusFMeasure}{'`fgrep \ToradocuPlus "$RESULTS_TABLE" | cut -d "&" -f 13 | xargs | cut -d ' ' -f 1 | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
+
+echo "Created macros: $MACROS"
