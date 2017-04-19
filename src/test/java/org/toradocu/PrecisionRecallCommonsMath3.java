@@ -111,7 +111,8 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testLinearInterpolator() throws Exception {
-    test("org.apache.commons.math3.analysis.interpolation.LinearInterpolator", 1, 0, 1, 1, 1, 1);
+    test(
+        "org.apache.commons.math3.analysis.interpolation.LinearInterpolator", 1, 0.333, 1, 1, 1, 1);
   }
 
   @Test
@@ -186,7 +187,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
     test(
         "org.apache.commons.math3.analysis.interpolation.DividedDifferenceInterpolator",
         1,
-        0,
+        0.4,
         1,
         1,
         1,

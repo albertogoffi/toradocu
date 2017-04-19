@@ -126,8 +126,8 @@ public class JavaElementsCollector {
     Set<ParamTag> paramTags = method.paramTags();
     Set<String> ids = new HashSet<String>();
     for (ParamTag pt : paramTags) {
-      String bohboh = pt.parameter().getName();
-      if (bohboh.equals(param)) {
+      String paramName = pt.parameter().getName();
+      if (paramName.equals(param)) {
         List<SemanticGraph> sgs = StanfordParser.getSemanticGraphs(pt.getComment());
         for (SemanticGraph sg : sgs) ids.add(sg.getFirstRoot().word());
       }

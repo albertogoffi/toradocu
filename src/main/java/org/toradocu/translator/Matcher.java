@@ -111,12 +111,19 @@ class Matcher {
 
     // Special case to handle predicates about arrays' length. We need a more general solution.
     if (subject.getJavaCodeElement().toString().contains("[]")) {
-      final java.util.regex.Matcher lengthPatter =
+      final java.util.regex.Matcher lengthPattern =
           Pattern.compile("has length ([0-9]+|zero)").matcher(predicate);
-      if (lengthPatter.find()) {
-        final String lengthString = lengthPatter.group(1);
+      if (lengthPattern.find()) {
+        final String lengthString = lengthPattern.group(1);
         final int length = lengthString.equals("zero") ? 0 : Integer.parseInt(lengthString);
         return subject.getJavaExpression() + ".length==" + length;
+      }
+      final java.util.regex.Matcher numberPattern =
+          Pattern.compile("([<>=]=?|(!=)) ?([0-9]+|zero)").matcher(predicate);
+      if (numberPattern.find()) {
+        final String lengthString = numberPattern.group(3);
+        final int length = lengthString.equals("zero") ? 0 : Integer.parseInt(lengthString);
+        return subject.getJavaExpression() + ".length" + numberPattern.group(1) + length;
       }
 
       // "zero-length" special case handling.
