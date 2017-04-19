@@ -88,14 +88,14 @@ public class JavaElementsCollector {
       paramIndex++;
     }
 
+    // Select only valid identifiers for the parameters, i.e. the unique ones (count in map is 0)
     for (ParameterCodeElement p : params) {
-      Set<String> ids = ((ParameterCodeElement) p).getOtherIdentifiers();
+      Set<String> ids = p.getOtherIdentifiers();
       for (Entry<String, Integer> countId : countIds.entrySet()) {
-        if (ids.contains(countId.getKey()) && countId.getValue() > 0) {
-          ((ParameterCodeElement) p).removeIdentifier(countId.getKey());
-        }
+        String identifier = countId.getKey();
+        if (ids.contains(identifier) && countId.getValue() > 0) p.removeIdentifier(identifier);
       }
-      ((ParameterCodeElement) p).mergeIdentifiers();
+      p.mergeIdentifiers();
     }
 
     // Add methods of the target class (all but the method corresponding to documentedMethod).
@@ -122,6 +122,14 @@ public class JavaElementsCollector {
     return collectedElements;
   }
 
+  /**
+   * For the parameter in input, find its param tag in the method's Javadoc and produce the
+   * SemanticGraphs of the comment. For every graph, keep the root as identifier.
+   *
+   * @param method the DocumentedMethod which the parameter belongs to
+   * @param param the parameter
+   * @return the extracted ids
+   */
   private static Set<String> extractIdsFromParams(DocumentedMethod method, String param) {
     Set<ParamTag> paramTags = method.paramTags();
     Set<String> ids = new HashSet<String>();

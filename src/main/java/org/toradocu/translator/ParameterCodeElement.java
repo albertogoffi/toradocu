@@ -15,19 +15,20 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
   private int index;
 
   /** Additional identifiers coming directly from param comments. */
-  private Set<String> otherIdentifiers;
+  private Set<String> extractedIdentifiers;
   /**
    * Constructs and initializes a {@code ParameterCodeElement} that identifies the given parameter.
    *
    * @param parameter the backing parameter that this code element identifies
    * @param name the name of the parameter
    * @param index the 0-based index of the parameter in the parameter list of its associated method
-   * @param ids the alternative IDs extracted from the param comment
+   * @param extractedIds the additional IDs extracted from the param comment
    */
-  public ParameterCodeElement(Parameter parameter, String name, int index, Set<String> ids) {
+  public ParameterCodeElement(
+      Parameter parameter, String name, int index, Set<String> extractedIds) {
     super(parameter);
     this.index = index;
-    this.otherIdentifiers = ids;
+    this.extractedIdentifiers = extractedIds;
 
     // Add name identifiers.
     addIdentifier("parameter");
@@ -59,25 +60,26 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
   }
 
   /**
-   * Returns a list of strings that identify this code element.
+   * Returns the additional identifiers extractedIdentifiers.
    *
    * @return a list of strings that identify this code element
    */
   public Set<String> getOtherIdentifiers() {
-    return otherIdentifiers;
+    return extractedIdentifiers;
   }
 
   /**
-   * Remove a string identifier for the code element that this object represents.
+   * Remove a string identifier from extractedIdentifiers.
    *
    * @param identifier a string that identifies this code element
    */
   public void removeIdentifier(String identifier) {
-    otherIdentifiers.remove(identifier);
+    extractedIdentifiers.remove(identifier);
   }
 
+  /** Merge the default identifiers with the additional ones extractedIdentifiers. */
   public void mergeIdentifiers() {
-    getIdentifiers().addAll(otherIdentifiers);
+    getIdentifiers().addAll(extractedIdentifiers);
   }
   /**
    * Builds and returns the Java expression representation of this parameter code element. The
