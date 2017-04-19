@@ -61,26 +61,20 @@ public class JavaElementsCollector {
       parameters.remove(0);
     }
 
-    HashMap<String, Integer> countIds = new HashMap<String, Integer>();
-    Set<ParameterCodeElement> params = new HashSet<ParameterCodeElement>();
+    HashMap<String, Integer> countIds = new HashMap<>();
+    Set<ParameterCodeElement> params = new HashSet<>();
 
     for (java.lang.reflect.Parameter par : parameters) {
+      String paramName = documentedMethod.getParameters().get(paramIndex).getName();
       // Extract identifiers from param comment
-      Set<String> ids = new HashSet<String>();
-      //      if(documentedMethod.getParameters().get(paramIndex).getName().length()==1)
-      ids =
-          extractIdsFromParams(
-              documentedMethod, documentedMethod.getParameters().get(paramIndex).getName());
+      Set<String> ids = extractIdsFromParams(documentedMethod, paramName);
 
       for (String id : ids) {
-        Integer oldValue = countIds.get(id);
-        if (oldValue == null) countIds.put(id, 0);
-        else countIds.put(id, ++oldValue);
+        Integer oldValue = countIds.getOrDefault(id, -1);
+        countIds.put(id, ++oldValue);
       }
 
-      ParameterCodeElement p =
-          new ParameterCodeElement(
-              par, documentedMethod.getParameters().get(paramIndex).getName(), paramIndex, ids);
+      ParameterCodeElement p = new ParameterCodeElement(par, paramName, paramIndex, ids);
       collectedElements.add(p);
       params.add(p);
 
@@ -88,6 +82,8 @@ public class JavaElementsCollector {
       paramIndex++;
     }
 
+    // TODO Create a parameter code element directly with unique identifiers, thus removing
+    // mergeIdentifiers() and related methods in ParameterCodeElement.
     // Select only valid identifiers for the parameters, i.e. the unique ones (count in map is 0)
     for (ParameterCodeElement p : params) {
       Set<String> ids = p.getOtherIdentifiers();
@@ -132,7 +128,7 @@ public class JavaElementsCollector {
    */
   private static Set<String> extractIdsFromParams(DocumentedMethod method, String param) {
     Set<ParamTag> paramTags = method.paramTags();
-    Set<String> ids = new HashSet<String>();
+    Set<String> ids = new HashSet<>();
     for (ParamTag pt : paramTags) {
       String paramName = pt.parameter().getName();
       if (paramName.equals(param)) {
