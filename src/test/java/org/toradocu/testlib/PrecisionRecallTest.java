@@ -50,8 +50,7 @@ class PrecisionRecallTest {
           "--class-dir",
           binPath,
           "--source-dir",
-          srcPath,
-          "--tcomment"
+          srcPath
         };
     final List<String> argsList = new ArrayList<>(Arrays.asList(toradocuArgs));
 
