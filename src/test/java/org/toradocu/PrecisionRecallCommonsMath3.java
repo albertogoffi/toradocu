@@ -47,7 +47,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testBitsStreamGenerator() throws Exception {
-    test("org.apache.commons.math3.random.BitsStreamGenerator", 1, 0.75, 1, 0.8, 1, 1);
+    test("org.apache.commons.math3.random.BitsStreamGenerator", 1, 0.75, 1, 0.75, 1, 1);
   }
 
   @Test
@@ -57,17 +57,17 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testRandomDataGenerator() throws Exception {
-    test("org.apache.commons.math3.random.RandomDataGenerator", 1, 0.964, 1, 1, 1, 1);
+    test("org.apache.commons.math3.random.RandomDataGenerator", 1, 0.963, 1, 1, 1, 1);
   }
 
   @Test
   public void testArithmeticUtils() throws Exception {
-    test("org.apache.commons.math3.util.ArithmeticUtils", 1, 0.947, 1, 0.666, 1, 1);
+    test("org.apache.commons.math3.util.ArithmeticUtils", 1, 0.947, 1, 0.857, 1, 0);
   }
 
   @Test
   public void testFastMath() throws Exception {
-    test("org.apache.commons.math3.util.FastMath", 1, 1, 1, 1, 1, 1);
+    test("org.apache.commons.math3.util.FastMath", 1, 1, 1, 1, 1, 0);
   }
 
   @Test
@@ -82,14 +82,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testSimpsonIntegrator() throws Exception {
-    test(
-        "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
-        0.857,
-        0.545,
-        1,
-        1,
-        1,
-        1);
+    test("org.apache.commons.math3.analysis.integration.SimpsonIntegrator", 1, 0.666, 1, 1, 1, 1);
   }
 
   @Test
@@ -102,7 +95,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
     test(
         "org.apache.commons.math3.analysis.integration.IterativeLegendreGaussIntegrator",
         1,
-        0.625,
+        0.5,
         1,
         1,
         1,
@@ -149,7 +142,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testFraction() throws Exception {
-    test("org.apache.commons.math3.fraction.Fraction", 0.5, 0.5, 1, 1, 1, 1);
+    test("org.apache.commons.math3.fraction.Fraction", 0.462, 0.462, 1, 1, 1, 1);
   }
 
   @Test
@@ -164,7 +157,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testVector3D() throws Exception {
-    test("org.apache.commons.math3.geometry.euclidean.threed.Vector3D", 1, 0.5, 1, 1, 1, 1);
+    test("org.apache.commons.math3.geometry.euclidean.threed.Vector3D", 1, 0.5, 1, 1, 1, 0);
   }
 
   @Test
