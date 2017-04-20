@@ -25,7 +25,7 @@ public class PrecisionRecallPlumeLib extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testFileCompiler() throws Exception {
-    test("plume.FileCompiler", 1, 0, 1, 1, 1, 1);
+    test("plume.FileCompiler", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
