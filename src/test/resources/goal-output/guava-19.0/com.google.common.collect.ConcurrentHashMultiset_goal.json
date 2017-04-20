@@ -360,26 +360,6 @@
           "qualifiedName": "java.lang.IllegalArgumentException"
         },
         "kind": "@throws"
-      },
-      {
-        "comment": "if occurrences is negative, or if this operation would result in more than Integer.MAX_VALUE occurrences of the element",
-        "condition": "args[1]<0",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "@throws"
-      },
-      {
-        "comment": "if element is null and this implementation does not permit null elements. Note that if occurrences is zero, the implementation may opt to return normally.",
-        "condition": "args[0]==null",
-        "exception": {
-          "isArray": false,
-          "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
-        },
-        "kind": "@throws"
       }
     ]
   },
@@ -551,34 +531,7 @@
     },
     "isVarArgs": false,
     "name": "setCount",
-    "paramTags": [
-      {
-        "comment": "the element to add or remove occurrences of; may be null only if explicitly allowed by the implementation",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "element",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "the desired count of the element in this multiset",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "count",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "paramTags": [],
     "parameters": [
       {
         "name": "element",
@@ -619,16 +572,6 @@
           "qualifiedName": "java.lang.IllegalArgumentException"
         },
         "kind": "@throws"
-      },
-      {
-        "comment": "if element is null and this implementation does not permit null elements. Note that if count is zero, the implementor may optionally return zero instead.",
-        "condition": "args[0]==null",
-        "exception": {
-          "isArray": false,
-          "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
-        },
-        "kind": "@throws"
       }
     ]
   },
@@ -640,34 +583,7 @@
     },
     "isVarArgs": false,
     "name": "setCount",
-    "paramTags": [
-      {
-        "comment": "the element to conditionally set the count of; may be null only if explicitly allowed by the implementation",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "element",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "the desired count of the element in this multiset",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "newCount",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "paramTags": [],
     "parameters": [
       {
         "name": "element",
@@ -714,26 +630,6 @@
           "isArray": false,
           "name": "IllegalArgumentException",
           "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "@throws"
-      },
-      {
-        "comment": "if oldCount or newCount is negative",
-        "condition": "args[1]<0 || args[2]<0",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "@throws"
-      },
-      {
-        "comment": "if element is null and the implementation does not permit null elements. Note that if oldCount and newCount are both zero, the implementor may optionally return true instead.",
-        "condition": "args[0]==null",
-        "exception": {
-          "isArray": false,
-          "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
         },
         "kind": "@throws"
       }

@@ -50,7 +50,7 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testBloomFilter() throws Exception {
-    test("com.google.common.hash.BloomFilter", 0.5, 0.5, 1, 1, 1, 1);
+    test("com.google.common.hash.BloomFilter", 0, 0, 1, 1, 1, 1);
   }
 
   @Test
@@ -60,7 +60,7 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testConcurrentHashMultiset() throws Exception {
-    test("com.google.common.collect.ConcurrentHashMultiset", 0.8, 0.727, 1, 1, 1, 1);
+    test("com.google.common.collect.ConcurrentHashMultiset", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
