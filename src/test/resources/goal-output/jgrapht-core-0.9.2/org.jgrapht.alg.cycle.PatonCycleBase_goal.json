@@ -113,36 +113,8 @@
         "name": "graph"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "org.jgrapht.UndirectedGraph",
-            "name": "UndirectedGraph",
-            "isArray": false
-          },
-          "name": "graph"
-        },
-        "comment": "the graph.",
-        "kind": "PARAM",
-        "condition": ""
-      }
-    ],
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.IllegalArgumentException",
-          "name": "IllegalArgumentException",
-          "isArray": false
-        },
-        "codeTags": [
-          "null"
-        ],
-        "comment": "if the argument is null.",
-        "kind": "THROWS",
-        "condition": "args[0]==null"
-      }
-    ]
+    "paramTags": [],
+    "throwsTags": []
   },
   {
     "signature": "findCycleBase()",
@@ -166,18 +138,6 @@
       "kind": "RETURN",
       "condition": "true ? result != null"
     },
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.IllegalArgumentException",
-          "name": "IllegalArgumentException",
-          "isArray": false
-        },
-        "codeTags": [],
-        "comment": "if the current graph is null.",
-        "kind": "THROWS",
-        "condition": "target.getGraph()==null"
-      }
-    ]
+    "throwsTags": []
   }
 ]

@@ -21,34 +21,7 @@
     },
     "isVarArgs": false,
     "name": "containsEdge",
-    "paramTags": [
-      {
-        "comment": "source vertex of the edge.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "sourceVertex",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "target vertex of the edge.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "targetVertex",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "paramTags": [],
     "parameters": [
       {
         "name": "sourceVertex",
@@ -89,21 +62,7 @@
     },
     "isVarArgs": false,
     "name": "removeAllEdges",
-    "paramTags": [
-      {
-        "comment": "edges to be removed from this graph.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "edges",
-          "type": {
-            "isArray": false,
-            "name": "Collection",
-            "qualifiedName": "java.util.Collection"
-          }
-        }
-      }
-    ],
+    "paramTags": [],
     "parameters": [
       {
         "name": "edges",
@@ -126,18 +85,7 @@
     },
     "signature": "removeAllEdges(java.util.Collection edges)",
     "targetClass": "org.jgrapht.graph.AbstractGraph",
-    "throwsTags": [
-      {
-        "comment": "if the specified edge collection is null.",
-        "condition": "args[0]==null",
-        "exception": {
-          "isArray": false,
-          "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
-        },
-        "kind": "@throws"
-      }
-    ]
+    "throwsTags": []
   },
   {
     "containingClass": {
@@ -147,34 +95,7 @@
     },
     "isVarArgs": false,
     "name": "removeAllEdges",
-    "paramTags": [
-      {
-        "comment": "source vertex of the edge.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "sourceVertex",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "target vertex of the edge.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "targetVertex",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "paramTags": [],
     "parameters": [
       {
         "name": "sourceVertex",
@@ -252,18 +173,7 @@
     },
     "signature": "removeAllVertices(java.util.Collection vertices)",
     "targetClass": "org.jgrapht.graph.AbstractGraph",
-    "throwsTags": [
-      {
-        "comment": "if the specified vertex collection is null.",
-        "condition": "args[0]==null",
-        "exception": {
-          "isArray": false,
-          "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
-        },
-        "kind": "@throws"
-      }
-    ]
+    "throwsTags": []
   },
   {
     "containingClass": {

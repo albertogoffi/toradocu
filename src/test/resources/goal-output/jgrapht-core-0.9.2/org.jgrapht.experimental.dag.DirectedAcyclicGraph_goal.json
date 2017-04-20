@@ -152,41 +152,13 @@
         "name": "v"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "v"
-        },
-        "comment": "vertex to be added to this graph.",
-        "kind": "PARAM",
-        "condition": ""
-      }
-    ],
+    "paramTags": [],
     "returnTag": {
       "comment": "true if this graph did not already contain the specified vertex.",
       "kind": "RETURN",
       "condition": ""
     },
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.NullPointerException",
-          "name": "NullPointerException",
-          "isArray": false
-        },
-        "codeTags": [
-          "null"
-        ],
-        "comment": "if the specified vertex is null.",
-        "kind": "THROWS",
-        "condition": "args[0]==null"
-      }
-    ]
+    "throwsTags": []
   },
   {
     "signature": "addVertex(java.lang.Object v,boolean addToTop)",
@@ -353,65 +325,13 @@
         "name": "targetVertex"
       }
     ],
-    "paramTags": [
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "sourceVertex"
-        },
-        "comment": "source vertex of the edge.",
-        "kind": "PARAM",
-        "condition": ""
-      },
-      {
-        "parameter": {
-          "type": {
-            "qualifiedName": "java.lang.Object",
-            "name": "Object",
-            "isArray": false
-          },
-          "name": "targetVertex"
-        },
-        "comment": "target vertex of the edge.",
-        "kind": "PARAM",
-        "condition": ""
-      }
-    ],
+    "paramTags": [],
     "returnTag": {
       "comment": "The newly created edge if added to the graph, otherwise null.",
       "kind": "RETURN",
       "condition": ""
     },
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.IllegalArgumentException",
-          "name": "IllegalArgumentException",
-          "isArray": false
-        },
-        "codeTags": [],
-        "comment": "if source or target vertices are not found in the graph.",
-        "kind": "THROWS",
-        "condition": ""
-      },
-      {
-        "exception": {
-          "qualifiedName": "java.lang.NullPointerException",
-          "name": "NullPointerException",
-          "isArray": false
-        },
-        "codeTags": [
-          "null"
-        ],
-        "comment": "if any of the specified vertices is null.",
-        "kind": "THROWS",
-        "condition": "(args[0]==null || args[1]==null)"
-      }
-    ]
+    "throwsTags": []
   },
   {
     "signature": "addDagEdge(java.lang.Object fromVertex,java.lang.Object toVertex,java.lang.Object e)",
@@ -584,43 +504,7 @@
       "kind": "RETURN",
       "condition": ""
     },
-    "throwsTags": [
-      {
-        "exception": {
-          "qualifiedName": "java.lang.IllegalArgumentException",
-          "name": "IllegalArgumentException",
-          "isArray": false
-        },
-        "codeTags": [],
-        "comment": "if source or target vertices are not found in the graph.",
-        "kind": "THROWS",
-        "condition": ""
-      },
-      {
-        "exception": {
-          "qualifiedName": "java.lang.ClassCastException",
-          "name": "ClassCastException",
-          "isArray": false
-        },
-        "codeTags": [],
-        "comment": "if the specified edge is not assignment compatible with the class of edges produced by the edge factory of this graph.",
-        "kind": "THROWS",
-        "condition": ""
-      },
-      {
-        "exception": {
-          "qualifiedName": "java.lang.NullPointerException",
-          "name": "NullPointerException",
-          "isArray": false
-        },
-        "codeTags": [
-          "null"
-        ],
-        "comment": "if any of the specified vertices is null.",
-        "kind": "THROWS",
-        "condition": "(args[0]==null || args[1]==null)"
-      }
-    ]
+    "throwsTags": []
   },
   {
     "signature": "removeVertex(java.lang.Object v)",

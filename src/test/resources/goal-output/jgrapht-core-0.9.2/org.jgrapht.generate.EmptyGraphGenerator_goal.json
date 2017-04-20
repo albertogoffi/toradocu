@@ -55,47 +55,7 @@
     },
     "isVarArgs": false,
     "name": "generateGraph",
-    "paramTags": [
-      {
-        "comment": "receives the generated edges and vertices; if this is non-empty on entry, the result will be a disconnected graph since generated elements will not be connected to existing elements",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "target",
-          "type": {
-            "isArray": false,
-            "name": "Graph",
-            "qualifiedName": "org.jgrapht.Graph"
-          }
-        }
-      },
-      {
-        "comment": "called to produce new vertices",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "vertexFactory",
-          "type": {
-            "isArray": false,
-            "name": "VertexFactory",
-            "qualifiedName": "org.jgrapht.VertexFactory"
-          }
-        }
-      },
-      {
-        "comment": "if non-null, receives implementation-specific mappings from String roles to graph elements (or collections of graph elements)",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "resultMap",
-          "type": {
-            "isArray": false,
-            "name": "Map",
-            "qualifiedName": "java.util.Map"
-          }
-        }
-      }
-    ],
+    "paramTags": [],
     "parameters": [
       {
         "name": "target",
