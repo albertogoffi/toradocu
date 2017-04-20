@@ -4,13 +4,15 @@
 # "tcomment": statistics using @tComment as translation engine.
 
 # Parse command line argument and set variables
+TESTS_PREFIX="org.toradocu.PrecisionRecall"
+TESTS='--tests '$TESTS_PREFIX'CommonsCollections4 --tests '$TESTS_PREFIX'CommonsMath3 --tests '$TESTS_PREFIX'Guava19 --tests '$TESTS_PREFIX'JGraphT --tests '$TESTS_PREFIX'PlumeLib'
 if [ $# -eq 1 ]; then
     if [ "$1" = "current" ]; then
-	COMMAND="./gradlew test --tests org.toradocu.PrecisionRecall*"
+	COMMAND="./gradlew test $TESTS"
 	STATS_FILE=results.csv
 	STATS_FILE_TO_SAVE=results_current.csv
     elif [ "$1" = "tcomment" ]; then
-	COMMAND="./gradlew -Dorg.toradocu.translator=tcomment test --tests org.toradocu.PrecisionRecall*"
+	COMMAND="./gradlew -Dorg.toradocu.translator=tcomment test $TESTS"
 	STATS_FILE=tcomment_results.csv
 	STATS_FILE_TO_SAVE=results_tcomment.csv
     else
