@@ -822,16 +822,6 @@
           "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
         },
         "kind": "@throws"
-      },
-      {
-        "comment": "if a is null.",
-        "condition": "args[0]==null",
-        "exception": {
-          "isArray": false,
-          "name": "NullArgumentException",
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
-        },
-        "kind": "@throws"
       }
     ]
   },
@@ -1286,26 +1276,6 @@
       {
         "comment": "if the fraction to divide by is zero",
         "condition": "args[0]==(org.apache.commons.math3.fraction.BigFraction.ZERO)",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
-        },
-        "kind": "@throws"
-      },
-      {
-        "comment": "if a is null.",
-        "condition": "args[0]==null",
-        "exception": {
-          "isArray": false,
-          "name": "NullArgumentException",
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
-        },
-        "kind": "@throws"
-      },
-      {
-        "comment": "if a is zero",
-        "condition": "args[0].equals(org.apache.commons.math3.fraction.BigFraction.ZERO)",
         "exception": {
           "isArray": false,
           "name": "MathArithmeticException",

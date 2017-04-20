@@ -27,7 +27,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testComplex() throws Exception {
-    test("org.apache.commons.math3.complex.Complex", 0.5, 0.5, 1, 1, 1, 1);
+    test("org.apache.commons.math3.complex.Complex", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
@@ -47,7 +47,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testBitsStreamGenerator() throws Exception {
-    test("org.apache.commons.math3.random.BitsStreamGenerator", 1, 0.75, 1, 0.75, 1, 1);
+    test("org.apache.commons.math3.random.BitsStreamGenerator", 1, 0.666, 1, 1, 1, 1);
   }
 
   @Test
@@ -57,7 +57,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testRandomDataGenerator() throws Exception {
-    test("org.apache.commons.math3.random.RandomDataGenerator", 1, 0.963, 1, 1, 1, 1);
+    test("org.apache.commons.math3.random.RandomDataGenerator", 1, 0.941, 1, 1, 1, 1);
   }
 
   @Test
@@ -104,13 +104,12 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testLinearInterpolator() throws Exception {
-    test(
-        "org.apache.commons.math3.analysis.interpolation.LinearInterpolator", 1, 0.333, 1, 1, 1, 1);
+    test("org.apache.commons.math3.analysis.interpolation.LinearInterpolator", 1, 0.5, 1, 1, 1, 1);
   }
 
   @Test
   public void testLoessInterpolator() throws Exception {
-    test("org.apache.commons.math3.analysis.interpolation.LoessInterpolator", 1, 0.111, 1, 1, 1, 1);
+    test("org.apache.commons.math3.analysis.interpolation.LoessInterpolator", 1, 0.125, 1, 1, 1, 1);
   }
 
   @Test
@@ -137,12 +136,12 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testBigFraction() throws Exception {
-    test("org.apache.commons.math3.fraction.BigFraction", 0.5, 0.454, 1, 1, 1, 1);
+    test("org.apache.commons.math3.fraction.BigFraction", 0.714, 0.625, 1, 1, 1, 1);
   }
 
   @Test
   public void testFraction() throws Exception {
-    test("org.apache.commons.math3.fraction.Fraction", 0.462, 0.462, 1, 1, 1, 1);
+    test("org.apache.commons.math3.fraction.Fraction", 0.857, 0.857, 1, 1, 1, 1);
   }
 
   @Test
@@ -157,7 +156,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testVector3D() throws Exception {
-    test("org.apache.commons.math3.geometry.euclidean.threed.Vector3D", 1, 0.5, 1, 1, 1, 0);
+    test("org.apache.commons.math3.geometry.euclidean.threed.Vector3D", 1, 0.333, 1, 1, 1, 1);
   }
 
   @Test
@@ -180,7 +179,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
     test(
         "org.apache.commons.math3.analysis.interpolation.DividedDifferenceInterpolator",
         1,
-        0.4,
+        0.5,
         1,
         1,
         1,
