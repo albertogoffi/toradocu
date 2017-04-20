@@ -68,8 +68,8 @@ public class JavadocExtractorTest {
     throwsTags.clear();
     Parameter par1 = new Parameter(new Type("int[]"), "array", true);
     params.add(par1);
-    paramTags.add(new ParamTag(par1, "must not be null"));
-    throwsTags.add(new ThrowsTag(npe, "if array is null"));
+    //    paramTags.add(new ParamTag(par1, "must not be null"));
+    //    throwsTags.add(new ThrowsTag(npe, "if array is null"));
     expected.add(
         new DocumentedMethod(
             aClass, "foo", doubleType, params, paramTags, false, throwsTags, null));
@@ -80,8 +80,8 @@ public class JavadocExtractorTest {
     throwsTags.clear();
     params.add(new Parameter(objectType, "x", false));
     params.add(new Parameter(objectType, "y", false));
-    throwsTags.add(new ThrowsTag(iae, "if x is null"));
-    paramTags.add(new ParamTag(new Parameter(objectType, "x", false), "must not be null"));
+    //    throwsTags.add(new ThrowsTag(iae, "if x is null"));
+    //    paramTags.add(new ParamTag(new Parameter(objectType, "x", false), "must not be null"));
     expected.add(
         new DocumentedMethod(
             aClass, "bar", doubleType, params, paramTags, false, throwsTags, null));
@@ -130,7 +130,7 @@ public class JavadocExtractorTest {
     paramTags.clear();
     throwsTags.clear();
     params.add(new Parameter(doubleType, "x"));
-    paramTags.add(new ParamTag(new Parameter(doubleType, "x"), "must be positive"));
+    //    paramTags.add(new ParamTag(new Parameter(doubleType, "x"), "must be positive"));
     expected.add(
         new DocumentedMethod(
             aClass, "testParam3", doubleType, params, paramTags, false, throwsTags, null));
@@ -183,10 +183,10 @@ public class JavadocExtractorTest {
     throwsTags.clear();
     params.add(new Parameter(doubleType, "x"));
     params.add(new Parameter(doubleType, "y"));
-    paramTags.add(
-        new ParamTag(new Parameter(doubleType, "x"), "the first number, must be positive"));
-    paramTags.add(
-        new ParamTag(new Parameter(doubleType, "y"), "the second number, must be " + "positive"));
+    //    paramTags.add(
+    //        new ParamTag(new Parameter(doubleType, "x"), "the first number, must be positive"));
+    //    paramTags.add(
+    //        new ParamTag(new Parameter(doubleType, "y"), "the second number, must be " + "positive"));
     expected.add(
         new DocumentedMethod(
             aChild, "testParam", doubleType, params, paramTags, false, throwsTags, null));
@@ -197,10 +197,10 @@ public class JavadocExtractorTest {
     throwsTags.clear();
     params.add(new Parameter(doubleType, "x"));
     params.add(new Parameter(doubleType, "y"));
-    paramTags.add(
-        new ParamTag(new Parameter(doubleType, "x"), "the first number, must be positive"));
-    paramTags.add(
-        new ParamTag(new Parameter(doubleType, "y"), "the second number, must be " + "positive"));
+    //    paramTags.add(
+    //        new ParamTag(new Parameter(doubleType, "x"), "the first number, must be positive"));
+    //    paramTags.add(
+    //        new ParamTag(new Parameter(doubleType, "y"), "the second number, must be " + "positive"));
     expected.add(
         new DocumentedMethod(
             aChild, "testParam2", doubleType, params, paramTags, false, throwsTags, null));
@@ -226,8 +226,8 @@ public class JavadocExtractorTest {
     params.add(par1);
     params.add(par2);
 
-    paramTags.add(new ParamTag(par1, "source vertex of the edge."));
-    paramTags.add(new ParamTag(par2, "target vertex of the edge."));
+    //    paramTags.add(new ParamTag(par1, "source vertex of the edge."));
+    //    paramTags.add(new ParamTag(par2, "target vertex of the edge."));
 
     expected.add(
         new DocumentedMethod(
