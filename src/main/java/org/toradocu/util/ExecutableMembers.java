@@ -1,9 +1,14 @@
 package org.toradocu.util;
 
+import java.lang.reflect.Executable;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
- * Given the fully qualified name of a class, this program prints the number of public constructors
- * and methods of the given class. Note that package-private and protected executable members are
- * ignored.
+ * Given the fully qualified name of a class, this program prints the number of constructors and
+ * methods of the given class. Note that synthetic and private executable members are ignored.
  */
 public class ExecutableMembers {
 
@@ -12,13 +17,19 @@ public class ExecutableMembers {
       throw new IllegalArgumentException("Please provide a fully qualified name of a class.");
     }
 
+    Class<?> clazz;
     try {
       // We assume to have the class to load in the classpath.
-      Class<?> clazz = Class.forName(args[0]);
-      int members = clazz.getConstructors().length + clazz.getMethods().length;
-      System.out.println(members);
+      clazz = Class.forName(args[0]);
     } catch (ClassNotFoundException e) {
       throw new IllegalArgumentException("Unable to load class " + args[0], e);
     }
+    List<Executable> members = new ArrayList<>();
+    Collections.addAll(members, clazz.getDeclaredConstructors());
+    Collections.addAll(members, clazz.getDeclaredMethods());
+    // Ignore synthetic and private executable members.
+    members.removeIf(m -> Modifier.isPrivate(m.getModifiers()) || m.isSynthetic());
+    long count = members.stream().filter(e -> Modifier.isPublic(e.getModifiers())).count();
+    System.out.println(count);
   }
 }
