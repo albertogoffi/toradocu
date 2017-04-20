@@ -18,12 +18,12 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testArrayStack() throws Exception {
-    test("org.apache.commons.collections4.ArrayStack", 1, 0.75, 1, 1, 1, 1);
+    test("org.apache.commons.collections4.ArrayStack", 1, 0.75, 1, 1, 1, 0.2);
   }
 
   @Test
   public void testBagUtils() throws Exception {
-    test("org.apache.commons.collections4.BagUtils", 1, 1, 1, 1, 1, 1);
+    test("org.apache.commons.collections4.BagUtils", 1, 1, 1, 1, 1, 0);
   }
 
   @Test
@@ -43,12 +43,12 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testQueueUtils() throws Exception {
-    test("org.apache.commons.collections4.QueueUtils", 1, 1, 1, 1, 1, 1);
+    test("org.apache.commons.collections4.QueueUtils", 1, 1, 1, 1, 1, 0);
   }
 
   @Test
   public void testFixedOrderComparator() throws Exception {
-    test("org.apache.commons.collections4.comparators.FixedOrderComparator", 1, 0.571, 1, 1, 1, 1);
+    test("org.apache.commons.collections4.comparators.FixedOrderComparator", 1, 0.571, 1, 1, 1, 0);
   }
 
   @Test
@@ -58,12 +58,12 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testFluentIterable() throws Exception {
-    test("org.apache.commons.collections4.FluentIterable", 1, 0.866, 1, 1, 1, 1);
+    test("org.apache.commons.collections4.FluentIterable", 1, 0.866, 1, 1, 1, 0);
   }
 
   @Test
   public void testLRUMap() throws Exception {
-    test("org.apache.commons.collections4.map.LRUMap", 0.892, 0.862, 1, 1, 1, 0.5);
+    test("org.apache.commons.collections4.map.LRUMap", 0.833, 0.833, 1, 1, 1, 1);
   }
 
   @Test
