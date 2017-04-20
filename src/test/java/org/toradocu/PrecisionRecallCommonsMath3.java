@@ -42,7 +42,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testPrimes() throws Exception {
-    test("org.apache.commons.math3.primes.Primes", 1, 1, 1, 1, 1, 1);
+    test("org.apache.commons.math3.primes.Primes", 1, 1, 1, 1, 0, 0);
   }
 
   @Test
@@ -57,7 +57,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testRandomDataGenerator() throws Exception {
-    test("org.apache.commons.math3.random.RandomDataGenerator", 1, 0.928, 1, 1, 1, 1);
+    test("org.apache.commons.math3.random.RandomDataGenerator", 1, 0.964, 1, 1, 1, 1);
   }
 
   @Test
@@ -111,7 +111,8 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testLinearInterpolator() throws Exception {
-    test("org.apache.commons.math3.analysis.interpolation.LinearInterpolator", 1, 0, 1, 1, 1, 1);
+    test(
+        "org.apache.commons.math3.analysis.interpolation.LinearInterpolator", 1, 0.333, 1, 1, 1, 1);
   }
 
   @Test
@@ -148,7 +149,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testFraction() throws Exception {
-    test("org.apache.commons.math3.fraction.Fraction", 0.462, 0.429, 1, 1, 1, 1);
+    test("org.apache.commons.math3.fraction.Fraction", 0.5, 0.5, 1, 1, 1, 1);
   }
 
   @Test
@@ -178,7 +179,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testRealVector() throws Exception {
-    test("org.apache.commons.math3.linear.RealVector", 1, 0.304, 1, 1, 1, 1);
+    test("org.apache.commons.math3.linear.RealVector", 1, 0.348, 1, 1, 1, 1);
   }
 
   @Test
@@ -186,7 +187,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
     test(
         "org.apache.commons.math3.analysis.interpolation.DividedDifferenceInterpolator",
         1,
-        0,
+        0.4,
         1,
         1,
         1,

@@ -1,6 +1,7 @@
 package org.toradocu.translator;
 
 import java.lang.reflect.Parameter;
+import java.util.Set;
 import java.util.StringJoiner;
 
 /**
@@ -13,16 +14,21 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
   /** The 0-based index of this parameter in its associated method's parameter list. */
   private int index;
 
+  /** Additional identifiers coming directly from param comments. */
+  private Set<String> extractedIdentifiers;
   /**
    * Constructs and initializes a {@code ParameterCodeElement} that identifies the given parameter.
    *
    * @param parameter the backing parameter that this code element identifies
    * @param name the name of the parameter
    * @param index the 0-based index of the parameter in the parameter list of its associated method
+   * @param extractedIds the additional IDs extracted from the param comment
    */
-  public ParameterCodeElement(Parameter parameter, String name, int index) {
+  public ParameterCodeElement(
+      Parameter parameter, String name, int index, Set<String> extractedIds) {
     super(parameter);
     this.index = index;
+    this.extractedIdentifiers = extractedIds;
 
     // Add name identifiers.
     addIdentifier("parameter");
@@ -53,6 +59,28 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
     }
   }
 
+  /**
+   * Returns the additional identifiers extractedIdentifiers.
+   *
+   * @return a list of strings that identify this code element
+   */
+  public Set<String> getOtherIdentifiers() {
+    return extractedIdentifiers;
+  }
+
+  /**
+   * Remove a string identifier from extractedIdentifiers.
+   *
+   * @param identifier a string that identifies this code element
+   */
+  public void removeIdentifier(String identifier) {
+    extractedIdentifiers.remove(identifier);
+  }
+
+  /** Merge the default identifiers with the additional ones extractedIdentifiers. */
+  public void mergeIdentifiers() {
+    getIdentifiers().addAll(extractedIdentifiers);
+  }
   /**
    * Builds and returns the Java expression representation of this parameter code element. The
    * returned string is formatted as "args[i]" where i is the index of this parameter in a parameter

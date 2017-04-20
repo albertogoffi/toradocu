@@ -16,12 +16,12 @@ public class PrecisionRecallJGraphT extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testAbstractGraph() throws Exception {
-    test("org.jgrapht.graph.AbstractGraph", 1, 0.5, 1, 1, 1, 0);
+    test("org.jgrapht.graph.AbstractGraph", 1, 0.75, 1, 1, 1, 0);
   }
 
   @Test
   public void testGraph() throws Exception {
-    test("org.jgrapht.Graph", 1, 0.333, 1, 1, 1, 0);
+    test("org.jgrapht.Graph", 1, 0.444, 1, 1, 1, 0);
   }
 
   @Test
@@ -51,12 +51,12 @@ public class PrecisionRecallJGraphT extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testAbstractPathElementList() throws Exception {
-    test("org.jgrapht.alg.AbstractPathElementList", 1, 0.666, 1, 1, 1, 1);
+    test("org.jgrapht.alg.AbstractPathElementList", 1, 0.8, 1, 1, 1, 1);
   }
 
   @Test
   public void testDirectedAcyclicGraph() throws Exception {
-    test("org.jgrapht.experimental.dag.DirectedAcyclicGraph", 1, 0.428, 1, 1, 1, 1);
+    test("org.jgrapht.experimental.dag.DirectedAcyclicGraph", 1, 0.714, 1, 1, 1, 1);
   }
 
   @Test
