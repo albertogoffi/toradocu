@@ -205,40 +205,6 @@ public class JavadocExtractorTest {
         new DocumentedMethod(
             aChild, "testParam2", doubleType, params, paramTags, false, throwsTags, null));
 
-    // Method: AClass.foo(int[])
-    params.clear();
-    paramTags.clear();
-    throwsTags.clear();
-    Parameter par1 = new Parameter(new Type("int[]"), "array", true);
-    params.add(par1);
-    throwsTags.add(new ThrowsTag(npe, "if array is null"));
-    paramTags.add(new ParamTag(par1, "must not be null"));
-    expected.add(
-        new DocumentedMethod(
-            aClass, "foo", doubleType, params, paramTags, false, throwsTags, null));
-
-    // Method: AClass.bar(Object, Object).
-    params.clear();
-    paramTags.clear();
-    throwsTags.clear();
-    params.add(new Parameter(objectType, "x", false));
-    params.add(new Parameter(objectType, "y", false));
-    throwsTags.add(new ThrowsTag(iae, "if x is null"));
-    paramTags.add(new ParamTag(new Parameter(objectType, "x", false), "must not be null"));
-    expected.add(
-        new DocumentedMethod(
-            aClass, "bar", doubleType, params, paramTags, false, throwsTags, null));
-
-    // Method: AClass.testParam3(double)
-    params.clear();
-    paramTags.clear();
-    throwsTags.clear();
-    params.add(new Parameter(doubleType, "x"));
-    paramTags.add(new ParamTag(new Parameter(doubleType, "x"), "must be positive"));
-    expected.add(
-        new DocumentedMethod(
-            aClass, "testParam3", doubleType, params, paramTags, false, throwsTags, null));
-
     test(
         "example.AChild",
         expected,
