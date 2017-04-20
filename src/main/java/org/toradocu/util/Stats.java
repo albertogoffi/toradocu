@@ -1,5 +1,6 @@
 package org.toradocu.util;
 
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -8,7 +9,6 @@ import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.ReturnTag;
 import org.toradocu.extractor.Tag;
-import org.toradocu.extractor.Type;
 
 /**
  * Represents Toradocu precision/recall for a given Java element (for example, it can be a class or
@@ -306,6 +306,12 @@ public class Stats {
    */
   public static List<Stats> getStats(
       List<DocumentedMethod> actualMethodList, List<DocumentedMethod> expectedMethodList) {
+
+    // TODO Fix the goal files and remove the following line. Goal files include inherited methods!
+    expectedMethodList.removeIf(
+        m -> !m.getTargetClass().equals(m.getContainingClass().getQualifiedName()));
+    expectedMethodList.removeIf(m -> Modifier.isPrivate(m.getExecutable().getModifiers()));
+
     if (actualMethodList.size() != expectedMethodList.size()) {
       throw new IllegalArgumentException(
           "Actual and expected method list should be of the same size.");
@@ -353,6 +359,12 @@ public class Stats {
       List<DocumentedMethod> actualMethodList,
       List<DocumentedMethod> expectedMethodList,
       StringBuilder output) {
+
+    // TODO Fix the goal files and remove the following line. Goal files include inherited methods!
+    expectedMethodList.removeIf(
+        m -> !m.getTargetClass().equals(m.getContainingClass().getQualifiedName()));
+    expectedMethodList.removeIf(m -> Modifier.isPrivate(m.getExecutable().getModifiers()));
+
     if (actualMethodList.size() != expectedMethodList.size()) {
       throw new IllegalArgumentException(
           "Actual and expected method list should be of the same size.");
@@ -365,14 +377,8 @@ public class Stats {
 
       Set<ReturnTag> actualMethodReturnTag = new LinkedHashSet<>();
       Set<ReturnTag> expectedMethodReturnTag = new LinkedHashSet<>();
-      final Type methodReturnType = expectedMethod.getReturnType();
-      final String typeSimpleName =
-          methodReturnType != null ? methodReturnType.getSimpleName() : "";
-      if (typeSimpleName.equals("boolean") || typeSimpleName.equals("Boolean")) {
-        // Consider @return only for methods with
-        actualMethodReturnTag.add(actualMethod.returnTag());
-        expectedMethodReturnTag.add(expectedMethod.returnTag());
-      }
+      actualMethodReturnTag.add(actualMethod.returnTag());
+      expectedMethodReturnTag.add(expectedMethod.returnTag());
 
       output
           .append(

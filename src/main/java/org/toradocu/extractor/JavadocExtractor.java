@@ -6,6 +6,7 @@ import com.sun.javadoc.ConstructorDoc;
 import com.sun.javadoc.Doc;
 import com.sun.javadoc.ExecutableMemberDoc;
 import com.sun.javadoc.MethodDoc;
+import com.sun.javadoc.SourcePosition;
 import com.sun.javadoc.Tag;
 import com.sun.javadoc.Type;
 import com.sun.javadoc.TypeVariable;
@@ -102,38 +103,31 @@ public final class JavadocExtractor {
   private List<ExecutableMemberDoc> getConstructorsAndMethods(ClassDoc classDoc) {
     /* Constructors of the class {@code classDoc} to be returned by this method */
     List<ExecutableMemberDoc> constructors = new ArrayList<>();
-    /* Methods of the class {@code classDoc} to be returned by this method */
-    Map<String, ExecutableMemberDoc> methods = new LinkedHashMap<>();
 
     // Collect non-default constructors.
-    for (ConstructorDoc constructor : classDoc.constructors()) {
+    for (ConstructorDoc constructor : classDoc.constructors(false)) {
       // This is a workaround to strange behavior of method Doc.position(). It does not return null
       // for default constructors. It instead returns the line number of the start of the class.
-      if (constructor.position() == null
-          || !constructor.position().toString().equals(classDoc.position().toString())) {
+      SourcePosition position = constructor.position();
+      if (!constructor.isSynthetic()
+          && !constructor.isPrivate()
+          && position != null
+          && !position.toString().equals(classDoc.position().toString())) {
         constructors.add(constructor);
       }
     }
 
-    // Collect non-synthetic methods (i.e. those methods that have not been synthesized by the compiler).
-    ClassDoc currentClass = classDoc; // Used to traverse over superclasses.
-    while (currentClass != null && !currentClass.qualifiedName().equals("java.lang.Object")) {
-      List<ExecutableMemberDoc> currentClassMethods =
-          new ArrayList<>(Arrays.asList(currentClass.methods()));
-      // Class hierarchy is traversed from from subclass to superclass. Each visited method's signature
-      // is stored so that a method is considered only once, even when it is overridden.
-      for (ExecutableMemberDoc method : currentClassMethods) {
-        String methodID = method.name() + method.signature();
-        if (!method.isSynthetic() && !methods.containsKey(methodID)) {
-          methods.put(methodID, method);
-        }
-      }
-      currentClass = currentClass.superclass();
-    }
+    // Collect non-private non-synthetic methods (i.e. those methods that have not been synthesized
+    // by the compiler).
+    List<MethodDoc> methods =
+        Arrays.stream(classDoc.methods(false))
+            .filter(m -> !m.isSynthetic() && !m.isPrivate())
+            .collect(Collectors.toList());
 
-    List<ExecutableMemberDoc> constructorsAndMethods = new ArrayList<>(constructors);
-    constructorsAndMethods.addAll(methods.values());
-    return constructorsAndMethods;
+    List<ExecutableMemberDoc> members = new ArrayList<>();
+    members.addAll(constructors);
+    members.addAll(methods);
+    return members;
   }
 
   /**
