@@ -26,9 +26,7 @@ import org.slf4j.LoggerFactory;
 import org.toradocu.doclet.formats.html.ConfigurationImpl;
 import org.toradocu.doclet.formats.html.HtmlDocletWriter;
 import org.toradocu.doclet.internal.toolkit.taglets.TagletWriter;
-import org.toradocu.doclet.internal.toolkit.util.DocFinder;
 import org.toradocu.doclet.internal.toolkit.util.DocPath;
-import org.toradocu.doclet.internal.toolkit.util.ImplementedMethods;
 
 /**
  * {@code JavadocExtractor} extracts {@code DocumentedMethod}s from {@code ClassDoc}s. The entry
@@ -280,21 +278,21 @@ public final class JavadocExtractor {
     // overwriting the Javadoc documentation.
     throwsTags.addAll(throwsTagsOf(member));
 
-    Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
+    //    Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
 
     // Collect tags that are automatically inherited (i.e., when there is no comment for a method
     // overriding another one).
-    throwsTags.addAll(throwsTagsOf(holder));
+    //    throwsTags.addAll(throwsTagsOf(holder));
 
     // Collect tags from method definitions in interfaces. This is not done by DocFinder.search
     // (at least in the way we use it).
-    if (holder instanceof MethodDoc) {
-      ImplementedMethods implementedMethods =
-          new ImplementedMethods((MethodDoc) holder, configuration);
-      for (MethodDoc implementedMethod : implementedMethods.build()) {
-        throwsTags.addAll(throwsTagsOf(implementedMethod));
-      }
-    }
+    //    if (holder instanceof MethodDoc) {
+    //      ImplementedMethods implementedMethods =
+    //          new ImplementedMethods((MethodDoc) holder, configuration);
+    //      for (MethodDoc implementedMethod : implementedMethods.build()) {
+    //        throwsTags.addAll(throwsTagsOf(implementedMethod));
+    //      }
+    //    }
 
     List<ThrowsTag> memberThrowsTags = new ArrayList<>();
     for (Tag tag : throwsTags) {
@@ -366,21 +364,21 @@ public final class JavadocExtractor {
     // Param tag support.
     paramTagsMap.putAll(getParamTags(member.tags("@param")));
 
-    Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
+    //    Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
 
     // Extract the inherited tags.
-    paramTagsMap.putAll(getParamTags(holder.tags("@param")));
+    //    paramTagsMap.putAll(getParamTags(holder.tags("@param")));
 
     // Collect tags from method definitions in interfaces. This is not done by DocFinder.search
     // (at least in the way we use it).
-    if (holder instanceof MethodDoc) {
-      ImplementedMethods implementedMethods =
-          new ImplementedMethods((MethodDoc) holder, configuration);
-      for (MethodDoc implementedMethod : implementedMethods.build()) {
-        //param
-        paramTagsMap.putAll(getParamTags(implementedMethod.tags("@param")));
-      }
-    }
+    //    if (holder instanceof MethodDoc) {
+    //      ImplementedMethods implementedMethods =
+    //          new ImplementedMethods((MethodDoc) holder, configuration);
+    //      for (MethodDoc implementedMethod : implementedMethods.build()) {
+    //        //param
+    //        paramTagsMap.putAll(getParamTags(implementedMethod.tags("@param")));
+    //      }
+    //    }
 
     // List that will contain the ParamTags of the method.
     paramTags.addAll(paramTagsMap.values());
@@ -459,23 +457,23 @@ public final class JavadocExtractor {
     // overwriting the Javadoc documentation.
     Collections.addAll(returnTags, member.tags(TAG_NAME));
 
-    if (returnTags.isEmpty()) { // Inherit @return comments if necessary.
-      Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
-
-      // Collect tags that are automatically inherited (i.e., when there is no comment for a method
-      // overriding another one).
-      Collections.addAll(returnTags, holder.tags(TAG_NAME));
-
-      // Collect tags from method definitions in interfaces. This is not done by DocFinder.search
-      // (at least in the way we use it).
-      if (holder instanceof MethodDoc) {
-        ImplementedMethods implementedMethods =
-            new ImplementedMethods((MethodDoc) holder, configuration);
-        for (MethodDoc implementedMethod : implementedMethods.build()) {
-          Collections.addAll(returnTags, implementedMethod.tags(TAG_NAME));
-        }
-      }
-    }
+    //    if (returnTags.isEmpty()) { // Inherit @return comments if necessary.
+    //      Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
+    //
+    //      // Collect tags that are automatically inherited (i.e., when there is no comment for a method
+    //      // overriding another one).
+    //      Collections.addAll(returnTags, holder.tags(TAG_NAME));
+    //
+    //      // Collect tags from method definitions in interfaces. This is not done by DocFinder.search
+    //      // (at least in the way we use it).
+    //      if (holder instanceof MethodDoc) {
+    //        ImplementedMethods implementedMethods =
+    //            new ImplementedMethods((MethodDoc) holder, configuration);
+    //        for (MethodDoc implementedMethod : implementedMethods.build()) {
+    //          Collections.addAll(returnTags, implementedMethod.tags(TAG_NAME));
+    //        }
+    //      }
+    //    }
 
     List<ReturnTag> memberReturnTags = new ArrayList<>();
     for (Tag tag : returnTags) {
