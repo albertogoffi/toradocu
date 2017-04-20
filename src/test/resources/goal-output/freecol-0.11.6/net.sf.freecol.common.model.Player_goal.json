@@ -344,7 +344,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "The name of the new world as chosen by the Player, or null if none chosen yet.",
-      "condition": "true ? result==target.newLandName",
+      "condition": "target.newLandName != null ? result==target.newLandName : result==null",
       "kind": "RETURN"
     },
     "returnType": {
