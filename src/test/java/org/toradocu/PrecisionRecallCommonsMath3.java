@@ -151,7 +151,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testSubLine() throws Exception {
-    test("org.apache.commons.math3.geometry.euclidean.threed.SubLine", 1, 0, 1, 1, 1, 1);
+    test("org.apache.commons.math3.geometry.euclidean.threed.SubLine", 1, 1, 1, 1, 1, 1);
   }
 
   @Test

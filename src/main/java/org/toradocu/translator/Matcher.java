@@ -4,7 +4,11 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.lang.reflect.Parameter;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -188,24 +192,95 @@ class Matcher {
                   })
               .collect(Collectors.toSet());
 
-      Set<CodeElement<?>> matches = filterMatchingCodeElements(predicate, codeElements);
-      if (matches.isEmpty()) {
+      //      Set<CodeElement<?>> matches = filterMatchingCodeElements(predicate, codeElements);
+      List<CodeElement<?>> sortedList =
+          new ArrayList<CodeElement<?>>(filterMatchingCodeElements(predicate, codeElements));
+      if (!sortedList.isEmpty()) Collections.sort(sortedList, new JavaExpressionComparator());
+      if (sortedList.isEmpty()) {
         return null;
       } else {
-        // Matches contains matches that are at the same distance from s. We simply return one of
-        // those because we don't know which one is best.
-        match = matches.stream().findFirst().get().getJavaExpression();
+        match = findRightMatch(method, predicate, sortedList);
       }
     }
 
     // Condition "target==null" is indeed not correct.
-    if (match.equals("target==null")) {
-      return null;
-    }
+    if (match.equals("target==null")) return null;
 
-    if (negate) {
-      match = "(" + match + ") == false";
+    if (negate) match = "(" + match + ") == false";
+
+    return match;
+  }
+
+  private static String findRightMatch(
+      DocumentedMethod method, String predicate, List<CodeElement<?>> sortedList) {
+    String match = "";
+    CodeElement<?> firstMatch = null;
+    boolean foundParams = false;
+    List<String> paramForMatch = new ArrayList<String>();
+    List<String> paramMatch = new ArrayList<String>();
+    java.lang.reflect.Parameter[] myParams = method.getExecutable().getParameters();
+    for (CodeElement<?> currentMatch : sortedList) {
+      if (currentMatch instanceof MethodCodeElement) {
+        // Match is a String: before building it, check if the method has parameters,
+        // and fill the parenthesis () with the right ones
+        if (((MethodCodeElement) currentMatch).getArgs() != null) {
+          paramMatch = Arrays.asList(((MethodCodeElement) currentMatch).getArgs());
+          int pcount = 0;
+          for (java.lang.reflect.Parameter p : myParams) {
+            Type pt = p.getParameterizedType();
+            if (paramMatch.contains(pt.getTypeName())) {
+              foundParams = true;
+              paramForMatch.add("args[" + pcount + "]");
+              firstMatch = currentMatch;
+            }
+            pcount++;
+          }
+        }
+      }
+      if (foundParams) break;
     }
+    if (foundParams) {
+      String exp = firstMatch.getJavaExpression();
+      match = exp.substring(0, exp.indexOf("(") + 1);
+      for (int j = 0; j < paramForMatch.size() - 1; j++) match += paramForMatch.get(j) + ",";
+      match += paramForMatch.get(paramForMatch.size() - 1) + ")";
+    } else if (!paramMatch
+        .isEmpty()) { //the method is supposed to take params but we haven't find a match: does it have to take null?
+      final java.util.regex.Matcher nullPattern =
+          Pattern.compile("[has|have|contain(s?)] null").matcher(predicate);
+
+      final java.util.regex.Matcher equalPattern =
+          Pattern.compile("[is|are] equal(s?)").matcher(predicate);
+      if (firstMatch == null) firstMatch = sortedList.stream().findFirst().get();
+      if (nullPattern.find()) {
+        String exp = firstMatch.getJavaExpression();
+        match = exp.substring(0, exp.indexOf("(") + 1) + "null" + ")";
+      } else if (equalPattern.find()) {
+        // the equal method can be invoked only from an Object to an Object of the same type
+        String receiver =
+            ((MethodCodeElement) firstMatch)
+                .getReceiver()
+                .replace("[", "")
+                .replace("]", "")
+                .replace("s", "");
+        boolean foundEquals = false;
+        for (int i = 0; i < myParams.length && !foundEquals; i++) {
+          Parameter p = myParams[i];
+          if (p.getName().equals(receiver)) { //found the receiver, who is the Object of same type?
+            String type = p.getParameterizedType().getTypeName();
+            for (int j = 0; j < myParams.length; j++) {
+              if (j != i && myParams[j].getParameterizedType().getTypeName().equals(type)) {
+                String exp = firstMatch.getJavaExpression();
+                match = exp.substring(0, exp.indexOf("(") + 1) + "args[" + j + "]" + ")";
+                foundEquals = true;
+                break;
+              }
+            }
+          }
+        }
+        if (!foundEquals) match = sortedList.stream().findFirst().get().getJavaExpression();
+      } else match = sortedList.stream().findFirst().get().getJavaExpression();
+    } else match = sortedList.stream().findFirst().get().getJavaExpression();
     return match;
   }
 
@@ -272,9 +347,8 @@ class Matcher {
 
     for (Method method :
         Arrays.stream(type.getMethods()).sorted(byName).collect(Collectors.toList())) {
-      if (method.getParameterCount() == 0
-          && (method.getReturnType().equals(Boolean.class)
-              || method.getReturnType().equals(boolean.class))) {
+      if (method.getReturnType().equals(Boolean.class)
+          || method.getReturnType().equals(boolean.class)) {
         result.add(new MethodCodeElement(receiver.getJavaExpression(), method));
       }
     }
