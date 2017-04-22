@@ -325,7 +325,7 @@
     ],
     "returnTag": {
       "comment": "true if this graph did not already contain the specified edge.",
-      "condition": "target.containsEdge(args[2])==false ? result==true",
+      "condition": "(target.containsEdge(args[0],args[1]))==false?result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -403,7 +403,7 @@
     ],
     "returnTag": {
       "comment": "true if this graph did not already contain the specified vertex.",
-      "condition": "target.containsVertex(args[2])==false ? result==true",
+      "condition": "(target.containsVertex(args[0]))==false ? result==true",
       "kind": "RETURN"
     },
     "returnType": {
@@ -794,7 +794,7 @@
     ],
     "returnTag": {
       "comment": "the removed edges, or null if either vertex is not part of graph",
-      "condition": "target.containsVertex(args[0])==false && target.containsVertex(args[1])==false ? result==null",
+      "condition": "",
       "kind": "RETURN"
     },
     "returnType": {
