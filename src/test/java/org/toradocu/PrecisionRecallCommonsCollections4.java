@@ -43,7 +43,7 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testQueueUtils() throws Exception {
-    test("org.apache.commons.collections4.QueueUtils", 1, 1, 1, 1, 1, 0);
+    test("org.apache.commons.collections4.QueueUtils", 1, 1, 0.8, 0.8, 1, 0);
   }
 
   @Test
