@@ -275,7 +275,7 @@
     ],
     "returnTag": {
       "comment": "true if the target graph did not already contain the specified edge.",
-      "condition": "target.containsEdge(args[2])==false ? result==true",
+      "condition": "(args[0].containsEdge(args[2]))==false?result==true",
       "kind": "RETURN"
     },
     "returnType": {
