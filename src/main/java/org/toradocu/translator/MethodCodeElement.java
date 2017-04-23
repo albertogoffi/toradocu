@@ -25,7 +25,6 @@ public class MethodCodeElement extends CodeElement<Method> {
    *
    * @param receiver the class/object in which the method is called
    * @param method the no-argument method that this code element identifies
-   * @param parameters the actual parameters to use to invoke this method
    */
   public MethodCodeElement(String receiver, Method method) {
     super(method);
