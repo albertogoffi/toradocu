@@ -1,5 +1,7 @@
 package org.toradocu.translator;
 
+import static java.util.stream.Collectors.toList;
+
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,6 +19,7 @@ import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.ParamTag;
+import org.toradocu.extractor.Parameter;
 import org.toradocu.extractor.Tag;
 import org.toradocu.extractor.ThrowsTag;
 
@@ -74,11 +77,14 @@ public class ConditionTranslator {
         text.replace("greater than or equal to", ">=")
             .replace("≥", ">=")
             .replace("less than or equal to", "<=")
+            .replace("lesser than or equal to", "<=")
+            .replace("lesser or equal to", "<=")
             .replace("≤", "<=")
             .replace("greater than", ">")
             .replace("smaller than or equal to", "<=")
             .replace("smaller than", "<")
             .replace("less than", "<")
+            .replace("lesser than", "<")
             .replace("equal to", "==");
 
     java.util.regex.Matcher matcher = Pattern.compile(INEQUALITY_NUMBER_REGEX).matcher(text);
@@ -526,7 +532,7 @@ public class ConditionTranslator {
 
         if (!predicate.isEmpty() && !trueCase.isEmpty()) {
           try {
-            String predicateTranslation = translateFirstPart(predicate);
+            String predicateTranslation = translateFirstPart(predicate, method);
             String conditionTranslation = translateSecondPart(trueCase, method);
 
             if (!predicateTranslation.isEmpty() && !conditionTranslation.isEmpty()) {
@@ -605,6 +611,12 @@ public class ConditionTranslator {
       return "result == true";
     } else if (lowerCaseText.contains("false")) {
       return "result == false";
+    } else {
+      String[] splittedText = text.split(" ");
+      for (int i = 0; i < splittedText.length; i++) {
+        int index = searchForCode(splittedText[i], method);
+        if (index != -1) return "result == args[" + index + "]";
+      }
     }
     return null;
   }
@@ -639,18 +651,32 @@ public class ConditionTranslator {
    * {@code @return true if the parameter is null}. In this comment the first part is "true".
    *
    * @param text words representing the first part of an @return comment
+   * @param method the DocumentedMethod the @return comment belongs to
    * @return the translation of the given {@code text}
    * @throws IllegalArgumentException if the given {@code text} cannot be translated
    */
-  private static String translateFirstPart(String text) {
+  private static String translateFirstPart(String text, DocumentedMethod method) {
     String lowerCaseText = text.trim().toLowerCase();
     switch (lowerCaseText) {
       case "true":
       case "false":
         return "result == " + lowerCaseText;
+      default:
+        {
+          int index = searchForCode(text, method);
+          if (index != -1) return "result == args[" + index + "]";
+        }
     }
     //TODO: Change the exception with one more meaningful.
     throw new IllegalArgumentException(text + " cannot be translated: Pattern not supported");
+  }
+
+  private static int searchForCode(String text, DocumentedMethod method) {
+    List<String> arguments =
+        method.getParameters().stream().map(Parameter::getName).collect(toList());
+    for (int i = 0; i < arguments.size(); i++) if (arguments.get(i).equals(text)) return i;
+
+    return -1;
   }
 
   /**

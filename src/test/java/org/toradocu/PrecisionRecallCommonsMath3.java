@@ -67,7 +67,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testFastMath() throws Exception {
-    test("org.apache.commons.math3.util.FastMath", 1, 1, 1, 1, 1, 0);
+    test("org.apache.commons.math3.util.FastMath", 1, 1, 1, 1, 1, 0.444);
   }
 
   @Test
