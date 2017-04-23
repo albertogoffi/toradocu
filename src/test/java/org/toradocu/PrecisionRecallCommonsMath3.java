@@ -62,7 +62,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testArithmeticUtils() throws Exception {
-    test("org.apache.commons.math3.util.ArithmeticUtils", 1, 0.947, 1, 0.857, 1, 0);
+    test("org.apache.commons.math3.util.ArithmeticUtils", 1, 0.947, 1, 0.857, 1, 0.666);
   }
 
   @Test
