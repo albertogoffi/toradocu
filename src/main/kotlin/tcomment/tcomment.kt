@@ -74,7 +74,7 @@ private fun mustBeNotNull(comment: String): Boolean {
       }
       var j = index + 1
       while (j <= index + 3 && j < commentWords.size) {
-        if (commentWords[j] == "not" || commentWords[i] == "never")
+        if (commentWords[j] == "not" || commentWords[j] == "never")
           return true
         ++j
       }
