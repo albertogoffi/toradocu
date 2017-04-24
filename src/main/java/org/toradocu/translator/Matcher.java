@@ -215,7 +215,7 @@ class Matcher {
       DocumentedMethod method, String predicate, List<CodeElement<?>> sortedList) {
     String match = "";
     CodeElement<?> firstMatch = null;
-    boolean foundParams = false;
+    boolean foundMatch = false;
     List<String> paramForMatch = new ArrayList<String>();
     List<String> paramMatch = new ArrayList<String>();
     java.lang.reflect.Parameter[] myParams = method.getExecutable().getParameters();
@@ -229,7 +229,7 @@ class Matcher {
           for (java.lang.reflect.Parameter p : myParams) {
             Type pt = p.getParameterizedType();
             if (paramMatch.contains(pt.getTypeName())) {
-              foundParams = true;
+              foundMatch = true;
               paramForMatch.add("args[" + pcount + "]");
               firstMatch = currentMatch;
             }
@@ -237,9 +237,9 @@ class Matcher {
           }
         }
       }
-      if (foundParams) break;
+      if (foundMatch) break;
     }
-    if (foundParams) {
+    if (foundMatch) {
       String exp = firstMatch.getJavaExpression();
       match = exp.substring(0, exp.indexOf("(") + 1);
       for (int j = 0; j < paramForMatch.size() - 1; j++) match += paramForMatch.get(j) + ",";
@@ -249,12 +249,13 @@ class Matcher {
       final java.util.regex.Matcher nullPattern =
           Pattern.compile("[has|have|contain(s?)] null").matcher(predicate);
 
-      final java.util.regex.Matcher equalPattern =
+      final java.util.regex.Matcher equalPattern = //or is it the equals() method?
           Pattern.compile("[is|are] equal(s?)").matcher(predicate);
       if (firstMatch == null) firstMatch = sortedList.stream().findFirst().get();
       if (nullPattern.find()) {
         String exp = firstMatch.getJavaExpression();
         match = exp.substring(0, exp.indexOf("(") + 1) + "null" + ")";
+        foundMatch = true;
       } else if (equalPattern.find()) {
         // the equal method can be invoked only from an Object to an Object of the same type
         String receiver =
@@ -263,8 +264,7 @@ class Matcher {
                 .replace("[", "")
                 .replace("]", "")
                 .replace("s", "");
-        boolean foundEquals = false;
-        for (int i = 0; i < myParams.length && !foundEquals; i++) {
+        for (int i = 0; i < myParams.length && !foundMatch; i++) {
           Parameter p = myParams[i];
           if (p.getName().equals(receiver)) { //found the receiver, who is the Object of same type?
             String type = p.getParameterizedType().getTypeName();
@@ -272,15 +272,16 @@ class Matcher {
               if (j != i && myParams[j].getParameterizedType().getTypeName().equals(type)) {
                 String exp = firstMatch.getJavaExpression();
                 match = exp.substring(0, exp.indexOf("(") + 1) + "args[" + j + "]" + ")";
-                foundEquals = true;
+                foundMatch = true;
                 break;
               }
             }
           }
         }
-        if (!foundEquals) match = sortedList.stream().findFirst().get().getJavaExpression();
-      } else match = sortedList.stream().findFirst().get().getJavaExpression();
-    } else match = sortedList.stream().findFirst().get().getJavaExpression();
+      }
+    }
+    // No match is the absolute best: just pick the first one
+    if (!foundMatch) match = sortedList.stream().findFirst().get().getJavaExpression();
     return match;
   }
 
@@ -391,108 +392,157 @@ class Matcher {
     String predicateTranslation;
     if (isPattern.find()) {
       // Get the last group in the regular expression.
-      String lastWord = isPattern.group(isPattern.groupCount());
-      switch (lastWord) {
-        case "true":
-        case "false":
-        case "null":
-          predicateTranslation = "==" + lastWord;
-          break;
-        case "this":
-          predicateTranslation = "==target"; // The receiver object in the generated aspects.
-          break;
-        case "zero":
-          predicateTranslation = "==0";
-          break;
-        case "positive":
-        case "strictly positive":
-          predicateTranslation = ">0";
-          break;
-        case "negative":
-        case "strictly negative":
-          predicateTranslation = "<0";
-          break;
-        case "nonnegative":
-          predicateTranslation = ">=0";
-          break;
-        case "nonpositive":
-          predicateTranslation = "<=0";
-          break;
-        default:
-          predicateTranslation = null;
-      }
+      predicateTranslation = manageIsPattern(isPattern);
     } else if (isNotPattern.find()) {
-      String word = isNotPattern.group(isNotPattern.groupCount());
-      switch (word) {
-        case "true":
-        case "false":
-        case "null":
-          predicateTranslation = "!=" + word;
-          break;
-        case "zero":
-          predicateTranslation = "!=0";
-          break;
-        case "positive":
-        case "strictly positive":
-          predicateTranslation = ">0";
-          break;
-        case "negative":
-        case "strictly negative":
-          predicateTranslation = "<0";
-          break;
-        case "nonnegative":
-          predicateTranslation = ">=0";
-          break;
-        case "nonpositive":
-          predicateTranslation = "<=0";
-          break;
-        default:
-          predicateTranslation = null;
-      }
+      predicateTranslation = manageIsNotPattern(isNotPattern);
     } else if (inequalityNumber.find()) {
-      // Get the number from the last group of the regular expression.
-      String numberString = inequalityNumber.group(3);
-      // Get the symbol from the regular expression.
-      String relation = inequalityNumber.group(2);
-      String numberWord = numberWordToDigit(numberString);
-
-      int intNumber = 0;
-      float floatNumber = 0;
-      boolean isIntNumber = false;
-
-      if (!numberString.contains(".")) { //the number is an int
-        intNumber =
-            (!numberWord.equals(""))
-                ? intNumber = Integer.parseInt(numberWord)
-                : Integer.parseInt(numberString);
-
-        isIntNumber = true;
-      } else {
-        floatNumber = Float.parseFloat(numberString);
-      }
-      // relation is null in predicates without inequalities. For example "is 0".
-      if (relation == null || relation.equals("=")) {
-        predicateTranslation = (isIntNumber) ? ("==" + intNumber) : ("==" + floatNumber);
-      } else {
-        predicateTranslation = (isIntNumber) ? (relation + intNumber) : (relation + floatNumber);
-      }
+      predicateTranslation = manageInequalityNumber(inequalityNumber);
     } else if (inequalityVar.find()) {
-      // Get the variable from the last group of the regular expression.
-      String variable = inequalityVar.group(3);
-      // Get the symbol from the regular expression.
-      String relation = inequalityVar.group(2);
-      // Now we have the variable name, but who is it in the code? We'll have to find it.
-      if (relation == null || relation.equals("="))
-        predicateTranslation = "==" + "{" + variable + "}";
-      else predicateTranslation = relation + "{" + variable + "}";
-      if (predicate.contains(variable + "."))
-        predicateTranslation += predicate.substring(predicate.indexOf("."));
+      predicateTranslation = manageInequalityVar(predicate, inequalityVar);
     } else if (predicate.equals("been set")) {
       predicateTranslation = "!=null";
     } else if (instanceOf.find()) {
       predicateTranslation = " instanceof " + instanceOf.group(2);
     } else {
       predicateTranslation = null;
+    }
+    return predicateTranslation;
+  }
+
+  /**
+   * Returns the translation of predicate matching the inequalityVar regex
+   *
+   * @param inequalityVar the matching regex
+   * @return the translation
+   */
+  private static String manageInequalityVar(
+      String predicate, java.util.regex.Matcher inequalityVar) {
+    String predicateTranslation;
+    // Get the variable from the last group of the regular expression.
+    String variable = inequalityVar.group(3);
+    // Get the symbol from the regular expression.
+    String relation = inequalityVar.group(2);
+    // Now we have the variable name, but who is it in the code? We'll have to find it.
+    if (relation == null || relation.equals("="))
+      predicateTranslation = "==" + "{" + variable + "}";
+    else predicateTranslation = relation + "{" + variable + "}";
+    if (predicate.contains(variable + "."))
+      predicateTranslation += predicate.substring(predicate.indexOf("."));
+    return predicateTranslation;
+  }
+
+  /**
+   * Returns the translation of predicate matching the inequalityNumber regex
+   *
+   * @param inequalityNumber the matching regex
+   * @return the translation
+   */
+  private static String manageInequalityNumber(java.util.regex.Matcher inequalityNumber) {
+    String predicateTranslation;
+    // Get the number from the last group of the regular expression.
+    String numberString = inequalityNumber.group(3);
+    // Get the symbol from the regular expression.
+    String relation = inequalityNumber.group(2);
+    String numberWord = numberWordToDigit(numberString);
+
+    int intNumber = 0;
+    float floatNumber = 0;
+    boolean isIntNumber = false;
+
+    if (!numberString.contains(".")) { //the number is an int
+      intNumber =
+          (!numberWord.equals(""))
+              ? intNumber = Integer.parseInt(numberWord)
+              : Integer.parseInt(numberString);
+
+      isIntNumber = true;
+    } else {
+      floatNumber = Float.parseFloat(numberString);
+    }
+    // relation is null in predicates without inequalities. For example "is 0".
+    if (relation == null || relation.equals("=")) {
+      predicateTranslation = (isIntNumber) ? ("==" + intNumber) : ("==" + floatNumber);
+    } else {
+      predicateTranslation = (isIntNumber) ? (relation + intNumber) : (relation + floatNumber);
+    }
+    return predicateTranslation;
+  }
+
+  /**
+   * Returns the translation of predicate matching the isNotPattern regex
+   *
+   * @param isNotPattern the matching regex
+   * @return the translation
+   */
+  private static String manageIsNotPattern(java.util.regex.Matcher isNotPattern) {
+    String predicateTranslation;
+    String word = isNotPattern.group(isNotPattern.groupCount());
+    switch (word) {
+      case "true":
+      case "false":
+      case "null":
+        predicateTranslation = "!=" + word;
+        break;
+      case "zero":
+        predicateTranslation = "!=0";
+        break;
+      case "positive":
+      case "strictly positive":
+        predicateTranslation = ">0";
+        break;
+      case "negative":
+      case "strictly negative":
+        predicateTranslation = "<0";
+        break;
+      case "nonnegative":
+        predicateTranslation = ">=0";
+        break;
+      case "nonpositive":
+        predicateTranslation = "<=0";
+        break;
+      default:
+        predicateTranslation = null;
+    }
+    return predicateTranslation;
+  }
+
+  /**
+   * Returns the translation of predicate matching the isPattern regex
+   *
+   * @param isPattern the matching regex
+   * @return the translation
+   */
+  private static String manageIsPattern(java.util.regex.Matcher isPattern) {
+    String predicateTranslation;
+    String lastWord = isPattern.group(isPattern.groupCount());
+    switch (lastWord) {
+      case "true":
+      case "false":
+      case "null":
+        predicateTranslation = "==" + lastWord;
+        break;
+      case "this":
+        predicateTranslation = "==target"; // The receiver object in the generated aspects.
+        break;
+      case "zero":
+        predicateTranslation = "==0";
+        break;
+      case "positive":
+      case "strictly positive":
+        predicateTranslation = ">0";
+        break;
+      case "negative":
+      case "strictly negative":
+        predicateTranslation = "<0";
+        break;
+      case "nonnegative":
+        predicateTranslation = ">=0";
+        break;
+      case "nonpositive":
+        predicateTranslation = "<=0";
+        break;
+      default:
+        predicateTranslation = null;
     }
     return predicateTranslation;
   }

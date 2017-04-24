@@ -1257,7 +1257,7 @@
     ],
     "returnTag": {
       "comment": "the last element in the collection, or null if either collection or closure is null",
-      "condition": "args[0]==null || args[1]==null ? result==null",
+      "condition": "(args[0]==null || args[1]==null) ? result==null : args[0].get(args[0].size() - 1)",
       "kind": "RETURN"
     },
     "returnType": {
