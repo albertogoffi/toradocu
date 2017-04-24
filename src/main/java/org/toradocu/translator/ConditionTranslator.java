@@ -169,7 +169,8 @@ public class ConditionTranslator {
       " *((([<>=]=?)|(!=)) ?)-?([0-9]+(?!/)(.[0-9]+)?|zero|one|two|three|four|five|six|seven|eight|nine)";
   private static final String INEQUALITY_VAR_REGEX =
       " *((([<>=]=?)|(!=)) ?)(?!this)((([a-zA-Z]+([0-9]?))+_?(?! ))+(.([a-zA-Z]+([0-9]?))+(\\(*\\))?)?)";
-  private static final String ARITHMETIC_OP_REGEX = "([a-zA-Z]+) ?([+|-|*|//]) ?([a-zA-Z]+)";
+  private static final String ARITHMETIC_OP_REGEX =
+      "(([a-zA-Z]+[0-9]?_?)+) ?([-+*/]) ?(([a-zA-Z]+[0-9]?_?)+)";
   private static final String PLACEHOLDER_PREFIX = " INEQUALITY_";
   private static final String INEQ_INSOF = " *[an]* (instance of)"; // e.g "an instance of"
   private static final String INEQ_INSOFPROCESSED =
@@ -594,8 +595,8 @@ public class ConditionTranslator {
               Pattern.compile(ARITHMETIC_OP_REGEX).matcher(commentToTranslate);
           if (matcherOp.find()) {
             String firstFactor = matcherOp.group(1);
-            String secFactor = matcherOp.group(3);
-            String op = matcherOp.group(2);
+            String secFactor = matcherOp.group(4);
+            String op = matcherOp.group(3);
             int firstIndex = searchForCode(firstFactor, method);
             if (firstIndex != -1) {
               int secIndex = searchForCode(secFactor, method);
