@@ -198,7 +198,7 @@ class Matcher {
       if (sortedList.isEmpty()) {
         return null;
       } else {
-        match = findRightMatch(method, predicate, sortedList);
+        match = findMethodMatch(method, predicate, sortedList);
       }
     }
 
@@ -210,15 +210,25 @@ class Matcher {
     return match;
   }
 
-  private static String findRightMatch(
-      DocumentedMethod method, String predicate, List<CodeElement<?>> sortedList) {
+  /**
+   * Search the best match between the {@code predicate} and the list of possibly matching sorted
+   * {@code CodeElement}s. This is especially to find the best mathod match in case of {@code
+   * MethodCodeElement}, by comparing the arguments needed.
+   *
+   * @param method the {@code DocumentedMethod} the predicate is referring to
+   * @param predicate the String predicate to match
+   * @param sortedCodeElements sorted list of matching method {@code CodeElement}s
+   * @return String representation of the best match found
+   */
+  private static String findMethodMatch(
+      DocumentedMethod method, String predicate, List<CodeElement<?>> sortedCodeElements) {
     String match = "";
     CodeElement<?> firstMatch = null;
     boolean foundMatch = false;
     List<String> paramForMatch = new ArrayList<String>();
     List<String> paramMatch = new ArrayList<String>();
     java.lang.reflect.Parameter[] myParams = method.getExecutable().getParameters();
-    for (CodeElement<?> currentMatch : sortedList) {
+    for (CodeElement<?> currentMatch : sortedCodeElements) {
       if (currentMatch instanceof MethodCodeElement) {
         // Match is a String: before building it, check if the method has parameters,
         // and fill the parenthesis () with the right ones
@@ -250,7 +260,7 @@ class Matcher {
 
       final java.util.regex.Matcher equalPattern = //or is it the equals() method?
           Pattern.compile("[is|are] equal(s?)").matcher(predicate);
-      if (firstMatch == null) firstMatch = sortedList.stream().findFirst().get();
+      if (firstMatch == null) firstMatch = sortedCodeElements.stream().findFirst().get();
       if (nullPattern.find()) {
         String exp = firstMatch.getJavaExpression();
         match = exp.substring(0, exp.indexOf("(") + 1) + "null" + ")";
@@ -280,7 +290,7 @@ class Matcher {
       }
     }
     // No match is the absolute best: just pick the first one
-    if (!foundMatch) match = sortedList.stream().findFirst().get().getJavaExpression();
+    if (!foundMatch) match = sortedCodeElements.stream().findFirst().get().getJavaExpression();
     return match;
   }
 
