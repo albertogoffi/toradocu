@@ -42,14 +42,10 @@ public class MethodCodeElement extends CodeElement<Method> {
       String methodString = method.toGenericString();
       String methodArgs =
           methodString.substring(methodString.indexOf("(") + 1, methodString.indexOf(")"));
-      if (method.getParameterCount() == 1) {
-        args = new String[] {methodArgs};
-        //    		parameters = new String[] {"args[0]"};
-      } else if (method.getParameterCount() > 1) {
+      if (method.getParameterCount() == 1) args = new String[] {methodArgs};
+      else if (method.getParameterCount() > 1) {
         args = methodArgs.split(" *,");
         this.parameters = new String[args.length];
-        //    		for(int i=0; i<parameters.length; i++)
-        //    			this.parameters[i]="args["+i+"]";
       }
     }
   }
