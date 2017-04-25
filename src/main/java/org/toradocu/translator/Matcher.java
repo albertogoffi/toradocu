@@ -192,7 +192,6 @@ class Matcher {
                   })
               .collect(Collectors.toSet());
 
-      //      Set<CodeElement<?>> matches = filterMatchingCodeElements(predicate, codeElements);
       List<CodeElement<?>> sortedList =
           new ArrayList<CodeElement<?>>(filterMatchingCodeElements(predicate, codeElements));
       if (!sortedList.isEmpty()) Collections.sort(sortedList, new JavaExpressionComparator());
