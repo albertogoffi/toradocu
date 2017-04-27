@@ -52,7 +52,7 @@ arraySum() {
 }
 
 # Create Toradocu Jar with dependencies
-gradlew shadowJar
+./gradlew shadowJar
 
 # Create output dir
 mkdir -p "$OUTPUT_DIR"
