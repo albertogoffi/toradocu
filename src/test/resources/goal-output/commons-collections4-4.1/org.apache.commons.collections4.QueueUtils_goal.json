@@ -227,7 +227,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "an empty Queue",
-      "condition": "true ? result.isEmpty()==true",
+      "condition": "true?result.equals(target.EMPTY_QUEUE)",
       "kind": "RETURN"
     },
     "returnType": {

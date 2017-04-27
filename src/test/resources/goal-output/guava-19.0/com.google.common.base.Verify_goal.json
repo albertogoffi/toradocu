@@ -181,7 +181,7 @@
     ],
     "returnTag": {
       "comment": "reference, guaranteed to be non-null, for convenience",
-      "condition": "true ? (result==null)==false",
+      "condition": "true ? result!=null",
       "kind": "RETURN"
     },
     "returnType": {
@@ -281,7 +281,7 @@
     ],
     "returnTag": {
       "comment": "reference, guaranteed to be non-null, for convenience",
-      "condition": "true ? (result==null)==false",
+      "condition": "true ? result!=null",
       "kind": "RETURN"
     },
     "returnType": {
