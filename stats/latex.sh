@@ -31,11 +31,12 @@ numberOfAnalyzedMethods() {
 }
 
 numberOfAnalyzedComments() {
-    # 1st arg is either "PRE" or "POST" or "EXC_POST".
+    # 1st arg is either "PRE" or "POST" or "EXC".
     # 2nd arg is the path to the folder containing the goal files.
+    # 3rd arg is the jar containing the target class.
     local count=0
     for goalFile in "$2"/*.json; do
-	count=$((count + $(python "stats/json_analyzer.py" "$goalFile" | fgrep $1 | cut -d ' ' -f 2)))
+        count=$((count + $(java -cp "$3":build/libs/toradocu-1.0-all.jar org.toradocu.util.SpecsCount "$goalFile" | fgrep $1 | cut -d ' ' -f 2)))
     done
     echo $count
 }
@@ -50,6 +51,9 @@ arraySum() {
     echo $count
 }
 
+# Create Toradocu Jar with dependencies
+gradlew shadowJar
+
 # Create output dir
 mkdir -p "$OUTPUT_DIR"
 
@@ -60,18 +64,18 @@ CLASSES[0]=$(numberOfClasses src/test/resources/src/commons-collections4-4.1-src
 SELECTED_CLASSES[0]=$(numberOfAnalyzedClasses src/test/java/org/toradocu/PrecisionRecallCommonsCollections4.java)
 METHODS[0]=$(numberOfMethods src/test/java/org/toradocu/PrecisionRecallCommonsCollections4.java src/test/resources/bin/commons-collections4-4.1.jar)
 DOCUMENTED_METHODS[0]=$(numberOfAnalyzedMethods org.apache.commons.collections4)
-PRE[0]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/commons-collections4-4.1)
-POST[0]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/commons-collections4-4.1)
-EXC_POST[0]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/commons-collections4-4.1)
+PRE[0]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/commons-collections4-4.1 src/test/resources/bin/commons-collections4-4.1.jar)
+POST[0]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/commons-collections4-4.1 src/test/resources/bin/commons-collections4-4.1.jar)
+EXC_POST[0]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/commons-collections4-4.1 src/test/resources/bin/commons-collections4-4.1.jar)
 
 # Collect info for Commons Math
 CLASSES[1]=$(numberOfClasses src/test/resources/src/commons-math3-3.6.1-src/src/main/java)
 SELECTED_CLASSES[1]=$(numberOfAnalyzedClasses src/test/java/org/toradocu/PrecisionRecallCommonsMath3.java)
 METHODS[1]=$(numberOfMethods src/test/java/org/toradocu/PrecisionRecallCommonsMath3.java src/test/resources/bin/commons-math3-3.6.1.jar)
 DOCUMENTED_METHODS[1]=$(numberOfAnalyzedMethods org.apache.commons.math3)
-PRE[1]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/commons-math3-3.6.1)
-POST[1]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/commons-math3-3.6.1)
-EXC_POST[1]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/commons-math3-3.6.1)
+PRE[1]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/commons-math3-3.6.1 src/test/resources/bin/commons-math3-3.6.1.jar)
+POST[1]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/commons-math3-3.6.1 src/test/resources/bin/commons-math3-3.6.1.jar)
+EXC_POST[1]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/commons-math3-3.6.1 src/test/resources/bin/commons-math3-3.6.1.jar)
 
 # Collect info for FreeCol
 # CLASSES[2]=$(numberOfClasses src/test/resources/src/freecol-0.11.6/src/)
@@ -86,27 +90,27 @@ CLASSES[3]=$(numberOfClasses src/test/resources/src/guava-19.0-sources)
 SELECTED_CLASSES[3]=$(numberOfAnalyzedClasses src/test/java/org/toradocu/PrecisionRecallGuava19.java)
 METHODS[3]=$(numberOfMethods src/test/java/org/toradocu/PrecisionRecallGuava19.java src/test/resources/bin/guava-19.0.jar)
 DOCUMENTED_METHODS[3]=$(numberOfAnalyzedMethods com.google.common)
-PRE[3]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/guava-19.0)
-POST[3]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/guava-19.0)
-EXC_POST[3]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/guava-19.0)
+PRE[3]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/guava-19.0 src/test/resources/bin/guava-19.0.jar)
+POST[3]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/guava-19.0 src/test/resources/bin/guava-19.0.jar)
+EXC_POST[3]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/guava-19.0 src/test/resources/bin/guava-19.0.jar)
 
 # Collect info for JGraphT
 CLASSES[4]=$(numberOfClasses src/test/resources/src/jgrapht-core-0.9.2-sources)
 SELECTED_CLASSES[4]=$(numberOfAnalyzedClasses src/test/java/org/toradocu/PrecisionRecallJGraphT.java)
 METHODS[4]=$(numberOfMethods src/test/java/org/toradocu/PrecisionRecallJGraphT.java src/test/resources/bin/jgrapht-core-0.9.2.jar)
 DOCUMENTED_METHODS[4]=$(numberOfAnalyzedMethods org.jgrapht)
-PRE[4]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/jgrapht-core-0.9.2)
-POST[4]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/jgrapht-core-0.9.2)
-EXC_POST[4]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/jgrapht-core-0.9.2)
+PRE[4]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/jgrapht-core-0.9.2 src/test/resources/bin/jgrapht-core-0.9.2.jar)
+POST[4]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/jgrapht-core-0.9.2 src/test/resources/bin/jgrapht-core-0.9.2.jar)
+EXC_POST[4]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/jgrapht-core-0.9.2 src/test/resources/bin/jgrapht-core-0.9.2.jar)
 
 # Collect info for Plume-lib
 CLASSES[5]=$(numberOfClasses src/test/resources/src/plume-lib-1.1.0/java/src)
 SELECTED_CLASSES[5]=$(numberOfAnalyzedClasses src/test/java/org/toradocu/PrecisionRecallPlumeLib.java)
 METHODS[5]=$(numberOfMethods src/test/java/org/toradocu//PrecisionRecallPlumeLib.java src/test/resources/bin/plume-lib-1.1.0.jar)
 DOCUMENTED_METHODS[5]=$(numberOfAnalyzedMethods plume.)
-PRE[5]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/plume-lib-1.1.0)
-POST[5]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/plume-lib-1.1.0)
-EXC_POST[5]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/plume-lib-1.1.0)
+PRE[5]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/plume-lib-1.1.0 src/test/resources/bin/plume-lib-1.1.0.jar)
+POST[5]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/plume-lib-1.1.0 src/test/resources/bin/plume-lib-1.1.0.jar)
+EXC_POST[5]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/plume-lib-1.1.0 src/test/resources/bin/plume-lib-1.1.0.jar)
 
 # Collect info for GraphStream
 # CLASSES[6]=$(numberOfClasses src/test/resources/src/gs-core-1.3-sources)

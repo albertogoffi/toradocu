@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -76,7 +77,10 @@ public class Reflection {
    * @return a new class loader that load classes from paths specified with option --class-dir
    */
   private static ClassLoader getClassLoader() {
-    List<String> binariesPaths = Toradocu.configuration.getClassDir();
+    List<String> binariesPaths =
+        Toradocu.configuration == null
+            ? Collections.emptyList()
+            : Toradocu.configuration.getClassDir();
     URL[] urls = new URL[binariesPaths.size()];
     for (int i = 0; i < urls.length; i++) {
       try {
