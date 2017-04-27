@@ -29,7 +29,6 @@ public class ExecutableMembers {
     Collections.addAll(members, clazz.getDeclaredMethods());
     // Ignore synthetic and private executable members.
     members.removeIf(m -> Modifier.isPrivate(m.getModifiers()) || m.isSynthetic());
-    long count = members.stream().filter(e -> Modifier.isPublic(e.getModifiers())).count();
-    System.out.println(count);
+    System.out.println(members.size());
   }
 }
