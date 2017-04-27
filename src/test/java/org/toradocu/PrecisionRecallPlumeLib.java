@@ -35,7 +35,7 @@ public class PrecisionRecallPlumeLib extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testTimeLimitProcess() throws Exception {
-    test("plume.TimeLimitProcess", 1, 1, 1, 0, 1, 0);
+    test("plume.TimeLimitProcess", 1, 1, 1, 0, 1, 1);
   }
 
   @Test

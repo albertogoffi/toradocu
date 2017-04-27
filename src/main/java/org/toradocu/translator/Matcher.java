@@ -148,58 +148,8 @@ class Matcher {
         match = subject.getJavaExpression() + match;
       }
     } else {
-      Set<CodeElement<?>> codeElements;
-      if (subject instanceof ParameterCodeElement) {
-        ParameterCodeElement paramCodeElement = (ParameterCodeElement) subject;
-        codeElements =
-            extractBooleanCodeElements(
-                paramCodeElement, paramCodeElement.getJavaCodeElement().getType());
-        Class<?> targetClass = Reflection.getClass(method.getContainingClass().getQualifiedName());
-        codeElements.addAll(extractStaticBooleanMethods(targetClass, paramCodeElement));
-      } else if (subject instanceof ClassCodeElement) {
-        ClassCodeElement classCodeElement = (ClassCodeElement) subject;
-        codeElements =
-            extractBooleanCodeElements(classCodeElement, classCodeElement.getJavaCodeElement());
-      } else if (subject instanceof MethodCodeElement) {
-        MethodCodeElement methodCodeElement = (MethodCodeElement) subject;
-        codeElements =
-            extractBooleanCodeElements(
-                methodCodeElement, methodCodeElement.getJavaCodeElement().getReturnType());
-      } else if (subject instanceof StaticMethodCodeElement) {
-        StaticMethodCodeElement staticMethodCodeElement = (StaticMethodCodeElement) subject;
-        codeElements =
-            extractBooleanCodeElements(
-                staticMethodCodeElement,
-                staticMethodCodeElement.getJavaCodeElement().getReturnType());
-      } else {
-        return null;
-      }
-
-      // Filter collected code elements that refer to the documented method under analysis.
-      // This avoids to generate specifications mentioning the method whose behavior they specify.
-      codeElements =
-          codeElements
-              .stream()
-              .filter(
-                  e -> {
-                    if (e instanceof MethodCodeElement) {
-                      Method m = ((MethodCodeElement) e).getJavaCodeElement();
-                      if (m.toGenericString().equals(method.getExecutable().toGenericString())) {
-                        return false;
-                      }
-                    }
-                    return true;
-                  })
-              .collect(Collectors.toSet());
-
-      List<CodeElement<?>> sortedList =
-          new ArrayList<CodeElement<?>>(filterMatchingCodeElements(predicate, codeElements));
-      if (!sortedList.isEmpty()) Collections.sort(sortedList, new JavaExpressionComparator());
-      if (sortedList.isEmpty()) {
-        return null;
-      } else {
-        match = findMethodMatch(method, predicate, sortedList);
-      }
+      match = codeElementsMatch(method, subject, predicate);
+      if (match == null) return null;
     }
 
     // Condition "target==null" is indeed not correct.
@@ -207,6 +157,65 @@ class Matcher {
 
     if (negate) match = "(" + match + ") == false";
 
+    return match;
+  }
+
+  static String codeElementsMatch(
+      DocumentedMethod method, CodeElement<?> subject, String predicate) {
+    Set<CodeElement<?>> codeElements;
+    String match;
+
+    if (subject instanceof ParameterCodeElement) {
+      ParameterCodeElement paramCodeElement = (ParameterCodeElement) subject;
+      codeElements =
+          extractBooleanCodeElements(
+              paramCodeElement, paramCodeElement.getJavaCodeElement().getType());
+      Class<?> targetClass = Reflection.getClass(method.getContainingClass().getQualifiedName());
+      codeElements.addAll(extractStaticBooleanMethods(targetClass, paramCodeElement));
+    } else if (subject instanceof ClassCodeElement) {
+      ClassCodeElement classCodeElement = (ClassCodeElement) subject;
+      codeElements =
+          extractBooleanCodeElements(classCodeElement, classCodeElement.getJavaCodeElement());
+    } else if (subject instanceof MethodCodeElement) {
+      MethodCodeElement methodCodeElement = (MethodCodeElement) subject;
+      codeElements =
+          extractBooleanCodeElements(
+              methodCodeElement, methodCodeElement.getJavaCodeElement().getReturnType());
+    } else if (subject instanceof StaticMethodCodeElement) {
+      StaticMethodCodeElement staticMethodCodeElement = (StaticMethodCodeElement) subject;
+      codeElements =
+          extractBooleanCodeElements(
+              staticMethodCodeElement,
+              staticMethodCodeElement.getJavaCodeElement().getReturnType());
+    } else {
+      return null;
+    }
+
+    // Filter collected code elements that refer to the documented method under analysis.
+    // This avoids to generate specifications mentioning the method whose behavior they specify.
+    codeElements =
+        codeElements
+            .stream()
+            .filter(
+                e -> {
+                  if (e instanceof MethodCodeElement) {
+                    Method m = ((MethodCodeElement) e).getJavaCodeElement();
+                    if (m.toGenericString().equals(method.getExecutable().toGenericString())) {
+                      return false;
+                    }
+                  }
+                  return true;
+                })
+            .collect(Collectors.toSet());
+
+    List<CodeElement<?>> sortedList =
+        new ArrayList<CodeElement<?>>(filterMatchingCodeElements(predicate, codeElements));
+    if (!sortedList.isEmpty()) Collections.sort(sortedList, new JavaExpressionComparator());
+    if (sortedList.isEmpty()) {
+      return null;
+    } else {
+      match = findMethodMatch(method, predicate, sortedList);
+    }
     return match;
   }
 
@@ -378,7 +387,7 @@ class Matcher {
     String verbs = "(is|are|be|is equal to|are equal to|equals to) ?";
 
     String predicates =
-        "(true|false|null|this|zero|positive|strictly positive|negative|strictly negative|nonnegative|nonpositive)";
+        "(true|false|null|this|empty|zero|positive|strictly positive|negative|strictly negative|nonnegative|nonpositive)";
 
     java.util.regex.Matcher isPattern =
         Pattern.compile(verbs + "(==|=)? ?" + predicates).matcher(predicate);

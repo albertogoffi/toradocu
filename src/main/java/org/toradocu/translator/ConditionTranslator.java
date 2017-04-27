@@ -2,6 +2,7 @@ package org.toradocu.translator;
 
 import static java.util.stream.Collectors.toList;
 
+import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -436,10 +437,13 @@ public class ConditionTranslator {
         "Identifying propositions from: \"" + tag.getComment() + "\" in " + method.getSignature());
 
     String comment = tag.getComment().trim();
+
     // Add end-of-sentence period, if missing.
     if (!comment.endsWith(".")) {
       comment += ".";
     }
+
+    comment = sanitizeComment(comment);
 
     // Remove commas from the comment if enabled. (Do not remove commas when dealing with @return.)
     if (Toradocu.configuration != null
@@ -526,6 +530,7 @@ public class ConditionTranslator {
       // TODO Naive splitting. Make the split more reliable.
       final int predicateSplitPoint = comment.indexOf(" if ");
       if (predicateSplitPoint != -1) {
+        if (comment.contains(";")) comment = comment.replace(";", ",");
         String predicate = comment.substring(0, predicateSplitPoint);
         final String[] tokens = comment.substring(predicateSplitPoint + 3).split(",", 2);
         String trueCase = tokens[0];
@@ -605,10 +610,77 @@ public class ConditionTranslator {
                     "true ? result==args[" + firstIndex + "]" + op + "args[" + secIndex + "]";
             }
           }
+          if (translation.equals("")) {
+            String t = lastAttemptMatch(method, comment);
+            if (t != null) {
+              if (t.contains("result")) translation = "true ?" + t;
+              else translation = "true ? result.equals(" + t + ")";
+            }
+          }
         }
       }
       tag.setCondition(translation);
     }
+  }
+
+  /**
+   * Replace some common expressions in the comment with other standard easier to translate
+   * correctly.
+   *
+   * @param comment the String comment to sanitize
+   * @return the sanitized comment
+   */
+  private static String sanitizeComment(String comment) {
+    if (comment.contains("if and only if")) comment = comment.replace("if and only if", "if");
+
+    if (comment.contains("iff")) comment = comment.replace("iff", "if");
+
+    if (comment.contains("non-null")) comment = comment.replace("non-null", "!=null");
+
+    if (comment.contains("non-empty")) comment = comment.replace("non-empty", "!=empty");
+    return comment;
+  }
+
+  /**
+   * Called if all the previous stantard tentatives of matching failed.
+   *
+   * @param method the DocumentedMethod under analysis
+   * @param comment the comment to translate
+   * @return a match if found, otherwise null
+   */
+  private static String lastAttemptMatch(DocumentedMethod method, String comment) {
+    //Try a match looking at the semantic graph.
+    String match = null;
+    comment = comment.replace(";", "").replace(",", "");
+    for (SemanticGraph sg : StanfordParser.getSemanticGraphs(comment, method)) {
+      //First: search for a verb.
+      List<IndexedWord> verbs = sg.getAllNodesByPartOfSpeechPattern("VB(.*)");
+      if (!verbs.isEmpty()) {
+        List<PropositionSeries> extractedPropositions = getPropositionSeries(comment, method);
+        for (PropositionSeries prop : extractedPropositions) {
+          Set<String> conditions = new LinkedHashSet<>();
+          for (Proposition p : prop.getPropositions()) {
+            match =
+                Matcher.predicateMatch(
+                    method, new GeneralCodeElement("result"), p.getPredicate(), p.isNegative());
+            if (match != null) break;
+          }
+        }
+      } else { // No verb found: process nouns and their adjectives
+        List<IndexedWord> nouns = sg.getAllNodesByPartOfSpeechPattern("NN(.*)");
+        List<IndexedWord> adj = sg.getAllNodesByPartOfSpeechPattern("JJ(.*)");
+        if (match == null) {
+          String wordToMatch = "";
+          for (IndexedWord n : nouns) {
+            for (IndexedWord a : adj) wordToMatch += a.word();
+            wordToMatch += n.word();
+            Set<CodeElement<?>> subject = Matcher.subjectMatch(wordToMatch, method);
+            if (!subject.isEmpty()) match = subject.stream().findFirst().get().getJavaExpression();
+          }
+        }
+      }
+    }
+    return match;
   }
 
   /**
@@ -681,6 +753,10 @@ public class ConditionTranslator {
         {
           int index = searchForCode(text, method);
           if (index != -1) return "result == args[" + index + "]";
+          else {
+            String match = lastAttemptMatch(method, text);
+            if (match != null) return match;
+          }
         }
     }
     //TODO: Change the exception with one more meaningful.
