@@ -95,6 +95,9 @@ public class RandoopSpecs {
     if (condition.isEmpty()) {
       return null;
     }
+    if (condition.indexOf("?") <= 0) {
+      return null;
+    }
 
     // Remove whitespaces to do not influence parsing.
     condition = condition.replace(" ", "");
