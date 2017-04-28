@@ -68,7 +68,7 @@
     "paramTags": [
       {
         "comment": "the bag whose unmodifiable view is to be returned, must not be null",
-        "condition": "",
+        "condition": "(args[0]==null) == false",
         "kind": "@param",
         "parameter": {
           "name": "bag",
@@ -400,7 +400,7 @@
     "paramTags": [
       {
         "comment": "the bag whose unmodifiable view is to be returned, must not be null",
-        "condition": "",
+        "condition": "(args[0]==null) == false",
         "kind": "@param",
         "parameter": {
           "name": "bag",

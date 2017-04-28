@@ -49,7 +49,7 @@
     ],
     "returnTag": {
       "comment": "string itself if it is non-null; \"\" if it is null",
-      "condition": "args[0]==null ? result.equals(\"\") : result.equals(args[0]) ",
+      "condition": "args[0]!=null ? result.equals(args[0]) : result.equals(\"\") ",
       "kind": "RETURN"
     },
     "returnType": {
