@@ -171,7 +171,7 @@ public class ConditionTranslator {
   private static final String INEQUALITY_VAR_REGEX =
       " *((([<>=]=?)|(!=)) ?)(?!this)((([a-zA-Z]+([0-9]?))+_?(?! ))+(.([a-zA-Z]+([0-9]?))+(\\(*\\))?)?)";
   private static final String ARITHMETIC_OP_REGEX =
-      "(([a-zA-Z]+[0-9]?_?)+) ?([-+*/]) ?(([a-zA-Z]+[0-9]?_?)+)";
+      "(([a-zA-Z]+[0-9]?_?)+) ?([-+*/%]) ?(([a-zA-Z]+[0-9]?_?)+)";
   private static final String PLACEHOLDER_PREFIX = " INEQUALITY_";
   private static final String INEQ_INSOF = " *[an]* (instance of)"; // e.g "an instance of"
   private static final String INEQ_INSOFPROCESSED =
