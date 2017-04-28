@@ -2,6 +2,8 @@ package org.toradocu.translator;
 
 import static java.util.stream.Collectors.toList;
 
+import edu.stanford.nlp.ling.IndexedWord;
+import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -11,9 +13,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import edu.stanford.nlp.ling.IndexedWord;
-import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
@@ -576,7 +575,8 @@ public class ConditionTranslator {
    * @param commentToTranslate String comment to translate
    * @return the translation
    */
-  private static String manageArithmeticOperation(DocumentedMethod method, String commentToTranslate) {
+  private static String manageArithmeticOperation(
+      DocumentedMethod method, String commentToTranslate) {
     String translation = "";
     java.util.regex.Matcher matcherOp =
         Pattern.compile(ARITHMETIC_OP_REGEX).matcher(commentToTranslate);
@@ -588,8 +588,7 @@ public class ConditionTranslator {
       if (firstIndex != -1) {
         int secIndex = searchForCode(secFactor, method);
         if (secIndex != -1)
-          translation =
-              "true ? result==args[" + firstIndex + "]" + op + "args[" + secIndex + "]";
+          translation = "true ? result==args[" + firstIndex + "]" + op + "args[" + secIndex + "]";
       }
     }
     return translation;
@@ -603,9 +602,9 @@ public class ConditionTranslator {
    * @param predicateSplitPoint index of the "if"
    * @return the translation computed
    */
-
-  private static String returnStandardPattern(DocumentedMethod method, String comment, int predicateSplitPoint) {
-    String translation="";
+  private static String returnStandardPattern(
+      DocumentedMethod method, String comment, int predicateSplitPoint) {
+    String translation = "";
     if (comment.contains(";")) comment = comment.replace(";", ",");
     String predicate = comment.substring(0, predicateSplitPoint);
     final String[] tokens = comment.substring(predicateSplitPoint + 3).split(",", 2);
@@ -613,9 +612,9 @@ public class ConditionTranslator {
     String falseCase = tokens.length > 1 ? tokens[1] : "";
 
     if (!predicate.isEmpty() && !trueCase.isEmpty()) {
-//          try {
+      //          try {
       String predicateTranslation = translateFirstPart(predicate, method);
-      if(predicateTranslation!=null) {
+      if (predicateTranslation != null) {
         String conditionTranslation = translateSecondPart(trueCase, method);
 
         if (!predicateTranslation.isEmpty() && !conditionTranslation.isEmpty()) {
@@ -627,35 +626,35 @@ public class ConditionTranslator {
           }
         }
       }
-        /* To validate the return values of the method under test we will have a code similar
-         * to this in the generated aspect:
-         *
-         * if ( condition ) {
-         *   return check;
-         * else {
-         *   return anotherCheck;
-         * }
-         *
-         * Example: @return true if the values are equal.
-         * translation: args[0].equals(args[1]) ? true
-         *
-         * if (args[0].equals(args[1])) {
-         *   return result.equals(true);
-         * }
-         *
-         * We use the characters '?' and ':' to separate the different parts of the translation.
-         * We need that because the translation is currently a plain a String.
-         */
-//          }
-//          catch (IllegalArgumentException e) {
-//            //TODO: Change the exception with one more meaningful.
-//            // Pattern not supported.
-//            log.warn("Unable to translate: \"" + comment + "\"");
-//          }
+      /* To validate the return values of the method under test we will have a code similar
+       * to this in the generated aspect:
+       *
+       * if ( condition ) {
+       *   return check;
+       * else {
+       *   return anotherCheck;
+       * }
+       *
+       * Example: @return true if the values are equal.
+       * translation: args[0].equals(args[1]) ? true
+       *
+       * if (args[0].equals(args[1])) {
+       *   return result.equals(true);
+       * }
+       *
+       * We use the characters '?' and ':' to separate the different parts of the translation.
+       * We need that because the translation is currently a plain a String.
+       */
+      //          }
+      //          catch (IllegalArgumentException e) {
+      //            //TODO: Change the exception with one more meaningful.
+      //            // Pattern not supported.
+      //            log.warn("Unable to translate: \"" + comment + "\"");
+      //          }
 
       else {
         String match = lastAttemptMatch(method, comment);
-        if(match!=null)   translation = match;
+        if (match != null) translation = match;
         else translation = "";
       }
     }
@@ -671,8 +670,7 @@ public class ConditionTranslator {
    * @return the normalized comment
    */
   private static String normalizeComment(String comment, DocumentedMethod method) {
-    if (comment.contains("if and only if"))
-      comment = comment.replace("if and only if", "if");
+    if (comment.contains("if and only if")) comment = comment.replace("if and only if", "if");
 
     if (comment.contains("iff")) comment = comment.replace("iff", "if");
 
@@ -682,14 +680,13 @@ public class ConditionTranslator {
 
     // "it" would be translated as a standalone subject, but more probably it is referred to another more meaningful one:
     // probably a previous mentioned noun.
-    if(comment.contains(" it ")){
-      for (SemanticGraph sg : StanfordParser.getSemanticGraphs(comment, method)){
+    if (comment.contains(" it ")) {
+      for (SemanticGraph sg : StanfordParser.getSemanticGraphs(comment, method)) {
         List<IndexedWord> nouns = sg.getAllNodesByPartOfSpeechPattern("NN(.*)");
-        if(!nouns.isEmpty()) {
+        if (!nouns.isEmpty()) {
           IndexedWord boh = nouns.stream().findFirst().get();
           comment = comment.replace(" it ", " " + boh.word() + " ");
         }
-
       }
     }
 
@@ -760,7 +757,7 @@ public class ConditionTranslator {
         int index = searchForCode(splittedText[i], method);
         if (index != -1) return "result == args[" + index + "]";
         //the empty String was found
-        else if(splittedText[i].equals("\"\"")) return "result.equals(\"\")";
+        else if (splittedText[i].equals("\"\"")) return "result.equals(\"\")";
       }
     }
     return null;
@@ -802,7 +799,7 @@ public class ConditionTranslator {
    */
   private static String translateFirstPart(String text, DocumentedMethod method) {
     String lowerCaseText = text.trim().toLowerCase();
-    String match=null;
+    String match = null;
     switch (lowerCaseText) {
       case "true":
       case "false":
@@ -813,17 +810,15 @@ public class ConditionTranslator {
           if (index != -1) return "result == args[" + index + "]";
           else {
             match = lastAttemptMatch(method, text);
-            if (match != null){
-              if(!match.contains("result=="))
-                return "result.equals("+match+")";
-              else
-                return match;
+            if (match != null) {
+              if (!match.contains("result==")) return "result.equals(" + match + ")";
+              else return match;
             }
           }
         }
     }
     //TODO: Change the exception with one more meaningful.
-//    throw new IllegalArgumentException(text + " cannot be translated: Pattern not supported");
+    //    throw new IllegalArgumentException(text + " cannot be translated: Pattern not supported");
     return match;
   }
 
