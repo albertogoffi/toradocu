@@ -68,7 +68,7 @@
     "paramTags": [
       {
         "comment": "the bag whose unmodifiable view is to be returned, must not be null",
-        "condition": "",
+        "condition": "(args[0]==null) == false",
         "kind": "@param",
         "parameter": {
           "name": "bag",
@@ -400,7 +400,7 @@
     "paramTags": [
       {
         "comment": "the bag whose unmodifiable view is to be returned, must not be null",
-        "condition": "",
+        "condition": "(args[0]==null) == false",
         "kind": "@param",
         "parameter": {
           "name": "bag",
@@ -617,7 +617,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "an empty Bag",
-      "condition": "true ? result.isEmpty()==true",
+      "condition": "true ? result.equals(target.EMPTY_BAG)",
       "kind": "RETURN"
     },
     "returnType": {
@@ -641,7 +641,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "an empty sorted Bag",
-      "condition": "true ? result.isEmpty()==true",
+      "condition": "true ? result.equals(target.EMPTY_SORTED_BAG)",
       "kind": "RETURN"
     },
     "returnType": {

@@ -872,7 +872,7 @@
     "paramTags": [
       {
         "comment": "the iterables to interleave, may not be null",
-        "condition": "",
+        "condition": "(args[0]==null) == false",
         "kind": "@param",
         "parameter": {
           "name": "others",
@@ -1282,7 +1282,7 @@
     "parameters": [],
     "returnTag": {
       "comment": "the size of this iterable",
-      "condition": "true ? result==target.size()",
+      "condition": "",
       "kind": "RETURN"
     },
     "returnType": {

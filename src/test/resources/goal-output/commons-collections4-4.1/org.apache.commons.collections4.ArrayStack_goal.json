@@ -155,7 +155,7 @@
     ],
     "returnTag": {
       "comment": "the n'th item on the stack, zero relative",
-      "condition": "true ? result.equals(target.peek(args[0]))",
+      "condition": "true ? result.equals(target.get(target.size() - args[0])-1)",
       "kind": "RETURN"
     },
     "returnType": {

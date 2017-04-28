@@ -23,7 +23,7 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testBagUtils() throws Exception {
-    test("org.apache.commons.collections4.BagUtils", 1, 1, 1, 1, 1, 0);
+    test("org.apache.commons.collections4.BagUtils", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
@@ -33,7 +33,7 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testCollectionUtils() throws Exception {
-    test("org.apache.commons.collections4.CollectionUtils", 0.966, 0.935, 1, 1, 1, 0);
+    test("org.apache.commons.collections4.CollectionUtils", 0.966, 0.935, 1, 1, 0, 0);
   }
 
   @Test
@@ -43,7 +43,7 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
 
   @Test
   public void testQueueUtils() throws Exception {
-    test("org.apache.commons.collections4.QueueUtils", 1, 1, 0.8, 0.8, 1, 0);
+    test("org.apache.commons.collections4.QueueUtils", 1, 1, 0.8, 0.8, 1, 1);
   }
 
   @Test
