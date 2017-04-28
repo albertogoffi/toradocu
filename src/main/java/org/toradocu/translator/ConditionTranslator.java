@@ -2,8 +2,6 @@ package org.toradocu.translator;
 
 import static java.util.stream.Collectors.toList;
 
-import edu.stanford.nlp.ling.IndexedWord;
-import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -13,6 +11,9 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import edu.stanford.nlp.ling.IndexedWord;
+import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
@@ -443,7 +444,7 @@ public class ConditionTranslator {
       comment += ".";
     }
 
-    comment = sanitizeComment(comment);
+    comment = normalizeComment(comment, method);
 
     // Remove commas from the comment if enabled. (Do not remove commas when dealing with @return.)
     if (Toradocu.configuration != null
@@ -530,51 +531,7 @@ public class ConditionTranslator {
       // TODO Naive splitting. Make the split more reliable.
       final int predicateSplitPoint = comment.indexOf(" if ");
       if (predicateSplitPoint != -1) {
-        if (comment.contains(";")) comment = comment.replace(";", ",");
-        String predicate = comment.substring(0, predicateSplitPoint);
-        final String[] tokens = comment.substring(predicateSplitPoint + 3).split(",", 2);
-        String trueCase = tokens[0];
-        String falseCase = tokens.length > 1 ? tokens[1] : "";
-
-        if (!predicate.isEmpty() && !trueCase.isEmpty()) {
-          try {
-            String predicateTranslation = translateFirstPart(predicate, method);
-            String conditionTranslation = translateSecondPart(trueCase, method);
-
-            if (!predicateTranslation.isEmpty() && !conditionTranslation.isEmpty()) {
-              translation = conditionTranslation + " ? " + predicateTranslation;
-              // Else case might not be present.
-              String elsePredicate = translateLastPart(falseCase, method);
-              if (elsePredicate != null) {
-                translation = translation + " : " + elsePredicate;
-              }
-            }
-            /* To validate the return values of the method under test we will have a code similar
-             * to this in the generated aspect:
-             *
-             * if ( condition ) {
-             *   return check;
-             * else {
-             *   return anotherCheck;
-             * }
-             *
-             * Example: @return true if the values are equal.
-             * translation: args[0].equals(args[1]) ? true
-             *
-             * if (args[0].equals(args[1])) {
-             *   return result.equals(true);
-             * }
-             *
-             * We use the characters '?' and ':' to separate the different parts of the translation.
-             * We need that because the translation is currently a plain a String.
-             */
-          } catch (IllegalArgumentException e) {
-            //TODO: Change the exception with one more meaningful.
-            // Pattern not supported.
-            log.warn("Unable to translate: \"" + comment + "\"");
-          }
-        }
-        // Else: do nothing. How can we support different forms of @return tags?
+        translation = returnStandardPattern(method, comment, predicateSplitPoint);
       } else {
         final String[] truePatterns = {"true", "true always"};
         final String[] falsePatterns = {"false", "false always"};
@@ -596,31 +553,113 @@ public class ConditionTranslator {
         } else if (falsePatternsMatch) {
           translation = "true ? result==false";
         } else {
-          java.util.regex.Matcher matcherOp =
-              Pattern.compile(ARITHMETIC_OP_REGEX).matcher(commentToTranslate);
-          if (matcherOp.find()) {
-            String firstFactor = matcherOp.group(1);
-            String secFactor = matcherOp.group(4);
-            String op = matcherOp.group(3);
-            int firstIndex = searchForCode(firstFactor, method);
-            if (firstIndex != -1) {
-              int secIndex = searchForCode(secFactor, method);
-              if (secIndex != -1)
-                translation =
-                    "true ? result==args[" + firstIndex + "]" + op + "args[" + secIndex + "]";
-            }
-          }
+          translation = manageArithmeticOperation(method, commentToTranslate);
           if (translation.equals("")) {
-            String t = lastAttemptMatch(method, comment);
-            if (t != null) {
-              if (t.contains("result")) translation = "true ?" + t;
-              else translation = "true ? result.equals(" + t + ")";
+            // All the previous attempts failed: try the last strategies (e.g. search for missing subjects)
+            String match = lastAttemptMatch(method, comment);
+            if (match != null) {
+              if (match.contains("result")) translation = "true ?" + match;
+              else translation = "true ? result.equals(" + match + ")";
             }
           }
         }
       }
+
       tag.setCondition(translation);
     }
+  }
+
+  /**
+   * Translate arithemtic operations between arguments, if found.
+   *
+   * @param method the DocumentedMethod
+   * @param commentToTranslate String comment to translate
+   * @return the translation
+   */
+  private static String manageArithmeticOperation(DocumentedMethod method, String commentToTranslate) {
+    String translation = "";
+    java.util.regex.Matcher matcherOp =
+        Pattern.compile(ARITHMETIC_OP_REGEX).matcher(commentToTranslate);
+    if (matcherOp.find()) {
+      String firstFactor = matcherOp.group(1);
+      String secFactor = matcherOp.group(4);
+      String op = matcherOp.group(3);
+      int firstIndex = searchForCode(firstFactor, method);
+      if (firstIndex != -1) {
+        int secIndex = searchForCode(secFactor, method);
+        if (secIndex != -1)
+          translation =
+              "true ? result==args[" + firstIndex + "]" + op + "args[" + secIndex + "]";
+      }
+    }
+    return translation;
+  }
+
+  /**
+   * This method attempts to translate the return tag according to the classical pattern.
+   *
+   * @param method the DocumentedMethod
+   * @param comment the String comment to translate
+   * @param predicateSplitPoint index of the "if"
+   * @return the translation computed
+   */
+
+  private static String returnStandardPattern(DocumentedMethod method, String comment, int predicateSplitPoint) {
+    String translation="";
+    if (comment.contains(";")) comment = comment.replace(";", ",");
+    String predicate = comment.substring(0, predicateSplitPoint);
+    final String[] tokens = comment.substring(predicateSplitPoint + 3).split(",", 2);
+    String trueCase = tokens[0];
+    String falseCase = tokens.length > 1 ? tokens[1] : "";
+
+    if (!predicate.isEmpty() && !trueCase.isEmpty()) {
+//          try {
+      String predicateTranslation = translateFirstPart(predicate, method);
+      if(predicateTranslation!=null) {
+        String conditionTranslation = translateSecondPart(trueCase, method);
+
+        if (!predicateTranslation.isEmpty() && !conditionTranslation.isEmpty()) {
+          translation = conditionTranslation + " ? " + predicateTranslation;
+          // Else case might not be present.
+          String elsePredicate = translateLastPart(falseCase, method);
+          if (elsePredicate != null) {
+            translation = translation + " : " + elsePredicate;
+          }
+        }
+      }
+        /* To validate the return values of the method under test we will have a code similar
+         * to this in the generated aspect:
+         *
+         * if ( condition ) {
+         *   return check;
+         * else {
+         *   return anotherCheck;
+         * }
+         *
+         * Example: @return true if the values are equal.
+         * translation: args[0].equals(args[1]) ? true
+         *
+         * if (args[0].equals(args[1])) {
+         *   return result.equals(true);
+         * }
+         *
+         * We use the characters '?' and ':' to separate the different parts of the translation.
+         * We need that because the translation is currently a plain a String.
+         */
+//          }
+//          catch (IllegalArgumentException e) {
+//            //TODO: Change the exception with one more meaningful.
+//            // Pattern not supported.
+//            log.warn("Unable to translate: \"" + comment + "\"");
+//          }
+
+      else {
+        String match = lastAttemptMatch(method, comment);
+        if(match!=null)   translation = match;
+        else translation = "";
+      }
+    }
+    return translation;
   }
 
   /**
@@ -628,16 +667,32 @@ public class ConditionTranslator {
    * correctly.
    *
    * @param comment the String comment to sanitize
-   * @return the sanitized comment
+   * @param method the DocumentedMethod
+   * @return the normalized comment
    */
-  private static String sanitizeComment(String comment) {
-    if (comment.contains("if and only if")) comment = comment.replace("if and only if", "if");
+  private static String normalizeComment(String comment, DocumentedMethod method) {
+    if (comment.contains("if and only if"))
+      comment = comment.replace("if and only if", "if");
 
     if (comment.contains("iff")) comment = comment.replace("iff", "if");
 
     if (comment.contains("non-null")) comment = comment.replace("non-null", "!=null");
 
     if (comment.contains("non-empty")) comment = comment.replace("non-empty", "!=empty");
+
+    // "it" would be translated as a standalone subject, but more probably it is referred to another more meaningful one:
+    // probably a previous mentioned noun.
+    if(comment.contains(" it ")){
+      for (SemanticGraph sg : StanfordParser.getSemanticGraphs(comment, method)){
+        List<IndexedWord> nouns = sg.getAllNodesByPartOfSpeechPattern("NN(.*)");
+        if(!nouns.isEmpty()) {
+          IndexedWord boh = nouns.stream().findFirst().get();
+          comment = comment.replace(" it ", " " + boh.word() + " ");
+        }
+
+      }
+    }
+
     return comment;
   }
 
@@ -704,6 +759,8 @@ public class ConditionTranslator {
       for (int i = 0; i < splittedText.length; i++) {
         int index = searchForCode(splittedText[i], method);
         if (index != -1) return "result == args[" + index + "]";
+        //the empty String was found
+        else if(splittedText[i].equals("\"\"")) return "result.equals(\"\")";
       }
     }
     return null;
@@ -745,6 +802,7 @@ public class ConditionTranslator {
    */
   private static String translateFirstPart(String text, DocumentedMethod method) {
     String lowerCaseText = text.trim().toLowerCase();
+    String match=null;
     switch (lowerCaseText) {
       case "true":
       case "false":
@@ -754,13 +812,19 @@ public class ConditionTranslator {
           int index = searchForCode(text, method);
           if (index != -1) return "result == args[" + index + "]";
           else {
-            String match = lastAttemptMatch(method, text);
-            if (match != null) return match;
+            match = lastAttemptMatch(method, text);
+            if (match != null){
+              if(!match.contains("result=="))
+                return "result.equals("+match+")";
+              else
+                return match;
+            }
           }
         }
     }
     //TODO: Change the exception with one more meaningful.
-    throw new IllegalArgumentException(text + " cannot be translated: Pattern not supported");
+//    throw new IllegalArgumentException(text + " cannot be translated: Pattern not supported");
+    return match;
   }
 
   private static int searchForCode(String text, DocumentedMethod method) {
