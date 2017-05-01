@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -33,38 +34,34 @@ public class JavadocExtractor {
 		
 		// Loop on constructors and methods (also inherited) of the target class
 		for (ExecutableMemberDoc member : getConstructorsAndMethods(classDoc)) {
+
+			if (member.isPrivate()) {
+				continue;
+			}
+
 			Output found = DocFinder.search(new DocFinder.Input(member));
 			Doc holder = found.holder;
 			List<Tag> tags = new ArrayList<>();
 			
 			Collections.addAll(tags, holder.tags("@throws"));
-    		Collections.addAll(tags, holder.tags("@exception"));
-    		
-			// Collect information for methods defined in interfaces
-			if (holder instanceof MethodDoc) {
-				ImplementedMethods implementedMethods = new ImplementedMethods((MethodDoc) holder, configuration);
-				for (MethodDoc implementedMethod : implementedMethods.build()) {
-					Collections.addAll(tags, implementedMethod.tags("@throws"));
-					Collections.addAll(tags, implementedMethod.tags("@exception"));
+			Collections.addAll(tags, holder.tags("@exception"));
+
+			// Note that we filter duplicated tags
+			for (Tag tag : tags) {
+				ThrowsTag throwsTag = (ThrowsTag) tag;
+					String exception = getExceptionName(throwsTag);
+				String comment = tagletWriterInstance.commentTagsToOutput(tag, tag.inlineTags()).toString(); // Inline taglet such as {@inheritDoc}
+				comment = Jsoup.parse(comment).text(); //Remove HTML tags
+
+				Doc method = tag.holder();
+				if (method instanceof ExecutableMemberDoc) {
+					/* Note that a JavadocExceptionComment refers to the method where the comment is defined.
+						 This means that if a comment is defined in an interface we refer to the interface's method. */
+					extractedComments.add(new JavadocExceptionComment(member, (ExecutableMemberDoc) method, exception, comment));
+				} else {
+					throw new AssertionError("This should never happen", null);
 				}
 			}
-			
-			// Note that we filter duplicated tags
-    		for (Tag tag : filterDuplicates(tags)) {
-    			ThrowsTag throwsTag = (ThrowsTag) tag;
-        		String exception = getExceptionName(throwsTag);
-    			String comment = tagletWriterInstance.commentTagsToOutput(tag, tag.inlineTags()).toString(); // Inline taglet such as {@inheritDoc}
-    			comment = Jsoup.parse(comment).text(); //Remove HTML tags
-    			
-    			Doc method = tag.holder();
-    			if (method instanceof ExecutableMemberDoc) {
-    				/* Note that a JavadocExceptionComment refers to the method where the comment is defined.
-    				   This means that if a comment is defined in an interface we refer to the interface's method. */
-    				extractedComments.add(new JavadocExceptionComment(member, (ExecutableMemberDoc) method, exception, comment)); 
-    			} else {
-    				throw new AssertionError("This should never happen", null);
-    			}
-    		}
 		}
 		return extractedComments;
 	}
@@ -109,24 +106,9 @@ public class JavadocExtractor {
 	 * @return the list of constructors and methods of <code>classDoc</code>
 	 */
 	private static Set<ExecutableMemberDoc> getConstructorsAndMethods(ClassDoc classDoc) {
-		Set<ExecutableMemberDoc> membersToAnalyze = new HashSet<>();
-		Set<String> membersAlreadyConsidered = new HashSet<>();
-		ClassDoc currentClass = classDoc;
-		
-		do {
-			List<ExecutableMemberDoc> currentMembers = new ArrayList<>();
-			currentMembers.addAll(Arrays.asList(classDoc.constructors()));
-			currentMembers.addAll(Arrays.asList(currentClass.methods()));
-			// In this way we consider a method only once even when is overridden
-			for (ExecutableMemberDoc member : currentMembers) {
-				String memberID = member.name() + member.signature();
-				if (!membersAlreadyConsidered.contains(memberID)) {
-					membersToAnalyze.add(member);
-					membersAlreadyConsidered.add(memberID);
-				}
-			}
-			currentClass = currentClass.superclass();
-		} while (currentClass != null && !currentClass.qualifiedName().equals("java.lang.Object"));
+		Set<ExecutableMemberDoc> membersToAnalyze = new LinkedHashSet<>();
+		membersToAnalyze.addAll(Arrays.asList(classDoc.constructors()));
+		membersToAnalyze.addAll(Arrays.asList(classDoc.methods()));
 		return membersToAnalyze;
 	}
 }
