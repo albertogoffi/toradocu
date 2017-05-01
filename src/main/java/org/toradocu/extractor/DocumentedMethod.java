@@ -261,7 +261,8 @@ public final class DocumentedMethod {
       }
     } else {
       for (Method method : containingClass.getDeclaredMethods()) {
-        if (method.getName().equals(getName())
+        if (!method.isSynthetic()
+            && method.getName().equals(getName())
             && Reflection.checkTypes(
                 getParameters().toArray(new Parameter[0]), method.getParameterTypes())) {
           return method;

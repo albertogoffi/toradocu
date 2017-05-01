@@ -59,8 +59,10 @@ public class GoalFileConverter {
           continue;
         }
 
-        final int memberModifiers = executable.getModifiers();
-        if (!Modifier.isPublic(memberModifiers) && !Modifier.isProtected(memberModifiers)) {
+        // Ignore private and inherited executable members.
+        if (Modifier.isPrivate(executable.getModifiers())
+            || executable.isSynthetic()
+            || !method.getTargetClass().equals(method.getContainingClass().getQualifiedName())) {
           continue;
         }
 
@@ -99,6 +101,8 @@ public class GoalFileConverter {
     final List<String> actualResult = Files.readAllLines(Paths.get(actualOutputFile));
     final List<String> expectedResult = Files.readAllLines(Paths.get(expectedOutputFile));
 
+    boolean correct = true;
+
     if (actualResult.size() != expectedResult.size()) {
       System.out.println(
           "Conversion has a number of lines ("
@@ -107,14 +111,13 @@ public class GoalFileConverter {
               + "different than expected ("
               + expectedResult.size()
               + ")");
-      return false;
+      correct = false;
     }
 
-    // Sort results so the comparison is not impacted by the order.
+    // Sort results so that the order does not influence the comparison.
     actualResult.sort(String::compareTo);
     expectedResult.sort(String::compareTo);
 
-    boolean correct = true;
     for (int i = 0; i < actualResult.size(); i++) {
       String actual = actualResult.get(i);
       String expected = expectedResult.get(i);
@@ -125,7 +128,13 @@ public class GoalFileConverter {
         System.out.println("\nConverted result is different than expected:");
         System.out.println("ACTUAL: " + actual);
         System.out.println("EXPECTED: " + expected);
-        correct = false;
+
+        System.out.println("\nACTUAL LIST:");
+        actualResult.forEach(System.out::println);
+        System.out.println("\nEXPECTED LIST:");
+        expectedResult.forEach(System.out::println);
+
+        return false;
       }
     }
 
@@ -177,7 +186,16 @@ public class GoalFileConverter {
     StringJoiner joiner = new StringJoiner(", ", "<", ">");
     joiner.setEmptyValue("");
     for (TypeVariable typeParameter : member.getTypeParameters()) {
-      joiner.add(typeParameter.getName());
+      StringBuilder typeParameterName = new StringBuilder(typeParameter.getName());
+
+      for (java.lang.reflect.Type bound : typeParameter.getBounds()) {
+        String boundName = bound.getTypeName();
+        if (!boundName.equals("java.lang.Object")) {
+          typeParameterName.append(" extends ").append(boundName);
+        }
+      }
+
+      joiner.add(typeParameterName.toString());
     }
     return joiner.toString();
   }
