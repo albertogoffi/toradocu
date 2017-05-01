@@ -1,2 +1,1 @@
 com.google.common.base.Converter.doBackward(B) throws java.lang.UnsupportedOperationException if backward conversion is not implemented; this should be very rare. Note that if backward conversion is not only unimplemented but unimplementable (for example, consider a Converter<Chicken, ChickenNugget>), then this is not logically a Converter at all, and should just implement Function. ==> []
-com.google.common.base.Converter.apply(A) throws java.lang.NullPointerException if input is null and this function does not accept null arguments ==> [args[0]==null]

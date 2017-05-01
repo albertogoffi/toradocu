@@ -1,3 +1,2 @@
 com.google.common.base.CharMatcher.inRange(char, char) throws java.lang.IllegalArgumentException if endInclusive < startInclusive ==> [args[1]<args[0]]
 com.google.common.base.CharMatcher.indexIn(java.lang.CharSequence, int) throws java.lang.IndexOutOfBoundsException if start is negative or greater than sequence.length() ==> [args[1]<0||args[1]>args[0].length()]
-com.google.common.base.CharMatcher.apply(java.lang.Character) throws java.lang.NullPointerException if input is null and this predicate does not accept null arguments ==> []
