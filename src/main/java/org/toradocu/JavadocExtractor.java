@@ -39,12 +39,9 @@ public class JavadocExtractor {
 				continue;
 			}
 
-			Output found = DocFinder.search(new DocFinder.Input(member));
-			Doc holder = found.holder;
 			List<Tag> tags = new ArrayList<>();
-			
-			Collections.addAll(tags, holder.tags("@throws"));
-			Collections.addAll(tags, holder.tags("@exception"));
+			Collections.addAll(tags, member.tags("@throws"));
+			Collections.addAll(tags, member.tags("@exception"));
 
 			// Note that we filter duplicated tags
 			for (Tag tag : tags) {
