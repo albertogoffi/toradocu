@@ -2,4 +2,5 @@ com.google.common.collect.ConcurrentHashMultiset.add(E, int) throws java.lang.Il
 com.google.common.collect.ConcurrentHashMultiset.remove(java.lang.Object, int) throws java.lang.IllegalArgumentException if occurrences is negative ==> [args[1]<0]
 com.google.common.collect.ConcurrentHashMultiset.removeExactly(java.lang.Object, int) throws java.lang.IllegalArgumentException if occurrences is negative ==> [args[1]<0]
 com.google.common.collect.ConcurrentHashMultiset.setCount(E, int) throws java.lang.IllegalArgumentException if count is negative ==> [args[1]<0]
-com.google.common.collect.ConcurrentHashMultiset.setCount(E, int, int) throws java.lang.IllegalArgumentException if oldCount or newCount is negative ==> [args[1]<0||args[2]<0]
+com.google.common.collect.ConcurrentHashMultiset.setCount(E, int, int) throws java.lang.IllegalArgumentException if expectedOldCount or newCount is negative ==> [args[1]<0||args[2]<0]
+com.google.common.collect.ConcurrentHashMultiset(java.util.concurrent.ConcurrentMap<E, java.util.concurrent.atomic.AtomicInteger>) throws java.lang.IllegalArgumentException if countMap is not empty ==> [(args[0].isEmpty())==false]

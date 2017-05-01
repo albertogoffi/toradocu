@@ -168,7 +168,7 @@
     "throwsTags": [
       {
         "comment": "if there are not enough items on the stack to satisfy this request",
-        "condition": "target.size()<n",
+        "condition": "target.size()<args[0]",
         "exception": {
           "isArray": false,
           "name": "EmptyStackException",

@@ -50,8 +50,7 @@ public class GoalFileConverterTest {
         GUAVA_BIN);
   }
 
-  // Test excluded because it fails.
-  // @Test
+  @Test
   public void concurrentHashMultiset() {
     test(
         GUAVA_JSON_DIR,
@@ -178,8 +177,7 @@ public class GoalFileConverterTest {
         COMM_COLL_BIN);
   }
 
-  // Test excluded because it fails.
-  // @Test
+  @Test
   public void lruMap() {
     test(
         COMM_COLL_JSON_DIR,
