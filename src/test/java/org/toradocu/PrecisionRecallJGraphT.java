@@ -52,6 +52,16 @@ public class PrecisionRecallJGraphT extends AbstractPrecisionRecallTestSuite {
     test("org.jgrapht.generate.LinearGraphGenerator");
   }
 
+  @Test
+  public void directedAcyclicGraphTest() throws Exception {
+    test("org.jgrapht.experimental.dag.DirectedAcyclicGraph");
+  }
+
+  @Test
+  public void patonCycleBaseTest() throws Exception {
+    test("org.jgrapht.alg.cycle.PatonCycleBase");
+  }
+
   private Map<String, TestCaseStats> test(String targetClass) {
     Map<String, TestCaseStats> stats =
         PrecisionRecallTest.test(targetClass, JGRAPHT_SRC, JGRAPHT_EXPECTED_DIR);

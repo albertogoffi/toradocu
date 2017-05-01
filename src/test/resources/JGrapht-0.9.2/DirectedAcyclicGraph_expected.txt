@@ -1,0 +1,4 @@
+org.jgrapht.experimental.dag.DirectedAcyclicGraph.addDagEdge(V, V) throws java.lang.IllegalArgumentException If either fromVertex or toVertex is not a member of the graph ==> []
+org.jgrapht.experimental.dag.DirectedAcyclicGraph.addDagEdge(V, V) throws org.jgrapht.experimental.dag.DirectedAcyclicGraph.CycleFoundException if the edge would induce a cycle in the graph ==> []
+org.jgrapht.experimental.dag.DirectedAcyclicGraph.addDagEdge(V, V, E) throws org.jgrapht.experimental.dag.DirectedAcyclicGraph.CycleFoundException if adding an edge (fromVertex, toVertex) to the graph would induce a cycle. ==> []
+org.jgrapht.experimental.dag.DirectedAcyclicGraph.removeAllVertices(java.util.Collection<? extends V>) throws java.lang.NullPointerException if the specified vertex collection is null. ==> [args[0]==null]
