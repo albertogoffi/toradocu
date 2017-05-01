@@ -2,6 +2,3 @@ org.apache.commons.collections4.functors.AnyPredicate.<T>anyPredicate(org.apache
 org.apache.commons.collections4.functors.AnyPredicate.<T>anyPredicate(org.apache.commons.collections4.Predicate<? super T>...) throws java.lang.NullPointerException if any predicate in the array is null ==> [java.util.Arrays.stream(args[0]).anyMatch(e->e==null)]
 org.apache.commons.collections4.functors.AnyPredicate.<T>anyPredicate(java.util.Collection<? extends org.apache.commons.collections4.Predicate<? super T>>) throws java.lang.NullPointerException if the predicates array is null ==> [args[0]==null]
 org.apache.commons.collections4.functors.AnyPredicate.<T>anyPredicate(java.util.Collection<? extends org.apache.commons.collections4.Predicate<? super T>>) throws java.lang.NullPointerException if any predicate in the array is null ==> [args[0].stream().anyMatch(e->e==null)]
-org.apache.commons.collections4.functors.AnyPredicate.evaluate(T) throws java.lang.ClassCastException (runtime) if the input is the wrong class ==> []
-org.apache.commons.collections4.functors.AnyPredicate.evaluate(T) throws java.lang.IllegalArgumentException (runtime) if the input is invalid ==> []
-org.apache.commons.collections4.functors.AnyPredicate.evaluate(T) throws org.apache.commons.collections4.FunctorException (runtime) if the predicate encounters a problem ==> []
