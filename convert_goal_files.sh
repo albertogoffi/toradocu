@@ -1,5 +1,8 @@
 #!/bin/sh
 
+TORADOCU=build/libs/toradocu-1.0-all.jar
+CONVERTER=org.toradocu.util.GoalFileConverter
+
 if [ "$#" -ne 3 ]; then
     echo "You must invoke this script with exactly 3 arguments:"
     echo "1. Folder containing json files to be translated."
@@ -8,10 +11,11 @@ if [ "$#" -ne 3 ]; then
     exit 1
 fi
 
-TORADOCU=build/libs/toradocu-1.0-all.jar
-CONVERTER=org.toradocu.util.GoalFileConverter
+./gradlew shadowJar
 
-for JSON in $1/*_goal.json; do
+mkdir -p "$3"
+
+for JSON in "$1"/*_goal.json; do
     BASENAME=$(basename "$JSON" _goal.json)
     OUTPUT_FILENAME="${BASENAME##*.}"_expected.txt
     echo "Converting $JSON to $3/$OUTPUT_FILENAME"
