@@ -28,8 +28,38 @@ public class PrecisionRecallPlumeLib extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void weakIdentityHashMap() throws Exception {
+  public void weakIdentityHashMapTest() throws Exception {
     test("plume.WeakIdentityHashMap");
+  }
+
+  @Test
+  public void timeLimitProcessTest() throws Exception {
+    test("plume.TimeLimitProcess");
+  }
+
+  @Test
+  public void weakHasherMapTest() throws Exception {
+    test("plume.WeakHasherMap");
+  }
+
+  @Test
+  public void entryReaderTest() throws Exception {
+    test("plume.EntryReader");
+  }
+
+  @Test
+  public void mathMDETest() throws Exception {
+    test("plume.MathMDE");
+  }
+
+  @Test
+  public void strTokTest() throws Exception {
+    test("plume.StrTok");
+  }
+
+  @Test
+  public void utilMDETest() throws Exception {
+    test("plume.UtilMDE");
   }
 
   private Map<String, TestCaseStats> test(String targetClass) {
