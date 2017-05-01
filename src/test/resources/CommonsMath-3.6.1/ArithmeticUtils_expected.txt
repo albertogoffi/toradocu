@@ -1,6 +1,5 @@
 org.apache.commons.math3.util.ArithmeticUtils.addAndCheck(int, int) throws org.apache.commons.math3.exception.MathArithmeticException if the result can not be represented as an int. ==> []
 org.apache.commons.math3.util.ArithmeticUtils.addAndCheck(long, long) throws org.apache.commons.math3.exception.MathArithmeticException if the result can not be represented as an long ==> []
-org.apache.commons.math3.util.ArithmeticUtils.addAndCheck(long, long, org.apache.commons.math3.exception.util.Localizable) throws org.apache.commons.math3.exception.MathArithmeticException if the result cannot be represented as a long. ==> []
 org.apache.commons.math3.util.ArithmeticUtils.binomialCoefficient(int, int) throws org.apache.commons.math3.exception.NotPositiveException if n < 0. ==> [args[0]<0]
 org.apache.commons.math3.util.ArithmeticUtils.binomialCoefficient(int, int) throws org.apache.commons.math3.exception.NumberIsTooLargeException if k > n. ==> [args[1]>args[0]]
 org.apache.commons.math3.util.ArithmeticUtils.binomialCoefficient(int, int) throws org.apache.commons.math3.exception.MathArithmeticException if the result is too large to be represented by a long integer. ==> []
@@ -33,5 +32,5 @@ org.apache.commons.math3.util.ArithmeticUtils.pow(java.math.BigInteger, int) thr
 org.apache.commons.math3.util.ArithmeticUtils.pow(java.math.BigInteger, long) throws org.apache.commons.math3.exception.NotPositiveException if e < 0. ==> [args[1]<0]
 org.apache.commons.math3.util.ArithmeticUtils.pow(java.math.BigInteger, java.math.BigInteger) throws org.apache.commons.math3.exception.NotPositiveException if e < 0. ==> [args[1]<0]
 org.apache.commons.math3.util.ArithmeticUtils.stirlingS2(int, int) throws org.apache.commons.math3.exception.NotPositiveException if k < 0. ==> [args[1]<0]
-org.apache.commons.math3.util.ArithmeticUtils.stirlingS2(int, int) throws org.apache.commons.math3.exception.NumberIsTooLargeException if k > n. ==> [args[1]<args[0]]
+org.apache.commons.math3.util.ArithmeticUtils.stirlingS2(int, int) throws org.apache.commons.math3.exception.NumberIsTooLargeException if k > n. ==> [args[1]>args[0]]
 org.apache.commons.math3.util.ArithmeticUtils.stirlingS2(int, int) throws org.apache.commons.math3.exception.MathArithmeticException if some overflow happens, typically for n exceeding 25 and k between 20 and n-2 (S(n,n-1) is handled specifically and does not overflow) ==> []
