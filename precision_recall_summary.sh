@@ -16,7 +16,7 @@ if [ ! -f $STATS_FILE ]; then
 fi
 
 # Run Toradocu and collect statistics
-./gradlew clean test --tests "org.toradocu.PrecisionRecall*" --rerun-tasks
+./gradlew --rerun-tasks clean test --tests "org.toradocu.PrecisionRecallPaper"
 echo "TOTAL,=SUM(B2:INDIRECT(\"B\" & ROW()-1)),=SUM(C2:INDIRECT(\"C\" & ROW()-1)),=SUM(D2:INDIRECT(\"D\" & ROW()-1))" >> $STATS_FILE
 echo "NUMBER OF METHODS,=ROW()-3" >> $STATS_FILE
 echo "NUMBER OF CONDITIONS,=INDIRECT(\"B\" & ROW()-2)+INDIRECT(\"C\" & ROW()-2)+INDIRECT(\"D\" & ROW()-2)" >> $STATS_FILE
