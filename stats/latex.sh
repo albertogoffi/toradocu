@@ -133,7 +133,7 @@ TOTAL[6]=$(arraySum EXC_POST)
 echo 'Commons Collections 4.1 \newline\footnotesize\url{https://commons.apache.org/collections}' \
      '& '${CLASSES[0]}' & '${SELECTED_CLASSES[0]}' & '${METHODS[0]}' & '${DOCUMENTED_METHODS[0]}' & '${PRE[0]}' & '${POST[0]}' & '${EXC_POST[0]}' \\' > "$SUBJECTS_TABLE"
 echo 'Commons Math 3.6.1 \newline\footnotesize\url{https://commons.apache.org/math}' \
-     '& '${CLASSES[1]}' & '${SELECTED_CLASSES[1]}' & '${METHODS[1]}' & '${DOCUMENTED_METHODS[1]}' &'${PRE[1]}' & '${POST[1]}' & '${EXC_POST[1]}' \\' >> "$SUBJECTS_TABLE"
+     '& '${CLASSES[1]}' & '${SELECTED_CLASSES[1]}' & '${METHODS[1]}' & '${DOCUMENTED_METHODS[1]}' & '${PRE[1]}' & '${POST[1]}' & '${EXC_POST[1]}' \\' >> "$SUBJECTS_TABLE"
 echo 'Guava 19 \newline\footnotesize\url{http://github.com/google/guava}' \
      '& '${CLASSES[3]}' & '${SELECTED_CLASSES[3]}' & '${METHODS[3]}' & '${DOCUMENTED_METHODS[3]}' & '${PRE[3]}' & '${POST[3]}' & '${EXC_POST[3]}' \\' >> "$SUBJECTS_TABLE"
 echo 'JGraphT 0.9.2 \newline\footnotesize\url{http://jgrapht.org}' \
