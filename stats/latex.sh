@@ -8,6 +8,9 @@ SUBJECTS_TABLE="$OUTPUT_DIR"/subject-classes-table.tex
 RESULTS_TABLE="$OUTPUT_DIR"/accuracy-table.tex
 MACROS="$OUTPUT_DIR"/macros.tex
 
+JDOCTOR="\ToradocuPlus"
+TORADOCU="\OldToradocu"
+
 numberOfClasses() {
     echo $(find "$1" -name "*.java" -type f | wc -l | tr -d " ")
 }
@@ -188,6 +191,35 @@ CONDITIONS=0
 CONDITIONS=$((CONDITIONS+${TOTAL[4]}))
 CONDITIONS=$((CONDITIONS+${TOTAL[5]}))
 CONDITIONS=$((CONDITIONS+${TOTAL[6]}))
-echo '\newcommand{\totalConditions}{'$CONDITIONS'}' >> "$MACROS"
+echo '\newcommand{\totalConditions}{'$CONDITIONS'\xspace}' >> "$MACROS"
+echo '\newcommand{\totalClasses}{'${TOTAL[1]}'\xspace}' >> "$MACROS"
+
+# Jdoctor precsion/recall values
+JDOCTOR_PRECISION_PRE=`fgrep $JDOCTOR "$RESULTS_TABLE" | cut -d '&' -f 2 | xargs`
+JDOCTOR_RECALL_PRE=`fgrep $JDOCTOR "$RESULTS_TABLE" | cut -d '&' -f 3 | xargs`
+JDOCTOR_PRECISION_EXC=`fgrep $JDOCTOR "$RESULTS_TABLE" | cut -d '&' -f 8 | xargs`
+JDOCTOR_RECALL_EXC=`fgrep $JDOCTOR "$RESULTS_TABLE" | cut -d '&' -f 9 | xargs`
+
+# Improvement over @tComment
+TCOMMENT_PRECISION_PRE=`fgrep @tComment "$RESULTS_TABLE" | cut -d '&' -f 2 | xargs`
+TCOMMENT_RECALL_PRE=`fgrep @tComment "$RESULTS_TABLE" | cut -d '&' -f 3 | xargs`
+TCOMMENT_PRECISION_EXC=`fgrep @tComment "$RESULTS_TABLE" | cut -d '&' -f 8 | xargs`
+TCOMMENT_RECALL_EXC=`fgrep @tComment "$RESULTS_TABLE" | cut -d '&' -f 9 | xargs`
+PRECISION_PRE_IMPROVEMENT_TCOMMENT=`bc -l <<< "scale=0; ($JDOCTOR_PRECISION_PRE-$TCOMMENT_PRECISION_PRE)*100 / 1"`
+RECALL_PRE_IMPROVEMENT_TCOMMENT=`bc -l <<< "scale=0; ($JDOCTOR_RECALL_PRE-$TCOMMENT_RECALL_PRE)*100 / 1"`
+PRECISION_EXC_IMPROVEMENT_TCOMMENT=`bc -l <<< "scale=0; ($JDOCTOR_PRECISION_EXC-$TCOMMENT_PRECISION_EXC)*100 / 1"`
+RECALL_EXC_IMPROVEMENT_TCOMMENT=`bc -l <<< "scale=0; ($JDOCTOR_RECALL_EXC-$TCOMMENT_RECALL_EXC)*100 / 1"`
+echo '\newcommand{\precisionImprovementPreTcomment}{'$PRECISION_PRE_IMPROVEMENT_TCOMMENT'\%\xspace}' >> "$MACROS"
+echo '\newcommand{\precisionImprovementExcTcomment}{'$PRECISION_EXC_IMPROVEMENT_TCOMMENT'\%\xspace}' >> "$MACROS"
+echo '\newcommand{\recallImprovementPreTcomment}{'$RECALL_PRE_IMPROVEMENT_TCOMMENT'\%\xspace}' >> "$MACROS"
+echo '\newcommand{\recallImprovementExcTcomment}{'$RECALL_EXC_IMPROVEMENT_TCOMMENT'\%\xspace}' >> "$MACROS"
+
+# Improvement over Toradocu
+TORADOCU_PRECISION_EXC=`fgrep $TORADOCU "$RESULTS_TABLE" | cut -d '&' -f 8 | xargs`
+TORADOCU_RECALL_EXC=`fgrep $TORADOCU "$RESULTS_TABLE" | cut -d '&' -f 9 | xargs`
+PRECISION_EXC_IMPROVEMENT_TORADOCU=`bc -l <<< "scale=0; ($JDOCTOR_PRECISION_EXC-$TORADOCU_PRECISION_EXC)*100 / 1"`
+RECALL_EXC_IMPROVEMENT_TORADOCU=`bc -l <<< "scale=0; ($JDOCTOR_RECALL_EXC-$TORADOCU_RECALL_EXC)*100 / 1"`
+echo '\newcommand{\precisionImprovementExcToradocu}{'$PRECISION_EXC_IMPROVEMENT_TORADOCU'\%\xspace}' >> "$MACROS"
+echo '\newcommand{\recallImprovementExcToradocu}{'$PRECISION_EXC_IMPROVEMENT_TORADOCU'\%\xspace}' >> "$MACROS"
 
 echo "Created macros: $MACROS"
