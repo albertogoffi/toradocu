@@ -128,6 +128,7 @@ public class ConditionTranslator {
       placeholderText = findVerb(placeholderText, i);
       i++;
     }
+
     return placeholderText;
   }
 
@@ -513,8 +514,6 @@ public class ConditionTranslator {
       // Assumption: the comment is composed of a single sentence. We should probably split multiple
       // sentence comments using the Stanford Parser, and then work on each single sentence.
       String translation = "";
-      //Translation to proper english of non-null and non-empty
-      comment = comment.replaceAll("non-null", "not null").replaceAll("non-empty", "not empty");
 
       // Split the sentence in three parts: predicate + true case + false case.
       // TODO Naive splitting. Make the split more reliable.
@@ -622,6 +621,7 @@ public class ConditionTranslator {
   private static String translateSecondPart(String text, DocumentedMethod method) {
     // Identify propositions in the comment. Each sentence in the comment is parsed into a
     // PropositionSeries.
+
     text = removeInitial(text, "if");
     List<PropositionSeries> extractedPropositions = getPropositionSeries(text, method);
     Set<String> conditions = new LinkedHashSet<>();
@@ -630,64 +630,6 @@ public class ConditionTranslator {
       translatePropositions(propositions, method);
       conditions.add(propositions.getTranslation());
     }
-
-    //If conditions are empty
-    boolean noSubject = false;
-
-    //Check if it is due to the subject
-    for (PropositionSeries p : extractedPropositions) {
-      noSubject = p.isEmpty();
-      for (Proposition prop : p.getPropositions()) {
-        if (prop.getSubject().getSubject().length() == 0) noSubject = true;
-      }
-    }
-
-    if (noSubject) {
-      //If it is, then add the subject as needed
-      //Check for the verb.
-      String[] possibleVerbs = {"is", "is not", "isn't", "are", "are not", "aren't"};
-      boolean containsVerb = false;
-      for (String possibleVerb : possibleVerbs) {
-        if (containsVerb = text.contains(" " + possibleVerb + " ")) {
-          //If no arguments, subject this
-          int numParam = method.getParameters().size();
-          if (numParam == 0) {
-            text.replace(possibleVerb, " this " + possibleVerb);
-          } else if (numParam == 1) {
-            text.replace(possibleVerb, "parameter " + possibleVerb);
-          } else if (numParam == 2) {
-            text.replace(
-                possibleVerb,
-                method.getParameters().get(0).getName()
-                    + " and "
-                    + method.getParameters().get(1).getName()
-                    + possibleVerb);
-          }
-        }
-      }
-
-      int numParam = method.getParameters().size();
-      if (numParam == 0) {
-        text = "this is" + text;
-      } else if (numParam == 1) {
-        text = method.getParameters().get(0).getName() + " is" + text;
-      } else if (numParam == 2) {
-        text =
-            method.getParameters().get(0).getName()
-                + " and "
-                + method.getParameters().get(1).getName()
-                + " are"
-                + text;
-      }
-    }
-    extractedPropositions = getPropositionSeries(text, method);
-    conditions = new LinkedHashSet<>();
-    // Identify Java code elements in propositions.
-    for (PropositionSeries propositions : extractedPropositions) {
-      translatePropositions(propositions, method);
-      conditions.add(propositions.getTranslation());
-    }
-
     return mergeConditions(conditions);
   }
 
