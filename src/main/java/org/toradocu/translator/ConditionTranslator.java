@@ -448,11 +448,6 @@ public class ConditionTranslator {
 
     // Comment preprocessing for @param tags.
     if (tag.getKind() == Tag.Kind.PARAM) {
-      //We're not interested on "may be null" conditions.
-      if (comment.contains("may be null")) {
-        comment = comment.replaceAll("may be null", "");
-      }
-
       String parameterName = ((ParamTag) tag).parameter().getName();
       String[] patterns = {
         "must be",
