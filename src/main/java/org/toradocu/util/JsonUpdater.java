@@ -68,15 +68,15 @@ public class JsonUpdater {
       final DocumentedMethod oldMethod = matchingMethods.get(0);
 
       updateParamTags(oldJSONSpecs, oldMethod, newMethod);
-      updateReturnTag(newMethod, oldMethod);
-      updateThrowsTags(oldJSONSpecs, newMethod, oldMethod);
+      updateReturnTag(oldMethod, newMethod);
+      updateThrowsTags(oldJSONSpecs, oldMethod, newMethod);
     }
 
     // Print the JSON on the standard output.
     System.out.println(GsonInstance.gson().toJson(newSpecs, collectionType));
   }
 
-  private static void updateReturnTag(DocumentedMethod newMethod, DocumentedMethod oldMethod) {
+  private static void updateReturnTag(DocumentedMethod oldMethod, DocumentedMethod newMethod) {
     final ReturnTag oldReturnTag = oldMethod.returnTag();
     final ReturnTag newReturnTag = newMethod.returnTag();
     if (oldReturnTag == null && newReturnTag != null) {
@@ -105,12 +105,18 @@ public class JsonUpdater {
               .stream()
               .filter(
                   t ->
-                      t.parameter().equals(newParamTag.parameter())
+                      t.parameter().getName().equals(newParamTag.parameter().getName())
                           && t.getComment().equals(newParamTag.getComment()))
               .collect(Collectors.toList());
       // Sanity checks.
       if (matchingOldParamTags.size() == 0) {
-        throw new AssertionError("Tag " + newParamTag + " not present in " + oldJSONSpecs);
+        throw new AssertionError(
+            "Tag "
+                + newParamTag
+                + " not present in method "
+                + oldMethod.getSignature()
+                + " of "
+                + oldJSONSpecs);
       }
       if (matchingOldParamTags.size() > 1) {
         throw new AssertionError(
@@ -126,7 +132,7 @@ public class JsonUpdater {
   }
 
   private static void updateThrowsTags(
-      String oldJSONSpecs, DocumentedMethod newMethod, DocumentedMethod oldMethod) {
+      String oldJSONSpecs, DocumentedMethod oldMethod, DocumentedMethod newMethod) {
     final Set<ThrowsTag> oldThrowsTags = oldMethod.throwsTags();
     for (ThrowsTag newThrowsTag : newMethod.throwsTags()) {
       final List<ThrowsTag> matchingOldThrowsTags =
@@ -139,7 +145,13 @@ public class JsonUpdater {
               .collect(Collectors.toList());
       // Sanity checks.
       if (matchingOldThrowsTags.size() == 0) {
-        throw new AssertionError("Tag " + newThrowsTag + " not present in " + oldJSONSpecs);
+        throw new AssertionError(
+            "Tag "
+                + newThrowsTag
+                + " not present in method "
+                + oldMethod.getSignature()
+                + " of "
+                + oldJSONSpecs);
       }
       if (matchingOldThrowsTags.size() > 1) {
         throw new AssertionError(
