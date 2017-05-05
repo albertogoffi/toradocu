@@ -1,756 +1,701 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AtomicDoubleArray",
-      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray"
-    },
-    "isVarArgs": false,
+    "signature": "AtomicDoubleArray(int length)",
     "name": "AtomicDoubleArray",
-    "paramTags": [
-      {
-        "comment": "the length of the array",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "length",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray",
+      "name": "AtomicDoubleArray",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
+    "isVarArgs": false,
     "parameters": [
       {
-        "name": "length",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "length"
       }
     ],
-    "signature": "AtomicDoubleArray(int length)",
-    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "length"
+        },
+        "comment": "the length of the array",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AtomicDoubleArray",
-      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray"
-    },
-    "isVarArgs": false,
+    "signature": "AtomicDoubleArray(double[] array)",
     "name": "AtomicDoubleArray",
-    "paramTags": [
-      {
-        "comment": "the array to copy elements from",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "array",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "double",
-              "qualifiedName": "double"
-            },
-            "isArray": true,
-            "name": "double[]",
-            "qualifiedName": "double[]"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray",
+      "name": "AtomicDoubleArray",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
+    "isVarArgs": false,
     "parameters": [
       {
-        "name": "array",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          },
-          "isArray": true,
+          "qualifiedName": "double[]",
           "name": "double[]",
-          "qualifiedName": "double[]"
-        }
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "array"
       }
     ],
-    "signature": "AtomicDoubleArray(double[] array)",
-    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "the array to copy elements from",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": [
       {
-        "comment": "if array is null",
-        "condition": "args[0]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if array is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AtomicDoubleArray",
-      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray"
-    },
-    "isVarArgs": false,
+    "signature": "length()",
     "name": "length",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray",
+      "name": "AtomicDoubleArray",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the length of the array",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "length()",
-    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AtomicDoubleArray",
-      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray"
-    },
-    "isVarArgs": false,
+    "signature": "get(int i)",
     "name": "get",
-    "paramTags": [
-      {
-        "comment": "the index",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "i",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray",
+      "name": "AtomicDoubleArray",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "i",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "i"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "i"
+        },
+        "comment": "the index",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the current value",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "get(int i)",
-    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AtomicDoubleArray",
-      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray"
-    },
-    "isVarArgs": false,
-    "name": "set",
-    "paramTags": [
-      {
-        "comment": "the index",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "i",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the new value",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "newValue",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "i",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "newValue",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
     "signature": "set(int i,double newValue)",
-    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
-    "throwsTags": []
-  },
-  {
+    "name": "set",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray",
       "name": "AtomicDoubleArray",
-      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray"
+      "isArray": false
     },
+    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
     "isVarArgs": false,
-    "name": "lazySet",
-    "paramTags": [
-      {
-        "comment": "the index",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "i",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the new value",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "newValue",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "i",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "newValue",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
     "returnType": {
-      "isArray": false,
+      "qualifiedName": "void",
       "name": "void",
-      "qualifiedName": "void"
+      "isArray": false
     },
-    "signature": "lazySet(int i,double newValue)",
-    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "i"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "newValue"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "i"
+        },
+        "comment": "the index",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "newValue"
+        },
+        "comment": "the new value",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": []
   },
   {
+    "signature": "lazySet(int i,double newValue)",
+    "name": "lazySet",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray",
       "name": "AtomicDoubleArray",
-      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray"
+      "isArray": false
     },
+    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
     "isVarArgs": false,
-    "name": "getAndSet",
-    "paramTags": [
-      {
-        "comment": "the index",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "i",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the new value",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "newValue",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "i",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "i"
       },
       {
-        "name": "newValue",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "newValue"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "i"
+        },
+        "comment": "the index",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "newValue"
+        },
+        "comment": "the new value",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "getAndSet(int i,double newValue)",
+    "name": "getAndSet",
+    "containingClass": {
+      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray",
+      "name": "AtomicDoubleArray",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "i"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "newValue"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "i"
+        },
+        "comment": "the index",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "newValue"
+        },
+        "comment": "the new value",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the previous value",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "getAndSet(int i,double newValue)",
-    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AtomicDoubleArray",
-      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray"
-    },
-    "isVarArgs": false,
+    "signature": "compareAndSet(int i,double expect,double update)",
     "name": "compareAndSet",
-    "paramTags": [
-      {
-        "comment": "the index",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "i",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the expected value",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "expect",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "the new value",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "update",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray",
+      "name": "AtomicDoubleArray",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "i",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "i"
       },
       {
-        "name": "expect",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "expect"
       },
       {
-        "name": "update",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "update"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "i"
+        },
+        "comment": "the index",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "expect"
+        },
+        "comment": "the expected value",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "update"
+        },
+        "comment": "the new value",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if successful. False return indicates that the actual value was not equal to the expected value.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "compareAndSet(int i,double expect,double update)",
-    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AtomicDoubleArray",
-      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray"
-    },
-    "isVarArgs": false,
+    "signature": "weakCompareAndSet(int i,double expect,double update)",
     "name": "weakCompareAndSet",
-    "paramTags": [
-      {
-        "comment": "the index",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "i",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the expected value",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "expect",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "the new value",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "update",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray",
+      "name": "AtomicDoubleArray",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "i",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "i"
       },
       {
-        "name": "expect",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "expect"
       },
       {
-        "name": "update",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "update"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "i"
+        },
+        "comment": "the index",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "expect"
+        },
+        "comment": "the expected value",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "update"
+        },
+        "comment": "the new value",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if successful",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "weakCompareAndSet(int i,double expect,double update)",
-    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AtomicDoubleArray",
-      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray"
-    },
-    "isVarArgs": false,
+    "signature": "getAndAdd(int i,double delta)",
     "name": "getAndAdd",
-    "paramTags": [
-      {
-        "comment": "the index",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "i",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the value to add",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "delta",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray",
+      "name": "AtomicDoubleArray",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "i",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "i"
       },
       {
-        "name": "delta",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "delta"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "i"
+        },
+        "comment": "the index",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "delta"
+        },
+        "comment": "the value to add",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the previous value",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "getAndAdd(int i,double delta)",
-    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AtomicDoubleArray",
-      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray"
-    },
-    "isVarArgs": false,
+    "signature": "addAndGet(int i,double delta)",
     "name": "addAndGet",
-    "paramTags": [
-      {
-        "comment": "the index",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "i",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the value to add",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "delta",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray",
+      "name": "AtomicDoubleArray",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "i",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "i"
       },
       {
-        "name": "delta",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "delta"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "i"
+        },
+        "comment": "the index",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "delta"
+        },
+        "comment": "the value to add",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the updated value",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "addAndGet(int i,double delta)",
-    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AtomicDoubleArray",
-      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray"
-    },
-    "isVarArgs": false,
+    "signature": "toString()",
     "name": "toString",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray",
+      "name": "AtomicDoubleArray",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the String representation of the current values of array",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "String",
-      "qualifiedName": "java.lang.String"
-    },
-    "signature": "toString()",
-    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AtomicDoubleArray",
-      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray"
-    },
-    "isVarArgs": false,
-    "name": "writeObject",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "s",
-        "type": {
-          "isArray": false,
-          "name": "ObjectOutputStream",
-          "qualifiedName": "java.io.ObjectOutputStream"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "writeObject(java.io.ObjectOutputStream s)",
-    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AtomicDoubleArray",
-      "qualifiedName": "com.google.common.util.concurrent.AtomicDoubleArray"
-    },
-    "isVarArgs": false,
-    "name": "readObject",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "s",
-        "type": {
-          "isArray": false,
-          "name": "ObjectInputStream",
-          "qualifiedName": "java.io.ObjectInputStream"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "readObject(java.io.ObjectInputStream s)",
-    "targetClass": "com.google.common.util.concurrent.AtomicDoubleArray",
     "throwsTags": []
   }
 ]

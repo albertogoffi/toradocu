@@ -1,929 +1,863 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
-    },
-    "isVarArgs": false,
-    "name": "BloomFilter",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "bits",
-        "type": {
-          "isArray": false,
-          "name": "BitArray",
-          "qualifiedName": "com.google.common.hash.BloomFilterStrategies.BitArray"
-        }
-      },
-      {
-        "name": "numHashFunctions",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "funnel",
-        "type": {
-          "isArray": false,
-          "name": "Funnel",
-          "qualifiedName": "com.google.common.hash.Funnel"
-        }
-      },
-      {
-        "name": "strategy",
-        "type": {
-          "isArray": false,
-          "name": "Strategy",
-          "qualifiedName": "com.google.common.hash.BloomFilter.Strategy"
-        }
-      }
-    ],
-    "signature": "BloomFilter(com.google.common.hash.BloomFilterStrategies.BitArray bits,int numHashFunctions,com.google.common.hash.Funnel funnel,com.google.common.hash.BloomFilter.Strategy strategy)",
-    "targetClass": "com.google.common.hash.BloomFilter",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
-    },
-    "isVarArgs": false,
-    "name": "copy",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
-    },
     "signature": "copy()",
+    "name": "copy",
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.BloomFilter",
+      "name": "BloomFilter",
+      "isArray": false
+    },
     "targetClass": "com.google.common.hash.BloomFilter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.BloomFilter",
+      "name": "BloomFilter",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
-    },
-    "isVarArgs": false,
-    "name": "mightContain",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "object",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
     "signature": "mightContain(java.lang.Object object)",
-    "targetClass": "com.google.common.hash.BloomFilter",
-    "throwsTags": []
-  },
-  {
+    "name": "mightContain",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.hash.BloomFilter",
       "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
+      "isArray": false
     },
+    "targetClass": "com.google.common.hash.BloomFilter",
     "isVarArgs": false,
-    "name": "apply",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "input",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
     "returnType": {
-      "isArray": false,
+      "qualifiedName": "boolean",
       "name": "boolean",
-      "qualifiedName": "boolean"
+      "isArray": false
     },
-    "signature": "apply(java.lang.Object input)",
-    "targetClass": "com.google.common.hash.BloomFilter",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "object"
+      }
+    ],
+    "paramTags": [],
     "throwsTags": []
   },
   {
+    "signature": "apply(java.lang.Object input)",
+    "name": "apply",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.hash.BloomFilter",
       "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
+      "isArray": false
     },
+    "targetClass": "com.google.common.hash.BloomFilter",
     "isVarArgs": false,
-    "name": "put",
-    "paramTags": [],
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "object",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "input"
       }
     ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "put(java.lang.Object object)",
+    "name": "put",
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.BloomFilter",
+      "name": "BloomFilter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.hash.BloomFilter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "object"
+      }
+    ],
+    "paramTags": [],
     "returnTag": {
       "comment": "true if the bloom filter's bits changed as a result of this operation. If the bits changed, this is definitely the first time object has been added to the filter. If the bits haven't changed, this might be the first time object has been added to the filter. Note that put(t) always returns the opposite result to what mightContain(t) would have returned at the time it is called.\"",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "put(java.lang.Object object)",
-    "targetClass": "com.google.common.hash.BloomFilter",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
-    },
-    "isVarArgs": false,
-    "name": "expectedFpp",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
     "signature": "expectedFpp()",
-    "targetClass": "com.google.common.hash.BloomFilter",
-    "throwsTags": []
-  },
-  {
+    "name": "expectedFpp",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.hash.BloomFilter",
       "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
+      "isArray": false
     },
+    "targetClass": "com.google.common.hash.BloomFilter",
     "isVarArgs": false,
-    "name": "bitSize",
-    "paramTags": [],
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
-    },
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
     "signature": "bitSize()",
+    "name": "bitSize",
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.BloomFilter",
+      "name": "BloomFilter",
+      "isArray": false
+    },
     "targetClass": "com.google.common.hash.BloomFilter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
-    },
-    "isVarArgs": false,
-    "name": "isCompatible",
-    "paramTags": [
-      {
-        "comment": "The bloom filter to check for compatibility.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "that",
-          "type": {
-            "isArray": false,
-            "name": "BloomFilter",
-            "qualifiedName": "com.google.common.hash.BloomFilter"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "that",
-        "type": {
-          "isArray": false,
-          "name": "BloomFilter",
-          "qualifiedName": "com.google.common.hash.BloomFilter"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
     "signature": "isCompatible(com.google.common.hash.BloomFilter that)",
+    "name": "isCompatible",
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.BloomFilter",
+      "name": "BloomFilter",
+      "isArray": false
+    },
     "targetClass": "com.google.common.hash.BloomFilter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "com.google.common.hash.BloomFilter",
+          "name": "BloomFilter",
+          "isArray": false
+        },
+        "name": "that"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "com.google.common.hash.BloomFilter",
+            "name": "BloomFilter",
+            "isArray": false
+          },
+          "name": "that"
+        },
+        "comment": "The bloom filter to check for compatibility.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
-    },
-    "isVarArgs": false,
+    "signature": "putAll(com.google.common.hash.BloomFilter that)",
     "name": "putAll",
-    "paramTags": [
-      {
-        "comment": "The bloom filter to combine this bloom filter with. It is not mutated.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "that",
-          "type": {
-            "isArray": false,
-            "name": "BloomFilter",
-            "qualifiedName": "com.google.common.hash.BloomFilter"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.BloomFilter",
+      "name": "BloomFilter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.hash.BloomFilter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "that",
         "type": {
-          "isArray": false,
+          "qualifiedName": "com.google.common.hash.BloomFilter",
           "name": "BloomFilter",
-          "qualifiedName": "com.google.common.hash.BloomFilter"
-        }
+          "isArray": false
+        },
+        "name": "that"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "putAll(com.google.common.hash.BloomFilter that)",
-    "targetClass": "com.google.common.hash.BloomFilter",
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "com.google.common.hash.BloomFilter",
+            "name": "BloomFilter",
+            "isArray": false
+          },
+          "name": "that"
+        },
+        "comment": "The bloom filter to combine this bloom filter with. It is not mutated.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
         "codeTags": [
           "isCompatible(that) == false"
         ],
         "comment": "if isCompatible(that) == false",
-        "condition": "target.isCompatible(args[0])==false",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "target.isCompatible(args[0])==false"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
-    },
-    "isVarArgs": false,
-    "name": "equals",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "object",
-        "nullable": true,
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
     "signature": "equals(java.lang.Object object)",
+    "name": "equals",
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.BloomFilter",
+      "name": "BloomFilter",
+      "isArray": false
+    },
     "targetClass": "com.google.common.hash.BloomFilter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "object",
+        "nullable": true
+      }
+    ],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
-    },
-    "isVarArgs": false,
-    "name": "hashCode",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
     "signature": "hashCode()",
-    "targetClass": "com.google.common.hash.BloomFilter",
-    "throwsTags": []
-  },
-  {
+    "name": "hashCode",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.hash.BloomFilter",
       "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
+      "isArray": false
     },
-    "isVarArgs": false,
-    "name": "create",
-    "paramTags": [
-      {
-        "comment": "the funnel of T's that the constructed BloomFilter<T> will use",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "funnel",
-          "type": {
-            "isArray": false,
-            "name": "Funnel",
-            "qualifiedName": "com.google.common.hash.Funnel"
-          }
-        }
-      },
-      {
-        "comment": "the number of expected insertions to the constructed BloomFilter<T>; must be positive",
-        "condition": "args[1]>0",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "expectedInsertions",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the desired false positive probability (must be positive and less than 1.0)",
-        "condition": "args[2]>0 && args[2]<1.0",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "fpp",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "funnel",
-        "type": {
-          "isArray": false,
-          "name": "Funnel",
-          "qualifiedName": "com.google.common.hash.Funnel"
-        }
-      },
-      {
-        "name": "expectedInsertions",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "fpp",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a BloomFilter",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
-    },
-    "signature": "create(com.google.common.hash.Funnel funnel,int expectedInsertions,double fpp)",
     "targetClass": "com.google.common.hash.BloomFilter",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
-    },
     "isVarArgs": false,
-    "name": "create",
-    "paramTags": [
-      {
-        "comment": "the funnel of T's that the constructed BloomFilter<T> will use",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "funnel",
-          "type": {
-            "isArray": false,
-            "name": "Funnel",
-            "qualifiedName": "com.google.common.hash.Funnel"
-          }
-        }
-      },
-      {
-        "comment": "the number of expected insertions to the constructed BloomFilter<T>; must be positive",
-        "condition": "args[1]>0",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "expectedInsertions",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      },
-      {
-        "comment": "the desired false positive probability (must be positive and less than 1.0)",
-        "condition": "args[2]>0 && args[2]<1.0",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "fpp",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "funnel",
-        "type": {
-          "isArray": false,
-          "name": "Funnel",
-          "qualifiedName": "com.google.common.hash.Funnel"
-        }
-      },
-      {
-        "name": "expectedInsertions",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      },
-      {
-        "name": "fpp",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a BloomFilter",
-      "condition": "",
-      "kind": "RETURN"
-    },
     "returnType": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
-    },
-    "signature": "create(com.google.common.hash.Funnel funnel,long expectedInsertions,double fpp)",
-    "targetClass": "com.google.common.hash.BloomFilter",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
-    },
-    "isVarArgs": false,
-    "name": "create",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "funnel",
-        "type": {
-          "isArray": false,
-          "name": "Funnel",
-          "qualifiedName": "com.google.common.hash.Funnel"
-        }
-      },
-      {
-        "name": "expectedInsertions",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      },
-      {
-        "name": "fpp",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      },
-      {
-        "name": "strategy",
-        "type": {
-          "isArray": false,
-          "name": "Strategy",
-          "qualifiedName": "com.google.common.hash.BloomFilter.Strategy"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
-    },
-    "signature": "create(com.google.common.hash.Funnel funnel,long expectedInsertions,double fpp,com.google.common.hash.BloomFilter.Strategy strategy)",
-    "targetClass": "com.google.common.hash.BloomFilter",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
-    },
-    "isVarArgs": false,
-    "name": "create",
-    "paramTags": [
-      {
-        "comment": "the funnel of T's that the constructed BloomFilter<T> will use",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "funnel",
-          "type": {
-            "isArray": false,
-            "name": "Funnel",
-            "qualifiedName": "com.google.common.hash.Funnel"
-          }
-        }
-      },
-      {
-        "comment": "the number of expected insertions to the constructed BloomFilter<T>; must be positive",
-        "condition": "args[1]>0",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "expectedInsertions",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "funnel",
-        "type": {
-          "isArray": false,
-          "name": "Funnel",
-          "qualifiedName": "com.google.common.hash.Funnel"
-        }
-      },
-      {
-        "name": "expectedInsertions",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a BloomFilter",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
-    },
-    "signature": "create(com.google.common.hash.Funnel funnel,int expectedInsertions)",
-    "targetClass": "com.google.common.hash.BloomFilter",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
-    },
-    "isVarArgs": false,
-    "name": "create",
-    "paramTags": [
-      {
-        "comment": "the funnel of T's that the constructed BloomFilter<T> will use",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "funnel",
-          "type": {
-            "isArray": false,
-            "name": "Funnel",
-            "qualifiedName": "com.google.common.hash.Funnel"
-          }
-        }
-      },
-      {
-        "comment": "the number of expected insertions to the constructed BloomFilter<T>; must be positive",
-        "condition": "args[1]>0",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "expectedInsertions",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "funnel",
-        "type": {
-          "isArray": false,
-          "name": "Funnel",
-          "qualifiedName": "com.google.common.hash.Funnel"
-        }
-      },
-      {
-        "name": "expectedInsertions",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a BloomFilter",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
-    },
-    "signature": "create(com.google.common.hash.Funnel funnel,long expectedInsertions)",
-    "targetClass": "com.google.common.hash.BloomFilter",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
-    },
-    "isVarArgs": false,
-    "name": "optimalNumOfHashFunctions",
-    "paramTags": [
-      {
-        "comment": "expected insertions (must be positive)",
-        "condition": "args[0]>0",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "n",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      },
-      {
-        "comment": "total number of bits in Bloom filter (must be positive)",
-        "condition": "args[1]>0",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "m",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "n",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      },
-      {
-        "name": "m",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
+      "qualifiedName": "int",
       "name": "int",
-      "qualifiedName": "int"
+      "isArray": false
     },
-    "signature": "optimalNumOfHashFunctions(long n,long m)",
-    "targetClass": "com.google.common.hash.BloomFilter",
+    "parameters": [],
+    "paramTags": [],
     "throwsTags": []
   },
   {
+    "signature": "create(com.google.common.hash.Funnel funnel,int expectedInsertions,double fpp)",
+    "name": "create",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.hash.BloomFilter",
       "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
+      "isArray": false
     },
+    "targetClass": "com.google.common.hash.BloomFilter",
     "isVarArgs": false,
-    "name": "optimalNumOfBits",
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.BloomFilter",
+      "name": "BloomFilter",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "com.google.common.hash.Funnel",
+          "name": "Funnel",
+          "isArray": false
+        },
+        "name": "funnel"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "expectedInsertions"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "fpp"
+      }
+    ],
     "paramTags": [
       {
-        "comment": "expected insertions (must be positive)",
-        "condition": "args[0]>0",
-        "kind": "PARAM",
         "parameter": {
-          "name": "n",
           "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
+            "qualifiedName": "com.google.common.hash.Funnel",
+            "name": "Funnel",
+            "isArray": false
+          },
+          "name": "funnel"
+        },
+        "comment": "the funnel of T's that the constructed BloomFilter<T> will use",
+        "kind": "PARAM",
+        "condition": ""
       },
       {
-        "comment": "false positive rate (must be 0 < p < 1)",
-        "condition": "",
-        "kind": "PARAM",
         "parameter": {
-          "name": "p",
           "type": {
-            "isArray": false,
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "expectedInsertions"
+        },
+        "comment": "the number of expected insertions to the constructed BloomFilter<T>; must be positive",
+        "kind": "PARAM",
+        "condition": "args[1]>0"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
             "name": "double",
-            "qualifiedName": "double"
-          }
-        }
+            "isArray": false
+          },
+          "name": "fpp"
+        },
+        "comment": "the desired false positive probability (must be positive and less than 1.0)",
+        "kind": "PARAM",
+        "condition": "args[2]>0 && args[2]<1.0"
       }
     ],
-    "parameters": [
-      {
-        "name": "n",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      },
-      {
-        "name": "p",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
+    "returnTag": {
+      "comment": "a BloomFilter",
+      "kind": "RETURN",
+      "condition": ""
     },
-    "signature": "optimalNumOfBits(long n,double p)",
-    "targetClass": "com.google.common.hash.BloomFilter",
     "throwsTags": []
   },
   {
+    "signature": "create(com.google.common.hash.Funnel funnel,long expectedInsertions,double fpp)",
+    "name": "create",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.hash.BloomFilter",
       "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
+      "isArray": false
     },
-    "isVarArgs": false,
-    "name": "writeReplace",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "Object",
-      "qualifiedName": "java.lang.Object"
-    },
-    "signature": "writeReplace()",
     "targetClass": "com.google.common.hash.BloomFilter",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
-    },
     "isVarArgs": false,
-    "name": "writeTo",
-    "paramTags": [],
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.BloomFilter",
+      "name": "BloomFilter",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "out",
         "type": {
-          "isArray": false,
-          "name": "OutputStream",
-          "qualifiedName": "java.io.OutputStream"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "writeTo(java.io.OutputStream out)",
-    "targetClass": "com.google.common.hash.BloomFilter",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
-    },
-    "isVarArgs": false,
-    "name": "readFrom",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "in",
-        "type": {
-          "isArray": false,
-          "name": "InputStream",
-          "qualifiedName": "java.io.InputStream"
-        }
-      },
-      {
-        "name": "funnel",
-        "type": {
-          "isArray": false,
+          "qualifiedName": "com.google.common.hash.Funnel",
           "name": "Funnel",
-          "qualifiedName": "com.google.common.hash.Funnel"
-        }
+          "isArray": false
+        },
+        "name": "funnel"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "expectedInsertions"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "fpp"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "BloomFilter",
-      "qualifiedName": "com.google.common.hash.BloomFilter"
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "com.google.common.hash.Funnel",
+            "name": "Funnel",
+            "isArray": false
+          },
+          "name": "funnel"
+        },
+        "comment": "the funnel of T's that the constructed BloomFilter<T> will use",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "expectedInsertions"
+        },
+        "comment": "the number of expected insertions to the constructed BloomFilter<T>; must be positive",
+        "kind": "PARAM",
+        "condition": "args[1]>0"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "fpp"
+        },
+        "comment": "the desired false positive probability (must be positive and less than 1.0)",
+        "kind": "PARAM",
+        "condition": "args[2]>0 && args[2]<1.0"
+      }
+    ],
+    "returnTag": {
+      "comment": "a BloomFilter",
+      "kind": "RETURN",
+      "condition": ""
     },
-    "signature": "readFrom(java.io.InputStream in,com.google.common.hash.Funnel funnel)",
+    "throwsTags": []
+  },
+  {
+    "signature": "create(com.google.common.hash.Funnel funnel,long expectedInsertions,double fpp,com.google.common.hash.BloomFilter.Strategy strategy)",
+    "name": "create",
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.BloomFilter",
+      "name": "BloomFilter",
+      "isArray": false
+    },
     "targetClass": "com.google.common.hash.BloomFilter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.BloomFilter",
+      "name": "BloomFilter",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "com.google.common.hash.Funnel",
+          "name": "Funnel",
+          "isArray": false
+        },
+        "name": "funnel"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "expectedInsertions"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "fpp"
+      },
+      {
+        "type": {
+          "qualifiedName": "com.google.common.hash.BloomFilter.Strategy",
+          "name": "Strategy",
+          "isArray": false
+        },
+        "name": "strategy"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "create(com.google.common.hash.Funnel funnel,int expectedInsertions)",
+    "name": "create",
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.BloomFilter",
+      "name": "BloomFilter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.hash.BloomFilter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.BloomFilter",
+      "name": "BloomFilter",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "com.google.common.hash.Funnel",
+          "name": "Funnel",
+          "isArray": false
+        },
+        "name": "funnel"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "expectedInsertions"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "com.google.common.hash.Funnel",
+            "name": "Funnel",
+            "isArray": false
+          },
+          "name": "funnel"
+        },
+        "comment": "the funnel of T's that the constructed BloomFilter<T> will use",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "expectedInsertions"
+        },
+        "comment": "the number of expected insertions to the constructed BloomFilter<T>; must be positive",
+        "kind": "PARAM",
+        "condition": "args[1]>0"
+      }
+    ],
+    "returnTag": {
+      "comment": "a BloomFilter",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "create(com.google.common.hash.Funnel funnel,long expectedInsertions)",
+    "name": "create",
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.BloomFilter",
+      "name": "BloomFilter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.hash.BloomFilter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.BloomFilter",
+      "name": "BloomFilter",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "com.google.common.hash.Funnel",
+          "name": "Funnel",
+          "isArray": false
+        },
+        "name": "funnel"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "expectedInsertions"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "com.google.common.hash.Funnel",
+            "name": "Funnel",
+            "isArray": false
+          },
+          "name": "funnel"
+        },
+        "comment": "the funnel of T's that the constructed BloomFilter<T> will use",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "expectedInsertions"
+        },
+        "comment": "the number of expected insertions to the constructed BloomFilter<T>; must be positive",
+        "kind": "PARAM",
+        "condition": "args[1]>0"
+      }
+    ],
+    "returnTag": {
+      "comment": "a BloomFilter",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "optimalNumOfHashFunctions(long n,long m)",
+    "name": "optimalNumOfHashFunctions",
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.BloomFilter",
+      "name": "BloomFilter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.hash.BloomFilter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "n"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "m"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "expected insertions (must be positive)",
+        "kind": "PARAM",
+        "condition": "args[0]>0"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "m"
+        },
+        "comment": "total number of bits in Bloom filter (must be positive)",
+        "kind": "PARAM",
+        "condition": "args[1]>0"
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "optimalNumOfBits(long n,double p)",
+    "name": "optimalNumOfBits",
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.BloomFilter",
+      "name": "BloomFilter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.hash.BloomFilter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "n"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "p"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "expected insertions (must be positive)",
+        "kind": "PARAM",
+        "condition": "args[0]>0"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "p"
+        },
+        "comment": "false positive rate (must be 0 < p < 1)",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "writeTo(java.io.OutputStream out)",
+    "name": "writeTo",
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.BloomFilter",
+      "name": "BloomFilter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.hash.BloomFilter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.OutputStream",
+          "name": "OutputStream",
+          "isArray": false
+        },
+        "name": "out"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "readFrom(java.io.InputStream in,com.google.common.hash.Funnel funnel)",
+    "name": "readFrom",
+    "containingClass": {
+      "qualifiedName": "com.google.common.hash.BloomFilter",
+      "name": "BloomFilter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.hash.BloomFilter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.hash.BloomFilter",
+      "name": "BloomFilter",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.InputStream",
+          "name": "InputStream",
+          "isArray": false
+        },
+        "name": "in"
+      },
+      {
+        "type": {
+          "qualifiedName": "com.google.common.hash.Funnel",
+          "name": "Funnel",
+          "isArray": false
+        },
+        "name": "funnel"
+      }
+    ],
+    "paramTags": [],
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
         "codeTags": [
           "IOException"
         ],
         "comment": "if the InputStream throws an IOException, or if its data does not appear to be a BloomFilter serialized using the writeTo(OutputStream) method.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "IOException",
-          "qualifiedName": "java.io.IOException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   }

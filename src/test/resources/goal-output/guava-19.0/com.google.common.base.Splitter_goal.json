@@ -1,757 +1,659 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "isVarArgs": false,
-    "name": "Splitter",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "strategy",
-        "type": {
-          "isArray": false,
-          "name": "Strategy",
-          "qualifiedName": "com.google.common.base.Splitter.Strategy"
-        }
-      }
-    ],
-    "signature": "Splitter(com.google.common.base.Splitter.Strategy strategy)",
-    "targetClass": "com.google.common.base.Splitter",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "isVarArgs": false,
-    "name": "Splitter",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "strategy",
-        "type": {
-          "isArray": false,
-          "name": "Strategy",
-          "qualifiedName": "com.google.common.base.Splitter.Strategy"
-        }
-      },
-      {
-        "name": "omitEmptyStrings",
-        "type": {
-          "isArray": false,
-          "name": "boolean",
-          "qualifiedName": "boolean"
-        }
-      },
-      {
-        "name": "trimmer",
-        "type": {
-          "isArray": false,
-          "name": "CharMatcher",
-          "qualifiedName": "com.google.common.base.CharMatcher"
-        }
-      },
-      {
-        "name": "limit",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "signature": "Splitter(com.google.common.base.Splitter.Strategy strategy,boolean omitEmptyStrings,com.google.common.base.CharMatcher trimmer,int limit)",
-    "targetClass": "com.google.common.base.Splitter",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "isVarArgs": false,
+    "signature": "on(char separator)",
     "name": "on",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Splitter",
+      "name": "Splitter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Splitter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.Splitter",
+      "name": "Splitter",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "char",
+          "name": "char",
+          "isArray": false
+        },
+        "name": "separator"
+      }
+    ],
     "paramTags": [
       {
-        "comment": "the character to recognize as a separator",
-        "condition": "",
-        "kind": "PARAM",
         "parameter": {
-          "name": "separator",
           "type": {
-            "isArray": false,
+            "qualifiedName": "char",
             "name": "char",
-            "qualifiedName": "char"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "separator",
-        "type": {
-          "isArray": false,
-          "name": "char",
-          "qualifiedName": "char"
-        }
+            "isArray": false
+          },
+          "name": "separator"
+        },
+        "comment": "the character to recognize as a separator",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a splitter, with default settings, that recognizes that separator",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "signature": "on(char separator)",
-    "targetClass": "com.google.common.base.Splitter",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "isVarArgs": false,
+    "signature": "on(com.google.common.base.CharMatcher separatorMatcher)",
     "name": "on",
-    "paramTags": [
-      {
-        "comment": "a CharMatcher that determines whether a character is a separator",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "separatorMatcher",
-          "type": {
-            "isArray": false,
-            "name": "CharMatcher",
-            "qualifiedName": "com.google.common.base.CharMatcher"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Splitter",
+      "name": "Splitter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Splitter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.Splitter",
+      "name": "Splitter",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "separatorMatcher",
         "type": {
-          "isArray": false,
+          "qualifiedName": "com.google.common.base.CharMatcher",
           "name": "CharMatcher",
-          "qualifiedName": "com.google.common.base.CharMatcher"
-        }
+          "isArray": false
+        },
+        "name": "separatorMatcher"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "com.google.common.base.CharMatcher",
+            "name": "CharMatcher",
+            "isArray": false
+          },
+          "name": "separatorMatcher"
+        },
+        "comment": "a CharMatcher that determines whether a character is a separator",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a splitter, with default settings, that uses this matcher",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "signature": "on(com.google.common.base.CharMatcher separatorMatcher)",
-    "targetClass": "com.google.common.base.Splitter",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "isVarArgs": false,
+    "signature": "on(java.lang.String separator)",
     "name": "on",
-    "paramTags": [
-      {
-        "comment": "the literal, nonempty string to recognize as a separator",
-        "condition": "(args[0]==null) == false",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "separator",
-          "type": {
-            "isArray": false,
-            "name": "String",
-            "qualifiedName": "java.lang.String"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Splitter",
+      "name": "Splitter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Splitter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.Splitter",
+      "name": "Splitter",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "separator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.String",
           "name": "String",
-          "qualifiedName": "java.lang.String"
-        }
+          "isArray": false
+        },
+        "name": "separator"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "separator"
+        },
+        "comment": "the literal, nonempty string to recognize as a separator",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
       }
     ],
     "returnTag": {
       "comment": "a splitter, with default settings, that recognizes that separator",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "signature": "on(java.lang.String separator)",
-    "targetClass": "com.google.common.base.Splitter",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "isVarArgs": false,
+    "signature": "on(java.util.regex.Pattern separatorPattern)",
     "name": "on",
-    "paramTags": [
-      {
-        "comment": "the pattern that determines whether a subsequence is a separator. This pattern may not match the empty string.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "separatorPattern",
-          "type": {
-            "isArray": false,
-            "name": "Pattern",
-            "qualifiedName": "java.util.regex.Pattern"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Splitter",
+      "name": "Splitter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Splitter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.Splitter",
+      "name": "Splitter",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "separatorPattern",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.regex.Pattern",
           "name": "Pattern",
-          "qualifiedName": "java.util.regex.Pattern"
-        }
+          "isArray": false
+        },
+        "name": "separatorPattern"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.regex.Pattern",
+            "name": "Pattern",
+            "isArray": false
+          },
+          "name": "separatorPattern"
+        },
+        "comment": "the pattern that determines whether a subsequence is a separator. This pattern may not match the empty string.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a splitter, with default settings, that uses this pattern",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "signature": "on(java.util.regex.Pattern separatorPattern)",
-    "targetClass": "com.google.common.base.Splitter",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
         "codeTags": [
           "separatorPattern"
         ],
         "comment": "if separatorPattern matches the empty string",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "isVarArgs": false,
+    "signature": "onPattern(java.lang.String separatorPattern)",
     "name": "onPattern",
-    "paramTags": [
-      {
-        "comment": "the pattern that determines whether a subsequence is a separator. This pattern may not match the empty string.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "separatorPattern",
-          "type": {
-            "isArray": false,
-            "name": "String",
-            "qualifiedName": "java.lang.String"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Splitter",
+      "name": "Splitter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Splitter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.Splitter",
+      "name": "Splitter",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "separatorPattern",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.String",
           "name": "String",
-          "qualifiedName": "java.lang.String"
-        }
+          "isArray": false
+        },
+        "name": "separatorPattern"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "separatorPattern"
+        },
+        "comment": "the pattern that determines whether a subsequence is a separator. This pattern may not match the empty string.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a splitter, with default settings, that uses this pattern",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "signature": "onPattern(java.lang.String separatorPattern)",
-    "targetClass": "com.google.common.base.Splitter",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "java.util.regex.PatternSyntaxException",
+          "name": "PatternSyntaxException",
+          "isArray": false
+        },
         "codeTags": [
           "separatorPattern"
         ],
         "comment": "if separatorPattern is a malformed expression",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "PatternSyntaxException",
-          "qualifiedName": "java.util.regex.PatternSyntaxException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       },
       {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
         "codeTags": [
           "separatorPattern"
         ],
         "comment": "if separatorPattern matches the empty string",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "isVarArgs": false,
+    "signature": "fixedLength(int length)",
     "name": "fixedLength",
-    "paramTags": [
-      {
-        "comment": "the desired length of pieces after splitting, a positive integer",
-        "condition": "args[0]>0",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "length",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Splitter",
+      "name": "Splitter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Splitter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.Splitter",
+      "name": "Splitter",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "length",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "length"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "length"
+        },
+        "comment": "the desired length of pieces after splitting, a positive integer",
+        "kind": "PARAM",
+        "condition": "args[0]>0"
       }
     ],
     "returnTag": {
       "comment": "a splitter, with default settings, that can split into fixed sized pieces",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "signature": "fixedLength(int length)",
-    "targetClass": "com.google.common.base.Splitter",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
         "codeTags": [
           "length"
         ],
         "comment": "if length is zero or negative",
-        "condition": "args[0]==0 || args[0]<0",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[0]==0 || args[0]<0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "isVarArgs": false,
-    "name": "omitEmptyStrings",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "a splitter with the desired configuration",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
     "signature": "omitEmptyStrings()",
-    "targetClass": "com.google.common.base.Splitter",
-    "throwsTags": []
-  },
-  {
+    "name": "omitEmptyStrings",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.base.Splitter",
       "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
+      "isArray": false
     },
+    "targetClass": "com.google.common.base.Splitter",
     "isVarArgs": false,
-    "name": "limit",
-    "paramTags": [
-      {
-        "comment": "the maximum number of items returned",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "limit",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "limit",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a splitter with the desired configuration",
-      "condition": "",
-      "kind": "RETURN"
-    },
     "returnType": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.base.Splitter",
       "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
+      "isArray": false
     },
-    "signature": "limit(int limit)",
-    "targetClass": "com.google.common.base.Splitter",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "isVarArgs": false,
-    "name": "trimResults",
-    "paramTags": [],
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "a splitter with the desired configuration",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
+    "throwsTags": []
+  },
+  {
+    "signature": "limit(int limit)",
+    "name": "limit",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Splitter",
       "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
+      "isArray": false
     },
+    "targetClass": "com.google.common.base.Splitter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.Splitter",
+      "name": "Splitter",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "limit"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "limit"
+        },
+        "comment": "the maximum number of items returned",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a splitter with the desired configuration",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
     "signature": "trimResults()",
+    "name": "trimResults",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Splitter",
+      "name": "Splitter",
+      "isArray": false
+    },
     "targetClass": "com.google.common.base.Splitter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.Splitter",
+      "name": "Splitter",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "a splitter with the desired configuration",
+      "kind": "RETURN",
+      "condition": ""
+    },
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "isVarArgs": false,
+    "signature": "trimResults(com.google.common.base.CharMatcher trimmer)",
     "name": "trimResults",
-    "paramTags": [
-      {
-        "comment": "a CharMatcher that determines whether a character should be removed from the beginning/end of a subsequence",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "trimmer",
-          "type": {
-            "isArray": false,
-            "name": "CharMatcher",
-            "qualifiedName": "com.google.common.base.CharMatcher"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Splitter",
+      "name": "Splitter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Splitter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.Splitter",
+      "name": "Splitter",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "trimmer",
         "type": {
-          "isArray": false,
+          "qualifiedName": "com.google.common.base.CharMatcher",
           "name": "CharMatcher",
-          "qualifiedName": "com.google.common.base.CharMatcher"
-        }
+          "isArray": false
+        },
+        "name": "trimmer"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "com.google.common.base.CharMatcher",
+            "name": "CharMatcher",
+            "isArray": false
+          },
+          "name": "trimmer"
+        },
+        "comment": "a CharMatcher that determines whether a character should be removed from the beginning/end of a subsequence",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a splitter with the desired configuration",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "signature": "trimResults(com.google.common.base.CharMatcher trimmer)",
-    "targetClass": "com.google.common.base.Splitter",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "isVarArgs": false,
+    "signature": "split(java.lang.CharSequence sequence)",
     "name": "split",
-    "paramTags": [
-      {
-        "comment": "the sequence of characters to split",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "sequence",
-          "type": {
-            "isArray": false,
-            "name": "CharSequence",
-            "qualifiedName": "java.lang.CharSequence"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Splitter",
+      "name": "Splitter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Splitter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.Iterable",
+      "name": "Iterable",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "sequence",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.CharSequence",
           "name": "CharSequence",
-          "qualifiedName": "java.lang.CharSequence"
-        }
+          "isArray": false
+        },
+        "name": "sequence"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.CharSequence",
+            "name": "CharSequence",
+            "isArray": false
+          },
+          "name": "sequence"
+        },
+        "comment": "the sequence of characters to split",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "an iteration over the segments split from the parameter.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Iterable",
-      "qualifiedName": "java.lang.Iterable"
-    },
-    "signature": "split(java.lang.CharSequence sequence)",
-    "targetClass": "com.google.common.base.Splitter",
     "throwsTags": []
   },
   {
+    "signature": "splitToList(java.lang.CharSequence sequence)",
+    "name": "splitToList",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.base.Splitter",
       "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
+      "isArray": false
     },
+    "targetClass": "com.google.common.base.Splitter",
     "isVarArgs": false,
-    "name": "splittingIterator",
-    "paramTags": [],
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "sequence",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.CharSequence",
           "name": "CharSequence",
-          "qualifiedName": "java.lang.CharSequence"
-        }
+          "isArray": false
+        },
+        "name": "sequence"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "Iterator",
-      "qualifiedName": "java.util.Iterator"
-    },
-    "signature": "splittingIterator(java.lang.CharSequence sequence)",
-    "targetClass": "com.google.common.base.Splitter",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "isVarArgs": false,
-    "name": "splitToList",
     "paramTags": [
       {
-        "comment": "the sequence of characters to split",
-        "condition": "",
-        "kind": "PARAM",
         "parameter": {
-          "name": "sequence",
           "type": {
-            "isArray": false,
+            "qualifiedName": "java.lang.CharSequence",
             "name": "CharSequence",
-            "qualifiedName": "java.lang.CharSequence"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "sequence",
-        "type": {
-          "isArray": false,
-          "name": "CharSequence",
-          "qualifiedName": "java.lang.CharSequence"
-        }
+            "isArray": false
+          },
+          "name": "sequence"
+        },
+        "comment": "the sequence of characters to split",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "an immutable list of the segments split from the parameter",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "List",
-      "qualifiedName": "java.util.List"
-    },
-    "signature": "splitToList(java.lang.CharSequence sequence)",
-    "targetClass": "com.google.common.base.Splitter",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "isVarArgs": false,
-    "name": "withKeyValueSeparator",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "separator",
-        "type": {
-          "isArray": false,
-          "name": "String",
-          "qualifiedName": "java.lang.String"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "MapSplitter",
-      "qualifiedName": "com.google.common.base.Splitter.MapSplitter"
-    },
     "signature": "withKeyValueSeparator(java.lang.String separator)",
+    "name": "withKeyValueSeparator",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Splitter",
+      "name": "Splitter",
+      "isArray": false
+    },
     "targetClass": "com.google.common.base.Splitter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.Splitter.MapSplitter",
+      "name": "MapSplitter",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "separator"
+      }
+    ],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "isVarArgs": false,
-    "name": "withKeyValueSeparator",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "separator",
-        "type": {
-          "isArray": false,
-          "name": "char",
-          "qualifiedName": "char"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "MapSplitter",
-      "qualifiedName": "com.google.common.base.Splitter.MapSplitter"
-    },
     "signature": "withKeyValueSeparator(char separator)",
+    "name": "withKeyValueSeparator",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Splitter",
+      "name": "Splitter",
+      "isArray": false
+    },
     "targetClass": "com.google.common.base.Splitter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.Splitter.MapSplitter",
+      "name": "MapSplitter",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "char",
+          "name": "char",
+          "isArray": false
+        },
+        "name": "separator"
+      }
+    ],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Splitter",
-      "qualifiedName": "com.google.common.base.Splitter"
-    },
-    "isVarArgs": false,
+    "signature": "withKeyValueSeparator(com.google.common.base.Splitter keyValueSplitter)",
     "name": "withKeyValueSeparator",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Splitter",
+      "name": "Splitter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Splitter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.Splitter.MapSplitter",
+      "name": "MapSplitter",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "keyValueSplitter",
         "type": {
-          "isArray": false,
+          "qualifiedName": "com.google.common.base.Splitter",
           "name": "Splitter",
-          "qualifiedName": "com.google.common.base.Splitter"
-        }
+          "isArray": false
+        },
+        "name": "keyValueSplitter"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "MapSplitter",
-      "qualifiedName": "com.google.common.base.Splitter.MapSplitter"
-    },
-    "signature": "withKeyValueSeparator(com.google.common.base.Splitter keyValueSplitter)",
-    "targetClass": "com.google.common.base.Splitter",
+    "paramTags": [],
     "throwsTags": []
   }
 ]

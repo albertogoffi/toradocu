@@ -1,603 +1,416 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Throwables",
-      "qualifiedName": "com.google.common.base.Throwables"
-    },
-    "isVarArgs": false,
-    "name": "Throwables",
-    "paramTags": [],
-    "parameters": [],
-    "signature": "Throwables()",
-    "targetClass": "com.google.common.base.Throwables",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Throwables",
-      "qualifiedName": "com.google.common.base.Throwables"
-    },
-    "isVarArgs": false,
-    "name": "propagateIfInstanceOf",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "throwable",
-        "nullable": true,
-        "type": {
-          "isArray": false,
-          "name": "Throwable",
-          "qualifiedName": "java.lang.Throwable"
-        }
-      },
-      {
-        "name": "declaredType",
-        "type": {
-          "isArray": false,
-          "name": "Class",
-          "qualifiedName": "java.lang.Class"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
     "signature": "propagateIfInstanceOf(java.lang.Throwable throwable,java.lang.Class declaredType)",
-    "targetClass": "com.google.common.base.Throwables",
-    "throwsTags": []
-  },
-  {
+    "name": "propagateIfInstanceOf",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.base.Throwables",
       "name": "Throwables",
-      "qualifiedName": "com.google.common.base.Throwables"
+      "isArray": false
     },
+    "targetClass": "com.google.common.base.Throwables",
     "isVarArgs": false,
-    "name": "propagateIfPossible",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Throwable",
+          "name": "Throwable",
+          "isArray": false
+        },
+        "name": "throwable",
+        "nullable": true
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Class",
+          "name": "Class",
+          "isArray": false
+        },
+        "name": "declaredType"
+      }
+    ],
     "paramTags": [],
-    "parameters": [
-      {
-        "name": "throwable",
-        "nullable": true,
-        "type": {
-          "isArray": false,
-          "name": "Throwable",
-          "qualifiedName": "java.lang.Throwable"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
+    "throwsTags": []
+  },
+  {
     "signature": "propagateIfPossible(java.lang.Throwable throwable)",
+    "name": "propagateIfPossible",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Throwables",
+      "name": "Throwables",
+      "isArray": false
+    },
     "targetClass": "com.google.common.base.Throwables",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Throwable",
+          "name": "Throwable",
+          "isArray": false
+        },
+        "name": "throwable",
+        "nullable": true
+      }
+    ],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Throwables",
-      "qualifiedName": "com.google.common.base.Throwables"
-    },
-    "isVarArgs": false,
-    "name": "propagateIfPossible",
-    "paramTags": [
-      {
-        "comment": "the Throwable to possibly propagate",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "throwable",
-          "type": {
-            "isArray": false,
-            "name": "Throwable",
-            "qualifiedName": "java.lang.Throwable"
-          }
-        }
-      },
-      {
-        "comment": "the single checked exception type declared by the calling method",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "declaredType",
-          "type": {
-            "isArray": false,
-            "name": "Class",
-            "qualifiedName": "java.lang.Class"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "throwable",
-        "nullable": true,
-        "type": {
-          "isArray": false,
-          "name": "Throwable",
-          "qualifiedName": "java.lang.Throwable"
-        }
-      },
-      {
-        "name": "declaredType",
-        "type": {
-          "isArray": false,
-          "name": "Class",
-          "qualifiedName": "java.lang.Class"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
     "signature": "propagateIfPossible(java.lang.Throwable throwable,java.lang.Class declaredType)",
-    "targetClass": "com.google.common.base.Throwables",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Throwables",
-      "qualifiedName": "com.google.common.base.Throwables"
-    },
-    "isVarArgs": false,
     "name": "propagateIfPossible",
-    "paramTags": [
-      {
-        "comment": "the Throwable to possibly propagate",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "throwable",
-          "type": {
-            "isArray": false,
-            "name": "Throwable",
-            "qualifiedName": "java.lang.Throwable"
-          }
-        }
-      },
-      {
-        "comment": "any checked exception type declared by the calling method",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "declaredType1",
-          "type": {
-            "isArray": false,
-            "name": "Class",
-            "qualifiedName": "java.lang.Class"
-          }
-        }
-      },
-      {
-        "comment": "any other checked exception type declared by the calling method",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "declaredType2",
-          "type": {
-            "isArray": false,
-            "name": "Class",
-            "qualifiedName": "java.lang.Class"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Throwables",
+      "name": "Throwables",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Throwables",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "throwable",
-        "nullable": true,
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Throwable",
           "name": "Throwable",
-          "qualifiedName": "java.lang.Throwable"
-        }
+          "isArray": false
+        },
+        "name": "throwable",
+        "nullable": true
       },
       {
-        "name": "declaredType1",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Class",
           "name": "Class",
-          "qualifiedName": "java.lang.Class"
-        }
-      },
-      {
-        "name": "declaredType2",
-        "type": {
-          "isArray": false,
-          "name": "Class",
-          "qualifiedName": "java.lang.Class"
-        }
+          "isArray": false
+        },
+        "name": "declaredType"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "propagateIfPossible(java.lang.Throwable throwable,java.lang.Class declaredType1,java.lang.Class declaredType2)",
-    "targetClass": "com.google.common.base.Throwables",
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Throwable",
+            "name": "Throwable",
+            "isArray": false
+          },
+          "name": "throwable",
+          "nullable": true
+        },
+        "comment": "the Throwable to possibly propagate",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          },
+          "name": "declaredType"
+        },
+        "comment": "the single checked exception type declared by the calling method",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": []
   },
   {
+    "signature": "propagateIfPossible(java.lang.Throwable throwable,java.lang.Class declaredType1,java.lang.Class declaredType2)",
+    "name": "propagateIfPossible",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.base.Throwables",
       "name": "Throwables",
-      "qualifiedName": "com.google.common.base.Throwables"
+      "isArray": false
     },
+    "targetClass": "com.google.common.base.Throwables",
     "isVarArgs": false,
-    "name": "propagate",
-    "paramTags": [
-      {
-        "comment": "the Throwable to propagate",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "throwable",
-          "type": {
-            "isArray": false,
-            "name": "Throwable",
-            "qualifiedName": "java.lang.Throwable"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "throwable",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Throwable",
           "name": "Throwable",
-          "qualifiedName": "java.lang.Throwable"
-        }
+          "isArray": false
+        },
+        "name": "throwable",
+        "nullable": true
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Class",
+          "name": "Class",
+          "isArray": false
+        },
+        "name": "declaredType1"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Class",
+          "name": "Class",
+          "isArray": false
+        },
+        "name": "declaredType2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Throwable",
+            "name": "Throwable",
+            "isArray": false
+          },
+          "name": "throwable",
+          "nullable": true
+        },
+        "comment": "the Throwable to possibly propagate",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          },
+          "name": "declaredType1"
+        },
+        "comment": "any checked exception type declared by the calling method",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          },
+          "name": "declaredType2"
+        },
+        "comment": "any other checked exception type declared by the calling method",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "propagate(java.lang.Throwable throwable)",
+    "name": "propagate",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Throwables",
+      "name": "Throwables",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Throwables",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.RuntimeException",
+      "name": "RuntimeException",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Throwable",
+          "name": "Throwable",
+          "isArray": false
+        },
+        "name": "throwable"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Throwable",
+            "name": "Throwable",
+            "isArray": false
+          },
+          "name": "throwable"
+        },
+        "comment": "the Throwable to propagate",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "nothing will ever be returned; this return type is only for your convenience, as illustrated in the example above",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RuntimeException",
-      "qualifiedName": "java.lang.RuntimeException"
-    },
-    "signature": "propagate(java.lang.Throwable throwable)",
-    "targetClass": "com.google.common.base.Throwables",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Throwables",
-      "qualifiedName": "com.google.common.base.Throwables"
-    },
-    "isVarArgs": false,
+    "signature": "getRootCause(java.lang.Throwable throwable)",
     "name": "getRootCause",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Throwables",
+      "name": "Throwables",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Throwables",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.Throwable",
+      "name": "Throwable",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "throwable",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Throwable",
           "name": "Throwable",
-          "qualifiedName": "java.lang.Throwable"
-        }
+          "isArray": false
+        },
+        "name": "throwable"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "Throwable",
-      "qualifiedName": "java.lang.Throwable"
-    },
-    "signature": "getRootCause(java.lang.Throwable throwable)",
-    "targetClass": "com.google.common.base.Throwables",
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Throwables",
-      "qualifiedName": "com.google.common.base.Throwables"
-    },
-    "isVarArgs": false,
+    "signature": "getCausalChain(java.lang.Throwable throwable)",
     "name": "getCausalChain",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Throwables",
+      "name": "Throwables",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Throwables",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Throwable",
+          "name": "Throwable",
+          "isArray": false
+        },
+        "name": "throwable"
+      }
+    ],
     "paramTags": [
       {
-        "comment": "the non-null Throwable to extract causes from",
-        "condition": "(args[0]==null) == false",
-        "kind": "PARAM",
         "parameter": {
-          "name": "throwable",
           "type": {
-            "isArray": false,
+            "qualifiedName": "java.lang.Throwable",
             "name": "Throwable",
-            "qualifiedName": "java.lang.Throwable"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "throwable",
-        "type": {
-          "isArray": false,
-          "name": "Throwable",
-          "qualifiedName": "java.lang.Throwable"
-        }
+            "isArray": false
+          },
+          "name": "throwable"
+        },
+        "comment": "the non-null Throwable to extract causes from",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
       }
     ],
     "returnTag": {
       "comment": "an unmodifiable list containing the cause chain starting with throwable",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "List",
-      "qualifiedName": "java.util.List"
-    },
-    "signature": "getCausalChain(java.lang.Throwable throwable)",
-    "targetClass": "com.google.common.base.Throwables",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Throwables",
-      "qualifiedName": "com.google.common.base.Throwables"
-    },
-    "isVarArgs": false,
-    "name": "getStackTraceAsString",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "throwable",
-        "type": {
-          "isArray": false,
-          "name": "Throwable",
-          "qualifiedName": "java.lang.Throwable"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "String",
-      "qualifiedName": "java.lang.String"
-    },
     "signature": "getStackTraceAsString(java.lang.Throwable throwable)",
+    "name": "getStackTraceAsString",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Throwables",
+      "name": "Throwables",
+      "isArray": false
+    },
     "targetClass": "com.google.common.base.Throwables",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Throwable",
+          "name": "Throwable",
+          "isArray": false
+        },
+        "name": "throwable"
+      }
+    ],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Throwables",
-      "qualifiedName": "com.google.common.base.Throwables"
-    },
-    "isVarArgs": false,
-    "name": "lazyStackTrace",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "throwable",
-        "type": {
-          "isArray": false,
-          "name": "Throwable",
-          "qualifiedName": "java.lang.Throwable"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "List",
-      "qualifiedName": "java.util.List"
-    },
     "signature": "lazyStackTrace(java.lang.Throwable throwable)",
-    "targetClass": "com.google.common.base.Throwables",
-    "throwsTags": []
-  },
-  {
+    "name": "lazyStackTrace",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.base.Throwables",
       "name": "Throwables",
-      "qualifiedName": "com.google.common.base.Throwables"
+      "isArray": false
     },
-    "isVarArgs": false,
-    "name": "lazyStackTraceIsLazy",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "lazyStackTraceIsLazy()",
     "targetClass": "com.google.common.base.Throwables",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Throwables",
-      "qualifiedName": "com.google.common.base.Throwables"
-    },
     "isVarArgs": false,
-    "name": "jlaStackTrace",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "t",
-        "type": {
-          "isArray": false,
-          "name": "Throwable",
-          "qualifiedName": "java.lang.Throwable"
-        }
-      }
-    ],
     "returnType": {
-      "isArray": false,
+      "qualifiedName": "java.util.List",
       "name": "List",
-      "qualifiedName": "java.util.List"
+      "isArray": false
     },
-    "signature": "jlaStackTrace(java.lang.Throwable t)",
-    "targetClass": "com.google.common.base.Throwables",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Throwables",
-      "qualifiedName": "com.google.common.base.Throwables"
-    },
-    "isVarArgs": true,
-    "name": "invokeAccessibleNonThrowingMethod",
-    "paramTags": [],
     "parameters": [
       {
-        "name": "method",
         "type": {
-          "isArray": false,
-          "name": "Method",
-          "qualifiedName": "java.lang.reflect.Method"
-        }
-      },
-      {
-        "name": "receiver",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      },
-      {
-        "name": "params",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          },
-          "isArray": true,
-          "name": "Object[]",
-          "qualifiedName": "java.lang.Object[]"
-        }
+          "qualifiedName": "java.lang.Throwable",
+          "name": "Throwable",
+          "isArray": false
+        },
+        "name": "throwable"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "Object",
-      "qualifiedName": "java.lang.Object"
-    },
-    "signature": "invokeAccessibleNonThrowingMethod(java.lang.reflect.Method method,java.lang.Object receiver,java.lang.Object[] params)",
-    "targetClass": "com.google.common.base.Throwables",
+    "paramTags": [],
     "throwsTags": []
   },
   {
+    "signature": "lazyStackTraceIsLazy()",
+    "name": "lazyStackTraceIsLazy",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.base.Throwables",
       "name": "Throwables",
-      "qualifiedName": "com.google.common.base.Throwables"
+      "isArray": false
     },
+    "targetClass": "com.google.common.base.Throwables",
     "isVarArgs": false,
-    "name": "getJLA",
-    "paramTags": [],
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "Object",
-      "qualifiedName": "java.lang.Object"
-    },
-    "signature": "getJLA()",
-    "targetClass": "com.google.common.base.Throwables",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Throwables",
-      "qualifiedName": "com.google.common.base.Throwables"
-    },
-    "isVarArgs": false,
-    "name": "getGetMethod",
     "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "Method",
-      "qualifiedName": "java.lang.reflect.Method"
-    },
-    "signature": "getGetMethod()",
-    "targetClass": "com.google.common.base.Throwables",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Throwables",
-      "qualifiedName": "com.google.common.base.Throwables"
-    },
-    "isVarArgs": false,
-    "name": "getSizeMethod",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "Method",
-      "qualifiedName": "java.lang.reflect.Method"
-    },
-    "signature": "getSizeMethod()",
-    "targetClass": "com.google.common.base.Throwables",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Throwables",
-      "qualifiedName": "com.google.common.base.Throwables"
-    },
-    "isVarArgs": true,
-    "name": "getJlaMethod",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "name",
-        "type": {
-          "isArray": false,
-          "name": "String",
-          "qualifiedName": "java.lang.String"
-        }
-      },
-      {
-        "name": "parameterTypes",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "Class",
-            "qualifiedName": "java.lang.Class"
-          },
-          "isArray": true,
-          "name": "Class[]",
-          "qualifiedName": "java.lang.Class[]"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "Method",
-      "qualifiedName": "java.lang.reflect.Method"
-    },
-    "signature": "getJlaMethod(java.lang.String name,java.lang.Class[] parameterTypes)",
-    "targetClass": "com.google.common.base.Throwables",
     "throwsTags": []
   }
 ]

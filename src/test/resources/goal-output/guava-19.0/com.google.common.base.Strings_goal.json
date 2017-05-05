@@ -1,525 +1,517 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Strings",
-      "qualifiedName": "com.google.common.base.Strings"
-    },
-    "isVarArgs": false,
-    "name": "Strings",
-    "paramTags": [],
-    "parameters": [],
-    "signature": "Strings()",
-    "targetClass": "com.google.common.base.Strings",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Strings",
-      "qualifiedName": "com.google.common.base.Strings"
-    },
-    "isVarArgs": false,
+    "signature": "nullToEmpty(java.lang.String string)",
     "name": "nullToEmpty",
-    "paramTags": [
-      {
-        "comment": "the string to test and possibly return",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "string",
-          "type": {
-            "isArray": false,
-            "name": "String",
-            "qualifiedName": "java.lang.String"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Strings",
+      "name": "Strings",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Strings",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "string",
-        "nullable": true,
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.String",
           "name": "String",
-          "qualifiedName": "java.lang.String"
-        }
+          "isArray": false
+        },
+        "name": "string",
+        "nullable": true
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "string",
+          "nullable": true
+        },
+        "comment": "the string to test and possibly return",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "string itself if it is non-null; \"\" if it is null",
-      "condition": "args[0]!=null ? result.equals(args[0]) : result.equals(\"\") ",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "args[0]!=null ? result.equals(args[0]) : result.equals(\"\") "
     },
-    "returnType": {
-      "isArray": false,
-      "name": "String",
-      "qualifiedName": "java.lang.String"
-    },
-    "signature": "nullToEmpty(java.lang.String string)",
-    "targetClass": "com.google.common.base.Strings",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Strings",
-      "qualifiedName": "com.google.common.base.Strings"
-    },
-    "isVarArgs": false,
+    "signature": "emptyToNull(java.lang.String string)",
     "name": "emptyToNull",
-    "paramTags": [
-      {
-        "comment": "the string to test and possibly return",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "string",
-          "type": {
-            "isArray": false,
-            "name": "String",
-            "qualifiedName": "java.lang.String"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Strings",
+      "name": "Strings",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Strings",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "string",
-        "nullable": true,
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.String",
           "name": "String",
-          "qualifiedName": "java.lang.String"
-        }
+          "isArray": false
+        },
+        "name": "string",
+        "nullable": true
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "string",
+          "nullable": true
+        },
+        "comment": "the string to test and possibly return",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "string itself if it is nonempty; null if it is empty or null",
-      "condition": "args[0]==null || args[0].isEmpty() ? result==null : result.equals(args[0])",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "args[0]==null || args[0].isEmpty() ? result==null : result.equals(args[0])"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "String",
-      "qualifiedName": "java.lang.String"
-    },
-    "signature": "emptyToNull(java.lang.String string)",
-    "targetClass": "com.google.common.base.Strings",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Strings",
-      "qualifiedName": "com.google.common.base.Strings"
-    },
-    "isVarArgs": false,
+    "signature": "isNullOrEmpty(java.lang.String string)",
     "name": "isNullOrEmpty",
-    "paramTags": [
-      {
-        "comment": "a string reference to check",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "string",
-          "type": {
-            "isArray": false,
-            "name": "String",
-            "qualifiedName": "java.lang.String"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Strings",
+      "name": "Strings",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Strings",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "string",
-        "nullable": true,
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.String",
           "name": "String",
-          "qualifiedName": "java.lang.String"
-        }
+          "isArray": false
+        },
+        "name": "string",
+        "nullable": true
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "string",
+          "nullable": true
+        },
+        "comment": "a string reference to check",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if the string is null or is the empty string",
-      "condition": "args[0]==null || args[0].isEmpty() ? result==true",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "args[0]==null || args[0].isEmpty() ? result==true"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "isNullOrEmpty(java.lang.String string)",
-    "targetClass": "com.google.common.base.Strings",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Strings",
-      "qualifiedName": "com.google.common.base.Strings"
-    },
-    "isVarArgs": false,
-    "name": "padStart",
-    "paramTags": [
-      {
-        "comment": "the string which should appear at the end of the result",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "string",
-          "type": {
-            "isArray": false,
-            "name": "String",
-            "qualifiedName": "java.lang.String"
-          }
-        }
-      },
-      {
-        "comment": "the minimum length the resulting string must have. Can be zero or negative, in which case the input string is always returned.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "minLength",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the character to insert at the beginning of the result until the minimum length is reached",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "padChar",
-          "type": {
-            "isArray": false,
-            "name": "char",
-            "qualifiedName": "char"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "string",
-        "type": {
-          "isArray": false,
-          "name": "String",
-          "qualifiedName": "java.lang.String"
-        }
-      },
-      {
-        "name": "minLength",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "padChar",
-        "type": {
-          "isArray": false,
-          "name": "char",
-          "qualifiedName": "char"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the padded string",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "String",
-      "qualifiedName": "java.lang.String"
-    },
     "signature": "padStart(java.lang.String string,int minLength,char padChar)",
-    "targetClass": "com.google.common.base.Strings",
-    "throwsTags": []
-  },
-  {
+    "name": "padStart",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.base.Strings",
       "name": "Strings",
-      "qualifiedName": "com.google.common.base.Strings"
+      "isArray": false
     },
+    "targetClass": "com.google.common.base.Strings",
     "isVarArgs": false,
-    "name": "padEnd",
-    "paramTags": [
-      {
-        "comment": "the string which should appear at the beginning of the result",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "string",
-          "type": {
-            "isArray": false,
-            "name": "String",
-            "qualifiedName": "java.lang.String"
-          }
-        }
-      },
-      {
-        "comment": "the minimum length the resulting string must have. Can be zero or negative, in which case the input string is always returned.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "minLength",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the character to append to the end of the result until the minimum length is reached",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "padChar",
-          "type": {
-            "isArray": false,
-            "name": "char",
-            "qualifiedName": "char"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "string",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.String",
           "name": "String",
-          "qualifiedName": "java.lang.String"
-        }
+          "isArray": false
+        },
+        "name": "string"
       },
       {
-        "name": "minLength",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "minLength"
       },
       {
-        "name": "padChar",
         "type": {
-          "isArray": false,
+          "qualifiedName": "char",
           "name": "char",
-          "qualifiedName": "char"
-        }
+          "isArray": false
+        },
+        "name": "padChar"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "string"
+        },
+        "comment": "the string which should appear at the end of the result",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "minLength"
+        },
+        "comment": "the minimum length the resulting string must have. Can be zero or negative, in which case the input string is always returned.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "char",
+            "name": "char",
+            "isArray": false
+          },
+          "name": "padChar"
+        },
+        "comment": "the character to insert at the beginning of the result until the minimum length is reached",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the padded string",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "String",
-      "qualifiedName": "java.lang.String"
-    },
-    "signature": "padEnd(java.lang.String string,int minLength,char padChar)",
-    "targetClass": "com.google.common.base.Strings",
     "throwsTags": []
   },
   {
+    "signature": "padEnd(java.lang.String string,int minLength,char padChar)",
+    "name": "padEnd",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.base.Strings",
       "name": "Strings",
-      "qualifiedName": "com.google.common.base.Strings"
+      "isArray": false
     },
+    "targetClass": "com.google.common.base.Strings",
     "isVarArgs": false,
-    "name": "repeat",
-    "paramTags": [
-      {
-        "comment": "any non-null string",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "string",
-          "type": {
-            "isArray": false,
-            "name": "String",
-            "qualifiedName": "java.lang.String"
-          }
-        }
-      },
-      {
-        "comment": "the number of times to repeat it; a nonnegative integer",
-        "condition": "(args[1]<0) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "count",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "string",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.String",
           "name": "String",
-          "qualifiedName": "java.lang.String"
-        }
+          "isArray": false
+        },
+        "name": "string"
       },
       {
-        "name": "count",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "minLength"
+      },
+      {
+        "type": {
+          "qualifiedName": "char",
+          "name": "char",
+          "isArray": false
+        },
+        "name": "padChar"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "string"
+        },
+        "comment": "the string which should appear at the beginning of the result",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "minLength"
+        },
+        "comment": "the minimum length the resulting string must have. Can be zero or negative, in which case the input string is always returned.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "char",
+            "name": "char",
+            "isArray": false
+          },
+          "name": "padChar"
+        },
+        "comment": "the character to append to the end of the result until the minimum length is reached",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the padded string",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "repeat(java.lang.String string,int count)",
+    "name": "repeat",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Strings",
+      "name": "Strings",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Strings",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "string"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "count"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "string"
+        },
+        "comment": "any non-null string",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "count"
+        },
+        "comment": "the number of times to repeat it; a nonnegative integer",
+        "kind": "PARAM",
+        "condition": "(args[1]<0) == false"
       }
     ],
     "returnTag": {
       "comment": "a string containing string repeated count times (the empty string if count is zero)",
-      "condition": "args[1]==0 ? result.equals(\"\")",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "args[1]==0 ? result.equals(\"\")"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "String",
-      "qualifiedName": "java.lang.String"
-    },
-    "signature": "repeat(java.lang.String string,int count)",
-    "targetClass": "com.google.common.base.Strings",
     "throwsTags": [
       {
-        "comment": "if count is negative",
-        "condition": "args[1]<0",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.IllegalArgumentException",
           "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "count"
+        ],
+        "comment": "if count is negative",
+        "kind": "THROWS",
+        "condition": "args[1]<0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Strings",
-      "qualifiedName": "com.google.common.base.Strings"
-    },
-    "isVarArgs": false,
-    "name": "commonPrefix",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "a",
-        "type": {
-          "isArray": false,
-          "name": "CharSequence",
-          "qualifiedName": "java.lang.CharSequence"
-        }
-      },
-      {
-        "name": "b",
-        "type": {
-          "isArray": false,
-          "name": "CharSequence",
-          "qualifiedName": "java.lang.CharSequence"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "String",
-      "qualifiedName": "java.lang.String"
-    },
     "signature": "commonPrefix(java.lang.CharSequence a,java.lang.CharSequence b)",
-    "targetClass": "com.google.common.base.Strings",
-    "throwsTags": []
-  },
-  {
+    "name": "commonPrefix",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.base.Strings",
       "name": "Strings",
-      "qualifiedName": "com.google.common.base.Strings"
+      "isArray": false
     },
+    "targetClass": "com.google.common.base.Strings",
     "isVarArgs": false,
-    "name": "commonSuffix",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "a",
-        "type": {
-          "isArray": false,
-          "name": "CharSequence",
-          "qualifiedName": "java.lang.CharSequence"
-        }
-      },
-      {
-        "name": "b",
-        "type": {
-          "isArray": false,
-          "name": "CharSequence",
-          "qualifiedName": "java.lang.CharSequence"
-        }
-      }
-    ],
     "returnType": {
-      "isArray": false,
+      "qualifiedName": "java.lang.String",
       "name": "String",
-      "qualifiedName": "java.lang.String"
+      "isArray": false
     },
-    "signature": "commonSuffix(java.lang.CharSequence a,java.lang.CharSequence b)",
-    "targetClass": "com.google.common.base.Strings",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.CharSequence",
+          "name": "CharSequence",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.CharSequence",
+          "name": "CharSequence",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "paramTags": [],
     "throwsTags": []
   },
   {
+    "signature": "commonSuffix(java.lang.CharSequence a,java.lang.CharSequence b)",
+    "name": "commonSuffix",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.base.Strings",
       "name": "Strings",
-      "qualifiedName": "com.google.common.base.Strings"
+      "isArray": false
     },
+    "targetClass": "com.google.common.base.Strings",
     "isVarArgs": false,
-    "name": "validSurrogatePairAt",
-    "paramTags": [],
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "string",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.CharSequence",
           "name": "CharSequence",
-          "qualifiedName": "java.lang.CharSequence"
-        }
+          "isArray": false
+        },
+        "name": "a"
       },
       {
-        "name": "index",
         "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
+          "qualifiedName": "java.lang.CharSequence",
+          "name": "CharSequence",
+          "isArray": false
+        },
+        "name": "b"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
     "signature": "validSurrogatePairAt(java.lang.CharSequence string,int index)",
+    "name": "validSurrogatePairAt",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Strings",
+      "name": "Strings",
+      "isArray": false
+    },
     "targetClass": "com.google.common.base.Strings",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.CharSequence",
+          "name": "CharSequence",
+          "isArray": false
+        },
+        "name": "string"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      }
+    ],
+    "paramTags": [],
     "throwsTags": []
   }
 ]

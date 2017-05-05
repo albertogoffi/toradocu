@@ -1,196 +1,186 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "MoreObjects",
-      "qualifiedName": "com.google.common.base.MoreObjects"
-    },
-    "isVarArgs": false,
-    "name": "MoreObjects",
-    "paramTags": [],
-    "parameters": [],
-    "signature": "MoreObjects()",
-    "targetClass": "com.google.common.base.MoreObjects",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "MoreObjects",
-      "qualifiedName": "com.google.common.base.MoreObjects"
-    },
-    "isVarArgs": false,
+    "signature": "firstNonNull(java.lang.Object first,java.lang.Object second)",
     "name": "firstNonNull",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.MoreObjects",
+      "name": "MoreObjects",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.MoreObjects",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "first",
-        "nullable": true,
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "first",
+        "nullable": true
       },
       {
-        "name": "second",
-        "nullable": true,
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "second",
+        "nullable": true
       }
     ],
+    "paramTags": [],
     "returnTag": {
       "comment": "first if it is non-null; otherwise second if it is non-null",
-      "condition": "args[0] != null ? result == args[0] ; args[0] == null && args[1] != null ? result == args[1]",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "args[0] != null ? result == args[0] ; args[0] == null && args[1] != null ? result == args[1]"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "T",
-      "qualifiedName": "T"
-    },
-    "signature": "firstNonNull(java.lang.Object first,java.lang.Object second)",
-    "targetClass": "com.google.common.base.MoreObjects",
     "throwsTags": [
       {
-        "comment": "if both first and second are null",
-        "condition": "args[0]==null && args[1]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "first",
+          "second"
+        ],
+        "comment": "if both first and second are null",
+        "kind": "THROWS",
+        "condition": "args[0]==null && args[1]==null"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "MoreObjects",
-      "qualifiedName": "com.google.common.base.MoreObjects"
-    },
-    "isVarArgs": false,
-    "name": "toStringHelper",
-    "paramTags": [
-      {
-        "comment": "the object to generate the string for (typically this), used only for its class name",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "self",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "self",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "ToStringHelper",
-      "qualifiedName": "com.google.common.base.MoreObjects.ToStringHelper"
-    },
     "signature": "toStringHelper(java.lang.Object self)",
+    "name": "toStringHelper",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.MoreObjects",
+      "name": "MoreObjects",
+      "isArray": false
+    },
     "targetClass": "com.google.common.base.MoreObjects",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.MoreObjects.ToStringHelper",
+      "name": "ToStringHelper",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "self"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "self"
+        },
+        "comment": "the object to generate the string for (typically this), used only for its class name",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "MoreObjects",
-      "qualifiedName": "com.google.common.base.MoreObjects"
-    },
-    "isVarArgs": false,
-    "name": "toStringHelper",
-    "paramTags": [
-      {
-        "comment": "the Class of the instance",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "clazz",
-          "type": {
-            "isArray": false,
-            "name": "Class",
-            "qualifiedName": "java.lang.Class"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "clazz",
-        "type": {
-          "isArray": false,
-          "name": "Class",
-          "qualifiedName": "java.lang.Class"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "ToStringHelper",
-      "qualifiedName": "com.google.common.base.MoreObjects.ToStringHelper"
-    },
     "signature": "toStringHelper(java.lang.Class clazz)",
+    "name": "toStringHelper",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.MoreObjects",
+      "name": "MoreObjects",
+      "isArray": false
+    },
     "targetClass": "com.google.common.base.MoreObjects",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.MoreObjects.ToStringHelper",
+      "name": "ToStringHelper",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Class",
+          "name": "Class",
+          "isArray": false
+        },
+        "name": "clazz"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          },
+          "name": "clazz"
+        },
+        "comment": "the Class of the instance",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "MoreObjects",
-      "qualifiedName": "com.google.common.base.MoreObjects"
-    },
-    "isVarArgs": false,
+    "signature": "toStringHelper(java.lang.String className)",
     "name": "toStringHelper",
-    "paramTags": [
-      {
-        "comment": "the name of the instance type",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "className",
-          "type": {
-            "isArray": false,
-            "name": "String",
-            "qualifiedName": "java.lang.String"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.MoreObjects",
+      "name": "MoreObjects",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.MoreObjects",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.MoreObjects.ToStringHelper",
+      "name": "ToStringHelper",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "className",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.String",
           "name": "String",
-          "qualifiedName": "java.lang.String"
-        }
+          "isArray": false
+        },
+        "name": "className"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "ToStringHelper",
-      "qualifiedName": "com.google.common.base.MoreObjects.ToStringHelper"
-    },
-    "signature": "toStringHelper(java.lang.String className)",
-    "targetClass": "com.google.common.base.MoreObjects",
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "className"
+        },
+        "comment": "the name of the instance type",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": []
   }
 ]

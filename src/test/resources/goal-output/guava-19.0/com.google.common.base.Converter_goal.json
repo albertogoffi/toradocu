@@ -1,457 +1,457 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Converter",
-      "qualifiedName": "com.google.common.base.Converter"
-    },
-    "isVarArgs": false,
-    "name": "Converter",
-    "paramTags": [],
-    "parameters": [],
     "signature": "Converter()",
-    "targetClass": "com.google.common.base.Converter",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Converter",
-      "qualifiedName": "com.google.common.base.Converter"
-    },
-    "isVarArgs": false,
     "name": "Converter",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Converter",
+      "name": "Converter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Converter",
+    "isVarArgs": false,
+    "parameters": [],
     "paramTags": [],
-    "parameters": [
-      {
-        "name": "handleNullAutomatically",
-        "type": {
-          "isArray": false,
-          "name": "boolean",
-          "qualifiedName": "boolean"
-        }
-      }
-    ],
+    "throwsTags": []
+  },
+  {
     "signature": "Converter(boolean handleNullAutomatically)",
+    "name": "Converter",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Converter",
+      "name": "Converter",
+      "isArray": false
+    },
     "targetClass": "com.google.common.base.Converter",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "handleNullAutomatically"
+      }
+    ],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Converter",
-      "qualifiedName": "com.google.common.base.Converter"
-    },
-    "isVarArgs": false,
-    "name": "doForward",
-    "paramTags": [
-      {
-        "comment": "the instance to convert; will never be null",
-        "condition": "(args[0]==null) == false",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "a",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "a",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the converted instance; must not be null",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "B",
-      "qualifiedName": "B"
-    },
     "signature": "doForward(java.lang.Object a)",
-    "targetClass": "com.google.common.base.Converter",
-    "throwsTags": []
-  },
-  {
+    "name": "doForward",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.base.Converter",
       "name": "Converter",
-      "qualifiedName": "com.google.common.base.Converter"
+      "isArray": false
     },
+    "targetClass": "com.google.common.base.Converter",
     "isVarArgs": false,
-    "name": "doBackward",
-    "paramTags": [
-      {
-        "comment": "the instance to convert; will never be null",
-        "condition": "(args[0]==null) == false",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "b",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "B",
+      "name": "B",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "b",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "a"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the instance to convert; will never be null",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
       }
     ],
     "returnTag": {
       "comment": "the converted instance; must not be null",
-      "condition": "true ? (result==null)==false",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "A",
-      "qualifiedName": "A"
-    },
+    "throwsTags": []
+  },
+  {
     "signature": "doBackward(java.lang.Object b)",
+    "name": "doBackward",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Converter",
+      "name": "Converter",
+      "isArray": false
+    },
     "targetClass": "com.google.common.base.Converter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "A",
+      "name": "A",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the instance to convert; will never be null",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
+    "returnTag": {
+      "comment": "the converted instance; must not be null",
+      "kind": "RETURN",
+      "condition": "true ? (result==null)==false"
+    },
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "java.lang.UnsupportedOperationException",
+          "name": "UnsupportedOperationException",
+          "isArray": false
+        },
         "codeTags": [
           "Converter<Chicken, ChickenNugget>",
           "Converter",
           "Function"
         ],
         "comment": "if backward conversion is not implemented; this should be very rare. Note that if backward conversion is not only unimplemented but unimplementable (for example, consider a Converter<Chicken, ChickenNugget>), then this is not logically a Converter at all, and should just implement Function.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "UnsupportedOperationException",
-          "qualifiedName": "java.lang.UnsupportedOperationException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Converter",
-      "qualifiedName": "com.google.common.base.Converter"
-    },
-    "isVarArgs": false,
+    "signature": "convert(java.lang.Object a)",
     "name": "convert",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Converter",
+      "name": "Converter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Converter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "B",
+      "name": "B",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "a",
-        "nullable": true,
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "a",
+        "nullable": true
       }
     ],
+    "paramTags": [],
     "returnTag": {
       "comment": "the converted value; is null if and only if a is null",
-      "condition": "args[0]==null ? result==null",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "args[0]==null ? result==null"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "B",
-      "qualifiedName": "B"
-    },
-    "signature": "convert(java.lang.Object a)",
-    "targetClass": "com.google.common.base.Converter",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Converter",
-      "qualifiedName": "com.google.common.base.Converter"
-    },
-    "isVarArgs": false,
-    "name": "correctedDoForward",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "a",
-        "nullable": true,
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "B",
-      "qualifiedName": "B"
-    },
     "signature": "correctedDoForward(java.lang.Object a)",
-    "targetClass": "com.google.common.base.Converter",
-    "throwsTags": []
-  },
-  {
+    "name": "correctedDoForward",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.base.Converter",
       "name": "Converter",
-      "qualifiedName": "com.google.common.base.Converter"
+      "isArray": false
     },
-    "isVarArgs": false,
-    "name": "correctedDoBackward",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "b",
-        "nullable": true,
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "A",
-      "qualifiedName": "A"
-    },
-    "signature": "correctedDoBackward(java.lang.Object b)",
     "targetClass": "com.google.common.base.Converter",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Converter",
-      "qualifiedName": "com.google.common.base.Converter"
-    },
     "isVarArgs": false,
-    "name": "convertAll",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "fromIterable",
-        "type": {
-          "isArray": false,
-          "name": "Iterable",
-          "qualifiedName": "java.lang.Iterable"
-        }
-      }
-    ],
     "returnType": {
-      "isArray": false,
-      "name": "Iterable",
-      "qualifiedName": "java.lang.Iterable"
-    },
-    "signature": "convertAll(java.lang.Iterable fromIterable)",
-    "targetClass": "com.google.common.base.Converter",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Converter",
-      "qualifiedName": "com.google.common.base.Converter"
-    },
-    "isVarArgs": false,
-    "name": "reverse",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "Converter",
-      "qualifiedName": "com.google.common.base.Converter"
-    },
-    "signature": "reverse()",
-    "targetClass": "com.google.common.base.Converter",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Converter",
-      "qualifiedName": "com.google.common.base.Converter"
-    },
-    "isVarArgs": false,
-    "name": "andThen",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "secondConverter",
-        "type": {
-          "isArray": false,
-          "name": "Converter",
-          "qualifiedName": "com.google.common.base.Converter"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "Converter",
-      "qualifiedName": "com.google.common.base.Converter"
-    },
-    "signature": "andThen(com.google.common.base.Converter secondConverter)",
-    "targetClass": "com.google.common.base.Converter",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Converter",
-      "qualifiedName": "com.google.common.base.Converter"
-    },
-    "isVarArgs": false,
-    "name": "doAndThen",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "secondConverter",
-        "type": {
-          "isArray": false,
-          "name": "Converter",
-          "qualifiedName": "com.google.common.base.Converter"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "Converter",
-      "qualifiedName": "com.google.common.base.Converter"
-    },
-    "signature": "doAndThen(com.google.common.base.Converter secondConverter)",
-    "targetClass": "com.google.common.base.Converter",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Converter",
-      "qualifiedName": "com.google.common.base.Converter"
-    },
-    "isVarArgs": false,
-    "name": "apply",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "a",
-        "nullable": true,
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
+      "qualifiedName": "B",
       "name": "B",
-      "qualifiedName": "B"
+      "isArray": false
     },
-    "signature": "apply(java.lang.Object a)",
-    "targetClass": "com.google.common.base.Converter",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Converter",
-      "qualifiedName": "com.google.common.base.Converter"
-    },
-    "isVarArgs": false,
-    "name": "equals",
-    "paramTags": [],
     "parameters": [
       {
-        "name": "object",
-        "nullable": true,
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "a",
+        "nullable": true
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "equals(java.lang.Object object)",
-    "targetClass": "com.google.common.base.Converter",
+    "paramTags": [],
     "throwsTags": []
   },
   {
+    "signature": "correctedDoBackward(java.lang.Object b)",
+    "name": "correctedDoBackward",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.base.Converter",
       "name": "Converter",
-      "qualifiedName": "com.google.common.base.Converter"
+      "isArray": false
     },
+    "targetClass": "com.google.common.base.Converter",
     "isVarArgs": false,
-    "name": "from",
-    "paramTags": [],
+    "returnType": {
+      "qualifiedName": "A",
+      "name": "A",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "forwardFunction",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "b",
+        "nullable": true
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "convertAll(java.lang.Iterable fromIterable)",
+    "name": "convertAll",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Converter",
+      "name": "Converter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Converter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.Iterable",
+      "name": "Iterable",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "fromIterable"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "reverse()",
+    "name": "reverse",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Converter",
+      "name": "Converter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Converter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.Converter",
+      "name": "Converter",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "andThen(com.google.common.base.Converter secondConverter)",
+    "name": "andThen",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Converter",
+      "name": "Converter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Converter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.Converter",
+      "name": "Converter",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "com.google.common.base.Converter",
+          "name": "Converter",
+          "isArray": false
+        },
+        "name": "secondConverter"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "doAndThen(com.google.common.base.Converter secondConverter)",
+    "name": "doAndThen",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Converter",
+      "name": "Converter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Converter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.Converter",
+      "name": "Converter",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "com.google.common.base.Converter",
+          "name": "Converter",
+          "isArray": false
+        },
+        "name": "secondConverter"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "apply(java.lang.Object a)",
+    "name": "apply",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Converter",
+      "name": "Converter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Converter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "B",
+      "name": "B",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "a",
+        "nullable": true
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "equals(java.lang.Object object)",
+    "name": "equals",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Converter",
+      "name": "Converter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Converter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "object",
+        "nullable": true
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "from(com.google.common.base.Function forwardFunction,com.google.common.base.Function backwardFunction)",
+    "name": "from",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Converter",
+      "name": "Converter",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.base.Converter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.Converter",
+      "name": "Converter",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "com.google.common.base.Function",
           "name": "Function",
-          "qualifiedName": "com.google.common.base.Function"
-        }
+          "isArray": false
+        },
+        "name": "forwardFunction"
       },
       {
-        "name": "backwardFunction",
         "type": {
-          "isArray": false,
+          "qualifiedName": "com.google.common.base.Function",
           "name": "Function",
-          "qualifiedName": "com.google.common.base.Function"
-        }
+          "isArray": false
+        },
+        "name": "backwardFunction"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "Converter",
-      "qualifiedName": "com.google.common.base.Converter"
-    },
-    "signature": "from(com.google.common.base.Function forwardFunction,com.google.common.base.Function backwardFunction)",
-    "targetClass": "com.google.common.base.Converter",
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Converter",
-      "qualifiedName": "com.google.common.base.Converter"
-    },
-    "isVarArgs": false,
-    "name": "identity",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "Converter",
-      "qualifiedName": "com.google.common.base.Converter"
-    },
     "signature": "identity()",
+    "name": "identity",
+    "containingClass": {
+      "qualifiedName": "com.google.common.base.Converter",
+      "name": "Converter",
+      "isArray": false
+    },
     "targetClass": "com.google.common.base.Converter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.Converter",
+      "name": "Converter",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
     "throwsTags": []
   }
 ]

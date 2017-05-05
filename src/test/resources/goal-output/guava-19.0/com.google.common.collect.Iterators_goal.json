@@ -1,2447 +1,2392 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
-    "name": "Iterators",
-    "paramTags": [],
-    "parameters": [],
-    "signature": "Iterators()",
-    "targetClass": "com.google.common.collect.Iterators",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
-    "name": "emptyIterator",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "UnmodifiableIterator",
-      "qualifiedName": "com.google.common.collect.UnmodifiableIterator"
-    },
     "signature": "emptyIterator()",
+    "name": "emptyIterator",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
     "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.collect.UnmodifiableIterator",
+      "name": "UnmodifiableIterator",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
-    "name": "emptyListIterator",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "UnmodifiableListIterator",
-      "qualifiedName": "com.google.common.collect.UnmodifiableListIterator"
-    },
     "signature": "emptyListIterator()",
-    "targetClass": "com.google.common.collect.Iterators",
-    "throwsTags": []
-  },
-  {
+    "name": "emptyListIterator",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.collect.Iterators",
       "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
+      "isArray": false
     },
+    "targetClass": "com.google.common.collect.Iterators",
     "isVarArgs": false,
-    "name": "emptyModifiableIterator",
-    "paramTags": [],
+    "returnType": {
+      "qualifiedName": "com.google.common.collect.UnmodifiableListIterator",
+      "name": "UnmodifiableListIterator",
+      "isArray": false
+    },
     "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "Iterator",
-      "qualifiedName": "java.util.Iterator"
-    },
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
     "signature": "emptyModifiableIterator()",
+    "name": "emptyModifiableIterator",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
     "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
-    "name": "unmodifiableIterator",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "iterator",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "UnmodifiableIterator",
-      "qualifiedName": "com.google.common.collect.UnmodifiableIterator"
-    },
     "signature": "unmodifiableIterator(java.util.Iterator iterator)",
-    "targetClass": "com.google.common.collect.Iterators",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
     "name": "unmodifiableIterator",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "iterator",
-        "type": {
-          "isArray": false,
-          "name": "UnmodifiableIterator",
-          "qualifiedName": "com.google.common.collect.UnmodifiableIterator"
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
     "returnType": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.collect.UnmodifiableIterator",
       "name": "UnmodifiableIterator",
-      "qualifiedName": "com.google.common.collect.UnmodifiableIterator"
+      "isArray": false
     },
-    "signature": "unmodifiableIterator(com.google.common.collect.UnmodifiableIterator iterator)",
-    "targetClass": "com.google.common.collect.Iterators",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
-    "name": "size",
-    "paramTags": [],
     "parameters": [
       {
-        "name": "iterator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "size(java.util.Iterator iterator)",
-    "targetClass": "com.google.common.collect.Iterators",
+    "paramTags": [],
     "throwsTags": []
   },
   {
+    "signature": "unmodifiableIterator(com.google.common.collect.UnmodifiableIterator iterator)",
+    "name": "unmodifiableIterator",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.collect.Iterators",
       "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
+      "isArray": false
     },
+    "targetClass": "com.google.common.collect.Iterators",
     "isVarArgs": false,
-    "name": "contains",
-    "paramTags": [],
+    "returnType": {
+      "qualifiedName": "com.google.common.collect.UnmodifiableIterator",
+      "name": "UnmodifiableIterator",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "iterator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "com.google.common.collect.UnmodifiableIterator",
+          "name": "UnmodifiableIterator",
+          "isArray": false
+        },
+        "name": "iterator"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "size(java.util.Iterator iterator)",
+    "name": "size",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "contains(java.util.Iterator iterator,java.lang.Object element)",
+    "name": "contains",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "iterator"
       },
       {
-        "name": "element",
-        "nullable": true,
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "element",
+        "nullable": true
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "contains(java.util.Iterator iterator,java.lang.Object element)",
-    "targetClass": "com.google.common.collect.Iterators",
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "removeAll(java.util.Iterator removeFrom,java.util.Collection elementsToRemove)",
     "name": "removeAll",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "removeFrom"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "elementsToRemove"
+      }
+    ],
     "paramTags": [
       {
-        "comment": "the iterator to (potentially) remove elements from",
-        "condition": "",
-        "kind": "PARAM",
         "parameter": {
-          "name": "removeFrom",
           "type": {
-            "isArray": false,
+            "qualifiedName": "java.util.Iterator",
             "name": "Iterator",
-            "qualifiedName": "java.util.Iterator"
-          }
-        }
-      },
-      {
-        "comment": "the elements to remove",
-        "condition": "",
+            "isArray": false
+          },
+          "name": "removeFrom"
+        },
+        "comment": "the iterator to (potentially) remove elements from",
         "kind": "PARAM",
-        "parameter": {
-          "name": "elementsToRemove",
-          "type": {
-            "isArray": false,
-            "name": "Collection",
-            "qualifiedName": "java.util.Collection"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "removeFrom",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+        "condition": ""
       },
       {
-        "name": "elementsToRemove",
-        "type": {
-          "isArray": false,
-          "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "elementsToRemove"
+        },
+        "comment": "the elements to remove",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if any element was removed from iterator",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "removeAll(java.util.Iterator removeFrom,java.util.Collection elementsToRemove)",
-    "targetClass": "com.google.common.collect.Iterators",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "removeIf(java.util.Iterator removeFrom,com.google.common.base.Predicate predicate)",
     "name": "removeIf",
-    "paramTags": [
-      {
-        "comment": "the iterator to (potentially) remove elements from",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "removeFrom",
-          "type": {
-            "isArray": false,
-            "name": "Iterator",
-            "qualifiedName": "java.util.Iterator"
-          }
-        }
-      },
-      {
-        "comment": "a predicate that determines whether an element should be removed",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "predicate",
-          "type": {
-            "isArray": false,
-            "name": "Predicate",
-            "qualifiedName": "com.google.common.base.Predicate"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "removeFrom",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "removeFrom"
       },
       {
-        "name": "predicate",
         "type": {
-          "isArray": false,
+          "qualifiedName": "com.google.common.base.Predicate",
           "name": "Predicate",
-          "qualifiedName": "com.google.common.base.Predicate"
-        }
+          "isArray": false
+        },
+        "name": "predicate"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Iterator",
+            "name": "Iterator",
+            "isArray": false
+          },
+          "name": "removeFrom"
+        },
+        "comment": "the iterator to (potentially) remove elements from",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "com.google.common.base.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "a predicate that determines whether an element should be removed",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if any elements were removed from the iterator",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "removeIf(java.util.Iterator removeFrom,com.google.common.base.Predicate predicate)",
-    "targetClass": "com.google.common.collect.Iterators",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "retainAll(java.util.Iterator removeFrom,java.util.Collection elementsToRetain)",
     "name": "retainAll",
-    "paramTags": [
-      {
-        "comment": "the iterator to (potentially) remove elements from",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "removeFrom",
-          "type": {
-            "isArray": false,
-            "name": "Iterator",
-            "qualifiedName": "java.util.Iterator"
-          }
-        }
-      },
-      {
-        "comment": "the elements to retain",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "elementsToRetain",
-          "type": {
-            "isArray": false,
-            "name": "Collection",
-            "qualifiedName": "java.util.Collection"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "removeFrom",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "removeFrom"
       },
       {
-        "name": "elementsToRetain",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Collection",
           "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
+          "isArray": false
+        },
+        "name": "elementsToRetain"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Iterator",
+            "name": "Iterator",
+            "isArray": false
+          },
+          "name": "removeFrom"
+        },
+        "comment": "the iterator to (potentially) remove elements from",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "elementsToRetain"
+        },
+        "comment": "the elements to retain",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if any element was removed from iterator",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "retainAll(java.util.Iterator removeFrom,java.util.Collection elementsToRetain)",
-    "targetClass": "com.google.common.collect.Iterators",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "elementsEqual(java.util.Iterator iterator1,java.util.Iterator iterator2)",
     "name": "elementsEqual",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "iterator1",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator1"
       },
       {
-        "name": "iterator2",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator2"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "elementsEqual(java.util.Iterator iterator1,java.util.Iterator iterator2)",
-    "targetClass": "com.google.common.collect.Iterators",
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
-    "name": "toString",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "iterator",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "String",
-      "qualifiedName": "java.lang.String"
-    },
     "signature": "toString(java.util.Iterator iterator)",
+    "name": "toString",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
     "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "iterator"
+      }
+    ],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "getOnlyElement(java.util.Iterator iterator)",
     "name": "getOnlyElement",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "iterator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "T",
-      "qualifiedName": "T"
-    },
-    "signature": "getOnlyElement(java.util.Iterator iterator)",
-    "targetClass": "com.google.common.collect.Iterators",
+    "paramTags": [],
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "java.util.NoSuchElementException",
+          "name": "NoSuchElementException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if the iterator is empty",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "NoSuchElementException",
-          "qualifiedName": "java.util.NoSuchElementException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       },
       {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if the iterator contains multiple elements. The state of the iterator is unspecified.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "getOnlyElement(java.util.Iterator iterator,java.lang.Object defaultValue)",
     "name": "getOnlyElement",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "iterator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator"
       },
       {
-        "name": "defaultValue",
-        "nullable": true,
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "defaultValue",
+        "nullable": true
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "T",
-      "qualifiedName": "T"
-    },
-    "signature": "getOnlyElement(java.util.Iterator iterator,java.lang.Object defaultValue)",
-    "targetClass": "com.google.common.collect.Iterators",
+    "paramTags": [],
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if the iterator contains multiple elements. The state of the iterator is unspecified.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "toArray(java.util.Iterator iterator,java.lang.Class type)",
     "name": "toArray",
-    "paramTags": [
-      {
-        "comment": "the iterator to copy",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "iterator",
-          "type": {
-            "isArray": false,
-            "name": "Iterator",
-            "qualifiedName": "java.util.Iterator"
-          }
-        }
-      },
-      {
-        "comment": "the type of the elements",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "type",
-          "type": {
-            "isArray": false,
-            "name": "Class",
-            "qualifiedName": "java.lang.Class"
-          }
-        }
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T[]",
+      "name": "T[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "T",
+        "name": "T",
+        "isArray": false
       }
-    ],
+    },
     "parameters": [
       {
-        "name": "iterator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator"
       },
       {
-        "name": "type",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Class",
           "name": "Class",
-          "qualifiedName": "java.lang.Class"
-        }
+          "isArray": false
+        },
+        "name": "type"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Iterator",
+            "name": "Iterator",
+            "isArray": false
+          },
+          "name": "iterator"
+        },
+        "comment": "the iterator to copy",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          },
+          "name": "type"
+        },
+        "comment": "the type of the elements",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a newly-allocated array into which all the elements of the iterator have been copied",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "T",
-        "qualifiedName": "T"
-      },
-      "isArray": true,
-      "name": "T[]",
-      "qualifiedName": "T[]"
-    },
-    "signature": "toArray(java.util.Iterator iterator,java.lang.Class type)",
-    "targetClass": "com.google.common.collect.Iterators",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "addAll(java.util.Collection addTo,java.util.Iterator iterator)",
     "name": "addAll",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "addTo",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Collection",
           "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
+          "isArray": false
+        },
+        "name": "addTo"
       },
       {
-        "name": "iterator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator"
       }
     ],
+    "paramTags": [],
     "returnTag": {
       "comment": "true if collection was modified as a result of this operation",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "addAll(java.util.Collection addTo,java.util.Iterator iterator)",
-    "targetClass": "com.google.common.collect.Iterators",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
-    "name": "frequency",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "iterator",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      },
-      {
-        "name": "element",
-        "nullable": true,
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
     "signature": "frequency(java.util.Iterator iterator,java.lang.Object element)",
+    "name": "frequency",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
     "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "iterator"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "element",
+        "nullable": true
+      }
+    ],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
-    "name": "cycle",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "iterable",
-        "type": {
-          "isArray": false,
-          "name": "Iterable",
-          "qualifiedName": "java.lang.Iterable"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "Iterator",
-      "qualifiedName": "java.util.Iterator"
-    },
     "signature": "cycle(java.lang.Iterable iterable)",
-    "targetClass": "com.google.common.collect.Iterators",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": true,
     "name": "cycle",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "elements",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          },
-          "isArray": true,
-          "name": "Object[]",
-          "qualifiedName": "java.lang.Object[]"
-        }
+          "qualifiedName": "java.lang.Iterable",
+          "name": "Iterable",
+          "isArray": false
+        },
+        "name": "iterable"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "Iterator",
-      "qualifiedName": "java.util.Iterator"
-    },
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
     "signature": "cycle(java.lang.Object[] elements)",
-    "targetClass": "com.google.common.collect.Iterators",
-    "throwsTags": []
-  },
-  {
+    "name": "cycle",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.collect.Iterators",
       "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
+      "isArray": false
     },
-    "isVarArgs": false,
-    "name": "concat",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "a",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      },
-      {
-        "name": "b",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "Iterator",
-      "qualifiedName": "java.util.Iterator"
-    },
-    "signature": "concat(java.util.Iterator a,java.util.Iterator b)",
     "targetClass": "com.google.common.collect.Iterators",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
-    "name": "concat",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "a",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      },
-      {
-        "name": "b",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      },
-      {
-        "name": "c",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "Iterator",
-      "qualifiedName": "java.util.Iterator"
-    },
-    "signature": "concat(java.util.Iterator a,java.util.Iterator b,java.util.Iterator c)",
-    "targetClass": "com.google.common.collect.Iterators",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
-    "name": "concat",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "a",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      },
-      {
-        "name": "b",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      },
-      {
-        "name": "c",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      },
-      {
-        "name": "d",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "Iterator",
-      "qualifiedName": "java.util.Iterator"
-    },
-    "signature": "concat(java.util.Iterator a,java.util.Iterator b,java.util.Iterator c,java.util.Iterator d)",
-    "targetClass": "com.google.common.collect.Iterators",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
     "isVarArgs": true,
-    "name": "concat",
-    "paramTags": [],
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "inputs",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "Iterator",
-            "qualifiedName": "java.util.Iterator"
-          },
+          "qualifiedName": "java.lang.Object[]",
+          "name": "Object[]",
           "isArray": true,
-          "name": "Iterator[]",
-          "qualifiedName": "java.util.Iterator[]"
-        }
+          "componentType": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          }
+        },
+        "name": "elements"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "Iterator",
-      "qualifiedName": "java.util.Iterator"
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "concat(java.util.Iterator a,java.util.Iterator b)",
+    "name": "concat",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
     },
-    "signature": "concat(java.util.Iterator[] inputs)",
     "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "concat(java.util.Iterator a,java.util.Iterator b,java.util.Iterator c)",
+    "name": "concat",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "c"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "concat(java.util.Iterator a,java.util.Iterator b,java.util.Iterator c,java.util.Iterator d)",
+    "name": "concat",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "c"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "d"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "concat(java.util.Iterator[] inputs)",
+    "name": "concat",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": true,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator[]",
+          "name": "Iterator[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.util.Iterator",
+            "name": "Iterator",
+            "isArray": false
+          }
+        },
+        "name": "inputs"
+      }
+    ],
+    "paramTags": [],
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if any of the provided iterators is null",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "concat(java.util.Iterator inputs)",
     "name": "concat",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "inputs",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "inputs"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "Iterator",
-      "qualifiedName": "java.util.Iterator"
-    },
-    "signature": "concat(java.util.Iterator inputs)",
-    "targetClass": "com.google.common.collect.Iterators",
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "partition(java.util.Iterator iterator,int size)",
     "name": "partition",
-    "paramTags": [
-      {
-        "comment": "the iterator to return a partitioned view of",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "iterator",
-          "type": {
-            "isArray": false,
-            "name": "Iterator",
-            "qualifiedName": "java.util.Iterator"
-          }
-        }
-      },
-      {
-        "comment": "the desired size of each partition (the last may be smaller)",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "size",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.collect.UnmodifiableIterator",
+      "name": "UnmodifiableIterator",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "iterator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator"
       },
       {
-        "name": "size",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "size"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Iterator",
+            "name": "Iterator",
+            "isArray": false
+          },
+          "name": "iterator"
+        },
+        "comment": "the iterator to return a partitioned view of",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "size"
+        },
+        "comment": "the desired size of each partition (the last may be smaller)",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "an iterator of immutable lists containing the elements of iterator divided into partitions",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "UnmodifiableIterator",
-      "qualifiedName": "com.google.common.collect.UnmodifiableIterator"
-    },
-    "signature": "partition(java.util.Iterator iterator,int size)",
-    "targetClass": "com.google.common.collect.Iterators",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
         "codeTags": [
           "size"
         ],
         "comment": "if size is nonpositive",
-        "condition": "args[1]<=0",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[1]<=0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "paddedPartition(java.util.Iterator iterator,int size)",
     "name": "paddedPartition",
-    "paramTags": [
-      {
-        "comment": "the iterator to return a partitioned view of",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "iterator",
-          "type": {
-            "isArray": false,
-            "name": "Iterator",
-            "qualifiedName": "java.util.Iterator"
-          }
-        }
-      },
-      {
-        "comment": "the desired size of each partition",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "size",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.collect.UnmodifiableIterator",
+      "name": "UnmodifiableIterator",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "iterator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator"
       },
       {
-        "name": "size",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "size"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Iterator",
+            "name": "Iterator",
+            "isArray": false
+          },
+          "name": "iterator"
+        },
+        "comment": "the iterator to return a partitioned view of",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "size"
+        },
+        "comment": "the desired size of each partition",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "an iterator of immutable lists containing the elements of iterator divided into partitions (the final iterable may have trailing null elements)",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "UnmodifiableIterator",
-      "qualifiedName": "com.google.common.collect.UnmodifiableIterator"
-    },
-    "signature": "paddedPartition(java.util.Iterator iterator,int size)",
-    "targetClass": "com.google.common.collect.Iterators",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
         "codeTags": [
           "size"
         ],
         "comment": "if size is nonpositive",
-        "condition": "args[1]<=0",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[1]<=0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
-    "name": "partitionImpl",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "iterator",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      },
-      {
-        "name": "size",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "pad",
-        "type": {
-          "isArray": false,
-          "name": "boolean",
-          "qualifiedName": "boolean"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "UnmodifiableIterator",
-      "qualifiedName": "com.google.common.collect.UnmodifiableIterator"
-    },
-    "signature": "partitionImpl(java.util.Iterator iterator,int size,boolean pad)",
-    "targetClass": "com.google.common.collect.Iterators",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
-    "name": "filter",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "unfiltered",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      },
-      {
-        "name": "predicate",
-        "type": {
-          "isArray": false,
-          "name": "Predicate",
-          "qualifiedName": "com.google.common.base.Predicate"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "UnmodifiableIterator",
-      "qualifiedName": "com.google.common.collect.UnmodifiableIterator"
-    },
     "signature": "filter(java.util.Iterator unfiltered,com.google.common.base.Predicate predicate)",
+    "name": "filter",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
     "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.collect.UnmodifiableIterator",
+      "name": "UnmodifiableIterator",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "unfiltered"
+      },
+      {
+        "type": {
+          "qualifiedName": "com.google.common.base.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "predicate"
+      }
+    ],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "filter(java.util.Iterator unfiltered,java.lang.Class type)",
     "name": "filter",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.collect.UnmodifiableIterator",
+      "name": "UnmodifiableIterator",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "unfiltered"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Class",
+          "name": "Class",
+          "isArray": false
+        },
+        "name": "type"
+      }
+    ],
     "paramTags": [
       {
-        "comment": "an iterator containing objects of any type",
-        "condition": "",
-        "kind": "PARAM",
         "parameter": {
-          "name": "unfiltered",
           "type": {
-            "isArray": false,
+            "qualifiedName": "java.util.Iterator",
             "name": "Iterator",
-            "qualifiedName": "java.util.Iterator"
-          }
-        }
-      },
-      {
-        "comment": "the type of elements desired",
-        "condition": "",
+            "isArray": false
+          },
+          "name": "unfiltered"
+        },
+        "comment": "an iterator containing objects of any type",
         "kind": "PARAM",
-        "parameter": {
-          "name": "type",
-          "type": {
-            "isArray": false,
-            "name": "Class",
-            "qualifiedName": "java.lang.Class"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "unfiltered",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+        "condition": ""
       },
       {
-        "name": "type",
-        "type": {
-          "isArray": false,
-          "name": "Class",
-          "qualifiedName": "java.lang.Class"
-        }
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          },
+          "name": "type"
+        },
+        "comment": "the type of elements desired",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "an unmodifiable iterator containing all elements of the original iterator that were of the requested type",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "UnmodifiableIterator",
-      "qualifiedName": "com.google.common.collect.UnmodifiableIterator"
-    },
-    "signature": "filter(java.util.Iterator unfiltered,java.lang.Class type)",
-    "targetClass": "com.google.common.collect.Iterators",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
-    "name": "any",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "iterator",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      },
-      {
-        "name": "predicate",
-        "type": {
-          "isArray": false,
-          "name": "Predicate",
-          "qualifiedName": "com.google.common.base.Predicate"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
     "signature": "any(java.util.Iterator iterator,com.google.common.base.Predicate predicate)",
-    "targetClass": "com.google.common.collect.Iterators",
-    "throwsTags": []
-  },
-  {
+    "name": "any",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.collect.Iterators",
       "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
+      "isArray": false
     },
+    "targetClass": "com.google.common.collect.Iterators",
     "isVarArgs": false,
-    "name": "all",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "iterator",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      },
-      {
-        "name": "predicate",
-        "type": {
-          "isArray": false,
-          "name": "Predicate",
-          "qualifiedName": "com.google.common.base.Predicate"
-        }
-      }
-    ],
     "returnType": {
-      "isArray": false,
+      "qualifiedName": "boolean",
       "name": "boolean",
-      "qualifiedName": "boolean"
+      "isArray": false
     },
-    "signature": "all(java.util.Iterator iterator,com.google.common.base.Predicate predicate)",
-    "targetClass": "com.google.common.collect.Iterators",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "iterator"
+      },
+      {
+        "type": {
+          "qualifiedName": "com.google.common.base.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "predicate"
+      }
+    ],
+    "paramTags": [],
     "throwsTags": []
   },
   {
+    "signature": "all(java.util.Iterator iterator,com.google.common.base.Predicate predicate)",
+    "name": "all",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.collect.Iterators",
       "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
+      "isArray": false
     },
+    "targetClass": "com.google.common.collect.Iterators",
     "isVarArgs": false,
-    "name": "find",
-    "paramTags": [],
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "iterator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator"
       },
       {
-        "name": "predicate",
         "type": {
-          "isArray": false,
+          "qualifiedName": "com.google.common.base.Predicate",
           "name": "Predicate",
-          "qualifiedName": "com.google.common.base.Predicate"
-        }
+          "isArray": false
+        },
+        "name": "predicate"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "T",
-      "qualifiedName": "T"
-    },
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
     "signature": "find(java.util.Iterator iterator,com.google.common.base.Predicate predicate)",
+    "name": "find",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
     "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "iterator"
+      },
+      {
+        "type": {
+          "qualifiedName": "com.google.common.base.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "predicate"
+      }
+    ],
+    "paramTags": [],
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "java.util.NoSuchElementException",
+          "name": "NoSuchElementException",
+          "isArray": false
+        },
         "codeTags": [
           "iterator"
         ],
         "comment": "if no element in iterator matches the given predicate",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "NoSuchElementException",
-          "qualifiedName": "java.util.NoSuchElementException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
-    "name": "find",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "iterator",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      },
-      {
-        "name": "predicate",
-        "type": {
-          "isArray": false,
-          "name": "Predicate",
-          "qualifiedName": "com.google.common.base.Predicate"
-        }
-      },
-      {
-        "name": "defaultValue",
-        "nullable": true,
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "T",
-      "qualifiedName": "T"
-    },
     "signature": "find(java.util.Iterator iterator,com.google.common.base.Predicate predicate,java.lang.Object defaultValue)",
+    "name": "find",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
     "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "iterator"
+      },
+      {
+        "type": {
+          "qualifiedName": "com.google.common.base.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "predicate"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "defaultValue",
+        "nullable": true
+      }
+    ],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
-    "name": "tryFind",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "iterator",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      },
-      {
-        "name": "predicate",
-        "type": {
-          "isArray": false,
-          "name": "Predicate",
-          "qualifiedName": "com.google.common.base.Predicate"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "Optional",
-      "qualifiedName": "com.google.common.base.Optional"
-    },
     "signature": "tryFind(java.util.Iterator iterator,com.google.common.base.Predicate predicate)",
-    "targetClass": "com.google.common.collect.Iterators",
-    "throwsTags": []
-  },
-  {
+    "name": "tryFind",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.collect.Iterators",
       "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
+      "isArray": false
     },
+    "targetClass": "com.google.common.collect.Iterators",
     "isVarArgs": false,
-    "name": "indexOf",
-    "paramTags": [],
+    "returnType": {
+      "qualifiedName": "com.google.common.base.Optional",
+      "name": "Optional",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "iterator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator"
       },
       {
-        "name": "predicate",
         "type": {
-          "isArray": false,
+          "qualifiedName": "com.google.common.base.Predicate",
           "name": "Predicate",
-          "qualifiedName": "com.google.common.base.Predicate"
-        }
+          "isArray": false
+        },
+        "name": "predicate"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "indexOf(java.util.Iterator iterator,com.google.common.base.Predicate predicate)",
-    "targetClass": "com.google.common.collect.Iterators",
+    "paramTags": [],
     "throwsTags": []
   },
   {
+    "signature": "indexOf(java.util.Iterator iterator,com.google.common.base.Predicate predicate)",
+    "name": "indexOf",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.collect.Iterators",
       "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
+      "isArray": false
     },
+    "targetClass": "com.google.common.collect.Iterators",
     "isVarArgs": false,
-    "name": "transform",
-    "paramTags": [],
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "fromIterator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator"
       },
       {
-        "name": "function",
         "type": {
-          "isArray": false,
-          "name": "Function",
-          "qualifiedName": "com.google.common.base.Function"
-        }
+          "qualifiedName": "com.google.common.base.Predicate",
+          "name": "Predicate",
+          "isArray": false
+        },
+        "name": "predicate"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "Iterator",
-      "qualifiedName": "java.util.Iterator"
-    },
-    "signature": "transform(java.util.Iterator fromIterator,com.google.common.base.Function function)",
-    "targetClass": "com.google.common.collect.Iterators",
+    "paramTags": [],
     "throwsTags": []
   },
   {
+    "signature": "transform(java.util.Iterator fromIterator,com.google.common.base.Function function)",
+    "name": "transform",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.collect.Iterators",
       "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
+      "isArray": false
     },
+    "targetClass": "com.google.common.collect.Iterators",
     "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "fromIterator"
+      },
+      {
+        "type": {
+          "qualifiedName": "com.google.common.base.Function",
+          "name": "Function",
+          "isArray": false
+        },
+        "name": "function"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "get(java.util.Iterator iterator,int position)",
     "name": "get",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "iterator"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "position"
+      }
+    ],
     "paramTags": [
       {
-        "comment": "position of the element to return",
-        "condition": "",
-        "kind": "PARAM",
         "parameter": {
-          "name": "position",
           "type": {
-            "isArray": false,
+            "qualifiedName": "int",
             "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "iterator",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      },
-      {
-        "name": "position",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
+            "isArray": false
+          },
+          "name": "position"
+        },
+        "comment": "position of the element to return",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the element at the specified position in iterator",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "T",
-      "qualifiedName": "T"
-    },
-    "signature": "get(java.util.Iterator iterator,int position)",
-    "targetClass": "com.google.common.collect.Iterators",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "java.lang.IndexOutOfBoundsException",
+          "name": "IndexOutOfBoundsException",
+          "isArray": false
+        },
         "codeTags": [
           "position",
           "iterator"
         ],
         "comment": "if position is negative or greater than or equal to the number of elements remaining in iterator",
-        "condition": "args[1]<0",
-        "exception": {
-          "isArray": false,
-          "name": "IndexOutOfBoundsException",
-          "qualifiedName": "java.lang.IndexOutOfBoundsException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[1]<0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "checkNonnegative(int position)",
     "name": "checkNonnegative",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "position",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "position"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "checkNonnegative(int position)",
-    "targetClass": "com.google.common.collect.Iterators",
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "get(java.util.Iterator iterator,int position,java.lang.Object defaultValue)",
     "name": "get",
-    "paramTags": [
-      {
-        "comment": "position of the element to return",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "position",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the default value to return if the iterator is empty or if position is greater than the number of elements remaining in iterator",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "defaultValue",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "iterator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator"
       },
       {
-        "name": "position",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "position"
       },
       {
-        "name": "defaultValue",
-        "nullable": true,
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "defaultValue",
+        "nullable": true
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "position"
+        },
+        "comment": "position of the element to return",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "defaultValue",
+          "nullable": true
+        },
+        "comment": "the default value to return if the iterator is empty or if position is greater than the number of elements remaining in iterator",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the element at the specified position in iterator or defaultValue if iterator produces fewer than position + 1 elements.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "T",
-      "qualifiedName": "T"
-    },
-    "signature": "get(java.util.Iterator iterator,int position,java.lang.Object defaultValue)",
-    "targetClass": "com.google.common.collect.Iterators",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "java.lang.IndexOutOfBoundsException",
+          "name": "IndexOutOfBoundsException",
+          "isArray": false
+        },
         "codeTags": [
           "position"
         ],
         "comment": "if position is negative",
-        "condition": "args[1]<0",
-        "exception": {
-          "isArray": false,
-          "name": "IndexOutOfBoundsException",
-          "qualifiedName": "java.lang.IndexOutOfBoundsException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[1]<0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "getNext(java.util.Iterator iterator,java.lang.Object defaultValue)",
     "name": "getNext",
-    "paramTags": [
-      {
-        "comment": "the default value to return if the iterator is empty",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "defaultValue",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "iterator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator"
       },
       {
-        "name": "defaultValue",
-        "nullable": true,
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "defaultValue",
+        "nullable": true
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "defaultValue",
+          "nullable": true
+        },
+        "comment": "the default value to return if the iterator is empty",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the next element of iterator or the default value",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "T",
-      "qualifiedName": "T"
-    },
-    "signature": "getNext(java.util.Iterator iterator,java.lang.Object defaultValue)",
-    "targetClass": "com.google.common.collect.Iterators",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "getLast(java.util.Iterator iterator)",
     "name": "getLast",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "iterator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator"
       }
     ],
+    "paramTags": [],
     "returnTag": {
       "comment": "the last element of iterator",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "T",
-      "qualifiedName": "T"
-    },
-    "signature": "getLast(java.util.Iterator iterator)",
-    "targetClass": "com.google.common.collect.Iterators",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "java.util.NoSuchElementException",
+          "name": "NoSuchElementException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if the iterator is empty",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "NoSuchElementException",
-          "qualifiedName": "java.util.NoSuchElementException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "getLast(java.util.Iterator iterator,java.lang.Object defaultValue)",
     "name": "getLast",
-    "paramTags": [
-      {
-        "comment": "the default value to return if the iterator is empty",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "defaultValue",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "iterator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator"
       },
       {
-        "name": "defaultValue",
-        "nullable": true,
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "defaultValue",
+        "nullable": true
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "defaultValue",
+          "nullable": true
+        },
+        "comment": "the default value to return if the iterator is empty",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the last element of iterator",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "T",
-      "qualifiedName": "T"
-    },
-    "signature": "getLast(java.util.Iterator iterator,java.lang.Object defaultValue)",
-    "targetClass": "com.google.common.collect.Iterators",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "advance(java.util.Iterator iterator,int numberToAdvance)",
     "name": "advance",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "iterator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator"
       },
       {
-        "name": "numberToAdvance",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "numberToAdvance"
       }
     ],
+    "paramTags": [],
     "returnTag": {
       "comment": "the number of elements the iterator was advanced",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "advance(java.util.Iterator iterator,int numberToAdvance)",
-    "targetClass": "com.google.common.collect.Iterators",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "limit(java.util.Iterator iterator,int limitSize)",
     "name": "limit",
-    "paramTags": [
-      {
-        "comment": "the iterator to limit",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "iterator",
-          "type": {
-            "isArray": false,
-            "name": "Iterator",
-            "qualifiedName": "java.util.Iterator"
-          }
-        }
-      },
-      {
-        "comment": "the maximum number of elements in the returned iterator",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "limitSize",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "iterator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator"
       },
       {
-        "name": "limitSize",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "limitSize"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "Iterator",
-      "qualifiedName": "java.util.Iterator"
-    },
-    "signature": "limit(java.util.Iterator iterator,int limitSize)",
-    "targetClass": "com.google.common.collect.Iterators",
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Iterator",
+            "name": "Iterator",
+            "isArray": false
+          },
+          "name": "iterator"
+        },
+        "comment": "the iterator to limit",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "limitSize"
+        },
+        "comment": "the maximum number of elements in the returned iterator",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
         "codeTags": [
           "limitSize"
         ],
         "comment": "if limitSize is negative",
-        "condition": "args[1]<0",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[1]<0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "consumingIterator(java.util.Iterator iterator)",
     "name": "consumingIterator",
-    "paramTags": [
-      {
-        "comment": "the iterator to remove and return elements from",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "iterator",
-          "type": {
-            "isArray": false,
-            "name": "Iterator",
-            "qualifiedName": "java.util.Iterator"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "iterator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Iterator",
+            "name": "Iterator",
+            "isArray": false
+          },
+          "name": "iterator"
+        },
+        "comment": "the iterator to remove and return elements from",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "an iterator that removes and returns elements from the supplied iterator",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Iterator",
-      "qualifiedName": "java.util.Iterator"
-    },
-    "signature": "consumingIterator(java.util.Iterator iterator)",
-    "targetClass": "com.google.common.collect.Iterators",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
-    "name": "pollNext",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "iterator",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "T",
-      "qualifiedName": "T"
-    },
     "signature": "pollNext(java.util.Iterator iterator)",
+    "name": "pollNext",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
     "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "iterator"
+      }
+    ],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
-    "name": "clear",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "iterator",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
     "signature": "clear(java.util.Iterator iterator)",
-    "targetClass": "com.google.common.collect.Iterators",
-    "throwsTags": []
-  },
-  {
+    "name": "clear",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.collect.Iterators",
       "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
+      "isArray": false
     },
-    "isVarArgs": true,
-    "name": "forArray",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "array",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          },
-          "isArray": true,
-          "name": "Object[]",
-          "qualifiedName": "java.lang.Object[]"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "UnmodifiableIterator",
-      "qualifiedName": "com.google.common.collect.UnmodifiableIterator"
-    },
-    "signature": "forArray(java.lang.Object[] array)",
     "targetClass": "com.google.common.collect.Iterators",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
     "isVarArgs": false,
-    "name": "forArray",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "array",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          },
-          "isArray": true,
-          "name": "Object[]",
-          "qualifiedName": "java.lang.Object[]"
-        }
-      },
-      {
-        "name": "offset",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "length",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "index",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
     "returnType": {
-      "isArray": false,
-      "name": "UnmodifiableListIterator",
-      "qualifiedName": "com.google.common.collect.UnmodifiableListIterator"
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
     },
-    "signature": "forArray(java.lang.Object[] array,int offset,int length,int index)",
-    "targetClass": "com.google.common.collect.Iterators",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
-    "name": "singletonIterator",
-    "paramTags": [],
     "parameters": [
       {
-        "name": "value",
-        "nullable": true,
         "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "UnmodifiableIterator",
-      "qualifiedName": "com.google.common.collect.UnmodifiableIterator"
-    },
-    "signature": "singletonIterator(java.lang.Object value)",
-    "targetClass": "com.google.common.collect.Iterators",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
-    "name": "forEnumeration",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "enumeration",
-        "type": {
-          "isArray": false,
-          "name": "Enumeration",
-          "qualifiedName": "java.util.Enumeration"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "UnmodifiableIterator",
-      "qualifiedName": "com.google.common.collect.UnmodifiableIterator"
-    },
-    "signature": "forEnumeration(java.util.Enumeration enumeration)",
-    "targetClass": "com.google.common.collect.Iterators",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
-    "name": "asEnumeration",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "iterator",
-        "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "Enumeration",
-      "qualifiedName": "java.util.Enumeration"
-    },
-    "signature": "asEnumeration(java.util.Iterator iterator)",
-    "targetClass": "com.google.common.collect.Iterators",
+    "paramTags": [],
     "throwsTags": []
   },
   {
+    "signature": "forArray(java.lang.Object[] array)",
+    "name": "forArray",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.collect.Iterators",
       "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
+      "isArray": false
     },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": true,
+    "returnType": {
+      "qualifiedName": "com.google.common.collect.UnmodifiableIterator",
+      "name": "UnmodifiableIterator",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object[]",
+          "name": "Object[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          }
+        },
+        "name": "array"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "forArray(java.lang.Object[] array,int offset,int length,int index)",
+    "name": "forArray",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
     "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.collect.UnmodifiableListIterator",
+      "name": "UnmodifiableListIterator",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object[]",
+          "name": "Object[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          }
+        },
+        "name": "array"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "offset"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "length"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "singletonIterator(java.lang.Object value)",
+    "name": "singletonIterator",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.collect.UnmodifiableIterator",
+      "name": "UnmodifiableIterator",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "value",
+        "nullable": true
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "forEnumeration(java.util.Enumeration enumeration)",
+    "name": "forEnumeration",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.collect.UnmodifiableIterator",
+      "name": "UnmodifiableIterator",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Enumeration",
+          "name": "Enumeration",
+          "isArray": false
+        },
+        "name": "enumeration"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "asEnumeration(java.util.Iterator iterator)",
+    "name": "asEnumeration",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Enumeration",
+      "name": "Enumeration",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "iterator"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "peekingIterator(java.util.Iterator iterator)",
     "name": "peekingIterator",
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.collect.PeekingIterator",
+      "name": "PeekingIterator",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Iterator",
+          "name": "Iterator",
+          "isArray": false
+        },
+        "name": "iterator"
+      }
+    ],
     "paramTags": [
       {
-        "comment": "the backing iterator. The PeekingIterator assumes ownership of this iterator, so users should cease making direct calls to it after calling this method.",
-        "condition": "",
-        "kind": "PARAM",
         "parameter": {
-          "name": "iterator",
           "type": {
-            "isArray": false,
+            "qualifiedName": "java.util.Iterator",
             "name": "Iterator",
-            "qualifiedName": "java.util.Iterator"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "iterator",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+            "isArray": false
+          },
+          "name": "iterator"
+        },
+        "comment": "the backing iterator. The PeekingIterator assumes ownership of this iterator, so users should cease making direct calls to it after calling this method.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a peeking iterator backed by that iterator. Apart from the additional PeekingIterator.peek() method, this iterator behaves exactly the same as iterator.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "PeekingIterator",
-      "qualifiedName": "com.google.common.collect.PeekingIterator"
-    },
-    "signature": "peekingIterator(java.util.Iterator iterator)",
-    "targetClass": "com.google.common.collect.Iterators",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "peekingIterator(com.google.common.collect.PeekingIterator iterator)",
     "name": "peekingIterator",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.collect.PeekingIterator",
+      "name": "PeekingIterator",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "iterator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "com.google.common.collect.PeekingIterator",
           "name": "PeekingIterator",
-          "qualifiedName": "com.google.common.collect.PeekingIterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "PeekingIterator",
-      "qualifiedName": "com.google.common.collect.PeekingIterator"
-    },
-    "signature": "peekingIterator(com.google.common.collect.PeekingIterator iterator)",
-    "targetClass": "com.google.common.collect.Iterators",
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "mergeSorted(java.lang.Iterable iterators,java.util.Comparator comparator)",
     "name": "mergeSorted",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.collect.UnmodifiableIterator",
+      "name": "UnmodifiableIterator",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "iterators",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Iterable",
           "name": "Iterable",
-          "qualifiedName": "java.lang.Iterable"
-        }
+          "isArray": false
+        },
+        "name": "iterators"
       },
       {
-        "name": "comparator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Comparator",
           "name": "Comparator",
-          "qualifiedName": "java.util.Comparator"
-        }
+          "isArray": false
+        },
+        "name": "comparator"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "UnmodifiableIterator",
-      "qualifiedName": "com.google.common.collect.UnmodifiableIterator"
-    },
-    "signature": "mergeSorted(java.lang.Iterable iterators,java.util.Comparator comparator)",
-    "targetClass": "com.google.common.collect.Iterators",
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Iterators",
-      "qualifiedName": "com.google.common.collect.Iterators"
-    },
-    "isVarArgs": false,
+    "signature": "cast(java.util.Iterator iterator)",
     "name": "cast",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "com.google.common.collect.Iterators",
+      "name": "Iterators",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.collect.Iterators",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.ListIterator",
+      "name": "ListIterator",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "iterator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Iterator",
           "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
+          "isArray": false
+        },
+        "name": "iterator"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "ListIterator",
-      "qualifiedName": "java.util.ListIterator"
-    },
-    "signature": "cast(java.util.Iterator iterator)",
-    "targetClass": "com.google.common.collect.Iterators",
+    "paramTags": [],
     "throwsTags": []
   }
 ]

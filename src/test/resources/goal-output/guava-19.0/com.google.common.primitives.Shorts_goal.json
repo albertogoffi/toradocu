@@ -1,1370 +1,1217 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
-    },
-    "isVarArgs": false,
-    "name": "Shorts",
-    "paramTags": [],
-    "parameters": [],
-    "signature": "Shorts()",
-    "targetClass": "com.google.common.primitives.Shorts",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
-    },
-    "isVarArgs": false,
+    "signature": "hashCode(short value)",
     "name": "hashCode",
-    "paramTags": [
-      {
-        "comment": "a primitive short value",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "value",
-          "type": {
-            "isArray": false,
-            "name": "short",
-            "qualifiedName": "short"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Shorts",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "value",
         "type": {
-          "isArray": false,
+          "qualifiedName": "short",
           "name": "short",
-          "qualifiedName": "short"
-        }
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "a primitive short value",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a hash code for the value",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "hashCode(short value)",
-    "targetClass": "com.google.common.primitives.Shorts",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
-    },
-    "isVarArgs": false,
+    "signature": "checkedCast(long value)",
     "name": "checkedCast",
-    "paramTags": [
-      {
-        "comment": "any value in the range of the short type",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "value",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Shorts",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "short",
+      "name": "short",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "value",
         "type": {
-          "isArray": false,
+          "qualifiedName": "long",
           "name": "long",
-          "qualifiedName": "long"
-        }
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "any value in the range of the short type",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the short value that equals value",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "short",
-      "qualifiedName": "short"
-    },
-    "signature": "checkedCast(long value)",
-    "targetClass": "com.google.common.primitives.Shorts",
     "throwsTags": [
       {
-        "comment": "if value is greater than Short.MAX_VALUE or less than Short.MIN_VALUE",
-        "condition": "args[0]>Short.MAX_VALUE || args[0]<Short.MIN_VALUE",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.IllegalArgumentException",
           "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "value",
+          "Short.MAX_VALUE",
+          "Short.MIN_VALUE"
+        ],
+        "comment": "if value is greater than Short.MAX_VALUE or less than Short.MIN_VALUE",
+        "kind": "THROWS",
+        "condition": "args[0]>Short.MAX_VALUE || args[0]<Short.MIN_VALUE"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
-    },
-    "isVarArgs": false,
+    "signature": "saturatedCast(long value)",
     "name": "saturatedCast",
-    "paramTags": [
-      {
-        "comment": "any long value",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "value",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Shorts",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "short",
+      "name": "short",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "value",
         "type": {
-          "isArray": false,
+          "qualifiedName": "long",
           "name": "long",
-          "qualifiedName": "long"
-        }
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "any long value",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the same value cast to short if it is in the range of the short type, Short.MAX_VALUE if it is too large, or Short.MIN_VALUE if it is too small",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "short",
-      "qualifiedName": "short"
-    },
-    "signature": "saturatedCast(long value)",
-    "targetClass": "com.google.common.primitives.Shorts",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
-    },
-    "isVarArgs": false,
+    "signature": "compare(short a,short b)",
     "name": "compare",
-    "paramTags": [
-      {
-        "comment": "the first short to compare",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "a",
-          "type": {
-            "isArray": false,
-            "name": "short",
-            "qualifiedName": "short"
-          }
-        }
-      },
-      {
-        "comment": "the second short to compare",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "b",
-          "type": {
-            "isArray": false,
-            "name": "short",
-            "qualifiedName": "short"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Shorts",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "a",
         "type": {
-          "isArray": false,
+          "qualifiedName": "short",
           "name": "short",
-          "qualifiedName": "short"
-        }
+          "isArray": false
+        },
+        "name": "a"
       },
       {
-        "name": "b",
         "type": {
-          "isArray": false,
+          "qualifiedName": "short",
           "name": "short",
-          "qualifiedName": "short"
-        }
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the first short to compare",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the second short to compare",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a negative value if a is less than b; a positive value if a is greater than b; or zero if they are equal",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "compare(short a,short b)",
-    "targetClass": "com.google.common.primitives.Shorts",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
-    },
-    "isVarArgs": false,
+    "signature": "contains(short[] array,short target)",
     "name": "contains",
-    "paramTags": [
-      {
-        "comment": "an array of short values, possibly empty",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "array",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "short",
-              "qualifiedName": "short"
-            },
-            "isArray": true,
-            "name": "short[]",
-            "qualifiedName": "short[]"
-          }
-        }
-      },
-      {
-        "comment": "a primitive short value",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "target",
-          "type": {
-            "isArray": false,
-            "name": "short",
-            "qualifiedName": "short"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Shorts",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "array",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "short",
-            "qualifiedName": "short"
-          },
-          "isArray": true,
+          "qualifiedName": "short[]",
           "name": "short[]",
-          "qualifiedName": "short[]"
-        }
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
+        },
+        "name": "array"
       },
       {
-        "name": "target",
         "type": {
-          "isArray": false,
+          "qualifiedName": "short",
           "name": "short",
-          "qualifiedName": "short"
-        }
+          "isArray": false
+        },
+        "name": "target"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short[]",
+            "name": "short[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "an array of short values, possibly empty",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          },
+          "name": "target"
+        },
+        "comment": "a primitive short value",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if array[i] == target for some value of i",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "contains(short[] array,short target)",
-    "targetClass": "com.google.common.primitives.Shorts",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
-    },
-    "isVarArgs": false,
+    "signature": "indexOf(short[] array,short target)",
     "name": "indexOf",
-    "paramTags": [
-      {
-        "comment": "an array of short values, possibly empty",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "array",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "short",
-              "qualifiedName": "short"
-            },
-            "isArray": true,
-            "name": "short[]",
-            "qualifiedName": "short[]"
-          }
-        }
-      },
-      {
-        "comment": "a primitive short value",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "target",
-          "type": {
-            "isArray": false,
-            "name": "short",
-            "qualifiedName": "short"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Shorts",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "array",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "short",
-            "qualifiedName": "short"
-          },
-          "isArray": true,
+          "qualifiedName": "short[]",
           "name": "short[]",
-          "qualifiedName": "short[]"
-        }
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
+        },
+        "name": "array"
       },
       {
-        "name": "target",
         "type": {
-          "isArray": false,
+          "qualifiedName": "short",
           "name": "short",
-          "qualifiedName": "short"
-        }
+          "isArray": false
+        },
+        "name": "target"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short[]",
+            "name": "short[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "an array of short values, possibly empty",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          },
+          "name": "target"
+        },
+        "comment": "a primitive short value",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the least index i for which array[i] == target, or -1 if no such index exists.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "indexOf(short[] array,short target)",
-    "targetClass": "com.google.common.primitives.Shorts",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
-    },
-    "isVarArgs": false,
-    "name": "indexOf",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "array",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "short",
-            "qualifiedName": "short"
-          },
-          "isArray": true,
-          "name": "short[]",
-          "qualifiedName": "short[]"
-        }
-      },
-      {
-        "name": "target",
-        "type": {
-          "isArray": false,
-          "name": "short",
-          "qualifiedName": "short"
-        }
-      },
-      {
-        "name": "start",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "end",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "indexOf(short[] array,short target,int start,int end)",
-    "targetClass": "com.google.common.primitives.Shorts",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
-    },
-    "isVarArgs": false,
-    "name": "indexOf",
-    "paramTags": [
-      {
-        "comment": "the array to search for the sequence target",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "array",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "short",
-              "qualifiedName": "short"
-            },
-            "isArray": true,
-            "name": "short[]",
-            "qualifiedName": "short[]"
-          }
-        }
-      },
-      {
-        "comment": "the array to search for as a sub-sequence of array",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "target",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "short",
-              "qualifiedName": "short"
-            },
-            "isArray": true,
-            "name": "short[]",
-            "qualifiedName": "short[]"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "array",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "short",
-            "qualifiedName": "short"
-          },
-          "isArray": true,
-          "name": "short[]",
-          "qualifiedName": "short[]"
-        }
-      },
-      {
-        "name": "target",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "short",
-            "qualifiedName": "short"
-          },
-          "isArray": true,
-          "name": "short[]",
-          "qualifiedName": "short[]"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
     "signature": "indexOf(short[] array,short[] target)",
+    "name": "indexOf",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
     "targetClass": "com.google.common.primitives.Shorts",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "short[]",
+          "name": "short[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
+        },
+        "name": "array"
+      },
+      {
+        "type": {
+          "qualifiedName": "short[]",
+          "name": "short[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
+        },
+        "name": "target"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short[]",
+            "name": "short[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "the array to search for the sequence target",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short[]",
+            "name": "short[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
+          },
+          "name": "target"
+        },
+        "comment": "the array to search for as a sub-sequence of array",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
-    },
-    "isVarArgs": false,
+    "signature": "lastIndexOf(short[] array,short target)",
     "name": "lastIndexOf",
-    "paramTags": [
-      {
-        "comment": "an array of short values, possibly empty",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "array",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "short",
-              "qualifiedName": "short"
-            },
-            "isArray": true,
-            "name": "short[]",
-            "qualifiedName": "short[]"
-          }
-        }
-      },
-      {
-        "comment": "a primitive short value",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "target",
-          "type": {
-            "isArray": false,
-            "name": "short",
-            "qualifiedName": "short"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Shorts",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "array",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "short",
-            "qualifiedName": "short"
-          },
-          "isArray": true,
+          "qualifiedName": "short[]",
           "name": "short[]",
-          "qualifiedName": "short[]"
-        }
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
+        },
+        "name": "array"
       },
       {
-        "name": "target",
         "type": {
-          "isArray": false,
+          "qualifiedName": "short",
           "name": "short",
-          "qualifiedName": "short"
-        }
+          "isArray": false
+        },
+        "name": "target"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short[]",
+            "name": "short[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "an array of short values, possibly empty",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          },
+          "name": "target"
+        },
+        "comment": "a primitive short value",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the greatest index i for which array[i] == target, or -1 if no such index exists.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "lastIndexOf(short[] array,short target)",
-    "targetClass": "com.google.common.primitives.Shorts",
     "throwsTags": []
   },
   {
+    "signature": "min(short[] array)",
+    "name": "min",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.primitives.Shorts",
       "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
+      "isArray": false
     },
-    "isVarArgs": false,
-    "name": "lastIndexOf",
-    "paramTags": [],
+    "targetClass": "com.google.common.primitives.Shorts",
+    "isVarArgs": true,
+    "returnType": {
+      "qualifiedName": "short",
+      "name": "short",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "array",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "short",
-            "qualifiedName": "short"
-          },
-          "isArray": true,
+          "qualifiedName": "short[]",
           "name": "short[]",
-          "qualifiedName": "short[]"
-        }
-      },
-      {
-        "name": "target",
-        "type": {
-          "isArray": false,
-          "name": "short",
-          "qualifiedName": "short"
-        }
-      },
-      {
-        "name": "start",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "end",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
+        },
+        "name": "array"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "lastIndexOf(short[] array,short target,int start,int end)",
-    "targetClass": "com.google.common.primitives.Shorts",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
-    },
-    "isVarArgs": true,
-    "name": "min",
     "paramTags": [
       {
-        "comment": "a nonempty array of short values",
-        "condition": "(args[0].length==0) == false",
-        "kind": "@param",
         "parameter": {
-          "name": "array",
           "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "short",
-              "qualifiedName": "short"
-            },
-            "isArray": true,
+            "qualifiedName": "short[]",
             "name": "short[]",
-            "qualifiedName": "short[]"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "array",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "short",
-            "qualifiedName": "short"
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
           },
-          "isArray": true,
-          "name": "short[]",
-          "qualifiedName": "short[]"
-        }
+          "name": "array"
+        },
+        "comment": "a nonempty array of short values",
+        "kind": "PARAM",
+        "condition": "(args[0].length==0) == false"
       }
     ],
     "returnTag": {
       "comment": "the value present in array that is less than or equal to every other value in the array",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "short",
-      "qualifiedName": "short"
-    },
-    "signature": "min(short[] array)",
-    "targetClass": "com.google.common.primitives.Shorts",
     "throwsTags": [
       {
-        "comment": "if array is empty",
-        "condition": "args[0].length==0",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.IllegalArgumentException",
           "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "array"
+        ],
+        "comment": "if array is empty",
+        "kind": "THROWS",
+        "condition": "args[0].length==0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
-    },
-    "isVarArgs": true,
+    "signature": "max(short[] array)",
     "name": "max",
-    "paramTags": [
-      {
-        "comment": "a nonempty array of short values",
-        "condition": "(args[0].length==0) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "array",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "short",
-              "qualifiedName": "short"
-            },
-            "isArray": true,
-            "name": "short[]",
-            "qualifiedName": "short[]"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Shorts",
+    "isVarArgs": true,
+    "returnType": {
+      "qualifiedName": "short",
+      "name": "short",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "array",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "short",
-            "qualifiedName": "short"
-          },
-          "isArray": true,
+          "qualifiedName": "short[]",
           "name": "short[]",
-          "qualifiedName": "short[]"
-        }
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
+        },
+        "name": "array"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short[]",
+            "name": "short[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "a nonempty array of short values",
+        "kind": "PARAM",
+        "condition": "(args[0].length==0) == false"
       }
     ],
     "returnTag": {
       "comment": "the value present in array that is greater than or equal to every other value in the array",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "short",
-      "qualifiedName": "short"
-    },
-    "signature": "max(short[] array)",
-    "targetClass": "com.google.common.primitives.Shorts",
     "throwsTags": [
       {
-        "comment": "if array is empty",
-        "condition": "args[0].length==0",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.IllegalArgumentException",
           "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "array"
+        ],
+        "comment": "if array is empty",
+        "kind": "THROWS",
+        "condition": "args[0].length==0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
-    },
-    "isVarArgs": true,
+    "signature": "concat(short[][] arrays)",
     "name": "concat",
-    "paramTags": [
-      {
-        "comment": "zero or more short arrays",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "arrays",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "short",
-              "qualifiedName": "short"
-            },
-            "isArray": true,
-            "name": "short[][]",
-            "qualifiedName": "short[][]"
-          }
-        }
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Shorts",
+    "isVarArgs": true,
+    "returnType": {
+      "qualifiedName": "short[]",
+      "name": "short[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "short",
+        "name": "short",
+        "isArray": false
       }
-    ],
+    },
     "parameters": [
       {
-        "name": "arrays",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "short",
-            "qualifiedName": "short"
-          },
-          "isArray": true,
+          "qualifiedName": "short[][]",
           "name": "short[][]",
-          "qualifiedName": "short[][]"
-        }
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
+        },
+        "name": "arrays"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short[][]",
+            "name": "short[][]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
+          },
+          "name": "arrays"
+        },
+        "comment": "zero or more short arrays",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a single array containing all the values from the source arrays, in order",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "short",
-        "qualifiedName": "short"
-      },
-      "isArray": true,
-      "name": "short[]",
-      "qualifiedName": "short[]"
-    },
-    "signature": "concat(short[][] arrays)",
-    "targetClass": "com.google.common.primitives.Shorts",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
-    },
-    "isVarArgs": false,
-    "name": "toByteArray",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "value",
-        "type": {
-          "isArray": false,
-          "name": "short",
-          "qualifiedName": "short"
-        }
-      }
-    ],
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "byte",
-        "qualifiedName": "byte"
-      },
-      "isArray": true,
-      "name": "byte[]",
-      "qualifiedName": "byte[]"
-    },
     "signature": "toByteArray(short value)",
+    "name": "toByteArray",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
     "targetClass": "com.google.common.primitives.Shorts",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "byte[]",
+      "name": "byte[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "byte",
+        "name": "byte",
+        "isArray": false
+      }
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "short",
+          "name": "short",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
-    },
-    "isVarArgs": false,
+    "signature": "fromByteArray(byte[] bytes)",
     "name": "fromByteArray",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Shorts",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "short",
+      "name": "short",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "bytes",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "byte",
-            "qualifiedName": "byte"
-          },
-          "isArray": true,
+          "qualifiedName": "byte[]",
           "name": "byte[]",
-          "qualifiedName": "byte[]"
-        }
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "byte",
+            "name": "byte",
+            "isArray": false
+          }
+        },
+        "name": "bytes"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "short",
-      "qualifiedName": "short"
-    },
-    "signature": "fromByteArray(byte[] bytes)",
-    "targetClass": "com.google.common.primitives.Shorts",
+    "paramTags": [],
     "throwsTags": [
       {
-        "comment": "if bytes has fewer than 2 elements",
-        "condition": "args[0].length<2",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.IllegalArgumentException",
           "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "bytes"
+        ],
+        "comment": "if bytes has fewer than 2 elements",
+        "kind": "THROWS",
+        "condition": "args[0].length<2"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
-    },
-    "isVarArgs": false,
+    "signature": "fromBytes(byte b1,byte b2)",
     "name": "fromBytes",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Shorts",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "short",
+      "name": "short",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "b1",
         "type": {
-          "isArray": false,
+          "qualifiedName": "byte",
           "name": "byte",
-          "qualifiedName": "byte"
-        }
+          "isArray": false
+        },
+        "name": "b1"
       },
       {
-        "name": "b2",
         "type": {
-          "isArray": false,
+          "qualifiedName": "byte",
           "name": "byte",
-          "qualifiedName": "byte"
-        }
+          "isArray": false
+        },
+        "name": "b2"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "short",
-      "qualifiedName": "short"
-    },
-    "signature": "fromBytes(byte b1,byte b2)",
-    "targetClass": "com.google.common.primitives.Shorts",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
-    },
-    "isVarArgs": false,
-    "name": "stringConverter",
     "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "Converter",
-      "qualifiedName": "com.google.common.base.Converter"
-    },
-    "signature": "stringConverter()",
-    "targetClass": "com.google.common.primitives.Shorts",
     "throwsTags": []
   },
   {
+    "signature": "stringConverter()",
+    "name": "stringConverter",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.primitives.Shorts",
       "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
+      "isArray": false
     },
+    "targetClass": "com.google.common.primitives.Shorts",
     "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.Converter",
+      "name": "Converter",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "ensureCapacity(short[] array,int minLength,int padding)",
     "name": "ensureCapacity",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Shorts",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "short[]",
+      "name": "short[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "short",
+        "name": "short",
+        "isArray": false
+      }
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "short[]",
+          "name": "short[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
+        },
+        "name": "array"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "minLength"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "padding"
+      }
+    ],
     "paramTags": [
       {
-        "comment": "the source array",
-        "condition": "",
-        "kind": "@param",
         "parameter": {
-          "name": "array",
           "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "short",
-              "qualifiedName": "short"
-            },
-            "isArray": true,
+            "qualifiedName": "short[]",
             "name": "short[]",
-            "qualifiedName": "short[]"
-          }
-        }
-      },
-      {
-        "comment": "the minimum length the returned array must guarantee",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "minLength",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "an extra amount to \"grow\" the array by if growth is necessary",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "padding",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "array",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "short",
-            "qualifiedName": "short"
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
           },
-          "isArray": true,
-          "name": "short[]",
-          "qualifiedName": "short[]"
-        }
+          "name": "array"
+        },
+        "comment": "the source array",
+        "kind": "PARAM",
+        "condition": ""
       },
       {
-        "name": "minLength",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "minLength"
+        },
+        "comment": "the minimum length the returned array must guarantee",
+        "kind": "PARAM",
+        "condition": ""
       },
       {
-        "name": "padding",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "padding"
+        },
+        "comment": "an extra amount to \"grow\" the array by if growth is necessary",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "an array containing the values of array, with guaranteed minimum length minLength",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "short",
-        "qualifiedName": "short"
-      },
-      "isArray": true,
-      "name": "short[]",
-      "qualifiedName": "short[]"
-    },
-    "signature": "ensureCapacity(short[] array,int minLength,int padding)",
-    "targetClass": "com.google.common.primitives.Shorts",
     "throwsTags": [
       {
-        "comment": "if minLength or padding is negative",
-        "condition": "args[1]<0 || args[2]<0",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.IllegalArgumentException",
           "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "minLength",
+          "padding"
+        ],
+        "comment": "if minLength or padding is negative",
+        "kind": "THROWS",
+        "condition": "args[1]<0 || args[2]<0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
-    },
-    "isVarArgs": false,
-    "name": "copyOf",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "original",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "short",
-            "qualifiedName": "short"
-          },
-          "isArray": true,
-          "name": "short[]",
-          "qualifiedName": "short[]"
-        }
-      },
-      {
-        "name": "length",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "short",
-        "qualifiedName": "short"
-      },
-      "isArray": true,
-      "name": "short[]",
-      "qualifiedName": "short[]"
-    },
-    "signature": "copyOf(short[] original,int length)",
-    "targetClass": "com.google.common.primitives.Shorts",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
-    },
-    "isVarArgs": true,
-    "name": "join",
-    "paramTags": [
-      {
-        "comment": "the text that should appear between consecutive values in the resulting string (but not at the start or end)",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "separator",
-          "type": {
-            "isArray": false,
-            "name": "String",
-            "qualifiedName": "java.lang.String"
-          }
-        }
-      },
-      {
-        "comment": "an array of short values, possibly empty",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "array",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "short",
-              "qualifiedName": "short"
-            },
-            "isArray": true,
-            "name": "short[]",
-            "qualifiedName": "short[]"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "separator",
-        "type": {
-          "isArray": false,
-          "name": "String",
-          "qualifiedName": "java.lang.String"
-        }
-      },
-      {
-        "name": "array",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "short",
-            "qualifiedName": "short"
-          },
-          "isArray": true,
-          "name": "short[]",
-          "qualifiedName": "short[]"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "String",
-      "qualifiedName": "java.lang.String"
-    },
     "signature": "join(java.lang.String separator,short[] array)",
-    "targetClass": "com.google.common.primitives.Shorts",
-    "throwsTags": []
-  },
-  {
+    "name": "join",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "com.google.common.primitives.Shorts",
       "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
+      "isArray": false
     },
-    "isVarArgs": false,
-    "name": "lexicographicalComparator",
-    "paramTags": [],
-    "parameters": [],
+    "targetClass": "com.google.common.primitives.Shorts",
+    "isVarArgs": true,
     "returnType": {
-      "isArray": false,
-      "name": "Comparator",
-      "qualifiedName": "java.util.Comparator"
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
     },
-    "signature": "lexicographicalComparator()",
-    "targetClass": "com.google.common.primitives.Shorts",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
-    },
-    "isVarArgs": false,
-    "name": "toArray",
-    "paramTags": [
-      {
-        "comment": "a collection of Number instances",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "collection",
-          "type": {
-            "isArray": false,
-            "name": "Collection",
-            "qualifiedName": "java.util.Collection"
-          }
-        }
-      }
-    ],
     "parameters": [
       {
-        "name": "collection",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "separator"
+      },
+      {
+        "type": {
+          "qualifiedName": "short[]",
+          "name": "short[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
+        },
+        "name": "array"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "separator"
+        },
+        "comment": "the text that should appear between consecutive values in the resulting string (but not at the start or end)",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short[]",
+            "name": "short[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "an array of short values, possibly empty",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "lexicographicalComparator()",
+    "name": "lexicographicalComparator",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Shorts",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Comparator",
+      "name": "Comparator",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "toArray(java.util.Collection collection)",
+    "name": "toArray",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Shorts",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "short[]",
+      "name": "short[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "short",
+        "name": "short",
+        "isArray": false
+      }
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
           "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
+          "isArray": false
+        },
+        "name": "collection"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "a collection of Number instances",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "an array containing the same values as collection, in the same order, converted to primitives",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "short",
-        "qualifiedName": "short"
-      },
-      "isArray": true,
-      "name": "short[]",
-      "qualifiedName": "short[]"
-    },
-    "signature": "toArray(java.util.Collection collection)",
-    "targetClass": "com.google.common.primitives.Shorts",
     "throwsTags": [
       {
-        "comment": "if collection or any of its elements is null",
-        "condition": "args[0]==null || args[0].contains(null)",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "collection"
+        ],
+        "comment": "if collection or any of its elements is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null || args[0].contains(null)"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Shorts",
-      "qualifiedName": "com.google.common.primitives.Shorts"
-    },
-    "isVarArgs": true,
+    "signature": "asList(short[] backingArray)",
     "name": "asList",
-    "paramTags": [
-      {
-        "comment": "the array to back the list",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "backingArray",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "short",
-              "qualifiedName": "short"
-            },
-            "isArray": true,
-            "name": "short[]",
-            "qualifiedName": "short[]"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Shorts",
+      "name": "Shorts",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Shorts",
+    "isVarArgs": true,
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "backingArray",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "short",
-            "qualifiedName": "short"
-          },
-          "isArray": true,
+          "qualifiedName": "short[]",
           "name": "short[]",
-          "qualifiedName": "short[]"
-        }
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "short",
+            "name": "short",
+            "isArray": false
+          }
+        },
+        "name": "backingArray"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "short[]",
+            "name": "short[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "short",
+              "name": "short",
+              "isArray": false
+            }
+          },
+          "name": "backingArray"
+        },
+        "comment": "the array to back the list",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a list view of the array",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "List",
-      "qualifiedName": "java.util.List"
-    },
-    "signature": "asList(short[] backingArray)",
-    "targetClass": "com.google.common.primitives.Shorts",
     "throwsTags": []
   }
 ]
