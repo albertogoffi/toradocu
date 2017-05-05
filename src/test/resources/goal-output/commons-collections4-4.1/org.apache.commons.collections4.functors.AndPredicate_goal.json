@@ -1,215 +1,216 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AndPredicate",
-      "qualifiedName": "org.apache.commons.collections4.functors.AndPredicate"
-    },
-    "isVarArgs": false,
+    "signature": "AndPredicate(org.apache.commons.collections4.Predicate predicate1,org.apache.commons.collections4.Predicate predicate2)",
     "name": "AndPredicate",
-    "paramTags": [
-      {
-        "comment": "the first predicate to check, not null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "predicate1",
-          "type": {
-            "isArray": false,
-            "name": "Predicate",
-            "qualifiedName": "org.apache.commons.collections4.Predicate"
-          }
-        }
-      },
-      {
-        "comment": "the second predicate to check, not null",
-        "condition": "(args[1]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "predicate2",
-          "type": {
-            "isArray": false,
-            "name": "Predicate",
-            "qualifiedName": "org.apache.commons.collections4.Predicate"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.functors.AndPredicate",
+      "name": "AndPredicate",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.functors.AndPredicate",
+    "isVarArgs": false,
     "parameters": [
       {
-        "name": "predicate1",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
           "name": "Predicate",
-          "qualifiedName": "org.apache.commons.collections4.Predicate"
-        }
+          "isArray": false
+        },
+        "name": "predicate1"
       },
       {
-        "name": "predicate2",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
           "name": "Predicate",
-          "qualifiedName": "org.apache.commons.collections4.Predicate"
-        }
+          "isArray": false
+        },
+        "name": "predicate2"
       }
     ],
-    "signature": "AndPredicate(org.apache.commons.collections4.Predicate predicate1,org.apache.commons.collections4.Predicate predicate2)",
-    "targetClass": "org.apache.commons.collections4.functors.AndPredicate",
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate1"
+        },
+        "comment": "the first predicate to check, not null",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate2"
+        },
+        "comment": "the second predicate to check, not null",
+        "kind": "PARAM",
+        "condition": "(args[1]==null) == false"
+      }
+    ],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AndPredicate",
-      "qualifiedName": "org.apache.commons.collections4.functors.AndPredicate"
-    },
-    "isVarArgs": false,
+    "signature": "andPredicate(org.apache.commons.collections4.Predicate predicate1,org.apache.commons.collections4.Predicate predicate2)",
     "name": "andPredicate",
-    "paramTags": [
-      {
-        "comment": "the first predicate to check, not null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "predicate1",
-          "type": {
-            "isArray": false,
-            "name": "Predicate",
-            "qualifiedName": "org.apache.commons.collections4.Predicate"
-          }
-        }
-      },
-      {
-        "comment": "the second predicate to check, not null",
-        "condition": "(args[1]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "predicate2",
-          "type": {
-            "isArray": false,
-            "name": "Predicate",
-            "qualifiedName": "org.apache.commons.collections4.Predicate"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.functors.AndPredicate",
+      "name": "AndPredicate",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.functors.AndPredicate",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Predicate",
+      "name": "Predicate",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "predicate1",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
           "name": "Predicate",
-          "qualifiedName": "org.apache.commons.collections4.Predicate"
-        }
+          "isArray": false
+        },
+        "name": "predicate1"
       },
       {
-        "name": "predicate2",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
           "name": "Predicate",
-          "qualifiedName": "org.apache.commons.collections4.Predicate"
-        }
+          "isArray": false
+        },
+        "name": "predicate2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate1"
+        },
+        "comment": "the first predicate to check, not null",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate2"
+        },
+        "comment": "the second predicate to check, not null",
+        "kind": "PARAM",
+        "condition": "(args[1]==null) == false"
       }
     ],
     "returnTag": {
       "comment": "the and predicate",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Predicate",
-      "qualifiedName": "org.apache.commons.collections4.Predicate"
-    },
-    "signature": "andPredicate(org.apache.commons.collections4.Predicate predicate1,org.apache.commons.collections4.Predicate predicate2)",
-    "targetClass": "org.apache.commons.collections4.functors.AndPredicate",
     "throwsTags": [
       {
-        "comment": "if either predicate is null",
-        "condition": "args[0]==null || args[1]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if either predicate is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null || args[1]==null"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AndPredicate",
-      "qualifiedName": "org.apache.commons.collections4.functors.AndPredicate"
-    },
-    "isVarArgs": false,
+    "signature": "evaluate(java.lang.Object object)",
     "name": "evaluate",
-    "paramTags": [
-      {
-        "comment": "the input object",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "object",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.functors.AndPredicate",
+      "name": "AndPredicate",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.functors.AndPredicate",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "object",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "object"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "object"
+        },
+        "comment": "the input object",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if both decorated predicates return true",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "evaluate(java.lang.Object object)",
-    "targetClass": "org.apache.commons.collections4.functors.AndPredicate",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AndPredicate",
-      "qualifiedName": "org.apache.commons.collections4.functors.AndPredicate"
-    },
-    "isVarArgs": false,
+    "signature": "getPredicates()",
     "name": "getPredicates",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.functors.AndPredicate",
+      "name": "AndPredicate",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.functors.AndPredicate",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Predicate[]",
+      "name": "Predicate[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "org.apache.commons.collections4.Predicate",
+        "name": "Predicate",
+        "isArray": false
+      }
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the predicates",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "Predicate",
-        "qualifiedName": "org.apache.commons.collections4.Predicate"
-      },
-      "isArray": true,
-      "name": "Predicate[]",
-      "qualifiedName": "org.apache.commons.collections4.Predicate[]"
-    },
-    "signature": "getPredicates()",
-    "targetClass": "org.apache.commons.collections4.functors.AndPredicate",
     "throwsTags": []
   }
 ]

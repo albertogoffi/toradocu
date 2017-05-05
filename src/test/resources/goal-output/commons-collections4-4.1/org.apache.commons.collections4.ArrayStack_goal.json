@@ -1,1680 +1,314 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayStack",
-      "qualifiedName": "org.apache.commons.collections4.ArrayStack"
-    },
-    "isVarArgs": false,
-    "name": "ArrayStack",
-    "paramTags": [],
-    "parameters": [],
     "signature": "ArrayStack()",
+    "name": "ArrayStack",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ArrayStack",
+      "name": "ArrayStack",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.collections4.ArrayStack",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayStack",
-      "qualifiedName": "org.apache.commons.collections4.ArrayStack"
-    },
-    "isVarArgs": false,
+    "signature": "ArrayStack(int initialSize)",
     "name": "ArrayStack",
-    "paramTags": [
-      {
-        "comment": "the initial size to use",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "initialSize",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ArrayStack",
+      "name": "ArrayStack",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.ArrayStack",
+    "isVarArgs": false,
     "parameters": [
       {
-        "name": "initialSize",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "initialSize"
       }
     ],
-    "signature": "ArrayStack(int initialSize)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "initialSize"
+        },
+        "comment": "the initial size to use",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": [
       {
-        "comment": "if the specified initial size is negative",
-        "condition": "args[0]<0",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.IllegalArgumentException",
           "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the specified initial size is negative",
+        "kind": "THROWS",
+        "condition": "args[0]<0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayStack",
-      "qualifiedName": "org.apache.commons.collections4.ArrayStack"
-    },
-    "isVarArgs": false,
+    "signature": "empty()",
     "name": "empty",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ArrayStack",
+      "name": "ArrayStack",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.ArrayStack",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "true if the stack is currently empty",
-      "condition": "target.isEmpty() ? result==true",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "target.isEmpty() ? result==true"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "empty()",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayStack",
-      "qualifiedName": "org.apache.commons.collections4.ArrayStack"
-    },
-    "isVarArgs": false,
+    "signature": "peek()",
     "name": "peek",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ArrayStack",
+      "name": "ArrayStack",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.ArrayStack",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the top item on the stack",
-      "condition": "true ? result.equals(target.peek())",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "true ? result.equals(target.peek())"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "E",
-      "qualifiedName": "E"
-    },
-    "signature": "peek()",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
     "throwsTags": [
       {
-        "comment": "if the stack is empty",
-        "condition": "target.isEmpty()",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.util.EmptyStackException",
           "name": "EmptyStackException",
-          "qualifiedName": "java.util.EmptyStackException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the stack is empty",
+        "kind": "THROWS",
+        "condition": "target.isEmpty()"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayStack",
-      "qualifiedName": "org.apache.commons.collections4.ArrayStack"
-    },
-    "isVarArgs": false,
+    "signature": "peek(int n)",
     "name": "peek",
-    "paramTags": [
-      {
-        "comment": "the number of items down to go",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "n",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ArrayStack",
+      "name": "ArrayStack",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.ArrayStack",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "n",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "n"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "the number of items down to go",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the n'th item on the stack, zero relative",
-      "condition": "true ? result.equals(target.get(target.size() - args[0])-1)",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "true ? result.equals(target.get(target.size() - args[0])-1)"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "E",
-      "qualifiedName": "E"
-    },
-    "signature": "peek(int n)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
     "throwsTags": [
       {
-        "comment": "if there are not enough items on the stack to satisfy this request",
-        "condition": "target.size()<args[0]",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.util.EmptyStackException",
           "name": "EmptyStackException",
-          "qualifiedName": "java.util.EmptyStackException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if there are not enough items on the stack to satisfy this request",
+        "kind": "THROWS",
+        "condition": "target.size()<args[0]"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayStack",
-      "qualifiedName": "org.apache.commons.collections4.ArrayStack"
-    },
-    "isVarArgs": false,
+    "signature": "pop()",
     "name": "pop",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ArrayStack",
+      "name": "ArrayStack",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.ArrayStack",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the top item on the stack",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "E",
-      "qualifiedName": "E"
-    },
-    "signature": "pop()",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
     "throwsTags": [
       {
-        "comment": "if the stack is empty",
-        "condition": "target.isEmpty()",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.util.EmptyStackException",
           "name": "EmptyStackException",
-          "qualifiedName": "java.util.EmptyStackException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the stack is empty",
+        "kind": "THROWS",
+        "condition": "target.isEmpty()"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayStack",
-      "qualifiedName": "org.apache.commons.collections4.ArrayStack"
-    },
-    "isVarArgs": false,
+    "signature": "push(java.lang.Object item)",
     "name": "push",
-    "paramTags": [
-      {
-        "comment": "the item to be added",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "item",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ArrayStack",
+      "name": "ArrayStack",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.ArrayStack",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "item",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "item"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "item"
+        },
+        "comment": "the item to be added",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the item just pushed",
-      "condition": "true ? result.equals(args[0])",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "true ? result.equals(args[0])"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "E",
-      "qualifiedName": "E"
-    },
-    "signature": "push(java.lang.Object item)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayStack",
-      "qualifiedName": "org.apache.commons.collections4.ArrayStack"
-    },
-    "isVarArgs": false,
+    "signature": "search(java.lang.Object object)",
     "name": "search",
-    "paramTags": [
-      {
-        "comment": "the object to be searched for",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "object",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.ArrayStack",
+      "name": "ArrayStack",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.ArrayStack",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "object",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "object"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "object"
+        },
+        "comment": "the object to be searched for",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the 1-based depth into the stack of the object, or -1 if not found",
-      "condition": "target.contains(args[0]) ? result==target.indexOf(args[0])+1 : result==-1",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "target.contains(args[0]) ? result==target.indexOf(args[0])+1 : result==-1"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "search(java.lang.Object object)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "trimToSize",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "trimToSize()",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "ensureCapacity",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "ensureCapacity(int arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "ensureCapacityInternal",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "ensureCapacityInternal(int arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "ensureExplicitCapacity",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "ensureExplicitCapacity(int arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "grow",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "grow(int arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "hugeCapacity",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "hugeCapacity(int arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "size",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "size()",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "isEmpty",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "isEmpty()",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "contains",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "contains(java.lang.Object arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "indexOf",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "indexOf(java.lang.Object arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "lastIndexOf",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "lastIndexOf(java.lang.Object arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "clone",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "Object",
-      "qualifiedName": "java.lang.Object"
-    },
-    "signature": "clone()",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "toArray",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "Object",
-        "qualifiedName": "java.lang.Object"
-      },
-      "isArray": true,
-      "name": "Object[]",
-      "qualifiedName": "java.lang.Object[]"
-    },
-    "signature": "toArray()",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "toArray",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          },
-          "isArray": true,
-          "name": "Object[]",
-          "qualifiedName": "java.lang.Object[]"
-        }
-      }
-    ],
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "T",
-        "qualifiedName": "T"
-      },
-      "isArray": true,
-      "name": "T[]",
-      "qualifiedName": "T[]"
-    },
-    "signature": "toArray(java.lang.Object[] arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "elementData",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "E",
-      "qualifiedName": "E"
-    },
-    "signature": "elementData(int arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "get",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "E",
-      "qualifiedName": "E"
-    },
-    "signature": "get(int arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "set",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "arg1",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "E",
-      "qualifiedName": "E"
-    },
-    "signature": "set(int arg0,java.lang.Object arg1)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "add",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "add(java.lang.Object arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "add",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "arg1",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "add(int arg0,java.lang.Object arg1)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "remove",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "E",
-      "qualifiedName": "E"
-    },
-    "signature": "remove(int arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "remove",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "remove(java.lang.Object arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "fastRemove",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "fastRemove(int arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "clear",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "clear()",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "addAll",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "addAll(java.util.Collection arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "addAll",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "arg1",
-        "type": {
-          "isArray": false,
-          "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "addAll(int arg0,java.util.Collection arg1)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "removeRange",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "arg1",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "removeRange(int arg0,int arg1)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "rangeCheck",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "rangeCheck(int arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "rangeCheckForAdd",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "rangeCheckForAdd(int arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "outOfBoundsMsg",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "String",
-      "qualifiedName": "java.lang.String"
-    },
-    "signature": "outOfBoundsMsg(int arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "removeAll",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "removeAll(java.util.Collection arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "retainAll",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "retainAll(java.util.Collection arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "batchRemove",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
-      },
-      {
-        "name": "arg1",
-        "type": {
-          "isArray": false,
-          "name": "boolean",
-          "qualifiedName": "boolean"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "batchRemove(java.util.Collection arg0,boolean arg1)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "writeObject",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "ObjectOutputStream",
-          "qualifiedName": "java.io.ObjectOutputStream"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "writeObject(java.io.ObjectOutputStream arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "readObject",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "ObjectInputStream",
-          "qualifiedName": "java.io.ObjectInputStream"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "readObject(java.io.ObjectInputStream arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "listIterator",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "ListIterator",
-      "qualifiedName": "java.util.ListIterator"
-    },
-    "signature": "listIterator(int arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "listIterator",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "ListIterator",
-      "qualifiedName": "java.util.ListIterator"
-    },
-    "signature": "listIterator()",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "iterator",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "Iterator",
-      "qualifiedName": "java.util.Iterator"
-    },
-    "signature": "iterator()",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "subList",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "arg1",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "List",
-      "qualifiedName": "java.util.List"
-    },
-    "signature": "subList(int arg0,int arg1)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "subListRangeCheck",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "arg1",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "arg2",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "subListRangeCheck(int arg0,int arg1,int arg2)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "forEach",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "Consumer",
-          "qualifiedName": "java.util.function.Consumer"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "forEach(java.util.function.Consumer arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "spliterator",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "Spliterator",
-      "qualifiedName": "java.util.Spliterator"
-    },
-    "signature": "spliterator()",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "removeIf",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "Predicate",
-          "qualifiedName": "java.util.function.Predicate"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "removeIf(java.util.function.Predicate arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "replaceAll",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "UnaryOperator",
-          "qualifiedName": "java.util.function.UnaryOperator"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "replaceAll(java.util.function.UnaryOperator arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArrayList",
-      "qualifiedName": "java.util.ArrayList"
-    },
-    "isVarArgs": false,
-    "name": "sort",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "Comparator",
-          "qualifiedName": "java.util.Comparator"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "sort(java.util.Comparator arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractList",
-      "qualifiedName": "java.util.AbstractList"
-    },
-    "isVarArgs": false,
-    "name": "equals",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "equals(java.lang.Object arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractList",
-      "qualifiedName": "java.util.AbstractList"
-    },
-    "isVarArgs": false,
-    "name": "hashCode",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "hashCode()",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractCollection",
-      "qualifiedName": "java.util.AbstractCollection"
-    },
-    "isVarArgs": false,
-    "name": "finishToArray",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          },
-          "isArray": true,
-          "name": "Object[]",
-          "qualifiedName": "java.lang.Object[]"
-        }
-      },
-      {
-        "name": "arg1",
-        "type": {
-          "isArray": false,
-          "name": "Iterator",
-          "qualifiedName": "java.util.Iterator"
-        }
-      }
-    ],
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "T",
-        "qualifiedName": "T"
-      },
-      "isArray": true,
-      "name": "T[]",
-      "qualifiedName": "T[]"
-    },
-    "signature": "finishToArray(java.lang.Object[] arg0,java.util.Iterator arg1)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractCollection",
-      "qualifiedName": "java.util.AbstractCollection"
-    },
-    "isVarArgs": false,
-    "name": "containsAll",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "containsAll(java.util.Collection arg0)",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractCollection",
-      "qualifiedName": "java.util.AbstractCollection"
-    },
-    "isVarArgs": false,
-    "name": "toString",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "String",
-      "qualifiedName": "java.lang.String"
-    },
-    "signature": "toString()",
-    "targetClass": "org.apache.commons.collections4.ArrayStack",
     "throwsTags": []
   }
 ]

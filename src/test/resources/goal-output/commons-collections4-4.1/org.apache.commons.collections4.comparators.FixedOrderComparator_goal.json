@@ -1,560 +1,571 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FixedOrderComparator",
-      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator"
-    },
-    "isVarArgs": false,
-    "name": "FixedOrderComparator",
-    "paramTags": [],
-    "parameters": [],
     "signature": "FixedOrderComparator()",
+    "name": "FixedOrderComparator",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+      "name": "FixedOrderComparator",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FixedOrderComparator",
-      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator"
-    },
-    "isVarArgs": true,
-    "name": "FixedOrderComparator",
-    "paramTags": [
-      {
-        "comment": "the items that the comparator can compare in order",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "items",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "Object",
-              "qualifiedName": "java.lang.Object"
-            },
-            "isArray": true,
-            "name": "Object[]",
-            "qualifiedName": "java.lang.Object[]"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "items",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          },
-          "isArray": true,
-          "name": "Object[]",
-          "qualifiedName": "java.lang.Object[]"
-        }
-      }
-    ],
     "signature": "FixedOrderComparator(java.lang.Object[] items)",
-    "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
-    "throwsTags": [
-      {
-        "comment": "if the array is null",
-        "condition": "args[0]==null",
-        "exception": {
-          "isArray": false,
-          "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FixedOrderComparator",
-      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator"
-    },
-    "isVarArgs": false,
     "name": "FixedOrderComparator",
-    "paramTags": [
-      {
-        "comment": "the items that the comparator can compare in order",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "items",
-          "type": {
-            "isArray": false,
-            "name": "List",
-            "qualifiedName": "java.util.List"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+      "name": "FixedOrderComparator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+    "isVarArgs": true,
     "parameters": [
       {
-        "name": "items",
         "type": {
-          "isArray": false,
-          "name": "List",
-          "qualifiedName": "java.util.List"
-        }
+          "qualifiedName": "java.lang.Object[]",
+          "name": "Object[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          }
+        },
+        "name": "items"
       }
     ],
-    "signature": "FixedOrderComparator(java.util.List items)",
-    "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object[]",
+            "name": "Object[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.Object",
+              "name": "Object",
+              "isArray": false
+            }
+          },
+          "name": "items"
+        },
+        "comment": "the items that the comparator can compare in order",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": [
       {
-        "comment": "if the list is null",
-        "condition": "args[0]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the array is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
       }
     ]
   },
   {
+    "signature": "FixedOrderComparator(java.util.List items)",
+    "name": "FixedOrderComparator",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator",
       "name": "FixedOrderComparator",
-      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
     "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "items"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "items"
+        },
+        "comment": "the items that the comparator can compare in order",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the list is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      }
+    ]
+  },
+  {
+    "signature": "isLocked()",
     "name": "isLocked",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+      "name": "FixedOrderComparator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "true if attempts to change the FixedOrderComparator yield an UnsupportedOperationException, false if it can be changed.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "isLocked()",
-    "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FixedOrderComparator",
-      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator"
-    },
-    "isVarArgs": false,
-    "name": "checkLocked",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
     "signature": "checkLocked()",
+    "name": "checkLocked",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+      "name": "FixedOrderComparator",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
     "throwsTags": [
       {
-        "comment": "if the comparator is locked",
-        "condition": "target.isLocked()",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.UnsupportedOperationException",
           "name": "UnsupportedOperationException",
-          "qualifiedName": "java.lang.UnsupportedOperationException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the comparator is locked",
+        "kind": "THROWS",
+        "condition": "target.isLocked()"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FixedOrderComparator",
-      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator"
-    },
-    "isVarArgs": false,
+    "signature": "getUnknownObjectBehavior()",
     "name": "getUnknownObjectBehavior",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+      "name": "FixedOrderComparator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator.UnknownObjectBehavior",
+      "name": "UnknownObjectBehavior",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "FixedOrderComparator.UnknownObjectBehavior",
-      "condition": "true ? result.equals(org.apache.commons.collections4.comparators.FixedOrderComparator.UnknownObjectBehavior)",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "true ? result.equals(org.apache.commons.collections4.comparators.FixedOrderComparator.UnknownObjectBehavior)"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "UnknownObjectBehavior",
-      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator.UnknownObjectBehavior"
-    },
-    "signature": "getUnknownObjectBehavior()",
-    "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FixedOrderComparator",
-      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator"
-    },
-    "isVarArgs": false,
+    "signature": "setUnknownObjectBehavior(org.apache.commons.collections4.comparators.FixedOrderComparator.UnknownObjectBehavior unknownObjectBehavior)",
     "name": "setUnknownObjectBehavior",
-    "paramTags": [
-      {
-        "comment": "the flag for unknown behaviour - UNKNOWN_AFTER, UNKNOWN_BEFORE or UNKNOWN_THROW_EXCEPTION",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "unknownObjectBehavior",
-          "type": {
-            "isArray": false,
-            "name": "UnknownObjectBehavior",
-            "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator.UnknownObjectBehavior"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+      "name": "FixedOrderComparator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "unknownObjectBehavior",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator.UnknownObjectBehavior",
           "name": "UnknownObjectBehavior",
-          "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator.UnknownObjectBehavior"
-        }
+          "isArray": false
+        },
+        "name": "unknownObjectBehavior"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "setUnknownObjectBehavior(org.apache.commons.collections4.comparators.FixedOrderComparator.UnknownObjectBehavior unknownObjectBehavior)",
-    "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator.UnknownObjectBehavior",
+            "name": "UnknownObjectBehavior",
+            "isArray": false
+          },
+          "name": "unknownObjectBehavior"
+        },
+        "comment": "the flag for unknown behaviour - UNKNOWN_AFTER, UNKNOWN_BEFORE or UNKNOWN_THROW_EXCEPTION",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": [
       {
-        "comment": "if a comparison has been performed",
-        "condition": "target.isLocked()",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.UnsupportedOperationException",
           "name": "UnsupportedOperationException",
-          "qualifiedName": "java.lang.UnsupportedOperationException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if a comparison has been performed",
+        "kind": "THROWS",
+        "condition": "target.isLocked()"
       },
       {
-        "comment": "if unknownObjectBehavior is null",
-        "condition": "args[0]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if unknownObjectBehavior is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FixedOrderComparator",
-      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator"
-    },
-    "isVarArgs": false,
+    "signature": "add(java.lang.Object obj)",
     "name": "add",
-    "paramTags": [
-      {
-        "comment": "the item to be added to the Comparator.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "obj",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+      "name": "FixedOrderComparator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "obj",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "obj"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "obj"
+        },
+        "comment": "the item to be added to the Comparator.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if obj has been added for the first time, false if it was already known to the Comparator.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "add(java.lang.Object obj)",
-    "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
     "throwsTags": [
       {
-        "comment": "if a comparison has already been made",
-        "condition": "target.isLocked()",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.UnsupportedOperationException",
           "name": "UnsupportedOperationException",
-          "qualifiedName": "java.lang.UnsupportedOperationException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if a comparison has already been made",
+        "kind": "THROWS",
+        "condition": "target.isLocked()"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FixedOrderComparator",
-      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator"
-    },
-    "isVarArgs": false,
+    "signature": "addAsEqual(java.lang.Object existingObj,java.lang.Object newObj)",
     "name": "addAsEqual",
-    "paramTags": [
-      {
-        "comment": "an item already in the Comparator's set of known objects",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "existingObj",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "an item to be added to the Comparator's set of known objects",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "newObj",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+      "name": "FixedOrderComparator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "existingObj",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "existingObj"
       },
       {
-        "name": "newObj",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "newObj"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "existingObj"
+        },
+        "comment": "an item already in the Comparator's set of known objects",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "newObj"
+        },
+        "comment": "an item to be added to the Comparator's set of known objects",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if newObj has been added for the first time, false if it was already known to the Comparator.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "addAsEqual(java.lang.Object existingObj,java.lang.Object newObj)",
-    "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
     "throwsTags": [
       {
-        "comment": "if existingObject is not in the Comparator's set of known objects.",
-        "condition": "",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.IllegalArgumentException",
           "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if existingObject is not in the Comparator's set of known objects.",
+        "kind": "THROWS",
+        "condition": ""
       },
       {
-        "comment": "if a comparison has already been made",
-        "condition": "target.isLocked()",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.UnsupportedOperationException",
           "name": "UnsupportedOperationException",
-          "qualifiedName": "java.lang.UnsupportedOperationException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if a comparison has already been made",
+        "kind": "THROWS",
+        "condition": "target.isLocked()"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FixedOrderComparator",
-      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator"
-    },
-    "isVarArgs": false,
+    "signature": "compare(java.lang.Object obj1,java.lang.Object obj2)",
     "name": "compare",
-    "paramTags": [
-      {
-        "comment": "the first object to compare",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "obj1",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "the second object to compare",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "obj2",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+      "name": "FixedOrderComparator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "obj1",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "obj1"
       },
       {
-        "name": "obj2",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "obj2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "obj1"
+        },
+        "comment": "the first object to compare",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "obj2"
+        },
+        "comment": "the second object to compare",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "negative if obj1 is less, positive if greater, zero if equal",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "compare(java.lang.Object obj1,java.lang.Object obj2)",
-    "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
     "throwsTags": [
       {
-        "comment": "if obj1 or obj2 are not known to this Comparator and an alternative behavior has not been set via setUnknownObjectBehavior(UnknownObjectBehavior).",
-        "condition": "",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.IllegalArgumentException",
           "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "setUnknownObjectBehavior(UnknownObjectBehavior)"
+        ],
+        "comment": "if obj1 or obj2 are not known to this Comparator and an alternative behavior has not been set via setUnknownObjectBehavior(UnknownObjectBehavior).",
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FixedOrderComparator",
-      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator"
-    },
-    "isVarArgs": false,
+    "signature": "hashCode()",
     "name": "hashCode",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+      "name": "FixedOrderComparator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "a hash code for this comparator.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "hashCode()",
-    "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FixedOrderComparator",
-      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator"
-    },
-    "isVarArgs": false,
+    "signature": "equals(java.lang.Object object)",
     "name": "equals",
-    "paramTags": [
-      {
-        "comment": "the object to compare to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "object",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+      "name": "FixedOrderComparator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "object",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "object"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "object"
+        },
+        "comment": "the object to compare to",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if equal",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "equals(java.lang.Object object)",
-    "targetClass": "org.apache.commons.collections4.comparators.FixedOrderComparator",
     "throwsTags": []
   }
 ]

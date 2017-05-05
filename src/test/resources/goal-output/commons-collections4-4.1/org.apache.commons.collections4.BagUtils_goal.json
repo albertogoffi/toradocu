@@ -1,656 +1,665 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BagUtils",
-      "qualifiedName": "org.apache.commons.collections4.BagUtils"
-    },
-    "isVarArgs": false,
+    "signature": "synchronizedBag(org.apache.commons.collections4.Bag bag)",
     "name": "synchronizedBag",
-    "paramTags": [
-      {
-        "comment": "the bag to synchronize, must not be null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "bag",
-          "type": {
-            "isArray": false,
-            "name": "Bag",
-            "qualifiedName": "org.apache.commons.collections4.Bag"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.BagUtils",
+      "name": "BagUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.BagUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Bag",
+      "name": "Bag",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "bag",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.collections4.Bag",
           "name": "Bag",
-          "qualifiedName": "org.apache.commons.collections4.Bag"
-        }
+          "isArray": false
+        },
+        "name": "bag"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Bag",
+            "name": "Bag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag to synchronize, must not be null",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
       }
     ],
     "returnTag": {
       "comment": "a synchronized bag backed by that bag",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Bag",
-      "qualifiedName": "org.apache.commons.collections4.Bag"
-    },
-    "signature": "synchronizedBag(org.apache.commons.collections4.Bag bag)",
-    "targetClass": "org.apache.commons.collections4.BagUtils",
     "throwsTags": [
       {
-        "comment": "if the Bag is null",
-        "condition": "args[0]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the Bag is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BagUtils",
-      "qualifiedName": "org.apache.commons.collections4.BagUtils"
-    },
-    "isVarArgs": false,
+    "signature": "unmodifiableBag(org.apache.commons.collections4.Bag bag)",
     "name": "unmodifiableBag",
-    "paramTags": [
-      {
-        "comment": "the bag whose unmodifiable view is to be returned, must not be null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "bag",
-          "type": {
-            "isArray": false,
-            "name": "Bag",
-            "qualifiedName": "org.apache.commons.collections4.Bag"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.BagUtils",
+      "name": "BagUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.BagUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Bag",
+      "name": "Bag",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "bag",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.collections4.Bag",
           "name": "Bag",
-          "qualifiedName": "org.apache.commons.collections4.Bag"
-        }
+          "isArray": false
+        },
+        "name": "bag"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Bag",
+            "name": "Bag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag whose unmodifiable view is to be returned, must not be null",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
       }
     ],
     "returnTag": {
       "comment": "an unmodifiable view of that bag",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Bag",
-      "qualifiedName": "org.apache.commons.collections4.Bag"
-    },
-    "signature": "unmodifiableBag(org.apache.commons.collections4.Bag bag)",
-    "targetClass": "org.apache.commons.collections4.BagUtils",
     "throwsTags": [
       {
-        "comment": "if the Bag is null",
-        "condition": "args[0]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the Bag is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BagUtils",
-      "qualifiedName": "org.apache.commons.collections4.BagUtils"
-    },
-    "isVarArgs": false,
+    "signature": "predicatedBag(org.apache.commons.collections4.Bag bag,org.apache.commons.collections4.Predicate predicate)",
     "name": "predicatedBag",
-    "paramTags": [
-      {
-        "comment": "the bag to predicate, must not be null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "bag",
-          "type": {
-            "isArray": false,
-            "name": "Bag",
-            "qualifiedName": "org.apache.commons.collections4.Bag"
-          }
-        }
-      },
-      {
-        "comment": "the predicate for the bag, must not be null",
-        "condition": "(args[1]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "predicate",
-          "type": {
-            "isArray": false,
-            "name": "Predicate",
-            "qualifiedName": "org.apache.commons.collections4.Predicate"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.BagUtils",
+      "name": "BagUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.BagUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Bag",
+      "name": "Bag",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "bag",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.collections4.Bag",
           "name": "Bag",
-          "qualifiedName": "org.apache.commons.collections4.Bag"
-        }
+          "isArray": false
+        },
+        "name": "bag"
       },
       {
-        "name": "predicate",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
           "name": "Predicate",
-          "qualifiedName": "org.apache.commons.collections4.Predicate"
-        }
+          "isArray": false
+        },
+        "name": "predicate"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Bag",
+            "name": "Bag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag to predicate, must not be null",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate for the bag, must not be null",
+        "kind": "PARAM",
+        "condition": "(args[1]==null) == false"
       }
     ],
     "returnTag": {
       "comment": "a predicated bag backed by the given bag",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Bag",
-      "qualifiedName": "org.apache.commons.collections4.Bag"
-    },
-    "signature": "predicatedBag(org.apache.commons.collections4.Bag bag,org.apache.commons.collections4.Predicate predicate)",
-    "targetClass": "org.apache.commons.collections4.BagUtils",
     "throwsTags": [
       {
-        "comment": "if the Bag or Predicate is null",
-        "condition": "args[0]==null || args[1]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the Bag or Predicate is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null || args[1]==null"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BagUtils",
-      "qualifiedName": "org.apache.commons.collections4.BagUtils"
-    },
-    "isVarArgs": false,
+    "signature": "transformingBag(org.apache.commons.collections4.Bag bag,org.apache.commons.collections4.Transformer transformer)",
     "name": "transformingBag",
-    "paramTags": [
-      {
-        "comment": "the bag to predicate, must not be null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "bag",
-          "type": {
-            "isArray": false,
-            "name": "Bag",
-            "qualifiedName": "org.apache.commons.collections4.Bag"
-          }
-        }
-      },
-      {
-        "comment": "the transformer for the bag, must not be null",
-        "condition": "(args[1]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "transformer",
-          "type": {
-            "isArray": false,
-            "name": "Transformer",
-            "qualifiedName": "org.apache.commons.collections4.Transformer"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.BagUtils",
+      "name": "BagUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.BagUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Bag",
+      "name": "Bag",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "bag",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.collections4.Bag",
           "name": "Bag",
-          "qualifiedName": "org.apache.commons.collections4.Bag"
-        }
+          "isArray": false
+        },
+        "name": "bag"
       },
       {
-        "name": "transformer",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.collections4.Transformer",
           "name": "Transformer",
-          "qualifiedName": "org.apache.commons.collections4.Transformer"
-        }
+          "isArray": false
+        },
+        "name": "transformer"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Bag",
+            "name": "Bag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag to predicate, must not be null",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Transformer",
+            "name": "Transformer",
+            "isArray": false
+          },
+          "name": "transformer"
+        },
+        "comment": "the transformer for the bag, must not be null",
+        "kind": "PARAM",
+        "condition": "(args[1]==null) == false"
       }
     ],
     "returnTag": {
       "comment": "a transformed bag backed by the given bag",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Bag",
-      "qualifiedName": "org.apache.commons.collections4.Bag"
-    },
-    "signature": "transformingBag(org.apache.commons.collections4.Bag bag,org.apache.commons.collections4.Transformer transformer)",
-    "targetClass": "org.apache.commons.collections4.BagUtils",
     "throwsTags": [
       {
-        "comment": "if the Bag or Transformer is null",
-        "condition": "args[0]==null || args[1]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the Bag or Transformer is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null || args[1]==null"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BagUtils",
-      "qualifiedName": "org.apache.commons.collections4.BagUtils"
-    },
-    "isVarArgs": false,
+    "signature": "collectionBag(org.apache.commons.collections4.Bag bag)",
     "name": "collectionBag",
-    "paramTags": [
-      {
-        "comment": "the bag to decorate, must not be null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "bag",
-          "type": {
-            "isArray": false,
-            "name": "Bag",
-            "qualifiedName": "org.apache.commons.collections4.Bag"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.BagUtils",
+      "name": "BagUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.BagUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Bag",
+      "name": "Bag",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "bag",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.collections4.Bag",
           "name": "Bag",
-          "qualifiedName": "org.apache.commons.collections4.Bag"
-        }
+          "isArray": false
+        },
+        "name": "bag"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Bag",
+            "name": "Bag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag to decorate, must not be null",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
       }
     ],
     "returnTag": {
       "comment": "a Bag that complies to the Collection contract",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Bag",
-      "qualifiedName": "org.apache.commons.collections4.Bag"
-    },
-    "signature": "collectionBag(org.apache.commons.collections4.Bag bag)",
-    "targetClass": "org.apache.commons.collections4.BagUtils",
     "throwsTags": [
       {
-        "comment": "if bag is null",
-        "condition": "args[0]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if bag is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BagUtils",
-      "qualifiedName": "org.apache.commons.collections4.BagUtils"
-    },
-    "isVarArgs": false,
+    "signature": "synchronizedSortedBag(org.apache.commons.collections4.SortedBag bag)",
     "name": "synchronizedSortedBag",
-    "paramTags": [
-      {
-        "comment": "the bag to synchronize, must not be null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "bag",
-          "type": {
-            "isArray": false,
-            "name": "SortedBag",
-            "qualifiedName": "org.apache.commons.collections4.SortedBag"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.BagUtils",
+      "name": "BagUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.BagUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.SortedBag",
+      "name": "SortedBag",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "bag",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.collections4.SortedBag",
           "name": "SortedBag",
-          "qualifiedName": "org.apache.commons.collections4.SortedBag"
-        }
+          "isArray": false
+        },
+        "name": "bag"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.SortedBag",
+            "name": "SortedBag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag to synchronize, must not be null",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
       }
     ],
     "returnTag": {
       "comment": "a synchronized bag backed by that bag",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "SortedBag",
-      "qualifiedName": "org.apache.commons.collections4.SortedBag"
-    },
-    "signature": "synchronizedSortedBag(org.apache.commons.collections4.SortedBag bag)",
-    "targetClass": "org.apache.commons.collections4.BagUtils",
     "throwsTags": [
       {
-        "comment": "if the SortedBag is null",
-        "condition": "args[0]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the SortedBag is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BagUtils",
-      "qualifiedName": "org.apache.commons.collections4.BagUtils"
-    },
-    "isVarArgs": false,
+    "signature": "unmodifiableSortedBag(org.apache.commons.collections4.SortedBag bag)",
     "name": "unmodifiableSortedBag",
-    "paramTags": [
-      {
-        "comment": "the bag whose unmodifiable view is to be returned, must not be null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "bag",
-          "type": {
-            "isArray": false,
-            "name": "SortedBag",
-            "qualifiedName": "org.apache.commons.collections4.SortedBag"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.BagUtils",
+      "name": "BagUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.BagUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.SortedBag",
+      "name": "SortedBag",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "bag",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.collections4.SortedBag",
           "name": "SortedBag",
-          "qualifiedName": "org.apache.commons.collections4.SortedBag"
-        }
+          "isArray": false
+        },
+        "name": "bag"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.SortedBag",
+            "name": "SortedBag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag whose unmodifiable view is to be returned, must not be null",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
       }
     ],
     "returnTag": {
       "comment": "an unmodifiable view of that bag",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "SortedBag",
-      "qualifiedName": "org.apache.commons.collections4.SortedBag"
-    },
-    "signature": "unmodifiableSortedBag(org.apache.commons.collections4.SortedBag bag)",
-    "targetClass": "org.apache.commons.collections4.BagUtils",
     "throwsTags": [
       {
-        "comment": "if the SortedBag is null",
-        "condition": "args[0]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the SortedBag is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BagUtils",
-      "qualifiedName": "org.apache.commons.collections4.BagUtils"
-    },
-    "isVarArgs": false,
+    "signature": "predicatedSortedBag(org.apache.commons.collections4.SortedBag bag,org.apache.commons.collections4.Predicate predicate)",
     "name": "predicatedSortedBag",
-    "paramTags": [
-      {
-        "comment": "the sorted bag to predicate, must not be null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "bag",
-          "type": {
-            "isArray": false,
-            "name": "SortedBag",
-            "qualifiedName": "org.apache.commons.collections4.SortedBag"
-          }
-        }
-      },
-      {
-        "comment": "the predicate for the bag, must not be null",
-        "condition": "(args[1]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "predicate",
-          "type": {
-            "isArray": false,
-            "name": "Predicate",
-            "qualifiedName": "org.apache.commons.collections4.Predicate"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.BagUtils",
+      "name": "BagUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.BagUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.SortedBag",
+      "name": "SortedBag",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "bag",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.collections4.SortedBag",
           "name": "SortedBag",
-          "qualifiedName": "org.apache.commons.collections4.SortedBag"
-        }
+          "isArray": false
+        },
+        "name": "bag"
       },
       {
-        "name": "predicate",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.collections4.Predicate",
           "name": "Predicate",
-          "qualifiedName": "org.apache.commons.collections4.Predicate"
-        }
+          "isArray": false
+        },
+        "name": "predicate"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.SortedBag",
+            "name": "SortedBag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the sorted bag to predicate, must not be null",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          },
+          "name": "predicate"
+        },
+        "comment": "the predicate for the bag, must not be null",
+        "kind": "PARAM",
+        "condition": "(args[1]==null) == false"
       }
     ],
     "returnTag": {
       "comment": "a predicated bag backed by the given bag",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "SortedBag",
-      "qualifiedName": "org.apache.commons.collections4.SortedBag"
-    },
-    "signature": "predicatedSortedBag(org.apache.commons.collections4.SortedBag bag,org.apache.commons.collections4.Predicate predicate)",
-    "targetClass": "org.apache.commons.collections4.BagUtils",
     "throwsTags": [
       {
-        "comment": "if the SortedBag or Predicate is null",
-        "condition": "args[0]==null || args[1]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the SortedBag or Predicate is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null || args[1]==null"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BagUtils",
-      "qualifiedName": "org.apache.commons.collections4.BagUtils"
-    },
-    "isVarArgs": false,
+    "signature": "transformingSortedBag(org.apache.commons.collections4.SortedBag bag,org.apache.commons.collections4.Transformer transformer)",
     "name": "transformingSortedBag",
-    "paramTags": [
-      {
-        "comment": "the bag to predicate, must not be null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "bag",
-          "type": {
-            "isArray": false,
-            "name": "SortedBag",
-            "qualifiedName": "org.apache.commons.collections4.SortedBag"
-          }
-        }
-      },
-      {
-        "comment": "the transformer for the bag, must not be null",
-        "condition": "(args[1]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "transformer",
-          "type": {
-            "isArray": false,
-            "name": "Transformer",
-            "qualifiedName": "org.apache.commons.collections4.Transformer"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.BagUtils",
+      "name": "BagUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.BagUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.SortedBag",
+      "name": "SortedBag",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "bag",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.collections4.SortedBag",
           "name": "SortedBag",
-          "qualifiedName": "org.apache.commons.collections4.SortedBag"
-        }
+          "isArray": false
+        },
+        "name": "bag"
       },
       {
-        "name": "transformer",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.collections4.Transformer",
           "name": "Transformer",
-          "qualifiedName": "org.apache.commons.collections4.Transformer"
-        }
+          "isArray": false
+        },
+        "name": "transformer"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.SortedBag",
+            "name": "SortedBag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag to predicate, must not be null",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Transformer",
+            "name": "Transformer",
+            "isArray": false
+          },
+          "name": "transformer"
+        },
+        "comment": "the transformer for the bag, must not be null",
+        "kind": "PARAM",
+        "condition": "(args[1]==null) == false"
       }
     ],
     "returnTag": {
       "comment": "a transformed bag backed by the given bag",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "SortedBag",
-      "qualifiedName": "org.apache.commons.collections4.SortedBag"
-    },
-    "signature": "transformingSortedBag(org.apache.commons.collections4.SortedBag bag,org.apache.commons.collections4.Transformer transformer)",
-    "targetClass": "org.apache.commons.collections4.BagUtils",
     "throwsTags": [
       {
-        "comment": "if the Bag or Transformer is null",
-        "condition": "args[0]==null || args[1]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the Bag or Transformer is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null || args[1]==null"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BagUtils",
-      "qualifiedName": "org.apache.commons.collections4.BagUtils"
-    },
-    "isVarArgs": false,
+    "signature": "emptyBag()",
     "name": "emptyBag",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.BagUtils",
+      "name": "BagUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.BagUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Bag",
+      "name": "Bag",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "an empty Bag",
-      "condition": "true ? result.equals(target.EMPTY_BAG)",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "true ? result.equals(target.EMPTY_BAG)"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Bag",
-      "qualifiedName": "org.apache.commons.collections4.Bag"
-    },
-    "signature": "emptyBag()",
-    "targetClass": "org.apache.commons.collections4.BagUtils",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BagUtils",
-      "qualifiedName": "org.apache.commons.collections4.BagUtils"
-    },
-    "isVarArgs": false,
+    "signature": "emptySortedBag()",
     "name": "emptySortedBag",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.BagUtils",
+      "name": "BagUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.BagUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.SortedBag",
+      "name": "SortedBag",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "an empty sorted Bag",
-      "condition": "true ? result.equals(target.EMPTY_SORTED_BAG)",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "true ? result.equals(target.EMPTY_SORTED_BAG)"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "SortedBag",
-      "qualifiedName": "org.apache.commons.collections4.SortedBag"
-    },
-    "signature": "emptySortedBag()",
-    "targetClass": "org.apache.commons.collections4.BagUtils",
     "throwsTags": []
   }
 ]

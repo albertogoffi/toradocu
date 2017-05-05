@@ -1,3779 +1,1500 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
-    },
-    "isVarArgs": false,
-    "name": "LRUMap",
-    "paramTags": [],
-    "parameters": [],
     "signature": "LRUMap()",
+    "name": "LRUMap",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
+      "name": "LRUMap",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.collections4.map.LRUMap",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
-    },
-    "isVarArgs": false,
-    "name": "LRUMap",
-    "paramTags": [
-      {
-        "comment": "the maximum size of the map",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "maxSize",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "maxSize",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
     "signature": "LRUMap(int maxSize)",
+    "name": "LRUMap",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
+      "name": "LRUMap",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.collections4.map.LRUMap",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxSize"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxSize"
+        },
+        "comment": "the maximum size of the map",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": [
       {
-        "comment": "if the maximum size is less than one",
-        "condition": "args[0]<1",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.IllegalArgumentException",
           "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the maximum size is less than one",
+        "kind": "THROWS",
+        "condition": "args[0]<1"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
-    },
-    "isVarArgs": false,
-    "name": "LRUMap",
-    "paramTags": [
-      {
-        "comment": "the maximum size of the map",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "maxSize",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the initial size of the map",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "initialSize",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "maxSize",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "initialSize",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
     "signature": "LRUMap(int maxSize,int initialSize)",
+    "name": "LRUMap",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
+      "name": "LRUMap",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": [
+    "isVarArgs": false,
+    "parameters": [
       {
-        "comment": "if the maximum size is less than one",
-        "condition": "args[0]<1",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
         },
-        "kind": "@throws"
+        "name": "maxSize"
       },
       {
-        "comment": "if the initial size is negative or larger than the maximum size",
-        "condition": "args[1]<0 || args[1]>args[0]",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
         },
-        "kind": "@throws"
+        "name": "initialSize"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxSize"
+        },
+        "comment": "the maximum size of the map",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "initialSize"
+        },
+        "comment": "the initial size of the map",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the maximum size is less than one",
+        "kind": "THROWS",
+        "condition": "args[0]<1"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the initial size is negative or larger than the maximum size",
+        "kind": "THROWS",
+        "condition": "args[1]<0 || args[1]>args[0]"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
-    },
-    "isVarArgs": false,
-    "name": "LRUMap",
-    "paramTags": [
-      {
-        "comment": "the maximum size of the map",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "maxSize",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "scan until a removeable entry is found, default false",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "scanUntilRemovable",
-          "type": {
-            "isArray": false,
-            "name": "boolean",
-            "qualifiedName": "boolean"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "maxSize",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "scanUntilRemovable",
-        "type": {
-          "isArray": false,
-          "name": "boolean",
-          "qualifiedName": "boolean"
-        }
-      }
-    ],
     "signature": "LRUMap(int maxSize,boolean scanUntilRemovable)",
+    "name": "LRUMap",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
+      "name": "LRUMap",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.collections4.map.LRUMap",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxSize"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "scanUntilRemovable"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxSize"
+        },
+        "comment": "the maximum size of the map",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "scanUntilRemovable"
+        },
+        "comment": "scan until a removeable entry is found, default false",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": [
       {
-        "comment": "if the maximum size is less than one",
-        "condition": "args[0]<1",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.IllegalArgumentException",
           "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the maximum size is less than one",
+        "kind": "THROWS",
+        "condition": "args[0]<1"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
-    },
-    "isVarArgs": false,
-    "name": "LRUMap",
-    "paramTags": [
-      {
-        "comment": "the maximum size of the map",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "maxSize",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the load factor",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "loadFactor",
-          "type": {
-            "isArray": false,
-            "name": "float",
-            "qualifiedName": "float"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "maxSize",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "loadFactor",
-        "type": {
-          "isArray": false,
-          "name": "float",
-          "qualifiedName": "float"
-        }
-      }
-    ],
     "signature": "LRUMap(int maxSize,float loadFactor)",
+    "name": "LRUMap",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
+      "name": "LRUMap",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": [
+    "isVarArgs": false,
+    "parameters": [
       {
-        "comment": "if the maximum size is less than one",
-        "condition": "args[0]<1",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
         },
-        "kind": "@throws"
+        "name": "maxSize"
       },
       {
-        "comment": "if the load factor is less than zero",
-        "condition": "args[1]<0",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+        "type": {
+          "qualifiedName": "float",
+          "name": "float",
+          "isArray": false
         },
-        "kind": "@throws"
+        "name": "loadFactor"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxSize"
+        },
+        "comment": "the maximum size of the map",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          },
+          "name": "loadFactor"
+        },
+        "comment": "the load factor",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the maximum size is less than one",
+        "kind": "THROWS",
+        "condition": "args[0]<1"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the load factor is less than zero",
+        "kind": "THROWS",
+        "condition": "args[1]<0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
-    },
-    "isVarArgs": false,
-    "name": "LRUMap",
-    "paramTags": [
-      {
-        "comment": "the maximum size of the map",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "maxSize",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the initial size of the map",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "initialSize",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the load factor",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "loadFactor",
-          "type": {
-            "isArray": false,
-            "name": "float",
-            "qualifiedName": "float"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "maxSize",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "initialSize",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "loadFactor",
-        "type": {
-          "isArray": false,
-          "name": "float",
-          "qualifiedName": "float"
-        }
-      }
-    ],
     "signature": "LRUMap(int maxSize,int initialSize,float loadFactor)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": [
-      {
-        "comment": "if the maximum size is less than one",
-        "condition": "args[0]<1",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "@throws"
-      },
-      {
-        "comment": "if the initial size is negative or larger than the maximum size",
-        "condition": "args[1]<0 || args[1]>args[0]",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "@throws"
-      },
-      {
-        "comment": "if the load factor is less than zero",
-        "condition": "args[2]<0",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
-    },
-    "isVarArgs": false,
     "name": "LRUMap",
-    "paramTags": [
-      {
-        "comment": "the maximum size of the map",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "maxSize",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the load factor",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "loadFactor",
-          "type": {
-            "isArray": false,
-            "name": "float",
-            "qualifiedName": "float"
-          }
-        }
-      },
-      {
-        "comment": "scan until a removeable entry is found, default false",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "scanUntilRemovable",
-          "type": {
-            "isArray": false,
-            "name": "boolean",
-            "qualifiedName": "boolean"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
+      "name": "LRUMap",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.map.LRUMap",
+    "isVarArgs": false,
     "parameters": [
       {
-        "name": "maxSize",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "maxSize"
       },
       {
-        "name": "loadFactor",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "initialSize"
+      },
+      {
+        "type": {
+          "qualifiedName": "float",
           "name": "float",
-          "qualifiedName": "float"
-        }
-      },
-      {
-        "name": "scanUntilRemovable",
-        "type": {
-          "isArray": false,
-          "name": "boolean",
-          "qualifiedName": "boolean"
-        }
+          "isArray": false
+        },
+        "name": "loadFactor"
       }
     ],
-    "signature": "LRUMap(int maxSize,float loadFactor,boolean scanUntilRemovable)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": [
-      {
-        "comment": "if the maximum size is less than one",
-        "condition": "args[0]<1",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "@throws"
-      },
-      {
-        "comment": "if the load factor is less than zero",
-        "condition": "args[1]<0",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
-    },
-    "isVarArgs": false,
-    "name": "LRUMap",
     "paramTags": [
       {
-        "comment": "the maximum size of the map",
-        "condition": "",
-        "kind": "@param",
         "parameter": {
-          "name": "maxSize",
           "type": {
-            "isArray": false,
+            "qualifiedName": "int",
             "name": "int",
-            "qualifiedName": "int"
-          }
-        }
+            "isArray": false
+          },
+          "name": "maxSize"
+        },
+        "comment": "the maximum size of the map",
+        "kind": "PARAM",
+        "condition": ""
       },
       {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "initialSize"
+        },
         "comment": "the initial size of the map",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "initialSize",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
+        "kind": "PARAM",
+        "condition": ""
       },
       {
-        "comment": "the load factor",
-        "condition": "",
-        "kind": "@param",
         "parameter": {
-          "name": "loadFactor",
           "type": {
-            "isArray": false,
+            "qualifiedName": "float",
             "name": "float",
-            "qualifiedName": "float"
-          }
-        }
-      },
-      {
-        "comment": "scan until a removeable entry is found, default false",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "scanUntilRemovable",
-          "type": {
-            "isArray": false,
-            "name": "boolean",
-            "qualifiedName": "boolean"
-          }
-        }
+            "isArray": false
+          },
+          "name": "loadFactor"
+        },
+        "comment": "the load factor",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
-    "parameters": [
-      {
-        "name": "maxSize",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "initialSize",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "loadFactor",
-        "type": {
-          "isArray": false,
-          "name": "float",
-          "qualifiedName": "float"
-        }
-      },
-      {
-        "name": "scanUntilRemovable",
-        "type": {
-          "isArray": false,
-          "name": "boolean",
-          "qualifiedName": "boolean"
-        }
-      }
-    ],
-    "signature": "LRUMap(int maxSize,int initialSize,float loadFactor,boolean scanUntilRemovable)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
         "comment": "if the maximum size is less than one",
-        "condition": "args[0]<1",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "@throws"
+        "kind": "THROWS",
+        "condition": "args[0]<1"
       },
       {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
         "comment": "if the initial size is negative or larger than the maximum size",
-        "condition": "args[1]<0 || args[1]>args[0]",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "@throws"
+        "kind": "THROWS",
+        "condition": "args[1]<0 || args[1]>args[0]"
       },
       {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
         "comment": "if the load factor is less than zero",
-        "condition": "args[2]<0",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "@throws"
+        "kind": "THROWS",
+        "condition": "args[2]<0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
-    },
-    "isVarArgs": false,
+    "signature": "LRUMap(int maxSize,float loadFactor,boolean scanUntilRemovable)",
     "name": "LRUMap",
-    "paramTags": [
-      {
-        "comment": "the map to copy",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "map",
-          "type": {
-            "isArray": false,
-            "name": "Map",
-            "qualifiedName": "java.util.Map"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
+      "name": "LRUMap",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.map.LRUMap",
+    "isVarArgs": false,
     "parameters": [
       {
-        "name": "map",
         "type": {
-          "isArray": false,
-          "name": "Map",
-          "qualifiedName": "java.util.Map"
-        }
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxSize"
+      },
+      {
+        "type": {
+          "qualifiedName": "float",
+          "name": "float",
+          "isArray": false
+        },
+        "name": "loadFactor"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "scanUntilRemovable"
       }
     ],
-    "signature": "LRUMap(java.util.Map map)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": [
-      {
-        "comment": "if the map is null",
-        "condition": "args[0]==null",
-        "exception": {
-          "isArray": false,
-          "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
-        },
-        "kind": "@throws"
-      },
-      {
-        "comment": "if the map is empty",
-        "condition": "args[0].isEmpty()",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
-    },
-    "isVarArgs": false,
-    "name": "LRUMap",
     "paramTags": [
       {
-        "comment": "the map to copy",
-        "condition": "",
-        "kind": "@param",
         "parameter": {
-          "name": "map",
           "type": {
-            "isArray": false,
-            "name": "Map",
-            "qualifiedName": "java.util.Map"
-          }
-        }
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxSize"
+        },
+        "comment": "the maximum size of the map",
+        "kind": "PARAM",
+        "condition": ""
       },
       {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          },
+          "name": "loadFactor"
+        },
+        "comment": "the load factor",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "scanUntilRemovable"
+        },
         "comment": "scan until a removeable entry is found, default false",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "scanUntilRemovable",
-          "type": {
-            "isArray": false,
-            "name": "boolean",
-            "qualifiedName": "boolean"
-          }
-        }
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
-    "parameters": [
-      {
-        "name": "map",
-        "type": {
-          "isArray": false,
-          "name": "Map",
-          "qualifiedName": "java.util.Map"
-        }
-      },
-      {
-        "name": "scanUntilRemovable",
-        "type": {
-          "isArray": false,
-          "name": "boolean",
-          "qualifiedName": "boolean"
-        }
-      }
-    ],
-    "signature": "LRUMap(java.util.Map map,boolean scanUntilRemovable)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
     "throwsTags": [
       {
-        "comment": "if the map is null",
-        "condition": "args[0]==null",
         "exception": {
-          "isArray": false,
-          "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the maximum size is less than one",
+        "kind": "THROWS",
+        "condition": "args[0]<1"
       },
       {
-        "comment": "if the map is empty",
-        "condition": "args[0].isEmpty()",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.IllegalArgumentException",
           "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the load factor is less than zero",
+        "kind": "THROWS",
+        "condition": "args[1]<0"
       }
     ]
   },
   {
+    "signature": "LRUMap(int maxSize,int initialSize,float loadFactor,boolean scanUntilRemovable)",
+    "name": "LRUMap",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
       "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
+      "isArray": false
     },
-    "isVarArgs": false,
-    "name": "get",
-    "paramTags": [
-      {
-        "comment": "the key",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "key",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "key",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the mapped value, null if no match",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "V",
-      "qualifiedName": "V"
-    },
-    "signature": "get(java.lang.Object key)",
     "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
-    },
     "isVarArgs": false,
-    "name": "get",
-    "paramTags": [
-      {
-        "comment": "the key",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "key",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "whether the key shall be updated to the most recently used position",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "updateToMRU",
-          "type": {
-            "isArray": false,
-            "name": "boolean",
-            "qualifiedName": "boolean"
-          }
-        }
-      }
-    ],
     "parameters": [
       {
-        "name": "key",
         "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxSize"
       },
       {
-        "name": "updateToMRU",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "initialSize"
+      },
+      {
+        "type": {
+          "qualifiedName": "float",
+          "name": "float",
+          "isArray": false
+        },
+        "name": "loadFactor"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
           "name": "boolean",
-          "qualifiedName": "boolean"
-        }
+          "isArray": false
+        },
+        "name": "scanUntilRemovable"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxSize"
+        },
+        "comment": "the maximum size of the map",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "initialSize"
+        },
+        "comment": "the initial size of the map",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          },
+          "name": "loadFactor"
+        },
+        "comment": "the load factor",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "scanUntilRemovable"
+        },
+        "comment": "scan until a removeable entry is found, default false",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the maximum size is less than one",
+        "kind": "THROWS",
+        "condition": "args[0]<1"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the initial size is negative or larger than the maximum size",
+        "kind": "THROWS",
+        "condition": "args[1]<0 || args[1]>args[0]"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the load factor is less than zero",
+        "kind": "THROWS",
+        "condition": "args[2]<0"
+      }
+    ]
+  },
+  {
+    "signature": "LRUMap(java.util.Map map)",
+    "name": "LRUMap",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
+      "name": "LRUMap",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.map.LRUMap",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Map",
+          "name": "Map",
+          "isArray": false
+        },
+        "name": "map"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Map",
+            "name": "Map",
+            "isArray": false
+          },
+          "name": "map"
+        },
+        "comment": "the map to copy",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the map is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the map is empty",
+        "kind": "THROWS",
+        "condition": "args[0].isEmpty()"
+      }
+    ]
+  },
+  {
+    "signature": "LRUMap(java.util.Map map,boolean scanUntilRemovable)",
+    "name": "LRUMap",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
+      "name": "LRUMap",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.map.LRUMap",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Map",
+          "name": "Map",
+          "isArray": false
+        },
+        "name": "map"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "scanUntilRemovable"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Map",
+            "name": "Map",
+            "isArray": false
+          },
+          "name": "map"
+        },
+        "comment": "the map to copy",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "scanUntilRemovable"
+        },
+        "comment": "scan until a removeable entry is found, default false",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the map is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      },
+      {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the map is empty",
+        "kind": "THROWS",
+        "condition": "args[0].isEmpty()"
+      }
+    ]
+  },
+  {
+    "signature": "get(java.lang.Object key)",
+    "name": "get",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
+      "name": "LRUMap",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.map.LRUMap",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "V",
+      "name": "V",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the mapped value, null if no match",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "V",
-      "qualifiedName": "V"
-    },
+    "throwsTags": []
+  },
+  {
     "signature": "get(java.lang.Object key,boolean updateToMRU)",
+    "name": "get",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
+      "name": "LRUMap",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.collections4.map.LRUMap",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "V",
+      "name": "V",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "updateToMRU"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "updateToMRU"
+        },
+        "comment": "whether the key shall be updated to the most recently used position",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the mapped value, null if no match",
+      "kind": "RETURN",
+      "condition": ""
+    },
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
-    },
-    "isVarArgs": false,
-    "name": "moveToMRU",
-    "paramTags": [
-      {
-        "comment": "the entry to update",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "entry",
-          "type": {
-            "isArray": false,
-            "name": "LinkEntry",
-            "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "entry",
-        "type": {
-          "isArray": false,
-          "name": "LinkEntry",
-          "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
     "signature": "moveToMRU(org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry entry)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
+    "name": "moveToMRU",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
       "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.collections4.map.LRUMap",
     "isVarArgs": false,
-    "name": "updateEntry",
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry",
+          "name": "LinkEntry",
+          "isArray": false
+        },
+        "name": "entry"
+      }
+    ],
     "paramTags": [
       {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry",
+            "name": "LinkEntry",
+            "isArray": false
+          },
+          "name": "entry"
+        },
         "comment": "the entry to update",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "entry",
-          "type": {
-            "isArray": false,
-            "name": "HashEntry",
-            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-          }
-        }
-      },
-      {
-        "comment": "the new value to store",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "newValue",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
-    "parameters": [
-      {
-        "name": "entry",
-        "type": {
-          "isArray": false,
-          "name": "HashEntry",
-          "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-        }
-      },
-      {
-        "name": "newValue",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
+    "throwsTags": []
+  },
+  {
     "signature": "updateEntry(org.apache.commons.collections4.map.AbstractHashedMap.HashEntry entry,java.lang.Object newValue)",
+    "name": "updateEntry",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
+      "name": "LRUMap",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.collections4.map.LRUMap",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry",
+          "name": "HashEntry",
+          "isArray": false
+        },
+        "name": "entry"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "newValue"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry",
+            "name": "HashEntry",
+            "isArray": false
+          },
+          "name": "entry"
+        },
+        "comment": "the entry to update",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "newValue"
+        },
+        "comment": "the new value to store",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
-    },
-    "isVarArgs": false,
-    "name": "addMapping",
-    "paramTags": [
-      {
-        "comment": "the index into the data array to store at",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "hashIndex",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the hash code of the key to add",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "hashCode",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the key to add",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "key",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "the value to add",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "value",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "hashIndex",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "hashCode",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "key",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      },
-      {
-        "name": "value",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
     "signature": "addMapping(int hashIndex,int hashCode,java.lang.Object key,java.lang.Object value)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
+    "name": "addMapping",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
       "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.collections4.map.LRUMap",
     "isVarArgs": false,
-    "name": "reuseMapping",
-    "paramTags": [
-      {
-        "comment": "the entry to reuse",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "entry",
-          "type": {
-            "isArray": false,
-            "name": "LinkEntry",
-            "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry"
-          }
-        }
-      },
-      {
-        "comment": "the index into the data array to store at",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "hashIndex",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the hash code of the key to add",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "hashCode",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the key to add",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "key",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "the value to add",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "value",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "entry",
-        "type": {
-          "isArray": false,
-          "name": "LinkEntry",
-          "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry"
-        }
-      },
-      {
-        "name": "hashIndex",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "hashCode",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "key",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      },
-      {
-        "name": "value",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
     "returnType": {
-      "isArray": false,
+      "qualifiedName": "void",
       "name": "void",
-      "qualifiedName": "void"
+      "isArray": false
     },
-    "signature": "reuseMapping(org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry entry,int hashIndex,int hashCode,java.lang.Object key,java.lang.Object value)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "hashIndex"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "hashCode"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "hashIndex"
+        },
+        "comment": "the index into the data array to store at",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "hashCode"
+        },
+        "comment": "the hash code of the key to add",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key to add",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "the value to add",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": []
   },
   {
+    "signature": "reuseMapping(org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry entry,int hashIndex,int hashCode,java.lang.Object key,java.lang.Object value)",
+    "name": "reuseMapping",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
       "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.collections4.map.LRUMap",
     "isVarArgs": false,
-    "name": "removeLRU",
-    "paramTags": [
-      {
-        "comment": "the entry to be removed",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "entry",
-          "type": {
-            "isArray": false,
-            "name": "LinkEntry",
-            "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "entry",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry",
           "name": "LinkEntry",
-          "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry"
-        }
+          "isArray": false
+        },
+        "name": "entry"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "hashIndex"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "hashCode"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry",
+            "name": "LinkEntry",
+            "isArray": false
+          },
+          "name": "entry"
+        },
+        "comment": "the entry to reuse",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "hashIndex"
+        },
+        "comment": "the index into the data array to store at",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "hashCode"
+        },
+        "comment": "the hash code of the key to add",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key to add",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "the value to add",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "removeLRU(org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry entry)",
+    "name": "removeLRU",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
+      "name": "LRUMap",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.map.LRUMap",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry",
+          "name": "LinkEntry",
+          "isArray": false
+        },
+        "name": "entry"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry",
+            "name": "LinkEntry",
+            "isArray": false
+          },
+          "name": "entry"
+        },
+        "comment": "the entry to be removed",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true",
-      "condition": "true ? result==true",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "true ? result==true"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "removeLRU(org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry entry)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
-    },
-    "isVarArgs": false,
+    "signature": "isFull()",
     "name": "isFull",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
+      "name": "LRUMap",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.map.LRUMap",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "true if the map is full",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "isFull()",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
-    },
-    "isVarArgs": false,
+    "signature": "maxSize()",
     "name": "maxSize",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
+      "name": "LRUMap",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.map.LRUMap",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the maximum number of elements the map can hold",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "maxSize()",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
-    },
-    "isVarArgs": false,
+    "signature": "isScanUntilRemovable()",
     "name": "isScanUntilRemovable",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
+      "name": "LRUMap",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.map.LRUMap",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "true if this map scans",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "isScanUntilRemovable()",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
-    },
-    "isVarArgs": false,
+    "signature": "clone()",
     "name": "clone",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
+      "name": "LRUMap",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.map.LRUMap",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
+      "name": "LRUMap",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "a shallow clone",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
-    },
-    "signature": "clone()",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
-    },
-    "isVarArgs": false,
-    "name": "doWriteObject",
-    "paramTags": [
-      {
-        "comment": "the output stream",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "out",
-          "type": {
-            "isArray": false,
-            "name": "ObjectOutputStream",
-            "qualifiedName": "java.io.ObjectOutputStream"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "out",
-        "type": {
-          "isArray": false,
-          "name": "ObjectOutputStream",
-          "qualifiedName": "java.io.ObjectOutputStream"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
     "signature": "doWriteObject(java.io.ObjectOutputStream out)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": [
-      {
-        "comment": "if an error occurs while writing to the stream",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "IOException",
-          "qualifiedName": "java.io.IOException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
+    "name": "doWriteObject",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
       "name": "LRUMap",
-      "qualifiedName": "org.apache.commons.collections4.map.LRUMap"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.collections4.map.LRUMap",
     "isVarArgs": false,
-    "name": "doReadObject",
-    "paramTags": [
-      {
-        "comment": "the input stream",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "in",
-          "type": {
-            "isArray": false,
-            "name": "ObjectInputStream",
-            "qualifiedName": "java.io.ObjectInputStream"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "in",
         "type": {
-          "isArray": false,
-          "name": "ObjectInputStream",
-          "qualifiedName": "java.io.ObjectInputStream"
-        }
+          "qualifiedName": "java.io.ObjectOutputStream",
+          "name": "ObjectOutputStream",
+          "isArray": false
+        },
+        "name": "out"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "doReadObject(java.io.ObjectInputStream in)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.ObjectOutputStream",
+            "name": "ObjectOutputStream",
+            "isArray": false
+          },
+          "name": "out"
+        },
+        "comment": "the output stream",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": [
       {
-        "comment": "if an error occurs while reading from the stream",
-        "condition": "",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.io.IOException",
           "name": "IOException",
-          "qualifiedName": "java.io.IOException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if an error occurs while writing to the stream",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "doReadObject(java.io.ObjectInputStream in)",
+    "name": "doReadObject",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.map.LRUMap",
+      "name": "LRUMap",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.map.LRUMap",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.ObjectInputStream",
+          "name": "ObjectInputStream",
+          "isArray": false
+        },
+        "name": "in"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.ObjectInputStream",
+            "name": "ObjectInputStream",
+            "isArray": false
+          },
+          "name": "in"
+        },
+        "comment": "the input stream",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if an error occurs while reading from the stream",
+        "kind": "THROWS",
+        "condition": ""
       },
       {
-        "comment": "if an object read from the stream can not be loaded",
-        "condition": "",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.ClassNotFoundException",
           "name": "ClassNotFoundException",
-          "qualifiedName": "java.lang.ClassNotFoundException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if an object read from the stream can not be loaded",
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractLinkedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap"
-    },
-    "isVarArgs": false,
-    "name": "init",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "init()",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractLinkedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap"
-    },
-    "isVarArgs": false,
-    "name": "containsValue",
-    "paramTags": [
-      {
-        "comment": "the value to search for",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "value",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "value",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "true if the map contains the value",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "containsValue(java.lang.Object value)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractLinkedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap"
-    },
-    "isVarArgs": false,
-    "name": "clear",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "clear()",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractLinkedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap"
-    },
-    "isVarArgs": false,
-    "name": "firstKey",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the eldest key",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "K",
-      "qualifiedName": "K"
-    },
-    "signature": "firstKey()",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": [
-      {
-        "comment": "if this map is empty",
-        "condition": "target.isEmpty()",
-        "exception": {
-          "isArray": false,
-          "name": "NoSuchElementException",
-          "qualifiedName": "java.util.NoSuchElementException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractLinkedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap"
-    },
-    "isVarArgs": false,
-    "name": "lastKey",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the most recently inserted key",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "K",
-      "qualifiedName": "K"
-    },
-    "signature": "lastKey()",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": [
-      {
-        "comment": "if this map is empty",
-        "condition": "target.isEmpty()",
-        "exception": {
-          "isArray": false,
-          "name": "NoSuchElementException",
-          "qualifiedName": "java.util.NoSuchElementException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractLinkedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap"
-    },
-    "isVarArgs": false,
-    "name": "nextKey",
-    "paramTags": [
-      {
-        "comment": "the key to get after",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "key",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "key",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the next key",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "K",
-      "qualifiedName": "K"
-    },
-    "signature": "nextKey(java.lang.Object key)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractLinkedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap"
-    },
-    "isVarArgs": false,
-    "name": "getEntry",
-    "paramTags": [
-      {
-        "comment": "the key",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "key",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "key",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the entry, null if no match",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "LinkEntry",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry"
-    },
-    "signature": "getEntry(java.lang.Object key)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractLinkedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap"
-    },
-    "isVarArgs": false,
-    "name": "previousKey",
-    "paramTags": [
-      {
-        "comment": "the key to get before",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "key",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "key",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the previous key",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "K",
-      "qualifiedName": "K"
-    },
-    "signature": "previousKey(java.lang.Object key)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractLinkedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap"
-    },
-    "isVarArgs": false,
-    "name": "getEntry",
-    "paramTags": [
-      {
-        "comment": "the index to retrieve",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "index",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "index",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the key at the specified index",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "LinkEntry",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry"
-    },
-    "signature": "getEntry(int index)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": [
-      {
-        "comment": "if the index is invalid",
-        "condition": "args[0]<0 || args[0]>=target.entrySet().size()",
-        "exception": {
-          "isArray": false,
-          "name": "IndexOutOfBoundsException",
-          "qualifiedName": "java.lang.IndexOutOfBoundsException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractLinkedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap"
-    },
-    "isVarArgs": false,
-    "name": "addEntry",
-    "paramTags": [
-      {
-        "comment": "the entry to add",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "entry",
-          "type": {
-            "isArray": false,
-            "name": "HashEntry",
-            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-          }
-        }
-      },
-      {
-        "comment": "the index into the data array to store at",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "hashIndex",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "entry",
-        "type": {
-          "isArray": false,
-          "name": "HashEntry",
-          "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-        }
-      },
-      {
-        "name": "hashIndex",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "addEntry(org.apache.commons.collections4.map.AbstractHashedMap.HashEntry entry,int hashIndex)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractLinkedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap"
-    },
-    "isVarArgs": false,
-    "name": "createEntry",
-    "paramTags": [
-      {
-        "comment": "the next entry in sequence",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "next",
-          "type": {
-            "isArray": false,
-            "name": "HashEntry",
-            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-          }
-        }
-      },
-      {
-        "comment": "the hash code to use",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "hashCode",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the key to store",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "key",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "the value to store",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "value",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "next",
-        "type": {
-          "isArray": false,
-          "name": "HashEntry",
-          "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-        }
-      },
-      {
-        "name": "hashCode",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "key",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      },
-      {
-        "name": "value",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the newly created entry",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "LinkEntry",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry"
-    },
-    "signature": "createEntry(org.apache.commons.collections4.map.AbstractHashedMap.HashEntry next,int hashCode,java.lang.Object key,java.lang.Object value)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractLinkedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap"
-    },
-    "isVarArgs": false,
-    "name": "removeEntry",
-    "paramTags": [
-      {
-        "comment": "the entry to remove",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "entry",
-          "type": {
-            "isArray": false,
-            "name": "HashEntry",
-            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-          }
-        }
-      },
-      {
-        "comment": "the index into the data structure",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "hashIndex",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the previous entry in the chain",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "previous",
-          "type": {
-            "isArray": false,
-            "name": "HashEntry",
-            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "entry",
-        "type": {
-          "isArray": false,
-          "name": "HashEntry",
-          "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-        }
-      },
-      {
-        "name": "hashIndex",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "previous",
-        "type": {
-          "isArray": false,
-          "name": "HashEntry",
-          "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "removeEntry(org.apache.commons.collections4.map.AbstractHashedMap.HashEntry entry,int hashIndex,org.apache.commons.collections4.map.AbstractHashedMap.HashEntry previous)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractLinkedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap"
-    },
-    "isVarArgs": false,
-    "name": "entryBefore",
-    "paramTags": [
-      {
-        "comment": "the entry to query, must not be null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "entry",
-          "type": {
-            "isArray": false,
-            "name": "LinkEntry",
-            "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "entry",
-        "type": {
-          "isArray": false,
-          "name": "LinkEntry",
-          "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the before field of the entry",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "LinkEntry",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry"
-    },
-    "signature": "entryBefore(org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry entry)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": [
-      {
-        "comment": "if the entry is null",
-        "condition": "args[0]==null",
-        "exception": {
-          "isArray": false,
-          "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractLinkedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap"
-    },
-    "isVarArgs": false,
-    "name": "entryAfter",
-    "paramTags": [
-      {
-        "comment": "the entry to query, must not be null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "entry",
-          "type": {
-            "isArray": false,
-            "name": "LinkEntry",
-            "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "entry",
-        "type": {
-          "isArray": false,
-          "name": "LinkEntry",
-          "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the after field of the entry",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "LinkEntry",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry"
-    },
-    "signature": "entryAfter(org.apache.commons.collections4.map.AbstractLinkedMap.LinkEntry entry)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": [
-      {
-        "comment": "if the entry is null",
-        "condition": "args[0]==null",
-        "exception": {
-          "isArray": false,
-          "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractLinkedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap"
-    },
-    "isVarArgs": false,
-    "name": "mapIterator",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "a map iterator",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "OrderedMapIterator",
-      "qualifiedName": "org.apache.commons.collections4.OrderedMapIterator"
-    },
-    "signature": "mapIterator()",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractLinkedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap"
-    },
-    "isVarArgs": false,
-    "name": "createEntrySetIterator",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the entrySet iterator",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "Iterator",
-      "qualifiedName": "java.util.Iterator"
-    },
-    "signature": "createEntrySetIterator()",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractLinkedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap"
-    },
-    "isVarArgs": false,
-    "name": "createKeySetIterator",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the keySet iterator",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "Iterator",
-      "qualifiedName": "java.util.Iterator"
-    },
-    "signature": "createKeySetIterator()",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractLinkedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractLinkedMap"
-    },
-    "isVarArgs": false,
-    "name": "createValuesIterator",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the values iterator",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "Iterator",
-      "qualifiedName": "java.util.Iterator"
-    },
-    "signature": "createValuesIterator()",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "size",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the size",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "size()",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "isEmpty",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "true if the map is currently size zero",
-      "condition": "target.size()==0 ? result==true",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "isEmpty()",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "containsKey",
-    "paramTags": [
-      {
-        "comment": "the key to search for",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "key",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "key",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "true if the map contains the key",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "containsKey(java.lang.Object key)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "put",
-    "paramTags": [
-      {
-        "comment": "the key to add",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "key",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "the value to add",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "value",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "key",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      },
-      {
-        "name": "value",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the value previously mapped to this key, null if none",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "V",
-      "qualifiedName": "V"
-    },
-    "signature": "put(java.lang.Object key,java.lang.Object value)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "putAll",
-    "paramTags": [
-      {
-        "comment": "the map to add",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "map",
-          "type": {
-            "isArray": false,
-            "name": "Map",
-            "qualifiedName": "java.util.Map"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "map",
-        "type": {
-          "isArray": false,
-          "name": "Map",
-          "qualifiedName": "java.util.Map"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "putAll(java.util.Map map)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": [
-      {
-        "comment": "if the map is null",
-        "condition": "args[0]==null",
-        "exception": {
-          "isArray": false,
-          "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "_putAll",
-    "paramTags": [
-      {
-        "comment": "the map to add",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "map",
-          "type": {
-            "isArray": false,
-            "name": "Map",
-            "qualifiedName": "java.util.Map"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "map",
-        "type": {
-          "isArray": false,
-          "name": "Map",
-          "qualifiedName": "java.util.Map"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "_putAll(java.util.Map map)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": [
-      {
-        "comment": "if the map is null",
-        "condition": "args[0]==null",
-        "exception": {
-          "isArray": false,
-          "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "remove",
-    "paramTags": [
-      {
-        "comment": "the mapping to remove",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "key",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "key",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the value mapped to the removed key, null if key not in map",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "V",
-      "qualifiedName": "V"
-    },
-    "signature": "remove(java.lang.Object key)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "convertKey",
-    "paramTags": [
-      {
-        "comment": "the key convert",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "key",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "key",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the converted key",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "Object",
-      "qualifiedName": "java.lang.Object"
-    },
-    "signature": "convertKey(java.lang.Object key)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "hash",
-    "paramTags": [
-      {
-        "comment": "the key to get a hash code for",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "key",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "key",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the hash code",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "hash(java.lang.Object key)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "isEqualKey",
-    "paramTags": [
-      {
-        "comment": "the first key to compare passed in from outside",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "key1",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "the second key extracted from the entry via entry.key",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "key2",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "key1",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      },
-      {
-        "name": "key2",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "true if equal",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "isEqualKey(java.lang.Object key1,java.lang.Object key2)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "isEqualValue",
-    "paramTags": [
-      {
-        "comment": "the first value to compare passed in from outside",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "value1",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "the second value extracted from the entry via getValue()",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "value2",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "value1",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      },
-      {
-        "name": "value2",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "true if equal",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "isEqualValue(java.lang.Object value1,java.lang.Object value2)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "hashIndex",
-    "paramTags": [
-      {
-        "comment": "the hash code to use",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "hashCode",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the size of the data to pick a bucket from",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "dataSize",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "hashCode",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "dataSize",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the bucket index",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "hashIndex(int hashCode,int dataSize)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "reuseEntry",
-    "paramTags": [
-      {
-        "comment": "the entry to update, not null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "entry",
-          "type": {
-            "isArray": false,
-            "name": "HashEntry",
-            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-          }
-        }
-      },
-      {
-        "comment": "the index in the data array",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "hashIndex",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the hash code of the key to add",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "hashCode",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the key to add",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "key",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "the value to add",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "value",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "entry",
-        "type": {
-          "isArray": false,
-          "name": "HashEntry",
-          "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-        }
-      },
-      {
-        "name": "hashIndex",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "hashCode",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "key",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      },
-      {
-        "name": "value",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "reuseEntry(org.apache.commons.collections4.map.AbstractHashedMap.HashEntry entry,int hashIndex,int hashCode,java.lang.Object key,java.lang.Object value)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "removeMapping",
-    "paramTags": [
-      {
-        "comment": "the entry to remove",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "entry",
-          "type": {
-            "isArray": false,
-            "name": "HashEntry",
-            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-          }
-        }
-      },
-      {
-        "comment": "the index into the data structure",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "hashIndex",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the previous entry in the chain",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "previous",
-          "type": {
-            "isArray": false,
-            "name": "HashEntry",
-            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "entry",
-        "type": {
-          "isArray": false,
-          "name": "HashEntry",
-          "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-        }
-      },
-      {
-        "name": "hashIndex",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "previous",
-        "type": {
-          "isArray": false,
-          "name": "HashEntry",
-          "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "removeMapping(org.apache.commons.collections4.map.AbstractHashedMap.HashEntry entry,int hashIndex,org.apache.commons.collections4.map.AbstractHashedMap.HashEntry previous)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "destroyEntry",
-    "paramTags": [
-      {
-        "comment": "the entry to destroy",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "entry",
-          "type": {
-            "isArray": false,
-            "name": "HashEntry",
-            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "entry",
-        "type": {
-          "isArray": false,
-          "name": "HashEntry",
-          "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "destroyEntry(org.apache.commons.collections4.map.AbstractHashedMap.HashEntry entry)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "checkCapacity",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "checkCapacity()",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "ensureCapacity",
-    "paramTags": [
-      {
-        "comment": "the new capacity of the array (a power of two, less or equal to max)",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "newCapacity",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "newCapacity",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "ensureCapacity(int newCapacity)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "calculateNewCapacity",
-    "paramTags": [
-      {
-        "comment": "the proposed capacity",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "proposedCapacity",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "proposedCapacity",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the normalized new capacity",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "calculateNewCapacity(int proposedCapacity)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "calculateThreshold",
-    "paramTags": [
-      {
-        "comment": "the new capacity",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "newCapacity",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the load factor",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "factor",
-          "type": {
-            "isArray": false,
-            "name": "float",
-            "qualifiedName": "float"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "newCapacity",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "factor",
-        "type": {
-          "isArray": false,
-          "name": "float",
-          "qualifiedName": "float"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the new resize threshold",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "calculateThreshold(int newCapacity,float factor)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "entryNext",
-    "paramTags": [
-      {
-        "comment": "the entry to query, must not be null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "entry",
-          "type": {
-            "isArray": false,
-            "name": "HashEntry",
-            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "entry",
-        "type": {
-          "isArray": false,
-          "name": "HashEntry",
-          "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the next field of the entry",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "HashEntry",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-    },
-    "signature": "entryNext(org.apache.commons.collections4.map.AbstractHashedMap.HashEntry entry)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": [
-      {
-        "comment": "if the entry is null",
-        "condition": "args[0]==null",
-        "exception": {
-          "isArray": false,
-          "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "entryHashCode",
-    "paramTags": [
-      {
-        "comment": "the entry to query, must not be null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "entry",
-          "type": {
-            "isArray": false,
-            "name": "HashEntry",
-            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "entry",
-        "type": {
-          "isArray": false,
-          "name": "HashEntry",
-          "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the hashCode field of the entry",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "entryHashCode(org.apache.commons.collections4.map.AbstractHashedMap.HashEntry entry)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": [
-      {
-        "comment": "if the entry is null",
-        "condition": "args[0]==null",
-        "exception": {
-          "isArray": false,
-          "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "entryKey",
-    "paramTags": [
-      {
-        "comment": "the entry to query, must not be null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "entry",
-          "type": {
-            "isArray": false,
-            "name": "HashEntry",
-            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "entry",
-        "type": {
-          "isArray": false,
-          "name": "HashEntry",
-          "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the key field of the entry",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "K",
-      "qualifiedName": "K"
-    },
-    "signature": "entryKey(org.apache.commons.collections4.map.AbstractHashedMap.HashEntry entry)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": [
-      {
-        "comment": "if the entry is null",
-        "condition": "args[0]==null",
-        "exception": {
-          "isArray": false,
-          "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "entryValue",
-    "paramTags": [
-      {
-        "comment": "the entry to query, must not be null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "entry",
-          "type": {
-            "isArray": false,
-            "name": "HashEntry",
-            "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "entry",
-        "type": {
-          "isArray": false,
-          "name": "HashEntry",
-          "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap.HashEntry"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the value field of the entry",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "V",
-      "qualifiedName": "V"
-    },
-    "signature": "entryValue(org.apache.commons.collections4.map.AbstractHashedMap.HashEntry entry)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": [
-      {
-        "comment": "if the entry is null",
-        "condition": "args[0]==null",
-        "exception": {
-          "isArray": false,
-          "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "entrySet",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the entrySet view",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "Set",
-      "qualifiedName": "java.util.Set"
-    },
-    "signature": "entrySet()",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "keySet",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the keySet view",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "Set",
-      "qualifiedName": "java.util.Set"
-    },
-    "signature": "keySet()",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "values",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the values view",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "Collection",
-      "qualifiedName": "java.util.Collection"
-    },
-    "signature": "values()",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "equals",
-    "paramTags": [
-      {
-        "comment": "the object to compare to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "obj",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "obj",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "true if equal",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "equals(java.lang.Object obj)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "hashCode",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the hash code defined in the Map interface",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "hashCode()",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractHashedMap",
-      "qualifiedName": "org.apache.commons.collections4.map.AbstractHashedMap"
-    },
-    "isVarArgs": false,
-    "name": "toString",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "a string version of the map",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "String",
-      "qualifiedName": "java.lang.String"
-    },
-    "signature": "toString()",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractMap",
-      "qualifiedName": "java.util.AbstractMap"
-    },
-    "isVarArgs": false,
-    "name": "eq",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      },
-      {
-        "name": "arg1",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "eq(java.lang.Object arg0,java.lang.Object arg1)",
-    "targetClass": "org.apache.commons.collections4.map.LRUMap",
-    "throwsTags": []
   }
 ]

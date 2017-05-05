@@ -1,271 +1,246 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AnyPredicate",
-      "qualifiedName": "org.apache.commons.collections4.functors.AnyPredicate"
-    },
-    "isVarArgs": true,
+    "signature": "AnyPredicate(org.apache.commons.collections4.Predicate[] predicates)",
     "name": "AnyPredicate",
-    "paramTags": [
-      {
-        "comment": "the predicates to check, not cloned, not null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "predicates",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "Predicate",
-              "qualifiedName": "org.apache.commons.collections4.Predicate"
-            },
-            "isArray": true,
-            "name": "Predicate[]",
-            "qualifiedName": "org.apache.commons.collections4.Predicate[]"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.functors.AnyPredicate",
+      "name": "AnyPredicate",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.functors.AnyPredicate",
+    "isVarArgs": true,
     "parameters": [
       {
-        "name": "predicates",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "Predicate",
-            "qualifiedName": "org.apache.commons.collections4.Predicate"
-          },
-          "isArray": true,
+          "qualifiedName": "org.apache.commons.collections4.Predicate[]",
           "name": "Predicate[]",
-          "qualifiedName": "org.apache.commons.collections4.Predicate[]"
-        }
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          }
+        },
+        "name": "predicates"
       }
     ],
-    "signature": "AnyPredicate(org.apache.commons.collections4.Predicate[] predicates)",
-    "targetClass": "org.apache.commons.collections4.functors.AnyPredicate",
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate[]",
+            "name": "Predicate[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "org.apache.commons.collections4.Predicate",
+              "name": "Predicate",
+              "isArray": false
+            }
+          },
+          "name": "predicates"
+        },
+        "comment": "the predicates to check, not cloned, not null",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AnyPredicate",
-      "qualifiedName": "org.apache.commons.collections4.functors.AnyPredicate"
-    },
-    "isVarArgs": true,
+    "signature": "anyPredicate(org.apache.commons.collections4.Predicate[] predicates)",
     "name": "anyPredicate",
-    "paramTags": [
-      {
-        "comment": "the predicates to check, cloned, not null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "predicates",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "Predicate",
-              "qualifiedName": "org.apache.commons.collections4.Predicate"
-            },
-            "isArray": true,
-            "name": "Predicate[]",
-            "qualifiedName": "org.apache.commons.collections4.Predicate[]"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.functors.AnyPredicate",
+      "name": "AnyPredicate",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.functors.AnyPredicate",
+    "isVarArgs": true,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Predicate",
+      "name": "Predicate",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "predicates",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "Predicate",
-            "qualifiedName": "org.apache.commons.collections4.Predicate"
-          },
-          "isArray": true,
+          "qualifiedName": "org.apache.commons.collections4.Predicate[]",
           "name": "Predicate[]",
-          "qualifiedName": "org.apache.commons.collections4.Predicate[]"
-        }
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate",
+            "name": "Predicate",
+            "isArray": false
+          }
+        },
+        "name": "predicates"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Predicate[]",
+            "name": "Predicate[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "org.apache.commons.collections4.Predicate",
+              "name": "Predicate",
+              "isArray": false
+            }
+          },
+          "name": "predicates"
+        },
+        "comment": "the predicates to check, cloned, not null",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
       }
     ],
     "returnTag": {
       "comment": "the any predicate",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Predicate",
-      "qualifiedName": "org.apache.commons.collections4.Predicate"
-    },
-    "signature": "anyPredicate(org.apache.commons.collections4.Predicate[] predicates)",
-    "targetClass": "org.apache.commons.collections4.functors.AnyPredicate",
     "throwsTags": [
       {
-        "comment": "if the predicates array is null",
-        "condition": "args[0]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the predicates array is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
       },
       {
-        "comment": "if any predicate in the array is null",
-        "condition": "java.util.Arrays.stream(args[0]).anyMatch(e -> e==null)",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if any predicate in the array is null",
+        "kind": "THROWS",
+        "condition": "java.util.Arrays.stream(args[0]).anyMatch(e -> e==null)"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AnyPredicate",
-      "qualifiedName": "org.apache.commons.collections4.functors.AnyPredicate"
-    },
-    "isVarArgs": false,
+    "signature": "anyPredicate(java.util.Collection predicates)",
     "name": "anyPredicate",
-    "paramTags": [
-      {
-        "comment": "the predicates to check, cloned, not null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "predicates",
-          "type": {
-            "isArray": false,
-            "name": "Collection",
-            "qualifiedName": "java.util.Collection"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.functors.AnyPredicate",
+      "name": "AnyPredicate",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.functors.AnyPredicate",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Predicate",
+      "name": "Predicate",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "predicates",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Collection",
           "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
+          "isArray": false
+        },
+        "name": "predicates"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "predicates"
+        },
+        "comment": "the predicates to check, cloned, not null",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
       }
     ],
     "returnTag": {
       "comment": "the all predicate",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Predicate",
-      "qualifiedName": "org.apache.commons.collections4.Predicate"
-    },
-    "signature": "anyPredicate(java.util.Collection predicates)",
-    "targetClass": "org.apache.commons.collections4.functors.AnyPredicate",
     "throwsTags": [
       {
-        "comment": "if the predicates array is null",
-        "condition": "args[0]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the predicates array is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
       },
       {
-        "comment": "if any predicate in the array is null",
-        "condition": "args[0].stream().anyMatch(e -> e==null)",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if any predicate in the array is null",
+        "kind": "THROWS",
+        "condition": "args[0].stream().anyMatch(e -> e==null)"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AnyPredicate",
-      "qualifiedName": "org.apache.commons.collections4.functors.AnyPredicate"
-    },
-    "isVarArgs": false,
+    "signature": "evaluate(java.lang.Object object)",
     "name": "evaluate",
-    "paramTags": [
-      {
-        "comment": "the input object",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "object",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.functors.AnyPredicate",
+      "name": "AnyPredicate",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.functors.AnyPredicate",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "object",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "object"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "object"
+        },
+        "comment": "the input object",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if any decorated predicate return true",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "evaluate(java.lang.Object object)",
-    "targetClass": "org.apache.commons.collections4.functors.AnyPredicate",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractQuantifierPredicate",
-      "qualifiedName": "org.apache.commons.collections4.functors.AbstractQuantifierPredicate"
-    },
-    "isVarArgs": false,
-    "name": "getPredicates",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "a copy of the predicates",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "Predicate",
-        "qualifiedName": "org.apache.commons.collections4.Predicate"
-      },
-      "isArray": true,
-      "name": "Predicate[]",
-      "qualifiedName": "org.apache.commons.collections4.Predicate[]"
-    },
-    "signature": "getPredicates()",
-    "targetClass": "org.apache.commons.collections4.functors.AnyPredicate",
     "throwsTags": []
   }
 ]

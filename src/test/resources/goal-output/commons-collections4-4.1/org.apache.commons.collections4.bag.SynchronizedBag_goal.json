@@ -1,855 +1,370 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedBag",
-      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag"
-    },
-    "isVarArgs": false,
-    "name": "SynchronizedBag",
-    "paramTags": [
-      {
-        "comment": "the bag to decorate, must not be null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "bag",
-          "type": {
-            "isArray": false,
-            "name": "Bag",
-            "qualifiedName": "org.apache.commons.collections4.Bag"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "bag",
-        "type": {
-          "isArray": false,
-          "name": "Bag",
-          "qualifiedName": "org.apache.commons.collections4.Bag"
-        }
-      }
-    ],
     "signature": "SynchronizedBag(org.apache.commons.collections4.Bag bag)",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
-    "throwsTags": [
-      {
-        "comment": "if bag is null",
-        "condition": "args[0]==null",
-        "exception": {
-          "isArray": false,
-          "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedBag",
-      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag"
-    },
-    "isVarArgs": false,
     "name": "SynchronizedBag",
-    "paramTags": [
-      {
-        "comment": "the bag to decorate, must not be null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "bag",
-          "type": {
-            "isArray": false,
-            "name": "Bag",
-            "qualifiedName": "org.apache.commons.collections4.Bag"
-          }
-        }
-      },
-      {
-        "comment": "the lock to use, must not be null",
-        "condition": "(args[1]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "lock",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag",
+      "name": "SynchronizedBag",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
+    "isVarArgs": false,
     "parameters": [
       {
-        "name": "bag",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.collections4.Bag",
           "name": "Bag",
-          "qualifiedName": "org.apache.commons.collections4.Bag"
-        }
-      },
-      {
-        "name": "lock",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "bag"
       }
     ],
-    "signature": "SynchronizedBag(org.apache.commons.collections4.Bag bag,java.lang.Object lock)",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Bag",
+            "name": "Bag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag to decorate, must not be null",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "throwsTags": [
       {
-        "comment": "if bag or lock is null",
-        "condition": "args[0]==null || args[1]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if bag is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
       }
     ]
   },
   {
+    "signature": "SynchronizedBag(org.apache.commons.collections4.Bag bag,java.lang.Object lock)",
+    "name": "SynchronizedBag",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag",
       "name": "SynchronizedBag",
-      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
     "isVarArgs": false,
-    "name": "synchronizedBag",
-    "paramTags": [
-      {
-        "comment": "the bag to decorate, must not be null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "bag",
-          "type": {
-            "isArray": false,
-            "name": "Bag",
-            "qualifiedName": "org.apache.commons.collections4.Bag"
-          }
-        }
-      }
-    ],
     "parameters": [
       {
-        "name": "bag",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.collections4.Bag",
           "name": "Bag",
-          "qualifiedName": "org.apache.commons.collections4.Bag"
-        }
+          "isArray": false
+        },
+        "name": "bag"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "lock"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Bag",
+            "name": "Bag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag to decorate, must not be null",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "lock"
+        },
+        "comment": "the lock to use, must not be null",
+        "kind": "PARAM",
+        "condition": "(args[1]==null) == false"
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if bag or lock is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null || args[1]==null"
+      }
+    ]
+  },
+  {
+    "signature": "synchronizedBag(org.apache.commons.collections4.Bag bag)",
+    "name": "synchronizedBag",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag",
+      "name": "SynchronizedBag",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag",
+      "name": "SynchronizedBag",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Bag",
+          "name": "Bag",
+          "isArray": false
+        },
+        "name": "bag"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Bag",
+            "name": "Bag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag to decorate, must not be null",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
       }
     ],
     "returnTag": {
       "comment": "a new synchronized Bag",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "SynchronizedBag",
-      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag"
-    },
-    "signature": "synchronizedBag(org.apache.commons.collections4.Bag bag)",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
     "throwsTags": [
       {
-        "comment": "if bag is null",
-        "condition": "args[0]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if bag is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedBag",
-      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag"
-    },
-    "isVarArgs": false,
+    "signature": "getBag()",
     "name": "getBag",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag",
+      "name": "SynchronizedBag",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Bag",
+      "name": "Bag",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the decorated bag",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Bag",
-      "qualifiedName": "org.apache.commons.collections4.Bag"
-    },
-    "signature": "getBag()",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedBag",
-      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag"
-    },
-    "isVarArgs": false,
-    "name": "equals",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "object",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
     "signature": "equals(java.lang.Object object)",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
-    "throwsTags": []
-  },
-  {
+    "name": "equals",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag",
       "name": "SynchronizedBag",
-      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag"
+      "isArray": false
     },
-    "isVarArgs": false,
-    "name": "hashCode",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "hashCode()",
     "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedBag",
-      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag"
-    },
     "isVarArgs": false,
-    "name": "add",
-    "paramTags": [
-      {
-        "comment": "the object to add",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "object",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "object",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      },
-      {
-        "name": "count",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "true if the object was not already in the uniqueSet",
-      "condition": "",
-      "kind": "RETURN"
-    },
     "returnType": {
-      "isArray": false,
+      "qualifiedName": "boolean",
       "name": "boolean",
-      "qualifiedName": "boolean"
+      "isArray": false
     },
-    "signature": "add(java.lang.Object object,int count)",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedBag",
-      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag"
-    },
-    "isVarArgs": false,
-    "name": "remove",
-    "paramTags": [],
     "parameters": [
       {
-        "name": "object",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      },
-      {
-        "name": "count",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "true if this call changed the collection",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "remove(java.lang.Object object,int count)",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedBag",
-      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag"
-    },
-    "isVarArgs": false,
-    "name": "uniqueSet",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the Set of unique Bag elements",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "Set",
-      "qualifiedName": "java.util.Set"
-    },
-    "signature": "uniqueSet()",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedBag",
-      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag"
-    },
-    "isVarArgs": false,
-    "name": "getCount",
-    "paramTags": [
-      {
-        "comment": "the object to search for",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "object",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "object",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the number of occurrences of the object, zero if not found",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "getCount(java.lang.Object object)",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedCollection",
-      "qualifiedName": "org.apache.commons.collections4.collection.SynchronizedCollection"
-    },
-    "isVarArgs": false,
-    "name": "synchronizedCollection",
-    "paramTags": [
-      {
-        "comment": "the collection to decorate, must not be null",
-        "condition": "(args[0]==null) == false",
-        "kind": "@param",
-        "parameter": {
-          "name": "coll",
-          "type": {
-            "isArray": false,
-            "name": "Collection",
-            "qualifiedName": "java.util.Collection"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "coll",
-        "type": {
-          "isArray": false,
-          "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new synchronized collection",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "SynchronizedCollection",
-      "qualifiedName": "org.apache.commons.collections4.collection.SynchronizedCollection"
-    },
-    "signature": "synchronizedCollection(java.util.Collection coll)",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
-    "throwsTags": [
-      {
-        "comment": "if collection is null",
-        "condition": "args[0]==null",
-        "exception": {
-          "isArray": false,
-          "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedCollection",
-      "qualifiedName": "org.apache.commons.collections4.collection.SynchronizedCollection"
-    },
-    "isVarArgs": false,
-    "name": "decorated",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the decorated collection",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "Collection",
-      "qualifiedName": "java.util.Collection"
-    },
-    "signature": "decorated()",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedCollection",
-      "qualifiedName": "org.apache.commons.collections4.collection.SynchronizedCollection"
-    },
-    "isVarArgs": false,
-    "name": "add",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "object",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+        "name": "object"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "add(java.lang.Object object)",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
+    "paramTags": [],
     "throwsTags": []
   },
   {
+    "signature": "hashCode()",
+    "name": "hashCode",
     "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedCollection",
-      "qualifiedName": "org.apache.commons.collections4.collection.SynchronizedCollection"
+      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag",
+      "name": "SynchronizedBag",
+      "isArray": false
     },
-    "isVarArgs": false,
-    "name": "addAll",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "coll",
-        "type": {
-          "isArray": false,
-          "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "addAll(java.util.Collection coll)",
     "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedCollection",
-      "qualifiedName": "org.apache.commons.collections4.collection.SynchronizedCollection"
-    },
     "isVarArgs": false,
-    "name": "clear",
-    "paramTags": [],
-    "parameters": [],
     "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "clear()",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedCollection",
-      "qualifiedName": "org.apache.commons.collections4.collection.SynchronizedCollection"
-    },
-    "isVarArgs": false,
-    "name": "contains",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "object",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "contains(java.lang.Object object)",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedCollection",
-      "qualifiedName": "org.apache.commons.collections4.collection.SynchronizedCollection"
-    },
-    "isVarArgs": false,
-    "name": "containsAll",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "coll",
-        "type": {
-          "isArray": false,
-          "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "containsAll(java.util.Collection coll)",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedCollection",
-      "qualifiedName": "org.apache.commons.collections4.collection.SynchronizedCollection"
-    },
-    "isVarArgs": false,
-    "name": "isEmpty",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "isEmpty()",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedCollection",
-      "qualifiedName": "org.apache.commons.collections4.collection.SynchronizedCollection"
-    },
-    "isVarArgs": false,
-    "name": "iterator",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "an iterator that must be manually synchronized on the collection",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "Iterator",
-      "qualifiedName": "java.util.Iterator"
-    },
-    "signature": "iterator()",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedCollection",
-      "qualifiedName": "org.apache.commons.collections4.collection.SynchronizedCollection"
-    },
-    "isVarArgs": false,
-    "name": "toArray",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "Object",
-        "qualifiedName": "java.lang.Object"
-      },
-      "isArray": true,
-      "name": "Object[]",
-      "qualifiedName": "java.lang.Object[]"
-    },
-    "signature": "toArray()",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedCollection",
-      "qualifiedName": "org.apache.commons.collections4.collection.SynchronizedCollection"
-    },
-    "isVarArgs": false,
-    "name": "toArray",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "object",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          },
-          "isArray": true,
-          "name": "Object[]",
-          "qualifiedName": "java.lang.Object[]"
-        }
-      }
-    ],
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "T",
-        "qualifiedName": "T"
-      },
-      "isArray": true,
-      "name": "T[]",
-      "qualifiedName": "T[]"
-    },
-    "signature": "toArray(java.lang.Object[] object)",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedCollection",
-      "qualifiedName": "org.apache.commons.collections4.collection.SynchronizedCollection"
-    },
-    "isVarArgs": false,
-    "name": "remove",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "object",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "remove(java.lang.Object object)",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedCollection",
-      "qualifiedName": "org.apache.commons.collections4.collection.SynchronizedCollection"
-    },
-    "isVarArgs": false,
-    "name": "removeAll",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "coll",
-        "type": {
-          "isArray": false,
-          "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "removeAll(java.util.Collection coll)",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedCollection",
-      "qualifiedName": "org.apache.commons.collections4.collection.SynchronizedCollection"
-    },
-    "isVarArgs": false,
-    "name": "retainAll",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "coll",
-        "type": {
-          "isArray": false,
-          "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "retainAll(java.util.Collection coll)",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedCollection",
-      "qualifiedName": "org.apache.commons.collections4.collection.SynchronizedCollection"
-    },
-    "isVarArgs": false,
-    "name": "size",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
+      "qualifiedName": "int",
       "name": "int",
-      "qualifiedName": "int"
+      "isArray": false
     },
-    "signature": "size()",
-    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
+    "parameters": [],
+    "paramTags": [],
     "throwsTags": []
   },
   {
+    "signature": "add(java.lang.Object object,int count)",
+    "name": "add",
     "containingClass": {
-      "isArray": false,
-      "name": "SynchronizedCollection",
-      "qualifiedName": "org.apache.commons.collections4.collection.SynchronizedCollection"
+      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag",
+      "name": "SynchronizedBag",
+      "isArray": false
     },
-    "isVarArgs": false,
-    "name": "toString",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "String",
-      "qualifiedName": "java.lang.String"
-    },
-    "signature": "toString()",
     "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "object"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "count"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "remove(java.lang.Object object,int count)",
+    "name": "remove",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag",
+      "name": "SynchronizedBag",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "object"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "count"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "uniqueSet()",
+    "name": "uniqueSet",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag",
+      "name": "SynchronizedBag",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Set",
+      "name": "Set",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getCount(java.lang.Object object)",
+    "name": "getCount",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.bag.SynchronizedBag",
+      "name": "SynchronizedBag",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.bag.SynchronizedBag",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "object"
+      }
+    ],
+    "paramTags": [],
     "throwsTags": []
   }
 ]
