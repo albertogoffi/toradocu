@@ -1,3236 +1,3330 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "getDimension()",
     "name": "getDimension",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the size of this vector.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "getDimension()",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "getEntry(int index)",
     "name": "getEntry",
-    "paramTags": [
-      {
-        "comment": "Index location of entry to be fetched.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "index",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "index",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "index"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "Index location of entry to be fetched.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the vector entry at index.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "getEntry(int index)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": [
       {
-        "comment": "if the index is not valid.",
-        "condition": "",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException",
           "name": "OutOfRangeException",
-          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the index is not valid.",
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
-    "name": "setEntry",
-    "paramTags": [
-      {
-        "comment": "element index.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "index",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "new value for the element.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "value",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "index",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "value",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
     "signature": "setEntry(int index,double value)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
-    "throwsTags": [
-      {
-        "comment": "if the index is not valid.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "OutOfRangeException",
-          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
+    "name": "setEntry",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
       "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "isVarArgs": false,
-    "name": "addToEntry",
-    "paramTags": [
-      {
-        "comment": "Index location of entry to be set.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "index",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "Value to add to the vector entry.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "increment",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "index",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "increment",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
     "returnType": {
-      "isArray": false,
+      "qualifiedName": "void",
       "name": "void",
-      "qualifiedName": "void"
+      "isArray": false
     },
-    "signature": "addToEntry(int index,double increment)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "element index.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "new value for the element.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": [
       {
-        "comment": "if the index is not valid.",
-        "condition": "",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException",
           "name": "OutOfRangeException",
-          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the index is not valid.",
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
+    "signature": "addToEntry(int index,double increment)",
+    "name": "addToEntry",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
       "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
+      "isArray": false
     },
-    "isVarArgs": false,
-    "name": "append",
-    "paramTags": [
-      {
-        "comment": "vector to append to this one.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v",
-          "type": {
-            "isArray": false,
-            "name": "RealVector",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "v",
-        "type": {
-          "isArray": false,
-          "name": "RealVector",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new vector.",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "append(org.apache.commons.math3.linear.RealVector v)",
     "targetClass": "org.apache.commons.math3.linear.RealVector",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
     "isVarArgs": false,
-    "name": "append",
-    "paramTags": [
-      {
-        "comment": "double to append.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "d",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "d",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "increment"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "Index location of entry to be set.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "increment"
+        },
+        "comment": "Value to add to the vector entry.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException",
+          "name": "OutOfRangeException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the index is not valid.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "append(org.apache.commons.math3.linear.RealVector v)",
+    "name": "append",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "vector to append to this one.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a new vector.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "append(double d)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
+    "signature": "append(double d)",
+    "name": "append",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
       "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "isVarArgs": false,
-    "name": "getSubVector",
-    "paramTags": [
-      {
-        "comment": "index of first element.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "index",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "number of elements to be retrieved.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "n",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "index",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "d"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d"
+        },
+        "comment": "double to append.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new vector.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getSubVector(int index,int n)",
+    "name": "getSubVector",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "index"
       },
       {
-        "name": "n",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "n"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "index of first element.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "number of elements to be retrieved.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a vector containing n elements.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "getSubVector(int index,int n)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": [
       {
-        "comment": "if the index is not valid.",
-        "condition": "",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException",
           "name": "OutOfRangeException",
-          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the index is not valid.",
+        "kind": "THROWS",
+        "condition": ""
       },
       {
-        "comment": "if the number of elements is not positive.",
-        "condition": "(args[1]>0) == false",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException",
           "name": "NotPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the number of elements is not positive.",
+        "kind": "THROWS",
+        "condition": "(args[1]>0) == false"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "setSubVector(int index,org.apache.commons.math3.linear.RealVector v)",
     "name": "setSubVector",
-    "paramTags": [
-      {
-        "comment": "index of first element to be set.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "index",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "vector containing the values to set.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v",
-          "type": {
-            "isArray": false,
-            "name": "RealVector",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "index",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "index"
       },
       {
-        "name": "v",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
           "name": "RealVector",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-        }
+          "isArray": false
+        },
+        "name": "v"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "setSubVector(int index,org.apache.commons.math3.linear.RealVector v)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "index of first element to be set.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "vector containing the values to set.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": [
       {
-        "comment": "if the index is not valid.",
-        "condition": "",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException",
           "name": "OutOfRangeException",
-          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the index is not valid.",
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "isNaN()",
     "name": "isNaN",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "true if any coordinate of this vector is NaN, false otherwise.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "isNaN()",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "isInfinite()",
     "name": "isInfinite",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "true if any coordinate of this vector is infinite and none are NaN, false otherwise.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "isInfinite()",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
-    "name": "checkVectorDimensions",
-    "paramTags": [
-      {
-        "comment": "Vector to compare instance with.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v",
-          "type": {
-            "isArray": false,
-            "name": "RealVector",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "v",
-        "type": {
-          "isArray": false,
-          "name": "RealVector",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
     "signature": "checkVectorDimensions(org.apache.commons.math3.linear.RealVector v)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
-    "throwsTags": [
-      {
-        "comment": "if the vectors do not have the same dimension.",
-        "condition": "target.checkVectorsDimensions(args[0])",
-        "exception": {
-          "isArray": false,
-          "name": "DimensionMismatchException",
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
     "name": "checkVectorDimensions",
-    "paramTags": [
-      {
-        "comment": "Expected dimension.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "n",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "n",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "checkVectorDimensions(int n)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
-    "throwsTags": [
-      {
-        "comment": "if the dimension is inconsistent with the vector size.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "DimensionMismatchException",
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
       "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
+      "isArray": false
     },
-    "isVarArgs": false,
-    "name": "checkIndex",
-    "paramTags": [
-      {
-        "comment": "Index to check.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "index",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "index",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "checkIndex(int index)",
     "targetClass": "org.apache.commons.math3.linear.RealVector",
-    "throwsTags": [
-      {
-        "comment": "if index is not valid.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "OutOfRangeException",
-          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
     "isVarArgs": false,
-    "name": "checkIndices",
-    "paramTags": [
-      {
-        "comment": "the index of the first entry of the subvector",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "start",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the index of the last entry of the subvector (inclusive)",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "end",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "start",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "end",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
     "returnType": {
-      "isArray": false,
+      "qualifiedName": "void",
       "name": "void",
-      "qualifiedName": "void"
+      "isArray": false
     },
-    "signature": "checkIndices(int start,int end)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
-    "throwsTags": [
-      {
-        "comment": "if start of end are not valid",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "OutOfRangeException",
-          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException"
-        },
-        "kind": "@throws"
-      },
-      {
-        "comment": "if end < start",
-        "condition": "args[1]<args[0]",
-        "exception": {
-          "isArray": false,
-          "name": "NumberIsTooSmallException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
-    "name": "add",
-    "paramTags": [
-      {
-        "comment": "Vector to be added.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v",
-          "type": {
-            "isArray": false,
-            "name": "RealVector",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-          }
-        }
-      }
-    ],
     "parameters": [
       {
-        "name": "v",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
           "name": "RealVector",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-        }
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector to compare instance with.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
+          "name": "DimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the vectors do not have the same dimension.",
+        "kind": "THROWS",
+        "condition": "target.checkVectorsDimensions(args[0])"
+      }
+    ]
+  },
+  {
+    "signature": "checkVectorDimensions(int n)",
+    "name": "checkVectorDimensions",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "n"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "Expected dimension.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
+          "name": "DimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the dimension is inconsistent with the vector size.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "checkIndex(int index)",
+    "name": "checkIndex",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "Index to check.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException",
+          "name": "OutOfRangeException",
+          "isArray": false
+        },
+        "codeTags": [
+          "index"
+        ],
+        "comment": "if index is not valid.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "checkIndices(int start,int end)",
+    "name": "checkIndices",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "start"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "end"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "start"
+        },
+        "comment": "the index of the first entry of the subvector",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "end"
+        },
+        "comment": "the index of the last entry of the subvector (inclusive)",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException",
+          "name": "OutOfRangeException",
+          "isArray": false
+        },
+        "codeTags": [
+          "start",
+          "end"
+        ],
+        "comment": "if start of end are not valid",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException",
+          "name": "NumberIsTooSmallException",
+          "isArray": false
+        },
+        "codeTags": [
+          "end < start"
+        ],
+        "comment": "if end < start",
+        "kind": "THROWS",
+        "condition": "args[1]<args[0]"
+      }
+    ]
+  },
+  {
+    "signature": "add(org.apache.commons.math3.linear.RealVector v)",
+    "name": "add",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector to be added.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "this + v.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "add(org.apache.commons.math3.linear.RealVector v)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": [
       {
-        "comment": "if v is not the same size as this vector.",
-        "condition": "target.checkVectorDimensions(args[0])",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
           "name": "DimensionMismatchException",
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "v",
+          "this"
+        ],
+        "comment": "if v is not the same size as this vector.",
+        "kind": "THROWS",
+        "condition": "target.checkVectorDimensions(args[0])"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "subtract(org.apache.commons.math3.linear.RealVector v)",
     "name": "subtract",
-    "paramTags": [
-      {
-        "comment": "Vector to be subtracted.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v",
-          "type": {
-            "isArray": false,
-            "name": "RealVector",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "v",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
           "name": "RealVector",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-        }
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector to be subtracted.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "this - v.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "subtract(org.apache.commons.math3.linear.RealVector v)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": [
       {
-        "comment": "if v is not the same size as this vector.",
-        "condition": "target.checkVectorsDimensions(args[0])",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
           "name": "DimensionMismatchException",
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "v",
+          "this"
+        ],
+        "comment": "if v is not the same size as this vector.",
+        "kind": "THROWS",
+        "condition": "target.checkVectorsDimensions(args[0])"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "mapAdd(double d)",
     "name": "mapAdd",
-    "paramTags": [
-      {
-        "comment": "Value to be added to each entry.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "d",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "d",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "d"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d"
+        },
+        "comment": "Value to be added to each entry.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "this + d.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "mapAdd(double d)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "mapAddToSelf(double d)",
     "name": "mapAddToSelf",
-    "paramTags": [
-      {
-        "comment": "Value to be added to each entry.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "d",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "d",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "d"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d"
+        },
+        "comment": "Value to be added to each entry.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "this.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "mapAddToSelf(double d)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "copy()",
     "name": "copy",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "a vector copy.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "copy()",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "dotProduct(org.apache.commons.math3.linear.RealVector v)",
     "name": "dotProduct",
-    "paramTags": [
-      {
-        "comment": "Vector with which dot product should be computed",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v",
-          "type": {
-            "isArray": false,
-            "name": "RealVector",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "v",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
           "name": "RealVector",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-        }
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector with which dot product should be computed",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the scalar dot product between this instance and v.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "dotProduct(org.apache.commons.math3.linear.RealVector v)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": [
       {
-        "comment": "if v is not the same size as this vector.",
-        "condition": "target.checkVectorDimensions(args[0])",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
           "name": "DimensionMismatchException",
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "v",
+          "this"
+        ],
+        "comment": "if v is not the same size as this vector.",
+        "kind": "THROWS",
+        "condition": "target.checkVectorDimensions(args[0])"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "cosine(org.apache.commons.math3.linear.RealVector v)",
     "name": "cosine",
-    "paramTags": [
-      {
-        "comment": "Vector.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v",
-          "type": {
-            "isArray": false,
-            "name": "RealVector",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "v",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
           "name": "RealVector",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-        }
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the cosine of the angle between this vector and v.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "cosine(org.apache.commons.math3.linear.RealVector v)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": [
       {
-        "comment": "if this or v is the null vector",
-        "condition": "target.getNorm()==0 || args[0].getNorm()==0",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
           "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "this",
+          "v"
+        ],
+        "comment": "if this or v is the null vector",
+        "kind": "THROWS",
+        "condition": "target.getNorm()==0 || args[0].getNorm()==0"
       },
       {
-        "comment": "if the dimensions of this and v do not match",
-        "condition": "target.getDimension() != args[0].getDimension()",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
           "name": "DimensionMismatchException",
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "this",
+          "v"
+        ],
+        "comment": "if the dimensions of this and v do not match",
+        "kind": "THROWS",
+        "condition": "target.getDimension() != args[0].getDimension()"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "ebeDivide(org.apache.commons.math3.linear.RealVector v)",
     "name": "ebeDivide",
-    "paramTags": [
-      {
-        "comment": "Vector by which instance elements must be divided.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v",
-          "type": {
-            "isArray": false,
-            "name": "RealVector",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "v",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
           "name": "RealVector",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-        }
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector by which instance elements must be divided.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a vector containing this[i] / v[i] for all i.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "ebeDivide(org.apache.commons.math3.linear.RealVector v)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": [
       {
-        "comment": "if v is not the same size as this vector.",
-        "condition": "args[0].getDimension() != target.getDimension()",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
           "name": "DimensionMismatchException",
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "v",
+          "this"
+        ],
+        "comment": "if v is not the same size as this vector.",
+        "kind": "THROWS",
+        "condition": "args[0].getDimension() != target.getDimension()"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "ebeMultiply(org.apache.commons.math3.linear.RealVector v)",
     "name": "ebeMultiply",
-    "paramTags": [
-      {
-        "comment": "Vector by which instance elements must be multiplied",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v",
-          "type": {
-            "isArray": false,
-            "name": "RealVector",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "v",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
           "name": "RealVector",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-        }
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector by which instance elements must be multiplied",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a vector containing this[i] * v[i] for all i.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "ebeMultiply(org.apache.commons.math3.linear.RealVector v)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": [
       {
-        "comment": "if v is not the same size as this vector.",
-        "condition": "args[0].getDimension() != target.getDimension()",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
           "name": "DimensionMismatchException",
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "v",
+          "this"
+        ],
+        "comment": "if v is not the same size as this vector.",
+        "kind": "THROWS",
+        "condition": "args[0].getDimension() != target.getDimension()"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
-    "name": "getDistance",
-    "paramTags": [
-      {
-        "comment": "Vector to which distance is requested.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v",
-          "type": {
-            "isArray": false,
-            "name": "RealVector",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "v",
-        "type": {
-          "isArray": false,
-          "name": "RealVector",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the distance between two vectors.",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
     "signature": "getDistance(org.apache.commons.math3.linear.RealVector v)",
+    "name": "getDistance",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector to which distance is requested.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the distance between two vectors.",
+      "kind": "RETURN",
+      "condition": ""
+    },
     "throwsTags": [
       {
-        "comment": "if v is not the same size as this vector.",
-        "condition": "args[0].getDimension() != target.getDimension()",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
           "name": "DimensionMismatchException",
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "v",
+          "this"
+        ],
+        "comment": "if v is not the same size as this vector.",
+        "kind": "THROWS",
+        "condition": "args[0].getDimension() != target.getDimension()"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
-    "name": "getNorm",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the norm.",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
     "signature": "getNorm()",
+    "name": "getNorm",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the norm.",
+      "kind": "RETURN",
+      "condition": ""
+    },
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
-    "name": "getL1Norm",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the norm.",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
     "signature": "getL1Norm()",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
-    "throwsTags": []
-  },
-  {
+    "name": "getL1Norm",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
       "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "isVarArgs": false,
-    "name": "getLInfNorm",
-    "paramTags": [],
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the norm.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "getLInfNorm()",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
+    "signature": "getLInfNorm()",
+    "name": "getLInfNorm",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
       "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
+      "isArray": false
     },
-    "isVarArgs": false,
-    "name": "getL1Distance",
-    "paramTags": [
-      {
-        "comment": "Vector to which distance is requested.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v",
-          "type": {
-            "isArray": false,
-            "name": "RealVector",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "v",
-        "type": {
-          "isArray": false,
-          "name": "RealVector",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the distance between two vectors.",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "getL1Distance(org.apache.commons.math3.linear.RealVector v)",
     "targetClass": "org.apache.commons.math3.linear.RealVector",
-    "throwsTags": [
-      {
-        "comment": "if v is not the same size as this vector.",
-        "condition": "args[0].getDimension() != target.getDimension()",
-        "exception": {
-          "isArray": false,
-          "name": "DimensionMismatchException",
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
     "isVarArgs": false,
-    "name": "getLInfDistance",
-    "paramTags": [
-      {
-        "comment": "Vector to which distance is requested.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v",
-          "type": {
-            "isArray": false,
-            "name": "RealVector",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "v",
-        "type": {
-          "isArray": false,
-          "name": "RealVector",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the distance between two vectors.",
-      "condition": "",
-      "kind": "RETURN"
-    },
     "returnType": {
-      "isArray": false,
+      "qualifiedName": "double",
       "name": "double",
-      "qualifiedName": "double"
+      "isArray": false
     },
-    "signature": "getLInfDistance(org.apache.commons.math3.linear.RealVector v)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
-    "throwsTags": [
-      {
-        "comment": "if v is not the same size as this vector.",
-        "condition": "args[0].getDimension() != target.getDimension()",
-        "exception": {
-          "isArray": false,
-          "name": "DimensionMismatchException",
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
-    "name": "getMinIndex",
-    "paramTags": [],
     "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the norm.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getL1Distance(org.apache.commons.math3.linear.RealVector v)",
+    "name": "getL1Distance",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector to which distance is requested.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the distance between two vectors.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
+          "name": "DimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [
+          "v",
+          "this"
+        ],
+        "comment": "if v is not the same size as this vector.",
+        "kind": "THROWS",
+        "condition": "args[0].getDimension() != target.getDimension()"
+      }
+    ]
+  },
+  {
+    "signature": "getLInfDistance(org.apache.commons.math3.linear.RealVector v)",
+    "name": "getLInfDistance",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector to which distance is requested.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the distance between two vectors.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
+          "name": "DimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [
+          "v",
+          "this"
+        ],
+        "comment": "if v is not the same size as this vector.",
+        "kind": "THROWS",
+        "condition": "args[0].getDimension() != target.getDimension()"
+      }
+    ]
+  },
+  {
+    "signature": "getMinIndex()",
+    "name": "getMinIndex",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the index of the minimum entry or -1 if vector length is 0 or all entries are NaN.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "getMinIndex()",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "getMinValue()",
     "name": "getMinValue",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the value of the minimum entry or NaN if all entries are NaN.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "getMinValue()",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "getMaxIndex()",
     "name": "getMaxIndex",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the index of the maximum entry or -1 if vector length is 0 or all entries are NaN",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "getMaxIndex()",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "getMaxValue()",
     "name": "getMaxValue",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the value of the maximum entry or NaN if all entries are NaN.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "getMaxValue()",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "mapMultiply(double d)",
     "name": "mapMultiply",
-    "paramTags": [
-      {
-        "comment": "Multiplication factor.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "d",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "d",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "d"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d"
+        },
+        "comment": "Multiplication factor.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "this * d.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "mapMultiply(double d)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "mapMultiplyToSelf(double d)",
     "name": "mapMultiplyToSelf",
-    "paramTags": [
-      {
-        "comment": "Multiplication factor.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "d",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "d",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "d"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d"
+        },
+        "comment": "Multiplication factor.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "this.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "mapMultiplyToSelf(double d)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "mapSubtract(double d)",
     "name": "mapSubtract",
-    "paramTags": [
-      {
-        "comment": "Value to be subtracted.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "d",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "d",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "d"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d"
+        },
+        "comment": "Value to be subtracted.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "this - d.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "mapSubtract(double d)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "mapSubtractToSelf(double d)",
     "name": "mapSubtractToSelf",
-    "paramTags": [
-      {
-        "comment": "Value to be subtracted.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "d",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "d",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "d"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d"
+        },
+        "comment": "Value to be subtracted.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "this.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "mapSubtractToSelf(double d)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "mapDivide(double d)",
     "name": "mapDivide",
-    "paramTags": [
-      {
-        "comment": "Value to divide by.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "d",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "d",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "d"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d"
+        },
+        "comment": "Value to divide by.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "this / d.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "mapDivide(double d)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "mapDivideToSelf(double d)",
     "name": "mapDivideToSelf",
-    "paramTags": [
-      {
-        "comment": "Value to divide by.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "d",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "d",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "d"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d"
+        },
+        "comment": "Value to divide by.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "this.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "mapDivideToSelf(double d)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "outerProduct(org.apache.commons.math3.linear.RealVector v)",
     "name": "outerProduct",
-    "paramTags": [
-      {
-        "comment": "Vector with which outer product should be computed.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v",
-          "type": {
-            "isArray": false,
-            "name": "RealVector",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealMatrix",
+      "name": "RealMatrix",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "v",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
           "name": "RealVector",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-        }
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector with which outer product should be computed.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the matrix outer product between this instance and v.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealMatrix",
-      "qualifiedName": "org.apache.commons.math3.linear.RealMatrix"
-    },
-    "signature": "outerProduct(org.apache.commons.math3.linear.RealVector v)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "projection(org.apache.commons.math3.linear.RealVector v)",
     "name": "projection",
-    "paramTags": [
-      {
-        "comment": "vector onto which instance must be projected.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v",
-          "type": {
-            "isArray": false,
-            "name": "RealVector",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "v",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
           "name": "RealVector",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-        }
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "vector onto which instance must be projected.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "projection of the instance onto v.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "projection(org.apache.commons.math3.linear.RealVector v)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": [
       {
-        "comment": "if v is not the same size as this vector.",
-        "condition": "args[0].getDimension() != target.getDimension()",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
           "name": "DimensionMismatchException",
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "v",
+          "this"
+        ],
+        "comment": "if v is not the same size as this vector.",
+        "kind": "THROWS",
+        "condition": "args[0].getDimension() != target.getDimension()"
       },
       {
-        "comment": "if this or v is the null vector",
-        "condition": "target.getNorm()==0 || args[0].getNorm()==0",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
           "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "this",
+          "v"
+        ],
+        "comment": "if this or v is the null vector",
+        "kind": "THROWS",
+        "condition": "target.getNorm()==0 || args[0].getNorm()==0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "set(double value)",
     "name": "set",
-    "paramTags": [
-      {
-        "comment": "Single value to set for all elements.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "value",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "value",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "value"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "set(double value)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "Single value to set for all elements.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "toArray()",
     "name": "toArray",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double[]",
+      "name": "double[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "double",
+        "name": "double",
+        "isArray": false
+      }
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "an array containing a copy of the vector elements.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "double",
-        "qualifiedName": "double"
-      },
-      "isArray": true,
-      "name": "double[]",
-      "qualifiedName": "double[]"
-    },
-    "signature": "toArray()",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "unitVector()",
     "name": "unitVector",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "a unit vector pointing in direction of this vector.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "unitVector()",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": [
       {
-        "comment": "if the norm is zero.",
-        "condition": "target.getNorm()==0",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
           "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the norm is zero.",
+        "kind": "THROWS",
+        "condition": "target.getNorm()==0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
-    "name": "unitize",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
     "signature": "unitize()",
+    "name": "unitize",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
     "throwsTags": [
       {
-        "comment": "if the norm is zero.",
-        "condition": "target.getNorm()==0",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
           "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the norm is zero.",
+        "kind": "THROWS",
+        "condition": "target.getNorm()==0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "sparseIterator()",
     "name": "sparseIterator",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "a sparse iterator.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Iterator",
-      "qualifiedName": "java.util.Iterator"
-    },
-    "signature": "sparseIterator()",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "iterator()",
     "name": "iterator",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "a dense iterator.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Iterator",
-      "qualifiedName": "java.util.Iterator"
-    },
-    "signature": "iterator()",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "map(org.apache.commons.math3.analysis.UnivariateFunction function)",
     "name": "map",
-    "paramTags": [
-      {
-        "comment": "Function to apply to each entry.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "function",
-          "type": {
-            "isArray": false,
-            "name": "UnivariateFunction",
-            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "function",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
           "name": "UnivariateFunction",
-          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
-        }
+          "isArray": false
+        },
+        "name": "function"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+            "name": "UnivariateFunction",
+            "isArray": false
+          },
+          "name": "function"
+        },
+        "comment": "Function to apply to each entry.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a new vector.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "map(org.apache.commons.math3.analysis.UnivariateFunction function)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "mapToSelf(org.apache.commons.math3.analysis.UnivariateFunction function)",
     "name": "mapToSelf",
-    "paramTags": [
-      {
-        "comment": "Function to apply to each entry.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "function",
-          "type": {
-            "isArray": false,
-            "name": "UnivariateFunction",
-            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "function",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
           "name": "UnivariateFunction",
-          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
-        }
+          "isArray": false
+        },
+        "name": "function"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+            "name": "UnivariateFunction",
+            "isArray": false
+          },
+          "name": "function"
+        },
+        "comment": "Function to apply to each entry.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a reference to this vector.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "mapToSelf(org.apache.commons.math3.analysis.UnivariateFunction function)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "combine(double a,double b,org.apache.commons.math3.linear.RealVector y)",
     "name": "combine",
-    "paramTags": [
-      {
-        "comment": "Coefficient of this.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "a",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "Coefficient of y.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "b",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "Vector with which this is linearly combined.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "y",
-          "type": {
-            "isArray": false,
-            "name": "RealVector",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "a",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "a"
       },
       {
-        "name": "b",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "b"
       },
       {
-        "name": "y",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
           "name": "RealVector",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-        }
+          "isArray": false
+        },
+        "name": "y"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "Coefficient of this.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "Coefficient of y.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "y"
+        },
+        "comment": "Vector with which this is linearly combined.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a vector containing a * this[i] + b * y[i] for all i.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "combine(double a,double b,org.apache.commons.math3.linear.RealVector y)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": [
       {
-        "comment": "if y is not the same size as this vector.",
-        "condition": "args[2].getDimension() != target.getDimension()",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
           "name": "DimensionMismatchException",
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "y",
+          "this"
+        ],
+        "comment": "if y is not the same size as this vector.",
+        "kind": "THROWS",
+        "condition": "args[2].getDimension() != target.getDimension()"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "combineToSelf(double a,double b,org.apache.commons.math3.linear.RealVector y)",
     "name": "combineToSelf",
-    "paramTags": [
-      {
-        "comment": "Weight of this.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "a",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "Weight of y.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "b",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "Vector with which this is linearly combined.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "y",
-          "type": {
-            "isArray": false,
-            "name": "RealVector",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "a",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "a"
       },
       {
-        "name": "b",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "b"
       },
       {
-        "name": "y",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
           "name": "RealVector",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-        }
+          "isArray": false
+        },
+        "name": "y"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "Weight of this.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "Weight of y.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "y"
+        },
+        "comment": "Vector with which this is linearly combined.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "this, with components equal to a * this[i] + b * y[i] for all i.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "combineToSelf(double a,double b,org.apache.commons.math3.linear.RealVector y)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": [
       {
-        "comment": "if y is not the same size as this vector.",
-        "condition": "args[2].getDimension() != target.getDimension()",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
           "name": "DimensionMismatchException",
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "y",
+          "this"
+        ],
+        "comment": "if y is not the same size as this vector.",
+        "kind": "THROWS",
+        "condition": "args[2].getDimension() != target.getDimension()"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
-    "name": "walkInDefaultOrder",
-    "paramTags": [
-      {
-        "comment": "the visitor to be used to process the entries of this vector",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "visitor",
-          "type": {
-            "isArray": false,
-            "name": "RealVectorPreservingVisitor",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVectorPreservingVisitor"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "visitor",
-        "type": {
-          "isArray": false,
-          "name": "RealVectorPreservingVisitor",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVectorPreservingVisitor"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the value returned by RealVectorPreservingVisitor.end() at the end of the walk",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
     "signature": "walkInDefaultOrder(org.apache.commons.math3.linear.RealVectorPreservingVisitor visitor)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
     "name": "walkInDefaultOrder",
-    "paramTags": [
-      {
-        "comment": "visitor to be used to process the entries of this vector",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "visitor",
-          "type": {
-            "isArray": false,
-            "name": "RealVectorPreservingVisitor",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVectorPreservingVisitor"
-          }
-        }
-      },
-      {
-        "comment": "the index of the first entry to be visited",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "start",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the index of the last entry to be visited (inclusive)",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "end",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "visitor",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.linear.RealVectorPreservingVisitor",
           "name": "RealVectorPreservingVisitor",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVectorPreservingVisitor"
-        }
-      },
+          "isArray": false
+        },
+        "name": "visitor"
+      }
+    ],
+    "paramTags": [
       {
-        "name": "start",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "end",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVectorPreservingVisitor",
+            "name": "RealVectorPreservingVisitor",
+            "isArray": false
+          },
+          "name": "visitor"
+        },
+        "comment": "the visitor to be used to process the entries of this vector",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the value returned by RealVectorPreservingVisitor.end() at the end of the walk",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
+    "throwsTags": []
+  },
+  {
     "signature": "walkInDefaultOrder(org.apache.commons.math3.linear.RealVectorPreservingVisitor visitor,int start,int end)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
-    "throwsTags": [
-      {
-        "comment": "if end < start.",
-        "condition": "args[2]<args[1]",
-        "exception": {
-          "isArray": false,
-          "name": "NumberIsTooSmallException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException"
-        },
-        "kind": "@throws"
-      },
-      {
-        "comment": "if the indices are not valid.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "OutOfRangeException",
-          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
+    "name": "walkInDefaultOrder",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
       "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "isVarArgs": false,
-    "name": "walkInOptimizedOrder",
-    "paramTags": [
-      {
-        "comment": "the visitor to be used to process the entries of this vector",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "visitor",
-          "type": {
-            "isArray": false,
-            "name": "RealVectorPreservingVisitor",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVectorPreservingVisitor"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "visitor",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.linear.RealVectorPreservingVisitor",
           "name": "RealVectorPreservingVisitor",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVectorPreservingVisitor"
-        }
+          "isArray": false
+        },
+        "name": "visitor"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "start"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "end"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVectorPreservingVisitor",
+            "name": "RealVectorPreservingVisitor",
+            "isArray": false
+          },
+          "name": "visitor"
+        },
+        "comment": "visitor to be used to process the entries of this vector",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "start"
+        },
+        "comment": "the index of the first entry to be visited",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "end"
+        },
+        "comment": "the index of the last entry to be visited (inclusive)",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the value returned by RealVectorPreservingVisitor.end() at the end of the walk",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException",
+          "name": "NumberIsTooSmallException",
+          "isArray": false
+        },
+        "codeTags": [
+          "end < start"
+        ],
+        "comment": "if end < start.",
+        "kind": "THROWS",
+        "condition": "args[2]<args[1]"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException",
+          "name": "OutOfRangeException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the indices are not valid.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
     "signature": "walkInOptimizedOrder(org.apache.commons.math3.linear.RealVectorPreservingVisitor visitor)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
     "name": "walkInOptimizedOrder",
-    "paramTags": [
-      {
-        "comment": "visitor to be used to process the entries of this vector",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "visitor",
-          "type": {
-            "isArray": false,
-            "name": "RealVectorPreservingVisitor",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVectorPreservingVisitor"
-          }
-        }
-      },
-      {
-        "comment": "the index of the first entry to be visited",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "start",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the index of the last entry to be visited (inclusive)",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "end",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "visitor",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.linear.RealVectorPreservingVisitor",
           "name": "RealVectorPreservingVisitor",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVectorPreservingVisitor"
-        }
-      },
+          "isArray": false
+        },
+        "name": "visitor"
+      }
+    ],
+    "paramTags": [
       {
-        "name": "start",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "end",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVectorPreservingVisitor",
+            "name": "RealVectorPreservingVisitor",
+            "isArray": false
+          },
+          "name": "visitor"
+        },
+        "comment": "the visitor to be used to process the entries of this vector",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the value returned by RealVectorPreservingVisitor.end() at the end of the walk",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
+    "throwsTags": []
+  },
+  {
     "signature": "walkInOptimizedOrder(org.apache.commons.math3.linear.RealVectorPreservingVisitor visitor,int start,int end)",
+    "name": "walkInOptimizedOrder",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.math3.linear.RealVector",
-    "throwsTags": [
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
       {
-        "comment": "if end < start.",
-        "condition": "args[2]<args[1]",
-        "exception": {
-          "isArray": false,
-          "name": "NumberIsTooSmallException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException"
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVectorPreservingVisitor",
+          "name": "RealVectorPreservingVisitor",
+          "isArray": false
         },
-        "kind": "@throws"
+        "name": "visitor"
       },
       {
-        "comment": "if the indices are not valid.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "OutOfRangeException",
-          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException"
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
         },
-        "kind": "@throws"
+        "name": "start"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "end"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVectorPreservingVisitor",
+            "name": "RealVectorPreservingVisitor",
+            "isArray": false
+          },
+          "name": "visitor"
+        },
+        "comment": "visitor to be used to process the entries of this vector",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "start"
+        },
+        "comment": "the index of the first entry to be visited",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "end"
+        },
+        "comment": "the index of the last entry to be visited (inclusive)",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the value returned by RealVectorPreservingVisitor.end() at the end of the walk",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException",
+          "name": "NumberIsTooSmallException",
+          "isArray": false
+        },
+        "codeTags": [
+          "end < start"
+        ],
+        "comment": "if end < start.",
+        "kind": "THROWS",
+        "condition": "args[2]<args[1]"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException",
+          "name": "OutOfRangeException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the indices are not valid.",
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
-    "name": "walkInDefaultOrder",
-    "paramTags": [
-      {
-        "comment": "the visitor to be used to process and modify the entries of this vector",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "visitor",
-          "type": {
-            "isArray": false,
-            "name": "RealVectorChangingVisitor",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVectorChangingVisitor"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "visitor",
-        "type": {
-          "isArray": false,
-          "name": "RealVectorChangingVisitor",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVectorChangingVisitor"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the value returned by RealVectorChangingVisitor.end() at the end of the walk",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
     "signature": "walkInDefaultOrder(org.apache.commons.math3.linear.RealVectorChangingVisitor visitor)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
     "name": "walkInDefaultOrder",
-    "paramTags": [
-      {
-        "comment": "visitor to be used to process the entries of this vector",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "visitor",
-          "type": {
-            "isArray": false,
-            "name": "RealVectorChangingVisitor",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVectorChangingVisitor"
-          }
-        }
-      },
-      {
-        "comment": "the index of the first entry to be visited",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "start",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the index of the last entry to be visited (inclusive)",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "end",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "visitor",
-        "type": {
-          "isArray": false,
-          "name": "RealVectorChangingVisitor",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVectorChangingVisitor"
-        }
-      },
-      {
-        "name": "start",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "end",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the value returned by RealVectorChangingVisitor.end() at the end of the walk",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "walkInDefaultOrder(org.apache.commons.math3.linear.RealVectorChangingVisitor visitor,int start,int end)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
-    "throwsTags": [
-      {
-        "comment": "if end < start.",
-        "condition": "args[2]<args[1]",
-        "exception": {
-          "isArray": false,
-          "name": "NumberIsTooSmallException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException"
-        },
-        "kind": "@throws"
-      },
-      {
-        "comment": "if the indices are not valid.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "OutOfRangeException",
-          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
       "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "isVarArgs": false,
-    "name": "walkInOptimizedOrder",
-    "paramTags": [
-      {
-        "comment": "the visitor to be used to process the entries of this vector",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "visitor",
-          "type": {
-            "isArray": false,
-            "name": "RealVectorChangingVisitor",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVectorChangingVisitor"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "visitor",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.linear.RealVectorChangingVisitor",
           "name": "RealVectorChangingVisitor",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVectorChangingVisitor"
-        }
+          "isArray": false
+        },
+        "name": "visitor"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVectorChangingVisitor",
+            "name": "RealVectorChangingVisitor",
+            "isArray": false
+          },
+          "name": "visitor"
+        },
+        "comment": "the visitor to be used to process and modify the entries of this vector",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the value returned by RealVectorChangingVisitor.end() at the end of the walk",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "walkInOptimizedOrder(org.apache.commons.math3.linear.RealVectorChangingVisitor visitor)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   },
   {
+    "signature": "walkInDefaultOrder(org.apache.commons.math3.linear.RealVectorChangingVisitor visitor,int start,int end)",
+    "name": "walkInDefaultOrder",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
       "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "isVarArgs": false,
-    "name": "walkInOptimizedOrder",
-    "paramTags": [
-      {
-        "comment": "visitor to be used to process the entries of this vector",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "visitor",
-          "type": {
-            "isArray": false,
-            "name": "RealVectorChangingVisitor",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVectorChangingVisitor"
-          }
-        }
-      },
-      {
-        "comment": "the index of the first entry to be visited",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "start",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the index of the last entry to be visited (inclusive)",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "end",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "visitor",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.linear.RealVectorChangingVisitor",
           "name": "RealVectorChangingVisitor",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVectorChangingVisitor"
-        }
+          "isArray": false
+        },
+        "name": "visitor"
       },
       {
-        "name": "start",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "start"
       },
       {
-        "name": "end",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "end"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVectorChangingVisitor",
+            "name": "RealVectorChangingVisitor",
+            "isArray": false
+          },
+          "name": "visitor"
+        },
+        "comment": "visitor to be used to process the entries of this vector",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "start"
+        },
+        "comment": "the index of the first entry to be visited",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "end"
+        },
+        "comment": "the index of the last entry to be visited (inclusive)",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the value returned by RealVectorChangingVisitor.end() at the end of the walk",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "walkInOptimizedOrder(org.apache.commons.math3.linear.RealVectorChangingVisitor visitor,int start,int end)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": [
       {
-        "comment": "if end < start.",
-        "condition": "args[2]<args[1]",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException",
           "name": "NumberIsTooSmallException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "end < start"
+        ],
+        "comment": "if end < start.",
+        "kind": "THROWS",
+        "condition": "args[2]<args[1]"
       },
       {
-        "comment": "if the indices are not valid.",
-        "condition": "",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException",
           "name": "OutOfRangeException",
-          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the indices are not valid.",
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
+    "signature": "walkInOptimizedOrder(org.apache.commons.math3.linear.RealVectorChangingVisitor visitor)",
+    "name": "walkInOptimizedOrder",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
       "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "isVarArgs": false,
-    "name": "equals",
-    "paramTags": [
-      {
-        "comment": "Object to test for equality.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "other",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "other",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.linear.RealVectorChangingVisitor",
+          "name": "RealVectorChangingVisitor",
+          "isArray": false
+        },
+        "name": "visitor"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVectorChangingVisitor",
+            "name": "RealVectorChangingVisitor",
+            "isArray": false
+          },
+          "name": "visitor"
+        },
+        "comment": "the visitor to be used to process the entries of this vector",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the value returned by RealVectorChangingVisitor.end() at the end of the walk",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "walkInOptimizedOrder(org.apache.commons.math3.linear.RealVectorChangingVisitor visitor,int start,int end)",
+    "name": "walkInOptimizedOrder",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVectorChangingVisitor",
+          "name": "RealVectorChangingVisitor",
+          "isArray": false
+        },
+        "name": "visitor"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "start"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "end"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVectorChangingVisitor",
+            "name": "RealVectorChangingVisitor",
+            "isArray": false
+          },
+          "name": "visitor"
+        },
+        "comment": "visitor to be used to process the entries of this vector",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "start"
+        },
+        "comment": "the index of the first entry to be visited",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "end"
+        },
+        "comment": "the index of the last entry to be visited (inclusive)",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the value returned by RealVectorChangingVisitor.end() at the end of the walk",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException",
+          "name": "NumberIsTooSmallException",
+          "isArray": false
+        },
+        "codeTags": [
+          "end < start"
+        ],
+        "comment": "if end < start.",
+        "kind": "THROWS",
+        "condition": "args[2]<args[1]"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException",
+          "name": "OutOfRangeException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the indices are not valid.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "equals(java.lang.Object other)",
+    "name": "equals",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "other"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "other"
+        },
+        "comment": "Object to test for equality.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if two vector objects are equal, false if other is null, not an instance of RealVector, or not equal to this RealVector instance.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "equals(java.lang.Object other)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": [
       {
-        "comment": "if this method is not overridden.",
-        "condition": "",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.MathUnsupportedOperationException",
           "name": "MathUnsupportedOperationException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathUnsupportedOperationException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if this method is not overridden.",
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
-    "name": "hashCode",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
     "signature": "hashCode()",
+    "name": "hashCode",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
     "throwsTags": [
       {
-        "comment": "if this method is not overridden.",
-        "condition": "",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.MathUnsupportedOperationException",
           "name": "MathUnsupportedOperationException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathUnsupportedOperationException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if this method is not overridden.",
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "isVarArgs": false,
+    "signature": "unmodifiableRealVector(org.apache.commons.math3.linear.RealVector v)",
     "name": "unmodifiableRealVector",
-    "paramTags": [
-      {
-        "comment": "Vector for which an unmodifiable view is to be returned.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v",
-          "type": {
-            "isArray": false,
-            "name": "RealVector",
-            "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.RealVector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "RealVector",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "v",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
           "name": "RealVector",
-          "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-        }
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "Vector for which an unmodifiable view is to be returned.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "an unmodifiable view of v.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RealVector",
-      "qualifiedName": "org.apache.commons.math3.linear.RealVector"
-    },
-    "signature": "unmodifiableRealVector(org.apache.commons.math3.linear.RealVector v)",
-    "targetClass": "org.apache.commons.math3.linear.RealVector",
     "throwsTags": []
   }
 ]

@@ -1,2384 +1,1766 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
-    "name": "RandomDataGenerator",
-    "paramTags": [],
-    "parameters": [],
     "signature": "RandomDataGenerator()",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
     "name": "RandomDataGenerator",
-    "paramTags": [
-      {
-        "comment": "the source of (non-secure) random data (may be null, resulting in the default generator)",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "rand",
-          "type": {
-            "isArray": false,
-            "name": "RandomGenerator",
-            "qualifiedName": "org.apache.commons.math3.random.RandomGenerator"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "rand",
-        "type": {
-          "isArray": false,
-          "name": "RandomGenerator",
-          "qualifiedName": "org.apache.commons.math3.random.RandomGenerator"
-        }
-      }
-    ],
-    "signature": "RandomDataGenerator(org.apache.commons.math3.random.RandomGenerator rand)",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
     "throwsTags": []
   },
   {
+    "signature": "RandomDataGenerator(org.apache.commons.math3.random.RandomGenerator rand)",
+    "name": "RandomDataGenerator",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
       "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
     "isVarArgs": false,
-    "name": "nextHexString",
-    "paramTags": [
-      {
-        "comment": "the desired string length.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "len",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
     "parameters": [
       {
-        "name": "len",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.random.RandomGenerator",
+          "name": "RandomGenerator",
+          "isArray": false
+        },
+        "name": "rand"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.random.RandomGenerator",
+            "name": "RandomGenerator",
+            "isArray": false
+          },
+          "name": "rand"
+        },
+        "comment": "the source of (non-secure) random data (may be null, resulting in the default generator)",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "nextHexString(int len)",
+    "name": "nextHexString",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "len"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "len"
+        },
+        "comment": "the desired string length.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the random string.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "String",
-      "qualifiedName": "java.lang.String"
-    },
-    "signature": "nextHexString(int len)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
         "codeTags": [
           "len <= 0"
         ],
         "comment": "if len <= 0.",
-        "condition": "args[0]<=0",
-        "exception": {
-          "isArray": false,
-          "name": "NotStrictlyPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
-        },
-        "kind": "THROWS"
-      },
-      {
-        "codeTags": [
-          "len <= 0"
-        ],
-        "comment": "if len <= 0",
-        "condition": "args[0]<=0",
-        "exception": {
-          "isArray": false,
-          "name": "NotStrictlyPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[0]<=0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
-    "name": "nextInt",
-    "paramTags": [
-      {
-        "comment": "lower bound for generated integer",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "lower",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "upper bound for generated integer",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "upper",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "lower",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "upper",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a random integer greater than or equal to lower and less than or equal to upper",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
     "signature": "nextInt(int lower,int upper)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
-    "throwsTags": [
-      {
-        "codeTags": [
-          "lower >= upper"
-        ],
-        "comment": "if lower >= upper",
-        "condition": "args[0]>=args[1]",
-        "exception": {
-          "isArray": false,
-          "name": "NumberIsTooLargeException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException"
-        },
-        "kind": "THROWS"
-      }
-    ]
-  },
-  {
+    "name": "nextInt",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
       "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
+      "isArray": false
     },
-    "isVarArgs": false,
-    "name": "nextLong",
-    "paramTags": [
-      {
-        "comment": "lower bound for generated long integer",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "lower",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      },
-      {
-        "comment": "upper bound for generated long integer",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "upper",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "lower",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      },
-      {
-        "name": "upper",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a random long integer greater than or equal to lower and less than or equal to upper",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
-    },
-    "signature": "nextLong(long lower,long upper)",
     "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
-    "throwsTags": [
-      {
-        "codeTags": [
-          "lower >= upper"
-        ],
-        "comment": "if lower >= upper",
-        "condition": "args[0]>=args[1]",
-        "exception": {
-          "isArray": false,
-          "name": "NumberIsTooLargeException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException"
-        },
-        "kind": "THROWS"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
     "isVarArgs": false,
-    "name": "nextLong",
-    "paramTags": [
-      {
-        "comment": "random generator to use",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "rng",
-          "type": {
-            "isArray": false,
-            "name": "RandomGenerator",
-            "qualifiedName": "org.apache.commons.math3.random.RandomGenerator"
-          }
-        }
-      },
-      {
-        "comment": "the bound on the random number to be returned. Must be positive.",
-        "condition": "args[1]>0",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "n",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "rng",
-        "type": {
-          "isArray": false,
-          "name": "RandomGenerator",
-          "qualifiedName": "org.apache.commons.math3.random.RandomGenerator"
-        }
-      },
-      {
-        "name": "n",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a pseudorandom, uniformly distributed long value between 0 (inclusive) and n (exclusive).",
-      "condition": "",
-      "kind": "RETURN"
-    },
     "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
-    },
-    "signature": "nextLong(org.apache.commons.math3.random.RandomGenerator rng,long n)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
-    "throwsTags": [
-      {
-        "codeTags": [],
-        "comment": "if n is not positive.",
-        "condition": "(args[1]>0) == false",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "THROWS"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
-    "name": "nextSecureHexString",
-    "paramTags": [
-      {
-        "comment": "the length of the string to be generated",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "len",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "len",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a random string of hex characters of length len",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "String",
-      "qualifiedName": "java.lang.String"
-    },
-    "signature": "nextSecureHexString(int len)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
-    "throwsTags": [
-      {
-        "codeTags": [
-          "len <= 0"
-        ],
-        "comment": "if len <= 0",
-        "condition": "args[0]<=0",
-        "exception": {
-          "isArray": false,
-          "name": "NotStrictlyPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
-        },
-        "kind": "THROWS"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
-    "name": "nextSecureInt",
-    "paramTags": [
-      {
-        "comment": "lower bound for generated integer",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "lower",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "upper bound for generated integer",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "upper",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "lower",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "upper",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a random integer greater than or equal to lower and less than or equal to upper.",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
+      "qualifiedName": "int",
       "name": "int",
-      "qualifiedName": "int"
+      "isArray": false
     },
-    "signature": "nextSecureInt(int lower,int upper)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
-    "throwsTags": [
-      {
-        "codeTags": [
-          "lower >= upper"
-        ],
-        "comment": "if lower >= upper.",
-        "condition": "args[0]>=args[1]",
-        "exception": {
-          "isArray": false,
-          "name": "NumberIsTooLargeException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException"
-        },
-        "kind": "THROWS"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
-    "name": "nextSecureLong",
-    "paramTags": [
-      {
-        "comment": "lower bound for generated integer",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "lower",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      },
-      {
-        "comment": "upper bound for generated integer",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "upper",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      }
-    ],
     "parameters": [
       {
-        "name": "lower",
         "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "lower"
       },
       {
-        "name": "upper",
         "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "upper"
       }
     ],
-    "returnTag": {
-      "comment": "a random long integer greater than or equal to lower and less than or equal to upper.",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
-    },
-    "signature": "nextSecureLong(long lower,long upper)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
-    "throwsTags": [
-      {
-        "codeTags": [
-          "lower >= upper"
-        ],
-        "comment": "if lower >= upper.",
-        "condition": "args[0]>=args[1]",
-        "exception": {
-          "isArray": false,
-          "name": "NumberIsTooLargeException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException"
-        },
-        "kind": "THROWS"
-      }
-    ]
+    "paramTags": [],
+    "throwsTags": []
   },
   {
+    "signature": "nextLong(long lower,long upper)",
+    "name": "nextLong",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
       "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
     "isVarArgs": false,
-    "name": "nextPoisson",
-    "paramTags": [
-      {
-        "comment": "the mean of the Poisson distribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "mean",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "mean",
         "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "lower"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "upper"
       }
     ],
-    "returnTag": {
-      "comment": "a random value following the specified Poisson distribution",
-      "condition": "",
-      "kind": "RETURN"
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "nextSecureHexString(int len)",
+    "name": "nextSecureHexString",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
     },
-    "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
-    },
-    "signature": "nextPoisson(double mean)",
     "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "len"
+      }
+    ],
+    "paramTags": [],
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
         "codeTags": [
           "len <= 0"
         ],
         "comment": "if len <= 0",
-        "condition": "args[0]<=0",
-        "exception": {
-          "isArray": false,
-          "name": "NotStrictlyPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
-        },
-        "kind": "THROWS"
-      },
-      {
-        "codeTags": [
-          "mean <= 0"
-        ],
-        "comment": "if mean <= 0.",
-        "condition": "args[0]<=0",
-        "exception": {
-          "isArray": false,
-          "name": "NotStrictlyPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[0]<=0"
       }
     ]
   },
   {
+    "signature": "nextSecureInt(int lower,int upper)",
+    "name": "nextSecureInt",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
       "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
     "isVarArgs": false,
-    "name": "nextGaussian",
-    "paramTags": [
-      {
-        "comment": "the mean of the distribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "mu",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "the standard deviation of the distribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "sigma",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "mu",
         "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "lower"
       },
       {
-        "name": "sigma",
         "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "upper"
       }
     ],
-    "returnTag": {
-      "comment": "a random value following the specified Gaussian distribution",
-      "condition": "",
-      "kind": "RETURN"
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "nextSecureLong(long lower,long upper)",
+    "name": "nextSecureLong",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
     "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
     },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "lower"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "upper"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "nextPoisson(double mean)",
+    "name": "nextPoisson",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "mean"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
+        "codeTags": [
+          "len <= 0"
+        ],
+        "comment": "if len <= 0",
+        "kind": "THROWS",
+        "condition": "args[0]<=0"
+      }
+    ]
+  },
+  {
     "signature": "nextGaussian(double mu,double sigma)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
-    "throwsTags": [
-      {
-        "codeTags": [
-          "sigma <= 0"
-        ],
-        "comment": "if sigma <= 0.",
-        "condition": "args[1]<=0",
-        "exception": {
-          "isArray": false,
-          "name": "NotStrictlyPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
-        },
-        "kind": "THROWS"
-      }
-    ]
-  },
-  {
+    "name": "nextGaussian",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
       "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
     "isVarArgs": false,
-    "name": "nextExponential",
-    "paramTags": [
-      {
-        "comment": "the mean of the distribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "mean",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "mean",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a random value following the specified exponential distribution",
-      "condition": "",
-      "kind": "RETURN"
-    },
     "returnType": {
-      "isArray": false,
+      "qualifiedName": "double",
       "name": "double",
-      "qualifiedName": "double"
+      "isArray": false
     },
-    "signature": "nextExponential(double mean)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
-    "throwsTags": [
-      {
-        "codeTags": [
-          "mean <= 0"
-        ],
-        "comment": "if mean <= 0.",
-        "condition": "args[0]<=0",
-        "exception": {
-          "isArray": false,
-          "name": "NotStrictlyPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
-        },
-        "kind": "THROWS"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
-    "name": "nextGamma",
-    "paramTags": [
-      {
-        "comment": "the median of the Gamma distribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "shape",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "the scale parameter of the Gamma distribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "scale",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
     "parameters": [
       {
-        "name": "shape",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "mu"
       },
       {
-        "name": "scale",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "sigma"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "nextExponential(double mean)",
+    "name": "nextExponential",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "mean"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "nextGamma(double shape,double scale)",
+    "name": "nextGamma",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "shape"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "scale"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "shape"
+        },
+        "comment": "the median of the Gamma distribution",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "scale"
+        },
+        "comment": "the scale parameter of the Gamma distribution",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "random value sampled from the Gamma(shape, scale) distribution",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "nextGamma(double shape,double scale)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
         "codeTags": [
           "shape <= 0",
           "scale <= 0"
         ],
         "comment": "if shape <= 0 or scale <= 0.",
-        "condition": "args[0]<=0 || args[1]<=0",
-        "exception": {
-          "isArray": false,
-          "name": "NotStrictlyPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[0]<=0 || args[1]<=0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
+    "signature": "nextHypergeometric(int populationSize,int numberOfSuccesses,int sampleSize)",
     "name": "nextHypergeometric",
-    "paramTags": [
-      {
-        "comment": "the population size of the Hypergeometric distribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "populationSize",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "number of successes in the population of the Hypergeometric distribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "numberOfSuccesses",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the sample size of the Hypergeometric distribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "sampleSize",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "populationSize",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "populationSize"
       },
       {
-        "name": "numberOfSuccesses",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "numberOfSuccesses"
       },
       {
-        "name": "sampleSize",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "sampleSize"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "populationSize"
+        },
+        "comment": "the population size of the Hypergeometric distribution",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "numberOfSuccesses"
+        },
+        "comment": "number of successes in the population of the Hypergeometric distribution",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "sampleSize"
+        },
+        "comment": "the sample size of the Hypergeometric distribution",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "random value sampled from the Hypergeometric(numberOfSuccesses, sampleSize) distribution",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "nextHypergeometric(int populationSize,int numberOfSuccesses,int sampleSize)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException",
+          "name": "NumberIsTooLargeException",
+          "isArray": false
+        },
         "codeTags": [
           "numberOfSuccesses > populationSize",
           "sampleSize > populationSize"
         ],
         "comment": "if numberOfSuccesses > populationSize, or sampleSize > populationSize.",
-        "condition": "args[1]>args[0] || args[2]>args[0]",
-        "exception": {
-          "isArray": false,
-          "name": "NumberIsTooLargeException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[1]>args[0] || args[2]>args[0]"
       },
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
         "codeTags": [
           "populationSize <= 0"
         ],
         "comment": "if populationSize <= 0.",
-        "condition": "args[0]<=0",
-        "exception": {
-          "isArray": false,
-          "name": "NotStrictlyPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[0]<=0"
       },
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException",
+          "name": "NotPositiveException",
+          "isArray": false
+        },
         "codeTags": [
           "numberOfSuccesses < 0"
         ],
         "comment": "if numberOfSuccesses < 0.",
-        "condition": "args[1]<0",
-        "exception": {
-          "isArray": false,
-          "name": "NotPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[1]<0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
+    "signature": "nextPascal(int r,double p)",
     "name": "nextPascal",
-    "paramTags": [
-      {
-        "comment": "the number of successes of the Pascal distribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "r",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the probability of success of the Pascal distribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "p",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "r",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "r"
       },
       {
-        "name": "p",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "p"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "r"
+        },
+        "comment": "the number of successes of the Pascal distribution",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "p"
+        },
+        "comment": "the probability of success of the Pascal distribution",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "random value sampled from the Pascal(r, p) distribution",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "nextPascal(int r,double p)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if the number of successes is not positive",
-        "condition": "(args[0]>0) == false",
-        "exception": {
-          "isArray": false,
-          "name": "NotStrictlyPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "(args[0]>0) == false"
       },
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException",
+          "name": "OutOfRangeException",
+          "isArray": false
+        },
         "codeTags": [
           "[0, 1]"
         ],
         "comment": "if the probability of success is not in the range [0, 1].",
-        "condition": "args[1]>=0 && args[1]<=1",
-        "exception": {
-          "isArray": false,
-          "name": "OutOfRangeException",
-          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[1]>=0 && args[1]<=1"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
+    "signature": "nextT(double df)",
     "name": "nextT",
-    "paramTags": [
-      {
-        "comment": "the degrees of freedom of the T distribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "df",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "df",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "df"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "df"
+        },
+        "comment": "the degrees of freedom of the T distribution",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "random value from the T(df) distribution",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "nextT(double df)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
         "codeTags": [
           "df <= 0"
         ],
         "comment": "if df <= 0",
-        "condition": "args[0]<=0",
-        "exception": {
-          "isArray": false,
-          "name": "NotStrictlyPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[0]<=0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
+    "signature": "nextWeibull(double shape,double scale)",
     "name": "nextWeibull",
-    "paramTags": [
-      {
-        "comment": "the shape parameter of the Weibull distribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "shape",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "the scale parameter of the Weibull distribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "scale",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "shape",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "shape"
       },
       {
-        "name": "scale",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "scale"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "shape"
+        },
+        "comment": "the shape parameter of the Weibull distribution",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "scale"
+        },
+        "comment": "the scale parameter of the Weibull distribution",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "random value sampled from the Weibull(shape, size) distribution",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "nextWeibull(double shape,double scale)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
         "codeTags": [
           "shape <= 0",
           "scale <= 0"
         ],
         "comment": "if shape <= 0 or scale <= 0.",
-        "condition": "args[0]<=0 || args[1]<=0",
-        "exception": {
-          "isArray": false,
-          "name": "NotStrictlyPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[0]<=0 || args[1]<=0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
+    "signature": "nextZipf(int numberOfElements,double exponent)",
     "name": "nextZipf",
-    "paramTags": [
-      {
-        "comment": "the number of elements of the ZipfDistribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "numberOfElements",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the exponent of the ZipfDistribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "exponent",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "numberOfElements",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "numberOfElements"
       },
       {
-        "name": "exponent",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "exponent"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "numberOfElements"
+        },
+        "comment": "the number of elements of the ZipfDistribution",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "exponent"
+        },
+        "comment": "the exponent of the ZipfDistribution",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "random value sampled from the Zipf(numberOfElements, exponent) distribution",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "nextZipf(int numberOfElements,double exponent)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
         "codeTags": [
           "numberOfElements <= 0",
           "exponent <= 0"
         ],
         "comment": "if numberOfElements <= 0 or exponent <= 0.",
-        "condition": "args[0]<=0 || args[1]<=0",
-        "exception": {
-          "isArray": false,
-          "name": "NotStrictlyPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[0]<=0 || args[1]<=0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
+    "signature": "nextBeta(double alpha,double beta)",
     "name": "nextBeta",
-    "paramTags": [
-      {
-        "comment": "first distribution shape parameter",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "alpha",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "second distribution shape parameter",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "beta",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "alpha",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "alpha"
       },
       {
-        "name": "beta",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "beta"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "alpha"
+        },
+        "comment": "first distribution shape parameter",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "beta"
+        },
+        "comment": "second distribution shape parameter",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "random value sampled from the beta(alpha, beta) distribution",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "nextBeta(double alpha,double beta)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
+    "signature": "nextBinomial(int numberOfTrials,double probabilityOfSuccess)",
     "name": "nextBinomial",
-    "paramTags": [
-      {
-        "comment": "number of trials of the Binomial distribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "numberOfTrials",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "probability of success of the Binomial distribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "probabilityOfSuccess",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "numberOfTrials",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "numberOfTrials"
       },
       {
-        "name": "probabilityOfSuccess",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "probabilityOfSuccess"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "numberOfTrials"
+        },
+        "comment": "number of trials of the Binomial distribution",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "probabilityOfSuccess"
+        },
+        "comment": "probability of success of the Binomial distribution",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "random value sampled from the Binomial(numberOfTrials, probabilityOfSuccess) distribution",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "nextBinomial(int numberOfTrials,double probabilityOfSuccess)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
+    "signature": "nextCauchy(double median,double scale)",
     "name": "nextCauchy",
-    "paramTags": [
-      {
-        "comment": "the median of the Cauchy distribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "median",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "the scale parameter of the Cauchy distribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "scale",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "median",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "median"
       },
       {
-        "name": "scale",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "scale"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "median"
+        },
+        "comment": "the median of the Cauchy distribution",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "scale"
+        },
+        "comment": "the scale parameter of the Cauchy distribution",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "random value sampled from the Cauchy(median, scale) distribution",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "nextCauchy(double median,double scale)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
+    "signature": "nextChiSquare(double df)",
     "name": "nextChiSquare",
-    "paramTags": [
-      {
-        "comment": "the degrees of freedom of the ChiSquare distribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "df",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "df",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "df"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "df"
+        },
+        "comment": "the degrees of freedom of the ChiSquare distribution",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "random value sampled from the ChiSquare(df) distribution",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "nextChiSquare(double df)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
+    "signature": "nextF(double numeratorDf,double denominatorDf)",
     "name": "nextF",
-    "paramTags": [
-      {
-        "comment": "the numerator degrees of freedom of the F distribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "numeratorDf",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "the denominator degrees of freedom of the F distribution",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "denominatorDf",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "numeratorDf",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "numeratorDf"
       },
       {
-        "name": "denominatorDf",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "denominatorDf"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "numeratorDf"
+        },
+        "comment": "the numerator degrees of freedom of the F distribution",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "denominatorDf"
+        },
+        "comment": "the denominator degrees of freedom of the F distribution",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "random value sampled from the F(numeratorDf, denominatorDf) distribution",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "nextF(double numeratorDf,double denominatorDf)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
         "codeTags": [
           "numeratorDf <= 0",
           "denominatorDf <= 0"
         ],
         "comment": "if numeratorDf <= 0 or denominatorDf <= 0.",
-        "condition": "args[0]<=0 || args[1]<=0",
-        "exception": {
-          "isArray": false,
-          "name": "NotStrictlyPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[0]<=0 || args[1]<=0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
-    "name": "nextUniform",
-    "paramTags": [
-      {
-        "comment": "the exclusive lower bound of the support",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "lower",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "the exclusive upper bound of the support",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "upper",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "lower",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      },
-      {
-        "name": "upper",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a uniformly distributed random value between lower and upper (exclusive)",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
     "signature": "nextUniform(double lower,double upper)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
-    "throwsTags": [
-      {
-        "codeTags": [
-          "lower >= upper"
-        ],
-        "comment": "if lower >= upper",
-        "condition": "args[0]>=args[1]",
-        "exception": {
-          "isArray": false,
-          "name": "NumberIsTooLargeException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException"
-        },
-        "kind": "THROWS"
-      },
-      {
-        "codeTags": [],
-        "comment": "if one of the bounds is infinite",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "NotFiniteNumberException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotFiniteNumberException"
-        },
-        "kind": "THROWS"
-      },
-      {
-        "codeTags": [],
-        "comment": "if one of the bounds is NaN",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "NotANumberException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotANumberException"
-        },
-        "kind": "THROWS"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
     "name": "nextUniform",
-    "paramTags": [
-      {
-        "comment": "the lower bound of the support",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "lower",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "the exclusive upper bound of the support",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "upper",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "true if the lower bound is inclusive",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "lowerInclusive",
-          "type": {
-            "isArray": false,
-            "name": "boolean",
-            "qualifiedName": "boolean"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "lower",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "lower"
       },
       {
-        "name": "upper",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
-      },
-      {
-        "name": "lowerInclusive",
-        "type": {
-          "isArray": false,
-          "name": "boolean",
-          "qualifiedName": "boolean"
-        }
+          "isArray": false
+        },
+        "name": "upper"
       }
     ],
-    "returnTag": {
-      "comment": "uniformly distributed random value in the (lower, upper) interval, if lowerInclusive is false, or in the [lower, upper) interval, if lowerInclusive is true",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "nextUniform(double lower,double upper,boolean lowerInclusive)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "paramTags": [],
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException",
+          "name": "NumberIsTooLargeException",
+          "isArray": false
+        },
         "codeTags": [
           "lower >= upper"
         ],
         "comment": "if lower >= upper",
-        "condition": "args[0]>=args[1]",
-        "exception": {
-          "isArray": false,
-          "name": "NumberIsTooLargeException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[0]>=args[1]"
       },
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotFiniteNumberException",
+          "name": "NotFiniteNumberException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if one of the bounds is infinite",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "NotFiniteNumberException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotFiniteNumberException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       },
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotANumberException",
+          "name": "NotANumberException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if one of the bounds is NaN",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "NotANumberException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotANumberException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
+    "signature": "nextUniform(double lower,double upper,boolean lowerInclusive)",
+    "name": "nextUniform",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
       "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
     "isVarArgs": false,
-    "name": "nextPermutation",
-    "paramTags": [
-      {
-        "comment": "the domain of the permutation",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "n",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the size of the permutation",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "k",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "n",
         "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "lower"
       },
       {
-        "name": "k",
         "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "upper"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "lowerInclusive"
       }
     ],
-    "returnTag": {
-      "comment": "a random k-permutation of n, as an array of integers",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "int",
-        "qualifiedName": "int"
-      },
-      "isArray": true,
-      "name": "int[]",
-      "qualifiedName": "int[]"
-    },
-    "signature": "nextPermutation(int n,int k)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "paramTags": [],
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException",
+          "name": "NumberIsTooLargeException",
+          "isArray": false
+        },
+        "codeTags": [
+          "lower >= upper"
+        ],
+        "comment": "if lower >= upper",
+        "kind": "THROWS",
+        "condition": "args[0]>=args[1]"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotFiniteNumberException",
+          "name": "NotFiniteNumberException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if one of the bounds is infinite",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotANumberException",
+          "name": "NotANumberException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if one of the bounds is NaN",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "nextPermutation(int n,int k)",
+    "name": "nextPermutation",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int[]",
+      "name": "int[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "int",
+        "name": "int",
+        "isArray": false
+      }
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "n"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "k"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException",
+          "name": "NumberIsTooLargeException",
+          "isArray": false
+        },
         "codeTags": [
           "k > n"
         ],
         "comment": "if k > n.",
-        "condition": "args[1]>args[0]",
-        "exception": {
-          "isArray": false,
-          "name": "NumberIsTooLargeException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[1]>args[0]"
       },
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
         "codeTags": [
           "k <= 0"
         ],
         "comment": "if k <= 0.",
-        "condition": "args[1]<=0",
-        "exception": {
-          "isArray": false,
-          "name": "NotStrictlyPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[1]<=0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
-    "name": "nextSample",
-    "paramTags": [
-      {
-        "comment": "the collection to be sampled",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "c",
-          "type": {
-            "isArray": false,
-            "name": "Collection",
-            "qualifiedName": "java.util.Collection"
-          }
-        }
-      },
-      {
-        "comment": "the size of the sample",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "k",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "c",
-        "type": {
-          "isArray": false,
-          "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
-      },
-      {
-        "name": "k",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a random sample of k elements from c",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "Object",
-        "qualifiedName": "java.lang.Object"
-      },
-      "isArray": true,
-      "name": "Object[]",
-      "qualifiedName": "java.lang.Object[]"
-    },
     "signature": "nextSample(java.util.Collection c,int k)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
-    "throwsTags": [
-      {
-        "codeTags": [
-          "k > c.size()"
-        ],
-        "comment": "if k > c.size().",
-        "condition": "args[1]>args[0].size()",
-        "exception": {
-          "isArray": false,
-          "name": "NumberIsTooLargeException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException"
-        },
-        "kind": "THROWS"
-      },
-      {
-        "codeTags": [
-          "k <= 0"
-        ],
-        "comment": "if k <= 0.",
-        "condition": "args[1]<=0",
-        "exception": {
-          "isArray": false,
-          "name": "NotStrictlyPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
-        },
-        "kind": "THROWS"
-      }
-    ]
-  },
-  {
+    "name": "nextSample",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
       "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
     "isVarArgs": false,
-    "name": "reSeed",
-    "paramTags": [
-      {
-        "comment": "the seed value to use",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "seed",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
+    "returnType": {
+      "qualifiedName": "java.lang.Object[]",
+      "name": "Object[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "java.lang.Object",
+        "name": "Object",
+        "isArray": false
       }
-    ],
+    },
     "parameters": [
       {
-        "name": "seed",
         "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "c"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "k"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
     "signature": "reSeed(long seed)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
-    "name": "reSeedSecure",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "reSeedSecure()",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
-    "name": "reSeedSecure",
-    "paramTags": [
-      {
-        "comment": "the seed value to use",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "seed",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "seed",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "reSeedSecure(long seed)",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
     "name": "reSeed",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
     },
-    "signature": "reSeed()",
     "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "seed"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "seed"
+        },
+        "comment": "the seed value to use",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": []
   },
   {
+    "signature": "reSeedSecure()",
+    "name": "reSeedSecure",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
       "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
     "isVarArgs": false,
-    "name": "setSecureAlgorithm",
-    "paramTags": [
-      {
-        "comment": "the name of the PRNG algorithm",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "algorithm",
-          "type": {
-            "isArray": false,
-            "name": "String",
-            "qualifiedName": "java.lang.String"
-          }
-        }
-      },
-      {
-        "comment": "the name of the provider",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "provider",
-          "type": {
-            "isArray": false,
-            "name": "String",
-            "qualifiedName": "java.lang.String"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "reSeedSecure(long seed)",
+    "name": "reSeedSecure",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "algorithm",
         "type": {
-          "isArray": false,
-          "name": "String",
-          "qualifiedName": "java.lang.String"
-        }
-      },
-      {
-        "name": "provider",
-        "type": {
-          "isArray": false,
-          "name": "String",
-          "qualifiedName": "java.lang.String"
-        }
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "seed"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "seed"
+        },
+        "comment": "the seed value to use",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "reSeed()",
+    "name": "reSeed",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
     },
-    "signature": "setSecureAlgorithm(java.lang.String algorithm,java.lang.String provider)",
     "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "setSecureAlgorithm(java.lang.String algorithm,java.lang.String provider)",
+    "name": "setSecureAlgorithm",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "algorithm"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "provider"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "algorithm"
+        },
+        "comment": "the name of the PRNG algorithm",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "provider"
+        },
+        "comment": "the name of the provider",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "java.security.NoSuchAlgorithmException",
+          "name": "NoSuchAlgorithmException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if the specified algorithm is not available",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "NoSuchAlgorithmException",
-          "qualifiedName": "java.security.NoSuchAlgorithmException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       },
       {
+        "exception": {
+          "qualifiedName": "java.security.NoSuchProviderException",
+          "name": "NoSuchProviderException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if the specified provider is not installed",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "NoSuchProviderException",
-          "qualifiedName": "java.security.NoSuchProviderException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
+    "signature": "getRandomGenerator()",
     "name": "getRandomGenerator",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator",
+      "name": "RandomDataGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomGenerator",
+      "name": "RandomGenerator",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the Random used to generate random data",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "RandomGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomGenerator"
-    },
-    "signature": "getRandomGenerator()",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
-    "name": "initRan",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "initRan()",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomDataGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomDataGenerator"
-    },
-    "isVarArgs": false,
-    "name": "getSecRan",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the SecureRandom used to generate secure random data, wrapped in a RandomGenerator.",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "RandomGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.RandomGenerator"
-    },
-    "signature": "getSecRan()",
-    "targetClass": "org.apache.commons.math3.random.RandomDataGenerator",
     "throwsTags": []
   }
 ]

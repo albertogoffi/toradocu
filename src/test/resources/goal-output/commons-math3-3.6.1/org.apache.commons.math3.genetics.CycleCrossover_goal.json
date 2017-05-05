@@ -1,244 +1,217 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "CycleCrossover",
-      "qualifiedName": "org.apache.commons.math3.genetics.CycleCrossover"
-    },
-    "isVarArgs": false,
-    "name": "CycleCrossover",
-    "paramTags": [],
-    "parameters": [],
     "signature": "CycleCrossover()",
+    "name": "CycleCrossover",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.CycleCrossover",
+      "name": "CycleCrossover",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.math3.genetics.CycleCrossover",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "CycleCrossover",
-      "qualifiedName": "org.apache.commons.math3.genetics.CycleCrossover"
-    },
-    "isVarArgs": false,
+    "signature": "CycleCrossover(boolean randomStart)",
     "name": "CycleCrossover",
-    "paramTags": [
-      {
-        "comment": "whether the start index shall be chosen randomly or be set to 0",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "randomStart",
-          "type": {
-            "isArray": false,
-            "name": "boolean",
-            "qualifiedName": "boolean"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.CycleCrossover",
+      "name": "CycleCrossover",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.CycleCrossover",
+    "isVarArgs": false,
     "parameters": [
       {
-        "name": "randomStart",
         "type": {
-          "isArray": false,
+          "qualifiedName": "boolean",
           "name": "boolean",
-          "qualifiedName": "boolean"
-        }
+          "isArray": false
+        },
+        "name": "randomStart"
       }
     ],
-    "signature": "CycleCrossover(boolean randomStart)",
-    "targetClass": "org.apache.commons.math3.genetics.CycleCrossover",
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "randomStart"
+        },
+        "comment": "whether the start index shall be chosen randomly or be set to 0",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "CycleCrossover",
-      "qualifiedName": "org.apache.commons.math3.genetics.CycleCrossover"
-    },
-    "isVarArgs": false,
+    "signature": "isRandomStart()",
     "name": "isRandomStart",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.CycleCrossover",
+      "name": "CycleCrossover",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.CycleCrossover",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "true if the starting index is chosen randomly, false otherwise",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "isRandomStart()",
-    "targetClass": "org.apache.commons.math3.genetics.CycleCrossover",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "CycleCrossover",
-      "qualifiedName": "org.apache.commons.math3.genetics.CycleCrossover"
-    },
-    "isVarArgs": false,
+    "signature": "crossover(org.apache.commons.math3.genetics.Chromosome first,org.apache.commons.math3.genetics.Chromosome second)",
     "name": "crossover",
-    "paramTags": [
-      {
-        "comment": "the first chromosome.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "first",
-          "type": {
-            "isArray": false,
-            "name": "Chromosome",
-            "qualifiedName": "org.apache.commons.math3.genetics.Chromosome"
-          }
-        }
-      },
-      {
-        "comment": "the second chromosome.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "second",
-          "type": {
-            "isArray": false,
-            "name": "Chromosome",
-            "qualifiedName": "org.apache.commons.math3.genetics.Chromosome"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.CycleCrossover",
+      "name": "CycleCrossover",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.CycleCrossover",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.genetics.ChromosomePair",
+      "name": "ChromosomePair",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "first",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.genetics.Chromosome",
           "name": "Chromosome",
-          "qualifiedName": "org.apache.commons.math3.genetics.Chromosome"
-        }
+          "isArray": false
+        },
+        "name": "first"
       },
       {
-        "name": "second",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.genetics.Chromosome",
           "name": "Chromosome",
-          "qualifiedName": "org.apache.commons.math3.genetics.Chromosome"
-        }
+          "isArray": false
+        },
+        "name": "second"
       }
     ],
-    "returnTag": {
-      "comment": "the pair of new chromosomes that resulted from the crossover.",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "ChromosomePair",
-      "qualifiedName": "org.apache.commons.math3.genetics.ChromosomePair"
-    },
-    "signature": "crossover(org.apache.commons.math3.genetics.Chromosome first,org.apache.commons.math3.genetics.Chromosome second)",
-    "targetClass": "org.apache.commons.math3.genetics.CycleCrossover",
+    "paramTags": [],
     "throwsTags": [
       {
-        "comment": "if the chromosomes are not an instance of AbstractListChromosome",
-        "condition": "(args[0] instanceof AbstractListChromosome) == false || (args[1] instanceof AbstractListChromosome) == false",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException",
           "name": "MathIllegalArgumentException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "AbstractListChromosome"
+        ],
+        "comment": "if the chromosomes are not an instance of AbstractListChromosome",
+        "kind": "THROWS",
+        "condition": "(args[0] instanceof AbstractListChromosome) == false || (args[1] instanceof AbstractListChromosome) == false"
       },
       {
-        "comment": "if the length of the two chromosomes is different",
-        "condition": "(args[0].getLength() == args[1].getLength()) == false",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
           "name": "DimensionMismatchException",
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the length of the two chromosomes is different",
+        "kind": "THROWS",
+        "condition": "(args[0].getLength() == args[1].getLength()) == false"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "CycleCrossover",
-      "qualifiedName": "org.apache.commons.math3.genetics.CycleCrossover"
-    },
-    "isVarArgs": false,
+    "signature": "mate(org.apache.commons.math3.genetics.AbstractListChromosome first,org.apache.commons.math3.genetics.AbstractListChromosome second)",
     "name": "mate",
-    "paramTags": [
-      {
-        "comment": "the first chromosome",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "first",
-          "type": {
-            "isArray": false,
-            "name": "AbstractListChromosome",
-            "qualifiedName": "org.apache.commons.math3.genetics.AbstractListChromosome"
-          }
-        }
-      },
-      {
-        "comment": "the second chromosome",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "second",
-          "type": {
-            "isArray": false,
-            "name": "AbstractListChromosome",
-            "qualifiedName": "org.apache.commons.math3.genetics.AbstractListChromosome"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.CycleCrossover",
+      "name": "CycleCrossover",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.CycleCrossover",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.genetics.ChromosomePair",
+      "name": "ChromosomePair",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "first",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.genetics.AbstractListChromosome",
           "name": "AbstractListChromosome",
-          "qualifiedName": "org.apache.commons.math3.genetics.AbstractListChromosome"
-        }
+          "isArray": false
+        },
+        "name": "first"
       },
       {
-        "name": "second",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.genetics.AbstractListChromosome",
           "name": "AbstractListChromosome",
-          "qualifiedName": "org.apache.commons.math3.genetics.AbstractListChromosome"
-        }
+          "isArray": false
+        },
+        "name": "second"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.genetics.AbstractListChromosome",
+            "name": "AbstractListChromosome",
+            "isArray": false
+          },
+          "name": "first"
+        },
+        "comment": "the first chromosome",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.genetics.AbstractListChromosome",
+            "name": "AbstractListChromosome",
+            "isArray": false
+          },
+          "name": "second"
+        },
+        "comment": "the second chromosome",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the pair of new chromosomes that resulted from the crossover",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "ChromosomePair",
-      "qualifiedName": "org.apache.commons.math3.genetics.ChromosomePair"
-    },
-    "signature": "mate(org.apache.commons.math3.genetics.AbstractListChromosome first,org.apache.commons.math3.genetics.AbstractListChromosome second)",
-    "targetClass": "org.apache.commons.math3.genetics.CycleCrossover",
     "throwsTags": [
       {
-        "comment": "if the length of the two chromosomes is different",
-        "condition": "(args[0].getLength() == args[1].getLength()) == false",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
           "name": "DimensionMismatchException",
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the length of the two chromosomes is different",
+        "kind": "THROWS",
+        "condition": "(args[0].getLength() == args[1].getLength()) == false"
       }
     ]
   }

@@ -1,180 +1,166 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Primes",
-      "qualifiedName": "org.apache.commons.math3.primes.Primes"
-    },
-    "isVarArgs": false,
-    "name": "Primes",
-    "paramTags": [],
-    "parameters": [],
-    "signature": "Primes()",
-    "targetClass": "org.apache.commons.math3.primes.Primes",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Primes",
-      "qualifiedName": "org.apache.commons.math3.primes.Primes"
-    },
-    "isVarArgs": false,
+    "signature": "isPrime(int n)",
     "name": "isPrime",
-    "paramTags": [
-      {
-        "comment": "number to test.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "n",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.primes.Primes",
+      "name": "Primes",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.primes.Primes",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "n",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "n"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "number to test.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if n is prime. (All numbers < 2 return false).",
-      "condition": "(args[0]<2) ? result==false",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "(args[0]<2) ? result==false"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "isPrime(int n)",
-    "targetClass": "org.apache.commons.math3.primes.Primes",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Primes",
-      "qualifiedName": "org.apache.commons.math3.primes.Primes"
-    },
-    "isVarArgs": false,
+    "signature": "nextPrime(int n)",
     "name": "nextPrime",
-    "paramTags": [
-      {
-        "comment": "a positive number.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "n",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.primes.Primes",
+      "name": "Primes",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.primes.Primes",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "n",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "n"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "a positive number.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the smallest prime greater than or equal to n.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "nextPrime(int n)",
-    "targetClass": "org.apache.commons.math3.primes.Primes",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException",
+          "name": "MathIllegalArgumentException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if n < 0.",
-        "condition": "args[0]<0",
-        "exception": {
-          "isArray": false,
-          "name": "MathIllegalArgumentException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[0]<0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Primes",
-      "qualifiedName": "org.apache.commons.math3.primes.Primes"
-    },
-    "isVarArgs": false,
+    "signature": "primeFactors(int n)",
     "name": "primeFactors",
-    "paramTags": [
-      {
-        "comment": "number to factorize: must be \u2265 2",
-        "condition": "args[0]>=2",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "n",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.primes.Primes",
+      "name": "Primes",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.primes.Primes",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "n",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "n"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "number to factorize: must be ≥ 2",
+        "kind": "PARAM",
+        "condition": "args[0]>=2"
       }
     ],
     "returnTag": {
       "comment": "list of prime factors of n",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "List",
-      "qualifiedName": "java.util.List"
-    },
-    "signature": "primeFactors(int n)",
-    "targetClass": "org.apache.commons.math3.primes.Primes",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException",
+          "name": "MathIllegalArgumentException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if n < 2.",
-        "condition": "args[0]<2",
-        "exception": {
-          "isArray": false,
-          "name": "MathIllegalArgumentException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[0]<2"
       }
     ]
   }

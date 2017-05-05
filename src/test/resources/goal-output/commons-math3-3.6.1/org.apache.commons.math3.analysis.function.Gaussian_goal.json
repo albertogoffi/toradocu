@@ -1,393 +1,256 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Gaussian",
-      "qualifiedName": "org.apache.commons.math3.analysis.function.Gaussian"
-    },
-    "isVarArgs": false,
-    "name": "Gaussian",
-    "paramTags": [
-      {
-        "comment": "Normalization factor.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "norm",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "Mean.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "mean",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "Standard deviation.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "sigma",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "norm",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      },
-      {
-        "name": "mean",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      },
-      {
-        "name": "sigma",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
     "signature": "Gaussian(double norm,double mean,double sigma)",
-    "targetClass": "org.apache.commons.math3.analysis.function.Gaussian",
-    "throwsTags": [
-      {
-        "comment": "if sigma <= 0.",
-        "condition": "args[2]<=0",
-        "exception": {
-          "isArray": false,
-          "name": "NotStrictlyPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Gaussian",
-      "qualifiedName": "org.apache.commons.math3.analysis.function.Gaussian"
-    },
-    "isVarArgs": false,
     "name": "Gaussian",
-    "paramTags": [
-      {
-        "comment": "Mean.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "mean",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "Standard deviation.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "sigma",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.function.Gaussian",
+      "name": "Gaussian",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.analysis.function.Gaussian",
+    "isVarArgs": false,
     "parameters": [
       {
-        "name": "mean",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
-      },
-      {
-        "name": "sigma",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
-    "signature": "Gaussian(double mean,double sigma)",
-    "targetClass": "org.apache.commons.math3.analysis.function.Gaussian",
-    "throwsTags": [
-      {
-        "comment": "if sigma <= 0.",
-        "condition": "args[1]<=0",
-        "exception": {
-          "isArray": false,
-          "name": "NotStrictlyPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
+          "isArray": false
         },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Gaussian",
-      "qualifiedName": "org.apache.commons.math3.analysis.function.Gaussian"
-    },
-    "isVarArgs": false,
-    "name": "Gaussian",
-    "paramTags": [],
-    "parameters": [],
-    "signature": "Gaussian()",
-    "targetClass": "org.apache.commons.math3.analysis.function.Gaussian",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Gaussian",
-      "qualifiedName": "org.apache.commons.math3.analysis.function.Gaussian"
-    },
-    "isVarArgs": false,
-    "name": "value",
-    "paramTags": [
-      {
-        "comment": "Point at which the function value should be computed.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "x",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "x",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the value of the function.",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "value(double x)",
-    "targetClass": "org.apache.commons.math3.analysis.function.Gaussian",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Gaussian",
-      "qualifiedName": "org.apache.commons.math3.analysis.function.Gaussian"
-    },
-    "isVarArgs": false,
-    "name": "derivative",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the derivative function",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "UnivariateFunction",
-      "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
-    },
-    "signature": "derivative()",
-    "targetClass": "org.apache.commons.math3.analysis.function.Gaussian",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Gaussian",
-      "qualifiedName": "org.apache.commons.math3.analysis.function.Gaussian"
-    },
-    "isVarArgs": false,
-    "name": "value",
-    "paramTags": [
-      {
-        "comment": "x - mean.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "xMinusMean",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
+        "name": "norm"
       },
       {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "mean"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "sigma"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "norm"
+        },
         "comment": "Normalization factor.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "norm",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
+        "kind": "PARAM",
+        "condition": ""
       },
       {
-        "comment": "Inverse of twice the square of the standard deviation.",
-        "condition": "",
-        "kind": "@param",
         "parameter": {
-          "name": "i2s2",
           "type": {
-            "isArray": false,
+            "qualifiedName": "double",
             "name": "double",
-            "qualifiedName": "double"
-          }
-        }
+            "isArray": false
+          },
+          "name": "mean"
+        },
+        "comment": "Mean.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "sigma"
+        },
+        "comment": "Standard deviation.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
+        "codeTags": [
+          "sigma <= 0"
+        ],
+        "comment": "if sigma <= 0.",
+        "kind": "THROWS",
+        "condition": "args[2]<=0"
+      }
+    ]
+  },
+  {
+    "signature": "Gaussian(double mean,double sigma)",
+    "name": "Gaussian",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.function.Gaussian",
+      "name": "Gaussian",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.analysis.function.Gaussian",
+    "isVarArgs": false,
     "parameters": [
       {
-        "name": "xMinusMean",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "mean"
       },
       {
-        "name": "norm",
         "type": {
-          "isArray": false,
+          "qualifiedName": "double",
           "name": "double",
-          "qualifiedName": "double"
-        }
-      },
-      {
-        "name": "i2s2",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
+          "isArray": false
+        },
+        "name": "sigma"
       }
     ],
-    "returnTag": {
-      "comment": "the value of the Gaussian at x.",
-      "condition": "",
-      "kind": "RETURN"
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "mean"
+        },
+        "comment": "Mean.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "sigma"
+        },
+        "comment": "Standard deviation.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
+        "codeTags": [
+          "sigma <= 0"
+        ],
+        "comment": "if sigma <= 0.",
+        "kind": "THROWS",
+        "condition": "args[1]<=0"
+      }
+    ]
+  },
+  {
+    "signature": "Gaussian()",
+    "name": "Gaussian",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.function.Gaussian",
+      "name": "Gaussian",
+      "isArray": false
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "value(double xMinusMean,double norm,double i2s2)",
     "targetClass": "org.apache.commons.math3.analysis.function.Gaussian",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Gaussian",
-      "qualifiedName": "org.apache.commons.math3.analysis.function.Gaussian"
-    },
-    "isVarArgs": false,
+    "signature": "value(double x)",
     "name": "value",
-    "paramTags": [
-      {
-        "comment": "function input value",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "t",
-          "type": {
-            "isArray": false,
-            "name": "DerivativeStructure",
-            "qualifiedName": "org.apache.commons.math3.analysis.differentiation.DerivativeStructure"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.function.Gaussian",
+      "name": "Gaussian",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.analysis.function.Gaussian",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "t",
         "type": {
-          "isArray": false,
-          "name": "DerivativeStructure",
-          "qualifiedName": "org.apache.commons.math3.analysis.differentiation.DerivativeStructure"
-        }
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "x"
       }
     ],
-    "returnTag": {
-      "comment": "function result",
-      "condition": "",
-      "kind": "RETURN"
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "derivative()",
+    "name": "derivative",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.function.Gaussian",
+      "name": "Gaussian",
+      "isArray": false
     },
-    "returnType": {
-      "isArray": false,
-      "name": "DerivativeStructure",
-      "qualifiedName": "org.apache.commons.math3.analysis.differentiation.DerivativeStructure"
-    },
-    "signature": "value(org.apache.commons.math3.analysis.differentiation.DerivativeStructure t)",
     "targetClass": "org.apache.commons.math3.analysis.function.Gaussian",
-    "throwsTags": [
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+      "name": "UnivariateFunction",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "value(org.apache.commons.math3.analysis.differentiation.DerivativeStructure t)",
+    "name": "value",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.function.Gaussian",
+      "name": "Gaussian",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.analysis.function.Gaussian",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.analysis.differentiation.DerivativeStructure",
+      "name": "DerivativeStructure",
+      "isArray": false
+    },
+    "parameters": [
       {
-        "comment": "if t is inconsistent with the function's free parameters or order",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "DimensionMismatchException",
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.differentiation.DerivativeStructure",
+          "name": "DerivativeStructure",
+          "isArray": false
         },
-        "kind": "@throws"
+        "name": "t"
       }
-    ]
+    ],
+    "paramTags": [],
+    "throwsTags": []
   }
 ]

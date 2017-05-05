@@ -1,254 +1,254 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "DividedDifferenceInterpolator",
-      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.DividedDifferenceInterpolator"
-    },
-    "isVarArgs": false,
+    "signature": "interpolate(double[] x,double[] y)",
     "name": "interpolate",
-    "paramTags": [
-      {
-        "comment": "Interpolating points array.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "x",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "double",
-              "qualifiedName": "double"
-            },
-            "isArray": true,
-            "name": "double[]",
-            "qualifiedName": "double[]"
-          }
-        }
-      },
-      {
-        "comment": "Interpolating values array.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "y",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "double",
-              "qualifiedName": "double"
-            },
-            "isArray": true,
-            "name": "double[]",
-            "qualifiedName": "double[]"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.DividedDifferenceInterpolator",
+      "name": "DividedDifferenceInterpolator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.analysis.interpolation.DividedDifferenceInterpolator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
+      "name": "PolynomialFunctionNewtonForm",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "x",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          },
-          "isArray": true,
+          "qualifiedName": "double[]",
           "name": "double[]",
-          "qualifiedName": "double[]"
-        }
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "x"
       },
       {
-        "name": "y",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          },
-          "isArray": true,
+          "qualifiedName": "double[]",
           "name": "double[]",
-          "qualifiedName": "double[]"
-        }
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "y"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "x"
+        },
+        "comment": "Interpolating points array.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "y"
+        },
+        "comment": "Interpolating values array.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a function which interpolates the dataset.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "PolynomialFunctionNewtonForm",
-      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm"
-    },
-    "signature": "interpolate(double[] x,double[] y)",
-    "targetClass": "org.apache.commons.math3.analysis.interpolation.DividedDifferenceInterpolator",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
+          "name": "DimensionMismatchException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if the array lengths are different.",
-        "condition": "args[0].length != args[1].length",
-        "exception": {
-          "isArray": false,
-          "name": "DimensionMismatchException",
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[0].length != args[1].length"
       },
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException",
+          "name": "NumberIsTooSmallException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if the number of points is less than 2.",
-        "condition": "args[0].length<2",
-        "exception": {
-          "isArray": false,
-          "name": "NumberIsTooSmallException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[0].length<2"
       },
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NonMonotonicSequenceException",
+          "name": "NonMonotonicSequenceException",
+          "isArray": false
+        },
         "codeTags": [
           "x"
         ],
         "comment": "if x is not sorted in strictly increasing order.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "NonMonotonicSequenceException",
-          "qualifiedName": "org.apache.commons.math3.exception.NonMonotonicSequenceException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "DividedDifferenceInterpolator",
-      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.DividedDifferenceInterpolator"
-    },
-    "isVarArgs": false,
+    "signature": "computeDividedDifference(double[] x,double[] y)",
     "name": "computeDividedDifference",
-    "paramTags": [
-      {
-        "comment": "Interpolating points array.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "x",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "double",
-              "qualifiedName": "double"
-            },
-            "isArray": true,
-            "name": "double[]",
-            "qualifiedName": "double[]"
-          }
-        }
-      },
-      {
-        "comment": "Interpolating values array.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "y",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "double",
-              "qualifiedName": "double"
-            },
-            "isArray": true,
-            "name": "double[]",
-            "qualifiedName": "double[]"
-          }
-        }
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.DividedDifferenceInterpolator",
+      "name": "DividedDifferenceInterpolator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.analysis.interpolation.DividedDifferenceInterpolator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double[]",
+      "name": "double[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "double",
+        "name": "double",
+        "isArray": false
       }
-    ],
+    },
     "parameters": [
       {
-        "name": "x",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          },
-          "isArray": true,
+          "qualifiedName": "double[]",
           "name": "double[]",
-          "qualifiedName": "double[]"
-        }
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "x"
       },
       {
-        "name": "y",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          },
-          "isArray": true,
+          "qualifiedName": "double[]",
           "name": "double[]",
-          "qualifiedName": "double[]"
-        }
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "y"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "x"
+        },
+        "comment": "Interpolating points array.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "y"
+        },
+        "comment": "Interpolating values array.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a fresh copy of the divided difference array.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "double",
-        "qualifiedName": "double"
-      },
-      "isArray": true,
-      "name": "double[]",
-      "qualifiedName": "double[]"
-    },
-    "signature": "computeDividedDifference(double[] x,double[] y)",
-    "targetClass": "org.apache.commons.math3.analysis.interpolation.DividedDifferenceInterpolator",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
+          "name": "DimensionMismatchException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if the array lengths are different.",
-        "condition": "args[0].length != args[1].length",
-        "exception": {
-          "isArray": false,
-          "name": "DimensionMismatchException",
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[0].length != args[1].length"
       },
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException",
+          "name": "NumberIsTooSmallException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if the number of points is less than 2.",
-        "condition": "args[0].length<2",
-        "exception": {
-          "isArray": false,
-          "name": "NumberIsTooSmallException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[0].length<2"
       },
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NonMonotonicSequenceException",
+          "name": "NonMonotonicSequenceException",
+          "isArray": false
+        },
         "codeTags": [
           "x"
         ],
         "comment": "if x is not sorted in strictly increasing order.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "NonMonotonicSequenceException",
-          "qualifiedName": "org.apache.commons.math3.exception.NonMonotonicSequenceException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   }

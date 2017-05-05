@@ -1,3024 +1,2504 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "FieldRotation",
-    "paramTags": [
-      {
-        "comment": "scalar part of the quaternion",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "q0",
-          "type": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          }
-        }
-      },
-      {
-        "comment": "first coordinate of the vectorial part of the quaternion",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "q1",
-          "type": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          }
-        }
-      },
-      {
-        "comment": "second coordinate of the vectorial part of the quaternion",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "q2",
-          "type": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          }
-        }
-      },
-      {
-        "comment": "third coordinate of the vectorial part of the quaternion",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "q3",
-          "type": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          }
-        }
-      },
-      {
-        "comment": "if true, the coordinates are considered not to be normalized, a normalization preprocessing step is performed before using them",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "needsNormalization",
-          "type": {
-            "isArray": false,
-            "name": "boolean",
-            "qualifiedName": "boolean"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "q0",
-        "type": {
-          "isArray": false,
-          "name": "RealFieldElement",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-        }
-      },
-      {
-        "name": "q1",
-        "type": {
-          "isArray": false,
-          "name": "RealFieldElement",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-        }
-      },
-      {
-        "name": "q2",
-        "type": {
-          "isArray": false,
-          "name": "RealFieldElement",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-        }
-      },
-      {
-        "name": "q3",
-        "type": {
-          "isArray": false,
-          "name": "RealFieldElement",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-        }
-      },
-      {
-        "name": "needsNormalization",
-        "type": {
-          "isArray": false,
-          "name": "boolean",
-          "qualifiedName": "boolean"
-        }
-      }
-    ],
     "signature": "FieldRotation(org.apache.commons.math3.RealFieldElement q0,org.apache.commons.math3.RealFieldElement q1,org.apache.commons.math3.RealFieldElement q2,org.apache.commons.math3.RealFieldElement q3,boolean needsNormalization)",
+    "name": "FieldRotation",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+          "name": "RealFieldElement",
+          "isArray": false
+        },
+        "name": "q0"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+          "name": "RealFieldElement",
+          "isArray": false
+        },
+        "name": "q1"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+          "name": "RealFieldElement",
+          "isArray": false
+        },
+        "name": "q2"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+          "name": "RealFieldElement",
+          "isArray": false
+        },
+        "name": "q3"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "needsNormalization"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          },
+          "name": "q0"
+        },
+        "comment": "scalar part of the quaternion",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          },
+          "name": "q1"
+        },
+        "comment": "first coordinate of the vectorial part of the quaternion",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          },
+          "name": "q2"
+        },
+        "comment": "second coordinate of the vectorial part of the quaternion",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          },
+          "name": "q3"
+        },
+        "comment": "third coordinate of the vectorial part of the quaternion",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "needsNormalization"
+        },
+        "comment": "if true, the coordinates are considered not to be normalized, a normalization preprocessing step is performed before using them",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "FieldRotation",
-    "paramTags": [
-      {
-        "comment": "axis around which to rotate",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "axis",
-          "type": {
-            "isArray": false,
-            "name": "FieldVector3D",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-          }
-        }
-      },
-      {
-        "comment": "rotation angle.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "angle",
-          "type": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "axis",
-        "type": {
-          "isArray": false,
-          "name": "FieldVector3D",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-        }
-      },
-      {
-        "name": "angle",
-        "type": {
-          "isArray": false,
-          "name": "RealFieldElement",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-        }
-      }
-    ],
     "signature": "FieldRotation(org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D axis,org.apache.commons.math3.RealFieldElement angle)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": [
-      {
-        "comment": "if the axis norm is zero",
-        "condition": "args[0].getNorm().getReal()==0",
-        "exception": {
-          "isArray": false,
-          "name": "MathIllegalArgumentException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
     "name": "FieldRotation",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+          "name": "FieldVector3D",
+          "isArray": false
+        },
+        "name": "axis"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+          "name": "RealFieldElement",
+          "isArray": false
+        },
+        "name": "angle"
+      }
+    ],
     "paramTags": [
       {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+            "name": "FieldVector3D",
+            "isArray": false
+          },
+          "name": "axis"
+        },
         "comment": "axis around which to rotate",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "axis",
-          "type": {
-            "isArray": false,
-            "name": "FieldVector3D",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-          }
-        }
+        "kind": "PARAM",
+        "condition": ""
       },
       {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          },
+          "name": "angle"
+        },
         "comment": "rotation angle.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "angle",
-          "type": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          }
-        }
-      },
-      {
-        "comment": "convention to use for the semantics of the angle",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "convention",
-          "type": {
-            "isArray": false,
-            "name": "RotationConvention",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention"
-          }
-        }
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
-    "parameters": [
-      {
-        "name": "axis",
-        "type": {
-          "isArray": false,
-          "name": "FieldVector3D",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-        }
-      },
-      {
-        "name": "angle",
-        "type": {
-          "isArray": false,
-          "name": "RealFieldElement",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-        }
-      },
-      {
-        "name": "convention",
-        "type": {
-          "isArray": false,
-          "name": "RotationConvention",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention"
-        }
-      }
-    ],
-    "signature": "FieldRotation(org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D axis,org.apache.commons.math3.RealFieldElement angle,org.apache.commons.math3.geometry.euclidean.threed.RotationConvention convention)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
     "throwsTags": [
       {
-        "comment": "if the axis norm is zero",
-        "condition": "args[0].getNorm().getReal()==0",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException",
           "name": "MathIllegalArgumentException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the axis norm is zero",
+        "kind": "THROWS",
+        "condition": "args[0].getNorm().getReal()==0"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
+    "signature": "FieldRotation(org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D axis,org.apache.commons.math3.RealFieldElement angle,org.apache.commons.math3.geometry.euclidean.threed.RotationConvention convention)",
     "name": "FieldRotation",
-    "paramTags": [
-      {
-        "comment": "rotation matrix",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "m",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "RealFieldElement",
-              "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-            },
-            "isArray": true,
-            "name": "RealFieldElement[][]",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement[][]"
-          }
-        }
-      },
-      {
-        "comment": "convergence threshold for the iterative orthogonality correction (convergence is reached when the difference between two steps of the Frobenius norm of the correction is below this threshold)",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "threshold",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "m",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          },
-          "isArray": true,
-          "name": "RealFieldElement[][]",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement[][]"
-        }
-      },
-      {
-        "name": "threshold",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
-    "signature": "FieldRotation(org.apache.commons.math3.RealFieldElement[][] m,double threshold)",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": [
-      {
-        "comment": "if the matrix is not a 3X3 matrix, or if it cannot be transformed into an orthogonal matrix with the given threshold, or if the determinant of the resulting orthogonal matrix is negative",
-        "condition": "(args[0].length != 3) || (args[0][0].length != 3) || (args[0][1].length != 3) || (args[0][2].length != 3)",
-        "exception": {
-          "isArray": false,
-          "name": "NotARotationMatrixException",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.NotARotationMatrixException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
     "isVarArgs": false,
-    "name": "FieldRotation",
-    "paramTags": [
-      {
-        "comment": "first vector of the origin pair",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "u1",
-          "type": {
-            "isArray": false,
-            "name": "FieldVector3D",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-          }
-        }
-      },
-      {
-        "comment": "second vector of the origin pair",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "u2",
-          "type": {
-            "isArray": false,
-            "name": "FieldVector3D",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-          }
-        }
-      },
-      {
-        "comment": "desired image of u1 by the rotation",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v1",
-          "type": {
-            "isArray": false,
-            "name": "FieldVector3D",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-          }
-        }
-      },
-      {
-        "comment": "desired image of u2 by the rotation",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v2",
-          "type": {
-            "isArray": false,
-            "name": "FieldVector3D",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-          }
-        }
-      }
-    ],
     "parameters": [
       {
-        "name": "u1",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
           "name": "FieldVector3D",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-        }
-      },
-      {
-        "name": "u2",
-        "type": {
-          "isArray": false,
-          "name": "FieldVector3D",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-        }
-      },
-      {
-        "name": "v1",
-        "type": {
-          "isArray": false,
-          "name": "FieldVector3D",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-        }
-      },
-      {
-        "name": "v2",
-        "type": {
-          "isArray": false,
-          "name": "FieldVector3D",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-        }
-      }
-    ],
-    "signature": "FieldRotation(org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D u1,org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D u2,org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D v1,org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D v2)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": [
-      {
-        "comment": "if the norm of one of the vectors is zero, or if one of the pair is degenerated (i.e. the vectors of the pair are collinear)",
-        "condition": "args[0].getNorm().getReal()==0 || args[1].getNorm().getReal()==0 || args[2].getNorm().getReal()==0",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
+          "isArray": false
         },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "FieldRotation",
-    "paramTags": [
-      {
-        "comment": "origin vector",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "u",
-          "type": {
-            "isArray": false,
-            "name": "FieldVector3D",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-          }
-        }
+        "name": "axis"
       },
       {
-        "comment": "desired image of u by the rotation",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v",
-          "type": {
-            "isArray": false,
-            "name": "FieldVector3D",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "u",
         "type": {
-          "isArray": false,
-          "name": "FieldVector3D",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-        }
-      },
-      {
-        "name": "v",
-        "type": {
-          "isArray": false,
-          "name": "FieldVector3D",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-        }
-      }
-    ],
-    "signature": "FieldRotation(org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D u,org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D v)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": [
-      {
-        "comment": "if the norm of one of the vectors is zero",
-        "condition": "args[0].getNorm().getReal()==0 || args[1].getNorm().getReal()==0",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "FieldRotation",
-    "paramTags": [
-      {
-        "comment": "order of rotations to use",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "order",
-          "type": {
-            "isArray": false,
-            "name": "RotationOrder",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationOrder"
-          }
-        }
-      },
-      {
-        "comment": "angle of the first elementary rotation",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "alpha1",
-          "type": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          }
-        }
-      },
-      {
-        "comment": "angle of the second elementary rotation",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "alpha2",
-          "type": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          }
-        }
-      },
-      {
-        "comment": "angle of the third elementary rotation",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "alpha3",
-          "type": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "order",
-        "type": {
-          "isArray": false,
-          "name": "RotationOrder",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationOrder"
-        }
-      },
-      {
-        "name": "alpha1",
-        "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement",
           "name": "RealFieldElement",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-        }
+          "isArray": false
+        },
+        "name": "angle"
       },
       {
-        "name": "alpha2",
         "type": {
-          "isArray": false,
-          "name": "RealFieldElement",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-        }
-      },
-      {
-        "name": "alpha3",
-        "type": {
-          "isArray": false,
-          "name": "RealFieldElement",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-        }
-      }
-    ],
-    "signature": "FieldRotation(org.apache.commons.math3.geometry.euclidean.threed.RotationOrder order,org.apache.commons.math3.RealFieldElement alpha1,org.apache.commons.math3.RealFieldElement alpha2,org.apache.commons.math3.RealFieldElement alpha3)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "FieldRotation",
-    "paramTags": [
-      {
-        "comment": "order of rotations to compose, from left to right (i.e. we will use r1.compose(r2.compose(r3, convention), convention))",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "order",
-          "type": {
-            "isArray": false,
-            "name": "RotationOrder",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationOrder"
-          }
-        }
-      },
-      {
-        "comment": "convention to use for the semantics of the angle",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "convention",
-          "type": {
-            "isArray": false,
-            "name": "RotationConvention",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention"
-          }
-        }
-      },
-      {
-        "comment": "angle of the first elementary rotation",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "alpha1",
-          "type": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          }
-        }
-      },
-      {
-        "comment": "angle of the second elementary rotation",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "alpha2",
-          "type": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          }
-        }
-      },
-      {
-        "comment": "angle of the third elementary rotation",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "alpha3",
-          "type": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "order",
-        "type": {
-          "isArray": false,
-          "name": "RotationOrder",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationOrder"
-        }
-      },
-      {
-        "name": "convention",
-        "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention",
           "name": "RotationConvention",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention"
-        }
-      },
-      {
-        "name": "alpha1",
-        "type": {
-          "isArray": false,
-          "name": "RealFieldElement",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-        }
-      },
-      {
-        "name": "alpha2",
-        "type": {
-          "isArray": false,
-          "name": "RealFieldElement",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-        }
-      },
-      {
-        "name": "alpha3",
-        "type": {
-          "isArray": false,
-          "name": "RealFieldElement",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-        }
+          "isArray": false
+        },
+        "name": "convention"
       }
     ],
-    "signature": "FieldRotation(org.apache.commons.math3.geometry.euclidean.threed.RotationOrder order,org.apache.commons.math3.geometry.euclidean.threed.RotationConvention convention,org.apache.commons.math3.RealFieldElement alpha1,org.apache.commons.math3.RealFieldElement alpha2,org.apache.commons.math3.RealFieldElement alpha3)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "mat2quat",
     "paramTags": [
       {
-        "comment": "orthogonal rotation matrix",
-        "condition": "",
-        "kind": "@param",
         "parameter": {
-          "name": "ort",
           "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "RealFieldElement",
-              "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-            },
-            "isArray": true,
-            "name": "RealFieldElement[][]",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement[][]"
-          }
-        }
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+            "name": "FieldVector3D",
+            "isArray": false
+          },
+          "name": "axis"
+        },
+        "comment": "axis around which to rotate",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          },
+          "name": "angle"
+        },
+        "comment": "rotation angle.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention",
+            "name": "RotationConvention",
+            "isArray": false
+          },
+          "name": "convention"
+        },
+        "comment": "convention to use for the semantics of the angle",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException",
+          "name": "MathIllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the axis norm is zero",
+        "kind": "THROWS",
+        "condition": "args[0].getNorm().getReal()==0"
+      }
+    ]
+  },
+  {
+    "signature": "FieldRotation(org.apache.commons.math3.RealFieldElement[][] m,double threshold)",
+    "name": "FieldRotation",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
     "parameters": [
       {
-        "name": "ort",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          },
-          "isArray": true,
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement[][]",
           "name": "RealFieldElement[][]",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement[][]"
-        }
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          }
+        },
+        "name": "m"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "threshold"
       }
     ],
-    "returnTag": {
-      "comment": "quaternion corresponding to the matrix",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "T",
-        "qualifiedName": "T"
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement[][]",
+            "name": "RealFieldElement[][]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+              "name": "RealFieldElement",
+              "isArray": false
+            }
+          },
+          "name": "m"
+        },
+        "comment": "rotation matrix",
+        "kind": "PARAM",
+        "condition": ""
       },
-      "isArray": true,
-      "name": "T[]",
-      "qualifiedName": "T[]"
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "threshold"
+        },
+        "comment": "convergence threshold for the iterative orthogonality correction (convergence is reached when the difference between two steps of the Frobenius norm of the correction is below this threshold)",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.NotARotationMatrixException",
+          "name": "NotARotationMatrixException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the matrix is not a 3X3 matrix, or if it cannot be transformed into an orthogonal matrix with the given threshold, or if the determinant of the resulting orthogonal matrix is negative",
+        "kind": "THROWS",
+        "condition": "(args[0].length != 3) || (args[0][0].length != 3) || (args[0][1].length != 3) || (args[0][2].length != 3)"
+      }
+    ]
+  },
+  {
+    "signature": "FieldRotation(org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D u1,org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D u2,org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D v1,org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D v2)",
+    "name": "FieldRotation",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
     },
-    "signature": "mat2quat(org.apache.commons.math3.RealFieldElement[][] ort)",
     "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+          "name": "FieldVector3D",
+          "isArray": false
+        },
+        "name": "u1"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+          "name": "FieldVector3D",
+          "isArray": false
+        },
+        "name": "u2"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+          "name": "FieldVector3D",
+          "isArray": false
+        },
+        "name": "v1"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+          "name": "FieldVector3D",
+          "isArray": false
+        },
+        "name": "v2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+            "name": "FieldVector3D",
+            "isArray": false
+          },
+          "name": "u1"
+        },
+        "comment": "first vector of the origin pair",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+            "name": "FieldVector3D",
+            "isArray": false
+          },
+          "name": "u2"
+        },
+        "comment": "second vector of the origin pair",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+            "name": "FieldVector3D",
+            "isArray": false
+          },
+          "name": "v1"
+        },
+        "comment": "desired image of u1 by the rotation",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+            "name": "FieldVector3D",
+            "isArray": false
+          },
+          "name": "v2"
+        },
+        "comment": "desired image of u2 by the rotation",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the norm of one of the vectors is zero, or if one of the pair is degenerated (i.e. the vectors of the pair are collinear)",
+        "kind": "THROWS",
+        "condition": "args[0].getNorm().getReal()==0 || args[1].getNorm().getReal()==0 || args[2].getNorm().getReal()==0"
+      }
+    ]
+  },
+  {
+    "signature": "FieldRotation(org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D u,org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D v)",
+    "name": "FieldRotation",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+          "name": "FieldVector3D",
+          "isArray": false
+        },
+        "name": "u"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+          "name": "FieldVector3D",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+            "name": "FieldVector3D",
+            "isArray": false
+          },
+          "name": "u"
+        },
+        "comment": "origin vector",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+            "name": "FieldVector3D",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "desired image of u by the rotation",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the norm of one of the vectors is zero",
+        "kind": "THROWS",
+        "condition": "args[0].getNorm().getReal()==0 || args[1].getNorm().getReal()==0"
+      }
+    ]
+  },
+  {
+    "signature": "FieldRotation(org.apache.commons.math3.geometry.euclidean.threed.RotationOrder order,org.apache.commons.math3.RealFieldElement alpha1,org.apache.commons.math3.RealFieldElement alpha2,org.apache.commons.math3.RealFieldElement alpha3)",
+    "name": "FieldRotation",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationOrder",
+          "name": "RotationOrder",
+          "isArray": false
+        },
+        "name": "order"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+          "name": "RealFieldElement",
+          "isArray": false
+        },
+        "name": "alpha1"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+          "name": "RealFieldElement",
+          "isArray": false
+        },
+        "name": "alpha2"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+          "name": "RealFieldElement",
+          "isArray": false
+        },
+        "name": "alpha3"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationOrder",
+            "name": "RotationOrder",
+            "isArray": false
+          },
+          "name": "order"
+        },
+        "comment": "order of rotations to use",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          },
+          "name": "alpha1"
+        },
+        "comment": "angle of the first elementary rotation",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          },
+          "name": "alpha2"
+        },
+        "comment": "angle of the second elementary rotation",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          },
+          "name": "alpha3"
+        },
+        "comment": "angle of the third elementary rotation",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": []
   },
   {
+    "signature": "FieldRotation(org.apache.commons.math3.geometry.euclidean.threed.RotationOrder order,org.apache.commons.math3.geometry.euclidean.threed.RotationConvention convention,org.apache.commons.math3.RealFieldElement alpha1,org.apache.commons.math3.RealFieldElement alpha2,org.apache.commons.math3.RealFieldElement alpha3)",
+    "name": "FieldRotation",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
       "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
     "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationOrder",
+          "name": "RotationOrder",
+          "isArray": false
+        },
+        "name": "order"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention",
+          "name": "RotationConvention",
+          "isArray": false
+        },
+        "name": "convention"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+          "name": "RealFieldElement",
+          "isArray": false
+        },
+        "name": "alpha1"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+          "name": "RealFieldElement",
+          "isArray": false
+        },
+        "name": "alpha2"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+          "name": "RealFieldElement",
+          "isArray": false
+        },
+        "name": "alpha3"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationOrder",
+            "name": "RotationOrder",
+            "isArray": false
+          },
+          "name": "order"
+        },
+        "comment": "order of rotations to compose, from left to right (i.e. we will use r1.compose(r2.compose(r3, convention), convention))",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention",
+            "name": "RotationConvention",
+            "isArray": false
+          },
+          "name": "convention"
+        },
+        "comment": "convention to use for the semantics of the angle",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          },
+          "name": "alpha1"
+        },
+        "comment": "angle of the first elementary rotation",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          },
+          "name": "alpha2"
+        },
+        "comment": "angle of the second elementary rotation",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          },
+          "name": "alpha3"
+        },
+        "comment": "angle of the third elementary rotation",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "revert()",
     "name": "revert",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "a new rotation whose effect is the reverse of the effect of the instance",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "signature": "revert()",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
+    "signature": "getQ0()",
     "name": "getQ0",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "scalar coordinate of the quaternion",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "T",
-      "qualifiedName": "T"
-    },
-    "signature": "getQ0()",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
+    "signature": "getQ1()",
     "name": "getQ1",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "first coordinate of the vectorial part of the quaternion",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "T",
-      "qualifiedName": "T"
-    },
-    "signature": "getQ1()",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
+    "signature": "getQ2()",
     "name": "getQ2",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "second coordinate of the vectorial part of the quaternion",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "T",
-      "qualifiedName": "T"
-    },
-    "signature": "getQ2()",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
+    "signature": "getQ3()",
     "name": "getQ3",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "third coordinate of the vectorial part of the quaternion",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "T",
-      "qualifiedName": "T"
-    },
-    "signature": "getQ3()",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "getAxis",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "normalized axis of the rotation",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldVector3D",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-    },
     "signature": "getAxis()",
+    "name": "getAxis",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+      "name": "FieldVector3D",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "normalized axis of the rotation",
+      "kind": "RETURN",
+      "condition": ""
+    },
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
+    "signature": "getAxis(org.apache.commons.math3.geometry.euclidean.threed.RotationConvention convention)",
     "name": "getAxis",
-    "paramTags": [
-      {
-        "comment": "convention to use for the semantics of the angle",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "convention",
-          "type": {
-            "isArray": false,
-            "name": "RotationConvention",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+      "name": "FieldVector3D",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "convention",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention",
           "name": "RotationConvention",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention"
-        }
+          "isArray": false
+        },
+        "name": "convention"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention",
+            "name": "RotationConvention",
+            "isArray": false
+          },
+          "name": "convention"
+        },
+        "comment": "convention to use for the semantics of the angle",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "normalized axis of the rotation",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldVector3D",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-    },
-    "signature": "getAxis(org.apache.commons.math3.geometry.euclidean.threed.RotationConvention convention)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "getAngle",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "angle of the rotation (between 0 and \u03c0)",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "T",
-      "qualifiedName": "T"
-    },
     "signature": "getAngle()",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
+    "name": "getAngle",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
       "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
     "isVarArgs": false,
-    "name": "getAngles",
-    "paramTags": [
-      {
-        "comment": "rotation order to use",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "order",
-          "type": {
-            "isArray": false,
-            "name": "RotationOrder",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationOrder"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "order",
-        "type": {
-          "isArray": false,
-          "name": "RotationOrder",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationOrder"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "an array of three angles, in the order specified by the set",
-      "condition": "",
-      "kind": "RETURN"
-    },
     "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "T",
-        "qualifiedName": "T"
-      },
-      "isArray": true,
-      "name": "T[]",
-      "qualifiedName": "T[]"
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
     },
-    "signature": "getAngles(org.apache.commons.math3.geometry.euclidean.threed.RotationOrder order)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": [
-      {
-        "comment": "if the rotation is singular with respect to the angles set specified",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "CardanEulerSingularityException",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.CardanEulerSingularityException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "getAngles",
-    "paramTags": [
-      {
-        "comment": "rotation order to use",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "order",
-          "type": {
-            "isArray": false,
-            "name": "RotationOrder",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationOrder"
-          }
-        }
-      },
-      {
-        "comment": "convention to use for the semantics of the angle",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "convention",
-          "type": {
-            "isArray": false,
-            "name": "RotationConvention",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "order",
-        "type": {
-          "isArray": false,
-          "name": "RotationOrder",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationOrder"
-        }
-      },
-      {
-        "name": "convention",
-        "type": {
-          "isArray": false,
-          "name": "RotationConvention",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "an array of three angles, in the order specified by the set",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "T",
-        "qualifiedName": "T"
-      },
-      "isArray": true,
-      "name": "T[]",
-      "qualifiedName": "T[]"
-    },
-    "signature": "getAngles(org.apache.commons.math3.geometry.euclidean.threed.RotationOrder order,org.apache.commons.math3.geometry.euclidean.threed.RotationConvention convention)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": [
-      {
-        "comment": "if the rotation is singular with respect to the angles set specified",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "CardanEulerSingularityException",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.CardanEulerSingularityException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "buildArray",
-    "paramTags": [
-      {
-        "comment": "first array element",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "a0",
-          "type": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          }
-        }
-      },
-      {
-        "comment": "second array element",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "a1",
-          "type": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          }
-        }
-      },
-      {
-        "comment": "third array element",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "a2",
-          "type": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "a0",
-        "type": {
-          "isArray": false,
-          "name": "RealFieldElement",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-        }
-      },
-      {
-        "name": "a1",
-        "type": {
-          "isArray": false,
-          "name": "RealFieldElement",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-        }
-      },
-      {
-        "name": "a2",
-        "type": {
-          "isArray": false,
-          "name": "RealFieldElement",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "new array",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "T",
-        "qualifiedName": "T"
-      },
-      "isArray": true,
-      "name": "T[]",
-      "qualifiedName": "T[]"
-    },
-    "signature": "buildArray(org.apache.commons.math3.RealFieldElement a0,org.apache.commons.math3.RealFieldElement a1,org.apache.commons.math3.RealFieldElement a2)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "vector",
-    "paramTags": [
-      {
-        "comment": "abscissa",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "x",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "ordinate",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "y",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "height",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "z",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "x",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      },
-      {
-        "name": "y",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      },
-      {
-        "name": "z",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a constant vector",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldVector3D",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-    },
-    "signature": "vector(double x,double y,double z)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "getMatrix",
-    "paramTags": [],
     "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "angle of the rotation (between 0 and π)",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getAngles(org.apache.commons.math3.geometry.euclidean.threed.RotationOrder order)",
+    "name": "getAngles",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T[]",
+      "name": "T[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "T",
+        "name": "T",
+        "isArray": false
+      }
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationOrder",
+          "name": "RotationOrder",
+          "isArray": false
+        },
+        "name": "order"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationOrder",
+            "name": "RotationOrder",
+            "isArray": false
+          },
+          "name": "order"
+        },
+        "comment": "rotation order to use",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "an array of three angles, in the order specified by the set",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.CardanEulerSingularityException",
+          "name": "CardanEulerSingularityException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the rotation is singular with respect to the angles set specified",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "getAngles(org.apache.commons.math3.geometry.euclidean.threed.RotationOrder order,org.apache.commons.math3.geometry.euclidean.threed.RotationConvention convention)",
+    "name": "getAngles",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T[]",
+      "name": "T[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "T",
+        "name": "T",
+        "isArray": false
+      }
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationOrder",
+          "name": "RotationOrder",
+          "isArray": false
+        },
+        "name": "order"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention",
+          "name": "RotationConvention",
+          "isArray": false
+        },
+        "name": "convention"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationOrder",
+            "name": "RotationOrder",
+            "isArray": false
+          },
+          "name": "order"
+        },
+        "comment": "rotation order to use",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention",
+            "name": "RotationConvention",
+            "isArray": false
+          },
+          "name": "convention"
+        },
+        "comment": "convention to use for the semantics of the angle",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "an array of three angles, in the order specified by the set",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.CardanEulerSingularityException",
+          "name": "CardanEulerSingularityException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the rotation is singular with respect to the angles set specified",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "getMatrix()",
+    "name": "getMatrix",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T[][]",
+      "name": "T[][]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "T",
+        "name": "T",
+        "isArray": false
+      }
+    },
+    "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the matrix corresponding to the instance",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "T",
-        "qualifiedName": "T"
-      },
-      "isArray": true,
-      "name": "T[][]",
-      "qualifiedName": "T[][]"
-    },
-    "signature": "getMatrix()",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
+    "signature": "toRotation()",
     "name": "toRotation",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation",
+      "name": "Rotation",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "a constant vector",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Rotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation"
-    },
-    "signature": "toRotation()",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "applyTo",
-    "paramTags": [
-      {
-        "comment": "vector to apply the rotation to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "u",
-          "type": {
-            "isArray": false,
-            "name": "FieldVector3D",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "u",
-        "type": {
-          "isArray": false,
-          "name": "FieldVector3D",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new vector which is the image of u by the rotation",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldVector3D",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-    },
     "signature": "applyTo(org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D u)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
     "name": "applyTo",
-    "paramTags": [
-      {
-        "comment": "vector to apply the rotation to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "u",
-          "type": {
-            "isArray": false,
-            "name": "Vector3D",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "u",
-        "type": {
-          "isArray": false,
-          "name": "Vector3D",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new vector which is the image of u by the rotation",
-      "condition": "",
-      "kind": "RETURN"
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
     "returnType": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
       "name": "FieldVector3D",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
+      "isArray": false
     },
-    "signature": "applyTo(org.apache.commons.math3.geometry.euclidean.threed.Vector3D u)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "applyTo",
-    "paramTags": [
-      {
-        "comment": "an array with three items which stores vector to rotate",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "in",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "RealFieldElement",
-              "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-            },
-            "isArray": true,
-            "name": "RealFieldElement[]",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement[]"
-          }
-        }
-      },
-      {
-        "comment": "an array with three items to put result to (it can be the same array as in)",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "out",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "RealFieldElement",
-              "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-            },
-            "isArray": true,
-            "name": "RealFieldElement[]",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement[]"
-          }
-        }
-      }
-    ],
     "parameters": [
       {
-        "name": "in",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          },
-          "isArray": true,
-          "name": "RealFieldElement[]",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement[]"
-        }
-      },
-      {
-        "name": "out",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          },
-          "isArray": true,
-          "name": "RealFieldElement[]",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement[]"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "applyTo(org.apache.commons.math3.RealFieldElement[] in,org.apache.commons.math3.RealFieldElement[] out)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "applyTo",
-    "paramTags": [
-      {
-        "comment": "an array with three items which stores vector to rotate",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "in",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "double",
-              "qualifiedName": "double"
-            },
-            "isArray": true,
-            "name": "double[]",
-            "qualifiedName": "double[]"
-          }
-        }
-      },
-      {
-        "comment": "an array with three items to put result to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "out",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "RealFieldElement",
-              "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-            },
-            "isArray": true,
-            "name": "RealFieldElement[]",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement[]"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "in",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          },
-          "isArray": true,
-          "name": "double[]",
-          "qualifiedName": "double[]"
-        }
-      },
-      {
-        "name": "out",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          },
-          "isArray": true,
-          "name": "RealFieldElement[]",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement[]"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "applyTo(double[] in,org.apache.commons.math3.RealFieldElement[] out)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "applyTo",
-    "paramTags": [
-      {
-        "comment": "rotation to apply",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "r",
-          "type": {
-            "isArray": false,
-            "name": "Rotation",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation"
-          }
-        }
-      },
-      {
-        "comment": "vector to apply the rotation to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "u",
-          "type": {
-            "isArray": false,
-            "name": "FieldVector3D",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "r",
-        "type": {
-          "isArray": false,
-          "name": "Rotation",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation"
-        }
-      },
-      {
-        "name": "u",
-        "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
           "name": "FieldVector3D",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new vector which is the image of u by the rotation",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldVector3D",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-    },
-    "signature": "applyTo(org.apache.commons.math3.geometry.euclidean.threed.Rotation r,org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D u)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "applyInverseTo",
-    "paramTags": [
-      {
-        "comment": "vector to apply the inverse of the rotation to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "u",
-          "type": {
-            "isArray": false,
-            "name": "FieldVector3D",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "u",
-        "type": {
-          "isArray": false,
-          "name": "FieldVector3D",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new vector which such that u is its image by the rotation",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldVector3D",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-    },
-    "signature": "applyInverseTo(org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D u)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "applyInverseTo",
-    "paramTags": [
-      {
-        "comment": "vector to apply the inverse of the rotation to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "u",
-          "type": {
-            "isArray": false,
-            "name": "Vector3D",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "u",
-        "type": {
-          "isArray": false,
-          "name": "Vector3D",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new vector which such that u is its image by the rotation",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldVector3D",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-    },
-    "signature": "applyInverseTo(org.apache.commons.math3.geometry.euclidean.threed.Vector3D u)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "applyInverseTo",
-    "paramTags": [
-      {
-        "comment": "an array with three items which stores vector to rotate",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "in",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "RealFieldElement",
-              "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-            },
-            "isArray": true,
-            "name": "RealFieldElement[]",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement[]"
-          }
-        }
-      },
-      {
-        "comment": "an array with three items to put result to (it can be the same array as in)",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "out",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "RealFieldElement",
-              "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-            },
-            "isArray": true,
-            "name": "RealFieldElement[]",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement[]"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "in",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          },
-          "isArray": true,
-          "name": "RealFieldElement[]",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement[]"
-        }
-      },
-      {
-        "name": "out",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          },
-          "isArray": true,
-          "name": "RealFieldElement[]",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement[]"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "applyInverseTo(org.apache.commons.math3.RealFieldElement[] in,org.apache.commons.math3.RealFieldElement[] out)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "applyInverseTo",
-    "paramTags": [
-      {
-        "comment": "an array with three items which stores vector to rotate",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "in",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "double",
-              "qualifiedName": "double"
-            },
-            "isArray": true,
-            "name": "double[]",
-            "qualifiedName": "double[]"
-          }
-        }
-      },
-      {
-        "comment": "an array with three items to put result to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "out",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "RealFieldElement",
-              "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-            },
-            "isArray": true,
-            "name": "RealFieldElement[]",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement[]"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "in",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          },
-          "isArray": true,
-          "name": "double[]",
-          "qualifiedName": "double[]"
-        }
-      },
-      {
-        "name": "out",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          },
-          "isArray": true,
-          "name": "RealFieldElement[]",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement[]"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "applyInverseTo(double[] in,org.apache.commons.math3.RealFieldElement[] out)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "applyInverseTo",
-    "paramTags": [
-      {
-        "comment": "rotation to apply",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "r",
-          "type": {
-            "isArray": false,
-            "name": "Rotation",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation"
-          }
-        }
-      },
-      {
-        "comment": "vector to apply the inverse of the rotation to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "u",
-          "type": {
-            "isArray": false,
-            "name": "FieldVector3D",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "r",
-        "type": {
-          "isArray": false,
-          "name": "Rotation",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation"
-        }
-      },
-      {
-        "name": "u",
-        "type": {
-          "isArray": false,
-          "name": "FieldVector3D",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new vector which such that u is its image by the rotation",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldVector3D",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D"
-    },
-    "signature": "applyInverseTo(org.apache.commons.math3.geometry.euclidean.threed.Rotation r,org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D u)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "applyTo",
-    "paramTags": [
-      {
-        "comment": "rotation to apply the rotation to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "r",
-          "type": {
-            "isArray": false,
-            "name": "FieldRotation",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "r",
-        "type": {
-          "isArray": false,
-          "name": "FieldRotation",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new rotation which is the composition of r by the instance",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "signature": "applyTo(org.apache.commons.math3.geometry.euclidean.threed.FieldRotation r)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "compose",
-    "paramTags": [
-      {
-        "comment": "rotation to apply the rotation to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "r",
-          "type": {
-            "isArray": false,
-            "name": "FieldRotation",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-          }
-        }
-      },
-      {
-        "comment": "convention to use for the semantics of the angle",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "convention",
-          "type": {
-            "isArray": false,
-            "name": "RotationConvention",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "r",
-        "type": {
-          "isArray": false,
-          "name": "FieldRotation",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-        }
-      },
-      {
-        "name": "convention",
-        "type": {
-          "isArray": false,
-          "name": "RotationConvention",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new rotation which is the composition of r by the instance",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "signature": "compose(org.apache.commons.math3.geometry.euclidean.threed.FieldRotation r,org.apache.commons.math3.geometry.euclidean.threed.RotationConvention convention)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "composeInternal",
-    "paramTags": [
-      {
-        "comment": "rotation to apply the rotation to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "r",
-          "type": {
-            "isArray": false,
-            "name": "FieldRotation",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "r",
-        "type": {
-          "isArray": false,
-          "name": "FieldRotation",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new rotation which is the composition of r by the instance using vector operator convention",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "signature": "composeInternal(org.apache.commons.math3.geometry.euclidean.threed.FieldRotation r)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "applyTo",
-    "paramTags": [
-      {
-        "comment": "rotation to apply the rotation to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "r",
-          "type": {
-            "isArray": false,
-            "name": "Rotation",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "r",
-        "type": {
-          "isArray": false,
-          "name": "Rotation",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new rotation which is the composition of r by the instance",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "signature": "applyTo(org.apache.commons.math3.geometry.euclidean.threed.Rotation r)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "compose",
-    "paramTags": [
-      {
-        "comment": "rotation to apply the rotation to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "r",
-          "type": {
-            "isArray": false,
-            "name": "Rotation",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation"
-          }
-        }
-      },
-      {
-        "comment": "convention to use for the semantics of the angle",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "convention",
-          "type": {
-            "isArray": false,
-            "name": "RotationConvention",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "r",
-        "type": {
-          "isArray": false,
-          "name": "Rotation",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation"
-        }
-      },
-      {
-        "name": "convention",
-        "type": {
-          "isArray": false,
-          "name": "RotationConvention",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new rotation which is the composition of r by the instance",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "signature": "compose(org.apache.commons.math3.geometry.euclidean.threed.Rotation r,org.apache.commons.math3.geometry.euclidean.threed.RotationConvention convention)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "composeInternal",
-    "paramTags": [
-      {
-        "comment": "rotation to apply the rotation to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "r",
-          "type": {
-            "isArray": false,
-            "name": "Rotation",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "r",
-        "type": {
-          "isArray": false,
-          "name": "Rotation",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new rotation which is the composition of r by the instance using vector operator convention",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "signature": "composeInternal(org.apache.commons.math3.geometry.euclidean.threed.Rotation r)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "applyTo",
-    "paramTags": [
-      {
-        "comment": "rotation to apply",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "r1",
-          "type": {
-            "isArray": false,
-            "name": "Rotation",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation"
-          }
-        }
-      },
-      {
-        "comment": "rotation to apply the rotation to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "rInner",
-          "type": {
-            "isArray": false,
-            "name": "FieldRotation",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "r1",
-        "type": {
-          "isArray": false,
-          "name": "Rotation",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation"
-        }
-      },
-      {
-        "name": "rInner",
-        "type": {
-          "isArray": false,
-          "name": "FieldRotation",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new rotation which is the composition of r by the instance",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "signature": "applyTo(org.apache.commons.math3.geometry.euclidean.threed.Rotation r1,org.apache.commons.math3.geometry.euclidean.threed.FieldRotation rInner)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "applyInverseTo",
-    "paramTags": [
-      {
-        "comment": "rotation to apply the rotation to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "r",
-          "type": {
-            "isArray": false,
-            "name": "FieldRotation",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "r",
-        "type": {
-          "isArray": false,
-          "name": "FieldRotation",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new rotation which is the composition of r by the inverse of the instance",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "signature": "applyInverseTo(org.apache.commons.math3.geometry.euclidean.threed.FieldRotation r)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "composeInverse",
-    "paramTags": [
-      {
-        "comment": "rotation to apply the rotation to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "r",
-          "type": {
-            "isArray": false,
-            "name": "FieldRotation",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-          }
-        }
-      },
-      {
-        "comment": "convention to use for the semantics of the angle",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "convention",
-          "type": {
-            "isArray": false,
-            "name": "RotationConvention",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "r",
-        "type": {
-          "isArray": false,
-          "name": "FieldRotation",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-        }
-      },
-      {
-        "name": "convention",
-        "type": {
-          "isArray": false,
-          "name": "RotationConvention",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new rotation which is the composition of r by the inverse of the instance",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "signature": "composeInverse(org.apache.commons.math3.geometry.euclidean.threed.FieldRotation r,org.apache.commons.math3.geometry.euclidean.threed.RotationConvention convention)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "composeInverseInternal",
-    "paramTags": [
-      {
-        "comment": "rotation to apply the rotation to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "r",
-          "type": {
-            "isArray": false,
-            "name": "FieldRotation",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "r",
-        "type": {
-          "isArray": false,
-          "name": "FieldRotation",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new rotation which is the composition of r by the inverse of the instance using vector operator convention",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "signature": "composeInverseInternal(org.apache.commons.math3.geometry.euclidean.threed.FieldRotation r)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "applyInverseTo",
-    "paramTags": [
-      {
-        "comment": "rotation to apply the rotation to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "r",
-          "type": {
-            "isArray": false,
-            "name": "Rotation",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "r",
-        "type": {
-          "isArray": false,
-          "name": "Rotation",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new rotation which is the composition of r by the inverse of the instance",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "signature": "applyInverseTo(org.apache.commons.math3.geometry.euclidean.threed.Rotation r)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "composeInverse",
-    "paramTags": [
-      {
-        "comment": "rotation to apply the rotation to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "r",
-          "type": {
-            "isArray": false,
-            "name": "Rotation",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation"
-          }
-        }
-      },
-      {
-        "comment": "convention to use for the semantics of the angle",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "convention",
-          "type": {
-            "isArray": false,
-            "name": "RotationConvention",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "r",
-        "type": {
-          "isArray": false,
-          "name": "Rotation",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation"
-        }
-      },
-      {
-        "name": "convention",
-        "type": {
-          "isArray": false,
-          "name": "RotationConvention",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new rotation which is the composition of r by the inverse of the instance",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "signature": "composeInverse(org.apache.commons.math3.geometry.euclidean.threed.Rotation r,org.apache.commons.math3.geometry.euclidean.threed.RotationConvention convention)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "composeInverseInternal",
-    "paramTags": [
-      {
-        "comment": "rotation to apply the rotation to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "r",
-          "type": {
-            "isArray": false,
-            "name": "Rotation",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "r",
-        "type": {
-          "isArray": false,
-          "name": "Rotation",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new rotation which is the composition of r by the inverse of the instance using vector operator convention",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "signature": "composeInverseInternal(org.apache.commons.math3.geometry.euclidean.threed.Rotation r)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "applyInverseTo",
-    "paramTags": [
-      {
-        "comment": "rotation to apply the rotation to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "rOuter",
-          "type": {
-            "isArray": false,
-            "name": "Rotation",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation"
-          }
-        }
-      },
-      {
-        "comment": "rotation to apply the rotation to",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "rInner",
-          "type": {
-            "isArray": false,
-            "name": "FieldRotation",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "rOuter",
-        "type": {
-          "isArray": false,
-          "name": "Rotation",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation"
-        }
-      },
-      {
-        "name": "rInner",
-        "type": {
-          "isArray": false,
-          "name": "FieldRotation",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a new rotation which is the composition of r by the inverse of the instance",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "signature": "applyInverseTo(org.apache.commons.math3.geometry.euclidean.threed.Rotation rOuter,org.apache.commons.math3.geometry.euclidean.threed.FieldRotation rInner)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "orthogonalizeMatrix",
-    "paramTags": [
-      {
-        "comment": "initial matrix (not exactly orthogonal)",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "m",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "RealFieldElement",
-              "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-            },
-            "isArray": true,
-            "name": "RealFieldElement[][]",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement[][]"
-          }
-        }
-      },
-      {
-        "comment": "convergence threshold for the iterative orthogonality correction (convergence is reached when the difference between two steps of the Frobenius norm of the correction is below this threshold)",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "threshold",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "m",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "RealFieldElement",
-            "qualifiedName": "org.apache.commons.math3.RealFieldElement"
-          },
-          "isArray": true,
-          "name": "RealFieldElement[][]",
-          "qualifiedName": "org.apache.commons.math3.RealFieldElement[][]"
-        }
-      },
-      {
-        "name": "threshold",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "an orthogonal matrix close to m",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "componentType": {
-        "isArray": false,
-        "name": "T",
-        "qualifiedName": "T"
-      },
-      "isArray": true,
-      "name": "T[][]",
-      "qualifiedName": "T[][]"
-    },
-    "signature": "orthogonalizeMatrix(org.apache.commons.math3.RealFieldElement[][] m,double threshold)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
-    "throwsTags": [
-      {
-        "comment": "if the matrix cannot be orthogonalized with the given threshold after 10 iterations",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "NotARotationMatrixException",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.NotARotationMatrixException"
+          "isArray": false
         },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "FieldRotation",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-    },
-    "isVarArgs": false,
-    "name": "distance",
-    "paramTags": [
-      {
-        "comment": "first rotation",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "r1",
-          "type": {
-            "isArray": false,
-            "name": "FieldRotation",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-          }
-        }
-      },
-      {
-        "comment": "second rotation",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "r2",
-          "type": {
-            "isArray": false,
-            "name": "FieldRotation",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-          }
-        }
+        "name": "u"
       }
     ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+            "name": "FieldVector3D",
+            "isArray": false
+          },
+          "name": "u"
+        },
+        "comment": "vector to apply the rotation to",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new vector which is the image of u by the rotation",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "applyTo(org.apache.commons.math3.geometry.euclidean.threed.Vector3D u)",
+    "name": "applyTo",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+      "name": "FieldVector3D",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "r1",
         "type": {
-          "isArray": false,
-          "name": "FieldRotation",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-        }
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+          "name": "Vector3D",
+          "isArray": false
+        },
+        "name": "u"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+            "name": "Vector3D",
+            "isArray": false
+          },
+          "name": "u"
+        },
+        "comment": "vector to apply the rotation to",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new vector which is the image of u by the rotation",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "applyTo(org.apache.commons.math3.RealFieldElement[] in,org.apache.commons.math3.RealFieldElement[] out)",
+    "name": "applyTo",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement[]",
+          "name": "RealFieldElement[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          }
+        },
+        "name": "in"
       },
       {
-        "name": "r2",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement[]",
+          "name": "RealFieldElement[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          }
+        },
+        "name": "out"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement[]",
+            "name": "RealFieldElement[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+              "name": "RealFieldElement",
+              "isArray": false
+            }
+          },
+          "name": "in"
+        },
+        "comment": "an array with three items which stores vector to rotate",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement[]",
+            "name": "RealFieldElement[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+              "name": "RealFieldElement",
+              "isArray": false
+            }
+          },
+          "name": "out"
+        },
+        "comment": "an array with three items to put result to (it can be the same array as in)",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "applyTo(double[] in,org.apache.commons.math3.RealFieldElement[] out)",
+    "name": "applyTo",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double[]",
+          "name": "double[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "in"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement[]",
+          "name": "RealFieldElement[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          }
+        },
+        "name": "out"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "in"
+        },
+        "comment": "an array with three items which stores vector to rotate",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement[]",
+            "name": "RealFieldElement[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+              "name": "RealFieldElement",
+              "isArray": false
+            }
+          },
+          "name": "out"
+        },
+        "comment": "an array with three items to put result to",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "applyTo(org.apache.commons.math3.geometry.euclidean.threed.Rotation r,org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D u)",
+    "name": "applyTo",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+      "name": "FieldVector3D",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation",
+          "name": "Rotation",
+          "isArray": false
+        },
+        "name": "r"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+          "name": "FieldVector3D",
+          "isArray": false
+        },
+        "name": "u"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation",
+            "name": "Rotation",
+            "isArray": false
+          },
+          "name": "r"
+        },
+        "comment": "rotation to apply",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+            "name": "FieldVector3D",
+            "isArray": false
+          },
+          "name": "u"
+        },
+        "comment": "vector to apply the rotation to",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new vector which is the image of u by the rotation",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "applyInverseTo(org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D u)",
+    "name": "applyInverseTo",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+      "name": "FieldVector3D",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+          "name": "FieldVector3D",
+          "isArray": false
+        },
+        "name": "u"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+            "name": "FieldVector3D",
+            "isArray": false
+          },
+          "name": "u"
+        },
+        "comment": "vector to apply the inverse of the rotation to",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new vector which such that u is its image by the rotation",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "applyInverseTo(org.apache.commons.math3.geometry.euclidean.threed.Vector3D u)",
+    "name": "applyInverseTo",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+      "name": "FieldVector3D",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+          "name": "Vector3D",
+          "isArray": false
+        },
+        "name": "u"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+            "name": "Vector3D",
+            "isArray": false
+          },
+          "name": "u"
+        },
+        "comment": "vector to apply the inverse of the rotation to",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new vector which such that u is its image by the rotation",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "applyInverseTo(org.apache.commons.math3.RealFieldElement[] in,org.apache.commons.math3.RealFieldElement[] out)",
+    "name": "applyInverseTo",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement[]",
+          "name": "RealFieldElement[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          }
+        },
+        "name": "in"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement[]",
+          "name": "RealFieldElement[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          }
+        },
+        "name": "out"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement[]",
+            "name": "RealFieldElement[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+              "name": "RealFieldElement",
+              "isArray": false
+            }
+          },
+          "name": "in"
+        },
+        "comment": "an array with three items which stores vector to rotate",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement[]",
+            "name": "RealFieldElement[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+              "name": "RealFieldElement",
+              "isArray": false
+            }
+          },
+          "name": "out"
+        },
+        "comment": "an array with three items to put result to (it can be the same array as in)",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "applyInverseTo(double[] in,org.apache.commons.math3.RealFieldElement[] out)",
+    "name": "applyInverseTo",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double[]",
+          "name": "double[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "in"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement[]",
+          "name": "RealFieldElement[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          }
+        },
+        "name": "out"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "in"
+        },
+        "comment": "an array with three items which stores vector to rotate",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement[]",
+            "name": "RealFieldElement[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+              "name": "RealFieldElement",
+              "isArray": false
+            }
+          },
+          "name": "out"
+        },
+        "comment": "an array with three items to put result to",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "applyInverseTo(org.apache.commons.math3.geometry.euclidean.threed.Rotation r,org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D u)",
+    "name": "applyInverseTo",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+      "name": "FieldVector3D",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation",
+          "name": "Rotation",
+          "isArray": false
+        },
+        "name": "r"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+          "name": "FieldVector3D",
+          "isArray": false
+        },
+        "name": "u"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation",
+            "name": "Rotation",
+            "isArray": false
+          },
+          "name": "r"
+        },
+        "comment": "rotation to apply",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldVector3D",
+            "name": "FieldVector3D",
+            "isArray": false
+          },
+          "name": "u"
+        },
+        "comment": "vector to apply the inverse of the rotation to",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new vector which such that u is its image by the rotation",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "applyTo(org.apache.commons.math3.geometry.euclidean.threed.FieldRotation r)",
+    "name": "applyTo",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
           "name": "FieldRotation",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation"
-        }
+          "isArray": false
+        },
+        "name": "r"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+            "name": "FieldRotation",
+            "isArray": false
+          },
+          "name": "r"
+        },
+        "comment": "rotation to apply the rotation to",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new rotation which is the composition of r by the instance",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "compose(org.apache.commons.math3.geometry.euclidean.threed.FieldRotation r,org.apache.commons.math3.geometry.euclidean.threed.RotationConvention convention)",
+    "name": "compose",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+          "name": "FieldRotation",
+          "isArray": false
+        },
+        "name": "r"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention",
+          "name": "RotationConvention",
+          "isArray": false
+        },
+        "name": "convention"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+            "name": "FieldRotation",
+            "isArray": false
+          },
+          "name": "r"
+        },
+        "comment": "rotation to apply the rotation to",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention",
+            "name": "RotationConvention",
+            "isArray": false
+          },
+          "name": "convention"
+        },
+        "comment": "convention to use for the semantics of the angle",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new rotation which is the composition of r by the instance",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "applyTo(org.apache.commons.math3.geometry.euclidean.threed.Rotation r)",
+    "name": "applyTo",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation",
+          "name": "Rotation",
+          "isArray": false
+        },
+        "name": "r"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation",
+            "name": "Rotation",
+            "isArray": false
+          },
+          "name": "r"
+        },
+        "comment": "rotation to apply the rotation to",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new rotation which is the composition of r by the instance",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "compose(org.apache.commons.math3.geometry.euclidean.threed.Rotation r,org.apache.commons.math3.geometry.euclidean.threed.RotationConvention convention)",
+    "name": "compose",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation",
+          "name": "Rotation",
+          "isArray": false
+        },
+        "name": "r"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention",
+          "name": "RotationConvention",
+          "isArray": false
+        },
+        "name": "convention"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation",
+            "name": "Rotation",
+            "isArray": false
+          },
+          "name": "r"
+        },
+        "comment": "rotation to apply the rotation to",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention",
+            "name": "RotationConvention",
+            "isArray": false
+          },
+          "name": "convention"
+        },
+        "comment": "convention to use for the semantics of the angle",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new rotation which is the composition of r by the instance",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "applyTo(org.apache.commons.math3.geometry.euclidean.threed.Rotation r1,org.apache.commons.math3.geometry.euclidean.threed.FieldRotation rInner)",
+    "name": "applyTo",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation",
+          "name": "Rotation",
+          "isArray": false
+        },
+        "name": "r1"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+          "name": "FieldRotation",
+          "isArray": false
+        },
+        "name": "rInner"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation",
+            "name": "Rotation",
+            "isArray": false
+          },
+          "name": "r1"
+        },
+        "comment": "rotation to apply",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+            "name": "FieldRotation",
+            "isArray": false
+          },
+          "name": "rInner"
+        },
+        "comment": "rotation to apply the rotation to",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new rotation which is the composition of r by the instance",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "applyInverseTo(org.apache.commons.math3.geometry.euclidean.threed.FieldRotation r)",
+    "name": "applyInverseTo",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+          "name": "FieldRotation",
+          "isArray": false
+        },
+        "name": "r"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+            "name": "FieldRotation",
+            "isArray": false
+          },
+          "name": "r"
+        },
+        "comment": "rotation to apply the rotation to",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new rotation which is the composition of r by the inverse of the instance",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "composeInverse(org.apache.commons.math3.geometry.euclidean.threed.FieldRotation r,org.apache.commons.math3.geometry.euclidean.threed.RotationConvention convention)",
+    "name": "composeInverse",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+          "name": "FieldRotation",
+          "isArray": false
+        },
+        "name": "r"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention",
+          "name": "RotationConvention",
+          "isArray": false
+        },
+        "name": "convention"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+            "name": "FieldRotation",
+            "isArray": false
+          },
+          "name": "r"
+        },
+        "comment": "rotation to apply the rotation to",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention",
+            "name": "RotationConvention",
+            "isArray": false
+          },
+          "name": "convention"
+        },
+        "comment": "convention to use for the semantics of the angle",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new rotation which is the composition of r by the inverse of the instance",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "applyInverseTo(org.apache.commons.math3.geometry.euclidean.threed.Rotation r)",
+    "name": "applyInverseTo",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation",
+          "name": "Rotation",
+          "isArray": false
+        },
+        "name": "r"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation",
+            "name": "Rotation",
+            "isArray": false
+          },
+          "name": "r"
+        },
+        "comment": "rotation to apply the rotation to",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new rotation which is the composition of r by the inverse of the instance",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "composeInverse(org.apache.commons.math3.geometry.euclidean.threed.Rotation r,org.apache.commons.math3.geometry.euclidean.threed.RotationConvention convention)",
+    "name": "composeInverse",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation",
+          "name": "Rotation",
+          "isArray": false
+        },
+        "name": "r"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention",
+          "name": "RotationConvention",
+          "isArray": false
+        },
+        "name": "convention"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation",
+            "name": "Rotation",
+            "isArray": false
+          },
+          "name": "r"
+        },
+        "comment": "rotation to apply the rotation to",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.RotationConvention",
+            "name": "RotationConvention",
+            "isArray": false
+          },
+          "name": "convention"
+        },
+        "comment": "convention to use for the semantics of the angle",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new rotation which is the composition of r by the inverse of the instance",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "applyInverseTo(org.apache.commons.math3.geometry.euclidean.threed.Rotation rOuter,org.apache.commons.math3.geometry.euclidean.threed.FieldRotation rInner)",
+    "name": "applyInverseTo",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation",
+          "name": "Rotation",
+          "isArray": false
+        },
+        "name": "rOuter"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+          "name": "FieldRotation",
+          "isArray": false
+        },
+        "name": "rInner"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Rotation",
+            "name": "Rotation",
+            "isArray": false
+          },
+          "name": "rOuter"
+        },
+        "comment": "rotation to apply the rotation to",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+            "name": "FieldRotation",
+            "isArray": false
+          },
+          "name": "rInner"
+        },
+        "comment": "rotation to apply the rotation to",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new rotation which is the composition of r by the inverse of the instance",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "distance(org.apache.commons.math3.geometry.euclidean.threed.FieldRotation r1,org.apache.commons.math3.geometry.euclidean.threed.FieldRotation r2)",
+    "name": "distance",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+      "name": "FieldRotation",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+          "name": "FieldRotation",
+          "isArray": false
+        },
+        "name": "r1"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+          "name": "FieldRotation",
+          "isArray": false
+        },
+        "name": "r2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+            "name": "FieldRotation",
+            "isArray": false
+          },
+          "name": "r1"
+        },
+        "comment": "first rotation",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
+            "name": "FieldRotation",
+            "isArray": false
+          },
+          "name": "r2"
+        },
+        "comment": "second rotation",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "distance between r1 and r2",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "T",
-      "qualifiedName": "T"
-    },
-    "signature": "distance(org.apache.commons.math3.geometry.euclidean.threed.FieldRotation r1,org.apache.commons.math3.geometry.euclidean.threed.FieldRotation r2)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.FieldRotation",
     "throwsTags": []
   }
 ]

@@ -1,459 +1,362 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "SubLine",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.SubLine"
-    },
-    "isVarArgs": false,
+    "signature": "SubLine(org.apache.commons.math3.geometry.euclidean.threed.Line line,org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet remainingRegion)",
     "name": "SubLine",
-    "paramTags": [
-      {
-        "comment": "underlying line",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "line",
-          "type": {
-            "isArray": false,
-            "name": "Line",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line"
-          }
-        }
-      },
-      {
-        "comment": "remaining region of the line",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "remainingRegion",
-          "type": {
-            "isArray": false,
-            "name": "IntervalsSet",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
+      "name": "SubLine",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
+    "isVarArgs": false,
     "parameters": [
       {
-        "name": "line",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
           "name": "Line",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line"
-        }
+          "isArray": false
+        },
+        "name": "line"
       },
       {
-        "name": "remainingRegion",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
           "name": "IntervalsSet",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet"
-        }
+          "isArray": false
+        },
+        "name": "remainingRegion"
       }
     ],
-    "signature": "SubLine(org.apache.commons.math3.geometry.euclidean.threed.Line line,org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet remainingRegion)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Line",
+            "name": "Line",
+            "isArray": false
+          },
+          "name": "line"
+        },
+        "comment": "underlying line",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+            "name": "IntervalsSet",
+            "isArray": false
+          },
+          "name": "remainingRegion"
+        },
+        "comment": "remaining region of the line",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "SubLine",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.SubLine"
-    },
-    "isVarArgs": false,
-    "name": "SubLine",
-    "paramTags": [
-      {
-        "comment": "start point",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "start",
-          "type": {
-            "isArray": false,
-            "name": "Vector3D",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
-          }
-        }
-      },
-      {
-        "comment": "end point",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "end",
-          "type": {
-            "isArray": false,
-            "name": "Vector3D",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
-          }
-        }
-      },
-      {
-        "comment": "tolerance below which points are considered identical",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "tolerance",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "start",
-        "type": {
-          "isArray": false,
-          "name": "Vector3D",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
-        }
-      },
-      {
-        "name": "end",
-        "type": {
-          "isArray": false,
-          "name": "Vector3D",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
-        }
-      },
-      {
-        "name": "tolerance",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
     "signature": "SubLine(org.apache.commons.math3.geometry.euclidean.threed.Vector3D start,org.apache.commons.math3.geometry.euclidean.threed.Vector3D end,double tolerance)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
-    "throwsTags": [
-      {
-        "comment": "if the points are equal",
-        "condition": "args[1].equals(args[0])",
-        "exception": {
-          "isArray": false,
-          "name": "MathIllegalArgumentException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SubLine",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.SubLine"
-    },
-    "isVarArgs": false,
     "name": "SubLine",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
+      "name": "SubLine",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+          "name": "Vector3D",
+          "isArray": false
+        },
+        "name": "start"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+          "name": "Vector3D",
+          "isArray": false
+        },
+        "name": "end"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "tolerance"
+      }
+    ],
     "paramTags": [
       {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+            "name": "Vector3D",
+            "isArray": false
+          },
+          "name": "start"
+        },
         "comment": "start point",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "start",
-          "type": {
-            "isArray": false,
-            "name": "Vector3D",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
-          }
-        }
+        "kind": "PARAM",
+        "condition": ""
       },
       {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+            "name": "Vector3D",
+            "isArray": false
+          },
+          "name": "end"
+        },
         "comment": "end point",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "end",
-          "type": {
-            "isArray": false,
-            "name": "Vector3D",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "start",
-        "type": {
-          "isArray": false,
-          "name": "Vector3D",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
-        }
+        "kind": "PARAM",
+        "condition": ""
       },
       {
-        "name": "end",
-        "type": {
-          "isArray": false,
-          "name": "Vector3D",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
-        }
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "tolerance"
+        },
+        "comment": "tolerance below which points are considered identical",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
-    "signature": "SubLine(org.apache.commons.math3.geometry.euclidean.threed.Vector3D start,org.apache.commons.math3.geometry.euclidean.threed.Vector3D end)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
     "throwsTags": [
       {
-        "comment": "if the points are equal",
-        "condition": "args[1].equals(args[0])",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException",
           "name": "MathIllegalArgumentException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the points are equal",
+        "kind": "THROWS",
+        "condition": "args[1].equals(args[0])"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "SubLine",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.SubLine"
-    },
-    "isVarArgs": false,
+    "signature": "SubLine(org.apache.commons.math3.geometry.euclidean.threed.Vector3D start,org.apache.commons.math3.geometry.euclidean.threed.Vector3D end)",
     "name": "SubLine",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
+      "name": "SubLine",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+          "name": "Vector3D",
+          "isArray": false
+        },
+        "name": "start"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+          "name": "Vector3D",
+          "isArray": false
+        },
+        "name": "end"
+      }
+    ],
     "paramTags": [
       {
-        "comment": "single segment forming the sub-line",
-        "condition": "",
-        "kind": "@param",
         "parameter": {
-          "name": "segment",
           "type": {
-            "isArray": false,
-            "name": "Segment",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Segment"
-          }
-        }
-      }
-    ],
-    "parameters": [
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+            "name": "Vector3D",
+            "isArray": false
+          },
+          "name": "start"
+        },
+        "comment": "start point",
+        "kind": "PARAM",
+        "condition": ""
+      },
       {
-        "name": "segment",
-        "type": {
-          "isArray": false,
-          "name": "Segment",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Segment"
-        }
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+            "name": "Vector3D",
+            "isArray": false
+          },
+          "name": "end"
+        },
+        "comment": "end point",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
-    "signature": "SubLine(org.apache.commons.math3.geometry.euclidean.threed.Segment segment)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
     "throwsTags": [
       {
-        "comment": "if the segment endpoints are equal",
-        "condition": "",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException",
           "name": "MathIllegalArgumentException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the points are equal",
+        "kind": "THROWS",
+        "condition": "args[1].equals(args[0])"
       }
     ]
   },
   {
+    "signature": "SubLine(org.apache.commons.math3.geometry.euclidean.threed.Segment segment)",
+    "name": "SubLine",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
       "name": "SubLine",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.SubLine"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
     "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Segment",
+          "name": "Segment",
+          "isArray": false
+        },
+        "name": "segment"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Segment",
+            "name": "Segment",
+            "isArray": false
+          },
+          "name": "segment"
+        },
+        "comment": "single segment forming the sub-line",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException",
+          "name": "MathIllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the segment endpoints are equal",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "getSegments()",
     "name": "getSegments",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
+      "name": "SubLine",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "list of segments endpoints",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "List",
-      "qualifiedName": "java.util.List"
-    },
-    "signature": "getSegments()",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "SubLine",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.SubLine"
-    },
-    "isVarArgs": false,
+    "signature": "intersection(org.apache.commons.math3.geometry.euclidean.threed.SubLine subLine,boolean includeEndPoints)",
     "name": "intersection",
-    "paramTags": [
-      {
-        "comment": "other sub-line which may intersect instance",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "subLine",
-          "type": {
-            "isArray": false,
-            "name": "SubLine",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.SubLine"
-          }
-        }
-      },
-      {
-        "comment": "if true, endpoints are considered to belong to instance (i.e. they are closed sets) and may be returned, otherwise endpoints are considered to not belong to instance (i.e. they are open sets) and intersection occurring on endpoints lead to null being returned",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "includeEndPoints",
-          "type": {
-            "isArray": false,
-            "name": "boolean",
-            "qualifiedName": "boolean"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
+      "name": "SubLine",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D",
+      "name": "Vector3D",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "subLine",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
           "name": "SubLine",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.SubLine"
-        }
+          "isArray": false
+        },
+        "name": "subLine"
       },
       {
-        "name": "includeEndPoints",
         "type": {
-          "isArray": false,
+          "qualifiedName": "boolean",
           "name": "boolean",
-          "qualifiedName": "boolean"
-        }
+          "isArray": false
+        },
+        "name": "includeEndPoints"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
+            "name": "SubLine",
+            "isArray": false
+          },
+          "name": "subLine"
+        },
+        "comment": "other sub-line which may intersect instance",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "includeEndPoints"
+        },
+        "comment": "if true, endpoints are considered to belong to instance (i.e. they are closed sets) and may be returned, otherwise endpoints are considered to not belong to instance (i.e. they are open sets) and intersection occurring on endpoints lead to null being returned",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the intersection point if there is one, null if the sub-lines don't intersect",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Vector3D",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
-    },
-    "signature": "intersection(org.apache.commons.math3.geometry.euclidean.threed.SubLine subLine,boolean includeEndPoints)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
     "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SubLine",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.SubLine"
-    },
-    "isVarArgs": false,
-    "name": "buildIntervalSet",
-    "paramTags": [
-      {
-        "comment": "start point",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "start",
-          "type": {
-            "isArray": false,
-            "name": "Vector3D",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
-          }
-        }
-      },
-      {
-        "comment": "end point",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "end",
-          "type": {
-            "isArray": false,
-            "name": "Vector3D",
-            "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
-          }
-        }
-      },
-      {
-        "comment": "tolerance below which points are considered identical",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "tolerance",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "start",
-        "type": {
-          "isArray": false,
-          "name": "Vector3D",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
-        }
-      },
-      {
-        "name": "end",
-        "type": {
-          "isArray": false,
-          "name": "Vector3D",
-          "qualifiedName": "org.apache.commons.math3.geometry.euclidean.threed.Vector3D"
-        }
-      },
-      {
-        "name": "tolerance",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "an interval set",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "IntervalsSet",
-      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet"
-    },
-    "signature": "buildIntervalSet(org.apache.commons.math3.geometry.euclidean.threed.Vector3D start,org.apache.commons.math3.geometry.euclidean.threed.Vector3D end,double tolerance)",
-    "targetClass": "org.apache.commons.math3.geometry.euclidean.threed.SubLine",
-    "throwsTags": [
-      {
-        "comment": "if the points are equal",
-        "condition": "args[0].equals(args[1])",
-        "exception": {
-          "isArray": false,
-          "name": "MathIllegalArgumentException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException"
-        },
-        "kind": "@throws"
-      }
-    ]
   }
 ]

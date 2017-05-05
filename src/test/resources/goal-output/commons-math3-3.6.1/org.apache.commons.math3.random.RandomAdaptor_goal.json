@@ -1,1139 +1,430 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomAdaptor",
-      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor"
-    },
-    "isVarArgs": false,
-    "name": "RandomAdaptor",
-    "paramTags": [],
-    "parameters": [],
-    "signature": "RandomAdaptor()",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomAdaptor",
-      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor"
-    },
-    "isVarArgs": false,
-    "name": "RandomAdaptor",
-    "paramTags": [
-      {
-        "comment": "the wrapped generator",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "randomGenerator",
-          "type": {
-            "isArray": false,
-            "name": "RandomGenerator",
-            "qualifiedName": "org.apache.commons.math3.random.RandomGenerator"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "randomGenerator",
-        "type": {
-          "isArray": false,
-          "name": "RandomGenerator",
-          "qualifiedName": "org.apache.commons.math3.random.RandomGenerator"
-        }
-      }
-    ],
     "signature": "RandomAdaptor(org.apache.commons.math3.random.RandomGenerator randomGenerator)",
+    "name": "RandomAdaptor",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor",
+      "name": "RandomAdaptor",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.random.RandomGenerator",
+          "name": "RandomGenerator",
+          "isArray": false
+        },
+        "name": "randomGenerator"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.random.RandomGenerator",
+            "name": "RandomGenerator",
+            "isArray": false
+          },
+          "name": "randomGenerator"
+        },
+        "comment": "the wrapped generator",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomAdaptor",
-      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor"
-    },
-    "isVarArgs": false,
+    "signature": "createAdaptor(org.apache.commons.math3.random.RandomGenerator randomGenerator)",
     "name": "createAdaptor",
-    "paramTags": [
-      {
-        "comment": "wrapped RandomGenerator instance",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "randomGenerator",
-          "type": {
-            "isArray": false,
-            "name": "RandomGenerator",
-            "qualifiedName": "org.apache.commons.math3.random.RandomGenerator"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor",
+      "name": "RandomAdaptor",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Random",
+      "name": "Random",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "randomGenerator",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.random.RandomGenerator",
           "name": "RandomGenerator",
-          "qualifiedName": "org.apache.commons.math3.random.RandomGenerator"
-        }
+          "isArray": false
+        },
+        "name": "randomGenerator"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.random.RandomGenerator",
+            "name": "RandomGenerator",
+            "isArray": false
+          },
+          "name": "randomGenerator"
+        },
+        "comment": "wrapped RandomGenerator instance",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a Random instance wrapping the RandomGenerator",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
-    },
-    "signature": "createAdaptor(org.apache.commons.math3.random.RandomGenerator randomGenerator)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomAdaptor",
-      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor"
-    },
-    "isVarArgs": false,
+    "signature": "nextBoolean()",
     "name": "nextBoolean",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor",
+      "name": "RandomAdaptor",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the next pseudorandom, uniformly distributed boolean value from this random number generator's sequence",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "nextBoolean()",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomAdaptor",
-      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor"
-    },
-    "isVarArgs": false,
+    "signature": "nextBytes(byte[] bytes)",
     "name": "nextBytes",
-    "paramTags": [
-      {
-        "comment": "the non-null byte array in which to put the random bytes",
-        "condition": "(args[0]==null) == false",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "bytes",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "byte",
-              "qualifiedName": "byte"
-            },
-            "isArray": true,
-            "name": "byte[]",
-            "qualifiedName": "byte[]"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor",
+      "name": "RandomAdaptor",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "bytes",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "byte",
-            "qualifiedName": "byte"
-          },
-          "isArray": true,
+          "qualifiedName": "byte[]",
           "name": "byte[]",
-          "qualifiedName": "byte[]"
-        }
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "byte",
+            "name": "byte",
+            "isArray": false
+          }
+        },
+        "name": "bytes"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "nextBytes(byte[] bytes)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "byte[]",
+            "name": "byte[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "byte",
+              "name": "byte",
+              "isArray": false
+            }
+          },
+          "name": "bytes"
+        },
+        "comment": "the non-null byte array in which to put the random bytes",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomAdaptor",
-      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor"
-    },
-    "isVarArgs": false,
+    "signature": "nextDouble()",
     "name": "nextDouble",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor",
+      "name": "RandomAdaptor",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the next pseudorandom, uniformly distributed double value between 0.0 and 1.0 from this random number generator's sequence",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "nextDouble()",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomAdaptor",
-      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor"
-    },
-    "isVarArgs": false,
+    "signature": "nextFloat()",
     "name": "nextFloat",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor",
+      "name": "RandomAdaptor",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "float",
+      "name": "float",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the next pseudorandom, uniformly distributed float value between 0.0 and 1.0 from this random number generator's sequence",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "float",
-      "qualifiedName": "float"
-    },
-    "signature": "nextFloat()",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomAdaptor",
-      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor"
-    },
-    "isVarArgs": false,
+    "signature": "nextGaussian()",
     "name": "nextGaussian",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor",
+      "name": "RandomAdaptor",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the next pseudorandom, Gaussian (\"normally\") distributed double value with mean 0.0 and standard deviation 1.0 from this random number generator's sequence",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "nextGaussian()",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomAdaptor",
-      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor"
-    },
-    "isVarArgs": false,
+    "signature": "nextInt()",
     "name": "nextInt",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor",
+      "name": "RandomAdaptor",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the next pseudorandom, uniformly distributed int value from this random number generator's sequence",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "nextInt()",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomAdaptor",
-      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor"
-    },
-    "isVarArgs": false,
+    "signature": "nextInt(int n)",
     "name": "nextInt",
-    "paramTags": [
-      {
-        "comment": "the bound on the random number to be returned. Must be positive.",
-        "condition": "args[0]>0",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "n",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor",
+      "name": "RandomAdaptor",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "n",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "n"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "the bound on the random number to be returned. Must be positive.",
+        "kind": "PARAM",
+        "condition": "args[0]>0"
       }
     ],
     "returnTag": {
       "comment": "a pseudorandom, uniformly distributed int value between 0 (inclusive) and n (exclusive).",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "nextInt(int n)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if n is not positive.",
-        "condition": "(args[0]>0) == false",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "(args[0]>0) == false"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomAdaptor",
-      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor"
-    },
-    "isVarArgs": false,
+    "signature": "nextLong()",
     "name": "nextLong",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor",
+      "name": "RandomAdaptor",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the next pseudorandom, uniformly distributed long value from this random number generator's sequence",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
-    },
-    "signature": "nextLong()",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomAdaptor",
-      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor"
-    },
-    "isVarArgs": false,
-    "name": "setSeed",
-    "paramTags": [
-      {
-        "comment": "the seed value",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "seed",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "seed",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
     "signature": "setSeed(int seed)",
+    "name": "setSeed",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor",
+      "name": "RandomAdaptor",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "seed"
+      }
+    ],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomAdaptor",
-      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor"
-    },
-    "isVarArgs": false,
-    "name": "setSeed",
-    "paramTags": [
-      {
-        "comment": "the seed value",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "seed",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "int",
-              "qualifiedName": "int"
-            },
-            "isArray": true,
-            "name": "int[]",
-            "qualifiedName": "int[]"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "seed",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          },
-          "isArray": true,
-          "name": "int[]",
-          "qualifiedName": "int[]"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
     "signature": "setSeed(int[] seed)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "RandomAdaptor",
-      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor"
-    },
-    "isVarArgs": false,
     "name": "setSeed",
-    "paramTags": [
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor",
+      "name": "RandomAdaptor",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
       {
-        "comment": "the seed value",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "seed",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
+        "type": {
+          "qualifiedName": "int[]",
+          "name": "int[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
           }
-        }
+        },
+        "name": "seed"
       }
     ],
-    "parameters": [
-      {
-        "name": "seed",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
     "signature": "setSeed(long seed)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
+    "name": "setSeed",
     "containingClass": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
+      "qualifiedName": "org.apache.commons.math3.random.RandomAdaptor",
+      "name": "RandomAdaptor",
+      "isArray": false
     },
-    "isVarArgs": false,
-    "name": "seedUniquifier",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
-    },
-    "signature": "seedUniquifier()",
     "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
-    },
     "isVarArgs": false,
-    "name": "initialScramble",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      }
-    ],
     "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
-    },
-    "signature": "initialScramble(long arg0)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
-    },
-    "isVarArgs": false,
-    "name": "next",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "next(int arg0)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
-    },
-    "isVarArgs": false,
-    "name": "internalNextLong",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      },
-      {
-        "name": "arg1",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
-    },
-    "signature": "internalNextLong(long arg0,long arg1)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
-    },
-    "isVarArgs": false,
-    "name": "internalNextInt",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "arg1",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "internalNextInt(int arg0,int arg1)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
-    },
-    "isVarArgs": false,
-    "name": "internalNextDouble",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      },
-      {
-        "name": "arg1",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "internalNextDouble(double arg0,double arg1)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
-    },
-    "isVarArgs": false,
-    "name": "ints",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "IntStream",
-      "qualifiedName": "java.util.stream.IntStream"
-    },
-    "signature": "ints(long arg0)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
-    },
-    "isVarArgs": false,
-    "name": "ints",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "IntStream",
-      "qualifiedName": "java.util.stream.IntStream"
-    },
-    "signature": "ints()",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
-    },
-    "isVarArgs": false,
-    "name": "ints",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      },
-      {
-        "name": "arg1",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "arg2",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "IntStream",
-      "qualifiedName": "java.util.stream.IntStream"
-    },
-    "signature": "ints(long arg0,int arg1,int arg2)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
-    },
-    "isVarArgs": false,
-    "name": "ints",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "arg1",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "IntStream",
-      "qualifiedName": "java.util.stream.IntStream"
-    },
-    "signature": "ints(int arg0,int arg1)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
-    },
-    "isVarArgs": false,
-    "name": "longs",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "LongStream",
-      "qualifiedName": "java.util.stream.LongStream"
-    },
-    "signature": "longs(long arg0)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
-    },
-    "isVarArgs": false,
-    "name": "longs",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "LongStream",
-      "qualifiedName": "java.util.stream.LongStream"
-    },
-    "signature": "longs()",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
-    },
-    "isVarArgs": false,
-    "name": "longs",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      },
-      {
-        "name": "arg1",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      },
-      {
-        "name": "arg2",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "LongStream",
-      "qualifiedName": "java.util.stream.LongStream"
-    },
-    "signature": "longs(long arg0,long arg1,long arg2)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
-    },
-    "isVarArgs": false,
-    "name": "longs",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      },
-      {
-        "name": "arg1",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "LongStream",
-      "qualifiedName": "java.util.stream.LongStream"
-    },
-    "signature": "longs(long arg0,long arg1)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
-    },
-    "isVarArgs": false,
-    "name": "doubles",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "DoubleStream",
-      "qualifiedName": "java.util.stream.DoubleStream"
-    },
-    "signature": "doubles(long arg0)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
-    },
-    "isVarArgs": false,
-    "name": "doubles",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "DoubleStream",
-      "qualifiedName": "java.util.stream.DoubleStream"
-    },
-    "signature": "doubles()",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
-    },
-    "isVarArgs": false,
-    "name": "doubles",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      },
-      {
-        "name": "arg1",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      },
-      {
-        "name": "arg2",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "DoubleStream",
-      "qualifiedName": "java.util.stream.DoubleStream"
-    },
-    "signature": "doubles(long arg0,double arg1,double arg2)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
-    },
-    "isVarArgs": false,
-    "name": "doubles",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      },
-      {
-        "name": "arg1",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "DoubleStream",
-      "qualifiedName": "java.util.stream.DoubleStream"
-    },
-    "signature": "doubles(double arg0,double arg1)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
-    },
-    "isVarArgs": false,
-    "name": "readObject",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
-          "name": "ObjectInputStream",
-          "qualifiedName": "java.io.ObjectInputStream"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
+      "qualifiedName": "void",
       "name": "void",
-      "qualifiedName": "void"
+      "isArray": false
     },
-    "signature": "readObject(java.io.ObjectInputStream arg0)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
-    },
-    "isVarArgs": false,
-    "name": "writeObject",
-    "paramTags": [],
     "parameters": [
       {
-        "name": "arg0",
         "type": {
-          "isArray": false,
-          "name": "ObjectOutputStream",
-          "qualifiedName": "java.io.ObjectOutputStream"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "writeObject(java.io.ObjectOutputStream arg0)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Random",
-      "qualifiedName": "java.util.Random"
-    },
-    "isVarArgs": false,
-    "name": "resetSeed",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "arg0",
-        "type": {
-          "isArray": false,
+          "qualifiedName": "long",
           "name": "long",
-          "qualifiedName": "long"
-        }
+          "isArray": false
+        },
+        "name": "seed"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "resetSeed(long arg0)",
-    "targetClass": "org.apache.commons.math3.random.RandomAdaptor",
+    "paramTags": [],
     "throwsTags": []
   }
 ]

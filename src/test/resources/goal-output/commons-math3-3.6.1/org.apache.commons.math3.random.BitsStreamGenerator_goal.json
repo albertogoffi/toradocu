@@ -1,626 +1,546 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BitsStreamGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator"
-    },
-    "isVarArgs": false,
-    "name": "BitsStreamGenerator",
-    "paramTags": [],
-    "parameters": [],
     "signature": "BitsStreamGenerator()",
+    "name": "BitsStreamGenerator",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator",
+      "name": "BitsStreamGenerator",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BitsStreamGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator"
-    },
-    "isVarArgs": false,
-    "name": "setSeed",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "seed",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
     "signature": "setSeed(int seed)",
-    "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BitsStreamGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator"
-    },
-    "isVarArgs": false,
     "name": "setSeed",
-    "paramTags": [
-      {
-        "comment": "the seed value",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "seed",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "int",
-              "qualifiedName": "int"
-            },
-            "isArray": true,
-            "name": "int[]",
-            "qualifiedName": "int[]"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "seed",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          },
-          "isArray": true,
-          "name": "int[]",
-          "qualifiedName": "int[]"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "setSeed(int[] seed)",
-    "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
-    "throwsTags": []
-  },
-  {
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator",
       "name": "BitsStreamGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator"
+      "isArray": false
     },
-    "isVarArgs": false,
-    "name": "setSeed",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "seed",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "setSeed(long seed)",
     "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BitsStreamGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator"
-    },
     "isVarArgs": false,
-    "name": "next",
-    "paramTags": [
-      {
-        "comment": "number of random bits to produce",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "bits",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "bits",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "seed"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "setSeed(int[] seed)",
+    "name": "setSeed",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator",
+      "name": "BitsStreamGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int[]",
+          "name": "int[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          }
+        },
+        "name": "seed"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "setSeed(long seed)",
+    "name": "setSeed",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator",
+      "name": "BitsStreamGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "seed"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "next(int bits)",
+    "name": "next",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator",
+      "name": "BitsStreamGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "bits"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "bits"
+        },
+        "comment": "number of random bits to produce",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "random bits generated",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "next(int bits)",
-    "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BitsStreamGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator"
-    },
-    "isVarArgs": false,
-    "name": "nextBoolean",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the next pseudorandom, uniformly distributed boolean value from this random number generator's sequence",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
     "signature": "nextBoolean()",
+    "name": "nextBoolean",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator",
+      "name": "BitsStreamGenerator",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BitsStreamGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator"
-    },
-    "isVarArgs": false,
-    "name": "nextDouble",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the next pseudorandom, uniformly distributed double value between 0.0 and 1.0 from this random number generator's sequence",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
     "signature": "nextDouble()",
-    "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
-    "throwsTags": []
-  },
-  {
+    "name": "nextDouble",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator",
       "name": "BitsStreamGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator"
+      "isArray": false
     },
-    "isVarArgs": false,
-    "name": "nextFloat",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the next pseudorandom, uniformly distributed float value between 0.0 and 1.0 from this random number generator's sequence",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "float",
-      "qualifiedName": "float"
-    },
-    "signature": "nextFloat()",
     "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BitsStreamGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator"
-    },
     "isVarArgs": false,
-    "name": "nextGaussian",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the next pseudorandom, Gaussian (\"normally\") distributed double value with mean 0.0 and standard deviation 1.0 from this random number generator's sequence",
-      "condition": "",
-      "kind": "RETURN"
-    },
     "returnType": {
-      "isArray": false,
+      "qualifiedName": "double",
       "name": "double",
-      "qualifiedName": "double"
+      "isArray": false
     },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "nextFloat()",
+    "name": "nextFloat",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator",
+      "name": "BitsStreamGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "float",
+      "name": "float",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
     "signature": "nextGaussian()",
+    "name": "nextGaussian",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator",
+      "name": "BitsStreamGenerator",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BitsStreamGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator"
-    },
-    "isVarArgs": false,
-    "name": "nextInt",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the next pseudorandom, uniformly distributed int value from this random number generator's sequence",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
     "signature": "nextInt()",
-    "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BitsStreamGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator"
-    },
-    "isVarArgs": false,
     "name": "nextInt",
-    "paramTags": [
-      {
-        "comment": "the bound on the random number to be returned. Must be positive.",
-        "condition": "args[0]>0",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "n",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "n",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "a pseudorandom, uniformly distributed int value between 0 (inclusive) and n (exclusive).",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "nextInt(int n)",
-    "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
-    "throwsTags": [
-      {
-        "codeTags": [],
-        "comment": "if n is not positive.",
-        "condition": "(args[0]>0) == false",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "THROWS"
-      }
-    ]
-  },
-  {
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator",
       "name": "BitsStreamGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator"
+      "isArray": false
     },
-    "isVarArgs": false,
-    "name": "nextLong",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the next pseudorandom, uniformly distributed long value from this random number generator's sequence",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
-    },
-    "signature": "nextLong()",
     "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
     "throwsTags": []
   },
   {
+    "signature": "nextInt(int n)",
+    "name": "nextInt",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator",
       "name": "BitsStreamGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
     "isVarArgs": false,
-    "name": "nextLong",
-    "paramTags": [
-      {
-        "comment": "the bound on the random number to be returned. Must be positive.",
-        "condition": "args[0]>0",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "n",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "n",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "n"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "nextLong()",
+    "name": "nextLong",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator",
+      "name": "BitsStreamGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "nextLong(long n)",
+    "name": "nextLong",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator",
+      "name": "BitsStreamGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "long",
           "name": "long",
-          "qualifiedName": "long"
-        }
+          "isArray": false
+        },
+        "name": "n"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "the bound on the random number to be returned. Must be positive.",
+        "kind": "PARAM",
+        "condition": "args[0]>0"
       }
     ],
     "returnTag": {
       "comment": "a pseudorandom, uniformly distributed long value between 0 (inclusive) and n (exclusive).",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
-    },
-    "signature": "nextLong(long n)",
-    "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if n is not positive.",
-        "condition": "(args[0]>0) == false",
-        "exception": {
-          "isArray": false,
-          "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "(args[0]>0) == false"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BitsStreamGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator"
-    },
-    "isVarArgs": false,
-    "name": "clear",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
     "signature": "clear()",
+    "name": "clear",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator",
+      "name": "BitsStreamGenerator",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BitsStreamGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator"
-    },
-    "isVarArgs": false,
-    "name": "nextBytes",
-    "paramTags": [
-      {
-        "comment": "Array in which to put the generated bytes. Cannot be null.",
-        "condition": "(args[0]==null) == false",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "bytes",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "byte",
-              "qualifiedName": "byte"
-            },
-            "isArray": true,
-            "name": "byte[]",
-            "qualifiedName": "byte[]"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "bytes",
-        "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "byte",
-            "qualifiedName": "byte"
-          },
-          "isArray": true,
-          "name": "byte[]",
-          "qualifiedName": "byte[]"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
     "signature": "nextBytes(byte[] bytes)",
+    "name": "nextBytes",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator",
+      "name": "BitsStreamGenerator",
+      "isArray": false
+    },
     "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "byte[]",
+          "name": "byte[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "byte",
+            "name": "byte",
+            "isArray": false
+          }
+        },
+        "name": "bytes"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "byte[]",
+            "name": "byte[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "byte",
+              "name": "byte",
+              "isArray": false
+            }
+          },
+          "name": "bytes"
+        },
+        "comment": "Array in which to put the generated bytes. Cannot be null.",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "BitsStreamGenerator",
-      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator"
-    },
-    "isVarArgs": false,
+    "signature": "nextBytes(byte[] bytes,int start,int len)",
     "name": "nextBytes",
-    "paramTags": [
-      {
-        "comment": "Array in which to put the generated bytes. Cannot be null.",
-        "condition": "(args[0]==null) == false",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "bytes",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "byte",
-              "qualifiedName": "byte"
-            },
-            "isArray": true,
-            "name": "byte[]",
-            "qualifiedName": "byte[]"
-          }
-        }
-      },
-      {
-        "comment": "Index at which to start inserting the generated bytes.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "start",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "Number of bytes to insert.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "len",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.BitsStreamGenerator",
+      "name": "BitsStreamGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "bytes",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "byte",
-            "qualifiedName": "byte"
-          },
-          "isArray": true,
+          "qualifiedName": "byte[]",
           "name": "byte[]",
-          "qualifiedName": "byte[]"
-        }
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "byte",
+            "name": "byte",
+            "isArray": false
+          }
+        },
+        "name": "bytes"
       },
       {
-        "name": "start",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "start"
       },
       {
-        "name": "len",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "len"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "nextBytes(byte[] bytes,int start,int len)",
-    "targetClass": "org.apache.commons.math3.random.BitsStreamGenerator",
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "byte[]",
+            "name": "byte[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "byte",
+              "name": "byte",
+              "isArray": false
+            }
+          },
+          "name": "bytes"
+        },
+        "comment": "Array in which to put the generated bytes. Cannot be null.",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "start"
+        },
+        "comment": "Index at which to start inserting the generated bytes.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "len"
+        },
+        "comment": "Number of bytes to insert.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException",
+          "name": "OutOfRangeException",
+          "isArray": false
+        },
         "codeTags": [
           "start < 0",
           "start >= bytes.length"
         ],
         "comment": "if start < 0 or start >= bytes.length.",
-        "condition": "args[1]<0 || args[1]>=args[0].length",
-        "exception": {
-          "isArray": false,
-          "name": "OutOfRangeException",
-          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[1]<0 || args[1]>=args[0].length"
       },
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException",
+          "name": "OutOfRangeException",
+          "isArray": false
+        },
         "codeTags": [
           "len < 0",
           "len > bytes.length - start"
         ],
         "comment": "if len < 0 or len > bytes.length - start.",
-        "condition": "args[2]<0 || args[2]>(args[0].length - args[1])",
-        "exception": {
-          "isArray": false,
-          "name": "OutOfRangeException",
-          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[2]<0 || args[2]>(args[0].length - args[1])"
       }
     ]
   }

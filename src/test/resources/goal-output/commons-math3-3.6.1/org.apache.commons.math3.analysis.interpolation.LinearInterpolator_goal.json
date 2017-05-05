@@ -1,140 +1,130 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "LinearInterpolator",
-      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LinearInterpolator"
-    },
-    "isVarArgs": false,
+    "signature": "interpolate(double[] x,double[] y)",
     "name": "interpolate",
-    "paramTags": [
-      {
-        "comment": "the arguments for the interpolation points",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "x",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "double",
-              "qualifiedName": "double"
-            },
-            "isArray": true,
-            "name": "double[]",
-            "qualifiedName": "double[]"
-          }
-        }
-      },
-      {
-        "comment": "the values for the interpolation points",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "y",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "double",
-              "qualifiedName": "double"
-            },
-            "isArray": true,
-            "name": "double[]",
-            "qualifiedName": "double[]"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.LinearInterpolator",
+      "name": "LinearInterpolator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.analysis.interpolation.LinearInterpolator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction",
+      "name": "PolynomialSplineFunction",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "x",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          },
-          "isArray": true,
+          "qualifiedName": "double[]",
           "name": "double[]",
-          "qualifiedName": "double[]"
-        }
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "x"
       },
       {
-        "name": "y",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          },
-          "isArray": true,
+          "qualifiedName": "double[]",
           "name": "double[]",
-          "qualifiedName": "double[]"
-        }
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          }
+        },
+        "name": "y"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "x"
+        },
+        "comment": "the arguments for the interpolation points",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double[]",
+            "name": "double[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "double",
+              "name": "double",
+              "isArray": false
+            }
+          },
+          "name": "y"
+        },
+        "comment": "the values for the interpolation points",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a function which interpolates the data set",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "PolynomialSplineFunction",
-      "qualifiedName": "org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction"
-    },
-    "signature": "interpolate(double[] x,double[] y)",
-    "targetClass": "org.apache.commons.math3.analysis.interpolation.LinearInterpolator",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
+          "name": "DimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [
+          "x",
+          "y"
+        ],
         "comment": "if x and y have different sizes.",
-        "condition": "((args[0].length) == (args[1].length)) == false",
-        "exception": {
-          "isArray": false,
-          "name": "DimensionMismatchException",
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
-        },
-        "kind": "@throws"
+        "kind": "THROWS",
+        "condition": "((args[0].length) == (args[1].length)) == false"
       },
       {
-        "comment": "if x is not sorted in strict increasing order.",
-        "condition": "",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.NonMonotonicSequenceException",
           "name": "NonMonotonicSequenceException",
-          "qualifiedName": "org.apache.commons.math3.exception.NonMonotonicSequenceException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "x"
+        ],
+        "comment": "if x is not sorted in strict increasing order.",
+        "kind": "THROWS",
+        "condition": ""
       },
       {
-        "comment": "if the size of x is smaller than 2.",
-        "condition": "args[0].length<2",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException",
           "name": "NumberIsTooSmallException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException"
+          "isArray": false
         },
-        "kind": "@throws"
-      },
-      {
-        "comment": "if the arguments violate assumptions made by the interpolation algorithm.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "MathIllegalArgumentException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException"
-        },
-        "kind": "@throws"
-      },
-      {
-        "comment": "if arrays lengthes do not match",
-        "condition": "((args[0].length) == (args[1].length)) == false",
-        "exception": {
-          "isArray": false,
-          "name": "DimensionMismatchException",
-          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException"
-        },
-        "kind": "@throws"
+        "codeTags": [
+          "x"
+        ],
+        "comment": "if the size of x is smaller than 2.",
+        "kind": "THROWS",
+        "condition": "args[0].length<2"
       }
     ]
   }

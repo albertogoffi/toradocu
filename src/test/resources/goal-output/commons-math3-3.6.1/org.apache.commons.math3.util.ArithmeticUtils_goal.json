@@ -1,2268 +1,2097 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
-    },
-    "isVarArgs": false,
+    "signature": "addAndCheck(int x,int y)",
     "name": "addAndCheck",
-    "paramTags": [
-      {
-        "comment": "an addend",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "x",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "an addend",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "y",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
+      "name": "ArithmeticUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "x",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "x"
       },
       {
-        "name": "y",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "y"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "x"
+        },
+        "comment": "an addend",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "y"
+        },
+        "comment": "an addend",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the sum x+y",
-      "condition": "true ? result==args[0]+args[1]",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "true ? result==args[0]+args[1]"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "addAndCheck(int x,int y)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
         "codeTags": [
           "int"
         ],
         "comment": "if the result can not be represented as an int.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
-    },
-    "isVarArgs": false,
+    "signature": "addAndCheck(long a,long b)",
     "name": "addAndCheck",
-    "paramTags": [
-      {
-        "comment": "an addend",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "a",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      },
-      {
-        "comment": "an addend",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "b",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
+      "name": "ArithmeticUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "a",
         "type": {
-          "isArray": false,
+          "qualifiedName": "long",
           "name": "long",
-          "qualifiedName": "long"
-        }
+          "isArray": false
+        },
+        "name": "a"
       },
       {
-        "name": "b",
         "type": {
-          "isArray": false,
+          "qualifiedName": "long",
           "name": "long",
-          "qualifiedName": "long"
-        }
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "an addend",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "an addend",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the sum a+b",
-      "condition": "true ? result==args[0]+args[1]",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "true ? result==args[0]+args[1]"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
-    },
-    "signature": "addAndCheck(long a,long b)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if the result can not be represented as an long",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
-    },
-    "isVarArgs": false,
-    "name": "binomialCoefficient",
-    "paramTags": [
-      {
-        "comment": "the size of the set",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "n",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the size of the subsets to be counted",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "k",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "n",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "k",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "n choose k",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
-    },
     "signature": "binomialCoefficient(int n,int k)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
-    "throwsTags": [
-      {
-        "codeTags": [
-          "n < 0"
-        ],
-        "comment": "if n < 0.",
-        "condition": "args[0]<0",
-        "exception": {
-          "isArray": false,
-          "name": "NotPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException"
-        },
-        "kind": "THROWS"
-      },
-      {
-        "codeTags": [
-          "k > n"
-        ],
-        "comment": "if k > n.",
-        "condition": "args[1]>args[0]",
-        "exception": {
-          "isArray": false,
-          "name": "NumberIsTooLargeException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException"
-        },
-        "kind": "THROWS"
-      },
-      {
-        "codeTags": [],
-        "comment": "if the result is too large to be represented by a long integer.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
-        },
-        "kind": "THROWS"
-      }
-    ]
-  },
-  {
+    "name": "binomialCoefficient",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
       "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "isVarArgs": false,
-    "name": "binomialCoefficientDouble",
-    "paramTags": [
-      {
-        "comment": "the size of the set",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "n",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the size of the subsets to be counted",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "k",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "n",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "n"
       },
       {
-        "name": "k",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "k"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "the size of the set",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "k"
+        },
+        "comment": "the size of the subsets to be counted",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "n choose k",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException",
+          "name": "NotPositiveException",
+          "isArray": false
+        },
+        "codeTags": [
+          "n < 0"
+        ],
+        "comment": "if n < 0.",
+        "kind": "THROWS",
+        "condition": "args[0]<0"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException",
+          "name": "NumberIsTooLargeException",
+          "isArray": false
+        },
+        "codeTags": [
+          "k > n"
+        ],
+        "comment": "if k > n.",
+        "kind": "THROWS",
+        "condition": "args[1]>args[0]"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the result is too large to be represented by a long integer.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
     "signature": "binomialCoefficientDouble(int n,int k)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
-    "throwsTags": [
-      {
-        "codeTags": [
-          "n < 0"
-        ],
-        "comment": "if n < 0.",
-        "condition": "args[0]<0",
-        "exception": {
-          "isArray": false,
-          "name": "NotPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException"
-        },
-        "kind": "THROWS"
-      },
-      {
-        "codeTags": [
-          "k > n"
-        ],
-        "comment": "if k > n.",
-        "condition": "args[1]>args[0]",
-        "exception": {
-          "isArray": false,
-          "name": "NumberIsTooLargeException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException"
-        },
-        "kind": "THROWS"
-      },
-      {
-        "codeTags": [],
-        "comment": "if the result is too large to be represented by a long integer.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
-        },
-        "kind": "THROWS"
-      }
-    ]
-  },
-  {
+    "name": "binomialCoefficientDouble",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
       "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "isVarArgs": false,
-    "name": "binomialCoefficientLog",
-    "paramTags": [
-      {
-        "comment": "the size of the set",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "n",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the size of the subsets to be counted",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "k",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "n",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "n"
       },
       {
-        "name": "k",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "k"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "the size of the set",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "k"
+        },
+        "comment": "the size of the subsets to be counted",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "n choose k",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "binomialCoefficientLog(int n,int k)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException",
+          "name": "NotPositiveException",
+          "isArray": false
+        },
         "codeTags": [
           "n < 0"
         ],
         "comment": "if n < 0.",
-        "condition": "args[0]<0",
-        "exception": {
-          "isArray": false,
-          "name": "NotPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[0]<0"
       },
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException",
+          "name": "NumberIsTooLargeException",
+          "isArray": false
+        },
         "codeTags": [
           "k > n"
         ],
         "comment": "if k > n.",
-        "condition": "args[1]>args[0]",
-        "exception": {
-          "isArray": false,
-          "name": "NumberIsTooLargeException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[1]>args[0]"
       },
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if the result is too large to be represented by a long integer.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
+    "signature": "binomialCoefficientLog(int n,int k)",
+    "name": "binomialCoefficientLog",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
       "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "isVarArgs": false,
-    "name": "factorial",
-    "paramTags": [
-      {
-        "comment": "argument",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "n",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "n",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "n"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "k"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "the size of the set",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "k"
+        },
+        "comment": "the size of the subsets to be counted",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "n choose k",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException",
+          "name": "NotPositiveException",
+          "isArray": false
+        },
+        "codeTags": [
+          "n < 0"
+        ],
+        "comment": "if n < 0.",
+        "kind": "THROWS",
+        "condition": "args[0]<0"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException",
+          "name": "NumberIsTooLargeException",
+          "isArray": false
+        },
+        "codeTags": [
+          "k > n"
+        ],
+        "comment": "if k > n.",
+        "kind": "THROWS",
+        "condition": "args[1]>args[0]"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the result is too large to be represented by a long integer.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "factorial(int n)",
+    "name": "factorial",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
+      "name": "ArithmeticUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "n"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "argument",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "n!",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
-    },
-    "signature": "factorial(int n)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
         "codeTags": [
           "long"
         ],
         "comment": "if the result is too large to be represented by a long.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       },
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException",
+          "name": "NotPositiveException",
+          "isArray": false
+        },
         "codeTags": [
           "n < 0"
         ],
         "comment": "if n < 0.",
-        "condition": "args[0]<0",
-        "exception": {
-          "isArray": false,
-          "name": "NotPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[0]<0"
       },
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
         "codeTags": [
           "n > 20",
           "long"
         ],
         "comment": "if n > 20: The factorial value is too large to fit in a long.",
-        "condition": "args[0]>20",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[0]>20"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
-    },
-    "isVarArgs": false,
-    "name": "factorialDouble",
-    "paramTags": [
-      {
-        "comment": "Argument.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "n",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "n",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "n!",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
     "signature": "factorialDouble(int n)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
-    "throwsTags": [
-      {
-        "codeTags": [
-          "n < 0"
-        ],
-        "comment": "if n < 0.",
-        "condition": "args[0]<0",
-        "exception": {
-          "isArray": false,
-          "name": "NotPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException"
-        },
-        "kind": "THROWS"
-      }
-    ]
-  },
-  {
+    "name": "factorialDouble",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
       "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "isVarArgs": false,
-    "name": "factorialLog",
-    "paramTags": [
-      {
-        "comment": "Argument.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "n",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "n",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "n"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "Argument.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "n!",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "factorialLog(int n)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException",
+          "name": "NotPositiveException",
+          "isArray": false
+        },
         "codeTags": [
           "n < 0"
         ],
         "comment": "if n < 0.",
-        "condition": "args[0]<0",
-        "exception": {
-          "isArray": false,
-          "name": "NotPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[0]<0"
       }
     ]
   },
   {
+    "signature": "factorialLog(int n)",
+    "name": "factorialLog",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
       "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "isVarArgs": false,
-    "name": "gcd",
-    "paramTags": [
-      {
-        "comment": "Number.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "p",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "Number.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "q",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "p",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "n"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "Argument.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "n!",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException",
+          "name": "NotPositiveException",
+          "isArray": false
+        },
+        "codeTags": [
+          "n < 0"
+        ],
+        "comment": "if n < 0.",
+        "kind": "THROWS",
+        "condition": "args[0]<0"
+      }
+    ]
+  },
+  {
+    "signature": "gcd(int p,int q)",
+    "name": "gcd",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
+      "name": "ArithmeticUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "p"
       },
       {
-        "name": "q",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "q"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "p"
+        },
+        "comment": "Number.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "q"
+        },
+        "comment": "Number.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the greatest common divisor (never negative).",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "gcd(int p,int q)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
         "codeTags": [
           "int"
         ],
         "comment": "if the result cannot be represented as a non-negative int value.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
-    },
-    "isVarArgs": false,
-    "name": "gcdPositive",
-    "paramTags": [
-      {
-        "comment": "Positive number.",
-        "condition": "args[0]>0",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "a",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "Positive number.",
-        "condition": "args[0]>0",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "b",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "a",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "b",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the greatest common divisor.",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "gcdPositive(int a,int b)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
-    },
-    "isVarArgs": false,
+    "signature": "gcd(long p,long q)",
     "name": "gcd",
-    "paramTags": [
-      {
-        "comment": "Number.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "p",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      },
-      {
-        "comment": "Number.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "q",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
+      "name": "ArithmeticUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "p",
         "type": {
-          "isArray": false,
+          "qualifiedName": "long",
           "name": "long",
-          "qualifiedName": "long"
-        }
+          "isArray": false
+        },
+        "name": "p"
       },
       {
-        "name": "q",
         "type": {
-          "isArray": false,
+          "qualifiedName": "long",
           "name": "long",
-          "qualifiedName": "long"
-        }
+          "isArray": false
+        },
+        "name": "q"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "p"
+        },
+        "comment": "Number.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "q"
+        },
+        "comment": "Number.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the greatest common divisor, never negative.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
-    },
-    "signature": "gcd(long p,long q)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
         "codeTags": [
           "long"
         ],
         "comment": "if the result cannot be represented as a non-negative long value.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
-    },
-    "isVarArgs": false,
+    "signature": "lcm(int a,int b)",
     "name": "lcm",
-    "paramTags": [
-      {
-        "comment": "Number.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "a",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "Number.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "b",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
+      "name": "ArithmeticUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "a",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "a"
       },
       {
-        "name": "b",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "Number.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "Number.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the least common multiple, never negative.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "lcm(int a,int b)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
         "codeTags": [
           "int"
         ],
         "comment": "if the result cannot be represented as a non-negative int value.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
-    },
-    "isVarArgs": false,
+    "signature": "lcm(long a,long b)",
     "name": "lcm",
-    "paramTags": [
-      {
-        "comment": "Number.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "a",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      },
-      {
-        "comment": "Number.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "b",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
+      "name": "ArithmeticUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "a",
         "type": {
-          "isArray": false,
+          "qualifiedName": "long",
           "name": "long",
-          "qualifiedName": "long"
-        }
+          "isArray": false
+        },
+        "name": "a"
       },
       {
-        "name": "b",
         "type": {
-          "isArray": false,
+          "qualifiedName": "long",
           "name": "long",
-          "qualifiedName": "long"
-        }
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "Number.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "Number.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the least common multiple, never negative.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
-    },
-    "signature": "lcm(long a,long b)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
         "codeTags": [
           "long"
         ],
         "comment": "if the result cannot be represented as a non-negative long value.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
-    },
-    "isVarArgs": false,
+    "signature": "mulAndCheck(int x,int y)",
     "name": "mulAndCheck",
-    "paramTags": [
-      {
-        "comment": "Factor.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "x",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "Factor.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "y",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
+      "name": "ArithmeticUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "x",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "x"
       },
       {
-        "name": "y",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "y"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "x"
+        },
+        "comment": "Factor.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "y"
+        },
+        "comment": "Factor.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the product x * y.",
-      "condition": "true ? result==args[0]*args[1]",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "true ? result==args[0]*args[1]"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "mulAndCheck(int x,int y)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
         "codeTags": [
           "int"
         ],
         "comment": "if the result can not be represented as an int.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
-    },
-    "isVarArgs": false,
+    "signature": "mulAndCheck(long a,long b)",
     "name": "mulAndCheck",
-    "paramTags": [
-      {
-        "comment": "Factor.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "a",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      },
-      {
-        "comment": "Factor.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "b",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
+      "name": "ArithmeticUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "a",
         "type": {
-          "isArray": false,
+          "qualifiedName": "long",
           "name": "long",
-          "qualifiedName": "long"
-        }
+          "isArray": false
+        },
+        "name": "a"
       },
       {
-        "name": "b",
         "type": {
-          "isArray": false,
+          "qualifiedName": "long",
           "name": "long",
-          "qualifiedName": "long"
-        }
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "Factor.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "Factor.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the product a * b.",
-      "condition": "true ? result==args[0]*args[1]",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "true ? result==args[0]*args[1]"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
-    },
-    "signature": "mulAndCheck(long a,long b)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
         "codeTags": [
           "long"
         ],
         "comment": "if the result can not be represented as a long.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
-    },
-    "isVarArgs": false,
+    "signature": "subAndCheck(int x,int y)",
     "name": "subAndCheck",
-    "paramTags": [
-      {
-        "comment": "Minuend.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "x",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "Subtrahend.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "y",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
+      "name": "ArithmeticUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "x",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "x"
       },
       {
-        "name": "y",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "y"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "x"
+        },
+        "comment": "Minuend.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "y"
+        },
+        "comment": "Subtrahend.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the difference x - y.",
-      "condition": "true ? result==args[0]-args[1]",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "true ? result==args[0]-args[1]"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "subAndCheck(int x,int y)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
         "codeTags": [
           "int"
         ],
         "comment": "if the result can not be represented as an int.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
-    },
-    "isVarArgs": false,
+    "signature": "subAndCheck(long a,long b)",
     "name": "subAndCheck",
-    "paramTags": [
-      {
-        "comment": "Value.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "a",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      },
-      {
-        "comment": "Value.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "b",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
+      "name": "ArithmeticUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "a",
         "type": {
-          "isArray": false,
+          "qualifiedName": "long",
           "name": "long",
-          "qualifiedName": "long"
-        }
+          "isArray": false
+        },
+        "name": "a"
       },
       {
-        "name": "b",
         "type": {
-          "isArray": false,
+          "qualifiedName": "long",
           "name": "long",
-          "qualifiedName": "long"
-        }
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "Value.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "Value.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the difference a - b.",
-      "condition": "true ? result==args[0]-args[1]",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "true ? result==args[0]-args[1]"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
-    },
-    "signature": "subAndCheck(long a,long b)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
         "codeTags": [
           "long"
         ],
         "comment": "if the result can not be represented as a long.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
-    },
-    "isVarArgs": false,
-    "name": "pow",
-    "paramTags": [
-      {
-        "comment": "Number to raise.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "k",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "Exponent (must be positive or zero).",
-        "condition": "args[1]>0||args[1]==0",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "e",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "k",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "e",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "\\( k^e \\)",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
     "signature": "pow(int k,int e)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
-    "throwsTags": [
-      {
-        "codeTags": [
-          "e < 0"
-        ],
-        "comment": "if e < 0.",
-        "condition": "args[1]<0",
-        "exception": {
-          "isArray": false,
-          "name": "NotPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException"
-        },
-        "kind": "THROWS"
-      },
-      {
-        "codeTags": [],
-        "comment": "if the result would overflow.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
-        },
-        "kind": "THROWS"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
-    },
-    "isVarArgs": false,
     "name": "pow",
-    "paramTags": [
-      {
-        "comment": "Number to raise.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "k",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "Exponent (must be positive or zero).",
-        "condition": "args[1]>0||args[1]==0",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "e",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "k",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "e",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "ke",
-      "condition": "",
-      "kind": "RETURN"
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
+      "name": "ArithmeticUtils",
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
+    "isVarArgs": false,
     "returnType": {
-      "isArray": false,
+      "qualifiedName": "int",
       "name": "int",
-      "qualifiedName": "int"
+      "isArray": false
     },
-    "signature": "pow(int k,long e)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
-    "throwsTags": [
-      {
-        "codeTags": [
-          "e < 0"
-        ],
-        "comment": "if e < 0.",
-        "condition": "args[1]<0",
-        "exception": {
-          "isArray": false,
-          "name": "NotPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException"
-        },
-        "kind": "THROWS"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
-    },
-    "isVarArgs": false,
-    "name": "pow",
-    "paramTags": [
-      {
-        "comment": "Number to raise.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "k",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      },
-      {
-        "comment": "Exponent (must be positive or zero).",
-        "condition": "args[1]>0||args[1]==0",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "e",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
     "parameters": [
       {
-        "name": "k",
         "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "k"
       },
       {
-        "name": "e",
         "type": {
-          "isArray": false,
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "k"
+        },
+        "comment": "Number to raise.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "Exponent (must be positive or zero).",
+        "kind": "PARAM",
+        "condition": "args[1]>0||args[1]==0"
       }
     ],
     "returnTag": {
       "comment": "\\( k^e \\)",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
-    },
-    "signature": "pow(long k,int e)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException",
+          "name": "NotPositiveException",
+          "isArray": false
+        },
         "codeTags": [
           "e < 0"
         ],
         "comment": "if e < 0.",
-        "condition": "args[1]<0",
-        "exception": {
-          "isArray": false,
-          "name": "NotPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[1]<0"
       },
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if the result would overflow.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
-    },
-    "isVarArgs": false,
+    "signature": "pow(int k,long e)",
     "name": "pow",
-    "paramTags": [
-      {
-        "comment": "Number to raise.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "k",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      },
-      {
-        "comment": "Exponent (must be positive or zero).",
-        "condition": "args[1]>0||args[1]==0",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "e",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
+      "name": "ArithmeticUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "k",
         "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "k"
       },
       {
-        "name": "e",
         "type": {
-          "isArray": false,
+          "qualifiedName": "long",
           "name": "long",
-          "qualifiedName": "long"
-        }
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "k"
+        },
+        "comment": "Number to raise.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "Exponent (must be positive or zero).",
+        "kind": "PARAM",
+        "condition": "args[1]>0||args[1]==0"
       }
     ],
     "returnTag": {
       "comment": "ke",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException",
+          "name": "NotPositiveException",
+          "isArray": false
+        },
+        "codeTags": [
+          "e < 0"
+        ],
+        "comment": "if e < 0.",
+        "kind": "THROWS",
+        "condition": "args[1]<0"
+      }
+    ]
+  },
+  {
+    "signature": "pow(long k,int e)",
+    "name": "pow",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
+      "name": "ArithmeticUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
+    "isVarArgs": false,
     "returnType": {
-      "isArray": false,
+      "qualifiedName": "long",
       "name": "long",
-      "qualifiedName": "long"
+      "isArray": false
     },
-    "signature": "pow(long k,long e)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
-    "throwsTags": [
-      {
-        "codeTags": [
-          "e < 0"
-        ],
-        "comment": "if e < 0.",
-        "condition": "args[1]<0",
-        "exception": {
-          "isArray": false,
-          "name": "NotPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException"
-        },
-        "kind": "THROWS"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
-    },
-    "isVarArgs": false,
-    "name": "pow",
-    "paramTags": [
-      {
-        "comment": "Number to raise.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "k",
-          "type": {
-            "isArray": false,
-            "name": "BigInteger",
-            "qualifiedName": "java.math.BigInteger"
-          }
-        }
-      },
-      {
-        "comment": "Exponent (must be positive or zero).",
-        "condition": "args[1]>0||args[1]==0",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "e",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
     "parameters": [
       {
-        "name": "k",
         "type": {
-          "isArray": false,
-          "name": "BigInteger",
-          "qualifiedName": "java.math.BigInteger"
-        }
-      },
-      {
-        "name": "e",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "ke",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "BigInteger",
-      "qualifiedName": "java.math.BigInteger"
-    },
-    "signature": "pow(java.math.BigInteger k,int e)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
-    "throwsTags": [
-      {
-        "codeTags": [
-          "e < 0"
-        ],
-        "comment": "if e < 0.",
-        "condition": "args[1]<0",
-        "exception": {
-          "isArray": false,
-          "name": "NotPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException"
-        },
-        "kind": "THROWS"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
-    },
-    "isVarArgs": false,
-    "name": "pow",
-    "paramTags": [
-      {
-        "comment": "Number to raise.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "k",
-          "type": {
-            "isArray": false,
-            "name": "BigInteger",
-            "qualifiedName": "java.math.BigInteger"
-          }
-        }
-      },
-      {
-        "comment": "Exponent (must be positive or zero).",
-        "condition": "args[1]>0||args[1]==0",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "e",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "k",
-        "type": {
-          "isArray": false,
-          "name": "BigInteger",
-          "qualifiedName": "java.math.BigInteger"
-        }
-      },
-      {
-        "name": "e",
-        "type": {
-          "isArray": false,
+          "qualifiedName": "long",
           "name": "long",
-          "qualifiedName": "long"
-        }
+          "isArray": false
+        },
+        "name": "k"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "e"
       }
     ],
-    "returnTag": {
-      "comment": "ke",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "BigInteger",
-      "qualifiedName": "java.math.BigInteger"
-    },
-    "signature": "pow(java.math.BigInteger k,long e)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
-    "throwsTags": [
-      {
-        "codeTags": [
-          "e < 0"
-        ],
-        "comment": "if e < 0.",
-        "condition": "args[1]<0",
-        "exception": {
-          "isArray": false,
-          "name": "NotPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException"
-        },
-        "kind": "THROWS"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
-    },
-    "isVarArgs": false,
-    "name": "pow",
     "paramTags": [
       {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "k"
+        },
         "comment": "Number to raise.",
-        "condition": "",
         "kind": "PARAM",
-        "parameter": {
-          "name": "k",
-          "type": {
-            "isArray": false,
-            "name": "BigInteger",
-            "qualifiedName": "java.math.BigInteger"
-          }
-        }
+        "condition": ""
       },
       {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "e"
+        },
         "comment": "Exponent (must be positive or zero).",
-        "condition": "args[1]>0||args[1]==0",
         "kind": "PARAM",
-        "parameter": {
-          "name": "e",
-          "type": {
-            "isArray": false,
-            "name": "BigInteger",
-            "qualifiedName": "java.math.BigInteger"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "k",
-        "type": {
-          "isArray": false,
-          "name": "BigInteger",
-          "qualifiedName": "java.math.BigInteger"
-        }
-      },
-      {
-        "name": "e",
-        "type": {
-          "isArray": false,
-          "name": "BigInteger",
-          "qualifiedName": "java.math.BigInteger"
-        }
+        "condition": "args[1]>0||args[1]==0"
       }
     ],
     "returnTag": {
-      "comment": "ke",
-      "condition": "",
-      "kind": "RETURN"
+      "comment": "\\( k^e \\)",
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "BigInteger",
-      "qualifiedName": "java.math.BigInteger"
-    },
-    "signature": "pow(java.math.BigInteger k,java.math.BigInteger e)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException",
+          "name": "NotPositiveException",
+          "isArray": false
+        },
         "codeTags": [
           "e < 0"
         ],
         "comment": "if e < 0.",
-        "condition": "args[1]<0",
+        "kind": "THROWS",
+        "condition": "args[1]<0"
+      },
+      {
         "exception": {
-          "isArray": false,
-          "name": "NotPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException"
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
         },
-        "kind": "THROWS"
+        "codeTags": [],
+        "comment": "if the result would overflow.",
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
+    "signature": "pow(long k,long e)",
+    "name": "pow",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
       "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "isVarArgs": false,
-    "name": "stirlingS2",
-    "paramTags": [
-      {
-        "comment": "the size of the set",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "n",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the number of non-empty subsets",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "k",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "n",
         "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "k"
       },
       {
-        "name": "k",
         "type": {
-          "isArray": false,
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "k"
+        },
+        "comment": "Number to raise.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "Exponent (must be positive or zero).",
+        "kind": "PARAM",
+        "condition": "args[1]>0||args[1]==0"
+      }
+    ],
+    "returnTag": {
+      "comment": "ke",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException",
+          "name": "NotPositiveException",
+          "isArray": false
+        },
+        "codeTags": [
+          "e < 0"
+        ],
+        "comment": "if e < 0.",
+        "kind": "THROWS",
+        "condition": "args[1]<0"
+      }
+    ]
+  },
+  {
+    "signature": "pow(java.math.BigInteger k,int e)",
+    "name": "pow",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
+      "name": "ArithmeticUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.math.BigInteger",
+      "name": "BigInteger",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.math.BigInteger",
+          "name": "BigInteger",
+          "isArray": false
+        },
+        "name": "k"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
           "name": "int",
-          "qualifiedName": "int"
-        }
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.math.BigInteger",
+            "name": "BigInteger",
+            "isArray": false
+          },
+          "name": "k"
+        },
+        "comment": "Number to raise.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "Exponent (must be positive or zero).",
+        "kind": "PARAM",
+        "condition": "args[1]>0||args[1]==0"
+      }
+    ],
+    "returnTag": {
+      "comment": "ke",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException",
+          "name": "NotPositiveException",
+          "isArray": false
+        },
+        "codeTags": [
+          "e < 0"
+        ],
+        "comment": "if e < 0.",
+        "kind": "THROWS",
+        "condition": "args[1]<0"
+      }
+    ]
+  },
+  {
+    "signature": "pow(java.math.BigInteger k,long e)",
+    "name": "pow",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
+      "name": "ArithmeticUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.math.BigInteger",
+      "name": "BigInteger",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.math.BigInteger",
+          "name": "BigInteger",
+          "isArray": false
+        },
+        "name": "k"
+      },
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.math.BigInteger",
+            "name": "BigInteger",
+            "isArray": false
+          },
+          "name": "k"
+        },
+        "comment": "Number to raise.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "Exponent (must be positive or zero).",
+        "kind": "PARAM",
+        "condition": "args[1]>0||args[1]==0"
+      }
+    ],
+    "returnTag": {
+      "comment": "ke",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException",
+          "name": "NotPositiveException",
+          "isArray": false
+        },
+        "codeTags": [
+          "e < 0"
+        ],
+        "comment": "if e < 0.",
+        "kind": "THROWS",
+        "condition": "args[1]<0"
+      }
+    ]
+  },
+  {
+    "signature": "pow(java.math.BigInteger k,java.math.BigInteger e)",
+    "name": "pow",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
+      "name": "ArithmeticUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.math.BigInteger",
+      "name": "BigInteger",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.math.BigInteger",
+          "name": "BigInteger",
+          "isArray": false
+        },
+        "name": "k"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.math.BigInteger",
+          "name": "BigInteger",
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.math.BigInteger",
+            "name": "BigInteger",
+            "isArray": false
+          },
+          "name": "k"
+        },
+        "comment": "Number to raise.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.math.BigInteger",
+            "name": "BigInteger",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "Exponent (must be positive or zero).",
+        "kind": "PARAM",
+        "condition": "args[1]>0||args[1]==0"
+      }
+    ],
+    "returnTag": {
+      "comment": "ke",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException",
+          "name": "NotPositiveException",
+          "isArray": false
+        },
+        "codeTags": [
+          "e < 0"
+        ],
+        "comment": "if e < 0.",
+        "kind": "THROWS",
+        "condition": "args[1]<0"
+      }
+    ]
+  },
+  {
+    "signature": "stirlingS2(int n,int k)",
+    "name": "stirlingS2",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
+      "name": "ArithmeticUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "n"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "k"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "the size of the set",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "k"
+        },
+        "comment": "the number of non-empty subsets",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "S(n,k)",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
-    },
-    "signature": "stirlingS2(int n,int k)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "throwsTags": [
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException",
+          "name": "NotPositiveException",
+          "isArray": false
+        },
         "codeTags": [
           "k < 0"
         ],
         "comment": "if k < 0.",
-        "condition": "args[1]<0",
-        "exception": {
-          "isArray": false,
-          "name": "NotPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[1]<0"
       },
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException",
+          "name": "NumberIsTooLargeException",
+          "isArray": false
+        },
         "codeTags": [
           "k > n"
         ],
         "comment": "if k > n.",
-        "condition": "args[1]>args[0]",
-        "exception": {
-          "isArray": false,
-          "name": "NumberIsTooLargeException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": "args[1]>args[0]"
       },
       {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
         "codeTags": [],
         "comment": "if some overflow happens, typically for n exceeding 25 and k between 20 and n-2 (S(n,n-1) is handled specifically and does not overflow)",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
-        },
-        "kind": "THROWS"
+        "kind": "THROWS",
+        "condition": ""
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
-    },
-    "isVarArgs": false,
-    "name": "addAndCheck",
-    "paramTags": [
-      {
-        "comment": "Addend.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "a",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      },
-      {
-        "comment": "Addend.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "b",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      },
-      {
-        "comment": "Pattern to use for any thrown exception.",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "pattern",
-          "type": {
-            "isArray": false,
-            "name": "Localizable",
-            "qualifiedName": "org.apache.commons.math3.exception.util.Localizable"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "a",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      },
-      {
-        "name": "b",
-        "type": {
-          "isArray": false,
-          "name": "long",
-          "qualifiedName": "long"
-        }
-      },
-      {
-        "name": "pattern",
-        "type": {
-          "isArray": false,
-          "name": "Localizable",
-          "qualifiedName": "org.apache.commons.math3.exception.util.Localizable"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the sum a + b.",
-      "condition": "true ? result==args[0]+args[1]",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "long",
-      "qualifiedName": "long"
-    },
-    "signature": "addAndCheck(long a,long b,org.apache.commons.math3.exception.util.Localizable pattern)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
-    "throwsTags": [
-      {
-        "codeTags": [
-          "long"
-        ],
-        "comment": "if the result cannot be represented as a long.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "MathArithmeticException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException"
-        },
-        "kind": "THROWS"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "ArithmeticUtils",
-      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils"
-    },
-    "isVarArgs": false,
+    "signature": "isPowerOfTwo(long n)",
     "name": "isPowerOfTwo",
-    "paramTags": [
-      {
-        "comment": "the number to test",
-        "condition": "",
-        "kind": "PARAM",
-        "parameter": {
-          "name": "n",
-          "type": {
-            "isArray": false,
-            "name": "long",
-            "qualifiedName": "long"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.ArithmeticUtils",
+      "name": "ArithmeticUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "n",
         "type": {
-          "isArray": false,
+          "qualifiedName": "long",
           "name": "long",
-          "qualifiedName": "long"
-        }
+          "isArray": false
+        },
+        "name": "n"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "long",
+            "name": "long",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "the number to test",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if the argument is a power of two",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "isPowerOfTwo(long n)",
-    "targetClass": "org.apache.commons.math3.util.ArithmeticUtils",
     "throwsTags": []
   }
 ]

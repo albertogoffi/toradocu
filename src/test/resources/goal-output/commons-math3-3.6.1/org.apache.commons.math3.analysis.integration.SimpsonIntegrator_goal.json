@@ -1,786 +1,265 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "SimpsonIntegrator",
-      "qualifiedName": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator"
-    },
-    "isVarArgs": false,
-    "name": "SimpsonIntegrator",
-    "paramTags": [
-      {
-        "comment": "relative accuracy of the result",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "relativeAccuracy",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "absolute accuracy of the result",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "absoluteAccuracy",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "minimum number of iterations",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "minimalIterationCount",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "maximum number of iterations (must be less than or equal to SIMPSON_MAX_ITERATIONS_COUNT)",
-        "condition": "args[3]<=target.SIMPSON_MAX_ITERATIONS_COUNT",
-        "kind": "@param",
-        "parameter": {
-          "name": "maximalIterationCount",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "relativeAccuracy",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      },
-      {
-        "name": "absoluteAccuracy",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      },
-      {
-        "name": "minimalIterationCount",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "maximalIterationCount",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
     "signature": "SimpsonIntegrator(double relativeAccuracy,double absoluteAccuracy,int minimalIterationCount,int maximalIterationCount)",
-    "targetClass": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
-    "throwsTags": [
-      {
-        "comment": "if minimal number of iterations is not strictly positive",
-        "condition": "(args[2]>0)==false",
-        "exception": {
-          "isArray": false,
-          "name": "NotStrictlyPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
-        },
-        "kind": "@throws"
-      },
-      {
-        "comment": "if maximal number of iterations is lesser than or equal to the minimal number of iterations",
-        "condition": "args[3]<=args[2]",
-        "exception": {
-          "isArray": false,
-          "name": "NumberIsTooSmallException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException"
-        },
-        "kind": "@throws"
-      },
-      {
-        "comment": "if maximal number of iterations is greater than SIMPSON_MAX_ITERATIONS_COUNT",
-        "condition": "args[3]>target.SIMPSON_MAX_ITERATIONS_COUNT",
-        "exception": {
-          "isArray": false,
-          "name": "NumberIsTooLargeException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "SimpsonIntegrator",
-      "qualifiedName": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator"
-    },
-    "isVarArgs": false,
     "name": "SimpsonIntegrator",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
+      "name": "SimpsonIntegrator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "relativeAccuracy"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "absoluteAccuracy"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "minimalIterationCount"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maximalIterationCount"
+      }
+    ],
     "paramTags": [
       {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "relativeAccuracy"
+        },
+        "comment": "relative accuracy of the result",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "absoluteAccuracy"
+        },
+        "comment": "absolute accuracy of the result",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "minimalIterationCount"
+        },
         "comment": "minimum number of iterations",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "minimalIterationCount",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
+        "kind": "PARAM",
+        "condition": ""
       },
       {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maximalIterationCount"
+        },
         "comment": "maximum number of iterations (must be less than or equal to SIMPSON_MAX_ITERATIONS_COUNT)",
-        "condition": "args[1]<=target.SIMPSON_MAX_ITERATIONS_COUNT",
-        "kind": "@param",
-        "parameter": {
-          "name": "maximalIterationCount",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
+        "kind": "PARAM",
+        "condition": "args[3]<=target.SIMPSON_MAX_ITERATIONS_COUNT"
       }
     ],
-    "parameters": [
-      {
-        "name": "minimalIterationCount",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "maximalIterationCount",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      }
-    ],
-    "signature": "SimpsonIntegrator(int minimalIterationCount,int maximalIterationCount)",
-    "targetClass": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
     "throwsTags": [
       {
-        "comment": "if minimal number of iterations is not strictly positive",
-        "condition": "(args[0]>0)==false",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
           "name": "NotStrictlyPositiveException",
-          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if minimal number of iterations is not strictly positive",
+        "kind": "THROWS",
+        "condition": "(args[2]>0)==false"
       },
       {
-        "comment": "if maximal number of iterations is lesser than or equal to the minimal number of iterations",
-        "condition": "args[1]<=args[0]",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException",
           "name": "NumberIsTooSmallException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if maximal number of iterations is lesser than or equal to the minimal number of iterations",
+        "kind": "THROWS",
+        "condition": "args[3]<=args[2]"
       },
       {
-        "comment": "if maximal number of iterations is greater than SIMPSON_MAX_ITERATIONS_COUNT",
-        "condition": "args[1]>target.SIMPSON_MAX_ITERATIONS_COUNT",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException",
           "name": "NumberIsTooLargeException",
-          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "SIMPSON_MAX_ITERATIONS_COUNT"
+        ],
+        "comment": "if maximal number of iterations is greater than SIMPSON_MAX_ITERATIONS_COUNT",
+        "kind": "THROWS",
+        "condition": "args[3]>target.SIMPSON_MAX_ITERATIONS_COUNT"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "SimpsonIntegrator",
-      "qualifiedName": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator"
-    },
-    "isVarArgs": false,
+    "signature": "SimpsonIntegrator(int minimalIterationCount,int maximalIterationCount)",
     "name": "SimpsonIntegrator",
-    "paramTags": [],
-    "parameters": [],
-    "signature": "SimpsonIntegrator()",
-    "targetClass": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
-    "throwsTags": []
-  },
-  {
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
       "name": "SimpsonIntegrator",
-      "qualifiedName": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator"
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
     "isVarArgs": false,
-    "name": "doIntegrate",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "minimalIterationCount"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maximalIterationCount"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "minimalIterationCount"
+        },
+        "comment": "minimum number of iterations",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maximalIterationCount"
+        },
+        "comment": "maximum number of iterations (must be less than or equal to SIMPSON_MAX_ITERATIONS_COUNT)",
+        "kind": "PARAM",
+        "condition": "args[1]<=target.SIMPSON_MAX_ITERATIONS_COUNT"
+      }
+    ],
+    "throwsTags": [
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if minimal number of iterations is not strictly positive",
+        "kind": "THROWS",
+        "condition": "(args[0]>0)==false"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException",
+          "name": "NumberIsTooSmallException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if maximal number of iterations is lesser than or equal to the minimal number of iterations",
+        "kind": "THROWS",
+        "condition": "args[1]<=args[0]"
+      },
+      {
+        "exception": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooLargeException",
+          "name": "NumberIsTooLargeException",
+          "isArray": false
+        },
+        "codeTags": [
+          "SIMPSON_MAX_ITERATIONS_COUNT"
+        ],
+        "comment": "if maximal number of iterations is greater than SIMPSON_MAX_ITERATIONS_COUNT",
+        "kind": "THROWS",
+        "condition": "args[1]>target.SIMPSON_MAX_ITERATIONS_COUNT"
+      }
+    ]
+  },
+  {
+    "signature": "SimpsonIntegrator()",
+    "name": "SimpsonIntegrator",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
+      "name": "SimpsonIntegrator",
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
     "signature": "doIntegrate()",
-    "targetClass": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
-    "throwsTags": []
-  },
-  {
+    "name": "doIntegrate",
     "containingClass": {
-      "isArray": false,
-      "name": "BaseAbstractUnivariateIntegrator",
-      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator"
+      "qualifiedName": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
+      "name": "SimpsonIntegrator",
+      "isArray": false
     },
+    "targetClass": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
     "isVarArgs": false,
-    "name": "getRelativeAccuracy",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the accuracy",
-      "condition": "",
-      "kind": "RETURN"
-    },
     "returnType": {
-      "isArray": false,
+      "qualifiedName": "double",
       "name": "double",
-      "qualifiedName": "double"
+      "isArray": false
     },
-    "signature": "getRelativeAccuracy()",
-    "targetClass": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BaseAbstractUnivariateIntegrator",
-      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator"
-    },
-    "isVarArgs": false,
-    "name": "getAbsoluteAccuracy",
-    "paramTags": [],
     "parameters": [],
-    "returnTag": {
-      "comment": "the accuracy",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "getAbsoluteAccuracy()",
-    "targetClass": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BaseAbstractUnivariateIntegrator",
-      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator"
-    },
-    "isVarArgs": false,
-    "name": "getMinimalIterationCount",
     "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the actual min limit",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "getMinimalIterationCount()",
-    "targetClass": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
     "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BaseAbstractUnivariateIntegrator",
-      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator"
-    },
-    "isVarArgs": false,
-    "name": "getMaximalIterationCount",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the actual upper limit",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "getMaximalIterationCount()",
-    "targetClass": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BaseAbstractUnivariateIntegrator",
-      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator"
-    },
-    "isVarArgs": false,
-    "name": "getEvaluations",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "number of function evaluations",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "getEvaluations()",
-    "targetClass": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BaseAbstractUnivariateIntegrator",
-      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator"
-    },
-    "isVarArgs": false,
-    "name": "getIterations",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "number of iterations",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "getIterations()",
-    "targetClass": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BaseAbstractUnivariateIntegrator",
-      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator"
-    },
-    "isVarArgs": false,
-    "name": "incrementCount",
-    "paramTags": [],
-    "parameters": [],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "incrementCount()",
-    "targetClass": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
-    "throwsTags": [
-      {
-        "comment": "if the number of iterations exceeds the allowed maximum number",
-        "condition": "target.getIterations() + 1 > target.getMaximalIterationCount()",
-        "exception": {
-          "isArray": false,
-          "name": "MaxCountExceededException",
-          "qualifiedName": "org.apache.commons.math3.exception.MaxCountExceededException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BaseAbstractUnivariateIntegrator",
-      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator"
-    },
-    "isVarArgs": false,
-    "name": "getMin",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the lower bound.",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "getMin()",
-    "targetClass": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BaseAbstractUnivariateIntegrator",
-      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator"
-    },
-    "isVarArgs": false,
-    "name": "getMax",
-    "paramTags": [],
-    "parameters": [],
-    "returnTag": {
-      "comment": "the upper bound.",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "getMax()",
-    "targetClass": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BaseAbstractUnivariateIntegrator",
-      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator"
-    },
-    "isVarArgs": false,
-    "name": "computeObjectiveValue",
-    "paramTags": [
-      {
-        "comment": "Point at which the objective function must be evaluated.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "point",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "point",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the objective function value at specified point.",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "computeObjectiveValue(double point)",
-    "targetClass": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
-    "throwsTags": [
-      {
-        "comment": "if the maximal number of function evaluations is exceeded.",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "TooManyEvaluationsException",
-          "qualifiedName": "org.apache.commons.math3.exception.TooManyEvaluationsException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BaseAbstractUnivariateIntegrator",
-      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator"
-    },
-    "isVarArgs": false,
-    "name": "setup",
-    "paramTags": [
-      {
-        "comment": "Maximum number of evaluations.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "maxEval",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the integrand function",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "f",
-          "type": {
-            "isArray": false,
-            "name": "UnivariateFunction",
-            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
-          }
-        }
-      },
-      {
-        "comment": "the min bound for the interval",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "lower",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      },
-      {
-        "comment": "the upper bound for the interval",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "upper",
-          "type": {
-            "isArray": false,
-            "name": "double",
-            "qualifiedName": "double"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "maxEval",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "f",
-        "type": {
-          "isArray": false,
-          "name": "UnivariateFunction",
-          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
-        }
-      },
-      {
-        "name": "lower",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      },
-      {
-        "name": "upper",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "setup(int maxEval,org.apache.commons.math3.analysis.UnivariateFunction f,double lower,double upper)",
-    "targetClass": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
-    "throwsTags": [
-      {
-        "comment": "if f is null.",
-        "condition": "args[1]==null",
-        "exception": {
-          "isArray": false,
-          "name": "NullArgumentException",
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
-        },
-        "kind": "@throws"
-      },
-      {
-        "comment": "if min >= max.",
-        "condition": "args[2]>=args[3]",
-        "exception": {
-          "isArray": false,
-          "name": "MathIllegalArgumentException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException"
-        },
-        "kind": "@throws"
-      }
-    ]
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "BaseAbstractUnivariateIntegrator",
-      "qualifiedName": "org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator"
-    },
-    "isVarArgs": false,
-    "name": "integrate",
-    "paramTags": [
-      {
-        "comment": "Maximum number of evaluations.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "maxEval",
-          "type": {
-            "isArray": false,
-            "name": "int",
-            "qualifiedName": "int"
-          }
-        }
-      },
-      {
-        "comment": "the integrand function",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "f",
-          "type": {
-            "isArray": false,
-            "name": "UnivariateFunction",
-            "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "maxEval",
-        "type": {
-          "isArray": false,
-          "name": "int",
-          "qualifiedName": "int"
-        }
-      },
-      {
-        "name": "f",
-        "type": {
-          "isArray": false,
-          "name": "UnivariateFunction",
-          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction"
-        }
-      },
-      {
-        "name": "lower",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      },
-      {
-        "name": "upper",
-        "type": {
-          "isArray": false,
-          "name": "double",
-          "qualifiedName": "double"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the value of integral",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "integrate(int maxEval,org.apache.commons.math3.analysis.UnivariateFunction f,double lower,double upper)",
-    "targetClass": "org.apache.commons.math3.analysis.integration.SimpsonIntegrator",
-    "throwsTags": [
-      {
-        "comment": "if the maximum number of function evaluations is exceeded",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "TooManyEvaluationsException",
-          "qualifiedName": "org.apache.commons.math3.exception.TooManyEvaluationsException"
-        },
-        "kind": "@throws"
-      },
-      {
-        "comment": "if the maximum iteration count is exceeded or the integrator detects convergence problems otherwise",
-        "condition": "",
-        "exception": {
-          "isArray": false,
-          "name": "MaxCountExceededException",
-          "qualifiedName": "org.apache.commons.math3.exception.MaxCountExceededException"
-        },
-        "kind": "@throws"
-      },
-      {
-        "comment": "if min > max or the endpoints do not satisfy the requirements specified by the integrator",
-        "condition": "args[3]>args[2]",
-        "exception": {
-          "isArray": false,
-          "name": "MathIllegalArgumentException",
-          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException"
-        },
-        "kind": "@throws"
-      },
-      {
-        "comment": "if f is null.",
-        "condition": "args[1]==null",
-        "exception": {
-          "isArray": false,
-          "name": "NullArgumentException",
-          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException"
-        },
-        "kind": "@throws"
-      }
-    ]
   }
 ]
