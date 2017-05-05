@@ -1,487 +1,457 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractGraph",
-      "qualifiedName": "org.jgrapht.graph.AbstractGraph"
-    },
-    "isVarArgs": false,
-    "name": "AbstractGraph",
-    "paramTags": [],
-    "parameters": [],
     "signature": "AbstractGraph()",
-    "targetClass": "org.jgrapht.graph.AbstractGraph",
-    "throwsTags": []
-  },
-  {
+    "name": "AbstractGraph",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.jgrapht.graph.AbstractGraph",
       "name": "AbstractGraph",
-      "qualifiedName": "org.jgrapht.graph.AbstractGraph"
+      "isArray": false
     },
-    "isVarArgs": false,
-    "name": "containsEdge",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "sourceVertex",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      },
-      {
-        "name": "targetVertex",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "true if this graph contains the specified edge.",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "containsEdge(java.lang.Object sourceVertex,java.lang.Object targetVertex)",
     "targetClass": "org.jgrapht.graph.AbstractGraph",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractGraph",
-      "qualifiedName": "org.jgrapht.graph.AbstractGraph"
-    },
     "isVarArgs": false,
-    "name": "removeAllEdges",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "edges",
-        "type": {
-          "isArray": false,
-          "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "true if this graph changed as a result of the call",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "removeAllEdges(java.util.Collection edges)",
-    "targetClass": "org.jgrapht.graph.AbstractGraph",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractGraph",
-      "qualifiedName": "org.jgrapht.graph.AbstractGraph"
-    },
-    "isVarArgs": false,
-    "name": "removeAllEdges",
-    "paramTags": [],
-    "parameters": [
-      {
-        "name": "sourceVertex",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      },
-      {
-        "name": "targetVertex",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "the removed edges, or null if either vertex is not part of graph",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "Set",
-      "qualifiedName": "java.util.Set"
-    },
-    "signature": "removeAllEdges(java.lang.Object sourceVertex,java.lang.Object targetVertex)",
-    "targetClass": "org.jgrapht.graph.AbstractGraph",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractGraph",
-      "qualifiedName": "org.jgrapht.graph.AbstractGraph"
-    },
-    "isVarArgs": false,
-    "name": "removeAllVertices",
-    "paramTags": [
-      {
-        "comment": "vertices to be removed from this graph.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "vertices",
-          "type": {
-            "isArray": false,
-            "name": "Collection",
-            "qualifiedName": "java.util.Collection"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "vertices",
-        "type": {
-          "isArray": false,
-          "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "true if this graph changed as a result of the call",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "removeAllVertices(java.util.Collection vertices)",
-    "targetClass": "org.jgrapht.graph.AbstractGraph",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractGraph",
-      "qualifiedName": "org.jgrapht.graph.AbstractGraph"
-    },
-    "isVarArgs": false,
-    "name": "toString",
-    "paramTags": [],
     "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "containsEdge(java.lang.Object sourceVertex,java.lang.Object targetVertex)",
+    "name": "containsEdge",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.AbstractGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "sourceVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "targetVertex"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "removeAllEdges(java.util.Collection edges)",
+    "name": "removeAllEdges",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.AbstractGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "edges"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "removeAllEdges(java.lang.Object sourceVertex,java.lang.Object targetVertex)",
+    "name": "removeAllEdges",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.AbstractGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Set",
+      "name": "Set",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "sourceVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "targetVertex"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "removeAllVertices(java.util.Collection vertices)",
+    "name": "removeAllVertices",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.AbstractGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "vertices"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "toString()",
+    "name": "toString",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.AbstractGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "a string representation of this graph.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "String",
-      "qualifiedName": "java.lang.String"
-    },
-    "signature": "toString()",
-    "targetClass": "org.jgrapht.graph.AbstractGraph",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractGraph",
-      "qualifiedName": "org.jgrapht.graph.AbstractGraph"
-    },
-    "isVarArgs": false,
+    "signature": "assertVertexExist(java.lang.Object v)",
     "name": "assertVertexExist",
-    "paramTags": [
-      {
-        "comment": "vertex",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.AbstractGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "v",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "vertex",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if this assertion holds.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "assertVertexExist(java.lang.Object v)",
-    "targetClass": "org.jgrapht.graph.AbstractGraph",
     "throwsTags": [
       {
-        "comment": "if specified vertex is null.",
-        "condition": "args[0]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "null"
+        ],
+        "comment": "if specified vertex is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
       },
       {
-        "comment": "if specified vertex does not exist in this graph.",
-        "condition": "target.containsVertex(arg[0])==false",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.IllegalArgumentException",
           "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if specified vertex does not exist in this graph.",
+        "kind": "THROWS",
+        "condition": "target.containsVertex(arg[0])==false"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractGraph",
-      "qualifiedName": "org.jgrapht.graph.AbstractGraph"
-    },
-    "isVarArgs": false,
+    "signature": "removeAllEdges(java.lang.Object[] edges)",
     "name": "removeAllEdges",
-    "paramTags": [
-      {
-        "comment": "edges to be removed from this graph.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "edges",
-          "type": {
-            "componentType": {
-              "isArray": false,
-              "name": "Object",
-              "qualifiedName": "java.lang.Object"
-            },
-            "isArray": true,
-            "name": "Object[]",
-            "qualifiedName": "java.lang.Object[]"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.AbstractGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "edges",
         "type": {
-          "componentType": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          },
-          "isArray": true,
+          "qualifiedName": "java.lang.Object[]",
           "name": "Object[]",
-          "qualifiedName": "java.lang.Object[]"
-        }
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          }
+        },
+        "name": "edges"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object[]",
+            "name": "Object[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.Object",
+              "name": "Object",
+              "isArray": false
+            }
+          },
+          "name": "edges"
+        },
+        "comment": "edges to be removed from this graph.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if this graph changed as a result of the call.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "removeAllEdges(java.lang.Object[] edges)",
-    "targetClass": "org.jgrapht.graph.AbstractGraph",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractGraph",
-      "qualifiedName": "org.jgrapht.graph.AbstractGraph"
-    },
-    "isVarArgs": false,
+    "signature": "toStringFromSets(java.util.Collection vertexSet,java.util.Collection edgeSet,boolean directed)",
     "name": "toStringFromSets",
-    "paramTags": [
-      {
-        "comment": "the vertex set V to be printed",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "vertexSet",
-          "type": {
-            "isArray": false,
-            "name": "Collection",
-            "qualifiedName": "java.util.Collection"
-          }
-        }
-      },
-      {
-        "comment": "the edge set E to be printed",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "edgeSet",
-          "type": {
-            "isArray": false,
-            "name": "Collection",
-            "qualifiedName": "java.util.Collection"
-          }
-        }
-      },
-      {
-        "comment": "true to use parens for each edge (representing directed); false to use curly braces (representing undirected)",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "directed",
-          "type": {
-            "isArray": false,
-            "name": "boolean",
-            "qualifiedName": "boolean"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.AbstractGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "vertexSet",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Collection",
           "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
+          "isArray": false
+        },
+        "name": "vertexSet"
       },
       {
-        "name": "edgeSet",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Collection",
           "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
+          "isArray": false
+        },
+        "name": "edgeSet"
       },
       {
-        "name": "directed",
         "type": {
-          "isArray": false,
+          "qualifiedName": "boolean",
           "name": "boolean",
-          "qualifiedName": "boolean"
-        }
+          "isArray": false
+        },
+        "name": "directed"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "vertexSet"
+        },
+        "comment": "the vertex set V to be printed",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "edgeSet"
+        },
+        "comment": "the edge set E to be printed",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "directed"
+        },
+        "comment": "true to use parens for each edge (representing directed); false to use curly braces (representing undirected)",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a string representation of (V,E)",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "String",
-      "qualifiedName": "java.lang.String"
-    },
-    "signature": "toStringFromSets(java.util.Collection vertexSet,java.util.Collection edgeSet,boolean directed)",
-    "targetClass": "org.jgrapht.graph.AbstractGraph",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractGraph",
-      "qualifiedName": "org.jgrapht.graph.AbstractGraph"
-    },
-    "isVarArgs": false,
+    "signature": "hashCode()",
     "name": "hashCode",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.AbstractGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the hash code value this graph",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "int",
-      "qualifiedName": "int"
-    },
-    "signature": "hashCode()",
-    "targetClass": "org.jgrapht.graph.AbstractGraph",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "AbstractGraph",
-      "qualifiedName": "org.jgrapht.graph.AbstractGraph"
-    },
-    "isVarArgs": false,
+    "signature": "equals(java.lang.Object obj)",
     "name": "equals",
-    "paramTags": [
-      {
-        "comment": "object to be compared for equality with this graph",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "obj",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.AbstractGraph",
+      "name": "AbstractGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.AbstractGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "obj",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "obj"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "obj"
+        },
+        "comment": "object to be compared for equality with this graph",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if the specified object is equal to this graph",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "equals(java.lang.Object obj)",
-    "targetClass": "org.jgrapht.graph.AbstractGraph",
     "throwsTags": []
   }
 ]

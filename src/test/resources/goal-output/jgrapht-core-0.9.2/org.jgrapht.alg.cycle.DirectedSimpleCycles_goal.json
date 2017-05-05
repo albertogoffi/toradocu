@@ -1,113 +1,117 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "DirectedSimpleCycles",
-      "qualifiedName": "org.jgrapht.alg.cycle.DirectedSimpleCycles"
-    },
-    "isVarArgs": false,
+    "signature": "getGraph()",
     "name": "getGraph",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.cycle.DirectedSimpleCycles",
+      "name": "DirectedSimpleCycles",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.alg.cycle.DirectedSimpleCycles",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.jgrapht.DirectedGraph",
+      "name": "DirectedGraph",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "The graph.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "DirectedGraph",
-      "qualifiedName": "org.jgrapht.DirectedGraph"
-    },
-    "signature": "getGraph()",
-    "targetClass": "org.jgrapht.alg.cycle.DirectedSimpleCycles",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "DirectedSimpleCycles",
-      "qualifiedName": "org.jgrapht.alg.cycle.DirectedSimpleCycles"
-    },
-    "isVarArgs": false,
+    "signature": "setGraph(org.jgrapht.DirectedGraph graph)",
     "name": "setGraph",
-    "paramTags": [
-      {
-        "comment": "the graph.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "graph",
-          "type": {
-            "isArray": false,
-            "name": "DirectedGraph",
-            "qualifiedName": "org.jgrapht.DirectedGraph"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.cycle.DirectedSimpleCycles",
+      "name": "DirectedSimpleCycles",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.alg.cycle.DirectedSimpleCycles",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "graph",
         "type": {
-          "isArray": false,
+          "qualifiedName": "org.jgrapht.DirectedGraph",
           "name": "DirectedGraph",
-          "qualifiedName": "org.jgrapht.DirectedGraph"
-        }
+          "isArray": false
+        },
+        "name": "graph"
       }
     ],
-    "returnType": {
-      "isArray": false,
-      "name": "void",
-      "qualifiedName": "void"
-    },
-    "signature": "setGraph(org.jgrapht.DirectedGraph graph)",
-    "targetClass": "org.jgrapht.alg.cycle.DirectedSimpleCycles",
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.DirectedGraph",
+            "name": "DirectedGraph",
+            "isArray": false
+          },
+          "name": "graph"
+        },
+        "comment": "the graph.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
     "throwsTags": [
       {
-        "comment": "if the argument is null.",
-        "condition": "args[0]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.IllegalArgumentException",
           "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "null"
+        ],
+        "comment": "if the argument is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "DirectedSimpleCycles",
-      "qualifiedName": "org.jgrapht.alg.cycle.DirectedSimpleCycles"
-    },
-    "isVarArgs": false,
+    "signature": "findSimpleCycles()",
     "name": "findSimpleCycles",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.cycle.DirectedSimpleCycles",
+      "name": "DirectedSimpleCycles",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.alg.cycle.DirectedSimpleCycles",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "The list of all simple cycles. Possibly empty but never null.",
-      "condition": "true ? (result==null)==false",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "true ? (result==null)==false"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "List",
-      "qualifiedName": "java.util.List"
-    },
-    "signature": "findSimpleCycles()",
-    "targetClass": "org.jgrapht.alg.cycle.DirectedSimpleCycles",
     "throwsTags": [
       {
-        "comment": "if the current graph is null.",
-        "condition": "target.getGraph()==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.IllegalArgumentException",
           "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the current graph is null.",
+        "kind": "THROWS",
+        "condition": "target.getGraph()==null"
       }
     ]
   }

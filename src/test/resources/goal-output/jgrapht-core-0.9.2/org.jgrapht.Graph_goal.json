@@ -1,1194 +1,1212 @@
 [
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Graph",
-      "qualifiedName": "org.jgrapht.Graph"
-    },
-    "isVarArgs": false,
+    "signature": "getAllEdges(java.lang.Object sourceVertex,java.lang.Object targetVertex)",
     "name": "getAllEdges",
-    "paramTags": [
-      {
-        "comment": "source vertex of the edge.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "sourceVertex",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "target vertex of the edge.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "targetVertex",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graph",
+      "name": "Graph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Set",
+      "name": "Set",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "sourceVertex",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "sourceVertex"
       },
       {
-        "name": "targetVertex",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "targetVertex"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "sourceVertex"
+        },
+        "comment": "source vertex of the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "targetVertex"
+        },
+        "comment": "target vertex of the edge.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a set of all edges connecting source vertex to target vertex.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Set",
-      "qualifiedName": "java.util.Set"
-    },
-    "signature": "getAllEdges(java.lang.Object sourceVertex,java.lang.Object targetVertex)",
-    "targetClass": "org.jgrapht.Graph",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Graph",
-      "qualifiedName": "org.jgrapht.Graph"
-    },
-    "isVarArgs": false,
+    "signature": "getEdge(java.lang.Object sourceVertex,java.lang.Object targetVertex)",
     "name": "getEdge",
-    "paramTags": [
-      {
-        "comment": "source vertex of the edge.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "sourceVertex",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "target vertex of the edge.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "targetVertex",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graph",
+      "name": "Graph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "sourceVertex",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "sourceVertex"
       },
       {
-        "name": "targetVertex",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "targetVertex"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "sourceVertex"
+        },
+        "comment": "source vertex of the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "targetVertex"
+        },
+        "comment": "target vertex of the edge.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "an edge connecting source vertex to target vertex.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "E",
-      "qualifiedName": "E"
-    },
-    "signature": "getEdge(java.lang.Object sourceVertex,java.lang.Object targetVertex)",
-    "targetClass": "org.jgrapht.Graph",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Graph",
-      "qualifiedName": "org.jgrapht.Graph"
-    },
-    "isVarArgs": false,
+    "signature": "getEdgeFactory()",
     "name": "getEdgeFactory",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graph",
+      "name": "Graph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.jgrapht.EdgeFactory",
+      "name": "EdgeFactory",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "the edge factory using which this graph creates new edges.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "EdgeFactory",
-      "qualifiedName": "org.jgrapht.EdgeFactory"
-    },
-    "signature": "getEdgeFactory()",
-    "targetClass": "org.jgrapht.Graph",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Graph",
-      "qualifiedName": "org.jgrapht.Graph"
-    },
-    "isVarArgs": false,
+    "signature": "addEdge(java.lang.Object sourceVertex,java.lang.Object targetVertex)",
     "name": "addEdge",
-    "paramTags": [
-      {
-        "comment": "source vertex of the edge.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "sourceVertex",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "target vertex of the edge.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "targetVertex",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graph",
+      "name": "Graph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "sourceVertex",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "sourceVertex"
       },
       {
-        "name": "targetVertex",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "targetVertex"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "sourceVertex"
+        },
+        "comment": "source vertex of the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "targetVertex"
+        },
+        "comment": "target vertex of the edge.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "The newly created edge if added to the graph, otherwise null.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "E",
-      "qualifiedName": "E"
-    },
-    "signature": "addEdge(java.lang.Object sourceVertex,java.lang.Object targetVertex)",
-    "targetClass": "org.jgrapht.Graph",
     "throwsTags": [
       {
-        "comment": "if source or target vertices are not found in the graph.",
-        "condition": "target.contains(arg[0])==false || target.contains(arg[1])==false",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.IllegalArgumentException",
           "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if source or target vertices are not found in the graph.",
+        "kind": "THROWS",
+        "condition": "target.contains(arg[0])==false || target.contains(arg[1])==false"
       },
       {
-        "comment": "if any of the specified vertices is null.",
-        "condition": "args[0]==null || args[1]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "null"
+        ],
+        "comment": "if any of the specified vertices is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null || args[1]==null"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Graph",
-      "qualifiedName": "org.jgrapht.Graph"
-    },
-    "isVarArgs": false,
+    "signature": "addEdge(java.lang.Object sourceVertex,java.lang.Object targetVertex,java.lang.Object e)",
     "name": "addEdge",
-    "paramTags": [
-      {
-        "comment": "source vertex of the edge.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "sourceVertex",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "target vertex of the edge.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "targetVertex",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "edge to be added to this graph.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "e",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graph",
+      "name": "Graph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "sourceVertex",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "sourceVertex"
       },
       {
-        "name": "targetVertex",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "targetVertex"
       },
       {
-        "name": "e",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "sourceVertex"
+        },
+        "comment": "source vertex of the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "targetVertex"
+        },
+        "comment": "target vertex of the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "edge to be added to this graph.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if this graph did not already contain the specified edge.",
-      "condition": "(target.containsEdge(args[0],args[1]))==false?result==true",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "(target.containsEdge(args[0],args[1]))==false?result==true"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "addEdge(java.lang.Object sourceVertex,java.lang.Object targetVertex,java.lang.Object e)",
-    "targetClass": "org.jgrapht.Graph",
     "throwsTags": [
       {
-        "comment": "if source or target vertices are not found in the graph.",
-        "condition": "target.contains(arg[0])==false || target.contains(arg[1])==false",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.IllegalArgumentException",
           "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if source or target vertices are not found in the graph.",
+        "kind": "THROWS",
+        "condition": "target.contains(arg[0])==false || target.contains(arg[1])==false"
       },
       {
-        "comment": "if the specified edge is not assignment compatible with the class of edges produced by the edge factory of this graph.",
-        "condition": "",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.ClassCastException",
           "name": "ClassCastException",
-          "qualifiedName": "java.lang.ClassCastException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the specified edge is not assignment compatible with the class of edges produced by the edge factory of this graph.",
+        "kind": "THROWS",
+        "condition": ""
       },
       {
-        "comment": "if any of the specified vertices is null.",
-        "condition": "args[0]==null || args[1]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "null"
+        ],
+        "comment": "if any of the specified vertices is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null || args[1]==null"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Graph",
-      "qualifiedName": "org.jgrapht.Graph"
-    },
-    "isVarArgs": false,
+    "signature": "addVertex(java.lang.Object v)",
     "name": "addVertex",
-    "paramTags": [
-      {
-        "comment": "vertex to be added to this graph.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graph",
+      "name": "Graph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "v",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "vertex to be added to this graph.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if this graph did not already contain the specified vertex.",
-      "condition": "(target.containsVertex(args[0]))==false ? result==true",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "(target.containsVertex(args[0]))==false ? result==true"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "addVertex(java.lang.Object v)",
-    "targetClass": "org.jgrapht.Graph",
     "throwsTags": [
       {
-        "comment": "if the specified vertex is null.",
-        "condition": "args[0]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "null"
+        ],
+        "comment": "if the specified vertex is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Graph",
-      "qualifiedName": "org.jgrapht.Graph"
-    },
-    "isVarArgs": false,
-    "name": "containsEdge",
-    "paramTags": [
-      {
-        "comment": "source vertex of the edge.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "sourceVertex",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "target vertex of the edge.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "targetVertex",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
-    "parameters": [
-      {
-        "name": "sourceVertex",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      },
-      {
-        "name": "targetVertex",
-        "type": {
-          "isArray": false,
-          "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
-      }
-    ],
-    "returnTag": {
-      "comment": "true if this graph contains the specified edge.",
-      "condition": "",
-      "kind": "RETURN"
-    },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
     "signature": "containsEdge(java.lang.Object sourceVertex,java.lang.Object targetVertex)",
-    "targetClass": "org.jgrapht.Graph",
-    "throwsTags": []
-  },
-  {
-    "containingClass": {
-      "isArray": false,
-      "name": "Graph",
-      "qualifiedName": "org.jgrapht.Graph"
-    },
-    "isVarArgs": false,
     "name": "containsEdge",
-    "paramTags": [
-      {
-        "comment": "edge whose presence in this graph is to be tested.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "e",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graph",
+      "name": "Graph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "e",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "sourceVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "targetVertex"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "sourceVertex"
+        },
+        "comment": "source vertex of the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "targetVertex"
+        },
+        "comment": "target vertex of the edge.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if this graph contains the specified edge.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "containsEdge(java.lang.Object e)",
-    "targetClass": "org.jgrapht.Graph",
     "throwsTags": []
   },
   {
+    "signature": "containsEdge(java.lang.Object e)",
+    "name": "containsEdge",
     "containingClass": {
-      "isArray": false,
+      "qualifiedName": "org.jgrapht.Graph",
       "name": "Graph",
-      "qualifiedName": "org.jgrapht.Graph"
+      "isArray": false
     },
+    "targetClass": "org.jgrapht.Graph",
     "isVarArgs": false,
-    "name": "containsVertex",
-    "paramTags": [
-      {
-        "comment": "vertex whose presence in this graph is to be tested.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "v",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "edge whose presence in this graph is to be tested.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if this graph contains the specified edge.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "containsVertex(java.lang.Object v)",
+    "name": "containsVertex",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graph",
+      "name": "Graph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "vertex whose presence in this graph is to be tested.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if this graph contains the specified vertex.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "containsVertex(java.lang.Object v)",
-    "targetClass": "org.jgrapht.Graph",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Graph",
-      "qualifiedName": "org.jgrapht.Graph"
-    },
-    "isVarArgs": false,
+    "signature": "edgeSet()",
     "name": "edgeSet",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graph",
+      "name": "Graph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Set",
+      "name": "Set",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "a set of the edges contained in this graph.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Set",
-      "qualifiedName": "java.util.Set"
-    },
-    "signature": "edgeSet()",
-    "targetClass": "org.jgrapht.Graph",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Graph",
-      "qualifiedName": "org.jgrapht.Graph"
-    },
-    "isVarArgs": false,
+    "signature": "edgesOf(java.lang.Object vertex)",
     "name": "edgesOf",
-    "paramTags": [
-      {
-        "comment": "the vertex for which a set of touching edges is to be returned.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "vertex",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graph",
+      "name": "Graph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Set",
+      "name": "Set",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "vertex",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "vertex"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "vertex"
+        },
+        "comment": "the vertex for which a set of touching edges is to be returned.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "a set of all edges touching the specified vertex.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Set",
-      "qualifiedName": "java.util.Set"
-    },
-    "signature": "edgesOf(java.lang.Object vertex)",
-    "targetClass": "org.jgrapht.Graph",
     "throwsTags": [
       {
-        "comment": "if vertex is not found in the graph.",
-        "condition": "target.contains(arg[0])==false",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.IllegalArgumentException",
           "name": "IllegalArgumentException",
-          "qualifiedName": "java.lang.IllegalArgumentException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if vertex is not found in the graph.",
+        "kind": "THROWS",
+        "condition": "target.contains(arg[0])==false"
       },
       {
-        "comment": "if vertex is null.",
-        "condition": "args[0]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [
+          "null"
+        ],
+        "comment": "if vertex is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Graph",
-      "qualifiedName": "org.jgrapht.Graph"
-    },
-    "isVarArgs": false,
+    "signature": "removeAllEdges(java.util.Collection edges)",
     "name": "removeAllEdges",
-    "paramTags": [
-      {
-        "comment": "edges to be removed from this graph.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "edges",
-          "type": {
-            "isArray": false,
-            "name": "Collection",
-            "qualifiedName": "java.util.Collection"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graph",
+      "name": "Graph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "edges",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Collection",
           "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
+          "isArray": false
+        },
+        "name": "edges"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "edges"
+        },
+        "comment": "edges to be removed from this graph.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if this graph changed as a result of the call",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "removeAllEdges(java.util.Collection edges)",
-    "targetClass": "org.jgrapht.Graph",
     "throwsTags": [
       {
-        "comment": "if the specified edge collection is null.",
-        "condition": "args[0]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the specified edge collection is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Graph",
-      "qualifiedName": "org.jgrapht.Graph"
-    },
-    "isVarArgs": false,
+    "signature": "removeAllEdges(java.lang.Object sourceVertex,java.lang.Object targetVertex)",
     "name": "removeAllEdges",
-    "paramTags": [
-      {
-        "comment": "source vertex of the edge.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "sourceVertex",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "target vertex of the edge.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "targetVertex",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graph",
+      "name": "Graph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Set",
+      "name": "Set",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "sourceVertex",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "sourceVertex"
       },
       {
-        "name": "targetVertex",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "targetVertex"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "sourceVertex"
+        },
+        "comment": "source vertex of the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "targetVertex"
+        },
+        "comment": "target vertex of the edge.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "the removed edges, or null if either vertex is not part of graph",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Set",
-      "qualifiedName": "java.util.Set"
-    },
-    "signature": "removeAllEdges(java.lang.Object sourceVertex,java.lang.Object targetVertex)",
-    "targetClass": "org.jgrapht.Graph",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Graph",
-      "qualifiedName": "org.jgrapht.Graph"
-    },
-    "isVarArgs": false,
+    "signature": "removeAllVertices(java.util.Collection vertices)",
     "name": "removeAllVertices",
-    "paramTags": [
-      {
-        "comment": "vertices to be removed from this graph.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "vertices",
-          "type": {
-            "isArray": false,
-            "name": "Collection",
-            "qualifiedName": "java.util.Collection"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graph",
+      "name": "Graph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "vertices",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.util.Collection",
           "name": "Collection",
-          "qualifiedName": "java.util.Collection"
-        }
+          "isArray": false
+        },
+        "name": "vertices"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "vertices"
+        },
+        "comment": "vertices to be removed from this graph.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if this graph changed as a result of the call",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "removeAllVertices(java.util.Collection vertices)",
-    "targetClass": "org.jgrapht.Graph",
     "throwsTags": [
       {
-        "comment": "if the specified vertex collection is null.",
-        "condition": "args[0]==null",
         "exception": {
-          "isArray": false,
+          "qualifiedName": "java.lang.NullPointerException",
           "name": "NullPointerException",
-          "qualifiedName": "java.lang.NullPointerException"
+          "isArray": false
         },
-        "kind": "@throws"
+        "codeTags": [],
+        "comment": "if the specified vertex collection is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
       }
     ]
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Graph",
-      "qualifiedName": "org.jgrapht.Graph"
-    },
-    "isVarArgs": false,
+    "signature": "removeEdge(java.lang.Object sourceVertex,java.lang.Object targetVertex)",
     "name": "removeEdge",
-    "paramTags": [
-      {
-        "comment": "source vertex of the edge.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "sourceVertex",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      },
-      {
-        "comment": "target vertex of the edge.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "targetVertex",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graph",
+      "name": "Graph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "sourceVertex",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "sourceVertex"
       },
       {
-        "name": "targetVertex",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "targetVertex"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "sourceVertex"
+        },
+        "comment": "source vertex of the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "targetVertex"
+        },
+        "comment": "target vertex of the edge.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "The removed edge, or null if no edge removed.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "E",
-      "qualifiedName": "E"
-    },
-    "signature": "removeEdge(java.lang.Object sourceVertex,java.lang.Object targetVertex)",
-    "targetClass": "org.jgrapht.Graph",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Graph",
-      "qualifiedName": "org.jgrapht.Graph"
-    },
-    "isVarArgs": false,
+    "signature": "removeEdge(java.lang.Object e)",
     "name": "removeEdge",
-    "paramTags": [
-      {
-        "comment": "edge to be removed from this graph, if present.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "e",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graph",
+      "name": "Graph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "e",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "edge to be removed from this graph, if present.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if and only if the graph contained the specified edge.",
-      "condition": "target.containsEdge(args[0]) ? result==true : result==false",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "target.containsEdge(args[0]) ? result==true : result==false"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "removeEdge(java.lang.Object e)",
-    "targetClass": "org.jgrapht.Graph",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Graph",
-      "qualifiedName": "org.jgrapht.Graph"
-    },
-    "isVarArgs": false,
+    "signature": "removeVertex(java.lang.Object v)",
     "name": "removeVertex",
-    "paramTags": [
-      {
-        "comment": "vertex to be removed from this graph, if present.",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "v",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graph",
+      "name": "Graph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "v",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "vertex to be removed from this graph, if present.",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "true if the graph contained the specified vertex; false otherwise.",
-      "condition": "target.containsVertex(args[0]) ? result==true : result==false",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": "target.containsVertex(args[0]) ? result==true : result==false"
     },
-    "returnType": {
-      "isArray": false,
-      "name": "boolean",
-      "qualifiedName": "boolean"
-    },
-    "signature": "removeVertex(java.lang.Object v)",
-    "targetClass": "org.jgrapht.Graph",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Graph",
-      "qualifiedName": "org.jgrapht.Graph"
-    },
-    "isVarArgs": false,
+    "signature": "vertexSet()",
     "name": "vertexSet",
-    "paramTags": [],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graph",
+      "name": "Graph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Set",
+      "name": "Set",
+      "isArray": false
+    },
     "parameters": [],
+    "paramTags": [],
     "returnTag": {
       "comment": "a set view of the vertices contained in this graph.",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "Set",
-      "qualifiedName": "java.util.Set"
-    },
-    "signature": "vertexSet()",
-    "targetClass": "org.jgrapht.Graph",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Graph",
-      "qualifiedName": "org.jgrapht.Graph"
-    },
-    "isVarArgs": false,
+    "signature": "getEdgeSource(java.lang.Object e)",
     "name": "getEdgeSource",
-    "paramTags": [
-      {
-        "comment": "edge of interest",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "e",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graph",
+      "name": "Graph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "V",
+      "name": "V",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "e",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "edge of interest",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "source vertex",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "V",
-      "qualifiedName": "V"
-    },
-    "signature": "getEdgeSource(java.lang.Object e)",
-    "targetClass": "org.jgrapht.Graph",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Graph",
-      "qualifiedName": "org.jgrapht.Graph"
-    },
-    "isVarArgs": false,
+    "signature": "getEdgeTarget(java.lang.Object e)",
     "name": "getEdgeTarget",
-    "paramTags": [
-      {
-        "comment": "edge of interest",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "e",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graph",
+      "name": "Graph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "V",
+      "name": "V",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "e",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "edge of interest",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "target vertex",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "V",
-      "qualifiedName": "V"
-    },
-    "signature": "getEdgeTarget(java.lang.Object e)",
-    "targetClass": "org.jgrapht.Graph",
     "throwsTags": []
   },
   {
-    "containingClass": {
-      "isArray": false,
-      "name": "Graph",
-      "qualifiedName": "org.jgrapht.Graph"
-    },
-    "isVarArgs": false,
+    "signature": "getEdgeWeight(java.lang.Object e)",
     "name": "getEdgeWeight",
-    "paramTags": [
-      {
-        "comment": "edge of interest",
-        "condition": "",
-        "kind": "@param",
-        "parameter": {
-          "name": "e",
-          "type": {
-            "isArray": false,
-            "name": "Object",
-            "qualifiedName": "java.lang.Object"
-          }
-        }
-      }
-    ],
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graph",
+      "name": "Graph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
     "parameters": [
       {
-        "name": "e",
         "type": {
-          "isArray": false,
+          "qualifiedName": "java.lang.Object",
           "name": "Object",
-          "qualifiedName": "java.lang.Object"
-        }
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "edge of interest",
+        "kind": "PARAM",
+        "condition": ""
       }
     ],
     "returnTag": {
       "comment": "edge weight",
-      "condition": "",
-      "kind": "RETURN"
+      "kind": "RETURN",
+      "condition": ""
     },
-    "returnType": {
-      "isArray": false,
-      "name": "double",
-      "qualifiedName": "double"
-    },
-    "signature": "getEdgeWeight(java.lang.Object e)",
-    "targetClass": "org.jgrapht.Graph",
     "throwsTags": []
   }
 ]
