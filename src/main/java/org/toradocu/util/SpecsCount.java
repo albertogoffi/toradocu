@@ -57,7 +57,7 @@ public class SpecsCount {
         if (returnTag != null) {
           final String condition = returnTag.getCondition().orElse("");
           if (!condition.isEmpty()) {
-            post += condition.split(";").length;
+            post += 1;
           }
         }
       }

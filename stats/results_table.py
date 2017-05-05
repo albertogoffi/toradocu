@@ -2,12 +2,16 @@ import csv
 import sys
 
 # Check command line arguments.
-if len(sys.argv) != 2:
+if len(sys.argv) != 3:
     print("""\
-This script must be invoked with the CSV file to parse as argument.
+This script must be invoked with the following arguments:
+1. CSV file to parse;
+2. Total number of considered conditions (pre, post, and exceptional post).
 Ouptut will be printed on the standard output.
 """)
     sys.exit(1)
+
+TOTAL_CONDITIONS = int(sys.argv[2])
 
 COLUMNS = [
     'CORRECT PARAM CONDITIONS',
@@ -58,7 +62,7 @@ overall_correct = correct_param + correct_return + correct_throws
 overall_missing = missing_param + missing_return + missing_throws
 overall_wrong = wrong_param + wrong_return + wrong_throws
 overall_precision = 0 if overall_correct == 0 else float(overall_correct) / (overall_correct + overall_wrong)
-overall_recall = 0 if overall_correct == 0 else float(overall_correct) / (overall_correct + overall_wrong + overall_missing)
+overall_recall = 0 if overall_correct == 0 else float(overall_correct) / TOTAL_CONDITIONS
 fmeasure = (2 * overall_precision * overall_recall) / (overall_precision + overall_recall)
 
 output = "{:.2f}".format(param_precision) if (correct_param + wrong_param) > 0 else "n.a." # param_precision
