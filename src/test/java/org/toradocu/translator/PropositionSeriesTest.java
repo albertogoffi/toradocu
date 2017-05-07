@@ -208,7 +208,7 @@ public class PropositionSeriesTest {
     assertTrue(propositions.getConjunctions().isEmpty());
   }
 
-  //@Test
+  @Test
   public void testIssue97() {
     // https://github.com/albertogoffi/toradocu/issues/97
     PropositionSeries propositions =
