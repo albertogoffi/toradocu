@@ -221,6 +221,6 @@ TORADOCU_RECALL_EXC=`fgrep $TORADOCU "$RESULTS_TABLE" | cut -d '&' -f 9 | xargs`
 PRECISION_EXC_IMPROVEMENT_TORADOCU=`bc -l <<< "scale=0; ($JDOCTOR_PRECISION_EXC-$TORADOCU_PRECISION_EXC)*100 / 1"`
 RECALL_EXC_IMPROVEMENT_TORADOCU=`bc -l <<< "scale=0; ($JDOCTOR_RECALL_EXC-$TORADOCU_RECALL_EXC)*100 / 1"`
 echo '\newcommand{\precisionImprovementExcToradocu}{'$PRECISION_EXC_IMPROVEMENT_TORADOCU'\%\xspace}' >> "$MACROS"
-echo '\newcommand{\recallImprovementExcToradocu}{'$PRECISION_EXC_IMPROVEMENT_TORADOCU'\%\xspace}' >> "$MACROS"
+echo '\newcommand{\recallImprovementExcToradocu}{'$RECALL_EXC_IMPROVEMENT_TORADOCU'\%\xspace}' >> "$MACROS"
 
 echo "Created macros: $MACROS"
