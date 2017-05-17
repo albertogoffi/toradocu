@@ -7,7 +7,7 @@ import org.toradocu.util.Checks;
 class AbstractTag implements Tag {
 
   /** The comment associated with the exception. */
-  private final String comment;
+  private String comment;
 
   /** The kind of this tag (e.g., @throws, @param). */
   private final Kind kind;
@@ -51,6 +51,11 @@ class AbstractTag implements Tag {
   @Override
   public String getComment() {
     return comment;
+  }
+
+  @Override
+  public void setComment(String comment) {
+    this.comment = comment;
   }
 
   /**

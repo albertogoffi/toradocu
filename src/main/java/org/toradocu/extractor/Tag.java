@@ -53,4 +53,6 @@ public interface Tag {
    * @return the comment associated with the exception in this tag
    */
   String getComment();
+
+  void setComment(String comment);
 }
