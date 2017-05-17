@@ -6,8 +6,9 @@ import java.util.Set;
 import java.util.StringJoiner;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.ThrowsTag;
+import org.toradocu.translator.spec.Specification;
 
-public class ParamThrowsTranslator implements Translator<ThrowsTag> {
+public class ThrowsTranslator implements Translator<ThrowsTag> {
 
   @Override
   public Specification translate(ThrowsTag tag, DocumentedMethod excMember) {

@@ -6,11 +6,12 @@ class TranslatorFactory {
 
   private TranslatorFactory() {}
 
-  static Translator create(Tag.Kind tagKind) {
+  static Translator<? extends Tag> create(Tag.Kind tagKind) {
     switch (tagKind) {
       case PARAM:
+        return new ParamTranslator();
       case THROWS:
-        return new ParamThrowsTranslator();
+        return new ThrowsTranslator();
       case RETURN:
         return new ReturnTranslator();
       default:

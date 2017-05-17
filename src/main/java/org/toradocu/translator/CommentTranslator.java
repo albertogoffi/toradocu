@@ -3,16 +3,18 @@ package org.toradocu.translator;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.Tag;
 import org.toradocu.translator.preprocess.PreprocessorFactory;
+import org.toradocu.translator.spec.Specification;
 
 public class CommentTranslator {
 
-  public static void translate(Tag tag, DocumentedMethod excMember) {
+  public static <T extends Tag> void translate(T tag, DocumentedMethod excMember) {
 
     // Preprocessing.
     PreprocessorFactory.create(tag.getKind()).preprocess(tag, excMember);
 
     // Translation.
-    Specification spec = TranslatorFactory.create(tag.getKind()).translate(tag, excMember);
+    final Translator<? extends Tag> translator = TranslatorFactory.create(tag.getKind());
+    Specification spec = translator.translate(tag, excMember);
 
     // TODO ...
   }
