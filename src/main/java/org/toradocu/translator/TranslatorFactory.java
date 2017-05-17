@@ -9,8 +9,9 @@ class TranslatorFactory {
   static Translator create(Tag.Kind tagKind) {
     switch (tagKind) {
       case PARAM:
+        return new ParamTranslator();
       case THROWS:
-        return new ParamThrowsTranslator();
+        return new ThrowsTranslator();
       case RETURN:
         return new ReturnTranslator();
       default:

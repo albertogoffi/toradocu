@@ -8,12 +8,8 @@ public class Preprocessor {
 
   private List<PreprocessingPhase> phases;
 
-  public Preprocessor(List<PreprocessingPhase> phases) {
+  Preprocessor(List<PreprocessingPhase> phases) {
     this.phases = phases;
-  }
-
-  void addPhase(PreprocessingPhase phase) {
-    phases.add(phase);
   }
 
   public Tag preprocess(Tag tag, DocumentedMethod excMember) {

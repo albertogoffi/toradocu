@@ -1,12 +1,13 @@
 package org.toradocu.translator;
 
 import org.toradocu.extractor.DocumentedMethod;
-import org.toradocu.extractor.Tag;
+import org.toradocu.extractor.ReturnTag;
+import org.toradocu.translator.spec.Specification;
 
-public class ReturnTranslator implements Translator {
+public class ReturnTranslator implements Translator<ReturnTag> {
 
   @Override
-  public Specification translate(Tag tag, DocumentedMethod excMember) {
+  public Specification translate(ReturnTag tag, DocumentedMethod excMember) {
     return null;
   }
 }

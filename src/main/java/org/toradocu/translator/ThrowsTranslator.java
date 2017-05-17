@@ -6,8 +6,9 @@ import java.util.Set;
 import java.util.StringJoiner;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.ThrowsTag;
+import org.toradocu.translator.spec.Specification;
 
-public class ParamThrowsTranslator implements Translator<ThrowsTag> {
+public class ThrowsTranslator implements Translator<ThrowsTag> {
 
   @Override
   public Specification translate(ThrowsTag tag, DocumentedMethod excMember) {
@@ -37,12 +38,6 @@ public class ParamThrowsTranslator implements Translator<ThrowsTag> {
    */
   private String mergeConditions(Set<String> conditions) {
     conditions.removeIf(String::isEmpty); // TODO Why should we have empty conditions here?
-    if (conditions.size() == 0) {
-      return "";
-    }
-    if (conditions.size() == 1) {
-      return conditions.iterator().next();
-    }
 
     String delimiter = " " + Conjunction.OR + " ";
     StringJoiner joiner = new StringJoiner(delimiter);
