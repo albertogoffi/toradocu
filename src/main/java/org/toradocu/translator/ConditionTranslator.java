@@ -54,7 +54,7 @@ public class ConditionTranslator {
    * @param method the DocumentedMethod under analysis
    * @return a list of {@code PropositionSeries} objects, one for each sentence in the comment
    */
-  private static List<PropositionSeries> getPropositionSeries(
+  public static List<PropositionSeries> getPropositionSeries(
       String comment, DocumentedMethod method) {
     comment = addPlaceholders(comment);
     List<PropositionSeries> result = new ArrayList<>();
@@ -222,8 +222,7 @@ public class ConditionTranslator {
    * @param method the method the containing the Javadoc comment from which the {@code
    *     propositionSeries} was extracted
    */
-  private static void translatePropositions(
-      PropositionSeries propositionSeries, DocumentedMethod method) {
+  public static void translate(PropositionSeries propositionSeries, DocumentedMethod method) {
     for (Proposition p : propositionSeries.getPropositions()) {
       Set<CodeElement<?>> subjectMatches;
       subjectMatches = Matcher.subjectMatch(p.getSubject().getSubject(), method);
@@ -514,7 +513,7 @@ public class ConditionTranslator {
       Set<String> conditions = new LinkedHashSet<>();
       // Identify Java code elements in propositions.
       for (PropositionSeries propositions : extractedPropositions) {
-        translatePropositions(propositions, method);
+        translate(propositions, method);
         conditions.add(propositions.getTranslation());
       }
       tag.setCondition(mergeConditions(conditions));
@@ -781,7 +780,7 @@ public class ConditionTranslator {
     Set<String> conditions = new LinkedHashSet<>();
     // Identify Java code elements in propositions.
     for (PropositionSeries propositions : extractedPropositions) {
-      translatePropositions(propositions, method);
+      translate(propositions, method);
       conditions.add(propositions.getTranslation());
     }
     return mergeConditions(conditions);

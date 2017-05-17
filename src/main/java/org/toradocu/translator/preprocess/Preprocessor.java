@@ -16,7 +16,7 @@ public class Preprocessor {
     phases.add(phase);
   }
 
-  public Tag run(Tag tag, DocumentedMethod excMember) {
+  public Tag preprocess(Tag tag, DocumentedMethod excMember) {
     for (PreprocessingPhase phase : phases) {
       tag.setComment(phase.run(tag, excMember));
     }
