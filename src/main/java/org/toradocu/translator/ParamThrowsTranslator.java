@@ -37,12 +37,6 @@ public class ParamThrowsTranslator implements Translator<ThrowsTag> {
    */
   private String mergeConditions(Set<String> conditions) {
     conditions.removeIf(String::isEmpty); // TODO Why should we have empty conditions here?
-    if (conditions.size() == 0) {
-      return "";
-    }
-    if (conditions.size() == 1) {
-      return conditions.iterator().next();
-    }
 
     String delimiter = " " + Conjunction.OR + " ";
     StringJoiner joiner = new StringJoiner(delimiter);
