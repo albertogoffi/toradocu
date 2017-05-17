@@ -40,7 +40,7 @@ public class SpecsChecker {
       final List<String> postconditions =
           throwsTags
               .stream()
-              .map(t -> t.getCondition().orElse("").replaceAll(" ", ""))
+              .map(t -> t.getCondition().replaceAll(" ", ""))
               .filter(t -> !t.isEmpty())
               .collect(toList());
       // Check if there are duplicated exceptional postconditions.
@@ -60,14 +60,14 @@ public class SpecsChecker {
       final Set<ThrowsTag> throwsTags = method.throwsTags();
 
       for (ParamTag param : paramTags) {
-        String precondition = param.getCondition().orElse("").replaceAll(" ", "");
+        String precondition = param.getCondition().replaceAll(" ", "");
         if (precondition.isEmpty()) {
           continue;
         }
         final List<String> conflictingSpecs =
             throwsTags
                 .stream()
-                .map(tag -> tag.getCondition().orElse(""))
+                .map(tag -> tag.getCondition())
                 .map(postcondition -> postcondition.replaceAll(" ", ""))
                 .filter(postcondition -> postcondition.equals(precondition))
                 .collect(toList());

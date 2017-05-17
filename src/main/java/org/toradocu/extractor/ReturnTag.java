@@ -24,8 +24,6 @@ public class ReturnTag extends AbstractTag {
    */
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof ReturnTag)) return false;
-
-    return super.equals(obj);
+    return obj instanceof ReturnTag && super.equals(obj);
   }
 }

@@ -75,7 +75,7 @@ public class RandoopSpecs {
    *     been translated by Toradocu, or if the translation is empty
    */
   public static PreSpecification translate(ParamTag tag, DocumentedMethod method) {
-    String condition = tag.getCondition().orElse("");
+    String condition = tag.getCondition();
     return condition.isEmpty()
         ? null
         : new PreSpecification(
@@ -91,7 +91,7 @@ public class RandoopSpecs {
    *     been translated by Toradocu, or if the translation is empty
    */
   public static List<PostSpecification> translate(ReturnTag tag, DocumentedMethod method) {
-    String condition = tag.getCondition().orElse("");
+    String condition = tag.getCondition();
     if (condition.isEmpty()) {
       return null;
     }
@@ -130,7 +130,7 @@ public class RandoopSpecs {
    *     been translated by Toradocu, or if the translation is empty
    */
   public static ThrowsSpecification translate(ThrowsTag tag, DocumentedMethod method) {
-    String condition = tag.getCondition().orElse("");
+    String condition = tag.getCondition();
     if (condition.isEmpty()) {
       return null;
     }

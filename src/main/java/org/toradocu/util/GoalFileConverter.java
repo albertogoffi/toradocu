@@ -75,7 +75,7 @@ public class GoalFileConverter {
                   + " "
                   + throwsTag.getComment()
                   + " ==> ["
-                  + throwsTag.getCondition().orElse("").replace(" ", "")
+                  + throwsTag.getCondition().replace(" ", "")
                   + "]";
           writer.write(commentTranslation);
           writer.newLine();

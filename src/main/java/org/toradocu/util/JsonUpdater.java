@@ -91,7 +91,7 @@ public class JsonUpdater {
             "Mismatch between old and new return tag comments of method "
                 + oldMethod.getSignature());
       }
-      newReturnTag.setCondition(oldReturnTag.getCondition().orElse(""));
+      newReturnTag.setCondition(oldReturnTag.getCondition());
     }
   }
 
@@ -127,7 +127,7 @@ public class JsonUpdater {
       final ParamTag oldTag = matchingOldParamTags.get(0);
 
       // Set the goal condition in new specs.
-      newParamTag.setCondition(oldTag.getCondition().orElse(""));
+      newParamTag.setCondition(oldTag.getCondition());
     }
   }
 
@@ -162,7 +162,7 @@ public class JsonUpdater {
       final ThrowsTag oldTag = matchingOldThrowsTags.get(0);
 
       // Set the goal condition in new specs.
-      newThrowsTag.setCondition(oldTag.getCondition().orElse(""));
+      newThrowsTag.setCondition(oldTag.getCondition());
     }
   }
 }

@@ -69,12 +69,12 @@ public class OracleGenerator {
       tags.addAll(method.throwsTags());
       ReturnTag returnTag = method.returnTag();
       if (returnTag != null && returnTag.getCondition() != null) {
-        String condition = returnTag.getCondition().orElse("");
+        String condition = returnTag.getCondition();
         if (!condition.isEmpty()) {
           tags.add(returnTag);
         }
       }
-      boolean match = tags.stream().anyMatch(tag -> !tag.getCondition().orElse("").isEmpty());
+      boolean match = tags.stream().anyMatch(tag -> !tag.getCondition().isEmpty());
       if (match) {
         String aspectName = "Aspect_" + aspectNumber;
         createAspect(method, aspectName);

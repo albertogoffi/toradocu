@@ -1,20 +1,19 @@
 package org.toradocu.extractor;
 
 import java.util.Objects;
-import java.util.Optional;
 import org.toradocu.util.Checks;
 
 class AbstractTag implements Tag {
 
-  /** The comment associated with the exception. */
+  /** The comment of this tag. */
   private String comment;
 
   /** The kind of this tag (e.g., @throws, @param). */
   private final Kind kind;
 
   /**
-   * Java boolean condition translated from the comment for this {@code Tag}. Null if translation
-   * not yet attempted. Empty string if no translations found.
+   * Java boolean condition translated from the comment for this {@code Tag}. Empty string if no
+   * translations found or if translation not yet attempted.
    */
   private String condition;
 
@@ -38,8 +37,8 @@ class AbstractTag implements Tag {
   }
 
   @Override
-  public Optional<String> getCondition() {
-    return Optional.ofNullable(condition);
+  public String getCondition() {
+    return condition;
   }
 
   @Override
@@ -66,11 +65,12 @@ class AbstractTag implements Tag {
    */
   @Override
   public boolean equals(Object obj) {
+    if (this == obj) return true;
     if (!(obj instanceof AbstractTag)) return false;
 
     AbstractTag that = (AbstractTag) obj;
     return comment.equals(that.comment)
-        && Objects.equals(condition, that.condition)
+        && condition.equals(that.condition)
         && kind.equals(that.kind);
   }
 
@@ -96,9 +96,20 @@ class AbstractTag implements Tag {
   @Override
   public String toString() {
     String result = kind + " " + comment;
-    if (condition != null) {
-      result += " ==> " + condition;
+    return appendCondition(result);
+  }
+
+  /**
+   * Appends the condition to the given string if the condition is not empty. The condition is added
+   * at the end of the given string in the following form: " ==&gt; condition".
+   *
+   * @param stringRepresentation a string representing this Tag
+   * @return the string representation of this tag with the condition appended
+   */
+  String appendCondition(String stringRepresentation) {
+    if (!condition.isEmpty()) {
+      stringRepresentation += " ==> " + condition;
     }
-    return result;
+    return stringRepresentation;
   }
 }

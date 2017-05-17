@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.Tag;
 
+// TODO This should be done right before the parsing not during preprocessing!
 public class AddPlaceholders implements PreprocessingPhase {
 
   /**

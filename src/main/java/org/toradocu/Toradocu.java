@@ -348,6 +348,6 @@ public class Toradocu {
               return tags;
             })
         .flatMap(List::stream)
-        .anyMatch(t -> t.getCondition().isPresent() && !t.getCondition().get().isEmpty());
+        .anyMatch(t -> !t.getCondition().isEmpty());
   }
 }

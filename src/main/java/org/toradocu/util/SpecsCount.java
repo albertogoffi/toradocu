@@ -44,18 +44,18 @@ public class SpecsCount {
                 .paramTags()
                 .stream()
                 .map(t -> t.getCondition())
-                .filter(c -> c.isPresent() && !c.get().isEmpty())
+                .filter(c -> !c.isEmpty())
                 .count();
         exc +=
             method
                 .throwsTags()
                 .stream()
                 .map(t -> t.getCondition())
-                .filter(c -> c.isPresent() && !c.get().isEmpty())
+                .filter(c -> !c.isEmpty())
                 .count();
         ReturnTag returnTag = method.returnTag();
         if (returnTag != null) {
-          final String condition = returnTag.getCondition().orElse("");
+          final String condition = returnTag.getCondition();
           if (!condition.isEmpty()) {
             post += 1;
           }

@@ -97,11 +97,6 @@ public class ThrowsTag extends AbstractTag {
   @Override
   public String toString() {
     String result = super.getKind() + " " + exception + " " + super.getComment();
-    if (super.getCondition() != null
-        && super.getCondition().isPresent()
-        && !super.getCondition().get().isEmpty()) {
-      result += " ==> " + super.getCondition().get();
-    }
-    return result;
+    return appendCondition(result);
   }
 }

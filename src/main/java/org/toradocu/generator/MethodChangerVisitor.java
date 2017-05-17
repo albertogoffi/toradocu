@@ -86,13 +86,13 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
     ReturnStmt returnResultStmt = new ReturnStmt();
     returnResultStmt.setExpr(new NameExpr("result"));
 
-    if (tag == null || tag.getCondition().orElse("").isEmpty()) {
+    if (tag == null || tag.getCondition().isEmpty()) {
       methodDeclaration.getBody().getStmts().add(returnResultStmt);
       return;
     }
 
     // Remove whitespaces to do not influence parsing.
-    String spec = tag.getCondition().get().replace(" ", "");
+    String spec = tag.getCondition().replace(" ", "");
 
     String guardCondition = addCasting(spec.substring(0, spec.indexOf("?")), documentedMethod);
     String propertiesStr = spec.substring(spec.indexOf("?") + 1);
@@ -116,7 +116,7 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
       MethodDeclaration methodDeclaration, DocumentedMethod documentedMethod) {
     boolean returnStmtNeeded = true;
     for (ParamTag tag : documentedMethod.paramTags()) {
-      String condition = tag.getCondition().orElse("");
+      String condition = tag.getCondition();
       if (condition.isEmpty()) {
         continue;
       }
@@ -138,7 +138,7 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
   private void getExpectedExceptionChanger(
       MethodDeclaration methodDeclaration, DocumentedMethod documentedMethod) {
     for (ThrowsTag tag : documentedMethod.throwsTags()) {
-      String condition = tag.getCondition().orElse("");
+      String condition = tag.getCondition();
       if (condition.isEmpty()) {
         continue;
       }

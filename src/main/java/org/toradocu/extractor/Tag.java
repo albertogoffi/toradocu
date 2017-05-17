@@ -1,17 +1,17 @@
 package org.toradocu.extractor;
 
-import java.util.Optional;
-
+/** Represents a Javadoc tag. Supported tags are registered in {@code Tag.Kind}. */
 public interface Tag {
 
   enum Kind {
-    THROWS,
-    PARAM,
-    RETURN;
+    THROWS, // @throws and @exception
+    PARAM, // @param
+    RETURN; // @return
 
     @Override
     public String toString() {
-      switch (name()) {
+      final String label = name();
+      switch (label) {
         case "THROWS":
           return "@throws";
         case "PARAM":
@@ -19,7 +19,7 @@ public interface Tag {
         case "RETURN":
           return "@return";
         default:
-          throw new IllegalStateException("The value " + name() + " has no string representation.");
+          throw new IllegalStateException("The value " + label + " has no string representation.");
       }
     }
   }
@@ -32,12 +32,13 @@ public interface Tag {
   Kind getKind();
 
   /**
-   * Returns the translated Java boolean condition for this tag as an optional which is empty if
-   * translation has not been attempted yet.
+   * Returns the translated Java boolean condition for this tag. Empty if the translation has not
+   * been attempted yet or no translation has been generated.
    *
-   * @return the translated conditions for this tag if translation attempted, else empty optional
+   * @return the translated conditions for this tag. Empty if the translation has not been attempted
+   *     yet or no translation has been generated.
    */
-  Optional<String> getCondition();
+  String getCondition();
 
   /**
    * Sets the translated condition for this tag to the given condition.
@@ -54,5 +55,11 @@ public interface Tag {
    */
   String getComment();
 
+  /**
+   * Sets the comment for this tag.
+   *
+   * @param comment the comment for this tag
+   * @throws NullPointerException if comment is null
+   */
   void setComment(String comment);
 }
