@@ -11,11 +11,26 @@ public class PreprocessorFactory {
   public static Preprocessor create(Tag.Kind tagKind) {
     List<PreprocessingPhase> phases = new ArrayList<>();
 
+    phases.add(new EndPeriod());
+
     // TODO Complete the method adding missing phases.
     switch (tagKind) {
       case PARAM:
         phases.add(new RemoveCommas()); // TODO Make RemoveCommas a singleton?
+        phases.add(new RemoveMayBe());
+        phases.add(new MustWillShouldCanPatterns());
+        break;
+      case THROWS:
+        phases.add(new RemoveCommas());
+        phases.add(new NormalizeIfs());
+        phases.add(new RemoveInitialIf());
+        break;
+      case RETURN:
+        phases.add(new NormalizeIfs());
+        break;
     }
+    phases.add(new AddPlaceholders());
+
     return new Preprocessor(phases);
   }
 }
