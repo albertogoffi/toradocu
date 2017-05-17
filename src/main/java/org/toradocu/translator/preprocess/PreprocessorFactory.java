@@ -12,6 +12,7 @@ public class PreprocessorFactory {
     List<PreprocessingPhase> phases = new ArrayList<>();
 
     phases.add(new EndPeriod());
+    phases.add(new Trim());
 
     // TODO Complete the method adding missing phases.
     switch (tagKind) {
