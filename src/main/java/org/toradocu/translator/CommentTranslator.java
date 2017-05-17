@@ -13,10 +13,10 @@ public class CommentTranslator {
   public static void translate(Tag tag, DocumentedMethod excMember) {
 
     // Preprocessing
-    preprocessing(tag);
+    preprocessing(tag, excMember);
   }
 
-  private static void preprocessing(Tag tag) {
+  private static void preprocessing(Tag tag, DocumentedMethod excMember) {
     List<PreprocessingPhase> phases = new ArrayList<>();
 
     switch (tag.getKind()) {
@@ -24,6 +24,6 @@ public class CommentTranslator {
         phases.add(new RemoveCommas()); // TODO Make RemoveCommas a singleton?
     }
 
-    new Preprocessor(phases).run(tag);
+    new Preprocessor(phases).run(tag, excMember);
   }
 }
