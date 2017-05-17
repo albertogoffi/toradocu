@@ -6,7 +6,7 @@ class TranslatorFactory {
 
   private TranslatorFactory() {}
 
-  static Translator<? extends Tag> create(Tag.Kind tagKind) {
+  static Translator create(Tag.Kind tagKind) {
     switch (tagKind) {
       case PARAM:
         return new ParamTranslator();
