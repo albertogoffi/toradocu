@@ -5,17 +5,25 @@ import org.toradocu.util.Checks;
 
 public class Postcondition extends AbstractSpecification {
 
-  private final Guard property;
+  private final Guard trueProperty;
 
-  public Postcondition(Guard guard, Guard property) {
+  private final Guard falseProperty;
+
+  public Postcondition(Guard guard, Guard trueProperty, Guard falseProperty) {
     Checks.nonNullParameter(guard, "guard");
-    Checks.nonNullParameter(property, "property");
+    Checks.nonNullParameter(trueProperty, "trueProperty");
+    Checks.nonNullParameter(falseProperty, "falseProperty");
     this.guard = guard;
-    this.property = property;
+    this.trueProperty = trueProperty;
+    this.falseProperty = falseProperty;
   }
 
-  public Guard getProperty() {
-    return property;
+  public Guard getTrueProperty() {
+    return trueProperty;
+  }
+
+  public Guard getFalseProperty() {
+    return falseProperty;
   }
 
   @Override
@@ -31,11 +39,11 @@ public class Postcondition extends AbstractSpecification {
     }
 
     Postcondition that = (Postcondition) o;
-    return property.equals(that.property);
+    return trueProperty.equals(that.trueProperty) && falseProperty.equals(that.falseProperty);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(guard, property);
+    return Objects.hash(guard, trueProperty, falseProperty);
   }
 }

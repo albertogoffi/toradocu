@@ -13,6 +13,8 @@ import java.util.regex.Pattern;
 import org.toradocu.extractor.DocumentedMethod;
 import org.toradocu.extractor.Parameter;
 import org.toradocu.extractor.ReturnTag;
+import org.toradocu.translator.spec.Guard;
+import org.toradocu.translator.spec.Postcondition;
 import org.toradocu.translator.spec.Specification;
 
 public class ReturnTranslator implements Translator<ReturnTag> {
@@ -316,6 +318,18 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     }
 
     // TODO Create the specification with the derived merged conditions.
-    return null;
+
+    return parseTranslation(translation);
+  }
+
+  private Specification parseTranslation(String translation) {
+    String[] splitTranslation = translation.split("//?");
+    String guard = splitTranslation[0];
+    String[] properties = splitTranslation[1].split(":");
+    String trueProp = properties[0];
+    String falseProp = properties[1];
+    if (falseProp == null) falseProp = "";
+
+    return new Postcondition(new Guard(guard), new Guard(trueProp), new Guard(falseProp));
   }
 }
