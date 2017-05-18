@@ -180,6 +180,6 @@ public class PropositionSeries {
 
   public static List<PropositionSeries> create(String comment, DocumentedMethod excMember) {
     // TODO move the code about propositionSeries from ConditionTranslator to here.
-    return ConditionTranslator.getPropositionSeries(comment, excMember);
+    return Parser.getPropositionSeries(comment, excMember);
   }
 }
