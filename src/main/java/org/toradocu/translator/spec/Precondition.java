@@ -1,9 +1,11 @@
 package org.toradocu.translator.spec;
 
-public class Precondition implements Specification {
+import org.toradocu.util.Checks;
 
-  @Override
-  public Guard getCondition() {
-    return null;
+public class Precondition extends AbstractSpecification {
+
+  public Precondition(Guard guard) {
+    Checks.nonNullParameter(guard, "guard");
+    this.guard = guard;
   }
 }

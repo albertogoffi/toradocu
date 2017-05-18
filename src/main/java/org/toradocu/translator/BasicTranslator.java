@@ -5,12 +5,22 @@ import java.util.List;
 import java.util.Set;
 import java.util.StringJoiner;
 import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ParamTag;
 import org.toradocu.extractor.Tag;
+import org.toradocu.extractor.ThrowsTag;
 import org.toradocu.translator.spec.Specification;
 
 public class BasicTranslator {
 
-  public static Specification translate(Tag tag, DocumentedMethod excMember) {
+  public static Specification translate(ThrowsTag tag, DocumentedMethod excMember) {
+    return translateTag(tag, excMember);
+  }
+
+  public static Specification translate(ParamTag tag, DocumentedMethod excMember) {
+    return translateTag(tag, excMember);
+  }
+
+  private static Specification translateTag(Tag tag, DocumentedMethod excMember) {
     // Identify propositions in the comment. Each sentence in the comment is parsed into a
     // PropositionSeries.
     List<PropositionSeries> extractedPropositions =
