@@ -113,7 +113,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     //Try a match looking at the semantic graph.
     String match = null;
     comment = comment.replace(";", "").replace(",", "");
-    for (SemanticGraph sg : StanfordParser.getSemanticGraphs(comment, method)) {
+    for (SemanticGraph sg : Parser.getSemanticgraphs(comment, method)) {
       //First: search for a verb.
       List<IndexedWord> verbs = sg.getAllNodesByPartOfSpeechPattern("VB(.*)");
       if (!verbs.isEmpty()) {

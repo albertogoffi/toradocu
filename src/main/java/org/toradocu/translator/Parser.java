@@ -46,6 +46,13 @@ public class Parser {
         new MethodComment(comment, method), StanfordParser.getSemanticGraphs(comment, method));
   }
 
+  public static List<SemanticGraph> getSemanticgraphs(String comment, DocumentedMethod method) {
+    MethodComment key = new MethodComment(comment, method);
+    if (!graphsCache.containsKey(key)) storeSemanticGraphs(comment, method);
+
+    return graphsCache.get(key);
+  }
+
   /**
    * Takes a comment as a String and returns a list of {@code PropositionSeries} objects, one for
    * each sentence in the comment.
@@ -57,10 +64,7 @@ public class Parser {
   public static List<PropositionSeries> getPropositionSeries(
       String comment, DocumentedMethod method) {
     List<PropositionSeries> result = new ArrayList<>();
-    MethodComment key = new MethodComment(comment, method);
-    if (!graphsCache.containsKey(key)) storeSemanticGraphs(comment, method);
-
-    List<SemanticGraph> semanticGraphs = graphsCache.get(key);
+    List<SemanticGraph> semanticGraphs = getSemanticgraphs(comment, method);
     for (SemanticGraph semanticGraph : semanticGraphs)
       result.add(new SentenceParser(semanticGraph).getPropositionSeries());
 
@@ -192,6 +196,43 @@ public class Parser {
     }
 
     inequalities.clear();
+    return result;
+  }
+}
+
+/** This class ties a String comment to its DocumentedMethod. */
+class MethodComment {
+  private String comment;
+  private DocumentedMethod method;
+
+  public MethodComment(String comment, DocumentedMethod method) {
+    this.comment = comment;
+    this.method = method;
+  }
+
+  public String getComment() {
+    return comment;
+  }
+
+  public DocumentedMethod getMethod() {
+    return method;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    MethodComment that = (MethodComment) o;
+
+    if (comment != null ? !comment.equals(that.comment) : that.comment != null) return false;
+    return method != null ? method.equals(that.method) : that.method == null;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = comment != null ? comment.hashCode() : 0;
+    result = 31 * result + (method != null ? method.hashCode() : 0);
     return result;
   }
 }
