@@ -9,10 +9,10 @@ public class ThrowsTranslator implements Translator<ThrowsTag> {
   @Override
   public Specification translate(ThrowsTag tag, DocumentedMethod excMember) {
 
-    BasicTranslator.translate(tag, excMember);
+    return BasicTranslator.translate(tag, excMember);
 
-    // TODO Create the specification with the derived merged conditions.
-
-    return null;
+    //    // TODO Create the specification with the derived merged conditions.
+    //
+    //    return null;
   }
 }
