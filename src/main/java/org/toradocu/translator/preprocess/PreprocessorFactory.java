@@ -30,7 +30,6 @@ public class PreprocessorFactory {
         phases.add(new NormalizeIfs());
         break;
     }
-    phases.add(new AddPlaceholders());
 
     return new Preprocessor(phases);
   }

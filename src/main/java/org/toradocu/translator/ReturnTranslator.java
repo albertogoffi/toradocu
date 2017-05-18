@@ -118,7 +118,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
       List<IndexedWord> verbs = sg.getAllNodesByPartOfSpeechPattern("VB(.*)");
       if (!verbs.isEmpty()) {
         List<PropositionSeries> extractedPropositions =
-            ConditionTranslator.getPropositionSeries(comment, method);
+            Parser.getPropositionSeries(comment, method);
         for (PropositionSeries prop : extractedPropositions) {
           Set<String> conditions = new LinkedHashSet<>();
           for (Proposition p : prop.getPropositions()) {
@@ -159,8 +159,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     // PropositionSeries.
 
     //text = removeInitial(text, "if");  already done in Preprocess part
-    List<PropositionSeries> extractedPropositions =
-        ConditionTranslator.getPropositionSeries(text, method);
+    List<PropositionSeries> extractedPropositions = Parser.getPropositionSeries(text, method);
     Set<String> conditions = new LinkedHashSet<>();
     // Identify Java code elements in propositions.
     for (PropositionSeries propositions : extractedPropositions) {
