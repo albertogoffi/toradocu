@@ -17,15 +17,10 @@ public class ThrowsTagTest {
     ThrowsTag tag = new ThrowsTag(npe, "if x is null");
     assertThat(tag.getComment(), is("if x is null"));
     assertThat(tag.exception(), is(npe));
-    assertThat(tag.getCondition().isPresent(), is(false));
-
-    tag.setCondition("");
-    assertThat(tag.getCondition().isPresent(), is(true));
-    assertThat(tag.getCondition().get(), is(emptyString()));
+    assertThat(tag.getCondition(), is(emptyString()));
 
     tag.setCondition("(x==null)||(y==null)");
-    assertThat(tag.getCondition().isPresent(), is(true));
-    assertThat(tag.getCondition().get(), is("(x==null)||(y==null)"));
+    assertThat(tag.getCondition(), is("(x==null)||(y==null)"));
   }
 
   @Test
