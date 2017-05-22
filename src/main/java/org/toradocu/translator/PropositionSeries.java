@@ -3,7 +3,7 @@ package org.toradocu.translator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ExecutableMember;
 
 /**
  * This class represents a series of propositions and conjunctions in a sentence, as in
@@ -178,7 +178,7 @@ public class PropositionSeries {
     return output.toString();
   }
 
-  public static List<PropositionSeries> create(String comment, DocumentedMethod excMember) {
+  public static List<PropositionSeries> create(String comment, ExecutableMember excMember) {
     // TODO move the code about propositionSeries from ConditionTranslator to here.
     return Parser.getPropositionSeries(comment, excMember);
   }

@@ -2,7 +2,7 @@ package org.toradocu.translator;
 
 import java.lang.reflect.Parameter;
 import java.util.Collection;
-import org.toradocu.util.Checks;
+import org.toradocu.Checks;
 
 public class ContainerElementsCodeElement extends CodeElement<Object> {
 

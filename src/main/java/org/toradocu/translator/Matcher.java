@@ -16,7 +16,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.toradocu.Toradocu;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.util.Reflection;
 
 /**
@@ -32,15 +32,15 @@ class Matcher {
   private static final int EDIT_DISTANCE_THRESHOLD = Toradocu.configuration.getDistanceThreshold();
 
   /**
-   * Takes the subject of a proposition in a Javadoc comment and the {@code DocumentedMethod} that
+   * Takes the subject of a proposition in a Javadoc comment and the {@code ExecutableMember} that
    * subject was extracted from. Then returns all {@code CodeElement}s that match (i.e. have a
    * similar name to) the given subject string.
    *
    * @param subject the subject of a proposition from a Javadoc comment
-   * @param method the {@code DocumentedMethod} that the subject was extracted from
+   * @param method the {@code ExecutableMember} that the subject was extracted from
    * @return a set of {@code CodeElement}s that have a similar name to the subject
    */
-  static Set<CodeElement<?>> subjectMatch(String subject, DocumentedMethod method) {
+  static Set<CodeElement<?>> subjectMatch(String subject, ExecutableMember method) {
     // Extract every CodeElement associated with the method and the containing class of the method.
     Set<CodeElement<?>> codeElements = JavaElementsCollector.collect(method);
 
@@ -60,15 +60,15 @@ class Matcher {
   }
 
   /**
-   * Takes the container of a proposition in a Javadoc comment and the {@code DocumentedMethod} that
+   * Takes the container of a proposition in a Javadoc comment and the {@code ExecutableMember} that
    * container was extracted from. Then returns the {@code CodeElement} that matches (i.e. has a
    * similar name to) the given container string.
    *
    * @param container the container of a proposition from a Javadoc comment
-   * @param method the {@code DocumentedMethod} that the subject was extracted from
+   * @param method the {@code ExecutableMember} that the subject was extracted from
    * @return the {@code CodeElement} that has a similar name to the container
    */
-  static CodeElement<?> containerMatch(String container, DocumentedMethod method) {
+  static CodeElement<?> containerMatch(String container, ExecutableMember method) {
     final Set<CodeElement<?>> containers = subjectMatch(container, method);
     return !containers.isEmpty() ? containers.iterator().next() : null;
   }
@@ -111,7 +111,7 @@ class Matcher {
    *     predicate, or null if no translation found
    */
   static String predicateMatch(
-      DocumentedMethod method, CodeElement<?> subject, String predicate, boolean negate) {
+      ExecutableMember method, CodeElement<?> subject, String predicate, boolean negate) {
 
     // Special case to handle predicates about arrays' length. We need a more general solution.
     if (subject.getJavaCodeElement().toString().contains("[]")) {
@@ -161,7 +161,7 @@ class Matcher {
   }
 
   static String codeElementsMatch(
-      DocumentedMethod method, CodeElement<?> subject, String predicate) {
+      ExecutableMember method, CodeElement<?> subject, String predicate) {
     Set<CodeElement<?>> codeElements;
     String match;
 
@@ -224,13 +224,13 @@ class Matcher {
    * {@code CodeElement}s. This is especially to find the best mathod match in case of {@code
    * MethodCodeElement}, by comparing the arguments needed.
    *
-   * @param method the {@code DocumentedMethod} the predicate is referring to
+   * @param method the {@code ExecutableMember} the predicate is referring to
    * @param predicate the String predicate to match
    * @param sortedCodeElements sorted list of matching method {@code CodeElement}s
    * @return String representation of the best match found
    */
   private static String findMethodMatch(
-      DocumentedMethod method, String predicate, List<CodeElement<?>> sortedCodeElements) {
+      ExecutableMember method, String predicate, List<CodeElement<?>> sortedCodeElements) {
     String match = "";
     CodeElement<?> firstMatch = null;
     boolean foundMatch = false;

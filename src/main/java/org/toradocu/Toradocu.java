@@ -23,7 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.conf.Configuration;
 import org.toradocu.doclet.formats.html.ConfigurationImpl;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.JavadocExtractor;
 import org.toradocu.extractor.Tag;
 import org.toradocu.generator.OracleGenerator;
@@ -49,7 +49,7 @@ public class Toradocu {
   /** Logger of this class. */
   private static Logger log;
   /** Documented methods that will be processed by the condition translator. */
-  private static List<DocumentedMethod> methods;
+  private static List<ExecutableMember> methods;
 
   /**
    * Entry point for Toradocu. Takes several command-line arguments that configure its behavior.
@@ -107,7 +107,7 @@ public class Toradocu {
         methods = new ArrayList<>();
         methods.addAll(
             GsonInstance.gson()
-                .fromJson(reader, new TypeToken<List<DocumentedMethod>>() {}.getType()));
+                .fromJson(reader, new TypeToken<List<ExecutableMember>>() {}.getType()));
       } catch (IOException e) {
         log.error("Unable to read the file: " + configuration.getConditionTranslatorInput(), e);
         System.exit(1);
@@ -182,14 +182,14 @@ public class Toradocu {
       // Create statistics.
       File expectedResultFile = configuration.getExpectedOutput();
       if (expectedResultFile != null) {
-        Type collectionType = new TypeToken<List<DocumentedMethod>>() {}.getType();
+        Type collectionType = new TypeToken<List<ExecutableMember>>() {}.getType();
         try (BufferedReader reader = Files.newBufferedReader(expectedResultFile.toPath());
             BufferedWriter resultsFile =
                 Files.newBufferedWriter(
                     configuration.getStatsFile().toPath(),
                     StandardOpenOption.CREATE,
                     StandardOpenOption.APPEND)) {
-          List<DocumentedMethod> expectedResult =
+          List<ExecutableMember> expectedResult =
               GsonInstance.gson().fromJson(reader, collectionType);
           List<Stats> targetClassResults = Stats.getStats(methods, expectedResult);
           for (Stats result : targetClassResults) {
@@ -224,7 +224,7 @@ public class Toradocu {
    *
    * @param methods the documented methods containing the specifications to export
    */
-  private static void generateRandoopSpecs(List<DocumentedMethod> methods) {
+  private static void generateRandoopSpecs(List<ExecutableMember> methods) {
     File randoopSpecsFile = configuration.randoopSpecsFile();
     if (!configuration.isSilent() && randoopSpecsFile != null) {
       if (!randoopSpecsFile.exists()) {
@@ -303,7 +303,7 @@ public class Toradocu {
    * @throws IOException if there is an error while reading/generating class documentation
    */
   public static void process(ClassDoc classDoc, ConfigurationImpl docletConfiguration)
-      throws IOException {
+      throws IOException, ClassNotFoundException {
     if (!classDoc.qualifiedName().equals(configuration.getTargetClass())) {
       return;
     }
@@ -338,7 +338,7 @@ public class Toradocu {
    * @param methods the list of methods to inspect
    * @return true if there is at least one nonempty translation, false otherwise
    */
-  private static boolean translationsPresentIn(List<DocumentedMethod> methods) {
+  private static boolean translationsPresentIn(List<ExecutableMember> methods) {
     return methods
         .stream()
         .map(

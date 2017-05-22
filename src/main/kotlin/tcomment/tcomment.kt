@@ -1,6 +1,6 @@
 package tcomment
 
-import org.toradocu.extractor.DocumentedMethod
+import org.toradocu.extractor.ExecutableMember
 import org.toradocu.extractor.ParamTag
 import org.toradocu.extractor.ThrowsTag
 
@@ -8,9 +8,9 @@ import org.toradocu.extractor.ThrowsTag
  * Translates the tags in the given methods using @tComment algorithm. This method sets
  * [ThrowsTag.condition][ThrowsTag] for each @throws tag of the given methods.
  *
- * @param methods a list of [DocumentedMethod]s whose throws tags has to be translated
+ * @param methods a list of [ExecutableMember]s whose throws tags has to be translated
  */
-fun translate(methods: List<DocumentedMethod>) {
+fun translate(methods: List<ExecutableMember>) {
   // Translate @param and @throws comments using @tComment algorithm.
   for (method in methods) {
     val parameters = method.parameters.map { it.name }

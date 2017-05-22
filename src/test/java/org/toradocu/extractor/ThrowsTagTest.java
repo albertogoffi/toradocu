@@ -9,40 +9,38 @@ import org.junit.Test;
 
 public class ThrowsTagTest {
 
-  private final Type npe = new Type("java.lang.NullPointerException");
-  private final Type iae = new Type("java.lang.IllegalArgumentException");
+  private final Class<?> NPE;
+
+  public ThrowsTagTest() throws ClassNotFoundException {
+    NPE = loadException("java.lang.NullPointerException");
+  }
 
   @Test
   public void testBasics() {
-    ThrowsTag tag = new ThrowsTag(npe, "if x is null");
+    ThrowsTag tag = new ThrowsTag(NPE, "if x is null");
     assertThat(tag.getComment(), is("if x is null"));
-    assertThat(tag.exception(), is(npe));
+    assertThat(tag.exception(), is(NPE));
     assertThat(tag.getCondition(), is(emptyString()));
 
     tag.setCondition("(x==null)||(y==null)");
     assertThat(tag.getCondition(), is("(x==null)||(y==null)"));
-  }
 
-  @Test
-  public void testToString() {
-    ThrowsTag tag = new ThrowsTag(npe, "if x is null");
-    assertThat(tag.toString(), is("@throws java.lang.NullPointerException if x is null"));
-
-    tag.setCondition("x == null");
     assertThat(
         tag.toString(),
         is(
-            "@throws java.lang.NullPointerException"
+            tag.getKind()
                 + " "
-                + "if x is null"
+                + NPE.getName()
+                + " "
+                + tag.getComment()
                 + " ==> "
-                + "x == null"));
+                + tag.getCondition()));
   }
 
   @Test
-  public void testEquals() {
-    ThrowsTag tag1 = new ThrowsTag(npe, "if x is null");
-    ThrowsTag tag2 = new ThrowsTag(npe, "if x is null");
+  public void testEquals() throws ClassNotFoundException {
+    ThrowsTag tag1 = new ThrowsTag(NPE, "if x is null");
+    ThrowsTag tag2 = new ThrowsTag(NPE, "if x is null");
     assertThat(tag1.equals(tag2), is(true));
     assertThat(tag1.hashCode(), is(equalTo(tag2.hashCode())));
     assertThat(tag1.equals(new Object()), is(false));
@@ -55,10 +53,15 @@ public class ThrowsTagTest {
     tag2.setCondition("x == null || y == null");
     assertThat(tag1.equals(tag2), is(false));
 
-    ThrowsTag tag3 = new ThrowsTag(npe, "if y is null");
+    ThrowsTag tag3 = new ThrowsTag(NPE, "if y is null");
     assertThat(tag1.equals(tag3), is(false));
 
-    ThrowsTag tag4 = new ThrowsTag(iae, "if x is null");
+    final Class<?> IAE = loadException("java.lang.IllegalArgumentException");
+    ThrowsTag tag4 = new ThrowsTag(IAE, "if x is null");
     assertThat(tag1.equals(tag4), is(false));
+  }
+
+  private Class<?> loadException(String exception) throws ClassNotFoundException {
+    return Class.forName(exception);
   }
 }

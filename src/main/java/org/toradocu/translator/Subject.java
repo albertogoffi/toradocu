@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import org.toradocu.util.Checks;
+import org.toradocu.Checks;
 
 /**
  * Represents a subject in a sentence. The subject contains also the information about the container

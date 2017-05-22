@@ -6,7 +6,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import org.toradocu.Toradocu;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ReturnTag;
 import org.toradocu.extractor.Tag;
 
@@ -305,7 +305,7 @@ public class Stats {
    * @return statistics for each method of the given lists
    */
   public static List<Stats> getStats(
-      List<DocumentedMethod> actualMethodList, List<DocumentedMethod> expectedMethodList) {
+      List<ExecutableMember> actualMethodList, List<ExecutableMember> expectedMethodList) {
 
     // TODO Fix the goal files and remove the following line. Goal files include inherited methods!
     expectedMethodList.removeIf(
@@ -319,8 +319,8 @@ public class Stats {
 
     List<Stats> stats = new ArrayList<>();
     for (int methodIndex = 0; methodIndex < expectedMethodList.size(); methodIndex++) {
-      DocumentedMethod actualMethod = actualMethodList.get(methodIndex);
-      DocumentedMethod expectedMethod = expectedMethodList.get(methodIndex);
+      ExecutableMember actualMethod = actualMethodList.get(methodIndex);
+      ExecutableMember expectedMethod = expectedMethodList.get(methodIndex);
 
       Stats methodStats =
           new Stats(actualMethod.getContainingClass() + "." + actualMethod.getSignature());
@@ -356,8 +356,8 @@ public class Stats {
    */
   public static Stats getStats(
       String targetClass,
-      List<DocumentedMethod> actualMethodList,
-      List<DocumentedMethod> expectedMethodList,
+      List<ExecutableMember> actualMethodList,
+      List<ExecutableMember> expectedMethodList,
       StringBuilder output) {
 
     // TODO Fix the goal files and remove the following line. Goal files include inherited methods!
@@ -372,8 +372,8 @@ public class Stats {
 
     Stats stats = new Stats(targetClass);
     for (int methodIndex = 0; methodIndex < expectedMethodList.size(); methodIndex++) {
-      DocumentedMethod actualMethod = actualMethodList.get(methodIndex);
-      DocumentedMethod expectedMethod = expectedMethodList.get(methodIndex);
+      ExecutableMember actualMethod = actualMethodList.get(methodIndex);
+      ExecutableMember expectedMethod = expectedMethodList.get(methodIndex);
 
       Set<ReturnTag> actualMethodReturnTag = new LinkedHashSet<>();
       Set<ReturnTag> expectedMethodReturnTag = new LinkedHashSet<>();

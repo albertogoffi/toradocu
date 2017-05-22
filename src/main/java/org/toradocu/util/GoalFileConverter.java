@@ -16,7 +16,7 @@ import java.util.Objects;
 import java.util.StringJoiner;
 import org.toradocu.Toradocu;
 import org.toradocu.conf.Configuration;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ThrowsTag;
 
 /** Converts JSON goal files into the old format used by Toradocu v 0.1. */
@@ -46,13 +46,13 @@ public class GoalFileConverter {
     Toradocu.configuration = new Configuration();
     Toradocu.configuration.classDirs = binPath;
 
-    java.lang.reflect.Type listType = new TypeToken<List<DocumentedMethod>>() {}.getType();
+    java.lang.reflect.Type listType = new TypeToken<List<ExecutableMember>>() {}.getType();
 
     try (BufferedReader reader = Files.newBufferedReader(Paths.get(inputFilePath));
         BufferedWriter writer = Files.newBufferedWriter(Paths.get(outputFilePath))) {
 
-      List<DocumentedMethod> methods = GsonInstance.gson().fromJson(reader, listType);
-      for (DocumentedMethod method : methods) {
+      List<ExecutableMember> methods = GsonInstance.gson().fromJson(reader, listType);
+      for (ExecutableMember method : methods) {
         final Executable executable = method.getExecutable();
         if (executable == null) {
           System.err.println("Reflection error: Impossible to load method " + method.getName());

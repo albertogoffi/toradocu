@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ExecutableMember;
 
 /** Created by arianna on 18/05/17. */
 public class Parser {
@@ -40,13 +40,13 @@ public class Parser {
    * @param comment the string comment
    * @param method the DocumentedMethod
    */
-  private static void storeSemanticGraphs(String comment, DocumentedMethod method) {
+  private static void storeSemanticGraphs(String comment, ExecutableMember method) {
     comment = addPlaceholders(comment);
     graphsCache.put(
         new MethodComment(comment, method), StanfordParser.getSemanticGraphs(comment, method));
   }
 
-  public static List<SemanticGraph> getSemanticgraphs(String comment, DocumentedMethod method) {
+  public static List<SemanticGraph> getSemanticgraphs(String comment, ExecutableMember method) {
     MethodComment key = new MethodComment(comment, method);
     if (!graphsCache.containsKey(key)) storeSemanticGraphs(comment, method);
 
@@ -62,7 +62,7 @@ public class Parser {
    * @return a list of {@code PropositionSeries} objects, one for each sentence in the comment
    */
   public static List<PropositionSeries> getPropositionSeries(
-      String comment, DocumentedMethod method) {
+      String comment, ExecutableMember method) {
     List<PropositionSeries> result = new ArrayList<>();
     List<SemanticGraph> semanticGraphs = getSemanticgraphs(comment, method);
     for (SemanticGraph semanticGraph : semanticGraphs)
@@ -203,9 +203,9 @@ public class Parser {
 /** This class ties a String comment to its DocumentedMethod. */
 class MethodComment {
   private String comment;
-  private DocumentedMethod method;
+  private ExecutableMember method;
 
-  public MethodComment(String comment, DocumentedMethod method) {
+  public MethodComment(String comment, ExecutableMember method) {
     this.comment = comment;
     this.method = method;
   }
@@ -214,7 +214,7 @@ class MethodComment {
     return comment;
   }
 
-  public DocumentedMethod getMethod() {
+  public ExecutableMember getMethod() {
     return method;
   }
 

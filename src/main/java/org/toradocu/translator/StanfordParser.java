@@ -16,7 +16,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.Toradocu;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.Parameter;
 
 /**
@@ -56,10 +56,10 @@ class StanfordParser {
    * inequalities placeholders as JJ.
    *
    * @param comment the String comment of the condition
-   * @param method the DocumentedMethod under analysis
+   * @param method the ExecutableMember under analysis
    * @return the list of SemanticGraphs produced by the parser
    */
-  static List<SemanticGraph> getSemanticGraphs(String comment, DocumentedMethod method) {
+  static List<SemanticGraph> getSemanticGraphs(String comment, ExecutableMember method) {
     Iterable<List<HasWord>> hasWordComment = new DocumentPreprocessor(new StringReader(comment));
 
     ArrayList<List<HasWord>> sentences = new ArrayList<>();

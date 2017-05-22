@@ -1,4 +1,4 @@
-package org.toradocu.util;
+package org.toradocu;
 
 import java.util.Objects;
 

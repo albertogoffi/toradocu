@@ -9,7 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.List;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ReturnTag;
 
 /**
@@ -28,15 +28,15 @@ public class SpecsCount {
     }
 
     final String jsonFile = args[0];
-    final List<DocumentedMethod> specs;
+    final List<ExecutableMember> specs;
     try (BufferedReader file = Files.newBufferedReader(Paths.get(jsonFile))) {
-      Type collectionType = new TypeToken<Collection<DocumentedMethod>>() {}.getType();
+      Type collectionType = new TypeToken<Collection<ExecutableMember>>() {}.getType();
       specs = GsonInstance.gson().fromJson(file, collectionType);
     }
 
     int pre = 0, post = 0, exc = 0;
 
-    for (DocumentedMethod method : specs) {
+    for (ExecutableMember method : specs) {
       if (method.getTargetClass().equals(method.getContainingClass().getQualifiedName())
           || !Modifier.isPrivate(method.getExecutable().getModifiers())) {
         pre +=

@@ -1,6 +1,6 @@
 package org.toradocu.translator.spec;
 
-import org.toradocu.util.Checks;
+import org.toradocu.Checks;
 
 public class Guard {
 

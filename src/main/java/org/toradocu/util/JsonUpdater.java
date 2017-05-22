@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ParamTag;
 import org.toradocu.extractor.ReturnTag;
 import org.toradocu.extractor.ThrowsTag;
@@ -33,13 +33,13 @@ public class JsonUpdater {
               + "\n2. New Toradocu JSON file.");
     }
 
-    final Type collectionType = new TypeToken<Collection<DocumentedMethod>>() {}.getType();
+    final Type collectionType = new TypeToken<Collection<ExecutableMember>>() {}.getType();
 
     final String oldJSONSpecs = args[0];
     final String newJSONSpecs = args[1];
 
     // Load content of JSON files.
-    final List<DocumentedMethod> oldSpecs, newSpecs;
+    final List<ExecutableMember> oldSpecs, newSpecs;
     try (BufferedReader oldSpecsFile = Files.newBufferedReader(Paths.get(oldJSONSpecs));
         BufferedReader newSpecsFile = Files.newBufferedReader(Paths.get(newJSONSpecs))) {
       oldSpecs = GsonInstance.gson().fromJson(oldSpecsFile, collectionType);
@@ -47,10 +47,10 @@ public class JsonUpdater {
     }
 
     // Copy goal translations from old specs to new specs.
-    for (DocumentedMethod newMethod : newSpecs) {
+    for (ExecutableMember newMethod : newSpecs) {
 
       // Find in old specs the method corresponding to newMethod in new specs.
-      List<DocumentedMethod> matchingMethods =
+      List<ExecutableMember> matchingMethods =
           oldSpecs
               .stream()
               .filter(m -> m.getSignature().equals(newMethod.getSignature()))
@@ -65,7 +65,7 @@ public class JsonUpdater {
       }
 
       // oldMethod is the method in old specs corresponding to newMethod.
-      final DocumentedMethod oldMethod = matchingMethods.get(0);
+      final ExecutableMember oldMethod = matchingMethods.get(0);
 
       updateParamTags(oldJSONSpecs, oldMethod, newMethod);
       updateReturnTag(oldMethod, newMethod);
@@ -76,7 +76,7 @@ public class JsonUpdater {
     System.out.println(GsonInstance.gson().toJson(newSpecs, collectionType));
   }
 
-  private static void updateReturnTag(DocumentedMethod oldMethod, DocumentedMethod newMethod) {
+  private static void updateReturnTag(ExecutableMember oldMethod, ExecutableMember newMethod) {
     final ReturnTag oldReturnTag = oldMethod.returnTag();
     final ReturnTag newReturnTag = newMethod.returnTag();
     if (oldReturnTag == null && newReturnTag != null) {
@@ -97,7 +97,7 @@ public class JsonUpdater {
 
   // Copy @param translations from old specs (oldMethod) to new specs (newMethod).
   private static void updateParamTags(
-      String oldJSONSpecs, DocumentedMethod oldMethod, DocumentedMethod newMethod) {
+      String oldJSONSpecs, ExecutableMember oldMethod, ExecutableMember newMethod) {
     final Set<ParamTag> oldParamTags = oldMethod.paramTags();
     for (ParamTag newParamTag : newMethod.paramTags()) {
       final List<ParamTag> matchingOldParamTags =
@@ -132,7 +132,7 @@ public class JsonUpdater {
   }
 
   private static void updateThrowsTags(
-      String oldJSONSpecs, DocumentedMethod oldMethod, DocumentedMethod newMethod) {
+      String oldJSONSpecs, ExecutableMember oldMethod, ExecutableMember newMethod) {
     final Set<ThrowsTag> oldThrowsTags = oldMethod.throwsTags();
     for (ThrowsTag newThrowsTag : newMethod.throwsTags()) {
       final List<ThrowsTag> matchingOldThrowsTags =

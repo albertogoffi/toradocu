@@ -1,7 +1,7 @@
 package org.toradocu.extractor;
 
 import java.util.Objects;
-import org.toradocu.util.Checks;
+import org.toradocu.Checks;
 
 class AbstractTag implements Tag {
 
@@ -29,6 +29,7 @@ class AbstractTag implements Tag {
     Checks.nonNullParameter(comment, "comment");
     this.kind = kind;
     this.comment = comment;
+    condition = "";
   }
 
   @Override

@@ -5,7 +5,6 @@ import com.sun.javadoc.ClassDoc;
 import com.sun.javadoc.ConstructorDoc;
 import com.sun.javadoc.Doc;
 import com.sun.javadoc.ExecutableMemberDoc;
-import com.sun.javadoc.MethodDoc;
 import com.sun.javadoc.SourcePosition;
 import com.sun.javadoc.Tag;
 import com.sun.javadoc.Type;
@@ -14,9 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -27,9 +24,10 @@ import org.toradocu.doclet.formats.html.ConfigurationImpl;
 import org.toradocu.doclet.formats.html.HtmlDocletWriter;
 import org.toradocu.doclet.internal.toolkit.taglets.TagletWriter;
 import org.toradocu.doclet.internal.toolkit.util.DocPath;
+import org.toradocu.extractor.Tag.Kind;
 
 /**
- * {@code JavadocExtractor} extracts {@code DocumentedMethod}s from {@code ClassDoc}s. The entry
+ * {@code JavadocExtractor} extracts {@code ExecutableMember}s from {@code ClassDoc}s. The entry
  * point for this class is the {@link #extract(ClassDoc)} method.
  */
 public final class JavadocExtractor {
@@ -49,15 +47,16 @@ public final class JavadocExtractor {
   }
 
   /**
-   * Returns a list of {@code DocumentedMethod}s extracted from the given {@code classDoc}.
+   * Returns a list of {@code ExecutableMember}s extracted from the given {@code classDoc}.
    *
    * @param classDoc the {@code ClassDoc} from which to extract method documentation
    * @return a list containing documented methods from the class
    * @throws IOException if the method encounters an error while reading/generating class
    *     documentation
    */
-  public List<DocumentedMethod> extract(ClassDoc classDoc) throws IOException {
-    List<DocumentedMethod> methods = new ArrayList<>();
+  public List<ExecutableMember> extract(ClassDoc classDoc)
+      throws IOException, ClassNotFoundException {
+    List<ExecutableMember> methods = new ArrayList<>();
 
     // Loop on constructors and methods (also inherited) of the target class.
     for (ExecutableMemberDoc member : getConstructorsAndMethods(classDoc)) {
@@ -66,85 +65,74 @@ public final class JavadocExtractor {
       if (containingClassName.contains(".")) { // Containing class is not a top-level class.
         containingClassName = containingClassName.replace(".", "$");
       }
+      String packageName = containingClass.containingPackage().toString();
+      StringBuilder signature = new StringBuilder();
+      if (!packageName.isEmpty()) {
+        signature.append(packageName).append(".");
+      }
+      signature.append(containingClassName).append(".");
+      signature.append(member.name()).append(member.signature());
+
       List<ThrowsTag> memberThrowsTags = extractThrowsTags(member, classDoc);
       List<ParamTag> memberParamTags = extractParamTags(member, classDoc);
-      List<ReturnTag> memberReturnTags = extractReturnTag(member, classDoc);
+      ReturnTag returnTag = extractReturnTag(member);
+      List<org.toradocu.extractor.Tag> tags = new ArrayList<>();
+      tags.addAll(memberParamTags);
+      tags.addAll(memberThrowsTags);
+      tags.add(returnTag);
 
-      ReturnTag finalReturnTag = null;
-      if (!memberReturnTags.isEmpty()) finalReturnTag = memberReturnTags.get(0);
-
-      methods.add(
-          new DocumentedMethod(
-              new org.toradocu.extractor.Type(
-                  containingClass.containingPackage() + "." + containingClassName),
-              member.name(),
-              getReturnType(member),
-              getParameters(member),
-              memberParamTags,
-              member.isVarArgs(),
-              memberThrowsTags,
-              finalReturnTag));
+      methods.add(new ExecutableMember(signature.toString(), getParameters(member), tags));
     }
-
     return methods;
   }
 
   /**
-   * Returns all constructors and methods (including inherited ones) from the given {@code ClassDoc}
-   * . Notice that methods inherited from the class {@code java.lang.Object} are ignored and not
-   * included in the returned list.
+   * Returns all non-private non-synthetic constructors and methods of the given {@code ClassDoc}.
    *
    * @param classDoc the {@code ClassDoc} from which to extract constructors and methods
    * @return a list of {@code ExecutableMemberDoc}s representing the constructors and methods of
    *     {@code classDoc}
    */
   private List<ExecutableMemberDoc> getConstructorsAndMethods(ClassDoc classDoc) {
-    /* Constructors of the class {@code classDoc} to be returned by this method */
-    List<ExecutableMemberDoc> constructors = new ArrayList<>();
+    List<ExecutableMemberDoc> members = new ArrayList<>();
 
     // Collect non-default constructors.
     for (ConstructorDoc constructor : classDoc.constructors(false)) {
       // This is a workaround to strange behavior of method Doc.position(). It does not return null
       // for default constructors. It instead returns the line number of the start of the class.
       SourcePosition position = constructor.position();
-      if (!constructor.isSynthetic()
-          && !constructor.isPrivate()
-          && position != null
-          && !position.toString().equals(classDoc.position().toString())) {
-        constructors.add(constructor);
+      if (position != null && !position.toString().equals(classDoc.position().toString())) {
+        members.add(constructor);
       }
     }
 
     // Collect non-private non-synthetic methods (i.e. those methods that have not been synthesized
     // by the compiler).
-    List<MethodDoc> methods =
-        Arrays.stream(classDoc.methods(false))
-            .filter(m -> !m.isSynthetic() && !m.isPrivate())
-            .collect(Collectors.toList());
+    members.addAll(Arrays.asList(classDoc.methods(false)));
 
-    List<ExecutableMemberDoc> members = new ArrayList<>();
-    members.addAll(constructors);
-    members.addAll(methods);
-    return members;
+    return members
+        .stream()
+        .filter(m -> !m.isSynthetic() && !m.isPrivate())
+        .collect(Collectors.toList());
   }
 
-  /**
-   * Returns the return type of the given {@code member}. Returns {@code null} if {@code member} is
-   * a constructor.
-   *
-   * @param member the executable member (constructor or method) to return the return type
-   * @return the return type of the given member or null if the member is a constructor
-   */
-  private org.toradocu.extractor.Type getReturnType(ExecutableMemberDoc member) {
-    if (member instanceof MethodDoc) {
-      MethodDoc method = (MethodDoc) member;
-      Type returnType = method.returnType();
-      return new org.toradocu.extractor.Type(
-          returnType.qualifiedTypeName() + returnType.dimension());
-    } else {
-      return null;
-    }
-  }
+  //  /**
+  //   * Returns the return type of the given {@code member}. Returns {@code null} if {@code member} is
+  //   * a constructor.
+  //   *
+  //   * @param member the executable member (constructor or method) to return the return type
+  //   * @return the return type of the given member or null if the member is a constructor
+  //   */
+  //  private org.toradocu.extractor.Type getReturnType(ExecutableMemberDoc member) {
+  //    if (member instanceof MethodDoc) {
+  //      MethodDoc method = (MethodDoc) member;
+  //      Type returnType = method.returnType();
+  //      return new org.toradocu.extractor.Type(
+  //          returnType.qualifiedTypeName() + returnType.dimension());
+  //    } else {
+  //      return null;
+  //    }
+  //  }
 
   /**
    * Returns the {@code Parameter}s of the given constructor or method.
@@ -152,7 +140,7 @@ public final class JavadocExtractor {
    * @param member the constructor or method from which to extract parameters
    * @return an array of parameters
    */
-  private List<Parameter> getParameters(ExecutableMemberDoc member) {
+  private List<Parameter> getParameters(ExecutableMemberDoc member) throws ClassNotFoundException {
     com.sun.javadoc.Parameter[] params = member.parameters();
     Parameter[] parameters = new Parameter[params.length];
     for (int i = 0; i < parameters.length; i++) {
@@ -170,11 +158,30 @@ public final class JavadocExtractor {
       }
 
       String parameterType = getParameterType(params[i].type());
-      parameters[i] =
-          new Parameter(new org.toradocu.extractor.Type(parameterType), params[i].name(), nullable);
+      parameters[i] = new Parameter(Reflection.getClass(parameterType), params[i].name(), nullable);
     }
     return Arrays.asList(parameters);
   }
+
+  //  private void loadParameters(java.lang.reflect.Parameter[] parameters,
+  //      List<String> parameterNames) {
+  //    for (int i = 0; i < parameters.length; i++) {
+  //      java.lang.reflect.Parameter parameter = parameters[i];
+  //      String paramName;
+  //      if (parameterNames.isEmpty()) {
+  //        if (parameter.isNamePresent()) {
+  //          paramName = parameter.getName();
+  //        } else {
+  //          throw new IllegalArgumentException("Parameter names of executable " + executable +
+  //              " cannot be loaded with reflection. Please provide parameter names using the "
+  //              + "appropriate constructor ExecutableMember(String, List<String>, List<Tag>");
+  //        }
+  //      } else {
+  //        paramName = parameterNames.get(i);
+  //      }
+  //      this.parameters.add(new Parameter(parameter.getType(), paramName));
+  //    }
+  //  }
 
   /**
    * Returns the qualified name (with dimension information) of the specified parameter type.
@@ -219,12 +226,13 @@ public final class JavadocExtractor {
    * @param member the method to which this throws tag belongs
    * @return the name of the exception in the throws tag (qualified, if possible)
    */
-  @SuppressWarnings("deprecation")
-  private String getExceptionName(com.sun.javadoc.ThrowsTag throwsTag, ExecutableMemberDoc member) {
+  //  @SuppressWarnings("deprecation")
+  private Class<?> getException(com.sun.javadoc.ThrowsTag throwsTag, ExecutableMemberDoc member)
+      throws ClassNotFoundException {
     // We use deprecated method in Javadoc API. No alternative solution is documented.
     Type exceptionType = throwsTag.exceptionType();
     if (exceptionType != null) {
-      return exceptionType.qualifiedTypeName();
+      return Reflection.getClass(exceptionType.qualifiedTypeName());
     }
     // Try to collect the exception's name from the import declarations.
     String exceptionName = throwsTag.exceptionName();
@@ -236,27 +244,11 @@ public final class JavadocExtractor {
     }
     for (ClassDoc importedClass : importedClasses) {
       if (importedClass.name().equals(exceptionName)) {
-        return importedClass.qualifiedName();
+        return Class.forName(importedClass.qualifiedName());
       }
     }
     // If fully qualified exception's name cannot be collected from import statements, return the simple name
-    return exceptionName;
-  }
-
-  /**
-   * Given a set of @{code ParamTag} tags, returns a map that associates a parameter with its
-   * {@code @param} comment. The key of the map is the parameter name.
-   *
-   * @param tags an array of {@code ParamTag}s
-   * @return a map, parameter name -> @param comment
-   */
-  private Map<String, Tag> getParamTags(Tag[] tags) {
-    Map<String, Tag> paramTags = new LinkedHashMap<>();
-    for (Tag tag : tags) {
-      com.sun.javadoc.ParamTag paramTag = (com.sun.javadoc.ParamTag) tag;
-      paramTags.putIfAbsent(paramTag.parameterName(), paramTag);
-    }
-    return paramTags;
+    return Class.forName(exceptionName);
   }
 
   /**
@@ -269,7 +261,7 @@ public final class JavadocExtractor {
    *     documentation
    */
   private List<ThrowsTag> extractThrowsTags(ExecutableMemberDoc member, ClassDoc classDoc)
-      throws IOException {
+      throws IOException, ClassNotFoundException {
     // list that will contain the throws tags
     List<Tag> throwsTags = new ArrayList<>();
 
@@ -277,22 +269,6 @@ public final class JavadocExtractor {
     // does not load tags of a method when the method overrides a superclass' method also
     // overwriting the Javadoc documentation.
     throwsTags.addAll(throwsTagsOf(member));
-
-    //    Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
-
-    // Collect tags that are automatically inherited (i.e., when there is no comment for a method
-    // overriding another one).
-    //    throwsTags.addAll(throwsTagsOf(holder));
-
-    // Collect tags from method definitions in interfaces. This is not done by DocFinder.search
-    // (at least in the way we use it).
-    //    if (holder instanceof MethodDoc) {
-    //      ImplementedMethods implementedMethods =
-    //          new ImplementedMethods((MethodDoc) holder, configuration);
-    //      for (MethodDoc implementedMethod : implementedMethods.build()) {
-    //        throwsTags.addAll(throwsTagsOf(implementedMethod));
-    //      }
-    //    }
 
     List<ThrowsTag> memberThrowsTags = new ArrayList<>();
     for (Tag tag : throwsTags) {
@@ -322,10 +298,7 @@ public final class JavadocExtractor {
           taggedComment.select("code").stream().map(Element::text).collect(Collectors.toList());
 
       ThrowsTag tagToProcess =
-          new ThrowsTag(
-              new org.toradocu.extractor.Type(getExceptionName(throwsTag, member)),
-              comment,
-              stringCodeTags);
+          new ThrowsTag(getException(throwsTag, member), comment, stringCodeTags);
       memberThrowsTags.add(tagToProcess);
     }
 
@@ -353,63 +326,29 @@ public final class JavadocExtractor {
    *     documentation
    */
   private List<ParamTag> extractParamTags(ExecutableMemberDoc member, ClassDoc classDoc)
-      throws IOException {
+      throws IOException, ClassNotFoundException {
 
     // List that will contain all the paramTags in the method.
-    List<Tag> paramTags = new ArrayList<>();
+    List<ParamTag> paramTags = new ArrayList<>();
 
-    // Map parameter name -> @param tag.
-    Map<String, Tag> paramTagsMap = new LinkedHashMap<>();
-
-    // Param tag support.
-    paramTagsMap.putAll(getParamTags(member.tags("@param")));
-
-    //    Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
-
-    // Extract the inherited tags.
-    //    paramTagsMap.putAll(getParamTags(holder.tags("@param")));
-
-    // Collect tags from method definitions in interfaces. This is not done by DocFinder.search
-    // (at least in the way we use it).
-    //    if (holder instanceof MethodDoc) {
-    //      ImplementedMethods implementedMethods =
-    //          new ImplementedMethods((MethodDoc) holder, configuration);
-    //      for (MethodDoc implementedMethod : implementedMethods.build()) {
-    //        //param
-    //        paramTagsMap.putAll(getParamTags(implementedMethod.tags("@param")));
-    //      }
-    //    }
-
-    // List that will contain the ParamTags of the method.
-    paramTags.addAll(paramTagsMap.values());
-    List<ParamTag> memberParamTags = new ArrayList<>();
-    for (Tag tag : paramTags) { // For each of the tags in paramTags.
-      if (!(tag instanceof com.sun.javadoc.ParamTag)) { // If it is not an instanceof ParamTag.
-        throw new IllegalStateException(
-            tag
-                + " is not a @param tag. This should not happen."
-                + " Toradocu only considers @param and @throws tags.");
+    for (Tag tag : member.tags(Kind.PARAM.toString())) {
+      if (!(tag instanceof com.sun.javadoc.ParamTag)) {
+        throw new IllegalStateException(tag + " is not a @param tag. This should not happen.");
       }
 
       // We create a paramsTag that will be the cast of tag to ParamTag in order to work with it.
       com.sun.javadoc.ParamTag paramsTag = (com.sun.javadoc.ParamTag) tag;
 
-      // Handle inline taglets such as {@inheritDoc}.
-      TagletWriter tagletWriter =
-          new HtmlDocletWriter(configuration, DocPath.forClass(classDoc))
-              .getTagletWriterInstance(false);
-      String comment = tagletWriter.commentTagsToOutput(tag, tag.inlineTags()).toString();
-
       // Remove HTML tags (also generated by inline taglets). In the future, perhaps retain those
       // tags, because they contain information that can be exploited.
-      comment = Jsoup.parse(comment).text();
+      String comment = Jsoup.parse(paramsTag.parameterComment()).text();
 
       //The list of the parameters of the method that we'll use in order to match
       //the parameterName of the tag with the parameter itself
       List<Parameter> parameters = getParameters(member);
 
       String name = null; //Name of the ParamTag that we'll introduce
-      org.toradocu.extractor.Type type = null; //type of the parameter of the ParamTag
+      Class<?> type = null; //type of the parameter of the ParamTag
       Boolean nullable = null; // Nullability of the parameter.
 
       boolean found = false; //Boolean for control
@@ -419,7 +358,7 @@ public final class JavadocExtractor {
           // loop.
           found = true;
           name = parameters.get(i).getName(); //then we assign values to the variables
-          type = parameters.get(i).getType();
+          type = Reflection.getClass(parameters.get(i).getType().toString());
           nullable = parameters.get(i).getNullability();
         }
       }
@@ -431,76 +370,35 @@ public final class JavadocExtractor {
                 + "the method.");
       } else { //if not, then, the variables will have the value we want
         ParamTag tagToProcess = new ParamTag(new Parameter(type, name, nullable), comment);
-        memberParamTags.add(tagToProcess); //And then, we'll add it in the list we had before
+        paramTags.add(tagToProcess); //And then, we'll add it in the list we had before
       }
     }
-    return memberParamTags;
+    return paramTags;
   }
 
   /**
    * This method extracts the returnTag from the class we want.
    *
    * @param member the constructor or method from which to extract the return tags
-   * @param classDoc the class that we use to extract the tags
-   * @return the list that contains the ReturnTags of the class we gave
+   * @return the @return tag of the class if present, null otherwise
    * @throws IOException if the method encounters an error while reading/generating class
    *     documentation
    */
-  private List<ReturnTag> extractReturnTag(ExecutableMemberDoc member, ClassDoc classDoc)
-      throws IOException {
-    // List that will contain the return tags and will be returned by this method.
-    List<Tag> returnTags = new ArrayList<>();
-    final String TAG_NAME = "@return";
-
-    // Collect tags in the current method's documentation. This is needed because DocFinder.search
-    // does not load tags of a method when the method overrides a superclass' method also
-    // overwriting the Javadoc documentation.
-    Collections.addAll(returnTags, member.tags(TAG_NAME));
-
-    //    if (returnTags.isEmpty()) { // Inherit @return comments if necessary.
-    //      Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
-    //
-    //      // Collect tags that are automatically inherited (i.e., when there is no comment for a method
-    //      // overriding another one).
-    //      Collections.addAll(returnTags, holder.tags(TAG_NAME));
-    //
-    //      // Collect tags from method definitions in interfaces. This is not done by DocFinder.search
-    //      // (at least in the way we use it).
-    //      if (holder instanceof MethodDoc) {
-    //        ImplementedMethods implementedMethods =
-    //            new ImplementedMethods((MethodDoc) holder, configuration);
-    //        for (MethodDoc implementedMethod : implementedMethods.build()) {
-    //          Collections.addAll(returnTags, implementedMethod.tags(TAG_NAME));
-    //        }
-    //      }
-    //    }
-
-    List<ReturnTag> memberReturnTags = new ArrayList<>();
-    for (Tag tag : returnTags) {
-
-      // Handle inline taglets such as {@inheritDoc}.
-      TagletWriter tagletWriter =
-          new HtmlDocletWriter(configuration, DocPath.forClass(classDoc))
-              .getTagletWriterInstance(false);
-      String comment = tagletWriter.commentTagsToOutput(tag, tag.inlineTags()).toString();
-
-      /* taggedComment is the output of the Jsoup parsing: it can be exploited to extract
-       * text contained in a certain tag. For now we're interested in <code> */
-      Document taggedComment = Jsoup.parse(comment);
-
-      // Remove HTML tags (also generated by inline taglets). In the future, perhaps retain those
-      // tags, because they contain information that can be exploited.
-      comment = taggedComment.text();
-
-      ReturnTag tagToProcess = new ReturnTag(comment);
-      memberReturnTags.add(tagToProcess);
+  private ReturnTag extractReturnTag(ExecutableMemberDoc member) throws IOException {
+    final Tag[] returnTags = member.tags(Kind.RETURN.toString());
+    if (returnTags.length > 1) {
+      log.warn(
+          "There are more than one @return tag in this method. Toradocu only considers the first one.");
     }
 
-    if (memberReturnTags.size() > 1) {
-      log.trace(
-          "There are more than one return tag in this method. This is not handled by Toradocu");
-    }
+    Tag tag = returnTags[0];
+    String comment = tag.text();
+    /* taggedComment is the output of the Jsoup parsing: it can be exploited to extract text
+     * contained in a certain tag. For now we're interested in <code> */
+    Document taggedComment = Jsoup.parse(comment);
 
-    return memberReturnTags;
+    // Remove HTML tags (also generated by inline taglets). In the future, perhaps retain those
+    // tags, because they contain information that can be exploited.
+    return new ReturnTag(taggedComment.text());
   }
 }

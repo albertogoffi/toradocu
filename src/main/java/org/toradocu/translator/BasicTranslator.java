@@ -4,7 +4,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.StringJoiner;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ParamTag;
 import org.toradocu.extractor.Tag;
 import org.toradocu.extractor.ThrowsTag;
@@ -14,16 +14,16 @@ import org.toradocu.translator.spec.Precondition;
 
 public class BasicTranslator {
 
-  public static ExcPostcondition translate(ThrowsTag tag, DocumentedMethod excMember) {
+  public static ExcPostcondition translate(ThrowsTag tag, ExecutableMember excMember) {
     return new ExcPostcondition(
         new Guard(translateTag(tag, excMember)), tag.exception().toString());
   }
 
-  public static Precondition translate(ParamTag tag, DocumentedMethod excMember) {
+  public static Precondition translate(ParamTag tag, ExecutableMember excMember) {
     return new Precondition(new Guard(translateTag(tag, excMember)));
   }
 
-  private static String translateTag(Tag tag, DocumentedMethod excMember) {
+  private static String translateTag(Tag tag, ExecutableMember excMember) {
     // Identify propositions in the comment. Each sentence in the comment is parsed into a
     // PropositionSeries.
     List<PropositionSeries> extractedPropositions =

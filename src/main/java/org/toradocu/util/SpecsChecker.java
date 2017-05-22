@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ParamTag;
 import org.toradocu.extractor.ThrowsTag;
 
@@ -25,17 +25,17 @@ public class SpecsChecker {
     // Path to the JSON goal file to convert.
     final String inputFilePath = args[0];
 
-    java.lang.reflect.Type listType = new TypeToken<List<DocumentedMethod>>() {}.getType();
+    java.lang.reflect.Type listType = new TypeToken<List<ExecutableMember>>() {}.getType();
     try (BufferedReader reader = Files.newBufferedReader(Paths.get(inputFilePath))) {
       System.out.println("Checking specs from " + inputFilePath);
-      List<DocumentedMethod> methods = GsonInstance.gson().fromJson(reader, listType);
+      List<ExecutableMember> methods = GsonInstance.gson().fromJson(reader, listType);
       checkThrowsConsistency(methods);
       checkParamThrowsConsistency(methods);
     }
   }
 
-  private static void checkThrowsConsistency(List<DocumentedMethod> methods) {
-    for (DocumentedMethod method : methods) {
+  private static void checkThrowsConsistency(List<ExecutableMember> methods) {
+    for (ExecutableMember method : methods) {
       final Set<ThrowsTag> throwsTags = method.throwsTags();
       final List<String> postconditions =
           throwsTags
@@ -54,8 +54,8 @@ public class SpecsChecker {
     }
   }
 
-  private static void checkParamThrowsConsistency(List<DocumentedMethod> methods) {
-    for (DocumentedMethod method : methods) {
+  private static void checkParamThrowsConsistency(List<ExecutableMember> methods) {
+    for (ExecutableMember method : methods) {
       final Set<ParamTag> paramTags = method.paramTags();
       final Set<ThrowsTag> throwsTags = method.throwsTags();
 

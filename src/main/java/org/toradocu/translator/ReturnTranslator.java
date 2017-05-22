@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.StringJoiner;
 import java.util.regex.Pattern;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.Parameter;
 import org.toradocu.extractor.ReturnTag;
 import org.toradocu.translator.spec.Guard;
@@ -25,12 +25,12 @@ public class ReturnTranslator implements Translator<ReturnTag> {
   /**
    * Translate arithemtic operations between arguments, if found.
    *
-   * @param method the DocumentedMethod
+   * @param method the ExecutableMember
    * @param commentToTranslate String comment to translate
    * @return the translation
    */
   private static String manageArithmeticOperation(
-      DocumentedMethod method, String commentToTranslate) {
+      ExecutableMember method, String commentToTranslate) {
     String translation = "";
     java.util.regex.Matcher matcherOp =
         Pattern.compile(ARITHMETIC_OP_REGEX).matcher(commentToTranslate);
@@ -66,7 +66,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     return joiner.toString();
   }
 
-  private static int searchForCode(String text, DocumentedMethod method) {
+  private static int searchForCode(String text, ExecutableMember method) {
     List<String> arguments =
         method.getParameters().stream().map(Parameter::getName).collect(toList());
     for (int i = 0; i < arguments.size(); i++) if (arguments.get(i).equals(text)) return i;
@@ -84,7 +84,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    * @param method the method to which the @return tag belongs to
    * @return the translation of the given {@code text}
    */
-  private static String translateLastPart(String text, DocumentedMethod method) {
+  private static String translateLastPart(String text, ExecutableMember method) {
     final String lowerCaseText = text.toLowerCase();
     if (lowerCaseText.contains("true")) {
       return "result == true";
@@ -105,11 +105,11 @@ public class ReturnTranslator implements Translator<ReturnTag> {
   /**
    * Called if all the previous stantard tentatives of matching failed.
    *
-   * @param method the DocumentedMethod under analysis
+   * @param method the ExecutableMember under analysis
    * @param comment the comment to translate
    * @return a match if found, otherwise null
    */
-  private static String lastAttemptMatch(DocumentedMethod method, String comment) {
+  private static String lastAttemptMatch(ExecutableMember method, String comment) {
     //Try a match looking at the semantic graph.
     String match = null;
     comment = comment.replace(";", "").replace(",", "");
@@ -154,7 +154,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    * @param method the method to which the @return tag belongs to
    * @return the translation of the given {@code text}
    */
-  private static String translateSecondPart(String text, DocumentedMethod method) {
+  private static String translateSecondPart(String text, ExecutableMember method) {
     // Identify propositions in the comment. Each sentence in the comment is parsed into a
     // PropositionSeries.
 
@@ -175,11 +175,11 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    * {@code @return true if the parameter is null}. In this comment the first part is "true".
    *
    * @param text words representing the first part of an @return comment
-   * @param method the DocumentedMethod the @return comment belongs to
+   * @param method the ExecutableMember the @return comment belongs to
    * @return the translation of the given {@code text}
    * @throws IllegalArgumentException if the given {@code text} cannot be translated
    */
-  private static String translateFirstPart(String text, DocumentedMethod method) {
+  private static String translateFirstPart(String text, ExecutableMember method) {
     String lowerCaseText = text.trim().toLowerCase();
     String match = null;
     switch (lowerCaseText) {
@@ -207,13 +207,13 @@ public class ReturnTranslator implements Translator<ReturnTag> {
   /**
    * This method attempts to translate the return tag according to the classical pattern.
    *
-   * @param method the DocumentedMethod
+   * @param method the ExecutableMember
    * @param comment the String comment to translate
    * @param predicateSplitPoint index of the "if"
    * @return the translation computed
    */
   private static String returnStandardPattern(
-      DocumentedMethod method, String comment, int predicateSplitPoint) {
+      ExecutableMember method, String comment, int predicateSplitPoint) {
     String translation = "";
     if (comment.contains(";")) comment = comment.replace(";", ",");
     String predicate = comment.substring(0, predicateSplitPoint);
@@ -272,7 +272,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
   }
 
   @Override
-  public Specification translate(ReturnTag tag, DocumentedMethod excMember) {
+  public Specification translate(ReturnTag tag, ExecutableMember excMember) {
     String comment = tag.getComment();
     // Assumption: the comment is composed of a single sentence. We should probably split multiple
     // sentence comments using the Stanford Parser, and then work on each single sentence.

@@ -30,6 +30,19 @@ jar {
   }
 }
 
+sourceSets {
+  main {
+    java {
+      excludes = ['**/Toradocu.java', '**/doclet/*', '**/generator/*', '**/translator/*', '**/util/*']
+    }
+  }
+  test {
+    java {
+      excludes = ['**/generator/*', '**/testlib/*', '**/translator/*', '**/util/*', '**/PrecisionRecall*', '**/RegressionTests*']
+    }
+  }
+}
+
 /* Pass Java system properties from the command line to test tasks. */
 tasks.withType(Test) {
   systemProperties System.getProperties()
