@@ -16,7 +16,7 @@ public class BasicTranslator {
 
   public static ExcPostcondition translate(ThrowsTag tag, ExecutableMember excMember) {
     return new ExcPostcondition(
-        new Guard(translateTag(tag, excMember)), tag.exception().toString());
+        new Guard(translateTag(tag, excMember)), tag.getException().toString());
   }
 
   public static Precondition translate(ParamTag tag, ExecutableMember excMember) {

@@ -1,4 +1,4 @@
-package org.toradocu.util;
+package org.toradocu.util.old;
 
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;

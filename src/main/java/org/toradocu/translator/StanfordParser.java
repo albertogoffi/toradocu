@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.toradocu.Toradocu;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.Parameter;
 
@@ -92,9 +91,9 @@ class StanfordParser {
     // Build the semantic graph.
     SemanticGraph semanticGraph = new SemanticGraph(gs.typedDependenciesCCprocessed());
 
-    if (Toradocu.configuration != null && Toradocu.configuration.debug()) {
-      log.debug("Input sentence: " + sentence + "\nSemantic Graph:\n" + semanticGraph);
-    }
+    //    if (Toradocu.configuration != null && Toradocu.configuration.debug()) {
+    log.debug("Input sentence: " + sentence + "\nSemantic Graph:\n" + semanticGraph);
+    //    }
 
     return semanticGraph;
   }

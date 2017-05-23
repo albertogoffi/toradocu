@@ -1,4 +1,4 @@
-package org.toradocu.util;
+package org.toradocu.util.old;
 
 import static java.util.stream.Collectors.toList;
 
@@ -12,6 +12,7 @@ import java.util.Set;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ParamTag;
 import org.toradocu.extractor.ThrowsTag;
+import org.toradocu.util.GsonInstance;
 
 public class SpecsChecker {
 

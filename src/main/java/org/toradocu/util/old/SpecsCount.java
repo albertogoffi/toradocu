@@ -1,4 +1,4 @@
-package org.toradocu.util;
+package org.toradocu.util.old;
 
 import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
@@ -11,6 +11,7 @@ import java.util.Collection;
 import java.util.List;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ReturnTag;
+import org.toradocu.util.GsonInstance;
 
 /**
  * Given a goal JSON file as produced by Toradocu, this program prints the number of specifications

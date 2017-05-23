@@ -31,7 +31,7 @@ import org.toradocu.translator.ConditionTranslator;
 import org.toradocu.util.GsonInstance;
 import org.toradocu.util.NullOutputStream;
 import org.toradocu.util.RandoopSpecs;
-import org.toradocu.util.Stats;
+import org.toradocu.util.old.Stats;
 import randoop.condition.specification.OperationSpecification;
 
 /**

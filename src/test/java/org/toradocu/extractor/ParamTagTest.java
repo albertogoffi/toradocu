@@ -8,6 +8,7 @@ import static org.junit.Assert.assertThat;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import org.junit.Test;
+import org.toradocu.util.Reflection;
 
 public class ParamTagTest {
 

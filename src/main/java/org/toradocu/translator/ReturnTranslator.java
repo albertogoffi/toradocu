@@ -110,6 +110,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    * @return a match if found, otherwise null
    */
   private static String lastAttemptMatch(ExecutableMember method, String comment) {
+    Matcher matcher = new Matcher();
     //Try a match looking at the semantic graph.
     String match = null;
     comment = comment.replace(";", "").replace(",", "");
@@ -123,7 +124,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
           Set<String> conditions = new LinkedHashSet<>();
           for (Proposition p : prop.getPropositions()) {
             match =
-                Matcher.predicateMatch(
+                matcher.predicateMatch(
                     method, new GeneralCodeElement("result"), p.getPredicate(), p.isNegative());
             if (match != null) break;
           }
@@ -136,7 +137,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
           for (IndexedWord n : nouns) {
             for (IndexedWord a : adj) wordToMatch += a.word();
             wordToMatch += n.word();
-            Set<CodeElement<?>> subject = Matcher.subjectMatch(wordToMatch, method);
+            Set<CodeElement<?>> subject = matcher.subjectMatch(wordToMatch, method);
             if (!subject.isEmpty()) match = subject.stream().findFirst().get().getJavaExpression();
           }
         }

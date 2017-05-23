@@ -1,4 +1,4 @@
-package org.toradocu.util;
+package org.toradocu.util.old;
 
 import com.github.javaparser.ParseException;
 import com.google.gson.reflect.TypeToken;
@@ -15,6 +15,7 @@ import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ParamTag;
 import org.toradocu.extractor.ReturnTag;
 import org.toradocu.extractor.ThrowsTag;
+import org.toradocu.util.GsonInstance;
 
 /**
  * Given two Toradocu specs JSON files F1 and F2, this program copies the condition translations

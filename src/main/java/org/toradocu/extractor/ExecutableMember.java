@@ -203,6 +203,15 @@ public final class ExecutableMember {
   }
 
   /**
+   * Returns the executable member of this constructor/method.
+   *
+   * @return the executable member of this constructor/method
+   */
+  public Executable getExecutable() {
+    return executable;
+  }
+
+  /**
    * Returns true if this {@code ExecutableMember} and the specified object are equal.
    *
    * @param obj the object to test for equality

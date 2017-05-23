@@ -35,11 +35,12 @@ public class JavaElementsCollector {
    */
   public static Set<CodeElement<?>> collect(ExecutableMember executableMember) {
     Set<CodeElement<?>> collectedElements = new LinkedHashSet<>();
-    Class<?> containingClass =
-        Reflection.getClass(executableMember.getContainingClass().getQualifiedName());
-
-    // The containing class cannot be loaded. Return an empty set of code elements.
-    if (containingClass == null) {
+    Class<?> containingClass;
+    try {
+      containingClass = Reflection.getClass(executableMember.getContainingClass());
+    } catch (ClassNotFoundException e) {
+      // The containing class cannot be loaded. Return an empty set of code elements.
+      // TODO Log a warning!
       return collectedElements;
     }
 
@@ -127,10 +128,10 @@ public class JavaElementsCollector {
    * @return the extracted ids
    */
   private static Set<String> extractIdsFromParams(ExecutableMember method, String param) {
-    Set<ParamTag> paramTags = method.paramTags();
+    List<ParamTag> paramTags = method.paramTags();
     Set<String> ids = new HashSet<>();
     for (ParamTag pt : paramTags) {
-      String paramName = pt.parameter().getName();
+      String paramName = pt.getParameter().getName();
       if (paramName.equals(param)) {
         List<SemanticGraph> sgs = StanfordParser.getSemanticGraphs(pt.getComment());
         for (SemanticGraph sg : sgs) ids.add(sg.getFirstRoot().word());

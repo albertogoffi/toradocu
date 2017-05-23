@@ -1,4 +1,4 @@
-package org.toradocu.util;
+package org.toradocu.util.old;
 
 import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
@@ -18,6 +18,7 @@ import org.toradocu.Toradocu;
 import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ThrowsTag;
+import org.toradocu.util.GsonInstance;
 
 /** Converts JSON goal files into the old format used by Toradocu v 0.1. */
 public class GoalFileConverter {
