@@ -22,7 +22,7 @@ class AbstractTag implements Tag {
    *
    * @param kind the comment kind. See {@code Tag.Kind} for the available kinds.
    * @param comment the comment associated with the exception
-   * @throws NullPointerException if comment is null
+   * @throws NullPointerException if either kind or comment is null
    */
   AbstractTag(Kind kind, String comment) {
     Checks.nonNullParameter(kind, "kind");
