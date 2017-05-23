@@ -6,13 +6,13 @@ import org.toradocu.translator.preprocess.PreprocessorFactory;
 
 public class CommentTranslator {
 
-  public static <T extends Tag> void translate(T tag, ExecutableMember excMember) {
+  public static void translate(Tag tag, ExecutableMember excMember) {
 
     // Preprocessing.
     PreprocessorFactory.create(tag.getKind()).preprocess(tag, excMember);
 
     // Translation.
-    final Translator<Tag> translator = TranslatorFactory.create(tag.getKind());
+    final Translator<Tag> translator = TranslatorFactory.create(tag);
     translator.translate(tag, excMember);
 
     // TODO ...
