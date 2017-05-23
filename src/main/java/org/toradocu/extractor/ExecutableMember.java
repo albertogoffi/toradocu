@@ -13,24 +13,17 @@ import org.toradocu.Checks;
 
 /**
  * ExecutableMember represents the Javadoc documentation for a method in a class. It identifies the
- * method itself and key Javadoc information associated with it, such as throws tags, parameters,
- * and return type.
+ * method itself and key Javadoc information associated with it, such as throws, param, and return
+ * tags.
  */
 public final class ExecutableMember {
-
-  /**
-   * Method signature in reflection format as returned by {@code
-   * java.lang.reflect.Executable.toString()}.
-   */
-  //  private final String signature;
-
-  private final List<Tag> tags;
-  //  private final String className;
 
   /** Reflection executable of this ExecutableMember. */
   private final Executable executable;
 
   private final List<Parameter> parameters;
+
+  private final List<Tag> tags;
 
   // Tags caches.
   private final List<ParamTag> paramTags;
