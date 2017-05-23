@@ -49,7 +49,7 @@ public class ThrowsTag extends AbstractTag {
    *
    * @return the type of the exception in this throws tag
    */
-  public Class<?> exception() {
+  public Class<?> getException() {
     return exception;
   }
 

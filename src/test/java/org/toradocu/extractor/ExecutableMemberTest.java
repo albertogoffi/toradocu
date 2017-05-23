@@ -1,7 +1,5 @@
 package org.toradocu.extractor;
 
-import org.junit.Test;
-
 public class ExecutableMemberTest {
 
   //  private final Type arrayType = new Type("java.lang.String[]");
@@ -35,9 +33,6 @@ public class ExecutableMemberTest {
   //        new ExecutableMember(containingClass, "bat", Type.VOID, params, null, true, null, null);
   //    assertThat(method.isVarArgs(), is(true));
   //  }
-
-  @Test
-  public void testBasics() {}
 
   //  @Test
   //  public void testIllegalMethodName() {

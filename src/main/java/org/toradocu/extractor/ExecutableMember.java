@@ -1,16 +1,14 @@
 package org.toradocu.extractor;
 
-import static java.util.stream.Collectors.toList;
-
 import java.lang.reflect.AnnotatedType;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Executable;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.StringJoiner;
 import org.toradocu.Checks;
 
 /**
@@ -24,10 +22,10 @@ public final class ExecutableMember {
    * Method signature in reflection format as returned by {@code
    * java.lang.reflect.Executable.toString()}.
    */
-  private final String signature;
+  //  private final String signature;
 
   private final List<Tag> tags;
-  private final String className;
+  //  private final String className;
 
   /** Reflection executable of this ExecutableMember. */
   private final Executable executable;
@@ -39,30 +37,57 @@ public final class ExecutableMember {
   private final List<ThrowsTag> throwsTags;
   private ReturnTag returnTag;
 
-  public ExecutableMember(String signature) throws ClassNotFoundException {
-    this(signature, new ArrayList<>(), new ArrayList<>());
+  public ExecutableMember(Executable executable) throws ClassNotFoundException {
+    this(executable, new ArrayList<>(), new ArrayList<>());
   }
 
-  public ExecutableMember(String signature, List<Tag> tags) throws ClassNotFoundException {
-    this(signature, new ArrayList<>(), tags);
+  public ExecutableMember(Executable executable, List<Tag> tags) throws ClassNotFoundException {
+    this(executable, new ArrayList<>(), tags);
   }
 
-  public ExecutableMember(String signature, List<Parameter> parameters, List<Tag> tags)
+  public ExecutableMember(Executable executable, List<Parameter> parameters, List<Tag> tags)
       throws ClassNotFoundException {
-    Checks.nonNullParameter(signature, "signature");
+    Checks.nonNullParameter(executable, "executable");
     Checks.nonNullParameter(parameters, "parameters");
     Checks.nonNullParameter(tags, "tags");
 
-    this.signature = signature;
-    className = identifyClassName(signature);
-    executable = findExecutable(signature);
+    this.executable = executable;
+    checkParameters(executable.getParameters(), parameters);
     this.parameters = parameters;
+    // TODO Checks that param tag names are actually consistent with parameters names. Javadoc may contain errors.
     this.tags = tags;
 
+    // Load tags caches.
     paramTags = new ArrayList<>();
     throwsTags = new ArrayList<>();
     returnTag = null;
     loadTags(tags);
+  }
+
+  // Checks that provided parameter types are consistent with executable (reflection) parameter types.
+  private void checkParameters(
+      java.lang.reflect.Parameter[] executableParams, List<Parameter> params) {
+    if (executableParams.length != params.size()) {
+      throw new IllegalArgumentException(
+          "Expected "
+              + executableParams.length
+              + " parameters, "
+              + "but "
+              + params.size()
+              + " provided.");
+    }
+
+    int i = 0;
+    for (Parameter p : params) {
+      final java.lang.reflect.Parameter execParam = executableParams[i++];
+      if (!execParam.getType().equals(p.getType())) {
+        throw new IllegalArgumentException(
+            "Expected parameter types are "
+                + Arrays.toString(executableParams)
+                + " while provided types are "
+                + params);
+      }
+    }
   }
 
   private void loadTags(List<Tag> tags) {
@@ -80,42 +105,6 @@ public final class ExecutableMember {
         throwsTags.add((ThrowsTag) tag);
       }
     }
-  }
-
-  private String identifyClassName(String signature) {
-    final int dotPosition = signature.lastIndexOf(".");
-    if (dotPosition == -1) {
-      throw new IllegalArgumentException(
-          "Invalid signature format. "
-              + signature
-              + " must contain "
-              + "both class and method name");
-    }
-    return signature.substring(0, dotPosition);
-  }
-
-  private Executable findExecutable(String signature) throws ClassNotFoundException {
-    final Class<?> clazz = Reflection.getClass(className);
-
-    List<Executable> executables = new ArrayList<>();
-    final List<Constructor> constructors = Arrays.stream(clazz.getConstructors()).collect(toList());
-    final List<Method> methods = Arrays.stream(clazz.getMethods()).collect(toList());
-    executables.addAll(constructors);
-    executables.addAll(methods);
-
-    final List<Executable> matchingExecutables =
-        executables.stream().filter(e -> e.toString().equals(signature)).collect(toList());
-    if (matchingExecutables.isEmpty()) {
-      throw new AssertionError(
-          "Impossible to load executable " + signature + "." + " Check the provided binaries.");
-    }
-    if (matchingExecutables.size() > 1) {
-      throw new AssertionError(
-          "Only one single executable member should match. "
-              + "Instead multiple matching members were found: "
-              + matchingExecutables);
-    }
-    return matchingExecutables.get(0);
   }
 
   /**
@@ -188,7 +177,11 @@ public final class ExecutableMember {
    * @return the signature of this method
    */
   public String getSignature() {
-    return signature;
+    StringJoiner joiner = new StringJoiner(",", "(", ")");
+    for (Parameter param : parameters) {
+      joiner.add(param.toString());
+    }
+    return executable.getName() + joiner.toString();
   }
 
   /**
@@ -206,7 +199,7 @@ public final class ExecutableMember {
    * @return the class in which this executable member is defined
    */
   public String getContainingClass() {
-    return className;
+    return executable.getDeclaringClass().getName();
   }
 
   /**
@@ -217,11 +210,15 @@ public final class ExecutableMember {
    */
   @Override
   public boolean equals(Object obj) {
-    if (this == obj) return true;
-    if (!(obj instanceof ExecutableMember)) return false;
+    if (this == obj) {
+      return true;
+    }
+    if (!(obj instanceof ExecutableMember)) {
+      return false;
+    }
 
     ExecutableMember that = (ExecutableMember) obj;
-    return this.signature.equals(that.signature)
+    return this.executable.equals(that.executable)
         && this.parameters.equals(that.parameters)
         && this.tags.equals(that.tags);
   }
@@ -233,7 +230,7 @@ public final class ExecutableMember {
    */
   @Override
   public int hashCode() {
-    return Objects.hash(signature, parameters, tags);
+    return Objects.hash(executable, parameters, tags);
   }
 
   /**

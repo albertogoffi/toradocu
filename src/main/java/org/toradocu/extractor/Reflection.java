@@ -2,12 +2,8 @@ package org.toradocu.extractor;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class Reflection {
-
-  private static final Logger log = LoggerFactory.getLogger(Reflection.class);
 
   private static final Map<String, Class> primitiveClasses = new HashMap<>();
 
@@ -38,12 +34,7 @@ public class Reflection {
     if (primitiveClasses.containsKey(className)) {
       return primitiveClasses.get(className);
     }
-    try {
-      return Class.forName(className);
-    } catch (ClassNotFoundException e) {
-      log.error("Unable to load class " + className + ". Check the classpath.");
-      throw e;
-    }
+    return Class.forName(className);
   }
 
   //  /**

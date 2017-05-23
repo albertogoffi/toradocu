@@ -38,7 +38,7 @@ sourceSets {
   }
   test {
     java {
-      excludes = ['**/generator/*', '**/testlib/*', '**/translator/*', '**/util/*', '**/PrecisionRecall*', '**/RegressionTests*']
+      excludes = ['**/generator/*', '**/testlib/*', '**/translator/*', '**/util/*', '**/accuracy*', '**/RegressionTests*']
     }
   }
 }
@@ -81,7 +81,7 @@ dependencies {
   compile 'edu.stanford.nlp:stanford-corenlp:3.6.0'
   compile 'edu.stanford.nlp:stanford-corenlp:3.6.0:models-english'
   compile 'org.jsoup:jsoup:1.8.3' // JSoup used only to remove HTML tags in comments.
-  compile 'com.github.javaparser:javaparser-core:2.5.1'
+  compile 'com.github.javaparser:javaparser-core:3.2.4'
   compile 'com.beust:jcommander:1.64'
   compile 'com.google.code.gson:gson:2.8.0'
   compile 'commons-io:commons-io:2.5'

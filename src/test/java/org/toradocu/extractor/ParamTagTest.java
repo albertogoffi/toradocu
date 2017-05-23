@@ -20,7 +20,7 @@ public class ParamTagTest {
   @Test
   public void testBasics() {
     ParamTag tag = new ParamTag(new Parameter(intClass, "elements"), "must not be null");
-    assertThat(tag.parameter(), is(new Parameter(intClass, "elements")));
+    assertThat(tag.getParameter(), is(new Parameter(intClass, "elements")));
     assertThat(tag.getComment(), is("must not be null"));
     assertThat(tag.getCondition(), is(emptyString()));
 

@@ -1,4 +1,4 @@
-package org.toradocu;
+package org.toradocu.accuracy;
 
 import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;

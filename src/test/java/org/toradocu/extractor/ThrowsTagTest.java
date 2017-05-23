@@ -19,7 +19,7 @@ public class ThrowsTagTest {
   public void testBasics() {
     ThrowsTag tag = new ThrowsTag(NPE, "if x is null");
     assertThat(tag.getComment(), is("if x is null"));
-    assertThat(tag.exception(), is(NPE));
+    assertThat(tag.getException(), is(NPE));
     assertThat(tag.getCondition(), is(emptyString()));
 
     tag.setCondition("(x==null)||(y==null)");

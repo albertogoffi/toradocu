@@ -34,7 +34,7 @@ public class ParamTag extends AbstractTag {
    *
    * @return the parameter associated to the tag.
    */
-  public Parameter parameter() {
+  public Parameter getParameter() {
     return parameter;
   }
 
