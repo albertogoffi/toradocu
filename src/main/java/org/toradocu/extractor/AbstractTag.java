@@ -6,7 +6,7 @@ import org.toradocu.Checks;
 class AbstractTag implements Tag {
 
   /** The comment of this tag. */
-  private String comment;
+  private Comment comment;
 
   /** The kind of this tag (e.g., @throws, @param). */
   private final Kind kind;
@@ -24,7 +24,7 @@ class AbstractTag implements Tag {
    * @param comment the comment associated with the exception
    * @throws NullPointerException if either kind or comment is null
    */
-  AbstractTag(Kind kind, String comment) {
+  AbstractTag(Kind kind, Comment comment) {
     Checks.nonNullParameter(kind, "kind");
     Checks.nonNullParameter(comment, "comment");
     this.kind = kind;
@@ -49,12 +49,12 @@ class AbstractTag implements Tag {
   }
 
   @Override
-  public String getComment() {
+  public Comment getComment() {
     return comment;
   }
 
   @Override
-  public void setComment(String comment) {
+  public void setComment(Comment comment) {
     this.comment = comment;
   }
 

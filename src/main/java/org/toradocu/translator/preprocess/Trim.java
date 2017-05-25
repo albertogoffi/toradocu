@@ -8,6 +8,6 @@ public class Trim implements PreprocessingPhase {
   @Override
   public String run(Tag tag, ExecutableMember excMember) {
 
-    return tag.getComment().trim();
+    return tag.getComment().getText().trim();
   }
 }

@@ -274,7 +274,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
 
   @Override
   public Specification translate(ReturnTag tag, ExecutableMember excMember) {
-    String comment = tag.getComment();
+    String comment = tag.getComment().getText();
     // Assumption: the comment is composed of a single sentence. We should probably split multiple
     // sentence comments using the Stanford Parser, and then work on each single sentence.
     String translation = "";

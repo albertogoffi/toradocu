@@ -80,7 +80,8 @@ public class RandoopSpecs {
     return condition.isEmpty()
         ? null
         : new PreSpecification(
-            tag.getComment(), new Guard(tag.getComment(), processCondition(condition, method)));
+            tag.getComment().getText(),
+            new Guard(tag.getComment().getText(), processCondition(condition, method)));
   }
 
   /**
@@ -112,11 +113,12 @@ public class RandoopSpecs {
     List<PostSpecification> specs = new ArrayList<>();
     String propertiesStr = condition.substring(condition.indexOf("?") + 1, condition.length());
     String[] properties = propertiesStr.split(":", 2);
-    Property property = new Property(tag.getComment(), processCondition(properties[0], method));
+    Property property =
+        new Property(tag.getComment().getText(), processCondition(properties[0], method));
     specs.add(new PostSpecification(description, guard, property));
     if (properties.length > 1) {
       Property elseProperty =
-          new Property(tag.getComment(), processCondition(properties[1], method));
+          new Property(tag.getComment().getText(), processCondition(properties[1], method));
       specs.add(new PostSpecification(description, guard, elseProperty));
     }
     return specs;
@@ -139,7 +141,7 @@ public class RandoopSpecs {
     String tagKind = format(tag.getKind());
     String description =
         tagKind + " " + tag.getException().getSimpleName() + " " + tag.getComment();
-    Guard guard = new Guard(tag.getComment(), processCondition(condition, method));
+    Guard guard = new Guard(tag.getComment().getText(), processCondition(condition, method));
     return new ThrowsSpecification(description, guard, tag.getException().getName());
   }
 

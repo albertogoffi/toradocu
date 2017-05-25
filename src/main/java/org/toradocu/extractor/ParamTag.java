@@ -23,7 +23,7 @@ public class ParamTag extends AbstractTag {
    * @param comment the comment associated with the tag
    * @throws NullPointerException if parameter or comment is null
    */
-  public ParamTag(Parameter parameter, String comment) {
+  public ParamTag(Parameter parameter, Comment comment) {
     super(Kind.PARAM, comment);
     Checks.nonNullParameter(parameter, "parameter");
     this.parameter = parameter;
