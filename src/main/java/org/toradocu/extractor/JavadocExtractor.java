@@ -151,7 +151,7 @@ public final class JavadocExtractor {
     List<String> notNullAnnotations = new ArrayList<>(parameterAnnotations);
     notNullAnnotations.retainAll(Parameter.notNullAnnotations);
     List<String> nullableAnnotations = new ArrayList<>(parameterAnnotations);
-    notNullAnnotations.retainAll(Parameter.nullableAnnotations);
+    nullableAnnotations.retainAll(Parameter.nullableAnnotations);
 
     if (!notNullAnnotations.isEmpty() && !nullableAnnotations.isEmpty()) {
       // Parameter is annotated as both nullable and notNull.
