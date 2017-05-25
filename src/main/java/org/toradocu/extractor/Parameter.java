@@ -1,10 +1,16 @@
 package org.toradocu.extractor;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 import org.toradocu.Checks;
 
 /** This class represents a method parameter. */
 public final class Parameter {
+
+  static final List<String> notNullAnnotations = Arrays.asList("NotNull", "NonNull", "Nonnull");
+  static final List<String> nullableAnnotations = Collections.singletonList("Nullable");
 
   /** The type of the parameter. */
   private final Class<?> type;
@@ -76,7 +82,9 @@ public final class Parameter {
    */
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof Parameter)) return false;
+    if (!(obj instanceof Parameter)) {
+      return false;
+    }
 
     Parameter that = (Parameter) obj;
     return type.equals(that.type)

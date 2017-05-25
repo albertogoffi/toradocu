@@ -44,7 +44,7 @@ public class Toradocu {
    * @param args command-line arguments
    */
   public static void main(String[] args) {
-    configuration = new Configuration();
+    configuration = Configuration.INSTANCE;
     JCommander options = null;
     try {
       options = new JCommander(configuration, args);
@@ -89,7 +89,7 @@ public class Toradocu {
                 + "\n2. The path to the source code of your system is wrong: "
                 + configuration.getSourceDir()
                 + "\n3. The path to the binaries of your system is wrong: "
-                + configuration.getClassDir()
+                + configuration.classDirs
                 + "\nPlease, check the correctness of the command line arguments."
                 + "\nIf the error persists, report the issue at "
                 + "https://github.com/albertogoffi/toradocu/issues");

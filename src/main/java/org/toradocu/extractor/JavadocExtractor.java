@@ -62,16 +62,16 @@ public final class JavadocExtractor {
     for (Entry<Executable, CallableDeclaration<?>> entry : executablesMap.entrySet()) {
       final Executable reflectionMember = entry.getKey();
       final CallableDeclaration<?> sourceMember = entry.getValue();
-      List<org.toradocu.extractor.Tag> tags = getTags(reflectionMember, sourceMember);
       final List<Parameter> parameters =
           getParameters(sourceMember.getParameters(), reflectionMember.getParameters());
+      List<org.toradocu.extractor.Tag> tags = createTags(sourceMember, parameters);
       members.add(new ExecutableMember(reflectionMember, parameters, tags));
     }
     return members;
   }
 
-  private List<org.toradocu.extractor.Tag> getTags(
-      Executable reflectionMember, CallableDeclaration<?> sourceMember)
+  private List<org.toradocu.extractor.Tag> createTags(
+      CallableDeclaration<?> sourceMember, List<Parameter> parameters)
       throws ClassNotFoundException {
     List<org.toradocu.extractor.Tag> tags = new ArrayList<>();
     final Optional<Javadoc> javadocOpt = sourceMember.getJavadoc();
@@ -82,9 +82,7 @@ public final class JavadocExtractor {
         org.toradocu.extractor.Tag newTag = null;
         switch (blockTag.getType()) {
           case PARAM:
-            newTag =
-                createParamTag(
-                    blockTag, sourceMember.getParameters(), reflectionMember.getParameters());
+            newTag = createParamTag(blockTag, parameters);
             break;
           case RETURN:
             newTag = createReturnTag(blockTag);
@@ -103,46 +101,12 @@ public final class JavadocExtractor {
 
   private ThrowsTag createThrowsTag(JavadocBlockTag blockTag, CallableDeclaration<?> sourceMember)
       throws ClassNotFoundException {
+    // Javaparser library does not provide a nice parsing of @throws tags. We have to parse the
+    // comment text by ourselves.
     String comment = blockTag.getContent().toText();
     final String[] tokens = comment.split(" ", 2);
     final String exceptionName = tokens[0];
-
-    // TODO Add support for {@code} tags. Comment should be a list of Word(s) where each word can be
-    // TODO tagged. Should we create an ad-hoc tokenizer?
-
-    Class<?> exceptionType = null;
-    try {
-      exceptionType = Reflection.getClass(exceptionName);
-    } catch (ClassNotFoundException e) {
-      // Intentionally empty.
-    }
-    if (exceptionType == null) {
-      try {
-        exceptionType = Reflection.getClass("java.lang." + exceptionName);
-      } catch (ClassNotFoundException e) {
-        // Intentionally empty.
-      }
-    }
-    if (exceptionType == null) {
-      // Look for an import statement to complete exception type name.
-      Optional<Node> nodeOpt = sourceMember.getParentNode();
-      Node node = nodeOpt.orElse(null);
-      while (!(node instanceof CompilationUnit)) {
-        nodeOpt = node.getParentNode();
-        node = nodeOpt.orElse(null);
-      }
-      CompilationUnit cu = (CompilationUnit) node;
-      final NodeList<ImportDeclaration> imports = cu.getImports();
-      for (ImportDeclaration anImport : imports) {
-        String importedType = anImport.getNameAsString();
-        if (importedType.contains(exceptionName)) {
-          exceptionType = Reflection.getClass(importedType);
-        }
-      }
-    }
-    if (exceptionType == null) {
-      throw new ClassNotFoundException("Impossible to load exception type " + exceptionName);
-    }
+    Class<?> exceptionType = findExceptionType(sourceMember, exceptionName);
     return new ThrowsTag(exceptionType, tokens[1]);
   }
 
@@ -150,24 +114,14 @@ public final class JavadocExtractor {
     return new ReturnTag(blockTag.getContent().toText());
   }
 
-  private ParamTag createParamTag(
-      JavadocBlockTag blockTag,
-      NodeList<com.github.javaparser.ast.body.Parameter> sourceParams,
-      java.lang.reflect.Parameter[] reflectionParams) {
+  private ParamTag createParamTag(JavadocBlockTag blockTag, List<Parameter> parameters) {
     String paramName = blockTag.getName().orElse("");
 
-    final List<String> paramNames =
-        sourceParams.stream().map(p -> p.getName().asString()).collect(toList());
+    final List<Parameter> matchingParams =
+        parameters.stream().filter(p -> p.getName().equals(paramName)).collect(toList());
     // TODO If paramName not present in paramNames => issue a warning about incorrect documentation!
-    final java.lang.reflect.Parameter reflectionParam =
-        reflectionParams[paramNames.indexOf(paramName)];
-
-    // TODO Add support for {@code} tags. Comment should be a list of Word(s) where each word can be
-    // TODO tagged. Should we create an ad-hoc tokenizer?
-
-    // TODO Add support for @nullable, @nonnull, @notnull annotations
-    return new ParamTag(
-        new Parameter(reflectionParam.getType(), paramName), blockTag.getContent().toText());
+    // TODO If more than one matching parameter found => issue a warning about incorrect documentation!
+    return new ParamTag(matchingParams.get(0), blockTag.getContent().toText());
   }
 
   private List<Parameter> getParameters(
@@ -182,11 +136,35 @@ public final class JavadocExtractor {
     List<Parameter> parameters = new ArrayList<>(sourceParams.size());
     for (int i = 0; i < sourceParams.size(); i++) {
       final Class<?> paramType = reflectionParams[i].getType();
-      final String paramName = sourceParams.get(i).getName().asString();
-      // TODO: Determine nullness constraints from parameter annotations.
-      parameters.add(new Parameter(paramType, paramName));
+      final com.github.javaparser.ast.body.Parameter parameter = sourceParams.get(i);
+      final Boolean nullable = isNullable(parameter);
+      final String paramName = parameter.getName().asString();
+      parameters.add(new Parameter(paramType, paramName, nullable));
     }
     return parameters;
+  }
+
+  // Checks whether the given parameter is annotated with @NotNull or @Nullable or similar.
+  private Boolean isNullable(com.github.javaparser.ast.body.Parameter parameter) {
+    final List<String> parameterAnnotations =
+        parameter.getAnnotations().stream().map(a -> a.getName().asString()).collect(toList());
+    List<String> notNullAnnotations = new ArrayList<>(parameterAnnotations);
+    notNullAnnotations.retainAll(Parameter.notNullAnnotations);
+    List<String> nullableAnnotations = new ArrayList<>(parameterAnnotations);
+    notNullAnnotations.retainAll(Parameter.nullableAnnotations);
+
+    if (!notNullAnnotations.isEmpty() && !nullableAnnotations.isEmpty()) {
+      // Parameter is annotated as both nullable and notNull.
+      // TODO Log a warning about wrong specification?
+      return null;
+    }
+    if (!notNullAnnotations.isEmpty()) {
+      return false;
+    }
+    if (!nullableAnnotations.isEmpty()) {
+      return true;
+    }
+    return null;
   }
 
   // Collects members through reflection.
@@ -285,5 +263,44 @@ public final class JavadocExtractor {
       return reflectionName.substring(reflectionName.lastIndexOf(".") + 1);
     }
     return reflectionName;
+  }
+
+  // Tries
+  private Class<?> findExceptionType(CallableDeclaration<?> sourceMember, String exceptionName)
+      throws ClassNotFoundException {
+    Class<?> exceptionType = null;
+    try {
+      exceptionType = Reflection.getClass(exceptionName);
+    } catch (ClassNotFoundException e) {
+      // Intentionally empty.
+    }
+    if (exceptionType == null) {
+      try {
+        exceptionType = Reflection.getClass("java.lang." + exceptionName);
+      } catch (ClassNotFoundException e) {
+        // Intentionally empty.
+      }
+    }
+    if (exceptionType == null) {
+      // Look for an import statement to complete exception type name.
+      Optional<Node> nodeOpt = sourceMember.getParentNode();
+      Node node = nodeOpt.orElse(null);
+      while (!(node instanceof CompilationUnit)) {
+        nodeOpt = node.getParentNode();
+        node = nodeOpt.orElse(null);
+      }
+      CompilationUnit cu = (CompilationUnit) node;
+      final NodeList<ImportDeclaration> imports = cu.getImports();
+      for (ImportDeclaration anImport : imports) {
+        String importedType = anImport.getNameAsString();
+        if (importedType.contains(exceptionName)) {
+          exceptionType = Reflection.getClass(importedType);
+        }
+      }
+    }
+    if (exceptionType == null) {
+      throw new ClassNotFoundException("Impossible to load exception type " + exceptionName);
+    }
+    return exceptionType;
   }
 }

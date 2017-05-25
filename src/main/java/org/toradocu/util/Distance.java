@@ -24,7 +24,7 @@ public class Distance {
    *     deletions
    */
   public static int editDistance(String s0, String s1) {
-    return editDistance(s0, s1, new Configuration().getWordRemovalCost());
+    return editDistance(s0, s1, Configuration.INSTANCE.getWordRemovalCost());
   }
 
   /**

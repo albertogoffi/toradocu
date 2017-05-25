@@ -1,77 +1,38 @@
 package example;
 
-import example.annotation.NonNull;
 import example.annotation.NotNull;
-import example.annotation.Nullable;
 import example.exception.AnException;
 
-public class AClass implements Interface {
+public class AClass {
 
   /** @throws NullPointerException always */
-  public AClass() {
-    // TODO Auto-generated constructor stub
-  }
+  public AClass() {}
 
   /**
    * @param x must not be null nor empty
    * @throws NullPointerException if x is null
    * @throws AnException if x is empty
    */
-  public AClass(String x) {
-    // TODO Auto-generated constructor stub
-  }
-
-  @Override
-  public double foo(@Nullable int[] array) {
-    // TODO Auto-generated method stub
-    return 0;
-  }
+  public AClass(String x) {}
 
   /**
-   * {@inheritDoc}
+   * This is foo.
    *
-   * @see example.Interface#bar(java.lang.Object, java.lang.Object)
+   * @param array an array of objects, must not be null
+   * @return 0 always
    */
-  @Override
-  public double bar(@NotNull Object x, @NonNull Object y) {
-    // TODO Auto-generated method stub
+  public double foo(@NotNull Object[] array) {
     return 0;
   }
 
   /**
-   * @param x must not be null
+   * @param x an object
    * @throws IllegalArgumentException if x is null
-   * @see example.Interface#baz(java.lang.Object)
    */
-  @Override
-  public double baz(Object x) {
-    // TODO Auto-generated method stub
+  public double baz(@NotNull Object x) {
     return 0;
   }
 
-  /**
-   * Method to test @param inheritance
-   *
-   * @param x the first number, must be positive
-   * @param y the second number, must be positive
-   */
-  public double testParam(double x, double y) {
-    return 0;
-  }
-
-  /**
-   * Another method to test @param inheritance
-   *
-   * @param x the first number, must be positive
-   * @param y the second number, must be positive
-   */
-  public double testParam2(double x, double y) {
-    return 0;
-  }
-
-  /** @see example.Interface#testParam3(double) */
-  @Override
-  public double testParam3(double x) {
-    return 0;
-  }
+  /** A private method. */
+  private void aPrivateMethod() {}
 }

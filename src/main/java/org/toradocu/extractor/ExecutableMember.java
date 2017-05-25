@@ -20,9 +20,9 @@ public final class ExecutableMember {
 
   /** Reflection executable of this ExecutableMember. */
   private final Executable executable;
-
+  /** Parameters list. */
   private final List<Parameter> parameters;
-
+  /** Javadoc tags of this executable member. */
   private final List<Tag> tags;
 
   // Tags caches.
@@ -64,8 +64,7 @@ public final class ExecutableMember {
       throw new IllegalArgumentException(
           "Expected "
               + executableParams.length
-              + " parameters, "
-              + "but "
+              + " parameters, but "
               + params.size()
               + " provided.");
     }

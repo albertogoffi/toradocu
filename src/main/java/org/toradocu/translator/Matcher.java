@@ -32,8 +32,7 @@ class Matcher {
   private final int editDistanceThreshold;
 
   public Matcher() {
-    // TODO Make configuration a singleton.
-    this.editDistanceThreshold = new Configuration().getDistanceThreshold();
+    this.editDistanceThreshold = Configuration.INSTANCE.getDistanceThreshold();
   }
 
   public Matcher(int editDistanceThreshold) {

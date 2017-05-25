@@ -6,17 +6,17 @@ import com.beust.jcommander.converters.FileConverter;
 import com.beust.jcommander.converters.PathConverter;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
-/** This class holds the configuration options (particularly command-line options) for Toradocu. */
-public class Configuration {
+/** Holds the configuration options (particularly command-line options) for Toradocu. */
+public enum Configuration {
+  INSTANCE;
 
   /** Keyword that identifies receiver object in generated specifications. */
   public static final String RECEIVER = "target";
@@ -45,9 +45,10 @@ public class Configuration {
     description =
         "Specifies JAR files or directories containing binaries of the target class and"
             + " its dependencies. Use the standard classpath separator to separate different paths.",
+    listConverter = ClassDirsConverter.class,
     required = true
   )
-  public String classDirs;
+  public List<URL> classDirs;
 
   @Parameter(names = "--debug", description = "Enable fine-grained logging", hidden = true)
   private boolean debug = false;
@@ -324,23 +325,23 @@ public class Configuration {
     return sourceDir;
   }
 
-  /**
-   * Returns paths to JAR files or directories containing binaries of the target class and its
-   * dependencies.
-   *
-   * @return paths to JAR files or directories containing binaries of the target class and its
-   *     dependencies
-   */
-  public List<String> getClassDir() {
-    final List<String> paths = new ArrayList<>();
-    final String separator = File.pathSeparator;
-    if (classDirs.contains(separator)) {
-      paths.addAll(Arrays.asList(classDirs.split(Pattern.quote(separator))));
-    } else {
-      paths.add(classDirs);
-    }
-    return paths;
-  }
+  //  /**
+  //   * Returns paths to JAR files or directories containing binaries of the target class and its
+  //   * dependencies.
+  //   *
+  //   * @return paths to JAR files or directories containing binaries of the target class and its
+  //   *     dependencies
+  //   */
+  //  public List<String> getClassDir() {
+  //    final List<String> paths = new ArrayList<>();
+  //    final String separator = File.pathSeparator;
+  //    if (classDirs.contains(separator)) {
+  //      paths.addAll(Arrays.asList(classDirs.split(Pattern.quote(separator))));
+  //    } else {
+  //      paths.add(classDirs);
+  //    }
+  //    return paths;
+  //  }
 
   /**
    * Returns the file in which to export Javadoc extractor output or null if this file is not

@@ -1,22 +1,32 @@
 package org.toradocu.util;
 
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import org.slf4j.LoggerFactory;
+import org.toradocu.conf.Configuration;
 
 public class Reflection {
 
-  private static final Map<String, Class> primitiveClasses = new HashMap<>();
+  /** Logger of this class. */
+  private static org.slf4j.Logger log = LoggerFactory.getLogger(Reflection.class);
 
-  static {
-    primitiveClasses.put("int", Integer.TYPE);
-    primitiveClasses.put("long", Long.TYPE);
-    primitiveClasses.put("double", Double.TYPE);
-    primitiveClasses.put("float", Float.TYPE);
-    primitiveClasses.put("bool", Boolean.TYPE);
-    primitiveClasses.put("char", Character.TYPE);
-    primitiveClasses.put("byte", Byte.TYPE);
-    primitiveClasses.put("void", Void.TYPE);
-    primitiveClasses.put("short", Short.TYPE);
+  private static final Map<String, Class> primitiveClasses = initializePrimitivesMap();
+
+  private static Map<String, Class> initializePrimitivesMap() {
+    Map<String, Class> map = new HashMap<>(9);
+    map.put("int", Integer.TYPE);
+    map.put("long", Long.TYPE);
+    map.put("double", Double.TYPE);
+    map.put("float", Float.TYPE);
+    map.put("bool", Boolean.TYPE);
+    map.put("char", Character.TYPE);
+    map.put("byte", Byte.TYPE);
+    map.put("void", Void.TYPE);
+    map.put("short", Short.TYPE);
+    return map;
   }
 
   /** Makes constructor private to prevent the instantiation of this class objects. */
@@ -34,7 +44,13 @@ public class Reflection {
     if (primitiveClasses.containsKey(className)) {
       return primitiveClasses.get(className);
     }
-    return Class.forName(className);
+    try {
+      return Class.forName(className);
+    } catch (ClassNotFoundException e) {
+      final List<URL> urls = Configuration.INSTANCE.classDirs;
+      final URLClassLoader loader = new URLClassLoader(urls.toArray(new URL[urls.size()]));
+      return loader.loadClass(className);
+    }
   }
 
   //  /**
@@ -70,33 +86,5 @@ public class Reflection {
   //      }
   //    }
   //    return true;
-  //  }
-  //
-  //
-  //  /**
-  //   * Returns a new class loader that load classes from paths specified with option --class-dir.
-  //   *
-  //   * @return a new class loader that load classes from paths specified with option --class-dir
-  //   */
-  //  private static ClassLoader getClassLoader() {
-  //    List<String> binariesPaths =
-  //        Toradocu.configuration == null
-  //            ? Collections.emptyList()
-  //            : Toradocu.configuration.getClassDir();
-  //    URL[] urls = new URL[binariesPaths.size()];
-  //    for (int i = 0; i < urls.length; i++) {
-  //      try {
-  //        urls[i] = Paths.get(binariesPaths.get(i)).toUri().toURL();
-  //      } catch (MalformedURLException e) {
-  //        // TODO Move this check in the configuration to validate the input from the beginning.
-  //        // TODO Notice that we don't take any particular action if any provided path is wrong.
-  //        log.error(
-  //            "Impossible to load binaries from "
-  //                + binariesPaths.get(i)
-  //                + ". Check the correctness of the path provided with option --class-dir.",
-  //            e);
-  //      }
-  //    }
-  //    return URLClassLoader.newInstance(urls, ClassLoader.getSystemClassLoader());
   //  }
 }
