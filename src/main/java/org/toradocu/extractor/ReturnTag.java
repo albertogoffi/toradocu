@@ -12,7 +12,7 @@ public class ReturnTag extends AbstractTag {
    *
    * @param comment the comment associated to the return tag
    */
-  public ReturnTag(String comment) {
+  public ReturnTag(Comment comment) {
     super(Kind.RETURN, comment);
   }
 

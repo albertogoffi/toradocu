@@ -53,7 +53,7 @@ public interface Tag {
    *
    * @return the comment associated with the exception in this tag
    */
-  String getComment();
+  Comment getComment();
 
   /**
    * Sets the comment for this tag.
@@ -61,5 +61,5 @@ public interface Tag {
    * @param comment the comment for this tag
    * @throws NullPointerException if comment is null
    */
-  void setComment(String comment);
+  void setComment(Comment comment);
 }

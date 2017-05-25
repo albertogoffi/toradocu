@@ -18,7 +18,7 @@ public class POSTagger {
    * @param codeElements list of the words in the sentence that are code elements
    * @return the partially tagged sentence
    */
-  public List<TaggedWord> tagWords(List<HasWord> sentence, List<HasWord> codeElements) {
+  public List<TaggedWord> tagWords(List<HasWord> sentence, List<String> codeElements) {
     List<TaggedWord> taggedSentence = new ArrayList<>(sentence.size());
     for (HasWord word : sentence) {
       String wordString = word.toString();

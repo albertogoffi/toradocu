@@ -107,11 +107,13 @@ public final class JavadocExtractor {
     final String[] tokens = comment.split(" ", 2);
     final String exceptionName = tokens[0];
     Class<?> exceptionType = findExceptionType(sourceMember, exceptionName);
-    return new ThrowsTag(exceptionType, tokens[1]);
+    Comment commentObject = new Comment(tokens[1]);
+    return new ThrowsTag(exceptionType, commentObject);
   }
 
   private ReturnTag createReturnTag(JavadocBlockTag blockTag) {
-    return new ReturnTag(blockTag.getContent().toText());
+    Comment commentObject = new Comment(blockTag.getContent().toText());
+    return new ReturnTag(commentObject);
   }
 
   private ParamTag createParamTag(JavadocBlockTag blockTag, List<Parameter> parameters) {
@@ -121,7 +123,8 @@ public final class JavadocExtractor {
         parameters.stream().filter(p -> p.getName().equals(paramName)).collect(toList());
     // TODO If paramName not present in paramNames => issue a warning about incorrect documentation!
     // TODO If more than one matching parameter found => issue a warning about incorrect documentation!
-    return new ParamTag(matchingParams.get(0), blockTag.getContent().toText());
+    Comment commentObject = new Comment(blockTag.getContent().toText());
+    return new ParamTag(matchingParams.get(0), commentObject);
   }
 
   private List<Parameter> getParameters(

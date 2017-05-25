@@ -27,6 +27,6 @@ public class RemoveInitialIf implements PreprocessingPhase {
   @Override
   public String run(Tag tag, ExecutableMember excMember) {
     // TODO Auto-generated method stub
-    return removeInitial(tag.getComment(), "if");
+    return removeInitial(tag.getComment().getText(), "if");
   }
 }
