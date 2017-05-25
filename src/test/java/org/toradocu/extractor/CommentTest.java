@@ -13,17 +13,27 @@ public class CommentTest {
   public void testComment() {
     String doubleTagged = "This comment contains a {@code codeElement} and another {@code one}";
     String tagged = "This comment contains a {@code codeElement}";
-    String javaTypeComment = "This comment contains a.Java.Type.";
+    String complexTagged = "This comment contains a {@code complex codeElement}";
 
     Comment commentObject = new Comment(tagged);
     assertThat(commentObject.getWordsMarkedAsCode().contains("codeElement"), is(true));
+    assertThat(commentObject.getText().equals("This comment contains a codeElement"), is(true));
 
     commentObject = new Comment(doubleTagged);
     List<String> codeWords = new ArrayList<String>();
     codeWords.add("codeElement");
     codeWords.add("one");
     assertThat(commentObject.getWordsMarkedAsCode().equals(codeWords), is(true));
+    assertThat(
+        commentObject.getText().equals("This comment contains a codeElement and another one"),
+        is(true));
 
-    commentObject = new Comment(javaTypeComment);
+    codeWords.clear();
+    codeWords.add("complex");
+    codeWords.add("codeElement");
+    commentObject = new Comment(complexTagged);
+    assertThat(commentObject.getWordsMarkedAsCode().equals(codeWords), is(true));
+    assertThat(
+        commentObject.getText().equals("This comment contains a complex codeElement"), is(true));
   }
 }
