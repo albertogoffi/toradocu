@@ -449,7 +449,7 @@ public class ConditionTranslator {
     log.trace(
         "Identifying propositions from: \"" + tag.getComment() + "\" in " + method.getSignature());
 
-    String comment = tag.getComment().trim();
+    String comment = tag.getComment().getText().trim();
 
     // Add end-of-sentence period, if missing.
     if (!comment.endsWith(".")) {

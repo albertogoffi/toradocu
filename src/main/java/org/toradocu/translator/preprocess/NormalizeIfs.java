@@ -27,6 +27,6 @@ public class NormalizeIfs implements PreprocessingPhase {
 
   @Override
   public String run(Tag tag, ExecutableMember excMember) {
-    return normalizeComment(tag.getComment(), excMember);
+    return normalizeComment(tag.getComment().getText(), excMember);
   }
 }

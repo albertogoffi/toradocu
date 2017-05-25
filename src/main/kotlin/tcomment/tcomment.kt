@@ -27,7 +27,7 @@ fun translate(methods: List<ExecutableMember>) {
  */
 private fun translateTagComment(tag: ParamTag, parameterNames: List<String>) {
   val parameterName = tag.parameter.name
-  val condition = if (mustBeNotNull(tag.comment)) {
+  val condition = if (mustBeNotNull(tag.comment.text)) {
     "(args[${parameterNames.indexOf(parameterName)}]==null)==false"
   } else {
     ""
@@ -42,7 +42,7 @@ private fun translateTagComment(tag: ParamTag, parameterNames: List<String>) {
  * @param parameterNames names of the method's parameters to which [tag] belongs
  */
 private fun translateTagComment(tag: ThrowsTag, parameterNames: List<String>) {
-  val commentWords = getWords(tag.comment)
+  val commentWords = getWords(tag.comment.text)
   var condition = ""
   if (commentWords.contains("null")) {
     commentWords.intersect(parameterNames).forEach {

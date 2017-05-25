@@ -7,6 +7,6 @@ public class RemoveCommas implements PreprocessingPhase {
 
   @Override
   public String run(Tag tag, ExecutableMember excMember) {
-    return tag.getComment().replaceAll(",", " ");
+    return tag.getComment().getText().replaceAll(",", " ");
   }
 }

@@ -9,7 +9,7 @@ public class MustWillShouldCanPatterns implements PreprocessingPhase {
 
   @Override
   public String run(Tag tag, ExecutableMember excMember) {
-    String comment = tag.getComment();
+    String comment = tag.getComment().getText();
     String parameterName = ((ParamTag) tag).getParameter().getName();
     String[] patterns = {
       "must be",
