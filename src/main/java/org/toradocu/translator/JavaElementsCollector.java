@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Collectors;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ParamTag;
 import org.toradocu.util.Reflection;
 
@@ -30,16 +30,17 @@ public class JavaElementsCollector {
    * Collects all the Java code elements that can be used for the condition translation. The code
    * elements are collected using reflection starting from the given method.
    *
-   * @param documentedMethod the method from which to start to collect the code elements
+   * @param executableMember the method from which to start to collect the code elements
    * @return the collected code elements
    */
-  public static Set<CodeElement<?>> collect(DocumentedMethod documentedMethod) {
+  public static Set<CodeElement<?>> collect(ExecutableMember executableMember) {
     Set<CodeElement<?>> collectedElements = new LinkedHashSet<>();
-    Class<?> containingClass =
-        Reflection.getClass(documentedMethod.getContainingClass().getQualifiedName());
-
-    // The containing class cannot be loaded. Return an empty set of code elements.
-    if (containingClass == null) {
+    Class<?> containingClass;
+    try {
+      containingClass = Reflection.getClass(executableMember.getContainingClass());
+    } catch (ClassNotFoundException e) {
+      // The containing class cannot be loaded. Return an empty set of code elements.
+      // TODO Log a warning!
       return collectedElements;
     }
 
@@ -50,13 +51,13 @@ public class JavaElementsCollector {
     collectedElements.add(new ClassCodeElement(containingClass));
 
     // Add parameters of the documented method.
-    final Executable executable = documentedMethod.getExecutable();
+    final Executable executable = executableMember.getExecutable();
     int paramIndex = 0;
     List<Parameter> parameters = new ArrayList<>(Arrays.asList(executable.getParameters()));
 
     // The first two parameters of enum constructors are synthetic and must be removed to
     // reflect the source code.
-    if (containingClass.isEnum() && documentedMethod.isConstructor()) {
+    if (containingClass.isEnum() && executableMember.isConstructor()) {
       parameters.remove(0);
       parameters.remove(0);
     }
@@ -65,9 +66,9 @@ public class JavaElementsCollector {
     Set<ParameterCodeElement> params = new HashSet<>();
 
     for (java.lang.reflect.Parameter par : parameters) {
-      String paramName = documentedMethod.getParameters().get(paramIndex).getName();
+      String paramName = executableMember.getParameters().get(paramIndex).getName();
       // Extract identifiers from param comment
-      Set<String> ids = extractIdsFromParams(documentedMethod, paramName);
+      Set<String> ids = extractIdsFromParams(executableMember, paramName);
 
       for (String id : ids) {
         Integer oldValue = countIds.getOrDefault(id, -1);
@@ -94,7 +95,7 @@ public class JavaElementsCollector {
       p.mergeIdentifiers();
     }
 
-    // Add methods of the target class (all but the method corresponding to documentedMethod).
+    // Add methods of the target class (all but the method corresponding to executableMember).
     final List<Method> methods =
         Arrays.stream(containingClass.getMethods())
             .filter(
@@ -105,7 +106,7 @@ public class JavaElementsCollector {
     for (Method method : methods) {
       if (Modifier.isStatic(method.getModifiers())) {
         collectedElements.add(new StaticMethodCodeElement(method));
-      } else if (!documentedMethod.isConstructor()) {
+      } else if (!executableMember.isConstructor()) {
         collectedElements.add(new MethodCodeElement("target", method));
       }
     }
@@ -122,15 +123,15 @@ public class JavaElementsCollector {
    * For the parameter in input, find its param tag in the method's Javadoc and produce the
    * SemanticGraphs of the comment. For every graph, keep the root as identifier.
    *
-   * @param method the DocumentedMethod which the parameter belongs to
+   * @param method the ExecutableMember which the parameter belongs to
    * @param param the parameter
    * @return the extracted ids
    */
-  private static Set<String> extractIdsFromParams(DocumentedMethod method, String param) {
-    Set<ParamTag> paramTags = method.paramTags();
+  private static Set<String> extractIdsFromParams(ExecutableMember method, String param) {
+    List<ParamTag> paramTags = method.paramTags();
     Set<String> ids = new HashSet<>();
     for (ParamTag pt : paramTags) {
-      String paramName = pt.parameter().getName();
+      String paramName = pt.getParameter().getName();
       if (paramName.equals(param)) {
         List<SemanticGraph> sgs = StanfordParser.getSemanticGraphs(pt.getComment());
         for (SemanticGraph sg : sgs) ids.add(sg.getFirstRoot().word());

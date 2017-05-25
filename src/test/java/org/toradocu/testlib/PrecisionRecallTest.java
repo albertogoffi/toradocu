@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.toradocu.Toradocu;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.util.GsonInstance;
 import org.toradocu.util.Stats;
 
@@ -95,9 +95,9 @@ class PrecisionRecallTest {
     try (BufferedReader outFile = Files.newBufferedReader(Paths.get(outputFile));
         BufferedReader goalFile = Files.newBufferedReader(Paths.get(goalOutputFile))) {
 
-      Type collectionType = new TypeToken<Collection<DocumentedMethod>>() {}.getType();
-      List<DocumentedMethod> actualResult = GsonInstance.gson().fromJson(outFile, collectionType);
-      List<DocumentedMethod> goalResult = GsonInstance.gson().fromJson(goalFile, collectionType);
+      Type collectionType = new TypeToken<Collection<ExecutableMember>>() {}.getType();
+      List<ExecutableMember> actualResult = GsonInstance.gson().fromJson(outFile, collectionType);
+      List<ExecutableMember> goalResult = GsonInstance.gson().fromJson(goalFile, collectionType);
       final Stats stats = Stats.getStats(targetClass, actualResult, goalResult, report);
       System.out.println(report);
       return stats;

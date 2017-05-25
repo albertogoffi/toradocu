@@ -1,289 +1,141 @@
 package org.toradocu.extractor;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static java.util.stream.Collectors.toList;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.emptyString;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.fail;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
+import org.junit.BeforeClass;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.toradocu.Toradocu;
-import org.toradocu.util.GsonInstance;
+import org.toradocu.conf.ClassDirsConverter;
+import org.toradocu.conf.Configuration;
+import org.toradocu.testlib.Compiler;
 
+// TODO Add more assertions (about other methods in the example test class).
+
+/**
+ * Tests {@code JavadocExtractor} on the example class example.AClass in src/test/resources/example
+ */
 public class JavadocExtractorTest {
 
-  private final String testResources = "src/test/resources";
-  private final Type doubleType = new Type("double");
-  private final Type objectType = new Type("java.lang.Object");
-  private final Type objectArrayType = new Type("java.lang.Object[]");
-  private final Type npe = new Type("java.lang.NullPointerException");
-  private final Type iae = new Type("java.lang.IllegalArgumentException");
-  private final Logger log = LoggerFactory.getLogger(JavadocExtractorTest.class);
+  private static final String EXAMPLE_SRC = "src/test/resources";
+  private static List<ExecutableMember> members;
+  private static Class<?> stringClass;
 
-  /**
-   * Tests {@code JavadocExtractor} on the example class example.AClass in
-   * src/test/resources/example
-   */
-  @Test
-  public void exampleAClassTest() {
-    List<Parameter> params = new ArrayList<>();
-    List<ThrowsTag> throwsTags = new ArrayList<>();
-    List<ParamTag> paramTags = new ArrayList<>();
-    List<DocumentedMethod> expected = new ArrayList<>();
-    Type aClass = new Type("example.AClass");
-
-    // Method: AClass().
-    params.clear();
-    paramTags.clear();
-    throwsTags.clear();
-    throwsTags.add(new ThrowsTag(npe, "always"));
-    expected.add(new DocumentedMethod(aClass, "AClass", null, null, null, false, throwsTags, null));
-
-    // Method: AClass(String).
-    params.clear();
-    paramTags.clear();
-    throwsTags.clear();
-    params.add(new Parameter(new Type("java.lang.String"), "x"));
-    throwsTags.add(new ThrowsTag(npe, "if x is null"));
-    throwsTags.add(new ThrowsTag(new Type("example.exception.AnException"), "if x is empty"));
-    paramTags.add(
-        new ParamTag(
-            new Parameter(new Type("java.lang.String"), "x"), "must not be null nor empty"));
-    expected.add(
-        new DocumentedMethod(aClass, "AClass", null, params, paramTags, false, throwsTags, null));
-
-    // Method: foo(int[])
-    params.clear();
-    paramTags.clear();
-    throwsTags.clear();
-    Parameter par1 = new Parameter(new Type("int[]"), "array", true);
-    params.add(par1);
-    //    paramTags.add(new ParamTag(par1, "must not be null"));
-    //    throwsTags.add(new ThrowsTag(npe, "if array is null"));
-    expected.add(
-        new DocumentedMethod(
-            aClass, "foo", doubleType, params, paramTags, false, throwsTags, null));
-
-    // Method: bar(Object, Object).
-    params.clear();
-    paramTags.clear();
-    throwsTags.clear();
-    params.add(new Parameter(objectType, "x", false));
-    params.add(new Parameter(objectType, "y", false));
-    //    throwsTags.add(new ThrowsTag(iae, "if x is null"));
-    //    paramTags.add(new ParamTag(new Parameter(objectType, "x", false), "must not be null"));
-    expected.add(
-        new DocumentedMethod(
-            aClass, "bar", doubleType, params, paramTags, false, throwsTags, null));
-
-    // Method: baz(Object).
-    params.clear();
-    paramTags.clear();
-    throwsTags.clear();
-    params.add(new Parameter(objectType, "x"));
-    throwsTags.add(new ThrowsTag(iae, "if x is null"));
-    paramTags.add(new ParamTag(new Parameter(objectType, "x"), "must not be null"));
-    expected.add(
-        new DocumentedMethod(
-            aClass, "baz", doubleType, params, paramTags, false, throwsTags, null));
-
-    // Method: testParam(double, double)
-    params.clear();
-    paramTags.clear();
-    throwsTags.clear();
-    params.add(new Parameter(doubleType, "x"));
-    params.add(new Parameter(doubleType, "y"));
-    paramTags.add(
-        new ParamTag(new Parameter(doubleType, "x"), "the first number, must be positive"));
-    paramTags.add(
-        new ParamTag(new Parameter(doubleType, "y"), "the second number, must be " + "positive"));
-    expected.add(
-        new DocumentedMethod(
-            aClass, "testParam", doubleType, params, paramTags, false, throwsTags, null));
-
-    // Method: testParam2(double, double)
-    params.clear();
-    paramTags.clear();
-    throwsTags.clear();
-    params.add(new Parameter(doubleType, "x"));
-    params.add(new Parameter(doubleType, "y"));
-    paramTags.add(
-        new ParamTag(new Parameter(doubleType, "x"), "the first number, must be positive"));
-    paramTags.add(
-        new ParamTag(new Parameter(doubleType, "y"), "the second number, must be " + "positive"));
-    expected.add(
-        new DocumentedMethod(
-            aClass, "testParam2", doubleType, params, paramTags, false, throwsTags, null));
-
-    // Method: testParam3(double)
-    params.clear();
-    paramTags.clear();
-    throwsTags.clear();
-    params.add(new Parameter(doubleType, "x"));
-    //    paramTags.add(new ParamTag(new Parameter(doubleType, "x"), "must be positive"));
-    expected.add(
-        new DocumentedMethod(
-            aClass, "testParam3", doubleType, params, paramTags, false, throwsTags, null));
-
-    test(
-        "example.AClass",
-        expected,
-        testResources + "/example.AClass_extractor_output.txt",
-        testResources);
-  }
-
-  /**
-   * Tests {@code JavadocExtractor} on the example class example.AChild in
-   * src/test/resources/example
-   */
-  @Test
-  public void exampleAChildTest() {
-    List<Parameter> params = new ArrayList<>();
-    List<ThrowsTag> throwsTags = new ArrayList<>();
-    List<ParamTag> paramTags = new ArrayList<>();
-    List<DocumentedMethod> expected = new ArrayList<>();
-    Type aClass = new Type("example.AClass");
-    Type aChild = new Type("example.AChild");
-
-    // Method: baz(Object)
-    params.clear();
-    paramTags.clear();
-    throwsTags.clear();
-    params.add(new Parameter(objectType, "z"));
-    throwsTags.add(new ThrowsTag(iae, "if z is null"));
-    paramTags.add(new ParamTag(new Parameter(objectType, "z"), "must not be null"));
-    expected.add(
-        new DocumentedMethod(
-            aChild, "baz", doubleType, params, paramTags, false, throwsTags, null));
-
-    // Method: vararg(Object...)
-    params.clear();
-    paramTags.clear();
-    throwsTags.clear();
-    params.add(new Parameter(objectArrayType, "x"));
-    throwsTags.add(new ThrowsTag(iae, "if x is null"));
-    paramTags.add(new ParamTag(new Parameter(objectArrayType, "x"), "must not be null"));
-    expected.add(
-        new DocumentedMethod(
-            aChild, "vararg", doubleType, params, paramTags, true, throwsTags, null));
-
-    // Method: testParam(double, double)
-    params.clear();
-    paramTags.clear();
-    throwsTags.clear();
-    params.add(new Parameter(doubleType, "x"));
-    params.add(new Parameter(doubleType, "y"));
-    //    paramTags.add(
-    //        new ParamTag(new Parameter(doubleType, "x"), "the first number, must be positive"));
-    //    paramTags.add(
-    //        new ParamTag(new Parameter(doubleType, "y"), "the second number, must be " + "positive"));
-    expected.add(
-        new DocumentedMethod(
-            aChild, "testParam", doubleType, params, paramTags, false, throwsTags, null));
-
-    // Method: testParam2(double, double)
-    params.clear();
-    paramTags.clear();
-    throwsTags.clear();
-    params.add(new Parameter(doubleType, "x"));
-    params.add(new Parameter(doubleType, "y"));
-    //    paramTags.add(
-    //        new ParamTag(new Parameter(doubleType, "x"), "the first number, must be positive"));
-    //    paramTags.add(
-    //        new ParamTag(new Parameter(doubleType, "y"), "the second number, must be " + "positive"));
-    expected.add(
-        new DocumentedMethod(
-            aChild, "testParam2", doubleType, params, paramTags, false, throwsTags, null));
-
-    test(
-        "example.AChild",
-        expected,
-        testResources + "/example.AChild_extractor_output.txt",
-        testResources);
+  @BeforeClass
+  public static void setUp() throws IOException, ClassNotFoundException {
+    stringClass = Class.forName("java.lang.String");
+    compileSources();
+    members = runJavadocExtractor();
   }
 
   @Test
-  public void paramInheritanceInAbstractClassTest() {
-    List<Parameter> params = new ArrayList<>();
-    List<ThrowsTag> throwsTags = new ArrayList<>();
-    List<ParamTag> paramTags = new ArrayList<>();
-    List<DocumentedMethod> expected = new ArrayList<>();
-    Type abstractClass = new Type("example.AbstractClass");
-
-    Parameter par1 = new Parameter(new Type("V"), "sourceVertex");
-    Parameter par2 = new Parameter(new Type("V"), "targetVertex");
-
-    params.add(par1);
-    params.add(par2);
-
-    //    paramTags.add(new ParamTag(par1, "source vertex of the edge."));
-    //    paramTags.add(new ParamTag(par2, "target vertex of the edge."));
-
-    expected.add(
-        new DocumentedMethod(
-            abstractClass,
-            "containsEdge",
-            new Type("boolean"),
-            params,
-            paramTags,
-            false,
-            throwsTags,
-            null));
-
-    test(
-        "example.AbstractClass",
-        expected,
-        testResources + "/example.AbstractClass_extractor_output.txt",
-        testResources);
+  public void numberOfExecutableMembers() {
+    assertThat(members.size(), is(4));
   }
 
-  private void test(
-      String targetClass, List<DocumentedMethod> expected, String actualOutput, String sourcePath) {
-    Toradocu.main(
-        new String[] {
-          "--target-class",
-          targetClass,
-          "--javadoc-extractor-output",
-          actualOutput,
-          "--condition-translation",
-          "false",
-          "--oracle-generation",
-          "false",
-          "--source-dir",
-          sourcePath,
-          "--class-dir",
-          ""
-        });
+  @Test // Constructor AClass().
+  public void constructorAClass1() throws ClassNotFoundException {
+    ExecutableMember member = members.get(0);
+    assertThat(member.isConstructor(), is(true));
 
-    java.lang.reflect.Type listType = new TypeToken<List<DocumentedMethod>>() {}.getType();
-    Gson gson = GsonInstance.gson();
-    Path ouputFilePath = Paths.get(actualOutput);
-    try (BufferedReader reader = Files.newBufferedReader(ouputFilePath)) {
-      List<DocumentedMethod> actual = gson.fromJson(reader, listType);
-      assertThat(actual.size(), is(equalTo(expected.size())));
+    final List<Parameter> parameters = member.getParameters();
+    assertThat(parameters, is(empty()));
 
-      for (int i = 0; i < actual.size(); i++) {
-        DocumentedMethod actualValue = actual.get(i);
-        DocumentedMethod expectedValue = expected.get(i);
-        assertThat(actualValue, is(equalTo(expectedValue)));
-      }
-    } catch (IOException e) {
-      fail(e.getMessage());
+    final List<ParamTag> paramTags = member.paramTags();
+    assertThat(paramTags, is(empty()));
+
+    final ReturnTag returnTag = member.returnTag();
+    assertThat(returnTag, is(nullValue()));
+
+    final List<ThrowsTag> throwsTags = member.throwsTags();
+    assertThat(throwsTags.size(), is(1));
+    final ThrowsTag throwsTag = throwsTags.get(0);
+    assertThat(
+        throwsTag.getException(), is(equalTo(Class.forName("java.lang.NullPointerException"))));
+  }
+
+  @Test
+  public void constructorAClass2() throws ClassNotFoundException {
+    ExecutableMember member = members.get(1);
+    assertThat(member.isConstructor(), is(true));
+
+    final List<Parameter> parameters = member.getParameters();
+    assertThat(parameters.size(), is(1));
+    Parameter parameter = parameters.get(0);
+    assertThat(parameter.getName(), is("x"));
+    assertThat(parameter.getType(), is(stringClass));
+
+    final List<ParamTag> paramTags = member.paramTags();
+    assertThat(paramTags.size(), is(1));
+    final ParamTag paramTag = paramTags.get(0);
+    assertThat(paramTag.getParameter(), is(equalTo(parameter)));
+    assertThat(paramTag.getComment(), is("must not be null nor empty"));
+    assertThat(paramTag.getCondition(), is(emptyString()));
+
+    final ReturnTag returnTag = member.returnTag();
+    assertThat(returnTag, is(nullValue()));
+
+    final List<ThrowsTag> throwsTags = member.throwsTags();
+    assertThat(throwsTags.size(), is(2));
+  }
+
+  @Test
+  public void methodFoo() throws ClassNotFoundException {
+    ExecutableMember member = members.get(2);
+    assertThat(member.isConstructor(), is(false));
+
+    final List<Parameter> parameters = member.getParameters();
+    assertThat(parameters.size(), is(1));
+    final Parameter parameter = parameters.get(0);
+    assertThat(parameter.getName(), is("array"));
+    assertThat(parameter.getType(), is(Object[].class));
+
+    final List<ParamTag> paramTags = member.paramTags();
+    assertThat(paramTags.size(), is(1));
+    final ParamTag paramTag = paramTags.get(0);
+    assertThat(paramTag.getParameter(), is(equalTo(parameter)));
+    assertThat(paramTag.getComment(), is("an array of objects, must not be null"));
+    assertThat(paramTag.getCondition(), is(emptyString()));
+
+    final ReturnTag returnTag = member.returnTag();
+    assertThat(returnTag.getComment(), is("0 always"));
+
+    final List<ThrowsTag> throwsTags = member.throwsTags();
+    assertThat(throwsTags, is(empty()));
+  }
+
+  private static List<ExecutableMember> runJavadocExtractor()
+      throws ClassNotFoundException, FileNotFoundException {
+    final JavadocExtractor javadocExtractor = new JavadocExtractor();
+    return javadocExtractor.extract("example.AClass", EXAMPLE_SRC);
+  }
+
+  private static void compileSources() throws IOException {
+    final String examplePath = EXAMPLE_SRC + "/example";
+    final File sourceDir = new File(examplePath);
+    List<String> sourceFiles =
+        Files.walk(sourceDir.toPath())
+            .filter(p -> p.getFileName().toString().endsWith(".java"))
+            .map(Path::toString)
+            .collect(toList());
+    if (sourceFiles.isEmpty()) {
+      fail("No Java files to compile found in " + sourceDir);
     }
-    try {
-      Files.delete(ouputFilePath);
-    } catch (IOException e) {
-      log.error("Error deleting the file: " + ouputFilePath);
+    boolean compilationOK = Compiler.run(sourceFiles);
+    if (!compilationOK) {
+      fail("Error(s) during compilation of test source files.");
     }
+    Configuration.INSTANCE.classDirs = new ClassDirsConverter().convert(examplePath);
   }
 }

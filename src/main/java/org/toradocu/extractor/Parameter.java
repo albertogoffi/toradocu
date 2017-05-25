@@ -1,13 +1,19 @@
 package org.toradocu.extractor;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
-import org.toradocu.util.Checks;
+import org.toradocu.Checks;
 
 /** This class represents a method parameter. */
 public final class Parameter {
 
+  static final List<String> notNullAnnotations = Arrays.asList("NotNull", "NonNull", "Nonnull");
+  static final List<String> nullableAnnotations = Collections.singletonList("Nullable");
+
   /** The type of the parameter. */
-  private final Type type;
+  private final Class<?> type;
   /** The name of the parameter. */
   private final String name;
   /** True if this parameter is nullable, false if nonnull, and null if unspecified. */
@@ -21,7 +27,7 @@ public final class Parameter {
    * @param nullable true if the parameter is nullable, false if nonnull and null if unspecified
    * @throws NullPointerException if type or name is null
    */
-  public Parameter(Type type, String name, Boolean nullable) {
+  public Parameter(Class<?> type, String name, Boolean nullable) {
     Checks.nonNullParameter(type, "type");
     Checks.nonNullParameter(name, "name");
     this.type = type;
@@ -35,7 +41,7 @@ public final class Parameter {
    * @param type the type of the parameter including its dimension
    * @param name the name of the parameter
    */
-  public Parameter(Type type, String name) {
+  public Parameter(Class<?> type, String name) {
     this(type, name, null);
   }
 
@@ -53,7 +59,7 @@ public final class Parameter {
    *
    * @return the type of the parameter
    */
-  public Type getType() {
+  public Class<?> getType() {
     return type;
   }
 
@@ -64,7 +70,7 @@ public final class Parameter {
    * @return {@code true} if the parameter is nullable, {@code false} if it is nonnull, or {@code
    *     null} if its nullability is unspecified
    */
-  public Boolean getNullability() {
+  Boolean getNullability() {
     return nullable;
   }
 
@@ -76,7 +82,9 @@ public final class Parameter {
    */
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof Parameter)) return false;
+    if (!(obj instanceof Parameter)) {
+      return false;
+    }
 
     Parameter that = (Parameter) obj;
     return type.equals(that.type)
@@ -102,6 +110,6 @@ public final class Parameter {
    */
   @Override
   public String toString() {
-    return type + " " + name;
+    return type.getName() + " " + name;
   }
 }

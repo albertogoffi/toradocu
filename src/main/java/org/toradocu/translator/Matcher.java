@@ -15,8 +15,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import org.toradocu.Toradocu;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.conf.Configuration;
+import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.util.Reflection;
 
 /**
@@ -29,18 +29,26 @@ class Matcher {
    * Represents the threshold for the edit distance above which {@code CodeElement}s are considered
    * to be not matching.
    */
-  private static final int EDIT_DISTANCE_THRESHOLD = Toradocu.configuration.getDistanceThreshold();
+  private final int editDistanceThreshold;
+
+  public Matcher() {
+    this.editDistanceThreshold = Configuration.INSTANCE.getDistanceThreshold();
+  }
+
+  public Matcher(int editDistanceThreshold) {
+    this.editDistanceThreshold = editDistanceThreshold;
+  }
 
   /**
-   * Takes the subject of a proposition in a Javadoc comment and the {@code DocumentedMethod} that
+   * Takes the subject of a proposition in a Javadoc comment and the {@code ExecutableMember} that
    * subject was extracted from. Then returns all {@code CodeElement}s that match (i.e. have a
    * similar name to) the given subject string.
    *
    * @param subject the subject of a proposition from a Javadoc comment
-   * @param method the {@code DocumentedMethod} that the subject was extracted from
+   * @param method the {@code ExecutableMember} that the subject was extracted from
    * @return a set of {@code CodeElement}s that have a similar name to the subject
    */
-  static Set<CodeElement<?>> subjectMatch(String subject, DocumentedMethod method) {
+  Set<CodeElement<?>> subjectMatch(String subject, ExecutableMember method) {
     // Extract every CodeElement associated with the method and the containing class of the method.
     Set<CodeElement<?>> codeElements = JavaElementsCollector.collect(method);
 
@@ -60,15 +68,15 @@ class Matcher {
   }
 
   /**
-   * Takes the container of a proposition in a Javadoc comment and the {@code DocumentedMethod} that
+   * Takes the container of a proposition in a Javadoc comment and the {@code ExecutableMember} that
    * container was extracted from. Then returns the {@code CodeElement} that matches (i.e. has a
    * similar name to) the given container string.
    *
    * @param container the container of a proposition from a Javadoc comment
-   * @param method the {@code DocumentedMethod} that the subject was extracted from
+   * @param method the {@code ExecutableMember} that the subject was extracted from
    * @return the {@code CodeElement} that has a similar name to the container
    */
-  static CodeElement<?> containerMatch(String container, DocumentedMethod method) {
+  CodeElement<?> containerMatch(String container, ExecutableMember method) {
     final Set<CodeElement<?>> containers = subjectMatch(container, method);
     return !containers.isEmpty() ? containers.iterator().next() : null;
   }
@@ -80,11 +88,11 @@ class Matcher {
    * @param codeElements the set of {@code CodeElement}s to filter
    * @return a set of {@code CodeElement}s that match the given string
    */
-  private static Set<CodeElement<?>> filterMatchingCodeElements(
+  private Set<CodeElement<?>> filterMatchingCodeElements(
       String filter, Set<CodeElement<?>> codeElements) {
     Set<CodeElement<?>> minCodeElements = new LinkedHashSet<>();
     // Only consider elements with a minimum distance <= the threshold distance.
-    int minDistance = EDIT_DISTANCE_THRESHOLD;
+    int minDistance = editDistanceThreshold;
     // Returns the CodeElement(s) with the smallest distance.
     for (CodeElement<?> codeElement : codeElements) {
       int distance = codeElement.getEditDistanceFrom(filter);
@@ -110,8 +118,8 @@ class Matcher {
    * @return the translation (to a Java expression) of the predicate with the given subject and
    *     predicate, or null if no translation found
    */
-  static String predicateMatch(
-      DocumentedMethod method, CodeElement<?> subject, String predicate, boolean negate) {
+  String predicateMatch(
+      ExecutableMember method, CodeElement<?> subject, String predicate, boolean negate) {
 
     // Special case to handle predicates about arrays' length. We need a more general solution.
     if (subject.getJavaCodeElement().toString().contains("[]")) {
@@ -160,8 +168,8 @@ class Matcher {
     return match;
   }
 
-  static String codeElementsMatch(
-      DocumentedMethod method, CodeElement<?> subject, String predicate) {
+  private String codeElementsMatch(
+      ExecutableMember method, CodeElement<?> subject, String predicate) {
     Set<CodeElement<?>> codeElements;
     String match;
 
@@ -170,7 +178,12 @@ class Matcher {
       codeElements =
           extractBooleanCodeElements(
               paramCodeElement, paramCodeElement.getJavaCodeElement().getType());
-      Class<?> targetClass = Reflection.getClass(method.getContainingClass().getQualifiedName());
+      Class<?> targetClass = null;
+      try {
+        targetClass = Reflection.getClass(method.getContainingClass());
+      } catch (ClassNotFoundException e) {
+        // TODO Log a warning!
+      }
       codeElements.addAll(extractStaticBooleanMethods(targetClass, paramCodeElement));
     } else if (subject instanceof ClassCodeElement) {
       ClassCodeElement classCodeElement = (ClassCodeElement) subject;
@@ -224,13 +237,13 @@ class Matcher {
    * {@code CodeElement}s. This is especially to find the best mathod match in case of {@code
    * MethodCodeElement}, by comparing the arguments needed.
    *
-   * @param method the {@code DocumentedMethod} the predicate is referring to
+   * @param method the {@code ExecutableMember} the predicate is referring to
    * @param predicate the String predicate to match
    * @param sortedCodeElements sorted list of matching method {@code CodeElement}s
    * @return String representation of the best match found
    */
-  private static String findMethodMatch(
-      DocumentedMethod method, String predicate, List<CodeElement<?>> sortedCodeElements) {
+  private String findMethodMatch(
+      ExecutableMember method, String predicate, List<CodeElement<?>> sortedCodeElements) {
     String match = "";
     CodeElement<?> firstMatch = null;
     boolean foundMatch = false;
@@ -311,7 +324,7 @@ class Matcher {
    * @param parameter the actual parameter that has to be used to invoke the extracted methods
    * @return the static boolean methods in the given class target class as a set of code elements
    */
-  private static Set<CodeElement<?>> extractStaticBooleanMethods(
+  private Set<CodeElement<?>> extractStaticBooleanMethods(
       Class<?> targetClass, ParameterCodeElement parameter) {
     Set<CodeElement<?>> collectedElements = new LinkedHashSet<>();
 
@@ -345,8 +358,7 @@ class Matcher {
    * @param type the class whose boolean-valued fields and methods to extract
    * @return the boolean-valued fields and methods in the given class as a set of code elements
    */
-  private static Set<CodeElement<?>> extractBooleanCodeElements(
-      CodeElement<?> receiver, Class<?> type) {
+  private Set<CodeElement<?>> extractBooleanCodeElements(CodeElement<?> receiver, Class<?> type) {
     Set<CodeElement<?>> result = new LinkedHashSet<>();
 
     if (type.isArray()) {

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
-import org.toradocu.util.Checks;
+import org.toradocu.Checks;
 
 /**
  * This class represents a throws tag in a method. Each @throws tag consists of an exception, a
@@ -14,7 +14,7 @@ import org.toradocu.util.Checks;
 public class ThrowsTag extends AbstractTag {
 
   /** The exception described in this {@code ThrowsTag}. */
-  private final Type exception;
+  private final Class<?> exception;
   /** Code tags specified in the method's Javadoc. For now stored as simple Strings. */
   private final List<String> codeTags;
 
@@ -26,7 +26,7 @@ public class ThrowsTag extends AbstractTag {
    * @param codeTags words tagged with @code
    * @throws NullPointerException if exception or comment is null
    */
-  public ThrowsTag(Type exception, String comment, Collection<String> codeTags) {
+  ThrowsTag(Class<?> exception, Comment comment, Collection<String> codeTags) {
     super(Kind.THROWS, comment);
     Checks.nonNullParameter(exception, "exception");
     this.exception = exception;
@@ -40,7 +40,7 @@ public class ThrowsTag extends AbstractTag {
    * @param comment the comment associated with the exception
    * @throws NullPointerException if exception or comment is null
    */
-  public ThrowsTag(Type exception, String comment) {
+  ThrowsTag(Class<?> exception, Comment comment) {
     this(exception, comment, null);
   }
 
@@ -49,7 +49,7 @@ public class ThrowsTag extends AbstractTag {
    *
    * @return the type of the exception in this throws tag
    */
-  public Type exception() {
+  public Class<?> getException() {
     return exception;
   }
 
@@ -96,12 +96,7 @@ public class ThrowsTag extends AbstractTag {
    */
   @Override
   public String toString() {
-    String result = super.getKind() + " " + exception + " " + super.getComment();
-    if (super.getCondition() != null
-        && super.getCondition().isPresent()
-        && !super.getCondition().get().isEmpty()) {
-      result += " ==> " + super.getCondition().get();
-    }
-    return result;
+    String result = super.getKind() + " " + exception.getName() + " " + super.getComment();
+    return appendCondition(result);
   }
 }

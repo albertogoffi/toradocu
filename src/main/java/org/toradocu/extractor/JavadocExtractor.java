@@ -1,506 +1,309 @@
 package org.toradocu.extractor;
 
-import com.sun.javadoc.AnnotationDesc;
-import com.sun.javadoc.ClassDoc;
-import com.sun.javadoc.ConstructorDoc;
-import com.sun.javadoc.Doc;
-import com.sun.javadoc.ExecutableMemberDoc;
-import com.sun.javadoc.MethodDoc;
-import com.sun.javadoc.SourcePosition;
-import com.sun.javadoc.Tag;
-import com.sun.javadoc.Type;
-import com.sun.javadoc.TypeVariable;
-import java.io.IOException;
+import static java.util.stream.Collectors.toList;
+
+import com.github.javaparser.JavaParser;
+import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.ImportDeclaration;
+import com.github.javaparser.ast.Node;
+import com.github.javaparser.ast.NodeList;
+import com.github.javaparser.ast.body.CallableDeclaration;
+import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
+import com.github.javaparser.ast.nodeTypes.modifiers.NodeWithPrivateModifier;
+import com.github.javaparser.javadoc.Javadoc;
+import com.github.javaparser.javadoc.JavadocBlockTag;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.lang.reflect.Executable;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.toradocu.doclet.formats.html.ConfigurationImpl;
-import org.toradocu.doclet.formats.html.HtmlDocletWriter;
-import org.toradocu.doclet.internal.toolkit.taglets.TagletWriter;
-import org.toradocu.doclet.internal.toolkit.util.DocPath;
+import java.util.Map.Entry;
+import java.util.Optional;
+import org.toradocu.util.Reflection;
 
-/**
- * {@code JavadocExtractor} extracts {@code DocumentedMethod}s from {@code ClassDoc}s. The entry
- * point for this class is the {@link #extract(ClassDoc)} method.
- */
+/** {@code JavadocExtractor} extracts {@code ExecutableMember}s from a class. */
 public final class JavadocExtractor {
 
-  /** Holds Javadoc doclet configuration options. */
-  private final ConfigurationImpl configuration;
-
-  private static final Logger log = LoggerFactory.getLogger(JavadocExtractor.class);
-
   /**
-   * Constructs a {@code JavadocExtractor} with the given doclet {@code configuration}.
+   * Returns a list of {@code ExecutableMember}s extracted from the class with name {@code
+   * className}.
    *
-   * @param configuration the Javadoc doclet configuration
+   * @param className the qualified class name of the class from which to extract documentation
+   * @param sourcePath the path to the project source root folder
+   * @return a list of documented executable members
+   * @throws ClassNotFoundException if some reflection information cannot be loaded
+   * @throws FileNotFoundException if the source code of the class with name {@code className}
+   *     cannot be found in path {@code sourcePath}
    */
-  public JavadocExtractor(ConfigurationImpl configuration) {
-    this.configuration = configuration;
-  }
+  public List<ExecutableMember> extract(String className, String sourcePath)
+      throws ClassNotFoundException, FileNotFoundException {
 
-  /**
-   * Returns a list of {@code DocumentedMethod}s extracted from the given {@code classDoc}.
-   *
-   * @param classDoc the {@code ClassDoc} from which to extract method documentation
-   * @return a list containing documented methods from the class
-   * @throws IOException if the method encounters an error while reading/generating class
-   *     documentation
-   */
-  public List<DocumentedMethod> extract(ClassDoc classDoc) throws IOException {
-    List<DocumentedMethod> methods = new ArrayList<>();
+    // Obtain executable members by means of reflection.
+    final Class<?> clazz = Reflection.getClass(className);
+    final List<Executable> reflectionExecutables = getExecutables(clazz);
 
-    // Loop on constructors and methods (also inherited) of the target class.
-    for (ExecutableMemberDoc member : getConstructorsAndMethods(classDoc)) {
-      ClassDoc containingClass = member.containingClass();
-      String containingClassName = containingClass.name();
-      if (containingClassName.contains(".")) { // Containing class is not a top-level class.
-        containingClassName = containingClassName.replace(".", "$");
-      }
-      List<ThrowsTag> memberThrowsTags = extractThrowsTags(member, classDoc);
-      List<ParamTag> memberParamTags = extractParamTags(member, classDoc);
-      List<ReturnTag> memberReturnTags = extractReturnTag(member, classDoc);
+    // Obtain executable members in the source code.
+    // TODO Add support for nested classes.
+    String classFile = sourcePath + "/" + className.replaceAll("\\.", "/") + ".java";
+    final List<CallableDeclaration<?>> sourceExecutables =
+        getExecutables(clazz.getSimpleName(), classFile);
 
-      ReturnTag finalReturnTag = null;
-      if (!memberReturnTags.isEmpty()) finalReturnTag = memberReturnTags.get(0);
+    // Map reflection executable members to corresponding source members.
+    Map<Executable, CallableDeclaration<?>> executablesMap =
+        mapExecutables(reflectionExecutables, sourceExecutables);
 
-      methods.add(
-          new DocumentedMethod(
-              new org.toradocu.extractor.Type(
-                  containingClass.containingPackage() + "." + containingClassName),
-              member.name(),
-              getReturnType(member),
-              getParameters(member),
-              memberParamTags,
-              member.isVarArgs(),
-              memberThrowsTags,
-              finalReturnTag));
+    // Create the list of ExecutableMembers.
+    List<ExecutableMember> members = new ArrayList<>(reflectionExecutables.size());
+    for (Entry<Executable, CallableDeclaration<?>> entry : executablesMap.entrySet()) {
+      final Executable reflectionMember = entry.getKey();
+      final CallableDeclaration<?> sourceMember = entry.getValue();
+      final List<Parameter> parameters =
+          getParameters(sourceMember.getParameters(), reflectionMember.getParameters());
+      List<org.toradocu.extractor.Tag> tags = createTags(sourceMember, parameters);
+      members.add(new ExecutableMember(reflectionMember, parameters, tags));
     }
-
-    return methods;
-  }
-
-  /**
-   * Returns all constructors and methods (including inherited ones) from the given {@code ClassDoc}
-   * . Notice that methods inherited from the class {@code java.lang.Object} are ignored and not
-   * included in the returned list.
-   *
-   * @param classDoc the {@code ClassDoc} from which to extract constructors and methods
-   * @return a list of {@code ExecutableMemberDoc}s representing the constructors and methods of
-   *     {@code classDoc}
-   */
-  private List<ExecutableMemberDoc> getConstructorsAndMethods(ClassDoc classDoc) {
-    /* Constructors of the class {@code classDoc} to be returned by this method */
-    List<ExecutableMemberDoc> constructors = new ArrayList<>();
-
-    // Collect non-default constructors.
-    for (ConstructorDoc constructor : classDoc.constructors(false)) {
-      // This is a workaround to strange behavior of method Doc.position(). It does not return null
-      // for default constructors. It instead returns the line number of the start of the class.
-      SourcePosition position = constructor.position();
-      if (!constructor.isSynthetic()
-          && !constructor.isPrivate()
-          && position != null
-          && !position.toString().equals(classDoc.position().toString())) {
-        constructors.add(constructor);
-      }
-    }
-
-    // Collect non-private non-synthetic methods (i.e. those methods that have not been synthesized
-    // by the compiler).
-    List<MethodDoc> methods =
-        Arrays.stream(classDoc.methods(false))
-            .filter(m -> !m.isSynthetic() && !m.isPrivate())
-            .collect(Collectors.toList());
-
-    List<ExecutableMemberDoc> members = new ArrayList<>();
-    members.addAll(constructors);
-    members.addAll(methods);
     return members;
   }
 
-  /**
-   * Returns the return type of the given {@code member}. Returns {@code null} if {@code member} is
-   * a constructor.
-   *
-   * @param member the executable member (constructor or method) to return the return type
-   * @return the return type of the given member or null if the member is a constructor
-   */
-  private org.toradocu.extractor.Type getReturnType(ExecutableMemberDoc member) {
-    if (member instanceof MethodDoc) {
-      MethodDoc method = (MethodDoc) member;
-      Type returnType = method.returnType();
-      return new org.toradocu.extractor.Type(
-          returnType.qualifiedTypeName() + returnType.dimension());
-    } else {
+  private List<org.toradocu.extractor.Tag> createTags(
+      CallableDeclaration<?> sourceMember, List<Parameter> parameters)
+      throws ClassNotFoundException {
+    List<org.toradocu.extractor.Tag> tags = new ArrayList<>();
+    final Optional<Javadoc> javadocOpt = sourceMember.getJavadoc();
+    if (javadocOpt.isPresent()) {
+      final Javadoc javadocComment = javadocOpt.get();
+      final List<JavadocBlockTag> blockTags = javadocComment.getBlockTags();
+      for (JavadocBlockTag blockTag : blockTags) {
+        org.toradocu.extractor.Tag newTag = null;
+        switch (blockTag.getType()) {
+          case PARAM:
+            newTag = createParamTag(blockTag, parameters);
+            break;
+          case RETURN:
+            newTag = createReturnTag(blockTag);
+            break;
+          case THROWS:
+            newTag = createThrowsTag(blockTag, sourceMember);
+            break;
+        }
+        if (newTag != null) {
+          tags.add(newTag);
+        }
+      }
+    }
+    return tags;
+  }
+
+  private ThrowsTag createThrowsTag(JavadocBlockTag blockTag, CallableDeclaration<?> sourceMember)
+      throws ClassNotFoundException {
+    // Javaparser library does not provide a nice parsing of @throws tags. We have to parse the
+    // comment text by ourselves.
+    String comment = blockTag.getContent().toText();
+    final String[] tokens = comment.split(" ", 2);
+    final String exceptionName = tokens[0];
+    Class<?> exceptionType = findExceptionType(sourceMember, exceptionName);
+    Comment commentObject = new Comment(tokens[1]);
+    return new ThrowsTag(exceptionType, commentObject);
+  }
+
+  private ReturnTag createReturnTag(JavadocBlockTag blockTag) {
+    Comment commentObject = new Comment(blockTag.getContent().toText());
+    return new ReturnTag(commentObject);
+  }
+
+  private ParamTag createParamTag(JavadocBlockTag blockTag, List<Parameter> parameters) {
+    String paramName = blockTag.getName().orElse("");
+
+    final List<Parameter> matchingParams =
+        parameters.stream().filter(p -> p.getName().equals(paramName)).collect(toList());
+    // TODO If paramName not present in paramNames => issue a warning about incorrect documentation!
+    // TODO If more than one matching parameter found => issue a warning about incorrect documentation!
+    Comment commentObject = new Comment(blockTag.getContent().toText());
+    return new ParamTag(matchingParams.get(0), commentObject);
+  }
+
+  private List<Parameter> getParameters(
+      NodeList<com.github.javaparser.ast.body.Parameter> sourceParams,
+      java.lang.reflect.Parameter[] reflectionParams) {
+
+    if (sourceParams.size() != reflectionParams.length) {
+      throw new IllegalArgumentException(
+          "Source param types and reflection param types should be of the same size.");
+    }
+
+    List<Parameter> parameters = new ArrayList<>(sourceParams.size());
+    for (int i = 0; i < sourceParams.size(); i++) {
+      final Class<?> paramType = reflectionParams[i].getType();
+      final com.github.javaparser.ast.body.Parameter parameter = sourceParams.get(i);
+      final Boolean nullable = isNullable(parameter);
+      final String paramName = parameter.getName().asString();
+      parameters.add(new Parameter(paramType, paramName, nullable));
+    }
+    return parameters;
+  }
+
+  // Checks whether the given parameter is annotated with @NotNull or @Nullable or similar.
+  private Boolean isNullable(com.github.javaparser.ast.body.Parameter parameter) {
+    final List<String> parameterAnnotations =
+        parameter.getAnnotations().stream().map(a -> a.getName().asString()).collect(toList());
+    List<String> notNullAnnotations = new ArrayList<>(parameterAnnotations);
+    notNullAnnotations.retainAll(Parameter.notNullAnnotations);
+    List<String> nullableAnnotations = new ArrayList<>(parameterAnnotations);
+    notNullAnnotations.retainAll(Parameter.nullableAnnotations);
+
+    if (!notNullAnnotations.isEmpty() && !nullableAnnotations.isEmpty()) {
+      // Parameter is annotated as both nullable and notNull.
+      // TODO Log a warning about wrong specification?
       return null;
     }
+    if (!notNullAnnotations.isEmpty()) {
+      return false;
+    }
+    if (!nullableAnnotations.isEmpty()) {
+      return true;
+    }
+    return null;
   }
 
-  /**
-   * Returns the {@code Parameter}s of the given constructor or method.
-   *
-   * @param member the constructor or method from which to extract parameters
-   * @return an array of parameters
-   */
-  private List<Parameter> getParameters(ExecutableMemberDoc member) {
-    com.sun.javadoc.Parameter[] params = member.parameters();
-    Parameter[] parameters = new Parameter[params.length];
-    for (int i = 0; i < parameters.length; i++) {
-      // Determine nullness constraints from parameter annotations.
-      Boolean nullable = null;
-      for (AnnotationDesc annotation : params[i].annotations()) {
-        String annotationTypeName = annotation.annotationType().name().toLowerCase();
-        if (annotationTypeName.equals("nullable")) {
-          nullable = true;
-          break;
-        } else if (annotationTypeName.equals("notnull") || annotationTypeName.equals("nonnull")) {
-          nullable = false;
-          break;
-        }
+  // Collects members through reflection.
+  private List<Executable> getExecutables(Class<?> clazz) {
+    List<Executable> executables = new ArrayList<>();
+    executables.addAll(Arrays.asList(clazz.getDeclaredConstructors()));
+    executables.addAll(Arrays.asList(clazz.getDeclaredMethods()));
+    executables.removeIf(e -> Modifier.isPrivate(e.getModifiers())); // Ignore private members.
+    return Collections.unmodifiableList(executables);
+  }
+
+  // Collects members from source code.
+  private List<CallableDeclaration<?>> getExecutables(String className, String sourcePath)
+      throws FileNotFoundException {
+    final CompilationUnit cu = JavaParser.parse(new File(sourcePath));
+    final Optional<ClassOrInterfaceDeclaration> sourceClassOpt = cu.getClassByName(className);
+    final List<CallableDeclaration<?>> sourceExecutables = new ArrayList<>();
+    if (sourceClassOpt.isPresent()) {
+      final ClassOrInterfaceDeclaration sourceClass = sourceClassOpt.get();
+      sourceExecutables.addAll(sourceClass.getConstructors());
+      sourceExecutables.addAll(sourceClass.getMethods());
+      sourceExecutables.removeIf(NodeWithPrivateModifier::isPrivate); // Ignore private members.
+    }
+    return Collections.unmodifiableList(sourceExecutables);
+  }
+
+  // Maps reflection members to source code members.
+  private Map<Executable, CallableDeclaration<?>> mapExecutables(
+      List<Executable> reflectionExecutables, List<CallableDeclaration<?>> sourceExecutables) {
+
+    if (reflectionExecutables.size() != sourceExecutables.size()) {
+      throw new IllegalArgumentException("Error: Provided lists have different size.");
+    }
+
+    Map<Executable, CallableDeclaration<?>> map = new LinkedHashMap<>(reflectionExecutables.size());
+    for (CallableDeclaration<?> sourceMember : sourceExecutables) {
+      final List<Executable> matches =
+          reflectionExecutables
+              .stream()
+              .filter(
+                  e ->
+                      executableMemberSimpleName(e.getName())
+                              .equals(sourceMember.getName().asString())
+                          && sameParTypes(e.getParameters(), sourceMember.getParameters()))
+              .collect(toList());
+      if (matches.size() < 1) {
+        throw new AssertionError(
+            "Cannot find reflection executable member corresponding to "
+                + sourceMember.getSignature());
       }
-
-      String parameterType = getParameterType(params[i].type());
-      parameters[i] =
-          new Parameter(new org.toradocu.extractor.Type(parameterType), params[i].name(), nullable);
+      if (matches.size() > 1) {
+        throw new AssertionError(
+            "Found multiple reflection executable members corresponding to "
+                + sourceMember.getSignature());
+      }
+      map.put(matches.get(0), sourceMember);
     }
-    return Arrays.asList(parameters);
+    return map;
   }
 
-  /**
-   * Returns the qualified name (with dimension information) of the specified parameter type.
-   *
-   * @param parameterType the type (of a parameter)
-   * @return the qualified name (with dimension information) of the specified parameter type
-   */
-  private String getParameterType(Type parameterType) {
-    String qualifiedName = "";
-
-    TypeVariable pTypeAsTypeVariable = parameterType.asTypeVariable();
-    // If the parameter is a type variable.
-    if (pTypeAsTypeVariable != null) { // pTypeAsTypeVarialble can be like <E extends T>
-      Type[] bounds = pTypeAsTypeVariable.bounds(); // bounds[0] is "T"
-      do {
-        if (bounds.length == 0) {
-          qualifiedName = "java.lang.Object";
-        } else {
-          // FIXME What if the parameter type has multiple bounds? (e.g., <T extends B1 & B2>)
-          TypeVariable boundType = bounds[0].asTypeVariable(); // boundType is "T"
-          if (boundType == null) {
-            qualifiedName = bounds[0].qualifiedTypeName();
-            break;
-          } else {
-            bounds = boundType.bounds();
-          }
-        }
-      } while (qualifiedName.isEmpty());
-    } else {
-      qualifiedName = parameterType.qualifiedTypeName();
+  // Checks that reflection param types and source param types are the same.
+  private boolean sameParTypes(
+      java.lang.reflect.Parameter[] reflectionParams,
+      NodeList<com.github.javaparser.ast.body.Parameter> sourceParams) {
+    if (reflectionParams.length != sourceParams.size()) {
+      return false;
     }
-    /* Add dimension information when appropriate. Add "[]" if parameterType is a vararg. */
-    return qualifiedName + parameterType.dimension();
+
+    for (int i = 0; i < reflectionParams.length; i++) {
+      final java.lang.reflect.Parameter reflectionParam = reflectionParams[i];
+      final String reflectionType = removeGenerics(reflectionParam.getType().getSimpleName());
+
+      final com.github.javaparser.ast.body.Parameter sourceParam = sourceParams.get(i);
+      final String sourceType = removeGenerics(sourceParam.getType().asString());
+
+      if (!reflectionType.equals(sourceType)) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
-  /**
-   * This method tries to return the qualified name of the exception in the {@code throwsTag}. If
-   * the source code of the exception is not available, then just the simple name in the Javadoc
-   * comment is returned.
-   *
-   * @param throwsTag throws tag to extract exception name from
-   * @param member the method to which this throws tag belongs
-   * @return the name of the exception in the throws tag (qualified, if possible)
-   */
-  @SuppressWarnings("deprecation")
-  private String getExceptionName(com.sun.javadoc.ThrowsTag throwsTag, ExecutableMemberDoc member) {
-    // We use deprecated method in Javadoc API. No alternative solution is documented.
-    Type exceptionType = throwsTag.exceptionType();
-    if (exceptionType != null) {
-      return exceptionType.qualifiedTypeName();
+  private String removeGenerics(String type) {
+    int i = type.indexOf("<");
+    if (i != -1) { // If type contains "<".
+      return type.substring(0, i);
     }
-    // Try to collect the exception's name from the import declarations.
-    String exceptionName = throwsTag.exceptionName();
-    ClassDoc[] importedClasses;
+    return type;
+  }
+
+  private String executableMemberSimpleName(String reflectionName) {
+    // Constructor names contain package name.
+    int i = reflectionName.indexOf(".");
+    if (i != -1) {
+      return reflectionName.substring(reflectionName.lastIndexOf(".") + 1);
+    }
+    return reflectionName;
+  }
+
+  // Tries
+  private Class<?> findExceptionType(CallableDeclaration<?> sourceMember, String exceptionName)
+      throws ClassNotFoundException {
+    Class<?> exceptionType = null;
     try {
-      importedClasses = member.containingClass().importedClasses();
-    } catch (NullPointerException e) {
-      importedClasses = new ClassDoc[0];
+      exceptionType = Reflection.getClass(exceptionName);
+    } catch (ClassNotFoundException e) {
+      // Intentionally empty.
     }
-    for (ClassDoc importedClass : importedClasses) {
-      if (importedClass.name().equals(exceptionName)) {
-        return importedClass.qualifiedName();
+    if (exceptionType == null) {
+      try {
+        exceptionType = Reflection.getClass("java.lang." + exceptionName);
+      } catch (ClassNotFoundException e) {
+        // Intentionally empty.
       }
     }
-    // If fully qualified exception's name cannot be collected from import statements, return the simple name
-    return exceptionName;
-  }
-
-  /**
-   * Given a set of @{code ParamTag} tags, returns a map that associates a parameter with its
-   * {@code @param} comment. The key of the map is the parameter name.
-   *
-   * @param tags an array of {@code ParamTag}s
-   * @return a map, parameter name -> @param comment
-   */
-  private Map<String, Tag> getParamTags(Tag[] tags) {
-    Map<String, Tag> paramTags = new LinkedHashMap<>();
-    for (Tag tag : tags) {
-      com.sun.javadoc.ParamTag paramTag = (com.sun.javadoc.ParamTag) tag;
-      paramTags.putIfAbsent(paramTag.parameterName(), paramTag);
-    }
-    return paramTags;
-  }
-
-  /**
-   * This method extracts the throwsTags from the class we want.
-   *
-   * @param member the constructor or method from which to extract the throws tags
-   * @param classDoc the class that we use to extract the tags
-   * @return the list that contains the ThrowsTags of the class we gave
-   * @throws IOException if the method encounters an error while reading/generating class
-   *     documentation
-   */
-  private List<ThrowsTag> extractThrowsTags(ExecutableMemberDoc member, ClassDoc classDoc)
-      throws IOException {
-    // list that will contain the throws tags
-    List<Tag> throwsTags = new ArrayList<>();
-
-    // Collect tags in the current method's documentation. This is needed because DocFinder.search
-    // does not load tags of a method when the method overrides a superclass' method also
-    // overwriting the Javadoc documentation.
-    throwsTags.addAll(throwsTagsOf(member));
-
-    //    Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
-
-    // Collect tags that are automatically inherited (i.e., when there is no comment for a method
-    // overriding another one).
-    //    throwsTags.addAll(throwsTagsOf(holder));
-
-    // Collect tags from method definitions in interfaces. This is not done by DocFinder.search
-    // (at least in the way we use it).
-    //    if (holder instanceof MethodDoc) {
-    //      ImplementedMethods implementedMethods =
-    //          new ImplementedMethods((MethodDoc) holder, configuration);
-    //      for (MethodDoc implementedMethod : implementedMethods.build()) {
-    //        throwsTags.addAll(throwsTagsOf(implementedMethod));
-    //      }
-    //    }
-
-    List<ThrowsTag> memberThrowsTags = new ArrayList<>();
-    for (Tag tag : throwsTags) {
-      if (!(tag instanceof com.sun.javadoc.ThrowsTag)) {
-        throw new IllegalStateException(
-            tag
-                + " is not a @Throws tag. This should not happen. Toradocu only considers @throws tags.");
+    if (exceptionType == null) {
+      // Look for an import statement to complete exception type name.
+      Optional<Node> nodeOpt = sourceMember.getParentNode();
+      Node node = nodeOpt.orElse(null);
+      while (!(node instanceof CompilationUnit)) {
+        nodeOpt = node.getParentNode();
+        node = nodeOpt.orElse(null);
       }
-
-      com.sun.javadoc.ThrowsTag throwsTag = (com.sun.javadoc.ThrowsTag) tag;
-      // Handle inline taglets such as {@inheritDoc}.
-      TagletWriter tagletWriter =
-          new HtmlDocletWriter(configuration, DocPath.forClass(classDoc))
-              .getTagletWriterInstance(false);
-      String comment = tagletWriter.commentTagsToOutput(tag, tag.inlineTags()).toString();
-
-      /* taggedComment is the output of the Jsoup parsing: it can be exploited to extract
-       * text contained in a certain tag. For now we're interested in <code> */
-      Document taggedComment = Jsoup.parse(comment);
-
-      /* Remove HTML tags (also generated by inline taglets). In the future, perhaps retain those tags,
-       * because they contain information that can be exploited. */
-      comment = taggedComment.text();
-
-      // Words tagged with <code></code> (@code) found in the Javadoc comment of the parsed method
-      List<String> stringCodeTags =
-          taggedComment.select("code").stream().map(Element::text).collect(Collectors.toList());
-
-      ThrowsTag tagToProcess =
-          new ThrowsTag(
-              new org.toradocu.extractor.Type(getExceptionName(throwsTag, member)),
-              comment,
-              stringCodeTags);
-      memberThrowsTags.add(tagToProcess);
-    }
-
-    return memberThrowsTags;
-  }
-
-  /**
-   * Returns all the @throws and @exception tags in the documentation of the given class member.
-   *
-   * @param member a class member
-   * @return a list with all the @throws and @exception tags of member
-   */
-  private static List<Tag> throwsTagsOf(Doc member) {
-    final List<Tag> throwsTags = new ArrayList<>();
-    Collections.addAll(throwsTags, member.tags("@exception"));
-    Collections.addAll(throwsTags, member.tags("@throws"));
-    return throwsTags;
-  }
-
-  /**
-   * @param member the constructor or method from which to extract the throws tags
-   * @param classDoc the class that we use to extract the tags
-   * @return the list that contains the ParamTags of the class we gave
-   * @throws IOException if the method encounters an error while reading/generating class
-   *     documentation
-   */
-  private List<ParamTag> extractParamTags(ExecutableMemberDoc member, ClassDoc classDoc)
-      throws IOException {
-
-    // List that will contain all the paramTags in the method.
-    List<Tag> paramTags = new ArrayList<>();
-
-    // Map parameter name -> @param tag.
-    Map<String, Tag> paramTagsMap = new LinkedHashMap<>();
-
-    // Param tag support.
-    paramTagsMap.putAll(getParamTags(member.tags("@param")));
-
-    //    Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
-
-    // Extract the inherited tags.
-    //    paramTagsMap.putAll(getParamTags(holder.tags("@param")));
-
-    // Collect tags from method definitions in interfaces. This is not done by DocFinder.search
-    // (at least in the way we use it).
-    //    if (holder instanceof MethodDoc) {
-    //      ImplementedMethods implementedMethods =
-    //          new ImplementedMethods((MethodDoc) holder, configuration);
-    //      for (MethodDoc implementedMethod : implementedMethods.build()) {
-    //        //param
-    //        paramTagsMap.putAll(getParamTags(implementedMethod.tags("@param")));
-    //      }
-    //    }
-
-    // List that will contain the ParamTags of the method.
-    paramTags.addAll(paramTagsMap.values());
-    List<ParamTag> memberParamTags = new ArrayList<>();
-    for (Tag tag : paramTags) { // For each of the tags in paramTags.
-      if (!(tag instanceof com.sun.javadoc.ParamTag)) { // If it is not an instanceof ParamTag.
-        throw new IllegalStateException(
-            tag
-                + " is not a @param tag. This should not happen."
-                + " Toradocu only considers @param and @throws tags.");
-      }
-
-      // We create a paramsTag that will be the cast of tag to ParamTag in order to work with it.
-      com.sun.javadoc.ParamTag paramsTag = (com.sun.javadoc.ParamTag) tag;
-
-      // Handle inline taglets such as {@inheritDoc}.
-      TagletWriter tagletWriter =
-          new HtmlDocletWriter(configuration, DocPath.forClass(classDoc))
-              .getTagletWriterInstance(false);
-      String comment = tagletWriter.commentTagsToOutput(tag, tag.inlineTags()).toString();
-
-      // Remove HTML tags (also generated by inline taglets). In the future, perhaps retain those
-      // tags, because they contain information that can be exploited.
-      comment = Jsoup.parse(comment).text();
-
-      //The list of the parameters of the method that we'll use in order to match
-      //the parameterName of the tag with the parameter itself
-      List<Parameter> parameters = getParameters(member);
-
-      String name = null; //Name of the ParamTag that we'll introduce
-      org.toradocu.extractor.Type type = null; //type of the parameter of the ParamTag
-      Boolean nullable = null; // Nullability of the parameter.
-
-      boolean found = false; //Boolean for control
-      for (int i = 0; !found && i < parameters.size(); i++) {
-        if (parameters.get(i).getName().equals(paramsTag.parameterName())) {
-          // If the tag parameterName matches any parameter name in the method, then we stop the
-          // loop.
-          found = true;
-          name = parameters.get(i).getName(); //then we assign values to the variables
-          type = parameters.get(i).getType();
-          nullable = parameters.get(i).getNullability();
+      CompilationUnit cu = (CompilationUnit) node;
+      final NodeList<ImportDeclaration> imports = cu.getImports();
+      for (ImportDeclaration anImport : imports) {
+        String importedType = anImport.getNameAsString();
+        if (importedType.contains(exceptionName)) {
+          exceptionType = Reflection.getClass(importedType);
         }
       }
-
-      if (!found) { //At the exit of the loop, if found == true, we didn't find anything
-        log.trace(
-            tag
-                + " this param tag does not have a name that matches any of the parameters in "
-                + "the method.");
-      } else { //if not, then, the variables will have the value we want
-        ParamTag tagToProcess = new ParamTag(new Parameter(type, name, nullable), comment);
-        memberParamTags.add(tagToProcess); //And then, we'll add it in the list we had before
-      }
     }
-    return memberParamTags;
-  }
-
-  /**
-   * This method extracts the returnTag from the class we want.
-   *
-   * @param member the constructor or method from which to extract the return tags
-   * @param classDoc the class that we use to extract the tags
-   * @return the list that contains the ReturnTags of the class we gave
-   * @throws IOException if the method encounters an error while reading/generating class
-   *     documentation
-   */
-  private List<ReturnTag> extractReturnTag(ExecutableMemberDoc member, ClassDoc classDoc)
-      throws IOException {
-    // List that will contain the return tags and will be returned by this method.
-    List<Tag> returnTags = new ArrayList<>();
-    final String TAG_NAME = "@return";
-
-    // Collect tags in the current method's documentation. This is needed because DocFinder.search
-    // does not load tags of a method when the method overrides a superclass' method also
-    // overwriting the Javadoc documentation.
-    Collections.addAll(returnTags, member.tags(TAG_NAME));
-
-    //    if (returnTags.isEmpty()) { // Inherit @return comments if necessary.
-    //      Doc holder = DocFinder.search(new DocFinder.Input(member)).holder;
-    //
-    //      // Collect tags that are automatically inherited (i.e., when there is no comment for a method
-    //      // overriding another one).
-    //      Collections.addAll(returnTags, holder.tags(TAG_NAME));
-    //
-    //      // Collect tags from method definitions in interfaces. This is not done by DocFinder.search
-    //      // (at least in the way we use it).
-    //      if (holder instanceof MethodDoc) {
-    //        ImplementedMethods implementedMethods =
-    //            new ImplementedMethods((MethodDoc) holder, configuration);
-    //        for (MethodDoc implementedMethod : implementedMethods.build()) {
-    //          Collections.addAll(returnTags, implementedMethod.tags(TAG_NAME));
-    //        }
-    //      }
-    //    }
-
-    List<ReturnTag> memberReturnTags = new ArrayList<>();
-    for (Tag tag : returnTags) {
-
-      // Handle inline taglets such as {@inheritDoc}.
-      TagletWriter tagletWriter =
-          new HtmlDocletWriter(configuration, DocPath.forClass(classDoc))
-              .getTagletWriterInstance(false);
-      String comment = tagletWriter.commentTagsToOutput(tag, tag.inlineTags()).toString();
-
-      /* taggedComment is the output of the Jsoup parsing: it can be exploited to extract
-       * text contained in a certain tag. For now we're interested in <code> */
-      Document taggedComment = Jsoup.parse(comment);
-
-      // Remove HTML tags (also generated by inline taglets). In the future, perhaps retain those
-      // tags, because they contain information that can be exploited.
-      comment = taggedComment.text();
-
-      ReturnTag tagToProcess = new ReturnTag(comment);
-      memberReturnTags.add(tagToProcess);
+    if (exceptionType == null) {
+      throw new ClassNotFoundException("Impossible to load exception type " + exceptionName);
     }
-
-    if (memberReturnTags.size() > 1) {
-      log.trace(
-          "There are more than one return tag in this method. This is not handled by Toradocu");
-    }
-
-    return memberReturnTags;
+    return exceptionType;
   }
 }

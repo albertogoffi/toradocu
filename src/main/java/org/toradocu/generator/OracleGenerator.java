@@ -13,14 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.Checks;
+import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ReturnTag;
 import org.toradocu.extractor.Tag;
-import org.toradocu.util.Checks;
 
 /**
  * The oracle generator. The method {@code createAspects} of this class creates the aspects for a
- * list of {@code DocumentedMethod}.
+ * list of {@code ExecutableMember}.
  */
 public class OracleGenerator {
 
@@ -33,7 +33,7 @@ public class OracleGenerator {
    *
    * @param methods the {@code List} of methods to create aspects for. Must not be null.
    */
-  public static void createAspects(List<DocumentedMethod> methods) {
+  public static void createAspects(List<ExecutableMember> methods) {
     if (!configuration.isOracleGenerationEnabled()) {
       log.info("Oracle generator disabled: skipped aspect generation.");
       return;
@@ -64,17 +64,17 @@ public class OracleGenerator {
     final String junitAspectName = junitAspect.substring(0, junitAspect.lastIndexOf("."));
     createdAspectNames.add(junitAspectName);
     int aspectNumber = 1;
-    for (DocumentedMethod method : methods) {
+    for (ExecutableMember method : methods) {
       List<Tag> tags = new ArrayList<>(method.paramTags());
       tags.addAll(method.throwsTags());
       ReturnTag returnTag = method.returnTag();
       if (returnTag != null && returnTag.getCondition() != null) {
-        String condition = returnTag.getCondition().orElse("");
+        String condition = returnTag.getCondition();
         if (!condition.isEmpty()) {
           tags.add(returnTag);
         }
       }
-      boolean match = tags.stream().anyMatch(tag -> !tag.getCondition().orElse("").isEmpty());
+      boolean match = tags.stream().anyMatch(tag -> !tag.getCondition().isEmpty());
       if (match) {
         String aspectName = "Aspect_" + aspectNumber;
         createAspect(method, aspectName);
@@ -92,7 +92,7 @@ public class OracleGenerator {
    * @param aspectName name of the file where the newly created aspect is saved
    * @throws NullPointerException if {@code method} or {@code aspectName} is null
    */
-  private static void createAspect(DocumentedMethod method, String aspectName) {
+  private static void createAspect(ExecutableMember method, String aspectName) {
     Checks.nonNullParameter(method, "method");
     Checks.nonNullParameter(aspectName, "aspectName");
 

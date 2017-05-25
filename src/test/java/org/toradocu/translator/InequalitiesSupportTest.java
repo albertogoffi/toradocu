@@ -18,7 +18,7 @@ import javax.tools.ToolProvider;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.toradocu.Toradocu;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.util.GsonInstance;
 
 public class InequalitiesSupportTest {
@@ -58,12 +58,12 @@ public class InequalitiesSupportTest {
     Toradocu.main(argsList.toArray(new String[0]));
     assertTrue(Files.exists(actualOutput));
 
-    Type listType = new TypeToken<List<DocumentedMethod>>() {}.getType();
+    Type listType = new TypeToken<List<ExecutableMember>>() {}.getType();
     try (BufferedReader actualOutputReader = Files.newBufferedReader(actualOutput);
         BufferedReader expectedOutputReader = Files.newBufferedReader(actualOutput); ) {
-      List<DocumentedMethod> actualSpecs =
+      List<ExecutableMember> actualSpecs =
           GsonInstance.gson().fromJson(actualOutputReader, listType);
-      List<DocumentedMethod> expectedSpecs =
+      List<ExecutableMember> expectedSpecs =
           GsonInstance.gson().fromJson(expectedOutputReader, listType);
       assertThat(actualSpecs, is(expectedSpecs));
     }

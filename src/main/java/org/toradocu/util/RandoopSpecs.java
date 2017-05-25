@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import org.toradocu.Checks;
 import org.toradocu.conf.Configuration;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ParamTag;
 import org.toradocu.extractor.Parameter;
 import org.toradocu.extractor.ReturnTag;
@@ -33,7 +34,7 @@ public class RandoopSpecs {
    * @param method a documented executable member of a class
    * @return specifications for {@code method} in the Randoop operation specification format
    */
-  public static OperationSpecification translate(DocumentedMethod method) {
+  public static OperationSpecification translate(ExecutableMember method) {
     Operation operation = Operation.getOperation(method.getExecutable());
 
     List<String> params =
@@ -74,12 +75,13 @@ public class RandoopSpecs {
    * @return the Randoop {@code param} specification, or {@code null} if the tag comment has not
    *     been translated by Toradocu, or if the translation is empty
    */
-  public static PreSpecification translate(ParamTag tag, DocumentedMethod method) {
-    String condition = tag.getCondition().orElse("");
+  public static PreSpecification translate(ParamTag tag, ExecutableMember method) {
+    String condition = tag.getCondition();
     return condition.isEmpty()
         ? null
         : new PreSpecification(
-            tag.getComment(), new Guard(tag.getComment(), processCondition(condition, method)));
+            tag.getComment().getText(),
+            new Guard(tag.getComment().getText(), processCondition(condition, method)));
   }
 
   /**
@@ -90,8 +92,8 @@ public class RandoopSpecs {
    * @return the Randoop {@code return} specification, or {@code null} if the tag comment has not
    *     been translated by Toradocu, or if the translation is empty
    */
-  public static List<PostSpecification> translate(ReturnTag tag, DocumentedMethod method) {
-    String condition = tag.getCondition().orElse("");
+  public static List<PostSpecification> translate(ReturnTag tag, ExecutableMember method) {
+    String condition = tag.getCondition();
     if (condition.isEmpty()) {
       return null;
     }
@@ -111,11 +113,12 @@ public class RandoopSpecs {
     List<PostSpecification> specs = new ArrayList<>();
     String propertiesStr = condition.substring(condition.indexOf("?") + 1, condition.length());
     String[] properties = propertiesStr.split(":", 2);
-    Property property = new Property(tag.getComment(), processCondition(properties[0], method));
+    Property property =
+        new Property(tag.getComment().getText(), processCondition(properties[0], method));
     specs.add(new PostSpecification(description, guard, property));
     if (properties.length > 1) {
       Property elseProperty =
-          new Property(tag.getComment(), processCondition(properties[1], method));
+          new Property(tag.getComment().getText(), processCondition(properties[1], method));
       specs.add(new PostSpecification(description, guard, elseProperty));
     }
     return specs;
@@ -129,16 +132,17 @@ public class RandoopSpecs {
    * @return the Randoop {@code throws} specification, or {@code null} if the tag comment has not
    *     been translated by Toradocu, or if the translation is empty
    */
-  public static ThrowsSpecification translate(ThrowsTag tag, DocumentedMethod method) {
-    String condition = tag.getCondition().orElse("");
+  public static ThrowsSpecification translate(ThrowsTag tag, ExecutableMember method) {
+    String condition = tag.getCondition();
     if (condition.isEmpty()) {
       return null;
     }
 
     String tagKind = format(tag.getKind());
-    String description = tagKind + " " + tag.exception().getSimpleName() + " " + tag.getComment();
-    Guard guard = new Guard(tag.getComment(), processCondition(condition, method));
-    return new ThrowsSpecification(description, guard, tag.exception().getQualifiedName());
+    String description =
+        tagKind + " " + tag.getException().getSimpleName() + " " + tag.getComment();
+    Guard guard = new Guard(tag.getComment().getText(), processCondition(condition, method));
+    return new ThrowsSpecification(description, guard, tag.getException().getName());
   }
 
   /**
@@ -160,7 +164,7 @@ public class RandoopSpecs {
    * @param method the documented method the condition specifies
    * @return the given condition with the actual parameter names
    */
-  private static String processCondition(String condition, DocumentedMethod method) {
+  private static String processCondition(String condition, ExecutableMember method) {
     Checks.nonNullParameter(condition, "condition");
     Checks.nonNullParameter(method, "method");
 

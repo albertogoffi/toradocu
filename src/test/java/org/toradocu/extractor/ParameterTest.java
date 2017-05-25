@@ -7,59 +7,48 @@ import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
+import org.toradocu.util.Reflection;
 
 public class ParameterTest {
 
+  private final Class<?> string;
+
+  public ParameterTest() throws ClassNotFoundException {
+    string = Reflection.getClass("java.lang.String");
+  }
+
   @Test
   public void testBasics() {
-    Parameter p = new Parameter(new Type("org.toradocu.Parameter"), "par");
-    assertThat(p.getType().getQualifiedName(), is("org.toradocu.Parameter"));
-    assertThat(p.getType().getSimpleName(), is("Parameter"));
+    Parameter p = new Parameter(string, "par");
+    assertThat(p.getType(), is(string));
     assertThat(p.getName(), is("par"));
     assertThat(p.getNullability(), is(nullValue()));
 
-    Parameter intPar = new Parameter(new Type("int"), "par", false);
-    assertThat(intPar.getType().getSimpleName(), is("int"));
-    assertThat(intPar.getType().getQualifiedName(), is("int"));
+    Parameter intPar = new Parameter(string, "par", false);
     assertThat(intPar.getNullability(), is(false));
 
-    intPar = new Parameter(new Type("int"), "par", true);
+    intPar = new Parameter(string, "par", true);
     assertThat(intPar.getNullability(), is(true));
   }
 
   @Test
   public void testToString() {
-    Type type = new Type("org.toradocu.Parameter");
     String name = "par";
-    Parameter p = new Parameter(type, name);
-    assertThat(p.toString(), is(type + " " + name));
-  }
-
-  @Test
-  public void testNullability() {
-    Type type = new Type("org.toradocu.Parameter");
-    Parameter p = new Parameter(type, "par");
-    assertThat(p.getNullability(), is(nullValue()));
-
-    p = new Parameter(type, "par", false);
-    assertThat(p.getNullability(), is(false));
-
-    p = new Parameter(type, "par", true);
-    assertThat(p.getNullability(), is(true));
+    Parameter p = new Parameter(string, name);
+    assertThat(p.toString(), is(string.getName() + " " + name));
   }
 
   @Test
   public void testEquals() {
-    Type type = new Type("org.toradocu.Parameter");
-    Parameter p1 = new Parameter(type, "par");
+    Parameter p1 = new Parameter(string, "par");
     assertThat(p1.equals(p1), is(true));
     assertThat(p1.hashCode(), is(p1.hashCode()));
 
-    Parameter p1Copy = new Parameter(type, "par");
+    Parameter p1Copy = new Parameter(string, "par");
     assertThat(p1.equals(p1Copy), is(true));
     assertThat(p1.hashCode(), is(equalTo(p1Copy.hashCode())));
 
-    Parameter differentPar = new Parameter(type, "foo");
+    Parameter differentPar = new Parameter(string, "foo");
     assertThat(p1.equals(differentPar), is(false));
 
     Object anObject = new Object();

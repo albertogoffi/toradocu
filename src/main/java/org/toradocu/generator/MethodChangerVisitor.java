@@ -28,20 +28,20 @@ import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.toradocu.Checks;
 import org.toradocu.Toradocu;
 import org.toradocu.conf.Configuration;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ParamTag;
 import org.toradocu.extractor.Parameter;
 import org.toradocu.extractor.ReturnTag;
 import org.toradocu.extractor.ThrowsTag;
-import org.toradocu.util.Checks;
 
 /**
  * Visitor that modifies the aspect template (see method {@code visit}) to generate an aspect
- * (oracle) for a {@code DocumentedMethod}.
+ * (oracle) for a {@code ExecutableMember}.
  */
-public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMethod> {
+public class MethodChangerVisitor extends ModifierVisitorAdapter<ExecutableMember> {
 
   /** {@code Logger} for this class. */
   private static final Logger log = LoggerFactory.getLogger(MethodChangerVisitor.class);
@@ -53,56 +53,56 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
    * injecting the appropriate source code to get an aspect (oracle) for the method arg.
    *
    * @param methodDeclaration the method declaration of the method to visit
-   * @param documentedMethod the {@code DocumentedMethod} for which to generate the aspect (oracle)
+   * @param executableMember the {@code ExecutableMember} for which to generate the aspect (oracle)
    * @return the {@code methodDeclaration} modified as and when needed
-   * @throws NullPointerException if {@code methodDeclaration} or {@code documentedMethod} is null
+   * @throws NullPointerException if {@code methodDeclaration} or {@code executableMember} is null
    */
   @Override
-  public Node visit(MethodDeclaration methodDeclaration, DocumentedMethod documentedMethod) {
+  public Node visit(MethodDeclaration methodDeclaration, ExecutableMember executableMember) {
     Checks.nonNullParameter(methodDeclaration, "methodDeclaration");
-    Checks.nonNullParameter(documentedMethod, "documentedMethod");
+    Checks.nonNullParameter(executableMember, "executableMember");
 
     switch (methodDeclaration.getName()) {
       case "advice":
-        adviceChanger(methodDeclaration, documentedMethod);
+        adviceChanger(methodDeclaration, executableMember);
         break;
       case "getExpectedExceptions":
-        getExpectedExceptionChanger(methodDeclaration, documentedMethod);
+        getExpectedExceptionChanger(methodDeclaration, executableMember);
         break;
       case "paramTagsSatisfied":
-        paramTagSatisfiedChanger(methodDeclaration, documentedMethod);
+        paramTagSatisfiedChanger(methodDeclaration, executableMember);
         break;
       case "checkResult":
-        checkResultChanger(methodDeclaration, documentedMethod);
+        checkResultChanger(methodDeclaration, executableMember);
         break;
     }
     return methodDeclaration;
   }
 
   private void checkResultChanger(
-      MethodDeclaration methodDeclaration, DocumentedMethod documentedMethod) {
-    ReturnTag tag = documentedMethod.returnTag();
+      MethodDeclaration methodDeclaration, ExecutableMember executableMember) {
+    ReturnTag tag = executableMember.returnTag();
 
     ReturnStmt returnResultStmt = new ReturnStmt();
     returnResultStmt.setExpr(new NameExpr("result"));
 
-    if (tag == null || tag.getCondition().orElse("").isEmpty()) {
+    if (tag == null || tag.getCondition().isEmpty()) {
       methodDeclaration.getBody().getStmts().add(returnResultStmt);
       return;
     }
 
     // Remove whitespaces to do not influence parsing.
-    String spec = tag.getCondition().get().replace(" ", "");
+    String spec = tag.getCondition().replace(" ", "");
 
-    String guardCondition = addCasting(spec.substring(0, spec.indexOf("?")), documentedMethod);
+    String guardCondition = addCasting(spec.substring(0, spec.indexOf("?")), executableMember);
     String propertiesStr = spec.substring(spec.indexOf("?") + 1);
     String[] properties = propertiesStr.split(":", 2);
-    String castedProperty = addCasting(properties[0], documentedMethod);
+    String castedProperty = addCasting(properties[0], executableMember);
     String thenBlock = createBlock("if ((" + castedProperty + ")==false) { fail(\"Error!\"); }");
 
     IfStmt ifStmt;
     if (properties.length > 1) {
-      String castedProperty1 = addCasting(properties[1], documentedMethod);
+      String castedProperty1 = addCasting(properties[1], executableMember);
       String elseBlock = createBlock("if ((" + castedProperty1 + ")==false) { fail(\"Error!\"); }");
       ifStmt = createIfStmt(guardCondition, tag.getComment(), thenBlock, elseBlock);
     } else {
@@ -113,14 +113,14 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
   }
 
   private void paramTagSatisfiedChanger(
-      MethodDeclaration methodDeclaration, DocumentedMethod documentedMethod) {
+      MethodDeclaration methodDeclaration, ExecutableMember executableMember) {
     boolean returnStmtNeeded = true;
-    for (ParamTag tag : documentedMethod.paramTags()) {
-      String condition = tag.getCondition().orElse("");
+    for (ParamTag tag : executableMember.paramTags()) {
+      String condition = tag.getCondition();
       if (condition.isEmpty()) {
         continue;
       }
-      condition = addCasting(condition, documentedMethod);
+      condition = addCasting(condition, executableMember);
       String thenBlock = createBlock("return true;");
       String elseBlock = createBlock("return false;");
       IfStmt ifStmt = createIfStmt(condition, tag.toString(), thenBlock, elseBlock);
@@ -136,14 +136,14 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
   }
 
   private void getExpectedExceptionChanger(
-      MethodDeclaration methodDeclaration, DocumentedMethod documentedMethod) {
-    for (ThrowsTag tag : documentedMethod.throwsTags()) {
-      String condition = tag.getCondition().orElse("");
+      MethodDeclaration methodDeclaration, ExecutableMember executableMember) {
+    for (ThrowsTag tag : executableMember.throwsTags()) {
+      String condition = tag.getCondition();
       if (condition.isEmpty()) {
         continue;
       }
 
-      condition = addCasting(condition, documentedMethod);
+      condition = addCasting(condition, executableMember);
 
       IfStmt ifStmt = new IfStmt();
       Expression conditionExpression;
@@ -217,13 +217,13 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
   }
 
   private void adviceChanger(
-      MethodDeclaration methodDeclaration, DocumentedMethod documentedMethod) {
+      MethodDeclaration methodDeclaration, ExecutableMember executableMember) {
     String pointcut;
 
-    if (documentedMethod.isConstructor()) {
-      pointcut = "execution(" + getPointcut(documentedMethod) + ")";
+    if (executableMember.isConstructor()) {
+      pointcut = "execution(" + getPointcut(executableMember) + ")";
     } else {
-      pointcut = "call(" + getPointcut(documentedMethod) + ")";
+      pointcut = "call(" + getPointcut(executableMember) + ")";
       String testClassName = conf.getTestClass();
       if (testClassName != null) {
         pointcut += " && within(" + testClassName + ")";
@@ -266,14 +266,14 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
 
   /**
    * Generates the AspectJ pointcut definition to be used to match the given {@code
-   * DocumentedMethod}. A pointcut definition looks like {@code call(void C.foo())}. Given a {@code
-   * DocumentedMethod} describing the method C.foo(), this method returns the string {@code
+   * ExecutableMember}. A pointcut definition looks like {@code call(void C.foo())}. Given a {@code
+   * ExecutableMember} describing the method C.foo(), this method returns the string {@code
    * call(void C.foo())}.
    *
-   * @param method {@code DocumentedMethod} for which to generate the pointcut definition
+   * @param method {@code ExecutableMember} for which to generate the pointcut definition
    * @return the pointcut definition matching {@code method}
    */
-  private static String getPointcut(DocumentedMethod method) {
+  private static String getPointcut(ExecutableMember method) {
     StringBuilder pointcut = new StringBuilder();
 
     if (method.isConstructor()) { // Constructors
@@ -310,7 +310,7 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
    * @return the input condition with casted method arguments and target
    * @throws NullPointerException if {@code condition} or {@code method} is null
    */
-  private static String addCasting(String condition, DocumentedMethod method) {
+  private static String addCasting(String condition, ExecutableMember method) {
     Checks.nonNullParameter(condition, "condition");
     Checks.nonNullParameter(method, "method");
 

@@ -17,8 +17,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.toradocu.Toradocu;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ParamTag;
 import org.toradocu.extractor.Parameter;
 import org.toradocu.extractor.Tag;
@@ -28,6 +27,7 @@ import org.toradocu.extractor.ThrowsTag;
  * ConditionTranslator translates exception comments in method documentation to Java expressions.
  * The entry point is {@link #translate(List)}.
  */
+@Deprecated
 public class ConditionTranslator {
 
   private static final Logger log = LoggerFactory.getLogger(ConditionTranslator.class);
@@ -36,13 +36,19 @@ public class ConditionTranslator {
    * Translates throws an param tags in the given methods. This method sets the field {@code
    * AbstractTag.condition} for each tag in the given methods.
    *
-   * @param methods a list of {@code DocumentedMethod}s whose throws tags to translate
+   * @param methods a list of {@code ExecutableMember}s whose throws tags to translate
    */
-  public static void translate(List<DocumentedMethod> methods) {
-    for (DocumentedMethod method : methods) {
-      for (ThrowsTag tag : method.throwsTags()) processTag(tag, method);
-      for (ParamTag tag : method.paramTags()) processTag(tag, method);
-      if (method.returnTag() != null) processTag(method.returnTag(), method);
+  public static void translate(List<ExecutableMember> methods) {
+    for (ExecutableMember method : methods) {
+      for (ThrowsTag tag : method.throwsTags()) {
+        processTag(tag, method);
+      }
+      for (ParamTag tag : method.paramTags()) {
+        processTag(tag, method);
+      }
+      if (method.returnTag() != null) {
+        processTag(method.returnTag(), method);
+      }
     }
   }
 
@@ -51,16 +57,17 @@ public class ConditionTranslator {
    * each sentence in the comment.
    *
    * @param comment the text of a Javadoc comment
-   * @param method the DocumentedMethod under analysis
+   * @param method the ExecutableMember under analysis
    * @return a list of {@code PropositionSeries} objects, one for each sentence in the comment
    */
-  private static List<PropositionSeries> getPropositionSeries(
-      String comment, DocumentedMethod method) {
+  public static List<PropositionSeries> getPropositionSeries(
+      String comment, ExecutableMember method) {
     comment = addPlaceholders(comment);
     List<PropositionSeries> result = new ArrayList<>();
 
-    for (SemanticGraph semanticGraph : StanfordParser.getSemanticGraphs(comment, method))
+    for (SemanticGraph semanticGraph : StanfordParser.getSemanticGraphs(comment, method)) {
       result.add(new SentenceParser(semanticGraph).getPropositionSeries());
+    }
 
     return removePlaceholders(result);
   }
@@ -222,26 +229,30 @@ public class ConditionTranslator {
    * @param method the method the containing the Javadoc comment from which the {@code
    *     propositionSeries} was extracted
    */
-  private static void translatePropositions(
-      PropositionSeries propositionSeries, DocumentedMethod method) {
+  public static void translate(PropositionSeries propositionSeries, ExecutableMember method) {
+    Matcher matcher = new Matcher();
     for (Proposition p : propositionSeries.getPropositions()) {
       Set<CodeElement<?>> subjectMatches;
-      subjectMatches = Matcher.subjectMatch(p.getSubject().getSubject(), method);
+      subjectMatches = matcher.subjectMatch(p.getSubject().getSubject(), method);
       if (subjectMatches.isEmpty()) {
         log.debug("Failed subject translation for: " + p);
         return;
       }
       final Set<CodeElement<?>> matchingCodeElements = new LinkedHashSet<>();
       String loop = findMatchingCodeElements(p, subjectMatches, method, matchingCodeElements);
-      if (loop.equals(LOOP_RETURN)) return;
-      if (loop.equals(LOOP_CONTINUE)) continue;
+      if (loop.equals(LOOP_RETURN)) {
+        return;
+      }
+      if (loop.equals(LOOP_CONTINUE)) {
+        continue;
+      }
 
       // Maps each subject code element to the Java expression translation that uses that code
       // element.
       Map<CodeElement<?>, String> translations = new LinkedHashMap<>();
       for (CodeElement<?> subjectMatch : matchingCodeElements) {
         String currentTranslation =
-            Matcher.predicateMatch(method, subjectMatch, p.getPredicate(), p.isNegative());
+            matcher.predicateMatch(method, subjectMatch, p.getPredicate(), p.isNegative());
         if (currentTranslation == null) {
           log.trace("Failed predicate translation for: " + p);
           continue;
@@ -252,7 +263,7 @@ public class ConditionTranslator {
                   currentTranslation.indexOf("{") + 1, currentTranslation.indexOf("}"));
 
           Set<CodeElement<?>> argMatches;
-          argMatches = Matcher.subjectMatch(argument, method);
+          argMatches = matcher.subjectMatch(argument, method);
           if (argMatches.isEmpty()) {
             log.trace("Failed predicate translation for: " + p + " due to variable not found.");
             continue;
@@ -332,11 +343,11 @@ public class ConditionTranslator {
 
   /**
    * Find a set of {@code CodeElement}s that match the subject of the {@code Proposition} relative
-   * to the {@code DocumentedMethod}, updating the set {@code matchingCodeElements}.
+   * to the {@code ExecutableMember}, updating the set {@code matchingCodeElements}.
    *
    * @param p the proposition
    * @param subjectMatches CodeElements matches for subject
-   * @param method the DocumentedMethod under analysis
+   * @param method the ExecutableMember under analysis
    * @param matchingCodeElements the set of matching CodeElements to update
    * @return a String defining whether the loop in the method translatePropositions has to continue
    *     to the next iteration (LOOP_CONTINUE), to stop (LOOP_RETURN) or go on executing the rest of
@@ -345,12 +356,13 @@ public class ConditionTranslator {
   private static String findMatchingCodeElements(
       Proposition p,
       Set<CodeElement<?>> subjectMatches,
-      DocumentedMethod method,
+      ExecutableMember method,
       Set<CodeElement<?>> matchingCodeElements) {
+    Matcher matcher = new Matcher();
     final String container = p.getSubject().getContainer();
     if (container.isEmpty()) {
       // Subject match
-      subjectMatches = Matcher.subjectMatch(p.getSubject().getSubject(), method);
+      subjectMatches = matcher.subjectMatch(p.getSubject().getSubject(), method);
       if (subjectMatches.isEmpty()) {
         log.debug("Failed subject translation for: " + p);
         return LOOP_RETURN;
@@ -358,7 +370,7 @@ public class ConditionTranslator {
       matchingCodeElements.addAll(subjectMatches);
     } else {
       // Container match
-      final CodeElement<?> containerMatch = Matcher.containerMatch(container, method);
+      final CodeElement<?> containerMatch = matcher.containerMatch(container, method);
       if (containerMatch == null) {
         log.trace("Failed container translation for: " + p);
         matchingCodeElements.clear();
@@ -381,6 +393,7 @@ public class ConditionTranslator {
   private static final String LOOP_OK = "OK";
   private static final String LOOP_CONTINUE = "continue";
   private static final String LOOP_RETURN = "return";
+
   /**
    * Returns a boolean Java expression that merges the conditions from the given set of conditions.
    * Each condition in the set is combined using an || conjunction.
@@ -431,12 +444,12 @@ public class ConditionTranslator {
    * @param tag the tag provided by the method. Must not be null.
    * @param method the method that contains the tag to analyze. Must not be null.
    */
-  private static void processTag(Tag tag, DocumentedMethod method) {
+  private static void processTag(Tag tag, ExecutableMember method) {
 
     log.trace(
         "Identifying propositions from: \"" + tag.getComment() + "\" in " + method.getSignature());
 
-    String comment = tag.getComment().trim();
+    String comment = tag.getComment().getText().trim();
 
     // Add end-of-sentence period, if missing.
     if (!comment.endsWith(".")) {
@@ -446,9 +459,10 @@ public class ConditionTranslator {
     comment = normalizeComment(comment, method);
 
     // Remove commas from the comment if enabled. (Do not remove commas when dealing with @return.)
-    if (Toradocu.configuration != null
-        && Toradocu.configuration.removeCommas()
-        && !tag.getKind().equals(Tag.Kind.RETURN)) {
+    if ( //Toradocu.configuration != null
+    //&& Toradocu.configuration.removeCommas()
+    //    &&
+    !tag.getKind().equals(Tag.Kind.RETURN)) {
       comment = comment.replace(",", " ");
     }
 
@@ -464,7 +478,7 @@ public class ConditionTranslator {
         comment = comment.replaceAll("may be null", "");
       }
 
-      String parameterName = ((ParamTag) tag).parameter().getName();
+      String parameterName = ((ParamTag) tag).getParameter().getName();
       String[] patterns = {
         "must be",
         "must not be",
@@ -514,7 +528,7 @@ public class ConditionTranslator {
       Set<String> conditions = new LinkedHashSet<>();
       // Identify Java code elements in propositions.
       for (PropositionSeries propositions : extractedPropositions) {
-        translatePropositions(propositions, method);
+        translate(propositions, method);
         conditions.add(propositions.getTranslation());
       }
       tag.setCondition(mergeConditions(conditions));
@@ -557,8 +571,11 @@ public class ConditionTranslator {
             // All the previous attempts failed: try the last strategies (e.g. search for missing subjects)
             String match = lastAttemptMatch(method, comment);
             if (match != null) {
-              if (match.contains("result")) translation = "true ?" + match;
-              else translation = "true ? result.equals(" + match + ")";
+              if (match.contains("result")) {
+                translation = "true ?" + match;
+              } else {
+                translation = "true ? result.equals(" + match + ")";
+              }
             }
           }
         }
@@ -571,12 +588,12 @@ public class ConditionTranslator {
   /**
    * Translate arithemtic operations between arguments, if found.
    *
-   * @param method the DocumentedMethod
+   * @param method the ExecutableMember
    * @param commentToTranslate String comment to translate
    * @return the translation
    */
   private static String manageArithmeticOperation(
-      DocumentedMethod method, String commentToTranslate) {
+      ExecutableMember method, String commentToTranslate) {
     String translation = "";
     java.util.regex.Matcher matcherOp =
         Pattern.compile(ARITHMETIC_OP_REGEX).matcher(commentToTranslate);
@@ -587,8 +604,9 @@ public class ConditionTranslator {
       int firstIndex = searchForCode(firstFactor, method);
       if (firstIndex != -1) {
         int secIndex = searchForCode(secFactor, method);
-        if (secIndex != -1)
+        if (secIndex != -1) {
           translation = "true ? result==args[" + firstIndex + "]" + op + "args[" + secIndex + "]";
+        }
       }
     }
     return translation;
@@ -597,15 +615,17 @@ public class ConditionTranslator {
   /**
    * This method attempts to translate the return tag according to the classical pattern.
    *
-   * @param method the DocumentedMethod
+   * @param method the ExecutableMember
    * @param comment the String comment to translate
    * @param predicateSplitPoint index of the "if"
    * @return the translation computed
    */
   private static String returnStandardPattern(
-      DocumentedMethod method, String comment, int predicateSplitPoint) {
+      ExecutableMember method, String comment, int predicateSplitPoint) {
     String translation = "";
-    if (comment.contains(";")) comment = comment.replace(";", ",");
+    if (comment.contains(";")) {
+      comment = comment.replace(";", ",");
+    }
     String predicate = comment.substring(0, predicateSplitPoint);
     final String[] tokens = comment.substring(predicateSplitPoint + 3).split(",", 2);
     String trueCase = tokens[0];
@@ -654,8 +674,11 @@ public class ConditionTranslator {
 
       else {
         String match = lastAttemptMatch(method, comment);
-        if (match != null) translation = match;
-        else translation = "";
+        if (match != null) {
+          translation = match;
+        } else {
+          translation = "";
+        }
       }
     }
     return translation;
@@ -666,17 +689,25 @@ public class ConditionTranslator {
    * correctly.
    *
    * @param comment the String comment to sanitize
-   * @param method the DocumentedMethod
+   * @param method the ExecutableMember
    * @return the normalized comment
    */
-  private static String normalizeComment(String comment, DocumentedMethod method) {
-    if (comment.contains("if and only if")) comment = comment.replace("if and only if", "if");
+  private static String normalizeComment(String comment, ExecutableMember method) {
+    if (comment.contains("if and only if")) {
+      comment = comment.replace("if and only if", "if");
+    }
 
-    if (comment.contains("iff")) comment = comment.replace("iff", "if");
+    if (comment.contains("iff")) {
+      comment = comment.replace("iff", "if");
+    }
 
-    if (comment.contains("non-null")) comment = comment.replace("non-null", "!=null");
+    if (comment.contains("non-null")) {
+      comment = comment.replace("non-null", "!=null");
+    }
 
-    if (comment.contains("non-empty")) comment = comment.replace("non-empty", "!=empty");
+    if (comment.contains("non-empty")) {
+      comment = comment.replace("non-empty", "!=empty");
+    }
 
     // "it" would be translated as a standalone subject, but more probably it is referred to another more meaningful one:
     // probably a previous mentioned noun.
@@ -696,11 +727,12 @@ public class ConditionTranslator {
   /**
    * Called if all the previous stantard tentatives of matching failed.
    *
-   * @param method the DocumentedMethod under analysis
+   * @param method the ExecutableMember under analysis
    * @param comment the comment to translate
    * @return a match if found, otherwise null
    */
-  private static String lastAttemptMatch(DocumentedMethod method, String comment) {
+  private static String lastAttemptMatch(ExecutableMember method, String comment) {
+    Matcher matcher = new Matcher();
     //Try a match looking at the semantic graph.
     String match = null;
     comment = comment.replace(";", "").replace(",", "");
@@ -713,9 +745,11 @@ public class ConditionTranslator {
           Set<String> conditions = new LinkedHashSet<>();
           for (Proposition p : prop.getPropositions()) {
             match =
-                Matcher.predicateMatch(
+                matcher.predicateMatch(
                     method, new GeneralCodeElement("result"), p.getPredicate(), p.isNegative());
-            if (match != null) break;
+            if (match != null) {
+              break;
+            }
           }
         }
       } else { // No verb found: process nouns and their adjectives
@@ -724,10 +758,14 @@ public class ConditionTranslator {
         if (match == null) {
           String wordToMatch = "";
           for (IndexedWord n : nouns) {
-            for (IndexedWord a : adj) wordToMatch += a.word();
+            for (IndexedWord a : adj) {
+              wordToMatch += a.word();
+            }
             wordToMatch += n.word();
-            Set<CodeElement<?>> subject = Matcher.subjectMatch(wordToMatch, method);
-            if (!subject.isEmpty()) match = subject.stream().findFirst().get().getJavaExpression();
+            Set<CodeElement<?>> subject = matcher.subjectMatch(wordToMatch, method);
+            if (!subject.isEmpty()) {
+              match = subject.stream().findFirst().get().getJavaExpression();
+            }
           }
         }
       }
@@ -745,7 +783,7 @@ public class ConditionTranslator {
    * @param method the method to which the @return tag belongs to
    * @return the translation of the given {@code text}
    */
-  private static String translateLastPart(String text, DocumentedMethod method) {
+  private static String translateLastPart(String text, ExecutableMember method) {
     final String lowerCaseText = text.toLowerCase();
     if (lowerCaseText.contains("true")) {
       return "result == true";
@@ -755,9 +793,13 @@ public class ConditionTranslator {
       String[] splittedText = text.split(" ");
       for (int i = 0; i < splittedText.length; i++) {
         int index = searchForCode(splittedText[i], method);
-        if (index != -1) return "result == args[" + index + "]";
+        if (index != -1) {
+          return "result == args[" + index + "]";
+        }
         //the empty String was found
-        else if (splittedText[i].equals("\"\"")) return "result.equals(\"\")";
+        else if (splittedText[i].equals("\"\"")) {
+          return "result.equals(\"\")";
+        }
       }
     }
     return null;
@@ -772,7 +814,7 @@ public class ConditionTranslator {
    * @param method the method to which the @return tag belongs to
    * @return the translation of the given {@code text}
    */
-  private static String translateSecondPart(String text, DocumentedMethod method) {
+  private static String translateSecondPart(String text, ExecutableMember method) {
     // Identify propositions in the comment. Each sentence in the comment is parsed into a
     // PropositionSeries.
 
@@ -781,7 +823,7 @@ public class ConditionTranslator {
     Set<String> conditions = new LinkedHashSet<>();
     // Identify Java code elements in propositions.
     for (PropositionSeries propositions : extractedPropositions) {
-      translatePropositions(propositions, method);
+      translate(propositions, method);
       conditions.add(propositions.getTranslation());
     }
     return mergeConditions(conditions);
@@ -793,11 +835,11 @@ public class ConditionTranslator {
    * {@code @return true if the parameter is null}. In this comment the first part is "true".
    *
    * @param text words representing the first part of an @return comment
-   * @param method the DocumentedMethod the @return comment belongs to
+   * @param method the ExecutableMember the @return comment belongs to
    * @return the translation of the given {@code text}
    * @throws IllegalArgumentException if the given {@code text} cannot be translated
    */
-  private static String translateFirstPart(String text, DocumentedMethod method) {
+  private static String translateFirstPart(String text, ExecutableMember method) {
     String lowerCaseText = text.trim().toLowerCase();
     String match = null;
     switch (lowerCaseText) {
@@ -807,12 +849,16 @@ public class ConditionTranslator {
       default:
         {
           int index = searchForCode(text, method);
-          if (index != -1) return "result == args[" + index + "]";
-          else {
+          if (index != -1) {
+            return "result == args[" + index + "]";
+          } else {
             match = lastAttemptMatch(method, text);
             if (match != null) {
-              if (!match.contains("result==")) return "result.equals(" + match + ")";
-              else return match;
+              if (!match.contains("result==")) {
+                return "result.equals(" + match + ")";
+              } else {
+                return match;
+              }
             }
           }
         }
@@ -822,10 +868,14 @@ public class ConditionTranslator {
     return match;
   }
 
-  private static int searchForCode(String text, DocumentedMethod method) {
+  private static int searchForCode(String text, ExecutableMember method) {
     List<String> arguments =
         method.getParameters().stream().map(Parameter::getName).collect(toList());
-    for (int i = 0; i < arguments.size(); i++) if (arguments.get(i).equals(text)) return i;
+    for (int i = 0; i < arguments.size(); i++) {
+      if (arguments.get(i).equals(text)) {
+        return i;
+      }
+    }
 
     return -1;
   }

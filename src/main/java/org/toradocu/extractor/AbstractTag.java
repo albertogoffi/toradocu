@@ -1,20 +1,19 @@
 package org.toradocu.extractor;
 
 import java.util.Objects;
-import java.util.Optional;
-import org.toradocu.util.Checks;
+import org.toradocu.Checks;
 
 class AbstractTag implements Tag {
 
-  /** The comment associated with the exception. */
-  private final String comment;
+  /** The comment of this tag. */
+  private Comment comment;
 
   /** The kind of this tag (e.g., @throws, @param). */
   private final Kind kind;
 
   /**
-   * Java boolean condition translated from the comment for this {@code Tag}. Null if translation
-   * not yet attempted. Empty string if no translations found.
+   * Java boolean condition translated from the comment for this {@code Tag}. Empty string if no
+   * translations found or if translation not yet attempted.
    */
   private String condition;
 
@@ -23,13 +22,14 @@ class AbstractTag implements Tag {
    *
    * @param kind the comment kind. See {@code Tag.Kind} for the available kinds.
    * @param comment the comment associated with the exception
-   * @throws NullPointerException if comment is null
+   * @throws NullPointerException if either kind or comment is null
    */
-  AbstractTag(Kind kind, String comment) {
+  AbstractTag(Kind kind, Comment comment) {
     Checks.nonNullParameter(kind, "kind");
     Checks.nonNullParameter(comment, "comment");
     this.kind = kind;
     this.comment = comment;
+    condition = "";
   }
 
   @Override
@@ -38,8 +38,8 @@ class AbstractTag implements Tag {
   }
 
   @Override
-  public Optional<String> getCondition() {
-    return Optional.ofNullable(condition);
+  public String getCondition() {
+    return condition;
   }
 
   @Override
@@ -49,8 +49,13 @@ class AbstractTag implements Tag {
   }
 
   @Override
-  public String getComment() {
+  public Comment getComment() {
     return comment;
+  }
+
+  @Override
+  public void setComment(Comment comment) {
+    this.comment = comment;
   }
 
   /**
@@ -61,11 +66,12 @@ class AbstractTag implements Tag {
    */
   @Override
   public boolean equals(Object obj) {
+    if (this == obj) return true;
     if (!(obj instanceof AbstractTag)) return false;
 
     AbstractTag that = (AbstractTag) obj;
     return comment.equals(that.comment)
-        && Objects.equals(condition, that.condition)
+        && condition.equals(that.condition)
         && kind.equals(that.kind);
   }
 
@@ -91,9 +97,20 @@ class AbstractTag implements Tag {
   @Override
   public String toString() {
     String result = kind + " " + comment;
-    if (condition != null) {
-      result += " ==> " + condition;
+    return appendCondition(result);
+  }
+
+  /**
+   * Appends the condition to the given string if the condition is not empty. The condition is added
+   * at the end of the given string in the following form: " ==&gt; condition".
+   *
+   * @param stringRepresentation a string representing this Tag
+   * @return the string representation of this tag with the condition appended
+   */
+  String appendCondition(String stringRepresentation) {
+    if (!condition.isEmpty()) {
+      stringRepresentation += " ==> " + condition;
     }
-    return result;
+    return stringRepresentation;
   }
 }

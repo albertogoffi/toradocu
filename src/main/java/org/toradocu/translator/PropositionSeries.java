@@ -3,6 +3,7 @@ package org.toradocu.translator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import org.toradocu.extractor.ExecutableMember;
 
 /**
  * This class represents a series of propositions and conjunctions in a sentence, as in
@@ -28,9 +29,8 @@ public class PropositionSeries {
   private final List<Conjunction> conjunctions;
 
   /** Initializes an empty {@code PropositionSeries}. */
-  public PropositionSeries() {
-    propositions = new ArrayList<>();
-    conjunctions = new ArrayList<>();
+  PropositionSeries() {
+    this(new ArrayList<>(), new ArrayList<>());
   }
 
   /**
@@ -42,7 +42,7 @@ public class PropositionSeries {
    * @throws IllegalArgumentException if the number of conjunctions is not exactly 1 less than the
    *     number of propositions, unless both are empty
    */
-  public PropositionSeries(List<Proposition> propositions, List<Conjunction> conjunctions) {
+  PropositionSeries(List<Proposition> propositions, List<Conjunction> conjunctions) {
     if (propositions.size() != 0
         && conjunctions.size() != 0
         && propositions.size() - conjunctions.size() != 1) {
@@ -110,7 +110,7 @@ public class PropositionSeries {
    *
    * @return the number of propositions in the series
    */
-  public int numberOfPropositions() {
+  int numberOfPropositions() {
     return propositions.size();
   }
 
@@ -119,7 +119,7 @@ public class PropositionSeries {
    *
    * @return an unmodifiable list view of the propositions in this series
    */
-  public List<Proposition> getPropositions() {
+  List<Proposition> getPropositions() {
     return Collections.unmodifiableList(propositions);
   }
 
@@ -128,7 +128,7 @@ public class PropositionSeries {
    *
    * @return an unmodifiable list view of the conjunctions in this series
    */
-  public List<Conjunction> getConjunctions() {
+  List<Conjunction> getConjunctions() {
     return Collections.unmodifiableList(conjunctions);
   }
 
@@ -176,5 +176,10 @@ public class PropositionSeries {
       }
     }
     return output.toString();
+  }
+
+  public static List<PropositionSeries> create(String comment, ExecutableMember excMember) {
+    // TODO move the code about propositionSeries from ConditionTranslator to here.
+    return Parser.getPropositionSeries(comment, excMember);
   }
 }
