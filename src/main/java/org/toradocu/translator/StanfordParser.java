@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.Parameter;
 
@@ -41,13 +42,13 @@ class StanfordParser {
   }
 
   /**
-   * Takes some text and returns {@code SemanticGraph}s for each sentence in the text.
+   * Takes some text and returns {@code SemanticGraph}s for each sentence in the comment text.
    *
-   * @param text the text to return the semantic graphs for
+   * @param comment the comment object to return the semantic graphs for
    * @return a list of semantic graphs, one for each sentence in the text
    */
-  static List<SemanticGraph> getSemanticGraphs(String text) {
-    return getSemanticGraphs(text, null);
+  static List<SemanticGraph> getSemanticGraphs(Comment comment) {
+    return getSemanticGraphs(comment, null);
   }
 
   /**
@@ -58,13 +59,14 @@ class StanfordParser {
    * @param method the ExecutableMember under analysis
    * @return the list of SemanticGraphs produced by the parser
    */
-  static List<SemanticGraph> getSemanticGraphs(String comment, ExecutableMember method) {
-    Iterable<List<HasWord>> hasWordComment = new DocumentPreprocessor(new StringReader(comment));
+  static List<SemanticGraph> getSemanticGraphs(Comment comment, ExecutableMember method) {
+    Iterable<List<HasWord>> hasWordComment =
+        new DocumentPreprocessor(new StringReader(comment.getText()));
 
     ArrayList<List<HasWord>> sentences = new ArrayList<>();
     hasWordComment.forEach(sentences::add);
     List<SemanticGraph> result = new ArrayList<>();
-    List<HasWord> codeElements = new ArrayList<>();
+    List<String> codeElements = new ArrayList<>();
     List<String> arguments = new ArrayList<>();
 
     if (method != null) {
@@ -74,17 +76,17 @@ class StanfordParser {
     for (List<HasWord> sentence : sentences) {
       for (HasWord word : sentence) {
         if (arguments.contains(word.toString())) {
-          codeElements.add(word);
+          codeElements.add(word.word());
         }
       }
+      for (String codeTag : comment.getWordsMarkedAsCode()) codeElements.add(codeTag);
 
       result.add(getSemanticGraph(sentence, codeElements));
     }
     return result;
   }
 
-  private static SemanticGraph getSemanticGraph(
-      List<HasWord> sentence, List<HasWord> codeElements) {
+  private static SemanticGraph getSemanticGraph(List<HasWord> sentence, List<String> codeElements) {
     // Parse the sentence.
     Tree tree = LEXICALIZED_PARSER.parse(new POSTagger().tagWords(sentence, codeElements));
     GrammaticalStructure gs = GSF.newGrammaticalStructure(tree);
