@@ -70,7 +70,7 @@ public final class Parameter {
    * @return {@code true} if the parameter is nullable, {@code false} if it is nonnull, or {@code
    *     null} if its nullability is unspecified
    */
-  Boolean getNullability() {
+  Boolean isNullable() {
     return nullable;
   }
 

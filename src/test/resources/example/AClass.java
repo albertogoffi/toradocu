@@ -1,6 +1,7 @@
 package example;
 
 import example.annotation.NotNull;
+import example.annotation.Nullable;
 import example.exception.AnException;
 
 public class AClass {
@@ -29,7 +30,7 @@ public class AClass {
    * @param x an object
    * @throws IllegalArgumentException if x is null
    */
-  public double baz(@NotNull Object x) {
+  public double baz(@Nullable Object x) {
     return 0;
   }
 

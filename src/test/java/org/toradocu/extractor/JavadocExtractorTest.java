@@ -75,6 +75,7 @@ public class JavadocExtractorTest {
     Parameter parameter = parameters.get(0);
     assertThat(parameter.getName(), is("x"));
     assertThat(parameter.getType(), is(stringClass));
+    assertThat(parameter.isNullable(), is(nullValue()));
 
     final List<ParamTag> paramTags = member.paramTags();
     assertThat(paramTags.size(), is(1));
@@ -100,6 +101,7 @@ public class JavadocExtractorTest {
     final Parameter parameter = parameters.get(0);
     assertThat(parameter.getName(), is("array"));
     assertThat(parameter.getType(), is(Object[].class));
+    assertThat(parameter.isNullable(), is(false));
 
     final List<ParamTag> paramTags = member.paramTags();
     assertThat(paramTags.size(), is(1));

@@ -22,13 +22,13 @@ public class ParameterTest {
     Parameter p = new Parameter(string, "par");
     assertThat(p.getType(), is(string));
     assertThat(p.getName(), is("par"));
-    assertThat(p.getNullability(), is(nullValue()));
+    assertThat(p.isNullable(), is(nullValue()));
 
     Parameter intPar = new Parameter(string, "par", false);
-    assertThat(intPar.getNullability(), is(false));
+    assertThat(intPar.isNullable(), is(false));
 
     intPar = new Parameter(string, "par", true);
-    assertThat(intPar.getNullability(), is(true));
+    assertThat(intPar.isNullable(), is(true));
   }
 
   @Test
