@@ -13,25 +13,17 @@ public class Comment {
   public Comment(String text) {
     this.text = text;
     this.wordsMarkedAsCode = new ArrayList<String>();
+
     String codePattern = "\\{@code ([^}]+)\\}";
     java.util.regex.Matcher codeMatcher = Pattern.compile(codePattern).matcher(text);
-    while(codeMatcher.find()){
-      wordsMarkedAsCode.add(codeMatcher.group(1));
-    }
+    while (codeMatcher.find()) {
+      // get words marked as code
+      String taggedSubstring = codeMatcher.group(1);
+      String[] tokens = taggedSubstring.split(" ");
+      for (int i = 0; i < tokens.length; i++) wordsMarkedAsCode.add(tokens[i]);
 
-//    tokenize(text);
-
-
-  }
-
-  private void tokenize(String text) {
-    // Split comment on punctuation and white spaces
-    String[] tokens = text.split("\\s*(;|,|'|. |\\s)\\s*");
-    for (int i = 0; i < tokens.length; i++) {
-      if (tokens[i].startsWith("{@code")) {
-        String codeWord = tokens[i+1].replace("}", "");
-        this.getWordsMarkedAsCode().add(codeWord);
-      }
+      // remove the code tag from the original comment
+      this.text = this.text.replace(codeMatcher.group(0), codeMatcher.group(1));
     }
   }
 
