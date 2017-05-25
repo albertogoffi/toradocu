@@ -133,7 +133,7 @@ public class JavaElementsCollector {
     for (ParamTag pt : paramTags) {
       String paramName = pt.getParameter().getName();
       if (paramName.equals(param)) {
-        List<SemanticGraph> sgs = StanfordParser.getSemanticGraphs(pt.getComment());
+        List<SemanticGraph> sgs = Parser.parse(pt.getComment(), method);
         for (SemanticGraph sg : sgs) ids.add(sg.getFirstRoot().word());
       }
     }

@@ -1,11 +1,14 @@
 package org.toradocu.translator;
 
+import edu.stanford.nlp.ling.HasWord;
+import edu.stanford.nlp.ling.TaggedWord;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
+import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.ExecutableMember;
 
 /** Created by arianna on 18/05/17. */
@@ -29,8 +32,7 @@ public class Parser {
   private static List<String> inequalities = new ArrayList<>();
 
   /** Stores the cache of semantic graphs for each pair method-comment. */
-  private static Map<MethodComment, List<SemanticGraph>> graphsCache =
-      new HashMap<MethodComment, List<SemanticGraph>>();
+  private static Map<MethodComment, List<SemanticGraph>> graphsCache = new HashMap<>();
 
   private Parser() {}
 
@@ -40,17 +42,25 @@ public class Parser {
    * @param comment the string comment
    * @param method the DocumentedMethod
    */
-  private static void storeSemanticGraphs(String comment, ExecutableMember method) {
-    comment = addPlaceholders(comment);
-    graphsCache.put(
-        new MethodComment(comment, method), StanfordParser.getSemanticGraphs(comment, method));
-  }
-
-  public static List<SemanticGraph> getSemanticgraphs(String comment, ExecutableMember method) {
+  private static List<SemanticGraph> parse_(Comment comment, ExecutableMember method) {
+    // Check if cache contains a valid answer.
     MethodComment key = new MethodComment(comment, method);
-    if (!graphsCache.containsKey(key)) storeSemanticGraphs(comment, method);
+    if (graphsCache.containsKey(key)) {
+      return graphsCache.get(key);
+    }
 
-    return graphsCache.get(key);
+    List<SemanticGraph> graphs = new ArrayList<>();
+    Comment commentWithPlaceholders = addPlaceholders(comment);
+    final List<List<HasWord>> sentences =
+        StanfordParser.tokenize(commentWithPlaceholders.getText());
+    for (List<HasWord> sentence : sentences) {
+      final List<TaggedWord> taggedWords =
+          POSTagger.tagWords(sentence, comment.getWordsMarkedAsCode());
+      final SemanticGraph semanticGraph = StanfordParser.parse(taggedWords);
+      graphs.add(semanticGraph);
+    }
+    graphsCache.put(new MethodComment(comment, method), graphs);
+    return graphs;
   }
 
   /**
@@ -61,13 +71,13 @@ public class Parser {
    * @param method the DocumentedMethod under analysis
    * @return a list of {@code PropositionSeries} objects, one for each sentence in the comment
    */
-  public static List<PropositionSeries> getPropositionSeries(
-      String comment, ExecutableMember method) {
+  // TODO Move this to a new class PropositionIdentifier that handles Proposition.
+  public static List<PropositionSeries> parse(Comment comment, ExecutableMember method) {
     List<PropositionSeries> result = new ArrayList<>();
-    List<SemanticGraph> semanticGraphs = getSemanticgraphs(comment, method);
-    for (SemanticGraph semanticGraph : semanticGraphs)
+    List<SemanticGraph> semanticGraphs = parse_(comment, method);
+    for (SemanticGraph semanticGraph : semanticGraphs) {
       result.add(new SentenceParser(semanticGraph).getPropositionSeries());
-
+    }
     return removePlaceholders(result);
   }
 
@@ -98,9 +108,10 @@ public class Parser {
     return placeholderText;
   }
 
-  private static String addPlaceholders(String comment) {
+  private static Comment addPlaceholders(Comment comment) {
     String text =
         comment
+            .getText()
             .replace("greater than or equal to", ">=")
             .replace("≥", ">=")
             .replace("less than or equal to", "<=")
@@ -162,7 +173,7 @@ public class Parser {
       i++;
     }
 
-    return placeholderText;
+    return new Comment(placeholderText, comment.getWordsMarkedAsCode());
   }
 
   /**
@@ -202,15 +213,15 @@ public class Parser {
 
 /** This class ties a String comment to its DocumentedMethod. */
 class MethodComment {
-  private String comment;
+  private Comment comment;
   private ExecutableMember method;
 
-  public MethodComment(String comment, ExecutableMember method) {
+  public MethodComment(Comment comment, ExecutableMember method) {
     this.comment = comment;
     this.method = method;
   }
 
-  public String getComment() {
+  public Comment getComment() {
     return comment;
   }
 

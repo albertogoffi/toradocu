@@ -26,13 +26,12 @@ public class BasicTranslator {
   private static String translateTag(Tag tag, ExecutableMember excMember) {
     // Identify propositions in the comment. Each sentence in the comment is parsed into a
     // PropositionSeries.
-    List<PropositionSeries> extractedPropositions =
-        PropositionSeries.create(tag.getComment(), excMember);
+    List<PropositionSeries> propositions = Parser.parse(tag.getComment(), excMember);
     Set<String> conditions = new LinkedHashSet<>();
 
-    for (PropositionSeries propositions : extractedPropositions) {
-      ConditionTranslator.translate(propositions, excMember);
-      conditions.add(propositions.getTranslation()); // TODO Add only when translation is non-empty?
+    for (PropositionSeries props : propositions) {
+      ConditionTranslator.translate(props, excMember);
+      conditions.add(props.getTranslation()); // TODO Add only when translation is non-empty?
     }
     return mergeConditions(conditions);
   }

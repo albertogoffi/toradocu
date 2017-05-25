@@ -11,8 +11,12 @@ public class Comment {
   private List<String> wordsMarkedAsCode;
 
   public Comment(String text) {
+    this(text, new ArrayList<>());
+  }
+
+  public Comment(String text, List<String> wordsMarkedAsCode) {
     this.text = text;
-    this.wordsMarkedAsCode = new ArrayList<String>();
+    this.wordsMarkedAsCode = wordsMarkedAsCode;
 
     String codePattern = "\\{@code ([^}]+)\\}";
     java.util.regex.Matcher codeMatcher = Pattern.compile(codePattern).matcher(text);
