@@ -25,7 +25,7 @@ public class POSTagger {
       TaggedWord taggedWord = new TaggedWord(wordString);
       if (wordString.contains("INEQUALITY") && taggedWord.tag() == null)
         taggedSentence.add(new TaggedWord(wordString, "JJ"));
-      else if (codeElements.contains(word) && taggedWord.tag() == null)
+      else if (codeElements.contains(wordString) && taggedWord.tag() == null)
         taggedSentence.add(new TaggedWord(wordString, "NN"));
       else taggedSentence.add(taggedWord);
     }
