@@ -70,6 +70,14 @@ public final class JavadocExtractor {
     return members;
   }
 
+  /**
+   * Instantiates tags (of param, return or throws kind) referred to a source member.
+   *
+   * @param sourceMember the source member the tags are referred to
+   * @param parameters the list of parameters useful to find the ones associated to param kind tags
+   * @return the list of instantiated tags
+   * @throws ClassNotFoundException if the class of the eventual exception type couldn't be found
+   */
   private List<org.toradocu.extractor.Tag> createTags(
       CallableDeclaration<?> sourceMember, List<Parameter> parameters)
       throws ClassNotFoundException {
@@ -99,6 +107,14 @@ public final class JavadocExtractor {
     return tags;
   }
 
+  /**
+   * Instantiate a tag of throws kind.
+   *
+   * @param blockTag the block containing the tag
+   * @param sourceMember the source member the tag is referred to
+   * @return the instantiated tag
+   * @throws ClassNotFoundException if the class of the exception type couldn't be found
+   */
   private ThrowsTag createThrowsTag(JavadocBlockTag blockTag, CallableDeclaration<?> sourceMember)
       throws ClassNotFoundException {
     // Javaparser library does not provide a nice parsing of @throws tags. We have to parse the
@@ -111,11 +127,24 @@ public final class JavadocExtractor {
     return new ThrowsTag(exceptionType, commentObject);
   }
 
+  /**
+   * Instantiate a tag of return kind.
+   *
+   * @param blockTag the block containing the tag
+   * @return the instantiated tag
+   */
   private ReturnTag createReturnTag(JavadocBlockTag blockTag) {
     Comment commentObject = new Comment(blockTag.getContent().toText());
     return new ReturnTag(commentObject);
   }
 
+  /**
+   * Instantiate a tag of param kind.
+   *
+   * @param blockTag the block containing the tag
+   * @param parameters the parameters list in which looking for the one associated to the tag
+   * @return the instantiated tag
+   */
   private ParamTag createParamTag(JavadocBlockTag blockTag, List<Parameter> parameters) {
     String paramName = blockTag.getName().orElse("");
 
@@ -127,6 +156,13 @@ public final class JavadocExtractor {
     return new ParamTag(matchingParams.get(0), commentObject);
   }
 
+  /**
+   * Instantiate the parameters of type org.toradocu.extractor.Parameter
+   *
+   * @param sourceParams the NodeList of parameters found in source
+   * @param reflectionParams the array of parameters found trough reflection
+   * @return the list of org.toradocu.extractor.Parameter
+   */
   private List<Parameter> getParameters(
       NodeList<com.github.javaparser.ast.body.Parameter> sourceParams,
       java.lang.reflect.Parameter[] reflectionParams) {
@@ -147,7 +183,12 @@ public final class JavadocExtractor {
     return parameters;
   }
 
-  // Checks whether the given parameter is annotated with @NotNull or @Nullable or similar.
+  /**
+   * Checks whether the given parameter is annotated with @NotNull or @Nullable or similar.
+   *
+   * @param parameter the parameter to check
+   * @return true if the parameter is annotated, null otherwise or if it's both nullable and notNull
+   */
   private Boolean isNullable(com.github.javaparser.ast.body.Parameter parameter) {
     final List<String> parameterAnnotations =
         parameter.getAnnotations().stream().map(a -> a.getName().asString()).collect(toList());
@@ -170,7 +211,12 @@ public final class JavadocExtractor {
     return null;
   }
 
-  // Collects members through reflection.
+  /**
+   * Collects members through reflection.
+   *
+   * @param clazz the Class containing the members to collect
+   * @return an unmodifiable list of Executable
+   */
   private List<Executable> getExecutables(Class<?> clazz) {
     List<Executable> executables = new ArrayList<>();
     executables.addAll(Arrays.asList(clazz.getDeclaredConstructors()));
@@ -179,7 +225,14 @@ public final class JavadocExtractor {
     return Collections.unmodifiableList(executables);
   }
 
-  // Collects members from source code.
+  /**
+   * Collects members from source code.
+   *
+   * @param className the String class name
+   * @param sourcePath the String source path
+   * @return a list of CallableDeclaration
+   * @throws FileNotFoundException if the source path couldn't be resolved
+   */
   private List<CallableDeclaration<?>> getExecutables(String className, String sourcePath)
       throws FileNotFoundException {
     final CompilationUnit cu = JavaParser.parse(new File(sourcePath));
@@ -194,7 +247,13 @@ public final class JavadocExtractor {
     return Collections.unmodifiableList(sourceExecutables);
   }
 
-  // Maps reflection members to source code members.
+  /**
+   * Maps reflection members to source code members.
+   *
+   * @param reflectionExecutables the list of reflection members
+   * @param sourceExecutables the list of source code members
+   * @return a map holding the correspondences
+   */
   private Map<Executable, CallableDeclaration<?>> mapExecutables(
       List<Executable> reflectionExecutables, List<CallableDeclaration<?>> sourceExecutables) {
 
@@ -228,7 +287,13 @@ public final class JavadocExtractor {
     return map;
   }
 
-  // Checks that reflection param types and source param types are the same.
+  /**
+   * Checks that reflection param types and source param types are the same.
+   *
+   * @param reflectionParams array of reflection param types
+   * @param sourceParams NodeList of source param types
+   * @return true if the param types are the same, false otherwise
+   */
   private boolean sameParTypes(
       java.lang.reflect.Parameter[] reflectionParams,
       NodeList<com.github.javaparser.ast.body.Parameter> sourceParams) {
@@ -251,6 +316,12 @@ public final class JavadocExtractor {
     return true;
   }
 
+  /**
+   * Clean generics type
+   *
+   * @param type the String type
+   * @return the cleaned type
+   */
   private String removeGenerics(String type) {
     int i = type.indexOf("<");
     if (i != -1) { // If type contains "<".
@@ -268,7 +339,14 @@ public final class JavadocExtractor {
     return reflectionName;
   }
 
-  // Tries
+  /**
+   * Search for the class of the exception
+   *
+   * @param sourceMember the source member involving the exception
+   * @param exceptionName the String exception name
+   * @return the exception class
+   * @throws ClassNotFoundException if exception class couldn't be loaded
+   */
   private Class<?> findExceptionType(CallableDeclaration<?> sourceMember, String exceptionName)
       throws ClassNotFoundException {
     Class<?> exceptionType = null;
