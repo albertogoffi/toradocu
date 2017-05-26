@@ -20,7 +20,8 @@ public class ParamTagTest {
 
   @Test
   public void testBasics() {
-    ParamTag tag = new ParamTag(new Parameter(intClass, "elements"), "must not be null");
+    ParamTag tag =
+        new ParamTag(new Parameter(intClass, "elements"), new Comment("must not be null"));
     assertThat(tag.getParameter(), is(new Parameter(intClass, "elements")));
     assertThat(tag.getComment(), is("must not be null"));
     assertThat(tag.getCondition(), is(emptyString()));
@@ -31,7 +32,8 @@ public class ParamTagTest {
 
   @Test
   public void testToString() {
-    ParamTag tag = new ParamTag(new Parameter(intClass, "elements"), "must not be null");
+    ParamTag tag =
+        new ParamTag(new Parameter(intClass, "elements"), new Comment("must not be null"));
     assertThat(tag.toString(), is("@param elements must not be null"));
 
     tag.setCondition("elements != null");
@@ -40,8 +42,10 @@ public class ParamTagTest {
 
   @Test
   public void testEquals() {
-    ParamTag tag1 = new ParamTag(new Parameter(intClass, "elements"), "must not be null");
-    ParamTag tag2 = new ParamTag(new Parameter(intClass, "elements"), "must not be null");
+    ParamTag tag1 =
+        new ParamTag(new Parameter(intClass, "elements"), new Comment("must not be null"));
+    ParamTag tag2 =
+        new ParamTag(new Parameter(intClass, "elements"), new Comment("must not be null"));
     assertThat(tag1.equals(tag2), is(true));
     assertThat(tag1.hashCode(), is(equalTo(tag2.hashCode())));
     assertThat(tag1.equals(new Object()), is(false));
@@ -54,17 +58,21 @@ public class ParamTagTest {
     tag2.setCondition("elements == null");
     assertThat(tag1.equals(tag2), is(false));
 
-    ParamTag tag3 = new ParamTag(new Parameter(intClass, "elements"), "must not be false");
+    ParamTag tag3 =
+        new ParamTag(new Parameter(intClass, "elements"), new Comment("must not be false"));
     assertThat(tag1.equals(tag3), is(false));
 
-    ParamTag tag4 = new ParamTag(new Parameter(intClass, "element"), "must not be null");
+    ParamTag tag4 =
+        new ParamTag(new Parameter(intClass, "element"), new Comment("must not be null"));
     assertThat(tag1.equals(tag4), is(false));
   }
 
   @Test
   public void testHashCode() {
-    ParamTag tag1 = new ParamTag(new Parameter(intClass, "elements"), "must not be null");
-    ParamTag tag2 = new ParamTag(new Parameter(intClass, "elements"), "must not be null");
+    ParamTag tag1 =
+        new ParamTag(new Parameter(intClass, "elements"), new Comment("must not be null"));
+    ParamTag tag2 =
+        new ParamTag(new Parameter(intClass, "elements"), new Comment("must not be null"));
     Set<ParamTag> set1 = new LinkedHashSet<>();
     Set<ParamTag> set2 = new LinkedHashSet<>();
     set1.add(tag1);
