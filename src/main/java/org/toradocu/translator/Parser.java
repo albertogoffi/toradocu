@@ -1,5 +1,7 @@
 package org.toradocu.translator;
 
+import static java.util.stream.Collectors.toList;
+
 import edu.stanford.nlp.ling.HasWord;
 import edu.stanford.nlp.ling.TaggedWord;
 import edu.stanford.nlp.semgraph.SemanticGraph;
@@ -10,6 +12,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.ExecutableMember;
+import org.toradocu.extractor.Parameter;
 
 /** Created by arianna on 18/05/17. */
 public class Parser {
@@ -51,11 +54,22 @@ public class Parser {
 
     List<SemanticGraph> graphs = new ArrayList<>();
     Comment commentWithPlaceholders = addPlaceholders(comment);
+    List<String> arguments = new ArrayList<>();
+    List<String> codeElements = new ArrayList<>();
+    if (method != null)
+      // Collect method arguments
+      arguments = method.getParameters().stream().map(Parameter::getName).collect(toList());
+
     final List<List<HasWord>> sentences =
         StanfordParser.tokenize(commentWithPlaceholders.getText());
     for (List<HasWord> sentence : sentences) {
-      final List<TaggedWord> taggedWords =
-          POSTagger.tagWords(sentence, comment.getWordsMarkedAsCode());
+      for (HasWord word : sentence) {
+        // For every word in the sentence, check if it is an argument and update the code elements list
+        if (arguments.contains(word.toString())) codeElements.add(word.word());
+      }
+      // Update code elements list also with words marked as @code
+      codeElements.addAll(comment.getWordsMarkedAsCode());
+      final List<TaggedWord> taggedWords = POSTagger.tagWords(sentence, codeElements);
       final SemanticGraph semanticGraph = StanfordParser.parse(taggedWords);
       graphs.add(semanticGraph);
     }
