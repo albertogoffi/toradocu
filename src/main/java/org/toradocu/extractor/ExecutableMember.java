@@ -57,7 +57,13 @@ public final class ExecutableMember {
     loadTags(tags);
   }
 
-  // Checks that provided parameter types are consistent with executable (reflection) parameter types.
+  /**
+   * Checks that provided parameter types are consistent with executable (reflection) parameter
+   * types.
+   *
+   * @param executableParams array of reflection parameter types
+   * @param params list of Parameters
+   */
   private void checkParameters(
       java.lang.reflect.Parameter[] executableParams, List<Parameter> params) {
     if (executableParams.length != params.size()) {
@@ -82,6 +88,11 @@ public final class ExecutableMember {
     }
   }
 
+  /**
+   * Stores generic tags in the proper caches.
+   *
+   * @param tags list of {@code Tag}s
+   */
   private void loadTags(List<Tag> tags) {
     for (Tag tag : tags) {
       if (tag instanceof ParamTag) {
