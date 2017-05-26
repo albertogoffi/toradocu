@@ -42,8 +42,8 @@ public class Parser {
   /**
    * Store in cache the semantic graphs for a pair comment, method.
    *
-   * @param comment the string comment
-   * @param method the DocumentedMethod
+   * @param comment the comment object
+   * @param method the ExecutableMember
    */
   private static List<SemanticGraph> parse_(Comment comment, ExecutableMember method) {
     // Check if cache contains a valid answer.
@@ -60,6 +60,7 @@ public class Parser {
       // Collect method arguments
       arguments = method.getParameters().stream().map(Parameter::getName).collect(toList());
 
+    // Extract sentences in comment with placeholders
     final List<List<HasWord>> sentences =
         StanfordParser.tokenize(commentWithPlaceholders.getText());
     for (List<HasWord> sentence : sentences) {
@@ -78,11 +79,11 @@ public class Parser {
   }
 
   /**
-   * Takes a comment as a String and returns a list of {@code PropositionSeries} objects, one for
-   * each sentence in the comment.
+   * Takes a Comment object and returns a list of {@code PropositionSeries} objects, one for each
+   * sentence in the comment.
    *
-   * @param comment the text of a Javadoc comment
-   * @param method the DocumentedMethod under analysis
+   * @param comment object representing a Javadoc comment
+   * @param method the ExecutableMember under analysis
    * @return a list of {@code PropositionSeries} objects, one for each sentence in the comment
    */
   // TODO Move this to a new class PropositionIdentifier that handles Proposition.
