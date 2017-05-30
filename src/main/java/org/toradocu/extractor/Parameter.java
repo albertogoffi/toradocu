@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import org.toradocu.Checks;
+import org.toradocu.util.Checks;
 
 /** This class represents a method parameter. */
 public final class Parameter {

@@ -1,6 +1,6 @@
 package org.toradocu.translator.spec;
 
-import org.toradocu.Checks;
+import org.toradocu.util.Checks;
 
 public class Precondition extends AbstractSpecification {
 

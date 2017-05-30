@@ -1,7 +1,7 @@
 package org.toradocu.extractor;
 
 import java.util.Objects;
-import org.toradocu.Checks;
+import org.toradocu.util.Checks;
 
 /**
  * This class represents a param tag. Each param tag consists of the name of the param and a brief

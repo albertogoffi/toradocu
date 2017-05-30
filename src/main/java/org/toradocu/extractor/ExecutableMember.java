@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.StringJoiner;
-import org.toradocu.Checks;
+import org.toradocu.util.Checks;
 
 /**
  * ExecutableMember represents the Javadoc documentation for a method in a class. It identifies the

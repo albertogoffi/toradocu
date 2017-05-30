@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
-import org.toradocu.Checks;
+import org.toradocu.util.Checks;
 
 /**
  * This class represents a throws tag in a method. Each @throws tag consists of an exception, a

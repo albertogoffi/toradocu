@@ -1,7 +1,7 @@
 package org.toradocu.translator.spec;
 
 import java.util.Objects;
-import org.toradocu.Checks;
+import org.toradocu.util.Checks;
 
 public class Postcondition extends AbstractSpecification {
 

@@ -1,7 +1,7 @@
 package org.toradocu.extractor;
 
 import java.util.Objects;
-import org.toradocu.Checks;
+import org.toradocu.util.Checks;
 
 class AbstractTag implements Tag {
 
