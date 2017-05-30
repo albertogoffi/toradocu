@@ -203,6 +203,7 @@ public class Parser {
     List<PropositionSeries> result = new ArrayList<>();
 
     for (PropositionSeries series : seriesList) {
+      final SemanticGraph semanticGraph = series.getSemanticGraph();
       List<Proposition> inequalityPropositions = new ArrayList<>();
       for (Proposition placeholderProposition : series.getPropositions()) {
         Subject subject = placeholderProposition.getSubject();
@@ -218,7 +219,9 @@ public class Parser {
         inequalityPropositions.add(
             new Proposition(subject, predicate, placeholderProposition.isNegative()));
       }
-      result.add(new PropositionSeries(inequalityPropositions, series.getConjunctions()));
+      final PropositionSeries newSeries =
+          new PropositionSeries(semanticGraph, inequalityPropositions, series.getConjunctions());
+      result.add(newSeries);
     }
 
     inequalities.clear();

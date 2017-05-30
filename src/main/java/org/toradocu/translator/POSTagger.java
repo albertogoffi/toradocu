@@ -10,7 +10,7 @@ public class POSTagger {
   /**
    * This is a custom POS tagger to be used by the Stanford Parser. The purpose is tagging words in
    * the comment in case we already know their right POS tag. Up to now, this is useful for
-   * inequalities placeholder (tagged ad JJ) and code elements (tagged as NN). This way, the
+   * inequalities placeholder (tagged as JJ) and code elements (tagged as NN). This way, the
    * Stanford Parser will take in input a partially tagged sentence, and will adapt its tagging to
    * our previous one.
    *

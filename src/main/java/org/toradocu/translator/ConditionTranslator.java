@@ -65,9 +65,9 @@ public class ConditionTranslator {
     comment = addPlaceholders(comment);
     List<PropositionSeries> result = new ArrayList<>();
 
-    for (SemanticGraph semanticGraph : StanfordParser.getSemanticGraphs(comment, method)) {
-      result.add(new SentenceParser(semanticGraph).getPropositionSeries());
-    }
+    //    for (SemanticGraph semanticGraph : StanfordParser.getSemanticGraphs(comment, method)) {
+    //      result.add(new SentenceParser(semanticGraph).getPropositionSeries());
+    //    }
 
     return removePlaceholders(result);
   }
@@ -215,7 +215,7 @@ public class ConditionTranslator {
         inequalityPropositions.add(
             new Proposition(subject, predicate, placeholderProposition.isNegative()));
       }
-      result.add(new PropositionSeries(inequalityPropositions, series.getConjunctions()));
+      //      result.add(new PropositionSeries(inequalityPropositions, series.getConjunctions()));
     }
 
     inequalities.clear();
@@ -712,13 +712,13 @@ public class ConditionTranslator {
     // "it" would be translated as a standalone subject, but more probably it is referred to another more meaningful one:
     // probably a previous mentioned noun.
     if (comment.contains(" it ")) {
-      for (SemanticGraph sg : StanfordParser.getSemanticGraphs(comment, method)) {
-        List<IndexedWord> nouns = sg.getAllNodesByPartOfSpeechPattern("NN(.*)");
-        if (!nouns.isEmpty()) {
-          IndexedWord boh = nouns.stream().findFirst().get();
-          comment = comment.replace(" it ", " " + boh.word() + " ");
-        }
-      }
+      //      for (SemanticGraph sg : StanfordParser.getSemanticGraphs(comment, method)) {
+      //        List<IndexedWord> nouns = sg.getAllNodesByPartOfSpeechPattern("NN(.*)");
+      //        if (!nouns.isEmpty()) {
+      //          IndexedWord boh = nouns.stream().findFirst().get();
+      //          comment = comment.replace(" it ", " " + boh.word() + " ");
+      //        }
+      //      }
     }
 
     return comment;

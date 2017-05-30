@@ -1,5 +1,7 @@
 package org.toradocu.translator;
 
+import static java.util.stream.Collectors.toList;
+
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.lang.reflect.Executable;
 import java.lang.reflect.Field;
@@ -15,7 +17,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.stream.Collectors;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ParamTag;
 import org.toradocu.util.Reflection;
@@ -102,7 +103,7 @@ public class JavaElementsCollector {
                 m ->
                     !m.toGenericString().equals(executable.toGenericString())
                         && checkCompatibility(m, inScopeTypes))
-            .collect(Collectors.toList());
+            .collect(toList());
     for (Method method : methods) {
       if (Modifier.isStatic(method.getModifiers())) {
         collectedElements.add(new StaticMethodCodeElement(method));
@@ -133,8 +134,14 @@ public class JavaElementsCollector {
     for (ParamTag pt : paramTags) {
       String paramName = pt.getParameter().getName();
       if (paramName.equals(param)) {
-        List<SemanticGraph> sgs = Parser.parse(pt.getComment(), method);
-        for (SemanticGraph sg : sgs) ids.add(sg.getFirstRoot().word());
+        List<SemanticGraph> sgs =
+            Parser.parse(pt.getComment(), method)
+                .stream()
+                .map(PropositionSeries::getSemanticGraph)
+                .collect(toList());
+        for (SemanticGraph sg : sgs) {
+          ids.add(sg.getFirstRoot().word());
+        }
       }
     }
     return ids;

@@ -3,6 +3,7 @@ package org.toradocu.translator;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.Tag;
 import org.toradocu.translator.preprocess.PreprocessorFactory;
+import org.toradocu.translator.spec.Specification;
 
 public class CommentTranslator {
 
@@ -13,8 +14,8 @@ public class CommentTranslator {
 
     // Translation.
     final Translator<Tag> translator = TranslatorFactory.create(tag);
-    translator.translate(tag, excMember);
+    final Specification specification = translator.translate(tag, excMember);
 
-    // TODO ...
+    // TODO Check the consistency of the generated specification.
   }
 }

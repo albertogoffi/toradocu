@@ -1,5 +1,6 @@
 package org.toradocu.translator;
 
+import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -27,9 +28,14 @@ public class PropositionSeries {
    */
   private final List<Conjunction> conjunctions;
 
+  private final SemanticGraph semanticGraph;
+
   /** Initializes an empty {@code PropositionSeries}. */
-  PropositionSeries() {
-    this(new ArrayList<>(), new ArrayList<>());
+  PropositionSeries(SemanticGraph semanticGraph) {
+    this.semanticGraph = semanticGraph;
+    propositions = new ArrayList<>();
+    conjunctions = new ArrayList<>();
+    //    this(new ArrayList<>(), new ArrayList<>());
   }
 
   /**
@@ -41,12 +47,14 @@ public class PropositionSeries {
    * @throws IllegalArgumentException if the number of conjunctions is not exactly 1 less than the
    *     number of propositions, unless both are empty
    */
-  PropositionSeries(List<Proposition> propositions, List<Conjunction> conjunctions) {
-    if (propositions.size() != 0
-        && conjunctions.size() != 0
+  PropositionSeries(
+      SemanticGraph semanticGraph, List<Proposition> propositions, List<Conjunction> conjunctions) {
+    if (!propositions.isEmpty()
+        && !propositions.isEmpty()
         && propositions.size() - conjunctions.size() != 1) {
       throw new IllegalArgumentException();
     }
+    this.semanticGraph = semanticGraph;
     this.propositions = propositions;
     this.conjunctions = conjunctions;
   }
@@ -175,5 +183,9 @@ public class PropositionSeries {
       }
     }
     return output.toString();
+  }
+
+  public SemanticGraph getSemanticGraph() {
+    return semanticGraph;
   }
 }

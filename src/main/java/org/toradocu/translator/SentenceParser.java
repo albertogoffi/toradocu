@@ -69,7 +69,7 @@ public class SentenceParser {
     // map a conjunction between two specific words to a conjunction between two propositions.
     Map<List<IndexedWord>, Proposition> propositionMap = new LinkedHashMap<>();
     // Proposition series that will be built and returned.
-    PropositionSeries propositionSeries = new PropositionSeries();
+    PropositionSeries propositionSeries = new PropositionSeries(semanticGraph);
 
     for (SemanticGraphEdge subjectRelation : subjectRelations) {
       // Get the words that make up the predicate.
