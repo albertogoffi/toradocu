@@ -138,6 +138,17 @@ public final class ExecutableMember {
   }
 
   /**
+   * Returns the Javadoc comments introduced by a tag (e.g., @param, @return, ...) of this
+   * executable member.
+   *
+   * @return the Javadoc comments introduced by a tag (e.g., @param, @return, ...) of this
+   *     executable member
+   */
+  public List<Tag> getTags() {
+    return tags;
+  }
+
+  /**
    * Returns true if this method takes a variable number of arguments, false otherwise.
    *
    * @return {@code true} if this method takes a variable number of arguments, {@code false}

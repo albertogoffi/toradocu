@@ -20,7 +20,7 @@ import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.JavadocExtractor;
 import org.toradocu.extractor.Tag;
-import org.toradocu.translator.ConditionTranslator;
+import org.toradocu.translator.CommentTranslator;
 import org.toradocu.util.GsonInstance;
 import org.toradocu.util.RandoopSpecs;
 import randoop.condition.specification.OperationSpecification;
@@ -137,7 +137,11 @@ public class Toradocu {
       if (configuration.useTComment()) {
         tcomment.TcommentKt.translate(members);
       } else {
-        ConditionTranslator.translate(members);
+        for (ExecutableMember member : members) {
+          for (Tag tag : member.getTags()) {
+            CommentTranslator.translate(tag, member);
+          }
+        }
       }
 
       // Output the result on a file or on the standard output, if silent mode is disabled.
