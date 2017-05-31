@@ -6,15 +6,11 @@ import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.extractor.ExecutableMember;
@@ -222,174 +218,6 @@ public class ConditionTranslator {
     return result;
   }
 
-  /**
-   * Translates the {@code Proposition}s in the given {@code propositionSeries} to Java expressions.
-   *
-   * @param propositionSeries the {@code Proposition}s to translate into Java expressions
-   * @param method the method the containing the Javadoc comment from which the {@code
-   *     propositionSeries} was extracted
-   */
-  public static void translate(PropositionSeries propositionSeries, ExecutableMember method) {
-    Matcher matcher = new Matcher();
-    for (Proposition p : propositionSeries.getPropositions()) {
-      Set<CodeElement<?>> subjectMatches;
-      subjectMatches = matcher.subjectMatch(p.getSubject().getSubject(), method);
-      if (subjectMatches.isEmpty()) {
-        log.debug("Failed subject translation for: " + p);
-        return;
-      }
-      final Set<CodeElement<?>> matchingCodeElements = new LinkedHashSet<>();
-      String loop = findMatchingCodeElements(p, subjectMatches, method, matchingCodeElements);
-      if (loop.equals(LOOP_RETURN)) {
-        return;
-      }
-      if (loop.equals(LOOP_CONTINUE)) {
-        continue;
-      }
-
-      // Maps each subject code element to the Java expression translation that uses that code
-      // element.
-      Map<CodeElement<?>, String> translations = new LinkedHashMap<>();
-      for (CodeElement<?> subjectMatch : matchingCodeElements) {
-        String currentTranslation =
-            matcher.predicateMatch(method, subjectMatch, p.getPredicate(), p.isNegative());
-        if (currentTranslation == null) {
-          log.trace("Failed predicate translation for: " + p);
-          continue;
-        }
-        if (currentTranslation.contains("{") && currentTranslation.contains("}")) {
-          String argument =
-              currentTranslation.substring(
-                  currentTranslation.indexOf("{") + 1, currentTranslation.indexOf("}"));
-
-          Set<CodeElement<?>> argMatches;
-          argMatches = matcher.subjectMatch(argument, method);
-          if (argMatches.isEmpty()) {
-            log.trace("Failed predicate translation for: " + p + " due to variable not found.");
-            continue;
-          } else {
-            Iterator<CodeElement<?>> it = argMatches.iterator();
-            String replaceTarget = "{" + argument + "}";
-            //Naive solution: picks the first match from the list.
-            String replacement = it.next().getJavaExpression();
-            currentTranslation = currentTranslation.replace(replaceTarget, replacement);
-          }
-        }
-        translations.put(subjectMatch, currentTranslation);
-      }
-
-      if (translations.isEmpty()) {
-        // Predicate match failed for every subject match.
-        return;
-      }
-
-      // The final translation.
-      String result = null;
-
-      Conjunction conjunction = getConjunction(p.getSubject());
-      if (conjunction != null) {
-        // A single subject can refer to multiple elements (e.g., in "either value is null").
-        // Therefore, translations for each subject code element should be merged using the
-        // appropriate conjunction.
-        for (String translation : translations.values()) {
-          if (result == null) {
-            result = translation;
-          } else {
-            result += conjunction + translation;
-          }
-        }
-      } else { // Only one of the matching subjects should be used.
-        CodeElement<?> match = null;
-
-        // Sort matching subjects according to their priorities (defined in CodeElement#compareTo).
-        List<CodeElement<?>> matchingSubjects = new ArrayList<>();
-        matchingSubjects.addAll(translations.keySet());
-        matchingSubjects.sort(Collections.reverseOrder());
-        // Get all the matching subjects with the same priority (i.e., of the same type).
-        final List<CodeElement<?>> samePriorityElements =
-            matchingCodeElements
-                .stream()
-                .filter(c -> matchingSubjects.get(0).getClass().equals(c.getClass()))
-                .collect(Collectors.toList());
-        // Get the first matching subject tagged with {@code} or the first at all.
-        for (CodeElement<?> matchingSubject : samePriorityElements) {
-          // If the indecision is between two subject matches that are absolutely equal
-          // candidates, then the priority goes to the one which is also a {@code} tag in the
-          // method's Javadoc: isTaggedAsCode checks this property.
-          boolean isTaggedAsCode = false;
-          for (ThrowsTag throwTag : method.throwsTags()) {
-            isTaggedAsCode = throwTag.intersect(new ArrayList<>(matchingSubject.getIdentifiers()));
-          }
-          if (isTaggedAsCode) {
-            match = matchingSubject;
-            break;
-          }
-        }
-        if (match == null) {
-          match = samePriorityElements.get(0);
-        }
-        result = translations.get(match);
-      }
-
-      if (result == null) {
-        log.warn("Failed translation for proposition " + p);
-        p.setTranslation("");
-      } else {
-        log.trace("Translated proposition " + p + " as: " + result);
-        p.setTranslation(result);
-      }
-    }
-  }
-
-  /**
-   * Find a set of {@code CodeElement}s that match the subject of the {@code Proposition} relative
-   * to the {@code ExecutableMember}, updating the set {@code matchingCodeElements}.
-   *
-   * @param p the proposition
-   * @param subjectMatches CodeElements matches for subject
-   * @param method the ExecutableMember under analysis
-   * @param matchingCodeElements the set of matching CodeElements to update
-   * @return a String defining whether the loop in the method translatePropositions has to continue
-   *     to the next iteration (LOOP_CONTINUE), to stop (LOOP_RETURN) or go on executing the rest of
-   *     the body (LOOP_OK)
-   */
-  private static String findMatchingCodeElements(
-      Proposition p,
-      Set<CodeElement<?>> subjectMatches,
-      ExecutableMember method,
-      Set<CodeElement<?>> matchingCodeElements) {
-    Matcher matcher = new Matcher();
-    final String container = p.getSubject().getContainer();
-    if (container.isEmpty()) {
-      // Subject match
-      subjectMatches = matcher.subjectMatch(p.getSubject().getSubject(), method);
-      if (subjectMatches.isEmpty()) {
-        log.debug("Failed subject translation for: " + p);
-        return LOOP_RETURN;
-      }
-      matchingCodeElements.addAll(subjectMatches);
-    } else {
-      // Container match
-      final CodeElement<?> containerMatch = matcher.containerMatch(container, method);
-      if (containerMatch == null) {
-        log.trace("Failed container translation for: " + p);
-        matchingCodeElements.clear();
-        return LOOP_CONTINUE;
-      }
-      try {
-        matchingCodeElements.add(
-            new ContainerElementsCodeElement(
-                containerMatch.getJavaCodeElement(), containerMatch.getJavaExpression()));
-      } catch (IllegalArgumentException e) {
-        // The containerMatch is not supported by the current implementation of
-        // ContainerElementsCodeElement.
-        matchingCodeElements.clear();
-        return LOOP_CONTINUE;
-      }
-    }
-    return LOOP_OK;
-  }
-
   private static final String LOOP_OK = "OK";
   private static final String LOOP_CONTINUE = "continue";
   private static final String LOOP_RETURN = "return";
@@ -414,27 +242,6 @@ public class ConditionTranslator {
         conditionsBuilder.append(Conjunction.OR + "(" + it.next() + ")");
       }
       return conditionsBuilder.toString();
-    }
-  }
-
-  /**
-   * Returns the conjunction that should be used to form the translation for a {@code Proposition}
-   * with the given subject. Returns null if no conjunction should be used.
-   *
-   * @param subject the subject of the {@code Proposition}
-   * @return the conjunction that should be used to form the translation for the {@code Proposition}
-   *     with the given subject or null if no conjunction should be used
-   */
-  private static Conjunction getConjunction(Subject subject) {
-    String subjectAsString = subject.getSubject().toLowerCase();
-    if (subjectAsString.startsWith("either ") || subjectAsString.startsWith("any ")) {
-      return Conjunction.OR;
-    } else if (subjectAsString.startsWith("both ") || subjectAsString.startsWith("all ")) {
-      return Conjunction.AND;
-    } else if (!subject.isSingular()) {
-      return Conjunction.OR;
-    } else {
-      return null;
     }
   }
 
@@ -528,7 +335,7 @@ public class ConditionTranslator {
       Set<String> conditions = new LinkedHashSet<>();
       // Identify Java code elements in propositions.
       for (PropositionSeries propositions : extractedPropositions) {
-        translate(propositions, method);
+        BasicTranslator.translate(propositions, method);
         conditions.add(propositions.getTranslation());
       }
       tag.setCondition(mergeConditions(conditions));
@@ -823,7 +630,7 @@ public class ConditionTranslator {
     Set<String> conditions = new LinkedHashSet<>();
     // Identify Java code elements in propositions.
     for (PropositionSeries propositions : extractedPropositions) {
-      translate(propositions, method);
+      BasicTranslator.translate(propositions, method);
       conditions.add(propositions.getTranslation());
     }
     return mergeConditions(conditions);

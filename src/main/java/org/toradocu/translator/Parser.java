@@ -14,7 +14,13 @@ import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.Parameter;
 
-/** Created by arianna on 18/05/17. */
+/**
+ * Created by arianna on 18/05/17.
+ *
+ * <p>The Parser must extract the {@code PropositionSerie}s from a {@code Tag} comment. Thus, it
+ * interacts with the Stanford Parser in order to produce the {@code SemanticGraph}. It holds a
+ * {@code SemanticGraph}s cache which maps each comment to its {@code SemanticGraph}.
+ */
 public class Parser {
 
   /** The regular expressions used to identify patterns in the comment */
