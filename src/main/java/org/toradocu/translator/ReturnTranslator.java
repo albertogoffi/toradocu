@@ -168,7 +168,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     Set<String> conditions = new LinkedHashSet<>();
     // Identify Java code elements in propositions.
     for (PropositionSeries propositions : extractedPropositions) {
-      ConditionTranslator.translate(propositions, method);
+      BasicTranslator.translate(propositions, method);
       conditions.add(propositions.getTranslation());
     }
     return mergeConditions(conditions);
