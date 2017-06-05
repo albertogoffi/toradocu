@@ -136,9 +136,10 @@ public class RandoopSpecs {
     }
 
     String tagKind = format(tag.getKind());
-    String description = tagKind + " " + tag.exception().getSimpleName() + " " + tag.getComment();
+    String description =
+        tagKind + " " + tag.exceptionType().getSimpleName() + " " + tag.getComment();
     Guard guard = new Guard(tag.getComment(), processCondition(condition, method));
-    return new ThrowsSpecification(description, guard, tag.exception().getQualifiedName());
+    return new ThrowsSpecification(description, guard, tag.exceptionType().getQualifiedName());
   }
 
   /**

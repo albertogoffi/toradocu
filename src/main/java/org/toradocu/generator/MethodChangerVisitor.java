@@ -155,7 +155,7 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
         String addExpectedException =
             "{try{expectedExceptions.add("
                 + "Class.forName(\""
-                + tag.exception()
+                + tag.exceptionType()
                 + "\")"
                 + ");} catch (ClassNotFoundException e) {"
                 + "System.err.println(\"Class not found!\" + e);}}";
@@ -196,7 +196,7 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<DocumentedMetho
                 .filter(stm -> stm instanceof IfStmt)
                 .findFirst();
         if (ifCondition.isPresent()) {
-          String comment = " " + tag.getKind() + " " + tag.exception() + " " + tag.getComment();
+          String comment = " " + tag.getKind() + " " + tag.exceptionType() + " " + tag.getComment();
           ifCondition.get().setComment(new LineComment(comment));
         }
 

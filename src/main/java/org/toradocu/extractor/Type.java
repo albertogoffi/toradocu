@@ -119,7 +119,7 @@ public class Type {
   }
 
   /**
-   * Compares this type with a Java Class type.
+   * Compares this type with a Java Class.
    *
    * @param type the Class to be compared with this type
    * @return {@code true} if this type and {@code type} are equal, {@code false} otherwise

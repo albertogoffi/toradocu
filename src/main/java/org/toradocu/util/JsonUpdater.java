@@ -140,7 +140,7 @@ public class JsonUpdater {
               .stream()
               .filter(
                   t ->
-                      t.exception().equals(newThrowsTag.exception())
+                      t.exceptionType().equals(newThrowsTag.exceptionType())
                           && t.getComment().equals(newThrowsTag.getComment()))
               .collect(Collectors.toList());
       // Sanity checks.

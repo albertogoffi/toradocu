@@ -43,12 +43,9 @@ public final class DocumentedMethod {
   private final Type returnType;
   /** Method's parameters. */
   private final List<Parameter> parameters;
-  /** Param tags specified in the method's Javadoc introduced in order. */
+  /** Param tags specified in the method's Javadoc. */
   private final Set<ParamTag> paramTags;
-  /**
-   * return tags specified in the method's Javadoc introduced in order. (If more than one, but
-   * that's weird)
-   */
+  /** return tags specified in the method's Javadoc. (If more than one, but that's weird) */
   private final ReturnTag returnTag;
   /**
    * Throws tags specified in the method's Javadoc. Also, each throws tag can contain the
@@ -64,11 +61,11 @@ public final class DocumentedMethod {
    * @param name the simple name of the {@code DocumentedMethod}
    * @param returnType the fully qualified return type of the method or {@code null} if the {@code
    *     DocumentedMethod} is a constructor
-   * @param parameters the parameters of the {@code DocumentedMethod}
-   * @param paramTags the {@code @param tags} of the {@code DocumentedMethod}
+   * @param parameters the parameters of the {@code DocumentedMethod}; may be null
+   * @param paramTags the {@code @param tags} of the {@code DocumentedMethod}; may be null
    * @param isVarArgs true if the {@code DocumentedMethod} takes a variable number of arguments,
    *     false otherwise
-   * @param throwsTags the {@code @throws tags} of the {@code DocumentedMethod}
+   * @param throwsTags the {@code @throws tags} of the {@code DocumentedMethod}; may be null
    * @param returnTag the {@code @return tag} of the {@code DocumentedMethod}
    * @throws NullPointerException if {@code containingClass} or {@code name} is null
    */
@@ -276,7 +273,7 @@ public final class DocumentedMethod {
    * Returns the target class as specified with the command line option --target-class.
    *
    * @return the target class as specified with the command line option --target-class. Null if the
-   *     command line options have not been parsed.
+   *     command line options have not yet been parsed.
    */
   public String getTargetClass() {
     return targetClass;
@@ -294,7 +291,7 @@ public final class DocumentedMethod {
 
   /**
    * Returns return type (when present), fully qualified class, and signature of this method in the
-   * format "&lt;RETURN TYPE&gt; &lt;CLASS TYPE.METHOD SIGNATURE&gt;"
+   * format "{@code <RETURN TYPE> <CLASS TYPE>.<METHOD SIGNATURE>}".
    *
    * @return return the string representation of this method
    */
