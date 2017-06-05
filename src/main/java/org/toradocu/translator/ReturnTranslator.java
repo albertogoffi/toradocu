@@ -107,15 +107,15 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    * Called if all the previous stantard tentatives of matching failed.
    *
    * @param method the ExecutableMember under analysis
-   * @param comment the comment to translate
+   * @param predicate the comment to translate
    * @return a match if found, otherwise null
    */
-  private static String lastAttemptMatch(ExecutableMember method, Comment comment) {
+  private static String lastAttemptMatch(ExecutableMember method, String predicate) {
     Matcher matcher = new Matcher();
     //Try a match looking at the semantic graph.
     String match = null;
-    String commentText = comment.getText().replace(";", "").replace(",", "");
-    final List<PropositionSeries> propositions = Parser.parse(comment, method);
+    String commentText = predicate.replace(";", "").replace(",", "");
+    final List<PropositionSeries> propositions = Parser.parse(new Comment(predicate), method);
     final List<SemanticGraph> semanticGraphs =
         propositions.stream().map(PropositionSeries::getSemanticGraph).collect(toList());
 
@@ -155,16 +155,16 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    * "second part" means every word of the conditional clause. Example: {@code @return true if the
    * parameter is null}. In this comment the second part is "if the parameter is null".
    *
-   * @param comment words representing the second part of an @return comment
+   * @param trueCase words representing the second part of an @return comment
    * @param method the method to which the @return tag belongs to
    * @return the translation of the given {@code text}
    */
-  private static String translateSecondPart(Comment comment, ExecutableMember method) {
+  private static String translateSecondPart(String trueCase, ExecutableMember method) {
     // Identify propositions in the comment. Each sentence in the comment is parsed into a
     // PropositionSeries.
 
     //text = removeInitial(text, "if");  already done in Preprocess part
-    List<PropositionSeries> extractedPropositions = Parser.parse(comment, method);
+    List<PropositionSeries> extractedPropositions = Parser.parse(new Comment(trueCase), method);
     Set<String> conditions = new LinkedHashSet<>();
     // Identify Java code elements in propositions.
     for (PropositionSeries propositions : extractedPropositions) {
@@ -179,13 +179,13 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    * "first part" means every word before the start of the conditional clause. Example:
    * {@code @return true if the parameter is null}. In this comment the first part is "true".
    *
-   * @param comment words representing the first part of an @return comment
+   * @param predicate words representing the first part of an @return comment
    * @param method the ExecutableMember the @return comment belongs to
    * @return the translation of the given {@code text}
    * @throws IllegalArgumentException if the given {@code text} cannot be translated
    */
-  private static String translateFirstPart(Comment comment, ExecutableMember method) {
-    String lowerCaseText = comment.getText().trim().toLowerCase();
+  private static String translateFirstPart(String predicate, ExecutableMember method) {
+    String lowerCaseText = predicate.trim().toLowerCase();
     String match = null;
     switch (lowerCaseText) {
       case "true":
@@ -193,10 +193,10 @@ public class ReturnTranslator implements Translator<ReturnTag> {
         return "result == " + lowerCaseText;
       default:
         {
-          int index = searchForCode(comment.getText(), method);
+          int index = searchForCode(predicate, method);
           if (index != -1) return "result == args[" + index + "]";
           else {
-            match = lastAttemptMatch(method, comment);
+            match = lastAttemptMatch(method, predicate);
             if (match != null) {
               if (!match.contains("result==")) return "result.equals(" + match + ")";
               else return match;
@@ -244,7 +244,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
           }
         }
       } else {
-        String match = lastAttemptMatch(method, comment);
+        String match = lastAttemptMatch(method, comment.getText());
         if (match != null) translation = match;
         else translation = "";
       }
@@ -288,7 +288,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
         translation = manageArithmeticOperation(excMember, commentToTranslate);
         if (translation.equals("")) {
           // All the previous attempts failed: try the last strategies (e.g. search for missing subjects)
-          String match = lastAttemptMatch(excMember, tag.getComment());
+          String match = lastAttemptMatch(excMember, tag.getComment().getText());
           if (match != null) {
             if (match.contains("result")) translation = "true ?" + match;
             else translation = "true ? result.equals(" + match + ")";
