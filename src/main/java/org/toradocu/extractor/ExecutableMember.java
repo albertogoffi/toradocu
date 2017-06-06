@@ -191,10 +191,8 @@ public final class ExecutableMember {
    * @return the signature of this method
    */
   public String getSignature() {
-    StringJoiner joiner = new StringJoiner(",", "(", ")");
-    for (Parameter param : parameters) {
-      joiner.add(param.toString());
-    }
+    StringJoiner joiner = new StringJoiner(", ", "(", ")");
+    parameters.forEach(param -> joiner.add(param.toString()));
     return executable.getName() + joiner.toString();
   }
 
