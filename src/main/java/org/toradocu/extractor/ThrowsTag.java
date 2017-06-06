@@ -11,7 +11,7 @@ import org.toradocu.util.Checks;
  * comment, and can have an optional condition. A condition is the translation of the comment into a
  * Java boolean condition. When the condition evaluates to {@code true}, an exception is expected.
  */
-public class ThrowsTag extends AbstractTag {
+public class ThrowsTag extends Tag {
 
   /** The exception described in this {@code ThrowsTag}. */
   private final Class<?> exception;

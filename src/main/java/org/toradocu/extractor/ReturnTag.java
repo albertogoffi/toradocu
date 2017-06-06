@@ -5,7 +5,7 @@ package org.toradocu.extractor;
  * comment, and can have an optional condition. A condition is the translation of the comment into a
  * Java boolean condition. When the condition evaluates to {@code true}, an exception is expected.
  */
-public class ReturnTag extends AbstractTag {
+public class ReturnTag extends Tag {
 
   /**
    * Constructs a {@code ThrowsTag} with the given exception, comment, and words tagged with @code
