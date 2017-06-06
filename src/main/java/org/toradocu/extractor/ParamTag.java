@@ -4,9 +4,9 @@ import java.util.Objects;
 import org.toradocu.util.Checks;
 
 /**
- * This class represents a param tag in a method. Each param tag consist of the name of the param
- * and a brief description, which may contain a condition. A condition is the translation of the
- * comment into a Java boolean condition. When the condition evaluates to {@code true}, the
+ * This class represents a {@code @param} tag in a method. Each ParamTag consists of the name of the
+ * param and a brief description, which may contain a condition. A condition is the translation of
+ * the comment into a Java boolean condition. When the condition evaluates to {@code true}, the
  * precondition expressed by this tag is satisfied. When the condition evaluates to {@code false}
  * the precondition expressed by this tag is violated, and the behavior of the method documented by
  * this tag is unspecified.

@@ -71,7 +71,9 @@ public final class JavadocExtractor {
       List<ReturnTag> memberReturnTags = extractReturnTag(member, classDoc);
 
       ReturnTag finalReturnTag = null;
-      if (!memberReturnTags.isEmpty()) finalReturnTag = memberReturnTags.get(0);
+      if (!memberReturnTags.isEmpty()) {
+        finalReturnTag = memberReturnTags.get(0);
+      }
 
       methods.add(
           new DocumentedMethod(
@@ -90,18 +92,17 @@ public final class JavadocExtractor {
   }
 
   /**
-   * Returns all constructors and methods (including inherited ones) from the given {@code ClassDoc}
-   * . Notice that methods inherited from the class {@code java.lang.Object} are ignored and not
-   * included in the returned list.
+   * Returns all non-private constructors and methods from the given {@code ClassDoc}. This includes
+   * inherited methods, except methods inherited from the class {@code java.lang.Object}.
    *
    * @param classDoc the {@code ClassDoc} from which to extract constructors and methods
    * @return a list of {@code ExecutableMemberDoc}s representing the constructors and methods of
    *     {@code classDoc}
    */
   private List<ExecutableMemberDoc> getConstructorsAndMethods(ClassDoc classDoc) {
+
     /* Constructors of the class {@code classDoc} to be returned by this method */
     List<ExecutableMemberDoc> constructors = new ArrayList<>();
-
     // Collect non-default constructors.
     for (ConstructorDoc constructor : classDoc.constructors(false)) {
       // This is a workaround to strange behavior of method Doc.position(). It does not return null
@@ -132,7 +133,7 @@ public final class JavadocExtractor {
    * Returns the return type of the given {@code member}. Returns {@code null} if {@code member} is
    * a constructor.
    *
-   * @param member the executable member (constructor or method) to return the return type
+   * @param member the executable member (constructor or method) whose return type is returned
    * @return the return type of the given member or null if the member is a constructor
    */
   private org.toradocu.extractor.Type getReturnType(ExecutableMemberDoc member) {
@@ -177,10 +178,12 @@ public final class JavadocExtractor {
   }
 
   /**
-   * Returns the qualified name (with dimension information) of the specified parameter type.
+   * Returns a string representation of the fully-qualified type (with dimension information) of the
+   * specified parameter type.
    *
    * @param parameterType the type (of a parameter)
-   * @return the qualified name (with dimension information) of the specified parameter type
+   * @return a string representation of the fully-qualified type of {@code parameterType}, with
+   *     dimension information
    */
   private String getParameterType(Type parameterType) {
     String qualifiedName = "";
@@ -193,12 +196,18 @@ public final class JavadocExtractor {
         if (bounds.length == 0) {
           qualifiedName = "java.lang.Object";
         } else {
+          // At this point, each bound is either:
+          //  * a type variable such as "T", or
+          //  * an explicit type, such as "java.lang.Comparable" or "java.util.List"
+
           // FIXME What if the parameter type has multiple bounds? (e.g., <T extends B1 & B2>)
           TypeVariable boundType = bounds[0].asTypeVariable(); // boundType is "T"
           if (boundType == null) {
+            // The bound is an explicit type
             qualifiedName = bounds[0].qualifiedTypeName();
             break;
           } else {
+            // The bound is a type variable.  Use its bound instead.
             bounds = boundType.bounds();
           }
         }
@@ -239,13 +248,13 @@ public final class JavadocExtractor {
         return importedClass.qualifiedName();
       }
     }
-    // If fully qualified exception's name cannot be collected from import statements, return the simple name
+    // If the exception type's fully qualified name cannot be collected from import statements, return the simple name
     return exceptionName;
   }
 
   /**
-   * Given a set of @{code ParamTag} tags, returns a map that associates a parameter with its
-   * {@code @param} comment. The key of the map is the parameter name.
+   * Given a set of @{code ParamTag} tags, returns a map that associates a parameter name with its
+   * {@code @param} comment.
    *
    * @param tags an array of {@code ParamTag}s
    * @return a map, parameter name -> @param comment
@@ -260,11 +269,11 @@ public final class JavadocExtractor {
   }
 
   /**
-   * This method extracts the throwsTags from the class we want.
+   * This method extracts the throwsTags from a given class.
    *
    * @param member the constructor or method from which to extract the throws tags
-   * @param classDoc the class that we use to extract the tags
-   * @return the list that contains the ThrowsTags of the class we gave
+   * @param classDoc the class from wich to extract the tags
+   * @return a list of ThrowsTags for {@code classDoc}
    * @throws IOException if the method encounters an error while reading/generating class
    *     documentation
    */
@@ -404,8 +413,8 @@ public final class JavadocExtractor {
       // tags, because they contain information that can be exploited.
       comment = Jsoup.parse(comment).text();
 
-      //The list of the parameters of the method that we'll use in order to match
-      //the parameterName of the tag with the parameter itself
+      // The list of the parameters of the method that we'll use in order to match
+      // the parameterName of the tag with the parameter itself
       List<Parameter> parameters = getParameters(member);
 
       String name = null; //Name of the ParamTag that we'll introduce

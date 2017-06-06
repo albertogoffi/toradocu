@@ -14,34 +14,38 @@ import org.toradocu.util.Checks;
 public class ThrowsTag extends AbstractTag {
 
   /** The exception described in this {@code ThrowsTag}. */
-  private final Type exception;
-  /** Code tags specified in the method's Javadoc. For now stored as simple Strings. */
+  private final Type exceptionType;
+  /**
+   * Code tags specified in the method's Javadoc. For now stored as simple Strings, consisting of
+   * the content only without surrounding {@code <code>...</code>} or {@code {@code ...}}.
+   */
   private final List<String> codeTags;
 
   /**
-   * Constructs a {@code ThrowsTag} with the given exception, comment, and words tagged with @code
+   * Constructs a {@code ThrowsTag} with the given exception type, comment, and words tagged with
+   * {@code @code} or {@code <code>...</code>}.
    *
-   * @param exception the exception type
-   * @param comment the comment associated with the exception
+   * @param exceptionType the exception type
+   * @param comment the comment associated with the exception type
    * @param codeTags words tagged with @code
-   * @throws NullPointerException if exception or comment is null
+   * @throws NullPointerException if exceptionType or comment is null
    */
-  public ThrowsTag(Type exception, String comment, Collection<String> codeTags) {
+  public ThrowsTag(Type exceptionType, String comment, Collection<String> codeTags) {
     super(Kind.THROWS, comment);
-    Checks.nonNullParameter(exception, "exception");
-    this.exception = exception;
+    Checks.nonNullParameter(exceptionType, "exceptionType");
+    this.exceptionType = exceptionType;
     this.codeTags = codeTags == null ? new ArrayList<>() : new ArrayList<>(codeTags);
   }
 
   /**
-   * Constructs a {@code ThrowsTag} with the given exception and comment.
+   * Constructs a {@code ThrowsTag} with the given exception type and comment.
    *
-   * @param exception the exception type
-   * @param comment the comment associated with the exception
-   * @throws NullPointerException if exception or comment is null
+   * @param exceptionType the exception type
+   * @param comment the comment associated with the exception type
+   * @throws NullPointerException if exceptionType or comment is null
    */
-  public ThrowsTag(Type exception, String comment) {
-    this(exception, comment, null);
+  public ThrowsTag(Type exceptionType, String comment) {
+    this(exceptionType, comment, null);
   }
 
   /**
@@ -49,8 +53,8 @@ public class ThrowsTag extends AbstractTag {
    *
    * @return the type of the exception in this throws tag
    */
-  public Type exception() {
-    return exception;
+  public Type exceptionType() {
+    return exceptionType;
   }
 
   /**
@@ -76,27 +80,27 @@ public class ThrowsTag extends AbstractTag {
     if (!(obj instanceof ThrowsTag)) return false;
 
     ThrowsTag that = (ThrowsTag) obj;
-    return this.exception.equals(that.exception) && super.equals(that);
+    return this.exceptionType.equals(that.exceptionType) && super.equals(that);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), exception);
+    return Objects.hash(super.hashCode(), exceptionType);
   }
 
   /**
    * Returns a string representation of this throws tag. The returned string is in the format
-   * "@throws EXCEPTION COMMENT" where EXCEPTION is the fully qualified name of the exception in
-   * this throws tag and COMMENT is the text of the comment in the throws tag. If translation has
-   * been attempted on this tag, then the returned string is also appended with " ==&gt; CONDITION"
-   * where CONDITION is the translated condition for the exception as a Java expression or the empty
-   * string if translation failed.
+   * "@throws EXCEPTION COMMENT" where EXCEPTION is the string representation of the fully qualified
+   * type of the exception in this throws tag and COMMENT is the text of the comment in the throws
+   * tag. If translation has been attempted on this tag, then the returned string is also appended
+   * with " ==&gt; CONDITION" where CONDITION is the translated condition for the exception as a
+   * Java expression or the empty string if translation failed.
    *
    * @return a string representation of this throws tag
    */
   @Override
   public String toString() {
-    String result = super.getKind() + " " + exception + " " + super.getComment();
+    String result = super.getKind() + " " + exceptionType + " " + super.getComment();
     if (super.getCondition() != null
         && super.getCondition().isPresent()
         && !super.getCondition().get().isEmpty()) {
