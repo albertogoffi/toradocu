@@ -30,16 +30,17 @@ public final class ExecutableMember {
   private final List<ThrowsTag> throwsTags;
   private ReturnTag returnTag;
 
-  public ExecutableMember(Executable executable) throws ClassNotFoundException {
-    this(executable, new ArrayList<>(), new ArrayList<>());
-  }
-
-  public ExecutableMember(Executable executable, List<Tag> tags) throws ClassNotFoundException {
-    this(executable, new ArrayList<>(), tags);
-  }
-
-  public ExecutableMember(Executable executable, List<Parameter> parameters, List<Tag> tags)
-      throws ClassNotFoundException {
+  /**
+   * Creates a new {@code ExecutableMember} wrapping the given executable, with the specified
+   * parameters and Javadoc comments introduced by tags.
+   *
+   * @param executable the executable this ExecutableMember wraps
+   * @param parameters the parameters of this ExecutableMember
+   * @param tags the Javadoc comments introduced by tags (e.g., @param, @return) associated with
+   *     this executable member
+   * @throws NullPointerException if either executable or parameters or tags is null
+   */
+  ExecutableMember(Executable executable, List<Parameter> parameters, List<Tag> tags) {
     Checks.nonNullParameter(executable, "executable");
     Checks.nonNullParameter(parameters, "parameters");
     Checks.nonNullParameter(tags, "tags");
