@@ -198,7 +198,7 @@ public final class JavadocExtractor {
 
     if (!notNullAnnotations.isEmpty() && !nullableAnnotations.isEmpty()) {
       // Parameter is annotated as both nullable and notNull.
-      // TODO Log a warning about wrong specification?
+      // TODO Log a warning about wrong specification!
       return null;
     }
     if (!notNullAnnotations.isEmpty()) {
@@ -316,7 +316,7 @@ public final class JavadocExtractor {
   }
 
   /**
-   * Clean generics type
+   * Clean generics type.
    *
    * @param type the String type
    * @return the cleaned type
@@ -339,24 +339,25 @@ public final class JavadocExtractor {
   }
 
   /**
-   * Search for the class of the exception
+   * Search for the type of the exception with the given type name.
    *
-   * @param sourceMember the source member involving the exception
-   * @param exceptionName the String exception name
+   * @param sourceMember the source member for which the exception with type name {@code
+   *     exceptionTypeName} is expected
+   * @param exceptionTypeName the exception type name
    * @return the exception class
    * @throws ClassNotFoundException if exception class couldn't be loaded
    */
-  private Class<?> findExceptionType(CallableDeclaration<?> sourceMember, String exceptionName)
+  private Class<?> findExceptionType(CallableDeclaration<?> sourceMember, String exceptionTypeName)
       throws ClassNotFoundException {
     Class<?> exceptionType = null;
     try {
-      exceptionType = Reflection.getClass(exceptionName);
+      exceptionType = Reflection.getClass(exceptionTypeName);
     } catch (ClassNotFoundException e) {
       // Intentionally empty.
     }
     if (exceptionType == null) {
       try {
-        exceptionType = Reflection.getClass("java.lang." + exceptionName);
+        exceptionType = Reflection.getClass("java.lang." + exceptionTypeName);
       } catch (ClassNotFoundException e) {
         // Intentionally empty.
       }
@@ -373,13 +374,13 @@ public final class JavadocExtractor {
       final NodeList<ImportDeclaration> imports = cu.getImports();
       for (ImportDeclaration anImport : imports) {
         String importedType = anImport.getNameAsString();
-        if (importedType.contains(exceptionName)) {
+        if (importedType.contains(exceptionTypeName)) {
           exceptionType = Reflection.getClass(importedType);
         }
       }
     }
     if (exceptionType == null) {
-      throw new ClassNotFoundException("Impossible to load exception type " + exceptionName);
+      throw new ClassNotFoundException("Impossible to load exception type " + exceptionTypeName);
     }
     return exceptionType;
   }
