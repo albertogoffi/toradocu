@@ -26,7 +26,10 @@ import java.util.Map.Entry;
 import java.util.Optional;
 import org.toradocu.util.Reflection;
 
-/** {@code JavadocExtractor} extracts {@code ExecutableMember}s from a class. */
+/**
+ * {@code JavadocExtractor} extracts {@code ExecutableMember}s from a class by means of {@code
+ * extract(String, String)}.
+ */
 public final class JavadocExtractor {
 
   /**
