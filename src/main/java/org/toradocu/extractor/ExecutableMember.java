@@ -208,12 +208,12 @@ public final class ExecutableMember {
   }
 
   /**
-   * Returns the fully qualified class name in which this executable member is defined.
+   * Returns the class in which this executable member is defined.
    *
    * @return the class in which this executable member is defined
    */
-  public String getContainingClass() {
-    return executable.getDeclaringClass().getName();
+  public Class<?> getContainingClass() {
+    return executable.getDeclaringClass();
   }
 
   /**

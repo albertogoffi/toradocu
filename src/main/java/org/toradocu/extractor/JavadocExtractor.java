@@ -174,11 +174,10 @@ public final class JavadocExtractor {
 
     List<Parameter> parameters = new ArrayList<>(sourceParams.size());
     for (int i = 0; i < sourceParams.size(); i++) {
-      final Class<?> paramType = reflectionParams[i].getType();
       final com.github.javaparser.ast.body.Parameter parameter = sourceParams.get(i);
-      final Boolean nullable = isNullable(parameter);
       final String paramName = parameter.getName().asString();
-      parameters.add(new Parameter(paramType, paramName, nullable));
+      final Boolean nullable = isNullable(parameter);
+      parameters.add(new Parameter(reflectionParams[i], paramName, nullable));
     }
     return parameters;
   }

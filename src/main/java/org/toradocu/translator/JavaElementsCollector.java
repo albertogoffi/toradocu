@@ -4,22 +4,18 @@ import static java.util.stream.Collectors.toList;
 
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.lang.reflect.Executable;
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map.Entry;
 import java.util.Set;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ParamTag;
-import org.toradocu.util.Reflection;
 
 /**
  * Collects all the Java elements that can be used for the condition translation. Java elements are
@@ -36,88 +32,83 @@ public class JavaElementsCollector {
    */
   public static Set<CodeElement<?>> collect(ExecutableMember executableMember) {
     Set<CodeElement<?>> collectedElements = new LinkedHashSet<>();
-    Class<?> containingClass;
-    try {
-      containingClass = Reflection.getClass(executableMember.getContainingClass());
-    } catch (ClassNotFoundException e) {
-      // The containing class cannot be loaded. Return an empty set of code elements.
-      // TODO Log a warning!
-      return collectedElements;
-    }
+    final Class<?> containingClass = executableMember.getContainingClass();
 
-    List<Type> inScopeTypes = new ArrayList<>();
-    inScopeTypes.add(containingClass);
+    // Add the containing class.
+    collectedElements.add(containingClassOf(executableMember));
 
-    // Add the containing class as a code element.
-    collectedElements.add(new ClassCodeElement(containingClass));
+    // Add the parameters of the executable member.
+    collectedElements.addAll(parametersOf(executableMember));
 
-    // Add parameters of the documented method.
-    final Executable executable = executableMember.getExecutable();
-    int paramIndex = 0;
-    List<Parameter> parameters = new ArrayList<>(Arrays.asList(executable.getParameters()));
+    // Add fields of the containing class.
+    collectedElements.addAll(fieldsOf(containingClass));
 
-    // The first two parameters of enum constructors are synthetic and must be removed to
-    // reflect the source code.
-    if (containingClass.isEnum() && executableMember.isConstructor()) {
-      parameters.remove(0);
-      parameters.remove(0);
-    }
-
-    HashMap<String, Integer> countIds = new HashMap<>();
-    Set<ParameterCodeElement> params = new HashSet<>();
-
-    for (java.lang.reflect.Parameter par : parameters) {
-      String paramName = executableMember.getParameters().get(paramIndex).getName();
-      // Extract identifiers from param comment
-      Set<String> ids = extractIdsFromParams(executableMember, paramName);
-
-      for (String id : ids) {
-        Integer oldValue = countIds.getOrDefault(id, -1);
-        countIds.put(id, ++oldValue);
-      }
-
-      ParameterCodeElement p = new ParameterCodeElement(par, paramName, paramIndex, ids);
-      collectedElements.add(p);
-      params.add(p);
-
-      inScopeTypes.add(par.getType());
-      paramIndex++;
-    }
-
-    // TODO Create a parameter code element directly with unique identifiers, thus removing
-    // mergeIdentifiers() and related methods in ParameterCodeElement.
-    // Select only valid identifiers for the parameters, i.e. the unique ones (count in map is 0)
-    for (ParameterCodeElement p : params) {
-      Set<String> ids = p.getOtherIdentifiers();
-      for (Entry<String, Integer> countId : countIds.entrySet()) {
-        String identifier = countId.getKey();
-        if (ids.contains(identifier) && countId.getValue() > 0) p.removeIdentifier(identifier);
-      }
-      p.mergeIdentifiers();
-    }
-
-    // Add methods of the target class (all but the method corresponding to executableMember).
-    final List<Method> methods =
-        Arrays.stream(containingClass.getMethods())
-            .filter(
-                m ->
-                    !m.toGenericString().equals(executable.toGenericString())
-                        && checkCompatibility(m, inScopeTypes))
-            .collect(toList());
-    for (Method method : methods) {
-      if (Modifier.isStatic(method.getModifiers())) {
-        collectedElements.add(new StaticMethodCodeElement(method));
-      } else if (!executableMember.isConstructor()) {
-        collectedElements.add(new MethodCodeElement("target", method));
-      }
-    }
-
-    // Add fields of the target class.
-    for (Field field : containingClass.getFields()) {
-      collectedElements.add(new FieldCodeElement("target", field));
-    }
+    // Add methods of the containing class (all but the method corresponding to executableMember).
+    collectedElements.addAll(methodsOf(containingClass, executableMember));
 
     return collectedElements;
+  }
+
+  // Executable member is ignored and not included in the returned list of methods.
+  private static List<CodeElement<?>> methodsOf(
+      Class<?> containingClass, ExecutableMember executableMember) {
+    final List<Method> methods = Arrays.asList(containingClass.getMethods());
+    final Executable executable = executableMember.getExecutable();
+    if (executable instanceof Method) {
+      Method method = (Method) executable;
+      methods.remove(method);
+    }
+    List<Type> inScopeTypes = collectInScopeTypes(executableMember);
+    methods.removeIf(method -> !invokableWithParameters(method, inScopeTypes));
+
+    List<CodeElement<?>> codeElements = new ArrayList<>();
+    for (Method method : methods) {
+      if (Modifier.isStatic(method.getModifiers())) {
+        codeElements.add(new StaticMethodCodeElement(method));
+      } else if (!executableMember.isConstructor()) {
+        codeElements.add(new MethodCodeElement("target", method));
+      }
+    }
+    return codeElements;
+  }
+
+  private static List<Type> collectInScopeTypes(ExecutableMember executableMember) {
+    // TODO Implement this method.
+    return null;
+  }
+
+  private static List<FieldCodeElement> fieldsOf(Class<?> aClass) {
+    return Arrays.stream(aClass.getFields())
+        .map(field -> new FieldCodeElement("target", field))
+        .collect(toList());
+  }
+
+  private static List<ParameterCodeElement> parametersOf(ExecutableMember executableMember) {
+    List<ParameterCodeElement> paramCodeElements = new ArrayList<>();
+
+    // The first two parameters of enum constructors are synthetic and must be removed to reflect
+    // the source code.
+    final List<org.toradocu.extractor.Parameter> parameters = executableMember.getParameters();
+    if (executableMember.getContainingClass().isEnum() && executableMember.isConstructor()) {
+      parameters.remove(0);
+      parameters.remove(0);
+    }
+
+    int i = 0;
+    for (org.toradocu.extractor.Parameter parameter : parameters) {
+      final Parameter reflectionParam = parameter.asReflectionParameter();
+      final String parameterName = parameter.getName();
+      final Set<String> identifiers =
+          extractIdentifiersFromParamTags(executableMember, parameterName);
+      // TODO Generate code ids.
+      paramCodeElements.add(
+          new ParameterCodeElement(reflectionParam, parameterName, i++, identifiers));
+    }
+    return paramCodeElements;
+  }
+
+  private static ClassCodeElement containingClassOf(ExecutableMember executableMember) {
+    return new ClassCodeElement(executableMember.getContainingClass());
   }
 
   /**
@@ -128,7 +119,8 @@ public class JavaElementsCollector {
    * @param param the parameter
    * @return the extracted ids
    */
-  private static Set<String> extractIdsFromParams(ExecutableMember method, String param) {
+  private static Set<String> extractIdentifiersFromParamTags(
+      ExecutableMember method, String param) {
     List<ParamTag> paramTags = method.paramTags();
     Set<String> ids = new HashSet<>();
     for (ParamTag pt : paramTags) {
@@ -147,12 +139,9 @@ public class JavaElementsCollector {
     return ids;
   }
 
-  private static boolean checkCompatibility(Method m, List<Type> inScopeTypes) {
-    for (java.lang.reflect.Parameter parameter : m.getParameters()) {
-      if (!inScopeTypes.contains(parameter.getType())) {
-        return false;
-      }
-    }
-    return true;
+  private static boolean invokableWithParameters(Method method, List<Type> inScopeTypes) {
+    final List<? extends Class<?>> methodParamTypes =
+        Arrays.stream(method.getParameters()).map(Parameter::getType).collect(toList());
+    return inScopeTypes.containsAll(methodParamTypes);
   }
 }

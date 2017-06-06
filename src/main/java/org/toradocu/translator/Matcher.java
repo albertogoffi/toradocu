@@ -17,7 +17,6 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.ExecutableMember;
-import org.toradocu.util.Reflection;
 
 /**
  * The {@code Matcher} class translates subjects and predicates in Javadoc comments to Java
@@ -178,12 +177,7 @@ class Matcher {
       codeElements =
           extractBooleanCodeElements(
               paramCodeElement, paramCodeElement.getJavaCodeElement().getType());
-      Class<?> targetClass = null;
-      try {
-        targetClass = Reflection.getClass(method.getContainingClass());
-      } catch (ClassNotFoundException e) {
-        // TODO Log a warning!
-      }
+      Class<?> targetClass = method.getContainingClass();
       codeElements.addAll(extractStaticBooleanMethods(targetClass, paramCodeElement));
     } else if (subject instanceof ClassCodeElement) {
       ClassCodeElement classCodeElement = (ClassCodeElement) subject;

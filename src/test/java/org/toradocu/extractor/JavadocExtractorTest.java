@@ -81,7 +81,7 @@ public class JavadocExtractorTest {
     assertThat(paramTags.size(), is(1));
     final ParamTag paramTag = paramTags.get(0);
     assertThat(paramTag.getParameter(), is(equalTo(parameter)));
-    assertThat(paramTag.getComment(), is("must not be null nor empty"));
+    assertThat(paramTag.getComment().getText(), is("must not be null nor empty"));
     assertThat(paramTag.getCondition(), is(emptyString()));
 
     final ReturnTag returnTag = member.returnTag();
@@ -107,11 +107,11 @@ public class JavadocExtractorTest {
     assertThat(paramTags.size(), is(1));
     final ParamTag paramTag = paramTags.get(0);
     assertThat(paramTag.getParameter(), is(equalTo(parameter)));
-    assertThat(paramTag.getComment(), is("an array of objects, must not be null"));
+    assertThat(paramTag.getComment().getText(), is("an array of objects, must not be null"));
     assertThat(paramTag.getCondition(), is(emptyString()));
 
     final ReturnTag returnTag = member.returnTag();
-    assertThat(returnTag.getComment(), is("0 always"));
+    assertThat(returnTag.getComment().getText(), is("0 always"));
 
     final List<ThrowsTag> throwsTags = member.throwsTags();
     assertThat(throwsTags, is(empty()));

@@ -2,6 +2,7 @@ package org.toradocu.extractor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 /**
@@ -44,5 +45,22 @@ public class Comment {
 
   public List<String> getWordsMarkedAsCode() {
     return wordsMarkedAsCode;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(text, wordsMarkedAsCode);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (!(obj instanceof Comment)) {
+      return false;
+    }
+    Comment that = (Comment) obj;
+    return text.equals(that.text) && wordsMarkedAsCode.equals(that.wordsMarkedAsCode);
   }
 }
