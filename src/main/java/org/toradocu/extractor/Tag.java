@@ -105,7 +105,7 @@ public abstract class Tag {
   }
 
   /**
-   * Returns true if this {@code AbstractTag} and the specified object are equal.
+   * Returns true if this {@code Tag} and the specified object are equal.
    *
    * @param obj the object to test for equality
    * @return true if this object and {@code obj} are equal
