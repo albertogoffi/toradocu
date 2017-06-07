@@ -1,7 +1,8 @@
 package org.toradocu.translator;
 
+import static java.util.stream.Collectors.toList;
+
 import java.util.*;
-import java.util.stream.Collectors;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ParamTag;
 import org.toradocu.extractor.Tag;
@@ -156,7 +157,7 @@ public class BasicTranslator {
             matchingCodeElements
                 .stream()
                 .filter(c -> matchingSubjects.get(0).getClass().equals(c.getClass()))
-                .collect(Collectors.toList());
+                .collect(toList());
         // Get the first matching subject tagged with {@code} or the first at all.
         for (CodeElement<?> matchingSubject : samePriorityElements) {
           // If the indecision is between two subject matches that are absolutely equal
@@ -164,7 +165,14 @@ public class BasicTranslator {
           // method's Javadoc: isTaggedAsCode checks this property.
           boolean isTaggedAsCode = false;
           for (ThrowsTag throwTag : method.throwsTags()) {
-            isTaggedAsCode = throwTag.intersect(new ArrayList<>(matchingSubject.getIdentifiers()));
+            isTaggedAsCode =
+                !throwTag
+                    .getComment()
+                    .getWordsMarkedAsCode()
+                    .stream()
+                    .filter(matchingSubject.getIdentifiers()::contains)
+                    .collect(toList())
+                    .isEmpty();
           }
           if (isTaggedAsCode) {
             match = matchingSubject;
