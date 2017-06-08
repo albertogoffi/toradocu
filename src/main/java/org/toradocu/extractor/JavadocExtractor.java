@@ -43,7 +43,7 @@ public final class JavadocExtractor {
    * @throws FileNotFoundException if the source code of the class with name {@code className}
    *     cannot be found in path {@code sourcePath}
    */
-  public List<ExecutableMember> extract(String className, String sourcePath)
+  public DocumentedType extract(String className, String sourcePath)
       throws ClassNotFoundException, FileNotFoundException {
 
     // Obtain executable members by means of reflection.
@@ -70,7 +70,9 @@ public final class JavadocExtractor {
       List<org.toradocu.extractor.Tag> tags = createTags(sourceMember, parameters);
       members.add(new ExecutableMember(reflectionMember, parameters, tags));
     }
-    return members;
+
+    // Create the documented class.
+    return new DocumentedType(clazz, members);
   }
 
   /**

@@ -2,9 +2,7 @@ package org.toradocu.util;
 
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 import org.toradocu.Toradocu;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ReturnTag;
@@ -308,8 +306,7 @@ public class Stats {
       List<ExecutableMember> actualMethodList, List<ExecutableMember> expectedMethodList) {
 
     // TODO Fix the goal files and remove the following line. Goal files include inherited methods!
-    expectedMethodList.removeIf(
-        m -> !m.getContainingClass().equals(m.getContainingClass()));
+    expectedMethodList.removeIf(m -> !m.getContainingClass().equals(m.getContainingClass()));
     expectedMethodList.removeIf(m -> Modifier.isPrivate(m.getExecutable().getModifiers()));
 
     if (actualMethodList.size() != expectedMethodList.size()) {
@@ -361,8 +358,7 @@ public class Stats {
       StringBuilder output) {
 
     // TODO Fix the goal files and remove the following line. Goal files include inherited methods!
-    expectedMethodList.removeIf(
-        m -> !m.getContainingClass().equals(m.getContainingClass()));
+    expectedMethodList.removeIf(m -> !m.getContainingClass().equals(m.getContainingClass()));
     expectedMethodList.removeIf(m -> Modifier.isPrivate(m.getExecutable().getModifiers()));
 
     if (actualMethodList.size() != expectedMethodList.size()) {
@@ -394,7 +390,10 @@ public class Stats {
   }
 
   private static StringBuilder collectStats(
-      Stats stats, List<? extends Tag> actualTags, List<? extends Tag> expectedTags, Tag.Kind kind) {
+      Stats stats,
+      List<? extends Tag> actualTags,
+      List<? extends Tag> expectedTags,
+      Tag.Kind kind) {
 
     // TODO Restore the following check, once all the goal files are fixed (now that we completely
     // TODO removed inheritance!

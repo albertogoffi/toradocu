@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.conf.Configuration;
+import org.toradocu.extractor.DocumentedType;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.JavadocExtractor;
 import org.toradocu.extractor.Tag;
@@ -81,7 +82,9 @@ public class Toradocu {
     if (configuration.getConditionTranslatorInput() == null) {
       final JavadocExtractor javadocExtractor = new JavadocExtractor();
       try {
-        members = javadocExtractor.extract(targetClass, configuration.getSourceDir().toString());
+        final DocumentedType documentedType =
+            javadocExtractor.extract(targetClass, configuration.getSourceDir().toString());
+        members = documentedType.getExecutableMembers();
       } catch (ClassNotFoundException e) {
         log.error( // TODO Refine this error message for the specific caught exception.
             "Unable to find the target class: "

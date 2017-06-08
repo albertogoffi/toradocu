@@ -228,27 +228,27 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     final String[] tokens = commentText.substring(predicateSplitPoint + 3).split(",", 2);
     String trueCase = tokens[0];
     String falseCase = tokens.length > 1 ? tokens[1] : "";
-
-    if (!predicate.isEmpty() && !trueCase.isEmpty()) {
-      //          try {
-      String predicateTranslation = translateFirstPart(predicate, method);
-      if (predicateTranslation != null) {
-        String conditionTranslation = translateSecondPart(trueCase, method);
-
-        if (!predicateTranslation.isEmpty() && !conditionTranslation.isEmpty()) {
-          translation = conditionTranslation + " ? " + predicateTranslation;
-          // Else case might not be present.
-          String elsePredicate = translateLastPart(falseCase, method);
-          if (elsePredicate != null) {
-            translation = translation + " : " + elsePredicate;
-          }
-        }
-      } else {
-        String match = lastAttemptMatch(method, comment);
-        if (match != null) translation = match;
-        else translation = "";
-      }
-    }
+    //
+    //    if (!predicate.isEmpty() && !trueCase.isEmpty()) {
+    //      //          try {
+    //      String predicateTranslation = translateFirstPart(predicate, method);
+    //      if (predicateTranslation != null) {
+    //        String conditionTranslation = translateSecondPart(trueCase, method);
+    //
+    //        if (!predicateTranslation.isEmpty() && !conditionTranslation.isEmpty()) {
+    //          translation = conditionTranslation + " ? " + predicateTranslation;
+    //          // Else case might not be present.
+    //          String elsePredicate = translateLastPart(falseCase, method);
+    //          if (elsePredicate != null) {
+    //            translation = translation + " : " + elsePredicate;
+    //          }
+    //        }
+    //      } else {
+    //        String match = lastAttemptMatch(method, comment);
+    //        if (match != null) translation = match;
+    //        else translation = "";
+    //      }
+    //    }
     return translation;
   }
 

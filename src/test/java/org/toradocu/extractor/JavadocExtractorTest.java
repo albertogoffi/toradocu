@@ -24,27 +24,36 @@ import org.toradocu.testlib.Compiler;
 // TODO Add more assertions (about other methods in the example test class).
 
 /**
- * Tests {@code JavadocExtractor} on the example class example.AClass in src/test/resources/example
+ * Tests {@code JavadocExtractor} on the example class example.AClass in src/test/resources/example.
  */
 public class JavadocExtractorTest {
 
   private static final String EXAMPLE_SRC = "src/test/resources";
-  private static List<ExecutableMember> members;
+  private static final String TARGET_CLASS = "example.AClass";
+  private static DocumentedType documentedType;
   private static Class<?> stringClass;
+  private static List<ExecutableMember> members;
 
   @BeforeClass
   public static void setUp() throws IOException, ClassNotFoundException {
     stringClass = Class.forName("java.lang.String");
     compileSources();
-    members = runJavadocExtractor();
+    documentedType = runJavadocExtractor();
+    members = documentedType.getExecutableMembers();
+  }
+
+  @Test
+  public void classUnderAnalysis() throws ClassNotFoundException {
+    final Class<?> targetClass = Class.forName(TARGET_CLASS);
+    assertThat(documentedType.getDocumentedClass(), is(equalTo(targetClass)));
   }
 
   @Test
   public void numberOfExecutableMembers() {
-    assertThat(members.size(), is(4));
+    assertThat(documentedType.getExecutableMembers().size(), is(4));
   }
 
-  @Test // Constructor AClass().
+  @Test
   public void constructorAClass1() throws ClassNotFoundException {
     ExecutableMember member = members.get(0);
     assertThat(member.isConstructor(), is(true));
@@ -117,10 +126,10 @@ public class JavadocExtractorTest {
     assertThat(throwsTags, is(empty()));
   }
 
-  private static List<ExecutableMember> runJavadocExtractor()
+  private static DocumentedType runJavadocExtractor()
       throws ClassNotFoundException, FileNotFoundException {
     final JavadocExtractor javadocExtractor = new JavadocExtractor();
-    return javadocExtractor.extract("example.AClass", EXAMPLE_SRC);
+    return javadocExtractor.extract(TARGET_CLASS, EXAMPLE_SRC);
   }
 
   private static void compileSources() throws IOException {
