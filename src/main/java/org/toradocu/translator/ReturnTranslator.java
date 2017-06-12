@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.StringJoiner;
 import java.util.regex.Pattern;
-import org.jetbrains.annotations.NotNull;
 import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.Parameter;
@@ -97,17 +96,21 @@ public class ReturnTranslator implements Translator<ReturnTag> {
       // again: the result is not a plain boolean, so it must be a code element.
       String[] splittedText = text.split(" ");
       for (int i = 0; i < splittedText.length; i++) {
-        CodeElement<?> codeElementMatch = complexTypeMatch(method, splittedText[i]);
-        if (codeElementMatch != null) {
-          //is this code element a Primitive? (type check)
-          boolean isPrimitive = checkIfPrimitive(codeElementMatch);
-          if (isPrimitive) return "result == " + codeElementMatch.getJavaExpression();
-          else return "result.equals(" + codeElementMatch.getJavaExpression() + ")";
-
-        }
+        String translation = tryCodeElementMatch(method, splittedText[i]);
+        if (translation != null) return translation;
         //the empty String was found
         else if (splittedText[i].equals("\"\"")) return "result.equals(\"\")";
       }
+    }
+    return null;
+  }
+
+  static String tryCodeElementMatch(ExecutableMember method, String text) {
+    CodeElement<?> codeElementMatch = complexTypeMatch(method, text);
+    if (codeElementMatch != null) {
+      boolean isPrimitive = checkIfPrimitive(codeElementMatch);
+      if (isPrimitive) return "result == " + codeElementMatch.getJavaExpression();
+      else return "result.equals(" + codeElementMatch.getJavaExpression() + ")";
     }
     return null;
   }
@@ -148,7 +151,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    */
   private static String translateFirstPart(String predicate, ExecutableMember method) {
     String lowerCaseText = predicate.trim().toLowerCase();
-    String match = null;
+    String translation;
     switch (lowerCaseText) {
       case "true":
       case "false":
@@ -156,26 +159,18 @@ public class ReturnTranslator implements Translator<ReturnTag> {
       default:
         {
           //No return of type boolean: it must be a more complex boolean condition or a code element.
-          String predicateMatch = tryPredicateMatch(method, lowerCaseText);
-          if (predicateMatch != null) return predicateMatch;
-          else {
-            CodeElement<?> codeElementMatch = complexTypeMatch(method, lowerCaseText);
-            if (codeElementMatch != null) {
-              //is this code element Primitive? (type check)
-              boolean isPrimitive = checkIfPrimitive(codeElementMatch);
-              if (isPrimitive) return "result == " + codeElementMatch.getJavaExpression();
-              else return "result.equals(" + codeElementMatch.getJavaExpression() + ")";
-            }
-          }
+          translation = tryPredicateMatch(method, lowerCaseText);
+          if (translation == null) translation = tryCodeElementMatch(method, lowerCaseText);
         }
     }
     //TODO: Change the exception with one more meaningful.
     //    throw new IllegalArgumentException(text + " cannot be translated: Pattern not supported");
-    return match;
+    return translation;
   }
 
   /**
-   * This method attempts to translate the return tag according to the classical pattern.
+   * This method attempts to translate the return tag according to the classical pattern. Called
+   * only if the return tag comment contained an "if".
    *
    * @param method the ExecutableMember
    * @param comment the String comment to translate
@@ -201,7 +196,6 @@ public class ReturnTranslator implements Translator<ReturnTag> {
 
         if (!predicateTranslation.isEmpty() && !conditionTranslation.isEmpty()) {
           translation = conditionTranslation + " ? " + predicateTranslation;
-          // Else case might not be present.
           String elsePredicate = translateLastPart(falseCase, method);
           if (elsePredicate != null) {
             translation = translation + " : " + elsePredicate;
@@ -212,14 +206,22 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     return translation;
   }
 
-  @NotNull private static String returnNotStandard(ExecutableMember method, String comment) {
+  /**
+   * Return "not standard" pattern means that the comment referring to the return tag does not
+   * contain an "if". The translation will always be something like: "true ? result". Result here
+   * could be compared to: a plain true/false value; a more complex boolean expression, meaning that
+   * we must check some property of the result; a code element.
+   *
+   * @param method the ExecutableMember the tag belongs to
+   * @param comment the String comment belonging to the tag
+   * @return a String translation if any, or an empty string
+   */
+  private static String returnNotStandard(ExecutableMember method, String comment) {
     String translation;
     final String[] truePatterns = {"true", "true always"};
     final String[] falsePatterns = {"false", "false always"};
     final String commentToTranslate = comment;
 
-    // Comments always end with a period (added by Toradocu where missing). Therefore, we
-    // have to add period(s) here.
     final boolean truePatternsMatch =
         Arrays.stream(truePatterns)
             .map(p -> p.concat("."))
@@ -236,21 +238,8 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     } else {
       translation = manageArithmeticOperation(method, commentToTranslate);
       if (translation.equals("")) {
-        // All the previous attempts failed: try the last strategies (e.g. search for missing subjects)
-        //TODO: be careful, here you're NOT in the STANDARD pattern
-
-        String predicateMatch = tryPredicateMatch(method, comment);
-        if (predicateMatch != null) return "true ?" + predicateMatch;
-        else {
-          CodeElement<?> codeElementMatch = complexTypeMatch(method, comment);
-          if (codeElementMatch != null) {
-            //it's a Parameter
-            //is it Primitive? (type check)
-            boolean isPrimitive = checkIfPrimitive(codeElementMatch);
-            if (isPrimitive) return "true ? result == " + codeElementMatch.getJavaExpression();
-            else return "true ? result.equals(" + codeElementMatch.getJavaExpression() + ")";
-          }
-        }
+        translation = tryPredicateMatch(method, comment);
+        if (translation == null) translation = tryCodeElementMatch(method, comment);
       }
     }
     return translation;
@@ -265,6 +254,13 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     return false;
   }
 
+  /**
+   * Called to search for a complex boolean condition involved in the return tag.
+   *
+   * @param method the ExecutableMember the tag belongs to
+   * @param comment the String comment belonging to the tag
+   * @return a String predicate match if any, or null
+   */
   private static String tryPredicateMatch(ExecutableMember method, String comment) {
     String predicateMatch = null;
     comment = comment.replace(";", "").replace(",", "");
@@ -276,7 +272,6 @@ public class ReturnTranslator implements Translator<ReturnTag> {
       List<IndexedWord> verbs = sg.getAllNodesByPartOfSpeechPattern("VB(.*)");
       if (!verbs.isEmpty()) {
         for (PropositionSeries prop : extractedPropositions) {
-          Set<String> conditions = new LinkedHashSet<>();
           for (Proposition p : prop.getPropositions()) {
             predicateMatch =
                 new Matcher()
@@ -290,6 +285,13 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     return predicateMatch;
   }
 
+  /**
+   * Called to search for a code element involved in the return tag.
+   *
+   * @param method the ExecutableMember the tag belongs to
+   * @param comment the String comment belonging to the tag
+   * @return a code element if any, or null
+   */
   private static CodeElement<?> complexTypeMatch(ExecutableMember method, String comment) {
     //Try a match looking at the semantic graph.
     CodeElement<?> codeElementMatch = null;
@@ -319,19 +321,17 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     String comment = tag.getComment().getText();
     // Assumption: the comment is composed of a single sentence. We should probably split multiple
     // sentence comments using the Stanford Parser, and then work on each single sentence.
-    String translation = "";
+    String translation;
 
     // Split the sentence in three parts: predicate + true case + false case.
     // TODO Naive splitting. Make the split more reliable.
     final int predicateSplitPoint = comment.indexOf(" if ");
-    if (predicateSplitPoint != -1) {
+    if (predicateSplitPoint != -1)
       translation = returnStandardPattern(excMember, tag.getComment(), predicateSplitPoint);
-    } else {
-      translation = returnNotStandard(excMember, comment);
-    }
+    else translation = returnNotStandard(excMember, comment);
 
     // TODO Create the specification with the derived merged conditions.
-
+    // TODO shoulnd't we check if translation is null/empty befor trying the parse?
     return parseTranslation(translation);
   }
 
