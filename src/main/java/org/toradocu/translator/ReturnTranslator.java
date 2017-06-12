@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.StringJoiner;
 import java.util.regex.Pattern;
+import org.jetbrains.annotations.NotNull;
 import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.Parameter;
@@ -39,9 +40,9 @@ public class ReturnTranslator implements Translator<ReturnTag> {
       String firstFactor = matcherOp.group(1);
       String secFactor = matcherOp.group(4);
       String op = matcherOp.group(3);
-      int firstIndex = searchForCode(firstFactor, method);
+      int firstIndex = searchForArgs(firstFactor, method);
       if (firstIndex != -1) {
-        int secIndex = searchForCode(secFactor, method);
+        int secIndex = searchForArgs(secFactor, method);
         if (secIndex != -1)
           translation = "true ? result==args[" + firstIndex + "]" + op + "args[" + secIndex + "]";
       }
@@ -67,7 +68,8 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     return joiner.toString();
   }
 
-  private static int searchForCode(String text, ExecutableMember method) {
+  //TODO get rid of it
+  private static int searchForArgs(String text, ExecutableMember method) {
     List<String> arguments =
         method.getParameters().stream().map(Parameter::getName).collect(toList());
     for (int i = 0; i < arguments.size(); i++) if (arguments.get(i).equals(text)) return i;
@@ -92,62 +94,22 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     } else if (lowerCaseText.contains("false")) {
       return "result == false";
     } else {
+      // again: the result is not a plain boolean, so it must be a code element.
       String[] splittedText = text.split(" ");
       for (int i = 0; i < splittedText.length; i++) {
-        int index = searchForCode(splittedText[i], method);
-        if (index != -1) return "result == args[" + index + "]";
+        CodeElement<?> codeElementMatch = complexTypeMatch(method, splittedText[i]);
+        if (codeElementMatch != null) {
+          //is this code element a Primitive? (type check)
+          boolean isPrimitive = checkIfPrimitive(codeElementMatch);
+          if (isPrimitive) return "result == " + codeElementMatch.getJavaExpression();
+          else return "result.equals(" + codeElementMatch.getJavaExpression() + ")";
+
+        }
         //the empty String was found
         else if (splittedText[i].equals("\"\"")) return "result.equals(\"\")";
       }
     }
     return null;
-  }
-
-  /**
-   * Called if all the previous stantard tentatives of matching failed.
-   *
-   * @param method the ExecutableMember under analysis
-   * @param predicate the comment to translate
-   * @return a match if found, otherwise null
-   */
-  private static String lastAttemptMatch(ExecutableMember method, String predicate) {
-    Matcher matcher = new Matcher();
-    //Try a match looking at the semantic graph.
-    String match = null;
-    String commentText = predicate.replace(";", "").replace(",", "");
-    final List<PropositionSeries> propositions = Parser.parse(new Comment(predicate), method);
-    final List<SemanticGraph> semanticGraphs =
-        propositions.stream().map(PropositionSeries::getSemanticGraph).collect(toList());
-
-    for (SemanticGraph sg : semanticGraphs) {
-      //First: search for a verb.
-      List<IndexedWord> verbs = sg.getAllNodesByPartOfSpeechPattern("VB(.*)");
-      if (!verbs.isEmpty()) {
-        List<PropositionSeries> extractedPropositions = propositions;
-        for (PropositionSeries prop : extractedPropositions) {
-          Set<String> conditions = new LinkedHashSet<>();
-          for (Proposition p : prop.getPropositions()) {
-            match =
-                matcher.predicateMatch(
-                    method, new GeneralCodeElement("result"), p.getPredicate(), p.isNegative());
-            if (match != null) break;
-          }
-        }
-      } else { // No verb found: process nouns and their adjectives
-        List<IndexedWord> nouns = sg.getAllNodesByPartOfSpeechPattern("NN(.*)");
-        List<IndexedWord> adj = sg.getAllNodesByPartOfSpeechPattern("JJ(.*)");
-        if (match == null) {
-          String wordToMatch = "";
-          for (IndexedWord n : nouns) {
-            for (IndexedWord a : adj) wordToMatch += a.word();
-            wordToMatch += n.word();
-            Set<CodeElement<?>> subject = matcher.subjectMatch(wordToMatch, method);
-            if (!subject.isEmpty()) match = subject.stream().findFirst().get().getJavaExpression();
-          }
-        }
-      }
-    }
-    return match;
   }
 
   /**
@@ -193,13 +155,16 @@ public class ReturnTranslator implements Translator<ReturnTag> {
         return "result == " + lowerCaseText;
       default:
         {
-          int index = searchForCode(predicate, method);
-          if (index != -1) return "result == args[" + index + "]";
+          //No return of type boolean: it must be a more complex boolean condition or a code element.
+          String predicateMatch = tryPredicateMatch(method, lowerCaseText);
+          if (predicateMatch != null) return predicateMatch;
           else {
-            match = lastAttemptMatch(method, predicate);
-            if (match != null) {
-              if (!match.contains("result==")) return "result.equals(" + match + ")";
-              else return match;
+            CodeElement<?> codeElementMatch = complexTypeMatch(method, lowerCaseText);
+            if (codeElementMatch != null) {
+              //is this code element Primitive? (type check)
+              boolean isPrimitive = checkIfPrimitive(codeElementMatch);
+              if (isPrimitive) return "result == " + codeElementMatch.getJavaExpression();
+              else return "result.equals(" + codeElementMatch.getJavaExpression() + ")";
             }
           }
         }
@@ -230,7 +195,6 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     String falseCase = tokens.length > 1 ? tokens[1] : "";
 
     if (!predicate.isEmpty() && !trueCase.isEmpty()) {
-      //          try {
       String predicateTranslation = translateFirstPart(predicate, method);
       if (predicateTranslation != null) {
         String conditionTranslation = translateSecondPart(trueCase, method);
@@ -243,13 +207,111 @@ public class ReturnTranslator implements Translator<ReturnTag> {
             translation = translation + " : " + elsePredicate;
           }
         }
-      } else {
-        String match = lastAttemptMatch(method, comment.getText());
-        if (match != null) translation = match;
-        else translation = "";
       }
     }
     return translation;
+  }
+
+  @NotNull private static String returnNotStandard(ExecutableMember method, String comment) {
+    String translation;
+    final String[] truePatterns = {"true", "true always"};
+    final String[] falsePatterns = {"false", "false always"};
+    final String commentToTranslate = comment;
+
+    // Comments always end with a period (added by Toradocu where missing). Therefore, we
+    // have to add period(s) here.
+    final boolean truePatternsMatch =
+        Arrays.stream(truePatterns)
+            .map(p -> p.concat("."))
+            .anyMatch(p -> p.equalsIgnoreCase(commentToTranslate));
+    final boolean falsePatternsMatch =
+        Arrays.stream(falsePatterns)
+            .map(p -> p.concat("."))
+            .anyMatch(p -> p.equalsIgnoreCase(commentToTranslate));
+
+    if (truePatternsMatch) {
+      translation = "true ? result==true";
+    } else if (falsePatternsMatch) {
+      translation = "true ? result==false";
+    } else {
+      translation = manageArithmeticOperation(method, commentToTranslate);
+      if (translation.equals("")) {
+        // All the previous attempts failed: try the last strategies (e.g. search for missing subjects)
+        //TODO: be careful, here you're NOT in the STANDARD pattern
+
+        String predicateMatch = tryPredicateMatch(method, comment);
+        if (predicateMatch != null) return "true ?" + predicateMatch;
+        else {
+          CodeElement<?> codeElementMatch = complexTypeMatch(method, comment);
+          if (codeElementMatch != null) {
+            //it's a Parameter
+            //is it Primitive? (type check)
+            boolean isPrimitive = checkIfPrimitive(codeElementMatch);
+            if (isPrimitive) return "true ? result == " + codeElementMatch.getJavaExpression();
+            else return "true ? result.equals(" + codeElementMatch.getJavaExpression() + ")";
+          }
+        }
+      }
+    }
+    return translation;
+  }
+
+  private static boolean checkIfPrimitive(CodeElement<?> codeElementMatch) {
+    //TODO naive, don't we have any better?
+    String[] primitives = {"int", "char", "float", "double", "long", "short", "byte"};
+    Set<String> ids = codeElementMatch.getIdentifiers();
+    for (int i = 0; i != primitives.length; i++) if (ids.contains(primitives[i])) return true;
+
+    return false;
+  }
+
+  private static String tryPredicateMatch(ExecutableMember method, String comment) {
+    String predicateMatch = null;
+    comment = comment.replace(";", "").replace(",", "");
+    final List<PropositionSeries> extractedPropositions =
+        Parser.parse(new Comment(comment), method);
+    final List<SemanticGraph> semanticGraphs =
+        extractedPropositions.stream().map(PropositionSeries::getSemanticGraph).collect(toList());
+    for (SemanticGraph sg : semanticGraphs) {
+      List<IndexedWord> verbs = sg.getAllNodesByPartOfSpeechPattern("VB(.*)");
+      if (!verbs.isEmpty()) {
+        for (PropositionSeries prop : extractedPropositions) {
+          Set<String> conditions = new LinkedHashSet<>();
+          for (Proposition p : prop.getPropositions()) {
+            predicateMatch =
+                new Matcher()
+                    .predicateMatch(
+                        method, new GeneralCodeElement("result"), p.getPredicate(), p.isNegative());
+            if (predicateMatch != null) break;
+          }
+        }
+      }
+    }
+    return predicateMatch;
+  }
+
+  private static CodeElement<?> complexTypeMatch(ExecutableMember method, String comment) {
+    //Try a match looking at the semantic graph.
+    CodeElement<?> codeElementMatch = null;
+    comment = comment.replace(";", "").replace(",", "").replace("'", "");
+    final List<PropositionSeries> extractedPropositions =
+        Parser.parse(new Comment(comment), method);
+    final List<SemanticGraph> semanticGraphs =
+        extractedPropositions.stream().map(PropositionSeries::getSemanticGraph).collect(toList());
+
+    for (SemanticGraph sg : semanticGraphs) {
+      // No verb found: process nouns and their adjectives
+      List<IndexedWord> nouns = sg.getAllNodesByPartOfSpeechPattern("NN(.*)");
+      List<IndexedWord> adj = sg.getAllNodesByPartOfSpeechPattern("JJ(.*)");
+      String wordToMatch = "";
+      for (IndexedWord n : nouns) {
+        for (IndexedWord a : adj) wordToMatch += a.word();
+        wordToMatch += n.word();
+        Set<CodeElement<?>> subject = new Matcher().subjectMatch(wordToMatch, method);
+        if (!subject.isEmpty()) codeElementMatch = subject.stream().findFirst().get();
+      }
+    }
+    return codeElementMatch;
   }
 
   @Override
@@ -265,36 +327,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     if (predicateSplitPoint != -1) {
       translation = returnStandardPattern(excMember, tag.getComment(), predicateSplitPoint);
     } else {
-      final String[] truePatterns = {"true", "true always"};
-      final String[] falsePatterns = {"false", "false always"};
-      final String commentToTranslate = comment;
-
-      // Comments always end with a period (added by Toradocu where missing). Therefore, we
-      // have to add period(s) here.
-      final boolean truePatternsMatch =
-          Arrays.stream(truePatterns)
-              .map(p -> p.concat("."))
-              .anyMatch(p -> p.equalsIgnoreCase(commentToTranslate));
-      final boolean falsePatternsMatch =
-          Arrays.stream(falsePatterns)
-              .map(p -> p.concat("."))
-              .anyMatch(p -> p.equalsIgnoreCase(commentToTranslate));
-
-      if (truePatternsMatch) {
-        translation = "true ? result==true";
-      } else if (falsePatternsMatch) {
-        translation = "true ? result==false";
-      } else {
-        translation = manageArithmeticOperation(excMember, commentToTranslate);
-        if (translation.equals("")) {
-          // All the previous attempts failed: try the last strategies (e.g. search for missing subjects)
-          String match = lastAttemptMatch(excMember, tag.getComment().getText());
-          if (match != null) {
-            if (match.contains("result")) translation = "true ?" + match;
-            else translation = "true ? result.equals(" + match + ")";
-          }
-        }
-      }
+      translation = returnNotStandard(excMember, comment);
     }
 
     // TODO Create the specification with the derived merged conditions.
