@@ -12,7 +12,6 @@ import java.util.StringJoiner;
 import java.util.regex.Pattern;
 import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.ExecutableMember;
-import org.toradocu.extractor.Parameter;
 import org.toradocu.extractor.ReturnTag;
 import org.toradocu.translator.spec.Guard;
 import org.toradocu.translator.spec.Postcondition;
@@ -24,7 +23,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
       "(([a-zA-Z]+[0-9]?_?)+) ?([-+*/%]) ?(([a-zA-Z]+[0-9]?_?)+)";
 
   /**
-   * Translate arithemtic operations between arguments, if found.
+   * Translate arithmetic operations between arguments, if found.
    *
    * @param method the ExecutableMember
    * @param commentToTranslate String comment to translate
@@ -39,11 +38,18 @@ public class ReturnTranslator implements Translator<ReturnTag> {
       String firstFactor = matcherOp.group(1);
       String secFactor = matcherOp.group(4);
       String op = matcherOp.group(3);
-      int firstIndex = searchForArgs(firstFactor, method);
-      if (firstIndex != -1) {
-        int secIndex = searchForArgs(secFactor, method);
-        if (secIndex != -1)
-          translation = "true ? result==args[" + firstIndex + "]" + op + "args[" + secIndex + "]";
+
+      final List<PropositionSeries> extractedPropositions =
+          Parser.parse(new Comment(commentToTranslate), method);
+      final List<SemanticGraph> semanticGraphs =
+          extractedPropositions.stream().map(PropositionSeries::getSemanticGraph).collect(toList());
+
+      CodeElement<?> first = findCodeElement(method, firstFactor, semanticGraphs);
+      if (first != null) {
+        CodeElement<?> second = findCodeElement(method, secFactor, semanticGraphs);
+        if (second != null)
+          translation =
+              "true ? result==" + first.getJavaExpression() + op + second.getJavaExpression();
       }
     }
     return translation;
@@ -67,15 +73,6 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     return joiner.toString();
   }
 
-  //TODO get rid of it
-  private static int searchForArgs(String text, ExecutableMember method) {
-    List<String> arguments =
-        method.getParameters().stream().map(Parameter::getName).collect(toList());
-    for (int i = 0; i < arguments.size(); i++) if (arguments.get(i).equals(text)) return i;
-
-    return -1;
-  }
-
   /**
    * Translates the given {@code text} that is the second part of an @return Javadoc comment. Here
    * "second part" means every word of the conditional clause. Example: {@code @return true if the
@@ -93,20 +90,39 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     } else if (lowerCaseText.contains("false")) {
       return "result == false";
     } else {
-      // again: the result is not a plain boolean, so it must be a code element.
+      // The result is not a plain boolean, so it must be a code element.
       String[] splittedText = text.split(" ");
       for (int i = 0; i < splittedText.length; i++) {
-        String translation = tryCodeElementMatch(method, splittedText[i]);
-        if (translation != null) return translation;
-        //the empty String was found
-        else if (splittedText[i].equals("\"\"")) return "result.equals(\"\")";
+        if (!splittedText[i].equals("")) {
+          final List<PropositionSeries> extractedPropositions =
+              Parser.parse(new Comment(splittedText[i]), method);
+          final List<SemanticGraph> semanticGraphs =
+              extractedPropositions
+                  .stream()
+                  .map(PropositionSeries::getSemanticGraph)
+                  .collect(toList());
+
+          String translation = tryCodeElementMatch(method, splittedText[i], semanticGraphs);
+          if (translation != null) return translation;
+          //the empty String was found
+          else if (splittedText[i].equals("\"\"")) return "result.equals(\"\")";
+        }
       }
     }
     return null;
   }
 
-  static String tryCodeElementMatch(ExecutableMember method, String text) {
-    CodeElement<?> codeElementMatch = complexTypeMatch(method, text);
+  /**
+   * Search for a code element and produces a suitable translation, if any.
+   *
+   * @param method the {@code ExecutableMember} the comment belongs to
+   * @param text the comment text
+   * @param semanticGraphs the {@code SemanticGraph} related to the comment
+   * @return a String translation if any, null otherwise
+   */
+  private static String tryCodeElementMatch(
+      ExecutableMember method, String text, List<SemanticGraph> semanticGraphs) {
+    CodeElement<?> codeElementMatch = findCodeElement(method, text, semanticGraphs);
     if (codeElementMatch != null) {
       boolean isPrimitive = checkIfPrimitive(codeElementMatch);
       if (isPrimitive) return "result == " + codeElementMatch.getJavaExpression();
@@ -131,7 +147,6 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     //text = removeInitial(text, "if");  already done in Preprocess part
     List<PropositionSeries> extractedPropositions = Parser.parse(new Comment(trueCase), method);
     Set<String> conditions = new LinkedHashSet<>();
-    // Identify Java code elements in propositions.
     for (PropositionSeries propositions : extractedPropositions) {
       BasicTranslator.translate(propositions, method);
       conditions.add(propositions.getTranslation());
@@ -158,9 +173,19 @@ public class ReturnTranslator implements Translator<ReturnTag> {
         return "result == " + lowerCaseText;
       default:
         {
-          //No return of type boolean: it must be a more complex boolean condition or a code element.
-          translation = tryPredicateMatch(method, lowerCaseText);
-          if (translation == null) translation = tryCodeElementMatch(method, lowerCaseText);
+          //No return of type boolean: it must be a more complex boolean condition, or a code element.
+          final List<PropositionSeries> extractedPropositions =
+              Parser.parse(new Comment(predicate), method);
+          final List<SemanticGraph> semanticGraphs =
+              extractedPropositions
+                  .stream()
+                  .map(PropositionSeries::getSemanticGraph)
+                  .collect(toList());
+
+          translation =
+              tryPredicateMatch(method, lowerCaseText, semanticGraphs, extractedPropositions);
+          if (translation == null)
+            translation = tryCodeElementMatch(method, lowerCaseText, semanticGraphs);
         }
     }
     //TODO: Change the exception with one more meaningful.
@@ -238,8 +263,16 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     } else {
       translation = manageArithmeticOperation(method, commentToTranslate);
       if (translation.equals("")) {
-        translation = tryPredicateMatch(method, comment);
-        if (translation == null) translation = tryCodeElementMatch(method, comment);
+        final List<PropositionSeries> extractedPropositions =
+            Parser.parse(new Comment(comment), method);
+        final List<SemanticGraph> semanticGraphs =
+            extractedPropositions
+                .stream()
+                .map(PropositionSeries::getSemanticGraph)
+                .collect(toList());
+
+        translation = tryPredicateMatch(method, comment, semanticGraphs, extractedPropositions);
+        if (translation == null) translation = tryCodeElementMatch(method, comment, semanticGraphs);
       }
     }
     return translation;
@@ -259,15 +292,18 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    *
    * @param method the ExecutableMember the tag belongs to
    * @param comment the String comment belonging to the tag
+   * @param semanticGraphs list of {@code SemanticGraph} related to the comment
+   * @param extractedPropositions list of {@code PropositionSeries} extracted from the comment
    * @return a String predicate match if any, or null
    */
-  private static String tryPredicateMatch(ExecutableMember method, String comment) {
+  private static String tryPredicateMatch(
+      ExecutableMember method,
+      String comment,
+      List<SemanticGraph> semanticGraphs,
+      List<PropositionSeries> extractedPropositions) {
     String predicateMatch = null;
     comment = comment.replace(";", "").replace(",", "");
-    final List<PropositionSeries> extractedPropositions =
-        Parser.parse(new Comment(comment), method);
-    final List<SemanticGraph> semanticGraphs =
-        extractedPropositions.stream().map(PropositionSeries::getSemanticGraph).collect(toList());
+
     for (SemanticGraph sg : semanticGraphs) {
       List<IndexedWord> verbs = sg.getAllNodesByPartOfSpeechPattern("VB(.*)");
       if (!verbs.isEmpty()) {
@@ -290,17 +326,14 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    *
    * @param method the ExecutableMember the tag belongs to
    * @param comment the String comment belonging to the tag
+   * @param semanticGraphs list of {@code SemanticGraph} related to the comment
    * @return a code element if any, or null
    */
-  private static CodeElement<?> complexTypeMatch(ExecutableMember method, String comment) {
+  private static CodeElement<?> findCodeElement(
+      ExecutableMember method, String comment, List<SemanticGraph> semanticGraphs) {
     //Try a match looking at the semantic graph.
     CodeElement<?> codeElementMatch = null;
     comment = comment.replace(";", "").replace(",", "").replace("'", "");
-    final List<PropositionSeries> extractedPropositions =
-        Parser.parse(new Comment(comment), method);
-    final List<SemanticGraph> semanticGraphs =
-        extractedPropositions.stream().map(PropositionSeries::getSemanticGraph).collect(toList());
-
     for (SemanticGraph sg : semanticGraphs) {
       // No verb found: process nouns and their adjectives
       List<IndexedWord> nouns = sg.getAllNodesByPartOfSpeechPattern("NN(.*)");
