@@ -40,33 +40,24 @@ public class Distance {
    * @return the edit distance between the two strings, taking into account character edits and word
    *     deletions
    */
-  private static int editDistance(String s0, String s1, int wordDeletionCost) {
+  static int editDistance(String s0, String s1, int wordDeletionCost) {
     String[] words = s1.split(" ");
     return editDistanceRecursive(wordDeletionCost, s0, new LinkedList<>(Arrays.asList(words)));
   }
 
   private static int editDistanceRecursive(int wordDeletionCost, String s0, List<String> s1) {
-    int minDistance = levenshteinDistance(s0, joinWords(s1));
+    int minDistance = levenshteinDistance(s0, String.join(" ", s1));
     for (int i = 0; i < s1.size(); i++) {
       String word = s1.remove(i);
-      int distance = wordDeletionCost + editDistanceRecursive(wordDeletionCost, s0, s1);
-      if (distance < minDistance) {
-        minDistance = distance;
+      if (!s1.isEmpty()) {
+        int distance = wordDeletionCost + editDistanceRecursive(wordDeletionCost, s0, s1);
+        if (distance < minDistance) {
+          minDistance = distance;
+        }
       }
       s1.add(i, word);
     }
     return minDistance;
-  }
-
-  private static String joinWords(List<String> words) {
-    if (words.isEmpty()) {
-      return "";
-    }
-    StringBuilder result = new StringBuilder(words.get(0));
-    for (int i = 1; i < words.size(); i++) {
-      result.append(" ").append(words.get(i));
-    }
-    return result.toString();
   }
 
   /**
@@ -76,7 +67,7 @@ public class Distance {
    * @param s1 the second string to use in calculating distance
    * @return the Levenshtein distance between the two strings
    */
-  public static int levenshteinDistance(String s0, String s1) {
+  private static int levenshteinDistance(String s0, String s1) {
     return levenshteinDistance(s0, s1, false);
   }
 
@@ -88,7 +79,7 @@ public class Distance {
    * @param caseSensitive true to consider case in calculating distance
    * @return the Levenshtein distance between the two strings
    */
-  public static int levenshteinDistance(String s0, String s1, boolean caseSensitive) {
+  private static int levenshteinDistance(String s0, String s1, boolean caseSensitive) {
     if (!caseSensitive) {
       s0 = s0.toLowerCase();
       s1 = s1.toLowerCase();
