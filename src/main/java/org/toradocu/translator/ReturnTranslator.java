@@ -23,11 +23,11 @@ public class ReturnTranslator implements Translator<ReturnTag> {
       "(([a-zA-Z]+[0-9]?_?)+) ?([-+*/%]) ?(([a-zA-Z]+[0-9]?_?)+)";
 
   /**
-   * Translate arithmetic operations between arguments, if found.
+   * Translate arithmetic operations involved in the return, if found.
    *
    * @param method the ExecutableMember
    * @param commentToTranslate String comment to translate
-   * @return the translation
+   * @return the translation if any, or an empty String
    */
   private static String manageArithmeticOperation(
       ExecutableMember method, String commentToTranslate) {
@@ -74,10 +74,11 @@ public class ReturnTranslator implements Translator<ReturnTag> {
   }
 
   /**
-   * Translates the given {@code text} that is the second part of an @return Javadoc comment. Here
-   * "second part" means every word of the conditional clause. Example: {@code @return true if the
-   * parameter is positive, false otherwise}. In this comment the second part is "if the parameter
-   * is positive, false otherwise". This method translates only the "false otherwise" part.
+   * Translates the given {@code text} that is the second part of an @return Javadoc comment
+   * according to the "standard pattern". Here "second part" means every word of the conditional
+   * clause. Example: {@code @return true if the parameter is positive, false otherwise}. In this
+   * comment the second part is "if the parameter is positive, false otherwise". This method
+   * translates only the "false otherwise" part.
    *
    * @param text words representing the second part of an @return comment
    * @param method the method to which the @return tag belongs to
@@ -113,28 +114,10 @@ public class ReturnTranslator implements Translator<ReturnTag> {
   }
 
   /**
-   * Search for a code element and produces a suitable translation, if any.
-   *
-   * @param method the {@code ExecutableMember} the comment belongs to
-   * @param text the comment text
-   * @param semanticGraphs the {@code SemanticGraph} related to the comment
-   * @return a String translation if any, null otherwise
-   */
-  private static String tryCodeElementMatch(
-      ExecutableMember method, String text, List<SemanticGraph> semanticGraphs) {
-    CodeElement<?> codeElementMatch = findCodeElement(method, text, semanticGraphs);
-    if (codeElementMatch != null) {
-      boolean isPrimitive = checkIfPrimitive(codeElementMatch);
-      if (isPrimitive) return "result == " + codeElementMatch.getJavaExpression();
-      else return "result.equals(" + codeElementMatch.getJavaExpression() + ")";
-    }
-    return null;
-  }
-
-  /**
-   * Translates the given {@code text} that is the second part of an @return Javadoc comment. Here
-   * "second part" means every word of the conditional clause. Example: {@code @return true if the
-   * parameter is null}. In this comment the second part is "if the parameter is null".
+   * Translates the given {@code text} that is the second part of an @return Javadoc comment
+   * according to the "standard pattern". Here "second part" means every word of the conditional
+   * clause. Example: {@code @return true if the parameter is null}. In this comment the second part
+   * is "if the parameter is null".
    *
    * @param trueCase words representing the second part of an @return comment
    * @param method the method to which the @return tag belongs to
@@ -155,9 +138,13 @@ public class ReturnTranslator implements Translator<ReturnTag> {
   }
 
   /**
-   * Translates the given {@code text} that is the first part of an @return Javadoc comment. Here
-   * "first part" means every word before the start of the conditional clause. Example:
-   * {@code @return true if the parameter is null}. In this comment the first part is "true".
+   * Translates the given {@code text} that is the first part of an @return Javadoc comment
+   * according to the "standard pattern". Here "first part" means every word before the start of the
+   * conditional clause. Examples: {@code @return true if the parameter is null}. In this comment
+   * the first part is "true". In {@code @return a if a is lesser or equal to b, b otherwise} the
+   * first part is "a", i.e. a code element. In {@code @return the converted value, is null if the
+   * parameter is null} the first part is "result==null", with the complete translation being
+   * "args[0]==null?result==null".
    *
    * @param predicate words representing the first part of an @return comment
    * @param method the ExecutableMember the @return comment belongs to
@@ -194,8 +181,9 @@ public class ReturnTranslator implements Translator<ReturnTag> {
   }
 
   /**
-   * This method attempts to translate the return tag according to the classical pattern. Called
-   * only if the return tag comment contained an "if".
+   * This method attempts to translate the return tag according to the classical pattern. Thus, it
+   * will follow the call chain made by: translateFirstPart|translateSecondPart|translateLastPart.
+   * This "standard pattern" applies only when the return tag comment contains an "if".
    *
    * @param method the ExecutableMember
    * @param comment the String comment to translate
@@ -233,9 +221,11 @@ public class ReturnTranslator implements Translator<ReturnTag> {
 
   /**
    * Return "not standard" pattern means that the comment referring to the return tag does not
-   * contain an "if". The translation will always be something like: "true ? result". Result here
-   * could be compared to: a plain true/false value; a more complex boolean expression, meaning that
-   * we must check some property of the result; a code element.
+   * contain an "if". Thus, it will not follow the call chain made by:
+   * translateFirstPart|translateSecondPart|translateLastPart. In this pattern, the translation will
+   * always be something like: "true ? [condition over result]". result in the condition could be
+   * compared to: a plain true/false value; a more complex boolean expression, meaning that we must
+   * check some property of the result; a code element.
    *
    * @param method the ExecutableMember the tag belongs to
    * @param comment the String comment belonging to the tag
@@ -278,17 +268,24 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     return translation;
   }
 
-  private static boolean checkIfPrimitive(CodeElement<?> codeElementMatch) {
+  /**
+   * Check if the type of the code element is primitive or not.
+   *
+   * @param codeElement the code element for which verifying the type
+   * @return true if the type is primitive, false otherwise
+   */
+  private static boolean checkIfPrimitive(CodeElement<?> codeElement) {
     //TODO naive, don't we have any better?
     String[] primitives = {"int", "char", "float", "double", "long", "short", "byte"};
-    Set<String> ids = codeElementMatch.getIdentifiers();
+    Set<String> ids = codeElement.getIdentifiers();
     for (int i = 0; i != primitives.length; i++) if (ids.contains(primitives[i])) return true;
 
     return false;
   }
 
   /**
-   * Called to search for a complex boolean condition involved in the return tag.
+   * Called to search for a complex boolean condition involved in the return tag. Example: "return
+   * x, must not be null" produces (result==null) == false .
    *
    * @param method the ExecutableMember the tag belongs to
    * @param comment the String comment belonging to the tag
@@ -322,7 +319,27 @@ public class ReturnTranslator implements Translator<ReturnTag> {
   }
 
   /**
-   * Called to search for a code element involved in the return tag.
+   * Search for a code element in the comment text of the return tag and produces a suitable
+   * translation, if any.
+   *
+   * @param method the {@code ExecutableMember} the comment belongs to
+   * @param text the comment text
+   * @param semanticGraphs the {@code SemanticGraph} related to the comment
+   * @return a String translation if any, null otherwise
+   */
+  private static String tryCodeElementMatch(
+      ExecutableMember method, String text, List<SemanticGraph> semanticGraphs) {
+    CodeElement<?> codeElementMatch = findCodeElement(method, text, semanticGraphs);
+    if (codeElementMatch != null) {
+      boolean isPrimitive = checkIfPrimitive(codeElementMatch);
+      if (isPrimitive) return "result == " + codeElementMatch.getJavaExpression();
+      else return "result.equals(" + codeElementMatch.getJavaExpression() + ")";
+    }
+    return null;
+  }
+
+  /**
+   * Called by tryCodeElementMatch to search for a code element involved in the return tag.
    *
    * @param method the ExecutableMember the tag belongs to
    * @param comment the String comment belonging to the tag
