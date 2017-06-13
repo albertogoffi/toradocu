@@ -3,6 +3,7 @@ package example;
 import example.annotation.NotNull;
 import example.annotation.Nullable;
 import example.exception.AnException;
+import java.util.Collection;
 
 public class AClass {
 
@@ -36,4 +37,20 @@ public class AClass {
 
   /** A private method. */
   private void aPrivateMethod() {}
+
+  /**
+   * @param name a String
+   * @param type a Class
+   */
+  public <T extends Class> void callFriend(String name, Class<T> type) {}
+
+  /**
+   * @param a an array
+   * @param c a Collection
+   */
+  public <T> void fromArrayToCollection(@NotNull T[] a, @NotNull Collection<T> c) {
+    for (T o : a) {
+      c.add(o); // Correct
+    }
+  }
 }
