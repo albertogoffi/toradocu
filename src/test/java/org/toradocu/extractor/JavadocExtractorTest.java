@@ -33,10 +33,14 @@ public class JavadocExtractorTest {
   private static DocumentedType documentedType;
   private static Class<?> stringClass;
   private static List<ExecutableMember> members;
+  private static Class<?> classClass;
+  private static Class<?> collectionClass;
 
   @BeforeClass
   public static void setUp() throws IOException, ClassNotFoundException {
     stringClass = Class.forName("java.lang.String");
+    classClass = Class.forName("java.lang.Class");
+    collectionClass = Class.forName("java.util.Collection");
     compileSources();
     documentedType = runJavadocExtractor();
     members = documentedType.getExecutableMembers();
@@ -50,7 +54,7 @@ public class JavadocExtractorTest {
 
   @Test
   public void numberOfExecutableMembers() {
-    assertThat(documentedType.getExecutableMembers().size(), is(4));
+    assertThat(documentedType.getExecutableMembers().size(), is(6));
   }
 
   @Test
@@ -121,6 +125,78 @@ public class JavadocExtractorTest {
 
     final ReturnTag returnTag = member.returnTag();
     assertThat(returnTag.getComment().getText(), is("0 always"));
+
+    final List<ThrowsTag> throwsTags = member.throwsTags();
+    assertThat(throwsTags, is(empty()));
+  }
+
+  @Test
+  public void methodCallAFriend() throws ClassNotFoundException {
+    ExecutableMember member = members.get(4);
+    assertThat(member.isConstructor(), is(false));
+
+    final List<Parameter> parameters = member.getParameters();
+    assertThat(parameters.size(), is(2));
+    final Parameter parameter = parameters.get(0);
+    assertThat(parameter.getName(), is("name"));
+    assertThat(parameter.getType(), is(stringClass));
+    assertThat(parameter.isNullable(), is(nullValue()));
+
+    final Parameter parameter2 = parameters.get(1);
+    assertThat(parameter2.getName(), is("type"));
+    assertThat(parameter2.getType(), is(classClass));
+    assertThat(parameter2.isNullable(), is(nullValue()));
+
+    final List<ParamTag> paramTags = member.paramTags();
+    assertThat(paramTags.size(), is(2));
+    final ParamTag paramTag = paramTags.get(0);
+    assertThat(paramTag.getParameter(), is(equalTo(parameter)));
+    assertThat(paramTag.getComment().getText(), is("a String"));
+    assertThat(paramTag.getCondition(), is(emptyString()));
+
+    final ParamTag paramTag2 = paramTags.get(1);
+    assertThat(paramTag2.getParameter(), is(equalTo(parameter2)));
+    assertThat(paramTag2.getComment().getText(), is("a Class"));
+    assertThat(paramTag2.getCondition(), is(emptyString()));
+
+    final ReturnTag returnTag = member.returnTag();
+    assertThat(returnTag, is(nullValue()));
+
+    final List<ThrowsTag> throwsTags = member.throwsTags();
+    assertThat(throwsTags, is(empty()));
+  }
+
+  @Test
+  public void methodFromArrayToCollection() throws ClassNotFoundException {
+    ExecutableMember member = members.get(5);
+    assertThat(member.isConstructor(), is(false));
+
+    final List<Parameter> parameters = member.getParameters();
+    assertThat(parameters.size(), is(2));
+    final Parameter parameter = parameters.get(0);
+    assertThat(parameter.getName(), is("a"));
+    assertThat(parameter.getType(), is("array"));
+    assertThat(parameter.isNullable(), is(false));
+
+    final Parameter parameter2 = parameters.get(1);
+    assertThat(parameter2.getName(), is("c"));
+    assertThat(parameter2.getType(), is(collectionClass));
+    assertThat(parameter2.isNullable(), is(false));
+
+    final List<ParamTag> paramTags = member.paramTags();
+    assertThat(paramTags.size(), is(2));
+    final ParamTag paramTag = paramTags.get(0);
+    assertThat(paramTag.getParameter(), is(equalTo(parameter)));
+    assertThat(paramTag.getComment().getText(), is("an array"));
+    assertThat(paramTag.getCondition(), is(emptyString()));
+
+    final ParamTag paramTag2 = paramTags.get(1);
+    assertThat(paramTag2.getParameter(), is(equalTo(parameter2)));
+    assertThat(paramTag2.getComment().getText(), is("a Collection"));
+    assertThat(paramTag2.getCondition(), is(emptyString()));
+
+    final ReturnTag returnTag = member.returnTag();
+    assertThat(returnTag, is(nullValue()));
 
     final List<ThrowsTag> throwsTags = member.throwsTags();
     assertThat(throwsTags, is(empty()));
