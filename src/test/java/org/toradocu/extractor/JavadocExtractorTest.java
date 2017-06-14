@@ -21,30 +21,41 @@ import org.toradocu.conf.ClassDirsConverter;
 import org.toradocu.conf.Configuration;
 import org.toradocu.testlib.Compiler;
 
-// TODO Add more assertions (about other methods in the example test class).
-
 /**
- * Tests {@code JavadocExtractor} on the example class example.AClass in src/test/resources/example
+ * Tests {@code JavadocExtractor} on the example class example.AClass in src/test/resources/example.
  */
 public class JavadocExtractorTest {
 
   private static final String EXAMPLE_SRC = "src/test/resources";
+  private static final String TARGET_CLASS = "example.AClass";
+  private static DocumentedType documentedType;
   private static List<ExecutableMember> members;
   private static Class<?> stringClass;
+  private static Class<?> classClass;
+  private static Class<?> collectionClass;
 
   @BeforeClass
   public static void setUp() throws IOException, ClassNotFoundException {
     stringClass = Class.forName("java.lang.String");
+    classClass = Class.forName("java.lang.Class");
+    collectionClass = Class.forName("java.util.Collection");
     compileSources();
-    members = runJavadocExtractor();
+    documentedType = runJavadocExtractor();
+    members = documentedType.getExecutableMembers();
+  }
+
+  @Test
+  public void classUnderAnalysis() throws ClassNotFoundException {
+    final Class<?> targetClass = Class.forName(TARGET_CLASS);
+    assertThat(documentedType.getDocumentedClass(), is(equalTo(targetClass)));
   }
 
   @Test
   public void numberOfExecutableMembers() {
-    assertThat(members.size(), is(4));
+    assertThat(members.size(), is(6));
   }
 
-  @Test // Constructor AClass().
+  @Test
   public void constructorAClass1() throws ClassNotFoundException {
     ExecutableMember member = members.get(0);
     assertThat(member.isConstructor(), is(true));
@@ -81,7 +92,7 @@ public class JavadocExtractorTest {
     assertThat(paramTags.size(), is(1));
     final ParamTag paramTag = paramTags.get(0);
     assertThat(paramTag.getParameter(), is(equalTo(parameter)));
-    assertThat(paramTag.getComment(), is("must not be null nor empty"));
+    assertThat(paramTag.getComment().getText(), is("must not be null nor empty"));
     assertThat(paramTag.getCondition(), is(emptyString()));
 
     final ReturnTag returnTag = member.returnTag();
@@ -107,20 +118,92 @@ public class JavadocExtractorTest {
     assertThat(paramTags.size(), is(1));
     final ParamTag paramTag = paramTags.get(0);
     assertThat(paramTag.getParameter(), is(equalTo(parameter)));
-    assertThat(paramTag.getComment(), is("an array of objects, must not be null"));
+    assertThat(paramTag.getComment().getText(), is("an array of objects, must not be null"));
     assertThat(paramTag.getCondition(), is(emptyString()));
 
     final ReturnTag returnTag = member.returnTag();
-    assertThat(returnTag.getComment(), is("0 always"));
+    assertThat(returnTag.getComment().getText(), is("0 always"));
 
     final List<ThrowsTag> throwsTags = member.throwsTags();
     assertThat(throwsTags, is(empty()));
   }
 
-  private static List<ExecutableMember> runJavadocExtractor()
+  @Test
+  public void methodCallAFriend() throws ClassNotFoundException {
+    ExecutableMember member = members.get(4);
+    assertThat(member.isConstructor(), is(false));
+
+    final List<Parameter> parameters = member.getParameters();
+    assertThat(parameters.size(), is(2));
+    final Parameter parameter = parameters.get(0);
+    assertThat(parameter.getName(), is("name"));
+    assertThat(parameter.getType(), is(stringClass));
+    assertThat(parameter.isNullable(), is(nullValue()));
+
+    final Parameter parameter2 = parameters.get(1);
+    assertThat(parameter2.getName(), is("type"));
+    assertThat(parameter2.getType(), is(classClass));
+    assertThat(parameter2.isNullable(), is(nullValue()));
+
+    final List<ParamTag> paramTags = member.paramTags();
+    assertThat(paramTags.size(), is(2));
+    final ParamTag paramTag = paramTags.get(0);
+    assertThat(paramTag.getParameter(), is(equalTo(parameter)));
+    assertThat(paramTag.getComment().getText(), is("a String"));
+    assertThat(paramTag.getCondition(), is(emptyString()));
+
+    final ParamTag paramTag2 = paramTags.get(1);
+    assertThat(paramTag2.getParameter(), is(equalTo(parameter2)));
+    assertThat(paramTag2.getComment().getText(), is("a Class"));
+    assertThat(paramTag2.getCondition(), is(emptyString()));
+
+    final ReturnTag returnTag = member.returnTag();
+    assertThat(returnTag, is(nullValue()));
+
+    final List<ThrowsTag> throwsTags = member.throwsTags();
+    assertThat(throwsTags, is(empty()));
+  }
+
+  @Test
+  public void methodFromArrayToCollection() throws ClassNotFoundException {
+    ExecutableMember member = members.get(5);
+    assertThat(member.isConstructor(), is(false));
+
+    final List<Parameter> parameters = member.getParameters();
+    assertThat(parameters.size(), is(2));
+    final Parameter parameter = parameters.get(0);
+    assertThat(parameter.getName(), is("a"));
+    assertThat(parameter.getType(), is(Object[].class));
+    assertThat(parameter.isNullable(), is(false));
+
+    final Parameter parameter2 = parameters.get(1);
+    assertThat(parameter2.getName(), is("c"));
+    assertThat(parameter2.getType(), is(collectionClass));
+    assertThat(parameter2.isNullable(), is(false));
+
+    final List<ParamTag> paramTags = member.paramTags();
+    assertThat(paramTags.size(), is(2));
+    final ParamTag paramTag = paramTags.get(0);
+    assertThat(paramTag.getParameter(), is(equalTo(parameter)));
+    assertThat(paramTag.getComment().getText(), is("an array"));
+    assertThat(paramTag.getCondition(), is(emptyString()));
+
+    final ParamTag paramTag2 = paramTags.get(1);
+    assertThat(paramTag2.getParameter(), is(equalTo(parameter2)));
+    assertThat(paramTag2.getComment().getText(), is("a Collection"));
+    assertThat(paramTag2.getCondition(), is(emptyString()));
+
+    final ReturnTag returnTag = member.returnTag();
+    assertThat(returnTag, is(nullValue()));
+
+    final List<ThrowsTag> throwsTags = member.throwsTags();
+    assertThat(throwsTags, is(empty()));
+  }
+
+  private static DocumentedType runJavadocExtractor()
       throws ClassNotFoundException, FileNotFoundException {
     final JavadocExtractor javadocExtractor = new JavadocExtractor();
-    return javadocExtractor.extract("example.AClass", EXAMPLE_SRC);
+    return javadocExtractor.extract(TARGET_CLASS, EXAMPLE_SRC);
   }
 
   private static void compileSources() throws IOException {

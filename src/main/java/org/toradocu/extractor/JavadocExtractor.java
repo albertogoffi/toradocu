@@ -26,7 +26,10 @@ import java.util.Map.Entry;
 import java.util.Optional;
 import org.toradocu.util.Reflection;
 
-/** {@code JavadocExtractor} extracts {@code ExecutableMember}s from a class. */
+/**
+ * {@code JavadocExtractor} extracts {@code ExecutableMember}s from a class by means of {@code
+ * extract(String, String)}.
+ */
 public final class JavadocExtractor {
 
   /**
@@ -40,7 +43,7 @@ public final class JavadocExtractor {
    * @throws FileNotFoundException if the source code of the class with name {@code className}
    *     cannot be found in path {@code sourcePath}
    */
-  public List<ExecutableMember> extract(String className, String sourcePath)
+  public DocumentedType extract(String className, String sourcePath)
       throws ClassNotFoundException, FileNotFoundException {
 
     // Obtain executable members by means of reflection.
@@ -67,7 +70,9 @@ public final class JavadocExtractor {
       List<org.toradocu.extractor.Tag> tags = createTags(sourceMember, parameters);
       members.add(new ExecutableMember(reflectionMember, parameters, tags));
     }
-    return members;
+
+    // Create the documented class.
+    return new DocumentedType(clazz, members);
   }
 
   /**
@@ -174,11 +179,10 @@ public final class JavadocExtractor {
 
     List<Parameter> parameters = new ArrayList<>(sourceParams.size());
     for (int i = 0; i < sourceParams.size(); i++) {
-      final Class<?> paramType = reflectionParams[i].getType();
       final com.github.javaparser.ast.body.Parameter parameter = sourceParams.get(i);
-      final Boolean nullable = isNullable(parameter);
       final String paramName = parameter.getName().asString();
-      parameters.add(new Parameter(paramType, paramName, nullable));
+      final Boolean nullable = isNullable(parameter);
+      parameters.add(new Parameter(reflectionParams[i], paramName, nullable));
     }
     return parameters;
   }
@@ -199,7 +203,7 @@ public final class JavadocExtractor {
 
     if (!notNullAnnotations.isEmpty() && !nullableAnnotations.isEmpty()) {
       // Parameter is annotated as both nullable and notNull.
-      // TODO Log a warning about wrong specification?
+      // TODO Log a warning about wrong specification!
       return null;
     }
     if (!notNullAnnotations.isEmpty()) {
@@ -268,8 +272,7 @@ public final class JavadocExtractor {
               .stream()
               .filter(
                   e ->
-                      executableMemberSimpleName(e.getName())
-                              .equals(sourceMember.getName().asString())
+                      removePackage(e.getName()).equals(sourceMember.getName().asString())
                           && sameParTypes(e.getParameters(), sourceMember.getParameters()))
               .collect(toList());
       if (matches.size() < 1) {
@@ -303,12 +306,14 @@ public final class JavadocExtractor {
 
     for (int i = 0; i < reflectionParams.length; i++) {
       final java.lang.reflect.Parameter reflectionParam = reflectionParams[i];
-      final String reflectionType = removeGenerics(reflectionParam.getType().getSimpleName());
+      final String reflectionQualifiedTypeName =
+          removeGenerics(reflectionParam.getParameterizedType().getTypeName());
+      final String reflectionSimpleTypeName = removePackage(reflectionQualifiedTypeName);
 
       final com.github.javaparser.ast.body.Parameter sourceParam = sourceParams.get(i);
-      final String sourceType = removeGenerics(sourceParam.getType().asString());
+      final String sourceTypeName = removeGenerics(sourceParam.getType().asString());
 
-      if (!reflectionType.equals(sourceType)) {
+      if (!reflectionSimpleTypeName.equals(sourceTypeName)) {
         return false;
       }
     }
@@ -317,7 +322,7 @@ public final class JavadocExtractor {
   }
 
   /**
-   * Clean generics type
+   * Clean generics type.
    *
    * @param type the String type
    * @return the cleaned type
@@ -330,34 +335,42 @@ public final class JavadocExtractor {
     return type;
   }
 
-  private String executableMemberSimpleName(String reflectionName) {
+  /**
+   * Remove package from a type name. For example, given "java.lang.String", this method returns
+   * "String".
+   *
+   * @param type the type name from which remove the package prefix
+   * @return the given type with package prefix removed
+   */
+  private String removePackage(String type) {
     // Constructor names contain package name.
-    int i = reflectionName.indexOf(".");
+    int i = type.indexOf(".");
     if (i != -1) {
-      return reflectionName.substring(reflectionName.lastIndexOf(".") + 1);
+      return type.substring(type.lastIndexOf(".") + 1);
     }
-    return reflectionName;
+    return type;
   }
 
   /**
-   * Search for the class of the exception
+   * Search for the type of the exception with the given type name.
    *
-   * @param sourceMember the source member involving the exception
-   * @param exceptionName the String exception name
+   * @param sourceMember the source member for which the exception with type name {@code
+   *     exceptionTypeName} is expected
+   * @param exceptionTypeName the exception type name
    * @return the exception class
    * @throws ClassNotFoundException if exception class couldn't be loaded
    */
-  private Class<?> findExceptionType(CallableDeclaration<?> sourceMember, String exceptionName)
+  private Class<?> findExceptionType(CallableDeclaration<?> sourceMember, String exceptionTypeName)
       throws ClassNotFoundException {
     Class<?> exceptionType = null;
     try {
-      exceptionType = Reflection.getClass(exceptionName);
+      exceptionType = Reflection.getClass(exceptionTypeName);
     } catch (ClassNotFoundException e) {
       // Intentionally empty.
     }
     if (exceptionType == null) {
       try {
-        exceptionType = Reflection.getClass("java.lang." + exceptionName);
+        exceptionType = Reflection.getClass("java.lang." + exceptionTypeName);
       } catch (ClassNotFoundException e) {
         // Intentionally empty.
       }
@@ -374,13 +387,13 @@ public final class JavadocExtractor {
       final NodeList<ImportDeclaration> imports = cu.getImports();
       for (ImportDeclaration anImport : imports) {
         String importedType = anImport.getNameAsString();
-        if (importedType.contains(exceptionName)) {
+        if (importedType.contains(exceptionTypeName)) {
           exceptionType = Reflection.getClass(importedType);
         }
       }
     }
     if (exceptionType == null) {
-      throw new ClassNotFoundException("Impossible to load exception type " + exceptionName);
+      throw new ClassNotFoundException("Impossible to load exception type " + exceptionTypeName);
     }
     return exceptionType;
   }

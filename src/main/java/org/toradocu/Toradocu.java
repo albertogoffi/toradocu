@@ -2,12 +2,14 @@ package org.toradocu;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
+import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.StringReader;
+import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
@@ -17,12 +19,14 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.conf.Configuration;
+import org.toradocu.extractor.DocumentedType;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.JavadocExtractor;
 import org.toradocu.extractor.Tag;
 import org.toradocu.translator.CommentTranslator;
 import org.toradocu.util.GsonInstance;
 import org.toradocu.util.RandoopSpecs;
+import org.toradocu.util.Stats;
 import randoop.condition.specification.OperationSpecification;
 
 /**
@@ -78,7 +82,9 @@ public class Toradocu {
     if (configuration.getConditionTranslatorInput() == null) {
       final JavadocExtractor javadocExtractor = new JavadocExtractor();
       try {
-        members = javadocExtractor.extract(targetClass, configuration.getSourceDir().toString());
+        final DocumentedType documentedType =
+            javadocExtractor.extract(targetClass, configuration.getSourceDir().toString());
+        members = documentedType.getExecutableMembers();
       } catch (ClassNotFoundException e) {
         log.error( // TODO Refine this error message for the specific caught exception.
             "Unable to find the target class: "
@@ -166,31 +172,31 @@ public class Toradocu {
       }
 
       // Create statistics.
-      //      File expectedResultFile = configuration.getExpectedOutput();
-      //      if (expectedResultFile != null) {
-      //        Type collectionType = new TypeToken<List<ExecutableMember>>() {}.getType();
-      //        try (BufferedReader reader = Files.newBufferedReader(expectedResultFile.toPath());
-      //            BufferedWriter resultsFile =
-      //                Files.newBufferedWriter(
-      //                    configuration.getStatsFile().toPath(),
-      //                    StandardOpenOption.CREATE,
-      //                    StandardOpenOption.APPEND)) {
-      //          List<ExecutableMember> expectedResult =
-      //              GsonInstance.gson().fromJson(reader, collectionType);
-      //          List<Stats> targetClassResults = Stats.getStats(members, expectedResult);
-      //          for (Stats result : targetClassResults) {
-      //            if (result.numberOfConditions() != 0) { // Ignore methods with no tags.
-      //              resultsFile.write(result.asCSV());
-      //              resultsFile.newLine();
-      //            }
-      //          }
-      //        } catch (IOException e) {
-      //          log.error("Unable to read the file: " + configuration.getConditionTranslatorInput(), e);
-      //        }
-      //      }
+      File expectedResultFile = configuration.getExpectedOutput();
+      if (expectedResultFile != null) {
+        Type collectionType = new TypeToken<List<ExecutableMember>>() {}.getType();
+        try (BufferedReader reader = Files.newBufferedReader(expectedResultFile.toPath());
+            BufferedWriter resultsFile =
+                Files.newBufferedWriter(
+                    configuration.getStatsFile().toPath(),
+                    StandardOpenOption.CREATE,
+                    StandardOpenOption.APPEND)) {
+          List<ExecutableMember> expectedResult =
+              GsonInstance.gson().fromJson(reader, collectionType);
+          List<Stats> targetClassResults = Stats.getStats(members, expectedResult);
+          for (Stats result : targetClassResults) {
+            if (result.numberOfConditions() != 0) { // Ignore methods with no tags.
+              resultsFile.write(result.asCSV());
+              resultsFile.newLine();
+            }
+          }
+        } catch (IOException e) {
+          log.error("Unable to read the file: " + configuration.getConditionTranslatorInput(), e);
+        }
+      }
 
       // Export generated specifications as Randoop specifications if requested.
-      //      generateRandoopSpecs(methods);
+      generateRandoopSpecs(members);
     }
 
     // === Oracle Generator ===

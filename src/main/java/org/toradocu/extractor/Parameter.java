@@ -12,8 +12,8 @@ public final class Parameter {
   static final List<String> notNullAnnotations = Arrays.asList("NotNull", "NonNull", "Nonnull");
   static final List<String> nullableAnnotations = Collections.singletonList("Nullable");
 
-  /** The type of the parameter. */
-  private final Class<?> type;
+  /** The parameter this class wraps. */
+  private final java.lang.reflect.Parameter parameter;
   /** The name of the parameter. */
   private final String name;
   /** True if this parameter is nullable, false if nonnull, and null if unspecified. */
@@ -22,15 +22,15 @@ public final class Parameter {
   /**
    * Constructs a parameter with the given type and name.
    *
-   * @param type the type of the parameter including its dimension
+   * @param parameter the parameter
    * @param name the name of the parameter
    * @param nullable true if the parameter is nullable, false if nonnull and null if unspecified
    * @throws NullPointerException if type or name is null
    */
-  public Parameter(Class<?> type, String name, Boolean nullable) {
-    Checks.nonNullParameter(type, "type");
+  public Parameter(java.lang.reflect.Parameter parameter, String name, Boolean nullable) {
+    Checks.nonNullParameter(parameter, "parameter");
     Checks.nonNullParameter(name, "name");
-    this.type = type;
+    this.parameter = parameter;
     this.name = name;
     this.nullable = nullable;
   }
@@ -38,11 +38,11 @@ public final class Parameter {
   /**
    * Constructs a parameter with the given type and name.
    *
-   * @param type the type of the parameter including its dimension
+   * @param parameter the type of the parameter including its dimension
    * @param name the name of the parameter
    */
-  public Parameter(Class<?> type, String name) {
-    this(type, name, null);
+  public Parameter(java.lang.reflect.Parameter parameter, String name) {
+    this(parameter, name, null);
   }
 
   /**
@@ -60,7 +60,16 @@ public final class Parameter {
    * @return the type of the parameter
    */
   public Class<?> getType() {
-    return type;
+    return parameter.getType();
+  }
+
+  /**
+   * Returns the reflection parameter this parameter wraps.
+   *
+   * @return the reflection parameter this parameter wraps
+   */
+  public java.lang.reflect.Parameter asReflectionParameter() {
+    return parameter;
   }
 
   /**
@@ -87,7 +96,7 @@ public final class Parameter {
     }
 
     Parameter that = (Parameter) obj;
-    return type.equals(that.type)
+    return parameter.equals(that.parameter)
         && name.equals(that.name)
         && Objects.equals(nullable, that.nullable);
   }
@@ -99,7 +108,7 @@ public final class Parameter {
    */
   @Override
   public int hashCode() {
-    return Objects.hash(type, name, nullable);
+    return Objects.hash(parameter, name, nullable);
   }
 
   /**
@@ -110,6 +119,6 @@ public final class Parameter {
    */
   @Override
   public String toString() {
-    return type.getName() + " " + name;
+    return parameter.getType().getName() + " " + name;
   }
 }
