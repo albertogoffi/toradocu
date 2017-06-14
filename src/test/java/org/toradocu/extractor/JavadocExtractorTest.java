@@ -21,8 +21,6 @@ import org.toradocu.conf.ClassDirsConverter;
 import org.toradocu.conf.Configuration;
 import org.toradocu.testlib.Compiler;
 
-// TODO Add more assertions (about other methods in the example test class).
-
 /**
  * Tests {@code JavadocExtractor} on the example class example.AClass in src/test/resources/example.
  */
@@ -31,8 +29,8 @@ public class JavadocExtractorTest {
   private static final String EXAMPLE_SRC = "src/test/resources";
   private static final String TARGET_CLASS = "example.AClass";
   private static DocumentedType documentedType;
-  private static Class<?> stringClass;
   private static List<ExecutableMember> members;
+  private static Class<?> stringClass;
   private static Class<?> classClass;
   private static Class<?> collectionClass;
 
@@ -54,7 +52,7 @@ public class JavadocExtractorTest {
 
   @Test
   public void numberOfExecutableMembers() {
-    assertThat(documentedType.getExecutableMembers().size(), is(6));
+    assertThat(members.size(), is(6));
   }
 
   @Test
@@ -175,7 +173,7 @@ public class JavadocExtractorTest {
     assertThat(parameters.size(), is(2));
     final Parameter parameter = parameters.get(0);
     assertThat(parameter.getName(), is("a"));
-    assertThat(parameter.getType(), is("array"));
+    assertThat(parameter.getType(), is(Object[].class));
     assertThat(parameter.isNullable(), is(false));
 
     final Parameter parameter2 = parameters.get(1);
