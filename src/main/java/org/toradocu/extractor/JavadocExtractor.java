@@ -230,6 +230,7 @@ public final class JavadocExtractor {
     List<Executable> executables = new ArrayList<>();
     executables.addAll(Arrays.asList(clazz.getDeclaredConstructors()));
     executables.addAll(Arrays.asList(clazz.getDeclaredMethods()));
+    executables.removeIf(Executable::isSynthetic);
     executables.removeIf(e -> Modifier.isPrivate(e.getModifiers())); // Ignore private members.
     return Collections.unmodifiableList(executables);
   }
