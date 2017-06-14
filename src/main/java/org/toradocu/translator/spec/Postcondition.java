@@ -3,7 +3,7 @@ package org.toradocu.translator.spec;
 import java.util.Objects;
 import org.toradocu.util.Checks;
 
-public class Postcondition extends AbstractSpecification {
+public class Postcondition extends Specification {
 
   private final Guard trueProperty;
 

@@ -3,7 +3,7 @@ package org.toradocu.translator.spec;
 import java.util.Objects;
 import org.toradocu.util.Checks;
 
-public class ExcPostcondition extends AbstractSpecification {
+public class ExcPostcondition extends Specification {
 
   private final String exceptionType;
 
