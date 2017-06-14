@@ -153,6 +153,11 @@ public final class JavadocExtractor {
   private ParamTag createParamTag(JavadocBlockTag blockTag, List<Parameter> parameters) {
     String paramName = blockTag.getName().orElse("");
 
+    // Return null if blockTag refers to a @param tag documenting a generic type parameter.
+    if (paramName.startsWith("<") && paramName.endsWith(">")) {
+      return null;
+    }
+
     final List<Parameter> matchingParams =
         parameters.stream().filter(p -> p.getName().equals(paramName)).collect(toList());
     // TODO If paramName not present in paramNames => issue a warning about incorrect documentation!
