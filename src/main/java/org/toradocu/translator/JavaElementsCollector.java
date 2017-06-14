@@ -4,12 +4,13 @@ import static java.util.stream.Collectors.toList;
 
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.lang.reflect.Executable;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -52,13 +53,14 @@ public class JavaElementsCollector {
   // Executable member is ignored and not included in the returned list of methods.
   private static List<CodeElement<?>> methodsOf(
       Class<?> containingClass, ExecutableMember executableMember) {
-    final List<Method> methods = Arrays.asList(containingClass.getMethods());
+    final List<Method> methods = new ArrayList<>();
+    Collections.addAll(methods, containingClass.getMethods());
     final Executable executable = executableMember.getExecutable();
     if (executable instanceof Method) {
       Method method = (Method) executable;
       methods.remove(method);
     }
-    List<Type> inScopeTypes = collectInScopeTypes(executableMember);
+    List<Class<?>> inScopeTypes = collectInScopeTypes(executableMember);
     methods.removeIf(method -> !invokableWithParameters(method, inScopeTypes));
 
     List<CodeElement<?>> codeElements = new ArrayList<>();
@@ -72,9 +74,22 @@ public class JavaElementsCollector {
     return codeElements;
   }
 
-  private static List<Type> collectInScopeTypes(ExecutableMember executableMember) {
-    // TODO Implement this method.
-    return null;
+  private static List<Class<?>> collectInScopeTypes(ExecutableMember executableMember) {
+    final List<Class<?>> availableTypes = new ArrayList<>();
+    final Class<?> containingClass = executableMember.getContainingClass();
+
+    // Add parameters of the executable member.
+    Collections.addAll(availableTypes, executableMember.getExecutable().getParameterTypes());
+
+    // Add target class.
+    availableTypes.add(containingClass);
+
+    // Add target class' fields.
+    for (Field field : containingClass.getFields()) {
+      availableTypes.add(field.getType());
+    }
+
+    return availableTypes;
   }
 
   private static List<FieldCodeElement> fieldsOf(Class<?> aClass) {
@@ -139,7 +154,7 @@ public class JavaElementsCollector {
     return ids;
   }
 
-  private static boolean invokableWithParameters(Method method, List<Type> inScopeTypes) {
+  private static boolean invokableWithParameters(Method method, List<Class<?>> inScopeTypes) {
     final List<? extends Class<?>> methodParamTypes =
         Arrays.stream(method.getParameters()).map(Parameter::getType).collect(toList());
     return inScopeTypes.containsAll(methodParamTypes);
