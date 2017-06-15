@@ -153,6 +153,11 @@ public final class JavadocExtractor {
   private ParamTag createParamTag(JavadocBlockTag blockTag, List<Parameter> parameters) {
     String paramName = blockTag.getName().orElse("");
 
+    // Return null if blockTag refers to a @param tag documenting a generic type parameter.
+    if (paramName.startsWith("<") && paramName.endsWith(">")) {
+      return null;
+    }
+
     final List<Parameter> matchingParams =
         parameters.stream().filter(p -> p.getName().equals(paramName)).collect(toList());
     // TODO If paramName not present in paramNames => issue a warning about incorrect documentation!
@@ -225,6 +230,7 @@ public final class JavadocExtractor {
     List<Executable> executables = new ArrayList<>();
     executables.addAll(Arrays.asList(clazz.getDeclaredConstructors()));
     executables.addAll(Arrays.asList(clazz.getDeclaredMethods()));
+    executables.removeIf(Executable::isSynthetic);
     executables.removeIf(e -> Modifier.isPrivate(e.getModifiers())); // Ignore private members.
     return Collections.unmodifiableList(executables);
   }
@@ -272,8 +278,7 @@ public final class JavadocExtractor {
               .stream()
               .filter(
                   e ->
-                      executableMemberSimpleName(e.getName())
-                              .equals(sourceMember.getName().asString())
+                      removePackage(e.getName()).equals(sourceMember.getName().asString())
                           && sameParTypes(e.getParameters(), sourceMember.getParameters()))
               .collect(toList());
       if (matches.size() < 1) {
@@ -307,12 +312,14 @@ public final class JavadocExtractor {
 
     for (int i = 0; i < reflectionParams.length; i++) {
       final java.lang.reflect.Parameter reflectionParam = reflectionParams[i];
-      final String reflectionType = removeGenerics(reflectionParam.getType().getSimpleName());
+      final String reflectionQualifiedTypeName =
+          removeGenerics(reflectionParam.getParameterizedType().getTypeName());
+      final String reflectionSimpleTypeName = removePackage(reflectionQualifiedTypeName);
 
       final com.github.javaparser.ast.body.Parameter sourceParam = sourceParams.get(i);
-      final String sourceType = removeGenerics(sourceParam.getType().asString());
+      final String sourceTypeName = removeGenerics(sourceParam.getType().asString());
 
-      if (!reflectionType.equals(sourceType)) {
+      if (!reflectionSimpleTypeName.equals(sourceTypeName)) {
         return false;
       }
     }
@@ -334,13 +341,20 @@ public final class JavadocExtractor {
     return type;
   }
 
-  private String executableMemberSimpleName(String reflectionName) {
+  /**
+   * Remove package from a type name. For example, given "java.lang.String", this method returns
+   * "String".
+   *
+   * @param type the type name from which remove the package prefix
+   * @return the given type with package prefix removed
+   */
+  private String removePackage(String type) {
     // Constructor names contain package name.
-    int i = reflectionName.indexOf(".");
+    int i = type.indexOf(".");
     if (i != -1) {
-      return reflectionName.substring(reflectionName.lastIndexOf(".") + 1);
+      return type.substring(type.lastIndexOf(".") + 1);
     }
-    return reflectionName;
+    return type;
   }
 
   /**
