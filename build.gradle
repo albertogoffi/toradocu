@@ -202,35 +202,35 @@ shadowJar {
   archiveName = "toradocu-${version}-${classifier}.${extension}"
 }
 
-/* Clone the git repository containing the scripts to format the code */
 task getCodeFormatScripts(type: Exec) {
+  description "Obtain the run-google-java-format scripts"
   commandLine "bash", "-c", "(cd .run-google-java-format && git pull -q)" +
           " || " +
           "git clone -q https://github.com/plume-lib/run-google-java-format.git .run-google-java-format"
 }
 
-/* Check if the code is properly formatted */
-task checkCodeStyle(type: Exec) {
-  description "Run checkCodeStyle to check if the source code is properly formatted"
+task checkFormat(type: Exec) {
+  description "Check whether the source code is properly formatted"
   commandLine "bash", "-c", "find src -name \"*.java\" -type f " +
           "-not -path \"src/test/resources/src/*\" " +
           "-not -path \"src/test/resources/aspects/*\" " +
           "-not -path \"src/main/resources/AspectTemplate.java\" " +
-          "| xargs ./.run-google-java-format/check-google-java-format.py"
+          "| xargs ./.run-google-java-format/check-google-java-format.py " +
+	  "|| (echo 'Try running:  gradle reformat' && false)"
 }
-checkCodeStyle.dependsOn getCodeFormatScripts
-build.dependsOn checkCodeStyle
+checkFormat.dependsOn getCodeFormatScripts
+build.dependsOn checkFormat
 
 /* Format the code according to the Google Java format code style */
-task formatCode(type: Exec) {
-  description "Run formatCode to properly format the source code"
+task reformat(type: Exec) {
+  description "Format the Java source code"
   commandLine "bash", "-c", "find src -name \"*.java\" -type f " +
           "-not -path \"src/test/resources/src/*\" " +
           "-not -path \"src/test/resources/aspects/*\" " +
           "-not -path \"src/main/resources/AspectTemplate.java\" " +
           "| xargs ./.run-google-java-format/run-google-java-format.py"
 }
-formatCode.dependsOn getCodeFormatScripts
+reformat.dependsOn getCodeFormatScripts
 
 /* Downloads dependencies needed for the tutorial. */
 task tutorial(type: Download) {
