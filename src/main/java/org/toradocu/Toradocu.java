@@ -87,18 +87,18 @@ public class Toradocu {
         members = documentedType.getExecutableMembers();
       } catch (ClassNotFoundException e) {
         log.error( // TODO Refine this error message for the specific caught exception.
-            "Unable to find the target class: "
-                + targetClass
+            e.getMessage()
                 + "\nPossible reasons for the error are:"
-                + "\n1. The qualified name of the target class is wrong: "
-                + targetClass
+                + "\n1. The Javadoc documentations is wrong"
                 + "\n2. The path to the source code of your system is wrong: "
                 + configuration.getSourceDir()
                 + "\n3. The path to the binaries of your system is wrong: "
                 + configuration.classDirs
                 + "\nPlease, check the correctness of the command line arguments."
                 + "\nIf the error persists, report the issue at "
-                + "https://github.com/albertogoffi/toradocu/issues");
+                + "https://github.com/albertogoffi/toradocu/issues"
+                + "\nError stack trace:");
+        e.printStackTrace();
         System.exit(1);
       } catch (FileNotFoundException e) {
         e.printStackTrace(); // TODO Print a more meaningful message!
