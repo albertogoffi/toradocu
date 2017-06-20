@@ -142,7 +142,7 @@ public abstract class Tag {
    */
   @Override
   public String toString() {
-    String result = kind + " " + comment;
+    String result = kind + " " + comment.getText();
     return appendCondition(result);
   }
 

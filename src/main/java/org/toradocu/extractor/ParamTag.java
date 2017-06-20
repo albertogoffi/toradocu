@@ -73,7 +73,7 @@ public class ParamTag extends Tag {
    */
   @Override
   public String toString() {
-    String result = getKind() + " " + parameter.getName() + " " + getComment();
+    String result = getKind() + " " + parameter.getName() + " " + getComment().getText();
     return appendCondition(result);
   }
 }

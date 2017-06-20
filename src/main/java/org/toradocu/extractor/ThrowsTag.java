@@ -1,6 +1,7 @@
 package org.toradocu.extractor;
 
 import java.util.Objects;
+import java.util.StringJoiner;
 import org.toradocu.util.Checks;
 
 /**
@@ -66,7 +67,10 @@ public class ThrowsTag extends Tag {
    */
   @Override
   public String toString() {
-    String result = super.getKind() + " " + exception.getName() + " " + super.getComment();
-    return appendCondition(result);
+    StringJoiner joiner = new StringJoiner(" ");
+    joiner.add(super.getKind().toString());
+    joiner.add(exception.getName());
+    joiner.add(super.getComment().getText());
+    return appendCondition(joiner.toString());
   }
 }
