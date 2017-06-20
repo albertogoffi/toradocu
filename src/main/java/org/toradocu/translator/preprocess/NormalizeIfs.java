@@ -16,7 +16,7 @@ public class NormalizeIfs implements PreprocessingPhase {
   private static String normalizeComment(String comment, ExecutableMember method) {
     if (comment.contains("if and only if")) comment = comment.replace("if and only if", "if");
 
-    if (comment.contains(" iff ")) comment = comment.replace("iff", "if");
+    if (comment.contains("iff")) comment = comment.replace("iff", "if");
 
     if (comment.contains("non-null")) comment = comment.replace("non-null", "!=null");
 

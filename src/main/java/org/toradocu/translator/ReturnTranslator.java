@@ -390,7 +390,6 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     String[] splitTranslation = translation.split("\\?");
     String guard = splitTranslation[0];
     String trueProp, falseProp;
-    System.out.println(translation);
     if (splitTranslation[1].contains(":")) {
       String[] properties = splitTranslation[1].split(":");
       trueProp = properties[0];
