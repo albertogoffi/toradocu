@@ -387,12 +387,18 @@ public class ReturnTranslator implements Translator<ReturnTag> {
   }
 
   private Specification parseTranslation(String translation) {
-    String[] splitTranslation = translation.split("//?");
+    String[] splitTranslation = translation.split("\\?");
     String guard = splitTranslation[0];
-    String[] properties = splitTranslation[1].split(":");
-    String trueProp = properties[0];
-    String falseProp = properties[1];
-    if (falseProp == null) falseProp = "";
+    String trueProp, falseProp;
+    System.out.println(translation);
+    if (splitTranslation[1].contains(":")) {
+      String[] properties = splitTranslation[1].split(":");
+      trueProp = properties[0];
+      falseProp = properties[1];
+    } else {
+      trueProp = splitTranslation[1];
+      falseProp = "";
+    }
 
     return new Postcondition(new Guard(guard), new Guard(trueProp), new Guard(falseProp));
   }
