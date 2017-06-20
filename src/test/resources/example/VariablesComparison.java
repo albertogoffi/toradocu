@@ -44,12 +44,12 @@ public class VariablesComparison {
     return first - second;
   }
 
-  /** @throws IAE if v2 > v1 */
+  /** @throws IllegalArgumentException if v2 > v1 */
   public int throwsGTLettersNumbers(int v1, int v2) {
     return v1 - v2;
   }
 
-  /** @throws IAE if first is smaller than second */
+  /** @throws IllegalArgumentException if first is smaller than second */
   public int throwsLTLetters(int first, int second) {
     return first - second;
   }
