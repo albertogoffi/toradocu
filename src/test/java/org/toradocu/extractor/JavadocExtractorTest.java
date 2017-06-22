@@ -3,7 +3,6 @@ package org.toradocu.extractor;
 import static java.util.stream.Collectors.toList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.empty;
-import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -93,7 +92,7 @@ public class JavadocExtractorTest {
     final ParamTag paramTag = paramTags.get(0);
     assertThat(paramTag.getParameter(), is(equalTo(parameter)));
     assertThat(paramTag.getComment().getText(), is("must not be null nor empty"));
-    assertThat(paramTag.getCondition(), is(emptyString()));
+    assertThat(paramTag.getSpecification(), is(nullValue()));
 
     final ReturnTag returnTag = member.returnTag();
     assertThat(returnTag, is(nullValue()));
@@ -119,7 +118,7 @@ public class JavadocExtractorTest {
     final ParamTag paramTag = paramTags.get(0);
     assertThat(paramTag.getParameter(), is(equalTo(parameter)));
     assertThat(paramTag.getComment().getText(), is("an array of objects, must not be null"));
-    assertThat(paramTag.getCondition(), is(emptyString()));
+    assertThat(paramTag.getSpecification(), is(nullValue()));
 
     final ReturnTag returnTag = member.returnTag();
     assertThat(returnTag.getComment().getText(), is("0 always"));
@@ -150,12 +149,12 @@ public class JavadocExtractorTest {
     final ParamTag paramTag = paramTags.get(0);
     assertThat(paramTag.getParameter(), is(equalTo(parameter)));
     assertThat(paramTag.getComment().getText(), is("a String"));
-    assertThat(paramTag.getCondition(), is(emptyString()));
+    assertThat(paramTag.getSpecification(), is(nullValue()));
 
     final ParamTag paramTag2 = paramTags.get(1);
     assertThat(paramTag2.getParameter(), is(equalTo(parameter2)));
     assertThat(paramTag2.getComment().getText(), is("a Class"));
-    assertThat(paramTag2.getCondition(), is(emptyString()));
+    assertThat(paramTag2.getSpecification(), is(nullValue()));
 
     final ReturnTag returnTag = member.returnTag();
     assertThat(returnTag, is(nullValue()));
@@ -186,12 +185,12 @@ public class JavadocExtractorTest {
     final ParamTag paramTag = paramTags.get(0);
     assertThat(paramTag.getParameter(), is(equalTo(parameter)));
     assertThat(paramTag.getComment().getText(), is("an array"));
-    assertThat(paramTag.getCondition(), is(emptyString()));
+    assertThat(paramTag.getSpecification(), is(nullValue()));
 
     final ParamTag paramTag2 = paramTags.get(1);
     assertThat(paramTag2.getParameter(), is(equalTo(parameter2)));
     assertThat(paramTag2.getComment().getText(), is("a Collection"));
-    assertThat(paramTag2.getCondition(), is(emptyString()));
+    assertThat(paramTag2.getSpecification(), is(nullValue()));
 
     final ReturnTag returnTag = member.returnTag();
     assertThat(returnTag, is(nullValue()));

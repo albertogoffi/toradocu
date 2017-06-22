@@ -1,10 +1,11 @@
 package org.toradocu.extractor;
 
 import java.util.Objects;
+import org.toradocu.translator.spec.Specification;
 import org.toradocu.util.Checks;
 
 /** Represents a Javadoc tag. Supported tags are registered in {@code Tag.Kind}. */
-public abstract class Tag {
+public abstract class Tag<S extends Specification> {
 
   public enum Kind {
     PARAM, // @param
@@ -34,10 +35,10 @@ public abstract class Tag {
   private final Kind kind;
 
   /**
-   * Java boolean condition translated from the comment for this {@code Tag}. Empty string if no
-   * translations found or if translation not yet attempted.
+   * Specification generated from the comment of this {@code Tag}. {@code null} if Toradocu failed
+   * to generate a specification or if comment translation not yet attempted.
    */
-  private String condition;
+  private S specification;
 
   /**
    * Constructs a {@code Tag} of the specific kind, with the given comment.
@@ -51,7 +52,6 @@ public abstract class Tag {
     Checks.nonNullParameter(comment, "comment");
     this.kind = kind;
     this.comment = comment;
-    condition = "";
   }
 
   /**
@@ -64,25 +64,23 @@ public abstract class Tag {
   }
 
   /**
-   * Returns the translated Java boolean condition for this tag. Empty if the translation has not
-   * been attempted yet or no translation has been generated.
+   * Returns the specification that represents the translation for this tag. {@code null} if the
+   * translation has not been attempted yet or no translation has been generated.
    *
-   * @return the translated conditions for this tag. Empty if the translation has not been attempted
+   * @return the translation for this tag. {@code null} if the translation has not been attempted
    *     yet or no translation has been generated.
    */
-  public String getCondition() {
-    return condition;
+  public S getSpecification() {
+    return specification;
   }
 
   /**
-   * Sets the translated condition for this tag to the given condition.
+   * Sets the specification (translation) for this tag to the given specification.
    *
-   * @param condition the translated condition for this tag (as a Java boolean condition)
-   * @throws NullPointerException if condition is null
+   * @param specification the comment translation for this tag (a specification)
    */
-  public void setCondition(String condition) {
-    Checks.nonNullParameter(condition, "condition");
-    this.condition = condition;
+  public void setSpecification(S specification) {
+    this.specification = specification;
   }
 
   /**
@@ -118,7 +116,7 @@ public abstract class Tag {
     Tag that = (Tag) obj;
     return comment.equals(that.comment)
         && kind.equals(that.kind)
-        && condition.equals(that.condition);
+        && Objects.equals(specification, that.specification);
   }
 
   /**
@@ -128,15 +126,14 @@ public abstract class Tag {
    */
   @Override
   public int hashCode() {
-    return Objects.hash(comment, kind, condition);
+    return Objects.hash(comment, kind, specification);
   }
 
   /**
    * Returns a string representation of this tag. The returned string is in the format "@throws
    * COMMENT" where COMMENT is the text of the comment in the tag. If translation has been attempted
-   * on this tag, then the returned string is also appended with " ==&gt; CONDITION" where CONDITION
-   * is the translated condition for the exception as a Java expression or the empty string if
-   * translation failed.
+   * on this tag, then the returned string is also appended with " ==&gt; SPECIFICATION" where
+   * CONDITION is the translation of this tag.
    *
    * @return a string representation of this tag
    */
@@ -154,8 +151,8 @@ public abstract class Tag {
    * @return the string representation of this tag with the condition appended
    */
   String appendCondition(String stringRepresentation) {
-    if (!condition.isEmpty()) {
-      stringRepresentation += " ==> " + condition;
+    if (specification != null) {
+      stringRepresentation += " ==> " + specification;
     }
     return stringRepresentation;
   }
