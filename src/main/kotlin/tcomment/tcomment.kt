@@ -32,7 +32,7 @@ private fun translateTagComment(tag: ParamTag, parameterNames: List<String>) {
   } else {
     ""
   }
-  tag.setCondition(condition)
+//  tag.setCondition(condition)
 }
 
 /**
@@ -53,7 +53,7 @@ private fun translateTagComment(tag: ThrowsTag, parameterNames: List<String>) {
       if (!commentWords.contains("or") && !commentWords.contains("either")) return@forEach
     }
   }
-  tag.setCondition(condition)
+//  tag.setCondition(condition)
 }
 
 /**
