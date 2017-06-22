@@ -20,7 +20,20 @@ public class Postcondition extends Specification {
     this.falseProperty = falseProperty;
   }
 
+  /**
+   * Creates a new Postcondition from the given string representation of a postcondition. String
+   * representation must be in the form "GUARD ? TRUE_PROPERTY : FALSE_PROPERTY" where the fragment
+   * ": FALSE_PROPERTY" is optional.
+   *
+   * @param postcondition string representation of a postcondition
+   * @return a new Postcondition corresponding to the given string postcondition. Null if
+   *     postcondition is empty
+   */
   public static Postcondition create(String postcondition) {
+    if (postcondition == null) {
+      return null;
+    }
+
     Pattern pattern = Pattern.compile("([^?]+)(?:\\?([^:]+)(?::(.+))?)?");
     Matcher matcher = pattern.matcher(postcondition);
 

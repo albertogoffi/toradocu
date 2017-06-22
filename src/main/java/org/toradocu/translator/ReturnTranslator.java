@@ -382,8 +382,6 @@ public class ReturnTranslator implements Translator<ReturnTag> {
       translation = returnNotStandard(excMember, comment);
     }
 
-    // TODO Create the specification with the derived merged conditions.
-    // TODO shoulnd't we check if translation is null/empty before trying the parse?
     return Postcondition.create(translation);
   }
 }
