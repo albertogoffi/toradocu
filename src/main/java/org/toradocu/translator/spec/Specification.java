@@ -1,11 +1,16 @@
 package org.toradocu.translator.spec;
 
-public class Specification {
+public abstract class Specification {
 
   protected Guard guard;
 
   public Guard getGuard() {
     return guard;
+  }
+
+  @Override
+  public String toString() {
+    return guard.toString();
   }
 
   @Override

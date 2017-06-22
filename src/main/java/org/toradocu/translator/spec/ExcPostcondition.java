@@ -19,6 +19,11 @@ public class ExcPostcondition extends Specification {
   }
 
   @Override
+  public String toString() {
+    return guard.toString() + " ? " + exceptionType;
+  }
+
+  @Override
   public boolean equals(Object o) {
     if (this == o) {
       return true;

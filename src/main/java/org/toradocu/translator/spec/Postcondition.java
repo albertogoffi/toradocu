@@ -48,6 +48,15 @@ public class Postcondition extends Specification {
   }
 
   @Override
+  public String toString() {
+    String result = guard.toString() + " ? " + trueProperty;
+    if (!falseProperty.toString().isEmpty()) {
+      result += " : " + falseProperty;
+    }
+    return result;
+  }
+
+  @Override
   public boolean equals(Object o) {
     if (this == o) {
       return true;
