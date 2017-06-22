@@ -7,7 +7,7 @@ import org.toradocu.translator.spec.Postcondition;
  * optional condition. A condition is the translation of the comment into a Java boolean condition.
  * When the condition evaluates to {@code true}, documented and actual behaviors are consistent.
  */
-public class ReturnTag extends Tag<Postcondition> {
+public final class ReturnTag extends Tag<Postcondition> {
 
   /**
    * Constructs a {@code ReturnTag} with the given comment

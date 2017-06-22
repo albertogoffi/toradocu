@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  * that are tagged as @code. The class is easy to extend for future purposes, such as the handling
  * of other tags in the comments (e.g. @link).
  */
-public class Comment {
+public final class Comment {
 
   /** The text representing the comment. */
   private String text;

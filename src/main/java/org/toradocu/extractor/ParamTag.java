@@ -12,7 +12,7 @@ import org.toradocu.util.Checks;
  * expressed by this tag is violated, and the behavior of the method documented by this tag is
  * unspecified.
  */
-public class ParamTag extends Tag<Precondition> {
+public final class ParamTag extends Tag<Precondition> {
 
   /** The parameter associated with the param tag */
   private final Parameter parameter;
