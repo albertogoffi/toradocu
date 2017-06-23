@@ -14,13 +14,13 @@ public class NormalizeIfs implements PreprocessingPhase {
    * @return the normalized comment
    */
   private static String normalizeComment(String comment, ExecutableMember method) {
+    // No need to chekc the beggining of a phrase since "if and only if" cannot be a substring of a word.
     if (comment.contains("if and only if")) comment = comment.replace("if and only if", "if");
 
-    if (comment.contains(" iff ")) comment = comment.replace("iff", "if");
+    //Checks if the comment starts with "iff "
 
-    if (comment.contains("non-null")) comment = comment.replace("non-null", "!=null");
-
-    if (comment.contains("non-empty")) comment = comment.replace("non-empty", "!=empty");
+    if (comment.startsWith("iff ")) comment = comment.replace("iff ", "if ");
+    comment = comment.replaceAll(" iff ", " if ");
 
     return comment;
   }
