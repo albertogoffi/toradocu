@@ -20,14 +20,17 @@ public class PreprocessorFactory {
         phases.add(new RemoveCommas()); // TODO Make RemoveCommas a singleton?
         phases.add(new RemoveMayBe());
         phases.add(new MustWillShouldCanPatterns());
+        phases.add(new NormalizeNonNullNonEmpty());
         break;
       case THROWS:
         phases.add(new RemoveCommas());
         phases.add(new NormalizeIfs());
         phases.add(new RemoveInitialIf());
+        phases.add(new NormalizeNonNullNonEmpty());
         break;
       case RETURN:
         phases.add(new NormalizeIfs());
+        phases.add(new NormalizeNonNullNonEmpty());
         break;
     }
 

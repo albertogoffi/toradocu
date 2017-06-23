@@ -3,7 +3,7 @@ package org.toradocu.translator.preprocess;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.Tag;
 
-public class NormalizeIfs implements PreprocessingPhase {
+public class NormalizeNonNullNonEmpty implements PreprocessingPhase {
 
   /**
    * Replace some common expressions in the comment with other standard easier to translate
@@ -14,13 +14,10 @@ public class NormalizeIfs implements PreprocessingPhase {
    * @return the normalized comment
    */
   private static String normalizeComment(String comment, ExecutableMember method) {
-    // No need to chekc the beggining of a phrase since "if and only if" cannot be a substring of a word.
-    if (comment.contains("if and only if")) comment = comment.replace("if and only if", "if");
 
-    //Checks if the comment starts with "iff "
+    if (comment.contains("non-null")) comment = comment.replace("non-null", "!=null");
 
-    if (comment.startsWith("iff ")) comment = comment.replace("iff ", "if ");
-    comment = comment.replaceAll(" iff ", " if ");
+    if (comment.contains("non-empty")) comment = comment.replace("non-empty", "!=empty");
 
     return comment;
   }
