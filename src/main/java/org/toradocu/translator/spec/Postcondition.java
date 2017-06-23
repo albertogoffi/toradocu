@@ -1,6 +1,8 @@
 package org.toradocu.translator.spec;
 
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.toradocu.util.Checks;
 
 public class Postcondition extends Specification {
@@ -18,12 +20,53 @@ public class Postcondition extends Specification {
     this.falseProperty = falseProperty;
   }
 
+  /**
+   * Creates a new Postcondition from the given string representation of a postcondition. String
+   * representation must be in the form "GUARD ? TRUE_PROPERTY : FALSE_PROPERTY" where the fragment
+   * ": FALSE_PROPERTY" is optional.
+   *
+   * @param postcondition string representation of a postcondition
+   * @return a new Postcondition corresponding to the given string postcondition. Null if
+   *     postcondition is empty
+   */
+  public static Postcondition create(String postcondition) {
+    if (postcondition == null) {
+      return null;
+    }
+
+    Pattern pattern = Pattern.compile("([^?]+)(?:\\?([^:]+)(?::(.+))?)?");
+    Matcher matcher = pattern.matcher(postcondition);
+
+    String guard = "";
+    String trueProp = "";
+    String falseProp = "";
+    if (matcher.find()) {
+      guard = matcher.group();
+    }
+    if (matcher.find()) {
+      trueProp = matcher.group();
+    }
+    if (matcher.find()) {
+      falseProp = matcher.group();
+    }
+    return new Postcondition(new Guard(guard), new Guard(trueProp), new Guard(falseProp));
+  }
+
   public Guard getTrueProperty() {
     return trueProperty;
   }
 
   public Guard getFalseProperty() {
     return falseProperty;
+  }
+
+  @Override
+  public String toString() {
+    String result = guard.toString() + " ? " + trueProperty;
+    if (!falseProperty.toString().isEmpty()) {
+      result += " : " + falseProperty;
+    }
+    return result;
   }
 
   @Override

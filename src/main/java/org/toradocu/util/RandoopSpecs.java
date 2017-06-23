@@ -75,7 +75,7 @@ public class RandoopSpecs {
    *     been translated by Toradocu, or if the translation is empty
    */
   public static PreSpecification translate(ParamTag tag, ExecutableMember method) {
-    String condition = tag.getCondition();
+    String condition = tag.getSpecification().toString();
     return condition.isEmpty()
         ? null
         : new PreSpecification(
@@ -92,7 +92,7 @@ public class RandoopSpecs {
    *     been translated by Toradocu, or if the translation is empty
    */
   public static List<PostSpecification> translate(ReturnTag tag, ExecutableMember method) {
-    String condition = tag.getCondition();
+    String condition = tag.getSpecification().toString();
     if (condition.isEmpty()) {
       return null;
     }
@@ -132,7 +132,7 @@ public class RandoopSpecs {
    *     been translated by Toradocu, or if the translation is empty
    */
   public static ThrowsSpecification translate(ThrowsTag tag, ExecutableMember method) {
-    String condition = tag.getCondition();
+    String condition = tag.getSpecification().toString();
     if (condition.isEmpty()) {
       return null;
     }

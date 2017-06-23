@@ -17,5 +17,7 @@ public class CommentTranslator {
     final Specification specification = translator.translate(tag, excMember);
 
     // TODO Check the consistency of the generated specification.
+
+    // TODO Set the specification.
   }
 }

@@ -13,7 +13,6 @@ import java.util.regex.Pattern;
 import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ReturnTag;
-import org.toradocu.translator.spec.Guard;
 import org.toradocu.translator.spec.Postcondition;
 import org.toradocu.translator.spec.Specification;
 
@@ -372,33 +371,17 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     String comment = tag.getComment().getText();
     // Assumption: the comment is composed of a single sentence. We should probably split multiple
     // sentence comments using the Stanford Parser, and then work on each single sentence.
-    String translation;
+    final String translation;
 
     // Split the sentence in three parts: predicate + true case + false case.
     // TODO Naive splitting. Make the split more reliable.
     final int predicateSplitPoint = comment.indexOf(" if ");
-    if (predicateSplitPoint != -1)
+    if (predicateSplitPoint != -1) {
       translation = returnStandardPattern(excMember, tag.getComment(), predicateSplitPoint);
-    else translation = returnNotStandard(excMember, comment);
-
-    // TODO Create the specification with the derived merged conditions.
-    // TODO shoulnd't we check if translation is null/empty befor trying the parse?
-    return parseTranslation(translation);
-  }
-
-  private Specification parseTranslation(String translation) {
-    String[] splitTranslation = translation.split("\\?");
-    String guard = splitTranslation[0];
-    String trueProp, falseProp;
-    if (splitTranslation[1].contains(":")) {
-      String[] properties = splitTranslation[1].split(":");
-      trueProp = properties[0];
-      falseProp = properties[1];
     } else {
-      trueProp = splitTranslation[1];
-      falseProp = "";
+      translation = returnNotStandard(excMember, comment);
     }
 
-    return new Postcondition(new Guard(guard), new Guard(trueProp), new Guard(falseProp));
+    return Postcondition.create(translation);
   }
 }

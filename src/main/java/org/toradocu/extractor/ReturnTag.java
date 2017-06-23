@@ -1,11 +1,13 @@
 package org.toradocu.extractor;
 
+import org.toradocu.translator.spec.Postcondition;
+
 /**
  * This class represents a return tag in a method. Each @return tag has a comment, and can have an
  * optional condition. A condition is the translation of the comment into a Java boolean condition.
  * When the condition evaluates to {@code true}, documented and actual behaviors are consistent.
  */
-public class ReturnTag extends Tag {
+public final class ReturnTag extends Tag<Postcondition> {
 
   /**
    * Constructs a {@code ReturnTag} with the given comment

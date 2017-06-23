@@ -1,6 +1,8 @@
 package org.toradocu.extractor;
 
 import java.util.Objects;
+import java.util.StringJoiner;
+import org.toradocu.translator.spec.ExcPostcondition;
 import org.toradocu.util.Checks;
 
 /**
@@ -8,7 +10,7 @@ import org.toradocu.util.Checks;
  * comment, and can have an optional condition. A condition is the translation of the comment into a
  * Java boolean condition. When the condition evaluates to {@code true}, an exception is expected.
  */
-public class ThrowsTag extends Tag {
+public final class ThrowsTag extends Tag<ExcPostcondition> {
 
   /** The exception described in this {@code ThrowsTag}. */
   private final Class<?> exception;
@@ -66,7 +68,10 @@ public class ThrowsTag extends Tag {
    */
   @Override
   public String toString() {
-    String result = super.getKind() + " " + exception.getName() + " " + super.getComment();
-    return appendCondition(result);
+    StringJoiner joiner = new StringJoiner(" ");
+    joiner.add(super.getKind().toString());
+    joiner.add(exception.getName());
+    joiner.add(super.getComment().getText());
+    return appendCondition(joiner.toString());
   }
 }

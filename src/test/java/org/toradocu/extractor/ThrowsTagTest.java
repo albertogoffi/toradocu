@@ -1,11 +1,13 @@
 package org.toradocu.extractor;
 
-import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
+import org.toradocu.translator.spec.ExcPostcondition;
+import org.toradocu.translator.spec.Guard;
 
 public class ThrowsTagTest {
 
@@ -20,10 +22,12 @@ public class ThrowsTagTest {
     ThrowsTag tag = new ThrowsTag(NPE, new Comment("if x is null"));
     assertThat(tag.getComment().getText(), is("if x is null"));
     assertThat(tag.getException(), is(NPE));
-    assertThat(tag.getCondition(), is(emptyString()));
+    assertThat(tag.getSpecification(), is(nullValue()));
 
-    tag.setCondition("(x==null)||(y==null)");
-    assertThat(tag.getCondition(), is("(x==null)||(y==null)"));
+    Guard guard = new Guard("(x==null)||(y==null)");
+    ExcPostcondition excPostcondition = new ExcPostcondition(guard, tag.getException().getName());
+    tag.setSpecification(excPostcondition);
+    assertThat(tag.getSpecification(), is(excPostcondition));
 
     assertThat(
         tag.toString(),
@@ -32,9 +36,9 @@ public class ThrowsTagTest {
                 + " "
                 + NPE.getName()
                 + " "
-                + tag.getComment()
+                + tag.getComment().getText()
                 + " ==> "
-                + tag.getCondition()));
+                + tag.getSpecification().toString()));
   }
 
   @Test
@@ -45,12 +49,16 @@ public class ThrowsTagTest {
     assertThat(tag1.hashCode(), is(equalTo(tag2.hashCode())));
     assertThat(tag1.equals(new Object()), is(false));
 
-    tag1.setCondition("x == null");
-    tag2.setCondition("x == null");
+    Guard guard1 = new Guard("(x==null)");
+    ExcPostcondition excPostcondition1 = new ExcPostcondition(guard1, NPE.getName());
+    tag1.setSpecification(excPostcondition1);
+    tag2.setSpecification(excPostcondition1);
     assertThat(tag1.equals(tag2), is(true));
     assertThat(tag1.hashCode(), is(equalTo(tag2.hashCode())));
 
-    tag2.setCondition("x == null || y == null");
+    Guard guard2 = new Guard("(x==null || y==null)");
+    ExcPostcondition excPostcondition2 = new ExcPostcondition(guard2, NPE.getName());
+    tag2.setSpecification(excPostcondition2);
     assertThat(tag1.equals(tag2), is(false));
 
     ThrowsTag tag3 = new ThrowsTag(NPE, new Comment("if y is null"));
