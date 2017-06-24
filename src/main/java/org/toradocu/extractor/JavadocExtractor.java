@@ -147,7 +147,7 @@ public final class JavadocExtractor {
    * Instantiate a tag of param kind.
    *
    * @param blockTag the block containing the tag
-   * @param parameters the parameters list in which looking for the one associated to the tag
+   * @param parameters the formal parameter list in which looking for the one associated to the tag
    * @return the instantiated tag
    */
   private ParamTag createParamTag(JavadocBlockTag blockTag, List<Parameter> parameters) {
@@ -170,7 +170,7 @@ public final class JavadocExtractor {
    * Instantiate the parameters of type org.toradocu.extractor.Parameter
    *
    * @param sourceParams the NodeList of parameters found in source
-   * @param reflectionParams the array of parameters found trough reflection
+   * @param reflectionParams the array of parameters found through reflection
    * @return the list of org.toradocu.extractor.Parameter
    */
   private List<Parameter> getParameters(
@@ -196,7 +196,8 @@ public final class JavadocExtractor {
    * Checks whether the given parameter is annotated with @NotNull or @Nullable or similar.
    *
    * @param parameter the parameter to check
-   * @return true if the parameter is annotated, null otherwise or if it's both nullable and notNull
+   * @return true if the parameter is annotated with @Nullable, false if the parameter is annotated
+   *     with @NonNull, null otherwise or if it's both nullable and notNull
    */
   private Boolean isNullable(com.github.javaparser.ast.body.Parameter parameter) {
     final List<String> parameterAnnotations =
