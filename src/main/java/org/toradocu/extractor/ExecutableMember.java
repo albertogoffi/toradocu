@@ -48,7 +48,7 @@ public final class ExecutableMember {
     this.executable = executable;
     checkParameters(executable.getParameters(), parameters);
     this.parameters = parameters;
-    // TODO Checks that param tag names are actually consistent with parameters names. Javadoc may contain errors.
+    // TODO Check that param tag names are consistent with parameter names. Javadoc may contain errors.
     this.tags = tags;
 
     // Load tags caches.
@@ -257,7 +257,7 @@ public final class ExecutableMember {
 
   /**
    * Returns the string representation of this executable member as returned by {@code
-   * java.lang.reflect.Executable#toString}
+   * java.lang.reflect.Executable#toString}.
    *
    * @return return the string representation of this method
    */

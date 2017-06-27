@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Objects;
 import org.toradocu.util.Checks;
 
-/** Represent a class or interface that is documented with Javadoc comments. */
+/** Represents a class or interface that is documented with Javadoc comments. */
 public final class DocumentedType {
 
   /** Documented class or interface (or enum, ...). */
