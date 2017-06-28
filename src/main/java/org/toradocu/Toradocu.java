@@ -18,6 +18,7 @@ import org.toradocu.extractor.DocumentedType;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.JavadocExtractor;
 import org.toradocu.extractor.Tag;
+import org.toradocu.output.util.JsonOutput;
 import org.toradocu.translator.CommentTranslator;
 import org.toradocu.util.GsonInstance;
 
@@ -145,25 +146,29 @@ public class Toradocu {
 
       // Output the result on a file or on the standard output, if silent mode is disabled.
       // TODO Enable JSON output when JSON format is fixed.
-      //      if (!configuration.isSilent() || configuration.isSilent() && translationsPresentIn(members)) {
-      //        if (configuration.getConditionTranslatorOutput() != null) {
-      //          try (BufferedWriter writer =
-      //              Files.newBufferedWriter(
-      //                  configuration.getConditionTranslatorOutput().toPath(), StandardCharsets.UTF_8)) {
-      //            String jsonOutput = GsonInstance.gson().toJson(members);
-      //            writer.write(jsonOutput);
-      //            printConditionLines(jsonOutput);
-      //          } catch (Exception e) {
-      //            log.error(
-      //                "Unable to write the output on file "
-      //                    + configuration.getConditionTranslatorOutput().getAbsolutePath(),
-      //                e);
-      //          }
-      //        } else {
-      //          System.out.println(
-      //              "Condition translator output:\n" + GsonInstance.gson().toJson(members));
-      //        }
-      //      }
+      if (!configuration.isSilent() || configuration.isSilent() && translationsPresentIn(members)) {
+        if (configuration.getConditionTranslatorOutput() != null) {
+          try (BufferedWriter writer =
+              Files.newBufferedWriter(
+                  configuration.getConditionTranslatorOutput().toPath(), StandardCharsets.UTF_8)) {
+            //                  String jsonOutput = GsonInstance.gson().toJson(members);
+
+            List<JsonOutput> jsonOutputs = new ArrayList<JsonOutput>();
+            for (ExecutableMember member : members) jsonOutputs.add(new JsonOutput(member));
+            String jsonOutput = GsonInstance.gson().toJson(jsonOutputs);
+            writer.write(jsonOutput);
+            printConditionLines(jsonOutput);
+          } catch (Exception e) {
+            log.error(
+                "Unable to write the output on file "
+                    + configuration.getConditionTranslatorOutput().getAbsolutePath(),
+                e);
+          }
+        } else {
+          System.out.println(
+              "Condition translator output:\n" + GsonInstance.gson().toJson(members));
+        }
+      }
 
       // Create statistics.
       // TODO Enable when stats component is fixed.

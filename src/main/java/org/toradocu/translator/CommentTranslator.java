@@ -18,6 +18,6 @@ public class CommentTranslator {
 
     // TODO Check the consistency of the generated specification.
 
-    // TODO Set the specification.
+    tag.setSpecification(specification);
   }
 }
