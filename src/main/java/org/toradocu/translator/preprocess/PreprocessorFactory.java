@@ -21,16 +21,19 @@ public class PreprocessorFactory {
         phases.add(new RemoveMayBe());
         phases.add(new MustWillShouldCanPatterns());
         phases.add(new NormalizeNonNullNonEmpty());
+        phases.add(new NormalizeIt());
         break;
       case THROWS:
         phases.add(new RemoveCommas());
         phases.add(new NormalizeIfs());
         phases.add(new RemoveInitialIf());
         phases.add(new NormalizeNonNullNonEmpty());
+        phases.add(new NormalizeIt());
         break;
       case RETURN:
         phases.add(new NormalizeIfs());
         phases.add(new NormalizeNonNullNonEmpty());
+        phases.add(new NormalizeIt());
         break;
     }
 
