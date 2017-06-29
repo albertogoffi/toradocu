@@ -5,23 +5,15 @@ import java.util.List;
 import org.toradocu.extractor.Comment;
 
 /** Created by arianna on 28/06/17. */
-public class ThrowsTagOutput {
+public class ThrowsTagOutput extends TagOutput {
 
   Type exceptionType;
 
   List<String> codeTags;
 
-  String comment;
-
-  String kind;
-
-  String condition;
-
   public ThrowsTagOutput(Type exceptionType, Comment comment, String kind, String condition) {
+    super(comment.getText(), kind, condition);
     this.exceptionType = exceptionType;
-    this.condition = condition;
-    this.kind = kind;
-    this.comment = comment.getText();
     this.codeTags = new ArrayList<String>();
   }
 

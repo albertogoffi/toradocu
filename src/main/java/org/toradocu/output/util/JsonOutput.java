@@ -9,17 +9,16 @@ import org.toradocu.translator.spec.Postcondition;
 
 /** Created by arianna on 28/06/17. */
 public class JsonOutput {
-
-  String signature;
-  String name;
-  org.toradocu.output.util.Type containingClass;
-  String targetClass;
-  boolean isVarArgs;
-  org.toradocu.output.util.Type returnType;
-  List<org.toradocu.output.util.Parameter> parameters;
-  List<ParamTagOutput> paramTags;
-  ReturnTagOutput returnTag;
-  List<ThrowsTagOutput> throwsTags;
+  public String signature;
+  public String name;
+  public org.toradocu.output.util.Type containingClass;
+  public String targetClass;
+  public boolean isVarArgs;
+  public org.toradocu.output.util.Type returnType;
+  public List<org.toradocu.output.util.Parameter> parameters;
+  public List<ParamTagOutput> paramTags;
+  public ReturnTagOutput returnTag;
+  public List<ThrowsTagOutput> throwsTags;
 
   public JsonOutput(ExecutableMember member) {
     //TODO translate the executable member to a serializable format
