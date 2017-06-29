@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.StringJoiner;
 import java.util.regex.Pattern;
 import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.ExecutableMember;
@@ -54,23 +53,23 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     return translation;
   }
 
-  /**
-   * Returns a boolean Java expression that merges the conditions from the given set of conditions.
-   * Each condition in the set is combined using an || conjunction.
-   *
-   * @param conditions the translated conditions for a throws tag (as Java boolean conditions)
-   * @return a boolean Java expression that is true only if any of the given conditions is true
-   */
-  private static String mergeConditions(Set<String> conditions) {
-    conditions.removeIf(String::isEmpty); // TODO Why should we have empty conditions here?
-
-    String delimiter = " " + Conjunction.OR + " ";
-    StringJoiner joiner = new StringJoiner(delimiter);
-    for (String condition : conditions) {
-      joiner.add("(" + condition + ")");
-    }
-    return joiner.toString();
-  }
+  //  /**
+  //   * Returns a boolean Java expression that merges the conditions from the given set of conditions.
+  //   * Each condition in the set is combined using an || conjunction.
+  //   *
+  //   * @param conditions the translated conditions for a throws tag (as Java boolean conditions)
+  //   * @return a boolean Java expression that is true only if any of the given conditions is true
+  //   */
+  //  private static String mergeConditions(Set<String> conditions) {
+  //    conditions.removeIf(String::isEmpty); // TODO Why should we have empty conditions here?
+  //
+  //    String delimiter = " " + Conjunction.OR + " ";
+  //    StringJoiner joiner = new StringJoiner(delimiter);
+  //    for (String condition : conditions) {
+  //      joiner.add("(" + condition + ")");
+  //    }
+  //    return joiner.toString();
+  //  }
 
   /**
    * Translates the given {@code text} that is the second part of an @return Javadoc comment
@@ -133,7 +132,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
       BasicTranslator.translate(propositions, method);
       conditions.add(propositions.getTranslation());
     }
-    return mergeConditions(conditions);
+    return BasicTranslator.mergeConditions(conditions);
   }
 
   /**
@@ -262,7 +261,8 @@ public class ReturnTranslator implements Translator<ReturnTag> {
                 .collect(toList());
 
         translation = tryPredicateMatch(method, comment, semanticGraphs, extractedPropositions);
-        if (translation == null) translation = tryCodeElementMatch(method, comment, semanticGraphs);
+        if (translation != null) translation = "true?" + translation;
+        else translation = tryCodeElementMatch(method, comment, semanticGraphs);
       }
     }
     return translation;

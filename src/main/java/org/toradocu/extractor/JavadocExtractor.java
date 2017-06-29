@@ -49,6 +49,17 @@ public final class JavadocExtractor {
     // Obtain executable members by means of reflection.
     final Class<?> clazz = Reflection.getClass(className);
     final List<Executable> reflectionExecutables = getExecutables(clazz);
+    //    List<Executable> tempReflectionExecutables = getExecutables(clazz);
+    //    List<Executable> reflectionExecutables = new ArrayList<Executable>();
+    //
+    //    if(Modifier.isAbstract(clazz.getModifiers())){
+    //        for(Executable e : tempReflectionExecutables) {
+    //          if (!e.getName().equals(clazz.getName())) {
+    //            reflectionExecutables.add(e);
+    //          }
+    //        }
+    //      }
+    //      else reflectionExecutables = tempReflectionExecutables;
 
     // Obtain executable members in the source code.
     // TODO Add support for nested classes.
@@ -139,7 +150,11 @@ public final class JavadocExtractor {
    * @return the instantiated tag
    */
   private ReturnTag createReturnTag(JavadocBlockTag blockTag) {
-    Comment commentObject = new Comment(blockTag.getContent().toText());
+    String content = blockTag.getContent().toText();
+    //correct bug in Javaparser
+    if (content.startsWith("@code ")) content = "{" + content;
+
+    Comment commentObject = new Comment(content);
     return new ReturnTag(commentObject);
   }
 
@@ -248,9 +263,18 @@ public final class JavadocExtractor {
       throws FileNotFoundException {
     final CompilationUnit cu = JavaParser.parse(new File(sourcePath));
     final Optional<ClassOrInterfaceDeclaration> sourceClassOpt = cu.getClassByName(className);
+    Optional<ClassOrInterfaceDeclaration> sourceIntOpt = cu.getInterfaceByName(className);
     final List<CallableDeclaration<?>> sourceExecutables = new ArrayList<>();
     if (sourceClassOpt.isPresent()) {
       final ClassOrInterfaceDeclaration sourceClass = sourceClassOpt.get();
+      //      if(sourceClass.isAbstract())
+      //        sourceClass.addConstructor();
+      sourceExecutables.addAll(sourceClass.getConstructors());
+      sourceExecutables.addAll(sourceClass.getMethods());
+      sourceExecutables.removeIf(NodeWithPrivateModifier::isPrivate); // Ignore private members.
+    }
+    if (sourceIntOpt.isPresent()) {
+      final ClassOrInterfaceDeclaration sourceClass = sourceIntOpt.get();
       sourceExecutables.addAll(sourceClass.getConstructors());
       sourceExecutables.addAll(sourceClass.getMethods());
       sourceExecutables.removeIf(NodeWithPrivateModifier::isPrivate); // Ignore private members.

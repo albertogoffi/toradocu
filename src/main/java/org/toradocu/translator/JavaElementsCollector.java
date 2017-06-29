@@ -116,8 +116,10 @@ public class JavaElementsCollector {
       final Set<String> identifiers =
           extractIdentifiersFromParamTags(executableMember, parameterName);
       // TODO Generate code ids.
-      paramCodeElements.add(
-          new ParameterCodeElement(reflectionParam, parameterName, i++, identifiers));
+      ParameterCodeElement param =
+          new ParameterCodeElement(reflectionParam, parameterName, i++, identifiers);
+      param.mergeIdentifiers();
+      paramCodeElements.add(param);
     }
     return paramCodeElements;
   }

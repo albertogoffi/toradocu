@@ -54,15 +54,30 @@ public class BasicTranslator {
    * @param conditions the translated conditions for a throws tag (as Java boolean conditions)
    * @return a boolean Java expression that is true only if any of the given conditions is true
    */
-  private static String mergeConditions(Set<String> conditions) {
+  protected static String mergeConditions(Set<String> conditions) {
     conditions.removeIf(String::isEmpty); // TODO Why should we have empty conditions here?
 
-    String delimiter = " " + Conjunction.OR + " ";
-    StringJoiner joiner = new StringJoiner(delimiter);
-    for (String condition : conditions) {
-      joiner.add("(" + condition + ")");
+    //TODO check this (new code): why the parenthesis around a single condition?
+    //    String delimiter = " " + Conjunction.OR + " ";
+    //    StringJoiner joiner = new StringJoiner(delimiter);
+    //    for (String condition : conditions) {
+    //      joiner.add("(" + condition + ")");
+    //    }
+    //    return joiner.toString();
+
+    //Old code:
+    if (conditions.size() == 0) {
+      return "";
+    } else if (conditions.size() == 1) {
+      return conditions.iterator().next();
+    } else {
+      Iterator<String> it = conditions.iterator();
+      StringBuilder conditionsBuilder = new StringBuilder("(" + it.next() + ")");
+      while (it.hasNext()) {
+        conditionsBuilder.append(Conjunction.OR + "(" + it.next() + ")");
+      }
+      return conditionsBuilder.toString();
     }
-    return joiner.toString();
   }
 
   private static final String LOOP_OK = "OK";
