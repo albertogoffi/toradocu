@@ -11,4 +11,16 @@ public class ReturnTagOutput {
     this.kind = kind;
     this.condition = condition;
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ReturnTagOutput that = (ReturnTagOutput) o;
+
+    if (comment != null ? !comment.equals(that.comment) : that.comment != null) return false;
+    if (kind != null ? !kind.equals(that.kind) : that.kind != null) return false;
+    return condition != null ? condition.equals(that.condition) : that.condition == null;
+  }
 }
