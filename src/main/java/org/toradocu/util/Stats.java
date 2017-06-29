@@ -1,12 +1,12 @@
 package org.toradocu.util;
 
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 import org.toradocu.Toradocu;
-import org.toradocu.extractor.ExecutableMember;
-import org.toradocu.extractor.ReturnTag;
 import org.toradocu.extractor.Tag;
+import org.toradocu.output.util.JsonOutput;
+import org.toradocu.output.util.ReturnTagOutput;
+import org.toradocu.output.util.TagOutput;
 
 /**
  * Represents Toradocu precision/recall for a given Java element (for example, it can be a class or
@@ -303,11 +303,11 @@ public class Stats {
    * @return statistics for each method of the given lists
    */
   public static List<Stats> getStats(
-      List<ExecutableMember> actualMethodList, List<ExecutableMember> expectedMethodList) {
+      List<JsonOutput> actualMethodList, List<JsonOutput> expectedMethodList) {
 
     // TODO Fix the goal files and remove the following line. Goal files include inherited methods!
-    expectedMethodList.removeIf(m -> !m.getContainingClass().equals(m.getContainingClass()));
-    expectedMethodList.removeIf(m -> Modifier.isPrivate(m.getExecutable().getModifiers()));
+    expectedMethodList.removeIf(m -> !m.containingClass.equals(m.containingClass));
+    //    expectedMethodList.removeIf(m -> Modifier.isPrivate(m.getExecutable().getModifiers()));
 
     if (actualMethodList.size() != expectedMethodList.size()) {
       throw new IllegalArgumentException(
@@ -316,20 +316,19 @@ public class Stats {
 
     List<Stats> stats = new ArrayList<>();
     for (int methodIndex = 0; methodIndex < expectedMethodList.size(); methodIndex++) {
-      ExecutableMember actualMethod = actualMethodList.get(methodIndex);
-      ExecutableMember expectedMethod = expectedMethodList.get(methodIndex);
+      JsonOutput actualMethod = actualMethodList.get(methodIndex);
+      JsonOutput expectedMethod = expectedMethodList.get(methodIndex);
 
       Stats methodStats =
-          new Stats(actualMethod.getContainingClass() + "." + actualMethod.getSignature());
+          new Stats(actualMethod.containingClass + "." + actualMethod.containingClass);
       collectStats(
-          methodStats, actualMethod.throwsTags(), expectedMethod.throwsTags(), Tag.Kind.THROWS);
-      collectStats(
-          methodStats, actualMethod.paramTags(), expectedMethod.paramTags(), Tag.Kind.PARAM);
+          methodStats, actualMethod.throwsTags, expectedMethod.throwsTags, Tag.Kind.THROWS);
+      collectStats(methodStats, actualMethod.paramTags, expectedMethod.paramTags, Tag.Kind.PARAM);
 
-      List<ReturnTag> actualMethodReturnTag = new ArrayList<>();
-      List<ReturnTag> expectedMethodReturnTag = new ArrayList<>();
-      actualMethodReturnTag.add(actualMethod.returnTag());
-      expectedMethodReturnTag.add(expectedMethod.returnTag());
+      List<ReturnTagOutput> actualMethodReturnTag = new ArrayList<>();
+      List<ReturnTagOutput> expectedMethodReturnTag = new ArrayList<>();
+      actualMethodReturnTag.add(actualMethod.returnTag);
+      expectedMethodReturnTag.add(expectedMethod.returnTag);
       collectStats(methodStats, actualMethodReturnTag, expectedMethodReturnTag, Tag.Kind.RETURN);
 
       stats.add(methodStats);
@@ -353,13 +352,13 @@ public class Stats {
    */
   public static Stats getStats(
       String targetClass,
-      List<ExecutableMember> actualMethodList,
-      List<ExecutableMember> expectedMethodList,
+      List<JsonOutput> actualMethodList,
+      List<JsonOutput> expectedMethodList,
       StringBuilder output) {
 
     // TODO Fix the goal files and remove the following line. Goal files include inherited methods!
-    expectedMethodList.removeIf(m -> !m.getContainingClass().equals(m.getContainingClass()));
-    expectedMethodList.removeIf(m -> Modifier.isPrivate(m.getExecutable().getModifiers()));
+    expectedMethodList.removeIf(m -> !m.containingClass.equals(m.containingClass));
+    //    expectedMethodList.removeIf(m -> Modifier.isPrivate(m.getExecutable().getModifiers()));
 
     if (actualMethodList.size() != expectedMethodList.size()) {
       throw new IllegalArgumentException(
@@ -368,21 +367,20 @@ public class Stats {
 
     Stats stats = new Stats(targetClass);
     for (int methodIndex = 0; methodIndex < expectedMethodList.size(); methodIndex++) {
-      ExecutableMember actualMethod = actualMethodList.get(methodIndex);
-      ExecutableMember expectedMethod = expectedMethodList.get(methodIndex);
+      JsonOutput actualMethod = actualMethodList.get(methodIndex);
+      JsonOutput expectedMethod = expectedMethodList.get(methodIndex);
 
-      List<ReturnTag> actualMethodReturnTag = new ArrayList<>();
-      List<ReturnTag> expectedMethodReturnTag = new ArrayList<>();
-      actualMethodReturnTag.add(actualMethod.returnTag());
-      expectedMethodReturnTag.add(expectedMethod.returnTag());
+      List<ReturnTagOutput> actualMethodReturnTag = new ArrayList<>();
+      List<ReturnTagOutput> expectedMethodReturnTag = new ArrayList<>();
+      actualMethodReturnTag.add(actualMethod.returnTag);
+      expectedMethodReturnTag.add(expectedMethod.returnTag);
 
       output
           .append(
               collectStats(
-                  stats, actualMethod.throwsTags(), expectedMethod.throwsTags(), Tag.Kind.THROWS))
+                  stats, actualMethod.throwsTags, expectedMethod.throwsTags, Tag.Kind.THROWS))
           .append(
-              collectStats(
-                  stats, actualMethod.paramTags(), expectedMethod.paramTags(), Tag.Kind.PARAM))
+              collectStats(stats, actualMethod.paramTags, expectedMethod.paramTags, Tag.Kind.PARAM))
           .append(
               collectStats(stats, actualMethodReturnTag, expectedMethodReturnTag, Tag.Kind.RETURN));
     }
@@ -391,8 +389,8 @@ public class Stats {
 
   private static StringBuilder collectStats(
       Stats stats,
-      List<? extends Tag> actualTags,
-      List<? extends Tag> expectedTags,
+      List<? extends TagOutput> actualTags,
+      List<? extends TagOutput> expectedTags,
       Tag.Kind kind) {
 
     // TODO Restore the following check, once all the goal files are fixed (now that we completely
@@ -411,23 +409,26 @@ public class Stats {
     //    }
 
     final StringBuilder outputMessage = new StringBuilder();
-    final Tag[] actualTagsArray = actualTags.toArray(new Tag[actualTags.size()]);
-    final Tag[] expectedTagsArray = expectedTags.toArray(new Tag[expectedTags.size()]);
+    final TagOutput[] actualTagsArray = actualTags.toArray(new TagOutput[actualTags.size()]);
+    final TagOutput[] expectedTagsArray = expectedTags.toArray(new TagOutput[expectedTags.size()]);
     for (int tagIndex = 0; tagIndex < actualTagsArray.length; tagIndex++) {
-      Tag actualTag = actualTagsArray[tagIndex];
-      Tag expectedTag = expectedTagsArray[tagIndex];
+      TagOutput actualTag = actualTagsArray[tagIndex];
+      TagOutput expectedTag = expectedTagsArray[tagIndex];
 
       if (actualTag != null
-          && actualTag.getSpecification() != null
+          //          && actualTag.getSpecification() != null
           && expectedTag != null
-          && expectedTag.getSpecification() != null) {
+      //          && expectedTag.getSpecification() != null
+      ) {
 
-        String expectedCondition = expectedTag.getSpecification().toString().replace(" ", "");
+        //        String expectedCondition = expectedTag.getSpecification().toString().replace(" ", "");
+        String expectedCondition = expectedTag.getCondition();
         if (Toradocu.configuration.useTComment() && actualTag.getKind().equals(Tag.Kind.RETURN)) {
           continue; // Ignore not translated @return tags when using @tComment engine.
         }
-        String actualCondition = actualTag.getSpecification().toString().replace(" ", "");
+        //        String actualCondition = actualTag.getSpecification().toString().replace(" ", "");
 
+        String actualCondition = actualTag.getCondition();
         // Ignore conditions for which there is no known translation.
         if (!expectedCondition.isEmpty()) {
           if (expectedCondition.equals(actualCondition)) {
