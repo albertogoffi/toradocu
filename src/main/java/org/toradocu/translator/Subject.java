@@ -110,6 +110,8 @@ public class Subject {
    */
   public boolean isSingular() {
     final String[] singularPOSTags = new String[] {"NN", "NNP"};
+    //FIXME this is not always true. For example: "minimal number of iterations" gives
+    //FIXME as main word "iterations", which is not singular, but actually the subjet is
     final IndexedWord mainSubjectWord = subjectWords.get(subjectWords.size() - 1);
     String subjectPOSTag = mainSubjectWord.backingLabel().get(PartOfSpeechAnnotation.class);
     return Arrays.asList(singularPOSTags).contains(subjectPOSTag);
