@@ -150,27 +150,26 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    * @throws IllegalArgumentException if the given {@code text} cannot be translated
    */
   private static String translateFirstPart(String predicate, ExecutableMember method) {
-    String lowerCaseText = predicate.trim().toLowerCase();
+    String parsedComment = predicate.trim().toLowerCase().replace(",", "");
     String translation;
-    switch (lowerCaseText) {
+    switch (parsedComment) {
       case "true":
       case "false":
-        return "result == " + lowerCaseText;
+        return "result == " + parsedComment;
       default:
         {
           //No return of type boolean: it must be a more complex boolean condition, or a code element.
           final List<PropositionSeries> extractedPropositions =
-              Parser.parse(new Comment(predicate), method);
+              Parser.parse(new Comment(parsedComment), method);
           final List<SemanticGraph> semanticGraphs =
               extractedPropositions
                   .stream()
                   .map(PropositionSeries::getSemanticGraph)
                   .collect(toList());
 
-          translation =
-              tryPredicateMatch(method, lowerCaseText, semanticGraphs, extractedPropositions);
+          translation = tryPredicateMatch(method, semanticGraphs, extractedPropositions);
           if (translation == null)
-            translation = tryCodeElementMatch(method, lowerCaseText, semanticGraphs);
+            translation = tryCodeElementMatch(method, parsedComment, semanticGraphs);
         }
     }
     //TODO: Change the exception with one more meaningful.
@@ -260,7 +259,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
                 .map(PropositionSeries::getSemanticGraph)
                 .collect(toList());
 
-        translation = tryPredicateMatch(method, comment, semanticGraphs, extractedPropositions);
+        translation = tryPredicateMatch(method, semanticGraphs, extractedPropositions);
         if (translation != null) translation = "true?" + translation;
         else translation = tryCodeElementMatch(method, comment, semanticGraphs);
       }
@@ -288,18 +287,15 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    * x, must not be null" produces (result==null) == false .
    *
    * @param method the ExecutableMember the tag belongs to
-   * @param comment the String comment belonging to the tag
    * @param semanticGraphs list of {@code SemanticGraph} related to the comment
    * @param extractedPropositions list of {@code PropositionSeries} extracted from the comment
    * @return a String predicate match if any, or null
    */
   private static String tryPredicateMatch(
       ExecutableMember method,
-      String comment,
       List<SemanticGraph> semanticGraphs,
       List<PropositionSeries> extractedPropositions) {
     String predicateMatch = null;
-    comment = comment.replace(";", "").replace(",", "");
 
     for (SemanticGraph sg : semanticGraphs) {
       List<IndexedWord> verbs = sg.getAllNodesByPartOfSpeechPattern("VB(.*)");
