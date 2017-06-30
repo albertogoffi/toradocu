@@ -2,6 +2,7 @@ package org.toradocu.translator;
 
 import static java.util.stream.Collectors.toList;
 
+import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.lang.reflect.Executable;
 import java.lang.reflect.Field;
@@ -149,7 +150,8 @@ public class JavaElementsCollector {
                 .map(PropositionSeries::getSemanticGraph)
                 .collect(toList());
         for (SemanticGraph sg : sgs) {
-          ids.add(sg.getFirstRoot().word());
+          List<IndexedWord> nouns = sg.getAllNodesByPartOfSpeechPattern("NN*");
+          if (!nouns.isEmpty()) ids.add(nouns.get(0).word());
         }
       }
     }

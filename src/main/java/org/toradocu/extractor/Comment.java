@@ -23,7 +23,7 @@ public final class Comment {
   }
 
   public Comment(String text, List<String> wordsMarkedAsCode) {
-    this.text = text;
+    this.text = text.replaceAll("\\s+", " ");
     this.wordsMarkedAsCode = wordsMarkedAsCode;
 
     String codePattern = "<code>(.*)</code>";
