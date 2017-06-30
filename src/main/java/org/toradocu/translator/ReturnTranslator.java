@@ -42,9 +42,13 @@ public class ReturnTranslator implements Translator<ReturnTag> {
       final List<SemanticGraph> semanticGraphs =
           extractedPropositions.stream().map(PropositionSeries::getSemanticGraph).collect(toList());
 
-      CodeElement<?> first = findCodeElement(method, firstFactor, semanticGraphs);
+      CodeElement<?> first = null;
+      Set<CodeElement<?>> subject = new Matcher().subjectMatch(firstFactor, method);
+      if (!subject.isEmpty()) first = subject.stream().findFirst().get();
       if (first != null) {
-        CodeElement<?> second = findCodeElement(method, secFactor, semanticGraphs);
+        CodeElement<?> second = null;
+        subject = new Matcher().subjectMatch(secFactor, method);
+        if (!subject.isEmpty()) second = subject.stream().findFirst().get();
         if (second != null)
           translation =
               "true ? result==" + first.getJavaExpression() + op + second.getJavaExpression();

@@ -27,33 +27,38 @@ public final class Comment {
     this.wordsMarkedAsCode = wordsMarkedAsCode;
 
     String codePattern = "<code>(.*)</code>";
-    java.util.regex.Matcher codeMatcher = Pattern.compile(codePattern).matcher(text);
-    while (codeMatcher.find()) {
+    java.util.regex.Matcher matcher = Pattern.compile(codePattern).matcher(text);
+    while (matcher.find()) {
       // Get words marked as code
-      String taggedSubstring = codeMatcher.group(1).trim();
+      String taggedSubstring = matcher.group(1).trim();
       String[] tokens = taggedSubstring.split(" ");
       for (int i = 0; i < tokens.length; i++) {
         if (tokens[i] != "") wordsMarkedAsCode.add(tokens[i]);
       }
     }
     codePattern = "\\{@code ([^}]+)\\}";
-    codeMatcher = Pattern.compile(codePattern).matcher(text);
-    while (codeMatcher.find()) {
+    matcher = Pattern.compile(codePattern).matcher(text);
+    while (matcher.find()) {
       // Get words marked as code
-      String taggedSubstring = codeMatcher.group(1).trim();
+      String taggedSubstring = matcher.group(1).trim();
       String[] tokens = taggedSubstring.split(" ");
       for (int i = 0; i < tokens.length; i++) {
         if (tokens[i] != "") wordsMarkedAsCode.add(tokens[i]);
       }
-      this.text = this.text.replace(codeMatcher.group(0), codeMatcher.group(1));
+      this.text = this.text.replace(matcher.group(0), matcher.group(1));
     }
 
     String htmlTagPattern = "(<.*>).*(</.*>)";
-    java.util.regex.Matcher htmlMatcher = Pattern.compile(htmlTagPattern).matcher(text);
+    matcher = Pattern.compile(htmlTagPattern).matcher(text);
     // Remove the tag from the original comment
-    while (htmlMatcher.find()) {
-      this.text = this.text.replace(htmlMatcher.group(1), "");
-      this.text = this.text.replace(htmlMatcher.group(2), "");
+    while (matcher.find()) {
+      this.text = this.text.replace(matcher.group(1), "");
+      this.text = this.text.replace(matcher.group(2), "");
+    }
+    String linkPattern = "\\{@link #([^}]+)\\}";
+    matcher = Pattern.compile(linkPattern).matcher(text);
+    while (matcher.find()) {
+      this.text = this.text.replace(matcher.group(0), matcher.group(1));
     }
   }
 

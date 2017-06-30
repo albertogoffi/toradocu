@@ -150,7 +150,7 @@ public class JavaElementsCollector {
                 .map(PropositionSeries::getSemanticGraph)
                 .collect(toList());
         for (SemanticGraph sg : sgs) {
-          List<IndexedWord> nouns = sg.getAllNodesByPartOfSpeechPattern("NN*");
+          List<IndexedWord> nouns = sg.getAllNodesByPartOfSpeechPattern("NN(.*)");
           if (!nouns.isEmpty()) ids.add(nouns.get(0).word());
         }
       }
