@@ -50,8 +50,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
         subject = new Matcher().subjectMatch(secFactor, method);
         if (!subject.isEmpty()) second = subject.stream().findFirst().get();
         if (second != null)
-          translation =
-              "true ? result==" + first.getJavaExpression() + op + second.getJavaExpression();
+          translation = "result==" + first.getJavaExpression() + op + second.getJavaExpression();
       }
     }
     return translation;
@@ -249,9 +248,9 @@ public class ReturnTranslator implements Translator<ReturnTag> {
             .anyMatch(p -> p.equalsIgnoreCase(commentToTranslate));
 
     if (truePatternsMatch) {
-      translation = "true ? result==true";
+      translation = "result==true";
     } else if (falsePatternsMatch) {
-      translation = "true ? result==false";
+      translation = "result==false";
     } else {
       translation = manageArithmeticOperation(method, commentToTranslate);
       if (translation.equals("")) {
@@ -264,11 +263,12 @@ public class ReturnTranslator implements Translator<ReturnTag> {
                 .collect(toList());
 
         translation = tryPredicateMatch(method, semanticGraphs, extractedPropositions);
-        if (translation != null) translation = "true?" + translation;
-        else translation = tryCodeElementMatch(method, comment, semanticGraphs);
+        if (translation == null) translation = tryCodeElementMatch(method, comment, semanticGraphs);
       }
     }
-    return translation;
+    if (translation != null) return "true?" + translation;
+
+    return null;
   }
 
   /**

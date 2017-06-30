@@ -135,15 +135,19 @@ public class Parser {
             .getText()
             .replace("greater than or equal to", ">=")
             .replace("≥", ">=")
+            .replace("&ge;", ">=")
             .replace("less than or equal to", "<=")
             .replace("lesser than or equal to", "<=")
             .replace("lesser or equal to", "<=")
-            .replace("≤", "<=")
-            .replace("greater than", ">")
             .replace("smaller than or equal to", "<=")
+            .replace("≤", "<=")
+            .replace("&le;", "<=")
+            .replace("&gt;", ">")
+            .replace("greater than", ">")
             .replace("smaller than", "<")
             .replace("less than", "<")
             .replace("lesser than", "<")
+            .replace("&lt;", "<")
             .replace("equal to", "==");
 
     java.util.regex.Matcher matcher = Pattern.compile(INEQUALITY_NUMBER_REGEX).matcher(text);

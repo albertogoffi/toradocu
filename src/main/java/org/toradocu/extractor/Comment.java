@@ -55,7 +55,7 @@ public final class Comment {
       this.text = this.text.replace(matcher.group(1), "");
       this.text = this.text.replace(matcher.group(2), "");
     }
-    String linkPattern = "\\{@link #([^}]+)\\}";
+    String linkPattern = "\\{@link #?([^}]+)\\}";
     matcher = Pattern.compile(linkPattern).matcher(text);
     while (matcher.find()) {
       this.text = this.text.replace(matcher.group(0), matcher.group(1));

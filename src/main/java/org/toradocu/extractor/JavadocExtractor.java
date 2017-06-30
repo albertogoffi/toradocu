@@ -335,14 +335,19 @@ public final class JavadocExtractor {
       return false;
     }
 
+    //FIXME this doesn't work well with generics.
     for (int i = 0; i < reflectionParams.length; i++) {
       final java.lang.reflect.Parameter reflectionParam = reflectionParams[i];
       final String reflectionQualifiedTypeName =
           removeGenerics(reflectionParam.getParameterizedType().getTypeName());
-      final String reflectionSimpleTypeName = removePackage(reflectionQualifiedTypeName);
+      String reflectionSimpleTypeName = removePackage(reflectionQualifiedTypeName);
 
       final com.github.javaparser.ast.body.Parameter sourceParam = sourceParams.get(i);
       final String sourceTypeName = removeGenerics(sourceParam.getType().asString());
+      int dollar = reflectionSimpleTypeName.indexOf("$");
+      if (dollar != -1)
+        reflectionSimpleTypeName =
+            reflectionSimpleTypeName.substring(dollar + 1, reflectionSimpleTypeName.length());
 
       if (!reflectionSimpleTypeName.equals(sourceTypeName)) {
         return false;
