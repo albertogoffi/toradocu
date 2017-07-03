@@ -49,18 +49,6 @@ public final class JavadocExtractor {
     // Obtain executable members by means of reflection.
     final Class<?> clazz = Reflection.getClass(className);
     final List<Executable> reflectionExecutables = getExecutables(clazz);
-    //    List<Executable> tempReflectionExecutables = getExecutables(clazz);
-    //    List<Executable> reflectionExecutables = new ArrayList<Executable>();
-    //
-    //    if(Modifier.isAbstract(clazz.getModifiers())){
-    //        for(Executable e : tempReflectionExecutables) {
-    //          if (!e.getName().equals(clazz.getName())) {
-    //            reflectionExecutables.add(e);
-    //          }
-    //        }
-    //      }
-    //      else reflectionExecutables = tempReflectionExecutables;
-
     // Obtain executable members in the source code.
     // TODO Add support for nested classes.
     String classFile = sourcePath + "/" + className.replaceAll("\\.", "/") + ".java";
@@ -129,6 +117,9 @@ public final class JavadocExtractor {
             newTag = createReturnTag(blockTag);
             break;
           case THROWS:
+            newTag = createThrowsTag(classesInPackage, blockTag, sourceMember);
+            break;
+          case EXCEPTION:
             newTag = createThrowsTag(classesInPackage, blockTag, sourceMember);
             break;
         }
