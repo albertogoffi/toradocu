@@ -292,9 +292,9 @@ public final class JavadocExtractor {
   private Map<Executable, CallableDeclaration<?>> mapExecutables(
       List<Executable> reflectionExecutables, List<CallableDeclaration<?>> sourceExecutables) {
 
-    if (reflectionExecutables.size() != sourceExecutables.size()) {
-      throw new IllegalArgumentException("Error: Provided lists have different size.");
-    }
+    //    if (reflectionExecutables.size() != sourceExecutables.size()) {
+    //      throw new IllegalArgumentException("Error: Provided lists have different size.");
+    //    }
 
     Map<Executable, CallableDeclaration<?>> map = new LinkedHashMap<>(reflectionExecutables.size());
     for (CallableDeclaration<?> sourceMember : sourceExecutables) {
@@ -335,7 +335,6 @@ public final class JavadocExtractor {
       return false;
     }
 
-    //FIXME this doesn't work well with generics.
     for (int i = 0; i < reflectionParams.length; i++) {
       final java.lang.reflect.Parameter reflectionParam = reflectionParams[i];
       final String reflectionQualifiedTypeName =
@@ -343,7 +342,10 @@ public final class JavadocExtractor {
       String reflectionSimpleTypeName = removePackage(reflectionQualifiedTypeName);
 
       final com.github.javaparser.ast.body.Parameter sourceParam = sourceParams.get(i);
-      final String sourceTypeName = removeGenerics(sourceParam.getType().asString());
+      String sourceTypeName = removeGenerics(sourceParam.getType().asString());
+      if (sourceParam.isVarArgs()) sourceTypeName += "[]";
+      if (reflectionParam.isVarArgs() && !reflectionSimpleTypeName.contains("[]"))
+        reflectionSimpleTypeName += "[]";
       int dollar = reflectionSimpleTypeName.indexOf("$");
       if (dollar != -1)
         reflectionSimpleTypeName =
