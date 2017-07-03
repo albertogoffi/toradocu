@@ -2,20 +2,13 @@ package org.toradocu.translator;
 
 import static java.util.stream.Collectors.toList;
 
-import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.lang.reflect.Executable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ParamTag;
 
@@ -111,17 +104,35 @@ public class JavaElementsCollector {
     }
 
     int i = 0;
+    HashMap<String, Integer> countIds = new HashMap<>();
     for (org.toradocu.extractor.Parameter parameter : parameters) {
       final Parameter reflectionParam = parameter.asReflectionParameter();
       final String parameterName = parameter.getName();
       final Set<String> identifiers =
           extractIdentifiersFromParamTags(executableMember, parameterName);
+      for (String id : identifiers) {
+        Integer oldValue = countIds.getOrDefault(id, -1);
+        countIds.put(id, ++oldValue);
+      }
+
       // TODO Generate code ids.
       ParameterCodeElement param =
           new ParameterCodeElement(reflectionParam, parameterName, i++, identifiers);
-      param.mergeIdentifiers();
       paramCodeElements.add(param);
     }
+
+    // TODO Create a parameter code element directly with unique identifiers, thus removing
+    // mergeIdentifiers() and related methods in ParameterCodeElement.
+    // Select only valid identifiers for the parameters, i.e. the unique ones (count in map is 0)
+    for (ParameterCodeElement p : paramCodeElements) {
+      Set<String> ids = p.getOtherIdentifiers();
+      for (Map.Entry<String, Integer> countId : countIds.entrySet()) {
+        String identifier = countId.getKey();
+        if (ids.contains(identifier) && countId.getValue() > 0) p.removeIdentifier(identifier);
+      }
+      p.mergeIdentifiers();
+    }
+
     return paramCodeElements;
   }
 
@@ -150,8 +161,7 @@ public class JavaElementsCollector {
                 .map(PropositionSeries::getSemanticGraph)
                 .collect(toList());
         for (SemanticGraph sg : sgs) {
-          List<IndexedWord> nouns = sg.getAllNodesByPartOfSpeechPattern("NN(.*)");
-          if (!nouns.isEmpty()) ids.add(nouns.get(0).word());
+          ids.add(sg.getFirstRoot().word());
         }
       }
     }
