@@ -67,6 +67,14 @@ public final class JavadocExtractor {
     final List<CallableDeclaration<?>> sourceExecutables =
         getExecutables(clazz.getSimpleName(), classFile);
 
+    String packagePath = classFile.substring(0, classFile.lastIndexOf("/"));
+    File folder = new File(packagePath);
+    File[] listOfFiles = folder.listFiles();
+    List<String> classesInPackage = new ArrayList<String>();
+    for (File file : listOfFiles) {
+      String name = parseClassName(file.getName(), className);
+      if (!name.equals(className) && !name.contains("package-info")) classesInPackage.add(name);
+    }
     // Map reflection executable members to corresponding source members.
     Map<Executable, CallableDeclaration<?>> executablesMap =
         mapExecutables(reflectionExecutables, sourceExecutables);
@@ -78,7 +86,8 @@ public final class JavadocExtractor {
       final CallableDeclaration<?> sourceMember = entry.getValue();
       final List<Parameter> parameters =
           getParameters(sourceMember.getParameters(), reflectionMember.getParameters());
-      List<org.toradocu.extractor.Tag> tags = createTags(sourceMember, parameters);
+      List<org.toradocu.extractor.Tag> tags =
+          createTags(classesInPackage, sourceMember, parameters);
       members.add(new ExecutableMember(reflectionMember, parameters, tags));
     }
 
@@ -86,16 +95,24 @@ public final class JavadocExtractor {
     return new DocumentedType(clazz, members);
   }
 
+  private String parseClassName(String name, String className) {
+    String init = className.substring(0, className.lastIndexOf("."));
+    return init + "." + name.replace(".java", "");
+  }
+
   /**
    * Instantiates tags (of param, return or throws kind) referred to a source member.
    *
+   * @param classesInPackage
    * @param sourceMember the source member the tags are referred to
    * @param parameters the list of parameters useful to find the ones associated to param kind tags
    * @return the list of instantiated tags
    * @throws ClassNotFoundException if the class of the eventual exception type couldn't be found
    */
   private List<org.toradocu.extractor.Tag> createTags(
-      CallableDeclaration<?> sourceMember, List<Parameter> parameters)
+      List<String> classesInPackage,
+      CallableDeclaration<?> sourceMember,
+      List<Parameter> parameters)
       throws ClassNotFoundException {
     List<org.toradocu.extractor.Tag> tags = new ArrayList<>();
     final Optional<Javadoc> javadocOpt = sourceMember.getJavadoc();
@@ -112,7 +129,7 @@ public final class JavadocExtractor {
             newTag = createReturnTag(blockTag);
             break;
           case THROWS:
-            newTag = createThrowsTag(blockTag, sourceMember);
+            newTag = createThrowsTag(classesInPackage, blockTag, sourceMember);
             break;
         }
         if (newTag != null) {
@@ -126,19 +143,21 @@ public final class JavadocExtractor {
   /**
    * Instantiate a tag of throws kind.
    *
+   * @param classesInPackage
    * @param blockTag the block containing the tag
    * @param sourceMember the source member the tag is referred to
    * @return the instantiated tag
    * @throws ClassNotFoundException if the class of the exception type couldn't be found
    */
-  private ThrowsTag createThrowsTag(JavadocBlockTag blockTag, CallableDeclaration<?> sourceMember)
+  private ThrowsTag createThrowsTag(
+      List<String> classesInPackage, JavadocBlockTag blockTag, CallableDeclaration<?> sourceMember)
       throws ClassNotFoundException {
     // Javaparser library does not provide a nice parsing of @throws tags. We have to parse the
     // comment text by ourselves.
     String comment = blockTag.getContent().toText();
     final String[] tokens = comment.split(" ", 2);
     final String exceptionName = tokens[0];
-    Class<?> exceptionType = findExceptionType(sourceMember, exceptionName);
+    Class<?> exceptionType = findExceptionType(classesInPackage, sourceMember, exceptionName);
     Comment commentObject = new Comment(tokens[1]);
     return new ThrowsTag(exceptionType, commentObject);
   }
@@ -392,19 +411,31 @@ public final class JavadocExtractor {
   /**
    * Search for the type of the exception with the given type name.
    *
+   * @param classesInPackage
    * @param sourceMember the source member for which the exception with type name {@code
    *     exceptionTypeName} is expected
    * @param exceptionTypeName the exception type name
    * @return the exception class
    * @throws ClassNotFoundException if exception class couldn't be loaded
    */
-  private Class<?> findExceptionType(CallableDeclaration<?> sourceMember, String exceptionTypeName)
+  private Class<?> findExceptionType(
+      List<String> classesInPackage, CallableDeclaration<?> sourceMember, String exceptionTypeName)
       throws ClassNotFoundException {
     Class<?> exceptionType = null;
     try {
       exceptionType = Reflection.getClass(exceptionTypeName);
     } catch (ClassNotFoundException e) {
       // Intentionally empty.
+    }
+    if (exceptionType == null) {
+      // Look in classes of package
+      for (String classInPackage : classesInPackage) {
+        if (classInPackage.contains(exceptionTypeName)) {
+          if (classInPackage.contains("$")) classInPackage = classInPackage.replace(".class", "");
+
+          exceptionType = Reflection.getClass(classInPackage);
+        }
+      }
     }
     if (exceptionType == null) {
       try {
