@@ -4,7 +4,7 @@
 # "tcomment": statistics using @tComment as translation engine.
 
 # Parse command line argument and set variables
-TESTS_PREFIX="org.toradocu.PrecisionRecall"
+TESTS_PREFIX="org.toradocu.accuracy.PrecisionRecall"
 TESTS='--tests '$TESTS_PREFIX'CommonsCollections4 --tests '$TESTS_PREFIX'CommonsMath3 --tests '$TESTS_PREFIX'Guava19 --tests '$TESTS_PREFIX'JGraphT --tests '$TESTS_PREFIX'PlumeLib'
 if [ $# -eq 1 ]; then
     if [ "$1" = "current" ]; then
