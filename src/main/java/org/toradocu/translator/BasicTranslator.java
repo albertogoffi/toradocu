@@ -149,10 +149,12 @@ public class BasicTranslator {
       String result = null;
 
       Conjunction conjunction = getConjunction(p.getSubject());
-      if (conjunction != null) {
+      if (conjunction != null && !p.getPredicate().equals("are equal")) {
         // A single subject can refer to multiple elements (e.g., in "either value is null").
         // Therefore, translations for each subject code element should be merged using the
-        // appropriate conjunction.
+        // appropriate conjunction. The (<Objects>, are equal) proposition though is
+        // a special case, because the concept of "equal" is symmetric and a conjunction
+        // would produce a redundant specification
         for (String translation : translations.values()) {
           if (result == null) {
             result = translation;

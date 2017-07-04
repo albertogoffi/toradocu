@@ -82,7 +82,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testSimpsonIntegrator() throws Exception {
-    test("org.apache.commons.math3.analysis.integration.SimpsonIntegrator", 1, 0.666, 1, 1, 1, 1);
+    test("org.apache.commons.math3.analysis.integration.SimpsonIntegrator", 0.5, 0.333, 1, 1, 1, 1);
   }
 
   @Test
@@ -146,7 +146,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testLine() throws Exception {
-    test("org.apache.commons.math3.geometry.euclidean.threed.Line", 1, 0, 1, 1, 1, 1);
+    test("org.apache.commons.math3.geometry.euclidean.threed.Line", 1, 1, 1, 1, 1, 1);
   }
 
   @Test

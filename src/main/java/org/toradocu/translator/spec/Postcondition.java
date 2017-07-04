@@ -30,24 +30,22 @@ public class Postcondition extends Specification {
    *     postcondition is empty
    */
   public static Postcondition create(String postcondition) {
-    if (postcondition == null) {
-      return null;
-    }
-
-    Pattern pattern = Pattern.compile("([^?]+)(?:\\?([^:]+)(?::(.+))?)?");
-    Matcher matcher = pattern.matcher(postcondition);
-
     String guard = "";
     String trueProp = "";
     String falseProp = "";
-    if (matcher.find()) {
-      guard = matcher.group();
-    }
-    if (matcher.find()) {
-      trueProp = matcher.group();
-    }
-    if (matcher.find()) {
-      falseProp = matcher.group();
+    if (postcondition != null && !postcondition.equals("")) {
+      Pattern pattern = Pattern.compile("([^?]+)(?:\\?([^:]+)(?::(.+))?)?");
+      Matcher matcher = pattern.matcher(postcondition);
+
+      if (matcher.find()) {
+        guard = matcher.group();
+      }
+      if (matcher.find()) {
+        trueProp = matcher.group();
+      }
+      if (matcher.find()) {
+        falseProp = matcher.group();
+      }
     }
     return new Postcondition(new Guard(guard), new Guard(trueProp), new Guard(falseProp));
   }
@@ -62,9 +60,12 @@ public class Postcondition extends Specification {
 
   @Override
   public String toString() {
-    String result = guard.toString() + " ? " + trueProperty;
-    if (!falseProperty.toString().isEmpty()) {
-      result += " : " + falseProperty;
+    String result = "";
+    if (!guard.equals("")) {
+      result = guard.toString() + " ? " + trueProperty;
+      if (!falseProperty.toString().isEmpty()) {
+        result += " : " + falseProperty;
+      }
     }
     return result;
   }

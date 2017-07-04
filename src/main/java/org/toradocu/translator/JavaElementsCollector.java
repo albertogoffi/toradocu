@@ -9,6 +9,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
 import java.util.*;
+import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ParamTag;
 
@@ -125,11 +126,11 @@ public class JavaElementsCollector {
     // mergeIdentifiers() and related methods in ParameterCodeElement.
     // Select only valid identifiers for the parameters, i.e. the unique ones (count in map is 0)
     for (ParameterCodeElement p : paramCodeElements) {
-      Set<String> ids = p.getOtherIdentifiers();
-      for (Map.Entry<String, Integer> countId : countIds.entrySet()) {
-        String identifier = countId.getKey();
-        if (ids.contains(identifier) && countId.getValue() > 0) p.removeIdentifier(identifier);
-      }
+      //      Set<String> ids = p.getOtherIdentifiers();
+      //      for (Map.Entry<String, Integer> countId : countIds.entrySet()) {
+      //        String identifier = countId.getKey();
+      //        if (ids.contains(identifier) && countId.getValue() > 0) p.removeIdentifier(identifier);
+      //      }
       p.mergeIdentifiers();
     }
 
@@ -154,9 +155,16 @@ public class JavaElementsCollector {
     Set<String> ids = new HashSet<>();
     for (ParamTag pt : paramTags) {
       String paramName = pt.getParameter().getName();
+      String originalComment = pt.getComment().getText();
+      int semicolon = originalComment.indexOf(";");
+      if (semicolon != -1)
+        // Often param comments have a semicolon followed by a further description,
+        // not useful for our purpose here and possibly affecting the semantic graph
+        originalComment = originalComment.substring(0, semicolon);
+
       if (paramName.equals(param)) {
         List<SemanticGraph> sgs =
-            Parser.parse(pt.getComment(), method)
+            Parser.parse(new Comment(originalComment), method)
                 .stream()
                 .map(PropositionSeries::getSemanticGraph)
                 .collect(toList());

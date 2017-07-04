@@ -192,7 +192,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    */
   private static String returnStandardPattern(
       ExecutableMember method, Comment comment, int predicateSplitPoint) {
-    String translation = "";
+    String translation = null;
     String commentText = comment.getText();
     if (commentText.contains(";")) {
       commentText = commentText.replace(";", ",");
