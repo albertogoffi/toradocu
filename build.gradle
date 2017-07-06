@@ -80,7 +80,7 @@ dependencies {
   compile 'edu.stanford.nlp:stanford-corenlp:3.6.0'
   compile 'edu.stanford.nlp:stanford-corenlp:3.6.0:models-english'
   compile 'org.jsoup:jsoup:1.8.3' // JSoup used only to remove HTML tags in comments.
-  compile 'com.github.javaparser:javaparser-core:3.2.4'
+  compile 'com.github.javaparser:javaparser-core:3.2.10'
   compile 'com.beust:jcommander:1.69'
   compile 'com.google.code.gson:gson:2.8.0'
   compile 'commons-io:commons-io:2.5'
@@ -185,11 +185,17 @@ task extractSources(dependsOn: downloadSources) {
   }
 }
 
+
+task cleanSource(type: Exec, dependsOn: 'extractSources') {
+    commandLine './clean.sh'
+}
+
+
 task removeTestOutputDirs(type: Delete) {
   delete 'build/test-results', 'aspects'
 }
 
-test.dependsOn removeTestOutputDirs, extractSources, extractBinaries
+test.dependsOn removeTestOutputDirs, cleanSource, extractBinaries
 
 /* Make Emacs TAGS table */
 task tags(type: Exec) {
@@ -257,4 +263,7 @@ task tutorial(type: Download) {
   onlyIfNewer true
   overwrite false
 }
+
+
+
 tutorial.dependsOn shadowJar
