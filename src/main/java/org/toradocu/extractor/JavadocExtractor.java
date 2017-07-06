@@ -277,8 +277,6 @@ public final class JavadocExtractor {
     final List<CallableDeclaration<?>> sourceExecutables = new ArrayList<>();
     if (sourceClassOpt.isPresent()) {
       final ClassOrInterfaceDeclaration sourceClass = sourceClassOpt.get();
-      //      if(sourceClass.isAbstract())
-      //        sourceClass.addConstructor();
       sourceExecutables.addAll(sourceClass.getConstructors());
       sourceExecutables.addAll(sourceClass.getMethods());
       sourceExecutables.removeIf(NodeWithPrivateModifier::isPrivate); // Ignore private members.
@@ -357,9 +355,13 @@ public final class JavadocExtractor {
       if (reflectionParam.isVarArgs() && !reflectionSimpleTypeName.contains("[]"))
         reflectionSimpleTypeName += "[]";
       int dollar = reflectionSimpleTypeName.indexOf("$");
-      if (dollar != -1)
-        reflectionSimpleTypeName =
-            reflectionSimpleTypeName.substring(dollar + 1, reflectionSimpleTypeName.length());
+      if (dollar != -1) {
+        if (sourceTypeName.contains("."))
+          reflectionSimpleTypeName = reflectionSimpleTypeName.replace("$", ".");
+        else
+          reflectionSimpleTypeName =
+              reflectionSimpleTypeName.substring(dollar + 1, reflectionSimpleTypeName.length());
+      }
 
       if (!reflectionSimpleTypeName.equals(sourceTypeName)) {
         return false;
