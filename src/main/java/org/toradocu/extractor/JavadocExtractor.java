@@ -91,7 +91,7 @@ public final class JavadocExtractor {
   /**
    * Instantiates tags (of param, return or throws kind) referred to a source member.
    *
-   * @param classesInPackage
+   * @param classesInPackage list of class names in sourceMember's package
    * @param sourceMember the source member the tags are referred to
    * @param parameters the list of parameters useful to find the ones associated to param kind tags
    * @return the list of instantiated tags
@@ -134,7 +134,7 @@ public final class JavadocExtractor {
   /**
    * Instantiate a tag of throws kind.
    *
-   * @param classesInPackage
+   * @param classesInPackage list of class names in sourceMember's package
    * @param blockTag the block containing the tag
    * @param sourceMember the source member the tag is referred to
    * @return the instantiated tag
@@ -404,7 +404,7 @@ public final class JavadocExtractor {
   /**
    * Search for the type of the exception with the given type name.
    *
-   * @param classesInPackage
+   * @param classesInPackage list of class names in sourceMember's package
    * @param sourceMember the source member for which the exception with type name {@code
    *     exceptionTypeName} is expected
    * @param exceptionTypeName the exception type name
