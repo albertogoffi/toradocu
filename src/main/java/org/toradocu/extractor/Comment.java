@@ -6,9 +6,8 @@ import java.util.Objects;
 import java.util.regex.Pattern;
 
 /**
- * Comment associated to a tag. A comment is represented by the plain text and the list of words
- * that are tagged as @code. The class is easy to extend for future purposes, such as the handling
- * of other tags in the comments (e.g. @link).
+ * Text of a Javadoc {@link Tag}. A comment is represented by the plain text and the list of words
+ * that are tagged as @code.
  */
 public final class Comment {
 
