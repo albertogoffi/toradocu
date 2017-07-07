@@ -54,15 +54,30 @@ public class BasicTranslator {
    * @param conditions the translated conditions for a throws tag (as Java boolean conditions)
    * @return a boolean Java expression that is true only if any of the given conditions is true
    */
-  private static String mergeConditions(Set<String> conditions) {
+  protected static String mergeConditions(Set<String> conditions) {
     conditions.removeIf(String::isEmpty); // TODO Why should we have empty conditions here?
 
-    String delimiter = " " + Conjunction.OR + " ";
-    StringJoiner joiner = new StringJoiner(delimiter);
-    for (String condition : conditions) {
-      joiner.add("(" + condition + ")");
+    //TODO check this (new code): why the parenthesis around a single condition?
+    //    String delimiter = " " + Conjunction.OR + " ";
+    //    StringJoiner joiner = new StringJoiner(delimiter);
+    //    for (String condition : conditions) {
+    //      joiner.add("(" + condition + ")");
+    //    }
+    //    return joiner.toString();
+
+    //Old code:
+    if (conditions.size() == 0) {
+      return "";
+    } else if (conditions.size() == 1) {
+      return conditions.iterator().next();
+    } else {
+      Iterator<String> it = conditions.iterator();
+      StringBuilder conditionsBuilder = new StringBuilder("(" + it.next() + ")");
+      while (it.hasNext()) {
+        conditionsBuilder.append(Conjunction.OR + "(" + it.next() + ")");
+      }
+      return conditionsBuilder.toString();
     }
-    return joiner.toString();
   }
 
   private static final String LOOP_OK = "OK";
@@ -134,10 +149,12 @@ public class BasicTranslator {
       String result = null;
 
       Conjunction conjunction = getConjunction(p.getSubject());
-      if (conjunction != null) {
+      if (conjunction != null && !p.getPredicate().equals("are equal")) {
         // A single subject can refer to multiple elements (e.g., in "either value is null").
         // Therefore, translations for each subject code element should be merged using the
-        // appropriate conjunction.
+        // appropriate conjunction. The (<Objects>, are equal) proposition though is
+        // a special case, because the concept of "equal" is symmetric and a conjunction
+        // would produce a redundant specification
         for (String translation : translations.values()) {
           if (result == null) {
             result = translation;

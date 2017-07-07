@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.StringJoiner;
 import java.util.regex.Pattern;
 import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.ExecutableMember;
@@ -43,34 +42,37 @@ public class ReturnTranslator implements Translator<ReturnTag> {
       final List<SemanticGraph> semanticGraphs =
           extractedPropositions.stream().map(PropositionSeries::getSemanticGraph).collect(toList());
 
-      CodeElement<?> first = findCodeElement(method, firstFactor, semanticGraphs);
+      CodeElement<?> first = null;
+      Set<CodeElement<?>> subject = new Matcher().subjectMatch(firstFactor, method);
+      if (!subject.isEmpty()) first = subject.stream().findFirst().get();
       if (first != null) {
-        CodeElement<?> second = findCodeElement(method, secFactor, semanticGraphs);
+        CodeElement<?> second = null;
+        subject = new Matcher().subjectMatch(secFactor, method);
+        if (!subject.isEmpty()) second = subject.stream().findFirst().get();
         if (second != null)
-          translation =
-              "true ? result==" + first.getJavaExpression() + op + second.getJavaExpression();
+          translation = "result==" + first.getJavaExpression() + op + second.getJavaExpression();
       }
     }
     return translation;
   }
 
-  /**
-   * Returns a boolean Java expression that merges the conditions from the given set of conditions.
-   * Each condition in the set is combined using an || conjunction.
-   *
-   * @param conditions the translated conditions for a throws tag (as Java boolean conditions)
-   * @return a boolean Java expression that is true only if any of the given conditions is true
-   */
-  private static String mergeConditions(Set<String> conditions) {
-    conditions.removeIf(String::isEmpty); // TODO Why should we have empty conditions here?
-
-    String delimiter = " " + Conjunction.OR + " ";
-    StringJoiner joiner = new StringJoiner(delimiter);
-    for (String condition : conditions) {
-      joiner.add("(" + condition + ")");
-    }
-    return joiner.toString();
-  }
+  //  /**
+  //   * Returns a boolean Java expression that merges the conditions from the given set of conditions.
+  //   * Each condition in the set is combined using an || conjunction.
+  //   *
+  //   * @param conditions the translated conditions for a throws tag (as Java boolean conditions)
+  //   * @return a boolean Java expression that is true only if any of the given conditions is true
+  //   */
+  //  private static String mergeConditions(Set<String> conditions) {
+  //    conditions.removeIf(String::isEmpty); // TODO Why should we have empty conditions here?
+  //
+  //    String delimiter = " " + Conjunction.OR + " ";
+  //    StringJoiner joiner = new StringJoiner(delimiter);
+  //    for (String condition : conditions) {
+  //      joiner.add("(" + condition + ")");
+  //    }
+  //    return joiner.toString();
+  //  }
 
   /**
    * Translates the given {@code text} that is the second part of an @return Javadoc comment
@@ -133,7 +135,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
       BasicTranslator.translate(propositions, method);
       conditions.add(propositions.getTranslation());
     }
-    return mergeConditions(conditions);
+    return BasicTranslator.mergeConditions(conditions);
   }
 
   /**
@@ -151,27 +153,26 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    * @throws IllegalArgumentException if the given {@code text} cannot be translated
    */
   private static String translateFirstPart(String predicate, ExecutableMember method) {
-    String lowerCaseText = predicate.trim().toLowerCase();
+    String parsedComment = predicate.trim().toLowerCase().replace(",", "");
     String translation;
-    switch (lowerCaseText) {
+    switch (parsedComment) {
       case "true":
       case "false":
-        return "result == " + lowerCaseText;
+        return "result == " + parsedComment;
       default:
         {
           //No return of type boolean: it must be a more complex boolean condition, or a code element.
           final List<PropositionSeries> extractedPropositions =
-              Parser.parse(new Comment(predicate), method);
+              Parser.parse(new Comment(parsedComment), method);
           final List<SemanticGraph> semanticGraphs =
               extractedPropositions
                   .stream()
                   .map(PropositionSeries::getSemanticGraph)
                   .collect(toList());
 
-          translation =
-              tryPredicateMatch(method, lowerCaseText, semanticGraphs, extractedPropositions);
+          translation = tryPredicateMatch(method, semanticGraphs, extractedPropositions);
           if (translation == null)
-            translation = tryCodeElementMatch(method, lowerCaseText, semanticGraphs);
+            translation = tryCodeElementMatch(method, parsedComment, semanticGraphs);
         }
     }
     //TODO: Change the exception with one more meaningful.
@@ -191,7 +192,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    */
   private static String returnStandardPattern(
       ExecutableMember method, Comment comment, int predicateSplitPoint) {
-    String translation = "";
+    String translation = null;
     String commentText = comment.getText();
     if (commentText.contains(";")) {
       commentText = commentText.replace(";", ",");
@@ -247,9 +248,9 @@ public class ReturnTranslator implements Translator<ReturnTag> {
             .anyMatch(p -> p.equalsIgnoreCase(commentToTranslate));
 
     if (truePatternsMatch) {
-      translation = "true ? result==true";
+      translation = "result==true";
     } else if (falsePatternsMatch) {
-      translation = "true ? result==false";
+      translation = "result==false";
     } else {
       translation = manageArithmeticOperation(method, commentToTranslate);
       if (translation.equals("")) {
@@ -261,11 +262,13 @@ public class ReturnTranslator implements Translator<ReturnTag> {
                 .map(PropositionSeries::getSemanticGraph)
                 .collect(toList());
 
-        translation = tryPredicateMatch(method, comment, semanticGraphs, extractedPropositions);
+        translation = tryPredicateMatch(method, semanticGraphs, extractedPropositions);
         if (translation == null) translation = tryCodeElementMatch(method, comment, semanticGraphs);
       }
     }
-    return translation;
+    if (translation != null) return "true?" + translation;
+
+    return null;
   }
 
   /**
@@ -288,18 +291,15 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    * x, must not be null" produces (result==null) == false .
    *
    * @param method the ExecutableMember the tag belongs to
-   * @param comment the String comment belonging to the tag
    * @param semanticGraphs list of {@code SemanticGraph} related to the comment
    * @param extractedPropositions list of {@code PropositionSeries} extracted from the comment
    * @return a String predicate match if any, or null
    */
   private static String tryPredicateMatch(
       ExecutableMember method,
-      String comment,
       List<SemanticGraph> semanticGraphs,
       List<PropositionSeries> extractedPropositions) {
     String predicateMatch = null;
-    comment = comment.replace(";", "").replace(",", "");
 
     for (SemanticGraph sg : semanticGraphs) {
       List<IndexedWord> verbs = sg.getAllNodesByPartOfSpeechPattern("VB(.*)");

@@ -49,13 +49,20 @@ public final class JavadocExtractor {
     // Obtain executable members by means of reflection.
     final Class<?> clazz = Reflection.getClass(className);
     final List<Executable> reflectionExecutables = getExecutables(clazz);
-
     // Obtain executable members in the source code.
     // TODO Add support for nested classes.
     String classFile = sourcePath + "/" + className.replaceAll("\\.", "/") + ".java";
     final List<CallableDeclaration<?>> sourceExecutables =
         getExecutables(clazz.getSimpleName(), classFile);
 
+    String packagePath = classFile.substring(0, classFile.lastIndexOf("/"));
+    File folder = new File(packagePath);
+    File[] listOfFiles = folder.listFiles();
+    List<String> classesInPackage = new ArrayList<String>();
+    for (File file : listOfFiles) {
+      String name = parseClassName(file.getName(), className);
+      if (!name.equals(className) && !name.contains("package-info")) classesInPackage.add(name);
+    }
     // Map reflection executable members to corresponding source members.
     Map<Executable, CallableDeclaration<?>> executablesMap =
         mapExecutables(reflectionExecutables, sourceExecutables);
@@ -67,7 +74,8 @@ public final class JavadocExtractor {
       final CallableDeclaration<?> sourceMember = entry.getValue();
       final List<Parameter> parameters =
           getParameters(sourceMember.getParameters(), reflectionMember.getParameters());
-      List<org.toradocu.extractor.Tag> tags = createTags(sourceMember, parameters);
+      List<org.toradocu.extractor.Tag> tags =
+          createTags(classesInPackage, sourceMember, parameters);
       members.add(new ExecutableMember(reflectionMember, parameters, tags));
     }
 
@@ -75,16 +83,24 @@ public final class JavadocExtractor {
     return new DocumentedType(clazz, members);
   }
 
+  private String parseClassName(String name, String className) {
+    String init = className.substring(0, className.lastIndexOf("."));
+    return init + "." + name.replace(".java", "");
+  }
+
   /**
    * Instantiates tags (of param, return or throws kind) referred to a source member.
    *
+   * @param classesInPackage list of class names in sourceMember's package
    * @param sourceMember the source member the tags are referred to
    * @param parameters the list of parameters useful to find the ones associated to param kind tags
    * @return the list of instantiated tags
    * @throws ClassNotFoundException if the class of the eventual exception type couldn't be found
    */
   private List<org.toradocu.extractor.Tag> createTags(
-      CallableDeclaration<?> sourceMember, List<Parameter> parameters)
+      List<String> classesInPackage,
+      CallableDeclaration<?> sourceMember,
+      List<Parameter> parameters)
       throws ClassNotFoundException {
     List<org.toradocu.extractor.Tag> tags = new ArrayList<>();
     final Optional<Javadoc> javadocOpt = sourceMember.getJavadoc();
@@ -101,7 +117,10 @@ public final class JavadocExtractor {
             newTag = createReturnTag(blockTag);
             break;
           case THROWS:
-            newTag = createThrowsTag(blockTag, sourceMember);
+            newTag = createThrowsTag(classesInPackage, blockTag, sourceMember);
+            break;
+          case EXCEPTION:
+            newTag = createThrowsTag(classesInPackage, blockTag, sourceMember);
             break;
         }
         if (newTag != null) {
@@ -115,19 +134,21 @@ public final class JavadocExtractor {
   /**
    * Instantiate a tag of throws kind.
    *
+   * @param classesInPackage list of class names in sourceMember's package
    * @param blockTag the block containing the tag
    * @param sourceMember the source member the tag is referred to
    * @return the instantiated tag
    * @throws ClassNotFoundException if the class of the exception type couldn't be found
    */
-  private ThrowsTag createThrowsTag(JavadocBlockTag blockTag, CallableDeclaration<?> sourceMember)
+  private ThrowsTag createThrowsTag(
+      List<String> classesInPackage, JavadocBlockTag blockTag, CallableDeclaration<?> sourceMember)
       throws ClassNotFoundException {
     // Javaparser library does not provide a nice parsing of @throws tags. We have to parse the
     // comment text by ourselves.
     String comment = blockTag.getContent().toText();
     final String[] tokens = comment.split(" ", 2);
     final String exceptionName = tokens[0];
-    Class<?> exceptionType = findExceptionType(sourceMember, exceptionName);
+    Class<?> exceptionType = findExceptionType(classesInPackage, sourceMember, exceptionName);
     Comment commentObject = new Comment(tokens[1]);
     return new ThrowsTag(exceptionType, commentObject);
   }
@@ -139,7 +160,11 @@ public final class JavadocExtractor {
    * @return the instantiated tag
    */
   private ReturnTag createReturnTag(JavadocBlockTag blockTag) {
-    Comment commentObject = new Comment(blockTag.getContent().toText());
+    String content = blockTag.getContent().toText();
+    //correct bug in Javaparser
+    if (content.startsWith("@code ")) content = "{" + content;
+
+    Comment commentObject = new Comment(content);
     return new ReturnTag(commentObject);
   }
 
@@ -248,9 +273,16 @@ public final class JavadocExtractor {
       throws FileNotFoundException {
     final CompilationUnit cu = JavaParser.parse(new File(sourcePath));
     final Optional<ClassOrInterfaceDeclaration> sourceClassOpt = cu.getClassByName(className);
+    Optional<ClassOrInterfaceDeclaration> sourceIntOpt = cu.getInterfaceByName(className);
     final List<CallableDeclaration<?>> sourceExecutables = new ArrayList<>();
     if (sourceClassOpt.isPresent()) {
       final ClassOrInterfaceDeclaration sourceClass = sourceClassOpt.get();
+      sourceExecutables.addAll(sourceClass.getConstructors());
+      sourceExecutables.addAll(sourceClass.getMethods());
+      sourceExecutables.removeIf(NodeWithPrivateModifier::isPrivate); // Ignore private members.
+    }
+    if (sourceIntOpt.isPresent()) {
+      final ClassOrInterfaceDeclaration sourceClass = sourceIntOpt.get();
       sourceExecutables.addAll(sourceClass.getConstructors());
       sourceExecutables.addAll(sourceClass.getMethods());
       sourceExecutables.removeIf(NodeWithPrivateModifier::isPrivate); // Ignore private members.
@@ -268,9 +300,9 @@ public final class JavadocExtractor {
   private Map<Executable, CallableDeclaration<?>> mapExecutables(
       List<Executable> reflectionExecutables, List<CallableDeclaration<?>> sourceExecutables) {
 
-    if (reflectionExecutables.size() != sourceExecutables.size()) {
-      throw new IllegalArgumentException("Error: Provided lists have different size.");
-    }
+    //    if (reflectionExecutables.size() != sourceExecutables.size()) {
+    //      throw new IllegalArgumentException("Error: Provided lists have different size.");
+    //    }
 
     Map<Executable, CallableDeclaration<?>> map = new LinkedHashMap<>(reflectionExecutables.size());
     for (CallableDeclaration<?> sourceMember : sourceExecutables) {
@@ -315,10 +347,21 @@ public final class JavadocExtractor {
       final java.lang.reflect.Parameter reflectionParam = reflectionParams[i];
       final String reflectionQualifiedTypeName =
           removeGenerics(reflectionParam.getParameterizedType().getTypeName());
-      final String reflectionSimpleTypeName = removePackage(reflectionQualifiedTypeName);
+      String reflectionSimpleTypeName = removePackage(reflectionQualifiedTypeName);
 
       final com.github.javaparser.ast.body.Parameter sourceParam = sourceParams.get(i);
-      final String sourceTypeName = removeGenerics(sourceParam.getType().asString());
+      String sourceTypeName = removeGenerics(sourceParam.getType().asString());
+      if (sourceParam.isVarArgs()) sourceTypeName += "[]";
+      if (reflectionParam.isVarArgs() && !reflectionSimpleTypeName.contains("[]"))
+        reflectionSimpleTypeName += "[]";
+      int dollar = reflectionSimpleTypeName.indexOf("$");
+      if (dollar != -1) {
+        if (sourceTypeName.contains("."))
+          reflectionSimpleTypeName = reflectionSimpleTypeName.replace("$", ".");
+        else
+          reflectionSimpleTypeName =
+              reflectionSimpleTypeName.substring(dollar + 1, reflectionSimpleTypeName.length());
+      }
 
       if (!reflectionSimpleTypeName.equals(sourceTypeName)) {
         return false;
@@ -361,19 +404,31 @@ public final class JavadocExtractor {
   /**
    * Search for the type of the exception with the given type name.
    *
+   * @param classesInPackage list of class names in sourceMember's package
    * @param sourceMember the source member for which the exception with type name {@code
    *     exceptionTypeName} is expected
    * @param exceptionTypeName the exception type name
    * @return the exception class
    * @throws ClassNotFoundException if exception class couldn't be loaded
    */
-  private Class<?> findExceptionType(CallableDeclaration<?> sourceMember, String exceptionTypeName)
+  private Class<?> findExceptionType(
+      List<String> classesInPackage, CallableDeclaration<?> sourceMember, String exceptionTypeName)
       throws ClassNotFoundException {
     Class<?> exceptionType = null;
     try {
       exceptionType = Reflection.getClass(exceptionTypeName);
     } catch (ClassNotFoundException e) {
       // Intentionally empty.
+    }
+    if (exceptionType == null) {
+      // Look in classes of package
+      for (String classInPackage : classesInPackage) {
+        if (classInPackage.contains(exceptionTypeName)) {
+          if (classInPackage.contains("$")) classInPackage = classInPackage.replace(".class", "");
+
+          exceptionType = Reflection.getClass(classInPackage);
+        }
+      }
     }
     if (exceptionType == null) {
       try {

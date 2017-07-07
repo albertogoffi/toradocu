@@ -47,7 +47,7 @@ public abstract class Tag<S extends Specification> {
    * @param comment the comment associated with the exception
    * @throws NullPointerException if either kind or comment is null
    */
-  Tag(Kind kind, Comment comment) {
+  public Tag(Kind kind, Comment comment) {
     Checks.nonNullParameter(kind, "kind");
     Checks.nonNullParameter(comment, "comment");
     this.kind = kind;
