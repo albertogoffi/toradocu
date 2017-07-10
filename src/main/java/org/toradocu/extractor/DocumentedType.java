@@ -28,9 +28,9 @@ public final class DocumentedType {
   }
 
   /**
-   * Returns the documented type class.
+   * Returns the runtime class of the documented type this DocumentedType represents.
    *
-   * @return the documented type class
+   * @return the runtime class of the documented type this DocumentedType represents
    */
   Class<?> getDocumentedClass() {
     return documentedType;
