@@ -12,6 +12,7 @@ import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.nodeTypes.modifiers.NodeWithPrivateModifier;
 import com.github.javaparser.javadoc.Javadoc;
 import com.github.javaparser.javadoc.JavadocBlockTag;
+import com.github.javaparser.javadoc.JavadocBlockTag.Type;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Executable;
@@ -24,6 +25,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
+import org.apache.commons.lang3.tuple.ImmutableTriple;
+import org.apache.commons.lang3.tuple.Triple;
 import org.toradocu.util.Reflection;
 
 /**
@@ -34,7 +37,9 @@ public final class JavadocExtractor {
 
   /**
    * Returns a list of {@code DocumentedExecutable}s extracted from the class with name {@code
-   * className}.
+   * className}. The JavadocExtractor parses the Java source code of the specified class ({@code
+   * className}), and stores information about the executable members of the specified class
+   * (including the Javadoc comments).
    *
    * @param className the qualified class name of the class from which to extract documentation
    * @param sourcePath the path to the project source root folder
@@ -51,7 +56,8 @@ public final class JavadocExtractor {
     final List<Executable> reflectionExecutables = getExecutables(clazz);
     // Obtain executable members in the source code.
     // TODO Add support for nested classes.
-    String classFile = sourcePath + "/" + className.replaceAll("\\.", "/") + ".java";
+    String classFile =
+        sourcePath + File.separator + className.replaceAll("\\.", File.separator) + ".java";
     final List<CallableDeclaration<?>> sourceExecutables =
         getExecutables(clazz.getSimpleName(), classFile);
 
@@ -63,7 +69,7 @@ public final class JavadocExtractor {
       String name = parseClassName(file.getName(), className);
       if (!name.equals(className) && !name.contains("package-info")) classesInPackage.add(name);
     }
-    // Map reflection executable members to corresponding source members.
+    // Maps each reflection executable member to its corresponding source member.
     Map<Executable, CallableDeclaration<?>> executablesMap =
         mapExecutables(reflectionExecutables, sourceExecutables);
 
@@ -74,9 +80,15 @@ public final class JavadocExtractor {
       final CallableDeclaration<?> sourceMember = entry.getValue();
       final List<Parameter> parameters =
           getParameters(sourceMember.getParameters(), reflectionMember.getParameters());
-      List<org.toradocu.extractor.Tag> tags =
+      Triple<List<ParamTag>, ReturnTag, List<ThrowsTag>> tags =
           createTags(classesInPackage, sourceMember, parameters);
-      members.add(new DocumentedExecutable(reflectionMember, parameters, tags));
+      // TODO Consider to change DocumentedExecutable constructor to take as arguments the different
+      // TODO tags, and not one single list like it does now.
+      List<Tag> tagList = new ArrayList<>();
+      tagList.addAll(tags.getLeft());
+      tagList.add(tags.getMiddle());
+      tagList.addAll(tags.getRight());
+      members.add(new DocumentedExecutable(reflectionMember, parameters, tagList));
     }
 
     // Create the documented class.
@@ -92,51 +104,50 @@ public final class JavadocExtractor {
    * Instantiates tags (of param, return or throws kind) referred to a source member.
    *
    * @param classesInPackage list of class names in sourceMember's package
-   * @param sourceMember the source member the tags are referred to
-   * @param parameters the list of parameters useful to find the ones associated to param kind tags
-   * @return the list of instantiated tags
-   * @throws ClassNotFoundException if the class of the eventual exception type couldn't be found
+   * @param sourceMember the source member the tags refer to
+   * @param parameters {@code sourceMember}'s parameters
+   * @return a triple of instantiated tags: list of @param tags, return tag, list of @throws tags
+   * @throws ClassNotFoundException if a type described in a Javadoc comment cannot be loaded (e.g.,
+   *     the type is not on the classpath.)
    */
-  private List<org.toradocu.extractor.Tag> createTags(
+  private Triple<List<ParamTag>, ReturnTag, List<ThrowsTag>> createTags(
       List<String> classesInPackage,
       CallableDeclaration<?> sourceMember,
       List<Parameter> parameters)
       throws ClassNotFoundException {
-    List<org.toradocu.extractor.Tag> tags = new ArrayList<>();
+
+    List<ParamTag> paramTags = new ArrayList<>();
+    ReturnTag returnTag = null;
+    List<ThrowsTag> throwsTags = new ArrayList<>();
+
     final Optional<Javadoc> javadocOpt = sourceMember.getJavadoc();
     if (javadocOpt.isPresent()) {
       final Javadoc javadocComment = javadocOpt.get();
       final List<JavadocBlockTag> blockTags = javadocComment.getBlockTags();
       for (JavadocBlockTag blockTag : blockTags) {
-        org.toradocu.extractor.Tag newTag = null;
         switch (blockTag.getType()) {
           case PARAM:
-            newTag = createParamTag(blockTag, parameters);
+            paramTags.add(createParamTag(blockTag, parameters));
             break;
           case RETURN:
-            newTag = createReturnTag(blockTag);
-            break;
-          case THROWS:
-            newTag = createThrowsTag(classesInPackage, blockTag, sourceMember);
+            returnTag = createReturnTag(blockTag);
             break;
           case EXCEPTION:
-            newTag = createThrowsTag(classesInPackage, blockTag, sourceMember);
+          case THROWS:
+            throwsTags.add(createThrowsTag(classesInPackage, blockTag, sourceMember));
             break;
-        }
-        if (newTag != null) {
-          tags.add(newTag);
         }
       }
     }
-    return tags;
+    return new ImmutableTriple<>(paramTags, returnTag, throwsTags);
   }
 
   /**
    * Instantiate a tag of throws kind.
    *
    * @param classesInPackage list of class names in sourceMember's package
-   * @param blockTag the block containing the tag
-   * @param sourceMember the source member the tag is referred to
+   * @param blockTag the @throws or @exception Javadoc block comment containing the tag
+   * @param sourceMember the source member the tag refers to
    * @return the instantiated tag
    * @throws ClassNotFoundException if the class of the exception type couldn't be found
    */
@@ -145,8 +156,14 @@ public final class JavadocExtractor {
       throws ClassNotFoundException {
     // Javaparser library does not provide a nice parsing of @throws tags. We have to parse the
     // comment text by ourselves.
+    final Type blockTagType = blockTag.getType();
+    if (!blockTagType.equals(Type.THROWS) && !blockTagType.equals(Type.EXCEPTION)) {
+      throw new IllegalArgumentException(
+          "The block tag " + blockTag + " does not refer to an" + " @throws or @exception tag");
+    }
+
     String comment = blockTag.getContent().toText();
-    final String[] tokens = comment.split(" ", 2);
+    final String[] tokens = comment.split("[\\s\\t]+", 2);
     final String exceptionName = tokens[0];
     Class<?> exceptionType = findExceptionType(classesInPackage, sourceMember, exceptionName);
     Comment commentObject = new Comment(tokens[1]);
@@ -156,10 +173,16 @@ public final class JavadocExtractor {
   /**
    * Instantiate a tag of return kind.
    *
-   * @param blockTag the block containing the tag
+   * @param blockTag the @return block containing the tag
    * @return the instantiated tag
    */
   private ReturnTag createReturnTag(JavadocBlockTag blockTag) {
+    final Type blockTagType = blockTag.getType();
+    if (!blockTagType.equals(Type.RETURN)) {
+      throw new IllegalArgumentException(
+          "The block tag " + blockTag + " does not refer to an" + " @return tag");
+    }
+
     String content = blockTag.getContent().toText();
     //correct bug in Javaparser
     if (content.startsWith("@code ")) content = "{" + content;
@@ -173,9 +196,16 @@ public final class JavadocExtractor {
    *
    * @param blockTag the block containing the tag
    * @param parameters the formal parameter list in which looking for the one associated to the tag
-   * @return the instantiated tag
+   * @return the instantiated tag, null if {@code blockTag} refers to a @param tag documenting a
+   *     generic type parameter.
    */
   private ParamTag createParamTag(JavadocBlockTag blockTag, List<Parameter> parameters) {
+    final Type blockTagType = blockTag.getType();
+    if (!blockTagType.equals(Type.PARAM)) {
+      throw new IllegalArgumentException(
+          "The block tag " + blockTag + " does not refer to an" + " @param tag");
+    }
+
     String paramName = blockTag.getName().orElse("");
 
     // Return null if blockTag refers to a @param tag documenting a generic type parameter.
@@ -247,10 +277,10 @@ public final class JavadocExtractor {
   }
 
   /**
-   * Collects members through reflection.
+   * Collects non-private members through reflection.
    *
    * @param clazz the Class containing the members to collect
-   * @return an unmodifiable list of Executable
+   * @return non private-members of {@code clazz}
    */
   private List<Executable> getExecutables(Class<?> clazz) {
     List<Executable> executables = new ArrayList<>();
@@ -262,31 +292,29 @@ public final class JavadocExtractor {
   }
 
   /**
-   * Collects members from source code.
+   * Collects non-private members from source code.
    *
    * @param className the String class name
    * @param sourcePath the String source path
-   * @return a list of CallableDeclaration
+   * @return non private-members of the class with name {@code className}
    * @throws FileNotFoundException if the source path couldn't be resolved
    */
   private List<CallableDeclaration<?>> getExecutables(String className, String sourcePath)
       throws FileNotFoundException {
     final CompilationUnit cu = JavaParser.parse(new File(sourcePath));
-    final Optional<ClassOrInterfaceDeclaration> sourceClassOpt = cu.getClassByName(className);
-    Optional<ClassOrInterfaceDeclaration> sourceIntOpt = cu.getInterfaceByName(className);
+    Optional<ClassOrInterfaceDeclaration> definitionOpt = cu.getClassByName(className);
+    if (!definitionOpt.isPresent()) {
+      definitionOpt = cu.getInterfaceByName(className);
+    }
+    if (!definitionOpt.isPresent()) {
+      throw new IllegalArgumentException(
+          "Impossible to find a class or interface with name " + className + " in " + sourcePath);
+    }
     final List<CallableDeclaration<?>> sourceExecutables = new ArrayList<>();
-    if (sourceClassOpt.isPresent()) {
-      final ClassOrInterfaceDeclaration sourceClass = sourceClassOpt.get();
-      sourceExecutables.addAll(sourceClass.getConstructors());
-      sourceExecutables.addAll(sourceClass.getMethods());
-      sourceExecutables.removeIf(NodeWithPrivateModifier::isPrivate); // Ignore private members.
-    }
-    if (sourceIntOpt.isPresent()) {
-      final ClassOrInterfaceDeclaration sourceClass = sourceIntOpt.get();
-      sourceExecutables.addAll(sourceClass.getConstructors());
-      sourceExecutables.addAll(sourceClass.getMethods());
-      sourceExecutables.removeIf(NodeWithPrivateModifier::isPrivate); // Ignore private members.
-    }
+    final ClassOrInterfaceDeclaration sourceClass = definitionOpt.get();
+    sourceExecutables.addAll(sourceClass.getConstructors());
+    sourceExecutables.addAll(sourceClass.getMethods());
+    sourceExecutables.removeIf(NodeWithPrivateModifier::isPrivate); // Ignore private members.
     return Collections.unmodifiableList(sourceExecutables);
   }
 
@@ -300,9 +328,9 @@ public final class JavadocExtractor {
   private Map<Executable, CallableDeclaration<?>> mapExecutables(
       List<Executable> reflectionExecutables, List<CallableDeclaration<?>> sourceExecutables) {
 
-    //    if (reflectionExecutables.size() != sourceExecutables.size()) {
-    //      throw new IllegalArgumentException("Error: Provided lists have different size.");
-    //    }
+    if (reflectionExecutables.size() != sourceExecutables.size()) {
+      throw new IllegalArgumentException("Error: Provided lists have different size.");
+    }
 
     Map<Executable, CallableDeclaration<?>> map = new LinkedHashMap<>(reflectionExecutables.size());
     for (CallableDeclaration<?> sourceMember : sourceExecutables) {
