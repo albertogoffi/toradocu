@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import org.toradocu.conf.Configuration;
-import org.toradocu.extractor.ExecutableMember;
+import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.ParamTag;
 import org.toradocu.extractor.Parameter;
 import org.toradocu.extractor.ReturnTag;
@@ -33,7 +33,7 @@ public class RandoopSpecs {
    * @param method a documented executable member of a class
    * @return specifications for {@code method} in the Randoop operation specification format
    */
-  public static OperationSpecification translate(ExecutableMember method) {
+  public static OperationSpecification translate(DocumentedExecutable method) {
     Operation operation = Operation.getOperation(method.getExecutable());
 
     List<String> params =
@@ -74,7 +74,7 @@ public class RandoopSpecs {
    * @return the Randoop {@code param} specification, or {@code null} if the tag comment has not
    *     been translated by Toradocu, or if the translation is empty
    */
-  public static PreSpecification translate(ParamTag tag, ExecutableMember method) {
+  public static PreSpecification translate(ParamTag tag, DocumentedExecutable method) {
     String condition = tag.getSpecification().toString();
     return condition.isEmpty()
         ? null
@@ -91,7 +91,7 @@ public class RandoopSpecs {
    * @return the Randoop {@code return} specification, or {@code null} if the tag comment has not
    *     been translated by Toradocu, or if the translation is empty
    */
-  public static List<PostSpecification> translate(ReturnTag tag, ExecutableMember method) {
+  public static List<PostSpecification> translate(ReturnTag tag, DocumentedExecutable method) {
     String condition = tag.getSpecification().toString();
     if (condition.isEmpty()) {
       return null;
@@ -131,7 +131,7 @@ public class RandoopSpecs {
    * @return the Randoop {@code throws} specification, or {@code null} if the tag comment has not
    *     been translated by Toradocu, or if the translation is empty
    */
-  public static ThrowsSpecification translate(ThrowsTag tag, ExecutableMember method) {
+  public static ThrowsSpecification translate(ThrowsTag tag, DocumentedExecutable method) {
     String condition = tag.getSpecification().toString();
     if (condition.isEmpty()) {
       return null;
@@ -163,7 +163,7 @@ public class RandoopSpecs {
    * @param method the documented method the condition specifies
    * @return the given condition with the actual parameter names
    */
-  private static String processCondition(String condition, ExecutableMember method) {
+  private static String processCondition(String condition, DocumentedExecutable method) {
     Checks.nonNullParameter(condition, "condition");
     Checks.nonNullParameter(method, "method");
 

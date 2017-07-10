@@ -1,6 +1,5 @@
 package org.toradocu.output.util;
 
-import com.google.gson.*;
 import java.util.ArrayList;
 import java.util.List;
 import org.toradocu.extractor.*;
@@ -20,7 +19,7 @@ public class JsonOutput {
   public ReturnTagOutput returnTag;
   public List<ThrowsTagOutput> throwsTags;
 
-  public JsonOutput(ExecutableMember member) {
+  public JsonOutput(DocumentedExecutable member) {
     //TODO translate the executable member to a serializable format
     this.signature = member.getSignature();
     this.name = member.getName();

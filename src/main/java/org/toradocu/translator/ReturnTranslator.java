@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 import org.toradocu.extractor.Comment;
-import org.toradocu.extractor.ExecutableMember;
+import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.ReturnTag;
 import org.toradocu.translator.spec.Postcondition;
 import org.toradocu.translator.spec.Specification;
@@ -23,12 +23,12 @@ public class ReturnTranslator implements Translator<ReturnTag> {
   /**
    * Translate arithmetic operations involved in the return, if found.
    *
-   * @param method the ExecutableMember
+   * @param method the DocumentedExecutable
    * @param commentToTranslate String comment to translate
    * @return the translation if any, or an empty String
    */
   private static String manageArithmeticOperation(
-      ExecutableMember method, String commentToTranslate) {
+      DocumentedExecutable method, String commentToTranslate) {
     String translation = "";
     java.util.regex.Matcher matcherOp =
         Pattern.compile(ARITHMETIC_OP_REGEX).matcher(commentToTranslate);
@@ -85,7 +85,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    * @param method the method to which the @return tag belongs to
    * @return the translation of the given {@code text}
    */
-  private static String translateLastPart(String text, ExecutableMember method) {
+  private static String translateLastPart(String text, DocumentedExecutable method) {
     final String lowerCaseText = text.toLowerCase();
     if (lowerCaseText.contains("true")) {
       return "result == true";
@@ -124,7 +124,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    * @param method the method to which the @return tag belongs to
    * @return the translation of the given {@code text}
    */
-  private static String translateSecondPart(String trueCase, ExecutableMember method) {
+  private static String translateSecondPart(String trueCase, DocumentedExecutable method) {
     // Identify propositions in the comment. Each sentence in the comment is parsed into a
     // PropositionSeries.
 
@@ -148,11 +148,11 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    * "args[0]==null?result==null".
    *
    * @param predicate words representing the first part of an @return comment
-   * @param method the ExecutableMember the @return comment belongs to
+   * @param method the DocumentedExecutable the @return comment belongs to
    * @return the translation of the given {@code text}
    * @throws IllegalArgumentException if the given {@code text} cannot be translated
    */
-  private static String translateFirstPart(String predicate, ExecutableMember method) {
+  private static String translateFirstPart(String predicate, DocumentedExecutable method) {
     String parsedComment = predicate.trim().toLowerCase().replace(",", "");
     String translation;
     switch (parsedComment) {
@@ -185,13 +185,13 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    * will follow the call chain made by: translateFirstPart|translateSecondPart|translateLastPart.
    * This "standard pattern" applies only when the return tag comment contains an "if".
    *
-   * @param method the ExecutableMember
+   * @param method the DocumentedExecutable
    * @param comment the String comment to translate
    * @param predicateSplitPoint index of the "if"
    * @return the translation computed
    */
   private static String returnStandardPattern(
-      ExecutableMember method, Comment comment, int predicateSplitPoint) {
+      DocumentedExecutable method, Comment comment, int predicateSplitPoint) {
     String translation = null;
     String commentText = comment.getText();
     if (commentText.contains(";")) {
@@ -228,11 +228,11 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    * compared to: a plain true/false value; a more complex boolean expression, meaning that we must
    * check some property of the result; a code element.
    *
-   * @param method the ExecutableMember the tag belongs to
+   * @param method the DocumentedExecutable the tag belongs to
    * @param comment the String comment belonging to the tag
    * @return a String translation if any, or an empty string
    */
-  private static String returnNotStandard(ExecutableMember method, String comment) {
+  private static String returnNotStandard(DocumentedExecutable method, String comment) {
     String translation;
     final String[] truePatterns = {"true", "true always"};
     final String[] falsePatterns = {"false", "false always"};
@@ -290,13 +290,13 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    * Called to search for a complex boolean condition involved in the return tag. Example: "return
    * x, must not be null" produces (result==null) == false .
    *
-   * @param method the ExecutableMember the tag belongs to
+   * @param method the DocumentedExecutable the tag belongs to
    * @param semanticGraphs list of {@code SemanticGraph} related to the comment
    * @param extractedPropositions list of {@code PropositionSeries} extracted from the comment
    * @return a String predicate match if any, or null
    */
   private static String tryPredicateMatch(
-      ExecutableMember method,
+      DocumentedExecutable method,
       List<SemanticGraph> semanticGraphs,
       List<PropositionSeries> extractedPropositions) {
     String predicateMatch = null;
@@ -322,13 +322,13 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    * Search for a code element in the comment text of the return tag and produces a suitable
    * translation, if any.
    *
-   * @param method the {@code ExecutableMember} the comment belongs to
+   * @param method the {@code DocumentedExecutable} the comment belongs to
    * @param text the comment text
    * @param semanticGraphs the {@code SemanticGraph} related to the comment
    * @return a String translation if any, null otherwise
    */
   private static String tryCodeElementMatch(
-      ExecutableMember method, String text, List<SemanticGraph> semanticGraphs) {
+      DocumentedExecutable method, String text, List<SemanticGraph> semanticGraphs) {
     CodeElement<?> codeElementMatch = findCodeElement(method, text, semanticGraphs);
     if (codeElementMatch != null) {
       boolean isPrimitive = checkIfPrimitive(codeElementMatch);
@@ -341,13 +341,13 @@ public class ReturnTranslator implements Translator<ReturnTag> {
   /**
    * Called by tryCodeElementMatch to search for a code element involved in the return tag.
    *
-   * @param method the ExecutableMember the tag belongs to
+   * @param method the DocumentedExecutable the tag belongs to
    * @param comment the String comment belonging to the tag
    * @param semanticGraphs list of {@code SemanticGraph} related to the comment
    * @return a code element if any, or null
    */
   private static CodeElement<?> findCodeElement(
-      ExecutableMember method, String comment, List<SemanticGraph> semanticGraphs) {
+      DocumentedExecutable method, String comment, List<SemanticGraph> semanticGraphs) {
     //Try a match looking at the semantic graph.
     CodeElement<?> codeElementMatch = null;
     comment = comment.replace(";", "").replace(",", "").replace("'", "");
@@ -367,7 +367,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
   }
 
   @Override
-  public Specification translate(ReturnTag tag, ExecutableMember excMember) {
+  public Specification translate(ReturnTag tag, DocumentedExecutable excMember) {
     String comment = tag.getComment().getText();
     // Assumption: the comment is composed of a single sentence. We should probably split multiple
     // sentence comments using the Stanford Parser, and then work on each single sentence.

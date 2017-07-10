@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 import org.toradocu.extractor.Comment;
-import org.toradocu.extractor.ExecutableMember;
+import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.Parameter;
 
 /**
@@ -49,9 +49,9 @@ public class Parser {
    * Store in cache the semantic graphs for a pair comment, method.
    *
    * @param comment the comment object
-   * @param method the ExecutableMember
+   * @param method the DocumentedExecutable
    */
-  private static List<SemanticGraph> parse_(Comment comment, ExecutableMember method) {
+  private static List<SemanticGraph> parse_(Comment comment, DocumentedExecutable method) {
     // Check if cache contains a valid answer.
     MethodComment key = new MethodComment(comment, method);
     if (graphsCache.containsKey(key)) {
@@ -89,11 +89,11 @@ public class Parser {
    * sentence in the comment.
    *
    * @param comment object representing a Javadoc comment
-   * @param method the ExecutableMember under analysis
+   * @param method the DocumentedExecutable under analysis
    * @return a list of {@code PropositionSeries} objects, one for each sentence in the comment
    */
   // TODO Move this to a new class PropositionIdentifier that handles Proposition.
-  public static List<PropositionSeries> parse(Comment comment, ExecutableMember method) {
+  public static List<PropositionSeries> parse(Comment comment, DocumentedExecutable method) {
     List<PropositionSeries> result = new ArrayList<>();
     List<SemanticGraph> semanticGraphs = parse_(comment, method);
     for (SemanticGraph semanticGraph : semanticGraphs) {
@@ -242,9 +242,9 @@ public class Parser {
 /** This class ties a String comment to its DocumentedMethod. */
 class MethodComment {
   private Comment comment;
-  private ExecutableMember method;
+  private DocumentedExecutable method;
 
-  public MethodComment(Comment comment, ExecutableMember method) {
+  public MethodComment(Comment comment, DocumentedExecutable method) {
     this.comment = comment;
     this.method = method;
   }
@@ -253,7 +253,7 @@ class MethodComment {
     return comment;
   }
 
-  public ExecutableMember getMethod() {
+  public DocumentedExecutable getMethod() {
     return method;
   }
 

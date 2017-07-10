@@ -10,7 +10,7 @@ import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
 import java.util.*;
 import org.toradocu.extractor.Comment;
-import org.toradocu.extractor.ExecutableMember;
+import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.ParamTag;
 
 /**
@@ -23,58 +23,58 @@ public class JavaElementsCollector {
    * Collects all the Java code elements that can be used for the condition translation. The code
    * elements are collected using reflection starting from the given method.
    *
-   * @param executableMember the method from which to start to collect the code elements
+   * @param documentedExecutable the method from which to start to collect the code elements
    * @return the collected code elements
    */
-  public static Set<CodeElement<?>> collect(ExecutableMember executableMember) {
+  public static Set<CodeElement<?>> collect(DocumentedExecutable documentedExecutable) {
     Set<CodeElement<?>> collectedElements = new LinkedHashSet<>();
-    final Class<?> containingClass = executableMember.getContainingClass();
+    final Class<?> containingClass = documentedExecutable.getContainingClass();
 
     // Add the containing class.
-    collectedElements.add(containingClassOf(executableMember));
+    collectedElements.add(containingClassOf(documentedExecutable));
 
     // Add the parameters of the executable member.
-    collectedElements.addAll(parametersOf(executableMember));
+    collectedElements.addAll(parametersOf(documentedExecutable));
 
     // Add fields of the containing class.
     collectedElements.addAll(fieldsOf(containingClass));
 
-    // Add methods of the containing class (all but the method corresponding to executableMember).
-    collectedElements.addAll(methodsOf(containingClass, executableMember));
+    // Add methods of the containing class (all but the method corresponding to documentedExecutable).
+    collectedElements.addAll(methodsOf(containingClass, documentedExecutable));
 
     return collectedElements;
   }
 
   // Executable member is ignored and not included in the returned list of methods.
   private static List<CodeElement<?>> methodsOf(
-      Class<?> containingClass, ExecutableMember executableMember) {
+      Class<?> containingClass, DocumentedExecutable documentedExecutable) {
     final List<Method> methods = new ArrayList<>();
     Collections.addAll(methods, containingClass.getMethods());
-    final Executable executable = executableMember.getExecutable();
+    final Executable executable = documentedExecutable.getExecutable();
     if (executable instanceof Method) {
       Method method = (Method) executable;
       methods.remove(method);
     }
-    List<Class<?>> inScopeTypes = collectInScopeTypes(executableMember);
+    List<Class<?>> inScopeTypes = collectInScopeTypes(documentedExecutable);
     methods.removeIf(method -> !invokableWithParameters(method, inScopeTypes));
 
     List<CodeElement<?>> codeElements = new ArrayList<>();
     for (Method method : methods) {
       if (Modifier.isStatic(method.getModifiers())) {
         codeElements.add(new StaticMethodCodeElement(method));
-      } else if (!executableMember.isConstructor()) {
+      } else if (!documentedExecutable.isConstructor()) {
         codeElements.add(new MethodCodeElement("target", method));
       }
     }
     return codeElements;
   }
 
-  private static List<Class<?>> collectInScopeTypes(ExecutableMember executableMember) {
+  private static List<Class<?>> collectInScopeTypes(DocumentedExecutable documentedExecutable) {
     final List<Class<?>> availableTypes = new ArrayList<>();
-    final Class<?> containingClass = executableMember.getContainingClass();
+    final Class<?> containingClass = documentedExecutable.getContainingClass();
 
     // Add parameters of the executable member.
-    Collections.addAll(availableTypes, executableMember.getExecutable().getParameterTypes());
+    Collections.addAll(availableTypes, documentedExecutable.getExecutable().getParameterTypes());
 
     // Add target class.
     availableTypes.add(containingClass);
@@ -93,13 +93,15 @@ public class JavaElementsCollector {
         .collect(toList());
   }
 
-  private static List<ParameterCodeElement> parametersOf(ExecutableMember executableMember) {
+  private static List<ParameterCodeElement> parametersOf(
+      DocumentedExecutable documentedExecutable) {
     List<ParameterCodeElement> paramCodeElements = new ArrayList<>();
 
     // The first two parameters of enum constructors are synthetic and must be removed to reflect
     // the source code.
-    final List<org.toradocu.extractor.Parameter> parameters = executableMember.getParameters();
-    if (executableMember.getContainingClass().isEnum() && executableMember.isConstructor()) {
+    final List<org.toradocu.extractor.Parameter> parameters = documentedExecutable.getParameters();
+    if (documentedExecutable.getContainingClass().isEnum()
+        && documentedExecutable.isConstructor()) {
       parameters.remove(0);
       parameters.remove(0);
     }
@@ -110,7 +112,7 @@ public class JavaElementsCollector {
       final Parameter reflectionParam = parameter.asReflectionParameter();
       final String parameterName = parameter.getName();
       final Set<String> identifiers =
-          extractIdentifiersFromParamTags(executableMember, parameterName);
+          extractIdentifiersFromParamTags(documentedExecutable, parameterName);
       for (String id : identifiers) {
         Integer oldValue = countIds.getOrDefault(id, -1);
         countIds.put(id, ++oldValue);
@@ -137,20 +139,20 @@ public class JavaElementsCollector {
     return paramCodeElements;
   }
 
-  private static ClassCodeElement containingClassOf(ExecutableMember executableMember) {
-    return new ClassCodeElement(executableMember.getContainingClass());
+  private static ClassCodeElement containingClassOf(DocumentedExecutable documentedExecutable) {
+    return new ClassCodeElement(documentedExecutable.getContainingClass());
   }
 
   /**
    * For the parameter in input, find its param tag in the method's Javadoc and produce the
    * SemanticGraphs of the comment. For every graph, keep the root as identifier.
    *
-   * @param method the ExecutableMember which the parameter belongs to
+   * @param method the DocumentedExecutable which the parameter belongs to
    * @param param the parameter
    * @return the extracted ids
    */
   private static Set<String> extractIdentifiersFromParamTags(
-      ExecutableMember method, String param) {
+      DocumentedExecutable method, String param) {
     List<ParamTag> paramTags = method.paramTags();
     Set<String> ids = new HashSet<>();
     for (ParamTag pt : paramTags) {

@@ -1,6 +1,6 @@
 package org.toradocu.translator.preprocess;
 
-import org.toradocu.extractor.ExecutableMember;
+import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.Tag;
 
 public class NormalizeIfs implements PreprocessingPhase {
@@ -10,10 +10,10 @@ public class NormalizeIfs implements PreprocessingPhase {
    * correctly.
    *
    * @param comment the String comment to sanitize
-   * @param method the ExecutableMember
+   * @param method the DocumentedExecutable
    * @return the normalized comment
    */
-  private static String normalizeComment(String comment, ExecutableMember method) {
+  private static String normalizeComment(String comment, DocumentedExecutable method) {
     // No need to chekc the beggining of a phrase since "if and only if" cannot be a substring of a word.
     if (comment.contains("if and only if")) comment = comment.replace("if and only if", "if");
 
@@ -26,7 +26,7 @@ public class NormalizeIfs implements PreprocessingPhase {
   }
 
   @Override
-  public String run(Tag tag, ExecutableMember excMember) {
+  public String run(Tag tag, DocumentedExecutable excMember) {
     return normalizeComment(tag.getComment().getText(), excMember);
   }
 }

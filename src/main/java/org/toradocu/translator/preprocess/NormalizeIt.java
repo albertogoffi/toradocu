@@ -6,7 +6,7 @@ import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.util.List;
 import org.toradocu.extractor.Comment;
-import org.toradocu.extractor.ExecutableMember;
+import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.Tag;
 import org.toradocu.translator.Parser;
 import org.toradocu.translator.PropositionSeries;
@@ -14,7 +14,7 @@ import org.toradocu.translator.PropositionSeries;
 /** Created by arianna on 29/06/17. */
 public class NormalizeIt implements PreprocessingPhase {
 
-  private static String normalizeComment(String comment, ExecutableMember method) {
+  private static String normalizeComment(String comment, DocumentedExecutable method) {
     // "it" would be translated as a standalone subject, but more probably it is referred to another more meaningful one:
     // probably a previous mentioned noun.
     if (comment.contains(" it ")) {
@@ -35,7 +35,7 @@ public class NormalizeIt implements PreprocessingPhase {
   }
 
   @Override
-  public String run(Tag tag, ExecutableMember excMember) {
+  public String run(Tag tag, DocumentedExecutable excMember) {
     return normalizeComment(tag.getComment().getText(), excMember);
   }
 }

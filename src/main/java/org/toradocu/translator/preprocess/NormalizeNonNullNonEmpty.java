@@ -1,6 +1,6 @@
 package org.toradocu.translator.preprocess;
 
-import org.toradocu.extractor.ExecutableMember;
+import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.Tag;
 
 public class NormalizeNonNullNonEmpty implements PreprocessingPhase {
@@ -10,10 +10,10 @@ public class NormalizeNonNullNonEmpty implements PreprocessingPhase {
    * correctly.
    *
    * @param comment the String comment to sanitize
-   * @param method the ExecutableMember
+   * @param method the DocumentedExecutable
    * @return the normalized comment
    */
-  private static String normalizeComment(String comment, ExecutableMember method) {
+  private static String normalizeComment(String comment, DocumentedExecutable method) {
 
     if (comment.contains("non-null")) comment = comment.replace("non-null", "!=null");
 
@@ -23,7 +23,7 @@ public class NormalizeNonNullNonEmpty implements PreprocessingPhase {
   }
 
   @Override
-  public String run(Tag tag, ExecutableMember excMember) {
+  public String run(Tag tag, DocumentedExecutable excMember) {
     return normalizeComment(tag.getComment().getText(), excMember);
   }
 }

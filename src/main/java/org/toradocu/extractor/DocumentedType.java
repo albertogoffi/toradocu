@@ -10,21 +10,21 @@ public final class DocumentedType {
   /** Documented class or interface (or enum, ...). */
   private final Class<?> documentedType;
   /** Constructors and methods of this documented type. */
-  private final List<ExecutableMember> executableMembers;
+  private final List<DocumentedExecutable> documentedExecutables;
 
   /**
    * Creates a new DocumentedType wrapping the given class and with the given constructors and
    * methods.
    *
    * @param documentedClass the {@code Class} of this documentedClass
-   * @param executableMembers constructors and methods of {@code documentedClass}
-   * @throws NullPointerException if either documentedClass or executableMembers is null
+   * @param documentedExecutables constructors and methods of {@code documentedClass}
+   * @throws NullPointerException if either documentedClass or documentedExecutables is null
    */
-  DocumentedType(Class<?> documentedClass, List<ExecutableMember> executableMembers) {
+  DocumentedType(Class<?> documentedClass, List<DocumentedExecutable> documentedExecutables) {
     Checks.nonNullParameter(documentedClass, "documentedClass");
-    Checks.nonNullParameter(executableMembers, "executableMembers");
+    Checks.nonNullParameter(documentedExecutables, "documentedExecutables");
     this.documentedType = documentedClass;
-    this.executableMembers = executableMembers;
+    this.documentedExecutables = documentedExecutables;
   }
 
   /**
@@ -41,8 +41,8 @@ public final class DocumentedType {
    *
    * @return constructors and methods of this {@code documentedType}
    */
-  public List<ExecutableMember> getExecutableMembers() {
-    return executableMembers;
+  public List<DocumentedExecutable> getDocumentedExecutables() {
+    return documentedExecutables;
   }
 
   @Override
@@ -55,11 +55,11 @@ public final class DocumentedType {
     }
     DocumentedType that = (DocumentedType) o;
     return documentedType.equals(that.documentedType)
-        && executableMembers.equals(that.executableMembers);
+        && documentedExecutables.equals(that.documentedExecutables);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(documentedType, executableMembers);
+    return Objects.hash(documentedType, documentedExecutables);
   }
 }

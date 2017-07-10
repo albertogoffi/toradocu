@@ -2,7 +2,7 @@ package org.toradocu.translator.preprocess;
 
 import java.util.List;
 import org.toradocu.extractor.Comment;
-import org.toradocu.extractor.ExecutableMember;
+import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.Tag;
 
 public class Preprocessor {
@@ -13,7 +13,7 @@ public class Preprocessor {
     this.phases = phases;
   }
 
-  public Tag preprocess(Tag tag, ExecutableMember excMember) {
+  public Tag preprocess(Tag tag, DocumentedExecutable excMember) {
     for (PreprocessingPhase phase : phases) {
       tag.setComment(new Comment(phase.run(tag, excMember)));
     }

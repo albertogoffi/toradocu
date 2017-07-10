@@ -16,7 +16,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.toradocu.conf.Configuration;
-import org.toradocu.extractor.ExecutableMember;
+import org.toradocu.extractor.DocumentedExecutable;
 
 /**
  * The {@code Matcher} class translates subjects and predicates in Javadoc comments to Java
@@ -39,15 +39,15 @@ class Matcher {
   }
 
   /**
-   * Takes the subject of a proposition in a Javadoc comment and the {@code ExecutableMember} that
-   * subject was extracted from. Then returns all {@code CodeElement}s that match (i.e. have a
+   * Takes the subject of a proposition in a Javadoc comment and the {@code DocumentedExecutable}
+   * that subject was extracted from. Then returns all {@code CodeElement}s that match (i.e. have a
    * similar name to) the given subject string.
    *
    * @param subject the subject of a proposition from a Javadoc comment
-   * @param method the {@code ExecutableMember} that the subject was extracted from
+   * @param method the {@code DocumentedExecutable} that the subject was extracted from
    * @return a set of {@code CodeElement}s that have a similar name to the subject
    */
-  Set<CodeElement<?>> subjectMatch(String subject, ExecutableMember method) {
+  Set<CodeElement<?>> subjectMatch(String subject, DocumentedExecutable method) {
     // Extract every CodeElement associated with the method and the containing class of the method.
     Set<CodeElement<?>> codeElements = JavaElementsCollector.collect(method);
 
@@ -67,15 +67,15 @@ class Matcher {
   }
 
   /**
-   * Takes the container of a proposition in a Javadoc comment and the {@code ExecutableMember} that
-   * container was extracted from. Then returns the {@code CodeElement} that matches (i.e. has a
-   * similar name to) the given container string.
+   * Takes the container of a proposition in a Javadoc comment and the {@code DocumentedExecutable}
+   * that container was extracted from. Then returns the {@code CodeElement} that matches (i.e. has
+   * a similar name to) the given container string.
    *
    * @param container the container of a proposition from a Javadoc comment
-   * @param method the {@code ExecutableMember} that the subject was extracted from
+   * @param method the {@code DocumentedExecutable} that the subject was extracted from
    * @return the {@code CodeElement} that has a similar name to the container
    */
-  CodeElement<?> containerMatch(String container, ExecutableMember method) {
+  CodeElement<?> containerMatch(String container, DocumentedExecutable method) {
     final Set<CodeElement<?>> containers = subjectMatch(container, method);
     return !containers.isEmpty() ? containers.iterator().next() : null;
   }
@@ -118,7 +118,7 @@ class Matcher {
    *     predicate, or null if no translation found
    */
   String predicateMatch(
-      ExecutableMember method, CodeElement<?> subject, String predicate, boolean negate) {
+      DocumentedExecutable method, CodeElement<?> subject, String predicate, boolean negate) {
 
     // Special case to handle predicates about arrays' length. We need a more general solution.
     if (subject.getJavaCodeElement().toString().contains("[]")) {
@@ -168,7 +168,7 @@ class Matcher {
   }
 
   private String codeElementsMatch(
-      ExecutableMember method, CodeElement<?> subject, String predicate) {
+      DocumentedExecutable method, CodeElement<?> subject, String predicate) {
     Set<CodeElement<?>> codeElements;
     String match;
 
@@ -231,13 +231,13 @@ class Matcher {
    * {@code CodeElement}s. This is especially to find the best mathod match in case of {@code
    * MethodCodeElement}, by comparing the arguments needed.
    *
-   * @param method the {@code ExecutableMember} the predicate is referring to
+   * @param method the {@code DocumentedExecutable} the predicate is referring to
    * @param predicate the String predicate to match
    * @param sortedCodeElements sorted list of matching method {@code CodeElement}s
    * @return String representation of the best match found
    */
   private String findMethodMatch(
-      ExecutableMember method, String predicate, List<CodeElement<?>> sortedCodeElements) {
+      DocumentedExecutable method, String predicate, List<CodeElement<?>> sortedCodeElements) {
     String match = "";
     CodeElement<?> firstMatch = null;
     boolean foundMatch = false;

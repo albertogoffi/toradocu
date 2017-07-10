@@ -12,13 +12,13 @@ import java.util.StringJoiner;
 import org.toradocu.util.Checks;
 
 /**
- * ExecutableMember represents the Javadoc documentation for a method in a class. It identifies the
- * method itself and key Javadoc information associated with it, such as throws, param, and return
- * tags.
+ * DocumentedExecutable represents the Javadoc documentation for a method in a class. It identifies
+ * the method itself and key Javadoc information associated with it, such as throws, param, and
+ * return tags.
  */
-public final class ExecutableMember {
+public final class DocumentedExecutable {
 
-  /** Reflection executable of this ExecutableMember. */
+  /** Reflection executable of this DocumentedExecutable. */
   private final Executable executable;
   /** Parameters list. */
   private final List<Parameter> parameters;
@@ -31,16 +31,16 @@ public final class ExecutableMember {
   private ReturnTag returnTag;
 
   /**
-   * Creates a new {@code ExecutableMember} wrapping the given executable, with the specified
+   * Creates a new {@code DocumentedExecutable} wrapping the given executable, with the specified
    * parameters and Javadoc comments introduced by tags.
    *
-   * @param executable the executable this ExecutableMember wraps
-   * @param parameters the parameters of this ExecutableMember
+   * @param executable the executable this DocumentedExecutable wraps
+   * @param parameters the parameters of this DocumentedExecutable
    * @param tags the Javadoc comments introduced by tags (e.g., @param, @return) associated with
    *     this executable member
    * @throws NullPointerException if either executable or parameters or tags is null
    */
-  ExecutableMember(Executable executable, List<Parameter> parameters, List<Tag> tags) {
+  DocumentedExecutable(Executable executable, List<Parameter> parameters, List<Tag> tags) {
     Checks.nonNullParameter(executable, "executable");
     Checks.nonNullParameter(parameters, "parameters");
     Checks.nonNullParameter(tags, "tags");
@@ -225,7 +225,7 @@ public final class ExecutableMember {
   }
 
   /**
-   * Returns true if this {@code ExecutableMember} and the specified object are equal.
+   * Returns true if this {@code DocumentedExecutable} and the specified object are equal.
    *
    * @param obj the object to test for equality
    * @return true if this object and {@code obj} are equal
@@ -235,11 +235,11 @@ public final class ExecutableMember {
     if (this == obj) {
       return true;
     }
-    if (!(obj instanceof ExecutableMember)) {
+    if (!(obj instanceof DocumentedExecutable)) {
       return false;
     }
 
-    ExecutableMember that = (ExecutableMember) obj;
+    DocumentedExecutable that = (DocumentedExecutable) obj;
     return this.executable.equals(that.executable)
         && this.parameters.equals(that.parameters)
         && this.tags.equals(that.tags);

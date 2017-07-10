@@ -1,12 +1,12 @@
 package org.toradocu.translator.preprocess;
 
-import org.toradocu.extractor.ExecutableMember;
+import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.Tag;
 
 public class EndPeriod implements PreprocessingPhase {
 
   @Override
-  public String run(Tag tag, ExecutableMember excMember) {
+  public String run(Tag tag, DocumentedExecutable excMember) {
     String comment = tag.getComment().getText();
     if (!comment.endsWith(".")) {
       comment += ".";

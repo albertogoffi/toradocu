@@ -27,13 +27,13 @@ import java.util.Optional;
 import org.toradocu.util.Reflection;
 
 /**
- * {@code JavadocExtractor} extracts {@code ExecutableMember}s from a class by means of {@code
+ * {@code JavadocExtractor} extracts {@code DocumentedExecutable}s from a class by means of {@code
  * extract(String, String)}.
  */
 public final class JavadocExtractor {
 
   /**
-   * Returns a list of {@code ExecutableMember}s extracted from the class with name {@code
+   * Returns a list of {@code DocumentedExecutable}s extracted from the class with name {@code
    * className}.
    *
    * @param className the qualified class name of the class from which to extract documentation
@@ -68,7 +68,7 @@ public final class JavadocExtractor {
         mapExecutables(reflectionExecutables, sourceExecutables);
 
     // Create the list of ExecutableMembers.
-    List<ExecutableMember> members = new ArrayList<>(reflectionExecutables.size());
+    List<DocumentedExecutable> members = new ArrayList<>(reflectionExecutables.size());
     for (Entry<Executable, CallableDeclaration<?>> entry : executablesMap.entrySet()) {
       final Executable reflectionMember = entry.getKey();
       final CallableDeclaration<?> sourceMember = entry.getValue();
@@ -76,7 +76,7 @@ public final class JavadocExtractor {
           getParameters(sourceMember.getParameters(), reflectionMember.getParameters());
       List<org.toradocu.extractor.Tag> tags =
           createTags(classesInPackage, sourceMember, parameters);
-      members.add(new ExecutableMember(reflectionMember, parameters, tags));
+      members.add(new DocumentedExecutable(reflectionMember, parameters, tags));
     }
 
     // Create the documented class.

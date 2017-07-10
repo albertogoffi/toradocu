@@ -14,8 +14,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.conf.Configuration;
+import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.DocumentedType;
-import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.JavadocExtractor;
 import org.toradocu.extractor.Tag;
 import org.toradocu.output.util.JsonOutput;
@@ -70,14 +70,14 @@ public class Toradocu {
     // === Javadoc Extractor ===
 
     // Populate the methods field.
-    List<ExecutableMember> members = null;
+    List<DocumentedExecutable> members = null;
     final String targetClass = configuration.getTargetClass();
     if (configuration.getConditionTranslatorInput() == null) {
       final JavadocExtractor javadocExtractor = new JavadocExtractor();
       try {
         final DocumentedType documentedType =
             javadocExtractor.extract(targetClass, configuration.getSourceDir().toString());
-        members = documentedType.getExecutableMembers();
+        members = documentedType.getDocumentedExecutables();
       } catch (ClassNotFoundException e) {
         log.error( // TODO Refine this error message for the specific caught exception.
             e.getMessage()
@@ -105,7 +105,7 @@ public class Toradocu {
     //        methods = new ArrayList<>();
     //        methods.addAll(
     //            GsonInstance.gson()
-    //                .fromJson(reader, new TypeToken<List<ExecutableMember>>() {}.getType()));
+    //                .fromJson(reader, new TypeToken<List<DocumentedExecutable>>() {}.getType()));
     //      } catch (IOException e) {
     //        log.error("Unable to read the file: " + configuration.getConditionTranslatorInput(), e);
     //        System.exit(1);
@@ -136,7 +136,7 @@ public class Toradocu {
       if (configuration.useTComment()) {
         tcomment.TcommentKt.translate(members);
       } else {
-        for (ExecutableMember member : members) {
+        for (DocumentedExecutable member : members) {
           for (Tag tag : member.getTags()) {
             CommentTranslator.translate(tag, member);
             System.out.println("Comment: " + tag);
@@ -154,7 +154,7 @@ public class Toradocu {
             //                  String jsonOutput = GsonInstance.gson().toJson(members);
 
             List<JsonOutput> jsonOutputs = new ArrayList<JsonOutput>();
-            for (ExecutableMember member : members) jsonOutputs.add(new JsonOutput(member));
+            for (DocumentedExecutable member : members) jsonOutputs.add(new JsonOutput(member));
             String jsonOutput = GsonInstance.gson().toJson(jsonOutputs);
             writer.write(jsonOutput);
             printConditionLines(jsonOutput);
@@ -174,14 +174,14 @@ public class Toradocu {
       // TODO Enable when stats component is fixed.
       //      File expectedResultFile = configuration.getExpectedOutput();
       //      if (expectedResultFile != null) {
-      //        Type collectionType = new TypeToken<List<ExecutableMember>>() {}.getType();
+      //        Type collectionType = new TypeToken<List<DocumentedExecutable>>() {}.getType();
       //        try (BufferedReader reader = Files.newBufferedReader(expectedResultFile.toPath());
       //            BufferedWriter resultsFile =
       //                Files.newBufferedWriter(
       //                    configuration.getStatsFile().toPath(),
       //                    StandardOpenOption.CREATE,
       //                    StandardOpenOption.APPEND)) {
-      //          List<ExecutableMember> expectedResult =
+      //          List<DocumentedExecutable> expectedResult =
       //              GsonInstance.gson().fromJson(reader, collectionType);
       //          List<Stats> targetClassResults = Stats.getStats(members, expectedResult);
       //          for (Stats result : targetClassResults) {
@@ -209,7 +209,7 @@ public class Toradocu {
    *
    * @param methods the documented methods containing the specifications to export
    */
-  //  private static void generateRandoopSpecs(List<ExecutableMember> methods) {
+  //  private static void generateRandoopSpecs(List<DocumentedExecutable> methods) {
   //    File randoopSpecsFile = configuration.randoopSpecsFile();
   //    if (!configuration.isSilent() && randoopSpecsFile != null) {
   //      if (!randoopSpecsFile.exists()) {
@@ -283,7 +283,7 @@ public class Toradocu {
    * @param methods the list of methods to inspect
    * @return true if there is at least one nonempty translation, false otherwise
    */
-  private static boolean translationsPresentIn(List<ExecutableMember> methods) {
+  private static boolean translationsPresentIn(List<DocumentedExecutable> methods) {
     return methods
         .stream()
         .map(

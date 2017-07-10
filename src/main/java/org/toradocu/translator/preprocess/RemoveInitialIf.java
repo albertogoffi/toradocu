@@ -1,6 +1,6 @@
 package org.toradocu.translator.preprocess;
 
-import org.toradocu.extractor.ExecutableMember;
+import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.Tag;
 
 public class RemoveInitialIf implements PreprocessingPhase {
@@ -25,7 +25,7 @@ public class RemoveInitialIf implements PreprocessingPhase {
   }
 
   @Override
-  public String run(Tag tag, ExecutableMember excMember) {
+  public String run(Tag tag, DocumentedExecutable excMember) {
     // TODO Auto-generated method stub
     return removeInitial(tag.getComment().getText(), "if");
   }

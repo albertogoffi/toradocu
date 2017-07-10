@@ -59,7 +59,7 @@ class StanfordParser {
    * inequalities placeholders as JJ.
    *
    * @param comment the String comment of the condition
-   * @param method the ExecutableMember under analysis
+   * @param method the DocumentedExecutable under analysis
    * @return the list of SemanticGraphs produced by the parser
    */
   public static SemanticGraph parse(List<TaggedWord> words) {

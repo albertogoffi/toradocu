@@ -3,7 +3,7 @@ package org.toradocu.translator;
 import static java.util.stream.Collectors.toList;
 
 import java.util.*;
-import org.toradocu.extractor.ExecutableMember;
+import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.ParamTag;
 import org.toradocu.extractor.Tag;
 import org.toradocu.extractor.ThrowsTag;
@@ -17,12 +17,12 @@ import org.toradocu.translator.spec.Precondition;
  */
 public class BasicTranslator {
 
-  public static ExcPostcondition translate(ThrowsTag tag, ExecutableMember excMember) {
+  public static ExcPostcondition translate(ThrowsTag tag, DocumentedExecutable excMember) {
     return new ExcPostcondition(
         new Guard(translateTag(tag, excMember)), tag.getException().toString());
   }
 
-  public static Precondition translate(ParamTag tag, ExecutableMember excMember) {
+  public static Precondition translate(ParamTag tag, DocumentedExecutable excMember) {
     return new Precondition(new Guard(translateTag(tag, excMember)));
   }
 
@@ -31,10 +31,10 @@ public class BasicTranslator {
    * the tag comment, in order to compute a translation for each one.
    *
    * @param tag the {@code Tag} for which produce a translation
-   * @param excMember the {@code ExecutableMember} the tag belongs to
+   * @param excMember the {@code DocumentedExecutable} the tag belongs to
    * @return a String representing the translation
    */
-  private static String translateTag(Tag tag, ExecutableMember excMember) {
+  private static String translateTag(Tag tag, DocumentedExecutable excMember) {
     // Identify propositions in the comment. Each sentence in the comment is parsed into a
     // PropositionSeries.
     List<PropositionSeries> propositions = Parser.parse(tag.getComment(), excMember);
@@ -91,7 +91,7 @@ public class BasicTranslator {
    * @param method the method the containing the Javadoc comment from which the {@code
    *     propositionSeries} was extracted
    */
-  public static void translate(PropositionSeries propositionSeries, ExecutableMember method) {
+  public static void translate(PropositionSeries propositionSeries, DocumentedExecutable method) {
     Matcher matcher = new Matcher();
     for (Proposition p : propositionSeries.getPropositions()) {
       Set<CodeElement<?>> subjectMatches;
@@ -214,11 +214,11 @@ public class BasicTranslator {
 
   /**
    * Find a set of {@code CodeElement}s that match the subject of the {@code Proposition} relative
-   * to the {@code ExecutableMember}, updating the set {@code matchingCodeElements}.
+   * to the {@code DocumentedExecutable}, updating the set {@code matchingCodeElements}.
    *
    * @param p the proposition
    * @param subjectMatches CodeElements matches for subject
-   * @param method the ExecutableMember under analysis
+   * @param method the DocumentedExecutable under analysis
    * @param matchingCodeElements the set of matching CodeElements to update
    * @return a String defining whether the loop in the method translatePropositions has to continue
    *     to the next iteration (LOOP_CONTINUE), to stop (LOOP_RETURN) or go on executing the rest of
@@ -227,7 +227,7 @@ public class BasicTranslator {
   private static String findMatchingCodeElements(
       Proposition p,
       Set<CodeElement<?>> subjectMatches,
-      ExecutableMember method,
+      DocumentedExecutable method,
       Set<CodeElement<?>> matchingCodeElements) {
     Matcher matcher = new Matcher();
     final String container = p.getSubject().getContainer();

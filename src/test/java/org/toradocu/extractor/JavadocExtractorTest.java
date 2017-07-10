@@ -28,7 +28,7 @@ public class JavadocExtractorTest {
   private static final String EXAMPLE_SRC = "src/test/resources";
   private static final String TARGET_CLASS = "example.AClass";
   private static DocumentedType documentedType;
-  private static List<ExecutableMember> members;
+  private static List<DocumentedExecutable> members;
   private static Class<?> stringClass;
   private static Class<?> classClass;
   private static Class<?> collectionClass;
@@ -40,7 +40,7 @@ public class JavadocExtractorTest {
     collectionClass = Class.forName("java.util.Collection");
     compileSources();
     documentedType = runJavadocExtractor();
-    members = documentedType.getExecutableMembers();
+    members = documentedType.getDocumentedExecutables();
   }
 
   @Test
@@ -56,7 +56,7 @@ public class JavadocExtractorTest {
 
   @Test
   public void constructorAClass1() throws ClassNotFoundException {
-    ExecutableMember member = members.get(0);
+    DocumentedExecutable member = members.get(0);
     assertThat(member.isConstructor(), is(true));
 
     final List<Parameter> parameters = member.getParameters();
@@ -77,7 +77,7 @@ public class JavadocExtractorTest {
 
   @Test
   public void constructorAClass2() throws ClassNotFoundException {
-    ExecutableMember member = members.get(1);
+    DocumentedExecutable member = members.get(1);
     assertThat(member.isConstructor(), is(true));
 
     final List<Parameter> parameters = member.getParameters();
@@ -103,7 +103,7 @@ public class JavadocExtractorTest {
 
   @Test
   public void methodFoo() throws ClassNotFoundException {
-    ExecutableMember member = members.get(2);
+    DocumentedExecutable member = members.get(2);
     assertThat(member.isConstructor(), is(false));
 
     final List<Parameter> parameters = member.getParameters();
@@ -129,7 +129,7 @@ public class JavadocExtractorTest {
 
   @Test
   public void methodCallAFriend() throws ClassNotFoundException {
-    ExecutableMember member = members.get(4);
+    DocumentedExecutable member = members.get(4);
     assertThat(member.isConstructor(), is(false));
 
     final List<Parameter> parameters = member.getParameters();
@@ -165,7 +165,7 @@ public class JavadocExtractorTest {
 
   @Test
   public void methodFromArrayToCollection() throws ClassNotFoundException {
-    ExecutableMember member = members.get(5);
+    DocumentedExecutable member = members.get(5);
     assertThat(member.isConstructor(), is(false));
 
     final List<Parameter> parameters = member.getParameters();

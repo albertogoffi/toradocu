@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 import org.toradocu.extractor.Comment;
-import org.toradocu.extractor.ExecutableMember;
+import org.toradocu.extractor.DocumentedExecutable;
 
 public class PropositionSeriesTest {
 
@@ -228,7 +228,7 @@ public class PropositionSeriesTest {
     assertThat(propositions.getConjunctions().get(0), is(Conjunction.OR));
   }
 
-  private PropositionSeries getPropositions(Comment sentence, ExecutableMember member) {
+  private PropositionSeries getPropositions(Comment sentence, DocumentedExecutable member) {
 
     List<PropositionSeries> propositions = Parser.parse(sentence, member);
     //assertThat(semanticGraphs.size(), is(1));
