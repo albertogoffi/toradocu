@@ -143,7 +143,9 @@ public final class DocumentedExecutable {
   public List<Tag> getTags() {
     List<Tag> tagList = new ArrayList<>();
     tagList.addAll(paramTags);
-    tagList.add(returnTag);
+    if (returnTag != null) {
+      tagList.add(returnTag);
+    }
     tagList.addAll(throwsTags);
     return tagList;
   }
