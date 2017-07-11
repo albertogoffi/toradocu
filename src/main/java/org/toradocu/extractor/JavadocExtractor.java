@@ -430,12 +430,13 @@ public final class JavadocExtractor {
   }
 
   /**
-   * Search for the type of the exception with the given type name.
+   * Search for the type of the exception with the given type name. The type name is allowed to be
+   * fully-qualified or simple, in which case this method tries to guess the package name.
    *
    * @param classesInPackage list of class names in sourceMember's package
    * @param sourceMember the source member for which the exception with type name {@code
    *     exceptionTypeName} is expected
-   * @param exceptionTypeName the exception type name
+   * @param exceptionTypeName the exception type name (can be fully-qualified or simple)
    * @return the exception class
    * @throws ClassNotFoundException if exception class couldn't be loaded
    */
@@ -446,14 +447,16 @@ public final class JavadocExtractor {
     try {
       exceptionType = Reflection.getClass(exceptionTypeName);
     } catch (ClassNotFoundException e) {
-      // Intentionally empty.
+      // Intentionally empty: Apply other heuristics to load the exception type.
     }
     if (exceptionType == null) {
-      // Look in classes of package
+      // Look in classes of package.
       for (String classInPackage : classesInPackage) {
         if (classInPackage.contains(exceptionTypeName)) {
-          if (classInPackage.contains("$")) classInPackage = classInPackage.replace(".class", "");
-
+          // TODO Add a comment explaining why the following check is needed.
+          if (classInPackage.contains("$")) {
+            classInPackage = classInPackage.replace(".class", "");
+          }
           exceptionType = Reflection.getClass(classInPackage);
         }
       }
@@ -462,29 +465,40 @@ public final class JavadocExtractor {
       try {
         exceptionType = Reflection.getClass("java.lang." + exceptionTypeName);
       } catch (ClassNotFoundException e) {
-        // Intentionally empty.
+        // Intentionally empty: Apply other heuristics to load the exception type.
       }
     }
     if (exceptionType == null) {
       // Look for an import statement to complete exception type name.
-      Optional<Node> nodeOpt = sourceMember.getParentNode();
-      Node node = nodeOpt.orElse(null);
-      while (!(node instanceof CompilationUnit)) {
-        nodeOpt = node.getParentNode();
-        node = nodeOpt.orElse(null);
-      }
-      CompilationUnit cu = (CompilationUnit) node;
+      CompilationUnit cu = getCompilationUnit(sourceMember);
       final NodeList<ImportDeclaration> imports = cu.getImports();
       for (ImportDeclaration anImport : imports) {
         String importedType = anImport.getNameAsString();
-        if (importedType.contains(exceptionTypeName)) {
+        if (importedType.endsWith(exceptionTypeName)) {
           exceptionType = Reflection.getClass(importedType);
         }
       }
     }
     if (exceptionType == null) {
-      throw new ClassNotFoundException("Impossible to load exception type " + exceptionTypeName);
+      throw new ClassNotFoundException(
+          "Unable to load exception type " + exceptionTypeName + ". Is it on the classpath?");
     }
     return exceptionType;
+  }
+
+  /**
+   * Returns the compilation unit where {@code member} is defined.
+   *
+   * @param member an executable member
+   * @return the compilation unit where {@code member} is defined
+   */
+  private CompilationUnit getCompilationUnit(CallableDeclaration<?> member) {
+    Optional<Node> nodeOpt = member.getParentNode();
+    Node node = nodeOpt.orElse(null);
+    while (!(node instanceof CompilationUnit)) {
+      nodeOpt = node.getParentNode();
+      node = nodeOpt.orElse(null);
+    }
+    return (CompilationUnit) node;
   }
 }
