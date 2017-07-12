@@ -87,6 +87,7 @@ public class JavadocExtractorTest {
     assertThat(parameter.getType(), is(stringClass));
     assertThat(parameter.isNullable(), is(nullValue()));
 
+    assertThat(member.getTags().size(), is(3));
     final List<ParamTag> paramTags = member.paramTags();
     assertThat(paramTags.size(), is(1));
     final ParamTag paramTag = paramTags.get(0);
@@ -125,6 +126,11 @@ public class JavadocExtractorTest {
 
     final List<ThrowsTag> throwsTags = member.throwsTags();
     assertThat(throwsTags, is(empty()));
+
+    assertThat(member.getName(), is("foo"));
+    assertThat(member.getSignature(), is("foo(java.lang.Object[] array)"));
+    assertThat(member.toString(), is("public double example.AClass.foo(java.lang.Object[])"));
+    assertThat(member.getContainingClass().getName(), is("example.AClass"));
   }
 
   @Test
@@ -197,6 +203,7 @@ public class JavadocExtractorTest {
 
     final List<ThrowsTag> throwsTags = member.throwsTags();
     assertThat(throwsTags, is(empty()));
+    assertThat(member.getReturnType().getType().getTypeName(), is("void"));
   }
 
   private static DocumentedType runJavadocExtractor()
