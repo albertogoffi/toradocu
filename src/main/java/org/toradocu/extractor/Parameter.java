@@ -119,6 +119,8 @@ public final class Parameter {
    */
   @Override
   public String toString() {
-    return parameter.getType().getName() + " " + name;
+    String paramString = parameter.toString();
+
+    return paramString.substring(0, paramString.indexOf(" ")) + " " + name;
   }
 }

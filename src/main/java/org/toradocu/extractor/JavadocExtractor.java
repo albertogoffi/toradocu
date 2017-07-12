@@ -61,7 +61,8 @@ public final class JavadocExtractor {
     List<String> classesInPackage = new ArrayList<String>();
     for (File file : listOfFiles) {
       String name = parseClassName(file.getName(), className);
-      if (!name.equals(className) && !name.contains("package-info")) classesInPackage.add(name);
+      if (name != null && !name.equals(className) && !name.contains("package-info"))
+        classesInPackage.add(name);
     }
     // Map reflection executable members to corresponding source members.
     Map<Executable, CallableDeclaration<?>> executablesMap =
@@ -84,8 +85,12 @@ public final class JavadocExtractor {
   }
 
   private String parseClassName(String name, String className) {
-    String init = className.substring(0, className.lastIndexOf("."));
-    return init + "." + name.replace(".java", "");
+    int lastDot = className.lastIndexOf(".");
+    String parsedName = null;
+    if (lastDot != -1)
+      parsedName = className.substring(0, lastDot) + "." + name.replace(".java", "");
+
+    return parsedName;
   }
 
   /**
