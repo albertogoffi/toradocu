@@ -480,6 +480,7 @@ public final class JavadocExtractor {
       }
     }
     if (exceptionType == null) {
+      // TODO Improve error message.
       throw new ClassNotFoundException(
           "Unable to load exception type " + exceptionTypeName + ". Is it on the classpath?");
     }
