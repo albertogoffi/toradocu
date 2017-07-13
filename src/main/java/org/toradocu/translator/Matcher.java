@@ -135,7 +135,9 @@ class Matcher {
         final String lengthString = numberPattern.group(3);
         final int length = lengthString.equals("zero") ? 0 : Integer.parseInt(lengthString);
         String operator = numberPattern.group(1);
-        if (operator.equals("is")) operator = "==";
+        if (operator.equals("is")) {
+          operator = "==";
+        }
         return subject.getJavaExpression() + ".length" + operator + length;
       }
 

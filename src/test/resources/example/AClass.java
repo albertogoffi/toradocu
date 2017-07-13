@@ -69,8 +69,10 @@ public class AClass {
    * @throws IllegalArgumentException if the number is less than zero
    */
   public boolean checkNumberInLetter(int n) {
-    if (n > 0) throw new IllegalArgumentException();
-    return n < 5;
+    if (n < 0) {
+      throw new IllegalArgumentException();
+    }
+    return n > 5;
   }
 
   /**
@@ -79,7 +81,9 @@ public class AClass {
    * @throws IllegalArgumentException if the array lenght is 0
    */
   public boolean checkArrayLength(int[] arrayInt) {
-    if (arrayInt.length == 0) throw new IllegalArgumentException();
+    if (arrayInt.length == 0) {
+      throw new IllegalArgumentException();
+    }
     return arrayInt.length > 10;
   }
 
@@ -90,7 +94,9 @@ public class AClass {
    * @throws IllegalArgumentException if n1 is not strictly positive
    */
   public int checkArithmeticOp(int n1, int n2) {
-    if (n1 <= 0) throw new IllegalArgumentException();
+    if (n1 <= 0) {
+      throw new IllegalArgumentException();
+    }
     return n1 - n2;
   }
 
@@ -117,28 +123,44 @@ public class AClass {
   /**
    * @param v1 must be >= v2
    * @param v2
-   * @return difference between v1 and v2
+   * @return always true
    */
-  public int paramGELettersNumbers(int v1, int v2) {
-    return v1 - v2;
+  public boolean paramGELettersNumbers(int v1, int v2) {
+    return true;
   }
 
   /**
    * @param first
    * @param second must be smaller than first
-   * @return difference between first and second
+   * @return true always
    */
-  public int paramLTLetters(int first, int second) {
-    return first - second;
+  public boolean paramLTLetters(int first, int second) {
+    return true;
   }
 
-  /** @throws IllegalArgumentException if v2 > v1 */
-  public int throwsGTLettersNumbers(int v1, int v2) {
-    return v1 - v2;
+  /**
+   * @param v1
+   * @param v2
+   * @throws IllegalArgumentException if v2 > v1
+   * @return true always
+   */
+  public boolean throwsGTLettersNumbers(int v1, int v2) {
+    if (v2 > v1) {
+      throw new IllegalArgumentException();
+    }
+    return true;
   }
 
-  /** @throws IllegalArgumentException if first is smaller than second */
-  public int throwsLTLetters(int first, int second) {
-    return first - second;
+  /**
+   * @param first
+   * @param second
+   * @throws IllegalArgumentException if first is smaller than second
+   * @return false always
+   */
+  public boolean throwsLTLetters(int first, int second) {
+    if (first < second) {
+      throw new IllegalArgumentException();
+    }
+    return false;
   }
 }

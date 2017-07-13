@@ -761,8 +761,8 @@
     "targetClass": "example.AClass",
     "isVarArgs": false,
     "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
+      "qualifiedName": "boolean",
+      "name": "boolean",
       "isArray": false
     },
     "parameters": [
@@ -812,7 +812,7 @@
       }
     ],
     "returnTag": {
-      "comment": "difference between v1 and v2.",
+      "comment": "always true.",
       "kind": "RETURN",
       "condition": ""
     },
@@ -829,8 +829,8 @@
     "targetClass": "example.AClass",
     "isVarArgs": false,
     "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
+      "qualifiedName": "boolean",
+      "name": "boolean",
       "isArray": false
     },
     "parameters": [
@@ -880,9 +880,9 @@
       }
     ],
     "returnTag": {
-      "comment": "difference between first and second.",
+      "comment": "true always.",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true?result==true"
     },
     "throwsTags": []
   },
@@ -897,8 +897,8 @@
     "targetClass": "example.AClass",
     "isVarArgs": false,
     "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
+      "qualifiedName": "boolean",
+      "name": "boolean",
       "isArray": false
     },
     "parameters": [
@@ -919,7 +919,39 @@
         "name": "v2"
       }
     ],
-    "paramTags": [],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "v1"
+        },
+        "comment": ".",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "v2"
+        },
+        "comment": ".",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true always.",
+      "kind": "RETURN",
+      "condition": "true?result==true"
+    },
     "throwsTags": [
       {
         "exceptionType": {
@@ -945,8 +977,8 @@
     "targetClass": "example.AClass",
     "isVarArgs": false,
     "returnType": {
-      "qualifiedName": "int",
-      "name": "int",
+      "qualifiedName": "boolean",
+      "name": "boolean",
       "isArray": false
     },
     "parameters": [
@@ -967,7 +999,39 @@
         "name": "second"
       }
     ],
-    "paramTags": [],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "first"
+        },
+        "comment": ".",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "second"
+        },
+        "comment": ".",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "false always.",
+      "kind": "RETURN",
+      "condition": "true?result==false"
+    },
     "throwsTags": [
       {
         "exceptionType": {

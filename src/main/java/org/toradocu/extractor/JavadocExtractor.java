@@ -61,8 +61,9 @@ public final class JavadocExtractor {
     List<String> classesInPackage = new ArrayList<String>();
     for (File file : listOfFiles) {
       String name = parseClassName(file.getName(), className);
-      if (name != null && !name.equals(className) && !name.contains("package-info"))
+      if (name != null && !name.equals(className) && !name.contains("package-info")) {
         classesInPackage.add(name);
+      }
     }
     // Map reflection executable members to corresponding source members.
     Map<Executable, CallableDeclaration<?>> executablesMap =
