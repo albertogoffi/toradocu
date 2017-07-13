@@ -4,9 +4,14 @@ import java.util.Objects;
 import org.toradocu.translator.spec.Specification;
 import org.toradocu.util.Checks;
 
-/** Represents a Javadoc tag. Supported tags are registered in {@code Tag.Kind}. */
+/**
+ * Represents a Javadoc block tag (e.g. @param, @return). A {@link Tag} has a {@link Tag.Kind} that
+ * specifies the kind of tag and a comment, that is the text introduced by the tag. From {@link
+ * Tag}'s comment specifications can be derived.
+ */
 public abstract class Tag<S extends Specification> {
 
+  /** The Javadoc block tags currently supported by Toradocu. */
   public enum Kind {
     PARAM, // @param
     RETURN, // @return
@@ -28,11 +33,11 @@ public abstract class Tag<S extends Specification> {
     }
   }
 
-  /** The comment of this tag. */
-  private Comment comment;
-
   /** The kind of this tag (e.g., @throws, @param). */
   private final Kind kind;
+
+  /** The comment of this tag. */
+  private Comment comment;
 
   /**
    * Specification generated from the comment of this {@code Tag}. {@code null} if Toradocu failed
@@ -64,6 +69,25 @@ public abstract class Tag<S extends Specification> {
   }
 
   /**
+   * Returns the comment associated with the exception in this tag.
+   *
+   * @return the comment associated with the exception in this tag
+   */
+  public Comment getComment() {
+    return comment;
+  }
+
+  /**
+   * Sets the comment for this tag.
+   *
+   * @param comment the comment for this tag, must not be null
+   */
+  public void setComment(Comment comment) {
+    Checks.nonNullParameter(comment, "comment");
+    this.comment = comment;
+  }
+
+  /**
    * Returns the specification that represents the translation for this tag. {@code null} if the
    * translation has not been attempted yet or no translation has been generated.
    *
@@ -84,25 +108,6 @@ public abstract class Tag<S extends Specification> {
   }
 
   /**
-   * Returns the comment associated with the exception in this tag.
-   *
-   * @return the comment associated with the exception in this tag
-   */
-  public Comment getComment() {
-    return comment;
-  }
-
-  /**
-   * Sets the comment for this tag.
-   *
-   * @param comment the comment for this tag
-   * @throws NullPointerException if comment is null
-   */
-  public void setComment(Comment comment) {
-    this.comment = comment;
-  }
-
-  /**
    * Returns true if this {@code Tag} and the specified object are equal.
    *
    * @param obj the object to test for equality
@@ -114,8 +119,8 @@ public abstract class Tag<S extends Specification> {
     if (!(obj instanceof Tag)) return false;
 
     Tag that = (Tag) obj;
-    return comment.equals(that.comment)
-        && kind.equals(that.kind)
+    return kind.equals(that.kind)
+        && comment.equals(that.comment)
         && Objects.equals(specification, that.specification);
   }
 
