@@ -120,7 +120,8 @@ public final class Parameter {
   @Override
   public String toString() {
     String paramString = parameter.toString();
-
+    // parameter is of type reflect.Paramter, thus toString() will return a bytecode-format String.
+    // We convert it into plain Java format.
     return paramString.substring(0, paramString.indexOf(" ")) + " " + name;
   }
 }

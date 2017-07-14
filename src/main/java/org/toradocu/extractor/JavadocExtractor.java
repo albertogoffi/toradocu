@@ -60,7 +60,10 @@ public final class JavadocExtractor {
     File[] listOfFiles = folder.listFiles();
     List<String> classesInPackage = new ArrayList<String>();
     for (File file : listOfFiles) {
-      String name = parseClassName(file.getName(), className);
+      // this loop extracts files in the same directory of the class being analysed
+      // in order to find eventual Exception classes located in the same package.
+      // package-info files are not useful for this purpose
+      String name = extractClassNameForSource(file.getName(), className);
       if (name != null && !name.equals(className) && !name.contains("package-info")) {
         classesInPackage.add(name);
       }
@@ -85,11 +88,20 @@ public final class JavadocExtractor {
     return new DocumentedType(clazz, members);
   }
 
-  private String parseClassName(String name, String className) {
-    int lastDot = className.lastIndexOf(".");
+  /**
+   * Given the file name of a source located in the same package of the Class being analysed and the
+   * name of that Class, this method compose the class name corresponding to the source.
+   *
+   * @param sourceFileName name of the source file found in package
+   * @param analyzedClassName class name of the class being analysed
+   * @return the class name of the source
+   */
+  private String extractClassNameForSource(String sourceFileName, String analyzedClassName) {
+    int lastDot = analyzedClassName.lastIndexOf(".");
     String parsedName = null;
     if (lastDot != -1)
-      parsedName = className.substring(0, lastDot) + "." + name.replace(".java", "");
+      parsedName =
+          analyzedClassName.substring(0, lastDot) + "." + sourceFileName.replace(".java", "");
 
     return parsedName;
   }
