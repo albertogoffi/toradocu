@@ -7,7 +7,7 @@ import java.util.Objects;
 import org.toradocu.util.Checks;
 
 /** This class represents a method parameter. */
-public final class Parameter {
+public final class DocumentedParameter {
 
   static final List<String> notNullAnnotations = Arrays.asList("NotNull", "NonNull", "Nonnull");
   static final List<String> nullableAnnotations = Collections.singletonList("Nullable");
@@ -27,7 +27,7 @@ public final class Parameter {
    * @param nullable true if the parameter is nullable, false if nonnull and null if unspecified
    * @throws NullPointerException if type or name is null
    */
-  public Parameter(java.lang.reflect.Parameter parameter, String name, Boolean nullable) {
+  public DocumentedParameter(java.lang.reflect.Parameter parameter, String name, Boolean nullable) {
     Checks.nonNullParameter(parameter, "parameter");
     Checks.nonNullParameter(name, "name");
     this.parameter = parameter;
@@ -41,7 +41,7 @@ public final class Parameter {
    * @param parameter the type of the parameter including its dimension
    * @param name the name of the parameter
    */
-  public Parameter(java.lang.reflect.Parameter parameter, String name) {
+  public DocumentedParameter(java.lang.reflect.Parameter parameter, String name) {
     this(parameter, name, null);
   }
 
@@ -84,18 +84,18 @@ public final class Parameter {
   }
 
   /**
-   * Returns true if this {@code Parameter} and the specified object are equal.
+   * Returns true if this {@code DocumentedParameter} and the specified object are equal.
    *
    * @param obj the object to test for equality
    * @return true if this object and {@code obj} are equal
    */
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof Parameter)) {
+    if (!(obj instanceof DocumentedParameter)) {
       return false;
     }
 
-    Parameter that = (Parameter) obj;
+    DocumentedParameter that = (DocumentedParameter) obj;
     return parameter.equals(that.parameter)
         && name.equals(that.name)
         && Objects.equals(nullable, that.nullable);

@@ -22,7 +22,7 @@ public final class DocumentedExecutable {
   /** Reflection executable of this DocumentedExecutable. */
   private final Executable executable;
   /** Parameters list. */
-  private final List<Parameter> parameters;
+  private final List<DocumentedParameter> parameters;
   /** Javadoc @param tags of this executable member. */
   private List<ParamTag> paramTags;
   /** Javadoc @return tag of this executable member. */
@@ -39,7 +39,8 @@ public final class DocumentedExecutable {
    * @param tags the Javadoc comments introduced by tags (e.g., @param, @return) associated with
    *     this executable member
    */
-  DocumentedExecutable(Executable executable, List<Parameter> parameters, List<Tag> tags) {
+  DocumentedExecutable(
+      Executable executable, List<DocumentedParameter> parameters, List<Tag> tags) {
     Checks.nonNullParameter(executable, "executable");
     Checks.nonNullParameter(parameters, "parameters");
 
@@ -57,7 +58,7 @@ public final class DocumentedExecutable {
    * @param params list of Parameters
    */
   private void checkParameters(
-      java.lang.reflect.Parameter[] executableParams, List<Parameter> params) {
+      java.lang.reflect.Parameter[] executableParams, List<DocumentedParameter> params) {
     if (executableParams.length != params.size()) {
       throw new IllegalArgumentException(
           "Expected "
@@ -68,7 +69,7 @@ public final class DocumentedExecutable {
     }
 
     for (int i = 0; i < executableParams.length; i++) {
-      final Parameter sourceParam = params.get(i);
+      final DocumentedParameter sourceParam = params.get(i);
       final java.lang.reflect.Parameter execParam = executableParams[i];
       if (!execParam.getType().equals(sourceParam.getType())) {
         throw new IllegalArgumentException(
@@ -183,7 +184,7 @@ public final class DocumentedExecutable {
    *
    * @return an unmodifiable list view of the parameters in this method
    */
-  public List<Parameter> getParameters() {
+  public List<DocumentedParameter> getParameters() {
     return Collections.unmodifiableList(parameters);
   }
 

@@ -78,7 +78,7 @@ public final class JavadocExtractor {
     for (Entry<Executable, CallableDeclaration<?>> entry : executablesMap.entrySet()) {
       final Executable reflectionMember = entry.getKey();
       final CallableDeclaration<?> sourceMember = entry.getValue();
-      final List<Parameter> parameters =
+      final List<DocumentedParameter> parameters =
           getParameters(sourceMember.getParameters(), reflectionMember.getParameters());
       Triple<List<ParamTag>, ReturnTag, List<ThrowsTag>> tags =
           createTags(classesInPackage, sourceMember, parameters);
@@ -113,7 +113,7 @@ public final class JavadocExtractor {
   private Triple<List<ParamTag>, ReturnTag, List<ThrowsTag>> createTags(
       List<String> classesInPackage,
       CallableDeclaration<?> sourceMember,
-      List<Parameter> parameters)
+      List<DocumentedParameter> parameters)
       throws ClassNotFoundException {
 
     List<ParamTag> paramTags = new ArrayList<>();
@@ -199,7 +199,7 @@ public final class JavadocExtractor {
    * @return the instantiated tag, null if {@code blockTag} refers to a @param tag documenting a
    *     generic type parameter.
    */
-  private ParamTag createParamTag(JavadocBlockTag blockTag, List<Parameter> parameters) {
+  private ParamTag createParamTag(JavadocBlockTag blockTag, List<DocumentedParameter> parameters) {
     final Type blockTagType = blockTag.getType();
     if (!blockTagType.equals(Type.PARAM)) {
       throw new IllegalArgumentException(
@@ -213,7 +213,7 @@ public final class JavadocExtractor {
       return null;
     }
 
-    final List<Parameter> matchingParams =
+    final List<DocumentedParameter> matchingParams =
         parameters.stream().filter(p -> p.getName().equals(paramName)).collect(toList());
     // TODO If paramName not present in paramNames => issue a warning about incorrect documentation!
     // TODO If more than one matching parameter found => issue a warning about incorrect documentation!
@@ -222,13 +222,13 @@ public final class JavadocExtractor {
   }
 
   /**
-   * Instantiate the parameters of type org.toradocu.extractor.Parameter
+   * Instantiate the parameters of type org.toradocu.extractor.DocumentedParameter
    *
    * @param sourceParams the NodeList of parameters found in source
    * @param reflectionParams the array of parameters found through reflection
-   * @return the list of org.toradocu.extractor.Parameter
+   * @return the list of org.toradocu.extractor.DocumentedParameter
    */
-  private List<Parameter> getParameters(
+  private List<DocumentedParameter> getParameters(
       NodeList<com.github.javaparser.ast.body.Parameter> sourceParams,
       java.lang.reflect.Parameter[] reflectionParams) {
 
@@ -237,12 +237,12 @@ public final class JavadocExtractor {
           "Source param types and reflection param types should be of the same size.");
     }
 
-    List<Parameter> parameters = new ArrayList<>(sourceParams.size());
+    List<DocumentedParameter> parameters = new ArrayList<>(sourceParams.size());
     for (int i = 0; i < sourceParams.size(); i++) {
       final com.github.javaparser.ast.body.Parameter parameter = sourceParams.get(i);
       final String paramName = parameter.getName().asString();
       final Boolean nullable = isNullable(parameter);
-      parameters.add(new Parameter(reflectionParams[i], paramName, nullable));
+      parameters.add(new DocumentedParameter(reflectionParams[i], paramName, nullable));
     }
     return parameters;
   }
@@ -258,9 +258,9 @@ public final class JavadocExtractor {
     final List<String> parameterAnnotations =
         parameter.getAnnotations().stream().map(a -> a.getName().asString()).collect(toList());
     List<String> notNullAnnotations = new ArrayList<>(parameterAnnotations);
-    notNullAnnotations.retainAll(Parameter.notNullAnnotations);
+    notNullAnnotations.retainAll(DocumentedParameter.notNullAnnotations);
     List<String> nullableAnnotations = new ArrayList<>(parameterAnnotations);
-    nullableAnnotations.retainAll(Parameter.nullableAnnotations);
+    nullableAnnotations.retainAll(DocumentedParameter.nullableAnnotations);
 
     if (!notNullAnnotations.isEmpty() && !nullableAnnotations.isEmpty()) {
       // Parameter is annotated as both nullable and notNull.

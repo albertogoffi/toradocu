@@ -15,7 +15,7 @@ import org.toradocu.util.Checks;
 public final class ParamTag extends Tag<Precondition> {
 
   /** The parameter associated with the param tag */
-  private final Parameter parameter;
+  private final DocumentedParameter parameter;
 
   /**
    * Constructs a {@code ParamTag} with the given exception and comment.
@@ -24,7 +24,7 @@ public final class ParamTag extends Tag<Precondition> {
    * @param comment the comment associated with the tag
    * @throws NullPointerException if parameter or comment is null
    */
-  public ParamTag(Parameter parameter, Comment comment) {
+  public ParamTag(DocumentedParameter parameter, Comment comment) {
     super(Kind.PARAM, comment);
     Checks.nonNullParameter(parameter, "parameter");
     this.parameter = parameter;
@@ -35,7 +35,7 @@ public final class ParamTag extends Tag<Precondition> {
    *
    * @return the parameter associated to the tag.
    */
-  public Parameter getParameter() {
+  public DocumentedParameter getParameter() {
     return parameter;
   }
 

@@ -3,7 +3,7 @@ package org.toradocu.output.util;
 import java.util.ArrayList;
 import java.util.List;
 import org.toradocu.extractor.*;
-import org.toradocu.extractor.Parameter;
+import org.toradocu.extractor.DocumentedParameter;
 import org.toradocu.translator.spec.Postcondition;
 
 /** Created by arianna on 28/06/17. */
@@ -46,7 +46,7 @@ public class JsonOutput {
       this.returnTag = new ReturnTagOutput(mrt.getComment().getText(), mrt.getKind().name(), spec);
     }
 
-    for (Parameter param : member.getParameters()) {
+    for (DocumentedParameter param : member.getParameters()) {
       Class pType = param.asReflectionParameter().getType();
       org.toradocu.output.util.Type paramType =
           new org.toradocu.output.util.Type(
@@ -58,7 +58,7 @@ public class JsonOutput {
 
     for (Tag tag : member.getTags()) {
       if (tag instanceof ParamTag) {
-        Parameter param = ((ParamTag) tag).getParameter();
+        DocumentedParameter param = ((ParamTag) tag).getParameter();
         Class pType = ((ParamTag) tag).getParameter().asReflectionParameter().getType();
         org.toradocu.output.util.Type paramType =
             new org.toradocu.output.util.Type(

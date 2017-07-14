@@ -11,6 +11,7 @@ import java.lang.reflect.Parameter;
 import java.util.*;
 import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.DocumentedExecutable;
+import org.toradocu.extractor.DocumentedParameter;
 import org.toradocu.extractor.ParamTag;
 
 /**
@@ -99,7 +100,7 @@ public class JavaElementsCollector {
 
     // The first two parameters of enum constructors are synthetic and must be removed to reflect
     // the source code.
-    final List<org.toradocu.extractor.Parameter> parameters = documentedExecutable.getParameters();
+    final List<DocumentedParameter> parameters = documentedExecutable.getParameters();
     if (documentedExecutable.getContainingClass().isEnum()
         && documentedExecutable.isConstructor()) {
       parameters.remove(0);
@@ -108,7 +109,7 @@ public class JavaElementsCollector {
 
     int i = 0;
     HashMap<String, Integer> countIds = new HashMap<>();
-    for (org.toradocu.extractor.Parameter parameter : parameters) {
+    for (DocumentedParameter parameter : parameters) {
       final Parameter reflectionParam = parameter.asReflectionParameter();
       final String parameterName = parameter.getName();
       final Set<String> identifiers =

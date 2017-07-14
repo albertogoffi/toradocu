@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 import org.toradocu.extractor.DocumentedExecutable;
+import org.toradocu.extractor.DocumentedParameter;
 import org.toradocu.extractor.ParamTag;
-import org.toradocu.extractor.Parameter;
 import org.toradocu.extractor.ReturnTag;
 import org.toradocu.extractor.ThrowsTag;
 import org.toradocu.extractor.Type;
@@ -82,8 +82,8 @@ public class RandoopSpecsTest {
     Type contClass = new Type("org.aClass");
     Type bool = new Type("java.lang.Boolean");
 
-    Parameter par = new Parameter(new Type("int"), "x");
-    List<Parameter> parameters = new ArrayList<>();
+    DocumentedParameter par = new DocumentedParameter(new Type("int"), "x");
+    List<DocumentedParameter> parameters = new ArrayList<>();
     parameters.add(par);
 
     ParamTag tag = new ParamTag(par, "must not be null");

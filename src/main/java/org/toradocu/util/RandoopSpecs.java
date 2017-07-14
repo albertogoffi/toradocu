@@ -6,8 +6,8 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.DocumentedExecutable;
+import org.toradocu.extractor.DocumentedParameter;
 import org.toradocu.extractor.ParamTag;
-import org.toradocu.extractor.Parameter;
 import org.toradocu.extractor.ReturnTag;
 import org.toradocu.extractor.Tag;
 import org.toradocu.extractor.ThrowsTag;
@@ -37,7 +37,11 @@ public class RandoopSpecs {
     Operation operation = Operation.getOperation(method.getExecutable());
 
     List<String> params =
-        method.getParameters().stream().map(Parameter::getName).collect(Collectors.toList());
+        method
+            .getParameters()
+            .stream()
+            .map(DocumentedParameter::getName)
+            .collect(Collectors.toList());
     Identifiers identifiers =
         new Identifiers(params, Configuration.RECEIVER, Configuration.RETURN_VALUE);
 

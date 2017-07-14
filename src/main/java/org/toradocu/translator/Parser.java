@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.DocumentedExecutable;
-import org.toradocu.extractor.Parameter;
+import org.toradocu.extractor.DocumentedParameter;
 
 /**
  * Created by arianna on 18/05/17.
@@ -64,7 +64,8 @@ public class Parser {
     List<String> codeElements = new ArrayList<>();
     if (method != null)
       // Collect method arguments
-      arguments = method.getParameters().stream().map(Parameter::getName).collect(toList());
+      arguments =
+          method.getParameters().stream().map(DocumentedParameter::getName).collect(toList());
 
     // Extract sentences in comment with placeholders
     final List<List<HasWord>> sentences =

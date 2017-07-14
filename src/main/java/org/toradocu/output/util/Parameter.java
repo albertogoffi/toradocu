@@ -69,7 +69,7 @@ public final class Parameter {
   }
 
   /**
-   * Returns true if this {@code Parameter} and the specified object are equal.
+   * Returns true if this {@code DocumentedParameter} and the specified object are equal.
    *
    * @param obj the object to test for equality
    * @return true if this object and {@code obj} are equal

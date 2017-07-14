@@ -59,7 +59,7 @@ public class JavadocExtractorTest {
     DocumentedExecutable member = members.get(0);
     assertThat(member.isConstructor(), is(true));
 
-    final List<Parameter> parameters = member.getParameters();
+    final List<DocumentedParameter> parameters = member.getParameters();
     assertThat(parameters, is(empty()));
 
     final List<ParamTag> paramTags = member.paramTags();
@@ -80,9 +80,9 @@ public class JavadocExtractorTest {
     DocumentedExecutable member = members.get(1);
     assertThat(member.isConstructor(), is(true));
 
-    final List<Parameter> parameters = member.getParameters();
+    final List<DocumentedParameter> parameters = member.getParameters();
     assertThat(parameters.size(), is(1));
-    Parameter parameter = parameters.get(0);
+    DocumentedParameter parameter = parameters.get(0);
     assertThat(parameter.getName(), is("x"));
     assertThat(parameter.getType(), is(stringClass));
     assertThat(parameter.isNullable(), is(nullValue()));
@@ -106,9 +106,9 @@ public class JavadocExtractorTest {
     DocumentedExecutable member = members.get(2);
     assertThat(member.isConstructor(), is(false));
 
-    final List<Parameter> parameters = member.getParameters();
+    final List<DocumentedParameter> parameters = member.getParameters();
     assertThat(parameters.size(), is(1));
-    final Parameter parameter = parameters.get(0);
+    final DocumentedParameter parameter = parameters.get(0);
     assertThat(parameter.getName(), is("array"));
     assertThat(parameter.getType(), is(Object[].class));
     assertThat(parameter.isNullable(), is(false));
@@ -132,14 +132,14 @@ public class JavadocExtractorTest {
     DocumentedExecutable member = members.get(4);
     assertThat(member.isConstructor(), is(false));
 
-    final List<Parameter> parameters = member.getParameters();
+    final List<DocumentedParameter> parameters = member.getParameters();
     assertThat(parameters.size(), is(2));
-    final Parameter parameter = parameters.get(0);
+    final DocumentedParameter parameter = parameters.get(0);
     assertThat(parameter.getName(), is("name"));
     assertThat(parameter.getType(), is(stringClass));
     assertThat(parameter.isNullable(), is(nullValue()));
 
-    final Parameter parameter2 = parameters.get(1);
+    final DocumentedParameter parameter2 = parameters.get(1);
     assertThat(parameter2.getName(), is("type"));
     assertThat(parameter2.getType(), is(classClass));
     assertThat(parameter2.isNullable(), is(nullValue()));
@@ -168,14 +168,14 @@ public class JavadocExtractorTest {
     DocumentedExecutable member = members.get(5);
     assertThat(member.isConstructor(), is(false));
 
-    final List<Parameter> parameters = member.getParameters();
+    final List<DocumentedParameter> parameters = member.getParameters();
     assertThat(parameters.size(), is(2));
-    final Parameter parameter = parameters.get(0);
+    final DocumentedParameter parameter = parameters.get(0);
     assertThat(parameter.getName(), is("a"));
     assertThat(parameter.getType(), is(Object[].class));
     assertThat(parameter.isNullable(), is(false));
 
-    final Parameter parameter2 = parameters.get(1);
+    final DocumentedParameter parameter2 = parameters.get(1);
     assertThat(parameter2.getName(), is("c"));
     assertThat(parameter2.getType(), is(collectionClass));
     assertThat(parameter2.isNullable(), is(false));
