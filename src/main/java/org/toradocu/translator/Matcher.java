@@ -130,11 +130,15 @@ class Matcher {
         return subject.getJavaExpression() + ".length==" + length;
       }
       final java.util.regex.Matcher numberPattern =
-          Pattern.compile("([<>=]=?|(!=)) ?([0-9]+|zero)").matcher(predicate);
+          Pattern.compile("([<>=]=?|(!=)|is) ?([0-9]+|zero)").matcher(predicate);
       if (numberPattern.find()) {
         final String lengthString = numberPattern.group(3);
         final int length = lengthString.equals("zero") ? 0 : Integer.parseInt(lengthString);
-        return subject.getJavaExpression() + ".length" + numberPattern.group(1) + length;
+        String operator = numberPattern.group(1);
+        if (operator.equals("is")) {
+          operator = "==";
+        }
+        return subject.getJavaExpression() + ".length" + operator + length;
       }
 
       // "zero-length" special case handling.

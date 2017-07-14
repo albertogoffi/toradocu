@@ -66,8 +66,13 @@ public final class JavadocExtractor {
     File[] listOfFiles = folder.listFiles();
     List<String> classesInPackage = new ArrayList<String>();
     for (File file : listOfFiles) {
-      String name = parseClassName(file.getName(), className);
-      if (!name.equals(className) && !name.contains("package-info")) classesInPackage.add(name);
+      // this loop extracts files in the same directory of the class being analysed
+      // in order to find eventual Exception classes located in the same package.
+      // package-info files are not useful for this purpose
+      String name = extractClassNameForSource(file.getName(), className);
+      if (name != null && !name.equals(className) && !name.contains("package-info")) {
+        classesInPackage.add(name);
+      }
     }
     // Maps each reflection executable member to its corresponding source member.
     Map<Executable, CallableDeclaration<?>> executablesMap =
@@ -95,9 +100,22 @@ public final class JavadocExtractor {
     return new DocumentedType(clazz, members);
   }
 
-  private String parseClassName(String name, String className) {
-    String init = className.substring(0, className.lastIndexOf("."));
-    return init + "." + name.replace(".java", "");
+  /**
+   * Given the file name of a source located in the same package of the Class being analysed and the
+   * name of that Class, this method compose the class name corresponding to the source.
+   *
+   * @param sourceFileName name of the source file found in package
+   * @param analyzedClassName class name of the class being analysed
+   * @return the class name of the source
+   */
+  private String extractClassNameForSource(String sourceFileName, String analyzedClassName) {
+    int lastDot = analyzedClassName.lastIndexOf(".");
+    String parsedName = null;
+    if (lastDot != -1)
+      parsedName =
+          analyzedClassName.substring(0, lastDot) + "." + sourceFileName.replace(".java", "");
+
+    return parsedName;
   }
 
   /**

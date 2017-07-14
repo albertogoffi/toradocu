@@ -119,6 +119,9 @@ public final class DocumentedParameter {
    */
   @Override
   public String toString() {
-    return parameter.getType().getName() + " " + name;
+    String paramString = parameter.toString();
+    // parameter is of type reflect.Paramter, thus toString() will return a bytecode-format String.
+    // We convert it into plain Java format.
+    return paramString.substring(0, paramString.indexOf(" ")) + " " + name;
   }
 }

@@ -21,18 +21,21 @@ import org.toradocu.Toradocu;
 import org.toradocu.output.util.JsonOutput;
 import org.toradocu.util.GsonInstance;
 
-public class InequalitiesSupportTest {
-
+/**
+ * The AClass Javadoc conditions involve every case the Matcher can encounter. The output of the
+ * translators must be equal to the goal file.
+ */
+public class MatcherAndTranslatorsTest {
   private static final Path resourcesPath = Paths.get("src", "test", "resources");
   private static final Path expectedOutput =
-      Paths.get("expected-output", "example.VariablesComparison_goal.json");
-  private static final Path actualOutput = Paths.get("example.VariablesComparison_out.json");
+      Paths.get("src/test/resources/expected-output/example.AClass_goal.json");
+  private static final Path actualOutput = Paths.get("example.AClass_out.json");
 
   private static Path sourcePath;
 
   @BeforeClass
   public static void setUp() throws Exception {
-    sourcePath = Paths.get(resourcesPath.toString(), "example", "VariablesComparison.java");
+    sourcePath = Paths.get(resourcesPath.toString(), "example", "AClass.java");
 
     JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
     int compilerExitCode = compiler.run(null, null, null, sourcePath.toString());
@@ -46,7 +49,7 @@ public class InequalitiesSupportTest {
     String[] toradocuArgs =
         new String[] {
           "--target-class",
-          "example.VariablesComparison",
+          "example.AClass",
           "--condition-translator-output",
           actualOutput.toString(),
           "--class-dir",
@@ -60,7 +63,7 @@ public class InequalitiesSupportTest {
 
     Type listType = new TypeToken<List<JsonOutput>>() {}.getType();
     try (BufferedReader actualOutputReader = Files.newBufferedReader(actualOutput);
-        BufferedReader expectedOutputReader = Files.newBufferedReader(actualOutput); ) {
+        BufferedReader expectedOutputReader = Files.newBufferedReader(expectedOutput); ) {
       List<JsonOutput> actualSpecs = GsonInstance.gson().fromJson(actualOutputReader, listType);
       List<JsonOutput> expectedSpecs = GsonInstance.gson().fromJson(expectedOutputReader, listType);
       assertThat(actualSpecs, is(expectedSpecs));
