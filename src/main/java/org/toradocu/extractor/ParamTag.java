@@ -5,12 +5,12 @@ import org.toradocu.translator.spec.Precondition;
 import org.toradocu.util.Checks;
 
 /**
- * This class represents a param tag. Each param tag consists of the name of the param and a brief
- * description, which may contain a condition. A condition is the translation of the comment into a
- * Java boolean condition. When the condition evaluates to {@code true}, the precondition expressed
- * by this tag is satisfied. When the condition evaluates to {@code false} the precondition
- * expressed by this tag is violated, and the behavior of the method documented by this tag is
- * unspecified.
+ * Represents a Javadoc @param comment. Each {@link ParamTag} consists of the name of the parameter,
+ * a comment, and a specification (available after the translation of the comment). A specification
+ * is the translation of the comment into a Java boolean condition. When the condition evaluates to
+ * {@code true}, the precondition expressed by this tag is satisfied. When the condition evaluates
+ * to {@code false} the precondition expressed by this tag is violated, and the behavior of the
+ * method documented by this tag is unspecified.
  */
 public final class ParamTag extends Tag<Precondition> {
 

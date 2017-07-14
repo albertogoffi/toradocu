@@ -6,9 +6,10 @@ import org.toradocu.translator.spec.ExcPostcondition;
 import org.toradocu.util.Checks;
 
 /**
- * This class represents a throws tag in a method. Each @throws tag consists of an exception, a
- * comment, and can have an optional condition. A condition is the translation of the comment into a
- * Java boolean condition. When the condition evaluates to {@code true}, an exception is expected.
+ * Represents Javadoc @throws and @exception comments. Each {@link ThrowsTag} consists of a comment,
+ * an exception, and a specification (available after the translation of the comment). The
+ * specification specifies when the method documented with this @throws (or @exception) comment is
+ * expected to throw the exception.
  */
 public final class ThrowsTag extends Tag<ExcPostcondition> {
 
@@ -18,9 +19,8 @@ public final class ThrowsTag extends Tag<ExcPostcondition> {
   /**
    * Constructs a {@code ThrowsTag} with the given exception and comment.
    *
-   * @param exception the exception type
-   * @param comment the comment associated with the exception
-   * @throws NullPointerException if exception or comment is null
+   * @param exception the exception type, must not be null
+   * @param comment the comment associated with the exception, must not be null
    */
   ThrowsTag(Class<?> exception, Comment comment) {
     super(Kind.THROWS, comment);
@@ -69,9 +69,9 @@ public final class ThrowsTag extends Tag<ExcPostcondition> {
   @Override
   public String toString() {
     StringJoiner joiner = new StringJoiner(" ");
-    joiner.add(super.getKind().toString());
-    joiner.add(exception.getName());
-    joiner.add(super.getComment().getText());
+    joiner.add(getKind().toString());
+    joiner.add(getException().getName());
+    joiner.add(getComment().getText());
     return appendCondition(joiner.toString());
   }
 }

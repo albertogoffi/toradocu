@@ -48,9 +48,8 @@ public abstract class Tag<S extends Specification> {
   /**
    * Constructs a {@code Tag} of the specific kind, with the given comment.
    *
-   * @param kind the comment kind. See {@code Tag.Kind} for the available kinds.
-   * @param comment the comment associated with the exception
-   * @throws NullPointerException if either kind or comment is null
+   * @param kind the comment kind, must not be null. See {@code Tag.Kind} for the available kinds.
+   * @param comment the comment associated with the exception, must not be null
    */
   public Tag(Kind kind, Comment comment) {
     Checks.nonNullParameter(kind, "kind");
