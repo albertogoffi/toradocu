@@ -165,8 +165,10 @@ public class Toradocu {
                 e);
           }
         } else {
-          System.out.println(
-              "Condition translator output:\n" + GsonInstance.gson().toJson(members));
+          List<JsonOutput> jsonOutputs = new ArrayList<JsonOutput>();
+          for (ExecutableMember member : members) jsonOutputs.add(new JsonOutput(member));
+          String jsonOutput = GsonInstance.gson().toJson(jsonOutputs);
+          System.out.println("Condition translator output:\n" + jsonOutput);
         }
       }
 

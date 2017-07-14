@@ -1,0 +1,1049 @@
+[
+  {
+    "signature": "example.AClass()",
+    "name": "example.AClass",
+    "containingClass": {
+      "qualifiedName": "example.AClass",
+      "name": "AClass",
+      "isArray": false
+    },
+    "targetClass": "example.AClass",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "always.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "example.AClass(java.lang.String x)",
+    "name": "example.AClass",
+    "containingClass": {
+      "qualifiedName": "example.AClass",
+      "name": "AClass",
+      "isArray": false
+    },
+    "targetClass": "example.AClass",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "x"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "x"
+        },
+        "comment": ".x must not be null nor empty.",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "x is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "example.exception.AnException",
+          "name": "AnException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "x is empty.",
+        "kind": "THROWS",
+        "condition": "args[0].isEmpty()"
+      }
+    ]
+  },
+  {
+    "signature": "foo(java.lang.Object[] array)",
+    "name": "foo",
+    "containingClass": {
+      "qualifiedName": "example.AClass",
+      "name": "AClass",
+      "isArray": false
+    },
+    "targetClass": "example.AClass",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[Ljava.lang.Object;",
+          "name": "Object[]",
+          "isArray": true
+        },
+        "name": "array",
+        "nullable": false
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[Ljava.lang.Object;",
+            "name": "Object[]",
+            "isArray": true
+          },
+          "name": "array",
+          "nullable": false
+        },
+        "comment": "an array of objects .array must not be null.",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
+    "returnTag": {
+      "comment": "0 always.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "baz(java.lang.Object x)",
+    "name": "baz",
+    "containingClass": {
+      "qualifiedName": "example.AClass",
+      "name": "AClass",
+      "isArray": false
+    },
+    "targetClass": "example.AClass",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "x",
+        "nullable": true
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "x",
+          "nullable": true
+        },
+        "comment": "an object.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "x is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      }
+    ]
+  },
+  {
+    "signature": "callFriend(java.lang.String name, java.lang.Class<T> type)",
+    "name": "callFriend",
+    "containingClass": {
+      "qualifiedName": "example.AClass",
+      "name": "AClass",
+      "isArray": false
+    },
+    "targetClass": "example.AClass",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "name"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Class",
+          "name": "Class",
+          "isArray": false
+        },
+        "name": "type"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "name"
+        },
+        "comment": "a String.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          },
+          "name": "type"
+        },
+        "comment": "a Class.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "fromArrayToCollection(T[] a, java.util.Collection<T> c)",
+    "name": "fromArrayToCollection",
+    "containingClass": {
+      "qualifiedName": "example.AClass",
+      "name": "AClass",
+      "isArray": false
+    },
+    "targetClass": "example.AClass",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[Ljava.lang.Object;",
+          "name": "Object[]",
+          "isArray": true
+        },
+        "name": "a",
+        "nullable": false
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "c",
+        "nullable": false
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[Ljava.lang.Object;",
+            "name": "Object[]",
+            "isArray": true
+          },
+          "name": "a",
+          "nullable": false
+        },
+        "comment": "an array.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "c",
+          "nullable": false
+        },
+        "comment": "a Collection.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "paramIsEqual(java.lang.Integer a1, java.lang.Integer a2)",
+    "name": "paramIsEqual",
+    "containingClass": {
+      "qualifiedName": "example.AClass",
+      "name": "AClass",
+      "isArray": false
+    },
+    "targetClass": "example.AClass",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Integer",
+          "name": "Integer",
+          "isArray": false
+        },
+        "name": "a1"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Integer",
+          "name": "Integer",
+          "isArray": false
+        },
+        "name": "a2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Integer",
+            "name": "Integer",
+            "isArray": false
+          },
+          "name": "a1"
+        },
+        "comment": "first number.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Integer",
+            "name": "Integer",
+            "isArray": false
+          },
+          "name": "a2"
+        },
+        "comment": "second number.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if the numbers are equal.",
+      "kind": "RETURN",
+      "condition": "args[0].equals(args[1]) ? result == true"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "checkNumberInLetter(int n)",
+    "name": "checkNumberInLetter",
+    "containingClass": {
+      "qualifiedName": "example.AClass",
+      "name": "AClass",
+      "isArray": false
+    },
+    "targetClass": "example.AClass",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "n"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "the number.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if the number is greater than five.",
+      "kind": "RETURN",
+      "condition": "args[0]>5 ? result == true"
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the number is less than zero.",
+        "kind": "THROWS",
+        "condition": "args[0]<0"
+      }
+    ]
+  },
+  {
+    "signature": "checkArrayLength(int[] arrayInt)",
+    "name": "checkArrayLength",
+    "containingClass": {
+      "qualifiedName": "example.AClass",
+      "name": "AClass",
+      "isArray": false
+    },
+    "targetClass": "example.AClass",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[I",
+          "name": "int[]",
+          "isArray": true
+        },
+        "name": "arrayInt"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[I",
+            "name": "int[]",
+            "isArray": true
+          },
+          "name": "arrayInt"
+        },
+        "comment": "the array.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if the array length is greater than 10.",
+      "kind": "RETURN",
+      "condition": "args[0].length>10 ? result == true"
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the array lenght is 0.",
+        "kind": "THROWS",
+        "condition": "args[0].length==0"
+      }
+    ]
+  },
+  {
+    "signature": "checkArithmeticOp(int n1, int n2)",
+    "name": "checkArithmeticOp",
+    "containingClass": {
+      "qualifiedName": "example.AClass",
+      "name": "AClass",
+      "isArray": false
+    },
+    "targetClass": "example.AClass",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "n1"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "n2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n1"
+        },
+        "comment": "first number.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n2"
+        },
+        "comment": "second number.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "n1-n2.",
+      "kind": "RETURN",
+      "condition": "true?result==args[0]-args[1]"
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "n1 is not strictly positive.",
+        "kind": "THROWS",
+        "condition": "(args[0]>0) == false"
+      }
+    ]
+  },
+  {
+    "signature": "returnEqOnlyLetters(int first, int second)",
+    "name": "returnEqOnlyLetters",
+    "containingClass": {
+      "qualifiedName": "example.AClass",
+      "name": "AClass",
+      "isArray": false
+    },
+    "targetClass": "example.AClass",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "first"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "second"
+      }
+    ],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "true if first=second.",
+      "kind": "RETURN",
+      "condition": "args[0]==args[1] ? result == true"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "returnEqLettersNumbers(int v1, int v2)",
+    "name": "returnEqLettersNumbers",
+    "containingClass": {
+      "qualifiedName": "example.AClass",
+      "name": "AClass",
+      "isArray": false
+    },
+    "targetClass": "example.AClass",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "v1"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "v2"
+      }
+    ],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "true if v1=v2.",
+      "kind": "RETURN",
+      "condition": "args[0]==args[1] ? result == true"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "returnGELettersNumbers(int v1, int v2)",
+    "name": "returnGELettersNumbers",
+    "containingClass": {
+      "qualifiedName": "example.AClass",
+      "name": "AClass",
+      "isArray": false
+    },
+    "targetClass": "example.AClass",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "v1"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "v2"
+      }
+    ],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "true if v1>=v2.",
+      "kind": "RETURN",
+      "condition": "args[0]>=args[1] ? result == true"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "returnLTLettersNumbers(int v1, int v2)",
+    "name": "returnLTLettersNumbers",
+    "containingClass": {
+      "qualifiedName": "example.AClass",
+      "name": "AClass",
+      "isArray": false
+    },
+    "targetClass": "example.AClass",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "v1"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "v2"
+      }
+    ],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "true if v1 is smaller than v2.",
+      "kind": "RETURN",
+      "condition": "args[0]<args[1] ? result == true"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "paramGELettersNumbers(int v1, int v2)",
+    "name": "paramGELettersNumbers",
+    "containingClass": {
+      "qualifiedName": "example.AClass",
+      "name": "AClass",
+      "isArray": false
+    },
+    "targetClass": "example.AClass",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "v1"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "v2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "v1"
+        },
+        "comment": ".v1 must be >= v2.",
+        "kind": "PARAM",
+        "condition": "args[0]>=args[1]"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "v2"
+        },
+        "comment": ".",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "always true.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "paramLTLetters(int first, int second)",
+    "name": "paramLTLetters",
+    "containingClass": {
+      "qualifiedName": "example.AClass",
+      "name": "AClass",
+      "isArray": false
+    },
+    "targetClass": "example.AClass",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "first"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "second"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "first"
+        },
+        "comment": ".",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "second"
+        },
+        "comment": ".second must be smaller than first.",
+        "kind": "PARAM",
+        "condition": "args[1]<args[0]"
+      }
+    ],
+    "returnTag": {
+      "comment": "true always.",
+      "kind": "RETURN",
+      "condition": "true?result==true"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "throwsGTLettersNumbers(int v1, int v2)",
+    "name": "throwsGTLettersNumbers",
+    "containingClass": {
+      "qualifiedName": "example.AClass",
+      "name": "AClass",
+      "isArray": false
+    },
+    "targetClass": "example.AClass",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "v1"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "v2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "v1"
+        },
+        "comment": ".",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "v2"
+        },
+        "comment": ".",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true always.",
+      "kind": "RETURN",
+      "condition": "true?result==true"
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "v2 > v1.",
+        "kind": "THROWS",
+        "condition": "args[1]>args[0]"
+      }
+    ]
+  },
+  {
+    "signature": "throwsLTLetters(int first, int second)",
+    "name": "throwsLTLetters",
+    "containingClass": {
+      "qualifiedName": "example.AClass",
+      "name": "AClass",
+      "isArray": false
+    },
+    "targetClass": "example.AClass",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "first"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "second"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "first"
+        },
+        "comment": ".",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "second"
+        },
+        "comment": ".",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "false always.",
+      "kind": "RETURN",
+      "condition": "true?result==false"
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "first is smaller than second.",
+        "kind": "THROWS",
+        "condition": "args[0]<args[1]"
+      }
+    ]
+  }
+]
