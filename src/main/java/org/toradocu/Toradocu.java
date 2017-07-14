@@ -153,8 +153,10 @@ public class Toradocu {
                   configuration.getConditionTranslatorOutput().toPath(), StandardCharsets.UTF_8)) {
             //                  String jsonOutput = GsonInstance.gson().toJson(members);
 
-            List<JsonOutput> jsonOutputs = new ArrayList<JsonOutput>();
-            for (DocumentedExecutable member : members) jsonOutputs.add(new JsonOutput(member));
+            List<JsonOutput> jsonOutputs = new ArrayList<>();
+            for (DocumentedExecutable member : members) {
+              jsonOutputs.add(new JsonOutput(member));
+            }
             String jsonOutput = GsonInstance.gson().toJson(jsonOutputs);
             writer.write(jsonOutput);
             printConditionLines(jsonOutput);
@@ -165,8 +167,10 @@ public class Toradocu {
                 e);
           }
         } else {
-          List<JsonOutput> jsonOutputs = new ArrayList<JsonOutput>();
-          for (ExecutableMember member : members) jsonOutputs.add(new JsonOutput(member));
+          List<JsonOutput> jsonOutputs = new ArrayList<>();
+          for (DocumentedExecutable member : members) {
+            jsonOutputs.add(new JsonOutput(member));
+          }
           String jsonOutput = GsonInstance.gson().toJson(jsonOutputs);
           System.out.println("Condition translator output:\n" + jsonOutput);
         }
