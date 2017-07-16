@@ -9,12 +9,14 @@ import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.body.CallableDeclaration;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
+import com.github.javaparser.ast.body.ConstructorDeclaration;
 import com.github.javaparser.ast.nodeTypes.modifiers.NodeWithPrivateModifier;
 import com.github.javaparser.javadoc.Javadoc;
 import com.github.javaparser.javadoc.JavadocBlockTag;
 import com.github.javaparser.javadoc.JavadocBlockTag.Type;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Executable;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
@@ -58,22 +60,10 @@ public final class JavadocExtractor {
     // TODO Add support for nested classes.
     String classFile =
         sourcePath + File.separator + className.replaceAll("\\.", File.separator) + ".java";
+    List<String> classesInPackage = getClassesInSamePackage(className, classFile);
     final List<CallableDeclaration<?>> sourceExecutables =
         getExecutables(clazz.getSimpleName(), classFile);
 
-    String packagePath = classFile.substring(0, classFile.lastIndexOf("/"));
-    File folder = new File(packagePath);
-    File[] listOfFiles = folder.listFiles();
-    List<String> classesInPackage = new ArrayList<String>();
-    for (File file : listOfFiles) {
-      // this loop extracts files in the same directory of the class being analysed
-      // in order to find eventual Exception classes located in the same package.
-      // package-info files are not useful for this purpose
-      String name = extractClassNameForSource(file.getName(), className);
-      if (name != null && !name.equals(className) && !name.contains("package-info")) {
-        classesInPackage.add(name);
-      }
-    }
     // Maps each reflection executable member to its corresponding source member.
     Map<Executable, CallableDeclaration<?>> executablesMap =
         mapExecutables(reflectionExecutables, sourceExecutables);
@@ -98,6 +88,25 @@ public final class JavadocExtractor {
 
     // Create the documented class.
     return new DocumentedType(clazz, members);
+  }
+
+  private List<String> getClassesInSamePackage(String className, String classFile) {
+    // TODO Add missing Javadoc documentation.
+    // TODO Improve the code: this method should return all the available types in a given package.
+    String packagePath = classFile.substring(0, classFile.lastIndexOf("/"));
+    File folder = new File(packagePath);
+    File[] listOfFiles = folder.listFiles();
+    List<String> classesInPackage = new ArrayList<>();
+    for (File file : listOfFiles) {
+      // this loop extracts files in the same directory of the class being analysed
+      // in order to find eventual Exception classes located in the same package.
+      // package-info files are not useful for this purpose
+      String name = extractClassNameForSource(file.getName(), className);
+      if (name != null && !name.equals(className) && !name.contains("package-info")) {
+        classesInPackage.add(name);
+      }
+    }
+    return classesInPackage;
   }
 
   /**
@@ -297,7 +306,11 @@ public final class JavadocExtractor {
   }
 
   /**
-   * Collects non-private members through reflection.
+   * Collects non-private non-synthetic members through reflection. Notice that this method
+   * considers compiler-generated class initialization methods (e.g., default constructors) as
+   * non-synthetic (<a
+   * href="http://docs.oracle.com/javase/specs/jls/se8/html/jls-13.html#jls-13.1">JLS 13.1, item
+   * 11</a>).
    *
    * @param clazz the Class containing the members to collect
    * @return non private-members of {@code clazz}
@@ -308,7 +321,7 @@ public final class JavadocExtractor {
     executables.addAll(Arrays.asList(clazz.getDeclaredMethods()));
     executables.removeIf(Executable::isSynthetic);
     executables.removeIf(e -> Modifier.isPrivate(e.getModifiers())); // Ignore private members.
-    return Collections.unmodifiableList(executables);
+    return executables;
   }
 
   /**
@@ -348,6 +361,8 @@ public final class JavadocExtractor {
   private Map<Executable, CallableDeclaration<?>> mapExecutables(
       List<Executable> reflectionExecutables, List<CallableDeclaration<?>> sourceExecutables) {
 
+    filterOutGeneratedConstructors(reflectionExecutables, sourceExecutables);
+
     if (reflectionExecutables.size() != sourceExecutables.size()) {
       throw new IllegalArgumentException("Error: Provided lists have different size.");
     }
@@ -375,6 +390,41 @@ public final class JavadocExtractor {
       map.put(matches.get(0), sourceMember);
     }
     return map;
+  }
+
+  /**
+   * Removes compiler-generated constructors from {@code reflectionExcutables}.
+   *
+   * @param reflectionExecutables executable members obtained via reflection
+   * @param sourceExecutables executable members obtained parsing the source code
+   */
+  private void filterOutGeneratedConstructors(
+      List<Executable> reflectionExecutables, List<CallableDeclaration<?>> sourceExecutables) {
+    final List<CallableDeclaration<?>> sourceConstructors =
+        sourceExecutables
+            .stream()
+            .filter(e -> e instanceof ConstructorDeclaration && e.getParameters().isEmpty())
+            .collect(toList());
+    final List<Executable> reflectionConstructors =
+        reflectionExecutables
+            .stream()
+            .filter(e -> e instanceof Constructor && e.getParameterCount() == 0)
+            .collect(toList());
+
+    for (Executable reflectionConstructor : reflectionConstructors) {
+      final String reflectionConstructorName = reflectionConstructor.getName();
+      final String reflectionConstructorSimpleName =
+          reflectionConstructorName.substring(reflectionConstructorName.lastIndexOf(".") + 1);
+      boolean inSource = false;
+      for (CallableDeclaration<?> sourceConstructor : sourceConstructors) {
+        if (sourceConstructor.getNameAsString().equals(reflectionConstructorSimpleName)) {
+          inSource = true;
+        }
+      }
+      if (!inSource) {
+        reflectionExecutables.remove(reflectionConstructor);
+      }
+    }
   }
 
   /**
