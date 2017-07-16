@@ -202,8 +202,10 @@ public final class JavadocExtractor {
     }
 
     String content = blockTag.getContent().toText();
-    //correct bug in Javaparser
-    if (content.startsWith("@code ")) content = "{" + content;
+    // Fix bug in Javaparser: missing open bracket of {@code} inline tag.
+    if (content.startsWith("@code ")) {
+      content = "{" + content;
+    }
 
     Comment commentObject = new Comment(content);
     return new ReturnTag(commentObject);

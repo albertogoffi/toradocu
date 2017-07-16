@@ -72,7 +72,7 @@ public class GoalFileConverter {
           String commentTranslation =
               methodId
                   + " throws "
-                  + throwsTag.exception().getQualifiedName()
+                  + throwsTag.exceptionType().getQualifiedName()
                   + " "
                   + throwsTag.getComment()
                   + " ==> ["
