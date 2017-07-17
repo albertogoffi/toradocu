@@ -1770,7 +1770,7 @@
     "returnTag": {
       "comment": "True if this unit is on a tile.",
       "kind": "RETURN",
-      "condition": "target.getTile()!=null ? result==true : result==false"
+      "condition": "target.getTile()!=null ? result==true"
     },
     "throwsTags": []
   },
@@ -6259,7 +6259,7 @@
     "returnTag": {
       "comment": "True if a threat was found.",
       "kind": "RETURN",
-      "condition": "target.searchForDanger(args[0], args[1])!=null ? result==true : result==false"
+      "condition": "target.searchForDanger(args[0], args[1])!=null ? result==true"
     },
     "throwsTags": []
   },
@@ -7647,7 +7647,7 @@
     "returnTag": {
       "comment": "The location of this Unit.",
       "kind": "RETURN",
-      "condition": "true ? result==target.location"
+      "condition": ""
     },
     "throwsTags": []
   },

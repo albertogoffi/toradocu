@@ -46,8 +46,8 @@ public class SemanticMatcher {
     stopwords =
         new ArrayList<>(
             Arrays.asList(
-                "true", "false", "the", "a", "if", "for", "be", "this", "do", "not", "of", "only",
-                "already", "specify"));
+                "true", "false", "the", "a", "if", "for", "be", "have", "this", "do", "not", "of",
+                "only", "already", "specify"));
 
     gloveDB = setUpGloveBinaryDB();
   }
@@ -67,6 +67,7 @@ public class SemanticMatcher {
       String comment)
       throws IOException {
 
+    this.stopwords.add(proposition.getSubject().getSubject().toLowerCase());
     try {
       return vectorsMatch(comment, method, codeElements);
     } catch (IOException e) {
@@ -189,7 +190,7 @@ public class SemanticMatcher {
   Set<String> parseComment(String comment, DocumentedExecutable method) {
     //        if (posSelect) comment = POSUtils.findSubjectPredicate(tag.getComment(), method);
     //        else comment = tag.getComment().getText();
-    comment = comment.replaceAll("[^A-Za-z0-9! ]", "");
+    comment = comment.replaceAll("[^A-Za-z0-9! ]", "").toLowerCase();
 
     String[] wordComment = comment.split(" ");
     int index = 0;

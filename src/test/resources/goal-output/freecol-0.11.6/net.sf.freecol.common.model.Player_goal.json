@@ -352,7 +352,7 @@
     "returnTag": {
       "comment": "The name of the new world as chosen by the Player, or null if none chosen yet.",
       "kind": "RETURN",
-      "condition": "target.newLandName != null ? result==target.newLandName : result==null"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -376,7 +376,7 @@
     "returnTag": {
       "comment": "True if the new world has been named by this player.",
       "kind": "RETURN",
-      "condition": "target.newLandName != null ? result==true : result==false"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -1023,7 +1023,7 @@
     "returnTag": {
       "comment": "True if this player is colonial.",
       "kind": "RETURN",
-      "condition": "target.playerType == PlayerType.COLONIAL ? result==true"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -1071,7 +1071,7 @@
     "returnTag": {
       "comment": "True if this player is a native player.",
       "kind": "RETURN",
-      "condition": "target.playerType == PlayerType.NATIVE ? result==true"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -1095,7 +1095,7 @@
     "returnTag": {
       "comment": "True if this player is a rebel player.",
       "kind": "RETURN",
-      "condition": "target.playerType == PlayerType.REBEL ? result==true"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -1119,7 +1119,7 @@
     "returnTag": {
       "comment": "True if this player is undead.",
       "kind": "RETURN",
-      "condition": "target.playerType == PlayerType.UNDEAD ? result==true"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -1507,7 +1507,7 @@
     "returnTag": {
       "comment": "True if the player is an admin.",
       "kind": "RETURN",
-      "condition": "true ? result==target.admin"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -1531,7 +1531,7 @@
     "returnTag": {
       "comment": "True if this is an AI player.",
       "kind": "RETURN",
-      "condition": "true ? result==target.ai"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -1597,7 +1597,7 @@
     "returnTag": {
       "comment": "True if this Player is ready to start the game.",
       "kind": "RETURN",
-      "condition": "true ? result==target.ready"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -1663,7 +1663,7 @@
     "returnTag": {
       "comment": "True if this Player is dead.",
       "kind": "RETURN",
-      "condition": "true ? result==target.dead"
+      "condition": "target.getDead()?result==true"
     },
     "throwsTags": []
   },
@@ -1687,7 +1687,7 @@
     "returnTag": {
       "comment": "True if this Player is dead.",
       "kind": "RETURN",
-      "condition": "true ? result==target.dead"
+      "condition": "target.isDead()?result==true"
     },
     "throwsTags": []
   },
@@ -1753,7 +1753,7 @@
     "returnTag": {
       "comment": "True if this player has been attacked by privateers.",
       "kind": "RETURN",
-      "condition": "true ? result==target.attackedByPrivateers"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -2165,7 +2165,7 @@
     "returnTag": {
       "comment": "True if this player is bankrupt.",
       "kind": "RETURN",
-      "condition": "true ? result==target.bankrupt"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -2855,7 +2855,7 @@
     "returnTag": {
       "comment": "The current FoundingFather, or null if there is none.",
       "kind": "RETURN",
-      "condition": "true ? result==target.currentFather"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -4046,7 +4046,7 @@
     "returnTag": {
       "comment": "The Europe object, or null if the player is not European or indpendent.",
       "kind": "RETURN",
-      "condition": "(target.isEuropean()) == false ? result==null : result==target.europe"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -4112,7 +4112,7 @@
     "returnTag": {
       "comment": "True if this player has an instance of Europe.",
       "kind": "RETURN",
-      "condition": "target.getEurope() != null ? result==true : result==false"
+      "condition": "target.getEurope() != null ? result==true"
     },
     "throwsTags": []
   },
@@ -4207,7 +4207,7 @@
     "returnTag": {
       "comment": "The Monarch object this player has, or null if there is no monarch.",
       "kind": "RETURN",
-      "condition": "true ? result==target.monarch"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -4296,7 +4296,7 @@
     "returnTag": {
       "comment": "True if the player has the unit.",
       "kind": "RETURN",
-      "condition": "target.units.contains(args[0]) ? result==true : result==false"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -4721,7 +4721,7 @@
     "returnTag": {
       "comment": "True if the operation succeeded.",
       "kind": "RETURN",
-      "condition": "true ? result==target.nextActiveUnitIterator.setNext(args[0])"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -4745,7 +4745,7 @@
     "returnTag": {
       "comment": "True if there is a potential active unit.",
       "kind": "RETURN",
-      "condition": "target.nextActiveUnitIterator.hasNext() ? result==true : result==false"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -4816,7 +4816,7 @@
     "returnTag": {
       "comment": "True if the operation succeeded.",
       "kind": "RETURN",
-      "condition": "true ? result==target.nextGoingToUnitIterator.setNext(args[0])"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -4840,7 +4840,7 @@
     "returnTag": {
       "comment": "True if there is a unit with a destination.",
       "kind": "RETURN",
-      "condition": "target.nextGoingToUnitIterator.hasNext() ? result==true : result==false"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -4888,7 +4888,7 @@
     "returnTag": {
       "comment": "True if there is a unit with a trade route.",
       "kind": "RETURN",
-      "condition": "target.nextTradeRouteUnitIterator.hasNext() ? result==true : result==false"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -5271,7 +5271,7 @@
     "returnTag": {
       "comment": "True if this Player owns the given Settlement.",
       "kind": "RETURN",
-      "condition": "target.settlements.contains(args[0]) ? result==true : result==false"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -5365,7 +5365,7 @@
     "returnTag": {
       "comment": "True if the settlements container changed.",
       "kind": "RETURN",
-      "condition": "true ? result==target.settlements.remove(args[0])"
+      "condition": ""
     },
     "throwsTags": []
   },
@@ -6213,7 +6213,7 @@
     "returnTag": {
       "comment": "True if the Tile has been explored.",
       "kind": "RETURN",
-      "condition": "args[0].isExplored() ? result==true : result==false"
+      "condition": "args[0].isExplored() ? result==true"
     },
     "throwsTags": []
   },
@@ -6412,7 +6412,7 @@
     "returnTag": {
       "comment": "True if the given player is banned.",
       "kind": "RETURN",
-      "condition": "target.bannedMissions.contains(args[0]) ? result==true"
+      "condition": ""
     },
     "throwsTags": []
   },
