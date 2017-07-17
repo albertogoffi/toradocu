@@ -9,9 +9,5 @@ public class ParamTranslator implements Translator<ParamTag> {
   @Override
   public Specification translate(ParamTag tag, DocumentedExecutable excMember) {
     return BasicTranslator.translate(tag, excMember);
-
-    //    // TODO Create the specification with the derived merged conditions.
-    //
-    //    return null;
   }
 }

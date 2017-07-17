@@ -8,11 +8,6 @@ public class ThrowsTranslator implements Translator<ThrowsTag> {
 
   @Override
   public Specification translate(ThrowsTag tag, DocumentedExecutable excMember) {
-
     return BasicTranslator.translate(tag, excMember);
-
-    //    // TODO Create the specification with the derived merged conditions.
-    //
-    //    return null;
   }
 }
