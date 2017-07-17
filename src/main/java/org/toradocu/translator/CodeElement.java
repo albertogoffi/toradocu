@@ -118,7 +118,7 @@ public abstract class CodeElement<T> implements Comparable<CodeElement<?>> {
    *
    * @return the wrapped code element that this object holds data on
    */
-  T getJavaCodeElement() {
+  public T getJavaCodeElement() {
     return javaCodeElement;
   }
 
