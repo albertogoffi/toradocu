@@ -122,9 +122,11 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    *
    * @param trueCase words representing the second part of an @return comment
    * @param method the method to which the @return tag belongs to
+   * @param comment the comment text
    * @return the translation of the given {@code text}
    */
-  private static String translateSecondPart(String trueCase, DocumentedExecutable method) {
+  private static String translateSecondPart(
+      String trueCase, DocumentedExecutable method, String comment) {
     // Identify propositions in the comment. Each sentence in the comment is parsed into a
     // PropositionSeries.
 
@@ -132,7 +134,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     List<PropositionSeries> extractedPropositions = Parser.parse(new Comment(trueCase), method);
     Set<String> conditions = new LinkedHashSet<>();
     for (PropositionSeries propositions : extractedPropositions) {
-      BasicTranslator.translate(propositions, method);
+      BasicTranslator.translate(propositions, method, comment);
       conditions.add(propositions.getTranslation());
     }
     return BasicTranslator.mergeConditions(conditions);
@@ -170,7 +172,8 @@ public class ReturnTranslator implements Translator<ReturnTag> {
                   .map(PropositionSeries::getSemanticGraph)
                   .collect(toList());
 
-          translation = tryPredicateMatch(method, semanticGraphs, extractedPropositions);
+          translation =
+              tryPredicateMatch(method, semanticGraphs, extractedPropositions, parsedComment);
           if (translation == null)
             translation = tryCodeElementMatch(method, parsedComment, semanticGraphs);
         }
@@ -205,7 +208,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
     if (!predicate.isEmpty() && !trueCase.isEmpty()) {
       String predicateTranslation = translateFirstPart(predicate, method);
       if (predicateTranslation != null) {
-        String conditionTranslation = translateSecondPart(trueCase, method);
+        String conditionTranslation = translateSecondPart(trueCase, method, commentText);
 
         if (!predicateTranslation.isEmpty() && !conditionTranslation.isEmpty()) {
           translation = conditionTranslation + " ? " + predicateTranslation;
@@ -262,7 +265,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
                 .map(PropositionSeries::getSemanticGraph)
                 .collect(toList());
 
-        translation = tryPredicateMatch(method, semanticGraphs, extractedPropositions);
+        translation = tryPredicateMatch(method, semanticGraphs, extractedPropositions, comment);
         if (translation == null) translation = tryCodeElementMatch(method, comment, semanticGraphs);
       }
     }
@@ -293,12 +296,14 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    * @param method the DocumentedExecutable the tag belongs to
    * @param semanticGraphs list of {@code SemanticGraph} related to the comment
    * @param extractedPropositions list of {@code PropositionSeries} extracted from the comment
+   * @param comment the comment text
    * @return a String predicate match if any, or null
    */
   private static String tryPredicateMatch(
       DocumentedExecutable method,
       List<SemanticGraph> semanticGraphs,
-      List<PropositionSeries> extractedPropositions) {
+      List<PropositionSeries> extractedPropositions,
+      String comment) {
     String predicateMatch = null;
 
     for (SemanticGraph sg : semanticGraphs) {
@@ -307,9 +312,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
         for (PropositionSeries prop : extractedPropositions) {
           for (Proposition p : prop.getPropositions()) {
             predicateMatch =
-                new Matcher()
-                    .predicateMatch(
-                        method, new GeneralCodeElement("result"), p.getPredicate(), p.isNegative());
+                new Matcher().predicateMatch(method, new GeneralCodeElement("result"), p, comment);
             if (predicateMatch != null) break;
           }
         }
