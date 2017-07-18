@@ -90,6 +90,7 @@ public class SemanticMatcher {
       List<CodeElement<?>> codeElements)
       throws IOException {
     Set<String> commentWordSet = this.parseComment(comment, method);
+
     if (commentWordSet.size() > 4)
       //TODO vectors sum doesn't work well with long comments. Consider sub-sentences, or just prefer WMD
       commentWordSet = this.parseComment(proposition.getPredicate(), method);
@@ -103,12 +104,23 @@ public class SemanticMatcher {
 
     Map<CodeElement<?>, Double> distances = new LinkedHashMap<>();
 
+    String subject = proposition.getSubject().getSubject().toLowerCase();
+    String wordToReward = null;
     // For each code element, I want to take the vectors of its identifiers (like words componing the method name)
     // and compute the semantic similarity with the predicate (or the whole comment, we'll see)
     if (codeElements != null && !codeElements.isEmpty()) {
       for (CodeElement<?> codeElement : codeElements) {
         if (codeElement instanceof MethodCodeElement) {
-          DoubleVector methodVector = getCodeElementVector(freq, (MethodCodeElement) codeElement);
+          //          if(!((MethodCodeElement) codeElement).getReceiver().equals("target")){
+          //            //if receiver is not target, this code element is a method invoked from the subject.
+          //            if(subject.lastIndexOf(" ")!=-1)
+          //              wordToReward = subject.substring(subject.lastIndexOf(" ")+1, subject.length());
+          //            else
+          //              wordToReward = subject;
+          //          }
+
+          DoubleVector methodVector =
+              getCodeElementVector(freq, (MethodCodeElement) codeElement, wordToReward);
 
           if (methodVector != null && commentVector != null) {
             double dist = cos.measureDistance(methodVector, commentVector);
@@ -126,31 +138,36 @@ public class SemanticMatcher {
    *
    * @param freq TFID map
    * @param codeElement the code element
+   * @param wordToReward
    * @return a {@code DoubleVector} representing the code element vector
    * @throws IOException if the database couldn't be read
    */
   private static DoubleVector getCodeElementVector(
-      Map<String, Double> freq, MethodCodeElement codeElement) throws IOException {
+      Map<String, Double> freq, MethodCodeElement codeElement, String wordToReward)
+      throws IOException {
     int index;
     DoubleVector codeElementVector = null;
-    String[] camelId = codeElement.getJavaCodeElement().getName().split("(?<!^)(?=[A-Z])");
-
-    if (camelId.length > 3) {
-      // As for overly long comment, don't trust overly long method name
-      return null;
+    ArrayList<String> camelId =
+        new ArrayList<String>(
+            Arrays.asList(codeElement.getJavaCodeElement().getName().split("(?<!^)(?=[A-Z])")));
+    String joinedId = String.join(" ", camelId).replaceAll("\\s+", " ").toLowerCase().trim();
+    if (wordToReward != null) {
+      joinedId = wordToReward + " " + joinedId;
+      camelId.add(0, wordToReward);
     }
 
-    String joinedId = String.join(" ", camelId).replaceAll("\\s+", " ").toLowerCase().trim();
     index = 0;
     for (CoreLabel lemma : StanfordParser.lemmatize(joinedId)) {
       if (lemma != null) {
-        camelId[index] = lemma.lemma();
+        camelId.remove(index);
+        camelId.add(index, lemma.lemma());
       }
       index++;
     }
-    for (int i = 0; i != camelId.length; i++) {
-      DoubleVector v = gloveDB.get(camelId[i].toLowerCase());
-      if (stopwordsRemoval && stopwords.contains(camelId[i].toLowerCase())) continue;
+
+    for (int i = 0; i < camelId.size(); i++) {
+      DoubleVector v = gloveDB.get(camelId.get(i).toLowerCase());
+      if (stopwordsRemoval && stopwords.contains(camelId.get(i).toLowerCase())) continue;
       if (v != null) {
         if (codeElementVector == null) codeElementVector = v;
         else codeElementVector = codeElementVector.add(v);
@@ -201,7 +218,6 @@ public class SemanticMatcher {
     String[] wordComment = comment.split(" ");
     int index = 0;
     List<CoreLabel> lemmas = StanfordParser.lemmatize(comment);
-    if (wordComment.length != lemmas.size()) System.out.println("?");
     for (CoreLabel lemma : lemmas) {
       if (lemma != null) wordComment[index] = lemma.lemma();
       index++;

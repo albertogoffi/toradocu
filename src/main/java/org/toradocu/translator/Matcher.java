@@ -249,9 +249,14 @@ class Matcher {
       Collections.sort(sortedMethodList, new JavaExpressionComparator());
       LinkedHashMap<CodeElement<?>, Double> semanticMethodMatches =
           semanticMatcher.runVectorMatch(sortedMethodList, method, proposition, comment);
+
       if (semanticMethodMatches != null && !semanticMethodMatches.isEmpty()) {
-        ArrayList<CodeElement<?>> semanticMethodList =
+        List<CodeElement<?>> semanticMethodList =
             new ArrayList<CodeElement<?>>(semanticMethodMatches.keySet());
+
+        if (semanticMethodList.size() > 5) {
+          semanticMethodList = semanticMethodList.subList(0, 4);
+        }
         match = findBestMethodMatch(method, predicate, semanticMethodList);
       }
     } catch (IOException e) {
