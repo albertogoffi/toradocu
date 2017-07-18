@@ -1,9 +1,10 @@
 package org.toradocu.translator;
 
+import java.util.List;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.Tag;
-import org.toradocu.translator.spec.Specification;
+import randoop.condition.specification.Specification;
 
 public interface Translator<T extends Tag> {
-  Specification translate(T tag, DocumentedExecutable excMember);
+  List<? extends Specification> translate(T tag, DocumentedExecutable excMember);
 }

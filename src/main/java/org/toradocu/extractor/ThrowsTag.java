@@ -2,8 +2,8 @@ package org.toradocu.extractor;
 
 import java.util.Objects;
 import java.util.StringJoiner;
-import org.toradocu.translator.spec.ExcPostcondition;
 import org.toradocu.util.Checks;
+import randoop.condition.specification.ThrowsSpecification;
 
 /**
  * Represents Javadoc @throws and @exception comments. Each {@link ThrowsTag} consists of a comment,
@@ -11,7 +11,7 @@ import org.toradocu.util.Checks;
  * specification specifies when the method documented with this @throws (or @exception) comment is
  * expected to throw the exception.
  */
-public final class ThrowsTag extends Tag<ExcPostcondition> {
+public final class ThrowsTag extends Tag<ThrowsSpecification> {
 
   /** The exception described in this {@code ThrowsTag}. */
   private final Class<?> exception;

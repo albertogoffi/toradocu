@@ -1,13 +1,13 @@
 package org.toradocu.extractor;
 
-import org.toradocu.translator.spec.Postcondition;
+import randoop.condition.specification.PostSpecification;
 
 /**
  * Represents a Javadoc @return comment. Each {@link ReturnTag} consists of a comment and a
  * specification (available after the translation of the comment). The specification specifies the
  * postconditions of the method documented by this @return block comment.
  */
-public final class ReturnTag extends Tag<Postcondition> {
+public final class ReturnTag extends Tag<PostSpecification> {
 
   /**
    * Constructs a {@code ReturnTag} with the given comment

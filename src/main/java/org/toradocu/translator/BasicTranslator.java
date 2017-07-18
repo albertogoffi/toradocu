@@ -7,9 +7,6 @@ import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.ParamTag;
 import org.toradocu.extractor.Tag;
 import org.toradocu.extractor.ThrowsTag;
-import org.toradocu.translator.spec.ExcPostcondition;
-import org.toradocu.translator.spec.Guard;
-import org.toradocu.translator.spec.Precondition;
 
 /**
  * The {@code BasicTranslator} class holds the {@code translate()} methods for {@code Tag} of kind
@@ -17,13 +14,12 @@ import org.toradocu.translator.spec.Precondition;
  */
 public class BasicTranslator {
 
-  public static ExcPostcondition translate(ThrowsTag tag, DocumentedExecutable excMember) {
-    return new ExcPostcondition(
-        new Guard(translateTag(tag, excMember)), tag.getException().toString());
+  public static String translate(ThrowsTag tag, DocumentedExecutable excMember) {
+    return translateTag(tag, excMember);
   }
 
-  public static Precondition translate(ParamTag tag, DocumentedExecutable excMember) {
-    return new Precondition(new Guard(translateTag(tag, excMember)));
+  public static String translate(ParamTag tag, DocumentedExecutable excMember) {
+    return translateTag(tag, excMember);
   }
 
   /**

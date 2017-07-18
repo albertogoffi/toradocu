@@ -1,8 +1,9 @@
 package org.toradocu.extractor;
 
+import java.util.List;
 import java.util.Objects;
-import org.toradocu.translator.spec.Specification;
 import org.toradocu.util.Checks;
+import randoop.condition.specification.Specification;
 
 /**
  * Represents a Javadoc block tag (e.g. @param, @return). A {@link Tag} has a {@link Tag.Kind} that
@@ -40,10 +41,10 @@ public abstract class Tag<S extends Specification> {
   private Comment comment;
 
   /**
-   * Specification generated from the comment of this {@code Tag}. {@code null} if Toradocu failed
+   * Specifications generated from the comment of this {@code Tag}. {@code null} if Toradocu failed
    * to generate a specification or if comment translation not yet attempted.
    */
-  private S specification;
+  private List<S> specifications;
 
   /**
    * Constructs a {@code Tag} of the specific kind, with the given comment.
@@ -93,17 +94,17 @@ public abstract class Tag<S extends Specification> {
    * @return the translation for this tag. {@code null} if the translation has not been attempted
    *     yet or no translation has been generated.
    */
-  public S getSpecification() {
-    return specification;
+  public List<S> getSpecifications() {
+    return specifications;
   }
 
   /**
    * Sets the specification (translation) for this tag to the given specification.
    *
-   * @param specification the comment translation for this tag (a specification)
+   * @param specifications the comment translation for this tag (a specification)
    */
-  public void setSpecification(S specification) {
-    this.specification = specification;
+  public void setSpecification(List<S> specifications) {
+    this.specifications = specifications;
   }
 
   /**
@@ -120,7 +121,7 @@ public abstract class Tag<S extends Specification> {
     Tag that = (Tag) obj;
     return kind.equals(that.kind)
         && comment.equals(that.comment)
-        && Objects.equals(specification, that.specification);
+        && Objects.equals(specifications, that.specifications);
   }
 
   /**
@@ -130,7 +131,7 @@ public abstract class Tag<S extends Specification> {
    */
   @Override
   public int hashCode() {
-    return Objects.hash(comment, kind, specification);
+    return Objects.hash(comment, kind, specifications);
   }
 
   /**
@@ -155,8 +156,8 @@ public abstract class Tag<S extends Specification> {
    * @return the string representation of this tag with the condition appended
    */
   String appendCondition(String stringRepresentation) {
-    if (specification != null) {
-      stringRepresentation += " ==> " + specification;
+    if (specifications != null) {
+      stringRepresentation += " ==> " + specifications;
     }
     return stringRepresentation;
   }

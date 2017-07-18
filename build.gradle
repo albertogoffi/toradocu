@@ -78,6 +78,7 @@ repositories {
 }
 
 dependencies {
+  compile fileTree(dir: 'lib', include: '*.jar')
   compile 'edu.stanford.nlp:stanford-corenlp:3.6.0'
   compile 'edu.stanford.nlp:stanford-corenlp:3.6.0:models-english'
   compile 'org.jsoup:jsoup:1.8.3' // JSoup used only to remove HTML tags in comments.

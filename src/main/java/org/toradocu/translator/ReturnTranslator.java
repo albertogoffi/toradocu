@@ -4,6 +4,7 @@ import static java.util.stream.Collectors.toList;
 
 import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.semgraph.SemanticGraph;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -12,13 +13,66 @@ import java.util.regex.Pattern;
 import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.ReturnTag;
-import org.toradocu.translator.spec.Postcondition;
-import org.toradocu.translator.spec.Specification;
+import randoop.condition.specification.Guard;
+import randoop.condition.specification.PostSpecification;
+import randoop.condition.specification.Property;
 
 public class ReturnTranslator implements Translator<ReturnTag> {
 
-  private static final String ARITHMETIC_OP_REGEX =
-      "(([a-zA-Z]+[0-9]?_?)+) ?([-+*/%]) ?(([a-zA-Z]+[0-9]?_?)+)";
+  @Override
+  public List<PostSpecification> translate(ReturnTag tag, DocumentedExecutable excMember) {
+    String comment = tag.getComment().getText();
+    // Assumption: the comment is composed of a single sentence. We should probably split multiple
+    // sentence comments using the Stanford Parser, and then work on each single sentence.
+    final String translation;
+
+    // Split the sentence in three parts: predicate + true case + false case.
+    // TODO Naive splitting. Make the split more reliable.
+    final int predicateSplitPoint = comment.indexOf(" if ");
+    if (predicateSplitPoint != -1) {
+      translation = returnStandardPattern(excMember, tag.getComment(), predicateSplitPoint);
+    } else {
+      translation = returnNotStandard(excMember, comment);
+    }
+
+    return createPostSpecification(translation);
+  }
+
+  /**
+   * Creates a new Postcondition from the given string representation of a postcondition. String
+   * representation must be in the form "GUARD ? TRUE_PROPERTY : FALSE_PROPERTY" where the fragment
+   * ": FALSE_PROPERTY" is optional.
+   *
+   * @param postcondition string representation of a postcondition
+   * @return a new Postcondition corresponding to the given string postcondition. Null if
+   *     postcondition is empty
+   */
+  private List<PostSpecification> createPostSpecification(String postcondition) {
+    Pattern pattern = Pattern.compile("([^?]+)(?:\\?([^:]+)(?::(.+))?)?");
+    java.util.regex.Matcher matcher = pattern.matcher(postcondition);
+
+    // TODO Add proper description instead of empty strings.
+    Guard guard = null;
+    Property trueProp = null, falseProp = null;
+    if (matcher.find()) {
+      guard = new Guard("", matcher.group());
+    }
+    if (matcher.find()) {
+      trueProp = new Property("", matcher.group());
+    }
+    if (matcher.find()) {
+      falseProp = new Property("", matcher.group());
+    }
+
+    PostSpecification truePostSpec = new PostSpecification("", guard, trueProp);
+    // TODO Invert guard sign!
+    PostSpecification falsePostSpec = new PostSpecification("", guard, falseProp);
+
+    List<PostSpecification> specs = new ArrayList<>();
+    specs.add(truePostSpec);
+    specs.add(falsePostSpec);
+    return specs;
+  }
 
   /**
    * Translate arithmetic operations involved in the return, if found.
@@ -29,6 +83,8 @@ public class ReturnTranslator implements Translator<ReturnTag> {
    */
   private static String manageArithmeticOperation(
       DocumentedExecutable method, String commentToTranslate) {
+    final String ARITHMETIC_OP_REGEX = "(([a-zA-Z]+[0-9]?_?)+) ?([-+*/%]) ?(([a-zA-Z]+[0-9]?_?)+)";
+
     String translation = "";
     java.util.regex.Matcher matcherOp =
         Pattern.compile(ARITHMETIC_OP_REGEX).matcher(commentToTranslate);
@@ -364,24 +420,5 @@ public class ReturnTranslator implements Translator<ReturnTag> {
       }
     }
     return codeElementMatch;
-  }
-
-  @Override
-  public Specification translate(ReturnTag tag, DocumentedExecutable excMember) {
-    String comment = tag.getComment().getText();
-    // Assumption: the comment is composed of a single sentence. We should probably split multiple
-    // sentence comments using the Stanford Parser, and then work on each single sentence.
-    final String translation;
-
-    // Split the sentence in three parts: predicate + true case + false case.
-    // TODO Naive splitting. Make the split more reliable.
-    final int predicateSplitPoint = comment.indexOf(" if ");
-    if (predicateSplitPoint != -1) {
-      translation = returnStandardPattern(excMember, tag.getComment(), predicateSplitPoint);
-    } else {
-      translation = returnNotStandard(excMember, comment);
-    }
-
-    return Postcondition.create(translation);
   }
 }

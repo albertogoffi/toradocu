@@ -1,8 +1,8 @@
 package org.toradocu.extractor;
 
 import java.util.Objects;
-import org.toradocu.translator.spec.Precondition;
 import org.toradocu.util.Checks;
+import randoop.condition.specification.PreSpecification;
 
 /**
  * Represents a Javadoc @param comment. Each {@link ParamTag} consists of the name of the parameter,
@@ -12,7 +12,7 @@ import org.toradocu.util.Checks;
  * to {@code false} the precondition expressed by this tag is violated, and the behavior of the
  * method documented by this tag is unspecified.
  */
-public final class ParamTag extends Tag<Precondition> {
+public final class ParamTag extends Tag<PreSpecification> {
 
   /** The parameter associated with the param tag */
   private final DocumentedParameter parameter;
