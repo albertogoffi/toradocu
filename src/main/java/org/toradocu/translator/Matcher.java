@@ -206,6 +206,7 @@ class Matcher {
     } else {
       return null;
     }
+    codeElements.addAll(JavaElementsCollector.collect(method));
 
     // Filter collected code elements that refer to the documented method under analysis.
     // This avoids to generate specifications mentioning the method whose behavior they specify.
@@ -216,7 +217,9 @@ class Matcher {
                 e -> {
                   if (e instanceof MethodCodeElement) {
                     Method m = ((MethodCodeElement) e).getJavaCodeElement();
-                    if (m.toGenericString().equals(method.getExecutable().toGenericString())) {
+                    if (m.toGenericString().equals(method.getExecutable().toGenericString())
+                        || (!m.getReturnType().equals(Boolean.class)
+                            && !m.getReturnType().equals(boolean.class))) {
                       return false;
                     }
                   }
@@ -224,8 +227,9 @@ class Matcher {
                 })
             .collect(Collectors.toSet());
 
-    List<CodeElement<?>> sortedMethodList =
-        new ArrayList<CodeElement<?>>(filterMatchingCodeElements(predicate, codeElements));
+    //TODO remove the following commented lines if not useful anymore
+    //    List<CodeElement<?>> sortedMethodList =
+    //        new ArrayList<CodeElement<?>>(filterMatchingCodeElements(predicate, codeElements));
     //    if (!sortedList.isEmpty()) Collections.sort(sortedList, new JavaExpressionComparator());
     //    if (sortedList.isEmpty()) {
     //      return null;
@@ -233,23 +237,25 @@ class Matcher {
     //      match = findBestMethodMatch(method, predicate, sortedList);
     //    }
 
-    if (!sortedMethodList.isEmpty()) {
+    //    if (!sortedMethodList.isEmpty()) {
+    //      Collections.sort(sortedMethodList, new JavaExpressionComparator());
+    //      match = findBestMethodMatch(method, predicate, sortedMethodList);
+    //    } else {
+    SemanticMatcher semanticMatcher = new SemanticMatcher(true, false, (float) 0.265);
+    try {
+      List<CodeElement<?>> sortedMethodList = new ArrayList<CodeElement<?>>(codeElements);
+      //it is important to provide an fixed order since this point, to prevent method with same score
+      //being put in map in a different order every execution
       Collections.sort(sortedMethodList, new JavaExpressionComparator());
-      match = findBestMethodMatch(method, predicate, sortedMethodList);
-    } else {
-      SemanticMatcher semanticMatcher = new SemanticMatcher("", true, false, (float) 0.08);
-      try {
-        LinkedHashMap<CodeElement<?>, Double> semanticMethodMatches =
-            semanticMatcher.runVectorMatch(codeElements, method, proposition, comment);
-        if (semanticMethodMatches != null && !semanticMethodMatches.isEmpty()) {
-          ArrayList<CodeElement<?>> semanticMethodList =
-              new ArrayList<CodeElement<?>>(semanticMethodMatches.keySet());
-          Collections.sort(semanticMethodList, new JavaExpressionComparator());
-          match = findBestMethodMatch(method, predicate, semanticMethodList);
-        }
-      } catch (IOException e) {
-        e.printStackTrace();
+      LinkedHashMap<CodeElement<?>, Double> semanticMethodMatches =
+          semanticMatcher.runVectorMatch(sortedMethodList, method, proposition, comment);
+      if (semanticMethodMatches != null && !semanticMethodMatches.isEmpty()) {
+        ArrayList<CodeElement<?>> semanticMethodList =
+            new ArrayList<CodeElement<?>>(semanticMethodMatches.keySet());
+        match = findBestMethodMatch(method, predicate, semanticMethodList);
       }
+    } catch (IOException e) {
+      e.printStackTrace();
     }
     return match;
   }
@@ -266,7 +272,7 @@ class Matcher {
    */
   private String findBestMethodMatch(
       DocumentedExecutable method, String predicate, List<CodeElement<?>> sortedCodeElements) {
-    String match = "";
+    String match = null;
     CodeElement<?> firstMatch = null;
     boolean foundArgMatch = false;
     List<String> paramForMatch = new ArrayList<String>();
@@ -304,7 +310,8 @@ class Matcher {
 
       final java.util.regex.Matcher equalPattern = //or is it the equals() method?
           Pattern.compile("[is|are] equal(s?)").matcher(predicate);
-      if (firstMatch == null) firstMatch = sortedCodeElements.stream().findFirst().get();
+
+      firstMatch = sortedCodeElements.stream().findFirst().get();
       if (nullPattern.find()) {
         String exp = firstMatch.getJavaExpression();
         match = exp.substring(0, exp.indexOf("(") + 1) + "null" + ")";
@@ -333,8 +340,14 @@ class Matcher {
         }
       }
     }
-    // No match is the absolute best: just pick the first one
-    if (!foundArgMatch) match = sortedCodeElements.stream().findFirst().get().getJavaExpression();
+    if (!foundArgMatch) {
+      // No match is the absolute best: just pick the first one, but only if it takes no arguments!
+      firstMatch = sortedCodeElements.stream().findFirst().get();
+      if (firstMatch instanceof MethodCodeElement
+          && ((MethodCodeElement) firstMatch).getArgs() == null) {
+        match = sortedCodeElements.stream().findFirst().get().getJavaExpression();
+      }
+    }
     return match;
   }
 

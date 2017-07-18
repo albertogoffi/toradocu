@@ -14,13 +14,20 @@ public class NormalizeIfs implements PreprocessingPhase {
    * @return the normalized comment
    */
   private static String normalizeComment(String comment, DocumentedExecutable method) {
-    // No need to chekc the beggining of a phrase since "if and only if" cannot be a substring of a word.
-    if (comment.contains("if and only if")) comment = comment.replace("if and only if", "if");
-
-    //Checks if the comment starts with "iff "
-
-    if (comment.startsWith("iff ")) comment = comment.replace("iff ", "if ");
-    comment = comment.replaceAll(" iff ", " if ");
+    // Checks if comment contains "if and only if", " iff ", or starts with "iff".
+    // No need to check the beginning of a phrase since "if and only if" cannot be a substring of a word.
+    if (comment.contains("if and only if")
+        || comment.startsWith("iff ")
+        || comment.contains(" iff ")) {
+      comment = comment.replaceAll("if and only if", "if");
+      comment = comment.replace("iff ", "if ");
+      comment = comment.replaceAll(" iff ", " if ");
+      if (comment.endsWith(".")) {
+        comment = comment.substring(0, comment.length() - 1);
+      }
+      // By adding this, Toradocu is able to understand that also the false property must be specified
+      comment += ", false otherwise.";
+    }
 
     return comment;
   }

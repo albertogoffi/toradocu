@@ -34,8 +34,7 @@ public class SemanticMatcher {
 
   private static GloveRandomAccessReader gloveDB;
 
-  public SemanticMatcher(
-      String className, boolean stopwordsRemoval, boolean posSelect, float distanceThreshold) {
+  public SemanticMatcher(boolean stopwordsRemoval, boolean posSelect, float distanceThreshold) {
 
     this.stopwordsRemoval = stopwordsRemoval;
     this.posSelect = posSelect;
@@ -47,7 +46,7 @@ public class SemanticMatcher {
         new ArrayList<>(
             Arrays.asList(
                 "true", "false", "the", "a", "if", "for", "be", "have", "this", "do", "not", "of",
-                "only", "already", "specify"));
+                "in", "null", "only", "already", "specify"));
 
     gloveDB = setUpGloveBinaryDB();
   }
@@ -61,15 +60,15 @@ public class SemanticMatcher {
    * @param comment
    */
   public LinkedHashMap<CodeElement<?>, Double> runVectorMatch(
-      Set<CodeElement<?>> codeElements,
+      List<CodeElement<?>> codeElements,
       DocumentedExecutable method,
       Proposition proposition,
       String comment)
       throws IOException {
 
-    this.stopwords.add(proposition.getSubject().getSubject().toLowerCase());
+    //    this.stopwords.add(proposition.getSubject().getSubject().toLowerCase());
     try {
-      return vectorsMatch(comment, method, codeElements);
+      return vectorsMatch(comment, proposition, method, codeElements);
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -79,17 +78,21 @@ public class SemanticMatcher {
   /**
    * Computes semantic semantic through GloVe vectors.
    *
+   * @param proposition
    * @param method the method the tag belongs to
    * @param codeElements the code elements that are possible candidates to use in the translation
    * @throws IOException if the GloVe database couldn't be read
    */
   LinkedHashMap<CodeElement<?>, Double> vectorsMatch(
-      String comment, DocumentedExecutable method, Set<CodeElement<?>> codeElements)
+      String comment,
+      Proposition proposition,
+      DocumentedExecutable method,
+      List<CodeElement<?>> codeElements)
       throws IOException {
     Set<String> commentWordSet = this.parseComment(comment, method);
     if (commentWordSet.size() > 4)
       //TODO vectors sum doesn't work well with long comments. Consider sub-sentences, or just prefer WMD
-      return null;
+      commentWordSet = this.parseComment(proposition.getPredicate(), method);
 
     String parsedComment = String.join(" ", commentWordSet).replaceAll("\\s+", " ").trim();
 
@@ -98,7 +101,7 @@ public class SemanticMatcher {
 
     DoubleVector commentVector = getCommentVector(commentWordSet);
 
-    Map<CodeElement<?>, Double> distances = new HashMap<>();
+    Map<CodeElement<?>, Double> distances = new LinkedHashMap<>();
 
     // For each code element, I want to take the vectors of its identifiers (like words componing the method name)
     // and compute the semantic similarity with the predicate (or the whole comment, we'll see)
@@ -129,11 +132,14 @@ public class SemanticMatcher {
   private static DoubleVector getCodeElementVector(
       Map<String, Double> freq, MethodCodeElement codeElement) throws IOException {
     int index;
-    //    Set<String> ids = codeElement.getIdentifiers();
     DoubleVector codeElementVector = null;
-    //    for (String id : ids) {
-    //      String[] camelId = id.split("(?<!^)(?=[A-Z])");
     String[] camelId = codeElement.getJavaCodeElement().getName().split("(?<!^)(?=[A-Z])");
+
+    if (camelId.length > 3) {
+      // As for overly long comment, don't trust overly long method name
+      return null;
+    }
+
     String joinedId = String.join(" ", camelId).replaceAll("\\s+", " ").toLowerCase().trim();
     index = 0;
     for (CoreLabel lemma : StanfordParser.lemmatize(joinedId)) {
@@ -150,7 +156,7 @@ public class SemanticMatcher {
         else codeElementVector = codeElementVector.add(v);
       }
     }
-    //    }
+
     return codeElementVector;
   }
 
@@ -215,7 +221,6 @@ public class SemanticMatcher {
   LinkedHashMap<CodeElement<?>, Double> retainMatches(
       String parsedComment, String methodName, String tag, Map<CodeElement<?>, Double> distances) {
     SemanticMatch aMatch = new SemanticMatch(tag, methodName, parsedComment, distanceThreshold);
-
     // Select as candidates only code elements that have a semantic distance below the chosen threshold.
     if (distanceThreshold != -1) {
       distances
@@ -251,8 +256,9 @@ public class SemanticMatcher {
     if (stopwordsRemoval) {
       for (int i = 0; i != words.length; i++) {
         if (stopwords.contains(words[i].toLowerCase())
-            || words[i].toLowerCase().equals(className.toLowerCase())) {
-          // Subject often is not useful at all (usually it's the target). Try removing it
+            || words[i].toLowerCase().equals(className.toLowerCase()))
+        //         Class name often is not useful at all (usually it's the subject). Try removing it
+        {
           words[i] = "";
         }
       }
