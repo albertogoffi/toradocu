@@ -1,11 +1,8 @@
 package org.toradocu.extractor;
 
-import static java.util.stream.Collectors.toList;
-
 import java.lang.reflect.AnnotatedType;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Executable;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -21,33 +18,111 @@ public final class DocumentedExecutable {
 
   /** Reflection executable of this DocumentedExecutable. */
   private final Executable executable;
-  /** Parameters list. */
+  /** Parameter list. */
   private final List<DocumentedParameter> parameters;
-  /** Javadoc @param tags of this executable member. */
-  private List<ParamTag> paramTags;
-  /** Javadoc @return tag of this executable member. */
-  private ReturnTag returnTag;
-  /** Javadoc @throws and @exception tags of this executable member. */
-  private List<ThrowsTag> throwsTags;
+
+  /** Javadoc @param, @return, and @throws tags of this executable member. */
+  private BlockTags tags;
+
+  /** Represents the @param, @return, and @throws tags of an executable member. */
+  public static class BlockTags {
+    /** Javadoc @param tags of this executable member. */
+    private final List<ParamTag> paramTags;
+    /** Javadoc @return tag of this executable member. */
+    private final ReturnTag returnTag;
+    /** Javadoc @throws and @exception tags of this executable member. */
+    private final List<ThrowsTag> throwsTags;
+
+    /**
+     * Create a representation of the block tags of an executable member.
+     *
+     * @param paramTags Javadoc @param tags of this executable member.
+     * @param returnTag Javadoc @return tag of this executable member.
+     * @param throwsTags @throws and @exception tags of this executable member.
+     */
+    BlockTags(List<ParamTag> paramTags, ReturnTag returnTag, List<ThrowsTag> throwsTags) {
+      this.paramTags = paramTags;
+      this.returnTag = returnTag;
+      this.throwsTags = throwsTags;
+    }
+
+    /**
+     * Returns an unmodifiable view of the param tags in this method.
+     *
+     * @return an unmodifiable view of the param tags in this method.
+     */
+    public List<ParamTag> paramTags() {
+      return Collections.unmodifiableList(paramTags);
+    }
+
+    /**
+     * Returns the return tag in this method.
+     *
+     * @return the return tag in this method. Null if there is no @return comment
+     */
+    public ReturnTag returnTag() {
+      return returnTag;
+    }
+
+    /**
+     * Returns an unmodifiable view of the throws tags in this method.
+     *
+     * @return an unmodifiable view of the throws tags in this method
+     */
+    public List<ThrowsTag> throwsTags() {
+      return Collections.unmodifiableList(throwsTags);
+    }
+
+    /**
+     * Returns true if this {@code BlockTags} and the specified object are equal.
+     *
+     * @param obj the object to test for equality
+     * @return true if this object and {@code obj} are equal
+     */
+    @Override
+    public boolean equals(Object obj) {
+      if (this == obj) {
+        return true;
+      }
+      if (!(obj instanceof BlockTags)) {
+        return false;
+      }
+
+      BlockTags that = (BlockTags) obj;
+      return this.paramTags.equals(that.paramTags)
+          && this.returnTag.equals(that.returnTag)
+          && this.throwsTags.equals(that.throwsTags);
+    }
+
+    /**
+     * Returns the hash code of this object.
+     *
+     * @return the hash code of this object
+     */
+    @Override
+    public int hashCode() {
+      return Objects.hash(paramTags, returnTag, throwsTags);
+    }
+  }
 
   /**
    * Creates a new {@code DocumentedExecutable} wrapping the given executable, with the specified
-   * parameters and Javadoc comments introduced by tags.
+   * parameters and Javadoc comments introduced by block tags.
    *
    * @param executable the executable this DocumentedExecutable wraps, must not be null
    * @param parameters the parameters of this DocumentedExecutable, must not be null
-   * @param tags the Javadoc comments introduced by tags (e.g., @param, @return) associated with
-   *     this executable member
+   * @param tags the Javadoc comments introduced by block tags (e.g., {@code @param},
+   *     {@code @return}) associated with this executable member
    */
   DocumentedExecutable(
-      Executable executable, List<DocumentedParameter> parameters, List<Tag> tags) {
+      Executable executable, List<DocumentedParameter> parameters, BlockTags blockTags) {
     Checks.nonNullParameter(executable, "executable");
     Checks.nonNullParameter(parameters, "parameters");
 
     this.executable = executable;
     checkParameters(executable.getParameters(), parameters);
     this.parameters = parameters;
-    setTagFields(tags);
+    this.tags = blockTags;
   }
 
   /**
@@ -79,41 +154,12 @@ public final class DocumentedExecutable {
   }
 
   /**
-   * Stores tags in the proper fields.
-   *
-   * @param tags list of {@code Tag}s
-   */
-  private void setTagFields(List<Tag> tags) {
-    paramTags = new ArrayList<>();
-    throwsTags = new ArrayList<>();
-    returnTag = null;
-
-    for (Tag tag : tags) {
-      if (tag instanceof ParamTag) {
-        paramTags.add((ParamTag) tag);
-      } else if (tag instanceof ReturnTag) {
-        if (returnTag == null) {
-          returnTag = (ReturnTag) tag;
-        } else {
-          final List<Tag> returnTags =
-              tags.stream().filter(t -> t instanceof ReturnTag).collect(toList());
-          throw new IllegalArgumentException(
-              "Javadoc documentation must contain only one @return tag. Found @return tags: "
-                  + returnTags);
-        }
-      } else if (tag instanceof ThrowsTag) {
-        throwsTags.add((ThrowsTag) tag);
-      }
-    }
-  }
-
-  /**
    * Returns an unmodifiable view of the param tags in this method.
    *
    * @return an unmodifiable view of the param tags in this method.
    */
   public List<ParamTag> paramTags() {
-    return Collections.unmodifiableList(paramTags);
+    return tags.paramTags();
   }
 
   /**
@@ -122,7 +168,7 @@ public final class DocumentedExecutable {
    * @return the return tag in this method. Null if there is no @return comment
    */
   public ReturnTag returnTag() {
-    return returnTag;
+    return tags.returnTag();
   }
 
   /**
@@ -131,24 +177,18 @@ public final class DocumentedExecutable {
    * @return an unmodifiable view of the throws tags in this method
    */
   public List<ThrowsTag> throwsTags() {
-    return Collections.unmodifiableList(throwsTags);
+    return tags.throwsTags();
   }
 
   /**
-   * Returns the Javadoc comments introduced by a tag (e.g., @param, @return, ...) of this
+   * Returns the Javadoc comments introduced by a block tag (e.g., @param, @return, ...) of this
    * executable member.
    *
-   * @return the Javadoc comments introduced by a tag (e.g., @param, @return, ...) of this
+   * @return the Javadoc comments introduced by a block tag (e.g., @param, @return, ...) of this
    *     executable member
    */
-  public List<Tag> getTags() {
-    List<Tag> tagList = new ArrayList<>();
-    tagList.addAll(paramTags);
-    if (returnTag != null) {
-      tagList.add(returnTag);
-    }
-    tagList.addAll(throwsTags);
-    return tagList;
+  public BlockTags getTags() {
+    return tags;
   }
 
   /**
@@ -211,11 +251,11 @@ public final class DocumentedExecutable {
   }
 
   /**
-   * Returns the class in which this executable member is defined.
+   * Returns the class in which this executable member is declared.
    *
-   * @return the class in which this executable member is defined
+   * @return the class in which this executable member is declared
    */
-  public Class<?> getContainingClass() {
+  public Class<?> getDeclaringClass() {
     return executable.getDeclaringClass();
   }
 
@@ -246,9 +286,7 @@ public final class DocumentedExecutable {
     DocumentedExecutable that = (DocumentedExecutable) obj;
     return this.executable.equals(that.executable)
         && this.parameters.equals(that.parameters)
-        && this.paramTags.equals(that.paramTags)
-        && this.returnTag.equals(that.returnTag)
-        && this.throwsTags.equals(that.throwsTags);
+        && this.tags.equals(that.tags);
   }
 
   /**
@@ -258,7 +296,7 @@ public final class DocumentedExecutable {
    */
   @Override
   public int hashCode() {
-    return Objects.hash(executable, parameters, paramTags, returnTag, throwsTags);
+    return Objects.hash(executable, parameters, tags);
   }
 
   /**

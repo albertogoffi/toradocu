@@ -18,7 +18,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.toradocu.conf.ClassDirsConverter;
 import org.toradocu.conf.Configuration;
-import org.toradocu.testlib.Compiler;
+import org.toradocu.testlib.ToradocuJavaCompiler;
 
 /**
  * Tests {@code JavadocExtractor} on the example class example.AClass in src/test/resources/example.
@@ -87,7 +87,6 @@ public class JavadocExtractorTest {
     assertThat(parameter.getType(), is(stringClass));
     assertThat(parameter.isNullable(), is(nullValue()));
 
-    assertThat(member.getTags().size(), is(3));
     final List<ParamTag> paramTags = member.paramTags();
     assertThat(paramTags.size(), is(1));
     final ParamTag paramTag = paramTags.get(0);
@@ -130,7 +129,7 @@ public class JavadocExtractorTest {
     assertThat(member.getName(), is("foo"));
     assertThat(member.getSignature(), is("foo(java.lang.Object[] array)"));
     assertThat(member.toString(), is("public double example.AClass.foo(java.lang.Object[])"));
-    assertThat(member.getContainingClass().getName(), is("example.AClass"));
+    assertThat(member.getDeclaringClass().getName(), is("example.AClass"));
   }
 
   @Test
@@ -223,7 +222,7 @@ public class JavadocExtractorTest {
     if (sourceFiles.isEmpty()) {
       fail("No Java files to compile found in " + sourceDir);
     }
-    boolean compilationOK = Compiler.run(sourceFiles);
+    boolean compilationOK = ToradocuJavaCompiler.run(sourceFiles);
     if (!compilationOK) {
       fail("Error(s) during compilation of test source files.");
     }

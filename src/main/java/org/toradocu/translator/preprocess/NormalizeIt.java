@@ -5,9 +5,9 @@ import static java.util.stream.Collectors.toList;
 import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.util.List;
+import org.toradocu.extractor.BlockTag;
 import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.DocumentedExecutable;
-import org.toradocu.extractor.Tag;
 import org.toradocu.translator.Parser;
 import org.toradocu.translator.PropositionSeries;
 
@@ -35,7 +35,7 @@ public class NormalizeIt implements PreprocessingPhase {
   }
 
   @Override
-  public String run(Tag tag, DocumentedExecutable excMember) {
+  public String run(BlockTag tag, DocumentedExecutable excMember) {
     return normalizeComment(tag.getComment().getText(), excMember);
   }
 }

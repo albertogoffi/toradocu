@@ -50,7 +50,7 @@ public class PropositionSeries {
   PropositionSeries(
       SemanticGraph semanticGraph, List<Proposition> propositions, List<Conjunction> conjunctions) {
     if (!propositions.isEmpty()
-        && !propositions.isEmpty()
+        && !conjunctions.isEmpty()
         && propositions.size() - conjunctions.size() != 1) {
       throw new IllegalArgumentException();
     }

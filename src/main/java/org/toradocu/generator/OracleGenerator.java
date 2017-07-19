@@ -14,9 +14,9 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.Checks;
+import org.toradocu.extractor.BlockTag;
 import org.toradocu.extractor.ExecutableMember;
 import org.toradocu.extractor.ReturnTag;
-import org.toradocu.extractor.Tag;
 
 /**
  * The oracle generator. The method {@code createAspects} of this class creates the aspects for a
@@ -65,7 +65,7 @@ public class OracleGenerator {
     createdAspectNames.add(junitAspectName);
     int aspectNumber = 1;
     for (ExecutableMember method : methods) {
-      List<Tag> tags = new ArrayList<>(method.paramTags());
+      List<BlockTag> tags = new ArrayList<>(method.paramTags());
       tags.addAll(method.throwsTags());
       ReturnTag returnTag = method.returnTag();
       if (returnTag != null && returnTag.getCondition() != null) {

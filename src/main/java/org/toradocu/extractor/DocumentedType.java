@@ -8,7 +8,7 @@ import org.toradocu.util.Checks;
 public final class DocumentedType {
 
   /** Documented class or interface (or enum, ...). */
-  private final Class<?> documentedType;
+  private final Class<?> documentedClass;
   /** Constructors and methods of this documented type. */
   private final List<DocumentedExecutable> documentedExecutables;
 
@@ -23,7 +23,7 @@ public final class DocumentedType {
   DocumentedType(Class<?> documentedClass, List<DocumentedExecutable> documentedExecutables) {
     Checks.nonNullParameter(documentedClass, "documentedClass");
     Checks.nonNullParameter(documentedExecutables, "documentedExecutables");
-    this.documentedType = documentedClass;
+    this.documentedClass = documentedClass;
     this.documentedExecutables = documentedExecutables;
   }
 
@@ -33,13 +33,13 @@ public final class DocumentedType {
    * @return the runtime class of the documented type this DocumentedType represents
    */
   Class<?> getDocumentedClass() {
-    return documentedType;
+    return documentedClass;
   }
 
   /**
-   * Returns constructors and methods of this {@code documentedType}.
+   * Returns constructors and methods of this {@code DocumentedType}.
    *
-   * @return constructors and methods of this {@code documentedType}
+   * @return constructors and methods of this {@code DocumentedType}
    */
   public List<DocumentedExecutable> getDocumentedExecutables() {
     return documentedExecutables;
@@ -54,12 +54,12 @@ public final class DocumentedType {
       return false;
     }
     DocumentedType that = (DocumentedType) o;
-    return documentedType.equals(that.documentedType)
+    return documentedClass.equals(that.documentedClass)
         && documentedExecutables.equals(that.documentedExecutables);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(documentedType, documentedExecutables);
+    return Objects.hash(documentedClass, documentedExecutables);
   }
 }
