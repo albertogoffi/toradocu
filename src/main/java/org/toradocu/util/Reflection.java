@@ -5,13 +5,14 @@ import java.net.URLClassLoader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.conf.Configuration;
 
 public class Reflection {
 
   /** Logger of this class. */
-  private static org.slf4j.Logger log = LoggerFactory.getLogger(Reflection.class);
+  private static Logger log = LoggerFactory.getLogger(Reflection.class);
 
   private static final Map<String, Class> primitiveClasses = initializePrimitivesMap();
 
@@ -56,39 +57,4 @@ public class Reflection {
       return Class.forName(className);
     }
   }
-
-  //  /**
-  //   * Check the type of all the specified parameters. Returns true if all the specified {@code
-  //   * parameters} have the types specified in the array {@code types}.
-  //   *
-  //   * @param parameters the parameters whose type has to be checked
-  //   * @param types the types that the parameters should have
-  //   * @return true if all the specified {@code parameters} have the types specified in the array
-  //   *     {@code types}. False otherwise.
-  //   */
-  //  public static boolean checkTypes(Parameter[] parameters, Class<?>[] types) {
-  //    if (types.length != parameters.length) {
-  //      return false;
-  //    }
-  //
-  //    for (int i = 0; i < types.length; i++) {
-  //      final Type parameterType = parameters[i].getType();
-  //      if (parameterType.isArray() && types[i].isArray()) {
-  //        // Build the parameter type name (the name encodes the dimension of the array)
-  //        String parameterTypeName = "L" + parameterType.getComponentType().getQualifiedName();
-  //        for (int j = 0; j < parameterType.dimension(); j++) {
-  //          parameterTypeName = "[" + parameterTypeName;
-  //        }
-  //        // Compare the two type names
-  //        if (parameterTypeName.equals(types[i].getComponentType().getName())) {
-  //          return false;
-  //        }
-  //      } else {
-  //        if (!parameterType.equalsTo(types[i])) {
-  //          return false;
-  //        }
-  //      }
-  //    }
-  //    return true;
-  //  }
 }
