@@ -7,13 +7,13 @@ import org.toradocu.translator.spec.Specification;
 
 public class CommentTranslator {
 
-  public static void translate(Tag tag, DocumentedExecutable excMember) {
+  public static <T extends Tag> void translate(T tag, DocumentedExecutable excMember) {
 
     // Preprocessing.
     PreprocessorFactory.create(tag.getKind()).preprocess(tag, excMember);
 
     // Translation.
-    final Translator<Tag> translator = TranslatorFactory.create(tag);
+    final Translator<T> translator = TranslatorFactory.create(tag);
     final Specification specification = translator.translate(tag, excMember);
 
     // TODO Check the consistency of the generated specification.

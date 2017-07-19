@@ -75,8 +75,9 @@ public final class JavadocExtractor {
       final CallableDeclaration<?> sourceMember = entry.getValue();
       final List<DocumentedParameter> parameters =
           getParameters(sourceMember.getParameters(), reflectionMember.getParameters());
+      final String qualifiedClassName = reflectionMember.getDeclaringClass().getName();
       Triple<List<ParamTag>, ReturnTag, List<ThrowsTag>> tags =
-          createTags(classesInPackage, sourceMember, parameters);
+          createTags(classesInPackage, sourceMember, parameters, qualifiedClassName);
       // TODO Consider to change DocumentedExecutable constructor to take as arguments the different
       // TODO tags, and not one single list like it does now.
       List<Tag> tagList = new ArrayList<>();
@@ -133,6 +134,7 @@ public final class JavadocExtractor {
    * @param classesInPackage list of class names in sourceMember's package
    * @param sourceMember the source member the tags refer to
    * @param parameters {@code sourceMember}'s parameters
+   * @param className qualified name of the class defining {@code sourceMember}
    * @return a triple of instantiated tags: list of @param tags, return tag, list of @throws tags
    * @throws ClassNotFoundException if a type described in a Javadoc comment cannot be loaded (e.g.,
    *     the type is not on the classpath.)
@@ -140,7 +142,8 @@ public final class JavadocExtractor {
   private Triple<List<ParamTag>, ReturnTag, List<ThrowsTag>> createTags(
       List<String> classesInPackage,
       CallableDeclaration<?> sourceMember,
-      List<DocumentedParameter> parameters)
+      List<DocumentedParameter> parameters,
+      String className)
       throws ClassNotFoundException {
 
     List<ParamTag> paramTags = new ArrayList<>();
@@ -161,7 +164,7 @@ public final class JavadocExtractor {
             break;
           case EXCEPTION:
           case THROWS:
-            throwsTags.add(createThrowsTag(classesInPackage, blockTag, sourceMember));
+            throwsTags.add(createThrowsTag(classesInPackage, blockTag, sourceMember, className));
             break;
         }
       }
@@ -175,11 +178,15 @@ public final class JavadocExtractor {
    * @param classesInPackage list of class names in sourceMember's package
    * @param blockTag the @throws or @exception Javadoc block comment containing the tag
    * @param sourceMember the source member the tag refers to
+   * @param className qualified name of the class defining {@code sourceMember}
    * @return the instantiated tag
    * @throws ClassNotFoundException if the class of the exception type couldn't be found
    */
   private ThrowsTag createThrowsTag(
-      List<String> classesInPackage, JavadocBlockTag blockTag, CallableDeclaration<?> sourceMember)
+      List<String> classesInPackage,
+      JavadocBlockTag blockTag,
+      CallableDeclaration<?> sourceMember,
+      String className)
       throws ClassNotFoundException {
     // Javaparser library does not provide a nice parsing of @throws tags. We have to parse the
     // comment text by ourselves.
@@ -192,7 +199,8 @@ public final class JavadocExtractor {
     String comment = blockTag.getContent().toText();
     final String[] tokens = comment.split("[\\s\\t]+", 2);
     final String exceptionName = tokens[0];
-    Class<?> exceptionType = findExceptionType(classesInPackage, sourceMember, exceptionName);
+    Class<?> exceptionType =
+        findExceptionType(classesInPackage, sourceMember, exceptionName, className);
     Comment commentObject = new Comment(tokens[1]);
     return new ThrowsTag(exceptionType, commentObject);
   }
@@ -364,6 +372,7 @@ public final class JavadocExtractor {
     filterOutGeneratedConstructors(reflectionExecutables, sourceExecutables);
 
     if (reflectionExecutables.size() != sourceExecutables.size()) {
+      // TODO Add the differencies to the error message to better characterize the error.
       throw new IllegalArgumentException("Error: Provided lists have different size.");
     }
 
@@ -507,17 +516,35 @@ public final class JavadocExtractor {
    * @param sourceMember the source member for which the exception with type name {@code
    *     exceptionTypeName} is expected
    * @param exceptionTypeName the exception type name (can be fully-qualified or simple)
+   * @param className package of the class where {@code sourceMember} is defined
    * @return the exception class
    * @throws ClassNotFoundException if exception class couldn't be loaded
    */
   private Class<?> findExceptionType(
-      List<String> classesInPackage, CallableDeclaration<?> sourceMember, String exceptionTypeName)
+      List<String> classesInPackage,
+      CallableDeclaration<?> sourceMember,
+      String exceptionTypeName,
+      String className)
       throws ClassNotFoundException {
     Class<?> exceptionType = null;
     try {
       exceptionType = Reflection.getClass(exceptionTypeName);
     } catch (ClassNotFoundException e) {
       // Intentionally empty: Apply other heuristics to load the exception type.
+    }
+    if (exceptionType == null) { // Try to load a nested class.
+      try {
+        exceptionType = Reflection.getClass(className + "$" + exceptionTypeName);
+      } catch (ClassNotFoundException e) {
+        // Intentionally empty: Apply other heuristics to load the exception type.
+      }
+    }
+    if (exceptionType == null) {
+      try {
+        exceptionType = Reflection.getClass("java.lang." + exceptionTypeName);
+      } catch (ClassNotFoundException e) {
+        // Intentionally empty: Apply other heuristics to load the exception type.
+      }
     }
     if (exceptionType == null) {
       // Look in classes of package.
@@ -529,13 +556,6 @@ public final class JavadocExtractor {
           }
           exceptionType = Reflection.getClass(classInPackage);
         }
-      }
-    }
-    if (exceptionType == null) {
-      try {
-        exceptionType = Reflection.getClass("java.lang." + exceptionTypeName);
-      } catch (ClassNotFoundException e) {
-        // Intentionally empty: Apply other heuristics to load the exception type.
       }
     }
     if (exceptionType == null) {
