@@ -7,8 +7,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Text of a Javadoc block {@link Tag}. A {@link Comment} is composed of a text and a list of words
- * that are tagged as @code.
+ * Text of a Javadoc block tag ({@link BlockTag}), such as {@code @param}, {@code @return}, or
+ * {@code @throws}. A {@link Comment} is composed of a text and a list of words that are tagged
+ * as @code.
  */
 public final class Comment {
 
@@ -30,11 +31,11 @@ public final class Comment {
     this.wordsMarkedAsCode = new ArrayList<>();
 
     final String codePattern1 = "<code>(.*)</code>";
-    identifyMarkedWords(text, codePattern1);
+    identifyCodeWords(text, codePattern1);
     removeTags(codePattern1);
 
     final String codePattern2 = "\\{@code ([^}]+)\\}";
-    identifyMarkedWords(text, codePattern2);
+    identifyCodeWords(text, codePattern2);
     removeTags(codePattern2);
 
     removeTags("\\{@link #?([^}]+)\\}");
@@ -79,13 +80,13 @@ public final class Comment {
   }
 
   /**
-   * Identifies in {@code text} words marked with the given {@code codePattern}. Identified words
-   * are added to {@code wordsMarkedAsCode}.
+   * Adds to {@link #wordsMarkedAsCode} any words in {@code text} that are marked with the given
+   * {@code codePattern}.
    *
    * @param text text in which look for words marked as code
    * @param codePattern regular expression used to identify the words marked as code
    */
-  private void identifyMarkedWords(String text, String codePattern) {
+  private void identifyCodeWords(String text, String codePattern) {
     Matcher matcher = Pattern.compile(codePattern).matcher(text);
     while (matcher.find()) {
       String taggedSubstring = matcher.group(1).trim();

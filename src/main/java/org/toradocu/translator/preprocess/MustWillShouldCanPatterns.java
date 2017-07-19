@@ -1,14 +1,14 @@
 package org.toradocu.translator.preprocess;
 
 import java.util.regex.Pattern;
+import org.toradocu.extractor.BlockTag;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.ParamTag;
-import org.toradocu.extractor.Tag;
 
 public class MustWillShouldCanPatterns implements PreprocessingPhase {
 
   @Override
-  public String run(Tag tag, DocumentedExecutable excMember) {
+  public String run(BlockTag tag, DocumentedExecutable excMember) {
     String comment = tag.getComment().getText();
     String parameterName = ((ParamTag) tag).getParameter().getName();
     String[] patterns = {

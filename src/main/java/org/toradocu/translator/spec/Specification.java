@@ -10,7 +10,7 @@ public abstract class Specification {
 
   @Override
   public String toString() {
-    return guard.toString();
+    return (guard != null) ? guard.toString() : "no guard";
   }
 
   @Override

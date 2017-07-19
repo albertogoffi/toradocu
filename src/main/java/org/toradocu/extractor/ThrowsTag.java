@@ -11,7 +11,7 @@ import org.toradocu.util.Checks;
  * specification specifies when the method documented with this @throws (or @exception) comment is
  * expected to throw the exception.
  */
-public final class ThrowsTag extends Tag<ExcPostcondition> {
+public final class ThrowsTag extends BlockTag<ExcPostcondition> {
 
   /** The exception described in this {@code ThrowsTag}. */
   private final Class<?> exception;

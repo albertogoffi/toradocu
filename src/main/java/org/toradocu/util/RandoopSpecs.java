@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import org.toradocu.conf.Configuration;
+import org.toradocu.extractor.BlockTag;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.DocumentedParameter;
 import org.toradocu.extractor.ParamTag;
 import org.toradocu.extractor.ReturnTag;
-import org.toradocu.extractor.Tag;
 import org.toradocu.extractor.ThrowsTag;
 import randoop.condition.specification.Guard;
 import randoop.condition.specification.Identifiers;
@@ -149,13 +149,13 @@ public class RandoopSpecs {
   }
 
   /**
-   * Format the a {@code Tag.Kind} as expected in Randoop specifications, i.e., removing the initial
-   * {@code "@"}.
+   * Format the a {@code BlockTag.Kind} as expected in Randoop specifications, i.e., removing the
+   * initial {@code "@"}.
    *
    * @param tagKind a tag kind
    * @return the tag kind without the initial {@code "@"}
    */
-  private static String format(Tag.Kind tagKind) {
+  private static String format(BlockTag.Kind tagKind) {
     return tagKind.toString().replace("@", "");
   }
 

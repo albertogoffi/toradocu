@@ -112,7 +112,7 @@ public class JsonUpdater {
       // Sanity checks.
       if (matchingOldParamTags.size() == 0) {
         throw new AssertionError(
-            "Tag "
+            "BlockTag "
                 + newParamTag
                 + " not present in method "
                 + oldMethod.getSignature()
@@ -147,7 +147,7 @@ public class JsonUpdater {
       // Sanity checks.
       if (matchingOldThrowsTags.size() == 0) {
         throw new AssertionError(
-            "Tag "
+            "BlockTag "
                 + newThrowsTag
                 + " not present in method "
                 + oldMethod.getSignature()

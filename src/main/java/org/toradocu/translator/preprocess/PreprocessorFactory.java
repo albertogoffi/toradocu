@@ -2,13 +2,13 @@ package org.toradocu.translator.preprocess;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.toradocu.extractor.Tag;
+import org.toradocu.extractor.BlockTag;
 
 public class PreprocessorFactory {
 
   private PreprocessorFactory() {}
 
-  public static Preprocessor create(Tag.Kind tagKind) {
+  public static Preprocessor create(BlockTag.Kind tagKind) {
     List<PreprocessingPhase> phases = new ArrayList<>();
 
     phases.add(new EndPeriod());

@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 /** Holds the configuration options (particularly command-line options) for Toradocu. */
+@SuppressWarnings("ImmutableEnumChecker")
 public enum Configuration {
   INSTANCE;
 
