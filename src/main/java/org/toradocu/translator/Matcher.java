@@ -177,41 +177,43 @@ class Matcher {
       CodeElement<?> subject,
       Proposition proposition,
       String comment) {
-    Set<CodeElement<?>> codeElements;
+    Set<CodeElement<?>> directCodeElements;
+    Set<CodeElement<?>> targetCodeElements;
     String match = null;
     String predicate = proposition.getPredicate();
 
     if (subject instanceof ParameterCodeElement) {
       ParameterCodeElement paramCodeElement = (ParameterCodeElement) subject;
-      codeElements =
+      directCodeElements =
           extractBooleanCodeElements(
               paramCodeElement, paramCodeElement.getJavaCodeElement().getType());
       Class<?> targetClass = method.getContainingClass();
-      codeElements.addAll(extractStaticBooleanMethods(targetClass, paramCodeElement));
+      directCodeElements.addAll(extractStaticBooleanMethods(targetClass, paramCodeElement));
     } else if (subject instanceof ClassCodeElement) {
       ClassCodeElement classCodeElement = (ClassCodeElement) subject;
-      codeElements =
+      directCodeElements =
           extractBooleanCodeElements(classCodeElement, classCodeElement.getJavaCodeElement());
     } else if (subject instanceof MethodCodeElement) {
       MethodCodeElement methodCodeElement = (MethodCodeElement) subject;
-      codeElements =
+      directCodeElements =
           extractBooleanCodeElements(
               methodCodeElement, methodCodeElement.getJavaCodeElement().getReturnType());
     } else if (subject instanceof StaticMethodCodeElement) {
       StaticMethodCodeElement staticMethodCodeElement = (StaticMethodCodeElement) subject;
-      codeElements =
+      directCodeElements =
           extractBooleanCodeElements(
               staticMethodCodeElement,
               staticMethodCodeElement.getJavaCodeElement().getReturnType());
     } else {
       return null;
     }
-    codeElements.addAll(JavaElementsCollector.collect(method));
+
+    targetCodeElements = JavaElementsCollector.collect(method);
 
     // Filter collected code elements that refer to the documented method under analysis.
     // This avoids to generate specifications mentioning the method whose behavior they specify.
-    codeElements =
-        codeElements
+    directCodeElements =
+        directCodeElements
             .stream()
             .filter(
                 e -> {
@@ -227,28 +229,35 @@ class Matcher {
                 })
             .collect(Collectors.toSet());
 
-    //TODO remove the following commented lines if not useful anymore
-    //    List<CodeElement<?>> sortedMethodList =
-    //        new ArrayList<CodeElement<?>>(filterMatchingCodeElements(predicate, codeElements));
-    //    if (!sortedList.isEmpty()) Collections.sort(sortedList, new JavaExpressionComparator());
-    //    if (sortedList.isEmpty()) {
-    //      return null;
-    //    } else {
-    //      match = findBestMethodMatch(method, predicate, sortedList);
-    //    }
+    targetCodeElements =
+        targetCodeElements
+            .stream()
+            .filter(
+                e -> {
+                  if (e instanceof MethodCodeElement) {
+                    Method m = ((MethodCodeElement) e).getJavaCodeElement();
+                    if (m.toGenericString().equals(method.getExecutable().toGenericString())
+                        || (!m.getReturnType().equals(Boolean.class)
+                            && !m.getReturnType().equals(boolean.class))) {
+                      return false;
+                    }
+                  }
+                  return true;
+                })
+            .collect(Collectors.toSet());
 
-    //    if (!sortedMethodList.isEmpty()) {
-    //      Collections.sort(sortedMethodList, new JavaExpressionComparator());
-    //      match = findBestMethodMatch(method, predicate, sortedMethodList);
-    //    } else {
     SemanticMatcher semanticMatcher = new SemanticMatcher(true, false, (float) 0.265);
     try {
-      List<CodeElement<?>> sortedMethodList = new ArrayList<CodeElement<?>>(codeElements);
+      List<CodeElement<?>> sortedDirectMethods = new ArrayList<CodeElement<?>>(directCodeElements);
+      List<CodeElement<?>> sortedTargetMethods = new ArrayList<CodeElement<?>>(targetCodeElements);
       //it is important to provide an fixed order since this point, to prevent method with same score
       //being put in map in a different order every execution
-      Collections.sort(sortedMethodList, new JavaExpressionComparator());
+      Collections.sort(sortedDirectMethods, new JavaExpressionComparator());
+      Collections.sort(sortedTargetMethods, new JavaExpressionComparator());
+
       LinkedHashMap<CodeElement<?>, Double> semanticMethodMatches =
-          semanticMatcher.runVectorMatch(sortedMethodList, method, proposition, comment);
+          semanticMatcher.runVectorMatch(
+              sortedDirectMethods, sortedTargetMethods, method, proposition, comment);
 
       if (semanticMethodMatches != null && !semanticMethodMatches.isEmpty()) {
         List<CodeElement<?>> semanticMethodList =
@@ -348,8 +357,9 @@ class Matcher {
     if (!foundArgMatch) {
       // No match is the absolute best: just pick the first one, but only if it takes no arguments!
       firstMatch = sortedCodeElements.stream().findFirst().get();
-      if (firstMatch instanceof MethodCodeElement
-          && ((MethodCodeElement) firstMatch).getArgs() == null) {
+      if ((firstMatch instanceof MethodCodeElement
+              && ((MethodCodeElement) firstMatch).getArgs() == null)
+          || firstMatch instanceof GeneralCodeElement) {
         match = sortedCodeElements.stream().findFirst().get().getJavaExpression();
       }
     }

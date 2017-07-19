@@ -25,8 +25,10 @@ public class NormalizeIfs implements PreprocessingPhase {
       if (comment.endsWith(".")) {
         comment = comment.substring(0, comment.length() - 1);
       }
-      // By adding this, Toradocu is able to understand that also the false property must be specified
-      comment += ", false otherwise.";
+      if (comment.contains("true if"))
+        // By adding this, Toradocu is able to understand that also the false property must be specified
+        comment += ", false otherwise.";
+      else if (comment.contains("null if")) comment += ", non-null otherwise.";
     }
 
     return comment;
