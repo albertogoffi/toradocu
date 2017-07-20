@@ -1,13 +1,13 @@
 package org.toradocu.translator;
 
-import org.toradocu.extractor.Tag;
-import org.toradocu.extractor.Tag.Kind;
+import org.toradocu.extractor.BlockTag;
+import org.toradocu.extractor.BlockTag.Kind;
 
 class TranslatorFactory {
 
   private TranslatorFactory() {}
 
-  static <T extends Tag> Translator<T> create(T tag) {
+  static <T extends BlockTag> Translator<T> create(T tag) {
     Translator translator;
     final Kind tagKind = tag.getKind();
     switch (tagKind) {

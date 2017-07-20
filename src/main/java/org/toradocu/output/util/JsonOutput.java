@@ -2,6 +2,7 @@ package org.toradocu.output.util;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import org.toradocu.extractor.*;
 import org.toradocu.extractor.DocumentedParameter;
 import org.toradocu.translator.spec.Postcondition;
@@ -25,10 +26,10 @@ public class JsonOutput {
     this.name = member.getName();
     this.containingClass =
         new org.toradocu.output.util.Type(
-            member.getContainingClass().getName(),
-            member.getContainingClass().getSimpleName(),
-            member.getContainingClass().isArray());
-    this.targetClass = member.getContainingClass().getName();
+            member.getDeclaringClass().getName(),
+            member.getDeclaringClass().getSimpleName(),
+            member.getDeclaringClass().isArray());
+    this.targetClass = member.getDeclaringClass().getName();
     this.isVarArgs = member.isVarArgs();
 
     String returnTypeName = member.getExecutable().getAnnotatedReturnType().getType().getTypeName();
@@ -56,38 +57,37 @@ public class JsonOutput {
       parameters.add(paramObj);
     }
 
-    for (Tag tag : member.getTags()) {
-      if (tag instanceof ParamTag) {
-        DocumentedParameter param = ((ParamTag) tag).getParameter();
-        Class pType = ((ParamTag) tag).getParameter().asReflectionParameter().getType();
-        org.toradocu.output.util.Type paramType =
-            new org.toradocu.output.util.Type(
-                pType.getName(), pType.getSimpleName(), pType.isArray());
-        org.toradocu.output.util.Parameter paramObj =
-            new org.toradocu.output.util.Parameter(paramType, param.getName(), param.isNullable());
-        ParamTagOutput paramJsonObj =
-            new ParamTagOutput(
-                paramObj,
-                tag.getComment(),
-                tag.getKind().name(),
-                tag.getSpecification().getGuard().getCondition());
+    for (ParamTag paramTag : member.paramTags()) {
+      DocumentedParameter param = paramTag.getParameter();
+      Class pType = param.asReflectionParameter().getType();
+      org.toradocu.output.util.Type paramType =
+          new org.toradocu.output.util.Type(
+              pType.getName(), pType.getSimpleName(), pType.isArray());
+      org.toradocu.output.util.Parameter paramObj =
+          new org.toradocu.output.util.Parameter(paramType, param.getName(), param.isNullable());
+      ParamTagOutput paramJsonObj =
+          new ParamTagOutput(
+              paramObj,
+              paramTag.getComment(),
+              paramTag.getKind().name(),
+              paramTag.getSpecification().getGuard().getCondition());
 
-        paramTags.add(paramJsonObj);
-      } else if (tag instanceof ThrowsTag) {
-        Class eType = ((ThrowsTag) tag).getException();
-        org.toradocu.output.util.Type exType =
-            new org.toradocu.output.util.Type(
-                eType.getName(), eType.getSimpleName(), eType.isArray());
+      paramTags.add(paramJsonObj);
+    }
+    for (ThrowsTag throwsTag : member.throwsTags()) {
+      Class eType = throwsTag.getException();
+      org.toradocu.output.util.Type exType =
+          new org.toradocu.output.util.Type(
+              eType.getName(), eType.getSimpleName(), eType.isArray());
 
-        ThrowsTagOutput paramJsonObj =
-            new ThrowsTagOutput(
-                exType,
-                tag.getComment(),
-                tag.getKind().name(),
-                tag.getSpecification().getGuard().getCondition());
+      ThrowsTagOutput paramJsonObj =
+          new ThrowsTagOutput(
+              exType,
+              throwsTag.getComment(),
+              throwsTag.getKind().name(),
+              throwsTag.getSpecification().getGuard().getCondition());
 
-        throwsTags.add(paramJsonObj);
-      }
+      throwsTags.add(paramJsonObj);
     }
   }
 
@@ -98,23 +98,30 @@ public class JsonOutput {
 
     JsonOutput that = (JsonOutput) o;
 
-    if (isVarArgs != that.isVarArgs) return false;
-    if (signature != null ? !signature.equals(that.signature) : that.signature != null)
-      return false;
-    if (name != null ? !name.equals(that.name) : that.name != null) return false;
-    if (containingClass != null
-        ? !containingClass.equals(that.containingClass)
-        : that.containingClass != null) return false;
-    if (targetClass != null ? !targetClass.equals(that.targetClass) : that.targetClass != null)
-      return false;
-    if (returnType != null ? !returnType.equals(that.returnType) : that.returnType != null)
-      return false;
-    if (parameters != null ? !parameters.equals(that.parameters) : that.parameters != null)
-      return false;
-    if (paramTags != null ? !paramTags.equals(that.paramTags) : that.paramTags != null)
-      return false;
-    if (returnTag != null ? !returnTag.equals(that.returnTag) : that.returnTag != null)
-      return false;
-    return throwsTags != null ? throwsTags.equals(that.throwsTags) : that.throwsTags == null;
+    return (isVarArgs == that.isVarArgs)
+        && Objects.equals(signature, that.signature)
+        && Objects.equals(name, that.name)
+        && Objects.equals(containingClass, that.containingClass)
+        && Objects.equals(targetClass, that.targetClass)
+        && Objects.equals(returnType, that.returnType)
+        && Objects.equals(parameters, that.parameters)
+        && Objects.equals(paramTags, that.paramTags)
+        && Objects.equals(returnTag, that.returnTag)
+        && Objects.equals(throwsTags, that.throwsTags);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(
+        isVarArgs,
+        signature,
+        name,
+        containingClass,
+        targetClass,
+        returnType,
+        parameters,
+        paramTags,
+        returnTag,
+        throwsTags);
   }
 }

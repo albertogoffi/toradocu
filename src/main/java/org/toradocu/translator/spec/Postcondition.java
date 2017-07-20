@@ -61,7 +61,7 @@ public class Postcondition extends Specification {
   @Override
   public String toString() {
     String result = "";
-    if (!guard.equals("")) {
+    if (guard != null) {
       result = guard.toString() + " ? " + trueProperty;
       if (!falseProperty.toString().isEmpty()) {
         result += " : " + falseProperty;

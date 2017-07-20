@@ -1,6 +1,8 @@
 package org.toradocu.output.util;
 
 /** Created by arianna on 28/06/17. */
+import java.util.Objects;
+
 public class Type {
   String qualifiedName;
   String name;
@@ -17,12 +19,15 @@ public class Type {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
 
-    Type type = (Type) o;
+    Type that = (Type) o;
 
-    if (isArray != type.isArray) return false;
-    if (qualifiedName != null
-        ? !qualifiedName.equals(type.qualifiedName)
-        : type.qualifiedName != null) return false;
-    return name != null ? name.equals(type.name) : type.name == null;
+    return Objects.equals(qualifiedName, that.qualifiedName)
+        && Objects.equals(name, that.name)
+        && isArray == that.isArray;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(qualifiedName, name, isArray);
   }
 }

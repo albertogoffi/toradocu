@@ -277,12 +277,12 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<ExecutableMembe
     StringBuilder pointcut = new StringBuilder();
 
     if (method.isConstructor()) { // Constructors
-      pointcut.append(method.getContainingClass()).append(".new(");
+      pointcut.append(method.getDeclaringClass()).append(".new(");
     } else { // Regular methods
       pointcut
           .append(method.getReturnType())
           .append(" ")
-          .append(method.getContainingClass())
+          .append(method.getDeclaringClass())
           .append(".")
           .append(method.getName())
           .append("(");
@@ -328,7 +328,7 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<ExecutableMembe
     }
 
     // Casting of target object in condition.
-    condition = condition.replace("target.", "((" + method.getContainingClass() + ") target).");
+    condition = condition.replace("target.", "((" + method.getDeclaringClass() + ") target).");
     return condition;
   }
 }

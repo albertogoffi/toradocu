@@ -1,14 +1,14 @@
 package org.toradocu.translator;
 
 import java.util.List;
+import org.toradocu.extractor.BlockTag;
 import org.toradocu.extractor.DocumentedExecutable;
-import org.toradocu.extractor.Tag;
 import org.toradocu.translator.preprocess.PreprocessorFactory;
 import randoop.condition.specification.Specification;
 
 public class CommentTranslator {
 
-  public static <T extends Tag> void translate(T tag, DocumentedExecutable excMember) {
+  public static <T extends BlockTag> void translate(T tag, DocumentedExecutable excMember) {
 
     // Preprocessing.
     PreprocessorFactory.create(tag.getKind()).preprocess(tag, excMember);

@@ -1,6 +1,7 @@
 package org.toradocu.extractor;
 
 import static java.util.stream.Collectors.toList;
+import static org.toradocu.extractor.DocumentedExecutable.BlockTags;
 
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.CompilationUnit;
@@ -27,8 +28,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
-import org.apache.commons.lang3.tuple.ImmutableTriple;
-import org.apache.commons.lang3.tuple.Triple;
 import org.toradocu.util.Reflection;
 
 /**
@@ -39,11 +38,12 @@ public final class JavadocExtractor {
 
   /**
    * Returns a list of {@code DocumentedExecutable}s extracted from the class with name {@code
-   * className}. The JavadocExtractor parses the Java source code of the specified class ({@code
-   * className}), and stores information about the executable members of the specified class
-   * (including the Javadoc comments).
+   * className}. Parses the Java source code of the specified class ({@code className}), and stores
+   * information about the executable members of the specified class (including the Javadoc
+   * comments).
    *
-   * @param className the qualified class name of the class from which to extract documentation
+   * @param className the qualified class name of the class from which to extract documentation;
+   *     must be on the classpath
    * @param sourcePath the path to the project source root folder
    * @return a list of documented executable members
    * @throws ClassNotFoundException if some reflection information cannot be loaded
@@ -58,11 +58,11 @@ public final class JavadocExtractor {
     final List<Executable> reflectionExecutables = getExecutables(clazz);
     // Obtain executable members in the source code.
     // TODO Add support for nested classes.
-    String classFile =
+    String sourceFile =
         sourcePath + File.separator + className.replaceAll("\\.", File.separator) + ".java";
-    List<String> classesInPackage = getClassesInSamePackage(className, classFile);
+    List<String> classesInPackage = getClassesInSamePackage(className, sourceFile);
     final List<CallableDeclaration<?>> sourceExecutables =
-        getExecutables(clazz.getSimpleName(), classFile);
+        getExecutables(clazz.getSimpleName(), sourceFile);
 
     // Maps each reflection executable member to its corresponding source member.
     Map<Executable, CallableDeclaration<?>> executablesMap =
@@ -75,32 +75,27 @@ public final class JavadocExtractor {
       final CallableDeclaration<?> sourceMember = entry.getValue();
       final List<DocumentedParameter> parameters =
           getParameters(sourceMember.getParameters(), reflectionMember.getParameters());
-      Triple<List<ParamTag>, ReturnTag, List<ThrowsTag>> tags =
-          createTags(classesInPackage, sourceMember, parameters);
-      // TODO Consider to change DocumentedExecutable constructor to take as arguments the different
-      // TODO tags, and not one single list like it does now.
-      List<Tag> tagList = new ArrayList<>();
-      tagList.addAll(tags.getLeft());
-      tagList.add(tags.getMiddle());
-      tagList.addAll(tags.getRight());
-      members.add(new DocumentedExecutable(reflectionMember, parameters, tagList));
+      final String qualifiedClassName = reflectionMember.getDeclaringClass().getName();
+      BlockTags blockTags =
+          createTags(classesInPackage, sourceMember, parameters, qualifiedClassName);
+      members.add(new DocumentedExecutable(reflectionMember, parameters, blockTags));
     }
 
     // Create the documented class.
     return new DocumentedType(clazz, members);
   }
 
-  private List<String> getClassesInSamePackage(String className, String classFile) {
+  private List<String> getClassesInSamePackage(String className, String sourceFile) {
     // TODO Add missing Javadoc documentation.
     // TODO Improve the code: this method should return all the available types in a given package.
-    String packagePath = classFile.substring(0, classFile.lastIndexOf("/"));
+    String packagePath = sourceFile.substring(0, sourceFile.lastIndexOf("/"));
     File folder = new File(packagePath);
     File[] listOfFiles = folder.listFiles();
     List<String> classesInPackage = new ArrayList<>();
     for (File file : listOfFiles) {
-      // this loop extracts files in the same directory of the class being analysed
+      // This loop extracts files in the same directory as the class being analysed
       // in order to find eventual Exception classes located in the same package.
-      // package-info files are not useful for this purpose
+      // "package-info" files are not useful for this purpose.
       String name = extractClassNameForSource(file.getName(), className);
       if (name != null && !name.equals(className) && !name.contains("package-info")) {
         classesInPackage.add(name);
@@ -115,16 +110,15 @@ public final class JavadocExtractor {
    *
    * @param sourceFileName name of the source file found in package
    * @param analyzedClassName class name of the class being analysed
-   * @return the class name of the source
+   * @return the class name of the source, or null if {@code analyzedClassName} does not contain a
+   *     dot (i.e., {@code analyzedClassName} is a simple, not-qualified name)
    */
   private String extractClassNameForSource(String sourceFileName, String analyzedClassName) {
     int lastDot = analyzedClassName.lastIndexOf(".");
-    String parsedName = null;
-    if (lastDot != -1)
-      parsedName =
-          analyzedClassName.substring(0, lastDot) + "." + sourceFileName.replace(".java", "");
-
-    return parsedName;
+    if (lastDot == -1) {
+      return null;
+    }
+    return analyzedClassName.substring(0, lastDot) + "." + sourceFileName.replace(".java", "");
   }
 
   /**
@@ -133,14 +127,16 @@ public final class JavadocExtractor {
    * @param classesInPackage list of class names in sourceMember's package
    * @param sourceMember the source member the tags refer to
    * @param parameters {@code sourceMember}'s parameters
+   * @param className qualified name of the class defining {@code sourceMember}
    * @return a triple of instantiated tags: list of @param tags, return tag, list of @throws tags
    * @throws ClassNotFoundException if a type described in a Javadoc comment cannot be loaded (e.g.,
-   *     the type is not on the classpath.)
+   *     the type is not on the classpath)
    */
-  private Triple<List<ParamTag>, ReturnTag, List<ThrowsTag>> createTags(
+  private BlockTags createTags(
       List<String> classesInPackage,
       CallableDeclaration<?> sourceMember,
-      List<DocumentedParameter> parameters)
+      List<DocumentedParameter> parameters,
+      String className)
       throws ClassNotFoundException {
 
     List<ParamTag> paramTags = new ArrayList<>();
@@ -161,12 +157,15 @@ public final class JavadocExtractor {
             break;
           case EXCEPTION:
           case THROWS:
-            throwsTags.add(createThrowsTag(classesInPackage, blockTag, sourceMember));
+            throwsTags.add(createThrowsTag(classesInPackage, blockTag, sourceMember, className));
+            break;
+          default:
+            // ignore other block tags
             break;
         }
       }
     }
-    return new ImmutableTriple<>(paramTags, returnTag, throwsTags);
+    return new BlockTags(paramTags, returnTag, throwsTags);
   }
 
   /**
@@ -175,11 +174,15 @@ public final class JavadocExtractor {
    * @param classesInPackage list of class names in sourceMember's package
    * @param blockTag the @throws or @exception Javadoc block comment containing the tag
    * @param sourceMember the source member the tag refers to
+   * @param className qualified name of the class defining {@code sourceMember}
    * @return the instantiated tag
    * @throws ClassNotFoundException if the class of the exception type couldn't be found
    */
   private ThrowsTag createThrowsTag(
-      List<String> classesInPackage, JavadocBlockTag blockTag, CallableDeclaration<?> sourceMember)
+      List<String> classesInPackage,
+      JavadocBlockTag blockTag,
+      CallableDeclaration<?> sourceMember,
+      String className)
       throws ClassNotFoundException {
     // Javaparser library does not provide a nice parsing of @throws tags. We have to parse the
     // comment text by ourselves.
@@ -192,7 +195,8 @@ public final class JavadocExtractor {
     String comment = blockTag.getContent().toText();
     final String[] tokens = comment.split("[\\s\\t]+", 2);
     final String exceptionName = tokens[0];
-    Class<?> exceptionType = findExceptionType(classesInPackage, sourceMember, exceptionName);
+    Class<?> exceptionType =
+        findExceptionType(classesInPackage, sourceMember, exceptionName, className);
     Comment commentObject = new Comment(tokens[1]);
     return new ThrowsTag(exceptionType, commentObject);
   }
@@ -251,7 +255,7 @@ public final class JavadocExtractor {
   }
 
   /**
-   * Instantiate the parameters of type org.toradocu.extractor.DocumentedParameter
+   * Instantiate the parameters of type org.toradocu.extractor.DocumentedParameter.
    *
    * @param sourceParams the NodeList of parameters found in source
    * @param reflectionParams the array of parameters found through reflection
@@ -306,9 +310,9 @@ public final class JavadocExtractor {
   }
 
   /**
-   * Collects non-private non-synthetic members through reflection. Notice that this method
-   * considers compiler-generated class initialization methods (e.g., default constructors) as
-   * non-synthetic (<a
+   * Collects non-private non-synthetic constructors and methods through reflection. Notice that
+   * this method considers compiler-generated class initialization methods (e.g., default
+   * constructors) as non-synthetic (<a
    * href="http://docs.oracle.com/javase/specs/jls/se8/html/jls-13.html#jls-13.1">JLS 13.1, item
    * 11</a>).
    *
@@ -325,11 +329,11 @@ public final class JavadocExtractor {
   }
 
   /**
-   * Collects non-private members from source code.
+   * Collects non-private callables from source code.
    *
    * @param className the String class name
    * @param sourcePath the String source path
-   * @return non private-members of the class with name {@code className}
+   * @return non private-callables of the class with name {@code className}
    * @throws FileNotFoundException if the source path couldn't be resolved
    */
   private List<CallableDeclaration<?>> getExecutables(String className, String sourcePath)
@@ -364,6 +368,7 @@ public final class JavadocExtractor {
     filterOutGeneratedConstructors(reflectionExecutables, sourceExecutables);
 
     if (reflectionExecutables.size() != sourceExecutables.size()) {
+      // TODO Add the differencies to the error message to better characterize the error.
       throw new IllegalArgumentException("Error: Provided lists have different size.");
     }
 
@@ -375,7 +380,7 @@ public final class JavadocExtractor {
               .filter(
                   e ->
                       removePackage(e.getName()).equals(sourceMember.getName().asString())
-                          && sameParTypes(e.getParameters(), sourceMember.getParameters()))
+                          && sameParamTypes(e.getParameters(), sourceMember.getParameters()))
               .collect(toList());
       if (matches.size() < 1) {
         throw new AssertionError(
@@ -434,7 +439,7 @@ public final class JavadocExtractor {
    * @param sourceParams NodeList of source param types
    * @return true if the param types are the same, false otherwise
    */
-  private boolean sameParTypes(
+  private boolean sameParamTypes(
       java.lang.reflect.Parameter[] reflectionParams,
       NodeList<com.github.javaparser.ast.body.Parameter> sourceParams) {
     if (reflectionParams.length != sourceParams.size()) {
@@ -444,11 +449,11 @@ public final class JavadocExtractor {
     for (int i = 0; i < reflectionParams.length; i++) {
       final java.lang.reflect.Parameter reflectionParam = reflectionParams[i];
       final String reflectionQualifiedTypeName =
-          removeGenerics(reflectionParam.getParameterizedType().getTypeName());
+          rawType(reflectionParam.getParameterizedType().getTypeName());
       String reflectionSimpleTypeName = removePackage(reflectionQualifiedTypeName);
 
       final com.github.javaparser.ast.body.Parameter sourceParam = sourceParams.get(i);
-      String sourceTypeName = removeGenerics(sourceParam.getType().asString());
+      String sourceTypeName = rawType(sourceParam.getType().asString());
       if (sourceParam.isVarArgs()) sourceTypeName += "[]";
       if (reflectionParam.isVarArgs() && !reflectionSimpleTypeName.contains("[]"))
         reflectionSimpleTypeName += "[]";
@@ -470,12 +475,12 @@ public final class JavadocExtractor {
   }
 
   /**
-   * Clean generics type.
+   * Get raw type corresponding to a possibly-generic type; that is, remove generic type arguments.
    *
-   * @param type the String type
-   * @return the cleaned type
+   * @param type string representation of the type
+   * @return the raw type
    */
-  private String removeGenerics(String type) {
+  private String rawType(String type) {
     int i = type.indexOf("<");
     if (i != -1) { // If type contains "<".
       return type.substring(0, i);
@@ -492,9 +497,9 @@ public final class JavadocExtractor {
    */
   private String removePackage(String type) {
     // Constructor names contain package name.
-    int i = type.indexOf(".");
-    if (i != -1) {
-      return type.substring(type.lastIndexOf(".") + 1);
+    int lastDot = type.lastIndexOf(".");
+    if (lastDot != -1) {
+      return type.substring(lastDot + 1);
     }
     return type;
   }
@@ -507,54 +512,54 @@ public final class JavadocExtractor {
    * @param sourceMember the source member for which the exception with type name {@code
    *     exceptionTypeName} is expected
    * @param exceptionTypeName the exception type name (can be fully-qualified or simple)
+   * @param className package of the class where {@code sourceMember} is defined
    * @return the exception class
    * @throws ClassNotFoundException if exception class couldn't be loaded
    */
   private Class<?> findExceptionType(
-      List<String> classesInPackage, CallableDeclaration<?> sourceMember, String exceptionTypeName)
+      List<String> classesInPackage,
+      CallableDeclaration<?> sourceMember,
+      String exceptionTypeName,
+      String className)
       throws ClassNotFoundException {
-    Class<?> exceptionType = null;
     try {
-      exceptionType = Reflection.getClass(exceptionTypeName);
+      return Reflection.getClass(exceptionTypeName);
     } catch (ClassNotFoundException e) {
       // Intentionally empty: Apply other heuristics to load the exception type.
     }
-    if (exceptionType == null) {
-      // Look in classes of package.
-      for (String classInPackage : classesInPackage) {
-        if (classInPackage.contains(exceptionTypeName)) {
-          // TODO Add a comment explaining why the following check is needed.
-          if (classInPackage.contains("$")) {
-            classInPackage = classInPackage.replace(".class", "");
-          }
-          exceptionType = Reflection.getClass(classInPackage);
+    // Try to load a nested class.
+    try {
+      return Reflection.getClass(className + "$" + exceptionTypeName);
+    } catch (ClassNotFoundException e) {
+      // Intentionally empty: Apply other heuristics to load the exception type.
+    }
+    try {
+      return Reflection.getClass("java.lang." + exceptionTypeName);
+    } catch (ClassNotFoundException e) {
+      // Intentionally empty: Apply other heuristics to load the exception type.
+    }
+    // Look in classes of package.
+    for (String classInPackage : classesInPackage) {
+      if (classInPackage.contains(exceptionTypeName)) {
+        // TODO Add a comment explaining why the following check is needed.
+        if (classInPackage.contains("$")) {
+          classInPackage = classInPackage.replace(".class", "");
         }
+        return Reflection.getClass(classInPackage);
       }
     }
-    if (exceptionType == null) {
-      try {
-        exceptionType = Reflection.getClass("java.lang." + exceptionTypeName);
-      } catch (ClassNotFoundException e) {
-        // Intentionally empty: Apply other heuristics to load the exception type.
+    // Look for an import statement to complete exception type name.
+    CompilationUnit cu = getCompilationUnit(sourceMember);
+    final NodeList<ImportDeclaration> imports = cu.getImports();
+    for (ImportDeclaration anImport : imports) {
+      String importedType = anImport.getNameAsString();
+      if (importedType.endsWith(exceptionTypeName)) {
+        return Reflection.getClass(importedType);
       }
     }
-    if (exceptionType == null) {
-      // Look for an import statement to complete exception type name.
-      CompilationUnit cu = getCompilationUnit(sourceMember);
-      final NodeList<ImportDeclaration> imports = cu.getImports();
-      for (ImportDeclaration anImport : imports) {
-        String importedType = anImport.getNameAsString();
-        if (importedType.endsWith(exceptionTypeName)) {
-          exceptionType = Reflection.getClass(importedType);
-        }
-      }
-    }
-    if (exceptionType == null) {
-      // TODO Improve error message.
-      throw new ClassNotFoundException(
-          "Unable to load exception type " + exceptionTypeName + ". Is it on the classpath?");
-    }
-    return exceptionType;
+    // TODO Improve error message.
+    throw new ClassNotFoundException(
+        "Unable to load exception type " + exceptionTypeName + ". Is it on the classpath?");
   }
 
   /**

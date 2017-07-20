@@ -11,7 +11,7 @@ import randoop.condition.specification.ThrowsSpecification;
  * specification specifies when the method documented with this @throws (or @exception) comment is
  * expected to throw the exception.
  */
-public final class ThrowsTag extends Tag<ThrowsSpecification> {
+public final class ThrowsTag extends BlockTag<ThrowsSpecification> {
 
   /** The exception described in this {@code ThrowsTag}. */
   private final Class<?> exception;

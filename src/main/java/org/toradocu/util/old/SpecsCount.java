@@ -38,7 +38,7 @@ public class SpecsCount {
     int pre = 0, post = 0, exc = 0;
 
     for (ExecutableMember method : specs) {
-      if (method.getTargetClass().equals(method.getContainingClass().getQualifiedName())
+      if (method.getTargetClass().equals(method.getDeclaringClass().getQualifiedName())
           || !Modifier.isPrivate(method.getExecutable().getModifiers())) {
         pre +=
             method

@@ -1,5 +1,6 @@
 package org.toradocu.output.util;
 
+import java.util.Objects;
 import org.toradocu.extractor.Comment;
 
 /** Created by arianna on 28/06/17. */
@@ -20,11 +21,6 @@ public class ParamTagOutput extends TagOutput {
 
     ParamTagOutput that = (ParamTagOutput) o;
 
-    if (parameter != null ? !parameter.equals(that.parameter) : that.parameter != null)
-      return false;
-    if (condition != null ? !condition.equals(that.condition) : that.condition != null)
-      return false;
-    if (kind != null ? !kind.equals(that.kind) : that.kind != null) return false;
-    return comment != null ? comment.equals(that.comment) : that.comment == null;
+    return Objects.equals(parameter, that.parameter) && super.equals(that);
   }
 }

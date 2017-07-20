@@ -7,7 +7,7 @@ import randoop.condition.specification.PostSpecification;
  * specification (available after the translation of the comment). The specification specifies the
  * postconditions of the method documented by this @return block comment.
  */
-public final class ReturnTag extends Tag<PostSpecification> {
+public final class ReturnTag extends BlockTag<PostSpecification> {
 
   /**
    * Constructs a {@code ReturnTag} with the given comment
