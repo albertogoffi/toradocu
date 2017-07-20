@@ -21,7 +21,7 @@ public class PrecisionRecallJGraphT extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testGraph() throws Exception {
-    test("org.jgrapht.Graph", 1, 0.444, 1, 1, 1, 0.5);
+    test("org.jgrapht.Graph", 1, 0.556, 1, 1, 1, 1);
   }
 
   @Test
