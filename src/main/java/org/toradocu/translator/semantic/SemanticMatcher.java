@@ -52,22 +52,20 @@ public class SemanticMatcher {
    * Takes a goal file of a certain class in order to extract all its {@code DocumentedMethod}s and
    * the list of Java code elements that can be used in the translation.
    *
-   * @param directMethods
-   * @param targetClassMethods the list of Java code elements for the translation
+   * @param codeElements the list of Java code elements for the translation
    * @param method
    * @param comment
    */
   public LinkedHashMap<CodeElement<?>, Double> runVectorMatch(
-      List<CodeElement<?>> directMethods,
-      List<CodeElement<?>> targetClassMethods,
+      List<CodeElement<?>> codeElements,
       DocumentedExecutable method,
       Proposition proposition,
       String comment)
       throws IOException {
 
-    //    this.stopwords.add(proposition.getSubject().getSubject().toLowerCase());
+    this.stopwords.add(method.getContainingClass().getSimpleName().toLowerCase());
     try {
-      return vectorsMatch(comment, proposition, method, directMethods, targetClassMethods);
+      return vectorsMatch(comment, proposition, method, codeElements);
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -79,59 +77,71 @@ public class SemanticMatcher {
    *
    * @param proposition
    * @param method the method the tag belongs to
-   * @param directMethods
-   * @param targetClassMethods the code elements that are possible candidates to use in the
-   *     translation @throws IOException if the GloVe database couldn't be read
+   * @param codeElements the code elements that are possible candidates to use in the translation
+   * @throws IOException if the GloVe database couldn't be read
    */
   LinkedHashMap<CodeElement<?>, Double> vectorsMatch(
       String comment,
       Proposition proposition,
       DocumentedExecutable method,
-      List<CodeElement<?>> directMethods,
-      List<CodeElement<?>> targetClassMethods)
+      List<CodeElement<?>> codeElements)
       throws IOException {
-    Set<String> commentWordSet = this.parseComment(comment, method);
+    Set<String> commentWordSet = this.parseComment(comment);
 
     if (commentWordSet.size() > 3 || proposition.getPredicate().equals("is empty"))
       //TODO vectors sum doesn't work well with long comments. Consider sub-sentences, or just prefer WMD
-      commentWordSet = this.parseComment(proposition.getPredicate(), method);
+      commentWordSet = this.parseComment(proposition.getPredicate());
 
     String parsedComment = String.join(" ", commentWordSet).replaceAll("\\s+", " ").trim();
 
     Map<String, Double> freq = new HashMap<String, Double>();
-    CosineDistance cos = new CosineDistance();
 
-    DoubleVector commentVector = getCommentVector(commentWordSet);
+    DoubleVector originalCommentVector = getCommentVector(commentWordSet);
 
     Map<CodeElement<?>, Double> distances = new LinkedHashMap<>();
 
     String subject = proposition.getSubject().getSubject().toLowerCase();
+    String wordToIgnore = null;
     // For each code element, I want to take the vectors of its identifiers (like words componing the method name)
-    // and compute the semantic similarity with the comment
-    if (directMethods != null && !directMethods.isEmpty()) {
-      for (CodeElement<?> codeElement : directMethods) {
-        DoubleVector methodVector = getCodeElementVector(freq, codeElement);
+    // and compute the semantic similarity with the predicate (or the whole comment, we'll see)
+    if (codeElements != null && !codeElements.isEmpty()) {
+      for (CodeElement<?> codeElement : codeElements) {
+        if (codeElement instanceof MethodCodeElement
+            && !((MethodCodeElement) codeElement).getReceiver().equals("target")) {
+          // if receiver is not target, this code element is a method invoked from the subject.
+          if (subject.lastIndexOf(" ") != -1)
+            // in case of composed subject take just the last word (may be the most significant)
+            wordToIgnore = subject.substring(subject.lastIndexOf(" ") + 1, subject.length());
+          else wordToIgnore = subject;
 
-        if (methodVector != null && commentVector != null) {
-          double dist = cos.measureDistance(methodVector, commentVector);
-          distances.put(codeElement, dist);
+          DoubleVector methodVector =
+              getCodeElementVector(freq, (MethodCodeElement) codeElement, wordToIgnore);
+
+          Set<String> modifiedComment = new LinkedHashSet<String>(commentWordSet);
+          modifiedComment.remove(wordToIgnore);
+          DoubleVector modifiedCommentVector = getCommentVector(modifiedComment);
+
+          measureAndStoreDistance(modifiedCommentVector, distances, codeElement, methodVector);
+        } else {
+          DoubleVector methodVector = getCodeElementVector(freq, codeElement, null);
+          measureAndStoreDistance(originalCommentVector, distances, codeElement, methodVector);
         }
       }
-      retainMatches(parsedComment, method.getSignature(), comment, distances, 0.1);
+      return retainMatches(parsedComment, method.getSignature(), comment, distances);
     }
+    return null;
+  }
 
-    if (targetClassMethods != null && !targetClassMethods.isEmpty()) {
-      for (CodeElement<?> codeElement : targetClassMethods) {
-        DoubleVector methodVector = getCodeElementVector(freq, codeElement);
-
-        if (methodVector != null && commentVector != null) {
-          double dist = cos.measureDistance(methodVector, commentVector);
-          distances.put(codeElement, dist);
-        }
-      }
+  private void measureAndStoreDistance(
+      DoubleVector commentVector,
+      Map<CodeElement<?>, Double> distances,
+      CodeElement<?> codeElement,
+      DoubleVector methodVector) {
+    CosineDistance cos = new CosineDistance();
+    if (methodVector != null && commentVector != null) {
+      double dist = cos.measureDistance(methodVector, commentVector);
+      distances.put(codeElement, dist);
     }
-
-    return retainMatches(parsedComment, method.getSignature(), comment, distances, 0);
   }
 
   /**
@@ -139,11 +149,13 @@ public class SemanticMatcher {
    *
    * @param freq TFID map
    * @param codeElement the code element
+   * @param wordToIgnore
    * @return a {@code DoubleVector} representing the code element vector
    * @throws IOException if the database couldn't be read
    */
   private static DoubleVector getCodeElementVector(
-      Map<String, Double> freq, CodeElement<?> codeElement) throws IOException {
+      Map<String, Double> freq, CodeElement<?> codeElement, String wordToIgnore)
+      throws IOException {
     int index;
     DoubleVector codeElementVector = null;
     String name = "";
@@ -153,26 +165,15 @@ public class SemanticMatcher {
       name = ((GeneralCodeElement) codeElement).getIdentifiers().stream().findFirst().get();
     else return null;
     ArrayList<String> camelId = new ArrayList<String>(Arrays.asList(name.split("(?<!^)(?=[A-Z])")));
-
-    if (camelId.size() > 3) {
-      // Vectors sum doesn't work well with too many words.
-      return null;
-    }
-
     String joinedId = String.join(" ", camelId).replaceAll("\\s+", " ").toLowerCase().trim();
+    ArrayList<String> parsedId = new ArrayList<String>(parseComment(joinedId));
+    if (parsedId.size() > 3) return null;
 
-    index = 0;
-    for (CoreLabel lemma : StanfordParser.lemmatize(joinedId)) {
-      if (lemma != null) {
-        camelId.remove(index);
-        camelId.add(index, lemma.lemma());
-      }
-      index++;
-    }
+    if (wordToIgnore != null) parsedId.remove(wordToIgnore);
 
-    for (int i = 0; i < camelId.size(); i++) {
-      DoubleVector v = gloveDB.get(camelId.get(i).toLowerCase());
-      if (stopwordsRemoval && stopwords.contains(camelId.get(i).toLowerCase())) continue;
+    for (int i = 0; i < parsedId.size(); i++) {
+      DoubleVector v = gloveDB.get(parsedId.get(i).toLowerCase());
+      if (stopwordsRemoval && stopwords.contains(parsedId.get(i).toLowerCase())) continue;
       if (v != null) {
         if (codeElementVector == null) codeElementVector = v;
         else codeElementVector = codeElementVector.add(v);
@@ -212,13 +213,11 @@ public class SemanticMatcher {
   /**
    * Parse the original tag comment according to the configuration parameters.
    *
-   * @param method the {@code DocumentedMethod} containing the tag
    * @return the parsed comment in form of array of strings (words)
    */
-  Set<String> parseComment(String comment, DocumentedExecutable method) {
+  static Set<String> parseComment(String comment) {
     //        if (posSelect) comment = POSUtils.findSubjectPredicate(tag.getComment(), method);
     //        else comment = tag.getComment().getText();
-
     comment = comment.replaceAll("[^A-Za-z0-9 ]", "").toLowerCase();
 
     ArrayList<String> wordComment = new ArrayList<String>(Arrays.asList(comment.split(" ")));
@@ -234,7 +233,7 @@ public class SemanticMatcher {
       index++;
     }
 
-    return removeStopWords(wordComment, method.getContainingClass().getSimpleName());
+    return removeStopWords(wordComment);
   }
 
   /**
@@ -246,16 +245,11 @@ public class SemanticMatcher {
    * @param distances the computed distance, for every possible code element candidate, from the
    */
   LinkedHashMap<CodeElement<?>, Double> retainMatches(
-      String parsedComment,
-      String methodName,
-      String tag,
-      Map<CodeElement<?>, Double> distances,
-      double delta) {
+      String parsedComment, String methodName, String tag, Map<CodeElement<?>, Double> distances) {
     SemanticMatch aMatch = new SemanticMatch(tag, methodName, parsedComment, distanceThreshold);
     // Select as candidates only code elements that have a semantic distance below the chosen threshold.
 
     if (distanceThreshold != -1) {
-      distanceThreshold += delta;
       distances
           .values()
           .removeIf(
@@ -267,8 +261,7 @@ public class SemanticMatcher {
               });
     }
 
-    LinkedHashMap<CodeElement<?>, Double> orderedDistances;
-    orderedDistances =
+    LinkedHashMap<CodeElement<?>, Double> orderedDistances =
         distances
             .entrySet()
             .stream()
@@ -284,13 +277,12 @@ public class SemanticMatcher {
     return orderedDistances;
   }
 
-  static Set<String> removeStopWords(ArrayList<String> words, String className) {
+  static Set<String> removeStopWords(ArrayList<String> words) {
 
     if (stopwordsRemoval) {
       for (int i = 0; i < words.size(); i++) {
         String word = words.get(i).toLowerCase();
-        if (stopwords.contains(word) || word.equals(className.toLowerCase())) {
-          // Class name often is not useful at all (usually it's the subject). Try removing it
+        if (stopwords.contains(word)) {
           words.remove(i);
           words.add(i, "");
         }
