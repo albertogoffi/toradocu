@@ -1,5 +1,6 @@
 package org.toradocu.extractor;
 
+import java.util.List;
 import randoop.condition.specification.PostSpecification;
 
 /**
@@ -7,7 +8,13 @@ import randoop.condition.specification.PostSpecification;
  * specification (available after the translation of the comment). The specification specifies the
  * postconditions of the method documented by this @return block comment.
  */
-public final class ReturnTag extends BlockTag<PostSpecification> {
+public final class ReturnTag extends BlockTag {
+
+  /**
+   * Specification generated from the comment of this {@code ThrowsTag}. {@code null} if Toradocu
+   * failed to generate a specification or if comment translation not yet attempted.
+   */
+  private List<PostSpecification> specifications;
 
   /**
    * Constructs a {@code ReturnTag} with the given comment
@@ -16,6 +23,20 @@ public final class ReturnTag extends BlockTag<PostSpecification> {
    */
   ReturnTag(Comment comment) {
     super(Kind.RETURN, comment);
+  }
+
+  @Override
+  public List<PostSpecification> getSpecifications() {
+    return specifications;
+  }
+
+  /**
+   * Sets the specifications generated from this tag.
+   *
+   * @param specifications the specification corresponding to the comment of this tag
+   */
+  public void setSpecifications(List<PostSpecification> specifications) {
+    this.specifications = specifications;
   }
 
   /**
@@ -27,5 +48,13 @@ public final class ReturnTag extends BlockTag<PostSpecification> {
   @Override
   public boolean equals(Object obj) {
     return obj instanceof ReturnTag && super.equals(obj);
+  }
+
+  @Override
+  String appendSpecification(String stringRepresentation) {
+    if (specifications != null) {
+      return stringRepresentation + " ==> " + specifications;
+    }
+    return stringRepresentation;
   }
 }

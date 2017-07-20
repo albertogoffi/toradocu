@@ -1,9 +1,7 @@
 package org.toradocu.extractor;
 
-import java.util.List;
 import java.util.Objects;
 import org.toradocu.util.Checks;
-import randoop.condition.specification.Specification;
 
 /**
  * Represents a Javadoc block tag (e.g., {@code @param}, {@code @return}, {@code @thraws}) and its
@@ -12,7 +10,7 @@ import randoop.condition.specification.Specification;
  * specification (available after the translation of the comment). A specification is the
  * translation of the comment into a Java boolean condition.
  */
-public abstract class BlockTag<S extends Specification> {
+public abstract class BlockTag {
 
   /** The Javadoc block tags currently supported by Toradocu. */
   public enum Kind {
@@ -41,12 +39,6 @@ public abstract class BlockTag<S extends Specification> {
 
   /** The comment of this tag. */
   private Comment comment;
-
-  /**
-   * Specification generated from the comment of this {@code BlockTag}. {@code null} if Toradocu
-   * failed to generate a specification or if comment translation not yet attempted.
-   */
-  private List<S> specifications;
 
   /**
    * Constructs a {@code BlockTag} of the specific kind, with the given comment.
@@ -96,18 +88,7 @@ public abstract class BlockTag<S extends Specification> {
    * @return the translation for this tag. {@code null} if the translation has not been attempted
    *     yet or no translation has been generated.
    */
-  public List<S> getSpecifications() {
-    return specifications;
-  }
-
-  /**
-   * Sets the specification (translation) for this tag to the given specification.
-   *
-   * @param specifications the comment translation for this tag (a specification)
-   */
-  public void setSpecification(List<S> specifications) {
-    this.specifications = specifications;
-  }
+  public abstract Object getSpecifications();
 
   /**
    * Returns true if this {@code BlockTag} and the specified object are equal.
@@ -121,9 +102,7 @@ public abstract class BlockTag<S extends Specification> {
     if (!(obj instanceof BlockTag)) return false;
 
     BlockTag that = (BlockTag) obj;
-    return kind.equals(that.kind)
-        && comment.equals(that.comment)
-        && Objects.equals(specifications, that.specifications);
+    return kind.equals(that.kind) && comment.equals(that.comment);
   }
 
   /**
@@ -133,7 +112,7 @@ public abstract class BlockTag<S extends Specification> {
    */
   @Override
   public int hashCode() {
-    return Objects.hash(comment, kind, specifications);
+    return Objects.hash(comment, kind);
   }
 
   /**
@@ -147,20 +126,15 @@ public abstract class BlockTag<S extends Specification> {
   @Override
   public String toString() {
     String result = kind + " " + comment.getText();
-    return appendCondition(result);
+    return appendSpecification(result);
   }
 
   /**
-   * Appends the condition to the given string if the condition is not empty. The condition is added
-   * at the end of the given string in the following form: " ==&gt; condition".
+   * Appends the specification to the given string if the condition is not empty. The specification
+   * is added at the end of the given string in the following form: " ==&gt; specification".
    *
    * @param stringRepresentation a string representing this BlockTag
-   * @return the string representation of this tag with the condition appended
+   * @return the string representation of this tag with the specification appended
    */
-  String appendCondition(String stringRepresentation) {
-    if (specifications != null) {
-      stringRepresentation += " ==> " + specifications;
-    }
-    return stringRepresentation;
-  }
+  abstract String appendSpecification(String stringRepresentation);
 }

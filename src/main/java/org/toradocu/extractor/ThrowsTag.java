@@ -11,10 +11,16 @@ import randoop.condition.specification.ThrowsSpecification;
  * specification specifies when the method documented with this @throws (or @exception) comment is
  * expected to throw the exception.
  */
-public final class ThrowsTag extends BlockTag<ThrowsSpecification> {
+public final class ThrowsTag extends BlockTag {
 
   /** The exception described in this {@code ThrowsTag}. */
   private final Class<?> exception;
+
+  /**
+   * Specification generated from the comment of this {@code ThrowsTag}. {@code null} if Toradocu
+   * failed to generate a specification or if comment translation not yet attempted.
+   */
+  private ThrowsSpecification specification;
 
   /**
    * Constructs a {@code ThrowsTag} with the given exception and comment.
@@ -35,6 +41,20 @@ public final class ThrowsTag extends BlockTag<ThrowsSpecification> {
    */
   public Class<?> getException() {
     return exception;
+  }
+
+  @Override
+  public ThrowsSpecification getSpecifications() {
+    return specification;
+  }
+
+  /**
+   * Sets the specification generated from this tag.
+   *
+   * @param specification the specification corresponding to the comment of this tag
+   */
+  public void setSpecification(ThrowsSpecification specification) {
+    this.specification = specification;
   }
 
   /**
@@ -72,6 +92,14 @@ public final class ThrowsTag extends BlockTag<ThrowsSpecification> {
     joiner.add(getKind().toString());
     joiner.add(getException().getName());
     joiner.add(getComment().getText());
-    return appendCondition(joiner.toString());
+    return appendSpecification(joiner.toString());
+  }
+
+  @Override
+  String appendSpecification(String stringRepresentation) {
+    if (specification != null) {
+      return stringRepresentation + " ==> " + specification;
+    }
+    return stringRepresentation;
   }
 }

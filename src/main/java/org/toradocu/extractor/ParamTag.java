@@ -12,10 +12,16 @@ import randoop.condition.specification.PreSpecification;
  * to {@code false} the precondition expressed by this tag is violated, and the behavior of the
  * method documented by this tag is unspecified.
  */
-public final class ParamTag extends BlockTag<PreSpecification> {
+public final class ParamTag extends BlockTag {
 
   /** The parameter associated with the param tag */
   private final DocumentedParameter parameter;
+
+  /**
+   * Specification generated from the comment of this {@code ParamTag}. {@code null} if Toradocu
+   * failed to generate a specification or if comment translation not yet attempted.
+   */
+  private PreSpecification specification;
 
   /**
    * Constructs a {@code ParamTag} with the given exception and comment.
@@ -37,6 +43,20 @@ public final class ParamTag extends BlockTag<PreSpecification> {
    */
   public DocumentedParameter getParameter() {
     return parameter;
+  }
+
+  @Override
+  public PreSpecification getSpecifications() {
+    return specification;
+  }
+
+  /**
+   * Sets the specification generated from this tag.
+   *
+   * @param specification the specification corresponding to the comment of this tag
+   */
+  public void setSpecification(PreSpecification specification) {
+    this.specification = specification;
   }
 
   /**
@@ -75,6 +95,14 @@ public final class ParamTag extends BlockTag<PreSpecification> {
   @Override
   public String toString() {
     String result = getKind() + " " + parameter.getName() + " " + getComment().getText();
-    return appendCondition(result);
+    return appendSpecification(result);
+  }
+
+  @Override
+  String appendSpecification(String stringRepresentation) {
+    if (specification != null) {
+      return stringRepresentation + " ==> " + specification;
+    }
+    return stringRepresentation;
   }
 }

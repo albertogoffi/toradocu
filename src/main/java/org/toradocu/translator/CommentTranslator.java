@@ -1,10 +1,8 @@
 package org.toradocu.translator;
 
-import java.util.List;
 import org.toradocu.extractor.BlockTag;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.translator.preprocess.PreprocessorFactory;
-import randoop.condition.specification.Specification;
 
 public class CommentTranslator {
 
@@ -15,9 +13,7 @@ public class CommentTranslator {
 
     // Translation.
     final Translator<T> translator = TranslatorFactory.create(tag);
-    final List<? extends Specification> specifications = translator.translate(tag, excMember);
-    // TODO Check the consistency of the generated specification.
-
-    tag.setSpecification(specifications);
+    // TODO In translators, check the consistency of the generated specification(s).
+    translator.translate(tag, excMember);
   }
 }
