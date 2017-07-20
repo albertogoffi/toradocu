@@ -110,7 +110,8 @@ public final class JavadocExtractor {
    *
    * @param sourceFileName name of the source file found in package
    * @param analyzedClassName class name of the class being analysed
-   * @return the class name of the source, or null if TODO
+   * @return the class name of the source, or null if {@code analyzedClassName} does not contain a
+   *     dot (i.e., {@code analyzedClassName} is a simple, not-qualified name)
    */
   private String extractClassNameForSource(String sourceFileName, String analyzedClassName) {
     int lastDot = analyzedClassName.lastIndexOf(".");

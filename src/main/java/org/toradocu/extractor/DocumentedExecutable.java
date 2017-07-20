@@ -36,9 +36,9 @@ public final class DocumentedExecutable {
     /**
      * Create a representation of the block tags of an executable member.
      *
-     * @param paramTags Javadoc @param tags of this executable member.
-     * @param returnTag Javadoc @return tag of this executable member.
-     * @param throwsTags @throws and @exception tags of this executable member.
+     * @param paramTags Javadoc @param tags of this executable member
+     * @param returnTag Javadoc @return tag of this executable member
+     * @param throwsTags @throws and @exception tags of this executable member
      */
     BlockTags(List<ParamTag> paramTags, ReturnTag returnTag, List<ThrowsTag> throwsTags) {
       this.paramTags = paramTags;
@@ -49,7 +49,7 @@ public final class DocumentedExecutable {
     /**
      * Returns an unmodifiable view of the param tags in this method.
      *
-     * @return an unmodifiable view of the param tags in this method.
+     * @return an unmodifiable view of the param tags in this method
      */
     public List<ParamTag> paramTags() {
       return Collections.unmodifiableList(paramTags);
@@ -111,7 +111,7 @@ public final class DocumentedExecutable {
    *
    * @param executable the executable this DocumentedExecutable wraps, must not be null
    * @param parameters the parameters of this DocumentedExecutable, must not be null
-   * @param tags the Javadoc comments introduced by block tags (e.g., {@code @param},
+   * @param blockTags the Javadoc comments introduced by block tags (e.g., {@code @param},
    *     {@code @return}) associated with this executable member
    */
   DocumentedExecutable(
