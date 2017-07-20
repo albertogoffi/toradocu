@@ -227,7 +227,7 @@ class Matcher {
                 })
             .collect(Collectors.toSet());
 
-    SemanticMatcher semanticMatcher = new SemanticMatcher(true, false, (float) 0.265);
+    SemanticMatcher semanticMatcher = new SemanticMatcher(true, (float) 0.265);
     try {
       List<CodeElement<?>> sortedMethodList = new ArrayList<CodeElement<?>>(codeElements);
       //it is important to provide an fixed order since this point, to prevent method with same score

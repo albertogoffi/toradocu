@@ -21,6 +21,20 @@ plugins {
 apply plugin: 'kotlin'
 apply plugin: 'jacoco'
 
+task downloadGlove(type: Download) {
+    src 'https://dl.dropboxusercontent.com/s/ucakn0ju00pueds/glove-binary.zip'
+    dest 'src/main/resources'
+}
+task unzipGlove(type: Copy) {
+    def zipFile = file('src/main/resources/glove-binary.zip')
+    def outputDir = file('src/main/resources')
+ 
+    from zipTree(zipFile)
+    into outputDir
+}
+unzipGlove.dependsOn downloadGlove
+
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 mainClassName = "org.toradocu.Toradocu"
@@ -112,6 +126,8 @@ task copyDocletResources2(type: Copy) {
 compileJava.doLast {
   tasks.copyDocletResources1.execute()
   tasks.copyDocletResources2.execute()
+  tasks.downloadGlove.execute()
+  tasks.unzipGlove.execute()
 }
 
 import de.undercouch.gradle.tasks.download.Download
