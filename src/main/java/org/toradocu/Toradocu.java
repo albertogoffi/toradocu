@@ -13,10 +13,10 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.conf.Configuration;
+import org.toradocu.extractor.BlockTag;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.DocumentedType;
 import org.toradocu.extractor.JavadocExtractor;
-import org.toradocu.extractor.Tag;
 import org.toradocu.output.util.JsonOutput;
 import org.toradocu.translator.CommentTranslator;
 import org.toradocu.util.GsonInstance;
@@ -137,7 +137,16 @@ public class Toradocu {
         tcomment.TcommentKt.translate(members);
       } else {
         for (DocumentedExecutable member : members) {
-          for (Tag tag : member.getTags()) {
+          // TranslatorFactory should treat each type of BlockTag
+          // separately rather than doing a run-time test, which will
+          // both simplify that code and eliminate this ugly list creation.
+          List<BlockTag> tags = new ArrayList<>();
+          tags.addAll(member.paramTags());
+          if (member.returnTag() != null) {
+            tags.add(member.returnTag());
+          }
+          tags.addAll(member.throwsTags());
+          for (BlockTag tag : tags) {
             CommentTranslator.translate(tag, member);
             System.out.println("Comment: " + tag);
           }
@@ -293,7 +302,8 @@ public class Toradocu {
         .stream()
         .map(
             m -> {
-              List<Tag> tags = new ArrayList<>(m.paramTags());
+              List<BlockTag> tags = new ArrayList<>(m.paramTags());
+              // TODO: what about the return tag?
               tags.addAll(m.throwsTags());
               return tags;
             })

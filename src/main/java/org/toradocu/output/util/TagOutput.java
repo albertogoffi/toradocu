@@ -1,9 +1,13 @@
 package org.toradocu.output.util;
 
+// TODO: Add documentation throughout this class.
 /** Created by arianna on 29/06/17. */
+import java.util.Objects;
+
 public class TagOutput {
 
   String comment;
+  // TODO: What format is this?
   String kind;
 
   public String getComment() {
@@ -34,8 +38,13 @@ public class TagOutput {
 
     TagOutput that = (TagOutput) o;
 
-    if (comment != null ? !comment.equals(that.comment) : that.comment != null) return false;
-    if (kind != null ? !kind.equals(that.kind) : that.kind != null) return false;
-    return condition != null ? condition.equals(that.condition) : that.condition == null;
+    return Objects.equals(comment, that.comment)
+        && Objects.equals(kind, that.kind)
+        && Objects.equals(condition, that.condition);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(comment, kind, condition);
   }
 }

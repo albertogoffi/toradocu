@@ -63,7 +63,7 @@ public class GoalFileConverter {
         // Ignore private and inherited executable members.
         if (Modifier.isPrivate(executable.getModifiers())
             || executable.isSynthetic()
-            || !method.getTargetClass().equals(method.getContainingClass().getQualifiedName())) {
+            || !method.getTargetClass().equals(method.getDeclaringClass().getQualifiedName())) {
           continue;
         }
 

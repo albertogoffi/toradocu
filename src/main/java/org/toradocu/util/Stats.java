@@ -3,7 +3,7 @@ package org.toradocu.util;
 import java.util.ArrayList;
 import java.util.List;
 import org.toradocu.Toradocu;
-import org.toradocu.extractor.Tag;
+import org.toradocu.extractor.BlockTag;
 import org.toradocu.output.util.JsonOutput;
 import org.toradocu.output.util.ReturnTagOutput;
 import org.toradocu.output.util.TagOutput;
@@ -53,9 +53,9 @@ public class Stats {
    * Returns the recall for the specified tag kind.
    *
    * @param kind the kind of the tag
-   * @return the recall for the specified {@code Tag.Kind}
+   * @return the recall for the specified {@code BlockTag.Kind}
    */
-  public double getRecall(Tag.Kind kind) {
+  public double getRecall(BlockTag.Kind kind) {
     final int conditions = numberOfConditions(kind);
     switch (kind) {
       case THROWS:
@@ -65,7 +65,7 @@ public class Stats {
       case RETURN:
         return conditions == 0 ? 1 : correctTranslationsReturn / (double) conditions;
       default:
-        throw new IllegalStateException("Unsupported Tag.Kind " + kind);
+        throw new IllegalStateException("Unsupported BlockTag.Kind " + kind);
     }
   }
 
@@ -75,7 +75,7 @@ public class Stats {
    * @param kind the kind of the tag
    * @return the precision for the given kind of tag
    */
-  public double getPrecision(Tag.Kind kind) {
+  public double getPrecision(BlockTag.Kind kind) {
     int translated;
     switch (kind) {
       case THROWS:
@@ -88,7 +88,7 @@ public class Stats {
         translated = correctTranslationsReturn + wrongTranslationReturn;
         return translated == 0 ? 1 : correctTranslationsReturn / (double) translated;
       default:
-        throw new IllegalStateException("Unsupported Tag.Kind " + kind);
+        throw new IllegalStateException("Unsupported BlockTag.Kind " + kind);
     }
   }
 
@@ -115,9 +115,9 @@ public class Stats {
   /**
    * Return the total number of conditions for a given tag kind.
    *
-   * @return the number of conditions for the given {@code Tag.Kind}
+   * @return the number of conditions for the given {@code BlockTag.Kind}
    */
-  private int numberOfConditions(Tag.Kind kind) {
+  private int numberOfConditions(BlockTag.Kind kind) {
     switch (kind) {
       case THROWS:
         return correctTranslationsThrows + wrongTranslationThrows + missingTranslationsThrows;
@@ -126,7 +126,7 @@ public class Stats {
       case RETURN:
         return correctTranslationsReturn + wrongTranslationReturn + missingTranslationsReturn;
       default:
-        throw new IllegalStateException("Unsupported Tag.Kind " + kind);
+        throw new IllegalStateException("Unsupported BlockTag.Kind " + kind);
     }
   }
 
@@ -177,7 +177,7 @@ public class Stats {
    *
    * @param kind the kind of tag for which increment the number of correct translations
    */
-  private void addCorrectTranslation(Tag.Kind kind) {
+  private void addCorrectTranslation(BlockTag.Kind kind) {
     switch (kind) {
       case THROWS:
         ++correctTranslationsThrows;
@@ -189,7 +189,7 @@ public class Stats {
         ++correctTranslationsReturn;
         break;
       default:
-        throw new IllegalStateException("Unsupported Tag.Kind " + kind);
+        throw new IllegalStateException("Unsupported BlockTag.Kind " + kind);
     }
   }
 
@@ -198,7 +198,7 @@ public class Stats {
    *
    * @param kind the kind of tag for which increment the number of wrong translations
    */
-  private void addWrongTranslation(Tag.Kind kind) {
+  private void addWrongTranslation(BlockTag.Kind kind) {
     switch (kind) {
       case THROWS:
         ++wrongTranslationThrows;
@@ -210,7 +210,7 @@ public class Stats {
         ++wrongTranslationReturn;
         break;
       default:
-        throw new IllegalStateException("Unsupported Tag.Kind " + kind);
+        throw new IllegalStateException("Unsupported BlockTag.Kind " + kind);
     }
   }
 
@@ -219,7 +219,7 @@ public class Stats {
    *
    * @param kind the kind of tag for which increment the number of missing translations
    */
-  private void addMissingTranslation(Tag.Kind kind) {
+  private void addMissingTranslation(BlockTag.Kind kind) {
     switch (kind) {
       case THROWS:
         ++missingTranslationsThrows;
@@ -231,7 +231,7 @@ public class Stats {
         ++missingTranslationsReturn;
         break;
       default:
-        throw new IllegalStateException("Unsupported Tag.Kind " + kind);
+        throw new IllegalStateException("Unsupported BlockTag.Kind " + kind);
     }
   }
 
@@ -256,9 +256,9 @@ public class Stats {
         + SEPARATOR
         + missingTranslationsThrows
         + SEPARATOR
-        + getPrecision(Tag.Kind.THROWS)
+        + getPrecision(BlockTag.Kind.THROWS)
         + SEPARATOR
-        + getRecall(Tag.Kind.THROWS)
+        + getRecall(BlockTag.Kind.THROWS)
         + SEPARATOR
         + correctTranslationsParam
         + SEPARATOR
@@ -266,9 +266,9 @@ public class Stats {
         + SEPARATOR
         + missingTranslationsParam
         + SEPARATOR
-        + getPrecision(Tag.Kind.PARAM)
+        + getPrecision(BlockTag.Kind.PARAM)
         + SEPARATOR
-        + getRecall(Tag.Kind.PARAM)
+        + getRecall(BlockTag.Kind.PARAM)
         + SEPARATOR
         + correctTranslationsReturn
         + SEPARATOR
@@ -276,9 +276,9 @@ public class Stats {
         + SEPARATOR
         + missingTranslationsReturn
         + SEPARATOR
-        + getPrecision(Tag.Kind.RETURN)
+        + getPrecision(BlockTag.Kind.RETURN)
         + SEPARATOR
-        + getRecall(Tag.Kind.RETURN)
+        + getRecall(BlockTag.Kind.RETURN)
         + SEPARATOR
         + numberOfCorrectTranslations()
         + SEPARATOR
@@ -306,7 +306,8 @@ public class Stats {
       List<JsonOutput> actualMethodList, List<JsonOutput> expectedMethodList) {
 
     // TODO Fix the goal files and remove the following line. Goal files include inherited methods!
-    expectedMethodList.removeIf(m -> !m.containingClass.equals(m.containingClass));
+    // TODO: m.containingClass.equals(m.containingClass) in the following line is vacuously true.
+    // expectedMethodList.removeIf(m -> !m.containingClass.equals(m.containingClass));
     //    expectedMethodList.removeIf(m -> Modifier.isPrivate(m.getExecutable().getModifiers()));
 
     if (actualMethodList.size() != expectedMethodList.size()) {
@@ -322,14 +323,16 @@ public class Stats {
       Stats methodStats =
           new Stats(actualMethod.containingClass + "." + actualMethod.containingClass);
       collectStats(
-          methodStats, actualMethod.throwsTags, expectedMethod.throwsTags, Tag.Kind.THROWS);
-      collectStats(methodStats, actualMethod.paramTags, expectedMethod.paramTags, Tag.Kind.PARAM);
+          methodStats, actualMethod.throwsTags, expectedMethod.throwsTags, BlockTag.Kind.THROWS);
+      collectStats(
+          methodStats, actualMethod.paramTags, expectedMethod.paramTags, BlockTag.Kind.PARAM);
 
       List<ReturnTagOutput> actualMethodReturnTag = new ArrayList<>();
       List<ReturnTagOutput> expectedMethodReturnTag = new ArrayList<>();
       actualMethodReturnTag.add(actualMethod.returnTag);
       expectedMethodReturnTag.add(expectedMethod.returnTag);
-      collectStats(methodStats, actualMethodReturnTag, expectedMethodReturnTag, Tag.Kind.RETURN);
+      collectStats(
+          methodStats, actualMethodReturnTag, expectedMethodReturnTag, BlockTag.Kind.RETURN);
 
       stats.add(methodStats);
     }
@@ -357,7 +360,8 @@ public class Stats {
       StringBuilder output) {
 
     // TODO Fix the goal files and remove the following line. Goal files include inherited methods!
-    expectedMethodList.removeIf(m -> !m.containingClass.equals(m.containingClass));
+    // TODO: m.containingClass.equals(m.containingClass) in the following line is vacuously true.
+    // expectedMethodList.removeIf(m -> !m.containingClass.equals(m.containingClass));
     //    expectedMethodList.removeIf(m -> Modifier.isPrivate(m.getExecutable().getModifiers()));
 
     if (actualMethodList.size() != expectedMethodList.size()) {
@@ -378,11 +382,13 @@ public class Stats {
       output
           .append(
               collectStats(
-                  stats, actualMethod.throwsTags, expectedMethod.throwsTags, Tag.Kind.THROWS))
+                  stats, actualMethod.throwsTags, expectedMethod.throwsTags, BlockTag.Kind.THROWS))
           .append(
-              collectStats(stats, actualMethod.paramTags, expectedMethod.paramTags, Tag.Kind.PARAM))
+              collectStats(
+                  stats, actualMethod.paramTags, expectedMethod.paramTags, BlockTag.Kind.PARAM))
           .append(
-              collectStats(stats, actualMethodReturnTag, expectedMethodReturnTag, Tag.Kind.RETURN));
+              collectStats(
+                  stats, actualMethodReturnTag, expectedMethodReturnTag, BlockTag.Kind.RETURN));
     }
     return stats;
   }
@@ -391,7 +397,7 @@ public class Stats {
       Stats stats,
       List<? extends TagOutput> actualTags,
       List<? extends TagOutput> expectedTags,
-      Tag.Kind kind) {
+      BlockTag.Kind kind) {
 
     // TODO Restore the following check, once all the goal files are fixed (now that we completely
     // TODO removed inheritance!
@@ -423,7 +429,8 @@ public class Stats {
 
         //        String expectedCondition = expectedTag.getSpecification().toString().replace(" ", "");
         String expectedCondition = expectedTag.getCondition().replace(" ", "");
-        if (Toradocu.configuration.useTComment() && actualTag.getKind().equals(Tag.Kind.RETURN)) {
+        if (Toradocu.configuration.useTComment()
+            && actualTag.getKind().equals(BlockTag.Kind.RETURN.toString())) {
           continue; // Ignore not translated @return tags when using @tComment engine.
         }
         //        String actualCondition = actualTag.getSpecification().toString().replace(" ", "");

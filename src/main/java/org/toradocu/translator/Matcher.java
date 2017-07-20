@@ -186,7 +186,7 @@ class Matcher {
       codeElements =
           extractBooleanCodeElements(
               paramCodeElement, paramCodeElement.getJavaCodeElement().getType());
-      Class<?> targetClass = method.getContainingClass();
+      Class<?> targetClass = method.getDeclaringClass();
       codeElements.addAll(extractStaticBooleanMethods(targetClass, paramCodeElement));
     } else if (subject instanceof ClassCodeElement) {
       ClassCodeElement classCodeElement = (ClassCodeElement) subject;

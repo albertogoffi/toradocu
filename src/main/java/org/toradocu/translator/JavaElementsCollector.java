@@ -29,7 +29,7 @@ public class JavaElementsCollector {
    */
   public static Set<CodeElement<?>> collect(DocumentedExecutable documentedExecutable) {
     Set<CodeElement<?>> collectedElements = new LinkedHashSet<>();
-    final Class<?> containingClass = documentedExecutable.getContainingClass();
+    final Class<?> containingClass = documentedExecutable.getDeclaringClass();
 
     // Add the containing class.
     collectedElements.add(containingClassOf(documentedExecutable));
@@ -72,7 +72,7 @@ public class JavaElementsCollector {
 
   private static List<Class<?>> collectInScopeTypes(DocumentedExecutable documentedExecutable) {
     final List<Class<?>> availableTypes = new ArrayList<>();
-    final Class<?> containingClass = documentedExecutable.getContainingClass();
+    final Class<?> containingClass = documentedExecutable.getDeclaringClass();
 
     // Add parameters of the executable member.
     Collections.addAll(availableTypes, documentedExecutable.getExecutable().getParameterTypes());
@@ -101,8 +101,7 @@ public class JavaElementsCollector {
     // The first two parameters of enum constructors are synthetic and must be removed to reflect
     // the source code.
     final List<DocumentedParameter> parameters = documentedExecutable.getParameters();
-    if (documentedExecutable.getContainingClass().isEnum()
-        && documentedExecutable.isConstructor()) {
+    if (documentedExecutable.getDeclaringClass().isEnum() && documentedExecutable.isConstructor()) {
       parameters.remove(0);
       parameters.remove(0);
     }
@@ -141,7 +140,7 @@ public class JavaElementsCollector {
   }
 
   private static ClassCodeElement containingClassOf(DocumentedExecutable documentedExecutable) {
-    return new ClassCodeElement(documentedExecutable.getContainingClass());
+    return new ClassCodeElement(documentedExecutable.getDeclaringClass());
   }
 
   /**
