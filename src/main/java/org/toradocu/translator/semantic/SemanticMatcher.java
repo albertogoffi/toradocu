@@ -64,7 +64,7 @@ public class SemanticMatcher {
       String comment)
       throws IOException {
 
-    stopwords.add(method.getContainingClass().getSimpleName().toLowerCase());
+    stopwords.add(method.getDeclaringClass().getSimpleName().toLowerCase());
     try {
       return vectorsMatch(comment, proposition, method, codeElements);
     } catch (IOException e) {

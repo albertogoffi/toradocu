@@ -30,9 +30,8 @@ public final class Comment {
     this.text = text.replaceAll("\\s+", " ");
     this.wordsMarkedAsCode = new ArrayList<>();
 
-
     final String codePattern1 = "<code>([A-Za-z0-9_]+)</code>";
-    identifyMarkedWords(text, codePattern1);
+    identifyCodeWords(text, codePattern1);
     removeTags(codePattern1);
 
     final String codePattern2 = "\\{@code ([^}]+)\\}";
