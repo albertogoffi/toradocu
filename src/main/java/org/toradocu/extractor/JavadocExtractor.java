@@ -8,6 +8,7 @@ import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.ImportDeclaration;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.NodeList;
+import com.github.javaparser.ast.body.BodyDeclaration;
 import com.github.javaparser.ast.body.CallableDeclaration;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.ConstructorDeclaration;
@@ -57,16 +58,30 @@ public final class JavadocExtractor {
     final Class<?> clazz = Reflection.getClass(className);
     final List<Executable> reflectionExecutables = getExecutables(clazz);
     // Obtain executable members in the source code.
+
+    String fileName = "";
+    String simpleName = "";
+    boolean isNestedClass = false;
     // TODO Add support for nested classes.
+    if (className.contains("$")) {
+      isNestedClass = true;
+      // We are analysing a nested class so the source file won't match the name
+      fileName = className.substring(0, className.indexOf("$"));
+      simpleName =
+          className.substring(className.lastIndexOf(".") + 1, className.indexOf("$") + 1)
+              + clazz.getSimpleName();
+    } else {
+      fileName = className;
+      simpleName = clazz.getSimpleName();
+    }
     String sourceFile =
-        sourcePath + File.separator + className.replaceAll("\\.", File.separator) + ".java";
+        sourcePath + File.separator + fileName.replaceAll("\\.", File.separator) + ".java";
     List<String> classesInPackage = getClassesInSamePackage(className, sourceFile);
-    final List<CallableDeclaration<?>> sourceExecutables =
-        getExecutables(clazz.getSimpleName(), sourceFile);
+    final List<CallableDeclaration<?>> sourceExecutables = getExecutables(simpleName, sourceFile);
 
     // Maps each reflection executable member to its corresponding source member.
     Map<Executable, CallableDeclaration<?>> executablesMap =
-        mapExecutables(reflectionExecutables, sourceExecutables);
+        mapExecutables(reflectionExecutables, sourceExecutables, isNestedClass);
 
     // Create the list of ExecutableMembers.
     List<DocumentedExecutable> members = new ArrayList<>(reflectionExecutables.size());
@@ -343,9 +358,33 @@ public final class JavadocExtractor {
   private List<CallableDeclaration<?>> getExecutables(String className, String sourcePath)
       throws FileNotFoundException {
     final CompilationUnit cu = JavaParser.parse(new File(sourcePath));
+    String nestedClassName = "";
+    if (className.contains("$")) {
+      nestedClassName = className.substring(className.indexOf("$") + 1, className.length());
+      className = className.substring(0, className.indexOf("$"));
+    }
+
     Optional<ClassOrInterfaceDeclaration> definitionOpt = cu.getClassByName(className);
     if (!definitionOpt.isPresent()) {
       definitionOpt = cu.getInterfaceByName(className);
+    }
+
+    if (!nestedClassName.equals("") && definitionOpt.isPresent()) {
+      NodeList<BodyDeclaration<?>> containgClassMembers = definitionOpt.get().getMembers();
+      for (BodyDeclaration<?> childNode : containgClassMembers) {
+        if (childNode instanceof ClassOrInterfaceDeclaration
+            && ((ClassOrInterfaceDeclaration) childNode)
+                .getName()
+                .asString()
+                .equals(nestedClassName)) {
+          final List<CallableDeclaration<?>> sourceExecutables = new ArrayList<>();
+          final ClassOrInterfaceDeclaration sourceClass = (ClassOrInterfaceDeclaration) childNode;
+          sourceExecutables.addAll(sourceClass.getConstructors());
+          sourceExecutables.addAll(sourceClass.getMethods());
+          sourceExecutables.removeIf(NodeWithPrivateModifier::isPrivate); // Ignore private members.
+          return Collections.unmodifiableList(sourceExecutables);
+        }
+      }
     }
     if (!definitionOpt.isPresent()) {
       throw new IllegalArgumentException(
@@ -364,12 +403,15 @@ public final class JavadocExtractor {
    *
    * @param reflectionExecutables the list of reflection members
    * @param sourceExecutables the list of source code members
+   * @param isNestedClass true if the class containing the executables is a nested class
    * @return a map holding the correspondences
    */
   private Map<Executable, CallableDeclaration<?>> mapExecutables(
-      List<Executable> reflectionExecutables, List<CallableDeclaration<?>> sourceExecutables) {
+      List<Executable> reflectionExecutables,
+      List<CallableDeclaration<?>> sourceExecutables,
+      boolean isNestedClass) {
 
-    filterOutGeneratedConstructors(reflectionExecutables, sourceExecutables);
+    filterOutGeneratedConstructors(reflectionExecutables, sourceExecutables, isNestedClass);
 
     if (reflectionExecutables.size() != sourceExecutables.size()) {
       // TODO Add the differencies to the error message to better characterize the error.
@@ -406,19 +448,32 @@ public final class JavadocExtractor {
    *
    * @param reflectionExecutables executable members obtained via reflection
    * @param sourceExecutables executable members obtained parsing the source code
+   * @param isNestedClass true if the class containing the executables is a nested class
    */
   private void filterOutGeneratedConstructors(
-      List<Executable> reflectionExecutables, List<CallableDeclaration<?>> sourceExecutables) {
+      List<Executable> reflectionExecutables,
+      List<CallableDeclaration<?>> sourceExecutables,
+      boolean isNestedClass) {
     final List<CallableDeclaration<?>> sourceConstructors =
         sourceExecutables
             .stream()
             .filter(e -> e instanceof ConstructorDeclaration && e.getParameters().isEmpty())
             .collect(toList());
-    final List<Executable> reflectionConstructors =
-        reflectionExecutables
-            .stream()
-            .filter(e -> e instanceof Constructor && e.getParameterCount() == 0)
-            .collect(toList());
+
+    List<Executable> reflectionConstructors = new ArrayList<>();
+    if (!isNestedClass)
+      reflectionConstructors =
+          reflectionExecutables
+              .stream()
+              .filter(e -> e instanceof Constructor && e.getParameterCount() == 0)
+              .collect(toList());
+    else
+      //TODO seems like this doesn't apply to static classes: check.
+      reflectionConstructors =
+          reflectionExecutables
+              .stream()
+              .filter(e -> e instanceof Constructor && e.getParameterCount() == 1)
+              .collect(toList());
 
     for (Executable reflectionConstructor : reflectionConstructors) {
       final String reflectionConstructorName = reflectionConstructor.getName();
