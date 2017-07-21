@@ -150,7 +150,11 @@ public final class JavadocExtractor {
       for (JavadocBlockTag blockTag : blockTags) {
         switch (blockTag.getType()) {
           case PARAM:
-            paramTags.add(createParamTag(blockTag, parameters));
+            ParamTag paramTag = createParamTag(blockTag, parameters);
+            if (paramTag != null) {
+              // createParamTag returns null in case of generic type.
+              paramTags.add(paramTag);
+            }
             break;
           case RETURN:
             returnTag = createReturnTag(blockTag);
