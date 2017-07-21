@@ -2,13 +2,12 @@ package org.toradocu;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.StringReader;
+import com.google.gson.reflect.TypeToken;
+import java.io.*;
+import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
@@ -21,6 +20,7 @@ import org.toradocu.extractor.JavadocExtractor;
 import org.toradocu.output.util.JsonOutput;
 import org.toradocu.translator.CommentTranslator;
 import org.toradocu.util.GsonInstance;
+import org.toradocu.util.Stats;
 
 /**
  * Entry point of Toradocu. {@code Toradocu.main} is automatically executed running the command:
@@ -155,14 +155,15 @@ public class Toradocu {
 
       // Output the result on a file or on the standard output, if silent mode is disabled.
       // TODO Enable JSON output when JSON format is fixed.
-      if (!configuration.isSilent() || translationsPresentIn(members)) {
+      List<JsonOutput> jsonOutputs = new ArrayList<>();
+      if (!configuration.isSilent() || configuration.isSilent() && translationsPresentIn(members)) {
         if (configuration.getConditionTranslatorOutput() != null) {
+
           try (BufferedWriter writer =
               Files.newBufferedWriter(
                   configuration.getConditionTranslatorOutput().toPath(), StandardCharsets.UTF_8)) {
             //                  String jsonOutput = GsonInstance.gson().toJson(members);
 
-            List<JsonOutput> jsonOutputs = new ArrayList<>();
             for (DocumentedExecutable member : members) {
               jsonOutputs.add(new JsonOutput(member));
             }
@@ -176,7 +177,6 @@ public class Toradocu {
                 e);
           }
         } else {
-          List<JsonOutput> jsonOutputs = new ArrayList<>();
           for (DocumentedExecutable member : members) {
             jsonOutputs.add(new JsonOutput(member));
           }
@@ -187,28 +187,27 @@ public class Toradocu {
 
       // Create statistics.
       // TODO Enable when stats component is fixed.
-      //      File expectedResultFile = configuration.getExpectedOutput();
-      //      if (expectedResultFile != null) {
-      //        Type collectionType = new TypeToken<List<DocumentedExecutable>>() {}.getType();
-      //        try (BufferedReader reader = Files.newBufferedReader(expectedResultFile.toPath());
-      //            BufferedWriter resultsFile =
-      //                Files.newBufferedWriter(
-      //                    configuration.getStatsFile().toPath(),
-      //                    StandardOpenOption.CREATE,
-      //                    StandardOpenOption.APPEND)) {
-      //          List<DocumentedExecutable> expectedResult =
-      //              GsonInstance.gson().fromJson(reader, collectionType);
-      //          List<Stats> targetClassResults = Stats.getStats(members, expectedResult);
-      //          for (Stats result : targetClassResults) {
-      //            if (result.numberOfConditions() != 0) { // Ignore methods with no tags.
-      //              resultsFile.write(result.asCSV());
-      //              resultsFile.newLine();
-      //            }
-      //          }
-      //        } catch (IOException e) {
-      //          log.error("Unable to read the file: " + configuration.getConditionTranslatorInput(), e);
-      //        }
-      //      }
+      File expectedResultFile = configuration.getExpectedOutput();
+      if (expectedResultFile != null) {
+        Type collectionType = new TypeToken<List<JsonOutput>>() {}.getType();
+        try (BufferedReader reader = Files.newBufferedReader(expectedResultFile.toPath());
+            BufferedWriter resultsFile =
+                Files.newBufferedWriter(
+                    configuration.getStatsFile().toPath(),
+                    StandardOpenOption.CREATE,
+                    StandardOpenOption.APPEND)) {
+          List<JsonOutput> expectedResult = GsonInstance.gson().fromJson(reader, collectionType);
+          List<Stats> targetClassResults = Stats.getStats(jsonOutputs, expectedResult);
+          for (Stats result : targetClassResults) {
+            if (result.numberOfConditions() != 0) { // Ignore methods with no tags.
+              resultsFile.write(result.asCSV());
+              resultsFile.newLine();
+            }
+          }
+        } catch (IOException e) {
+          log.error("Unable to read the file: " + configuration.getConditionTranslatorInput(), e);
+        }
+      }
 
       // Export generated specifications as Randoop specifications if requested.
       //      generateRandoopSpecs(members);

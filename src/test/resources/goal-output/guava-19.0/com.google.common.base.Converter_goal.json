@@ -176,7 +176,7 @@
     "returnTag": {
       "comment": "the converted value; is null if and only if a is null",
       "kind": "RETURN",
-      "condition": "args[0]==null ? result==null"
+      "condition": "args[0]==null ? result==null : result!=null"
     },
     "throwsTags": []
   },
