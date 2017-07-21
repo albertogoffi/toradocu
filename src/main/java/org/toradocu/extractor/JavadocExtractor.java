@@ -61,10 +61,7 @@ public final class JavadocExtractor {
 
     String fileName = "";
     String simpleName = "";
-    boolean isNestedClass = false;
-    // TODO Add support for nested classes.
     if (className.contains("$")) {
-      isNestedClass = true;
       // We are analysing a nested class so the source file won't match the name
       fileName = className.substring(0, className.indexOf("$"));
       simpleName =
@@ -81,7 +78,7 @@ public final class JavadocExtractor {
 
     // Maps each reflection executable member to its corresponding source member.
     Map<Executable, CallableDeclaration<?>> executablesMap =
-        mapExecutables(reflectionExecutables, sourceExecutables, isNestedClass);
+        mapExecutables(reflectionExecutables, sourceExecutables, className);
 
     // Create the list of ExecutableMembers.
     List<DocumentedExecutable> members = new ArrayList<>(reflectionExecutables.size());
@@ -403,15 +400,15 @@ public final class JavadocExtractor {
    *
    * @param reflectionExecutables the list of reflection members
    * @param sourceExecutables the list of source code members
-   * @param isNestedClass true if the class containing the executables is a nested class
+   * @param className name of the class containing the executables
    * @return a map holding the correspondences
    */
   private Map<Executable, CallableDeclaration<?>> mapExecutables(
       List<Executable> reflectionExecutables,
       List<CallableDeclaration<?>> sourceExecutables,
-      boolean isNestedClass) {
+      String className) {
 
-    filterOutGeneratedConstructors(reflectionExecutables, sourceExecutables, isNestedClass);
+    filterOutGeneratedConstructors(reflectionExecutables, sourceExecutables, className);
 
     if (reflectionExecutables.size() != sourceExecutables.size()) {
       // TODO Add the differencies to the error message to better characterize the error.
@@ -448,12 +445,12 @@ public final class JavadocExtractor {
    *
    * @param reflectionExecutables executable members obtained via reflection
    * @param sourceExecutables executable members obtained parsing the source code
-   * @param isNestedClass true if the class containing the executables is a nested class
+   * @param className name of the class containing the executables
    */
   private void filterOutGeneratedConstructors(
       List<Executable> reflectionExecutables,
       List<CallableDeclaration<?>> sourceExecutables,
-      boolean isNestedClass) {
+      String className) {
     final List<CallableDeclaration<?>> sourceConstructors =
         sourceExecutables
             .stream()
@@ -461,20 +458,24 @@ public final class JavadocExtractor {
             .collect(toList());
 
     List<Executable> reflectionConstructors = new ArrayList<>();
-    if (!isNestedClass)
+    if (!className.contains("$")) {
       reflectionConstructors =
           reflectionExecutables
               .stream()
               .filter(e -> e instanceof Constructor && e.getParameterCount() == 0)
               .collect(toList());
-    else
-      //TODO seems like this doesn't apply to static classes: check.
+    } else {
+      String containingClassName = className.substring(0, className.indexOf("$"));
       reflectionConstructors =
           reflectionExecutables
               .stream()
-              .filter(e -> e instanceof Constructor && e.getParameterCount() == 1)
+              .filter(
+                  e ->
+                      e instanceof Constructor
+                          && e.getParameterCount() == 1
+                          && e.getParameters()[0].getType().getName().equals(containingClassName))
               .collect(toList());
-
+    }
     for (Executable reflectionConstructor : reflectionConstructors) {
       final String reflectionConstructorName = reflectionConstructor.getName();
       final String reflectionConstructorSimpleName =
@@ -555,6 +556,8 @@ public final class JavadocExtractor {
    * @return the given type with package prefix removed
    */
   private String removePackage(String type) {
+    int dollar = type.indexOf("$");
+    if (dollar != -1) return type.substring(dollar + 1);
     // Constructor names contain package name.
     int lastDot = type.lastIndexOf(".");
     if (lastDot != -1) {
