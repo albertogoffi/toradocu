@@ -519,11 +519,14 @@ public final class JavadocExtractor {
         reflectionSimpleTypeName += "[]";
       int dollar = reflectionSimpleTypeName.indexOf("$");
       if (dollar != -1) {
-        if (sourceTypeName.contains("."))
+        if (sourceTypeName.contains(".")) {
+          // In case of Enum
           reflectionSimpleTypeName = reflectionSimpleTypeName.replace("$", ".");
-        else
+        } else {
+          // In case of nested class
           reflectionSimpleTypeName =
               reflectionSimpleTypeName.substring(dollar + 1, reflectionSimpleTypeName.length());
+        }
       }
 
       if (!reflectionSimpleTypeName.equals(sourceTypeName)) {
@@ -556,8 +559,6 @@ public final class JavadocExtractor {
    * @return the given type with package prefix removed
    */
   private String removePackage(String type) {
-    int dollar = type.indexOf("$");
-    if (dollar != -1) return type.substring(dollar + 1);
     // Constructor names contain package name.
     int lastDot = type.lastIndexOf(".");
     if (lastDot != -1) {
