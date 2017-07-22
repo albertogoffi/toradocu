@@ -1,0 +1,97 @@
+[
+  {
+    "signature": "plume.EntryReader$FlnReader(java.io.Reader reader, java.lang.String filename)",
+    "name": "plume.EntryReader$FlnReader",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader$FlnReader",
+      "name": "FlnReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader$FlnReader",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.Reader",
+          "name": "Reader",
+          "isArray": false
+        },
+        "name": "reader"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.Reader",
+            "name": "Reader",
+            "isArray": false
+          },
+          "name": "reader"
+        },
+        "comment": "source from which to read entries.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "file name corresponding to reader for use in error messages. .filename Must be !=null; if there isn't a name clients should provide a dummy value.",
+        "kind": "PARAM",
+        "condition": "args[1]!=null"
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "plume.EntryReader$FlnReader(java.lang.String filename)",
+    "name": "plume.EntryReader$FlnReader",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader$FlnReader",
+      "name": "FlnReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader$FlnReader",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "file from which to read.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  }
+]

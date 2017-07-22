@@ -422,7 +422,8 @@ public final class JavadocExtractor {
               .stream()
               .filter(
                   e ->
-                      removePackage(e.getName()).equals(sourceMember.getName().asString())
+                      removePackage(e.getName(), e instanceof Constructor)
+                              .equals(sourceMember.getName().asString())
                           && sameParamTypes(e.getParameters(), sourceMember.getParameters()))
               .collect(toList());
       if (matches.size() < 1) {
@@ -510,7 +511,7 @@ public final class JavadocExtractor {
       final java.lang.reflect.Parameter reflectionParam = reflectionParams[i];
       final String reflectionQualifiedTypeName =
           rawType(reflectionParam.getParameterizedType().getTypeName());
-      String reflectionSimpleTypeName = removePackage(reflectionQualifiedTypeName);
+      String reflectionSimpleTypeName = removePackage(reflectionQualifiedTypeName, false);
 
       final com.github.javaparser.ast.body.Parameter sourceParam = sourceParams.get(i);
       String sourceTypeName = rawType(sourceParam.getType().asString());
@@ -558,12 +559,19 @@ public final class JavadocExtractor {
    * @param type the type name from which remove the package prefix
    * @return the given type with package prefix removed
    */
-  private String removePackage(String type) {
+  private String removePackage(String type, boolean isConstructor) {
     // Constructor names contain package name.
     int lastDot = type.lastIndexOf(".");
     if (lastDot != -1) {
-      return type.substring(lastDot + 1);
+      type = type.substring(lastDot + 1);
     }
+
+    // Constructor of nested classes need a special parsing
+    int dollar = type.indexOf("$");
+    if (isConstructor && dollar != -1) {
+      type = type.substring(dollar + 1, type.length());
+    }
+
     return type;
   }
 
