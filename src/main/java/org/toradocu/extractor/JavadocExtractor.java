@@ -402,7 +402,7 @@ public final class JavadocExtractor {
   }
 
   /**
-   * Removes compiler-generated constructors from {@code reflectionExcutables}.
+   * Removes compiler-generated constructors from {@code reflectionExecutables}.
    *
    * @param reflectionExecutables executable members obtained via reflection
    * @param sourceExecutables executable members obtained parsing the source code
