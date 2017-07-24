@@ -5,7 +5,6 @@ import static java.util.stream.Collectors.toList;
 import java.util.*;
 import org.toradocu.extractor.BlockTag;
 import org.toradocu.extractor.DocumentedExecutable;
-import org.toradocu.extractor.ParamTag;
 import org.toradocu.extractor.ThrowsTag;
 
 /**
@@ -13,14 +12,6 @@ import org.toradocu.extractor.ThrowsTag;
  * kind Param and Throws, since the translation process needed for this two tags is the same.
  */
 public class BasicTranslator {
-
-  public static String translate(ThrowsTag tag, DocumentedExecutable excMember) {
-    return translateTag(tag, excMember);
-  }
-
-  public static String translate(ParamTag tag, DocumentedExecutable excMember) {
-    return translateTag(tag, excMember);
-  }
 
   /**
    * Given a {@code BlockTag}, ask to {@code Parser} the list of {@code PropositionSeries}
@@ -30,7 +21,7 @@ public class BasicTranslator {
    * @param excMember the {@code DocumentedExecutable} the tag belongs to
    * @return a String representing the translation
    */
-  private static String translateTag(BlockTag tag, DocumentedExecutable excMember) {
+  public static String translate(BlockTag tag, DocumentedExecutable excMember) {
     // Identify propositions in the comment. Each sentence in the comment is parsed into a
     // PropositionSeries.
     List<PropositionSeries> propositions = Parser.parse(tag.getComment(), excMember);
