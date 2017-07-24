@@ -43,7 +43,13 @@ public final class ThrowsTag extends BlockTag {
     return exception;
   }
 
-  @Override
+  /**
+   * Returns the specification that represents the translation for this tag. {@code null} if the
+   * translation has not been attempted yet or no translation has been generated.
+   *
+   * @return the translation for this tag. {@code null} if the translation has not been attempted
+   *     yet or no translation has been generated.
+   */
   public ThrowsSpecification getSpecifications() {
     return specification;
   }

@@ -45,8 +45,14 @@ public final class ParamTag extends BlockTag {
     return parameter;
   }
 
-  @Override
-  public PreSpecification getSpecifications() {
+  /**
+   * Returns the specification that represents the translation for this tag. {@code null} if the
+   * translation has not been attempted yet or no translation has been generated.
+   *
+   * @return the translation for this tag. {@code null} if the translation has not been attempted
+   *     yet or no translation has been generated.
+   */
+  public PreSpecification getSpecification() {
     return specification;
   }
 

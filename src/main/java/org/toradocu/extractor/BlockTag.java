@@ -82,15 +82,6 @@ public abstract class BlockTag {
   }
 
   /**
-   * Returns the specification that represents the translation for this tag. {@code null} if the
-   * translation has not been attempted yet or no translation has been generated.
-   *
-   * @return the translation for this tag. {@code null} if the translation has not been attempted
-   *     yet or no translation has been generated.
-   */
-  public abstract Object getSpecifications();
-
-  /**
    * Returns true if this {@code BlockTag} and the specified object are equal.
    *
    * @param obj the object to test for equality

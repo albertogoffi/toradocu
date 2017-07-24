@@ -25,7 +25,13 @@ public final class ReturnTag extends BlockTag {
     super(Kind.RETURN, comment);
   }
 
-  @Override
+  /**
+   * Returns the specification that represents the translation for this tag. {@code null} if the
+   * translation has not been attempted yet or no translation has been generated.
+   *
+   * @return the translation for this tag. {@code null} if the translation has not been attempted
+   *     yet or no translation has been generated.
+   */
   public List<PostSpecification> getSpecifications() {
     return specifications;
   }
