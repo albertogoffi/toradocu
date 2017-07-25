@@ -62,7 +62,7 @@ public class JsonOutput {
                 + postSpec.getProperty().getConditionText();
         if (specs.size() > 1) {
           postSpec = specs.get(1);
-          spec += " : " + postSpec.getProperty();
+          spec += " : " + postSpec.getProperty().getConditionText();
         }
       }
       this.returnTag = new ReturnTagOutput(mrt.getComment().getText(), mrt.getKind().name(), spec);
