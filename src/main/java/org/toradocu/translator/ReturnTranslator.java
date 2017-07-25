@@ -270,7 +270,9 @@ public class ReturnTranslator implements Translator<ReturnTag> {
                 .collect(toList());
 
         translation = tryPredicateMatch(method, semanticGraphs, extractedPropositions, comment);
-        if (translation == null) translation = tryCodeElementMatch(method, comment);
+        if (translation == null) {
+          translation = tryCodeElementMatch(method, comment);
+        }
       }
     }
     if (translation != null) return "true?" + translation;

@@ -6,7 +6,9 @@ import de.jungblut.glove.impl.GloveBinaryRandomAccessReader;
 import de.jungblut.math.DoubleVector;
 import edu.stanford.nlp.ling.CoreLabel;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.Predicate;
@@ -23,14 +25,13 @@ import org.toradocu.translator.*;
  */
 public class SemanticMatcher {
 
-  boolean stopWordsRemoval;
-  float distanceThreshold;
-  List<String> stopwords;
+  private boolean stopWordsRemoval;
+  private float distanceThreshold;
+  private List<String> stopwords;
 
   private static GloveRandomAccessReader gloveDB;
 
   public SemanticMatcher(boolean stopWordsRemoval, float distanceThreshold) {
-
     this.stopWordsRemoval = stopWordsRemoval;
     this.distanceThreshold = distanceThreshold;
 
@@ -41,7 +42,12 @@ public class SemanticMatcher {
                 "true", "false", "the", "a", "if", "for", "be", "have", "this", "do", "not", "of",
                 "in", "null", "only", "already", "specify"));
 
-    gloveDB = setUpGloveBinaryDB();
+    try {
+      gloveDB = setUpGloveBinaryDB();
+    } catch (URISyntaxException | IOException e) {
+      e.printStackTrace();
+      gloveDB = null;
+    }
   }
 
   /**
@@ -304,8 +310,8 @@ public class SemanticMatcher {
         }
       }
     }
-    Set<String> wordList = new HashSet<String>(words);
-    wordList.removeAll(Arrays.asList(""));
+    Set<String> wordList = new HashSet<>(words);
+    wordList.removeAll(Collections.singletonList(""));
     return wordList;
   }
 
@@ -314,15 +320,9 @@ public class SemanticMatcher {
    *
    * @return the reader
    */
-  private GloveRandomAccessReader setUpGloveBinaryDB() {
-    GloveRandomAccessReader gloveBinaryDb = null;
-    try {
-      URL gloveBinaryModel =
-          Thread.currentThread().getContextClassLoader().getResource("glove-binary");
-      gloveBinaryDb = new GloveBinaryRandomAccessReader(Paths.get(gloveBinaryModel.toURI()));
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    return gloveBinaryDb;
+  private GloveRandomAccessReader setUpGloveBinaryDB() throws URISyntaxException, IOException {
+    URL gloveBinaryModel = ClassLoader.getSystemClassLoader().getResource("glove-binary");
+    Path modelsPath = Paths.get(gloveBinaryModel.toURI());
+    return new GloveBinaryRandomAccessReader(modelsPath);
   }
 }
