@@ -390,7 +390,7 @@ public final class JavadocExtractor {
       definitionOpt = cu.getInterfaceByName(className);
     }
 
-    if (className.contains("$")) {
+    if (!nestedClassName.isEmpty()) {
       // Nested class.
       if (!nestedClassName.isEmpty() && definitionOpt.isPresent()) {
         NodeList<BodyDeclaration<?>> containingClassMembers = definitionOpt.get().getMembers();
