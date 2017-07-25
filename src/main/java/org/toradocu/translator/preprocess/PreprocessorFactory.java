@@ -14,7 +14,6 @@ public class PreprocessorFactory {
     phases.add(new EndPeriod());
     phases.add(new Trim());
 
-    // TODO Complete the method adding missing phases.
     switch (tagKind) {
       case PARAM:
         phases.add(new RemoveCommas()); // TODO Make RemoveCommas a singleton?
