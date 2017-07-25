@@ -36,9 +36,9 @@ public class JsonOutput {
     this.returnType =
         new org.toradocu.output.util.Type(
             returnTypeName, returnTypeName, returnTypeName.endsWith("]"));
-    this.parameters = new ArrayList<org.toradocu.output.util.Parameter>();
-    this.paramTags = new ArrayList<ParamTagOutput>();
-    this.throwsTags = new ArrayList<ThrowsTagOutput>();
+    this.parameters = new ArrayList<>();
+    this.paramTags = new ArrayList<>();
+    this.throwsTags = new ArrayList<>();
     ReturnTag mrt = member.returnTag();
     if (mrt != null) {
       Postcondition msp = member.returnTag().getSpecification();

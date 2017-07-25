@@ -1,19 +1,25 @@
 package org.toradocu.translator;
 
-import org.toradocu.extractor.BlockTag;
+import java.util.List;
 import org.toradocu.extractor.DocumentedExecutable;
-import org.toradocu.translator.preprocess.PreprocessorFactory;
+import org.toradocu.extractor.ParamTag;
+import org.toradocu.extractor.ReturnTag;
+import org.toradocu.extractor.ThrowsTag;
+import randoop.condition.specification.PostSpecification;
+import randoop.condition.specification.PreSpecification;
+import randoop.condition.specification.ThrowsSpecification;
 
 public class CommentTranslator {
 
-  public static <T extends BlockTag> void translate(T tag, DocumentedExecutable excMember) {
+  public static PreSpecification translate(ParamTag tag, DocumentedExecutable excMember) {
+    return new ParamTranslator().translate(tag, excMember);
+  }
 
-    // Preprocessing.
-    PreprocessorFactory.create(tag.getKind()).preprocess(tag, excMember);
+  public static List<PostSpecification> translate(ReturnTag tag, DocumentedExecutable excMember) {
+    return new ReturnTranslator().translate(tag, excMember);
+  }
 
-    // Translation.
-    final Translator<T> translator = TranslatorFactory.create(tag);
-    // TODO In translators, check the consistency of the generated specification(s).
-    translator.translate(tag, excMember);
+  public static ThrowsSpecification translate(ThrowsTag tag, DocumentedExecutable excMember) {
+    return new ThrowsTranslator().translate(tag, excMember);
   }
 }

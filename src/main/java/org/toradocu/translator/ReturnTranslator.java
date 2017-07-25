@@ -17,10 +17,9 @@ import randoop.condition.specification.Guard;
 import randoop.condition.specification.PostSpecification;
 import randoop.condition.specification.Property;
 
-public class ReturnTranslator implements Translator<ReturnTag> {
+public class ReturnTranslator {
 
-  @Override
-  public void translate(ReturnTag tag, DocumentedExecutable excMember) {
+  public List<PostSpecification> translate(ReturnTag tag, DocumentedExecutable excMember) {
     String comment = tag.getComment().getText();
     // Assumption: the comment is composed of a single sentence. We should probably split multiple
     // sentence comments using the Stanford Parser, and then work on each single sentence.
@@ -35,7 +34,7 @@ public class ReturnTranslator implements Translator<ReturnTag> {
       translation = returnNotStandard(excMember, comment);
     }
 
-    tag.setSpecifications(createPostSpecification(translation));
+    return createPostSpecification(translation);
   }
 
   /**

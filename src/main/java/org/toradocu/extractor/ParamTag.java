@@ -2,7 +2,6 @@ package org.toradocu.extractor;
 
 import java.util.Objects;
 import org.toradocu.util.Checks;
-import randoop.condition.specification.PreSpecification;
 
 /**
  * Represents a Javadoc @param comment. Each {@code ParamTag} consists of the name of the parameter,
@@ -16,12 +15,6 @@ public final class ParamTag extends BlockTag {
 
   /** The parameter associated with the param tag */
   private final DocumentedParameter parameter;
-
-  /**
-   * Specification generated from the comment of this {@code ParamTag}. {@code null} if Toradocu
-   * failed to generate a specification or if comment translation not yet attempted.
-   */
-  private PreSpecification specification;
 
   /**
    * Constructs a {@code ParamTag} with the given exception and comment.
@@ -43,26 +36,6 @@ public final class ParamTag extends BlockTag {
    */
   public DocumentedParameter getParameter() {
     return parameter;
-  }
-
-  /**
-   * Returns the specification that represents the translation for this tag. {@code null} if the
-   * translation has not been attempted yet or no translation has been generated.
-   *
-   * @return the translation for this tag. {@code null} if the translation has not been attempted
-   *     yet or no translation has been generated.
-   */
-  public PreSpecification getSpecification() {
-    return specification;
-  }
-
-  /**
-   * Sets the specification generated from this tag.
-   *
-   * @param specification the specification corresponding to the comment of this tag
-   */
-  public void setSpecification(PreSpecification specification) {
-    this.specification = specification;
   }
 
   /**
@@ -92,23 +65,12 @@ public final class ParamTag extends BlockTag {
   /**
    * Returns a string representation of this param tag. The returned string is in the format "@param
    * PARAMNAME COMMENT" where PARAMNAME is the fully qualified name of the parameter in the param
-   * tag and COMMENT is the text of the comment in the param tag. If a translation of this tag is
-   * present, then the returned string is also appended with " ==&gt; CONDITION" where CONDITION is
-   * the translated condition as a Java expression.
+   * tag and COMMENT is the text of the comment in the param tag.
    *
    * @return a string representation of this param tag
    */
   @Override
   public String toString() {
-    String result = getKind() + " " + parameter.getName() + " " + getComment().getText();
-    return appendSpecification(result);
-  }
-
-  @Override
-  String appendSpecification(String stringRepresentation) {
-    if (specification != null) {
-      return stringRepresentation + " ==> " + specification;
-    }
-    return stringRepresentation;
+    return getKind() + " " + parameter.getName() + " " + getComment().getText();
   }
 }

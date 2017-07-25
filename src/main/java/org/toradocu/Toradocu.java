@@ -14,13 +14,16 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.conf.Configuration;
-import org.toradocu.extractor.BlockTag;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.DocumentedType;
 import org.toradocu.extractor.JavadocExtractor;
+import org.toradocu.extractor.ParamTag;
+import org.toradocu.extractor.ReturnTag;
+import org.toradocu.extractor.ThrowsTag;
 import org.toradocu.output.util.JsonOutput;
 import org.toradocu.translator.CommentTranslator;
 import org.toradocu.util.GsonInstance;
+import randoop.condition.specification.Specification;
 
 /**
  * Entry point of Toradocu. {@code Toradocu.main} is automatically executed running the command:
@@ -131,31 +134,29 @@ public class Toradocu {
     // === Condition Translator ===
 
     if (configuration.isConditionTranslationEnabled()) {
+      List<Specification> specifications = new ArrayList<>();
 
       // Use @tComment or the standard condition translator to translate comments.
       if (configuration.useTComment()) {
         tcomment.TcommentKt.translate(members);
       } else {
         for (DocumentedExecutable member : members) {
-          // TranslatorFactory should treat each type of BlockTag
-          // separately rather than doing a run-time test, which will
-          // both simplify that code and eliminate this ugly list creation.
-          List<BlockTag> tags = new ArrayList<>();
-          tags.addAll(member.paramTags());
-          if (member.returnTag() != null) {
-            tags.add(member.returnTag());
+          for (ParamTag paramTag : member.paramTags()) {
+            specifications.add(CommentTranslator.translate(paramTag, member));
           }
-          tags.addAll(member.throwsTags());
-          for (BlockTag tag : tags) {
-            CommentTranslator.translate(tag, member);
-            System.out.println("Comment: " + tag);
+          for (ThrowsTag throwsTag : member.throwsTags()) {
+            specifications.add(CommentTranslator.translate(throwsTag, member));
+          }
+          ReturnTag returnTag = member.returnTag();
+          if (returnTag != null) {
+            specifications.addAll(CommentTranslator.translate(returnTag, member));
           }
         }
       }
 
       // Output the result on a file or on the standard output, if silent mode is disabled.
       // TODO Enable JSON output when JSON format is fixed.
-      if (!configuration.isSilent() || translationsPresentIn(members)) {
+      if (!configuration.isSilent() || !specifications.isEmpty()) {
         if (configuration.getConditionTranslatorOutput() != null) {
           try (BufferedWriter writer =
               Files.newBufferedWriter(
@@ -290,25 +291,5 @@ public class Toradocu {
       // An IOException should never occur when using a StringReader.
       e.printStackTrace();
     }
-  }
-
-  /**
-   * Checks whether there is at least one nonempty translation for the comments of {@code methods}.
-   *
-   * @param methods the list of methods to inspect
-   * @return true if there is at least one nonempty translation, false otherwise
-   */
-  private static boolean translationsPresentIn(List<DocumentedExecutable> methods) {
-    return methods
-        .stream()
-        .map(
-            m -> {
-              List<BlockTag> tags = new ArrayList<>(m.paramTags());
-              // TODO: what about the return tag?
-              tags.addAll(m.throwsTags());
-              return tags;
-            })
-        .flatMap(List::stream)
-        .anyMatch(t -> !t.getSpecifications().toString().isEmpty());
   }
 }

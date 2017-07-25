@@ -107,25 +107,13 @@ public abstract class BlockTag {
   }
 
   /**
-   * Returns a string representation of this tag. The returned string is in the format "@throws
-   * COMMENT" where COMMENT is the text of the comment in the tag. If translation has been attempted
-   * on this tag, then the returned string is also appended with " ==&gt; SPECIFICATION" where
-   * CONDITION is the translation of this tag.
+   * Returns a string representation of this tag. The returned string is in the format "@Kind
+   * COMMENT" where COMMENT is the text of the comment in the tag.
    *
    * @return a string representation of this tag
    */
   @Override
   public String toString() {
-    String result = kind + " " + comment.getText();
-    return appendSpecification(result);
+    return kind + " " + comment.getText();
   }
-
-  /**
-   * Appends the specification to the given string if the condition is not empty. The specification
-   * is added at the end of the given string in the following form: " ==&gt; specification".
-   *
-   * @param stringRepresentation a string representing this BlockTag
-   * @return the string representation of this tag with the specification appended
-   */
-  abstract String appendSpecification(String stringRepresentation);
 }
