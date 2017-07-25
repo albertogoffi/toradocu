@@ -10,7 +10,9 @@ import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.conf.Configuration;
@@ -23,7 +25,11 @@ import org.toradocu.extractor.ThrowsTag;
 import org.toradocu.output.util.JsonOutput;
 import org.toradocu.translator.CommentTranslator;
 import org.toradocu.util.GsonInstance;
-import randoop.condition.specification.Specification;
+import randoop.condition.specification.Operation;
+import randoop.condition.specification.OperationSpecification;
+import randoop.condition.specification.PostSpecification;
+import randoop.condition.specification.PreSpecification;
+import randoop.condition.specification.ThrowsSpecification;
 
 /**
  * Entry point of Toradocu. {@code Toradocu.main} is automatically executed running the command:
@@ -72,7 +78,6 @@ public class Toradocu {
 
     // === Javadoc Extractor ===
 
-    // Populate the methods field.
     List<DocumentedExecutable> members = null;
     final String targetClass = configuration.getTargetClass();
     if (configuration.getConditionTranslatorInput() == null) {
@@ -134,24 +139,13 @@ public class Toradocu {
     // === Condition Translator ===
 
     if (configuration.isConditionTranslationEnabled()) {
-      List<Specification> specifications = new ArrayList<>();
+      Map<DocumentedExecutable, OperationSpecification> specifications;
 
       // Use @tComment or the standard condition translator to translate comments.
       if (configuration.useTComment()) {
-        tcomment.TcommentKt.translate(members);
+        specifications = tcomment.TcommentKt.translate(members);
       } else {
-        for (DocumentedExecutable member : members) {
-          for (ParamTag paramTag : member.paramTags()) {
-            specifications.add(CommentTranslator.translate(paramTag, member));
-          }
-          for (ThrowsTag throwsTag : member.throwsTags()) {
-            specifications.add(CommentTranslator.translate(throwsTag, member));
-          }
-          ReturnTag returnTag = member.returnTag();
-          if (returnTag != null) {
-            specifications.addAll(CommentTranslator.translate(returnTag, member));
-          }
-        }
+        specifications = createSpecifications(members);
       }
 
       // Output the result on a file or on the standard output, if silent mode is disabled.
@@ -164,8 +158,8 @@ public class Toradocu {
             //                  String jsonOutput = GsonInstance.gson().toJson(members);
 
             List<JsonOutput> jsonOutputs = new ArrayList<>();
-            for (DocumentedExecutable member : members) {
-              jsonOutputs.add(new JsonOutput(member));
+            for (DocumentedExecutable executable : specifications.keySet()) {
+              jsonOutputs.add(new JsonOutput(executable, specifications.get(executable)));
             }
             String jsonOutput = GsonInstance.gson().toJson(jsonOutputs);
             writer.write(jsonOutput);
@@ -179,7 +173,7 @@ public class Toradocu {
         } else {
           List<JsonOutput> jsonOutputs = new ArrayList<>();
           for (DocumentedExecutable member : members) {
-            jsonOutputs.add(new JsonOutput(member));
+            jsonOutputs.add(new JsonOutput(member, specifications.get(member)));
           }
           String jsonOutput = GsonInstance.gson().toJson(jsonOutputs);
           System.out.println("Condition translator output:\n" + jsonOutput);
@@ -217,6 +211,37 @@ public class Toradocu {
 
     // === Oracle Generator ===
     //    OracleGenerator.createAspects(methods);
+  }
+
+  private static Map<DocumentedExecutable, OperationSpecification> createSpecifications(
+      List<DocumentedExecutable> members) {
+    Map<DocumentedExecutable, OperationSpecification> specs = new LinkedHashMap<>();
+    for (DocumentedExecutable member : members) {
+      Operation operation = Operation.getOperation(member.getExecutable());
+      OperationSpecification spec = new OperationSpecification(operation);
+
+      List<PreSpecification> preSpecifications = new ArrayList<>();
+      for (ParamTag paramTag : member.paramTags()) {
+        preSpecifications.add(CommentTranslator.translate(paramTag, member));
+      }
+      spec.addParamSpecifications(preSpecifications);
+
+      List<ThrowsSpecification> throwsSpecifications = new ArrayList<>();
+      for (ThrowsTag throwsTag : member.throwsTags()) {
+        throwsSpecifications.add(CommentTranslator.translate(throwsTag, member));
+      }
+      spec.addThrowsSpecifications(throwsSpecifications);
+
+      List<PostSpecification> postSpecifications = new ArrayList<>();
+      ReturnTag returnTag = member.returnTag();
+      if (returnTag != null) {
+        postSpecifications.addAll(CommentTranslator.translate(returnTag, member));
+      }
+      spec.addReturnSpecifications(postSpecifications);
+
+      specs.put(member, spec);
+    }
+    return specs;
   }
 
   /**

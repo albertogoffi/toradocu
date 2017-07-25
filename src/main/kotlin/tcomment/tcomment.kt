@@ -3,6 +3,7 @@ package tcomment
 import org.toradocu.extractor.DocumentedExecutable
 import org.toradocu.extractor.ParamTag
 import org.toradocu.extractor.ThrowsTag
+import randoop.condition.specification.OperationSpecification
 
 /**
  * Translates the tags in the given methods using @tComment algorithm. This method sets
@@ -10,13 +11,14 @@ import org.toradocu.extractor.ThrowsTag
  *
  * @param methods a list of [DocumentedExecutable]s whose throws tags has to be translated
  */
-fun translate(methods: List<DocumentedExecutable>) {
+fun translate(methods: List<DocumentedExecutable>): MutableMap<DocumentedExecutable, OperationSpecification> {
   // Translate @param and @throws comments using @tComment algorithm.
   for (method in methods) {
     val parameters = method.parameters.map { it.name }
     method.paramTags().forEach { translateTagComment(it, parameters) }
     method.throwsTags().forEach { translateTagComment(it, parameters) }
   }
+  TODO()
 }
 
 /**

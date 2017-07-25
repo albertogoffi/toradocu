@@ -21,56 +21,15 @@ public class ReturnTranslator {
 
   public List<PostSpecification> translate(ReturnTag tag, DocumentedExecutable excMember) {
     String comment = tag.getComment().getText();
-    // Assumption: the comment is composed of a single sentence. We should probably split multiple
-    // sentence comments using the Stanford Parser, and then work on each single sentence.
-    final String translation;
 
     // Split the sentence in three parts: predicate + true case + false case.
     // TODO Naive splitting. Make the split more reliable.
     final int predicateSplitPoint = comment.indexOf(" if ");
     if (predicateSplitPoint != -1) {
-      translation = returnStandardPattern(excMember, tag.getComment(), predicateSplitPoint);
+      return returnStandardPattern(excMember, comment, predicateSplitPoint);
     } else {
-      translation = returnNotStandard(excMember, comment);
+      return returnNotStandard(excMember, comment);
     }
-
-    return createPostSpecification(translation);
-  }
-
-  /**
-   * Creates a new Postcondition from the given string representation of a postcondition. String
-   * representation must be in the form "GUARD ? TRUE_PROPERTY : FALSE_PROPERTY" where the fragment
-   * ": FALSE_PROPERTY" is optional.
-   *
-   * @param postcondition string representation of a postcondition
-   * @return a new Postcondition corresponding to the given string postcondition. Null if
-   *     postcondition is empty
-   */
-  private List<PostSpecification> createPostSpecification(String postcondition) {
-    Pattern pattern = Pattern.compile("([^?]+)(?:\\?([^:]+)(?::(.+))?)?");
-    java.util.regex.Matcher matcher = pattern.matcher(postcondition);
-
-    // TODO Add proper description instead of empty strings.
-    Guard guard = null;
-    Property trueProp = null, falseProp = null;
-    if (matcher.find()) {
-      guard = new Guard("", matcher.group());
-    }
-    if (matcher.find()) {
-      trueProp = new Property("", matcher.group());
-    }
-    if (matcher.find()) {
-      falseProp = new Property("", matcher.group());
-    }
-
-    PostSpecification truePostSpec = new PostSpecification("", guard, trueProp);
-    // TODO Invert guard sign!
-    PostSpecification falsePostSpec = new PostSpecification("", guard, falseProp);
-
-    List<PostSpecification> specs = new ArrayList<>();
-    specs.add(truePostSpec);
-    specs.add(falsePostSpec);
-    return specs;
   }
 
   /**
@@ -92,11 +51,6 @@ public class ReturnTranslator {
       String secFactor = matcherOp.group(4);
       String op = matcherOp.group(3);
 
-      final List<PropositionSeries> extractedPropositions =
-          Parser.parse(new Comment(commentToTranslate), method);
-      final List<SemanticGraph> semanticGraphs =
-          extractedPropositions.stream().map(PropositionSeries::getSemanticGraph).collect(toList());
-
       CodeElement<?> first = null;
       Set<CodeElement<?>> subject = new Matcher().subjectMatch(firstFactor, method);
       if (!subject.isEmpty()) first = subject.stream().findFirst().get();
@@ -110,24 +64,6 @@ public class ReturnTranslator {
     }
     return translation;
   }
-
-  //  /**
-  //   * Returns a boolean Java expression that merges the conditions from the given set of conditions.
-  //   * Each condition in the set is combined using an || conjunction.
-  //   *
-  //   * @param conditions the translated conditions for a throws tag (as Java boolean conditions)
-  //   * @return a boolean Java expression that is true only if any of the given conditions is true
-  //   */
-  //  private static String mergeConditions(Set<String> conditions) {
-  //    conditions.removeIf(String::isEmpty); // TODO Why should we have empty conditions here?
-  //
-  //    String delimiter = " " + Conjunction.OR + " ";
-  //    StringJoiner joiner = new StringJoiner(delimiter);
-  //    for (String condition : conditions) {
-  //      joiner.add("(" + condition + ")");
-  //    }
-  //    return joiner.toString();
-  //  }
 
   /**
    * Translates the given {@code text} that is the second part of an @return Javadoc comment
@@ -149,20 +85,24 @@ public class ReturnTranslator {
     } else {
       // The result is not a plain boolean, so it must be a code element.
       String[] splittedText = text.split(" ");
-      for (int i = 0; i < splittedText.length; i++) {
-        if (!splittedText[i].equals("")) {
+      for (String aSplittedText : splittedText) {
+        if (!aSplittedText.equals("")) {
           final List<PropositionSeries> extractedPropositions =
-              Parser.parse(new Comment(splittedText[i]), method);
+              Parser.parse(new Comment(aSplittedText), method);
           final List<SemanticGraph> semanticGraphs =
               extractedPropositions
                   .stream()
                   .map(PropositionSeries::getSemanticGraph)
                   .collect(toList());
 
-          String translation = tryCodeElementMatch(method, splittedText[i], semanticGraphs);
-          if (translation != null) return translation;
+          String translation = tryCodeElementMatch(method, aSplittedText, semanticGraphs);
+          if (translation != null) {
+            return translation;
+          }
           //the empty String was found
-          else if (splittedText[i].equals("\"\"")) return "result.equals(\"\")";
+          else if (aSplittedText.equals("\"\"")) {
+            return "result.equals(\"\")";
+          }
         }
       }
     }
@@ -241,14 +181,14 @@ public class ReturnTranslator {
    * This "standard pattern" applies only when the return tag comment contains an "if".
    *
    * @param method the DocumentedExecutable
-   * @param comment the String comment to translate
+   * @param commentText the String comment to translate
    * @param predicateSplitPoint index of the "if"
    * @return the translation computed
    */
-  private static String returnStandardPattern(
-      DocumentedExecutable method, Comment comment, int predicateSplitPoint) {
-    String translation = null;
-    String commentText = comment.getText();
+  private static List<PostSpecification> returnStandardPattern(
+      DocumentedExecutable method, String commentText, int predicateSplitPoint) {
+    List<PostSpecification> specs = new ArrayList<>();
+
     if (commentText.contains(";")) {
       commentText = commentText.replace(";", ",");
     }
@@ -262,17 +202,23 @@ public class ReturnTranslator {
       if (predicateTranslation != null) {
         String conditionTranslation = translateSecondPart(trueCase, method);
 
-        if (!predicateTranslation.isEmpty() && !conditionTranslation.isEmpty()) {
-          translation = conditionTranslation + " ? " + predicateTranslation;
+        if (!conditionTranslation.isEmpty() && !predicateTranslation.isEmpty()) {
+          Guard trueGuard = new Guard(commentText, conditionTranslation);
+          Property trueProperty = new Property(commentText, predicateTranslation);
+          specs.add(new PostSpecification(commentText, trueGuard, trueProperty));
+
           String elsePredicate = translateLastPart(falseCase, method);
           if (elsePredicate != null) {
-            translation = translation + " : " + elsePredicate;
+            String invertedGuard = "(" + conditionTranslation + ")==false";
+            Guard falseGuard = new Guard(commentText, invertedGuard);
+            Property falseProperty = new Property(commentText, elsePredicate);
+            specs.add(new PostSpecification(commentText, falseGuard, falseProperty));
           }
         }
       }
     }
 
-    return translation;
+    return specs;
   }
 
   /**
@@ -287,7 +233,10 @@ public class ReturnTranslator {
    * @param comment the String comment belonging to the tag
    * @return a String translation if any, or an empty string
    */
-  private static String returnNotStandard(DocumentedExecutable method, String comment) {
+  private static List<PostSpecification> returnNotStandard(
+      DocumentedExecutable method, String comment) {
+    List<PostSpecification> specs = new ArrayList<>();
+
     String translation;
     final String[] truePatterns = {"true", "true always"};
     final String[] falsePatterns = {"false", "false always"};
@@ -302,13 +251,15 @@ public class ReturnTranslator {
             .map(p -> p.concat("."))
             .anyMatch(p -> p.equalsIgnoreCase(commentToTranslate));
 
+    Guard guard = new Guard(comment, "true");
+    Property property = null;
     if (truePatternsMatch) {
-      translation = "result==true";
+      property = new Property(comment, "result==true");
     } else if (falsePatternsMatch) {
-      translation = "result==false";
+      property = new Property(comment, "result==false");
     } else {
       translation = manageArithmeticOperation(method, commentToTranslate);
-      if (translation.equals("")) {
+      if (translation.isEmpty()) {
         final List<PropositionSeries> extractedPropositions =
             Parser.parse(new Comment(comment), method);
         final List<SemanticGraph> semanticGraphs =
@@ -318,12 +269,20 @@ public class ReturnTranslator {
                 .collect(toList());
 
         translation = tryPredicateMatch(method, semanticGraphs, extractedPropositions);
-        if (translation == null) translation = tryCodeElementMatch(method, comment, semanticGraphs);
+        if (translation == null) {
+          translation = tryCodeElementMatch(method, comment, semanticGraphs);
+        }
+      }
+
+      if (translation != null && !translation.isEmpty()) {
+        property = new Property(comment, translation);
       }
     }
-    if (translation != null) return "true?" + translation;
 
-    return null;
+    if (property != null) {
+      specs.add(new PostSpecification(comment, guard, property));
+    }
+    return specs;
   }
 
   /**
