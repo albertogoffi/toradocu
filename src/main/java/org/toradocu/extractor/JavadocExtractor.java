@@ -390,9 +390,9 @@ public final class JavadocExtractor {
       definitionOpt = cu.getInterfaceByName(className);
     }
 
-    if (!nestedClassName.isEmpty()) {
-      // Nested class.
-      if (!nestedClassName.isEmpty() && definitionOpt.isPresent()) {
+    if (definitionOpt.isPresent()) {
+      if (!nestedClassName.isEmpty()) {
+        // Nested class.
         NodeList<BodyDeclaration<?>> containingClassMembers = definitionOpt.get().getMembers();
         for (BodyDeclaration<?> childNode : containingClassMembers) {
           if (childNode instanceof ClassOrInterfaceDeclaration
@@ -403,10 +403,8 @@ public final class JavadocExtractor {
             return (ClassOrInterfaceDeclaration) childNode;
           }
         }
-      }
-    } else {
-      // Top-level class or interface.
-      if (definitionOpt.isPresent()) {
+      } else {
+        // Top-level class or interface.
         return definitionOpt.get();
       }
     }
