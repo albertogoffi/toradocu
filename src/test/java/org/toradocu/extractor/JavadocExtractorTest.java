@@ -51,7 +51,7 @@ public class JavadocExtractorTest {
 
   @Test
   public void numberOfExecutableMembers() {
-    assertThat(members.size(), is(6));
+    assertThat(members.size(), is(18));
   }
 
   @Test
