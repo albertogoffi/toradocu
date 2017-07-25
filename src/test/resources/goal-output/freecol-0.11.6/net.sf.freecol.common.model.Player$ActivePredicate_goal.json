@@ -1,0 +1,35 @@
+[
+  {
+    "signature": "obtains(net.sf.freecol.common.model.Unit unit)",
+    "name": "obtains",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Player$ActivePredicate",
+      "name": "ActivePredicate",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Player$ActivePredicate",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "net.sf.freecol.common.model.Unit",
+          "name": "Unit",
+          "isArray": false
+        },
+        "name": "unit"
+      }
+    ],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "True if the unit can be moved.",
+      "kind": "RETURN",
+      "condition": "args[0].couldMove() ? result == true"
+    },
+    "throwsTags": []
+  }
+]

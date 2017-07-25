@@ -1,5 +1,6 @@
 package org.toradocu.translator;
 
+import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.ling.HasWord;
 import edu.stanford.nlp.ling.TaggedWord;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
@@ -20,7 +21,7 @@ import org.slf4j.LoggerFactory;
  * parser. To optimize execution time, the Stanford parser is initialized once in the static block
  * to ensure that its initialization phase is done only once.
  */
-class StanfordParser {
+public class StanfordParser {
 
   private static final LexicalizedParser LEXICALIZED_PARSER;
   private static final GrammaticalStructureFactory GSF;
@@ -92,5 +93,10 @@ class StanfordParser {
     GrammaticalStructure gs = GSF.newGrammaticalStructure(tree);
     // Build the semantic graph.
     return new SemanticGraph(gs.typedDependenciesCCprocessed());
+  }
+
+  public static List<CoreLabel> lemmatize(String text) {
+    List<CoreLabel> lemmas = LEXICALIZED_PARSER.lemmatize(text);
+    return lemmas;
   }
 }

@@ -8,6 +8,7 @@ import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.ImportDeclaration;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.NodeList;
+import com.github.javaparser.ast.body.BodyDeclaration;
 import com.github.javaparser.ast.body.CallableDeclaration;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.ConstructorDeclaration;
@@ -28,6 +29,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.toradocu.util.Reflection;
 
 /**
@@ -56,19 +59,22 @@ public final class JavadocExtractor {
     // Obtain executable members by means of reflection.
     final Class<?> clazz = Reflection.getClass(className);
     final List<Executable> reflectionExecutables = getExecutables(clazz);
+
     // Obtain executable members in the source code.
-    // TODO Add support for nested classes.
-    String sourceFile =
-        sourcePath + File.separator + className.replaceAll("\\.", File.separator) + ".java";
-    List<String> classesInPackage = getClassesInSamePackage(className, sourceFile);
-    final List<CallableDeclaration<?>> sourceExecutables =
-        getExecutables(clazz.getSimpleName(), sourceFile);
+    final ImmutablePair<String, String> fileNameAndSimpleName =
+        getFileNameAndSimpleName(clazz, className);
+    final String fileName = fileNameAndSimpleName.getLeft();
+    final String sourceFile =
+        sourcePath + File.separator + fileName.replaceAll("\\.", File.separator) + ".java";
+    final String simpleName = fileNameAndSimpleName.getRight();
+    final List<CallableDeclaration<?>> sourceExecutables = getExecutables(simpleName, sourceFile);
 
     // Maps each reflection executable member to its corresponding source member.
     Map<Executable, CallableDeclaration<?>> executablesMap =
-        mapExecutables(reflectionExecutables, sourceExecutables);
+        mapExecutables(reflectionExecutables, sourceExecutables, className);
 
     // Create the list of ExecutableMembers.
+    List<String> classesInPackage = getClassesInSamePackage(className, sourceFile);
     List<DocumentedExecutable> members = new ArrayList<>(reflectionExecutables.size());
     for (Entry<Executable, CallableDeclaration<?>> entry : executablesMap.entrySet()) {
       final Executable reflectionMember = entry.getKey();
@@ -83,6 +89,24 @@ public final class JavadocExtractor {
 
     // Create the documented class.
     return new DocumentedType(clazz, members);
+  }
+
+  private ImmutablePair<String, String> getFileNameAndSimpleName(Class<?> clazz, String className) {
+    String fileName;
+    String simpleName;
+    final int dollarPosition = className.indexOf("$");
+    if (dollarPosition != -1) {
+      // Nested class: source file won't match the name.
+      fileName = className.substring(0, dollarPosition);
+      simpleName =
+          className.substring(className.lastIndexOf(".") + 1, dollarPosition + 1)
+              + clazz.getSimpleName();
+    } else {
+      // Top-level class.
+      fileName = className;
+      simpleName = clazz.getSimpleName();
+    }
+    return ImmutablePair.of(fileName, simpleName);
   }
 
   private List<String> getClassesInSamePackage(String className, String sourceFile) {
@@ -341,21 +365,50 @@ public final class JavadocExtractor {
    */
   private List<CallableDeclaration<?>> getExecutables(String className, String sourcePath)
       throws FileNotFoundException {
-    final CompilationUnit cu = JavaParser.parse(new File(sourcePath));
-    Optional<ClassOrInterfaceDeclaration> definitionOpt = cu.getClassByName(className);
-    if (!definitionOpt.isPresent()) {
-      definitionOpt = cu.getInterfaceByName(className);
-    }
-    if (!definitionOpt.isPresent()) {
-      throw new IllegalArgumentException(
-          "Impossible to find a class or interface with name " + className + " in " + sourcePath);
-    }
     final List<CallableDeclaration<?>> sourceExecutables = new ArrayList<>();
-    final ClassOrInterfaceDeclaration sourceClass = definitionOpt.get();
+    final ClassOrInterfaceDeclaration sourceClass = getClassDefinition(className, sourcePath);
     sourceExecutables.addAll(sourceClass.getConstructors());
     sourceExecutables.addAll(sourceClass.getMethods());
     sourceExecutables.removeIf(NodeWithPrivateModifier::isPrivate); // Ignore private members.
     return Collections.unmodifiableList(sourceExecutables);
+  }
+
+  private ClassOrInterfaceDeclaration getClassDefinition(String className, String sourcePath)
+      throws FileNotFoundException {
+    final CompilationUnit cu = JavaParser.parse(new File(sourcePath));
+
+    String nestedClassName = "";
+    if (className.contains("$")) {
+      // Nested class.
+      nestedClassName = className.substring(className.indexOf("$") + 1, className.length());
+      className = className.substring(0, className.indexOf("$"));
+    }
+
+    Optional<ClassOrInterfaceDeclaration> definitionOpt = cu.getClassByName(className);
+    if (!definitionOpt.isPresent()) {
+      definitionOpt = cu.getInterfaceByName(className);
+    }
+
+    if (definitionOpt.isPresent()) {
+      if (!nestedClassName.isEmpty()) {
+        // Nested class.
+        NodeList<BodyDeclaration<?>> containingClassMembers = definitionOpt.get().getMembers();
+        for (BodyDeclaration<?> childNode : containingClassMembers) {
+          if (childNode instanceof ClassOrInterfaceDeclaration
+              && ((ClassOrInterfaceDeclaration) childNode)
+                  .getName()
+                  .asString()
+                  .equals(nestedClassName)) {
+            return (ClassOrInterfaceDeclaration) childNode;
+          }
+        }
+      } else {
+        // Top-level class or interface.
+        return definitionOpt.get();
+      }
+    }
+    throw new IllegalArgumentException(
+        "Impossible to find a class or interface with name " + className + " in " + sourcePath);
   }
 
   /**
@@ -363,12 +416,15 @@ public final class JavadocExtractor {
    *
    * @param reflectionExecutables the list of reflection members
    * @param sourceExecutables the list of source code members
+   * @param className name of the class containing the executables
    * @return a map holding the correspondences
    */
   private Map<Executable, CallableDeclaration<?>> mapExecutables(
-      List<Executable> reflectionExecutables, List<CallableDeclaration<?>> sourceExecutables) {
+      List<Executable> reflectionExecutables,
+      List<CallableDeclaration<?>> sourceExecutables,
+      String className) {
 
-    filterOutGeneratedConstructors(reflectionExecutables, sourceExecutables);
+    filterOutGeneratedConstructors(reflectionExecutables, sourceExecutables, className);
 
     if (reflectionExecutables.size() != sourceExecutables.size()) {
       // TODO Add the differences to the error message to better characterize the error.
@@ -382,7 +438,8 @@ public final class JavadocExtractor {
               .stream()
               .filter(
                   e ->
-                      removePackage(e.getName()).equals(sourceMember.getName().asString())
+                      removePackage(e.getName(), e instanceof Constructor)
+                              .equals(sourceMember.getName().asString())
                           && sameParamTypes(e.getParameters(), sourceMember.getParameters()))
               .collect(toList());
       if (matches.size() < 1) {
@@ -401,23 +458,36 @@ public final class JavadocExtractor {
   }
 
   /**
-   * Removes compiler-generated constructors from {@code reflectionExcutables}.
+   * Removes compiler-generated constructors from {@code reflectionExecutables}.
    *
    * @param reflectionExecutables executable members obtained via reflection
    * @param sourceExecutables executable members obtained parsing the source code
+   * @param className name of the class containing the executables
    */
   private void filterOutGeneratedConstructors(
-      List<Executable> reflectionExecutables, List<CallableDeclaration<?>> sourceExecutables) {
+      List<Executable> reflectionExecutables,
+      List<CallableDeclaration<?>> sourceExecutables,
+      String className) {
     final List<CallableDeclaration<?>> sourceConstructors =
         sourceExecutables
             .stream()
             .filter(e -> e instanceof ConstructorDeclaration && e.getParameters().isEmpty())
             .collect(toList());
-    final List<Executable> reflectionConstructors =
-        reflectionExecutables
-            .stream()
-            .filter(e -> e instanceof Constructor && e.getParameterCount() == 0)
-            .collect(toList());
+
+    List<Executable> reflectionConstructors;
+    Predicate<Executable> filterPredicate;
+    if (!className.contains("$")) {
+      filterPredicate = e -> e instanceof Constructor && e.getParameterCount() == 0;
+    } else {
+      String containingClassName = className.substring(0, className.indexOf("$"));
+      filterPredicate =
+          e ->
+              e instanceof Constructor
+                  && e.getParameterCount() == 1
+                  && e.getParameters()[0].getType().getName().equals(containingClassName);
+    }
+    reflectionConstructors =
+        reflectionExecutables.stream().filter(filterPredicate).collect(toList());
 
     for (Executable reflectionConstructor : reflectionConstructors) {
       final String reflectionConstructorName = reflectionConstructor.getName();
@@ -453,7 +523,7 @@ public final class JavadocExtractor {
       final java.lang.reflect.Parameter reflectionParam = reflectionParams[i];
       final String reflectionQualifiedTypeName =
           rawType(reflectionParam.getParameterizedType().getTypeName());
-      String reflectionSimpleTypeName = removePackage(reflectionQualifiedTypeName);
+      String reflectionSimpleTypeName = removePackage(reflectionQualifiedTypeName, false);
 
       final com.github.javaparser.ast.body.Parameter sourceParam = sourceParams.get(i);
       String sourceTypeName = rawType(sourceParam.getType().asString());
@@ -462,11 +532,14 @@ public final class JavadocExtractor {
         reflectionSimpleTypeName += "[]";
       int dollar = reflectionSimpleTypeName.indexOf("$");
       if (dollar != -1) {
-        if (sourceTypeName.contains("."))
+        if (sourceTypeName.contains(".")) {
+          // In case of Enum
           reflectionSimpleTypeName = reflectionSimpleTypeName.replace("$", ".");
-        else
+        } else {
+          // In case of nested class
           reflectionSimpleTypeName =
               reflectionSimpleTypeName.substring(dollar + 1, reflectionSimpleTypeName.length());
+        }
       }
 
       if (!reflectionSimpleTypeName.equals(sourceTypeName)) {
@@ -498,12 +571,19 @@ public final class JavadocExtractor {
    * @param type the type name from which remove the package prefix
    * @return the given type with package prefix removed
    */
-  private String removePackage(String type) {
+  private String removePackage(String type, boolean isConstructor) {
     // Constructor names contain package name.
     int lastDot = type.lastIndexOf(".");
     if (lastDot != -1) {
-      return type.substring(lastDot + 1);
+      type = type.substring(lastDot + 1);
     }
+
+    // Constructor of nested classes need a special parsing
+    int dollar = type.indexOf("$");
+    if (isConstructor && dollar != -1) {
+      type = type.substring(dollar + 1, type.length());
+    }
+
     return type;
   }
 

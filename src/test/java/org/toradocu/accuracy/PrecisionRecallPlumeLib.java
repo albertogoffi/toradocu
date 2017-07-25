@@ -49,6 +49,11 @@ public class PrecisionRecallPlumeLib extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
+  public void testEntryReaderFlnReader() throws Exception {
+    test("plume.EntryReader$FlnReader", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
   public void testMathMDE() throws Exception {
     test("plume.MathMDE", 1, 1, 1, 0, 1, 1);
   }

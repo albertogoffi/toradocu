@@ -85,22 +85,24 @@ public class ReturnTranslator {
     } else {
       // The result is not a plain boolean, so it must be a code element.
       String[] splittedText = text.split(" ");
-      for (String aSplittedText : splittedText) {
-        if (!aSplittedText.equals("")) {
+      for (String token : splittedText) {
+        if (!token.isEmpty()) {
           final List<PropositionSeries> extractedPropositions =
-              Parser.parse(new Comment(aSplittedText), method);
+              Parser.parse(new Comment("result " + token), method);
           final List<SemanticGraph> semanticGraphs =
               extractedPropositions
                   .stream()
                   .map(PropositionSeries::getSemanticGraph)
                   .collect(toList());
 
-          String translation = tryCodeElementMatch(method, aSplittedText, semanticGraphs);
+          String translation =
+              tryPredicateMatch(method, semanticGraphs, extractedPropositions, "result " + token);
+          if (translation == null) {
+            translation = tryCodeElementMatch(method, token);
+          }
           if (translation != null) {
             return translation;
-          }
-          //the empty String was found
-          else if (aSplittedText.equals("\"\"")) {
+          } else if (token.equals("\"\"")) { // The empty String was found
             return "result.equals(\"\")";
           }
         }
@@ -117,9 +119,11 @@ public class ReturnTranslator {
    *
    * @param trueCase words representing the second part of an @return comment
    * @param method the method to which the @return tag belongs to
+   * @param comment the comment text
    * @return the translation of the given {@code text}
    */
-  private static String translateSecondPart(String trueCase, DocumentedExecutable method) {
+  private static String translateSecondPart(
+      String trueCase, DocumentedExecutable method, String comment) {
     // Identify propositions in the comment. Each sentence in the comment is parsed into a
     // PropositionSeries.
 
@@ -127,7 +131,7 @@ public class ReturnTranslator {
     List<PropositionSeries> extractedPropositions = Parser.parse(new Comment(trueCase), method);
     Set<String> conditions = new LinkedHashSet<>();
     for (PropositionSeries propositions : extractedPropositions) {
-      BasicTranslator.translate(propositions, method);
+      BasicTranslator.translate(propositions, method, comment);
       conditions.add(propositions.getTranslation());
     }
     return BasicTranslator.mergeConditions(conditions);
@@ -156,7 +160,7 @@ public class ReturnTranslator {
         return "result == " + parsedComment;
       default:
         {
-          //No return of type boolean: it must be a more complex boolean condition, or a code element.
+          // No return of type boolean: it must be a more complex boolean condition, or a code element.
           final List<PropositionSeries> extractedPropositions =
               Parser.parse(new Comment(parsedComment), method);
           final List<SemanticGraph> semanticGraphs =
@@ -165,9 +169,9 @@ public class ReturnTranslator {
                   .map(PropositionSeries::getSemanticGraph)
                   .collect(toList());
 
-          translation = tryPredicateMatch(method, semanticGraphs, extractedPropositions);
-          if (translation == null)
-            translation = tryCodeElementMatch(method, parsedComment, semanticGraphs);
+          translation =
+              tryPredicateMatch(method, semanticGraphs, extractedPropositions, parsedComment);
+          if (translation == null) translation = tryCodeElementMatch(method, parsedComment);
         }
     }
     //TODO: Change the exception with one more meaningful.
@@ -200,7 +204,7 @@ public class ReturnTranslator {
     if (!predicate.isEmpty() && !trueCase.isEmpty()) {
       String predicateTranslation = translateFirstPart(predicate, method);
       if (predicateTranslation != null) {
-        String conditionTranslation = translateSecondPart(trueCase, method);
+        String conditionTranslation = translateSecondPart(trueCase, method, commentText);
 
         if (!conditionTranslation.isEmpty() && !predicateTranslation.isEmpty()) {
           Guard trueGuard = new Guard(commentText, conditionTranslation);
@@ -268,9 +272,9 @@ public class ReturnTranslator {
                 .map(PropositionSeries::getSemanticGraph)
                 .collect(toList());
 
-        translation = tryPredicateMatch(method, semanticGraphs, extractedPropositions);
+        translation = tryPredicateMatch(method, semanticGraphs, extractedPropositions, comment);
         if (translation == null) {
-          translation = tryCodeElementMatch(method, comment, semanticGraphs);
+          translation = tryCodeElementMatch(method, comment);
         }
       }
 
@@ -307,12 +311,14 @@ public class ReturnTranslator {
    * @param method the DocumentedExecutable the tag belongs to
    * @param semanticGraphs list of {@code SemanticGraph} related to the comment
    * @param extractedPropositions list of {@code PropositionSeries} extracted from the comment
+   * @param comment the comment text
    * @return a String predicate match if any, or null
    */
   private static String tryPredicateMatch(
       DocumentedExecutable method,
       List<SemanticGraph> semanticGraphs,
-      List<PropositionSeries> extractedPropositions) {
+      List<PropositionSeries> extractedPropositions,
+      String comment) {
     String predicateMatch = null;
 
     for (SemanticGraph sg : semanticGraphs) {
@@ -321,9 +327,7 @@ public class ReturnTranslator {
         for (PropositionSeries prop : extractedPropositions) {
           for (Proposition p : prop.getPropositions()) {
             predicateMatch =
-                new Matcher()
-                    .predicateMatch(
-                        method, new GeneralCodeElement("result"), p.getPredicate(), p.isNegative());
+                new Matcher().predicateMatch(method, new GeneralCodeElement("result"), p, comment);
             if (predicateMatch != null) break;
           }
         }
@@ -338,11 +342,13 @@ public class ReturnTranslator {
    *
    * @param method the {@code DocumentedExecutable} the comment belongs to
    * @param text the comment text
-   * @param semanticGraphs the {@code SemanticGraph} related to the comment
    * @return a String translation if any, null otherwise
    */
-  private static String tryCodeElementMatch(
-      DocumentedExecutable method, String text, List<SemanticGraph> semanticGraphs) {
+  private static String tryCodeElementMatch(DocumentedExecutable method, String text) {
+    final List<PropositionSeries> extractedPropositions = Parser.parse(new Comment(text), method);
+    final List<SemanticGraph> semanticGraphs =
+        extractedPropositions.stream().map(PropositionSeries::getSemanticGraph).collect(toList());
+
     CodeElement<?> codeElementMatch = findCodeElement(method, text, semanticGraphs);
     if (codeElementMatch != null) {
       boolean isPrimitive = checkIfPrimitive(codeElementMatch);
@@ -364,7 +370,7 @@ public class ReturnTranslator {
       DocumentedExecutable method, String comment, List<SemanticGraph> semanticGraphs) {
     //Try a match looking at the semantic graph.
     CodeElement<?> codeElementMatch = null;
-    comment = comment.replace(";", "").replace(",", "").replace("'", "");
+    comment = comment.replace(";", "").replace(",", "").replace("'", "").replace("result ", "");
     for (SemanticGraph sg : semanticGraphs) {
       // No verb found: process nouns and their adjectives
       List<IndexedWord> nouns = sg.getAllNodesByPartOfSpeechPattern("NN(.*)");

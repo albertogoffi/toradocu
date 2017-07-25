@@ -28,7 +28,7 @@ public class BasicTranslator {
     Set<String> conditions = new LinkedHashSet<>();
 
     for (PropositionSeries props : propositions) {
-      translate(props, excMember);
+      translate(props, excMember, tag.getComment().getText());
       conditions.add(props.getTranslation()); // TODO Add only when translation is non-empty?
     }
     return mergeConditions(conditions);
@@ -77,8 +77,10 @@ public class BasicTranslator {
    * @param propositionSeries the {@code Proposition}s to translate into Java expressions
    * @param method the method the containing the Javadoc comment from which the {@code
    *     propositionSeries} was extracted
+   * @param comment the comment text
    */
-  public static void translate(PropositionSeries propositionSeries, DocumentedExecutable method) {
+  public static void translate(
+      PropositionSeries propositionSeries, DocumentedExecutable method, String comment) {
     Matcher matcher = new Matcher();
     for (Proposition p : propositionSeries.getPropositions()) {
       Set<CodeElement<?>> subjectMatches;
@@ -100,8 +102,7 @@ public class BasicTranslator {
       // element.
       Map<CodeElement<?>, String> translations = new LinkedHashMap<>();
       for (CodeElement<?> subjectMatch : matchingCodeElements) {
-        String currentTranslation =
-            matcher.predicateMatch(method, subjectMatch, p.getPredicate(), p.isNegative());
+        String currentTranslation = matcher.predicateMatch(method, subjectMatch, p, comment);
         if (currentTranslation == null) {
           //          ConditionTranslator.log.trace("Failed predicate translation for: " + p);
           continue;
