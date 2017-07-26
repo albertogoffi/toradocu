@@ -1,4 +1,4 @@
-package org.toradocu.accuracy;
+package org.toradocu.regression;
 
 import static org.junit.Assert.assertTrue;
 
@@ -166,5 +166,21 @@ public class RegressionTests {
     Toradocu.main(toradocuArgs);
     // There are no specifications in the file, and so file should not be written
     assertTrue("file should not be written", Files.notExists(Paths.get(RANDOOP_SPEC)));
+  }
+
+  @Test
+  public void issue51() {
+    // Issue #51: https://github.com/albertogoffi/toradocu/issues/51
+    Toradocu.main(
+        new String[] {
+          "--target-class",
+          "com.google.common.collect.Ordering",
+          "--class-dir",
+          "src/test/resources/bin/guava-19.0.jar",
+          "--source-dir",
+          "src/test/resources/src/guava-19.0-sources",
+          "--oracle-generation",
+          "false"
+        });
   }
 }

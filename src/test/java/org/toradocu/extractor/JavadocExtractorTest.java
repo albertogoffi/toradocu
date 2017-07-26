@@ -51,7 +51,7 @@ public class JavadocExtractorTest {
 
   @Test
   public void numberOfExecutableMembers() {
-    assertThat(members.size(), is(6));
+    assertThat(members.size(), is(18));
   }
 
   @Test
@@ -92,7 +92,6 @@ public class JavadocExtractorTest {
     final ParamTag paramTag = paramTags.get(0);
     assertThat(paramTag.getParameter(), is(equalTo(parameter)));
     assertThat(paramTag.getComment().getText(), is("must not be null nor empty"));
-    assertThat(paramTag.getSpecification(), is(nullValue()));
 
     final ReturnTag returnTag = member.returnTag();
     assertThat(returnTag, is(nullValue()));
@@ -118,7 +117,6 @@ public class JavadocExtractorTest {
     final ParamTag paramTag = paramTags.get(0);
     assertThat(paramTag.getParameter(), is(equalTo(parameter)));
     assertThat(paramTag.getComment().getText(), is("an array of objects, must not be null"));
-    assertThat(paramTag.getSpecification(), is(nullValue()));
 
     final ReturnTag returnTag = member.returnTag();
     assertThat(returnTag.getComment().getText(), is("0 always"));
@@ -154,12 +152,10 @@ public class JavadocExtractorTest {
     final ParamTag paramTag = paramTags.get(0);
     assertThat(paramTag.getParameter(), is(equalTo(parameter)));
     assertThat(paramTag.getComment().getText(), is("a String"));
-    assertThat(paramTag.getSpecification(), is(nullValue()));
 
     final ParamTag paramTag2 = paramTags.get(1);
     assertThat(paramTag2.getParameter(), is(equalTo(parameter2)));
     assertThat(paramTag2.getComment().getText(), is("a Class"));
-    assertThat(paramTag2.getSpecification(), is(nullValue()));
 
     final ReturnTag returnTag = member.returnTag();
     assertThat(returnTag, is(nullValue()));
@@ -190,12 +186,10 @@ public class JavadocExtractorTest {
     final ParamTag paramTag = paramTags.get(0);
     assertThat(paramTag.getParameter(), is(equalTo(parameter)));
     assertThat(paramTag.getComment().getText(), is("an array"));
-    assertThat(paramTag.getSpecification(), is(nullValue()));
 
     final ParamTag paramTag2 = paramTags.get(1);
     assertThat(paramTag2.getParameter(), is(equalTo(parameter2)));
     assertThat(paramTag2.getComment().getText(), is("a Collection"));
-    assertThat(paramTag2.getSpecification(), is(nullValue()));
 
     final ReturnTag returnTag = member.returnTag();
     assertThat(returnTag, is(nullValue()));

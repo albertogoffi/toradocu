@@ -1,7 +1,6 @@
 package org.toradocu.extractor;
 
 import java.util.Objects;
-import org.toradocu.translator.spec.Precondition;
 import org.toradocu.util.Checks;
 
 /**
@@ -12,7 +11,7 @@ import org.toradocu.util.Checks;
  * to {@code false} the precondition expressed by this tag is violated, and the behavior of the
  * method documented by this tag is unspecified.
  */
-public final class ParamTag extends BlockTag<Precondition> {
+public final class ParamTag extends BlockTag {
 
   /** The parameter associated with the param tag */
   private final DocumentedParameter parameter;
@@ -66,15 +65,12 @@ public final class ParamTag extends BlockTag<Precondition> {
   /**
    * Returns a string representation of this param tag. The returned string is in the format "@param
    * PARAMNAME COMMENT" where PARAMNAME is the fully qualified name of the parameter in the param
-   * tag and COMMENT is the text of the comment in the param tag. If a translation of this tag is
-   * present, then the returned string is also appended with " ==&gt; CONDITION" where CONDITION is
-   * the translated condition as a Java expression.
+   * tag and COMMENT is the text of the comment in the param tag.
    *
    * @return a string representation of this param tag
    */
   @Override
   public String toString() {
-    String result = getKind() + " " + parameter.getName() + " " + getComment().getText();
-    return appendCondition(result);
+    return getKind() + " " + parameter.getName() + " " + getComment().getText();
   }
 }

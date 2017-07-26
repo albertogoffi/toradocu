@@ -2,12 +2,17 @@ package org.toradocu.translator;
 
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.ThrowsTag;
-import org.toradocu.translator.spec.Specification;
+import randoop.condition.specification.Guard;
+import randoop.condition.specification.ThrowsSpecification;
 
-public class ThrowsTranslator implements Translator<ThrowsTag> {
+public class ThrowsTranslator {
 
-  @Override
-  public Specification translate(ThrowsTag tag, DocumentedExecutable excMember) {
-    return BasicTranslator.translate(tag, excMember);
+  public ThrowsSpecification translate(ThrowsTag tag, DocumentedExecutable excMember) {
+    final String commentTranslation = BasicTranslator.translate(tag, excMember);
+
+    // TODO Replace empty strings!
+    final Guard guard = new Guard("", commentTranslation);
+    final String exceptionName = tag.getException().getName();
+    return new ThrowsSpecification("", guard, exceptionName);
   }
 }

@@ -174,9 +174,8 @@ public final class JavadocExtractor {
       for (JavadocBlockTag blockTag : blockTags) {
         switch (blockTag.getType()) {
           case PARAM:
-            ParamTag paramTag = createParamTag(blockTag, parameters);
-            if (paramTag != null) {
-              // createParamTag returns null in case of generic type.
+            final ParamTag paramTag = createParamTag(blockTag, parameters);
+            if (paramTag != null) { // Ignore @param comments describing generic type parameters.
               paramTags.add(paramTag);
             }
             break;
@@ -428,7 +427,7 @@ public final class JavadocExtractor {
     filterOutGeneratedConstructors(reflectionExecutables, sourceExecutables, className);
 
     if (reflectionExecutables.size() != sourceExecutables.size()) {
-      // TODO Add the differencies to the error message to better characterize the error.
+      // TODO Add the differences to the error message to better characterize the error.
       throw new IllegalArgumentException("Error: Provided lists have different size.");
     }
 

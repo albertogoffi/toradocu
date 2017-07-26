@@ -1,24 +1,29 @@
 package org.toradocu.translator;
 
-import org.toradocu.extractor.BlockTag;
+import java.util.List;
 import org.toradocu.extractor.DocumentedExecutable;
+import org.toradocu.extractor.ParamTag;
+import org.toradocu.extractor.ReturnTag;
+import org.toradocu.extractor.ThrowsTag;
 import org.toradocu.translator.preprocess.PreprocessorFactory;
-import org.toradocu.translator.spec.Specification;
+import randoop.condition.specification.PostSpecification;
+import randoop.condition.specification.PreSpecification;
+import randoop.condition.specification.ThrowsSpecification;
 
 public class CommentTranslator {
 
-  public static <T extends BlockTag<Specification>> void translate(
-      T tag, DocumentedExecutable excMember) {
-
-    // Preprocessing.
+  public static PreSpecification translate(ParamTag tag, DocumentedExecutable excMember) {
     PreprocessorFactory.create(tag.getKind()).preprocess(tag, excMember);
+    return new ParamTranslator().translate(tag, excMember);
+  }
 
-    // Translation.
-    final Translator<T> translator = TranslatorFactory.create(tag);
-    final Specification specification = translator.translate(tag, excMember);
+  public static List<PostSpecification> translate(ReturnTag tag, DocumentedExecutable excMember) {
+    PreprocessorFactory.create(tag.getKind()).preprocess(tag, excMember);
+    return new ReturnTranslator().translate(tag, excMember);
+  }
 
-    // TODO Check the consistency of the generated specification.
-
-    tag.setSpecification(specification);
+  public static ThrowsSpecification translate(ThrowsTag tag, DocumentedExecutable excMember) {
+    PreprocessorFactory.create(tag.getKind()).preprocess(tag, excMember);
+    return new ThrowsTranslator().translate(tag, excMember);
   }
 }

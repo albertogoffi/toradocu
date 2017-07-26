@@ -23,18 +23,18 @@ apply plugin: 'kotlin'
 apply plugin: 'jacoco'
 
 task downloadGlove(type: Download) {
-    src 'https://dl.dropboxusercontent.com/s/ucakn0ju00pueds/glove-binary.zip'
-    dest 'src/main/resources'
+  src 'https://dl.dropboxusercontent.com/s/ucakn0ju00pueds/glove-binary.zip'
+  dest 'src/main/resources'
+  onlyIfNewer true
+  overwrite false
 }
 task unzipGlove(type: Copy) {
-    def zipFile = file('src/main/resources/glove-binary.zip')
-    def outputDir = file('src/main/resources')
- 
-    from zipTree(zipFile)
-    into outputDir
+  def zipFile = file('src/main/resources/glove-binary.zip')
+  def outputDir = file('src/main/resources')
+  from zipTree(zipFile)
+  into outputDir
 }
 unzipGlove.dependsOn downloadGlove
-
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -54,7 +54,7 @@ sourceSets {
   }
   test {
     java {
-      excludes = ['**/generator/*', '**/util/*', '**/RegressionTests*']
+      excludes = ['**/generator/*', '**/util/*', '**/regression/*']
     }
   }
 }
@@ -82,6 +82,9 @@ compileJava {
 }
 
 test {
+  reports {
+    html.enabled = true
+  }
   // Print standard output during tests execution.
   testLogging {
     events = ['STANDARD_OUT']
@@ -93,6 +96,7 @@ repositories {
 }
 
 dependencies {
+  compile fileTree(dir: 'lib', include: '*.jar')
   compile 'edu.stanford.nlp:stanford-corenlp:3.6.0'
   compile 'edu.stanford.nlp:stanford-corenlp:3.6.0:models-english'
   compile group: 'de.jungblut.glove', name: 'glove', version: '0.1'
@@ -205,11 +209,10 @@ task extractSources(dependsOn: downloadSources) {
   }
 }
 
-
+/* Workaround for the Javaparser bug: https://github.com/javaparser/javaparser/issues/990 */
 task cleanSource(type: Exec, dependsOn: 'extractSources') {
     commandLine './clean.sh'
 }
-
 
 task removeTestOutputDirs(type: Delete) {
   delete 'build/test-results', 'aspects'
@@ -283,7 +286,4 @@ task tutorial(type: Download) {
   onlyIfNewer true
   overwrite false
 }
-
-
-
 tutorial.dependsOn shadowJar
