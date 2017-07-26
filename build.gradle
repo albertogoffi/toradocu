@@ -54,7 +54,7 @@ sourceSets {
   }
   test {
     java {
-      excludes = ['**/generator/*', '**/util/*', '**/RegressionTests*']
+      excludes = ['**/generator/*', '**/util/*', '**/regression/*']
     }
   }
 }
@@ -209,11 +209,10 @@ task extractSources(dependsOn: downloadSources) {
   }
 }
 
-
+/* Workaround for the Javaparser bug: https://github.com/javaparser/javaparser/issues/990 */
 task cleanSource(type: Exec, dependsOn: 'extractSources') {
     commandLine './clean.sh'
 }
-
 
 task removeTestOutputDirs(type: Delete) {
   delete 'build/test-results', 'aspects'

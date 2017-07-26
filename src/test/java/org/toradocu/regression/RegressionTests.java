@@ -1,4 +1,4 @@
-package org.toradocu.accuracy;
+package org.toradocu.regression;
 
 import static org.junit.Assert.assertTrue;
 
