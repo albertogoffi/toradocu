@@ -38,17 +38,7 @@ public class StanfordParser {
     GSF = tlp.grammaticalStructureFactory();
   }
 
-  //  /**
-  //   * Takes some text and returns {@code SemanticGraph}s for each sentence in the comment text.
-  //   *
-  //   * @param comment the comment object to return the semantic graphs for
-  //   * @return a list of semantic graphs, one for each sentence in the text
-  //   */
-  //  static List<SemanticGraph> getSemanticGraphs(Comment comment) {
-  //    return getSemanticGraphs(comment, null);
-  //  }
-
-  public static List<List<HasWord>> tokenize(String comment) {
+  static List<List<HasWord>> tokenize(String comment) {
     final DocumentPreprocessor sentences = new DocumentPreprocessor(new StringReader(comment));
     ArrayList<List<HasWord>> result = new ArrayList<>();
     sentences.forEach(result::add);
@@ -56,38 +46,14 @@ public class StanfordParser {
   }
 
   /**
-   * Before asking for the SemanticGraph to the parser, manually tag code elements as NN and
-   * inequalities placeholders as JJ.
+   * Parses the given {@code words} producing a SemanticGraph. Before asking the Stanford Parser to
+   * produce the semantic graph, this method (POS-)tags code elements as NN and inequalities
+   * placeholders as JJ.
    *
-   * @param comment the String comment of the condition
-   * @param method the DocumentedExecutable under analysis
-   * @return the list of SemanticGraphs produced by the parser
+   * @param words words that compose a sentence
+   * @return the semantic graph of the input sentence produced by the Stanford Parser
    */
   public static SemanticGraph parse(List<TaggedWord> words) {
-    //    Iterable<List<HasWord>> hasWordComment =
-    //        new DocumentPreprocessor(new StringReader(comment.getText()));
-    //
-    //    ArrayList<List<HasWord>> sentences = new ArrayList<>();
-    //    hasWordComment.forEach(sentences::add);
-    //    List<SemanticGraph> result = new ArrayList<>();
-    //    List<String> codeElements = new ArrayList<>();
-    //    List<String> arguments = new ArrayList<>();
-    //
-    //    if (method != null) {
-    //      arguments = method.getParameters().stream().map(Parameter::getName).collect(toList());
-    //    }
-    //
-    //    for (List<HasWord> sentence : sentences) {
-    //      for (HasWord word : sentence) {
-    //        if (arguments.contains(word.toString())) {
-    //          codeElements.add(word.word());
-    //        }
-    //      }
-    //      for (String codeTag : comment.getWordsMarkedAsCode()) codeElements.add(codeTag);
-    //
-    //      result.add(getSemanticGraph(sentence, codeElements));
-    //    }
-    //    return result;
     // Parse the sentence.
     Tree tree = LEXICALIZED_PARSER.parse(words);
     GrammaticalStructure gs = GSF.newGrammaticalStructure(tree);
@@ -96,7 +62,6 @@ public class StanfordParser {
   }
 
   public static List<CoreLabel> lemmatize(String text) {
-    List<CoreLabel> lemmas = LEXICALIZED_PARSER.lemmatize(text);
-    return lemmas;
+    return LEXICALIZED_PARSER.lemmatize(text);
   }
 }
