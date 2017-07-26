@@ -13,7 +13,10 @@ import java.util.regex.Pattern;
  */
 public final class Comment {
 
-  /** Comment text. */
+  /**
+   * Comment text. Does not include the tag (e.g., @return) and any additional information like the
+   * commented parameter name in case of @param tags and the exception name in case of @throws tags.
+   */
   private String text;
 
   /** List of words marked with @code tag in comment text. */
