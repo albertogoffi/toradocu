@@ -181,6 +181,8 @@ class Matcher {
     String match = null;
     String predicate = proposition.getPredicate();
 
+    //TODO check the following calls to extractBooleanCodeElements(): are they necessary before calling
+    //TODO JavaElementsCollector#collect()?
     if (subject instanceof ParameterCodeElement) {
       ParameterCodeElement paramCodeElement = (ParameterCodeElement) subject;
       codeElements =
@@ -217,6 +219,13 @@ class Matcher {
                 e -> {
                   if (e instanceof MethodCodeElement) {
                     Method m = ((MethodCodeElement) e).getJavaCodeElement();
+                    if (m.toGenericString().equals(method.getExecutable().toGenericString())
+                        || (!m.getReturnType().equals(Boolean.class)
+                            && !m.getReturnType().equals(boolean.class))) {
+                      return false;
+                    }
+                  } else if (e instanceof StaticMethodCodeElement) {
+                    Method m = ((StaticMethodCodeElement) e).getJavaCodeElement();
                     if (m.toGenericString().equals(method.getExecutable().toGenericString())
                         || (!m.getReturnType().equals(Boolean.class)
                             && !m.getReturnType().equals(boolean.class))) {
