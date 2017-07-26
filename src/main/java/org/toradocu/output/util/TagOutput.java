@@ -37,10 +37,17 @@ public class TagOutput {
     if (o == null || getClass() != o.getClass()) return false;
 
     TagOutput that = (TagOutput) o;
-
-    return Objects.equals(comment, that.comment)
-        && Objects.equals(kind, that.kind)
-        && Objects.equals(condition, that.condition);
+    if (condition != null && that.condition != null) {
+      String expectedCondition = condition.replaceAll("\\s", "");
+      String actualCondition = that.condition.replaceAll("\\s", "");
+      return Objects.equals(comment, that.comment)
+          && Objects.equals(kind, that.kind)
+          && expectedCondition.equals(actualCondition);
+    } else {
+      return Objects.equals(comment, that.comment)
+          && Objects.equals(kind, that.kind)
+          && Objects.equals(condition, that.condition);
+    }
   }
 
   @Override

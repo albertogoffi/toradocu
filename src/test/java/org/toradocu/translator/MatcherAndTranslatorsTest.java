@@ -1,5 +1,6 @@
 package org.toradocu.translator;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -43,7 +44,7 @@ public class MatcherAndTranslatorsTest {
   }
 
   @Test
-  public void name() throws Exception {
+  public void generatedSpecificationTest() throws Exception {
     String targetPath = sourcePath.getParent().getParent().toString();
 
     String[] toradocuArgs =
@@ -63,12 +64,18 @@ public class MatcherAndTranslatorsTest {
 
     Type listType = new TypeToken<List<JsonOutput>>() {}.getType();
     try (BufferedReader actualOutputReader = Files.newBufferedReader(actualOutput);
-        BufferedReader expectedOutputReader = Files.newBufferedReader(expectedOutput); ) {
+        BufferedReader expectedOutputReader = Files.newBufferedReader(expectedOutput)) {
       List<JsonOutput> actualSpecs = GsonInstance.gson().fromJson(actualOutputReader, listType);
       List<JsonOutput> expectedSpecs = GsonInstance.gson().fromJson(expectedOutputReader, listType);
-      assertThat(actualSpecs, is(expectedSpecs));
-    }
+      assertThat(actualSpecs.size(), is(equalTo(expectedSpecs.size())));
 
-    Files.delete(actualOutput);
+      for (int i = 0; i < actualSpecs.size(); i++) {
+        JsonOutput actualSpec = actualSpecs.get(i);
+        JsonOutput expectedSpec = expectedSpecs.get(i);
+        assertThat(actualSpec, is(equalTo(expectedSpec)));
+      }
+    } finally {
+      Files.delete(actualOutput);
+    }
   }
 }

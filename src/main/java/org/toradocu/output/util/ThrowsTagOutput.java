@@ -29,4 +29,9 @@ public class ThrowsTagOutput extends TagOutput {
         && Objects.equals(codeTags, that.codeTags)
         && super.equals(that);
   }
+
+  @Override
+  public String toString() {
+    return "@throws " + exceptionType.name + " " + getComment();
+  }
 }

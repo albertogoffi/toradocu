@@ -9,7 +9,7 @@ public class ParamTagOutput extends TagOutput {
   /** The parameter associated with the param tag */
   private final Parameter parameter;
 
-  public ParamTagOutput(Parameter parameter, Comment comment, String kind, String condition) {
+  ParamTagOutput(Parameter parameter, Comment comment, String kind, String condition) {
     super(comment.getText(), kind, condition);
     this.parameter = parameter;
   }
@@ -22,5 +22,10 @@ public class ParamTagOutput extends TagOutput {
     ParamTagOutput that = (ParamTagOutput) o;
 
     return Objects.equals(parameter, that.parameter) && super.equals(that);
+  }
+
+  @Override
+  public String toString() {
+    return "@param " + parameter.getName() + " " + super.getComment();
   }
 }

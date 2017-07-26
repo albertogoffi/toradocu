@@ -147,4 +147,9 @@ public class JsonOutput {
         returnTag,
         throwsTags);
   }
+
+  @Override
+  public String toString() {
+    return signature + "\n" + paramTags + "\n" + returnTag + "\n" + throwsTags;
+  }
 }
