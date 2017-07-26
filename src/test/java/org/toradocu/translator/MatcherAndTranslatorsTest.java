@@ -56,7 +56,9 @@ public class MatcherAndTranslatorsTest {
           "--class-dir",
           targetPath,
           "--source-dir",
-          targetPath
+          targetPath,
+          "--expected-output",
+          expectedOutput.toString()
         };
     List<String> argsList = new ArrayList<>(Arrays.asList(toradocuArgs));
     Toradocu.main(argsList.toArray(new String[0]));

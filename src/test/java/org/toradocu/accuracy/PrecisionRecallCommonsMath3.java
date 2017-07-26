@@ -42,7 +42,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testPrimes() throws Exception {
-    test("org.apache.commons.math3.primes.Primes", 1, 1, 1, 1, 0, 0);
+    test("org.apache.commons.math3.primes.Primes", 1, 1, 1, 1, 1, 0);
   }
 
   @Test
