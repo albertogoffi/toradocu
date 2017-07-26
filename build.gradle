@@ -25,6 +25,8 @@ apply plugin: 'jacoco'
 task downloadGlove(type: Download) {
   src 'https://dl.dropboxusercontent.com/s/ucakn0ju00pueds/glove-binary.zip'
   dest 'src/main/resources'
+  onlyIfNewer true
+  overwrite false
 }
 task unzipGlove(type: Copy) {
   def zipFile = file('src/main/resources/glove-binary.zip')
@@ -80,6 +82,9 @@ compileJava {
 }
 
 test {
+  reports {
+    html.enabled = true
+  }
   // Print standard output during tests execution.
   testLogging {
     events = ['STANDARD_OUT']
@@ -282,7 +287,4 @@ task tutorial(type: Download) {
   onlyIfNewer true
   overwrite false
 }
-
-
-
 tutorial.dependsOn shadowJar
