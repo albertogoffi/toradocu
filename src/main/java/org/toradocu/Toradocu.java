@@ -161,7 +161,7 @@ public class Toradocu {
             }
             String jsonOutput = GsonInstance.gson().toJson(jsonOutputs);
             writer.write(jsonOutput);
-            printConditionLines(jsonOutput);
+            //            printConditionLines(jsonOutput);
           } catch (Exception e) {
             log.error(
                 "Unable to write the output on file "
