@@ -11,14 +11,19 @@ import static org.junit.Assert.fail;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.List;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.toradocu.conf.ClassDirsConverter;
 import org.toradocu.conf.Configuration;
 import org.toradocu.testlib.ToradocuJavaCompiler;
+import org.toradocu.util.Reflection;
 
 /**
  * Tests {@code JavadocExtractor} on the example class example.AClass in src/test/resources/example.
@@ -45,8 +50,10 @@ public class JavadocExtractorTest {
 
   @Test
   public void classUnderAnalysis() throws ClassNotFoundException {
-    final Class<?> targetClass = Class.forName(TARGET_CLASS);
-    assertThat(documentedType.getDocumentedClass(), is(equalTo(targetClass)));
+    final Class<?> targetClass = Reflection.getClass(TARGET_CLASS);
+    final String docTypeClassName = documentedType.getDocumentedClass().getName();
+    final String targetClassName = targetClass.getName();
+    assertThat(docTypeClassName, is(equalTo(targetClassName)));
   }
 
   @Test
@@ -200,7 +207,9 @@ public class JavadocExtractorTest {
   }
 
   private static DocumentedType runJavadocExtractor()
-      throws ClassNotFoundException, FileNotFoundException {
+      throws ClassNotFoundException, FileNotFoundException, MalformedURLException {
+    final URL url = Paths.get(EXAMPLE_SRC).toUri().toURL();
+    Configuration.INSTANCE.classDirs = Collections.singletonList(url);
     final JavadocExtractor javadocExtractor = new JavadocExtractor();
     return javadocExtractor.extract(TARGET_CLASS, EXAMPLE_SRC);
   }
