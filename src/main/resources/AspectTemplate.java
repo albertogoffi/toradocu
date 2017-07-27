@@ -1,10 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.Assert.fail;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 
 @Aspect
