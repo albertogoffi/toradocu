@@ -91,7 +91,7 @@ test {
   }
   // Print standard output during tests execution.
   testLogging {
-    events = ['STANDARD_OUT']
+    events = ['STANDARD_OUT', 'FAILED']
     exceptionFormat = 'FULL'
   }
 }
