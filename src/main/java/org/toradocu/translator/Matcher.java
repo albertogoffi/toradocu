@@ -120,7 +120,6 @@ class Matcher {
       String comment) {
 
     String predicate = proposition.getPredicate();
-    boolean negate = proposition.isNegative();
     // Special case to handle predicates about arrays' length. We need a more general solution.
     if (subject.getJavaCodeElement().toString().contains("[]")) {
       final java.util.regex.Matcher lengthPattern =
@@ -164,12 +163,15 @@ class Matcher {
       if (match == null) return null;
     }
 
-    // Condition "target==null" is indeed not correct.
-    if (match.equals("target==null")) return null;
+    if (match.equals("target==null")) { // Condition "target==null" is indeed not correct.
+      return null;
+    }
 
-    if (negate) match = "(" + match + ") == false";
-
-    return match;
+    if (proposition.isNegative()) {
+      return "(" + match + ") == false";
+    } else {
+      return match;
+    }
   }
 
   private String codeElementsMatch(
@@ -321,10 +323,10 @@ class Matcher {
     } else if (!paramMatch
         .isEmpty()) { //the method is supposed to take params but we haven't find a match: does it have to take null?
       final java.util.regex.Matcher nullPattern =
-          Pattern.compile("[has|have|contain(s?)] null").matcher(predicate);
+          Pattern.compile("(has|have|contains?) null").matcher(predicate);
 
       final java.util.regex.Matcher equalPattern = //or is it the equals() method?
-          Pattern.compile("[is|are] equal(s?)").matcher(predicate);
+          Pattern.compile("(is|are) equals?").matcher(predicate);
 
       firstMatch = sortedCodeElements.stream().findFirst().get();
       if (nullPattern.find()) {
