@@ -20,7 +20,7 @@ public class PrecisionRecallFreeCol extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testPlayerActivePredicate() throws Exception {
-    test("net.sf.freecol.common.model.Player$ActivePredicate", 1, 1, 1, 1, 0, 0);
+    test("net.sf.freecol.common.model.Player$ActivePredicate", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
