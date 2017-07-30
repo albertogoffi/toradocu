@@ -40,7 +40,7 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testCacheLoader() throws Exception {
-    test("com.google.common.cache.CacheLoader", 1, 1, 1, 0, 1, 1);
+    test("com.google.common.cache.CacheLoader", 1, 1, 1, 0.4, 1, 1);
   }
 
   @Test
@@ -55,7 +55,7 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testHashing() throws Exception {
-    test("com.google.common.hash.Hashing", 1, 0, 1, 0, 1, 1);
+    test("com.google.common.hash.Hashing", 1, 1, 1, 0, 1, 1);
   }
 
   @Test
@@ -85,7 +85,7 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testStrings() throws Exception {
-    test("com.google.common.base.Strings", 1, 1, 1, 0, 0.333, 0.25);
+    test("com.google.common.base.Strings", 1, 1, 1, 0, 0.25, 0.25);
   }
 
   @Test

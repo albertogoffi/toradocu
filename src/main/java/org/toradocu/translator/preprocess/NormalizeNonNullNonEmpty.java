@@ -19,8 +19,16 @@ public class NormalizeNonNullNonEmpty implements PreprocessingPhase {
       comment = comment.replace("non-null", "!=null");
     }
 
+    if (comment.contains("nonnull")) {
+      comment = comment.replace("nonnull", "!=null");
+    }
+
     if (comment.contains("non-empty")) {
-      comment = comment.replace("non-empty", "!=empty");
+      comment = comment.replace("non-empty", "not empty");
+    }
+
+    if (comment.contains("nonempty")) {
+      comment = comment.replace("nonempty", "not empty");
     }
 
     return comment;

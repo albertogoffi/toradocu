@@ -290,7 +290,7 @@
         },
         "comment": "the function to be used for loading values; must never return null",
         "kind": "PARAM",
-        "condition": ""
+        "condition": "(args[0]==null)==false"
       }
     ],
     "returnTag": {
@@ -337,7 +337,7 @@
         },
         "comment": "the supplier to be used for loading values; must never return null",
         "kind": "PARAM",
-        "condition": ""
+        "condition": "(args[0]==null)==false"
       }
     ],
     "returnTag": {

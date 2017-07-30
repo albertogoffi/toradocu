@@ -40,7 +40,7 @@ public class SemanticMatcher {
         new ArrayList<>(
             Arrays.asList(
                 "true", "false", "the", "a", "if", "for", "be", "have", "this", "do", "not", "of",
-                "in", "null", "only", "already", "specify"));
+                "can", "in", "null", "only", "already", "specify"));
 
     try {
       gloveDB = setUpGloveBinaryDB();
@@ -187,9 +187,10 @@ public class SemanticMatcher {
       name = ((GeneralCodeElement) codeElement).getIdentifiers().stream().findFirst().get();
     else return null;
     ArrayList<String> camelId = new ArrayList<String>(Arrays.asList(name.split("(?<!^)(?=[A-Z])")));
+    if (camelId.size() > 3) return null;
+
     String joinedId = String.join(" ", camelId).replaceAll("\\s+", " ").toLowerCase().trim();
     ArrayList<String> parsedId = new ArrayList<String>(parseComment(joinedId));
-    if (parsedId.size() > 3) return null;
 
     if (wordToIgnore != null) parsedId.remove(wordToIgnore);
 

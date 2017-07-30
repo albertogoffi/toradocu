@@ -238,10 +238,10 @@ class Matcher {
                 })
             .collect(Collectors.toSet());
 
-    SemanticMatcher semanticMatcher = new SemanticMatcher(true, (float) 0.265);
+    SemanticMatcher semanticMatcher = new SemanticMatcher(true, (float) 0.2);
     try {
       List<CodeElement<?>> sortedMethodList = new ArrayList<CodeElement<?>>(codeElements);
-      //it is important to provide an fixed order since this point, to prevent method with same score
+      //it is important to provide a fixed order since this point, to prevent method with same score
       //being put in map in a different order every execution
       Collections.sort(sortedMethodList, new JavaExpressionComparator());
       LinkedHashMap<CodeElement<?>, Double> semanticMethodMatches =
@@ -292,6 +292,7 @@ class Matcher {
     List<String> paramMatch = new ArrayList<String>();
     String[] args = null;
     java.lang.reflect.Parameter[] myParams = method.getExecutable().getParameters();
+
     for (CodeElement<?> currentMatch : sortedCodeElements) {
       if (currentMatch instanceof MethodCodeElement)
         args = ((MethodCodeElement) currentMatch).getArgs();
@@ -315,13 +316,14 @@ class Matcher {
       }
       if (foundArgMatch) break;
     }
-    if (foundArgMatch) {
+    if (foundArgMatch && paramForMatch.size() == args.length) {
       String exp = firstMatch.getJavaExpression();
       match = exp.substring(0, exp.indexOf("(") + 1);
       for (int j = 0; j < paramForMatch.size() - 1; j++) match += paramForMatch.get(j) + ",";
       match += paramForMatch.get(paramForMatch.size() - 1) + ")";
-    } else if (!paramMatch
-        .isEmpty()) { //the method is supposed to take params but we haven't find a match: does it have to take null?
+    } else if (args
+        != null) { //the method is supposed to take params but we haven't find a match: does it have to take null?
+      //TODO check method match number of arguments!
       final java.util.regex.Matcher nullPattern =
           Pattern.compile("(has|have|contains?) null").matcher(predicate);
 

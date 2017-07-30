@@ -842,7 +842,7 @@
     "returnTag": {
       "comment": "x << y",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true?result==args[0]<<args[1]"
     },
     "throwsTags": []
   },
@@ -910,7 +910,7 @@
     "returnTag": {
       "comment": "x << y",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true?result==args[0]<<args[1]"
     },
     "throwsTags": []
   },
@@ -978,7 +978,7 @@
     "returnTag": {
       "comment": "x >> y",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true?result==args[0]>>args[1]"
     },
     "throwsTags": []
   },
@@ -1046,7 +1046,7 @@
     "returnTag": {
       "comment": "x >> y",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true?result==args[0]>>args[1]"
     },
     "throwsTags": []
   },
@@ -1114,7 +1114,7 @@
     "returnTag": {
       "comment": "x >>> y",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true?result==args[0]>>>args[1]"
     },
     "throwsTags": []
   },
@@ -1182,7 +1182,7 @@
     "returnTag": {
       "comment": "x >>> y",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true?result==args[0]>>>args[1]"
     },
     "throwsTags": []
   },
@@ -1250,7 +1250,7 @@
     "returnTag": {
       "comment": "x & y",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true?result==args[0]&args[1]"
     },
     "throwsTags": []
   },
@@ -1318,7 +1318,7 @@
     "returnTag": {
       "comment": "x & y",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true?result==args[0]&args[1]"
     },
     "throwsTags": []
   },
@@ -1386,7 +1386,7 @@
     "returnTag": {
       "comment": "the logical and of x and y; the result is always 0 or 1",
       "kind": "RETURN",
-      "condition": ""
+      "condition": " true ? (result==0 || result==1)"
     },
     "throwsTags": []
   },
@@ -1454,7 +1454,7 @@
     "returnTag": {
       "comment": "the logical and of x and y; the result is always 0 or 1",
       "kind": "RETURN",
-      "condition": ""
+      "condition": " true ? (result==0 || result==1)"
     },
     "throwsTags": []
   },
@@ -1522,7 +1522,7 @@
     "returnTag": {
       "comment": "x ^ y",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true?result==args[0]^args[1]"
     },
     "throwsTags": []
   },
@@ -1590,7 +1590,7 @@
     "returnTag": {
       "comment": "x ^ y",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true?result==args[0]^args[1]"
     },
     "throwsTags": []
   },
@@ -1658,7 +1658,7 @@
     "returnTag": {
       "comment": "the logical xor of x and y; the result is always 0 or 1",
       "kind": "RETURN",
-      "condition": ""
+      "condition": " true ? (result==0 || result==1)"
     },
     "throwsTags": []
   },
@@ -1726,7 +1726,7 @@
     "returnTag": {
       "comment": "the logical xor of x and y; the result is always 0 or 1",
       "kind": "RETURN",
-      "condition": ""
+      "condition": " true ? (result==0 || result==1)"
     },
     "throwsTags": []
   },
@@ -1794,7 +1794,7 @@
     "returnTag": {
       "comment": "x | y",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true?result==args[0]|args[1]"
     },
     "throwsTags": []
   },
@@ -1862,7 +1862,7 @@
     "returnTag": {
       "comment": "x | y",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true?result==args[0]|args[1]"
     },
     "throwsTags": []
   },
@@ -1930,7 +1930,7 @@
     "returnTag": {
       "comment": "the logical or of x and y; the result is always 0 or 1",
       "kind": "RETURN",
-      "condition": ""
+      "condition": " true ? (result==0 || result==1)"
     },
     "throwsTags": []
   },
@@ -1998,7 +1998,7 @@
     "returnTag": {
       "comment": "the logical or of x and y; the result is always 0 or 1",
       "kind": "RETURN",
-      "condition": ""
+      "condition": " true ? (result==0 || result==1)"
     },
     "throwsTags": []
   },
@@ -2795,7 +2795,7 @@
     "returnTag": {
       "comment": "x % y, where the result is constrained to be positive",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true?result==args[0]%args[1]"
     },
     "throwsTags": []
   },
@@ -3133,7 +3133,7 @@
     "returnTag": {
       "comment": "x % y, where the result is constrained to be positive",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true?result==args[0]%args[1]"
     },
     "throwsTags": []
   },
@@ -3459,7 +3459,7 @@
         },
         "comment": "numbers to be excluded; length > 0",
         "kind": "PARAM",
-        "condition": ""
+        "condition": "args[0]>0"
       }
     ],
     "returnTag": {

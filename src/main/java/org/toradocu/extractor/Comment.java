@@ -43,6 +43,17 @@ public final class Comment {
 
     removeTags("\\{@link #?([^}]+)\\}");
     removeHTMLTags();
+    decodeHTML();
+  }
+
+  private void decodeHTML() {
+    this.text =
+        this.text
+            .replaceAll("&ge;", ">=")
+            .replaceAll("&le;", "<=")
+            .replaceAll("&gt;", ">")
+            .replaceAll("&lt;", "<")
+            .replaceAll("&amp;", "&");
   }
 
   /**

@@ -55,7 +55,7 @@ public class PrecisionRecallPlumeLib extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testMathMDE() throws Exception {
-    test("plume.MathMDE", 1, 1, 1, 0, 1, 1);
+    test("plume.MathMDE", 1, 1, 1, 0, 0.846, 0.785);
   }
 
   @Test
@@ -65,6 +65,6 @@ public class PrecisionRecallPlumeLib extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testUtilMDE() throws Exception {
-    test("plume.UtilMDE", 1, 1, 1, 1, 1, 0);
+    test("plume.UtilMDE", 1, 1, 1, 1, 0, 0);
   }
 }

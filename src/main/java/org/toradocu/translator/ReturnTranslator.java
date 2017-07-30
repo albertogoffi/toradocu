@@ -4,11 +4,8 @@ import static java.util.stream.Collectors.toList;
 
 import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.semgraph.SemanticGraph;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.lang.reflect.Type;
+import java.util.*;
 import java.util.regex.Pattern;
 import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.DocumentedExecutable;
@@ -16,6 +13,9 @@ import org.toradocu.extractor.ReturnTag;
 import randoop.condition.specification.Guard;
 import randoop.condition.specification.PostSpecification;
 import randoop.condition.specification.Property;
+import sun.reflect.generics.reflectiveObjects.GenericArrayTypeImpl;
+import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
+import sun.reflect.generics.reflectiveObjects.TypeVariableImpl;
 
 public class ReturnTranslator {
 
@@ -33,36 +33,41 @@ public class ReturnTranslator {
   }
 
   /**
-   * Translate arithmetic operations involved in the return, if found.
+   * Translate arithmetic and bit-wise operations involving arguments, if found.
    *
    * @param method the DocumentedExecutable
-   * @param commentToTranslate String comment to translate
+   * @param matcherOp matcher in which an operation was found
    * @return the translation if any, or an empty String
    */
-  private static String manageArithmeticOperation(
-      DocumentedExecutable method, String commentToTranslate) {
-    final String ARITHMETIC_OP_REGEX = "(([a-zA-Z]+[0-9]?_?)+) ?([-+*/%]) ?(([a-zA-Z]+[0-9]?_?)+)";
+  private static String manageArgsOperation(
+      DocumentedExecutable method, java.util.regex.Matcher matcherOp) {
+    String firstFactor = matcherOp.group(1);
+    String secFactor = matcherOp.group(4);
+    String op = matcherOp.group(3);
 
-    String translation = "";
-    java.util.regex.Matcher matcherOp =
-        Pattern.compile(ARITHMETIC_OP_REGEX).matcher(commentToTranslate);
-    if (matcherOp.find()) {
-      String firstFactor = matcherOp.group(1);
-      String secFactor = matcherOp.group(4);
-      String op = matcherOp.group(3);
-
-      CodeElement<?> first = null;
-      Set<CodeElement<?>> subject = new Matcher().subjectMatch(firstFactor, method);
-      if (!subject.isEmpty()) first = subject.stream().findFirst().get();
-      if (first != null) {
-        CodeElement<?> second = null;
-        subject = new Matcher().subjectMatch(secFactor, method);
-        if (!subject.isEmpty()) second = subject.stream().findFirst().get();
-        if (second != null)
-          translation = "result==" + first.getJavaExpression() + op + second.getJavaExpression();
+    CodeElement<?> first = null;
+    Set<CodeElement<?>> subject = new Matcher().subjectMatch(firstFactor, method);
+    if (!subject.isEmpty()) {
+      first = subject.stream().findFirst().get();
+    }
+    if (first != null) {
+      CodeElement<?> second = null;
+      subject = new Matcher().subjectMatch(secFactor, method);
+      if (!subject.isEmpty()) {
+        second = subject.stream().findFirst().get();
+      }
+      if (second != null) {
+        String returnType = method.getReturnType().getType().getTypeName();
+        if (checkSameType(method, second)
+            && checkSameType(method, first)
+            && checkIfPrimitive(returnType)) {
+          return "result==" + first.getJavaExpression() + op + second.getJavaExpression();
+        }
       }
     }
-    return translation;
+
+    // if an operation was found, but between incompatible types, return empty translation
+    return "";
   }
 
   /**
@@ -87,6 +92,10 @@ public class ReturnTranslator {
       String[] splittedText = text.split(" ");
       for (String token : splittedText) {
         if (!token.isEmpty()) {
+          if (token.equals("\"\"")) { // The empty String was found
+            return "result.equals(\"\")";
+          }
+
           final List<PropositionSeries> extractedPropositions =
               Parser.parse(new Comment("result " + token), method);
           final List<SemanticGraph> semanticGraphs =
@@ -101,9 +110,24 @@ public class ReturnTranslator {
             translation = tryCodeElementMatch(method, token);
           }
           if (translation != null) {
+            if (translation.contains("{") && translation.contains("}")) {
+              String argument =
+                  translation.substring(translation.indexOf("{") + 1, translation.indexOf("}"));
+
+              Set<CodeElement<?>> argMatches;
+              argMatches = new Matcher().subjectMatch(argument, method);
+              if (argMatches.isEmpty()) {
+                //            ConditionTranslator.log.trace("Failed predicate translation for: " + p + " due to variable not found.");
+                return null;
+              } else {
+                Iterator<CodeElement<?>> it = argMatches.iterator();
+                String replaceTarget = "{" + argument + "}";
+                //Naive solution: picks the first match from the list.
+                String replacement = it.next().getJavaExpression();
+                translation = translation.replace(replaceTarget, replacement);
+              }
+            }
             return translation;
-          } else if (token.equals("\"\"")) { // The empty String was found
-            return "result.equals(\"\")";
           }
         }
       }
@@ -171,7 +195,14 @@ public class ReturnTranslator {
 
           translation =
               tryPredicateMatch(method, semanticGraphs, extractedPropositions, parsedComment);
-          if (translation == null) translation = tryCodeElementMatch(method, parsedComment);
+          if (translation == null) {
+            translation = tryCodeElementMatch(method, parsedComment);
+          } else {
+            if (translation.contains("{") && translation.contains("}")) {
+              translation = extractVariablesFound(translation, method);
+            }
+            return translation;
+          }
         }
     }
     //TODO: Change the exception with one more meaningful.
@@ -241,7 +272,7 @@ public class ReturnTranslator {
       DocumentedExecutable method, String comment) {
     List<PostSpecification> specs = new ArrayList<>();
 
-    String translation;
+    String translation = null;
     final String[] truePatterns = {"true", "true always"};
     final String[] falsePatterns = {"false", "false always"};
     final String commentToTranslate = comment;
@@ -262,8 +293,25 @@ public class ReturnTranslator {
     } else if (falsePatternsMatch) {
       property = new Property(comment, "result==false");
     } else {
-      translation = manageArithmeticOperation(method, commentToTranslate);
-      if (translation.isEmpty()) {
+
+      final String ARITHMETIC_OP_REGEX =
+          "(([a-zA-Z]+[0-9]?_?)+) ?([-+*/%]) ?(([a-zA-Z]+[0-9]?_?)+)";
+
+      final String BITWISE_OP_REGEX =
+          "(([a-zA-Z]+[0-9]?_?)+) ?(<<<?|>>>?|\\^|&|\\|) ?(([a-zA-Z]+[0-9]?_?)+)";
+
+      java.util.regex.Matcher matcherArithmeticOp =
+          Pattern.compile(ARITHMETIC_OP_REGEX).matcher(commentToTranslate);
+
+      java.util.regex.Matcher matcherBitOp =
+          Pattern.compile(BITWISE_OP_REGEX).matcher(commentToTranslate);
+
+      if (matcherArithmeticOp.find()) {
+        translation = manageArgsOperation(method, matcherArithmeticOp);
+      } else if (matcherBitOp.find()) {
+        translation = manageArgsOperation(method, matcherBitOp);
+      }
+      if (translation == null) {
         final List<PropositionSeries> extractedPropositions =
             Parser.parse(new Comment(comment), method);
         final List<SemanticGraph> semanticGraphs =
@@ -279,10 +327,12 @@ public class ReturnTranslator {
       }
 
       if (translation != null && !translation.isEmpty()) {
+        if (translation.contains("{") && translation.contains("}")) {
+          translation = extractVariablesFound(translation, method);
+        }
         property = new Property(comment, translation);
       }
     }
-
     if (property != null) {
       specs.add(new PostSpecification(comment, guard, property));
     }
@@ -290,18 +340,29 @@ public class ReturnTranslator {
   }
 
   /**
-   * Check if the type of the code element is primitive or not.
+   * If the regex found a variable, it will be wrapped between curly brackets. This method extract
+   * the corresponding expression for the variable and substitute the brackets and their content.
    *
-   * @param codeElement the code element for which verifying the type
-   * @return true if the type is primitive, false otherwise
+   * @param translation original translation containing curly brackets
+   * @param method the method to which the condition is referred
+   * @return the translation with the right substitution if any, null otherwise
    */
-  private static boolean checkIfPrimitive(CodeElement<?> codeElement) {
-    //TODO naive, don't we have any better?
-    String[] primitives = {"int", "char", "float", "double", "long", "short", "byte"};
-    Set<String> ids = codeElement.getIdentifiers();
-    for (int i = 0; i != primitives.length; i++) if (ids.contains(primitives[i])) return true;
+  private static String extractVariablesFound(String translation, DocumentedExecutable method) {
+    String argument = translation.substring(translation.indexOf("{") + 1, translation.indexOf("}"));
 
-    return false;
+    Set<CodeElement<?>> argMatches;
+    argMatches = new Matcher().subjectMatch(argument, method);
+    if (argMatches.isEmpty()) {
+      //            ConditionTranslator.log.trace("Failed predicate translation for: " + p + " due to variable not found.");
+      return null;
+    } else {
+      Iterator<CodeElement<?>> it = argMatches.iterator();
+      String replaceTarget = "{" + argument + "}";
+      //Naive solution: picks the first match from the list.
+      String replacement = it.next().getJavaExpression();
+      translation = translation.replace(replaceTarget, replacement);
+      return translation;
+    }
   }
 
   /**
@@ -351,11 +412,71 @@ public class ReturnTranslator {
 
     CodeElement<?> codeElementMatch = findCodeElement(method, text, semanticGraphs);
     if (codeElementMatch != null) {
-      boolean isPrimitive = checkIfPrimitive(codeElementMatch);
-      if (isPrimitive) return "result == " + codeElementMatch.getJavaExpression();
-      else return "result.equals(" + codeElementMatch.getJavaExpression() + ")";
+      // check if return type of method is the same of the code element that matches
+      boolean isSameType = checkSameType(method, codeElementMatch);
+
+      if (isSameType) {
+        if (checkIfPrimitive(method.getReturnType().getType().getTypeName())) {
+          return "result == " + codeElementMatch.getJavaExpression();
+        } else {
+          return "result.equals(" + codeElementMatch.getJavaExpression() + ")";
+        }
+      }
     }
     return null;
+  }
+
+  /**
+   * Check if the type of the code element is primitive or not.
+   *
+   * @return true if the type is primitive, false otherwise
+   */
+  private static boolean checkIfPrimitive(String type) {
+    //TODO naive, don't we have any better?
+    String[] primitives = {"int", "char", "float", "double", "long", "short", "byte"};
+    return Arrays.asList(primitives).contains(type);
+  }
+
+  /**
+   * Check if the method return type is the same type of code element.
+   *
+   * @param method method which return type must be checked
+   * @param codeElement code element to compare
+   * @return true the types match
+   */
+  private static boolean checkSameType(DocumentedExecutable method, CodeElement<?> codeElement) {
+    Type methodReturn = method.getReturnType().getType();
+
+    if (methodReturn instanceof TypeVariableImpl || methodReturn instanceof GenericArrayTypeImpl) {
+      //TODO naive but we have not better choice for now
+      return true;
+    }
+
+    if (codeElement instanceof FieldCodeElement) {
+      if (methodReturn instanceof ParameterizedTypeImpl) {
+        return ((FieldCodeElement) codeElement)
+            .getJavaCodeElement()
+            .getType()
+            .isAssignableFrom(((ParameterizedTypeImpl) methodReturn).getRawType());
+      }
+      return ((FieldCodeElement) codeElement)
+          .getJavaCodeElement()
+          .getType()
+          .isAssignableFrom((Class<?>) methodReturn);
+    }
+    if (codeElement instanceof ParameterCodeElement) {
+      if (methodReturn instanceof ParameterizedTypeImpl) {
+        return ((ParameterCodeElement) codeElement)
+            .getJavaCodeElement()
+            .getType()
+            .isAssignableFrom(((ParameterizedTypeImpl) methodReturn).getRawType());
+      }
+      return ((ParameterCodeElement) codeElement)
+          .getJavaCodeElement()
+          .getType()
+          .isAssignableFrom((Class<?>) methodReturn);
+    }
+    return false;
   }
 
   /**
@@ -370,6 +491,7 @@ public class ReturnTranslator {
       DocumentedExecutable method, String comment, List<SemanticGraph> semanticGraphs) {
     //Try a match looking at the semantic graph.
     CodeElement<?> codeElementMatch = null;
+
     comment = comment.replace(";", "").replace(",", "").replace("'", "").replace("result ", "");
     for (SemanticGraph sg : semanticGraphs) {
       // No verb found: process nouns and their adjectives

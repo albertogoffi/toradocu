@@ -27,15 +27,17 @@ public class Parser {
   private static final String INEQUALITY_NUMBER_REGEX =
       " *((([<>=]=?)|(!=)) ?)-?([0-9]+(?!/)(.[0-9]+)?|zero|one|two|three|four|five|six|seven|eight|nine)";
 
+  private static final String GENERIC_TYPE_REGEX = " *(<T>)";
+
+  private static final String RANGE_VAR_REGEX = " *([<>=]=?) ?([a-zA-Z]+) ?([<>=]=?)";
+
   private static final String INEQUALITY_VAR_REGEX =
       " *((([<>=]=?)|(!=)) ?)(?!this)((([a-zA-Z]+([0-9]?))+_?(?! ))+(.([a-zA-Z]+([0-9]?))+(\\(*\\))?)?)";
-  private static final String ARITHMETIC_OP_REGEX =
-      "(([a-zA-Z]+[0-9]?_?)+) ?([-+*/%]) ?(([a-zA-Z]+[0-9]?_?)+)";
   private static final String PLACEHOLDER_PREFIX = " INEQUALITY_";
   private static final String INEQ_INSOF = " *[an]* (instance of)"; // e.g "an instance of"
   private static final String INEQ_INSOFPROCESSED =
       " instanceof +[^ \\.]*"; // e.g. "instanceof BinaryMutation"
-  private static final String INEQ_THIS = " this\\."; // e.g "<object> is this."
+  private static final String INEQ_THIS = "(?<!of) this\\."; // e.g "<object> is this."
 
   /** Stores the inequalities that are replaced by placeholders when addPlaceholders is called. */
   private static List<String> inequalities = new ArrayList<>();
@@ -131,24 +133,23 @@ public class Parser {
   }
 
   private static Comment addPlaceholders(Comment comment) {
+
+    ArrayList<String> contentToIgnore = new ArrayList<>();
+
     String text =
         comment
             .getText()
             .replace("greater than or equal to", ">=")
             .replace("≥", ">=")
-            .replace("&ge;", ">=")
             .replace("less than or equal to", "<=")
             .replace("lesser than or equal to", "<=")
             .replace("lesser or equal to", "<=")
             .replace("smaller than or equal to", "<=")
             .replace("≤", "<=")
-            .replace("&le;", "<=")
-            .replace("&gt;", ">")
             .replace("greater than", ">")
             .replace("smaller than", "<")
             .replace("less than", "<")
             .replace("lesser than", "<")
-            .replace("&lt;", "<")
             .replace("equal to", "==");
 
     java.util.regex.Matcher matcher = Pattern.compile(INEQUALITY_NUMBER_REGEX).matcher(text);
@@ -157,7 +158,11 @@ public class Parser {
 
     java.util.regex.Matcher matcherThis = Pattern.compile(INEQ_THIS).matcher(text);
 
+    java.util.regex.Matcher matcherGeneric = Pattern.compile(GENERIC_TYPE_REGEX).matcher(text);
+
     java.util.regex.Matcher matcherVarComp = Pattern.compile(INEQUALITY_VAR_REGEX).matcher(text);
+
+    java.util.regex.Matcher matcherRangeVar = Pattern.compile(RANGE_VAR_REGEX).matcher(text);
 
     while (matcherInstanceOf.find()) {
       // Instance of added to the comparator list
@@ -192,12 +197,25 @@ public class Parser {
       i++;
     }
 
+    while (matcherGeneric.find()) {
+      placeholderText = placeholderText.replaceFirst(GENERIC_TYPE_REGEX, "IGNORE_ME");
+      contentToIgnore.add(matcherGeneric.group(0));
+    }
+
+    while (matcherRangeVar.find()) {
+      contentToIgnore.add(matcherRangeVar.group(0));
+      placeholderText = placeholderText.replaceFirst(RANGE_VAR_REGEX, "IGNORE_ME");
+    }
+
     while (matcherVarComp.find()) {
       inequalities.add(text.substring(matcherVarComp.start(), matcherVarComp.end()));
       placeholderText = placeholderText.replaceFirst(INEQUALITY_VAR_REGEX, PLACEHOLDER_PREFIX + i);
       placeholderText = findVerb(placeholderText, i);
       i++;
     }
+
+    for (String ignoredString : contentToIgnore)
+      placeholderText = placeholderText.replaceFirst("IGNORE_ME", ignoredString);
 
     return new Comment(placeholderText, comment.getWordsMarkedAsCode());
   }
