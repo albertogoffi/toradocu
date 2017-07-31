@@ -1,5 +1,6 @@
 package org.toradocu.translator.semantic;
 
+import com.crtomirmajer.wmd4j.WordMovers;
 import de.jungblut.distance.CosineDistance;
 import de.jungblut.glove.GloveRandomAccessReader;
 import de.jungblut.glove.impl.GloveBinaryRandomAccessReader;
@@ -27,13 +28,16 @@ public class SemanticMatcher {
 
   private boolean stopWordsRemoval;
   private float distanceThreshold;
+  private float wmdThreshold;
+  private boolean isWmdUsed = false;
   private List<String> stopwords;
 
   private static GloveRandomAccessReader gloveDB;
 
-  public SemanticMatcher(boolean stopWordsRemoval, float distanceThreshold) {
+  public SemanticMatcher(boolean stopWordsRemoval, float distanceThreshold, float wmdThreshold) {
     this.stopWordsRemoval = stopWordsRemoval;
     this.distanceThreshold = distanceThreshold;
+    this.wmdThreshold = wmdThreshold;
 
     //TODO can this naive list be improved?
     stopwords =
@@ -94,7 +98,7 @@ public class SemanticMatcher {
    *     comment
    * @throws IOException if there were problems reading the vector model
    */
-  LinkedHashMap<CodeElement<?>, Double> vectorsMatch(
+  private LinkedHashMap<CodeElement<?>, Double> vectorsMatch(
       String comment,
       Proposition proposition,
       DocumentedExecutable method,
@@ -105,7 +109,8 @@ public class SemanticMatcher {
     if (commentWordSet.size() > 3) {
       // Vectors sum doesn't work well with long comments: consider the only predicate.
       // In the future we may try WMD.
-      commentWordSet = parseComment(proposition.getPredicate());
+      return wmdMatch(commentWordSet, proposition, method, codeElements);
+      //      commentWordSet = parseComment(proposition.getPredicate());
     }
 
     String parsedComment = String.join(" ", commentWordSet).replaceAll("\\s+", " ").trim();
@@ -142,7 +147,7 @@ public class SemanticMatcher {
           measureAndStoreDistance(originalCommentVector, methodVector, codeElement, distances);
         }
       }
-      return retainMatches(parsedComment, method.getSignature(), comment, distances);
+      return retainMatches(parsedComment, method.getSignature(), distances);
     }
     return null;
   }
@@ -260,38 +265,48 @@ public class SemanticMatcher {
    *
    * @param parsedComment the parsed comment
    * @param methodName name of the method the tag belongs to
-   * @param comment the original comment text
    * @param distances the computed distance, for every possible code element candidate, from the
    *     comment
    */
   private LinkedHashMap<CodeElement<?>, Double> retainMatches(
-      String parsedComment,
-      String methodName,
-      String comment,
-      Map<CodeElement<?>, Double> distances) {
+      String parsedComment, String methodName, Map<CodeElement<?>, Double> distances) {
     // Select as candidates only code elements that have a semantic distance below the chosen threshold.
-    if (distanceThreshold != -1) {
-      distances
-          .values()
-          .removeIf(
-              new Predicate<Double>() {
-                @Override
-                public boolean test(Double aDouble) {
-                  return aDouble > distanceThreshold;
-                }
-              });
-    }
-
-    // Order the retained distances from the lowest (best one) to the highest (worst one).
     LinkedHashMap<CodeElement<?>, Double> orderedDistances =
-        distances
-            .entrySet()
-            .stream()
-            .sorted(Map.Entry.comparingByValue())
-            .collect(
-                Collectors.toMap(
-                    Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+        new LinkedHashMap<CodeElement<?>, Double>();
 
+    if (!distances.isEmpty()) {
+      if (!isWmdUsed) {
+        distances
+            .values()
+            .removeIf(
+                new Predicate<Double>() {
+                  @Override
+                  public boolean test(Double aDouble) {
+                    return aDouble > distanceThreshold;
+                  }
+                });
+      } else {
+        distances
+            .values()
+            .removeIf(
+                new Predicate<Double>() {
+                  @Override
+                  public boolean test(Double aDouble) {
+                    return aDouble > wmdThreshold;
+                  }
+                });
+      }
+
+      // Order the retained distances from the lowest (best one) to the highest (worst one).
+      orderedDistances =
+          distances
+              .entrySet()
+              .stream()
+              .sorted(Map.Entry.comparingByValue())
+              .collect(
+                  Collectors.toMap(
+                      Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+    }
     return orderedDistances;
   }
 
@@ -325,5 +340,61 @@ public class SemanticMatcher {
     URL gloveBinaryModel = ClassLoader.getSystemClassLoader().getResource("glove-binary");
     Path modelsPath = Paths.get(gloveBinaryModel.toURI());
     return new GloveBinaryRandomAccessReader(modelsPath);
+  }
+
+  private LinkedHashMap<CodeElement<?>, Double> wmdMatch(
+      Set<String> commentWordSet,
+      Proposition proposition,
+      DocumentedExecutable method,
+      List<CodeElement<?>> codeElements) {
+
+    this.isWmdUsed = true;
+    Map<CodeElement<?>, Double> distances = new LinkedHashMap<>();
+
+    WordMovers wm =
+        WordMovers.Builder()
+            .wordVectors(GloveModelWrapper.getInstance().getGloveTxtVectors())
+            .build();
+
+    String parsedComment = String.join(" ", commentWordSet).replaceAll("\\s+", " ").trim();
+    if (codeElements != null && !codeElements.isEmpty()) {
+      for (CodeElement<?> codeElement : codeElements) {
+        //For each code element, compute the corresponding vector and compute the distance
+        //between it and the comment vector. Store the distances and filter them lately.
+        String name = "";
+
+        if (codeElement instanceof MethodCodeElement)
+          name = ((MethodCodeElement) codeElement).getJavaCodeElement().getName();
+        else if (codeElement instanceof GeneralCodeElement)
+          name = ((GeneralCodeElement) codeElement).getIdentifiers().stream().findFirst().get();
+        else continue;
+
+        ArrayList<String> camelId =
+            new ArrayList<String>(Arrays.asList(name.split("(?<!^)(?=[A-Z])")));
+        String joinedId = String.join(" ", camelId).replaceAll("\\s+", " ").trim().toLowerCase();
+        int index = 0;
+        for (CoreLabel lemma : StanfordParser.lemmatize(joinedId)) {
+          if (lemma != null) {
+            if (index < camelId.size()) {
+              camelId.remove(index);
+            }
+            camelId.add(index, lemma.lemma());
+          }
+          index++;
+        }
+        Set<String> codeElementWordSet = removeStopWords(camelId);
+        joinedId =
+            String.join(" ", codeElementWordSet).replaceAll("\\s+", " ").trim().toLowerCase();
+        double dist = 10;
+        try {
+          dist = wm.distance(parsedComment, joinedId);
+        } catch (Exception e) {
+          //do nothing
+        }
+        distances.put(codeElement, dist);
+      }
+    }
+
+    return retainMatches(parsedComment, method.getSignature(), distances);
   }
 }
