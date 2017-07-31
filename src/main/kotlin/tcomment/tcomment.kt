@@ -3,22 +3,29 @@ package tcomment
 import org.toradocu.extractor.DocumentedExecutable
 import org.toradocu.extractor.ParamTag
 import org.toradocu.extractor.ThrowsTag
-import randoop.condition.specification.OperationSpecification
+import randoop.condition.specification.*
 
 /**
- * Translates the tags in the given methods using @tComment algorithm. This method sets
- * [ThrowsTag.condition][ThrowsTag] for each @throws tag of the given methods.
+ * Translates the @param and @throws/@exception comments in the given executables using @tComment
+ * algorithm.
  *
- * @param methods a list of [DocumentedExecutable]s whose throws tags has to be translated
+ * @param executables a list of [DocumentedExecutable]s whose tags has to be translated
  */
-fun translate(methods: List<DocumentedExecutable>): MutableMap<DocumentedExecutable, OperationSpecification> {
-  // Translate @param and @throws comments using @tComment algorithm.
-  for (method in methods) {
+fun translate(executables: List<DocumentedExecutable>):
+    Map<DocumentedExecutable, OperationSpecification> {
+  val specs = mutableMapOf<DocumentedExecutable, OperationSpecification>()
+  for (method in executables) {
     val parameters = method.parameters.map { it.name }
-    method.paramTags().forEach { translateTagComment(it, parameters) }
-    method.throwsTags().forEach { translateTagComment(it, parameters) }
+    val preSpecs = method.paramTags().map { translateTagComment(it, parameters) }
+    val throwsSpecs = method.throwsTags().map { translateTagComment(it, parameters) }
+
+    val operation = Operation.getOperation(method.getExecutable())
+    val spec = OperationSpecification(operation)
+    spec.addParamSpecifications(preSpecs)
+    spec.addThrowsSpecifications(throwsSpecs)
+    specs.put(method, spec)
   }
-  TODO()
+  return specs
 }
 
 /**
@@ -27,14 +34,16 @@ fun translate(methods: List<DocumentedExecutable>): MutableMap<DocumentedExecuta
  * @param tag the tag whose text has to be translated
  * @param parameterNames names of the method's parameters to which [tag] belongs
  */
-private fun translateTagComment(tag: ParamTag, parameterNames: List<String>) {
+private fun translateTagComment(tag: ParamTag, parameterNames: List<String>): PreSpecification {
   val parameterName = tag.parameter.name
+  val description = tag.comment.text
   val condition = if (mustBeNotNull(tag.comment.text)) {
     "(args[${parameterNames.indexOf(parameterName)}]==null)==false"
   } else {
     ""
   }
-//  tag.setCondition(condition)
+  val guard = Guard(description, condition)
+  return PreSpecification(description, guard)
 }
 
 /**
@@ -43,7 +52,7 @@ private fun translateTagComment(tag: ParamTag, parameterNames: List<String>) {
  * @param tag the tag whose text has to be translated
  * @param parameterNames names of the method's parameters to which [tag] belongs
  */
-private fun translateTagComment(tag: ThrowsTag, parameterNames: List<String>) {
+private fun translateTagComment(tag: ThrowsTag, parameterNames: List<String>): ThrowsSpecification {
   val commentWords = getWords(tag.comment.text)
   var condition = ""
   if (commentWords.contains("null")) {
@@ -55,7 +64,8 @@ private fun translateTagComment(tag: ThrowsTag, parameterNames: List<String>) {
       if (!commentWords.contains("or") && !commentWords.contains("either")) return@forEach
     }
   }
-//  tag.setCondition(condition)
+  val guard = Guard(tag.comment.text, condition)
+  return ThrowsSpecification(tag.comment.text, guard, tag.exception.name)
 }
 
 /**
