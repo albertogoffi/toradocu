@@ -9,7 +9,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import org.slf4j.Logger;
@@ -18,18 +18,11 @@ import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.DocumentedType;
 import org.toradocu.extractor.JavadocExtractor;
-import org.toradocu.extractor.ParamTag;
-import org.toradocu.extractor.ReturnTag;
-import org.toradocu.extractor.ThrowsTag;
 import org.toradocu.output.util.JsonOutput;
 import org.toradocu.translator.CommentTranslator;
 import org.toradocu.util.GsonInstance;
 import org.toradocu.util.Stats;
-import randoop.condition.specification.Operation;
 import randoop.condition.specification.OperationSpecification;
-import randoop.condition.specification.PostSpecification;
-import randoop.condition.specification.PreSpecification;
-import randoop.condition.specification.ThrowsSpecification;
 
 /**
  * Entry point of Toradocu. {@code Toradocu.main} is automatically executed running the command:
@@ -145,7 +138,7 @@ public class Toradocu {
       if (configuration.useTComment()) {
         specifications = tcomment.TcommentKt.translate(members);
       } else {
-        specifications = createSpecifications(members);
+        specifications = CommentTranslator.createSpecifications(members);
       }
 
       // Output the result on a file or on the standard output, if silent mode is disabled.
@@ -199,86 +192,55 @@ public class Toradocu {
           log.error("Unable to read the file: " + configuration.getConditionTranslatorInput(), e);
         }
       }
+
+      // Export generated specifications as Randoop specifications if requested.
+      generateRandoopSpecs(specifications);
     }
 
     // === Oracle Generator ===
     //    OracleGenerator.createAspects(methods);
   }
 
-  private static Map<DocumentedExecutable, OperationSpecification> createSpecifications(
-      List<DocumentedExecutable> members) {
-    Map<DocumentedExecutable, OperationSpecification> specs = new LinkedHashMap<>();
-    for (DocumentedExecutable member : members) {
-      Operation operation = Operation.getOperation(member.getExecutable());
-      OperationSpecification spec = new OperationSpecification(operation);
-
-      List<PreSpecification> preSpecifications = new ArrayList<>();
-      for (ParamTag paramTag : member.paramTags()) {
-        preSpecifications.add(CommentTranslator.translate(paramTag, member));
-      }
-      spec.addParamSpecifications(preSpecifications);
-
-      List<ThrowsSpecification> throwsSpecifications = new ArrayList<>();
-      for (ThrowsTag throwsTag : member.throwsTags()) {
-        throwsSpecifications.add(CommentTranslator.translate(throwsTag, member));
-      }
-      spec.addThrowsSpecifications(throwsSpecifications);
-
-      List<PostSpecification> postSpecifications = new ArrayList<>();
-      ReturnTag returnTag = member.returnTag();
-      if (returnTag != null) {
-        postSpecifications.addAll(CommentTranslator.translate(returnTag, member));
-      }
-      spec.addReturnSpecifications(postSpecifications);
-
-      specs.put(member, spec);
-    }
-    return specs;
-  }
-
   /**
-   * Export the specifications in {@code methods} to {@code conf.Configuration#randoopSpecsFile()}
+   * Export the specifications in {@code specsMap} to {@code conf.Configuration#randoopSpecsFile()}
    * as Randoop specifications.
    *
-   * @param methods the documented methods containing the specifications to export
+   * @param specsMap the documented methods containing the specifications to export
    */
-  //  private static void generateRandoopSpecs(List<DocumentedExecutable> methods) {
-  //    File randoopSpecsFile = configuration.randoopSpecsFile();
-  //    if (!configuration.isSilent() && randoopSpecsFile != null) {
-  //      if (!randoopSpecsFile.exists()) {
-  //        try {
-  //          File parentDir = randoopSpecsFile.getParentFile();
-  //          if (parentDir != null) {
-  //            Files.createDirectories(parentDir.toPath());
-  //          }
-  //
-  //        } catch (IOException e) {
-  //          log.error("Error occurred during creation of the file " + randoopSpecsFile.getPath(), e);
-  //        }
-  //      }
-  //      List<OperationSpecification> specs =
-  //          methods
-  //              .stream()
-  //              .map(RandoopSpecs::translate)
-  //              .filter(spec -> !spec.isEmpty())
-  //              .collect(Collectors.toList());
-  //      if (specs != null && !specs.isEmpty()) {
-  //        try (BufferedWriter writer =
-  //            Files.newBufferedWriter(
-  //                randoopSpecsFile.toPath(),
-  //                StandardOpenOption.WRITE,
-  //                StandardOpenOption.TRUNCATE_EXISTING,
-  //                StandardOpenOption.CREATE)) {
-  //          writer.write(GsonInstance.gson().toJson(specs));
-  //        } catch (IOException e) {
-  //          log.error(
-  //              "Error occurred during the export of generated specifications to file "
-  //                  + randoopSpecsFile.getPath(),
-  //              e);
-  //        }
-  //      }
-  //    }
-  //  }
+  private static void generateRandoopSpecs(
+      Map<DocumentedExecutable, OperationSpecification> specsMap) {
+    File randoopSpecsFile = configuration.randoopSpecsFile();
+    if (!configuration.isSilent() && randoopSpecsFile != null) {
+      if (!randoopSpecsFile.exists()) {
+        try {
+          File parentDir = randoopSpecsFile.getParentFile();
+          if (parentDir != null) {
+            Files.createDirectories(parentDir.toPath());
+          }
+
+        } catch (IOException e) {
+          log.error("Error occurred during creation of the file " + randoopSpecsFile.getPath(), e);
+        }
+      }
+      Collection<OperationSpecification> specs = specsMap.values();
+      if (!specs.isEmpty()) {
+        // TODO Filter empty specs? (specs for which the translation is empty string)
+        try (BufferedWriter writer =
+            Files.newBufferedWriter(
+                randoopSpecsFile.toPath(),
+                StandardOpenOption.WRITE,
+                StandardOpenOption.TRUNCATE_EXISTING,
+                StandardOpenOption.CREATE)) {
+          writer.write(GsonInstance.gson().toJson(specs));
+        } catch (IOException e) {
+          log.error(
+              "Error occurred during the export of generated specifications to file "
+                  + randoopSpecsFile.getPath(),
+              e);
+        }
+      }
+    }
+  }
 
   /**
    * Prints (to standard output) line numbers for lines in the given JSON output string that contain
