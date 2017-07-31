@@ -154,11 +154,15 @@ public class PropositionSeries {
       i++;
     }
     if (i < numberOfPropositions()) {
-      output.append(propositions.get(i).getTranslation().get());
+      String current = propositions.get(i).getTranslation().get();
+      output.append(current);
       for (int j = i + 1; j < numberOfPropositions(); j++) {
         if (propositions.get(j).getTranslation().isPresent()) {
-          output.append(conjunctions.get(j - 1));
-          output.append(propositions.get(j).getTranslation().get());
+          String next = propositions.get(j).getTranslation().get();
+          if (!current.equals(next)) {
+            output.append(conjunctions.get(j - 1));
+            output.append(next);
+          }
         }
       }
     }
