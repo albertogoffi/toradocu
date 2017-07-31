@@ -154,7 +154,6 @@ public class Toradocu {
             }
             String jsonOutput = GsonInstance.gson().toJson(jsonOutputs);
             writer.write(jsonOutput);
-            //            printConditionLines(jsonOutput);
           } catch (Exception e) {
             log.error(
                 "Unable to write the output on file "
@@ -239,36 +238,6 @@ public class Toradocu {
               e);
         }
       }
-    }
-  }
-
-  /**
-   * Prints (to standard output) line numbers for lines in the given JSON output string that contain
-   * Java expression translations of conditions. These lines can be altered to generate expected
-   * output files for the precision recall test suite.
-   *
-   * @param jsonOutput string containing output of condition translator in JSON format
-   */
-  private static void printConditionLines(String jsonOutput) {
-    BufferedReader reader = new BufferedReader(new StringReader(jsonOutput));
-    String fileName = configuration.getConditionTranslatorOutput().toString();
-    int lineNumber = 1;
-    try {
-      String line;
-      while ((line = reader.readLine()) != null) {
-        line = line.trim();
-        if (line.startsWith("\"comment\"") || line.startsWith("\"condition\"")) {
-          System.out.println(fileName + ":" + lineNumber + ": " + line);
-        }
-        if (line.startsWith("\"condition\"")) {
-          // Put a blank line between comment/condition pairs.
-          System.out.println();
-        }
-        lineNumber++;
-      }
-    } catch (IOException e) {
-      // An IOException should never occur when using a StringReader.
-      e.printStackTrace();
     }
   }
 }
