@@ -104,13 +104,17 @@ public class SemanticMatcher {
       DocumentedExecutable method,
       List<CodeElement<?>> codeElements)
       throws IOException {
-    Set<String> commentWordSet = parseComment(comment);
+
+    String rightSentence = splitInSentences(comment, proposition);
+    Set<String> commentWordSet = parseComment(rightSentence);
 
     if (commentWordSet.size() > 3) {
-      // Vectors sum doesn't work well with long comments: consider the only predicate.
-      // In the future we may try WMD.
+      // Vectors sum doesn't work well with long comments: use WMD
+      if (commentWordSet.size() > 7)
+        //Increase the threshold in case of very long comments
+        this.wmdThreshold = (float) 6.35;
+
       return wmdMatch(commentWordSet, proposition, method, codeElements);
-      //      commentWordSet = parseComment(proposition.getPredicate());
     }
 
     String parsedComment = String.join(" ", commentWordSet).replaceAll("\\s+", " ").trim();
@@ -150,6 +154,24 @@ public class SemanticMatcher {
       return retainMatches(parsedComment, method.getSignature(), distances);
     }
     return null;
+  }
+
+  /**
+   * If the comment is made of more than one sentence, identify the one containing the proposition
+   * (thus the right one to translate).
+   *
+   * @param comment the whole comment
+   * @param proposition the proposition to translate
+   * @return sub-sentence containing the proposition
+   */
+  private String splitInSentences(String comment, Proposition proposition) {
+    String rightSentence = comment;
+
+    String[] sentences = comment.split("\\.");
+    for (String sentence : sentences) {
+      if (sentence.contains(proposition.getPredicate())) rightSentence = sentence;
+    }
+    return rightSentence;
   }
 
   /**
@@ -261,6 +283,104 @@ public class SemanticMatcher {
   }
 
   /**
+   * Compute semantic distance through Word Mover's Distance.
+   *
+   * @param commentWordSet set of {@code String} words composing the comment
+   * @param proposition the proposition extracted from the comment that must be translated
+   * @param method the method to which the comment belongs
+   * @param codeElements list of code elements for which computing the distance
+   * @return a map containing the best matches together with the distance computed in respect to the
+   *     comment
+   */
+  private LinkedHashMap<CodeElement<?>, Double> wmdMatch(
+      Set<String> commentWordSet,
+      Proposition proposition,
+      DocumentedExecutable method,
+      List<CodeElement<?>> codeElements) {
+
+    this.isWmdUsed = true;
+    Map<CodeElement<?>, Double> distances = new LinkedHashMap<>();
+
+    WordMovers wm =
+        WordMovers.Builder()
+            .wordVectors(GloveModelWrapper.getInstance().getGloveTxtVectors())
+            .build();
+
+    String subject = proposition.getSubject().getSubject();
+    String finalComment = "";
+    String finalID = "";
+
+    if (codeElements != null && !codeElements.isEmpty()) {
+      for (CodeElement<?> codeElement : codeElements) {
+        //For each code element, compute the corresponding vector and compute the distance
+        //between it and the comment vector. Store the distances and filter them lately.
+        String name = "";
+        if (codeElement instanceof MethodCodeElement)
+          name = ((MethodCodeElement) codeElement).getJavaCodeElement().getName();
+        else if (codeElement instanceof GeneralCodeElement)
+          name = ((GeneralCodeElement) codeElement).getIdentifiers().stream().findFirst().get();
+        else continue;
+
+        List<String> camelId = parseCodeElementName(name);
+        Set<String> codeElementWordSet = removeStopWords(camelId);
+
+        if (codeElement instanceof MethodCodeElement
+            && !((MethodCodeElement) codeElement).getReceiver().equals("target")) {
+          // if receiver is not target, this is a method invoked from the subject, which for the reason
+          // is implicit and will be excluded from the vector computation
+
+          String wordToIgnore = "";
+          if (subject.lastIndexOf(" ") != -1)
+            // in case of composed subject take just the last word (may be the most significant)
+            wordToIgnore = subject.substring(subject.lastIndexOf(" ") + 1, subject.length());
+          else wordToIgnore = subject;
+
+          codeElementWordSet.remove(wordToIgnore);
+
+          Set<String> modifiedComment = new LinkedHashSet<String>(commentWordSet);
+          modifiedComment.remove(wordToIgnore);
+          finalComment = String.join(" ", modifiedComment).replaceAll("\\s+", " ").trim();
+        } else {
+          finalComment = String.join(" ", commentWordSet).replaceAll("\\s+", " ").trim();
+        }
+        finalID = String.join(" ", codeElementWordSet).replaceAll("\\s+", " ").trim().toLowerCase();
+
+        double dist = 10;
+        try {
+          dist = wm.distance(finalComment, finalID);
+        } catch (Exception e) {
+          //do nothing
+        }
+        distances.put(codeElement, dist);
+      }
+    }
+
+    return retainMatches(finalComment, method.getSignature(), distances);
+  }
+
+  /**
+   * Split code element name according to camel case
+   *
+   * @param name code element name
+   * @return list of words composing the code element name
+   */
+  private List<String> parseCodeElementName(String name) {
+    ArrayList<String> camelId = new ArrayList<String>(Arrays.asList(name.split("(?<!^)(?=[A-Z])")));
+    String joinedId = String.join(" ", camelId).replaceAll("\\s+", " ").trim().toLowerCase();
+    int index = 0;
+    for (CoreLabel lemma : StanfordParser.lemmatize(joinedId)) {
+      if (lemma != null) {
+        if (index < camelId.size()) {
+          camelId.remove(index);
+        }
+        camelId.add(index, lemma.lemma());
+      }
+      index++;
+    }
+    return camelId;
+  }
+
+  /**
    * Compute and instantiate the {@code SemantiMatch} computed for a tag.
    *
    * @param parsedComment the parsed comment
@@ -316,7 +436,7 @@ public class SemanticMatcher {
    * @param words list of {@code String}s to be cleaned
    * @return the cleaned list of words
    */
-  private Set<String> removeStopWords(ArrayList<String> words) {
+  private Set<String> removeStopWords(List<String> words) {
     if (this.stopWordsRemoval) {
       for (int i = 0; i < words.size(); i++) {
         String word = words.get(i).toLowerCase();
@@ -340,61 +460,5 @@ public class SemanticMatcher {
     URL gloveBinaryModel = ClassLoader.getSystemClassLoader().getResource("glove-binary");
     Path modelsPath = Paths.get(gloveBinaryModel.toURI());
     return new GloveBinaryRandomAccessReader(modelsPath);
-  }
-
-  private LinkedHashMap<CodeElement<?>, Double> wmdMatch(
-      Set<String> commentWordSet,
-      Proposition proposition,
-      DocumentedExecutable method,
-      List<CodeElement<?>> codeElements) {
-
-    this.isWmdUsed = true;
-    Map<CodeElement<?>, Double> distances = new LinkedHashMap<>();
-
-    WordMovers wm =
-        WordMovers.Builder()
-            .wordVectors(GloveModelWrapper.getInstance().getGloveTxtVectors())
-            .build();
-
-    String parsedComment = String.join(" ", commentWordSet).replaceAll("\\s+", " ").trim();
-    if (codeElements != null && !codeElements.isEmpty()) {
-      for (CodeElement<?> codeElement : codeElements) {
-        //For each code element, compute the corresponding vector and compute the distance
-        //between it and the comment vector. Store the distances and filter them lately.
-        String name = "";
-
-        if (codeElement instanceof MethodCodeElement)
-          name = ((MethodCodeElement) codeElement).getJavaCodeElement().getName();
-        else if (codeElement instanceof GeneralCodeElement)
-          name = ((GeneralCodeElement) codeElement).getIdentifiers().stream().findFirst().get();
-        else continue;
-
-        ArrayList<String> camelId =
-            new ArrayList<String>(Arrays.asList(name.split("(?<!^)(?=[A-Z])")));
-        String joinedId = String.join(" ", camelId).replaceAll("\\s+", " ").trim().toLowerCase();
-        int index = 0;
-        for (CoreLabel lemma : StanfordParser.lemmatize(joinedId)) {
-          if (lemma != null) {
-            if (index < camelId.size()) {
-              camelId.remove(index);
-            }
-            camelId.add(index, lemma.lemma());
-          }
-          index++;
-        }
-        Set<String> codeElementWordSet = removeStopWords(camelId);
-        joinedId =
-            String.join(" ", codeElementWordSet).replaceAll("\\s+", " ").trim().toLowerCase();
-        double dist = 10;
-        try {
-          dist = wm.distance(parsedComment, joinedId);
-        } catch (Exception e) {
-          //do nothing
-        }
-        distances.put(codeElement, dist);
-      }
-    }
-
-    return retainMatches(parsedComment, method.getSignature(), distances);
   }
 }
