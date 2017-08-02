@@ -198,11 +198,11 @@ public class SentenceParser {
     if (result.isEmpty()) {
       result = tryConjunctionPredicate(governor);
     }
-    if (result.isEmpty()) {
-      log.warn(
-          "Unable to identify a predicate (governor = " + governor.word() + ") in \"{}\"",
-          semanticGraph.toRecoveredSentenceString());
-    }
+    //    if (result.isEmpty()) {
+    //      log.warn(
+    //          "Unable to identify a predicate (governor = " + governor.word() + ") in \"{}\"",
+    //          semanticGraph.toRecoveredSentenceString());
+    //    }
 
     return result;
   }
@@ -366,9 +366,9 @@ public class SentenceParser {
   /** Initializes the relations fields using the semantic graph. */
   private void initializeRelations() {
     subjectRelations = getRelationsFromGraph("nsubj", "nsubjpass");
-    if (subjectRelations.isEmpty()) {
-      log.warn("Unable to identify subjects in \"{}\".", semanticGraph.toRecoveredSentenceString());
-    }
+    //    if (subjectRelations.isEmpty()) {
+    //      log.warn("Unable to identify subjects in \"{}\".", semanticGraph.toRecoveredSentenceString());
+    //    }
     copulaRelations = getRelationsFromGraph("cop");
     complementRelations = getRelationsFromGraph("acomp", "xcomp", "dobj");
     conjunctionRelations = getRelationsFromGraph("conj:and", "conj:or", "conj:but");

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.ParamTag;
 import org.toradocu.extractor.ReturnTag;
@@ -18,6 +20,9 @@ import randoop.condition.specification.ThrowsSpecification;
 /** Translates comments into procedure specifications. */
 public class CommentTranslator {
 
+  /** Logger of this class. */
+  private static Logger log = LoggerFactory.getLogger(CommentTranslator.class);
+
   /**
    * Translates the given @param comment into a precondition specification.
    *
@@ -27,6 +32,7 @@ public class CommentTranslator {
    */
   public static PreSpecification translate(ParamTag tag, DocumentedExecutable excMember) {
     PreprocessorFactory.create(tag.getKind()).preprocess(tag, excMember);
+    log.info("Translating " + tag + " of " + excMember.getSignature());
     return new ParamTranslator().translate(tag, excMember);
   }
 
@@ -40,6 +46,7 @@ public class CommentTranslator {
    */
   public static List<PostSpecification> translate(ReturnTag tag, DocumentedExecutable excMember) {
     PreprocessorFactory.create(tag.getKind()).preprocess(tag, excMember);
+    log.info("Translating " + tag + " of " + excMember.getSignature());
     return new ReturnTranslator().translate(tag, excMember);
   }
 
@@ -52,6 +59,7 @@ public class CommentTranslator {
    */
   public static ThrowsSpecification translate(ThrowsTag tag, DocumentedExecutable excMember) {
     PreprocessorFactory.create(tag.getKind()).preprocess(tag, excMember);
+    log.info("Translating " + tag + " of " + excMember.getSignature());
     return new ThrowsTranslator().translate(tag, excMember);
   }
 

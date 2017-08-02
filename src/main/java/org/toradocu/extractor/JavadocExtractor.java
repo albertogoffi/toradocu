@@ -32,6 +32,8 @@ import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.function.Predicate;
 import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.toradocu.util.Reflection;
 
 /**
@@ -39,6 +41,9 @@ import org.toradocu.util.Reflection;
  * extract(String, String)}.
  */
 public final class JavadocExtractor {
+
+  /** Logger of this class. */
+  private static final Logger log = LoggerFactory.getLogger(JavadocExtractor.class);
 
   /**
    * Returns a list of {@code DocumentedExecutable}s extracted from the class with name {@code
@@ -56,6 +61,8 @@ public final class JavadocExtractor {
    */
   public DocumentedType extract(String className, String sourcePath)
       throws ClassNotFoundException, FileNotFoundException {
+
+    log.info("Extracting Javadoc information of {} (in source folder {})", className, sourcePath);
 
     // Obtain executable members by means of reflection.
     final Class<?> clazz = Reflection.getClass(className);
@@ -87,6 +94,9 @@ public final class JavadocExtractor {
           createTags(classesInPackage, sourceMember, parameters, qualifiedClassName);
       members.add(new DocumentedExecutable(reflectionMember, parameters, blockTags));
     }
+
+    log.info(
+        "Extracting Javadoc information of {} (in source folder {}) done", className, sourcePath);
 
     // Create the documented class.
     return new DocumentedType(clazz, members);

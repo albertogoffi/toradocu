@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.impl.SimpleLogger;
 import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.DocumentedType;
@@ -61,12 +62,12 @@ public class Toradocu {
     }
 
     if (configuration.debug()) {
-      System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "trace");
+      System.setProperty(SimpleLogger.DEFAULT_LOG_LEVEL_KEY, "trace");
     }
 
     // Suppress non-error messages from Stanford parser (some of the messages directly printed on
     // standard error are still visible).
-    System.setProperty(org.slf4j.impl.SimpleLogger.LOG_KEY_PREFIX + "edu.stanford", "error");
+    System.setProperty(SimpleLogger.LOG_KEY_PREFIX + "edu.stanford", "error");
     log = LoggerFactory.getLogger(Toradocu.class);
 
     // === Javadoc Extractor ===
