@@ -21,6 +21,7 @@ import java.io.FileNotFoundException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Executable;
 import java.lang.reflect.Modifier;
+import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -520,29 +521,32 @@ public final class JavadocExtractor {
     }
 
     for (int i = 0; i < reflectionParams.length; i++) {
-      final java.lang.reflect.Parameter reflectionParam = reflectionParams[i];
-      final String reflectionQualifiedTypeName =
+      final Parameter reflectionParam = reflectionParams[i];
+      String reflectionQualifiedTypeName =
           rawType(reflectionParam.getParameterizedType().getTypeName());
-      String reflectionSimpleTypeName = removePackage(reflectionQualifiedTypeName, false);
+      if (reflectionParam.isVarArgs() && !reflectionQualifiedTypeName.endsWith("[]")) {
+        // Sometimes var args type name ends with "[]", sometimes don't. That's why we need this
+        // check.
+        reflectionQualifiedTypeName += "[]";
+      }
+      reflectionQualifiedTypeName = reflectionQualifiedTypeName.replaceAll("\\$", ".");
 
       final com.github.javaparser.ast.body.Parameter sourceParam = sourceParams.get(i);
       String sourceTypeName = rawType(sourceParam.getType().asString());
-      if (sourceParam.isVarArgs()) sourceTypeName += "[]";
-      if (reflectionParam.isVarArgs() && !reflectionSimpleTypeName.contains("[]"))
-        reflectionSimpleTypeName += "[]";
-      int dollar = reflectionSimpleTypeName.indexOf("$");
-      if (dollar != -1) {
-        if (sourceTypeName.contains(".")) {
-          // In case of Enum
-          reflectionSimpleTypeName = reflectionSimpleTypeName.replace("$", ".");
-        } else {
-          // In case of nested class
-          reflectionSimpleTypeName =
-              reflectionSimpleTypeName.substring(dollar + 1, reflectionSimpleTypeName.length());
-        }
+      if (sourceParam.isVarArgs()) {
+        sourceTypeName += "[]";
       }
 
-      if (!reflectionSimpleTypeName.equals(sourceTypeName)) {
+      boolean sameType;
+      if (sourceTypeName.contains(".")) {
+        // Here we cannot test for equality: Consider the case where source type is "b.c" while
+        // reflection type is "a.b.c". Equality is a too strict condition.
+        sameType = reflectionQualifiedTypeName.endsWith(sourceTypeName);
+      } else {
+        // TODO Why we pass always false? What's the purpose of that parameter?
+        sameType = removePackage(reflectionQualifiedTypeName, false).equals(sourceTypeName);
+      }
+      if (!sameType) {
         return false;
       }
     }
