@@ -17,7 +17,7 @@ plugins {
   id 'de.undercouch.download' version '3.1.2' // For the download tasks
   id 'eclipse' // Support for Eclipse projects
   id 'idea' // Support for IntelliJ IDEA projects
-  id "net.ltgt.errorprone" version "0.0.11"
+  // id "net.ltgt.errorprone" version "0.0.11"
 }
 apply plugin: 'kotlin'
 apply plugin: 'jacoco'
@@ -27,7 +27,20 @@ task downloadGlove(type: Download) {
   dest 'src/main/resources'
   onlyIfNewer true
   overwrite false
+
+  src 'https://dl.dropboxusercontent.com/s/rix84e4zcataggj/glove.6B.300d.txt'
+  dest 'src/main/resources'
+  onlyIfNewer true
+  overwrite false
 }
+
+task downloadWmd4j(type: Download) {
+  src 'https://dl.dropboxusercontent.com/s/4u7afhufnif2z2d/wmd4j-cf8c8e1.jar'
+  dest 'lib'
+  onlyIfNewer true
+  overwrite false
+}
+
 task unzipGlove(type: Copy) {
   def zipFile = file('src/main/resources/glove-binary.zip')
   def outputDir = file('src/main/resources')
@@ -131,6 +144,10 @@ task copyDocletResources1(type: Copy) {
 task copyDocletResources2(type: Copy) {
   from 'src/main/java/org/toradocu/doclet/formats/html/resources'
   into 'build/classes/main/org/toradocu/doclet/formats/html/resources'
+}
+
+compileJava.doFirst {
+  tasks.downloadWmd4j.execute()
 }
 
 compileJava.doLast {

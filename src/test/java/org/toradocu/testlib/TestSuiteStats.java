@@ -53,4 +53,10 @@ class TestSuiteStats {
   int getTotalNumConditions() {
     return testStats.stream().mapToInt(Stats::numberOfConditions).sum();
   }
+
+  public Object getFalsePositives() {
+    int sum = 0;
+    for (Stats s : testStats) sum += s.numberOfFalsePositives();
+    return sum;
+  }
 }

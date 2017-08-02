@@ -82,7 +82,9 @@ public abstract class AbstractPrecisionRecallTestSuite {
             + "\nAverage precision on @throws: "
             + String.format("%.2f", testSuiteStats.getPrecision(BlockTag.Kind.THROWS))
             + "\nAverage recall on @throws: "
-            + String.format("%.2f", testSuiteStats.getRecall(BlockTag.Kind.THROWS)));
+            + String.format("%.2f", testSuiteStats.getRecall(BlockTag.Kind.THROWS))
+            + "\nFALSE POSITIVES: "
+            + String.valueOf(testSuiteStats.getFalsePositives()));
   }
 
   /**

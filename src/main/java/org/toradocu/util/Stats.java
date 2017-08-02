@@ -39,6 +39,9 @@ public class Stats {
   /** Number of @return conditions not translated at all by Toradocu (false negatives). */
   private int missingTranslationsReturn = 0;
 
+  private int falsePositivesThrows = 0;
+  private int falsePositivesParam = 0;
+  private int falsePositivesReturn = 0;
   /**
    * Creates new stats for a given element with specified identifier. For example, identifier could
    * be a class name or a method name.
@@ -121,10 +124,13 @@ public class Stats {
     switch (kind) {
       case THROWS:
         return correctTranslationsThrows + wrongTranslationThrows + missingTranslationsThrows;
+        //            + falsePositivesThrows;
       case PARAM:
         return correctTranslationsParam + wrongTranslationParam + missingTranslationsParam;
+        //            + falsePositivesParam;
       case RETURN:
         return correctTranslationsReturn + wrongTranslationReturn + missingTranslationsReturn;
+        //            + falsePositivesParam;
       default:
         throw new IllegalStateException("Unsupported BlockTag.Kind " + kind);
     }
@@ -140,6 +146,11 @@ public class Stats {
     return numberOfCorrectTranslations()
         + numberOfWrongTranslations()
         + numberOfMissingTranslations();
+    //        + numberOfFalsePositives();
+  }
+
+  public int numberOfFalsePositives() {
+    return falsePositivesParam + falsePositivesReturn + falsePositivesThrows;
   }
 
   /**
@@ -459,9 +470,35 @@ public class Stats {
               .append("\n\tActual condition: ")
               .append(actualCondition)
               .append("\n");
+        } else {
+          if (!actualCondition.isEmpty()) {
+            stats.addFalsePositive(kind);
+            outputMessage
+                .append("\nFalse " + kind + " positive! Comment: ")
+                .append(expectedTag.getComment())
+                .append("\n\tActual condition: ")
+                .append(actualCondition)
+                .append("\n");
+          }
         }
       }
     }
     return outputMessage;
+  }
+
+  private void addFalsePositive(BlockTag.Kind kind) {
+    switch (kind) {
+      case THROWS:
+        ++falsePositivesThrows;
+        break;
+      case PARAM:
+        ++falsePositivesParam;
+        break;
+      case RETURN:
+        ++falsePositivesParam;
+        break;
+      default:
+        throw new IllegalStateException("Unsupported BlockTag.Kind " + kind);
+    }
   }
 }

@@ -25,6 +25,6 @@ public class PrecisionRecallFreeCol extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testUnit() throws Exception {
-    test("net.sf.freecol.common.model.Unit", 1, 1, 1, 1, 0, 0);
+    test("net.sf.freecol.common.model.Unit", 1, 1, 1, 1, 0.2, 0.125);
   }
 }

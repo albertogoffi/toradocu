@@ -238,9 +238,9 @@ class Matcher {
                 })
             .collect(Collectors.toSet());
 
-    SemanticMatcher semanticMatcher = new SemanticMatcher(true, (float) 0.2);
+    List<CodeElement<?>> sortedMethodList = new ArrayList<CodeElement<?>>(codeElements);
+    SemanticMatcher semanticMatcher = new SemanticMatcher(true, (float) 0.2, (float) 4);
     try {
-      List<CodeElement<?>> sortedMethodList = new ArrayList<CodeElement<?>>(codeElements);
       //it is important to provide a fixed order since this point, to prevent method with same score
       //being put in map in a different order every execution
       Collections.sort(sortedMethodList, new JavaExpressionComparator());
@@ -291,14 +291,16 @@ class Matcher {
     List<String> paramForMatch = new ArrayList<String>();
     List<String> paramMatch = new ArrayList<String>();
     String[] args = null;
+    String receiver = "";
     java.lang.reflect.Parameter[] myParams = method.getExecutable().getParameters();
 
     for (CodeElement<?> currentMatch : sortedCodeElements) {
-      if (currentMatch instanceof MethodCodeElement)
+      if (currentMatch instanceof MethodCodeElement) {
         args = ((MethodCodeElement) currentMatch).getArgs();
-      else if (currentMatch instanceof StaticMethodCodeElement)
+        receiver = ((MethodCodeElement) currentMatch).getReceiver();
+      } else if (currentMatch instanceof StaticMethodCodeElement) {
         args = ((StaticMethodCodeElement) currentMatch).getArgs();
-      else continue;
+      } else continue;
       // Match is a String: before building it, check if the method has parameters,
       // and fill the parenthesis () with the right ones
       if (args != null) {
@@ -307,9 +309,11 @@ class Matcher {
         for (java.lang.reflect.Parameter p : myParams) {
           Type pt = p.getParameterizedType();
           if (paramMatch.contains(pt.getTypeName())) {
-            foundArgMatch = true;
             paramForMatch.add("args[" + pcount + "]");
-            firstMatch = currentMatch;
+            if (!receiver.equals("args[" + pcount + "]")) {
+              firstMatch = currentMatch;
+              foundArgMatch = true;
+            }
           }
           pcount++;
         }
@@ -337,12 +341,7 @@ class Matcher {
         foundArgMatch = true;
       } else if (equalPattern.find()) {
         // the equal method can be invoked only from an Object to an Object of the same type
-        String receiver =
-            ((MethodCodeElement) firstMatch)
-                .getReceiver()
-                .replace("[", "")
-                .replace("]", "")
-                .replace("s", "");
+        receiver = receiver.replace("[", "").replace("]", "").replace("s", "");
         for (int i = 0; i < myParams.length && !foundArgMatch; i++) {
           Parameter p = myParams[i];
           if (p.getName().equals(receiver)) { //found the receiver, who is the Object of same type?
