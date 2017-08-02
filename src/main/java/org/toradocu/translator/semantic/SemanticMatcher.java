@@ -301,10 +301,15 @@ public class SemanticMatcher {
     this.isWmdUsed = true;
     Map<CodeElement<?>, Double> distances = new LinkedHashMap<>();
 
-    WordMovers wm =
-        WordMovers.Builder()
-            .wordVectors(GloveModelWrapper.getInstance().getGloveTxtVectors())
-            .build();
+    WordMovers wm = null;
+    try {
+      wm =
+          WordMovers.Builder()
+              .wordVectors(GloveModelWrapper.getInstance().getGloveTxtVectors())
+              .build();
+    } catch (URISyntaxException e) {
+      e.printStackTrace();
+    }
 
     String subject = proposition.getSubject().getSubject();
     String finalComment = "";
