@@ -27,6 +27,11 @@ task downloadGlove(type: Download) {
   dest 'src/main/resources'
   onlyIfNewer true
   overwrite false
+
+  src 'https://dl.dropboxusercontent.com/s/rix84e4zcataggj/glove.6B.300d.txt'
+  dest 'src/main/resources'
+  onlyIfNewer true
+  overwrite false
 }
 
 task downloadWmd4j(type: Download) {
