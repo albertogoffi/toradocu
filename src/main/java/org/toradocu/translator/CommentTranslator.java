@@ -32,7 +32,7 @@ public class CommentTranslator {
    */
   public static PreSpecification translate(ParamTag tag, DocumentedExecutable excMember) {
     PreprocessorFactory.create(tag.getKind()).preprocess(tag, excMember);
-    log.info("Translating " + tag + " of " + excMember.getSignature());
+    //    log.info("Translating " + tag + " of " + excMember.getSignature());
     return new ParamTranslator().translate(tag, excMember);
   }
 
@@ -46,7 +46,7 @@ public class CommentTranslator {
    */
   public static List<PostSpecification> translate(ReturnTag tag, DocumentedExecutable excMember) {
     PreprocessorFactory.create(tag.getKind()).preprocess(tag, excMember);
-    log.info("Translating " + tag + " of " + excMember.getSignature());
+    //    log.info("Translating " + tag + " of " + excMember.getSignature());
     return new ReturnTranslator().translate(tag, excMember);
   }
 
@@ -59,7 +59,7 @@ public class CommentTranslator {
    */
   public static ThrowsSpecification translate(ThrowsTag tag, DocumentedExecutable excMember) {
     PreprocessorFactory.create(tag.getKind()).preprocess(tag, excMember);
-    log.info("Translating " + tag + " of " + excMember.getSignature());
+    //    log.info("Translating " + tag + " of " + excMember.getSignature());
     return new ThrowsTranslator().translate(tag, excMember);
   }
 

@@ -62,7 +62,7 @@ public final class JavadocExtractor {
   public DocumentedType extract(String className, String sourcePath)
       throws ClassNotFoundException, FileNotFoundException {
 
-    log.info("Extracting Javadoc information of {} (in source folder {})", className, sourcePath);
+    //    log.info("Extracting Javadoc information of {} (in source folder {})", className, sourcePath);
 
     // Obtain executable members by means of reflection.
     final Class<?> clazz = Reflection.getClass(className);
@@ -95,8 +95,8 @@ public final class JavadocExtractor {
       members.add(new DocumentedExecutable(reflectionMember, parameters, blockTags));
     }
 
-    log.info(
-        "Extracting Javadoc information of {} (in source folder {}) done", className, sourcePath);
+    //    log.info(
+    //        "Extracting Javadoc information of {} (in source folder {}) done", className, sourcePath);
 
     // Create the documented class.
     return new DocumentedType(clazz, members);
