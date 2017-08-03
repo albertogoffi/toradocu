@@ -50,7 +50,7 @@
         },
         "comment": "the non-null key whose value should be loaded",
         "kind": "PARAM",
-        "condition": "(args[0]==null) == false"
+        "condition": "args[0]!=null"
       }
     ],
     "returnTag": {
@@ -131,7 +131,7 @@
         },
         "comment": "the non-null key whose value should be loaded",
         "kind": "PARAM",
-        "condition": "(args[0]==null) == false"
+        "condition": "args[0]!=null"
       },
       {
         "parameter": {
@@ -144,7 +144,7 @@
         },
         "comment": "the non-null old value corresponding to key",
         "kind": "PARAM",
-        "condition": "(args[1]==null) == false"
+        "condition": "args[1]!=null"
       }
     ],
     "returnTag": {
