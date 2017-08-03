@@ -1,5 +1,7 @@
 language: java
 
+install: travis_wait ./gradlew unzipGlove
+
 script: ./gradlew build && ./gradlew checkFormat
 
 sudo: required
