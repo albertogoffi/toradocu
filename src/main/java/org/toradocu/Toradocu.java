@@ -9,6 +9,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -92,8 +93,8 @@ public class Toradocu {
                 + "\nPlease, check the correctness of the command line arguments."
                 + "\nIf the error persists, report the issue at "
                 + "https://github.com/albertogoffi/toradocu/issues"
-                + "\nError stack trace:");
-        e.printStackTrace();
+                + "\nError stack trace:\n"
+                + Arrays.toString(e.getStackTrace()));
         System.exit(1);
       } catch (FileNotFoundException e) {
         e.printStackTrace(); // TODO Print a more meaningful message!
