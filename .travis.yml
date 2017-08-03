@@ -4,6 +4,10 @@ script: ./gradlew build && ./gradlew checkFormat
 
 sudo: required
 
+os:
+  - linux
+  - osx
+
 jdk:
   - oraclejdk8
 
