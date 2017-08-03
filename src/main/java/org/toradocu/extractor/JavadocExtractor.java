@@ -128,6 +128,9 @@ public final class JavadocExtractor {
     File[] listOfFiles = folder.listFiles();
     List<String> classesInPackage = new ArrayList<>();
     for (File file : listOfFiles) {
+      if (!file.getName().endsWith(".java")) {
+        continue;
+      }
       // This loop extracts files in the same directory as the class being analysed
       // in order to find eventual Exception classes located in the same package.
       // "package-info" files are not useful for this purpose.
