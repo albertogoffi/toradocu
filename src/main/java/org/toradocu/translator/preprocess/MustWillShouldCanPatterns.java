@@ -6,6 +6,7 @@ import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.toradocu.extractor.BlockTag;
 import org.toradocu.extractor.Comment;
@@ -56,43 +57,36 @@ public class MustWillShouldCanPatterns implements PreprocessingPhase {
       }
     }
 
-    //TODO make this a preprocessing phase
-    comment = comment.replace(";", ",");
-    String[] beginnings = {"the", "a", "any", " the", " a", " any"};
-    String commaPattern = ".*(, ?(?!may be)(?!can be)(?!could be)(?!possibly))(.*)";
-    java.util.regex.Matcher commaMatcher = Pattern.compile(commaPattern).matcher(comment);
-
-    if (noReplacedYet && commaMatcher.find()) {
-      //last group must not contain VERBS, and must contain an ADJ
-      //e.g. "not null", "not empty"
-      final List<PropositionSeries> extractedPropositions =
-          Parser.parse(new Comment(commaMatcher.group(2)), excMember);
-      final List<SemanticGraph> semanticGraphs =
-          extractedPropositions.stream().map(PropositionSeries::getSemanticGraph).collect(toList());
-      boolean goOn = false;
-      for (SemanticGraph sg : semanticGraphs) {
-        if (sg.getAllNodesByPartOfSpeechPattern("VB(.*)").isEmpty()
-            && !sg.getAllNodesByPartOfSpeechPattern("JJ(.*)").isEmpty()) goOn = true;
-      }
-
-      if (goOn) {
-        int lastComma = comment.lastIndexOf(",");
-        String tokens[] = {
-          comment.substring(0, lastComma), comment.substring(lastComma + 1, comment.length())
-        };
-
-        for (String begin : beginnings) {
-          if (tokens[1].startsWith(begin)) tokens[1] = tokens[1].replaceFirst(begin, "");
-        }
-
-        comment = tokens[0] + ". " + parameterName + " is " + tokens[1];
-        noReplacedYet = false;
-      }
-    }
-
     if (noReplacedYet) {
-      String[] tokens = comment.split(" ");
-      if (Arrays.asList(beginnings).contains(tokens[0])) {
+      //TODO make this a preprocessing phase
+      comment = comment.replace(";", ",");
+      String[] beginnings = {"the", "a", "any", " the", " a", " any"};
+      String commaPattern = ".*(, (?!may be)(?!can be)(?!could be)(?!possibly))(.*)";
+      java.util.regex.Matcher commaMatcher = Pattern.compile(commaPattern).matcher(comment);
+
+      if (commaMatcher.find()) {
+        // covers cases as: "..., not null"
+        if (findNextAdj(excMember, commaMatcher)) {
+          int lastComma = comment.lastIndexOf(",");
+          String tokens[] = {
+            comment.substring(0, lastComma), comment.substring(lastComma + 1, comment.length())
+          };
+          for (String begin : beginnings) {
+            if (tokens[1].startsWith(begin)) {
+              tokens[1] = tokens[1].replaceFirst(begin, "");
+            }
+          }
+          comment = tokens[0] + ". " + parameterName + " is " + tokens[1];
+          noReplacedYet = false;
+        }
+      }
+
+      if (noReplacedYet) {
+        String[] tokens = comment.split(" ");
+        String mayBeAdj = "";
+        mayBeAdj = (Arrays.asList(beginnings).contains(tokens[0])) ? tokens[1] : tokens[0];
+
+        //covers cases as: "the non-null..." or "non-null..."
         final List<PropositionSeries> extractedPropositions =
             Parser.parse(new Comment(comment), excMember);
         final List<SemanticGraph> semanticGraphs =
@@ -100,21 +94,46 @@ public class MustWillShouldCanPatterns implements PreprocessingPhase {
                 .stream()
                 .map(PropositionSeries::getSemanticGraph)
                 .collect(toList());
-        boolean goOn = false;
         for (SemanticGraph sg : semanticGraphs) {
-          if (sg.getAllNodesByPartOfSpeechPattern("VB(.*)").isEmpty()) {
-            List<IndexedWord> adjs = sg.getAllNodesByPartOfSpeechPattern("JJ(.*)");
-            for (IndexedWord adj : adjs) if (adj.word().equals(tokens[1])) goOn = true;
+          List<IndexedWord> adjs = sg.getAllNodesByPartOfSpeechPattern("JJ(.*)");
+          for (IndexedWord adj : adjs) {
+            if (adj.word().equals(mayBeAdj)) {
+              comment = comment.replace(tokens[0], "");
+              comment = comment.replace(tokens[1], "");
+              comment = parameterName + " is " + mayBeAdj + ". " + comment;
+              break;
+            }
           }
         }
-        // At this point, no verb was found. There remains
-        // only one last pattern to match.
-        comment = comment.replace(tokens[0], "");
-        comment = comment.replace(tokens[1], "");
-        comment = parameterName + " is " + tokens[1] + ". " + comment;
       }
     }
-
     return comment;
+  }
+
+  private boolean findVerb(DocumentedExecutable excMember, String comment) {
+    final List<PropositionSeries> extractedPropositions =
+        Parser.parse(new Comment(comment), excMember);
+    final List<SemanticGraph> semanticGraphs =
+        extractedPropositions.stream().map(PropositionSeries::getSemanticGraph).collect(toList());
+    for (SemanticGraph sg : semanticGraphs) {
+      if (!sg.getAllNodesByPartOfSpeechPattern("VB(.*)").isEmpty()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private boolean findNextAdj(DocumentedExecutable excMember, Matcher commaMatcher) {
+    final List<PropositionSeries> extractedPropositions =
+        Parser.parse(new Comment(commaMatcher.group(2)), excMember);
+    final List<SemanticGraph> semanticGraphs =
+        extractedPropositions.stream().map(PropositionSeries::getSemanticGraph).collect(toList());
+
+    for (SemanticGraph sg : semanticGraphs) {
+      if (!sg.getAllNodesByPartOfSpeechPattern("JJ(.*)").isEmpty()) {
+        return true;
+      }
+    }
+    return false;
   }
 }

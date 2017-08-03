@@ -23,8 +23,11 @@ public class POSTagger {
     for (HasWord word : sentence) {
       String wordString = word.toString();
       TaggedWord taggedWord = new TaggedWord(wordString);
-      if (wordString.contains("INEQUALITY") && taggedWord.tag() == null)
-        taggedSentence.add(new TaggedWord(wordString, "JJ"));
+      if ((wordString.contains("INEQUALITY")
+              || wordString.equals("null")
+              || wordString.equals("nonnull")
+              || wordString.equals("non-null"))
+          && taggedWord.tag() == null) taggedSentence.add(new TaggedWord(wordString, "JJ"));
       else if (codeElements.contains(wordString) && taggedWord.tag() == null)
         taggedSentence.add(new TaggedWord(wordString, "NN"));
       else taggedSentence.add(taggedWord);
