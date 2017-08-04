@@ -14,7 +14,7 @@ plugins {
   id 'java'
   id 'application'
   id 'com.github.johnrengelman.shadow' version '1.2.3' // For creating the fat JAR
-  id 'de.undercouch.download' version '3.1.2' // For the download tasks
+  id 'de.undercouch.download' version '3.2.0' // For the download tasks
   id 'eclipse' // Support for Eclipse projects
   id 'idea' // Support for IntelliJ IDEA projects
   // id "net.ltgt.errorprone" version "0.0.11"
@@ -24,23 +24,31 @@ apply plugin: 'jacoco'
 
 task downloadGlove(type: Download) {
   src 'http://www.inf.usi.ch/phd/goffi/toradocu/glove-binary.zip'
-  dest 'src/main/resources'
+  dest 'src/main/resources/glove-binary.zip'
   onlyIfNewer true
-  overwrite false
-
-  src 'http://www.inf.usi.ch/phd/goffi/toradocu/glove.6B.300d.txt'
-  dest 'src/main/resources'
-  onlyIfNewer true
-  overwrite false
 }
 
-task unzipGlove(type: Copy) {
+task unzipGlove(dependsOn: downloadGlove, type: Copy) {
   def zipFile = file('src/main/resources/glove-binary.zip')
   def outputDir = file('src/main/resources')
   from zipTree(zipFile)
   into outputDir
 }
-unzipGlove.dependsOn downloadGlove
+
+task downloadGloveModels(type: Download) {
+  src 'http://www.inf.usi.ch/phd/goffi/toradocu/glove-models.zip'
+  dest 'src/main/resources/glove-models.zip'
+  onlyIfNewer true
+}
+
+task unzipGloveModels(dependsOn: downloadGloveModels, type: Copy) {
+  def zipFile = file('src/main/resources/glove-models.zip')
+  def outputDir = file('src/main/resources')
+  from zipTree(zipFile)
+  into outputDir
+}
+
+processResources.dependsOn(unzipGlove, unzipGloveModels)
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -150,8 +158,6 @@ task copyDocletResources2(type: Copy) {
 compileJava.doLast {
   tasks.copyDocletResources1.execute()
   tasks.copyDocletResources2.execute()
-  tasks.downloadGlove.execute()
-  tasks.unzipGlove.execute()
 }
 
 import de.undercouch.gradle.tasks.download.Download

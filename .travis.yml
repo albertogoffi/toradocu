@@ -1,6 +1,6 @@
 language: java
 
-install: travis_wait 40 ./gradlew unzipGlove
+install: travis_wait 40 ./gradlew unzipGlove unzipGloveModels
 
 script: ./gradlew build && ./gradlew checkFormat
 
