@@ -61,7 +61,7 @@ public class MustWillShouldCanPatterns implements PreprocessingPhase {
       //TODO make this a preprocessing phase
       comment = comment.replace(";", ",");
       String[] beginnings = {"the", "a", "any", " the", " a", " any"};
-      String commaPattern = ".*(, (?!may be)(?!can be)(?!could be)(?!possibly))(.*)";
+      String commaPattern = ".*(, (?!default)(?!may be)(?!can be)(?!could be)(?!possibly))(.*)";
       java.util.regex.Matcher commaMatcher = Pattern.compile(commaPattern).matcher(comment);
 
       if (commaMatcher.find()) {
