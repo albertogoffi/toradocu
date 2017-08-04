@@ -26,6 +26,7 @@ task downloadGlove(type: Download) {
   src 'http://star-rep.inf.usi.ch/alberto/glove/raw/master/glove-binary.zip'
   dest 'src/main/resources/glove-binary.zip'
   onlyIfNewer true
+  overwrite false
 }
 
 task unzipGlove(dependsOn: downloadGlove, type: Copy) {
@@ -39,6 +40,7 @@ task downloadGloveModels(type: Download) {
   src 'http://star-rep.inf.usi.ch/alberto/glove/raw/master/glove-models.zip'
   dest 'src/main/resources/glove-models.zip'
   onlyIfNewer true
+  overwrite false
 }
 
 task unzipGloveModels(dependsOn: downloadGloveModels, type: Copy) {
