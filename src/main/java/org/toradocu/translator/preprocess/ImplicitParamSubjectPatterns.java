@@ -62,6 +62,7 @@ public class ImplicitParamSubjectPatterns implements PreprocessingPhase {
       comment = comment.replace(";", ",");
       String[] beginnings = {"the", "a", "any", " the", " a", " any"};
       String commaPattern = ".*(, (?!default)(?!may be)(?!can be)(?!could be)(?!possibly))(.*)";
+      //ignore "possible" values, i.e. not mandatory conditions
       java.util.regex.Matcher commaMatcher = Pattern.compile(commaPattern).matcher(comment);
 
       if (commaMatcher.find()) {
@@ -110,19 +111,14 @@ public class ImplicitParamSubjectPatterns implements PreprocessingPhase {
     return comment;
   }
 
-  private boolean findVerb(DocumentedExecutable excMember, String comment) {
-    final List<PropositionSeries> extractedPropositions =
-        Parser.parse(new Comment(comment), excMember);
-    final List<SemanticGraph> semanticGraphs =
-        extractedPropositions.stream().map(PropositionSeries::getSemanticGraph).collect(toList());
-    for (SemanticGraph sg : semanticGraphs) {
-      if (!sg.getAllNodesByPartOfSpeechPattern("VB(.*)").isEmpty()) {
-        return true;
-      }
-    }
-    return false;
-  }
-
+  /**
+   * Search for adjectives in the {@code SemanticGraph} of the portion of the comment text (which
+   * matched the comma pattern) that follows the comma
+   *
+   * @param excMember the {@code DocumentedExecutable} to which the comment belongs
+   * @param commaMatcher comment text
+   * @return true if adjectives were found, false otherwise
+   */
   private boolean findNextAdj(DocumentedExecutable excMember, Matcher commaMatcher) {
     final List<PropositionSeries> extractedPropositions =
         Parser.parse(new Comment(commaMatcher.group(2)), excMember);
