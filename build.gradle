@@ -23,7 +23,7 @@ apply plugin: 'kotlin'
 apply plugin: 'jacoco'
 
 task downloadGlove(type: Download) {
-  src 'http://www.inf.usi.ch/phd/goffi/toradocu/glove-binary.zip'
+  src 'http://star-rep.inf.usi.ch/alberto/glove/raw/master/glove-binary.zip'
   dest 'src/main/resources/glove-binary.zip'
   onlyIfNewer true
 }
@@ -36,7 +36,7 @@ task unzipGlove(dependsOn: downloadGlove, type: Copy) {
 }
 
 task downloadGloveModels(type: Download) {
-  src 'http://www.inf.usi.ch/phd/goffi/toradocu/glove-models.zip'
+  src 'http://star-rep.inf.usi.ch/alberto/glove/raw/master/glove-models.zip'
   dest 'src/main/resources/glove-models.zip'
   onlyIfNewer true
 }
