@@ -16,7 +16,7 @@ public class PreprocessorFactory {
 
     switch (tagKind) {
       case PARAM:
-        phases.add(new MustWillShouldCanPatterns());
+        phases.add(new ImplicitParamSubjectPatterns());
         phases.add(new RemoveCommas()); // TODO Make RemoveCommas a singleton?
         phases.add(new RemoveMayBe());
         phases.add(new NormalizeNonNullNonEmpty());

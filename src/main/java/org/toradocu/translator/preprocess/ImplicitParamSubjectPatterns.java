@@ -15,7 +15,7 @@ import org.toradocu.extractor.ParamTag;
 import org.toradocu.translator.Parser;
 import org.toradocu.translator.PropositionSeries;
 
-public class MustWillShouldCanPatterns implements PreprocessingPhase {
+public class ImplicitParamSubjectPatterns implements PreprocessingPhase {
 
   @Override
   public String run(BlockTag tag, DocumentedExecutable excMember) {
