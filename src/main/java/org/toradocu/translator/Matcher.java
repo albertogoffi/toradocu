@@ -464,7 +464,7 @@ class Matcher {
     java.util.regex.Matcher inequalityNumber =
         Pattern.compile(
                 verbs
-                    + "(<=|>=|<|>|!=|==|=)? ?(-?([0-9]+(.[0-9]+)?|zero|one|two|three|four|five|six|seven|eight|nine))")
+                    + "(<=|>=|<|>|!=|==|=)? ?(-?([0-9]+(.[0-9]+)?|zero|one|two|three|four\b|five|six\b|seven\b|eight\b|nine\b)(?! ))")
             .matcher(predicate);
 
     java.util.regex.Matcher inequalityVar =

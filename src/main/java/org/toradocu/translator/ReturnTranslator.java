@@ -494,6 +494,12 @@ public class ReturnTranslator {
 
     comment = comment.replace(";", "").replace(",", "").replace("'", "").replace("result ", "");
     for (SemanticGraph sg : semanticGraphs) {
+
+      if (!sg.getAllNodesByPartOfSpeechPattern("IN").isEmpty()
+          || !sg.getAllNodesByPartOfSpeechPattern("WDT").isEmpty()) {
+        //there are relations such as "of...", "in...", "that/which..." usually sign of bias in our assumption
+        return null;
+      }
       // No verb found: process nouns and their adjectives
       List<IndexedWord> nouns = sg.getAllNodesByPartOfSpeechPattern("NN(.*)");
       List<IndexedWord> adj = sg.getAllNodesByPartOfSpeechPattern("JJ(.*)");
