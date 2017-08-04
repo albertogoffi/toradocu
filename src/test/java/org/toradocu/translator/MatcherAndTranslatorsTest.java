@@ -74,7 +74,31 @@ public class MatcherAndTranslatorsTest {
       for (int i = 0; i < actualSpecs.size(); i++) {
         JsonOutput actualSpec = actualSpecs.get(i);
         JsonOutput expectedSpec = expectedSpecs.get(i);
-        assertThat(actualSpec, is(equalTo(expectedSpec)));
+        if (actualSpec.throwsTags != null) {
+          for (int j = 0; j < actualSpec.throwsTags.size(); j++) {
+            assertThat(
+                actualSpec.throwsTags.get(j).getCondition().replaceAll("\\s+", ""),
+                is(
+                    equalTo(
+                        expectedSpec
+                            .throwsTags
+                            .get(j)
+                            .getCondition()
+                            .replaceAll("\\s+", "")
+                            .trim())));
+          }
+        }
+        if (actualSpec.paramTags != null) {
+          for (int j = 0; j < actualSpec.paramTags.size(); j++) {
+            assertThat(
+                actualSpec.paramTags.get(j).getCondition().replaceAll("\\s+", ""),
+                is(equalTo(expectedSpec.paramTags.get(j).getCondition().replaceAll("\\s+", ""))));
+          }
+        }
+        if (actualSpec.returnTag != null)
+          assertThat(
+              actualSpec.returnTag.getCondition().replaceAll("\\s+", ""),
+              is(equalTo(expectedSpec.returnTag.getCondition().replaceAll("\\s+", ""))));
       }
     } finally {
       Files.delete(actualOutput);

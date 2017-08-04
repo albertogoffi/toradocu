@@ -57,10 +57,11 @@ public class ImplicitParamSubjectPatterns implements PreprocessingPhase {
       }
     }
 
+    //manage description following a comma
     if (noReplacedYet) {
       //TODO make this a preprocessing phase
       comment = comment.replace(";", ",");
-      String[] beginnings = {"the", "a", "any", " the", " a", " any"};
+      String[] beginnings = {"the", "a", "an", "any"};
       String commaPattern = ".*(, (?!default)(?!may be)(?!can be)(?!could be)(?!possibly))(.*)";
       //ignore "possible" values, i.e. not mandatory conditions
       java.util.regex.Matcher commaMatcher = Pattern.compile(commaPattern).matcher(comment);
@@ -73,8 +74,9 @@ public class ImplicitParamSubjectPatterns implements PreprocessingPhase {
             comment.substring(0, lastComma), comment.substring(lastComma + 1, comment.length())
           };
           for (String begin : beginnings) {
-            if (tokens[1].startsWith(begin)) {
-              tokens[1] = tokens[1].replaceFirst(begin, "");
+            if (tokens[1].startsWith(begin + " ")) {
+              tokens[1] = tokens[1].replaceFirst(begin + " ", "");
+              break;
             }
           }
           comment = tokens[0] + ". " + parameterName + " is " + tokens[1];
@@ -82,10 +84,12 @@ public class ImplicitParamSubjectPatterns implements PreprocessingPhase {
         }
       }
 
+      //manage comment starting with an adjective
       if (noReplacedYet) {
         String[] tokens = comment.split(" ");
+        boolean hasArticle = (Arrays.asList(beginnings).contains(tokens[0]));
         String mayBeAdj = "";
-        mayBeAdj = (Arrays.asList(beginnings).contains(tokens[0])) ? tokens[1] : tokens[0];
+        mayBeAdj = hasArticle ? tokens[1] : tokens[0];
 
         //covers cases as: "the non-null..." or "non-null..."
         final List<PropositionSeries> extractedPropositions =
@@ -99,9 +103,12 @@ public class ImplicitParamSubjectPatterns implements PreprocessingPhase {
           List<IndexedWord> adjs = sg.getAllNodesByPartOfSpeechPattern("JJ(.*)");
           for (IndexedWord adj : adjs) {
             if (adj.word().equals(mayBeAdj)) {
-              comment = comment.replace(tokens[0], "");
-              comment = comment.replace(tokens[1], "");
-              comment = parameterName + " is " + mayBeAdj + ". " + comment;
+              if (hasArticle)
+                //delete article
+                comment = comment.replaceFirst(tokens[0], "");
+
+              String firstPart = parameterName + " is " + mayBeAdj + ". ";
+              comment = firstPart + comment;
               break;
             }
           }
