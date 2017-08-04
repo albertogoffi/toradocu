@@ -52,7 +52,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testRandomAdaptor() throws Exception {
-    test("org.apache.commons.math3.random.RandomAdaptor", 1, 1, 1, 0.5, 1, 1);
+    test("org.apache.commons.math3.random.RandomAdaptor", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
