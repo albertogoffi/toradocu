@@ -46,7 +46,7 @@ public class ImplicitParamSubjectPatterns implements PreprocessingPhase {
       "Shouldn't be",
       "May not be"
     };
-    java.util.regex.Matcher matcher = Pattern.compile("\\(.*").matcher(comment);
+    Matcher matcher = Pattern.compile("\\(.*").matcher(comment);
     String separator = matcher.find() ? " " : ".";
     boolean noReplacedYet = true; //Tells if there was already a replacement in the phrase
     for (String pattern : patterns) {
@@ -64,7 +64,7 @@ public class ImplicitParamSubjectPatterns implements PreprocessingPhase {
       String[] beginnings = {"the", "a", "an", "any"};
       String commaPattern = ".*(, (?!default)(?!may be)(?!can be)(?!could be)(?!possibly))(.*)";
       //ignore "possible" values, i.e. not mandatory conditions
-      java.util.regex.Matcher commaMatcher = Pattern.compile(commaPattern).matcher(comment);
+      Matcher commaMatcher = Pattern.compile(commaPattern).matcher(comment);
 
       if (commaMatcher.find()) {
         // covers cases as: "..., not null"
