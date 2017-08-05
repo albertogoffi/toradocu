@@ -212,33 +212,41 @@ public class Toradocu {
       Map<DocumentedExecutable, OperationSpecification> specsMap) {
     File randoopSpecsFile = configuration.randoopSpecsFile();
     if (!configuration.isSilent() && randoopSpecsFile != null) {
-      if (!randoopSpecsFile.exists()) {
-        try {
-          File parentDir = randoopSpecsFile.getParentFile();
-          if (parentDir != null) {
-            Files.createDirectories(parentDir.toPath());
-          }
-
-        } catch (IOException e) {
-          log.error("Error occurred during creation of the file " + randoopSpecsFile.getPath(), e);
-        }
-      }
+      generateRandoopSpecsFile(randoopSpecsFile);
       Collection<OperationSpecification> specs = specsMap.values();
       if (!specs.isEmpty()) {
-        // TODO Filter empty specs? (specs for which the translation is empty string)
-        try (BufferedWriter writer =
-            Files.newBufferedWriter(
-                randoopSpecsFile.toPath(),
-                StandardOpenOption.WRITE,
-                StandardOpenOption.TRUNCATE_EXISTING,
-                StandardOpenOption.CREATE)) {
-          writer.write(GsonInstance.gson().toJson(specs));
-        } catch (IOException e) {
-          log.error(
-              "Error occurred during the export of generated specifications to file "
-                  + randoopSpecsFile.getPath(),
-              e);
+        writeRandoopSpecsFile(randoopSpecsFile, specs);
+      }
+    }
+  }
+
+  private static void writeRandoopSpecsFile(
+      File randoopSpecsFile, Collection<OperationSpecification> specs) {
+    try (BufferedWriter writer =
+        Files.newBufferedWriter(
+            randoopSpecsFile.toPath(),
+            StandardOpenOption.WRITE,
+            StandardOpenOption.TRUNCATE_EXISTING,
+            StandardOpenOption.CREATE)) {
+      writer.write(GsonInstance.gson().toJson(specs));
+    } catch (IOException e) {
+      log.error(
+          "Error occurred during the export of generated specifications to file "
+              + randoopSpecsFile.getPath(),
+          e);
+    }
+  }
+
+  private static void generateRandoopSpecsFile(File randoopSpecsFile) {
+    if (!randoopSpecsFile.exists()) {
+      try {
+        File parentDir = randoopSpecsFile.getParentFile();
+        if (parentDir != null) {
+          Files.createDirectories(parentDir.toPath());
         }
+
+      } catch (IOException e) {
+        log.error("Error occurred during creation of the file " + randoopSpecsFile.getPath(), e);
       }
     }
   }
