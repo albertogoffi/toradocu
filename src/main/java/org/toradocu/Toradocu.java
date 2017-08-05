@@ -1,5 +1,7 @@
 package org.toradocu;
 
+import static org.toradocu.translator.CommentTranslator.processCondition;
+
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
 import com.google.gson.reflect.TypeToken;
@@ -24,9 +26,11 @@ import org.toradocu.output.util.JsonOutput;
 import org.toradocu.translator.CommentTranslator;
 import org.toradocu.util.GsonInstance;
 import org.toradocu.util.Stats;
+import randoop.condition.specification.Guard;
 import randoop.condition.specification.OperationSpecification;
 import randoop.condition.specification.PostSpecification;
 import randoop.condition.specification.PreSpecification;
+import randoop.condition.specification.Property;
 import randoop.condition.specification.ThrowsSpecification;
 
 /**
@@ -216,26 +220,99 @@ public class Toradocu {
     File randoopSpecsFile = configuration.randoopSpecsFile();
     if (!configuration.isSilent() && randoopSpecsFile != null) {
       generateRandoopSpecsFile(randoopSpecsFile);
-      Collection<OperationSpecification> specs = specsMap.values();
-      if (!specs.isEmpty()) {
-        Collection<OperationSpecification> nonEmptySpecs = new ArrayList<>();
-        for (OperationSpecification spec : specs) {
-          // Filter empty specs.
-          final List<PreSpecification> preSpecifications = spec.getPreSpecifications();
-          preSpecifications.removeIf(s -> s.getGuard().getConditionText().isEmpty());
-          final List<PostSpecification> postSpecifications = spec.getPostSpecifications();
-          postSpecifications.removeIf(s -> s.getGuard().getConditionText().isEmpty());
-          final List<ThrowsSpecification> throwsSpecifications = spec.getThrowsSpecifications();
-          throwsSpecifications.removeIf(s -> s.getGuard().getConditionText().isEmpty());
-          if (!preSpecifications.isEmpty()
-              || !postSpecifications.isEmpty()
-              || !throwsSpecifications.isEmpty()) {
-            nonEmptySpecs.add(spec);
-          }
+      Collection<OperationSpecification> randoopSpecs = new ArrayList<>();
+      for (DocumentedExecutable documentedExecutable : specsMap.keySet()) {
+        final OperationSpecification spec = specsMap.get(documentedExecutable);
+
+        // Get rid of empty specifications.
+        final List<PreSpecification> preSpecifications = spec.getPreSpecifications();
+        preSpecifications.removeIf(s -> s.getGuard().getConditionText().isEmpty());
+        final List<PostSpecification> postSpecifications = spec.getPostSpecifications();
+        postSpecifications.removeIf(s -> s.getGuard().getConditionText().isEmpty());
+        final List<ThrowsSpecification> throwsSpecifications = spec.getThrowsSpecifications();
+        throwsSpecifications.removeIf(s -> s.getGuard().getConditionText().isEmpty());
+        if (spec.isEmpty()
+            || (preSpecifications.isEmpty()
+                && postSpecifications.isEmpty()
+                && throwsSpecifications.isEmpty())) {
+          continue;
         }
-        writeRandoopSpecsFile(randoopSpecsFile, nonEmptySpecs);
+
+        // Convert specifications to Randoop format: args -> actual param name.
+        final List<PreSpecification> randoopPreSpecs =
+            convertPreSpecifications(documentedExecutable, preSpecifications);
+        final List<PostSpecification> randoopPostSpecs =
+            convertPostSpecifications(documentedExecutable, postSpecifications);
+        final List<ThrowsSpecification> randoopThrowsSpecs =
+            convertThrowsSpecifications(documentedExecutable, throwsSpecifications);
+
+        final OperationSpecification newOperationSpec =
+            new OperationSpecification(
+                spec.getOperation(),
+                spec.getIdentifiers(),
+                randoopThrowsSpecs,
+                randoopPostSpecs,
+                randoopPreSpecs);
+        randoopSpecs.add(newOperationSpec);
       }
+      writeRandoopSpecsFile(randoopSpecsFile, randoopSpecs);
     }
+  }
+
+  private static List<PreSpecification> convertPreSpecifications(
+      DocumentedExecutable documentedExecutable, List<PreSpecification> preSpecifications) {
+    List<PreSpecification> newPreSpecifications = new ArrayList<>(preSpecifications.size());
+    for (PreSpecification preSpecification : preSpecifications) {
+      final Guard oldGuard = preSpecification.getGuard();
+      Guard newGuard =
+          new Guard(
+              oldGuard.getDescription(),
+              processCondition(oldGuard.getConditionText(), documentedExecutable));
+      PreSpecification newSpec = new PreSpecification(preSpecification.getDescription(), newGuard);
+      newPreSpecifications.add(newSpec);
+    }
+    return newPreSpecifications;
+  }
+
+  private static List<ThrowsSpecification> convertThrowsSpecifications(
+      DocumentedExecutable documentedExecutable, List<ThrowsSpecification> throwsSpecifications) {
+    List<ThrowsSpecification> newThrowsSpecifications =
+        new ArrayList<>(throwsSpecifications.size());
+    for (ThrowsSpecification throwsSpecification : throwsSpecifications) {
+      final Guard oldGuard = throwsSpecification.getGuard();
+      Guard newGuard =
+          new Guard(
+              oldGuard.getDescription(),
+              processCondition(oldGuard.getConditionText(), documentedExecutable));
+      ThrowsSpecification newSpec =
+          new ThrowsSpecification(
+              throwsSpecification.getDescription(),
+              newGuard,
+              throwsSpecification.getExceptionTypeName());
+      newThrowsSpecifications.add(newSpec);
+    }
+    return newThrowsSpecifications;
+  }
+
+  private static List<PostSpecification> convertPostSpecifications(
+      DocumentedExecutable documentedExecutable, List<PostSpecification> postSpecifications) {
+    List<PostSpecification> newPostSpecifications = new ArrayList<>(postSpecifications.size());
+    for (PostSpecification postSpec : postSpecifications) {
+      final Guard oldGuard = postSpec.getGuard();
+      Guard newGuard =
+          new Guard(
+              oldGuard.getDescription(),
+              processCondition(oldGuard.getConditionText(), documentedExecutable));
+      final Property oldProperty = postSpec.getProperty();
+      Property newProperty =
+          new Property(
+              oldProperty.getDescription(),
+              processCondition(oldProperty.getConditionText(), documentedExecutable));
+      PostSpecification newSpec =
+          new PostSpecification(postSpec.getDescription(), newGuard, newProperty);
+      newPostSpecifications.add(newSpec);
+    }
+    return newPostSpecifications;
   }
 
   private static void writeRandoopSpecsFile(

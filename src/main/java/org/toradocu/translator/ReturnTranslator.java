@@ -21,36 +21,15 @@ public class ReturnTranslator {
 
   public List<PostSpecification> translate(ReturnTag tag, DocumentedExecutable excMember) {
     String comment = tag.getComment().getText();
-    final List<PostSpecification> postSpecifications;
 
     // Split the sentence in three parts: predicate + true case + false case.
     // TODO Naive splitting. Make the split more reliable.
     final int predicateSplitPoint = comment.indexOf(" if ");
     if (predicateSplitPoint != -1) {
-      postSpecifications = returnStandardPattern(excMember, comment, predicateSplitPoint);
+      return returnStandardPattern(excMember, comment, predicateSplitPoint);
     } else {
-      postSpecifications = returnNotStandard(excMember, comment);
+      return returnNotStandard(excMember, comment);
     }
-
-    // TODO We need to do this to replace args[...] with parameter names. Change this!
-    final List<PostSpecification> correctSpecs = new ArrayList<>();
-    for (PostSpecification spec : postSpecifications) {
-      final Guard oldGuard = spec.getGuard();
-      Guard newGuard =
-          new Guard(
-              oldGuard.getDescription(),
-              CommentTranslator.processCondition(oldGuard.getConditionText(), excMember));
-      final Property oldProperty = spec.getProperty();
-      Property newProperty =
-          new Property(
-              oldProperty.getDescription(),
-              CommentTranslator.processCondition(oldProperty.getConditionText(), excMember));
-      PostSpecification newSpec =
-          new PostSpecification(spec.getDescription(), newGuard, newProperty);
-      correctSpecs.add(newSpec);
-    }
-
-    return correctSpecs;
   }
 
   /**

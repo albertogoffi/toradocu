@@ -119,7 +119,7 @@ public class CommentTranslator {
    * @param executable the documented method the condition specifies, must not be null
    * @return the given condition with the actual parameter names
    */
-  static String processCondition(String condition, DocumentedExecutable executable) {
+  public static String processCondition(String condition, DocumentedExecutable executable) {
     Checks.nonNullParameter(condition, "condition");
     Checks.nonNullParameter(executable, "executable");
 

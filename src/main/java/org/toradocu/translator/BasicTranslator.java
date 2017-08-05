@@ -29,11 +29,7 @@ public class BasicTranslator {
 
     for (PropositionSeries props : propositions) {
       translate(props, excMember, tag.getComment().getText());
-
-      final String translation = props.getTranslation();
-      if (!translation.isEmpty()) {
-        conditions.add(translation);
-      }
+      conditions.add(props.getTranslation()); // TODO Add only when translation is non-empty?
     }
     return mergeConditions(conditions);
   }
