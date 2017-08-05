@@ -1,5 +1,7 @@
 package org.toradocu.translator;
 
+import static java.util.stream.Collectors.toList;
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -7,10 +9,12 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.extractor.DocumentedExecutable;
+import org.toradocu.extractor.DocumentedParameter;
 import org.toradocu.extractor.ParamTag;
 import org.toradocu.extractor.ReturnTag;
 import org.toradocu.extractor.ThrowsTag;
 import org.toradocu.translator.preprocess.PreprocessorFactory;
+import randoop.condition.specification.Identifiers;
 import randoop.condition.specification.Operation;
 import randoop.condition.specification.OperationSpecification;
 import randoop.condition.specification.PostSpecification;
@@ -75,7 +79,10 @@ public class CommentTranslator {
     Map<DocumentedExecutable, OperationSpecification> specs = new LinkedHashMap<>();
     for (DocumentedExecutable member : members) {
       Operation operation = Operation.getOperation(member.getExecutable());
-      OperationSpecification spec = new OperationSpecification(operation);
+      List<String> paramNames =
+          member.getParameters().stream().map(DocumentedParameter::getName).collect(toList());
+      Identifiers identifiers = new Identifiers(paramNames);
+      OperationSpecification spec = new OperationSpecification(operation, identifiers);
 
       List<PreSpecification> preSpecifications = new ArrayList<>();
       for (ParamTag paramTag : member.paramTags()) {
