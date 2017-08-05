@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.DocumentedParameter;
 import org.toradocu.extractor.ParamTag;
@@ -82,7 +83,8 @@ public class CommentTranslator {
       Operation operation = Operation.getOperation(member.getExecutable());
       List<String> paramNames =
           member.getParameters().stream().map(DocumentedParameter::getName).collect(toList());
-      Identifiers identifiers = new Identifiers(paramNames);
+      Identifiers identifiers =
+          new Identifiers(paramNames, Configuration.RECEIVER, Configuration.RETURN_VALUE);
       OperationSpecification spec = new OperationSpecification(operation, identifiers);
 
       List<PreSpecification> preSpecifications = new ArrayList<>();
@@ -117,7 +119,7 @@ public class CommentTranslator {
    * @param executable the documented method the condition specifies, must not be null
    * @return the given condition with the actual parameter names
    */
-  public static String processCondition(String condition, DocumentedExecutable executable) {
+  static String processCondition(String condition, DocumentedExecutable executable) {
     Checks.nonNullParameter(condition, "condition");
     Checks.nonNullParameter(executable, "executable");
 
