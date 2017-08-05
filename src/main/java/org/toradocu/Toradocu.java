@@ -25,6 +25,9 @@ import org.toradocu.translator.CommentTranslator;
 import org.toradocu.util.GsonInstance;
 import org.toradocu.util.Stats;
 import randoop.condition.specification.OperationSpecification;
+import randoop.condition.specification.PostSpecification;
+import randoop.condition.specification.PreSpecification;
+import randoop.condition.specification.ThrowsSpecification;
 
 /**
  * Entry point of Toradocu. {@code Toradocu.main} is automatically executed running the command:
@@ -215,7 +218,22 @@ public class Toradocu {
       generateRandoopSpecsFile(randoopSpecsFile);
       Collection<OperationSpecification> specs = specsMap.values();
       if (!specs.isEmpty()) {
-        writeRandoopSpecsFile(randoopSpecsFile, specs);
+        Collection<OperationSpecification> nonEmptySpecs = new ArrayList<>();
+        for (OperationSpecification spec : specs) {
+          // Filter empty specs.
+          final List<PreSpecification> preSpecifications = spec.getPreSpecifications();
+          preSpecifications.removeIf(s -> s.getGuard().getConditionText().isEmpty());
+          final List<PostSpecification> postSpecifications = spec.getPostSpecifications();
+          postSpecifications.removeIf(s -> s.getGuard().getConditionText().isEmpty());
+          final List<ThrowsSpecification> throwsSpecifications = spec.getThrowsSpecifications();
+          throwsSpecifications.removeIf(s -> s.getGuard().getConditionText().isEmpty());
+          if (!preSpecifications.isEmpty()
+              || !postSpecifications.isEmpty()
+              || !throwsSpecifications.isEmpty()) {
+            nonEmptySpecs.add(spec);
+          }
+        }
+        writeRandoopSpecsFile(randoopSpecsFile, nonEmptySpecs);
       }
     }
   }
