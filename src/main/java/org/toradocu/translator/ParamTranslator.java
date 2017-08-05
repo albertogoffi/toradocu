@@ -9,9 +9,7 @@ public class ParamTranslator {
 
   public PreSpecification translate(ParamTag tag, DocumentedExecutable excMember) {
     final String commentTranslation = BasicTranslator.translate(tag, excMember);
-
-    // TODO Replace empty strings!
-    final Guard guard = new Guard("", commentTranslation);
-    return new PreSpecification("", guard);
+    final Guard guard = new Guard(tag.getComment().getText(), commentTranslation);
+    return new PreSpecification(tag.toString(), guard);
   }
 }
