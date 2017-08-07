@@ -16,7 +16,6 @@ Options marked with an asterisk (`*`) are mandatory.
 | Option | Description |
 | :--- | --- |
 | `--javadoc-extractor-output` | File path where to save the Javadoc extractor output in JSON format. |
-| `-J` | Toradocu relies on the `javadoc` tool to extract Javadoc comments from the source code. All the [options](http://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html#CHDFDACB) of the `javadoc` tool can be used with Toradocu. Each option must be preceded by `-J`. For example, to use the `javadoc` option `-noindex` execute Toradocu with the option `-J-noindex`. |
 
 ## Condition Translator Options
 | Option | Description |
