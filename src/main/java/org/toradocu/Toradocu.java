@@ -141,6 +141,9 @@ public class Toradocu {
 
     // === Condition Translator ===
 
+    //Enable or disable semantic matching
+    SemanticMatcher.setEnabled(configuration.isSemanticEnabled());
+
     if (configuration.isConditionTranslationEnabled()) {
       Map<DocumentedExecutable, OperationSpecification> specifications;
 
@@ -150,9 +153,6 @@ public class Toradocu {
       } else {
         specifications = CommentTranslator.createSpecifications(members);
       }
-
-      //Enable or disable semantic matching
-      SemanticMatcher.setEnabled(configuration.isSemanticEnabled());
 
       // Output the result on a file or on the standard output, if silent mode is disabled.
       List<JsonOutput> jsonOutputs = new ArrayList<>();

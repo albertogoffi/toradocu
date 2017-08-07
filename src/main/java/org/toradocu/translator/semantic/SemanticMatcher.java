@@ -3,15 +3,10 @@ package org.toradocu.translator.semantic;
 import com.crtomirmajer.wmd4j.WordMovers;
 import de.jungblut.distance.CosineDistance;
 import de.jungblut.glove.GloveRandomAccessReader;
-import de.jungblut.glove.impl.GloveBinaryRandomAccessReader;
 import de.jungblut.math.DoubleVector;
 import edu.stanford.nlp.ling.CoreLabel;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -39,18 +34,7 @@ public class SemanticMatcher {
 
   private static GloveRandomAccessReader gloveDB;
 
-  public static SemanticMatcher getInstance(
-      boolean stopWordsRemoval, float distanceThreshold, float wmdThreshold)
-      throws URISyntaxException {
-    if (!enabled) return null;
-
-    if (instance == null) {
-      instance = new SemanticMatcher(stopWordsRemoval, distanceThreshold, wmdThreshold);
-    }
-    return instance;
-  }
-
-  private SemanticMatcher(boolean stopWordsRemoval, float distanceThreshold, float wmdThreshold) {
+  public SemanticMatcher(boolean stopWordsRemoval, float distanceThreshold, float wmdThreshold) {
     this.stopWordsRemoval = stopWordsRemoval;
     this.distanceThreshold = distanceThreshold;
     this.wmdThreshold = wmdThreshold;
@@ -63,8 +47,8 @@ public class SemanticMatcher {
                 "can", "in", "null", "only", "already", "specify"));
 
     try {
-      gloveDB = createGloVeReader();
-    } catch (URISyntaxException | IOException e) {
+      gloveDB = GloveBinModelWrapper.getInstance().getGloveBinaryReader();
+    } catch (URISyntaxException e) {
       e.printStackTrace();
       gloveDB = null;
     }
@@ -478,34 +462,5 @@ public class SemanticMatcher {
     Set<String> wordList = new HashSet<>(words);
     wordList.removeAll(Collections.singletonList(""));
     return wordList;
-  }
-
-  /**
-   * Copy GloVe models from resources to a local folder and instantiate the reader.
-   *
-   * @return the reader
-   */
-  private GloveRandomAccessReader createGloVeReader() throws URISyntaxException, IOException {
-    String gloveBinaries = "glove-binary";
-    String file1 = "dict.bin";
-    String file2 = "vectors.bin";
-
-    // Copy GloVe models in Toradocu jar to glove-binary folder and use them.
-    String file1Path = "/" + gloveBinaries + "/" + file1;
-    String file2Path = "/" + gloveBinaries + "/" + file2;
-    InputStream gloveBinary1 = getClass().getResourceAsStream(file1Path);
-    InputStream gloveBinary2 = getClass().getResourceAsStream(file2Path);
-    Path destinationFile1 = Paths.get(gloveBinaries, file1);
-    Path destinationFile2 = Paths.get(gloveBinaries, file2);
-
-    Path folderPath = Paths.get(gloveBinaries);
-    if (!Files.exists(folderPath)) {
-      Files.createDirectory(folderPath);
-    }
-    if (Files.list(folderPath).count() == 0) {
-      Files.copy(gloveBinary1, destinationFile1);
-      Files.copy(gloveBinary2, destinationFile2);
-    }
-    return new GloveBinaryRandomAccessReader(folderPath);
   }
 }
