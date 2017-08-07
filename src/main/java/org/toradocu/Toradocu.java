@@ -24,6 +24,7 @@ import org.toradocu.extractor.DocumentedType;
 import org.toradocu.extractor.JavadocExtractor;
 import org.toradocu.output.util.JsonOutput;
 import org.toradocu.translator.CommentTranslator;
+import org.toradocu.translator.semantic.SemanticMatcher;
 import org.toradocu.util.GsonInstance;
 import org.toradocu.util.Stats;
 import randoop.condition.specification.Guard;
@@ -139,6 +140,9 @@ public class Toradocu {
     }
 
     // === Condition Translator ===
+
+    //Enable or disable semantic matching
+    SemanticMatcher.setEnabled(configuration.isSemanticEnabled());
 
     if (configuration.isConditionTranslationEnabled()) {
       Map<DocumentedExecutable, OperationSpecification> specifications;
