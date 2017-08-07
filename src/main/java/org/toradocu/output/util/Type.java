@@ -14,6 +14,10 @@ public class Type {
     this.isArray = isArray;
   }
 
+  public String getQualifiedName() {
+    return qualifiedName;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;

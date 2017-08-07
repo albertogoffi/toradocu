@@ -338,7 +338,7 @@ public class Stats {
       JsonOutput expectedMethod = expectedMethodList.get(methodIndex);
 
       Stats methodStats =
-          new Stats(actualMethod.containingClass + "." + actualMethod.containingClass);
+          new Stats(actualMethod.containingClass.getQualifiedName() + "." + actualMethod.signature);
       collectStats(
           methodStats, actualMethod.throwsTags, expectedMethod.throwsTags, BlockTag.Kind.THROWS);
       collectStats(
