@@ -167,9 +167,9 @@ public enum Configuration {
   @Parameter(
     names = "--semantic-enabled",
     description = "Use semantic matching for conditions translation",
-    hidden = true
+    arity = 1
   )
-  private boolean semanticEnabled;
+  private boolean semanticEnabled = true;
 
   // Aspect creation options
 
