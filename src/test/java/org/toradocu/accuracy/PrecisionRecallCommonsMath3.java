@@ -22,7 +22,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testUnivariateSolverUtils() throws Exception {
-    test("org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils", 1, 1, 1, 0, 1, 1);
+    test("org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils", 1, 1, 1, 0, 0, 1);
   }
 
   @Test
@@ -62,12 +62,12 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testArithmeticUtils() throws Exception {
-    test("org.apache.commons.math3.util.ArithmeticUtils", 1, 0.947, 1, 0.857, 1, 1);
+    test("org.apache.commons.math3.util.ArithmeticUtils", 1, 0.947, 1, 0.857, 0.857, 1);
   }
 
   @Test
   public void testFastMath() throws Exception {
-    test("org.apache.commons.math3.util.FastMath", 1, 1, 1, 1, 1, 1);
+    test("org.apache.commons.math3.util.FastMath", 1, 1, 1, 1, 0.888, 1);
   }
 
   @Test
@@ -109,7 +109,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testLoessInterpolator() throws Exception {
-    test("org.apache.commons.math3.analysis.interpolation.LoessInterpolator", 1, 0.125, 1, 1, 1, 1);
+    test("org.apache.commons.math3.analysis.interpolation.LoessInterpolator", 1, 0.125, 0, 1, 1, 1);
   }
 
   @Test
@@ -146,7 +146,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testLine() throws Exception {
-    test("org.apache.commons.math3.geometry.euclidean.threed.Line", 1, 1, 1, 1, 1, 1);
+    test("org.apache.commons.math3.geometry.euclidean.threed.Line", 1, 1, 0, 1, 1, 1);
   }
 
   @Test

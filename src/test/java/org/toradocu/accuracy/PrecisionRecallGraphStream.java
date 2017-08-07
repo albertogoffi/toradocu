@@ -15,7 +15,7 @@ public class PrecisionRecallGraphStream extends AbstractPrecisionRecallTestSuite
 
   @Test
   public void testSingleGraph() throws Exception {
-    test("org.graphstream.graph.implementations.SingleGraph", 1, 1, 1, 1, 1, 1);
+    test("org.graphstream.graph.implementations.SingleGraph", 1, 1, 0, 1, 1, 1);
   }
 
   @Test

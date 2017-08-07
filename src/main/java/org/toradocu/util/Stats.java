@@ -18,30 +18,33 @@ public class Stats {
   /** Java element (for example a class or method name) this statistics refer to. */
   private final String identifier;
 
-  /** Number of @throws conditions correctly translated by Toradocu (true positives). */
-  private int correctTranslationsThrows = 0;
-  /** Number of @throws conditions wrongly translated by Toradocu (false positives). */
-  private int wrongTranslationThrows = 0;
-  /** Number of @throws conditions not translated at all by Toradocu (false negatives). */
-  private int missingTranslationsThrows = 0;
+  /** Number of @throws conditions correctly translated by Toradocu. */
+  private int correctThrowsTranslations = 0;
+  /** Number of @throws conditions wrongly translated by Toradocu. */
+  private int wrongThrowsTranslations = 0;
+  /** Number of @throws conditions unexpectedly translated by Toradocu. */
+  private int unexpectedThrowsTranslations = 0;
+  /** Number of @throws conditions not translated at all by Toradocu. */
+  private int missingThrowsTranslations = 0;
 
-  /** Number of @param conditions correctly translated by Toradocu (true positives). */
-  private int correctTranslationsParam = 0;
-  /** Number of @param conditions wrongly translated by Toradocu (false positives). */
-  private int wrongTranslationParam = 0;
-  /** Number of @param conditions not translated at all by Toradocu (false negatives). */
-  private int missingTranslationsParam = 0;
+  /** Number of @param conditions correctly translated by Toradocu. */
+  private int correctParamTranslations = 0;
+  /** Number of @param conditions wrongly translated by Toradocu. */
+  private int wrongParamTranslations = 0;
+  /** Number of @param conditions unexpectedly translated by Toradocu. */
+  private int unexpectedParamTranslations = 0;
+  /** Number of @param conditions not translated at all by Toradocu. */
+  private int missingParamTranslations = 0;
 
   /** Number of @return conditions correctly translated by Toradocu (true positives). */
-  private int correctTranslationsReturn = 0;
+  private int correctReturnTranslations = 0;
   /** Number of @return conditions wrongly translated by Toradocu (false positives). */
-  private int wrongTranslationReturn = 0;
+  private int wrongReturnTranslations = 0;
+  /** Number of @return conditions unexpectedly translated by Toradocu. */
+  private int unexpectedReturnTranslations = 0;
   /** Number of @return conditions not translated at all by Toradocu (false negatives). */
-  private int missingTranslationsReturn = 0;
+  private int missingReturnTranslations = 0;
 
-  private int falsePositivesThrows = 0;
-  private int falsePositivesParam = 0;
-  private int falsePositivesReturn = 0;
   /**
    * Creates new stats for a given element with specified identifier. For example, identifier could
    * be a class name or a method name.
@@ -50,6 +53,32 @@ public class Stats {
    */
   private Stats(String identifier) {
     this.identifier = identifier;
+  }
+
+  /**
+   * Returns the precision for the given kind of tag.
+   *
+   * @param kind the kind of the tag
+   * @return the precision for the given kind of tag
+   */
+  public double getPrecision(BlockTag.Kind kind) {
+    int translated, wrong;
+    switch (kind) {
+      case THROWS:
+        wrong = unexpectedThrowsTranslations + wrongThrowsTranslations;
+        translated = correctThrowsTranslations + wrong;
+        return translated == 0 ? 1 : correctThrowsTranslations / (double) translated;
+      case PARAM:
+        wrong = unexpectedParamTranslations + wrongParamTranslations;
+        translated = correctParamTranslations + wrong;
+        return translated == 0 ? 1 : correctParamTranslations / (double) translated;
+      case RETURN:
+        wrong = unexpectedReturnTranslations + wrongReturnTranslations;
+        translated = correctReturnTranslations + wrong;
+        return translated == 0 ? 1 : correctReturnTranslations / (double) translated;
+      default:
+        throw new IllegalStateException("Unsupported BlockTag.Kind " + kind);
+    }
   }
 
   /**
@@ -62,58 +91,35 @@ public class Stats {
     final int conditions = numberOfConditions(kind);
     switch (kind) {
       case THROWS:
-        return conditions == 0 ? 1 : correctTranslationsThrows / (double) conditions;
+        return conditions == 0 ? 1 : correctThrowsTranslations / (double) conditions;
       case PARAM:
-        return conditions == 0 ? 1 : correctTranslationsParam / (double) conditions;
+        return conditions == 0 ? 1 : correctParamTranslations / (double) conditions;
       case RETURN:
-        return conditions == 0 ? 1 : correctTranslationsReturn / (double) conditions;
+        return conditions == 0 ? 1 : correctReturnTranslations / (double) conditions;
       default:
         throw new IllegalStateException("Unsupported BlockTag.Kind " + kind);
     }
   }
 
-  /**
-   * Returns the precision for the given kind of tag.
-   *
-   * @param kind the kind of the tag
-   * @return the precision for the given kind of tag
-   */
-  public double getPrecision(BlockTag.Kind kind) {
-    int translated;
-    switch (kind) {
-      case THROWS:
-        translated = correctTranslationsThrows + wrongTranslationThrows;
-        return translated == 0 ? 1 : correctTranslationsThrows / (double) translated;
-      case PARAM:
-        translated = correctTranslationsParam + wrongTranslationParam;
-        return translated == 0 ? 1 : correctTranslationsParam / (double) translated;
-      case RETURN:
-        translated = correctTranslationsReturn + wrongTranslationReturn;
-        return translated == 0 ? 1 : correctTranslationsReturn / (double) translated;
-      default:
-        throw new IllegalStateException("Unsupported BlockTag.Kind " + kind);
-    }
-  }
+  //  /**
+  //   * Returns the precision considering all the translations for both @param and @throws tags.
+  //   *
+  //   * @return the precision considering all the translations for both @param and @throws tags
+  //   */
+  //  public double getPrecision() {
+  //    final int translated = numberOfCorrectTranslations() + numberOfWrongTranslations();
+  //    return translated == 0 ? 1 : numberOfCorrectTranslations() / (double) translated;
+  //  }
 
-  /**
-   * Returns the recall considering all the translations for both @param and @throws tags.
-   *
-   * @return the recall considering all the translations for both @param and @throws tags
-   */
-  public double getRecall() {
-    final int conditions = numberOfConditions();
-    return conditions == 0 ? 1 : numberOfCorrectTranslations() / (double) conditions;
-  }
-
-  /**
-   * Returns the precision considering all the translations for both @param and @throws tags.
-   *
-   * @return the precision considering all the translations for both @param and @throws tags
-   */
-  public double getPrecision() {
-    final int translated = numberOfCorrectTranslations() + numberOfWrongTranslations();
-    return translated == 0 ? 1 : numberOfCorrectTranslations() / (double) translated;
-  }
+  //  /**
+  //   * Returns the recall considering all the translations for both @param and @throws tags.
+  //   *
+  //   * @return the recall considering all the translations for both @param and @throws tags
+  //   */
+  //  public double getRecall() {
+  //    final int conditions = numberOfConditions();
+  //    return conditions == 0 ? 1 : numberOfCorrectTranslations() / (double) conditions;
+  //  }
 
   /**
    * Return the total number of conditions for a given tag kind.
@@ -123,64 +129,64 @@ public class Stats {
   private int numberOfConditions(BlockTag.Kind kind) {
     switch (kind) {
       case THROWS:
-        return correctTranslationsThrows + wrongTranslationThrows + missingTranslationsThrows;
-        //            + falsePositivesThrows;
+        return correctThrowsTranslations + wrongThrowsTranslations + missingThrowsTranslations;
       case PARAM:
-        return correctTranslationsParam + wrongTranslationParam + missingTranslationsParam;
-        //            + falsePositivesParam;
+        return correctParamTranslations + wrongParamTranslations + missingParamTranslations;
       case RETURN:
-        return correctTranslationsReturn + wrongTranslationReturn + missingTranslationsReturn;
-        //            + falsePositivesParam;
+        return correctReturnTranslations + wrongReturnTranslations + missingReturnTranslations;
       default:
         throw new IllegalStateException("Unsupported BlockTag.Kind " + kind);
     }
   }
 
   /**
-   * Return the total number of conditions. These numbers include conditions from both @param
-   * and @throws tags.
+   * Return the total number of conditions from @param, @return, and @throws tags.
    *
    * @return the total number of conditions
    */
   public int numberOfConditions() {
     return numberOfCorrectTranslations()
         + numberOfWrongTranslations()
-        + numberOfMissingTranslations();
-    //        + numberOfFalsePositives();
-  }
-
-  public int numberOfFalsePositives() {
-    return falsePositivesParam + falsePositivesReturn + falsePositivesThrows;
+        + numberOfMissingTranslations()
+        + numberOfUnexpectedTranslations();
   }
 
   /**
-   * Return the total number of correct translations. These numbers include conditions from
-   * both @param and @throws tags.
+   * Return the total number of correct translations from @param, @return, and @throws tags.
    *
    * @return the total number of correct translations
    */
   private int numberOfCorrectTranslations() {
-    return correctTranslationsParam + correctTranslationsThrows + correctTranslationsReturn;
+    return correctParamTranslations + correctThrowsTranslations + correctReturnTranslations;
   }
 
   /**
-   * Return the total number of wrong translations. These numbers include conditions from
-   * both @param and @throws tags.
+   * Return the total number of wrong translations from @param, @return, and @throws tags.
    *
    * @return the total number of wrong translations
    */
   private int numberOfWrongTranslations() {
-    return wrongTranslationParam + wrongTranslationThrows + wrongTranslationReturn;
+    return wrongParamTranslations + wrongThrowsTranslations + wrongReturnTranslations;
   }
 
   /**
-   * Return the total number of missing translations. These numbers include conditions from
-   * both @param and @throws tags.
+   * Return the total number of missing translations from @param, @return, and @throws tags.
    *
    * @return the total number of missing translations
    */
   private int numberOfMissingTranslations() {
-    return missingTranslationsParam + missingTranslationsThrows + missingTranslationsReturn;
+    return missingParamTranslations + missingThrowsTranslations + missingReturnTranslations;
+  }
+
+  /**
+   * Return the total number of missing translations from @param, @return, and @throws tags.
+   *
+   * @return the total number of missing translations
+   */
+  private int numberOfUnexpectedTranslations() {
+    return unexpectedParamTranslations
+        + unexpectedThrowsTranslations
+        + unexpectedReturnTranslations;
   }
 
   /**
@@ -191,13 +197,13 @@ public class Stats {
   private void addCorrectTranslation(BlockTag.Kind kind) {
     switch (kind) {
       case THROWS:
-        ++correctTranslationsThrows;
+        ++correctThrowsTranslations;
         break;
       case PARAM:
-        ++correctTranslationsParam;
+        ++correctParamTranslations;
         break;
       case RETURN:
-        ++correctTranslationsReturn;
+        ++correctReturnTranslations;
         break;
       default:
         throw new IllegalStateException("Unsupported BlockTag.Kind " + kind);
@@ -212,13 +218,13 @@ public class Stats {
   private void addWrongTranslation(BlockTag.Kind kind) {
     switch (kind) {
       case THROWS:
-        ++wrongTranslationThrows;
+        ++wrongThrowsTranslations;
         break;
       case PARAM:
-        ++wrongTranslationParam;
+        ++wrongParamTranslations;
         break;
       case RETURN:
-        ++wrongTranslationReturn;
+        ++wrongReturnTranslations;
         break;
       default:
         throw new IllegalStateException("Unsupported BlockTag.Kind " + kind);
@@ -233,13 +239,34 @@ public class Stats {
   private void addMissingTranslation(BlockTag.Kind kind) {
     switch (kind) {
       case THROWS:
-        ++missingTranslationsThrows;
+        ++missingThrowsTranslations;
         break;
       case PARAM:
-        ++missingTranslationsParam;
+        ++missingParamTranslations;
         break;
       case RETURN:
-        ++missingTranslationsReturn;
+        ++missingReturnTranslations;
+        break;
+      default:
+        throw new IllegalStateException("Unsupported BlockTag.Kind " + kind);
+    }
+  }
+
+  /**
+   * Increments the number of unexpected translations produced by Toradocu by 1.
+   *
+   * @param kind the kind of tag for which increment the number of missing translations
+   */
+  private void addUnexpectedTranslation(BlockTag.Kind kind) {
+    switch (kind) {
+      case THROWS:
+        ++unexpectedThrowsTranslations;
+        break;
+      case PARAM:
+        ++unexpectedParamTranslations;
+        break;
+      case RETURN:
+        ++unexpectedReturnTranslations;
         break;
       default:
         throw new IllegalStateException("Unsupported BlockTag.Kind " + kind);
@@ -261,45 +288,29 @@ public class Stats {
         + SEPARATOR
         + Toradocu.configuration.getWordRemovalCost()
         + SEPARATOR
-        + correctTranslationsThrows
+        + correctThrowsTranslations
         + SEPARATOR
-        + wrongTranslationThrows
+        + wrongThrowsTranslations
         + SEPARATOR
-        + missingTranslationsThrows
+        + unexpectedThrowsTranslations
         + SEPARATOR
-        + getPrecision(BlockTag.Kind.THROWS)
+        + missingThrowsTranslations
         + SEPARATOR
-        + getRecall(BlockTag.Kind.THROWS)
+        + correctParamTranslations
         + SEPARATOR
-        + correctTranslationsParam
+        + wrongParamTranslations
         + SEPARATOR
-        + wrongTranslationParam
+        + unexpectedParamTranslations
         + SEPARATOR
-        + missingTranslationsParam
+        + missingParamTranslations
         + SEPARATOR
-        + getPrecision(BlockTag.Kind.PARAM)
+        + correctReturnTranslations
         + SEPARATOR
-        + getRecall(BlockTag.Kind.PARAM)
+        + wrongReturnTranslations
         + SEPARATOR
-        + correctTranslationsReturn
+        + unexpectedReturnTranslations
         + SEPARATOR
-        + wrongTranslationReturn
-        + SEPARATOR
-        + missingTranslationsReturn
-        + SEPARATOR
-        + getPrecision(BlockTag.Kind.RETURN)
-        + SEPARATOR
-        + getRecall(BlockTag.Kind.RETURN)
-        + SEPARATOR
-        + numberOfCorrectTranslations()
-        + SEPARATOR
-        + numberOfWrongTranslations()
-        + SEPARATOR
-        + numberOfMissingTranslations()
-        + SEPARATOR
-        + getPrecision()
-        + SEPARATOR
-        + getRecall();
+        + missingReturnTranslations;
   }
 
   /**
@@ -315,11 +326,6 @@ public class Stats {
    */
   public static List<Stats> getStats(
       List<JsonOutput> actualMethodList, List<JsonOutput> expectedMethodList) {
-
-    // TODO Fix the goal files and remove the following line. Goal files include inherited methods!
-    // TODO: m.containingClass.equals(m.containingClass) in the following line is vacuously true.
-    // expectedMethodList.removeIf(m -> !m.containingClass.equals(m.containingClass));
-    //    expectedMethodList.removeIf(m -> Modifier.isPrivate(m.getExecutable().getModifiers()));
 
     if (actualMethodList.size() != expectedMethodList.size()) {
       throw new IllegalArgumentException(
@@ -370,11 +376,6 @@ public class Stats {
       List<JsonOutput> expectedMethodList,
       StringBuilder output) {
 
-    // TODO Fix the goal files and remove the following line. Goal files include inherited methods!
-    // TODO: m.containingClass.equals(m.containingClass) in the following line is vacuously true.
-    // expectedMethodList.removeIf(m -> !m.containingClass.equals(m.containingClass));
-    //    expectedMethodList.removeIf(m -> Modifier.isPrivate(m.getExecutable().getModifiers()));
-
     if (actualMethodList.size() != expectedMethodList.size()) {
       throw new IllegalArgumentException(
           "Actual and expected method list should be of the same size.");
@@ -410,21 +411,6 @@ public class Stats {
       List<? extends TagOutput> expectedTags,
       BlockTag.Kind kind) {
 
-    // TODO Restore the following check, once all the goal files are fixed (now that we completely
-    // TODO removed inheritance!
-    //    if (actualTags.size() != expectedTags.size()) {
-    //      throw new IllegalArgumentException(
-    //          "The number of "
-    //              + kind
-    //              + " tags ("
-    //              + actualTags.size()
-    //              + ") of method "
-    //              + stats.identifier
-    //              + " is different than expected ("
-    //              + expectedTags.size()
-    //              + ")");
-    //    }
-
     final StringBuilder outputMessage = new StringBuilder();
     final TagOutput[] actualTagsArray = actualTags.toArray(new TagOutput[actualTags.size()]);
     final TagOutput[] expectedTagsArray = expectedTags.toArray(new TagOutput[expectedTags.size()]);
@@ -432,73 +418,40 @@ public class Stats {
       TagOutput actualTag = actualTagsArray[tagIndex];
       TagOutput expectedTag = expectedTagsArray[tagIndex];
 
-      if (actualTag != null
-          //          && actualTag.getSpecification() != null
-          && expectedTag != null
-      //          && expectedTag.getSpecification() != null
-      ) {
-
-        //        String expectedCondition = expectedTag.getSpecification().toString().replace(" ", "");
+      if (actualTag != null && expectedTag != null) {
         String expectedCondition = expectedTag.getCondition().replace(" ", "");
-        if (Toradocu.configuration.useTComment()
-            && actualTag.getKind().equals(BlockTag.Kind.RETURN.toString())) {
-          continue; // Ignore not translated @return tags when using @tComment engine.
-        }
-        //        String actualCondition = actualTag.getSpecification().toString().replace(" ", "");
-
         String actualCondition = actualTag.getCondition().replace(" ", "");
-        // Ignore conditions for which there is no known translation.
-        if (!expectedCondition.isEmpty()) {
-          if (expectedCondition.equals(actualCondition)) {
+
+        if (actualCondition.equals(expectedCondition)) {
+          if (!expectedCondition.isEmpty()) {
             stats.addCorrectTranslation(kind);
             outputMessage.append("Correct ");
           } else {
-            if (actualCondition.isEmpty()) {
-              stats.addMissingTranslation(kind);
-              outputMessage.append("Empty ");
-            } else {
-              stats.addWrongTranslation(kind);
-              outputMessage.append("Wrong ");
-            }
+            continue; // Ignore the case where Toradocu does not output anything as expected.
           }
-          outputMessage
-              .append(kind)
-              .append(" condition. Comment: ")
-              .append(expectedTag.getComment())
-              .append("\n\tExpected condition: ")
-              .append(expectedCondition)
-              .append("\n\tActual condition: ")
-              .append(actualCondition)
-              .append("\n");
         } else {
-          if (!actualCondition.isEmpty()) {
-            stats.addFalsePositive(kind);
-            outputMessage
-                .append("\nFalse " + kind + " positive! Comment: ")
-                .append(expectedTag.getComment())
-                .append("\n\tActual condition: ")
-                .append(actualCondition)
-                .append("\n");
+          if (expectedCondition.isEmpty()) {
+            stats.addUnexpectedTranslation(kind);
+            outputMessage.append("Unexpected ");
+          } else if (actualCondition.isEmpty()) {
+            stats.addMissingTranslation(kind);
+            outputMessage.append("Missing ");
+          } else {
+            stats.addWrongTranslation(kind);
+            outputMessage.append("Wrong ");
           }
         }
+        outputMessage
+            .append(kind)
+            .append(" condition. Comment: ")
+            .append(expectedTag.getComment())
+            .append("\n\tExpected condition: ")
+            .append(expectedCondition)
+            .append("\n\tActual condition: ")
+            .append(actualCondition)
+            .append("\n");
       }
     }
     return outputMessage;
-  }
-
-  private void addFalsePositive(BlockTag.Kind kind) {
-    switch (kind) {
-      case THROWS:
-        ++falsePositivesThrows;
-        break;
-      case PARAM:
-        ++falsePositivesParam;
-        break;
-      case RETURN:
-        ++falsePositivesParam;
-        break;
-      default:
-        throw new IllegalStateException("Unsupported BlockTag.Kind " + kind);
-    }
   }
 }
