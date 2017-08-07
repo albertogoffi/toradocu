@@ -1,6 +1,5 @@
 package org.toradocu.translator;
 
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Member;
 import java.lang.reflect.Method;
@@ -239,38 +238,57 @@ class Matcher {
             .collect(Collectors.toSet());
 
     List<CodeElement<?>> sortedMethodList = new ArrayList<CodeElement<?>>(codeElements);
-    SemanticMatcher semanticMatcher = new SemanticMatcher(true, (float) 0.2, (float) 4);
-    try {
-      //it is important to provide a fixed order since this point, to prevent method with same score
-      //being put in map in a different order every execution
-      Collections.sort(sortedMethodList, new JavaExpressionComparator());
-      LinkedHashMap<CodeElement<?>, Double> semanticMethodMatches =
-          semanticMatcher.runVectorMatch(sortedMethodList, method, proposition, comment);
+    if (SemanticMatcher.isEnabled()) {
+      try {
+        SemanticMatcher semanticMatcher = SemanticMatcher.getInstance(true, (float) 0.2, (float) 4);
 
-      if (semanticMethodMatches != null && !semanticMethodMatches.isEmpty()) {
-        List<CodeElement<?>> semanticMethodList =
-            new ArrayList<CodeElement<?>>(semanticMethodMatches.keySet());
+        //it is important to provide a fixed order since this point, to prevent method with same score
+        //being put in map in a different order every execution
+        Collections.sort(sortedMethodList, new JavaExpressionComparator());
+        LinkedHashMap<CodeElement<?>, Double> semanticMethodMatches =
+            semanticMatcher.runVectorMatch(sortedMethodList, method, proposition, comment);
 
-        if (semanticMethodList.size() > 5) {
-          semanticMethodList = semanticMethodList.subList(0, 4);
-        }
-        match = findBestMethodMatch(method, predicate, semanticMethodList);
-      } else {
-        // Semantic matching can fail due to errors in the underlying model!
-        sortedMethodList =
-            new ArrayList<CodeElement<?>>(filterMatchingCodeElements(predicate, codeElements));
-        if (!sortedMethodList.isEmpty())
-          Collections.sort(sortedMethodList, new JavaExpressionComparator());
-        if (sortedMethodList.isEmpty()) {
-          return null;
+        if (semanticMethodMatches != null && !semanticMethodMatches.isEmpty()) {
+          List<CodeElement<?>> semanticMethodList =
+              new ArrayList<CodeElement<?>>(semanticMethodMatches.keySet());
+
+          if (semanticMethodList.size() > 5) {
+            semanticMethodList = semanticMethodList.subList(0, 4);
+          }
+          match = findBestMethodMatch(method, predicate, semanticMethodList);
         } else {
-          match = findBestMethodMatch(method, predicate, sortedMethodList);
+          // Semantic matching can fail due to errors in the underlying model!
+          match = syntacticMatch(predicate, codeElements, method);
         }
+      } catch (Exception e) {
+        e.printStackTrace();
       }
-    } catch (IOException e) {
-      e.printStackTrace();
+    } else {
+      match = syntacticMatch(predicate, codeElements, method);
     }
     return match;
+  }
+
+  /**
+   * Run classic syntactic match based on edit distance
+   *
+   * @param predicate predicate to match
+   * @param codeElements list of candidate code elements to match
+   * @param method the {@code DocumentedExecutable} the predicate belongs to
+   * @return the best matching code element according to the edit distance, null if none found
+   */
+  private String syntacticMatch(
+      String predicate, Set<CodeElement<?>> codeElements, DocumentedExecutable method) {
+    List<CodeElement<?>> sortedMethodList = new ArrayList<CodeElement<?>>(codeElements);
+    sortedMethodList =
+        new ArrayList<CodeElement<?>>(filterMatchingCodeElements(predicate, codeElements));
+    if (!sortedMethodList.isEmpty())
+      Collections.sort(sortedMethodList, new JavaExpressionComparator());
+    if (sortedMethodList.isEmpty()) {
+      return null;
+    } else {
+      return findBestMethodMatch(method, predicate, sortedMethodList);
+    }
   }
 
   /**

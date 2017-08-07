@@ -164,6 +164,13 @@ public enum Configuration {
   )
   private File randoopSpecs;
 
+  @Parameter(
+    names = "--semantic-enabled",
+    description = "Use semantic matching for conditions translation",
+    hidden = true
+  )
+  private boolean semanticEnabled;
+
   // Aspect creation options
 
   @Parameter(
@@ -496,6 +503,16 @@ public enum Configuration {
    */
   public File randoopSpecsFile() {
     return randoopSpecs;
+  }
+
+  /**
+   * Returns whether Toradocu uses semantic matching when translating conditions. If false, classic
+   * syntactic matching is used.
+   *
+   * @return true if semantic matching is used during translation, false otherwise
+   */
+  public boolean isSemanticEnabled() {
+    return semanticEnabled;
   }
 
   /**

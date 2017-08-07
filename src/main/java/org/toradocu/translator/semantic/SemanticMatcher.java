@@ -27,6 +27,10 @@ import org.toradocu.translator.*;
  */
 public class SemanticMatcher {
 
+  private static SemanticMatcher instance = null;
+
+  private static boolean enabled;
+
   private boolean stopWordsRemoval;
   private float distanceThreshold;
   private float wmdThreshold;
@@ -35,7 +39,18 @@ public class SemanticMatcher {
 
   private static GloveRandomAccessReader gloveDB;
 
-  public SemanticMatcher(boolean stopWordsRemoval, float distanceThreshold, float wmdThreshold) {
+  public static SemanticMatcher getInstance(
+      boolean stopWordsRemoval, float distanceThreshold, float wmdThreshold)
+      throws URISyntaxException {
+    if (!enabled) return null;
+
+    if (instance == null) {
+      instance = new SemanticMatcher(stopWordsRemoval, distanceThreshold, wmdThreshold);
+    }
+    return instance;
+  }
+
+  private SemanticMatcher(boolean stopWordsRemoval, float distanceThreshold, float wmdThreshold) {
     this.stopWordsRemoval = stopWordsRemoval;
     this.distanceThreshold = distanceThreshold;
     this.wmdThreshold = wmdThreshold;
@@ -53,6 +68,14 @@ public class SemanticMatcher {
       e.printStackTrace();
       gloveDB = null;
     }
+  }
+
+  public static boolean isEnabled() {
+    return enabled;
+  }
+
+  public static void setEnabled(boolean enabled) {
+    SemanticMatcher.enabled = enabled;
   }
 
   /**
