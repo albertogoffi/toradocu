@@ -34,6 +34,7 @@ task unzipGlove(dependsOn: downloadGlove, type: Copy) {
   def outputDir = file('src/main/resources')
   from zipTree(zipFile)
   into outputDir
+  duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 task downloadGloveModels(type: Download) {
@@ -48,6 +49,7 @@ task unzipGloveModels(dependsOn: downloadGloveModels, type: Copy) {
   def outputDir = file('src/main/resources')
   from zipTree(zipFile)
   into outputDir
+  duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 processResources.dependsOn(unzipGlove, unzipGloveModels)
