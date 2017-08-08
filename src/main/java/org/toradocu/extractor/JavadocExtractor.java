@@ -238,7 +238,12 @@ public final class JavadocExtractor {
     final String exceptionName = tokens[0];
     Class<?> exceptionType =
         findExceptionType(classesInPackage, sourceMember, exceptionName, className);
-    Comment commentObject = new Comment(tokens[1]);
+    String commentToken = "";
+    if (tokens.length > 1) {
+      //a tag can report the exception type even without any description
+      commentToken = tokens[1];
+    }
+    Comment commentObject = new Comment(commentToken);
     return new ThrowsTag(exceptionType, commentObject);
   }
 
