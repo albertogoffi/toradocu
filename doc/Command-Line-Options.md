@@ -23,6 +23,7 @@ Options marked with an asterisk (`*`) are mandatory.
 | `--condition-translation` | [`true/false`] Enable/disable the translation of the Javadoc comments. Default value: true. |
 | `--distance-threshold` | Only code elements with edit distance less than this threshold will be considered candidates for translation. Must be a positive integer number. Default value: 2. |
 | `--word-removal-cost` | Cost of a single word deletion in the edit distance algorithm. Must be a positive integer number. Default value: 1. |
+| `--disable-semantics` | [`true/false`] Disable/enable the semantic-based translator. Default value: false (semantic-based translator enabled). |
 | `--remove-commas` | Remove commas before a Javadoc comment text is parsed. Default value: true. |
 | `--condition-translator-input` | File path to JSON file to be read as input of the condition translator. This option disables the Javadoc extractor. |
 | `--condition-translator-output` | File path where to save the condition translator output in JSON format. If not provided the result of the condition translation phase is printed on the standard output. |

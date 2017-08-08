@@ -69,7 +69,14 @@ class PrecisionRecallTest {
       argsList.add("--tcomment");
       argsList.add("--stats-file");
       argsList.add("tcomment_results.csv");
+    } else if (translator != null && translator.equals("semantics")) {
+      argsList.add("--disable-semantics");
+      argsList.add("true");
+      argsList.add("--stats-file");
+      argsList.add("results_semantics.csv");
     } else {
+      argsList.add("--disable-semantics");
+      argsList.add("false");
       argsList.add("--stats-file");
       argsList.add("results.csv");
     }

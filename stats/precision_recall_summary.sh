@@ -3,24 +3,30 @@
 # "current": statistics about the current Toradocu version.
 # "tcomment": statistics using @tComment as translation engine.
 
+ERROR_MESSAGE='Script must be invoked with one parameter: either "jdoctor" or "jdoctor_semantics" or "tcomment"'
+
 # Parse command line argument and set variables
 TESTS_PREFIX="org.toradocu.accuracy.PrecisionRecall"
 TESTS='--tests '$TESTS_PREFIX'CommonsCollections4 --tests '$TESTS_PREFIX'CommonsMath3 --tests '$TESTS_PREFIX'Guava19 --tests '$TESTS_PREFIX'JGraphT --tests '$TESTS_PREFIX'PlumeLib'
 if [ $# -eq 1 ]; then
-  if [ "$1" = "current" ]; then
+  if [ "$1" = "jdoctor" ]; then
     COMMAND="./gradlew --rerun-tasks test $TESTS"
     STATS_FILE=results.csv
-    STATS_FILE_TO_SAVE=results_current.csv
+    STATS_FILE_TO_SAVE=results_jdoctor.csv
+  elif [ "$1" = "jdoctor_semantics" ]; then
+    COMMAND="./gradlew --rerun-tasks -Dorg.toradocu.translator=semantics test $TESTS"
+    STATS_FILE=results_semantics.csv
+    STATS_FILE_TO_SAVE=results_jdoctor_semantics.csv
   elif [ "$1" = "tcomment" ]; then
     COMMAND="./gradlew --rerun-tasks -Dorg.toradocu.translator=tcomment test $TESTS"
     STATS_FILE=tcomment_results.csv
     STATS_FILE_TO_SAVE=results_tcomment.csv
   else
-	  echo 'Script must be invoked with one parameter: either "current" or "tcomment"'
+	  echo $ERROR_MESSAGE
 	  exit 1
 	fi
 else
-  echo 'Script must be invoked with one parameter: either "current" or "tcomment"'
+  echo $ERROR_MESSAGE
   exit 1
 fi
 

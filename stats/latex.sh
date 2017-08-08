@@ -10,6 +10,7 @@ MACROS="$OUTPUT_DIR"/macros.tex
 
 ACCURACY_TS=src/test/java/org/toradocu/accuracy
 
+JDOCTORPLUS="\ToradocuPlus+"
 JDOCTOR="\ToradocuPlus"
 TORADOCU="\OldToradocu"
 
@@ -32,7 +33,7 @@ numberOfMethods() {
 }
 
 numberOfAnalyzedMethods() {
-    echo $(egrep -c "^\"$1" results_current.csv)
+    echo $(egrep -c "^\"$1" results_jdoctor.csv)
 }
 
 numberOfAnalyzedComments() {
@@ -119,13 +120,13 @@ POST[5]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/plume-lib
 EXC_POST[5]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/plume-lib-1.1.0 src/test/resources/bin/plume-lib-1.1.0.jar)
 
 # Collect info for GraphStream
-#CLASSES[6]=$(numberOfClasses src/test/resources/src/gs-core-1.3-sources)
-#SELECTED_CLASSES[6]=$(numberOfAnalyzedClasses $ACCURACY_TS/PrecisionRecallGraphStream.java)
-#METHODS[5]=$(numberOfMethods $ACCURACY_TS/PrecisionRecallGraphStream.java src/test/resources/bin/gs-core-1.3.jar)
-#DOCUMENTED_METHODS[5]=$(numberOfAnalyzedMethods org.graphstream)
-#PRE[6]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/gs-core-1.3 src/test/resources/bin/gs-core-1.3.jar)
-#POST[6]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/gs-core-1.3 src/test/resources/bin/gs-core-1.3.jar)
-#EXC_POST[6]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/gs-core-1.3 src/test/resources/bin/gs-core-1.3.jar)
+CLASSES[6]=$(numberOfClasses src/test/resources/src/gs-core-1.3-sources)
+SELECTED_CLASSES[6]=$(numberOfAnalyzedClasses $ACCURACY_TS/PrecisionRecallGraphStream.java)
+METHODS[6]=$(numberOfMethods $ACCURACY_TS/PrecisionRecallGraphStream.java src/test/resources/bin/gs-core-1.3.jar)
+DOCUMENTED_METHODS[6]=$(numberOfAnalyzedMethods org.graphstream)
+PRE[6]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/gs-core-1.3 src/test/resources/bin/gs-core-1.3.jar)
+POST[6]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/gs-core-1.3 src/test/resources/bin/gs-core-1.3.jar)
+EXC_POST[6]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/gs-core-1.3 src/test/resources/bin/gs-core-1.3.jar)
 
 # Compute totals
 TOTAL[0]=$(arraySum CLASSES)
@@ -141,7 +142,7 @@ CONDITIONS=$((CONDITIONS+${TOTAL[4]}))
 CONDITIONS=$((CONDITIONS+${TOTAL[5]}))
 CONDITIONS=$((CONDITIONS+${TOTAL[6]}))
 
-# Create the table
+# Create subject table
 echo 'Commons Collections 4.1' \
      '& '${CLASSES[0]}' & '${SELECTED_CLASSES[0]}' & '${METHODS[0]}' & '${DOCUMENTED_METHODS[0]}' & '${PRE[0]}' & '${POST[0]}' & '${EXC_POST[0]}' \\' > "$SUBJECTS_TABLE"
 echo 'Commons Math 3.6.1' \
@@ -154,8 +155,8 @@ echo 'JGraphT 0.9.2' \
      '& '${CLASSES[4]}' & '${SELECTED_CLASSES[4]}' & '${METHODS[4]}' & '${DOCUMENTED_METHODS[4]}' & '${PRE[4]}' & '${POST[4]}' & '${EXC_POST[4]}' \\' >> "$SUBJECTS_TABLE"
 echo 'Plume-lib 1.1' \
      '& '${CLASSES[5]}' & '${SELECTED_CLASSES[5]}' & '${METHODS[5]}' & '${DOCUMENTED_METHODS[5]}' & '${PRE[5]}' & '${POST[5]}' & '${EXC_POST[5]}' \\' >> "$SUBJECTS_TABLE"
-#echo 'GraphStream 1.3' \
-#     '& '${CLASSES[6]}' & '${SELECTED_CLASSES[6]}' & '${METHODS[6]}' & '${DOCUMENTED_METHODS[6]}' & '${PRE[6]}' & '${POST[6]}' & '${EXC_POST[6]}' \\' >> "$SUBJECTS_TABLE"
+echo 'GraphStream 1.3' \
+     '& '${CLASSES[6]}' & '${SELECTED_CLASSES[6]}' & '${METHODS[6]}' & '${DOCUMENTED_METHODS[6]}' & '${PRE[6]}' & '${POST[6]}' & '${EXC_POST[6]}' \\' >> "$SUBJECTS_TABLE"
 echo '\midrule' >> "$SUBJECTS_TABLE"
 echo 'Total & '${TOTAL[0]}' & '${TOTAL[1]}' & '${TOTAL[2]}' & '${TOTAL[3]}' & '${TOTAL[4]}' & '${TOTAL[5]}' & '${TOTAL[6]}' \\' >> "$SUBJECTS_TABLE"
 
@@ -170,18 +171,22 @@ if [ `uname` == "Darwin" ]; then
 fi
 
 cat results_tcomment.csv | $TAC | tail -n +15 | $TAC > results_tcomment_truncated.csv
-echo '@tComment     & '`python stats/results_table.py results_tcomment_truncated.csv $CONDITIONS` > "$RESULTS_TABLE"
+echo '@tComment     & '`python stats/results_table.py results_tcomment_truncated.csv` > "$RESULTS_TABLE"
 rm results_tcomment_truncated.csv
 
 cat results_toradocu-0.1.csv | $TAC | tail -n +6 | $TAC | tail -n +2 > results_toradocu_truncated.csv
 echo '"METHOD","CORRECT THROWS CONDITIONS","WRONG THROWS CONDITIONS","MISSING THROWS CONDITIONS"' > results_toradocu_truncated2.csv
 cat results_toradocu_truncated.csv >> results_toradocu_truncated2.csv
-echo '\OldToradocu  & '`python stats/results_table.py results_toradocu_truncated2.csv $CONDITIONS` >> "$RESULTS_TABLE"
+echo "$TORADOCU & "`python stats/results_table.py results_toradocu_truncated2.csv` >> "$RESULTS_TABLE"
 rm results_toradocu_truncated.csv results_toradocu_truncated2.csv
 
-cat results_current.csv | $TAC | tail -n +15 | $TAC > results_current_truncated.csv
-echo '\ToradocuPlus & '`python stats/results_table.py results_current_truncated.csv $CONDITIONS` >> "$RESULTS_TABLE"
-rm results_current_truncated.csv
+cat results_jdoctor.csv | $TAC | tail -n +15 | $TAC > results_jdoctor_truncated.csv
+echo "$JDOCTOR & "`python stats/results_table.py results_jdoctor_truncated.csv` >> "$RESULTS_TABLE"
+rm results_jdoctor_truncated.csv
+
+cat results_jdoctor_semantics.csv | $TAC | tail -n +15 | $TAC > results_jdoctor_semantics_truncated.csv
+echo "$JDOCTORPLUS & "`python stats/results_table.py results_jdoctor_semantics_truncated.csv` >> "$RESULTS_TABLE"
+rm results_jdoctor_semantics_truncated.csv
 
 echo "Created table: $RESULTS_TABLE"
 

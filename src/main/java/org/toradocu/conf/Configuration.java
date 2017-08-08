@@ -165,11 +165,11 @@ public enum Configuration {
   private File randoopSpecs;
 
   @Parameter(
-    names = "--semantic-enabled",
-    description = "Use semantic matching for conditions translation",
+    names = "--disable-semantics",
+    description = "Disable semantic-based matcher for comments translation.",
     arity = 1
   )
-  private boolean semanticEnabled = true;
+  private boolean disableSemantics = false;
 
   // Aspect creation options
 
@@ -419,26 +419,6 @@ public enum Configuration {
   }
 
   /**
-   * Returns the command-line options passed to the Javadoc tool.
-   *
-   * @return the command-line options passed to the Javadoc tool
-   */
-  public String[] getJavadocOptions() {
-    return javadocOptions.toArray(new String[0]);
-  }
-
-  /**
-   * Returns a temporary directory for Javadoc output or null if a non-temporary directory is set
-   * for Javadoc output.
-   *
-   * @return a temporary directory for Javadoc output or null if a non-temporary directory is set
-   *     for Javadoc output
-   */
-  public String getJavadocOutputDir() {
-    return javadocOutputDir;
-  }
-
-  /**
    * Returns the distance threshold that has been set for code element matching.
    *
    * @return the distance threshold that has been set for code element matching
@@ -511,8 +491,8 @@ public enum Configuration {
    *
    * @return true if semantic matching is used during translation, false otherwise
    */
-  public boolean isSemanticEnabled() {
-    return semanticEnabled;
+  public boolean isSemanticMatcherEnabled() {
+    return !disableSemantics;
   }
 
   /**

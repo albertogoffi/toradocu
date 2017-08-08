@@ -101,26 +101,6 @@ public class Stats {
     }
   }
 
-  //  /**
-  //   * Returns the precision considering all the translations for both @param and @throws tags.
-  //   *
-  //   * @return the precision considering all the translations for both @param and @throws tags
-  //   */
-  //  public double getPrecision() {
-  //    final int translated = numberOfCorrectTranslations() + numberOfWrongTranslations();
-  //    return translated == 0 ? 1 : numberOfCorrectTranslations() / (double) translated;
-  //  }
-
-  //  /**
-  //   * Returns the recall considering all the translations for both @param and @throws tags.
-  //   *
-  //   * @return the recall considering all the translations for both @param and @throws tags
-  //   */
-  //  public double getRecall() {
-  //    final int conditions = numberOfConditions();
-  //    return conditions == 0 ? 1 : numberOfCorrectTranslations() / (double) conditions;
-  //  }
-
   /**
    * Return the total number of conditions for a given tag kind.
    *
@@ -139,11 +119,7 @@ public class Stats {
     }
   }
 
-  /**
-   * Return the total number of conditions from @param, @return, and @throws tags.
-   *
-   * @return the total number of conditions
-   */
+  /** Return the total number of conditions from @param, @return, and @throws tags. */
   public int numberOfConditions() {
     return numberOfCorrectTranslations()
         + numberOfWrongTranslations()
@@ -179,9 +155,9 @@ public class Stats {
   }
 
   /**
-   * Return the total number of missing translations from @param, @return, and @throws tags.
+   * Return the total number of unexpected translations from @param, @return, and @throws tags.
    *
-   * @return the total number of missing translations
+   * @return the number of unexpected conditions
    */
   private int numberOfUnexpectedTranslations() {
     return unexpectedParamTranslations
@@ -427,7 +403,7 @@ public class Stats {
             stats.addCorrectTranslation(kind);
             outputMessage.append("Correct ");
           } else {
-            continue; // Ignore the case where Toradocu does not output anything as expected.
+            continue; // No output message when Toradocu does not output anything as expected.
           }
         } else {
           if (expectedCondition.isEmpty()) {

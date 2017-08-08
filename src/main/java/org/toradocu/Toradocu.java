@@ -142,7 +142,7 @@ public class Toradocu {
     // === Condition Translator ===
 
     //Enable or disable semantic matching
-    SemanticMatcher.setEnabled(configuration.isSemanticEnabled());
+    SemanticMatcher.setEnabled(configuration.isSemanticMatcherEnabled());
 
     if (configuration.isConditionTranslationEnabled()) {
       Map<DocumentedExecutable, OperationSpecification> specifications;
