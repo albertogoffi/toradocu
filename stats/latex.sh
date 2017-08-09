@@ -14,6 +14,8 @@ JDOCTORPLUS="\ToradocuPlus+"
 JDOCTOR="\ToradocuPlus"
 TORADOCU="\OldToradocu"
 
+RESULT_FILE="results_jdoctor.csv"
+
 numberOfClasses() {
     echo $(find "$1" -name "*.java" -type f | wc -l | tr -d " ")
 }
@@ -33,7 +35,7 @@ numberOfMethods() {
 }
 
 numberOfAnalyzedMethods() {
-    echo $(egrep -c "^\"$1" results_jdoctor.csv)
+    echo $(egrep -c "^\"$1" "$RESULT_FILE")
 }
 
 numberOfAnalyzedComments() {

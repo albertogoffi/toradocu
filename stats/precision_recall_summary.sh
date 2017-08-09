@@ -7,14 +7,17 @@ ERROR_MESSAGE='Script must be invoked with one parameter: either "jdoctor" or "j
 
 # Parse command line argument and set variables
 TESTS_PREFIX="org.toradocu.accuracy.PrecisionRecall"
-TESTS='--tests '$TESTS_PREFIX'CommonsCollections4 --tests '$TESTS_PREFIX'CommonsMath3 --tests '$TESTS_PREFIX'Guava19 --tests '$TESTS_PREFIX'JGraphT --tests '$TESTS_PREFIX'PlumeLib'
+TESTS='--tests org.toradocu.accuracy.*'
+# The following is how to run specific tests.
+#TESTS='--tests '$TESTS_PREFIX'CommonsCollections4 --tests '$TESTS_PREFIX'CommonsMath3 --tests '$TESTS_PREFIX'Guava19 --tests '$TESTS_PREFIX'JGraphT --tests '$TESTS_PREFIX'PlumeLib'
+
 if [ $# -eq 1 ]; then
   if [ "$1" = "jdoctor" ]; then
-    COMMAND="./gradlew --rerun-tasks test $TESTS"
+    COMMAND="./gradlew -Dorg.toradocu.translator=nosemantics --rerun-tasks test $TESTS"
     STATS_FILE=results.csv
     STATS_FILE_TO_SAVE=results_jdoctor.csv
   elif [ "$1" = "jdoctor_semantics" ]; then
-    COMMAND="./gradlew --rerun-tasks -Dorg.toradocu.translator=semantics test $TESTS"
+    COMMAND="./gradlew --rerun-tasks test $TESTS"
     STATS_FILE=results_semantics.csv
     STATS_FILE_TO_SAVE=results_jdoctor_semantics.csv
   elif [ "$1" = "tcomment" ]; then
