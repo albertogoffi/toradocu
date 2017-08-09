@@ -18,4 +18,9 @@ public class AccuracyRandomFreeCol extends AbstractPrecisionRecallTestSuite {
   public void testLocatable() throws Exception {
     test("net.sf.freecol.common.model.Locatable", 1, 1, 1, 1, 1, 1);
   }
+
+  @Test
+  public void testCashInTreasureTrainMessage() throws Exception {
+    test("net.sf.freecol.common.networking.CashInTreasureTrainMessage", 1, 1, 1, 1, 1, 1);
+  }
 }

@@ -18,4 +18,9 @@ public class AccuracyRandomJGraphT extends AbstractPrecisionRecallTestSuite {
   public void testMinSourceSinkCut() throws Exception {
     test("org.jgrapht.alg.MinSourceSinkCut", 1, 1, 1, 1, 1, 1);
   }
+
+  @Test
+  public void testRankingPathElementt() throws Exception {
+    test("org.jgrapht.alg.RankingPathElement", 1, 1, 1, 1, 1, 1);
+  }
 }

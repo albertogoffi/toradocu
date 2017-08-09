@@ -17,4 +17,9 @@ public class AccuracyRandomPlumeLib extends AbstractPrecisionRecallTestSuite {
   public void testRandomSelector() throws Exception {
     test("plume.RandomSelector", 1, 1, 1, 1, 1, 1);
   }
+
+  @Test
+  public void testPair() throws Exception {
+    test("plume.Pair", 1, 1, 1, 1, 1, 1);
+  }
 }

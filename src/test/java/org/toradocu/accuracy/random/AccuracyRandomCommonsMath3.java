@@ -1,5 +1,6 @@
 package org.toradocu.accuracy.random;
 
+import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 
 /** Created by arianna on 07/08/17. */
@@ -15,7 +16,20 @@ public class AccuracyRandomCommonsMath3 extends AbstractPrecisionRecallTestSuite
     super(COMMONSMATH_3_SRC, COMMONSMATH_3_BIN, COMMONSMATH_3_GOAL_DIR);
   }
 
+  @Test
   public void testCurveFitter() throws Exception {
     test("org.apache.commons.math3.fitting.CurveFitter", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testUnivariateMultiStartOptimizer() throws Exception {
+    test(
+        "org.apache.commons.math3.optimization.univariate.UnivariateMultiStartOptimizer",
+        1,
+        1,
+        1,
+        1,
+        1,
+        1);
   }
 }

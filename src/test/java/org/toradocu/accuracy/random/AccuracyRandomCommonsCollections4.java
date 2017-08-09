@@ -21,4 +21,9 @@ public class AccuracyRandomCommonsCollections4 extends AbstractPrecisionRecallTe
   public void testIfClosure() throws Exception {
     test("org.apache.commons.collections4.functors.IfClosure", 1, 1, 1, 1, 1, 1);
   }
+
+  @Test
+  public void testLazyMap() throws Exception {
+    test("org.apache.commons.collections4.map.LazyMap", 1, 1, 1, 1, 1, 1);
+  }
 }
