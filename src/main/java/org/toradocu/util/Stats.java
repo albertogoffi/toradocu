@@ -119,7 +119,12 @@ public class Stats {
     }
   }
 
-  /** Return the total number of conditions from @param, @return, and @throws tags. */
+  /**
+   * Return the total number of conditions from @param, @return, and @throws tags. The return value
+   * includes correct, wrong, missing, and unexpected specifications.
+   *
+   * @return the total number of conditions from @param, @return, and @throws tags
+   */
   public int numberOfConditions() {
     return numberOfCorrectTranslations()
         + numberOfWrongTranslations()
