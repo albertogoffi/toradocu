@@ -27,7 +27,7 @@ public class AccuracyRandomCommonsMath3 extends AbstractPrecisionRecallTestSuite
         "org.apache.commons.math3.optimization.univariate.UnivariateMultiStartOptimizer",
         1,
         1,
-        1,
+        0,
         1,
         1,
         1);
