@@ -382,7 +382,7 @@ public final class JavadocExtractor {
    * @return non private-callables of the class with name {@code className}
    * @throws FileNotFoundException if the source path couldn't be resolved
    */
-  private List<CallableDeclaration<?>> getExecutables(String className, String sourcePath)
+  public List<CallableDeclaration<?>> getExecutables(String className, String sourcePath)
       throws FileNotFoundException {
     final List<CallableDeclaration<?>> sourceExecutables = new ArrayList<>();
     final ClassOrInterfaceDeclaration sourceClass = getClassDefinition(className, sourcePath);
