@@ -14,7 +14,9 @@ JDOCTORPLUS="\ToradocuPlus+"
 JDOCTOR="\ToradocuPlus"
 TORADOCU="\OldToradocu"
 
-RESULT_FILE="results_jdoctor.csv"
+RESULTS_TCOMMENT="results_tcomment.csv"
+RESULTS_SEMANTICS="results_semantics.csv"
+RESULTS="results.csv"
 
 numberOfClasses() {
     echo $(find "$1" -name "*.java" -type f | wc -l | tr -d " ")
@@ -35,7 +37,7 @@ numberOfMethods() {
 }
 
 numberOfAnalyzedMethods() {
-    echo $(egrep -c "^\"$1" "$RESULT_FILE")
+    echo $(egrep -c "^\"$1" "$RESULTS")
 }
 
 numberOfAnalyzedComments() {
@@ -60,7 +62,7 @@ arraySum() {
 }
 
 # Create Toradocu Jar with dependencies
-./gradlew shadowJar
+#./gradlew shadowJar
 
 # Create output dir
 mkdir -p "$OUTPUT_DIR"
@@ -172,7 +174,7 @@ if [ `uname` == "Darwin" ]; then
     TAC="tail -r"
 fi
 
-cat results_tcomment.csv | $TAC | tail -n +15 | $TAC > results_tcomment_truncated.csv
+cat "$RESULTS_TCOMMENT" | $TAC | tail -n +15 | $TAC > results_tcomment_truncated.csv
 echo '@tComment     & '`python stats/results_table.py results_tcomment_truncated.csv` > "$RESULTS_TABLE"
 rm results_tcomment_truncated.csv
 
@@ -182,11 +184,11 @@ cat results_toradocu_truncated.csv >> results_toradocu_truncated2.csv
 echo "$TORADOCU & "`python stats/results_table.py results_toradocu_truncated2.csv` >> "$RESULTS_TABLE"
 rm results_toradocu_truncated.csv results_toradocu_truncated2.csv
 
-cat results_jdoctor.csv | $TAC | tail -n +15 | $TAC > results_jdoctor_truncated.csv
+cat "$RESULTS" | $TAC | tail -n +15 | $TAC > results_jdoctor_truncated.csv
 echo "$JDOCTOR & "`python stats/results_table.py results_jdoctor_truncated.csv` >> "$RESULTS_TABLE"
 rm results_jdoctor_truncated.csv
 
-cat results_jdoctor_semantics.csv | $TAC | tail -n +15 | $TAC > results_jdoctor_semantics_truncated.csv
+cat "$RESULTS_SEMANTICS" | $TAC | tail -n +15 | $TAC > results_jdoctor_semantics_truncated.csv
 echo "$JDOCTORPLUS & "`python stats/results_table.py results_jdoctor_semantics_truncated.csv` >> "$RESULTS_TABLE"
 rm results_jdoctor_semantics_truncated.csv
 

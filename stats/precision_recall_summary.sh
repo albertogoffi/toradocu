@@ -13,16 +13,16 @@ TESTS='--tests org.toradocu.accuracy.*'
 
 if [ $# -eq 1 ]; then
   if [ "$1" = "jdoctor" ]; then
-    COMMAND="./gradlew -Dorg.toradocu.translator=nosemantics --rerun-tasks test $TESTS"
-    STATS_FILE=results.csv
-    STATS_FILE_TO_SAVE=results_jdoctor.csv
+    COMMAND="./gradlew --rerun-tasks -Dorg.toradocu.translator=nosemantics test $TESTS"
+    STATS_FILE=results_.csv
+    STATS_FILE_TO_SAVE=results.csv
   elif [ "$1" = "jdoctor_semantics" ]; then
     COMMAND="./gradlew --rerun-tasks test $TESTS"
-    STATS_FILE=results_semantics.csv
-    STATS_FILE_TO_SAVE=results_jdoctor_semantics.csv
+    STATS_FILE=results_semantics_.csv
+    STATS_FILE_TO_SAVE=results_semantics.csv
   elif [ "$1" = "tcomment" ]; then
     COMMAND="./gradlew --rerun-tasks -Dorg.toradocu.translator=tcomment test $TESTS"
-    STATS_FILE=tcomment_results.csv
+    STATS_FILE=results_tcomment_.csv
     STATS_FILE_TO_SAVE=results_tcomment.csv
   else
 	  echo $ERROR_MESSAGE

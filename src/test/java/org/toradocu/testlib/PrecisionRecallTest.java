@@ -68,16 +68,16 @@ class PrecisionRecallTest {
     if (translator != null && translator.equals("tcomment")) {
       argsList.add("--tcomment");
       argsList.add("--stats-file");
-      argsList.add("tcomment_results.csv");
+      argsList.add("results_tcomment_.csv");
     } else if (translator != null && translator.equals("nosemantics")) {
       argsList.add("--disable-semantics");
       argsList.add("true");
       argsList.add("--stats-file");
-      argsList.add("results_semantics.csv");
+      argsList.add("results_.csv");
     } else {
       // Semantic-based translator enabled by default.
       argsList.add("--stats-file");
-      argsList.add("results.csv");
+      argsList.add("results_semantics_.csv");
     }
 
     Toradocu.main(argsList.toArray(new String[0]));
