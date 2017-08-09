@@ -20,7 +20,12 @@ public class AccuracyRandomJGraphT extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void testRankingPathElementt() throws Exception {
+  public void testRankingPathElement() throws Exception {
     test("org.jgrapht.alg.RankingPathElement", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testDirectedNeighborIndex() throws Exception {
+    test("org.jgrapht.alg.DirectedNeighborIndex", 1, 1, 1, 1, 1, 1);
   }
 }

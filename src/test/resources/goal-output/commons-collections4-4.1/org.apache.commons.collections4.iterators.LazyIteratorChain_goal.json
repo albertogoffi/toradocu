@@ -1,0 +1,151 @@
+[
+  {
+    "signature": "nextIterator(int count)",
+    "name": "nextIterator",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.iterators.LazyIteratorChain",
+      "name": "LazyIteratorChain",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.iterators.LazyIteratorChain",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator<? extends E>",
+      "name": "java.util.Iterator<? extends E>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "count"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "count"
+        },
+        "comment": "the number of time this method has been called (starts with 1).",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the next iterator, or null if there are no more.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hasNext()",
+    "name": "hasNext",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.iterators.LazyIteratorChain",
+      "name": "LazyIteratorChain",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.iterators.LazyIteratorChain",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "true if elements remain.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "next()",
+    "name": "next",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.iterators.LazyIteratorChain",
+      "name": "LazyIteratorChain",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.iterators.LazyIteratorChain",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "element from the current Iterator.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.util.NoSuchElementException",
+          "name": "NoSuchElementException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "all the Iterators are exhausted.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "remove()",
+    "name": "remove",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.iterators.LazyIteratorChain",
+      "name": "LazyIteratorChain",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.iterators.LazyIteratorChain",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.UnsupportedOperationException",
+          "name": "UnsupportedOperationException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the remove operator is not supported by the underlying Iterator.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.IllegalStateException",
+          "name": "IllegalStateException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the next method has not yet been called or the remove method has already been called after the last call to the next method.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  }
+]

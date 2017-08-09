@@ -1,0 +1,339 @@
+[
+  {
+    "signature": "org.jgrapht.alg.DirectedNeighborIndex(org.jgrapht.DirectedGraph<V, g)",
+    "name": "org.jgrapht.alg.DirectedNeighborIndex",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.DirectedNeighborIndex",
+      "name": "DirectedNeighborIndex",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.alg.DirectedNeighborIndex",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.DirectedGraph",
+          "name": "DirectedGraph",
+          "isArray": false
+        },
+        "name": "g"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.DirectedGraph",
+            "name": "DirectedGraph",
+            "isArray": false
+          },
+          "name": "g"
+        },
+        "comment": "the graph for which a neighbor index is to be created.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "predecessorsOf(V v)",
+    "name": "predecessorsOf",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.DirectedNeighborIndex",
+      "name": "DirectedNeighborIndex",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.alg.DirectedNeighborIndex",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Set<V>",
+      "name": "java.util.Set<V>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "the vertex whose predecessors are desired.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "all unique predecessors of the specified vertex.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "predecessorListOf(V v)",
+    "name": "predecessorListOf",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.DirectedNeighborIndex",
+      "name": "DirectedNeighborIndex",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.alg.DirectedNeighborIndex",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List<V>",
+      "name": "java.util.List<V>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "the vertex whose predecessors are desired.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "all predecessors of the specified vertex.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "successorsOf(V v)",
+    "name": "successorsOf",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.DirectedNeighborIndex",
+      "name": "DirectedNeighborIndex",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.alg.DirectedNeighborIndex",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Set<V>",
+      "name": "java.util.Set<V>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "the vertex whose successors are desired.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "all unique successors of the specified vertex.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "successorListOf(V v)",
+    "name": "successorListOf",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.DirectedNeighborIndex",
+      "name": "DirectedNeighborIndex",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.alg.DirectedNeighborIndex",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List<V>",
+      "name": "java.util.List<V>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "the vertex whose successors are desired.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "all successors of the specified vertex.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "edgeAdded(org.jgrapht.event.GraphEdgeChangeEvent<V, e)",
+    "name": "edgeAdded",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.DirectedNeighborIndex",
+      "name": "DirectedNeighborIndex",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.alg.DirectedNeighborIndex",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.event.GraphEdgeChangeEvent",
+          "name": "GraphEdgeChangeEvent",
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "edgeRemoved(org.jgrapht.event.GraphEdgeChangeEvent<V, e)",
+    "name": "edgeRemoved",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.DirectedNeighborIndex",
+      "name": "DirectedNeighborIndex",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.alg.DirectedNeighborIndex",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.event.GraphEdgeChangeEvent",
+          "name": "GraphEdgeChangeEvent",
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "vertexAdded(org.jgrapht.event.GraphVertexChangeEvent<V> e)",
+    "name": "vertexAdded",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.DirectedNeighborIndex",
+      "name": "DirectedNeighborIndex",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.alg.DirectedNeighborIndex",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.event.GraphVertexChangeEvent",
+          "name": "GraphVertexChangeEvent",
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "vertexRemoved(org.jgrapht.event.GraphVertexChangeEvent<V> e)",
+    "name": "vertexRemoved",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.alg.DirectedNeighborIndex",
+      "name": "DirectedNeighborIndex",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.alg.DirectedNeighborIndex",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.event.GraphVertexChangeEvent",
+          "name": "GraphVertexChangeEvent",
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  }
+]

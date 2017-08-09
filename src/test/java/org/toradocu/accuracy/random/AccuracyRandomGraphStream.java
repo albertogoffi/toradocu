@@ -23,4 +23,9 @@ public class AccuracyRandomGraphStream extends AbstractPrecisionRecallTestSuite 
   public void testNetStreamDecoder() throws Exception {
     test("org.graphstream.stream.netstream.NetStreamDecoder", 1, 1, 1, 1, 1, 1);
   }
+
+  @Test
+  public void testGraphMetrics() throws Exception {
+    test("org.graphstream.ui.swingViewer.util.GraphMetrics", 1, 1, 1, 1, 0.666, 1);
+  }
 }

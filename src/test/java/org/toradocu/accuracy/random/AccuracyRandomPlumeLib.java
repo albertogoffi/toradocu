@@ -22,4 +22,9 @@ public class AccuracyRandomPlumeLib extends AbstractPrecisionRecallTestSuite {
   public void testPair() throws Exception {
     test("plume.Pair", 1, 1, 1, 1, 1, 1);
   }
+
+  @Test
+  public void testFileCompiler() throws Exception {
+    test("plume.FileCompiler", 1, 1, 1, 1, 1, 1);
+  }
 }

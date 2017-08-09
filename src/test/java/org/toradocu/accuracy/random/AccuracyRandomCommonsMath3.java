@@ -32,4 +32,9 @@ public class AccuracyRandomCommonsMath3 extends AbstractPrecisionRecallTestSuite
         1,
         1);
   }
+
+  @Test
+  public void testClusterer() throws Exception {
+    test("org.apache.commons.math3.ml.clustering.Clusterer", 1, 1, 1, 1, 1, 1);
+  }
 }

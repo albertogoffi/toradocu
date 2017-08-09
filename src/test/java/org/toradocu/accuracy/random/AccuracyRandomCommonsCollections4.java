@@ -26,4 +26,9 @@ public class AccuracyRandomCommonsCollections4 extends AbstractPrecisionRecallTe
   public void testLazyMap() throws Exception {
     test("org.apache.commons.collections4.map.LazyMap", 1, 1, 1, 1, 1, 1);
   }
+
+  @Test
+  public void testLazyIteratorChain() throws Exception {
+    test("org.apache.commons.collections4.iterators.LazyIteratorChain", 0, 1, 1, 1, 1, 1);
+  }
 }
