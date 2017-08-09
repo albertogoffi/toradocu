@@ -1,0 +1,463 @@
+[
+  {
+    "signature": "org.apache.commons.math3.fitting.CurveFitter(org.apache.commons.math3.optim.nonlinear.vector.MultivariateVectorOptimizer optimizer)",
+    "name": "org.apache.commons.math3.fitting.CurveFitter",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fitting.CurveFitter",
+      "name": "CurveFitter",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.fitting.CurveFitter",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.optim.nonlinear.vector.MultivariateVectorOptimizer",
+          "name": "MultivariateVectorOptimizer",
+          "isArray": false
+        },
+        "name": "optimizer"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.optim.nonlinear.vector.MultivariateVectorOptimizer",
+            "name": "MultivariateVectorOptimizer",
+            "isArray": false
+          },
+          "name": "optimizer"
+        },
+        "comment": "Optimizer to use for the fitting.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "addObservedPoint(double x, double y)",
+    "name": "addObservedPoint",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fitting.CurveFitter",
+      "name": "CurveFitter",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.fitting.CurveFitter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "x"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "y"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "x"
+        },
+        "comment": "abscissa of the point.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "y"
+        },
+        "comment": "observed value of the point at x. y is after fitting we should have f(x) as close as possible to this value.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "addObservedPoint(double weight, double x, double y)",
+    "name": "addObservedPoint",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fitting.CurveFitter",
+      "name": "CurveFitter",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.fitting.CurveFitter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "weight"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "x"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "y"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "weight"
+        },
+        "comment": "weight of the observed point in the fit.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "x"
+        },
+        "comment": "abscissa of the point.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "y"
+        },
+        "comment": "observed value of the point at x. y is after fitting we should have f(x) as close as possible to this value.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "addObservedPoint(org.apache.commons.math3.fitting.WeightedObservedPoint observed)",
+    "name": "addObservedPoint",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fitting.CurveFitter",
+      "name": "CurveFitter",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.fitting.CurveFitter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.fitting.WeightedObservedPoint",
+          "name": "WeightedObservedPoint",
+          "isArray": false
+        },
+        "name": "observed"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.fitting.WeightedObservedPoint",
+            "name": "WeightedObservedPoint",
+            "isArray": false
+          },
+          "name": "observed"
+        },
+        "comment": "observed point to add.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "getObservations()",
+    "name": "getObservations",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fitting.CurveFitter",
+      "name": "CurveFitter",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.fitting.CurveFitter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.fitting.WeightedObservedPoint[]",
+      "name": "org.apache.commons.math3.fitting.WeightedObservedPoint[]",
+      "isArray": true
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "observed points.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "clearObservations()",
+    "name": "clearObservations",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fitting.CurveFitter",
+      "name": "CurveFitter",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.fitting.CurveFitter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "fit(T f, double[] initialGuess)",
+    "name": "fit",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fitting.CurveFitter",
+      "name": "CurveFitter",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.fitting.CurveFitter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double[]",
+      "name": "double[]",
+      "isArray": true
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.ParametricUnivariateFunction",
+          "name": "ParametricUnivariateFunction",
+          "isArray": false
+        },
+        "name": "f"
+      },
+      {
+        "type": {
+          "qualifiedName": "[D",
+          "name": "double[]",
+          "isArray": true
+        },
+        "name": "initialGuess"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.analysis.ParametricUnivariateFunction",
+            "name": "ParametricUnivariateFunction",
+            "isArray": false
+          },
+          "name": "f"
+        },
+        "comment": "parametric function to fit.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[D",
+            "name": "double[]",
+            "isArray": true
+          },
+          "name": "initialGuess"
+        },
+        "comment": "initialGuess is first. first guess of the function parameters.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the fitted parameters.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
+          "name": "DimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the start point dimension is wrong.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "fit(int maxEval, T f, double[] initialGuess)",
+    "name": "fit",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.fitting.CurveFitter",
+      "name": "CurveFitter",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.fitting.CurveFitter",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double[]",
+      "name": "double[]",
+      "isArray": true
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxEval"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.ParametricUnivariateFunction",
+          "name": "ParametricUnivariateFunction",
+          "isArray": false
+        },
+        "name": "f"
+      },
+      {
+        "type": {
+          "qualifiedName": "[D",
+          "name": "double[]",
+          "isArray": true
+        },
+        "name": "initialGuess"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.analysis.ParametricUnivariateFunction",
+            "name": "ParametricUnivariateFunction",
+            "isArray": false
+          },
+          "name": "f"
+        },
+        "comment": "parametric function to fit.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[D",
+            "name": "double[]",
+            "isArray": true
+          },
+          "name": "initialGuess"
+        },
+        "comment": "initialGuess is first. first guess of the function parameters.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxEval"
+        },
+        "comment": "maxEval is Maximum. Maximum number of function evaluations.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the fitted parameters.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.TooManyEvaluationsException",
+          "name": "TooManyEvaluationsException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the number of allowed evaluations is exceeded.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
+          "name": "DimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the start point dimension is wrong.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  }
+]
