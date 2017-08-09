@@ -62,7 +62,16 @@ arraySum() {
 }
 
 # Create Toradocu Jar with dependencies
-#./gradlew shadowJar
+FATJAR=build/libs/toradocu-1.0-all.jar
+if [ -f "$FATJAR" ]; then
+  echo -n "Do you want to overwrite existing Toradocu fat jar? [y/n]: "
+  read ANSWER
+  if [ "$ANSWER" = "y" ]; then
+    ./gradlew shadowJar
+  fi
+else
+  ./gradlew shadowJar
+fi
 
 # Create output dir
 mkdir -p "$OUTPUT_DIR"
@@ -201,22 +210,22 @@ echo '\newcommand{\tCommentPrecision}{'`fgrep @tComment "$RESULTS_TABLE" | cut -
 echo '\newcommand{\tCommentRecall}{'`fgrep @tComment "$RESULTS_TABLE" | cut -d "&" -f 12 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
 echo '\newcommand{\tCommentFMeasure}{'`fgrep @tComment "$RESULTS_TABLE" | cut -d "&" -f 13 | xargs | cut -d ' ' -f 1 | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
 
-echo '\newcommand{\OldToradocuPrecision}{'`fgrep \OldToradocu "$RESULTS_TABLE" | cut -d "&" -f 11 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
-echo '\newcommand{\OldToradocuRecall}{'`fgrep \OldToradocu "$RESULTS_TABLE" | cut -d "&" -f 12 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
-echo '\newcommand{\OldToradocuFMeasure}{'`fgrep \OldToradocu "$RESULTS_TABLE" | cut -d "&" -f 13 | xargs | cut -d ' ' -f 1 | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
+echo '\newcommand{\OldToradocuPrecision}{'`fgrep $TORADOCU "$RESULTS_TABLE" | cut -d "&" -f 11 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
+echo '\newcommand{\OldToradocuRecall}{'`fgrep $TORADOCU "$RESULTS_TABLE" | cut -d "&" -f 12 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
+echo '\newcommand{\OldToradocuFMeasure}{'`fgrep $TORADOCU "$RESULTS_TABLE" | cut -d "&" -f 13 | xargs | cut -d ' ' -f 1 | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
 
-echo '\newcommand{\ToradocuPlusPrecision}{'`fgrep \ToradocuPlus "$RESULTS_TABLE" | cut -d "&" -f 11 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
-echo '\newcommand{\ToradocuPlusRecall}{'`fgrep \ToradocuPlus "$RESULTS_TABLE" | cut -d "&" -f 12 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
-echo '\newcommand{\ToradocuPlusFMeasure}{'`fgrep \ToradocuPlus "$RESULTS_TABLE" | cut -d "&" -f 13 | xargs | cut -d ' ' -f 1 | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
+echo '\newcommand{\ToradocuPlusPrecision}{'`fgrep $JDOCTOR "$RESULTS_TABLE" | cut -d "&" -f 11 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
+echo '\newcommand{\ToradocuPlusRecall}{'`fgrep $JDOCTOR "$RESULTS_TABLE" | cut -d "&" -f 12 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
+echo '\newcommand{\ToradocuPlusFMeasure}{'`fgrep $JDOCTOR "$RESULTS_TABLE" | cut -d "&" -f 13 | xargs | cut -d ' ' -f 1 | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
 
 echo '\newcommand{\totalConditions}{'$CONDITIONS'\xspace}' >> "$MACROS"
 echo '\newcommand{\totalClasses}{'${TOTAL[1]}'\xspace}' >> "$MACROS"
 
 # Jdoctor precsion/recall values
-JDOCTOR_PRECISION_PRE=`fgrep $JDOCTOR "$RESULTS_TABLE" | cut -d '&' -f 2 | xargs`
-JDOCTOR_RECALL_PRE=`fgrep $JDOCTOR "$RESULTS_TABLE" | cut -d '&' -f 3 | xargs`
-JDOCTOR_PRECISION_EXC=`fgrep $JDOCTOR "$RESULTS_TABLE" | cut -d '&' -f 8 | xargs`
-JDOCTOR_RECALL_EXC=`fgrep $JDOCTOR "$RESULTS_TABLE" | cut -d '&' -f 9 | xargs`
+JDOCTOR_PRECISION_PRE=`fgrep "$JDOCTOR " "$RESULTS_TABLE" | cut -d '&' -f 2 | xargs`
+JDOCTOR_RECALL_PRE=`fgrep "$JDOCTOR " "$RESULTS_TABLE" | cut -d '&' -f 3 | xargs`
+JDOCTOR_PRECISION_EXC=`fgrep "$JDOCTOR " "$RESULTS_TABLE" | cut -d '&' -f 8 | xargs`
+JDOCTOR_RECALL_EXC=`fgrep "$JDOCTOR " "$RESULTS_TABLE" | cut -d '&' -f 9 | xargs`
 
 # Improvement over @tComment
 TCOMMENT_PRECISION_PRE=`fgrep @tComment "$RESULTS_TABLE" | cut -d '&' -f 2 | xargs`
@@ -227,10 +236,6 @@ PRECISION_PRE_IMPROVEMENT_TCOMMENT=`bc -l <<< "scale=0; ($JDOCTOR_PRECISION_PRE-
 RECALL_PRE_IMPROVEMENT_TCOMMENT=`bc -l <<< "scale=0; ($JDOCTOR_RECALL_PRE-$TCOMMENT_RECALL_PRE)*100 / 1"`
 PRECISION_EXC_IMPROVEMENT_TCOMMENT=`bc -l <<< "scale=0; ($JDOCTOR_PRECISION_EXC-$TCOMMENT_PRECISION_EXC)*100 / 1"`
 RECALL_EXC_IMPROVEMENT_TCOMMENT=`bc -l <<< "scale=0; ($JDOCTOR_RECALL_EXC-$TCOMMENT_RECALL_EXC)*100 / 1"`
-echo '\newcommand{\precisionImprovementPreTcomment}{'$PRECISION_PRE_IMPROVEMENT_TCOMMENT'\%\xspace}' >> "$MACROS"
-echo '\newcommand{\precisionImprovementExcTcomment}{'$PRECISION_EXC_IMPROVEMENT_TCOMMENT'\%\xspace}' >> "$MACROS"
-echo '\newcommand{\recallImprovementPreTcomment}{'$RECALL_PRE_IMPROVEMENT_TCOMMENT'\%\xspace}' >> "$MACROS"
-echo '\newcommand{\recallImprovementExcTcomment}{'$RECALL_EXC_IMPROVEMENT_TCOMMENT'\%\xspace}' >> "$MACROS"
 
 # Improvement over Toradocu
 TORADOCU_PRECISION_EXC=`fgrep $TORADOCU "$RESULTS_TABLE" | cut -d '&' -f 8 | xargs`
