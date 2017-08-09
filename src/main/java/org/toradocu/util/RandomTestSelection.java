@@ -75,6 +75,15 @@ public class RandomTestSelection {
   }
 
   private static int findTagsForMethod(CallableDeclaration sourceMember) {
+    String name = sourceMember.getNameAsString();
+    if (name.equals("equals")
+        || name.equals("hashCode")
+        || name.equals("toString")
+        || name.startsWith("get")
+        || name.startsWith("set")) {
+      return 0;
+    }
+
     final Optional<Javadoc> javadocOpt = sourceMember.getJavadoc();
     int count = 0;
     if (javadocOpt.isPresent()) {
