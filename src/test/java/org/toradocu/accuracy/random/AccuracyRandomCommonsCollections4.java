@@ -11,7 +11,7 @@ public class AccuracyRandomCommonsCollections4 extends AbstractPrecisionRecallTe
   private static final String COMMONSCOLLECTIONS_4_BIN =
       "src/test/resources/bin/commons-collections4-4.1.jar";
   private static final String COMMONSCOLLECTIONS_4_GOAL_DIR =
-      "src/test/resources/goal-output/commons-collections4-4.1/";
+      "src/test/resources/goal-output/random/commons-collections4-4.1/";
 
   public AccuracyRandomCommonsCollections4() {
     super(COMMONSCOLLECTIONS_4_SRC, COMMONSCOLLECTIONS_4_BIN, COMMONSCOLLECTIONS_4_GOAL_DIR);

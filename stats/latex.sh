@@ -8,7 +8,8 @@ SUBJECTS_TABLE="$OUTPUT_DIR"/subject-classes-table.tex
 RESULTS_TABLE="$OUTPUT_DIR"/accuracy-table.tex
 MACROS="$OUTPUT_DIR"/macros.tex
 
-ACCURACY_TS=src/test/java/org/toradocu/accuracy
+ACCURACY_TS=src/test/java/org/toradocu/accuracy/random
+GOAL_FILES=src/test/resources/goal-output/random
 
 JDOCTORPLUS="\ToradocuPlus+"
 JDOCTOR="\ToradocuPlus"
@@ -79,67 +80,74 @@ mkdir -p "$OUTPUT_DIR"
 echo "Creating subjects table..."
 
 # Collect info for Commons Collections
+TS=$ACCURACY_TS/AccuracyRandomCommonsCollections4.java
 CLASSES[0]=$(numberOfClasses src/test/resources/src/commons-collections4-4.1-src/src/main/java)
-SELECTED_CLASSES[0]=$(numberOfAnalyzedClasses $ACCURACY_TS/PrecisionRecallCommonsCollections4.java)
-METHODS[0]=$(numberOfMethods $ACCURACY_TS/PrecisionRecallCommonsCollections4.java src/test/resources/bin/commons-collections4-4.1.jar)
+SELECTED_CLASSES[0]=$(numberOfAnalyzedClasses $TS)
+METHODS[0]=$(numberOfMethods $TS src/test/resources/bin/commons-collections4-4.1.jar)
 DOCUMENTED_METHODS[0]=$(numberOfAnalyzedMethods org.apache.commons.collections4)
-PRE[0]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/commons-collections4-4.1 src/test/resources/bin/commons-collections4-4.1.jar)
-POST[0]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/commons-collections4-4.1 src/test/resources/bin/commons-collections4-4.1.jar)
-EXC_POST[0]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/commons-collections4-4.1 src/test/resources/bin/commons-collections4-4.1.jar)
+PRE[0]=$(numberOfAnalyzedComments PRE $GOAL_FILES/commons-collections4-4.1 src/test/resources/bin/commons-collections4-4.1.jar)
+POST[0]=$(numberOfAnalyzedComments POST $GOAL_FILES/commons-collections4-4.1 src/test/resources/bin/commons-collections4-4.1.jar)
+EXC_POST[0]=$(numberOfAnalyzedComments EXC $GOAL_FILES/commons-collections4-4.1 src/test/resources/bin/commons-collections4-4.1.jar)
 
 # Collect info for Commons Math
+TS=$ACCURACY_TS/AccuracyRandomCommonsMath3.java
 CLASSES[1]=$(numberOfClasses src/test/resources/src/commons-math3-3.6.1-src/src/main/java)
-SELECTED_CLASSES[1]=$(numberOfAnalyzedClasses $ACCURACY_TS/PrecisionRecallCommonsMath3.java)
-METHODS[1]=$(numberOfMethods $ACCURACY_TS/PrecisionRecallCommonsMath3.java src/test/resources/bin/commons-math3-3.6.1.jar)
+SELECTED_CLASSES[1]=$(numberOfAnalyzedClasses $TS)
+METHODS[1]=$(numberOfMethods $TS src/test/resources/bin/commons-math3-3.6.1.jar)
 DOCUMENTED_METHODS[1]=$(numberOfAnalyzedMethods org.apache.commons.math3)
-PRE[1]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/commons-math3-3.6.1 src/test/resources/bin/commons-math3-3.6.1.jar)
-POST[1]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/commons-math3-3.6.1 src/test/resources/bin/commons-math3-3.6.1.jar)
-EXC_POST[1]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/commons-math3-3.6.1 src/test/resources/bin/commons-math3-3.6.1.jar)
+PRE[1]=$(numberOfAnalyzedComments PRE $GOAL_FILES/commons-math3-3.6.1 src/test/resources/bin/commons-math3-3.6.1.jar)
+POST[1]=$(numberOfAnalyzedComments POST $GOAL_FILES/commons-math3-3.6.1 src/test/resources/bin/commons-math3-3.6.1.jar)
+EXC_POST[1]=$(numberOfAnalyzedComments EXC $GOAL_FILES/commons-math3-3.6.1 src/test/resources/bin/commons-math3-3.6.1.jar)
 
 # Collect info for FreeCol
+TS=$ACCURACY_TS/AccuracyRandomFreeCol.java
 CLASSES[2]=$(numberOfClasses src/test/resources/src/freecol-0.11.6/src/)
-SELECTED_CLASSES[2]=$(numberOfAnalyzedClasses $ACCURACY_TS/PrecisionRecallFreeCol.java)
-METHODS[2]=$(numberOfMethods $ACCURACY_TS/PrecisionRecallFreeCol.java src/test/resources/bin/freecol-0.11.6.jar)
+SELECTED_CLASSES[2]=$(numberOfAnalyzedClasses $TS)
+METHODS[2]=$(numberOfMethods $TS src/test/resources/bin/freecol-0.11.6.jar)
 DOCUMENTED_METHODS[2]=$(numberOfAnalyzedMethods net.sf.freecol)
-PRE[2]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/freecol-0.11.6 src/test/resources/goal-output/freecol-0.11.6/freecol-0.11.6.jar)
-POST[2]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/freecol-0.11.6 src/test/resources/goal-output/freecol-0.11.6/freecol-0.11.6.jar)
-EXC_POST[2]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/freecol-0.11.6 src/test/resources/goal-output/freecol-0.11.6/freecol-0.11.6.jar)
+PRE[2]=$(numberOfAnalyzedComments PRE $GOAL_FILES/freecol-0.11.6 src/test/resources/goal-output/freecol-0.11.6/freecol-0.11.6.jar)
+POST[2]=$(numberOfAnalyzedComments POST $GOAL_FILES/freecol-0.11.6 src/test/resources/goal-output/freecol-0.11.6/freecol-0.11.6.jar)
+EXC_POST[2]=$(numberOfAnalyzedComments EXC $GOAL_FILES/freecol-0.11.6 src/test/resources/goal-output/freecol-0.11.6/freecol-0.11.6.jar)
 
 # Collect info for Guava
+TS=$ACCURACY_TS/AccuracyRandomGuava19.java
 CLASSES[3]=$(numberOfClasses src/test/resources/src/guava-19.0-sources)
-SELECTED_CLASSES[3]=$(numberOfAnalyzedClasses $ACCURACY_TS/PrecisionRecallGuava19.java)
-METHODS[3]=$(numberOfMethods $ACCURACY_TS/PrecisionRecallGuava19.java src/test/resources/bin/guava-19.0.jar)
+SELECTED_CLASSES[3]=$(numberOfAnalyzedClasses $TS)
+METHODS[3]=$(numberOfMethods $TS src/test/resources/bin/guava-19.0.jar)
 DOCUMENTED_METHODS[3]=$(numberOfAnalyzedMethods com.google.common)
-PRE[3]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/guava-19.0 src/test/resources/bin/guava-19.0.jar)
-POST[3]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/guava-19.0 src/test/resources/bin/guava-19.0.jar)
-EXC_POST[3]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/guava-19.0 src/test/resources/bin/guava-19.0.jar)
+PRE[3]=$(numberOfAnalyzedComments PRE $GOAL_FILES/guava-19.0 src/test/resources/bin/guava-19.0.jar)
+POST[3]=$(numberOfAnalyzedComments POST $GOAL_FILES/guava-19.0 src/test/resources/bin/guava-19.0.jar)
+EXC_POST[3]=$(numberOfAnalyzedComments EXC $GOAL_FILES/guava-19.0 src/test/resources/bin/guava-19.0.jar)
 
 # Collect info for JGraphT
+TS=$ACCURACY_TS/AccuracyRandomJGraphT.java
 CLASSES[4]=$(numberOfClasses src/test/resources/src/jgrapht-core-0.9.2-sources)
-SELECTED_CLASSES[4]=$(numberOfAnalyzedClasses $ACCURACY_TS/PrecisionRecallJGraphT.java)
-METHODS[4]=$(numberOfMethods $ACCURACY_TS/PrecisionRecallJGraphT.java src/test/resources/bin/jgrapht-core-0.9.2.jar)
+SELECTED_CLASSES[4]=$(numberOfAnalyzedClasses $TS)
+METHODS[4]=$(numberOfMethods $TS src/test/resources/bin/jgrapht-core-0.9.2.jar)
 DOCUMENTED_METHODS[4]=$(numberOfAnalyzedMethods org.jgrapht)
-PRE[4]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/jgrapht-core-0.9.2 src/test/resources/bin/jgrapht-core-0.9.2.jar)
-POST[4]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/jgrapht-core-0.9.2 src/test/resources/bin/jgrapht-core-0.9.2.jar)
-EXC_POST[4]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/jgrapht-core-0.9.2 src/test/resources/bin/jgrapht-core-0.9.2.jar)
+PRE[4]=$(numberOfAnalyzedComments PRE $GOAL_FILES/jgrapht-core-0.9.2 src/test/resources/bin/jgrapht-core-0.9.2.jar)
+POST[4]=$(numberOfAnalyzedComments POST $GOAL_FILES/jgrapht-core-0.9.2 src/test/resources/bin/jgrapht-core-0.9.2.jar)
+EXC_POST[4]=$(numberOfAnalyzedComments EXC $GOAL_FILES/jgrapht-core-0.9.2 src/test/resources/bin/jgrapht-core-0.9.2.jar)
 
 # Collect info for Plume-lib
+TS=$ACCURACY_TS/AccuracyRandomPlumeLib.java
 CLASSES[5]=$(numberOfClasses src/test/resources/src/plume-lib-1.1.0/java/src)
-SELECTED_CLASSES[5]=$(numberOfAnalyzedClasses $ACCURACY_TS/PrecisionRecallPlumeLib.java)
-METHODS[5]=$(numberOfMethods $ACCURACY_TS/PrecisionRecallPlumeLib.java src/test/resources/bin/plume-lib-1.1.0.jar)
+SELECTED_CLASSES[5]=$(numberOfAnalyzedClasses $TS)
+METHODS[5]=$(numberOfMethods $TS src/test/resources/bin/plume-lib-1.1.0.jar)
 DOCUMENTED_METHODS[5]=$(numberOfAnalyzedMethods plume.)
-PRE[5]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/plume-lib-1.1.0 src/test/resources/bin/plume-lib-1.1.0.jar)
-POST[5]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/plume-lib-1.1.0 src/test/resources/bin/plume-lib-1.1.0.jar)
-EXC_POST[5]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/plume-lib-1.1.0 src/test/resources/bin/plume-lib-1.1.0.jar)
+PRE[5]=$(numberOfAnalyzedComments PRE $GOAL_FILES/plume-lib-1.1.0 src/test/resources/bin/plume-lib-1.1.0.jar)
+POST[5]=$(numberOfAnalyzedComments POST $GOAL_FILES/plume-lib-1.1.0 src/test/resources/bin/plume-lib-1.1.0.jar)
+EXC_POST[5]=$(numberOfAnalyzedComments EXC $GOAL_FILES/plume-lib-1.1.0 src/test/resources/bin/plume-lib-1.1.0.jar)
 
 # Collect info for GraphStream
+TS=$ACCURACY_TS/AccuracyRandomGraphStream.java
 CLASSES[6]=$(numberOfClasses src/test/resources/src/gs-core-1.3-sources)
-SELECTED_CLASSES[6]=$(numberOfAnalyzedClasses $ACCURACY_TS/PrecisionRecallGraphStream.java)
-METHODS[6]=$(numberOfMethods $ACCURACY_TS/PrecisionRecallGraphStream.java src/test/resources/bin/gs-core-1.3.jar)
+SELECTED_CLASSES[6]=$(numberOfAnalyzedClasses $TS)
+METHODS[6]=$(numberOfMethods $TS src/test/resources/bin/gs-core-1.3.jar)
 DOCUMENTED_METHODS[6]=$(numberOfAnalyzedMethods org.graphstream)
-PRE[6]=$(numberOfAnalyzedComments PRE src/test/resources/goal-output/gs-core-1.3 src/test/resources/bin/gs-core-1.3.jar)
-POST[6]=$(numberOfAnalyzedComments POST src/test/resources/goal-output/gs-core-1.3 src/test/resources/bin/gs-core-1.3.jar)
-EXC_POST[6]=$(numberOfAnalyzedComments EXC src/test/resources/goal-output/gs-core-1.3 src/test/resources/bin/gs-core-1.3.jar)
+PRE[6]=$(numberOfAnalyzedComments PRE $GOAL_FILES/gs-core-1.3 src/test/resources/bin/gs-core-1.3.jar)
+POST[6]=$(numberOfAnalyzedComments POST $GOAL_FILES/gs-core-1.3 src/test/resources/bin/gs-core-1.3.jar)
+EXC_POST[6]=$(numberOfAnalyzedComments EXC $GOAL_FILES/gs-core-1.3 src/test/resources/bin/gs-core-1.3.jar)
 
 # Compute totals
 TOTAL[0]=$(arraySum CLASSES)

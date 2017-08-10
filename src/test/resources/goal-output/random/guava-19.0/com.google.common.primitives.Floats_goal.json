@@ -1,0 +1,1066 @@
+[
+  {
+    "signature": "hashCode(float value)",
+    "name": "hashCode",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Floats",
+      "name": "Floats",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Floats",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "float",
+          "name": "float",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "a primitive float value",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a hash code for the value",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "compare(float a,float b)",
+    "name": "compare",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Floats",
+      "name": "Floats",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Floats",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "float",
+          "name": "float",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "float",
+          "name": "float",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "the first float to compare",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the second float to compare",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the result of invoking Float.compare(float, float)",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "isFinite(float value)",
+    "name": "isFinite",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Floats",
+      "name": "Floats",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Floats",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "float",
+          "name": "float",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "contains(float[] array,float target)",
+    "name": "contains",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Floats",
+      "name": "Floats",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Floats",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "float[]",
+          "name": "float[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          }
+        },
+        "name": "array"
+      },
+      {
+        "type": {
+          "qualifiedName": "float",
+          "name": "float",
+          "isArray": false
+        },
+        "name": "target"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float[]",
+            "name": "float[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "float",
+              "name": "float",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "an array of float values, possibly empty",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          },
+          "name": "target"
+        },
+        "comment": "a primitive float value",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if array[i] == target for some value of i",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "indexOf(float[] array,float target)",
+    "name": "indexOf",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Floats",
+      "name": "Floats",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Floats",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "float[]",
+          "name": "float[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          }
+        },
+        "name": "array"
+      },
+      {
+        "type": {
+          "qualifiedName": "float",
+          "name": "float",
+          "isArray": false
+        },
+        "name": "target"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float[]",
+            "name": "float[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "float",
+              "name": "float",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "an array of float values, possibly empty",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          },
+          "name": "target"
+        },
+        "comment": "a primitive float value",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the least index i for which array[i] == target, or -1 if no such index exists.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "indexOf(float[] array,float[] target)",
+    "name": "indexOf",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Floats",
+      "name": "Floats",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Floats",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "float[]",
+          "name": "float[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          }
+        },
+        "name": "array"
+      },
+      {
+        "type": {
+          "qualifiedName": "float[]",
+          "name": "float[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          }
+        },
+        "name": "target"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float[]",
+            "name": "float[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "float",
+              "name": "float",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "the array to search for the sequence target",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float[]",
+            "name": "float[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "float",
+              "name": "float",
+              "isArray": false
+            }
+          },
+          "name": "target"
+        },
+        "comment": "the array to search for as a sub-sequence of array",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "lastIndexOf(float[] array,float target)",
+    "name": "lastIndexOf",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Floats",
+      "name": "Floats",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Floats",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "float[]",
+          "name": "float[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          }
+        },
+        "name": "array"
+      },
+      {
+        "type": {
+          "qualifiedName": "float",
+          "name": "float",
+          "isArray": false
+        },
+        "name": "target"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float[]",
+            "name": "float[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "float",
+              "name": "float",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "an array of float values, possibly empty",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          },
+          "name": "target"
+        },
+        "comment": "a primitive float value",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the greatest index i for which array[i] == target, or -1 if no such index exists.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "min(float[] array)",
+    "name": "min",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Floats",
+      "name": "Floats",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Floats",
+    "isVarArgs": true,
+    "returnType": {
+      "qualifiedName": "float",
+      "name": "float",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "float[]",
+          "name": "float[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          }
+        },
+        "name": "array"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float[]",
+            "name": "float[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "float",
+              "name": "float",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "a nonempty array of float values",
+        "kind": "PARAM",
+        "condition": "(args[0].length==0)==false"
+      }
+    ],
+    "returnTag": {
+      "comment": "the value present in array that is less than or equal to every other value in the array",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [
+          "array"
+        ],
+        "comment": "if array is empty",
+        "kind": "THROWS",
+        "condition": "args[0].length==0"
+      }
+    ]
+  },
+  {
+    "signature": "max(float[] array)",
+    "name": "max",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Floats",
+      "name": "Floats",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Floats",
+    "isVarArgs": true,
+    "returnType": {
+      "qualifiedName": "float",
+      "name": "float",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "float[]",
+          "name": "float[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          }
+        },
+        "name": "array"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float[]",
+            "name": "float[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "float",
+              "name": "float",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "a nonempty array of float values",
+        "kind": "PARAM",
+        "condition": "(args[0].length==0)==false"
+      }
+    ],
+    "returnTag": {
+      "comment": "the value present in array that is greater than or equal to every other value in the array",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [
+          "array"
+        ],
+        "comment": "if array is empty",
+        "kind": "THROWS",
+        "condition": "args[0].length==0"
+      }
+    ]
+  },
+  {
+    "signature": "concat(float[][] arrays)",
+    "name": "concat",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Floats",
+      "name": "Floats",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Floats",
+    "isVarArgs": true,
+    "returnType": {
+      "qualifiedName": "float[]",
+      "name": "float[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "float",
+        "name": "float",
+        "isArray": false
+      }
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "float[][]",
+          "name": "float[][]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          }
+        },
+        "name": "arrays"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float[][]",
+            "name": "float[][]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "float",
+              "name": "float",
+              "isArray": false
+            }
+          },
+          "name": "arrays"
+        },
+        "comment": "zero or more float arrays",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a single array containing all the values from the source arrays, in order",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "stringConverter()",
+    "name": "stringConverter",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Floats",
+      "name": "Floats",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Floats",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "com.google.common.base.Converter",
+      "name": "Converter",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "ensureCapacity(float[] array,int minLength,int padding)",
+    "name": "ensureCapacity",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Floats",
+      "name": "Floats",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Floats",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "float[]",
+      "name": "float[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "float",
+        "name": "float",
+        "isArray": false
+      }
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "float[]",
+          "name": "float[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          }
+        },
+        "name": "array"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "minLength"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "padding"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float[]",
+            "name": "float[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "float",
+              "name": "float",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "the source array",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "minLength"
+        },
+        "comment": "the minimum length the returned array must guarantee",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "padding"
+        },
+        "comment": "an extra amount to \"grow\" the array by if growth is necessary",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "an array containing the values of array, with guaranteed minimum length minLength",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [
+          "minLength",
+          "padding"
+        ],
+        "comment": "if minLength or padding is negative",
+        "kind": "THROWS",
+        "condition": "args[1]<0 || args[2]<0"
+      }
+    ]
+  },
+  {
+    "signature": "join(java.lang.String separator,float[] array)",
+    "name": "join",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Floats",
+      "name": "Floats",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Floats",
+    "isVarArgs": true,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "separator"
+      },
+      {
+        "type": {
+          "qualifiedName": "float[]",
+          "name": "float[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          }
+        },
+        "name": "array"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "separator"
+        },
+        "comment": "the text that should appear between consecutive values in the resulting string (but not at the start or end)",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float[]",
+            "name": "float[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "float",
+              "name": "float",
+              "isArray": false
+            }
+          },
+          "name": "array"
+        },
+        "comment": "an array of float values, possibly empty",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "lexicographicalComparator()",
+    "name": "lexicographicalComparator",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Floats",
+      "name": "Floats",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Floats",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Comparator",
+      "name": "Comparator",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "toArray(java.util.Collection collection)",
+    "name": "toArray",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Floats",
+      "name": "Floats",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Floats",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "float[]",
+      "name": "float[]",
+      "isArray": true,
+      "componentType": {
+        "qualifiedName": "float",
+        "name": "float",
+        "isArray": false
+      }
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "collection"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "collection"
+        },
+        "comment": "a collection of Number instances",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "an array containing the same values as collection, in the same order, converted to primitives",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "codeTags": [
+          "collection"
+        ],
+        "comment": "if collection or any of its elements is null",
+        "kind": "THROWS",
+        "condition": "args[0]==null || args[0].contains(null)"
+      }
+    ]
+  },
+  {
+    "signature": "asList(float[] backingArray)",
+    "name": "asList",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Floats",
+      "name": "Floats",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Floats",
+    "isVarArgs": true,
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "float[]",
+          "name": "float[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          }
+        },
+        "name": "backingArray"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float[]",
+            "name": "float[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "float",
+              "name": "float",
+              "isArray": false
+            }
+          },
+          "name": "backingArray"
+        },
+        "comment": "the array to back the list",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a list view of the array",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "tryParse(java.lang.String string)",
+    "name": "tryParse",
+    "containingClass": {
+      "qualifiedName": "com.google.common.primitives.Floats",
+      "name": "Floats",
+      "isArray": false
+    },
+    "targetClass": "com.google.common.primitives.Floats",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.Float",
+      "name": "Float",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "string"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "string"
+        },
+        "comment": "the string representation of a float value",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the floating point value represented by string, or null if string has a length of zero or cannot be parsed as a float value",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  }
+]

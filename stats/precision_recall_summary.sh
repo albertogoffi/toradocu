@@ -6,9 +6,10 @@
 ERROR_MESSAGE='Script must be invoked with one parameter: either "jdoctor" or "jdoctor_semantics" or "tcomment"'
 
 # Parse command line argument and set variables
-TESTS_PREFIX="org.toradocu.accuracy.PrecisionRecall"
-TESTS='--tests org.toradocu.accuracy.*'
+TESTS='--tests org.toradocu.accuracy.random.*'
+
 # The following is how to run specific tests.
+#TESTS_PREFIX="org.toradocu.accuracy.PrecisionRecall"
 #TESTS='--tests '$TESTS_PREFIX'CommonsCollections4 --tests '$TESTS_PREFIX'CommonsMath3 --tests '$TESTS_PREFIX'Guava19 --tests '$TESTS_PREFIX'JGraphT --tests '$TESTS_PREFIX'PlumeLib'
 
 if [ $# -eq 1 ]; then

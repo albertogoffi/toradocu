@@ -8,7 +8,7 @@ public class AccuracyRandomGuava19 extends AbstractPrecisionRecallTestSuite {
 
   private static final String GUAVA_19_SRC = "src/test/resources/src/guava-19.0-sources/";
   private static final String GUAVA_19_BIN = "src/test/resources/bin/guava-19.0.jar";
-  private static final String GUAVA_GOAL_DIR = "src/test/resources/goal-output/guava-19.0/";
+  private static final String GUAVA_GOAL_DIR = "src/test/resources/goal-output/random/guava-19.0/";
 
   public AccuracyRandomGuava19() {
     super(GUAVA_19_SRC, GUAVA_19_BIN, GUAVA_GOAL_DIR);
