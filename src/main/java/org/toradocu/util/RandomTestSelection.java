@@ -1,5 +1,7 @@
 package org.toradocu.util;
 
+import static java.util.stream.Collectors.toList;
+
 import com.github.javaparser.ast.body.CallableDeclaration;
 import com.github.javaparser.javadoc.Javadoc;
 import com.github.javaparser.javadoc.JavadocBlockTag;
@@ -8,47 +10,34 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
-import java.util.stream.Stream;
 import org.toradocu.extractor.JavadocExtractor;
 
-/** Created by arianna on 07/08/17. */
 public class RandomTestSelection {
 
-  public static ArrayList<Path> getJavaProjectSources(String projectRoot) {
-    ArrayList<Path> javaFiles = new ArrayList<Path>();
-
+  private static List<Path> getJavaProjectSources(String projectRoot) {
     try {
-      Stream<Path> allProjectFiles =
-          allProjectFiles =
-              Files.find(
-                  Paths.get(projectRoot),
-                  Integer.MAX_VALUE,
-                  (filePath, fileAttr) -> fileAttr.isRegularFile());
-
-      allProjectFiles.forEach(
-          item -> {
-            if (item.toString().toLowerCase().endsWith(".java")) {
-              javaFiles.add(item);
-            }
-          });
-
+      return Files.find(
+              Paths.get(projectRoot),
+              Integer.MAX_VALUE,
+              (filePath, fileAttr) -> fileAttr.isRegularFile())
+          .filter(f -> f.toFile().getName().endsWith(".java"))
+          .collect(toList());
     } catch (IOException e) {
       e.printStackTrace();
+      return Collections.emptyList();
     }
-
-    return javaFiles;
   }
 
-  public static Path pickRandomClass(ArrayList<Path> javaFiles) {
+  private static Path pickRandomClass(List<Path> javaFiles) {
     JavadocExtractor extractor = new JavadocExtractor();
-    List<CallableDeclaration<?>> methods = new ArrayList<CallableDeclaration<?>>();
-    Path choosenClass = null;
+    List<CallableDeclaration<?>> methods;
+    Path chosenClass = null;
 
-    while (choosenClass == null) {
+    while (chosenClass == null) {
       int index = new Random().nextInt(javaFiles.size());
       String sourcePath = javaFiles.get(index).toString();
       if (sourcePath.contains("package-info.java")) {
@@ -63,7 +52,7 @@ public class RandomTestSelection {
           numberOfTags += findTagsForMethod(m);
         }
         if (numberOfTags > 4) {
-          choosenClass = javaFiles.get(index);
+          chosenClass = javaFiles.get(index);
         }
 
       } catch (FileNotFoundException e) {
@@ -71,7 +60,7 @@ public class RandomTestSelection {
       }
     }
 
-    return choosenClass;
+    return chosenClass;
   }
 
   private static int findTagsForMethod(CallableDeclaration sourceMember) {
