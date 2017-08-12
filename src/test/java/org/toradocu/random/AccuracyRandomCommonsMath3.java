@@ -6,10 +6,8 @@ import org.toradocu.testlib.PrecisionRecallTest;
 
 public class AccuracyRandomCommonsMath3 extends AbstractPrecisionRecallTestSuite {
 
-  private static final String SRC =
-      "src/test/resources/commons-math3-3.6.1-src/src/main/java";
-  private static final String EXPECTED =
-      "src/test/resources/CommonsMath-3.6.1/";
+  private static final String SRC = "src/test/resources/commons-math3-3.6.1-src/src/main/java";
+  private static final String EXPECTED = "src/test/resources/CommonsMath-3.6.1/";
 
   @Test
   public void curveFitterTest() throws Exception {
