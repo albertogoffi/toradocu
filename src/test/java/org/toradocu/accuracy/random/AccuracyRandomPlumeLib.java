@@ -1,6 +1,5 @@
 package org.toradocu.accuracy.random;
 
-import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 
 /** Created by arianna on 07/08/17. */
@@ -12,20 +11,5 @@ public class AccuracyRandomPlumeLib extends AbstractPrecisionRecallTestSuite {
 
   public AccuracyRandomPlumeLib() {
     super(PLUMELIB_SRC, PLUMELIB_BIN, PLUMELIB_GOAL_DIR);
-  }
-
-  @Test
-  public void testRandomSelector() throws Exception {
-    test("plume.RandomSelector", 1, 1, 1, 1, 1, 1);
-  }
-
-  @Test
-  public void testPair() throws Exception {
-    test("plume.Pair", 1, 1, 1, 1, 1, 1);
-  }
-
-  @Test
-  public void testFileCompiler() throws Exception {
-    test("plume.FileCompiler", 1, 1, 1, 1, 1, 1);
   }
 }
