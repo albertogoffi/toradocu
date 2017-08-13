@@ -23,9 +23,4 @@ public class AccuracyRandomGuava19 extends AbstractPrecisionRecallTestSuite {
   public void testUnicodeEscaper() throws Exception {
     test("com.google.common.escape.UnicodeEscaper", 1, 1, 1, 1, 1, 1);
   }
-
-  @Test
-  public void testAtomicDoubleArray() throws Exception {
-    test("com.google.common.util.concurrent.AtomicDoubleArray", 1, 1, 1, 1, 0, 1);
-  }
 }

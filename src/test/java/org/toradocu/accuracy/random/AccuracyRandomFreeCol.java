@@ -1,6 +1,5 @@
 package org.toradocu.accuracy.random;
 
-import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 
 /** Created by arianna on 07/08/17. */
@@ -13,20 +12,5 @@ public class AccuracyRandomFreeCol extends AbstractPrecisionRecallTestSuite {
 
   public AccuracyRandomFreeCol() {
     super(FREECOL_SRC, FREECOL_BIN, FREECOL_GOAL_DIR);
-  }
-
-  @Test
-  public void testLocatable() throws Exception {
-    test("net.sf.freecol.common.model.Locatable", 1, 1, 1, 1, 1, 1);
-  }
-
-  @Test
-  public void testCashInTreasureTrainMessage() throws Exception {
-    test("net.sf.freecol.common.networking.CashInTreasureTrainMessage", 1, 1, 1, 1, 1, 1);
-  }
-
-  @Test
-  public void testMoveToMessage() throws Exception {
-    test("net.sf.freecol.common.networking.MoveToMessage", 1, 1, 1, 1, 1, 1);
   }
 }

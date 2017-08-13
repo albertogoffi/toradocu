@@ -17,11 +17,6 @@ public class AccuracyRandomCommonsMath3 extends AbstractPrecisionRecallTestSuite
   }
 
   @Test
-  public void testCurveFitter() throws Exception {
-    test("org.apache.commons.math3.fitting.CurveFitter", 1, 1, 1, 1, 1, 1);
-  }
-
-  @Test
   public void testUnivariateMultiStartOptimizer() throws Exception {
     test(
         "org.apache.commons.math3.optimization.univariate.UnivariateMultiStartOptimizer",
@@ -31,10 +26,5 @@ public class AccuracyRandomCommonsMath3 extends AbstractPrecisionRecallTestSuite
         1,
         1,
         1);
-  }
-
-  @Test
-  public void testClusterer() throws Exception {
-    test("org.apache.commons.math3.ml.clustering.Clusterer", 1, 1, 1, 1, 1, 1);
   }
 }

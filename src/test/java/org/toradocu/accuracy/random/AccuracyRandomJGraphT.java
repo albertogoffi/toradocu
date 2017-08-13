@@ -1,6 +1,5 @@
 package org.toradocu.accuracy.random;
 
-import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 
 /** Created by arianna on 07/08/17. */
@@ -12,20 +11,5 @@ public class AccuracyRandomJGraphT extends AbstractPrecisionRecallTestSuite {
 
   public AccuracyRandomJGraphT() {
     super(JGRAPHT_SRC, JGRAPHT_BIN, JGRAPHT_GOAL_DIR);
-  }
-
-  @Test
-  public void testMinSourceSinkCut() throws Exception {
-    test("org.jgrapht.alg.MinSourceSinkCut", 1, 1, 1, 1, 1, 1);
-  }
-
-  @Test
-  public void testRankingPathElement() throws Exception {
-    test("org.jgrapht.alg.RankingPathElement", 1, 1, 1, 1, 1, 1);
-  }
-
-  @Test
-  public void testDirectedNeighborIndex() throws Exception {
-    test("org.jgrapht.alg.DirectedNeighborIndex", 1, 1, 1, 1, 1, 1);
   }
 }
