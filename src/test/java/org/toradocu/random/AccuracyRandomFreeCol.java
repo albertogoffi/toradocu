@@ -10,18 +10,18 @@ public class AccuracyRandomFreeCol extends AbstractPrecisionRecallTestSuite {
   private static final String EXPECTED = "src/test/resources/FreeCol/";
 
   @Test
-  public void locatableTest() throws Exception {
-    test("net.sf.freecol.common.model.Locatable");
+  public void playerTest() throws Exception {
+    test("net.sf.freecol.common.model.Player");
   }
 
   @Test
-  public void cashInTreasureTrainMessageTest() throws Exception {
-    test("net.sf.freecol.common.networking.CashInTreasureTrainMessage");
+  public void buildingTypeTest() throws Exception {
+    test("net.sf.freecol.common.model.BuildingType");
   }
 
   @Test
-  public void moveToMessageTest() throws Exception {
-    test("net.sf.freecol.common.networking.MoveToMessage");
+  public void indianNationTypeTest() throws Exception {
+    test("net.sf.freecol.common.model.IndianNationType");
   }
 
   private void test(String clazz) {
