@@ -20,7 +20,7 @@ import org.toradocu.random.AccuracyRandomPlumeLib;
     AccuracyRandomGuava19.class,
     AccuracyRandomJGraphT.class,
     AccuracyRandomPlumeLib.class
-g})
+})
 public class PrecisionRecallPaper {
 
 }
