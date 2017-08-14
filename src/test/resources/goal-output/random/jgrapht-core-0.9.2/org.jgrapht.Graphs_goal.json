@@ -1,0 +1,1188 @@
+[
+  {
+    "signature": "addEdge(org.jgrapht.Graph g,java.lang.Object sourceVertex,java.lang.Object targetVertex,double weight)",
+    "name": "addEdge",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graphs",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "g"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "sourceVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "targetVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "weight"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.Graph",
+            "name": "Graph",
+            "isArray": false
+          },
+          "name": "g"
+        },
+        "comment": "the graph for which the edge to be added.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "sourceVertex"
+        },
+        "comment": "source vertex of the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "targetVertex"
+        },
+        "comment": "target vertex of the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "weight"
+        },
+        "comment": "weight of the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The newly created edge if added to the graph, otherwise null.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "addEdgeWithVertices(org.jgrapht.Graph g,java.lang.Object sourceVertex,java.lang.Object targetVertex)",
+    "name": "addEdgeWithVertices",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graphs",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "g"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "sourceVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "targetVertex"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.Graph",
+            "name": "Graph",
+            "isArray": false
+          },
+          "name": "g"
+        },
+        "comment": "the graph for which the specified edge to be added.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "sourceVertex"
+        },
+        "comment": "source vertex of the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "targetVertex"
+        },
+        "comment": "target vertex of the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The newly created edge if added to the graph, otherwise null.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "addEdgeWithVertices(org.jgrapht.Graph targetGraph,org.jgrapht.Graph sourceGraph,java.lang.Object edge)",
+    "name": "addEdgeWithVertices",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graphs",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "targetGraph"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "sourceGraph"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "edge"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.Graph",
+            "name": "Graph",
+            "isArray": false
+          },
+          "name": "targetGraph"
+        },
+        "comment": "the graph for which the specified edge to be added.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.Graph",
+            "name": "Graph",
+            "isArray": false
+          },
+          "name": "sourceGraph"
+        },
+        "comment": "the graph in which the specified edge is already present",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "edge"
+        },
+        "comment": "edge to add",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if the target graph did not already contain the specified edge.",
+      "kind": "RETURN",
+      "condition": "(args[0].containsEdge(args[2]))==false?result==true"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "addEdgeWithVertices(org.jgrapht.Graph g,java.lang.Object sourceVertex,java.lang.Object targetVertex,double weight)",
+    "name": "addEdgeWithVertices",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graphs",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "g"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "sourceVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "targetVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "weight"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.Graph",
+            "name": "Graph",
+            "isArray": false
+          },
+          "name": "g"
+        },
+        "comment": "the graph for which the specified edge to be added.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "sourceVertex"
+        },
+        "comment": "source vertex of the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "targetVertex"
+        },
+        "comment": "target vertex of the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "weight"
+        },
+        "comment": "weight of the edge.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The newly created edge if added to the graph, otherwise null.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "addGraph(org.jgrapht.Graph destination,org.jgrapht.Graph source)",
+    "name": "addGraph",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graphs",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "destination"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "source"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.Graph",
+            "name": "Graph",
+            "isArray": false
+          },
+          "name": "destination"
+        },
+        "comment": "the graph to which vertices and edges are added.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.Graph",
+            "name": "Graph",
+            "isArray": false
+          },
+          "name": "source"
+        },
+        "comment": "the graph used as source for vertices and edges to add.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if and only if the destination graph has been changed as a result of this operation.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "addGraphReversed(org.jgrapht.DirectedGraph destination,org.jgrapht.DirectedGraph source)",
+    "name": "addGraphReversed",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graphs",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.DirectedGraph",
+          "name": "DirectedGraph",
+          "isArray": false
+        },
+        "name": "destination"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.DirectedGraph",
+          "name": "DirectedGraph",
+          "isArray": false
+        },
+        "name": "source"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.DirectedGraph",
+            "name": "DirectedGraph",
+            "isArray": false
+          },
+          "name": "destination"
+        },
+        "comment": "the graph to which vertices and edges are added.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.DirectedGraph",
+            "name": "DirectedGraph",
+            "isArray": false
+          },
+          "name": "source"
+        },
+        "comment": "the graph used as source for vertices and edges to add.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "addAllEdges(org.jgrapht.Graph destination,org.jgrapht.Graph source,java.util.Collection edges)",
+    "name": "addAllEdges",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graphs",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "destination"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "source"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "edges"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.Graph",
+            "name": "Graph",
+            "isArray": false
+          },
+          "name": "destination"
+        },
+        "comment": "the graph to which edges are to be added",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.Graph",
+            "name": "Graph",
+            "isArray": false
+          },
+          "name": "source"
+        },
+        "comment": "the graph used as a source for edges to add",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "edges"
+        },
+        "comment": "the edges to be added",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if this graph changed as a result of the call",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "addAllVertices(org.jgrapht.Graph destination,java.util.Collection vertices)",
+    "name": "addAllVertices",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graphs",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "destination"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "vertices"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.Graph",
+            "name": "Graph",
+            "isArray": false
+          },
+          "name": "destination"
+        },
+        "comment": "the graph to which edges are to be added",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "vertices"
+        },
+        "comment": "the vertices to be added to the graph.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if graph changed as a result of the call",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the specified vertices contains one or more null vertices, or if the specified vertex collection is null.",
+        "kind": "THROWS",
+        "condition": "args[1].contains(null) || args[1]==null"
+      }
+    ]
+  },
+  {
+    "signature": "neighborListOf(org.jgrapht.Graph g,java.lang.Object vertex)",
+    "name": "neighborListOf",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graphs",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "g"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "vertex"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.Graph",
+            "name": "Graph",
+            "isArray": false
+          },
+          "name": "g"
+        },
+        "comment": "the graph to look for neighbors in.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "vertex"
+        },
+        "comment": "the vertex to get the neighbors of.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a list of the vertices that are the neighbors of the specified vertex.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "predecessorListOf(org.jgrapht.DirectedGraph g,java.lang.Object vertex)",
+    "name": "predecessorListOf",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graphs",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.DirectedGraph",
+          "name": "DirectedGraph",
+          "isArray": false
+        },
+        "name": "g"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "vertex"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.DirectedGraph",
+            "name": "DirectedGraph",
+            "isArray": false
+          },
+          "name": "g"
+        },
+        "comment": "the graph to look for predecessors in.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "vertex"
+        },
+        "comment": "the vertex to get the predecessors of.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a list of the vertices that are the direct predecessors of the specified vertex.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "successorListOf(org.jgrapht.DirectedGraph g,java.lang.Object vertex)",
+    "name": "successorListOf",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graphs",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.DirectedGraph",
+          "name": "DirectedGraph",
+          "isArray": false
+        },
+        "name": "g"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "vertex"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.DirectedGraph",
+            "name": "DirectedGraph",
+            "isArray": false
+          },
+          "name": "g"
+        },
+        "comment": "the graph to look for successors in.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "vertex"
+        },
+        "comment": "the vertex to get the successors of.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a list of the vertices that are the direct successors of the specified vertex.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "undirectedGraph(org.jgrapht.Graph g)",
+    "name": "undirectedGraph",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graphs",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.jgrapht.UndirectedGraph",
+      "name": "UndirectedGraph",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "g"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.Graph",
+            "name": "Graph",
+            "isArray": false
+          },
+          "name": "g"
+        },
+        "comment": "the graph for which an undirected view is to be returned.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "an undirected view of the specified graph, if it is directed, or or the specified graph itself if it is already undirected.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the graph is neither DirectedGraph nor UndirectedGraph.",
+        "kind": "THROWS",
+        "condition": "!(args[0] instanceof org.jgrapht.DirectedGraph) && !(args[0] instanceof org.jgrapht.UndirectedGraph)"
+      }
+    ]
+  },
+  {
+    "signature": "testIncidence(org.jgrapht.Graph g,java.lang.Object e,java.lang.Object v)",
+    "name": "testIncidence",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graphs",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "g"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "e"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.Graph",
+            "name": "Graph",
+            "isArray": false
+          },
+          "name": "g"
+        },
+        "comment": "graph containing e and v",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "edge in g",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "vertex in g",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true iff e is incident on v",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getOppositeVertex(org.jgrapht.Graph g,java.lang.Object e,java.lang.Object v)",
+    "name": "getOppositeVertex",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graphs",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "V",
+      "name": "V",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "g"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "e"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.Graph",
+            "name": "Graph",
+            "isArray": false
+          },
+          "name": "g"
+        },
+        "comment": "graph containing e and v",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "e"
+        },
+        "comment": "edge in g",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "vertex in g",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "vertex opposite to v across e",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getPathVertexList(org.jgrapht.GraphPath path)",
+    "name": "getPathVertexList",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.Graphs",
+      "name": "Graphs",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.Graphs",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List",
+      "name": "List",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.GraphPath",
+          "name": "GraphPath",
+          "isArray": false
+        },
+        "name": "path"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.GraphPath",
+            "name": "GraphPath",
+            "isArray": false
+          },
+          "name": "path"
+        },
+        "comment": "path of interest",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "corresponding vertex list",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  }
+]

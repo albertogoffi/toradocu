@@ -19,4 +19,14 @@ public class AccuracyRandomGraphStream extends AbstractPrecisionRecallTestSuite 
   public void testGraphMetrics() throws Exception {
     test("org.graphstream.ui.swingViewer.util.GraphMetrics", 1, 1, 1, 1, 0.666, 1);
   }
+
+  @Test
+  public void testSingleGraph() throws Exception {
+    test("org.graphstream.graph.implementations.SingleGraph", 1, 1, 0, 1, 1, 1);
+  }
+
+  @Test
+  public void testFixedArrayList() throws Exception {
+    test("org.graphstream.util.set.FixedArrayList", 1, 1, 1, 1, 1, 1);
+  }
 }

@@ -1,0 +1,475 @@
+[
+  {
+    "signature": "org.apache.commons.math3.genetics.RandomKey(java.util.List<java.lang.Double> representation)",
+    "name": "org.apache.commons.math3.genetics.RandomKey",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.RandomKey",
+      "name": "RandomKey",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.RandomKey",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "representation"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "representation"
+        },
+        "comment": "list of [0 1] values representing the permutation.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.genetics.InvalidRepresentationException",
+          "name": "InvalidRepresentationException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the representation can not represent a valid chromosome",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "org.apache.commons.math3.genetics.RandomKey(java.lang.Double[] representation)",
+    "name": "org.apache.commons.math3.genetics.RandomKey",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.RandomKey",
+      "name": "RandomKey",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.RandomKey",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[Ljava.lang.Double;",
+          "name": "Double[]",
+          "isArray": true
+        },
+        "name": "representation"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[Ljava.lang.Double;",
+            "name": "Double[]",
+            "isArray": true
+          },
+          "name": "representation"
+        },
+        "comment": "array of [0 1] values representing the permutation.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.genetics.InvalidRepresentationException",
+          "name": "InvalidRepresentationException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the representation can not represent a valid chromosome",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "decode(java.util.List<T> sequence)",
+    "name": "decode",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.RandomKey",
+      "name": "RandomKey",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.RandomKey",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List<T>",
+      "name": "java.util.List<T>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "sequence"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "isSame(org.apache.commons.math3.genetics.Chromosome another)",
+    "name": "isSame",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.RandomKey",
+      "name": "RandomKey",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.RandomKey",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.genetics.Chromosome",
+          "name": "Chromosome",
+          "isArray": false
+        },
+        "name": "another"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.genetics.Chromosome",
+            "name": "Chromosome",
+            "isArray": false
+          },
+          "name": "another"
+        },
+        "comment": "chromosome to compare.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if chromosomes encode the same permutation, false otherwise.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "checkValidity(java.util.List<java.lang.Double> chromosomeRepresentation)",
+    "name": "checkValidity",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.RandomKey",
+      "name": "RandomKey",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.RandomKey",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "chromosomeRepresentation"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "randomPermutation(int l)",
+    "name": "randomPermutation",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.RandomKey",
+      "name": "RandomKey",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.RandomKey",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List<java.lang.Double>",
+      "name": "java.util.List<java.lang.Double>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "l"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "l"
+        },
+        "comment": "length of the permutation.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "representation of a random permutation.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "identityPermutation(int l)",
+    "name": "identityPermutation",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.RandomKey",
+      "name": "RandomKey",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.RandomKey",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List<java.lang.Double>",
+      "name": "java.util.List<java.lang.Double>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "l"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "l"
+        },
+        "comment": "length of the permutation.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "representation of an identity permutation.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "comparatorPermutation(java.util.List<S> data, java.util.Comparator<S> comparator)",
+    "name": "comparatorPermutation",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.RandomKey",
+      "name": "RandomKey",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.RandomKey",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List<java.lang.Double>",
+      "name": "java.util.List<java.lang.Double>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "data"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Comparator",
+          "name": "Comparator",
+          "isArray": false
+        },
+        "name": "comparator"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "data"
+        },
+        "comment": "list of data determining the order.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Comparator",
+            "name": "Comparator",
+            "isArray": false
+          },
+          "name": "comparator"
+        },
+        "comment": "how the data .comparator will be compared.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "list representation of the permutation corresponding to the parameters.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "inducedPermutation(java.util.List<S> originalData, java.util.List<S> permutedData)",
+    "name": "inducedPermutation",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.RandomKey",
+      "name": "RandomKey",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.RandomKey",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List<java.lang.Double>",
+      "name": "java.util.List<java.lang.Double>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "originalData"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "permutedData"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "originalData"
+        },
+        "comment": "the original unpermuted data.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "permutedData"
+        },
+        "comment": "the data somehow permuted.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "representation of a permutation corresponding to the permutation permutedData.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
+          "name": "DimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the length of originalData and permutedData lists are not equal",
+        "kind": "THROWS",
+        "condition": "args[0].size() != args[1].size()"
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException",
+          "name": "MathIllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the permutedData and originalData lists contain different data",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "toString()",
+    "name": "toString",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.RandomKey",
+      "name": "RandomKey",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.RandomKey",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "java.lang.String",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  }
+]

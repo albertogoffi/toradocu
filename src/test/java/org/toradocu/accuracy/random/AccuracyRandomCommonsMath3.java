@@ -27,4 +27,14 @@ public class AccuracyRandomCommonsMath3 extends AbstractPrecisionRecallTestSuite
         1,
         1);
   }
+
+  @Test
+  public void testRandomKey() throws Exception {
+    test("org.apache.commons.math3.genetics.RandomKey", 1, 0, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testAbstractSimplex() throws Exception {
+    test("org.apache.commons.math3.optimization.direct.AbstractSimplex", 0.5, 1, 1, 1, 1, 1);
+  }
 }

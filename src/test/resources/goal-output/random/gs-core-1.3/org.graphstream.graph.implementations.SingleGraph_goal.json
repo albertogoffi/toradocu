@@ -1,0 +1,239 @@
+[
+  {
+    "signature": "SingleGraph(java.lang.String id,boolean strictChecking,boolean autoCreate,int initialNodeCapacity,int initialEdgeCapacity)",
+    "name": "SingleGraph",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.SingleGraph",
+      "name": "SingleGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.SingleGraph",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "id"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "strictChecking"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "autoCreate"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "initialNodeCapacity"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "initialEdgeCapacity"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "Unique identifier of the graph.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "strictChecking"
+        },
+        "comment": "If true any non-fatal error throws an exception.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "autoCreate"
+        },
+        "comment": "If true (and strict checking is false), nodes are automatically created when referenced when creating a edge, even if not yet inserted in the graph.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "initialNodeCapacity"
+        },
+        "comment": "Initial capacity of the node storage data structures. Use this if you know the approximate maximum number of nodes of the graph. The graph can grow beyond this limit, but storage reallocation is expensive operation.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "initialEdgeCapacity"
+        },
+        "comment": "Initial capacity of the edge storage data structures. Use this if you know the approximate maximum number of edges of the graph. The graph can grow beyond this limit, but storage reallocation is expensive operation.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "SingleGraph(java.lang.String id,boolean strictChecking,boolean autoCreate)",
+    "name": "SingleGraph",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.SingleGraph",
+      "name": "SingleGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.SingleGraph",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "id"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "strictChecking"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "autoCreate"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "Unique identifier of the graph.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "strictChecking"
+        },
+        "comment": "If true any non-fatal error throws an exception.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "autoCreate"
+        },
+        "comment": "If true (and strict checking is false), nodes are automatically created when referenced when creating a edge, even if not yet inserted in the graph.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "SingleGraph(java.lang.String id)",
+    "name": "SingleGraph",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.implementations.SingleGraph",
+      "name": "SingleGraph",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.implementations.SingleGraph",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "id"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "id"
+        },
+        "comment": "Unique identifier of the graph.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  }
+]
