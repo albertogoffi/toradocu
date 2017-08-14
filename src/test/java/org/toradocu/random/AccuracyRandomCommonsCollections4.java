@@ -22,8 +22,8 @@ public class AccuracyRandomCommonsCollections4 extends AbstractPrecisionRecallTe
   }
 
   @Test
-  public void lazyIteratorChainTest() throws Exception {
-    test("org.apache.commons.collections4.iterators.LazyIteratorChain");
+  public void factoryUtilsTest() throws Exception {
+    test("org.apache.commons.collections4.FactoryUtils");
   }
 
   private void test(String clazz) {
