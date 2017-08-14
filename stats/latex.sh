@@ -170,14 +170,14 @@ echo 'Commons Math 3.6.1' \
      '& '${CLASSES[1]}' & '${SELECTED_CLASSES[1]}' & '${METHODS[1]}' & '${DOCUMENTED_METHODS[1]}' & '${PRE[1]}' & '${POST[1]}' & '${EXC_POST[1]}' \\' >> "$SUBJECTS_TABLE"
 echo 'FreeCol 0.11.6' \
      '& '${CLASSES[2]}' & '${SELECTED_CLASSES[2]}' & '${METHODS[2]}' & '${DOCUMENTED_METHODS[2]}' & '${PRE[2]}' & '${POST[2]}' & '${EXC_POST[2]}' \\' >> "$SUBJECTS_TABLE"
+echo 'GraphStream 1.3' \
+     '& '${CLASSES[6]}' & '${SELECTED_CLASSES[6]}' & '${METHODS[6]}' & '${DOCUMENTED_METHODS[6]}' & '${PRE[6]}' & '${POST[6]}' & '${EXC_POST[6]}' \\' >> "$SUBJECTS_TABLE"
 echo 'Guava 19' \
      '& '${CLASSES[3]}' & '${SELECTED_CLASSES[3]}' & '${METHODS[3]}' & '${DOCUMENTED_METHODS[3]}' & '${PRE[3]}' & '${POST[3]}' & '${EXC_POST[3]}' \\' >> "$SUBJECTS_TABLE"
 echo 'JGraphT 0.9.2' \
      '& '${CLASSES[4]}' & '${SELECTED_CLASSES[4]}' & '${METHODS[4]}' & '${DOCUMENTED_METHODS[4]}' & '${PRE[4]}' & '${POST[4]}' & '${EXC_POST[4]}' \\' >> "$SUBJECTS_TABLE"
 echo 'Plume-lib 1.1' \
      '& '${CLASSES[5]}' & '${SELECTED_CLASSES[5]}' & '${METHODS[5]}' & '${DOCUMENTED_METHODS[5]}' & '${PRE[5]}' & '${POST[5]}' & '${EXC_POST[5]}' \\' >> "$SUBJECTS_TABLE"
-echo 'GraphStream 1.3' \
-     '& '${CLASSES[6]}' & '${SELECTED_CLASSES[6]}' & '${METHODS[6]}' & '${DOCUMENTED_METHODS[6]}' & '${PRE[6]}' & '${POST[6]}' & '${EXC_POST[6]}' \\' >> "$SUBJECTS_TABLE"
 echo '\midrule' >> "$SUBJECTS_TABLE"
 echo 'Total & '${TOTAL[0]}' & '${TOTAL[1]}' & '${TOTAL[2]}' & '${TOTAL[3]}' & '${TOTAL[4]}' & '${TOTAL[5]}' & '${TOTAL[6]}' \\' >> "$SUBJECTS_TABLE"
 
