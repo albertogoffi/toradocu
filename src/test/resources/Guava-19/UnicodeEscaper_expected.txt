@@ -1,0 +1,5 @@
+com.google.common.escape.UnicodeEscaper.escape(java.lang.String) throws java.lang.IllegalArgumentException if invalid surrogate characters are encountered ==> []
+com.google.common.escape.UnicodeEscaper.escape(java.lang.String) throws java.lang.NullPointerException if string is null ==> [args[0]==null]
+com.google.common.escape.UnicodeEscaper.escapeSlow(java.lang.String, int) throws java.lang.IllegalArgumentException if invalid surrogate characters are encountered ==> []
+com.google.common.escape.UnicodeEscaper.escapeSlow(java.lang.String, int) throws java.lang.NullPointerException if string is null ==> [args[0]==null]
+com.google.common.escape.UnicodeEscaper.nextEscapeIndex(java.lang.CharSequence, int, int) throws java.lang.IllegalArgumentException if the scanned sub-sequence of csq contains invalid surrogate pairs ==> []
