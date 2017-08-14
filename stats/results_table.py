@@ -63,7 +63,7 @@ overall_wrong = wrong_param + wrong_return + wrong_throws
 overall_unexpected = unexpected_param + unexpected_return + unexpected_throws
 overall_precision = 0 if overall_correct == 0 else float(overall_correct) / (overall_correct + overall_wrong + overall_unexpected)
 overall_recall = 0 if overall_correct == 0 else float(overall_correct) / (overall_correct + overall_wrong + overall_missing)
-fmeasure = (2 * overall_precision * overall_recall) / (overall_precision + overall_recall)
+fmeasure = 0 if overall_precision + overall_recall == 0 else (2 * overall_precision * overall_recall) / (overall_precision + overall_recall)
 
 output = "{:.2f}".format(param_precision) if (correct_param + wrong_param) > 0 else "n.a." # param_precision
 output += " & {:.2f} && ".format(param_recall) # param_recall
