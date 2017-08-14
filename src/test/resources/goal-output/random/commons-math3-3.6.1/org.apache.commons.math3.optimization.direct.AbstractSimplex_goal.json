@@ -1,0 +1,719 @@
+[
+  {
+    "signature": "org.apache.commons.math3.optimization.direct.AbstractSimplex(int n)",
+    "name": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+      "name": "AbstractSimplex",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "n"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "Dimension of the simplex.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "org.apache.commons.math3.optimization.direct.AbstractSimplex(int n, double sideLength)",
+    "name": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+      "name": "AbstractSimplex",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "n"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "sideLength"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "n"
+        },
+        "comment": "Dimension of the simplex.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "sideLength"
+        },
+        "comment": "Length of the sides of the hypercube.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "org.apache.commons.math3.optimization.direct.AbstractSimplex(double[] steps)",
+    "name": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+      "name": "AbstractSimplex",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[D",
+          "name": "double[]",
+          "isArray": true
+        },
+        "name": "steps"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[D",
+            "name": "double[]",
+            "isArray": true
+          },
+          "name": "steps"
+        },
+        "comment": "Steps along the canonical axes representing box edges. They negative but not zero.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "steps is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.ZeroException",
+          "name": "ZeroException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "one of the steps is zero.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "org.apache.commons.math3.optimization.direct.AbstractSimplex(double[][] referenceSimplex)",
+    "name": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+      "name": "AbstractSimplex",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[[D",
+          "name": "double[][]",
+          "isArray": true
+        },
+        "name": "referenceSimplex"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[[D",
+            "name": "double[][]",
+            "isArray": true
+          },
+          "name": "referenceSimplex"
+        },
+        "comment": "Reference simplex.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the reference simplex does not contain at least one point.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
+          "name": "DimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "there is a dimension mismatch in the reference simplex.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "one of its vertices is duplicated.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "getDimension()",
+    "name": "getDimension",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+      "name": "AbstractSimplex",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the dimension of the simplex.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getSize()",
+    "name": "getSize",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+      "name": "AbstractSimplex",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the size of the simplex.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "iterate(org.apache.commons.math3.analysis.MultivariateFunction evaluationFunction, java.util.Comparator<org.apache.commons.math3.optimization.PointValuePair> comparator)",
+    "name": "iterate",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+      "name": "AbstractSimplex",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.MultivariateFunction",
+          "name": "MultivariateFunction",
+          "isArray": false
+        },
+        "name": "evaluationFunction"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Comparator",
+          "name": "Comparator",
+          "isArray": false
+        },
+        "name": "comparator"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.analysis.MultivariateFunction",
+            "name": "MultivariateFunction",
+            "isArray": false
+          },
+          "name": "evaluationFunction"
+        },
+        "comment": "Evaluation function.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Comparator",
+            "name": "Comparator",
+            "isArray": false
+          },
+          "name": "comparator"
+        },
+        "comment": "Comparator to use to sort simplex vertices from best to worst.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.TooManyEvaluationsException",
+          "name": "TooManyEvaluationsException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the algorithm fails to converge.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "build(double[] startPoint)",
+    "name": "build",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+      "name": "AbstractSimplex",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[D",
+          "name": "double[]",
+          "isArray": true
+        },
+        "name": "startPoint"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[D",
+            "name": "double[]",
+            "isArray": true
+          },
+          "name": "startPoint"
+        },
+        "comment": "First point of the simplex.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
+          "name": "DimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the start point does not match simplex dimension.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "evaluate(org.apache.commons.math3.analysis.MultivariateFunction evaluationFunction, java.util.Comparator<org.apache.commons.math3.optimization.PointValuePair> comparator)",
+    "name": "evaluate",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+      "name": "AbstractSimplex",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.MultivariateFunction",
+          "name": "MultivariateFunction",
+          "isArray": false
+        },
+        "name": "evaluationFunction"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Comparator",
+          "name": "Comparator",
+          "isArray": false
+        },
+        "name": "comparator"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.analysis.MultivariateFunction",
+            "name": "MultivariateFunction",
+            "isArray": false
+          },
+          "name": "evaluationFunction"
+        },
+        "comment": "Evaluation function.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Comparator",
+            "name": "Comparator",
+            "isArray": false
+          },
+          "name": "comparator"
+        },
+        "comment": "Comparator to use to sort simplex vertices from best to worst.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.TooManyEvaluationsException",
+          "name": "TooManyEvaluationsException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the maximal number of evaluations is exceeded.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "replaceWorstPoint(org.apache.commons.math3.optimization.PointValuePair pointValuePair, java.util.Comparator<org.apache.commons.math3.optimization.PointValuePair> comparator)",
+    "name": "replaceWorstPoint",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+      "name": "AbstractSimplex",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.optimization.PointValuePair",
+          "name": "PointValuePair",
+          "isArray": false
+        },
+        "name": "pointValuePair"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Comparator",
+          "name": "Comparator",
+          "isArray": false
+        },
+        "name": "comparator"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.optimization.PointValuePair",
+            "name": "PointValuePair",
+            "isArray": false
+          },
+          "name": "pointValuePair"
+        },
+        "comment": "Point to insert.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Comparator",
+            "name": "Comparator",
+            "isArray": false
+          },
+          "name": "comparator"
+        },
+        "comment": "Comparator to use for sorting the simplex vertices from best to worst.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "getPoints()",
+    "name": "getPoints",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+      "name": "AbstractSimplex",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.optimization.PointValuePair[]",
+      "name": "org.apache.commons.math3.optimization.PointValuePair[]",
+      "isArray": true
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "all the simplex points.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getPoint(int index)",
+    "name": "getPoint",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+      "name": "AbstractSimplex",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.optimization.PointValuePair",
+      "name": "org.apache.commons.math3.optimization.PointValuePair",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "Location.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the point at location index.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setPoint(int index, org.apache.commons.math3.optimization.PointValuePair point)",
+    "name": "setPoint",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+      "name": "AbstractSimplex",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.optimization.PointValuePair",
+          "name": "PointValuePair",
+          "isArray": false
+        },
+        "name": "point"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "Location.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.optimization.PointValuePair",
+            "name": "PointValuePair",
+            "isArray": false
+          },
+          "name": "point"
+        },
+        "comment": "New value.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "setPoints(org.apache.commons.math3.optimization.PointValuePair[] points)",
+    "name": "setPoints",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+      "name": "AbstractSimplex",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.optimization.direct.AbstractSimplex",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[Lorg.apache.commons.math3.optimization.PointValuePair;",
+          "name": "PointValuePair[]",
+          "isArray": true
+        },
+        "name": "points"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[Lorg.apache.commons.math3.optimization.PointValuePair;",
+            "name": "PointValuePair[]",
+            "isArray": true
+          },
+          "name": "points"
+        },
+        "comment": "New Points.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  }
+]

@@ -1,0 +1,468 @@
+[
+  {
+    "signature": "DirectedAcyclicGraph(java.lang.Class arg0)",
+    "name": "DirectedAcyclicGraph",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+      "name": "DirectedAcyclicGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Class",
+          "name": "Class",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "DirectedAcyclicGraph(org.jgrapht.EdgeFactory ef)",
+    "name": "DirectedAcyclicGraph",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+      "name": "DirectedAcyclicGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.EdgeFactory",
+          "name": "EdgeFactory",
+          "isArray": false
+        },
+        "name": "ef"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "DirectedAcyclicGraph(java.lang.Class arg0,org.jgrapht.experimental.dag.DirectedAcyclicGraph.VisitedFactory visitedFactory,org.jgrapht.experimental.dag.DirectedAcyclicGraph.TopoOrderMappingFactory topoOrderFactory)",
+    "name": "DirectedAcyclicGraph",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+      "name": "DirectedAcyclicGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Class",
+          "name": "Class",
+          "isArray": false
+        },
+        "name": "arg0"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.experimental.dag.DirectedAcyclicGraph.VisitedFactory",
+          "name": "VisitedFactory",
+          "isArray": false
+        },
+        "name": "visitedFactory"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.experimental.dag.DirectedAcyclicGraph.TopoOrderMappingFactory",
+          "name": "TopoOrderMappingFactory",
+          "isArray": false
+        },
+        "name": "topoOrderFactory"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "iterator()",
+    "name": "iterator",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+      "name": "DirectedAcyclicGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "an iterator that will traverse the graph in topological order",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "addVertex(java.lang.Object v)",
+    "name": "addVertex",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+      "name": "DirectedAcyclicGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "addVertex(java.lang.Object v,boolean addToTop)",
+    "name": "addVertex",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+      "name": "DirectedAcyclicGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "v"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "addToTop"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "addToTop"
+        },
+        "comment": "",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "whether new vertex was added",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "addDagEdge(java.lang.Object fromVertex,java.lang.Object toVertex)",
+    "name": "addDagEdge",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+      "name": "DirectedAcyclicGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "fromVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "toVertex"
+      }
+    ],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "null if the edge is already in the graph, else the created edge is returned",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If either fromVertex or toVertex is not a member of the graph",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.jgrapht.experimental.dag.DirectedAcyclicGraph.CycleFoundException",
+          "name": "CycleFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the edge would induce a cycle in the graph",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "addEdge(java.lang.Object sourceVertex,java.lang.Object targetVertex)",
+    "name": "addEdge",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+      "name": "DirectedAcyclicGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "sourceVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "targetVertex"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "addDagEdge(java.lang.Object fromVertex,java.lang.Object toVertex,java.lang.Object e)",
+    "name": "addDagEdge",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+      "name": "DirectedAcyclicGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "fromVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "toVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "true if the edge was added to the graph",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.jgrapht.experimental.dag.DirectedAcyclicGraph.CycleFoundException",
+          "name": "CycleFoundException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if adding an edge (fromVertex, toVertex) to the graph would induce a cycle.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "addEdge(java.lang.Object sourceVertex,java.lang.Object targetVertex,java.lang.Object edge)",
+    "name": "addEdge",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+      "name": "DirectedAcyclicGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "sourceVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "targetVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "edge"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "removeVertex(java.lang.Object v)",
+    "name": "removeVertex",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+      "name": "DirectedAcyclicGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "removeAllVertices(java.util.Collection arg0)",
+    "name": "removeAllVertices",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+      "name": "DirectedAcyclicGraph",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.experimental.dag.DirectedAcyclicGraph",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "arg0"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  }
+]

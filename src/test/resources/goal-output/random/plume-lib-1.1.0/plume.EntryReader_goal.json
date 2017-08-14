@@ -1,0 +1,1594 @@
+[
+  {
+    "signature": "EntryReader(java.io.InputStream in,java.lang.String charsetName,java.lang.String filename,java.lang.String comment_re_string,java.lang.String include_re_string)",
+    "name": "EntryReader",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.InputStream",
+          "name": "InputStream",
+          "isArray": false
+        },
+        "name": "in"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "charsetName"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "comment_re_string"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "include_re_string"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.InputStream",
+            "name": "InputStream",
+            "isArray": false
+          },
+          "name": "in"
+        },
+        "comment": "source from which to read entries",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "charsetName"
+        },
+        "comment": "the character set to use",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "non-null file name for stream being read",
+        "kind": "PARAM",
+        "condition": "args[2]!=null"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "comment_re_string"
+        },
+        "comment": "regular expression that matches comments. Any text that matches comment_re is removed. A line that is entirely a comment is ignored.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "include_re_string"
+        },
+        "comment": "regular expression that matches include directives. The expression should define one group that contains the include file name.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.io.UnsupportedEncodingException",
+          "name": "UnsupportedEncodingException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the charset encoding is not supported",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "EntryReader(java.io.InputStream in,java.lang.String charsetName,java.lang.String filename)",
+    "name": "EntryReader",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.InputStream",
+          "name": "InputStream",
+          "isArray": false
+        },
+        "name": "in"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "charsetName"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.InputStream",
+            "name": "InputStream",
+            "isArray": false
+          },
+          "name": "in"
+        },
+        "comment": "the InputStream",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "charsetName"
+        },
+        "comment": "the character set to use",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "the file name",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.io.UnsupportedEncodingException",
+          "name": "UnsupportedEncodingException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if the charset encoding is not supported",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "EntryReader(java.io.InputStream in,java.lang.String filename,java.lang.String comment_re_string,java.lang.String include_re_string)",
+    "name": "EntryReader",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.InputStream",
+          "name": "InputStream",
+          "isArray": false
+        },
+        "name": "in"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "comment_re_string"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "include_re_string"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.InputStream",
+            "name": "InputStream",
+            "isArray": false
+          },
+          "name": "in"
+        },
+        "comment": "source from which to read entries",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "non-null file name for stream being read",
+        "kind": "PARAM",
+        "condition": "(args[1]==null)==false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "comment_re_string"
+        },
+        "comment": "regular expression that matches comments. Any text that matches comment_re is removed. A line that is entirely a comment is ignored.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "include_re_string"
+        },
+        "comment": "regular expression that matches include directives. The expression should define one group that contains the include file name.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "EntryReader(java.io.InputStream in,java.lang.String filename)",
+    "name": "EntryReader",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.InputStream",
+          "name": "InputStream",
+          "isArray": false
+        },
+        "name": "in"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.InputStream",
+            "name": "InputStream",
+            "isArray": false
+          },
+          "name": "in"
+        },
+        "comment": "the InputStream",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "the file name",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "EntryReader(java.io.InputStream in)",
+    "name": "EntryReader",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.InputStream",
+          "name": "InputStream",
+          "isArray": false
+        },
+        "name": "in"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.InputStream",
+            "name": "InputStream",
+            "isArray": false
+          },
+          "name": "in"
+        },
+        "comment": "the InputStream",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "EntryReader(java.io.Reader reader,java.lang.String filename,java.lang.String comment_re_string,java.lang.String include_re_string)",
+    "name": "EntryReader",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.Reader",
+          "name": "Reader",
+          "isArray": false
+        },
+        "name": "reader"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "comment_re_string"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "include_re_string"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.Reader",
+            "name": "Reader",
+            "isArray": false
+          },
+          "name": "reader"
+        },
+        "comment": "source from which to read entries",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "file name corresponding to reader, for use in error messages",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "comment_re_string"
+        },
+        "comment": "regular expression that matches comments. Any text that matches comment_re is removed. A line that is entirely a comment is ignored",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "include_re_string"
+        },
+        "comment": "regular expression that matches include directives. The expression should define one group that contains the include file name",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "EntryReader(java.io.Reader reader)",
+    "name": "EntryReader",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.Reader",
+          "name": "Reader",
+          "isArray": false
+        },
+        "name": "reader"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.Reader",
+            "name": "Reader",
+            "isArray": false
+          },
+          "name": "reader"
+        },
+        "comment": "source from which to read entries",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "EntryReader(java.io.File file,java.lang.String comment_re,java.lang.String include_re)",
+    "name": "EntryReader",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.File",
+          "name": "File",
+          "isArray": false
+        },
+        "name": "file"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "comment_re"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "include_re"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.File",
+            "name": "File",
+            "isArray": false
+          },
+          "name": "file"
+        },
+        "comment": "initial file to read",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "comment_re"
+        },
+        "comment": "regular expression that matches comments. Any text that matches comment_re is removed. A line that is entirely a comment is ignored.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "include_re"
+        },
+        "comment": "regular expression that matches include directives. The expression should define one group that contains the include file name.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is a problem reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "EntryReader(java.io.File file)",
+    "name": "EntryReader",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.File",
+          "name": "File",
+          "isArray": false
+        },
+        "name": "file"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.File",
+            "name": "File",
+            "isArray": false
+          },
+          "name": "file"
+        },
+        "comment": "the file to read",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is a problem reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "EntryReader(java.io.File file,java.lang.String charsetName)",
+    "name": "EntryReader",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.File",
+          "name": "File",
+          "isArray": false
+        },
+        "name": "file"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "charsetName"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.File",
+            "name": "File",
+            "isArray": false
+          },
+          "name": "file"
+        },
+        "comment": "the file to read",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "charsetName"
+        },
+        "comment": "the character set to use",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is a problem reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "EntryReader(java.lang.String filename,java.lang.String comment_re,java.lang.String include_re)",
+    "name": "EntryReader",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "comment_re"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "include_re"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "initial file to read",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "comment_re"
+        },
+        "comment": "regular expression that matches comments. Any text that matches comment_re is removed. A line that is entirely a comment is ignored.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "include_re"
+        },
+        "comment": "regular expression that matches include directives. The expression should define one group that contains the include file name.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is a problem reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "EntryReader(java.lang.String filename)",
+    "name": "EntryReader",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "source from which to read entries",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is a problem reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "EntryReader(java.lang.String filename,java.lang.String charsetName)",
+    "name": "EntryReader",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "charsetName"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "filename"
+        },
+        "comment": "source from which to read entries",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "charsetName"
+        },
+        "comment": "the character set to use",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is a problem reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "readLine()",
+    "name": "readLine",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the string that was read, or null at end of file",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "iterator()",
+    "name": "iterator",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator",
+      "name": "Iterator",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "a line-by-line iterator for this file",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hasNext()",
+    "name": "hasNext",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "whether there is another line to read",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "next()",
+    "name": "next",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the next line in the multi-file Throws NoSuchElementException at end of file",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "remove()",
+    "name": "remove",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "get_entry()",
+    "name": "get_entry",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "plume.EntryReader.Entry",
+      "name": "Entry",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the next entry (paragraph) in the file",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is a problem reading the file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "getFileName()",
+    "name": "getFileName",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "String",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the current filename",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getLineNumber()",
+    "name": "getLineNumber",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the current line number",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setLineNumber(int lineNumber)",
+    "name": "setLineNumber",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "lineNumber"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "lineNumber"
+        },
+        "comment": "new line number for the current file",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "set_entry_start_stop(java.lang.String entry_start_re,java.lang.String entry_stop_re)",
+    "name": "set_entry_start_stop",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "entry_start_re"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "entry_stop_re"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "entry_start_re"
+        },
+        "comment": "regular expression that starts a long entry",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "entry_stop_re"
+        },
+        "comment": "regular expression that ends a long entry",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "set_entry_start_stop(java.util.regex.Pattern entry_start_re,java.util.regex.Pattern entry_stop_re)",
+    "name": "set_entry_start_stop",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.regex.Pattern",
+          "name": "Pattern",
+          "isArray": false
+        },
+        "name": "entry_start_re"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.regex.Pattern",
+          "name": "Pattern",
+          "isArray": false
+        },
+        "name": "entry_stop_re"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.regex.Pattern",
+            "name": "Pattern",
+            "isArray": false
+          },
+          "name": "entry_start_re"
+        },
+        "comment": "regular expression that starts a long entry",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.regex.Pattern",
+            "name": "Pattern",
+            "isArray": false
+          },
+          "name": "entry_stop_re"
+        },
+        "comment": "regular expression that ends a long entry",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "putback(java.lang.String line)",
+    "name": "putback",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "line"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "line"
+        },
+        "comment": "the line to be put back in the input",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "mark(int readAheadLimit)",
+    "name": "mark",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "readAheadLimit"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "read()",
+    "name": "read",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "read(char[] cbuf,int off,int len)",
+    "name": "read",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "char[]",
+          "name": "char[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "char",
+            "name": "char",
+            "isArray": false
+          }
+        },
+        "name": "cbuf"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "off"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "len"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "reset()",
+    "name": "reset",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "skip(long n)",
+    "name": "skip",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "long",
+          "name": "long",
+          "isArray": false
+        },
+        "name": "n"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "main(java.lang.String[] args)",
+    "name": "main",
+    "containingClass": {
+      "qualifiedName": "plume.EntryReader",
+      "name": "EntryReader",
+      "isArray": false
+    },
+    "targetClass": "plume.EntryReader",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String[]",
+          "name": "String[]",
+          "isArray": true,
+          "componentType": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          }
+        },
+        "name": "args"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String[]",
+            "name": "String[]",
+            "isArray": true,
+            "componentType": {
+              "qualifiedName": "java.lang.String",
+              "name": "String",
+              "isArray": false
+            }
+          },
+          "name": "args"
+        },
+        "comment": "command-line arguments: filename [comment_re [include_re]]",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "if there is a problem reading a file",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  }
+]
