@@ -1,0 +1,8 @@
+org.apache.commons.math3.optimization.direct.AbstractSimplex(double[]) throws org.apache.commons.math3.exception.NullArgumentException if steps is null. ==> [args[0]==null]
+org.apache.commons.math3.optimization.direct.AbstractSimplex(double[]) throws org.apache.commons.math3.exception.ZeroException if one of the steps is zero. ==> []
+org.apache.commons.math3.optimization.direct.AbstractSimplex(double[][]) throws java.lang.IllegalArgumentException if one of its vertices is duplicated. ==> []
+org.apache.commons.math3.optimization.direct.AbstractSimplex(double[][]) throws org.apache.commons.math3.exception.DimensionMismatchException if there is a dimension mismatch in the reference simplex. ==> []
+org.apache.commons.math3.optimization.direct.AbstractSimplex(double[][]) throws org.apache.commons.math3.exception.NotStrictlyPositiveException if the reference simplex does not contain at least one point. ==> []
+org.apache.commons.math3.optimization.direct.AbstractSimplex.build(double[]) throws org.apache.commons.math3.exception.DimensionMismatchException if the start point does not match simplex dimension. ==> []
+org.apache.commons.math3.optimization.direct.AbstractSimplex.evaluate(org.apache.commons.math3.analysis.MultivariateFunction, java.util.Comparator<org.apache.commons.math3.optimization.PointValuePair>) throws org.apache.commons.math3.exception.TooManyEvaluationsException if the maximal number of evaluations is exceeded. ==> []
+org.apache.commons.math3.optimization.direct.AbstractSimplex.iterate(org.apache.commons.math3.analysis.MultivariateFunction, java.util.Comparator<org.apache.commons.math3.optimization.PointValuePair>) throws org.apache.commons.math3.exception.TooManyEvaluationsException if the algorithm fails to converge. ==> []

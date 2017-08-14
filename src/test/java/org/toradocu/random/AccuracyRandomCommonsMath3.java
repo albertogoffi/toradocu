@@ -10,18 +10,18 @@ public class AccuracyRandomCommonsMath3 extends AbstractPrecisionRecallTestSuite
   private static final String EXPECTED = "src/test/resources/CommonsMath-3.6.1/";
 
   @Test
-  public void curveFitterTest() throws Exception {
-    test("org.apache.commons.math3.fitting.CurveFitter");
-  }
-
-  @Test
   public void univariateMultiStartOptimizerTest() throws Exception {
     test("org.apache.commons.math3.optimization.univariate.UnivariateMultiStartOptimizer");
   }
 
   @Test
-  public void clustererTest() throws Exception {
-    test("org.apache.commons.math3.ml.clustering.Clusterer");
+  public void randomKeyTest() throws Exception {
+    test("org.apache.commons.math3.genetics.RandomKey");
+  }
+
+  @Test
+  public void abstractSimplexTest() throws Exception {
+    test("org.apache.commons.math3.optimization.direct.AbstractSimplex");
   }
 
   private void test(String clazz) {
