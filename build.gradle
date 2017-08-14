@@ -107,6 +107,13 @@ task downloadPlumeLibSrc(type: Download) {
 	overwrite false
 }
 
+task downloadGraphStreamSrc(type: Download) {
+	src 'http://repo1.maven.org/maven2/org/graphstream/gs-core/1.3/gs-core-1.3-sources.jar'
+	dest 'src/test/resources/gs-core-1.3-sources.jar'
+	onlyIfNewer true
+	overwrite false
+}
+
 task extractGuavaSrc(type: Copy, dependsOn: downloadGuavaSrc) {
 	from zipTree('src/test/resources/guava-19.0-sources.jar')
 	into 'src/test/resources/guava-19.0-sources'
@@ -132,6 +139,11 @@ task extractJGraphTSrc(type: Copy, dependsOn: downloadJGraphTSrc) {
 	into 'src/test/resources/JGraphT'
 }
 
+task extractGraphStreamSrc(type: Copy, dependsOn: downloadGraphStreamSrc) {
+	from zipTree('src/test/resources/gs-core-1.3-sources.jar')
+	into 'src/test/resources/gs-core-1.3-sources'
+}
+
 task extractPlumeLibSrc(type: Copy, dependsOn: downloadPlumeLibSrc) {
 	from tarTree(resources.gzip('src/test/resources/plume-lib-1.1.0.tar.gz'))
 	into 'src/test/resources/'
@@ -139,7 +151,7 @@ task extractPlumeLibSrc(type: Copy, dependsOn: downloadPlumeLibSrc) {
 }
 
 test.dependsOn extractGuavaSrc, extractCommonsCollectionsSrc, extractCommonsMathSrc,
-		extractFreeColSrc, extractJGraphTSrc, extractPlumeLibSrc
+		extractFreeColSrc, extractJGraphTSrc, extractPlumeLibSrc, extractGraphStreamSrc
 
 task removeDefaultOutpuDir(type: Delete) {
 	delete 'tmp', 'aspects'
