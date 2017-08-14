@@ -1,15 +1,15 @@
 package org.toradocu.random;
 
+import java.util.Map;
 import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 import org.toradocu.testlib.PrecisionRecallTest;
+import org.toradocu.testlib.TestCaseStats;
 
 public class AccuracyRandomCommonsCollections4 extends AbstractPrecisionRecallTestSuite {
 
-  private static final String COMMONSCOLLECTIONS_4_SRC =
-      "src/test/resources/commons-collections4-4.1-src/src/main/java";
-  private static final String COMMONSCOLLECTIONS_4_EXPECTED_DIR =
-      "src/test/resources/CommonsCollections-4.1/";
+  private static final String SRC = "src/test/resources/commons-collections4-4.1-src/src/main/java";
+  private static final String EXPECTED = "src/test/resources/CommonsCollections-4.1/";
 
   @Test
   public void ifClosureTest() throws Exception {
@@ -27,6 +27,6 @@ public class AccuracyRandomCommonsCollections4 extends AbstractPrecisionRecallTe
   }
 
   private void test(String clazz) {
-    PrecisionRecallTest.test(clazz, COMMONSCOLLECTIONS_4_SRC, COMMONSCOLLECTIONS_4_EXPECTED_DIR);
+    testSuiteStats.addTest(PrecisionRecallTest.test(clazz, SRC, EXPECTED));
   }
 }

@@ -25,6 +25,6 @@ public class AccuracyRandomGraphStream extends AbstractPrecisionRecallTestSuite 
   }
 
   private void test(String clazz) {
-    PrecisionRecallTest.test(clazz, SRC, EXPECTED);
+    testSuiteStats.addTest(PrecisionRecallTest.test(clazz, SRC, EXPECTED));
   }
 }
