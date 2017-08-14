@@ -1,0 +1,864 @@
+[
+  {
+    "signature": "org.graphstream.graph.Path()",
+    "name": "org.graphstream.graph.Path",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getRoot()",
+    "name": "getRoot",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.graphstream.graph.Node",
+      "name": "org.graphstream.graph.Node",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the root of the path.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setRoot(org.graphstream.graph.Node root)",
+    "name": "setRoot",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.Node",
+          "name": "Node",
+          "isArray": false
+        },
+        "name": "root"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.Node",
+            "name": "Node",
+            "isArray": false
+          },
+          "name": "root"
+        },
+        "comment": "The root of the path.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "contains(org.graphstream.graph.Node node)",
+    "name": "contains",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.Node",
+          "name": "Node",
+          "isArray": false
+        },
+        "name": "node"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.Node",
+            "name": "Node",
+            "isArray": false
+          },
+          "name": "node"
+        },
+        "comment": "The node tested for existence in the path.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if the path contains the node.",
+      "kind": "RETURN",
+      "condition": "target.getNodePath().contains(args[0]) ? result==true"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "contains(org.graphstream.graph.Edge edge)",
+    "name": "contains",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.Edge",
+          "name": "Edge",
+          "isArray": false
+        },
+        "name": "edge"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.Edge",
+            "name": "Edge",
+            "isArray": false
+          },
+          "name": "edge"
+        },
+        "comment": "The edge tested for existence in the path.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if the path contains the edge.",
+      "kind": "RETURN",
+      "condition": "target.getEdgePath().contains(args[0]) ? result==true"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "empty()",
+    "name": "empty",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "true if the path is empty.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "size()",
+    "name": "size",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getPathWeight(java.lang.String characteristic)",
+    "name": "getPathWeight",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.Double",
+      "name": "java.lang.Double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "characteristic"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "characteristic"
+        },
+        "comment": "The characteristic.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "Sum of the characteristics.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getEdgePath()",
+    "name": "getEdgePath",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List<org.graphstream.graph.Edge>",
+      "name": "java.util.List<org.graphstream.graph.Edge>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The list of edges representing the path.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getNodePath()",
+    "name": "getNodePath",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List<org.graphstream.graph.Node>",
+      "name": "java.util.List<org.graphstream.graph.Node>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "A list of nodes representing the path.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "add(org.graphstream.graph.Node from, org.graphstream.graph.Edge edge)",
+    "name": "add",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.Node",
+          "name": "Node",
+          "isArray": false
+        },
+        "name": "from"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.Edge",
+          "name": "Edge",
+          "isArray": false
+        },
+        "name": "edge"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.Node",
+            "name": "Node",
+            "isArray": false
+          },
+          "name": "from"
+        },
+        "comment": "The start node.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.Edge",
+            "name": "Edge",
+            "isArray": false
+          },
+          "name": "edge"
+        },
+        "comment": "The edge used.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "add(org.graphstream.graph.Edge edge)",
+    "name": "add",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.Edge",
+          "name": "Edge",
+          "isArray": false
+        },
+        "name": "edge"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.Edge",
+            "name": "Edge",
+            "isArray": false
+          },
+          "name": "edge"
+        },
+        "comment": "The edge to add to the path.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "push(org.graphstream.graph.Node from, org.graphstream.graph.Edge edge)",
+    "name": "push",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.Node",
+          "name": "Node",
+          "isArray": false
+        },
+        "name": "from"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.Edge",
+          "name": "Edge",
+          "isArray": false
+        },
+        "name": "edge"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "push(org.graphstream.graph.Edge edge)",
+    "name": "push",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.Edge",
+          "name": "Edge",
+          "isArray": false
+        },
+        "name": "edge"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "popEdge()",
+    "name": "popEdge",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.graphstream.graph.Edge",
+      "name": "org.graphstream.graph.Edge",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The edge that have just been removed.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "popNode()",
+    "name": "popNode",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.graphstream.graph.Node",
+      "name": "org.graphstream.graph.Node",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The node that have just been removed.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "peekNode()",
+    "name": "peekNode",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.graphstream.graph.Node",
+      "name": "org.graphstream.graph.Node",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The node at the top of the stack.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "peekEdge()",
+    "name": "peekEdge",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.graphstream.graph.Edge",
+      "name": "org.graphstream.graph.Edge",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "clear()",
+    "name": "clear",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getACopy()",
+    "name": "getACopy",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "org.graphstream.graph.Path",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "A copy of this path.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "removeLoops()",
+    "name": "removeLoops",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "equals(org.graphstream.graph.Path p)",
+    "name": "equals",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.graph.Path",
+          "name": "Path",
+          "isArray": false
+        },
+        "name": "p"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.graph.Path",
+            "name": "Path",
+            "isArray": false
+          },
+          "name": "p"
+        },
+        "comment": "A path to compare to the curent one.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "True if both paths are equal.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "toString()",
+    "name": "toString",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "java.lang.String",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "A String representation of the path.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getNodeCount()",
+    "name": "getNodeCount",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The size of the path.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getEdgeCount()",
+    "name": "getEdgeCount",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getNodeIterator()",
+    "name": "getNodeIterator",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator<T>",
+      "name": "java.util.Iterator<T>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getEdgeIterator()",
+    "name": "getEdgeIterator",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator<T>",
+      "name": "java.util.Iterator<T>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getEachNode()",
+    "name": "getEachNode",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.Iterable<? extends T>",
+      "name": "java.lang.Iterable<? extends T>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getEachEdge()",
+    "name": "getEachEdge",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.Iterable<? extends T>",
+      "name": "java.lang.Iterable<? extends T>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getNodeSet()",
+    "name": "getNodeSet",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Collection<T>",
+      "name": "java.util.Collection<T>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getEdgeSet()",
+    "name": "getEdgeSet",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.graph.Path",
+      "name": "Path",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.graph.Path",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Collection<T>",
+      "name": "java.util.Collection<T>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  }
+]

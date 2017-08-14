@@ -21,12 +21,22 @@ public class AccuracyRandomGraphStream extends AbstractPrecisionRecallTestSuite 
   }
 
   @Test
-  public void testSingleGraph() throws Exception {
-    test("org.graphstream.graph.implementations.SingleGraph", 1, 1, 0, 1, 1, 1);
+  public void testFixedArrayList() throws Exception {
+    test("org.graphstream.util.set.FixedArrayList", 1, 0, 1, 1, 1, 0);
   }
 
   @Test
-  public void testFixedArrayList() throws Exception {
-    test("org.graphstream.util.set.FixedArrayList", 1, 1, 1, 1, 1, 1);
+  public void testGraphicElement() throws Exception {
+    test("org.graphstream.ui.graphicGraph.GraphicElement", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testEnvironment() throws Exception {
+    test("org.graphstream.util.Environment", 1, 1, 1, 1, 1, 0);
+  }
+
+  @Test
+  public void testPath() throws Exception {
+    test("org.graphstream.graph.Path", 1, 1, 1, 1, 1, 0);
   }
 }

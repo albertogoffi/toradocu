@@ -1,0 +1,158 @@
+[
+  {
+    "signature": "org.apache.commons.collections4.keyvalue.DefaultMapEntry(K key, V value)",
+    "name": "org.apache.commons.collections4.keyvalue.DefaultMapEntry",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.keyvalue.DefaultMapEntry",
+      "name": "DefaultMapEntry",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.keyvalue.DefaultMapEntry",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key for the entry null.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "the value for the entry null.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "org.apache.commons.collections4.keyvalue.DefaultMapEntry(org.apache.commons.collections4.KeyValue<? pair)",
+    "name": "org.apache.commons.collections4.keyvalue.DefaultMapEntry",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.keyvalue.DefaultMapEntry",
+      "name": "DefaultMapEntry",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.keyvalue.DefaultMapEntry",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.KeyValue",
+          "name": "KeyValue",
+          "isArray": false
+        },
+        "name": "pair"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.KeyValue",
+            "name": "KeyValue",
+            "isArray": false
+          },
+          "name": "pair"
+        },
+        "comment": "the pair to copy .pair must not be null.",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the entry is null.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "org.apache.commons.collections4.keyvalue.DefaultMapEntry(java.util.Map.java.util.Map$Entry<? entry)",
+    "name": "org.apache.commons.collections4.keyvalue.DefaultMapEntry",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.keyvalue.DefaultMapEntry",
+      "name": "DefaultMapEntry",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.keyvalue.DefaultMapEntry",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Map$Entry",
+          "name": "Entry",
+          "isArray": false
+        },
+        "name": "entry"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Map$Entry",
+            "name": "Entry",
+            "isArray": false
+          },
+          "name": "entry"
+        },
+        "comment": "the entry to copy .entry must not be null.",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the entry is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      }
+    ]
+  }
+]

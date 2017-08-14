@@ -28,4 +28,14 @@ public class AccuracyRandomPlumeLib extends AbstractPrecisionRecallTestSuite {
   public void testEntryReader() throws Exception {
     test("plume.EntryReader", 1, 1, 1, 1, 1, 1);
   }
+
+  @Test
+  public void testWeakHasherMap() throws Exception {
+    test("plume.WeakHasherMap", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testArraysMDE() throws Exception {
+    test("plume.ArraysMDE", 0.888, 0.842, 0, 1, 0, 0);
+  }
 }
