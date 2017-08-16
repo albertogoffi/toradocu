@@ -33,6 +33,7 @@ public class PreprocessorFactory {
         phases.add(new NormalizeIfs());
         phases.add(new NormalizeNonNullNonEmpty());
         phases.add(new NormalizeIt());
+        phases.add(new NormalizeWhether());
         break;
     }
 

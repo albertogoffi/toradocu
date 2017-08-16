@@ -16,7 +16,7 @@ public class AccuracyRandomPlumeLib extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testFuzzyFloat() throws Exception {
-    test("plume.FuzzyFloat", 1, 1, 1, 1, 0, 0);
+    test("plume.FuzzyFloat", 1, 1, 1, 1, 1, 0.8);
   }
 
   @Test
