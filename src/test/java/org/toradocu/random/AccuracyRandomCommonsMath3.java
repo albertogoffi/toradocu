@@ -24,6 +24,16 @@ public class AccuracyRandomCommonsMath3 extends AbstractPrecisionRecallTestSuite
     test("org.apache.commons.math3.optimization.direct.AbstractSimplex");
   }
 
+  @Test
+  public void sumTest() throws Exception {
+    test("org.apache.commons.math3.stat.descriptive.summary.Sum");
+  }
+
+  @Test
+  public void subLineTest() throws Exception {
+    test("org.apache.commons.math3.geometry.euclidean.threed.SubLine");
+  }
+
   private void test(String clazz) {
     testSuiteStats.addTest(PrecisionRecallTest.test(clazz, SRC, EXPECTED));
   }
