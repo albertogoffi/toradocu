@@ -1,0 +1,964 @@
+[
+  {
+    "signature": "copyFrom(net.sf.freecol.common.model.Feature other)",
+    "name": "copyFrom",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "net.sf.freecol.common.model.Feature",
+          "name": "Feature",
+          "isArray": false
+        },
+        "name": "other"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Feature",
+            "name": "Feature",
+            "isArray": false
+          },
+          "name": "other"
+        },
+        "comment": "The other Feature to copy.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "hasTimeLimit()",
+    "name": "hasTimeLimit",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "True if the feature is time limited.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getFirstTurn()",
+    "name": "getFirstTurn",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "net.sf.freecol.common.model.Turn",
+      "name": "net.sf.freecol.common.model.Turn",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The first turn, or null if none.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setFirstTurn(net.sf.freecol.common.model.Turn newFirstTurn)",
+    "name": "setFirstTurn",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "net.sf.freecol.common.model.Turn",
+          "name": "Turn",
+          "isArray": false
+        },
+        "name": "newFirstTurn"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Turn",
+            "name": "Turn",
+            "isArray": false
+          },
+          "name": "newFirstTurn"
+        },
+        "comment": "The new first turn value.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "getLastTurn()",
+    "name": "getLastTurn",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "net.sf.freecol.common.model.Turn",
+      "name": "net.sf.freecol.common.model.Turn",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The last turn, or null if none.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setLastTurn(net.sf.freecol.common.model.Turn newLastTurn)",
+    "name": "setLastTurn",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "net.sf.freecol.common.model.Turn",
+          "name": "Turn",
+          "isArray": false
+        },
+        "name": "newLastTurn"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Turn",
+            "name": "Turn",
+            "isArray": false
+          },
+          "name": "newLastTurn"
+        },
+        "comment": "The new last turn value.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "hasScope()",
+    "name": "hasScope",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "True if there are any scopes attached to this feature.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getScopes()",
+    "name": "getScopes",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List<net.sf.freecol.common.model.Scope>",
+      "name": "java.util.List<net.sf.freecol.common.model.Scope>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "A list of Scopes.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setScopes(java.util.List<net.sf.freecol.common.model.Scope> scopes)",
+    "name": "setScopes",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "scopes"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "scopes"
+        },
+        "comment": "A list of new Scopes.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "addScope(net.sf.freecol.common.model.Scope scope)",
+    "name": "addScope",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "net.sf.freecol.common.model.Scope",
+          "name": "Scope",
+          "isArray": false
+        },
+        "name": "scope"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Scope",
+            "name": "Scope",
+            "isArray": false
+          },
+          "name": "scope"
+        },
+        "comment": "The Scope to add.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "getSource()",
+    "name": "getSource",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "net.sf.freecol.common.model.FreeColObject",
+      "name": "net.sf.freecol.common.model.FreeColObject",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The source object.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setSource(net.sf.freecol.common.model.FreeColObject newSource)",
+    "name": "setSource",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "net.sf.freecol.common.model.FreeColObject",
+          "name": "FreeColObject",
+          "isArray": false
+        },
+        "name": "newSource"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FreeColObject",
+            "name": "FreeColObject",
+            "isArray": false
+          },
+          "name": "newSource"
+        },
+        "comment": "The new source.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "getDuration()",
+    "name": "getDuration",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The number of turns this feature lasts.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setDuration(int newDuration)",
+    "name": "setDuration",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "newDuration"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "newDuration"
+        },
+        "comment": "The new duration.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "isTemporary()",
+    "name": "isTemporary",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "setTemporary(boolean newTemporary)",
+    "name": "setTemporary",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "newTemporary"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "newTemporary"
+        },
+        "comment": "The new temporary status.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "appliesTo(net.sf.freecol.common.model.FreeColGameObjectType objectType)",
+    "name": "appliesTo",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "net.sf.freecol.common.model.FreeColGameObjectType",
+          "name": "FreeColGameObjectType",
+          "isArray": false
+        },
+        "name": "objectType"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FreeColGameObjectType",
+            "name": "FreeColGameObjectType",
+            "isArray": false
+          },
+          "name": "objectType"
+        },
+        "comment": "The FreeColGameObjectType to test.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "True if there are no scopes, or at least one scope is applicable to the object.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "appliesTo(net.sf.freecol.common.model.Turn turn)",
+    "name": "appliesTo",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "net.sf.freecol.common.model.Turn",
+          "name": "Turn",
+          "isArray": false
+        },
+        "name": "turn"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Turn",
+            "name": "Turn",
+            "isArray": false
+          },
+          "name": "turn"
+        },
+        "comment": "The Turn to test.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "True if the turn is null or not outside a valid time limit.",
+      "kind": "RETURN",
+      "condition": "args[0]==null ? result == true"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "appliesTo(net.sf.freecol.common.model.FreeColGameObjectType objectType, net.sf.freecol.common.model.Turn turn)",
+    "name": "appliesTo",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "net.sf.freecol.common.model.FreeColGameObjectType",
+          "name": "FreeColGameObjectType",
+          "isArray": false
+        },
+        "name": "objectType"
+      },
+      {
+        "type": {
+          "qualifiedName": "net.sf.freecol.common.model.Turn",
+          "name": "Turn",
+          "isArray": false
+        },
+        "name": "turn"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.FreeColGameObjectType",
+            "name": "FreeColGameObjectType",
+            "isArray": false
+          },
+          "name": "objectType"
+        },
+        "comment": "The FreeColGameObjectType to test.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Turn",
+            "name": "Turn",
+            "isArray": false
+          },
+          "name": "turn"
+        },
+        "comment": "The Turn to test.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "True if the feature applies.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "isOutOfDate(net.sf.freecol.common.model.Turn turn)",
+    "name": "isOutOfDate",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "net.sf.freecol.common.model.Turn",
+          "name": "Turn",
+          "isArray": false
+        },
+        "name": "turn"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "net.sf.freecol.common.model.Turn",
+            "name": "Turn",
+            "isArray": false
+          },
+          "name": "turn"
+        },
+        "comment": "The Turn to compare to.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "True if the Feature has an lastTurn turn smaller than the given turn.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "isIndependent()",
+    "name": "isIndependent",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "True if the feature is independent.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getNameKey()",
+    "name": "getNameKey",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "java.lang.String",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "equals(java.lang.Object o)",
+    "name": "equals",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "o"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "hashCode()",
+    "name": "hashCode",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "writeAttributes(net.sf.freecol.common.io.FreeColXMLWriter xw)",
+    "name": "writeAttributes",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "net.sf.freecol.common.io.FreeColXMLWriter",
+          "name": "FreeColXMLWriter",
+          "isArray": false
+        },
+        "name": "xw"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "writeChildren(net.sf.freecol.common.io.FreeColXMLWriter xw)",
+    "name": "writeChildren",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "net.sf.freecol.common.io.FreeColXMLWriter",
+          "name": "FreeColXMLWriter",
+          "isArray": false
+        },
+        "name": "xw"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "readAttributes(net.sf.freecol.common.io.FreeColXMLReader xr)",
+    "name": "readAttributes",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "net.sf.freecol.common.io.FreeColXMLReader",
+          "name": "FreeColXMLReader",
+          "isArray": false
+        },
+        "name": "xr"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "readChildren(net.sf.freecol.common.io.FreeColXMLReader xr)",
+    "name": "readChildren",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "net.sf.freecol.common.io.FreeColXMLReader",
+          "name": "FreeColXMLReader",
+          "isArray": false
+        },
+        "name": "xr"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "readChild(net.sf.freecol.common.io.FreeColXMLReader xr)",
+    "name": "readChild",
+    "containingClass": {
+      "qualifiedName": "net.sf.freecol.common.model.Feature",
+      "name": "Feature",
+      "isArray": false
+    },
+    "targetClass": "net.sf.freecol.common.model.Feature",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "net.sf.freecol.common.io.FreeColXMLReader",
+          "name": "FreeColXMLReader",
+          "isArray": false
+        },
+        "name": "xr"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  }
+]

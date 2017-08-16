@@ -37,4 +37,14 @@ public class AccuracyRandomCommonsMath3 extends AbstractPrecisionRecallTestSuite
   public void testAbstractSimplex() throws Exception {
     test("org.apache.commons.math3.optimization.direct.AbstractSimplex", 0.5, 1, 1, 1, 1, 1);
   }
+
+  @Test
+  public void testSum() throws Exception {
+    test("org.apache.commons.math3.stat.descriptive.summary.Sum", 1, 1, 1, 1, 1, 0);
+  }
+
+  @Test
+  public void testSubLine() throws Exception {
+    test("org.apache.commons.math3.geometry.euclidean.threed.SubLine", 1, 1, 1, 1, 1, 1);
+  }
 }

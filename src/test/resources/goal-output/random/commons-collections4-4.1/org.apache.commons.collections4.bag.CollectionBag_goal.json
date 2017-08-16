@@ -1,0 +1,441 @@
+[
+  {
+    "signature": "org.apache.commons.collections4.bag.CollectionBag(org.apache.commons.collections4.Bag<E> bag)",
+    "name": "org.apache.commons.collections4.bag.CollectionBag",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.bag.CollectionBag",
+      "name": "CollectionBag",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.bag.CollectionBag",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Bag",
+          "name": "Bag",
+          "isArray": false
+        },
+        "name": "bag"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Bag",
+            "name": "Bag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag to decorate .bag must not be null.",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "bag is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      }
+    ]
+  },
+  {
+    "signature": "collectionBag(org.apache.commons.collections4.Bag<E> bag)",
+    "name": "collectionBag",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.bag.CollectionBag",
+      "name": "CollectionBag",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.bag.CollectionBag",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Bag<E>",
+      "name": "org.apache.commons.collections4.Bag<E>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.collections4.Bag",
+          "name": "Bag",
+          "isArray": false
+        },
+        "name": "bag"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.collections4.Bag",
+            "name": "Bag",
+            "isArray": false
+          },
+          "name": "bag"
+        },
+        "comment": "the bag to decorate .bag must not be null.",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      }
+    ],
+    "returnTag": {
+      "comment": "a Bag that complies to the Collection contract.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "bag is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      }
+    ]
+  },
+  {
+    "signature": "containsAll(java.util.Collection<?> coll)",
+    "name": "containsAll",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.bag.CollectionBag",
+      "name": "CollectionBag",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.bag.CollectionBag",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "coll"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "coll"
+        },
+        "comment": "the collection to check against.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if the Bag contains at least one of every object in the collection.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "add(E object)",
+    "name": "add",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.bag.CollectionBag",
+      "name": "CollectionBag",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.bag.CollectionBag",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "object"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "object"
+        },
+        "comment": "the object to add.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true, always.",
+      "kind": "RETURN",
+      "condition": "true ? result==true"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "addAll(java.util.Collection<? coll)",
+    "name": "addAll",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.bag.CollectionBag",
+      "name": "CollectionBag",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.bag.CollectionBag",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "coll"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "remove(java.lang.Object object)",
+    "name": "remove",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.bag.CollectionBag",
+      "name": "CollectionBag",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.bag.CollectionBag",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "object"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "object"
+        },
+        "comment": "the object to remove.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if this call changed the collection.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "removeAll(java.util.Collection<?> coll)",
+    "name": "removeAll",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.bag.CollectionBag",
+      "name": "CollectionBag",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.bag.CollectionBag",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "coll"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "coll"
+        },
+        "comment": "the collection to remove.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if this call changed the collection.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "retainAll(java.util.Collection<?> coll)",
+    "name": "retainAll",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.bag.CollectionBag",
+      "name": "CollectionBag",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.bag.CollectionBag",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "coll"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "coll"
+        },
+        "comment": "the collection to retain.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if this call changed the collection.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "add(E object, int count)",
+    "name": "add",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.bag.CollectionBag",
+      "name": "CollectionBag",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.bag.CollectionBag",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "object"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "count"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "object"
+        },
+        "comment": "the object to add.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "count"
+        },
+        "comment": "the number of copies to add.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true, always.",
+      "kind": "RETURN",
+      "condition": "true ? result==true"
+    },
+    "throwsTags": []
+  }
+]

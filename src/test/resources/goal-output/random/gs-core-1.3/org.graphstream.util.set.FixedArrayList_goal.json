@@ -433,7 +433,7 @@
     "returnTag": {
       "comment": "Always true.",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true? result==true"
     },
     "throwsTags": [
       {
@@ -445,7 +445,7 @@
         "codeTags": [],
         "comment": "a null value is inserted.",
         "kind": "THROWS",
-        "condition": ""
+        "condition": "args[0]==null"
       }
     ]
   },

@@ -1,0 +1,743 @@
+[
+  {
+    "signature": "org.jgrapht.graph.GraphDelegator(org.jgrapht.Graph<V, g)",
+    "name": "org.jgrapht.graph.GraphDelegator",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "g"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.jgrapht.Graph",
+            "name": "Graph",
+            "isArray": false
+          },
+          "name": "g"
+        },
+        "comment": "the backing graph (the delegate).",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "g==null",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      }
+    ]
+  },
+  {
+    "signature": "getAllEdges(V sourceVertex, V targetVertex)",
+    "name": "getAllEdges",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Set<E>",
+      "name": "java.util.Set<E>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "sourceVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "targetVertex"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getEdge(V sourceVertex, V targetVertex)",
+    "name": "getEdge",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "sourceVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "targetVertex"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getEdgeFactory()",
+    "name": "getEdgeFactory",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.jgrapht.EdgeFactory<V, E>",
+      "name": "org.jgrapht.EdgeFactory<V, E>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "addEdge(V sourceVertex, V targetVertex)",
+    "name": "addEdge",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "sourceVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "targetVertex"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "addEdge(V sourceVertex, V targetVertex, E e)",
+    "name": "addEdge",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "sourceVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "targetVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "addVertex(V v)",
+    "name": "addVertex",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "containsEdge(E e)",
+    "name": "containsEdge",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "containsVertex(V v)",
+    "name": "containsVertex",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "degreeOf(V vertex)",
+    "name": "degreeOf",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "vertex"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "edgeSet()",
+    "name": "edgeSet",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Set<E>",
+      "name": "java.util.Set<E>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "edgesOf(V vertex)",
+    "name": "edgesOf",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Set<E>",
+      "name": "java.util.Set<E>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "vertex"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "inDegreeOf(V vertex)",
+    "name": "inDegreeOf",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "vertex"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "incomingEdgesOf(V vertex)",
+    "name": "incomingEdgesOf",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Set<E>",
+      "name": "java.util.Set<E>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "vertex"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "outDegreeOf(V vertex)",
+    "name": "outDegreeOf",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "vertex"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "outgoingEdgesOf(V vertex)",
+    "name": "outgoingEdgesOf",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Set<E>",
+      "name": "java.util.Set<E>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "vertex"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "removeEdge(E e)",
+    "name": "removeEdge",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "removeEdge(V sourceVertex, V targetVertex)",
+    "name": "removeEdge",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "E",
+      "name": "E",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "sourceVertex"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "targetVertex"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "removeVertex(V v)",
+    "name": "removeVertex",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "toString()",
+    "name": "toString",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "java.lang.String",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "vertexSet()",
+    "name": "vertexSet",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Set<V>",
+      "name": "java.util.Set<V>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getEdgeSource(E e)",
+    "name": "getEdgeSource",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "V",
+      "name": "V",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getEdgeTarget(E e)",
+    "name": "getEdgeTarget",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "V",
+      "name": "V",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getEdgeWeight(E e)",
+    "name": "getEdgeWeight",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "e"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "setEdgeWeight(E e, double weight)",
+    "name": "setEdgeWeight",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.graph.GraphDelegator",
+      "name": "GraphDelegator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.graph.GraphDelegator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "e"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "weight"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  }
+]

@@ -31,4 +31,14 @@ public class AccuracyRandomCommonsCollections4 extends AbstractPrecisionRecallTe
   public void testFactoryUtils() throws Exception {
     test("org.apache.commons.collections4.FactoryUtils", 1, 1, 1, 1, 1, 1);
   }
+
+  @Test
+  public void testDefaultMapEntry() throws Exception {
+    test("org.apache.commons.collections4.keyvalue.DefaultMapEntry", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testCollectionBag() throws Exception {
+    test("org.apache.commons.collections4.bag.CollectionBag", 1, 1, 1, 1, 1, 0);
+  }
 }
