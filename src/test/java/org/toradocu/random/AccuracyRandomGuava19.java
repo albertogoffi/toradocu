@@ -24,6 +24,16 @@ public class AccuracyRandomGuava19 extends AbstractPrecisionRecallTestSuite {
     test("com.google.common.util.concurrent.AtomicDoubleArray");
   }
 
+  @Test
+  public void immutableSortedMapFauxverideShimTest() throws Exception {
+    test("com.google.common.collect.ImmutableSortedMapFauxverideShim");
+  }
+
+  @Test
+  public void immutableSortedMapTest() throws Exception {
+    test("com.google.common.collect.ImmutableSortedMap");
+  }
+
   private void test(String clazz) {
     testSuiteStats.addTest(PrecisionRecallTest.test(clazz, SRC, EXPECTED));
   }
