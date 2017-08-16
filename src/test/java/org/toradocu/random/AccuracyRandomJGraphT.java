@@ -20,8 +20,18 @@ public class AccuracyRandomJGraphT extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void directedAcyclicGraphTest() throws Exception {
-    test("org.jgrapht.experimental.dag.DirectedAcyclicGraph");
+  public void linearGraphGeneratorTest() throws Exception {
+    test("org.jgrapht.generate.LinearGraphGenerator");
+  }
+
+  @Test
+  public void completeGraphGeneratorTest() throws Exception {
+    test("org.jgrapht.generate.CompleteGraphGenerator");
+  }
+
+  @Test
+  public void graphDelegatorTest() throws Exception {
+    test("org.jgrapht.graph.GraphDelegator");
   }
 
   private void test(String clazz) {
