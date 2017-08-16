@@ -24,6 +24,16 @@ public class AccuracyRandomFreeCol extends AbstractPrecisionRecallTestSuite {
     test("net.sf.freecol.common.model.IndianNationType");
   }
 
+  @Test
+  public void unitLocationTest() throws Exception {
+    test("net.sf.freecol.common.model.UnitLocation");
+  }
+
+  @Test
+  public void featureTest() throws Exception {
+    test("net.sf.freecol.common.model.Feature");
+  }
+
   private void test(String clazz) {
     testSuiteStats.addTest(PrecisionRecallTest.test(clazz, SRC, EXPECTED));
   }
