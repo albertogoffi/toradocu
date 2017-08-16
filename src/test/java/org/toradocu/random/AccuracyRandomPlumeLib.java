@@ -26,6 +26,16 @@ public class AccuracyRandomPlumeLib extends AbstractPrecisionRecallTestSuite {
     test("plume.MathMDE");
   }
 
+  @Test
+  public void weakerHasherMapTest() throws Exception {
+    test("plume.WeakHasherMap");
+  }
+
+  @Test
+  public void arraysMDETest() throws Exception {
+    test("plume.ArraysMDE");
+  }
+
 
   private void test(String clazz) {
     testSuiteStats.addTest(PrecisionRecallTest.test(clazz, SRC, EXPECTED));
