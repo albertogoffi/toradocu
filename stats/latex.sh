@@ -191,14 +191,16 @@ if [ `uname` == "Darwin" ]; then
     TAC="tail -r"
 fi
 
+MISSING=${TOTAL[5]}
 cat "$RESULTS_TCOMMENT" | $TAC | tail -n +15 | $TAC > results_tcomment_truncated.csv
-echo '@tComment     & '`python stats/results_table.py results_tcomment_truncated.csv` > "$RESULTS_TABLE"
+echo '@tComment     & '`python stats/results_table.py results_tcomment_truncated.csv $MISSING` > "$RESULTS_TABLE"
 rm results_tcomment_truncated.csv
 
+MISSING=$((${TOTAL[4]}+${TOTAL[5]}))
 cat results_toradocu-0.1.csv | $TAC | tail -n +6 | $TAC | tail -n +2 > results_toradocu_truncated.csv
 echo '"METHOD","CORRECT THROWS CONDITIONS","WRONG THROWS CONDITIONS","MISSING THROWS CONDITIONS"' > results_toradocu_truncated2.csv
 cat results_toradocu_truncated.csv >> results_toradocu_truncated2.csv
-echo "$TORADOCU & "`python stats/results_table.py results_toradocu_truncated2.csv` >> "$RESULTS_TABLE"
+echo "$TORADOCU & "`python stats/results_table.py results_toradocu_truncated2.csv $MISSING` >> "$RESULTS_TABLE"
 rm results_toradocu_truncated.csv results_toradocu_truncated2.csv
 
 cat "$RESULTS" | $TAC | tail -n +15 | $TAC > results_jdoctor_truncated.csv
@@ -229,7 +231,7 @@ echo '\newcommand{\ToradocuPlusFMeasure}{'`fgrep $JDOCTOR "$RESULTS_TABLE" | cut
 echo '\newcommand{\totalConditions}{'$CONDITIONS'\xspace}' >> "$MACROS"
 echo '\newcommand{\totalClasses}{'${TOTAL[1]}'\xspace}' >> "$MACROS"
 
-# Jdoctor precsion/recall values
+# Jdoctor precision/recall values
 JDOCTOR_PRECISION_PRE=`fgrep "$JDOCTOR " "$RESULTS_TABLE" | cut -d '&' -f 2 | xargs`
 JDOCTOR_RECALL_PRE=`fgrep "$JDOCTOR " "$RESULTS_TABLE" | cut -d '&' -f 3 | xargs`
 JDOCTOR_PRECISION_EXC=`fgrep "$JDOCTOR " "$RESULTS_TABLE" | cut -d '&' -f 8 | xargs`

@@ -2,10 +2,11 @@ import csv
 import sys
 
 # Check command line arguments.
-if len(sys.argv) != 2:
+if len(sys.argv) < 2 or len(sys.argv) > 3:
     print("""\
 This script must be invoked with the following arguments:
 1. CSV file to parse;
+2. (Optional) Number of missing translation to be considered to compute overall recall;
 Output will be printed on the standard output.
 """)
     sys.exit(1)
@@ -58,7 +59,8 @@ throws_precision = 0 if correct_throws == 0 else float(correct_throws) / (correc
 throws_recall = 0 if correct_throws == 0 else float(correct_throws) / (correct_throws + wrong_throws + missing_throws)
 
 overall_correct = correct_param + correct_return + correct_throws
-overall_missing = missing_param + missing_return + missing_throws
+additional_missing = 0 if len(sys.argv) == 2 else int(sys.argv[2])
+overall_missing = missing_param + missing_return + missing_throws + additional_missing
 overall_wrong = wrong_param + wrong_return + wrong_throws
 overall_unexpected = unexpected_param + unexpected_return + unexpected_throws
 overall_precision = 0 if overall_correct == 0 else float(overall_correct) / (overall_correct + overall_wrong + overall_unexpected)
@@ -70,5 +72,6 @@ output += " & {:.2f} && ".format(param_recall) # param_recall
 output += "{:.2f}".format(return_precision) if (correct_return + wrong_return) > 0 else "n.a." # return_precision
 output += " & {:.2f} && ".format(return_recall) # return_recall
 output += "{:.2f}".format(throws_precision) if (correct_throws + wrong_throws) > 0 else "n.a." # throws_precision
-output += " & {:.2f} && {:.2f} & {:.2f} & {:.2f} \\\\".format(throws_recall, overall_precision, overall_recall, fmeasure) # throws_recall,  overall precision, recall, and fmeasure
+output += " & {:.2f} && ".format(throws_recall) # throws_recall
+output += "{:.2f} & {:.2f} & {:.2f} \\\\".format(overall_precision, overall_recall, fmeasure) # overall precision, recall, and fmeasure
 print output
