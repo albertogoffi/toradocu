@@ -1,10 +1,8 @@
 package org.toradocu.random;
 
-import java.util.Map;
 import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 import org.toradocu.testlib.PrecisionRecallTest;
-import org.toradocu.testlib.TestCaseStats;
 
 public class AccuracyRandomCommonsCollections4 extends AbstractPrecisionRecallTestSuite {
 
@@ -24,6 +22,16 @@ public class AccuracyRandomCommonsCollections4 extends AbstractPrecisionRecallTe
   @Test
   public void factoryUtilsTest() throws Exception {
     test("org.apache.commons.collections4.FactoryUtils");
+  }
+
+  @Test
+  public void defaultMapEntryTest() throws Exception {
+    test("org.apache.commons.collections4.keyvalue.DefaultMapEntry");
+  }
+
+  @Test
+  public void collectionBagTest() throws Exception {
+    test("org.apache.commons.collections4.bag.CollectionBag");
   }
 
   private void test(String clazz) {
