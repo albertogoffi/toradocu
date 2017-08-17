@@ -11,7 +11,7 @@ MACROS="$OUTPUT_DIR"/macros.tex
 ACCURACY_TS=src/test/java/org/toradocu/accuracy/random
 GOAL_FILES=src/test/resources/goal-output/random
 
-JDOCTORPLUS="\ToradocuPlus+"
+JDOCTORPLUS="semantics" # Be aware of string matching: Do not use \ToradocuPlus in the name!
 JDOCTOR="\ToradocuPlus"
 TORADOCU="\OldToradocu"
 
