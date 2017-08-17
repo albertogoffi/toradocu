@@ -12,12 +12,12 @@ if [ -f $STATS_FILE ]; then
 fi
 
 if [ ! -f $STATS_FILE ]; then
-    echo "METHOD,CORRECT CONDITIONS,WRONG CONDITIONS,MISSING CONDITIONS" > $STATS_FILE
+    echo "METHOD,CORRECT CONDITIONS,WRONG CONDITIONS,MISSING CONDITIONS,UNEXPECTED CONDITIONS" > $STATS_FILE
 fi
 
 # Run Toradocu and collect statistics
-./gradlew --rerun-tasks clean test --tests "org.toradocu.PrecisionRecallPaper"
-echo "TOTAL,=SUM(B2:INDIRECT(\"B\" & ROW()-1)),=SUM(C2:INDIRECT(\"C\" & ROW()-1)),=SUM(D2:INDIRECT(\"D\" & ROW()-1))" >> $STATS_FILE
+./gradlew --rerun-tasks clean test --tests "org.toradocu.random.AccuracyRandom*"
+echo "TOTAL,=SUM(B2:INDIRECT(\"B\" & ROW()-1)),=SUM(C2:INDIRECT(\"C\" & ROW()-1)),=SUM(D2:INDIRECT(\"D\" & ROW()-1)),=SUM(E2:INDIRECT(\"E\" & ROW()-1))" >> $STATS_FILE
 echo "NUMBER OF METHODS,=ROW()-3" >> $STATS_FILE
 echo "NUMBER OF CONDITIONS,=INDIRECT(\"B\" & ROW()-2)+INDIRECT(\"C\" & ROW()-2)+INDIRECT(\"D\" & ROW()-2)" >> $STATS_FILE
 echo "PRECISION,=INDIRECT(\"B\" & ROW()-3)/(INDIRECT(\"B\" & ROW()-3) + INDIRECT(\"C\" & ROW()-3))" >> $STATS_FILE

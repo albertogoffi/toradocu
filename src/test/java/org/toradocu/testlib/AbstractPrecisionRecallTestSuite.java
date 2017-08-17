@@ -29,7 +29,8 @@ public abstract class AbstractPrecisionRecallTestSuite {
       final TestCaseStats methodResults = tests.get(method);
       report.append(methodResults.getCorrect()).append(SEPARATOR)
           .append(methodResults.getWrong()).append(SEPARATOR)
-          .append(methodResults.getMissing()).append("\n");
+          .append(methodResults.getMissing()).append(SEPARATOR)
+          .append(methodResults.getUnexpected()).append("\n");
     }
 
     try (BufferedWriter resultsFile =

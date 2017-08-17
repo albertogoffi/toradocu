@@ -75,10 +75,18 @@ public class PrecisionRecallTest {
           TestCaseStats result = methodResults.computeIfAbsent(method, TestCaseStats::new);
 
           if (translation.equals(expectedTranslation)) {
-            System.out.print("Correct ");
-            result.incrementCorrect();
+            if (expectedTranslation.equals(" []")) {
+              // Ignore when expected is empty and Toradocu does not output a translation.
+              continue;
+            } else {
+              System.out.print("Correct ");
+              result.incrementCorrect();
+            }
           } else {
-            if (translation.equals(" []")) {
+            if (expectedTranslation.equals(" []")) {
+              System.out.print("Unexpected ");
+              result.incrementUnexpected();
+            } else if (translation.equals(" []")) {
               System.out.print("Missing ");
               result.incrementMissig(); // Toradocu did not produce any translation.
             } else {
