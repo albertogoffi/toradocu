@@ -12,6 +12,9 @@ public class RemoveMayBe implements PreprocessingPhase {
     if (comment.contains("may be")) {
       comment = comment.replaceAll("may be", "");
     }
+    if (comment.contains("can be")) {
+      comment = comment.replaceAll("can be", "");
+    }
     return comment;
   }
 }
