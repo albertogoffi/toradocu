@@ -39,6 +39,6 @@ public class AccuracyRandomCommonsCollections4 extends AbstractPrecisionRecallTe
 
   @Test
   public void testCollectionBag() throws Exception {
-    test("org.apache.commons.collections4.bag.CollectionBag", 1, 1, 1, 1, 1, 0);
+    test("org.apache.commons.collections4.bag.CollectionBag", 1, 1, 1, 1, 1, 1);
   }
 }
