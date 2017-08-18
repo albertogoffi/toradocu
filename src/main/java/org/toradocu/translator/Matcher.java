@@ -624,7 +624,8 @@ class Matcher {
         predicateTranslation = "==" + lastWord;
         break;
       case "this":
-        predicateTranslation = "==target"; // The receiver object in the generated aspects.
+        predicateTranslation =
+            "==" + Configuration.RECEIVER; // The receiver object in the generated aspects.
         break;
       case "zero":
         predicateTranslation = "==0";

@@ -3,6 +3,7 @@ package org.toradocu.translator;
 import java.lang.reflect.Parameter;
 import java.util.Set;
 import java.util.StringJoiner;
+import org.toradocu.conf.Configuration;
 
 /**
  * This class represents a parameter code element for use in translation. It holds String
@@ -99,8 +100,8 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
     final Class<?> subjectType = subject.getType();
 
     // Comparison with receiver object
-    if (predicateTranslation.contains("target")) {
-      return subjectType.equals(declaringClass) && predicateTranslation.equals("==target");
+    if (predicateTranslation.equals("==" + Configuration.RECEIVER)) {
+      return subjectType.equals(declaringClass);
     }
     // Boolean or boolean
     if (subjectType.equals(boolean.class) || subjectType.equals(Boolean.class)) {
