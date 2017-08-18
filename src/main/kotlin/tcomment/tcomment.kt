@@ -19,7 +19,7 @@ fun translate(executables: List<DocumentedExecutable>):
     val preSpecs = method.paramTags().map { translateTagComment(it, parameters) }
     val throwsSpecs = method.throwsTags().map { translateTagComment(it, parameters) }
 
-    val operation = Operation.getOperation(method.getExecutable())
+    val operation = Operation.getOperation(method.executable)
     val spec = OperationSpecification(operation)
     spec.addParamSpecifications(preSpecs)
     spec.addThrowsSpecifications(throwsSpecs)
