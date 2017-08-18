@@ -20,7 +20,7 @@ fi
 echo "TOTAL,=SUM(B2:INDIRECT(\"B\" & ROW()-1)),=SUM(C2:INDIRECT(\"C\" & ROW()-1)),=SUM(D2:INDIRECT(\"D\" & ROW()-1)),=SUM(E2:INDIRECT(\"E\" & ROW()-1))" >> $STATS_FILE
 echo "NUMBER OF METHODS,=ROW()-3" >> $STATS_FILE
 echo "NUMBER OF CONDITIONS,=INDIRECT(\"B\" & ROW()-2)+INDIRECT(\"C\" & ROW()-2)+INDIRECT(\"D\" & ROW()-2)" >> $STATS_FILE
-echo "PRECISION,=INDIRECT(\"B\" & ROW()-3)/(INDIRECT(\"B\" & ROW()-3) + INDIRECT(\"C\" & ROW()-3))" >> $STATS_FILE
-echo "RECALL,=INDIRECT(\"B\" & ROW()-4)/INDIRECT(\"B\" & ROW()-2)" >> $STATS_FILE
+echo "PRECISION,=INDIRECT(\"B\" & ROW()-3)/(INDIRECT(\"B\" & ROW()-3) + INDIRECT(\"C\" & ROW()-3) + INDIRECT(\"E\" & ROW()-3))" >> $STATS_FILE
+echo "RECALL,=INDIRECT(\"B\" & ROW()-4)/(INDIRECT(\"B\" & ROW()-4) + INDIRECT(\"C\" & ROW()-4) + INDIRECT(\"D\" & ROW()-4))" >> $STATS_FILE
 
 echo "Open the result file: $STATS_FILE"
