@@ -176,7 +176,7 @@ public abstract class CodeElement<T> implements Comparable<CodeElement<?>> {
    * @param declaringClass declaring class of the {@code DocumentedExecutable} to check
    *     compatibility in case of comparisons with receiver object
    * @param predicateTranslation the translation of the predicate whose compatibility with this code
-   *     element hase to be checked
+   *     element has to be checked
    * @return true if the predicate translation is compatible, false otherwise
    */
   boolean isCompatibleWith(Class<?> declaringClass, String predicateTranslation) {
