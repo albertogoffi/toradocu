@@ -94,10 +94,14 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
   }
 
   @Override
-  boolean isCompatibleWith(String predicateTranslation) {
+  boolean isCompatibleWith(Class<?> declaringClass, String predicateTranslation) {
     final Parameter subject = getJavaCodeElement();
     final Class<?> subjectType = subject.getType();
 
+    // Comparison with receiver object
+    if (predicateTranslation.contains("target")) {
+      return subjectType.equals(declaringClass) && predicateTranslation.equals("==target");
+    }
     // Boolean or boolean
     if (subjectType.equals(boolean.class) || subjectType.equals(Boolean.class)) {
       return predicateTranslation.equals("==true") || predicateTranslation.equals("==false");
@@ -127,7 +131,6 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
     // Non-primitives
     if (!subjectType.isPrimitive()
         && !predicateTranslation.equals("==null")
-        && !predicateTranslation.equals("==target")
         && (predicateTranslation.startsWith("==")
             || predicateTranslation.startsWith("<")
             || predicateTranslation.startsWith("<=")

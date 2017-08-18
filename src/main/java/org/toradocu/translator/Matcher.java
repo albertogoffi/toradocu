@@ -150,7 +150,7 @@ class Matcher {
 
     // General case
     String match = simpleMatch(predicate);
-    if (match != null && subject.isCompatibleWith(match)) {
+    if (match != null && subject.isCompatibleWith(method.getDeclaringClass(), match)) {
       if (subject instanceof ContainerElementsCodeElement) {
         ContainerElementsCodeElement containerCodeElement = (ContainerElementsCodeElement) subject;
         match = containerCodeElement.getJavaExpression(match);
