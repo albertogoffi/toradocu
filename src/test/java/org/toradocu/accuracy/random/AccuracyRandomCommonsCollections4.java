@@ -3,7 +3,6 @@ package org.toradocu.accuracy.random;
 import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 
-/** Created by arianna on 07/08/17. */
 public class AccuracyRandomCommonsCollections4 extends AbstractPrecisionRecallTestSuite {
 
   private static final String COMMONSCOLLECTIONS_4_SRC =

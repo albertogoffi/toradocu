@@ -3,7 +3,6 @@ package org.toradocu.accuracy.random;
 import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 
-/** Created by arianna on 07/08/17. */
 public class AccuracyRandomGuava19 extends AbstractPrecisionRecallTestSuite {
 
   private static final String GUAVA_19_SRC = "src/test/resources/src/guava-19.0-sources/";
