@@ -95,6 +95,6 @@ public class PrecisionRecallGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testAtomicDoubleArray() throws Exception {
-    test("com.google.common.util.concurrent.AtomicDoubleArray", 1, 1, 1, 1, 0, 1);
+    test("com.google.common.util.concurrent.AtomicDoubleArray", 1, 1, 1, 1, 1, 1);
   }
 }
