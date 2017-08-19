@@ -36,9 +36,11 @@ public class PropositionSeriesTest {
     subject3Words.add(subject3);
 
     PropositionSeries propositions = new PropositionSeries(null);
-    propositions.add(new Proposition(new Subject(subject1Words), "predicate1"));
-    propositions.add(Conjunction.OR, new Proposition(new Subject(subject2Words), "predicate2"));
-    propositions.add(Conjunction.AND, new Proposition(new Subject(subject3Words), "predicate3"));
+    propositions.add(new Proposition(new Subject(subject1Words, false), "predicate1"));
+    propositions.add(
+        Conjunction.OR, new Proposition(new Subject(subject2Words, false), "predicate2"));
+    propositions.add(
+        Conjunction.AND, new Proposition(new Subject(subject3Words, false), "predicate3"));
 
     assertThat(propositions.numberOfPropositions(), is(3));
     assertThat(

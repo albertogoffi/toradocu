@@ -17,6 +17,8 @@ public class Subject {
   private final List<IndexedWord> subjectWords;
   /** Words composing the container */
   private final List<IndexedWord> containerWords;
+  /** Denotes whether this is a passive subject */
+  private final boolean isPassive;
 
   private String subjectAsString;
   private final String containerAsString;
@@ -27,8 +29,8 @@ public class Subject {
    * @param subject the words composing the subject
    * @throws NullPointerException if {@code subject} is null
    */
-  public Subject(List<IndexedWord> subject) {
-    this(subject, new ArrayList<>());
+  public Subject(List<IndexedWord> subject, boolean isPassive) {
+    this(subject, new ArrayList<>(), isPassive);
   }
 
   /**
@@ -36,12 +38,15 @@ public class Subject {
    *
    * @param subjectWords words composing the subject
    * @param containerWords words composing the container
+   * @param isPassive whether this is a passive subject
    * @throws NullPointerException if {@code subjectWords} or {@code containerWords} is null
    */
-  public Subject(List<IndexedWord> subjectWords, List<IndexedWord> containerWords) {
+  public Subject(
+      List<IndexedWord> subjectWords, List<IndexedWord> containerWords, boolean isPassive) {
     Checks.nonNullParameter(subjectWords, "subject");
     Checks.nonNullParameter(containerWords, "container");
     this.subjectWords = subjectWords;
+    this.isPassive = isPassive;
     this.containerWords = containerWords;
     this.subjectAsString =
         subjectWords.stream().map(IndexedWord::word).collect(Collectors.joining(" "));
@@ -122,6 +127,15 @@ public class Subject {
     }
     //    String subjectPOSTag = mainSubjectWord.backingLabel().get(PartOfSpeechAnnotation.class);
     return Arrays.asList(singularPOSTags).contains(subjectPOSTag);
+  }
+
+  /**
+   * Returns true if in the original sentence this was a passive subject.
+   *
+   * @return true if this is a passive subject, false otherwise
+   */
+  public boolean isPassive() {
+    return isPassive;
   }
 
   @Override
