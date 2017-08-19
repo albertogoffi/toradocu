@@ -360,7 +360,12 @@ public class SentenceParser {
       containerWords.add(container);
     }
 
-    return new Subject(extractSubjectWords(subjectWord), containerWords);
+    boolean isPassive =
+        getRelationsFromGraph("nsubjpass")
+            .stream()
+            .anyMatch(e -> e.getTarget().equals(subjectWord));
+
+    return new Subject(extractSubjectWords(subjectWord), containerWords, isPassive);
   }
 
   /** Initializes the relations fields using the semantic graph. */
