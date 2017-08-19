@@ -20,8 +20,8 @@ public class PropositionTest {
     List<IndexedWord> subject2Words = new ArrayList<>();
     subject2Words.add(subject2);
 
-    Proposition p1 = new Proposition(new Subject(subject1Words), "is empty");
-    Proposition p2 = new Proposition(new Subject(subject2Words), "is empty");
+    Proposition p1 = new Proposition(new Subject(subject1Words, false), "is empty");
+    Proposition p2 = new Proposition(new Subject(subject2Words, false), "is empty");
     assertTrue(p1.equals(p2));
     assertEquals(p1.hashCode(), p2.hashCode());
   }
