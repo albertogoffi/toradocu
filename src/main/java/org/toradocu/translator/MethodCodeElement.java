@@ -68,6 +68,15 @@ public class MethodCodeElement extends CodeElement<Method> {
     this.parameters = parameters.toArray(new String[0]);
   }
 
+  @Override
+  boolean isCompatibleWith(Class<?> declaringClass, String predicateTranslation) {
+    if (predicateTranslation.contains(".")) {
+      //if the translation is a method invocation, it must be this subject
+      return predicateTranslation.startsWith(getJavaExpression());
+    }
+    return true;
+  }
+
   /**
    * Builds and returns the Java expression representation of this method code element. The returned
    * string is formatted as "RECEIVER.METHOD_NAME" where RECEIVER is the name of the class on which

@@ -126,7 +126,8 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
           || predicateTranslation.startsWith("<=")
           || predicateTranslation.startsWith(">")
           || predicateTranslation.startsWith(">=")
-          || predicateTranslation.startsWith("==");
+          || predicateTranslation.startsWith("==")
+          || predicateTranslation.contains(".equals(");
     }
 
     // Non-primitives
