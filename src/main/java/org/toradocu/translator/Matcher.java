@@ -221,7 +221,7 @@ class Matcher {
             .filter(
                 e -> {
                   if (e.getJavaExpression().matches("(.*).set[A-Z](.*)")) {
-                    //esclude setters
+                    //exclude setters
                     return false;
                   }
                   if (e instanceof MethodCodeElement) {
