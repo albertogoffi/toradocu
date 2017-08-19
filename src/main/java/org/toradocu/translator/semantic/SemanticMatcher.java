@@ -69,22 +69,23 @@ public class SemanticMatcher {
    *
    * @param codeElements list of potentially candidate {@code CodeElement}s
    * @param method the method which the comment to match belongs
+   * @param subject the subject {@code CodeElement}
    * @param proposition the {@code Proposition} extracted from the comment
-   * @param comment comment text
-   * @return a map containing the best matches together with the distance computed in respect to the
-   *     comment
+   * @param comment comment text @return a map containing the best matches together with the
+   *     distance computed in respect to the comment
    * @throws IOException if there were problems reading the vector model
    */
   public LinkedHashMap<CodeElement<?>, Double> runVectorMatch(
       List<CodeElement<?>> codeElements,
       DocumentedExecutable method,
+      CodeElement<?> subject,
       Proposition proposition,
       String comment)
       throws IOException {
 
     stopwords.add(method.getDeclaringClass().getSimpleName().toLowerCase());
     try {
-      return vectorsMatch(comment, proposition, method, codeElements);
+      return vectorsMatch(comment, subject, proposition, method, codeElements);
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -99,6 +100,7 @@ public class SemanticMatcher {
    * the process.
    *
    * @param comment the comment text for which computing the distances
+   * @param subjectCodeElement the subject {@code CodeElement}
    * @param proposition the {@code Proposition} extracted from the comment
    * @param method the method which the comment to match belongs
    * @param codeElements ist of potentially candidate {@code CodeElement}s
@@ -108,6 +110,7 @@ public class SemanticMatcher {
    */
   private LinkedHashMap<CodeElement<?>, Double> vectorsMatch(
       String comment,
+      CodeElement<?> subjectCodeElement,
       Proposition proposition,
       DocumentedExecutable method,
       List<CodeElement<?>> codeElements)
@@ -122,7 +125,7 @@ public class SemanticMatcher {
         //Increase the threshold in case of very long comments
         this.wmdThreshold = (float) 6.35;
 
-      return wmdMatch(commentWordSet, proposition, method, codeElements);
+      return wmdMatch(commentWordSet, proposition, subjectCodeElement, method, codeElements);
     }
 
     String parsedComment = String.join(" ", commentWordSet).replaceAll("\\s+", " ").trim();
@@ -154,9 +157,16 @@ public class SemanticMatcher {
           DoubleVector modifiedCommentVector = getCommentVector(modifiedComment);
 
           measureAndStoreDistance(modifiedCommentVector, codeElementVector, codeElement, distances);
-        } else {
-          DoubleVector methodVector = getCodeElementVector(codeElement, null);
-          measureAndStoreDistance(originalCommentVector, methodVector, codeElement, distances);
+        } else if (codeElement instanceof MethodCodeElement
+            && ((MethodCodeElement) codeElement).getReceiver().equals("target")) {
+          if (proposition.getSubject().isPassive()
+              || subjectCodeElement.toString().startsWith("target:")) {
+            // assume it's legit to invoke a method of the target class if the subject is the receiver
+            // object itself or if the subject was passive (thus the action could be invoked not from,
+            // but on it, typically as an argument)
+            DoubleVector methodVector = getCodeElementVector(codeElement, null);
+            measureAndStoreDistance(originalCommentVector, methodVector, codeElement, distances);
+          }
         }
       }
       return retainMatches(parsedComment, method.getSignature(), distances);
@@ -303,6 +313,7 @@ public class SemanticMatcher {
   private LinkedHashMap<CodeElement<?>, Double> wmdMatch(
       Set<String> commentWordSet,
       Proposition proposition,
+      CodeElement<?> subjectCodeElement,
       DocumentedExecutable method,
       List<CodeElement<?>> codeElements) {
 
@@ -353,18 +364,33 @@ public class SemanticMatcher {
           Set<String> modifiedComment = new LinkedHashSet<String>(commentWordSet);
           modifiedComment.remove(wordToIgnore);
           finalComment = String.join(" ", modifiedComment).replaceAll("\\s+", " ").trim();
-        } else {
-          finalComment = String.join(" ", commentWordSet).replaceAll("\\s+", " ").trim();
-        }
-        finalID = String.join(" ", codeElementWordSet).replaceAll("\\s+", " ").trim().toLowerCase();
+          finalID =
+              String.join(" ", codeElementWordSet).replaceAll("\\s+", " ").trim().toLowerCase();
 
-        double dist = 10;
-        try {
-          dist = wm.distance(finalComment, finalID);
-        } catch (Exception e) {
-          //do nothing
+          double dist = 10;
+          try {
+            dist = wm.distance(finalComment, finalID);
+          } catch (Exception e) {
+            //do nothing
+          }
+          distances.put(codeElement, dist);
+        } else if (codeElement instanceof MethodCodeElement
+            && ((MethodCodeElement) codeElement).getReceiver().equals("target")) {
+          if (proposition.getSubject().isPassive()
+              || subjectCodeElement.toString().startsWith("target:")) {
+            finalComment = String.join(" ", commentWordSet).replaceAll("\\s+", " ").trim();
+            finalID =
+                String.join(" ", codeElementWordSet).replaceAll("\\s+", " ").trim().toLowerCase();
+
+            double dist = 10;
+            try {
+              dist = wm.distance(finalComment, finalID);
+            } catch (Exception e) {
+              //do nothing
+            }
+            distances.put(codeElement, dist);
+          }
         }
-        distances.put(codeElement, dist);
       }
     }
 

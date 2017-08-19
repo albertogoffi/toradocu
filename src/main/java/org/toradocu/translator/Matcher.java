@@ -159,7 +159,9 @@ class Matcher {
       }
     } else {
       match = codeElementsMatch(method, subject, proposition, comment);
-      if (match == null) return null;
+      if (match == null || !subject.isCompatibleWith(method.getDeclaringClass(), match)) {
+        return null;
+      }
     }
 
     if (match.equals("target==null")) { // Condition "target==null" is indeed not correct.
@@ -168,9 +170,9 @@ class Matcher {
 
     if (proposition.isNegative()) {
       return "(" + match + ") == false";
-    } else {
-      return match;
     }
+
+    return match;
   }
 
   private String codeElementsMatch(
@@ -218,6 +220,10 @@ class Matcher {
             .stream()
             .filter(
                 e -> {
+                  if (e.getJavaExpression().matches("(.*).set[A-Z](.*)")) {
+                    //esclude setters
+                    return false;
+                  }
                   if (e instanceof MethodCodeElement) {
                     Method m = ((MethodCodeElement) e).getJavaCodeElement();
                     if (m.toGenericString().equals(method.getExecutable().toGenericString())
@@ -246,7 +252,7 @@ class Matcher {
         //being put in map in a different order every execution
         Collections.sort(sortedMethodList, new JavaExpressionComparator());
         LinkedHashMap<CodeElement<?>, Double> semanticMethodMatches =
-            semanticMatcher.runVectorMatch(sortedMethodList, method, proposition, comment);
+            semanticMatcher.runVectorMatch(sortedMethodList, method, subject, proposition, comment);
 
         if (semanticMethodMatches != null && !semanticMethodMatches.isEmpty()) {
           List<CodeElement<?>> semanticMethodList =
