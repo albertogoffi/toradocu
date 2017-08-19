@@ -3,7 +3,6 @@ package org.toradocu.accuracy.random;
 import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 
-/** Created by arianna on 07/08/17. */
 public class AccuracyRandomFreeCol extends AbstractPrecisionRecallTestSuite {
 
   private static final String FREECOL_SRC = "src/test/resources/src/freecol-0.11.6/src/";

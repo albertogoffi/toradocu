@@ -3,7 +3,6 @@ package org.toradocu.accuracy.random;
 import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 
-/** Created by arianna on 07/08/17. */
 public class AccuracyRandomGraphStream extends AbstractPrecisionRecallTestSuite {
 
   private static final String GRAPHSTREAM_SRC = "src/test/resources/src/gs-core-1.3-sources";

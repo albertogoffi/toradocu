@@ -3,7 +3,6 @@ package org.toradocu.accuracy.random;
 import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 
-/** Created by arianna on 07/08/17. */
 public class AccuracyRandomPlumeLib extends AbstractPrecisionRecallTestSuite {
   private static final String PLUMELIB_SRC = "src/test/resources/src/plume-lib-1.1.0/java/src/";
   private static final String PLUMELIB_BIN = "src/test/resources/bin/plume-lib-1.1.0.jar";
