@@ -43,8 +43,28 @@ public class SemanticMatcher {
     stopwords =
         new ArrayList<>(
             Arrays.asList(
-                "true", "false", "the", "a", "if", "for", "be", "have", "this", "do", "not", "of",
-                "can", "in", "null", "only", "already", "specify"));
+                "true",
+                "false",
+                "the",
+                "a",
+                "if",
+                "either",
+                "whether",
+                "else",
+                "otherwise",
+                "for",
+                "be",
+                "have",
+                "this",
+                "do",
+                "not",
+                "of",
+                "can",
+                "in",
+                "null",
+                "only",
+                "already",
+                "specify"));
 
     try {
       gloveDB = GloveBinModelWrapper.getInstance().getGloveBinaryReader();
@@ -141,7 +161,8 @@ public class SemanticMatcher {
         //For each code element, compute the corresponding vector and compute the distance
         //between it and the comment vector. Store the distances and filter them lately.
         if (codeElement instanceof MethodCodeElement
-            && !((MethodCodeElement) codeElement).getReceiver().equals("target")) {
+            && !((MethodCodeElement) codeElement).getReceiver().equals("target")
+            && !areComplementary((MethodCodeElement) codeElement, method)) {
           // if receiver is not target, this is a method invoked from the subject, which for the reason
           // is implicit and will be excluded from the vector computation
           if (subject.lastIndexOf(" ") != -1)
@@ -158,7 +179,8 @@ public class SemanticMatcher {
 
           measureAndStoreDistance(modifiedCommentVector, codeElementVector, codeElement, distances);
         } else if (codeElement instanceof MethodCodeElement
-            && ((MethodCodeElement) codeElement).getReceiver().equals("target")) {
+            && ((MethodCodeElement) codeElement).getReceiver().equals("target")
+            && !areComplementary((MethodCodeElement) codeElement, method)) {
           if (proposition.getSubject().isPassive()
               || subjectCodeElement.toString().startsWith("target:")) {
             // assume it's legit to invoke a method of the target class if the subject is the receiver
@@ -211,6 +233,26 @@ public class SemanticMatcher {
       double dist = cos.measureDistance(codeElementVector, commentVector);
       distances.put(codeElement, dist);
     }
+  }
+
+  /**
+   * Returns true if the {@code DocumentedExecutable} is a setter and the possible candidate is the
+   * symmetric getter
+   *
+   * @param candidate the possible candidate {@code MethodCodeElement}
+   * @param method the {@code DocumentedExecutable}
+   * @return true if candidate and method are respectively the setter and the getter
+   */
+  private boolean areComplementary(MethodCodeElement candidate, DocumentedExecutable method) {
+    String candidateName = candidate.getJavaCodeElement().getName();
+    if (candidateName.matches("(.*)get[A-Z](.*)")) {
+      String property = candidateName.split("get")[1];
+      if (method.getName().equals("set" + property)) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   /**
@@ -349,7 +391,8 @@ public class SemanticMatcher {
         Set<String> codeElementWordSet = removeStopWords(camelId);
 
         if (codeElement instanceof MethodCodeElement
-            && !((MethodCodeElement) codeElement).getReceiver().equals("target")) {
+            && !((MethodCodeElement) codeElement).getReceiver().equals("target")
+            && !areComplementary((MethodCodeElement) codeElement, method)) {
           // if receiver is not target, this is a method invoked from the subject, which for the reason
           // is implicit and will be excluded from the vector computation
 
@@ -375,7 +418,8 @@ public class SemanticMatcher {
           }
           distances.put(codeElement, dist);
         } else if (codeElement instanceof MethodCodeElement
-            && ((MethodCodeElement) codeElement).getReceiver().equals("target")) {
+            && ((MethodCodeElement) codeElement).getReceiver().equals("target")
+            && !areComplementary((MethodCodeElement) codeElement, method)) {
           if (proposition.getSubject().isPassive()
               || subjectCodeElement.toString().startsWith("target:")) {
             finalComment = String.join(" ", commentWordSet).replaceAll("\\s+", " ").trim();
