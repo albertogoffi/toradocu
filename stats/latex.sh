@@ -11,7 +11,7 @@ MACROS="$OUTPUT_DIR"/macros.tex
 ACCURACY_TS=src/test/java/org/toradocu/accuracy/random
 GOAL_FILES=src/test/resources/goal-output/random
 
-JDOCTORPLUS="semantics" # Be aware of string matching: Do not use \ToradocuPlus in the name!
+JDOCTORPLUS="\ToradocuPlusSem" # Be aware of string matching!
 JDOCTOR="\ToradocuPlus"
 TORADOCU="\OldToradocu"
 
@@ -224,9 +224,9 @@ echo '\newcommand{\OldToradocuPrecision}{'`fgrep $TORADOCU "$RESULTS_TABLE" | cu
 echo '\newcommand{\OldToradocuRecall}{'`fgrep $TORADOCU "$RESULTS_TABLE" | cut -d "&" -f 12 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
 echo '\newcommand{\OldToradocuFMeasure}{'`fgrep $TORADOCU "$RESULTS_TABLE" | cut -d "&" -f 13 | xargs | cut -d ' ' -f 1 | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
 
-echo '\newcommand{\ToradocuPlusPrecision}{'`fgrep $JDOCTOR "$RESULTS_TABLE" | cut -d "&" -f 11 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
-echo '\newcommand{\ToradocuPlusRecall}{'`fgrep $JDOCTOR "$RESULTS_TABLE" | cut -d "&" -f 12 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
-echo '\newcommand{\ToradocuPlusFMeasure}{'`fgrep $JDOCTOR "$RESULTS_TABLE" | cut -d "&" -f 13 | xargs | cut -d ' ' -f 1 | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
+echo '\newcommand{\ToradocuPlusPrecision}{'`fgrep "$JDOCTOR " "$RESULTS_TABLE" | cut -d "&" -f 11 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
+echo '\newcommand{\ToradocuPlusRecall}{'`fgrep "$JDOCTOR " "$RESULTS_TABLE" | cut -d "&" -f 12 | xargs | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
+echo '\newcommand{\ToradocuPlusFMeasure}{'`fgrep "$JDOCTOR " "$RESULTS_TABLE" | cut -d "&" -f 13 | xargs | cut -d ' ' -f 1 | cut -d "." -f 2`'\%\xspace}' >> "$MACROS"
 
 echo '\newcommand{\totalConditions}{'$CONDITIONS'\xspace}' >> "$MACROS"
 echo '\newcommand{\totalClasses}{'${TOTAL[1]}'\xspace}' >> "$MACROS"
