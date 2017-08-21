@@ -34,7 +34,8 @@ public class Parser {
   private static final String INEQUALITY_VAR_REGEX =
       " *((([<>=]=?)|(!=)) ?)(?!this)((([a-zA-Z]+([0-9]?))+_?(?! ))+(.([a-zA-Z]+([0-9]?))+(\\(*\\))?)?)";
   private static final String PLACEHOLDER_PREFIX = " INEQUALITY_";
-  private static final String INEQ_INSOF = " *[an]* (instance of)"; // e.g "an instance of"
+  private static final String INEQ_INSOF =
+      "(?<!has )(?<!have )an (instance of)"; // e.g "an instance of"
   private static final String INEQ_INSOFPROCESSED =
       " instanceof +[^ \\.]*"; // e.g. "instanceof BinaryMutation"
   private static final String INEQ_THIS = "(?<!of) this\\."; // e.g "<object> is this."
