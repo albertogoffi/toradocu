@@ -4046,7 +4046,7 @@
     "returnTag": {
       "comment": "The Europe object, or null if the player is not European or indpendent.",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "(target.isEuropean())==false?result==null"
     },
     "throwsTags": []
   },
