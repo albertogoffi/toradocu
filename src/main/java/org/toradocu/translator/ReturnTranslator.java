@@ -22,14 +22,91 @@ public class ReturnTranslator {
   public List<PostSpecification> translate(ReturnTag tag, DocumentedExecutable excMember) {
     String comment = tag.getComment().getText();
 
-    // Split the sentence in three parts: predicate + true case + false case.
-    // TODO Naive splitting. Make the split more reliable.
-    final int predicateSplitPoint = comment.indexOf(" if ");
-    if (predicateSplitPoint != -1) {
-      return returnStandardPattern(excMember, comment, predicateSplitPoint);
-    } else {
-      return returnNotStandard(excMember, comment);
+    //Manage translation of each sub-sentence linked by the Or conjunction separately
+    String[] subSentences = manageOrConjunction(comment);
+    List<List<PostSpecification>> conditions = new ArrayList<List<PostSpecification>>();
+
+    for (String subSentence : subSentences) {
+      // Split the sentence in three parts: predicate + true case + false case.
+      // TODO Naive splitting. Make the split more reliable.
+      final int predicateSplitPoint = subSentence.indexOf(" if ");
+      if (predicateSplitPoint != -1) {
+        conditions.add(returnStandardPattern(excMember, subSentence, predicateSplitPoint));
+      } else {
+        conditions.add(returnNotStandard(excMember, subSentence));
+      }
     }
+
+    return mergeOrConjunction(comment, subSentences, conditions);
+  }
+
+  /**
+   * Extracts sub-sentences that in the comment are linked by an Or conjunction.
+   *
+   * @param comment original comment text
+   * @return the sub-sentences
+   */
+  private String[] manageOrConjunction(String comment) {
+    //Ignore pattern expressions involving an "or"
+    String placeholderText =
+        comment
+            .replaceAll("greater than or equal to", ">=")
+            .replaceAll("less than or equal to", "<=")
+            .replaceAll("lesser than or equal to", "<=")
+            .replaceAll("lesser or equal to", "<=")
+            .replaceAll("smaller than or equal to", "<=")
+            .replaceAll(" logical or ", " logicalOR ");
+
+    String subSentences[] = placeholderText.split(" or ");
+    if (subSentences.length > 1) {
+      // To help translation of the second sub-sentence, if any
+      subSentences[1] = "result is " + subSentences[1];
+    }
+    return subSentences;
+  }
+
+  /**
+   * We have translated the sub-sentences separately, now we have to join them with the conjunction.
+   *
+   * @param comment original comment text
+   * @param subSentences the sub-senteces composing the comment
+   * @param conditions the translated conditions
+   * @return a {@code List<PostSpecification>}
+   */
+  private List<PostSpecification> mergeOrConjunction(
+      String comment, String[] subSentences, List<List<PostSpecification>> conditions) {
+    if (conditions.size() > 1) {
+      if (!conditions.get(0).isEmpty() && !conditions.get(1).isEmpty()) {
+        // Both the conditions were correctly translated and can be merged
+        String property =
+            "("
+                + (conditions.get(0).get(0).getProperty().getConditionText()
+                    + "||"
+                    + conditions.get(1).get(0).getProperty().getConditionText())
+                + ")";
+        List<PostSpecification> specs = new ArrayList<>();
+        specs.add(
+            new PostSpecification(
+                comment,
+                new Guard(comment, conditions.get(0).get(0).getGuard().getConditionText()),
+                new Property(comment, property)));
+        return specs;
+      } else if (conditions.get(0).isEmpty()
+          && !conditions.get(1).isEmpty()
+          && subSentences[1].contains(" if ")) {
+        // We couldn't translate the main condition. Either the second one contains a correctly
+        // translated "if" condition, or we would produce a biased translation
+        return conditions.get(1);
+      } else if (!conditions.get(0).isEmpty()
+          && conditions.get(1).isEmpty()
+          && subSentences[1].contains(" if ")) {
+        return new ArrayList<PostSpecification>();
+      } else if (conditions.get(0).isEmpty() && conditions.get(1).isEmpty()) {
+        // We couldn't translate any of the sub-sentences, thus we return empty
+        return new ArrayList<PostSpecification>();
+      }
+    }
+    return conditions.get(0);
   }
 
   /**
