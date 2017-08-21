@@ -246,7 +246,7 @@ class Matcher {
     List<CodeElement<?>> sortedMethodList = new ArrayList<CodeElement<?>>(codeElements);
     if (SemanticMatcher.isEnabled()) {
       try {
-        SemanticMatcher semanticMatcher = new SemanticMatcher(true, (float) 0.2, (float) 1.5);
+        SemanticMatcher semanticMatcher = new SemanticMatcher(true, (float) 0.2, (float) 1.8);
 
         //it is important to provide a fixed order since this point, to prevent method with same score
         //being put in map in a different order every execution
