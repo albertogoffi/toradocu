@@ -39,7 +39,7 @@ public class AccuracyRandomCommonsMath3 extends AbstractPrecisionRecallTestSuite
 
   @Test
   public void testSum() throws Exception {
-    test("org.apache.commons.math3.stat.descriptive.summary.Sum", 1, 1, 1, 1, 1, 0);
+    test("org.apache.commons.math3.stat.descriptive.summary.Sum", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
