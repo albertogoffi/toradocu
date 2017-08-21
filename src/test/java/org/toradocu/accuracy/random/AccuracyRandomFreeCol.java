@@ -21,7 +21,7 @@ public class AccuracyRandomFreeCol extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testBuildingType() throws Exception {
-    test("net.sf.freecol.common.model.BuildingType", 1, 1, 0, 1, 0, 0);
+    test("net.sf.freecol.common.model.BuildingType", 1, 1, 1, 1, 0, 0);
   }
 
   @Test

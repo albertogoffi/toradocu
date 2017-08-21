@@ -8,8 +8,7 @@ import randoop.condition.specification.ThrowsSpecification;
 public class ThrowsTranslator {
 
   public ThrowsSpecification translate(ThrowsTag tag, DocumentedExecutable excMember) {
-    String commentTranslation = "";
-    commentTranslation =
+    final String commentTranslation =
         alwaysThrowException(tag.getComment().getText())
             ? "true"
             : BasicTranslator.translate(tag, excMember);
