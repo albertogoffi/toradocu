@@ -20,7 +20,7 @@ public class AccuracyRandomPlumeLib extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testMathMDE() throws Exception {
-    test("plume.MathMDE", 1, 1, 1, 0, 0.785, 0.785);
+    test("plume.MathMDE", 1, 1, 1, 0, 0.933, 1);
   }
 
   @Test
