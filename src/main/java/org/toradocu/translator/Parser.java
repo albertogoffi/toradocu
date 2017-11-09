@@ -29,10 +29,11 @@ public class Parser {
 
   private static final String GENERIC_TYPE_REGEX = " *(<T>)";
 
-  private static final String RANGE_VAR_REGEX = " *([<>=]=?) ?([a-zA-Z]+) ?([<>=]=?)";
+  private static final String RANGE_VAR_REGEX =
+      " * ?([a-zA-Z0-9]+) ?([<>=]=?) ?([a-zA-Z]+) ?([<>=]=?) ?([a-zA-Z0-9]+)";
 
   private static final String INEQUALITY_VAR_REGEX =
-      " *((([<>=]=?)|(!=)) ?)(?!this)((([a-zA-Z]+([0-9]?))+_?(?! ))+(.([a-zA-Z]+([0-9]?))+(\\(*\\))?)?)";
+      " *(([<>=]=?|!=) ?)(?!this)((?![a-zA-Z]+\\()([a-zA-Z][a-zA-Z0-9_]*)|([_][a-zA-Z0-9_]+))(\\.[a-zA-Z0-9_]+(\\(*\\))?)?";
   private static final String PLACEHOLDER_PREFIX = " INEQUALITY_";
   private static final String INEQ_INSOF =
       "(?<!has )(?<!have )an (instance of)"; // e.g "an instance of"
@@ -64,23 +65,18 @@ public class Parser {
     List<SemanticGraph> graphs = new ArrayList<>();
     Comment commentWithPlaceholders = addPlaceholders(comment);
     List<String> arguments = new ArrayList<>();
-    List<String> codeElements = new ArrayList<>();
-    if (method != null)
+    if (method != null) {
       // Collect method arguments
       arguments =
           method.getParameters().stream().map(DocumentedParameter::getName).collect(toList());
-
+    }
     // Extract sentences in comment with placeholders
     final List<List<HasWord>> sentences =
         StanfordParser.tokenize(commentWithPlaceholders.getText());
     for (List<HasWord> sentence : sentences) {
-      for (HasWord word : sentence) {
-        // For every word in the sentence, check if it is an argument and update the code elements list
-        if (arguments.contains(word.toString())) codeElements.add(word.word());
-      }
-      // Update code elements list also with words marked as @code
-      codeElements.addAll(comment.getWordsMarkedAsCode());
-      final List<TaggedWord> taggedWords = POSTagger.tagWords(sentence, codeElements);
+      final List<TaggedWord> taggedWords =
+          POSTagger.tagWords(
+              comment, commentWithPlaceholders.getText(), inequalities, sentence, arguments);
       final SemanticGraph semanticGraph = StanfordParser.parse(taggedWords);
       graphs.add(semanticGraph);
     }
@@ -153,18 +149,18 @@ public class Parser {
             .replace("lesser than", "<")
             .replace("equal to", "==");
 
-    java.util.regex.Matcher matcher = Pattern.compile(INEQUALITY_NUMBER_REGEX).matcher(text);
-
     java.util.regex.Matcher matcherInstanceOf = Pattern.compile(INEQ_INSOF).matcher(text);
 
     java.util.regex.Matcher matcherThis = Pattern.compile(INEQ_THIS).matcher(text);
 
     java.util.regex.Matcher matcherGeneric = Pattern.compile(GENERIC_TYPE_REGEX).matcher(text);
 
-    java.util.regex.Matcher matcherVarComp = Pattern.compile(INEQUALITY_VAR_REGEX).matcher(text);
-
     java.util.regex.Matcher matcherRangeVar = Pattern.compile(RANGE_VAR_REGEX).matcher(text);
 
+    java.util.regex.Matcher matcherVarComp = Pattern.compile(INEQUALITY_VAR_REGEX).matcher(text);
+
+    java.util.regex.Matcher matcherIneqNumber =
+        Pattern.compile(INEQUALITY_NUMBER_REGEX).matcher(text);
     while (matcherInstanceOf.find()) {
       // Instance of added to the comparator list
       // Replace "[an] instance of" with "instanceof"
@@ -190,22 +186,22 @@ public class Parser {
       i++;
     }
 
-    while (matcher.find()) {
-      inequalities.add(text.substring(matcher.start(), matcher.end()));
-      placeholderText =
-          placeholderText.replaceFirst(INEQUALITY_NUMBER_REGEX, PLACEHOLDER_PREFIX + i);
-      placeholderText = findVerb(placeholderText, i);
-      i++;
-    }
-
     while (matcherGeneric.find()) {
       placeholderText = placeholderText.replaceFirst(GENERIC_TYPE_REGEX, "IGNORE_ME");
       contentToIgnore.add(matcherGeneric.group(0));
     }
 
     while (matcherRangeVar.find()) {
-      contentToIgnore.add(matcherRangeVar.group(0));
       placeholderText = placeholderText.replaceFirst(RANGE_VAR_REGEX, "IGNORE_ME");
+      contentToIgnore.add(matcherRangeVar.group(0));
+    }
+
+    while (matcherIneqNumber.find()) {
+      inequalities.add(text.substring(matcherIneqNumber.start(), matcherIneqNumber.end()));
+      placeholderText =
+          placeholderText.replaceFirst(INEQUALITY_NUMBER_REGEX, PLACEHOLDER_PREFIX + i);
+      placeholderText = findVerb(placeholderText, i);
+      i++;
     }
 
     while (matcherVarComp.find()) {
@@ -215,8 +211,9 @@ public class Parser {
       i++;
     }
 
-    for (String ignoredString : contentToIgnore)
+    for (String ignoredString : contentToIgnore) {
       placeholderText = placeholderText.replaceFirst("IGNORE_ME", ignoredString);
+    }
 
     return new Comment(placeholderText, comment.getWordsMarkedAsCode());
   }
@@ -284,14 +281,14 @@ class MethodComment {
 
     MethodComment that = (MethodComment) o;
 
-    if (comment != null ? !comment.equals(that.comment) : that.comment != null) return false;
-    return method != null ? method.equals(that.method) : that.method == null;
+    if (!comment.equals(that.comment)) return false;
+    return method.equals(that.method);
   }
 
   @Override
   public int hashCode() {
-    int result = comment != null ? comment.hashCode() : 0;
-    result = 31 * result + (method != null ? method.hashCode() : 0);
+    int result = comment.hashCode();
+    result = 31 * result + method.hashCode();
     return result;
   }
 }
