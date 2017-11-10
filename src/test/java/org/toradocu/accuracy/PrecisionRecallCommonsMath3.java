@@ -22,7 +22,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testUnivariateSolverUtils() throws Exception {
-    test("org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils", 1, 1, 1, 0, 0, 1);
+    test("org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils", 1, 1, 1, 1, 0, 1);
   }
 
   @Test
@@ -37,7 +37,7 @@ public class PrecisionRecallCommonsMath3 extends AbstractPrecisionRecallTestSuit
 
   @Test
   public void testAdaptiveStepsizeIntegrator() throws Exception {
-    test("org.apache.commons.math3.ode.nonstiff.AdaptiveStepsizeIntegrator", 1, 1, 1, 0.8, 1, 1);
+    test("org.apache.commons.math3.ode.nonstiff.AdaptiveStepsizeIntegrator", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
