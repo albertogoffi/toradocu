@@ -1,9 +1,6 @@
 package org.toradocu.extractor;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,9 +20,11 @@ public final class Comment {
   /**
    * Words marked with {@literal @code} tag in comment text. With "word" we mean a single String (in
    * case of a whole sentence tagged as code, each word is stored separately). We do not retain
-   * symbols and numbers. Words are mapped with a list of integers, that stores the occurrences
-   * which are tagged as code. This is necessary to keep a consistent track in case of multiple
-   * occurrences of the same word in the same sentence.
+   * mathematical signs and numbers in case of expressions such as {@code i<0} (only "i" is stored).
+   * Each word retained (as a String key) is mapped with a list of integers that stores the
+   * occurrences which are tagged as code in the original text. For example: "{@code a} is negative
+   * and is a real number. {@code a} cannot be null" will be stored as a-> [0, 2] since the first
+   * and third occurrences are tagged as code, but not the second one.
    */
   private final Map<String, List<Integer>> wordsMarkedAsCode;
 
@@ -90,7 +89,7 @@ public final class Comment {
    * @param codePattern regular expression used to identify the words marked as code
    */
   private void identifyCodeWords(String codePattern) {
-    String[] subSentences = text.split("\\.");
+    String[] subSentences = text.split("\\. ");
     for (String subSentence : subSentences) {
       Matcher codeMatcher = Pattern.compile(codePattern).matcher(subSentence);
 
@@ -167,14 +166,11 @@ public final class Comment {
 
     Comment comment = (Comment) o;
 
-    if (!text.equals(comment.text)) return false;
-    return wordsMarkedAsCode.equals(comment.wordsMarkedAsCode);
+    return text.equals(comment.text) && wordsMarkedAsCode.equals(comment.wordsMarkedAsCode);
   }
 
   @Override
   public int hashCode() {
-    int result = text.hashCode();
-    result = 31 * result + wordsMarkedAsCode.hashCode();
-    return result;
+    return Objects.hash(text, wordsMarkedAsCode);
   }
 }

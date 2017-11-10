@@ -30,7 +30,7 @@ public class PrecisionRecallPlumeLib extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testWeakIdentityHashMap() throws Exception {
-    test("plume.WeakIdentityHashMap", 1, 1, 1, 1, 1, 1);
+    test("plume.WeakIdentityHashMap", 1, 1, 1, 1, 0, 0);
   }
 
   @Test

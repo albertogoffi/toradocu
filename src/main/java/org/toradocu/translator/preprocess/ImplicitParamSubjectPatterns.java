@@ -21,28 +21,33 @@ public class ImplicitParamSubjectPatterns implements PreprocessingPhase {
   public String run(BlockTag tag, DocumentedExecutable excMember) {
     String comment = tag.getComment().getText();
     String parameterName = ((ParamTag) tag).getParameter().getName();
-    String[] positivePatterns = {"must be", "will be", "Will be", "Must be"};
+    String[] positivePatterns = {"must be", "Must be", "will be", "Will be"};
 
     String[] negativePatterns = {
       "must not be",
-      "must not return",
-      "must never be",
-      "must never return",
-      "will not be",
-      "will never be",
-      "can't be",
-      "cannot be",
-      "should not be",
-      "shouldn't be",
-      "may not be",
       "Must not be",
-      "must'nt be",
+      "must not return",
+      "Must not return",
+      "must never be",
+      "Must never be",
+      "must never return",
+      "Must never return",
+      "will not be",
       "Will not be",
+      "will never be",
+      "Will never be",
+      "can't be",
       "Can't be",
+      "cannot be",
       "Cannot be",
+      "should not be",
       "Should not be",
+      "shouldn't be",
       "Shouldn't be",
-      "May not be"
+      "may not be",
+      "May not be",
+      "must'nt be",
+      "Must'nt be"
     };
 
     boolean noReplacedYet = true; //Tells if there was already a replacement in the phrase

@@ -85,7 +85,7 @@ class Matcher {
   private Set<CodeElement<?>> filterMatchingCodeElements(
       String filter, Set<CodeElement<?>> codeElements) {
     Set<CodeElement<?>> minCodeElements = new LinkedHashSet<>();
-    //Handle limit case: filter is a one-letter word.
+    // If the word to match is a one-letter word (or empty string), we look for an exact match.
     int minDistance = 0;
     // Only consider elements with a minimum distance <= the threshold distance.
     if (filter.length() > 1) {

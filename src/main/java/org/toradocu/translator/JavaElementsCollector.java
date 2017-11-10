@@ -171,9 +171,7 @@ public class JavaElementsCollector {
                 .map(PropositionSeries::getSemanticGraph)
                 .collect(toList());
         for (SemanticGraph sg : sgs) {
-          if (sg.getFirstRoot() != null) {
-            ids.add(sg.getFirstRoot().word());
-          }
+          ids.add(sg.getFirstRoot().word());
         }
       }
     }

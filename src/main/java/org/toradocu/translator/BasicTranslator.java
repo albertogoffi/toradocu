@@ -1,7 +1,5 @@
 package org.toradocu.translator;
 
-import static java.util.stream.Collectors.toList;
-
 import java.util.*;
 import org.toradocu.extractor.BlockTag;
 import org.toradocu.extractor.DocumentedExecutable;
@@ -161,8 +159,8 @@ public class BasicTranslator {
             matchingCodeElements
                 .stream()
                 .filter(c -> matchingSubjects.get(0).getClass().equals(c.getClass()))
-                .collect(toList())
-                .get(0);
+                .findFirst()
+                .orElse(null);
 
         result = translations.get(match);
       }
