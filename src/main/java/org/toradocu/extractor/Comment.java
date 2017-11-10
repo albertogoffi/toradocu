@@ -20,13 +20,19 @@ public final class Comment {
    */
   private String text;
 
-  /** List of words marked with @code tag in comment text. */
+  /**
+   * Words marked with {@literal @code} tag in comment text. With "word" we mean a single String (in
+   * case of a whole sentence tagged as code, each word is stored separately). We do not retain
+   * symbols and numbers. Words are mapped with a list of integers, that stores the occurrences
+   * which are tagged as code. This is necessary to keep a consistent track in case of multiple
+   * occurrences of the same word in the same sentence.
+   */
   private final Map<String, List<Integer>> wordsMarkedAsCode;
 
   /**
    * Builds a new Comment with the given {@code text}. Words marked with {@literal @code} and
-   * {@literal <code></code>} in {@code text} are automatically added to the list of words marked as
-   * code.
+   * {@literal <code></code>} in {@code text} are added to the map of words marked as code. Than,
+   * the text is cleaned from any tag.
    *
    * @param text text of the comment.
    */
@@ -35,11 +41,11 @@ public final class Comment {
     this.wordsMarkedAsCode = new HashMap<>();
 
     final String codePattern1 = "<code>([A-Za-z0-9_]+)</code>";
-    identifyCodeWords(codePattern1, 6);
+    identifyCodeWords(codePattern1);
     removeTags(codePattern1);
 
     final String codePattern2 = "\\{@code ([^}]+)\\}";
-    identifyCodeWords(codePattern2, 7);
+    identifyCodeWords(codePattern2);
     removeTags(codePattern2);
 
     removeTags("\\{@link #?([^}]+)\\}");
@@ -83,15 +89,20 @@ public final class Comment {
    *
    * @param codePattern regular expression used to identify the words marked as code
    */
-  private void identifyCodeWords(String codePattern, int PATTERN_OFFSET) {
+  private void identifyCodeWords(String codePattern) {
     String[] subSentences = text.split("\\.");
     for (String subSentence : subSentences) {
       Matcher codeMatcher = Pattern.compile(codePattern).matcher(subSentence);
 
       while (codeMatcher.find()) {
         String taggedSubstring = codeMatcher.group(1).trim();
-        String[] words = taggedSubstring.split("\\s+");
-        int indexOfMatch = codeMatcher.start() + PATTERN_OFFSET;
+        String[] words = null;
+        words = taggedSubstring.split("\\s+");
+        if (words.length == 1 && words[0].matches(".[[<>=]=?|!=].")) {
+          words = taggedSubstring.split("[<>=]=?|!=]");
+        }
+
+        int indexOfMatch = codeMatcher.start();
         for (String word : words) {
           if (!word.isEmpty() && !word.matches(".*[0-9+-/*(){}[<>=]=?|!=].*")) {
             //search this word before this index in original text
