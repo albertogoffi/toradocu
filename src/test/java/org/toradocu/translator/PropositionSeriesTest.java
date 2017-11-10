@@ -222,10 +222,10 @@ public class PropositionSeriesTest {
   public void testIssue97() {
     // https://github.com/albertogoffi/toradocu/issues/97
     PropositionSeries propositions =
-        getPropositions(new Comment("shape is INEQUALITY_0 or scale is INEQUALITY_1."), null);
+        getPropositions(new Comment("shape is <= 0 or scale is <= 0."), null);
     assertThat(propositions.numberOfPropositions(), is(2));
-    assertThat(propositions.getPropositions().get(0).toString(), is("(shape, is INEQUALITY_0)"));
-    assertThat(propositions.getPropositions().get(1).toString(), is("(scale, is INEQUALITY_1)"));
+    assertThat(propositions.getPropositions().get(0).toString(), is("(shape, is <= 0)"));
+    assertThat(propositions.getPropositions().get(1).toString(), is("(scale, is <= 0)"));
     assertThat(propositions.getConjunctions().size(), is(1));
     assertThat(propositions.getConjunctions().get(0), is(Conjunction.OR));
   }

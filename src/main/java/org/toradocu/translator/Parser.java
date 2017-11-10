@@ -281,14 +281,14 @@ class MethodComment {
 
     MethodComment that = (MethodComment) o;
 
-    if (!comment.equals(that.comment)) return false;
-    return method.equals(that.method);
+    if (comment != null ? !comment.equals(that.comment) : that.comment != null) return false;
+    return method != null ? method.equals(that.method) : that.method == null;
   }
 
   @Override
   public int hashCode() {
-    int result = comment.hashCode();
-    result = 31 * result + method.hashCode();
+    int result = comment != null ? comment.hashCode() : 0;
+    result = 31 * result + (method != null ? method.hashCode() : 0);
     return result;
   }
 }
