@@ -17,6 +17,9 @@ public class CommentTest {
     String simpleTag = "This comment contains a {@code codeElement}";
     String complexTag = "This comment contains a {@code complex codeElement}";
     String expressionTag = "This comment contains an expression: {@code i<0}";
+    String regularHTMLTags = "This comment contains <b>bold text</b>";
+    String selfClosingHTMLTags = "This comment contains a break <br/>";
+    String mixedHTMLTags = "This comment contains <b>bold text</b> and a break <br/>";
 
     Comment simpleComment = new Comment(simpleTag);
     List<Integer> codeWordOccurrences = simpleComment.getWordsMarkedAsCode().get("codeElement");
@@ -54,5 +57,14 @@ public class CommentTest {
     assertThat(exprComment.getWordsMarkedAsCode().size(), is(1));
     codeWordOccurrences = exprComment.getWordsMarkedAsCode().get("i");
     assertThat(codeWordOccurrences, not(is(nullValue())));
+
+    Comment regularHTMLComment = new Comment(regularHTMLTags);
+    assertThat(regularHTMLComment.getText(), is("This comment contains bold text"));
+
+    Comment scHTMLComment = new Comment(selfClosingHTMLTags);
+    assertThat(scHTMLComment.getText(), is("This comment contains a break"));
+
+    Comment mixedHTMLComment = new Comment(mixedHTMLTags);
+    assertThat(mixedHTMLComment.getText(), is("This comment contains bold text and a break"));
   }
 }
