@@ -15,7 +15,8 @@ public class Preprocessor {
 
   public BlockTag preprocess(BlockTag tag, DocumentedExecutable excMember) {
     for (PreprocessingPhase phase : phases) {
-      tag.setComment(new Comment(phase.run(tag, excMember)));
+      String preprocessedText = phase.run(tag, excMember);
+      tag.setComment(new Comment(preprocessedText, tag.getComment().getWordsMarkedAsCode()));
     }
     return tag;
   }

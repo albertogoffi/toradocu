@@ -1,11 +1,8 @@
 package org.toradocu.translator;
 
-import static java.util.stream.Collectors.toList;
-
 import java.util.*;
 import org.toradocu.extractor.BlockTag;
 import org.toradocu.extractor.DocumentedExecutable;
-import org.toradocu.extractor.ThrowsTag;
 
 /**
  * The {@code BasicTranslator} class holds the {@code translate()} methods for {@code BlockTag} of
@@ -151,42 +148,20 @@ public class BasicTranslator {
           }
         }
       } else { // Only one of the matching subjects should be used.
-        CodeElement<?> match = null;
 
         // Sort matching subjects according to their priorities (defined in CodeElement#compareTo).
         List<CodeElement<?>> matchingSubjects = new ArrayList<>();
         matchingSubjects.addAll(translations.keySet());
         matchingSubjects.sort(Collections.reverseOrder());
-        // Get all the matching subjects with the same priority (i.e., of the same type).
-        final List<CodeElement<?>> samePriorityElements =
+        // Get all the matching subjects with the same priority (i.e., of the same type)
+        // and pick the first one
+        CodeElement<?> match =
             matchingCodeElements
                 .stream()
                 .filter(c -> matchingSubjects.get(0).getClass().equals(c.getClass()))
-                .collect(toList());
-        // Get the first matching subject tagged with {@code} or the first at all.
-        for (CodeElement<?> matchingSubject : samePriorityElements) {
-          // If the indecision is between two subject matches that are absolutely equal
-          // candidates, then the priority goes to the one which is also a {@code} tag in the
-          // method's Javadoc: isTaggedAsCode checks this property.
-          boolean isTaggedAsCode = false;
-          for (ThrowsTag throwTag : method.throwsTags()) {
-            isTaggedAsCode =
-                !throwTag
-                    .getComment()
-                    .getWordsMarkedAsCode()
-                    .stream()
-                    .filter(matchingSubject.getIdentifiers()::contains)
-                    .collect(toList())
-                    .isEmpty();
-          }
-          if (isTaggedAsCode) {
-            match = matchingSubject;
-            break;
-          }
-        }
-        if (match == null) {
-          match = samePriorityElements.get(0);
-        }
+                .findFirst()
+                .orElse(null);
+
         result = translations.get(match);
       }
 

@@ -20,10 +20,10 @@ import sun.reflect.generics.reflectiveObjects.TypeVariableImpl;
 public class ReturnTranslator {
 
   public List<PostSpecification> translate(ReturnTag tag, DocumentedExecutable excMember) {
-    String comment = tag.getComment().getText();
+    String commentText = tag.getComment().getText();
 
     //Manage translation of each sub-sentence linked by the Or conjunction separately
-    String[] subSentences = manageOrConjunction(comment);
+    String[] subSentences = manageOrConjunction(commentText);
     List<List<PostSpecification>> conditions = new ArrayList<List<PostSpecification>>();
 
     for (String subSentence : subSentences) {
@@ -31,13 +31,14 @@ public class ReturnTranslator {
       // TODO Naive splitting. Make the split more reliable.
       final int predicateSplitPoint = subSentence.indexOf(" if ");
       if (predicateSplitPoint != -1) {
-        conditions.add(returnStandardPattern(excMember, subSentence, predicateSplitPoint));
+        conditions.add(
+            returnStandardPattern(excMember, subSentence, tag.getComment(), predicateSplitPoint));
       } else {
         conditions.add(returnNotStandard(excMember, subSentence));
       }
     }
 
-    return mergeOrConjunction(comment, subSentences, conditions);
+    return mergeOrConjunction(commentText, subSentences, conditions);
   }
 
   /**
@@ -224,15 +225,16 @@ public class ReturnTranslator {
    * @return the translation of the given {@code text}
    */
   private static String translateSecondPart(
-      String trueCase, DocumentedExecutable method, String comment) {
+      String trueCase, DocumentedExecutable method, Comment comment) {
     // Identify propositions in the comment. Each sentence in the comment is parsed into a
     // PropositionSeries.
 
     //text = removeInitial(text, "if");  already done in Preprocess part
-    List<PropositionSeries> extractedPropositions = Parser.parse(new Comment(trueCase), method);
+    List<PropositionSeries> extractedPropositions =
+        Parser.parse(new Comment(trueCase, comment.getWordsMarkedAsCode()), method);
     Set<String> conditions = new LinkedHashSet<>();
     for (PropositionSeries propositions : extractedPropositions) {
-      BasicTranslator.translate(propositions, method, comment);
+      BasicTranslator.translate(propositions, method, comment.getText());
       conditions.add(propositions.getTranslation());
     }
     return BasicTranslator.mergeConditions(conditions);
@@ -293,38 +295,42 @@ public class ReturnTranslator {
    * This "standard pattern" applies only when the return tag comment contains an "if".
    *
    * @param method the DocumentedExecutable
-   * @param commentText the String comment to translate
+   * @param textToTranslate the String text to translate
+   * @param comment original {@code Comment}
    * @param predicateSplitPoint index of the "if"
-   * @return the translation computed
+   * @return the translation produced
    */
   private static List<PostSpecification> returnStandardPattern(
-      DocumentedExecutable method, String commentText, int predicateSplitPoint) {
+      DocumentedExecutable method,
+      String textToTranslate,
+      Comment comment,
+      int predicateSplitPoint) {
     List<PostSpecification> specs = new ArrayList<>();
 
-    if (commentText.contains(";")) {
-      commentText = commentText.replace(";", ",");
+    if (textToTranslate.contains(";")) {
+      textToTranslate = textToTranslate.replace(";", ",");
     }
-    String predicate = commentText.substring(0, predicateSplitPoint);
-    final String[] tokens = commentText.substring(predicateSplitPoint + 3).split(",", 2);
+    String predicate = textToTranslate.substring(0, predicateSplitPoint);
+    final String[] tokens = textToTranslate.substring(predicateSplitPoint + 3).split(",", 2);
     String trueCase = tokens[0];
     String falseCase = tokens.length > 1 ? tokens[1] : "";
 
     if (!predicate.isEmpty() && !trueCase.isEmpty()) {
       String predicateTranslation = translateFirstPart(predicate, method);
       if (predicateTranslation != null) {
-        String conditionTranslation = translateSecondPart(trueCase, method, commentText);
+        String conditionTranslation = translateSecondPart(trueCase, method, comment);
 
         if (!conditionTranslation.isEmpty() && !predicateTranslation.isEmpty()) {
-          Guard trueGuard = new Guard(commentText, conditionTranslation);
-          Property trueProperty = new Property(commentText, predicateTranslation);
-          specs.add(new PostSpecification(commentText, trueGuard, trueProperty));
+          Guard trueGuard = new Guard(textToTranslate, conditionTranslation);
+          Property trueProperty = new Property(textToTranslate, predicateTranslation);
+          specs.add(new PostSpecification(textToTranslate, trueGuard, trueProperty));
 
           String elsePredicate = translateLastPart(falseCase, method);
           if (elsePredicate != null) {
             String invertedGuard = "(" + conditionTranslation + ")==false";
-            Guard falseGuard = new Guard(commentText, invertedGuard);
-            Property falseProperty = new Property(commentText, elsePredicate);
-            specs.add(new PostSpecification(commentText, falseGuard, falseProperty));
+            Guard falseGuard = new Guard(textToTranslate, invertedGuard);
+            Property falseProperty = new Property(textToTranslate, elsePredicate);
+            specs.add(new PostSpecification(textToTranslate, falseGuard, falseProperty));
           }
         }
       }

@@ -85,8 +85,12 @@ class Matcher {
   private Set<CodeElement<?>> filterMatchingCodeElements(
       String filter, Set<CodeElement<?>> codeElements) {
     Set<CodeElement<?>> minCodeElements = new LinkedHashSet<>();
+    // If the word to match is a one-letter word (or empty string), we look for an exact match.
+    int minDistance = 0;
     // Only consider elements with a minimum distance <= the threshold distance.
-    int minDistance = editDistanceThreshold;
+    if (filter.length() > 1) {
+      minDistance = editDistanceThreshold;
+    }
     // Returns the CodeElement(s) with the smallest distance.
     for (CodeElement<?> codeElement : codeElements) {
       int distance = codeElement.getEditDistanceFrom(filter);

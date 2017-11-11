@@ -21,45 +21,61 @@ public class ImplicitParamSubjectPatterns implements PreprocessingPhase {
   public String run(BlockTag tag, DocumentedExecutable excMember) {
     String comment = tag.getComment().getText();
     String parameterName = ((ParamTag) tag).getParameter().getName();
-    String[] patterns = {
-      "must be",
+    String[] positivePatterns = {"must be", "Must be", "will be", "Will be"};
+
+    String[] negativePatterns = {
       "must not be",
-      "must never",
-      "will be",
-      "will not be",
-      "will never be",
-      "can't be",
-      "cannot be",
-      "should be",
-      "should not be",
-      "shouldn't be",
-      "may not be",
-      "Must be",
       "Must not be",
-      "must'nt be",
-      "Will be",
+      "must not return",
+      "Must not return",
+      "must never be",
+      "Must never be",
+      "must never return",
+      "Must never return",
+      "will not be",
       "Will not be",
+      "will never be",
+      "Will never be",
+      "can't be",
       "Can't be",
+      "cannot be",
       "Cannot be",
-      "Should be",
+      "should not be",
       "Should not be",
+      "shouldn't be",
       "Shouldn't be",
-      "May not be"
+      "may not be",
+      "May not be",
+      "must'nt be",
+      "Must'nt be"
     };
-    Matcher matcher = Pattern.compile("\\(.*").matcher(comment);
-    String separator = matcher.find() ? " " : ".";
+
     boolean noReplacedYet = true; //Tells if there was already a replacement in the phrase
-    for (String pattern : patterns) {
+    for (String pattern : positivePatterns) {
+      String stringToReplace = pattern;
+      if (comment.contains(". It " + pattern)) {
+        stringToReplace = ". It " + pattern;
+      }
       if (comment.contains(pattern)) {
-        String replacement = separator + parameterName + " " + pattern;
-        comment = comment.replace(pattern, replacement);
+        String replacement = ". {@code " + parameterName + "} " + " is ";
+        comment = comment.replace(stringToReplace, replacement);
+        noReplacedYet = false;
+      }
+    }
+    for (String pattern : negativePatterns) {
+      String stringToReplace = pattern;
+      if (comment.contains(". It " + pattern)) {
+        stringToReplace = ". It " + pattern;
+      }
+      if (comment.contains(pattern)) {
+        String replacement = ". {@code " + parameterName + "} " + " is not ";
+        comment = comment.replace(stringToReplace, replacement);
         noReplacedYet = false;
       }
     }
 
     //manage description following a comma
     if (noReplacedYet) {
-      //TODO make this a preprocessing phase
       comment = comment.replace(";", ",");
       String[] beginnings = {"the", "a", "an", "any"};
       String commaPattern = ".*(, (?!default)(?!may be)(?!can be)(?!could be)(?!possibly))(.*)";
@@ -79,7 +95,7 @@ public class ImplicitParamSubjectPatterns implements PreprocessingPhase {
               break;
             }
           }
-          comment = tokens[0] + ". " + parameterName + " is " + tokens[1];
+          comment = tokens[0] + ". {@code " + parameterName + "} is " + tokens[1];
           noReplacedYet = false;
         }
       }
@@ -107,7 +123,7 @@ public class ImplicitParamSubjectPatterns implements PreprocessingPhase {
                 //delete article
                 comment = comment.replaceFirst(tokens[0], "");
 
-              String firstPart = parameterName + " is " + mayBeAdj + ". ";
+              String firstPart = "{@code " + parameterName + "} is " + mayBeAdj + ". ";
               comment = firstPart + comment;
               break;
             }
