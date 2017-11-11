@@ -50,6 +50,7 @@ public final class Comment {
     removeTags("\\{@link #?([^}]+)\\}");
     removeHTMLTags();
     decodeHTML();
+    this.text = this.text.trim();
   }
 
   private void decodeHTML() {
@@ -63,8 +64,7 @@ public final class Comment {
   }
 
   /**
-   * Builds a new Comment with the given {@code text} and code blocks. This constructor does not
-   * preserve the correct correspondence between the text and the code blocks.
+   * Builds a new Comment with the given {@code text} and code blocks.
    *
    * @param text text of the comment.
    * @param wordsMarkedAsCode blocks of text wrapped in {@literal @code} or {@literal <code></code>}
@@ -151,11 +151,15 @@ public final class Comment {
 
   /** Removes HTML tags from the comment text. */
   private void removeHTMLTags() {
-    String htmlTagPattern = "(<.*>).*(</.*>)";
+    String htmlTagPattern = "<([a-zA-Z][a-zA-Z0-9]*)\\b[^>]*>(.*?)</\\1>|(<(.*)/>)";
     Matcher matcher = Pattern.compile(htmlTagPattern).matcher(text);
     while (matcher.find()) {
-      this.text = this.text.replace(matcher.group(1), "");
-      this.text = this.text.replace(matcher.group(2), "");
+      if (matcher.group(1) != null) {
+        this.text = this.text.replace(matcher.group(0), matcher.group(2));
+      } else {
+        // Match contains self-closing tag
+        this.text = this.text.replace(matcher.group(0), "");
+      }
     }
   }
 
