@@ -120,7 +120,7 @@ public final class DocumentedExecutable {
     Checks.nonNullParameter(parameters, "parameters");
 
     this.executable = executable;
-    checkParameters(executable.getParameters(), parameters);
+    checkParametersConsistency(executable.getParameters(), parameters);
     this.parameters = parameters;
     this.tags = blockTags;
   }
@@ -130,9 +130,9 @@ public final class DocumentedExecutable {
    * types.
    *
    * @param executableParams array of reflection parameter types
-   * @param params list of Parameters
+   * @param params list of {@code DocumentedParameter}
    */
-  private void checkParameters(
+  private void checkParametersConsistency(
       java.lang.reflect.Parameter[] executableParams, List<DocumentedParameter> params) {
     if (executableParams.length != params.size()) {
       throw new IllegalArgumentException(
