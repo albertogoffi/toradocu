@@ -66,11 +66,11 @@ public final class JavadocExtractor {
 
     //    log.info("Extracting Javadoc information of {} (in source folder {})", className, sourcePath);
 
-    // Obtain executable members by means of reflection.
+    // Obtain executable documentedExecutables by means of reflection.
     final Class<?> clazz = Reflection.getClass(className);
     final List<Executable> reflectionExecutables = getExecutables(clazz);
 
-    // Obtain executable members in the source code.
+    // Obtain executable documentedExecutables in the source code.
     final ImmutablePair<String, String> fileNameAndSimpleName =
         getFileNameAndSimpleName(clazz, className);
     final String fileName = fileNameAndSimpleName.getLeft();
@@ -85,23 +85,24 @@ public final class JavadocExtractor {
 
     // Create the list of ExecutableMembers.
     List<String> classesInPackage = getClassesInSamePackage(className, sourceFile);
-    List<DocumentedExecutable> members = new ArrayList<>(reflectionExecutables.size());
+    List<DocumentedExecutable> documentedExecutables =
+        new ArrayList<>(reflectionExecutables.size());
     for (Entry<Executable, CallableDeclaration<?>> entry : executablesMap.entrySet()) {
       final Executable reflectionMember = entry.getKey();
-      final CallableDeclaration<?> sourceMember = entry.getValue();
+      final CallableDeclaration<?> sourceCallable = entry.getValue();
       final List<DocumentedParameter> parameters =
-          getParameters(sourceMember.getParameters(), reflectionMember.getParameters());
+          getParameters(sourceCallable.getParameters(), reflectionMember.getParameters());
       final String qualifiedClassName = reflectionMember.getDeclaringClass().getName();
       BlockTags blockTags =
-          createTags(classesInPackage, sourceMember, parameters, qualifiedClassName);
-      members.add(new DocumentedExecutable(reflectionMember, parameters, blockTags));
+          createTags(classesInPackage, sourceCallable, parameters, qualifiedClassName);
+      documentedExecutables.add(new DocumentedExecutable(reflectionMember, parameters, blockTags));
     }
 
     //    log.info(
     //        "Extracting Javadoc information of {} (in source folder {}) done", className, sourcePath);
 
     // Create the documented class.
-    return new DocumentedType(clazz, members);
+    return new DocumentedType(clazz, documentedExecutables);
   }
 
   private ImmutablePair<String, String> getFileNameAndSimpleName(Class<?> clazz, String className) {
@@ -128,7 +129,7 @@ public final class JavadocExtractor {
    *
    * @param className String name of the class for which to find classes in same package
    * @param sourceFile path of the class source file
-   * @return list of String holding classes' names found in folder
+   * @return list of String holding the qualified class names found in folder
    */
   private List<String> getClassesInSamePackage(String className, String sourceFile) {
     // TODO Improve the code: this method should return all the available types in a given package.
@@ -140,7 +141,7 @@ public final class JavadocExtractor {
       if (!file.getName().endsWith(".java")) {
         continue;
       }
-      // This loop extracts files in the same directory as the class being analysed
+      // This loop examines the .java files in the same directory as the .java class being analysed
       // in order to find eventual Exception classes located in the same package.
       // "package-info" files are not useful for this purpose.
       String name = extractClassNameForSource(file.getName(), className);
@@ -170,19 +171,19 @@ public final class JavadocExtractor {
   }
 
   /**
-   * Creates tags (of param, return or throws kind) referred to a source member.
+   * Creates tags (of param, return or throws kind) referred to a callable member.
    *
-   * @param classesInPackage list of class names in sourceMember's package
-   * @param sourceMember the source member the tags refer to
-   * @param parameters {@code sourceMember}'s parameters
-   * @param className qualified name of the class defining {@code sourceMember}
+   * @param classesInPackage list of class names in sourceCallable's package
+   * @param callableMember the callable member the tags refer to
+   * @param parameters {@code sourceCallable}'s parameters
+   * @param className qualified name of the class defining {@code sourceCallable}
    * @return a triple of instantiated tags: list of @param tags, return tag, list of @throws tags
    * @throws ClassNotFoundException if a type described in a Javadoc comment cannot be loaded (e.g.,
    *     the type is not on the classpath)
    */
   private BlockTags createTags(
       List<String> classesInPackage,
-      CallableDeclaration<?> sourceMember,
+      CallableDeclaration<?> callableMember,
       List<DocumentedParameter> parameters,
       String className)
       throws ClassNotFoundException {
@@ -191,7 +192,7 @@ public final class JavadocExtractor {
     ReturnTag returnTag = null;
     List<ThrowsTag> throwsTags = new ArrayList<>();
 
-    final Optional<Javadoc> javadocOpt = sourceMember.getJavadoc();
+    final Optional<Javadoc> javadocOpt = callableMember.getJavadoc();
     if (javadocOpt.isPresent()) {
       final Javadoc javadocComment = javadocOpt.get();
       final List<JavadocBlockTag> blockTags = javadocComment.getBlockTags();
@@ -208,7 +209,7 @@ public final class JavadocExtractor {
             break;
           case EXCEPTION:
           case THROWS:
-            throwsTags.add(createThrowsTag(classesInPackage, blockTag, sourceMember, className));
+            throwsTags.add(createThrowsTag(classesInPackage, blockTag, callableMember, className));
             break;
           default:
             // ignore other block tags
@@ -222,17 +223,17 @@ public final class JavadocExtractor {
   /**
    * Create a tag of throws kind.
    *
-   * @param classesInPackage list of class names in sourceMember's package
+   * @param classesInPackage list of class names in sourceCallable's package
    * @param blockTag the @throws or @exception Javadoc block comment containing the tag
-   * @param sourceMember the source member the tag refers to
-   * @param className qualified name of the class defining {@code sourceMember}
+   * @param sourceCallable the source callable the tag refers to
+   * @param className qualified name of the class defining {@code sourceCallable}
    * @return the instantiated tag
    * @throws ClassNotFoundException if the class of the exception type couldn't be found
    */
   private ThrowsTag createThrowsTag(
       List<String> classesInPackage,
       JavadocBlockTag blockTag,
-      CallableDeclaration<?> sourceMember,
+      CallableDeclaration<?> sourceCallable,
       String className)
       throws ClassNotFoundException {
     // Javaparser library does not provide a nice parsing of @throws tags. We have to parse the
@@ -247,7 +248,7 @@ public final class JavadocExtractor {
     final String[] tokens = comment.split("[\\s\\t]+", 2);
     final String exceptionName = tokens[0];
     Class<?> exceptionType =
-        findExceptionType(classesInPackage, sourceMember, exceptionName, className);
+        findExceptionType(classesInPackage, sourceCallable, exceptionName, className);
     String commentToken = "";
     if (tokens.length > 1) {
       //a tag can report the exception type even without any description
@@ -377,8 +378,8 @@ public final class JavadocExtractor {
    * href="http://docs.oracle.com/javase/specs/jls/se8/html/jls-13.html#jls-13.1">JLS 13.1, item
    * 11</a>).
    *
-   * @param clazz the Class containing the members to collect
-   * @return non private-members of {@code clazz}
+   * @param clazz the Class containing the executables to collect
+   * @return non private-executables of {@code clazz}
    */
   private List<Executable> getExecutables(Class<?> clazz) {
     List<Executable> executables = new ArrayList<>();
@@ -446,7 +447,7 @@ public final class JavadocExtractor {
   }
 
   /**
-   * Maps reflection members to source code members.
+   * Maps reflection executable members to source code executable members.
    *
    * @param reflectionExecutables the list of reflection members
    * @param sourceExecutables the list of source code members
@@ -466,27 +467,27 @@ public final class JavadocExtractor {
     }
 
     Map<Executable, CallableDeclaration<?>> map = new LinkedHashMap<>(reflectionExecutables.size());
-    for (CallableDeclaration<?> sourceMember : sourceExecutables) {
+    for (CallableDeclaration<?> sourceCallable : sourceExecutables) {
       final List<Executable> matches =
           reflectionExecutables
               .stream()
               .filter(
                   e ->
                       getSimpleNameOfExecutable(e.getName(), e instanceof Constructor)
-                              .equals(sourceMember.getName().asString())
-                          && sameParamTypes(e.getParameters(), sourceMember.getParameters()))
+                              .equals(sourceCallable.getName().asString())
+                          && sameParamTypes(e.getParameters(), sourceCallable.getParameters()))
               .collect(toList());
       if (matches.size() < 1) {
         throw new AssertionError(
             "Cannot find reflection executable member corresponding to "
-                + sourceMember.getSignature());
+                + sourceCallable.getSignature());
       }
       if (matches.size() > 1) {
         throw new AssertionError(
             "Found multiple reflection executable members corresponding to "
-                + sourceMember.getSignature());
+                + sourceCallable.getSignature());
       }
-      map.put(matches.get(0), sourceMember);
+      map.put(matches.get(0), sourceCallable);
     }
     return map;
   }
@@ -643,17 +644,17 @@ public final class JavadocExtractor {
    * Search for the type of the exception with the given type name. The type name is allowed to be
    * fully-qualified or simple, in which case this method tries to guess the package name.
    *
-   * @param classesInPackage list of class names in sourceMember's package
-   * @param callableDeclaration the callable for which the exception with type name {@code
+   * @param classesInPackage list of class names in {@code sourceCallable}'s package
+   * @param sourceCallable the callable for which the exception with type name {@code
    *     exceptionTypeName} is expected
    * @param exceptionTypeName the exception type name (can be fully-qualified or simple)
-   * @param className package of the class where {@code sourceMember} is defined
+   * @param className package of the class where {@code sourceCallable} is defined
    * @return the exception class
    * @throws ClassNotFoundException if exception class couldn't be loaded
    */
   private Class<?> findExceptionType(
       List<String> classesInPackage,
-      CallableDeclaration<?> callableDeclaration,
+      CallableDeclaration<?> sourceCallable,
       String exceptionTypeName,
       String className)
       throws ClassNotFoundException {
@@ -684,7 +685,7 @@ public final class JavadocExtractor {
       }
     }
     // Look for an import statement to complete exception type name.
-    CompilationUnit cu = getCompilationUnit(callableDeclaration);
+    CompilationUnit cu = getCompilationUnit(sourceCallable);
     final NodeList<ImportDeclaration> imports = cu.getImports();
     for (ImportDeclaration anImport : imports) {
       String importedType = anImport.getNameAsString();
@@ -698,17 +699,17 @@ public final class JavadocExtractor {
   }
 
   /**
-   * Returns the compilation unit where {@code member} is defined.
+   * Returns the compilation unit where {@code callableMember} is defined.
    *
-   * @param member an executable member
-   * @return the compilation unit where {@code member} is defined
+   * @param callableMember a callable member
+   * @return the compilation unit where {@code callableMember} is defined
    */
-  private CompilationUnit getCompilationUnit(CallableDeclaration<?> member) {
-    Optional<Node> nodeOpt = member.getParentNode();
+  private CompilationUnit getCompilationUnit(CallableDeclaration<?> callableMember) {
+    Optional<Node> nodeOpt = callableMember.getParentNode();
     if (!nodeOpt.isPresent()) {
       throw new NullPointerException(
           "Unexpected null value for parent of "
-              + member.getSignature()
+              + callableMember.getSignature()
               + ", cannot get the compilation unit where it is defined");
     }
 
@@ -718,7 +719,7 @@ public final class JavadocExtractor {
       if (!nodeOpt.isPresent()) {
         throw new NullPointerException(
             "Unexpected null value for parent of "
-                + member.getSignature()
+                + callableMember.getSignature()
                 + ", cannot get the compilation unit where it is defined");
       }
       node = nodeOpt.get();
