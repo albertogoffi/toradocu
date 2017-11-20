@@ -65,7 +65,8 @@ public final class ParamTag extends BlockTag {
   /**
    * Returns a string representation of this param tag. The returned string is in the format "@param
    * PARAMNAME COMMENT" where PARAMNAME is the fully qualified name of the parameter in the param
-   * tag and COMMENT is the text of the comment in the param tag.
+   * tag and COMMENT is the text of the comment in the param tag (without inline tags, as they are
+   * removed during the instantiation of the Comment object).
    *
    * @return a string representation of this param tag
    */

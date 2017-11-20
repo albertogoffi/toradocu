@@ -91,7 +91,8 @@ public final class JavadocExtractor {
       final Executable reflectionMember = entry.getKey();
       final CallableDeclaration<?> sourceCallable = entry.getValue();
       final List<DocumentedParameter> parameters =
-          getParameters(sourceCallable.getParameters(), reflectionMember.getParameters());
+          createDocumentedParameters(
+              sourceCallable.getParameters(), reflectionMember.getParameters());
       final String qualifiedClassName = reflectionMember.getDeclaringClass().getName();
       BlockTags blockTags =
           createTags(classesInPackage, sourceCallable, parameters, qualifiedClassName);
@@ -145,7 +146,7 @@ public final class JavadocExtractor {
       // This loop examines the .java files in the same directory as the .java class being analysed
       // in order to find eventual Exception classes located in the same package.
       // "package-info" files are not useful for this purpose.
-      String name = extractClassNameForSource(file.getName(), className);
+      String name = getClassNameForSource(file.getName(), className);
       if (name != null && !name.equals(className) && !name.contains("package-info")) {
         classesInPackage.add(name);
       }
@@ -163,7 +164,7 @@ public final class JavadocExtractor {
    * @return the qualified class name of the source or null if {@code analyzedClassName} does not
    *     contain a dot (i.e., {@code analyzedClassName} is a simple, not-qualified name)
    */
-  private String extractClassNameForSource(String sourceFileName, String analyzedClassName) {
+  private String getClassNameForSource(String sourceFileName, String analyzedClassName) {
     int lastDot = analyzedClassName.lastIndexOf(".");
     if (lastDot == -1) {
       return null;
@@ -178,7 +179,7 @@ public final class JavadocExtractor {
    * @param callableMember the callable member the tags refer to
    * @param parameters {@code sourceCallable}'s parameters
    * @param className qualified name of the class defining {@code sourceCallable}
-   * @return a triple of instantiated tags: list of @param tags, return tag, list of @throws tags
+   * @return a triple of created tags: list of @param tags, return tag, list of @throws tags
    * @throws ClassNotFoundException if a type described in a Javadoc comment cannot be loaded (e.g.,
    *     the type is not on the classpath)
    */
@@ -228,7 +229,7 @@ public final class JavadocExtractor {
    * @param blockTag the @throws or @exception Javadoc block comment containing the tag
    * @param sourceCallable the source callable the tag refers to
    * @param className qualified name of the class defining {@code sourceCallable}
-   * @return the instantiated tag
+   * @return the created tag
    * @throws ClassNotFoundException if the class of the exception type couldn't be found
    */
   private ThrowsTag createThrowsTag(
@@ -263,7 +264,7 @@ public final class JavadocExtractor {
    * Create a tag of return kind.
    *
    * @param blockTag the @return block containing the tag
-   * @return the instantiated tag
+   * @return the created tag
    */
   private ReturnTag createReturnTag(JavadocBlockTag blockTag) {
     final Type blockTagType = blockTag.getType();
@@ -287,8 +288,8 @@ public final class JavadocExtractor {
    *
    * @param blockTag the block containing the tag
    * @param parameters the formal parameter list in which looking for the one associated to the tag
-   * @return the instantiated tag, null if {@code blockTag} refers to a @param tag documenting a
-   *     generic type parameter.
+   * @return the created tag, null if {@code blockTag} refers to a @param tag documenting a generic
+   *     type parameter.
    */
   private ParamTag createParamTag(JavadocBlockTag blockTag, List<DocumentedParameter> parameters) {
     final Type blockTagType = blockTag.getType();
@@ -313,13 +314,13 @@ public final class JavadocExtractor {
   }
 
   /**
-   * Instantiate the parameters of type org.toradocu.extractor.DocumentedParameter.
+   * Instantiate the {@code DocumentedParameter} according to the list of source parameters.
    *
-   * @param sourceParams the NodeList of parameters found in source
+   * @param sourceParams the {@code NodeList} of parameters found in source
    * @param reflectionParams the array of parameters found through reflection
-   * @return the list of org.toradocu.extractor.DocumentedParameter
+   * @return the list of {@code org.toradocu.extractor.DocumentedParameter}
    */
-  private List<DocumentedParameter> getParameters(
+  private List<DocumentedParameter> createDocumentedParameters(
       NodeList<com.github.javaparser.ast.body.Parameter> sourceParams,
       java.lang.reflect.Parameter[] reflectionParams) {
 
