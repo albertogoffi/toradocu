@@ -53,6 +53,7 @@ public final class Comment {
     this.text = this.text.trim();
   }
 
+  /** Decodes HTML character entities found in comment text with corresponding characters. */
   private void decodeHTML() {
     this.text =
         this.text
@@ -74,10 +75,21 @@ public final class Comment {
     this.wordsMarkedAsCode.putAll(wordsMarkedAsCode);
   }
 
+  /**
+   * Returns the comment text as {@code String}. Notice that the text does not contain inline tags
+   * because they are removed in the constructor of {@code Comment}.
+   *
+   * @return the {@code String} comment text
+   */
   public String getText() {
     return text;
   }
 
+  /**
+   * Returns the {@code Map} of words marked with {@literal @code} tag in comment text.
+   *
+   * @return the {@code Map} of words marked as code
+   */
   public Map<String, List<Integer>> getWordsMarkedAsCode() {
     return wordsMarkedAsCode;
   }
@@ -119,12 +131,22 @@ public final class Comment {
     }
   }
 
-  private int countStringOccurrence(String word, String subSentence, int indexOfMatch) {
+  /**
+   * Counts how many occurrences of the String {@code word} there are before the given {@code
+   * limitIndex} inside the {@code subSentence}. By doing this we know which occurrence of the word
+   * we are examining in case of multiple occurrences of the same word in the sentence.
+   *
+   * @param word the word which occurrences must be count
+   * @param subSentence the {@code String} in which to find the word
+   * @param limitIndex limit index in {@code subSentence} where to count the occurrences
+   * @return the computed occurrence
+   */
+  private int countStringOccurrence(String word, String subSentence, int limitIndex) {
     Matcher matcher = Pattern.compile("\\b" + word + "\\b").matcher(subSentence);
     int i = 0;
-    while (matcher.find() && matcher.start() < indexOfMatch) {
+    while (matcher.find() && matcher.start() < limitIndex) {
       //Looping on method find preserves the order of matches,
-      //while staying behind the desired index counts how
+      //while staying behind the desired limitIndex counts how
       //many matches are before the desired word
       i++;
     }
