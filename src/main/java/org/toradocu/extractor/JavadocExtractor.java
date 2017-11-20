@@ -133,6 +133,7 @@ public final class JavadocExtractor {
    */
   private List<String> getClassesInSamePackage(String className, String sourceFile) {
     // TODO Improve the code: this method should return all the available types in a given package.
+    // TODO Replace string manipulation by using data structures
     String packagePath = sourceFile.substring(0, sourceFile.lastIndexOf("/"));
     File folder = new File(packagePath);
     File[] listOfFiles = folder.listFiles();
@@ -558,6 +559,7 @@ public final class JavadocExtractor {
       final Parameter reflectionParam = reflectionParams[i];
       String reflectionQualifiedTypeName =
           rawType(reflectionParam.getParameterizedType().getTypeName());
+      //TODO Replace the next 18 lines, which do string manipulation, by code that uses data structures
       if (reflectionParam.isVarArgs() && !reflectionQualifiedTypeName.endsWith("[]")) {
         // Sometimes var args type name ends with "[]", sometimes don't. That's why we need this
         // check.
