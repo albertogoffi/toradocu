@@ -25,7 +25,7 @@ public class Parser {
 
   /** The regular expressions used to identify patterns in the comment */
   private static final String INEQUALITY_NUMBER_REGEX =
-      " (?!-)((([<>=]=?)|(!=)) ?)-?([0-9]+(?!/)(.[0-9]+)?|zero|one|two|three|four|five|six|seven|eight|nine)";
+      " *(?!-)((([<>=]=?)|(!=)) ?)-?([0-9]+(?!/)(.[0-9]+)?|zero|one|two|three|four|five|six|seven|eight|nine)";
 
   private static final String INEQUALITY_NULL_REGEX = "([=]=?|!=) ?null";
 
@@ -35,7 +35,7 @@ public class Parser {
       " * ?([a-zA-Z0-9]+) ?([<>=]=?) ?([a-zA-Z]+) ?([<>=]=?) ?([a-zA-Z0-9]+)";
 
   private static final String INEQUALITY_VAR_REGEX =
-      " (?!-)(([<>=]=?|!=) ?)(?!this)((?![a-zA-Z]+\\()([a-zA-Z][a-zA-Z0-9_]*)|([_][a-zA-Z0-9_]+))(\\.[a-zA-Z0-9_]+(\\(*\\))?)?";
+      " *(?<!-)(([<>=]=?|!=) ?)(?!this)((?![a-zA-Z]+\\()([a-zA-Z][a-zA-Z0-9_]*)|([_][a-zA-Z0-9_]+))(\\.[a-zA-Z0-9_]+(\\(*\\))?)?";
   private static final String PLACEHOLDER_PREFIX = " INEQUALITY_";
   private static final String INEQ_INSOF =
       "(?<!has )(?<!have )an (instance of)"; // e.g "an instance of"
