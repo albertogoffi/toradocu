@@ -1,5 +1,5 @@
 buildscript {
-  ext.kotlin_version = '1.1.4'
+  ext.kotlin_version = '1.1.60'
 
   repositories {
     mavenCentral()
@@ -13,14 +13,14 @@ buildscript {
 plugins {
   id 'java'
   id 'application'
-  id 'com.github.johnrengelman.shadow' version '1.2.3' // For creating the fat JAR
-  id 'de.undercouch.download' version '3.2.0' // For the download tasks
+  id 'com.github.johnrengelman.shadow' version '2.0.1' // For creating the fat JAR
+  id 'de.undercouch.download' version '3.3.0' // For the download tasks
   id 'eclipse' // Support for Eclipse projects
   id 'idea' // Support for IntelliJ IDEA projects
   // id "net.ltgt.errorprone" version "0.0.11"
 }
 apply plugin: 'kotlin'
-apply plugin: 'jacoco'
+// apply plugin: 'jacoco'
 
 task downloadGlove(type: Download) {
   src 'http://star-rep.inf.usi.ch/alberto/glove/raw/master/glove-binary.zip'
@@ -67,7 +67,7 @@ jar {
 sourceSets {
   main {
     java {
-      excludes = ['**/generator/*', '**/util/old/*']
+      excludes = ['**/util/old/*']
     }
   }
   test {
@@ -87,7 +87,6 @@ build.dependsOn javadoc
 
 javadoc {
   options.encoding = 'UTF-8'
-  exclude 'org/toradocu/doclet/**'
   exclude 'org/toradocu/generator/**'
   exclude 'org/toradocu/util/old/**'
 }
@@ -145,7 +144,7 @@ configurations.all {
 }
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '4.1'
+  gradleVersion = '4.3.1'
 }
 
 /* Copy resources needed for doclet API to build directory after compilation. */
@@ -260,10 +259,7 @@ task tags(type: Exec) {
 task installhook(type: Exec) {
   commandLine 'bash', '-c' , 'if [ -e .git -a ! -f .git/hooks/pre-commit ]; then ln -s ../../git-pre-commit-hook.sh .git/hooks/pre-commit; fi'
 }
-
-gradle.taskGraph.beforeTask { Task task ->
-  installhook.execute()
-}
+gradle.taskGraph.beforeTask.dependsOn installhook
 
 shadowJar {
   // default: "${baseName}-${version}-${classifier}.${extension}",
