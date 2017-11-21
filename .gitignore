@@ -5,6 +5,13 @@
 /converted-goal-files/
 /randoop-specs/
 
+# Toradocu's resources (automatically downloaded with Gradle task: unzipGlove)
+/src/main/resources/glove-binary.zip
+/src/main/resources/glove-binary/
+/src/main/resources/glove-models.zip
+/src/main/resources/glove.6B.300d.txt
+/glove-binary/
+
 # Toradocu's test resources (test subjects' source code and binaries are downloaded automatically on gradle test)
 /src/test/resources/src
 /src/test/resources/bin
@@ -23,19 +30,20 @@
 
 # Toradocu's tutorial generated or downloaded files
 /tutorial/aspects
-tutorial/notes-toradocu-demo.txt
+/tutorial/notes-toradocu-demo.txt
 
 # Toradocu precision/recall summary
 results.csv
-results_current.csv
+results.csv-*
+results_semantics.csv
+results_semantics_.csv
 results_tcomment.csv
-results_toradocu.csv
 results_toradocu-0.1.csv
 config_check_results.csv
-results.csv-*
 
 # Temporary files used to compute statistics with different Toradocu configurations
 /stats/*.txt
+stats.csv
 
 # Eclipse IDE
 /bin/
@@ -47,6 +55,7 @@ results.csv-*
 # IntelliJ IDEA
 /.idea/
 /out/
+toradocu.iml
 
 # Gradle
 .gradle

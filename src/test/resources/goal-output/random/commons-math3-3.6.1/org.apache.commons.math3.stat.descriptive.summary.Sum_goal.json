@@ -1,0 +1,547 @@
+[
+  {
+    "signature": "org.apache.commons.math3.stat.descriptive.summary.Sum()",
+    "name": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+      "name": "Sum",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "org.apache.commons.math3.stat.descriptive.summary.Sum(org.apache.commons.math3.stat.descriptive.summary.Sum original)",
+    "name": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+      "name": "Sum",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+          "name": "Sum",
+          "isArray": false
+        },
+        "name": "original"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+            "name": "Sum",
+            "isArray": false
+          },
+          "name": "original"
+        },
+        "comment": "the Sum instance to copy.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "original is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      }
+    ]
+  },
+  {
+    "signature": "increment(double d)",
+    "name": "increment",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+      "name": "Sum",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "d"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getResult()",
+    "name": "getResult",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+      "name": "Sum",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getN()",
+    "name": "getN",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+      "name": "Sum",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "clear()",
+    "name": "clear",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+      "name": "Sum",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "evaluate(double[] values, int begin, int length)",
+    "name": "evaluate",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+      "name": "Sum",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[D",
+          "name": "double[]",
+          "isArray": true
+        },
+        "name": "values"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "begin"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "length"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[D",
+            "name": "double[]",
+            "isArray": true
+          },
+          "name": "values"
+        },
+        "comment": "the input array.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "begin"
+        },
+        "comment": "index of the first array element to include.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "length"
+        },
+        "comment": "the number of elements to include.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the sum of the values or 0 if length = 0.",
+      "kind": "RETURN",
+      "condition": "args[2]==0 ? result==0"
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException",
+          "name": "MathIllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the array is null or the array index parameters are not valid.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      }
+    ]
+  },
+  {
+    "signature": "evaluate(double[] values, double[] weights, int begin, int length)",
+    "name": "evaluate",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+      "name": "Sum",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[D",
+          "name": "double[]",
+          "isArray": true
+        },
+        "name": "values"
+      },
+      {
+        "type": {
+          "qualifiedName": "[D",
+          "name": "double[]",
+          "isArray": true
+        },
+        "name": "weights"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "begin"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "length"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[D",
+            "name": "double[]",
+            "isArray": true
+          },
+          "name": "values"
+        },
+        "comment": "the input array.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[D",
+            "name": "double[]",
+            "isArray": true
+          },
+          "name": "weights"
+        },
+        "comment": "the weights array.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "begin"
+        },
+        "comment": "index of the first array element to include.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "length"
+        },
+        "comment": "the number of elements to include.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the sum of the values or 0 if length = 0.",
+      "kind": "RETURN",
+      "condition": "args[3]==0 ? result==0"
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException",
+          "name": "MathIllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the parameters are not valid.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "evaluate(double[] values, double[] weights)",
+    "name": "evaluate",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+      "name": "Sum",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[D",
+          "name": "double[]",
+          "isArray": true
+        },
+        "name": "values"
+      },
+      {
+        "type": {
+          "qualifiedName": "[D",
+          "name": "double[]",
+          "isArray": true
+        },
+        "name": "weights"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[D",
+            "name": "double[]",
+            "isArray": true
+          },
+          "name": "values"
+        },
+        "comment": "the input array.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[D",
+            "name": "double[]",
+            "isArray": true
+          },
+          "name": "weights"
+        },
+        "comment": "the weights array.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the sum of the values or Double.NaN if length = 0.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalArgumentException",
+          "name": "MathIllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the parameters are not valid.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "copy()",
+    "name": "copy",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+      "name": "Sum",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+      "name": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "copy(org.apache.commons.math3.stat.descriptive.summary.Sum source, org.apache.commons.math3.stat.descriptive.summary.Sum dest)",
+    "name": "copy",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+      "name": "Sum",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+          "name": "Sum",
+          "isArray": false
+        },
+        "name": "source"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+          "name": "Sum",
+          "isArray": false
+        },
+        "name": "dest"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+            "name": "Sum",
+            "isArray": false
+          },
+          "name": "source"
+        },
+        "comment": "Sum to copy.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.stat.descriptive.summary.Sum",
+            "name": "Sum",
+            "isArray": false
+          },
+          "name": "dest"
+        },
+        "comment": "Sum to copy to.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "either source or dest is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null || args[1]==null"
+      }
+    ]
+  }
+]

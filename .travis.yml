@@ -1,11 +1,13 @@
 language: java
 
-script: ./gradlew build && ./gradlew checkFormat
-
 sudo: required
 
 jdk:
   - oraclejdk8
+
+install: travis_wait 30 ./gradlew unzipGlove unzipGloveModels
+
+script: ./gradlew build && ./gradlew checkFormat
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock

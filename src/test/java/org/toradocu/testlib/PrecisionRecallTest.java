@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.toradocu.Toradocu;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.output.util.JsonOutput;
 import org.toradocu.util.GsonInstance;
 import org.toradocu.util.Stats;
 
@@ -68,10 +68,16 @@ class PrecisionRecallTest {
     if (translator != null && translator.equals("tcomment")) {
       argsList.add("--tcomment");
       argsList.add("--stats-file");
-      argsList.add("tcomment_results.csv");
-    } else {
+      argsList.add("results_tcomment_.csv");
+    } else if (translator != null && translator.equals("nosemantics")) {
+      argsList.add("--disable-semantics");
+      argsList.add("true");
       argsList.add("--stats-file");
-      argsList.add("results.csv");
+      argsList.add("results_.csv");
+    } else {
+      // Semantic-based translator enabled by default.
+      argsList.add("--stats-file");
+      argsList.add("results_semantics_.csv");
     }
 
     Toradocu.main(argsList.toArray(new String[0]));
@@ -95,9 +101,9 @@ class PrecisionRecallTest {
     try (BufferedReader outFile = Files.newBufferedReader(Paths.get(outputFile));
         BufferedReader goalFile = Files.newBufferedReader(Paths.get(goalOutputFile))) {
 
-      Type collectionType = new TypeToken<Collection<DocumentedMethod>>() {}.getType();
-      List<DocumentedMethod> actualResult = GsonInstance.gson().fromJson(outFile, collectionType);
-      List<DocumentedMethod> goalResult = GsonInstance.gson().fromJson(goalFile, collectionType);
+      Type collectionType = new TypeToken<Collection<JsonOutput>>() {}.getType();
+      List<JsonOutput> actualResult = GsonInstance.gson().fromJson(outFile, collectionType);
+      List<JsonOutput> goalResult = GsonInstance.gson().fromJson(goalFile, collectionType);
       final Stats stats = Stats.getStats(targetClass, actualResult, goalResult, report);
       System.out.println(report);
       return stats;

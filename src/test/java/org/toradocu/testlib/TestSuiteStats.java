@@ -3,7 +3,7 @@ package org.toradocu.testlib;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import org.toradocu.extractor.Tag;
+import org.toradocu.extractor.BlockTag;
 import org.toradocu.util.Stats;
 
 /**
@@ -30,7 +30,7 @@ class TestSuiteStats {
    *
    * @return the average precision of the testStats
    */
-  double getPrecision(Tag.Kind kind) {
+  double getPrecision(BlockTag.Kind kind) {
     final double sum = testStats.stream().mapToDouble(stats -> stats.getPrecision(kind)).sum();
     return sum / testStats.size();
   }
@@ -40,7 +40,7 @@ class TestSuiteStats {
    *
    * @return the average recall of the testStats
    */
-  double getRecall(Tag.Kind kind) {
+  double getRecall(BlockTag.Kind kind) {
     final double sum = testStats.stream().mapToDouble(stats -> stats.getRecall(kind)).sum();
     return sum / testStats.size();
   }

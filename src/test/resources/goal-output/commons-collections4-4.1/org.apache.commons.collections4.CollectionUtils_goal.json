@@ -66,7 +66,7 @@
     "returnTag": {
       "comment": "an empty collection if the argument is null",
       "kind": "RETURN",
-      "condition": "args[0]==null ? result.isEmpty()==true"
+      "condition": "args[0]==null ? result.equals(org.apache.commons.collections4.CollectionUtils.emptyCollection())"
     },
     "throwsTags": []
   },
@@ -1131,7 +1131,7 @@
     "returnTag": {
       "comment": "closure",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true?result.equals(args[1])"
     },
     "throwsTags": []
   },
@@ -1199,7 +1199,7 @@
     "returnTag": {
       "comment": "closure",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true?result.equals(args[1])"
     },
     "throwsTags": []
   },

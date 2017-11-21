@@ -3,7 +3,7 @@ package org.toradocu.generator;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.visitor.ModifierVisitorAdapter;
-import org.toradocu.util.Checks;
+import org.toradocu.Checks;
 
 /**
  * Visitor that modifies the aspect template (see method {@code visit}) to generate an aspect

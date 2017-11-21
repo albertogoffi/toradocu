@@ -7,9 +7,9 @@ import static org.junit.Assert.assertThat;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
-import org.toradocu.extractor.DocumentedMethod;
+import org.toradocu.extractor.DocumentedExecutable;
+import org.toradocu.extractor.DocumentedParameter;
 import org.toradocu.extractor.ParamTag;
-import org.toradocu.extractor.Parameter;
 import org.toradocu.extractor.ReturnTag;
 import org.toradocu.extractor.ThrowsTag;
 import org.toradocu.extractor.Type;
@@ -23,7 +23,7 @@ public class RandoopSpecsTest {
 
   @Test
   public void paramSpecTest() throws Exception {
-    DocumentedMethod m = createMethod();
+    DocumentedExecutable m = createMethod();
     ParamTag paramTag = new ArrayList<>(m.paramTags()).get(0);
     PreSpecification spec = RandoopSpecs.translate(paramTag, m);
     assertThat(spec.getDescription(), is("must not be null"));
@@ -34,7 +34,7 @@ public class RandoopSpecsTest {
 
   @Test
   public void returnSpecsTest() throws Exception {
-    DocumentedMethod m = createMethod();
+    DocumentedExecutable m = createMethod();
     ReturnTag tag = m.returnTag();
     List<PostSpecification> specs = RandoopSpecs.translate(tag, m);
     assertThat(specs.size(), is(2));
@@ -61,7 +61,7 @@ public class RandoopSpecsTest {
 
   @Test
   public void throwsSpecTest() throws Exception {
-    DocumentedMethod m = createMethod();
+    DocumentedExecutable m = createMethod();
 
     ThrowsTag tag =
         new ThrowsTag(
@@ -78,12 +78,12 @@ public class RandoopSpecsTest {
     assertThat(guard.getDescription(), is("if the connection is already open"));
   }
 
-  private static DocumentedMethod createMethod() {
+  private static DocumentedExecutable createMethod() {
     Type contClass = new Type("org.aClass");
     Type bool = new Type("java.lang.Boolean");
 
-    Parameter par = new Parameter(new Type("int"), "x");
-    List<Parameter> parameters = new ArrayList<>();
+    DocumentedParameter par = new DocumentedParameter(new Type("int"), "x");
+    List<DocumentedParameter> parameters = new ArrayList<>();
     parameters.add(par);
 
     ParamTag tag = new ParamTag(par, "must not be null");
@@ -101,7 +101,7 @@ public class RandoopSpecsTest {
     ReturnTag returnTag = new ReturnTag("true iff x is positive");
     returnTag.setCondition("x>0 ? result==true : result==false");
 
-    return new DocumentedMethod(
+    return new DocumentedExecutable(
         contClass, "method", bool, parameters, paramTags, false, throwsTags, returnTag);
   }
 }

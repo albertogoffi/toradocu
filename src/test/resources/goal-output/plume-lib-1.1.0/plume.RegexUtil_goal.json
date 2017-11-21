@@ -434,7 +434,7 @@
     "returnTag": {
       "comment": "its argument",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true?result.equals(args[0])"
     },
     "throwsTags": [
       {
@@ -514,7 +514,7 @@
     "returnTag": {
       "comment": "its argument",
       "kind": "RETURN",
-      "condition": ""
+      "condition": "true?result.equals(args[0])"
     },
     "throwsTags": [
       {
@@ -526,7 +526,7 @@
         "codeTags": [],
         "comment": "if argument is not a regex",
         "kind": "THROWS",
-        "condition": "(plume.RegexUtil.isRegex(args[0])) == false"
+        "condition": "(plume.RegexUtil.isRegex(args[0], args[1])) == false"
       }
     ]
   }

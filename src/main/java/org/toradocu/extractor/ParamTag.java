@@ -4,17 +4,17 @@ import java.util.Objects;
 import org.toradocu.util.Checks;
 
 /**
- * This class represents a {@code @param} tag in a method. Each ParamTag consists of the name of the
- * param and a brief description, which may contain a condition. A condition is the translation of
- * the comment into a Java boolean condition. When the condition evaluates to {@code true}, the
- * precondition expressed by this tag is satisfied. When the condition evaluates to {@code false}
- * the precondition expressed by this tag is violated, and the behavior of the method documented by
- * this tag is unspecified.
+ * Represents a Javadoc @param comment. Each {@code ParamTag} consists of the name of the parameter,
+ * a comment, and a specification (available after the translation of the comment). A specification
+ * is the translation of the comment into a Java boolean condition. When the condition evaluates to
+ * {@code true}, the precondition expressed by this tag is satisfied. When the condition evaluates
+ * to {@code false} the precondition expressed by this tag is violated, and the behavior of the
+ * method documented by this tag is unspecified.
  */
-public class ParamTag extends AbstractTag {
+public final class ParamTag extends BlockTag {
 
   /** The parameter associated with the param tag */
-  private final Parameter parameter;
+  private final DocumentedParameter parameter;
 
   /**
    * Constructs a {@code ParamTag} with the given exception and comment.
@@ -23,7 +23,7 @@ public class ParamTag extends AbstractTag {
    * @param comment the comment associated with the tag
    * @throws NullPointerException if parameter or comment is null
    */
-  public ParamTag(Parameter parameter, String comment) {
+  public ParamTag(DocumentedParameter parameter, Comment comment) {
     super(Kind.PARAM, comment);
     Checks.nonNullParameter(parameter, "parameter");
     this.parameter = parameter;
@@ -34,7 +34,7 @@ public class ParamTag extends AbstractTag {
    *
    * @return the parameter associated to the tag.
    */
-  public Parameter parameter() {
+  public DocumentedParameter getParameter() {
     return parameter;
   }
 
@@ -65,20 +65,13 @@ public class ParamTag extends AbstractTag {
   /**
    * Returns a string representation of this param tag. The returned string is in the format "@param
    * PARAMNAME COMMENT" where PARAMNAME is the fully qualified name of the parameter in the param
-   * tag and COMMENT is the text of the comment in the param tag. If translation has been attempted
-   * on this tag, then the returned string is also appended with " ==&gt; CONDITION" where CONDITION
-   * is the translated condition as a Java expression or the empty string if translation failed.
+   * tag and COMMENT is the text of the comment in the param tag (without inline tags, as they are
+   * removed during the instantiation of the Comment object).
    *
    * @return a string representation of this param tag
    */
   @Override
   public String toString() {
-    String result = super.getKind() + " " + parameter.getName() + " " + super.getComment();
-    if (super.getCondition() != null
-        && super.getCondition().isPresent()
-        && !super.getCondition().get().isEmpty()) {
-      result += " ==> " + super.getCondition().get();
-    }
-    return result;
+    return getKind() + " " + parameter.getName() + " " + getComment().getText();
   }
 }

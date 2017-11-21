@@ -1,0 +1,1038 @@
+[
+  {
+    "signature": "getGlobalEnvironment()",
+    "name": "getGlobalEnvironment",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "org.graphstream.util.Environment",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "A singleton instance of the global environment.",
+      "kind": "RETURN",
+      "condition": "true ? result==target.GLOBAL_ENV"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "isLocked()",
+    "name": "isLocked",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "True if the environment is locked.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getParameter(java.lang.String parameter)",
+    "name": "getParameter",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "java.lang.String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "parameter"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "parameter"
+        },
+        "comment": "The parameter name.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The parameter value (empty string if not set).",
+      "kind": "RETURN",
+      "condition": "!target.hasParameter(args[0]) ? result.equals(\"\")"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hasParameter(java.lang.String parameter)",
+    "name": "hasParameter",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "parameter"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "parameter"
+        },
+        "comment": "The parameter name.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "True if the given paramter name points to a value.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getBooleanParameter(java.lang.String parameter)",
+    "name": "getBooleanParameter",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "parameter"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "parameter"
+        },
+        "comment": "The parameter name.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "True if the parameter value means \"true\", false for any other value or if the parameter does not exist.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getBooleanParameteri(java.lang.String parameter)",
+    "name": "getBooleanParameteri",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "parameter"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "parameter"
+        },
+        "comment": "The parameter name.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "1 if the parameter value means \"true\", 0 if parameter has any other value, or -1 if parameter does not exist.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getNumberParameter(java.lang.String parameter)",
+    "name": "getNumberParameter",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "parameter"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "parameter"
+        },
+        "comment": "The parameter name.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The numeric value of the parameter. 0 if the parameter does not exist or is not a number.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getParameterCount()",
+    "name": "getParameterCount",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The number of parameters found in the configuration file.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getParametersKeySet()",
+    "name": "getParametersKeySet",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Set<java.lang.String>",
+      "name": "java.util.Set<java.lang.String>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "A set of all the names identifying parameters in this environment.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "clone()",
+    "name": "clone",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "org.graphstream.util.Environment",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "An Environment object identical to this one.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setParameter(java.lang.String parameter, java.lang.String value)",
+    "name": "setParameter",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "parameter"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "parameter"
+        },
+        "comment": "The parameter name.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "The new parameter value.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "lockEnvironment(boolean on)",
+    "name": "lockEnvironment",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "on"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "on"
+        },
+        "comment": "If true the environment is locked.",
+        "kind": "PARAM",
+        "condition": "target.isLocked()"
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "initializeFieldsOf(java.lang.Object object)",
+    "name": "initializeFieldsOf",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "object"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "object"
+        },
+        "comment": "The object to initialize.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "initializeFieldsOf(java.lang.Object object, java.lang.String... fieldList)",
+    "name": "initializeFieldsOf",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": true,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "object"
+      },
+      {
+        "type": {
+          "qualifiedName": "[Ljava.lang.String;",
+          "name": "String[]",
+          "isArray": true
+        },
+        "name": "fieldList"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "object"
+        },
+        "comment": "The object to initialize.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[Ljava.lang.String;",
+            "name": "String[]",
+            "isArray": true
+          },
+          "name": "fieldList"
+        },
+        "comment": "The name of the fields to initialize in the object.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "initializeFieldsOf(java.lang.Object object, java.util.Collection<java.lang.String> fieldList)",
+    "name": "initializeFieldsOf",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "object"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "fieldList"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "object"
+        },
+        "comment": "The object to initialize.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "fieldList"
+        },
+        "comment": "The name of the fields to initialize in the object.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "invokeSetMethod(java.lang.Object object, java.lang.reflect.Method method, java.lang.Class<?>[] types, java.lang.String name, java.lang.String value)",
+    "name": "invokeSetMethod",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "object"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.reflect.Method",
+          "name": "Method",
+          "isArray": false
+        },
+        "name": "method"
+      },
+      {
+        "type": {
+          "qualifiedName": "[Ljava.lang.Class;",
+          "name": "Class[]",
+          "isArray": true
+        },
+        "name": "types"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "name"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "printParameters(java.io.PrintStream out)",
+    "name": "printParameters",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.io.PrintStream",
+          "name": "PrintStream",
+          "isArray": false
+        },
+        "name": "out"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.io.PrintStream",
+            "name": "PrintStream",
+            "isArray": false
+          },
+          "name": "out"
+        },
+        "comment": "The output stream to use.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "printParameters()",
+    "name": "printParameters",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "toString()",
+    "name": "toString",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "java.lang.String",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "readCommandLine(java.lang.String[] args)",
+    "name": "readCommandLine",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[Ljava.lang.String;",
+          "name": "String[]",
+          "isArray": true
+        },
+        "name": "args"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[Ljava.lang.String;",
+            "name": "String[]",
+            "isArray": true
+          },
+          "name": "args"
+        },
+        "comment": "The command line.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "readCommandLine(java.lang.String[] args, java.util.Collection<java.lang.String> trashcan)",
+    "name": "readCommandLine",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[Ljava.lang.String;",
+          "name": "String[]",
+          "isArray": true
+        },
+        "name": "args"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "trashcan"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[Ljava.lang.String;",
+            "name": "String[]",
+            "isArray": true
+          },
+          "name": "args"
+        },
+        "comment": "The command line.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "trashcan"
+        },
+        "comment": " trashcan Will be filled by the set of unparsed strings (can be null if these strings can be ignored).",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "readConfigFile(java.lang.String filename, java.util.Collection<java.lang.String> trashcan)",
+    "name": "readConfigFile",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "filename"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "trashcan"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "writeParameterFile(java.lang.String fileName)",
+    "name": "writeParameterFile",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "fileName"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "fileName"
+        },
+        "comment": "Name of the file to save the config in.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "For any output error on the given file name.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "readConfigurationFile()",
+    "name": "readConfigurationFile",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "readParameterFile(java.lang.String fileName)",
+    "name": "readParameterFile",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.util.Environment",
+      "name": "Environment",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.util.Environment",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "fileName"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "fileName"
+        },
+        "comment": "Name of the parameter file to read.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.io.IOException",
+          "name": "IOException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "For any error with the given parameter file name.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  }
+]

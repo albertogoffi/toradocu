@@ -1,18 +1,18 @@
 package org.toradocu.extractor;
 
 /**
- * This class represents a throws tag in a method. Each @throws tag consists of an exception, a
- * comment, and can have an optional condition. A condition is the translation of the comment into a
- * Java boolean condition. When the condition evaluates to {@code true}, an exception is expected.
+ * Represents a Javadoc @return comment. Each {@link ReturnTag} consists of a comment and a
+ * specification (available after the translation of the comment). The specification specifies the
+ * postconditions of the method documented by this @return block comment.
  */
-public class ReturnTag extends AbstractTag {
+public final class ReturnTag extends BlockTag {
 
   /**
-   * Constructs a {@code ThrowsTag} with the given exception, comment, and words tagged with @code
+   * Constructs a {@code ReturnTag} with the given comment
    *
    * @param comment the comment associated to the return tag
    */
-  public ReturnTag(String comment) {
+  ReturnTag(Comment comment) {
     super(Kind.RETURN, comment);
   }
 
@@ -24,8 +24,6 @@ public class ReturnTag extends AbstractTag {
    */
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof ReturnTag)) return false;
-
-    return super.equals(obj);
+    return obj instanceof ReturnTag && super.equals(obj);
   }
 }

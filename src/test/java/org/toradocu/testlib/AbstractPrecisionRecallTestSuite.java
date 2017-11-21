@@ -5,11 +5,9 @@ import static org.junit.Assert.assertThat;
 
 import java.io.File;
 import java.io.IOException;
-import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.toradocu.Toradocu;
-import org.toradocu.extractor.Tag;
+import org.toradocu.extractor.BlockTag;
 import org.toradocu.util.Stats;
 
 /**
@@ -74,22 +72,17 @@ public abstract class AbstractPrecisionRecallTestSuite {
             + "\nNumber of conditions: "
             + testSuiteStats.getTotalNumConditions()
             + "\nAverage precision on @return: "
-            + String.format("%.2f", testSuiteStats.getPrecision(Tag.Kind.RETURN))
+            + String.format("%.2f", testSuiteStats.getPrecision(BlockTag.Kind.RETURN))
             + "\nAverage recall on @return: "
-            + String.format("%.2f", testSuiteStats.getRecall(Tag.Kind.RETURN))
+            + String.format("%.2f", testSuiteStats.getRecall(BlockTag.Kind.RETURN))
             + "\nAverage precision on @param: "
-            + String.format("%.2f", testSuiteStats.getPrecision(Tag.Kind.PARAM))
+            + String.format("%.2f", testSuiteStats.getPrecision(BlockTag.Kind.PARAM))
             + "\nAverage recall on @param: "
-            + String.format("%.2f", testSuiteStats.getRecall(Tag.Kind.PARAM))
+            + String.format("%.2f", testSuiteStats.getRecall(BlockTag.Kind.PARAM))
             + "\nAverage precision on @throws: "
-            + String.format("%.2f", testSuiteStats.getPrecision(Tag.Kind.THROWS))
+            + String.format("%.2f", testSuiteStats.getPrecision(BlockTag.Kind.THROWS))
             + "\nAverage recall on @throws: "
-            + String.format("%.2f", testSuiteStats.getRecall(Tag.Kind.THROWS)));
-  }
-
-  @After
-  public void clearToradocuMethods() {
-    Toradocu.clearMethods();
+            + String.format("%.2f", testSuiteStats.getRecall(BlockTag.Kind.THROWS)));
   }
 
   /**
@@ -116,27 +109,27 @@ public abstract class AbstractPrecisionRecallTestSuite {
     testSuiteStats.addStats(stats);
     assertThat(
         "@throws precision is different than expected",
-        stats.getPrecision(Tag.Kind.THROWS),
+        stats.getPrecision(BlockTag.Kind.THROWS),
         closeTo(throwsPrecision, PRECISION));
     assertThat(
         "@throws recall is different than expected",
-        stats.getRecall(Tag.Kind.THROWS),
+        stats.getRecall(BlockTag.Kind.THROWS),
         closeTo(throwsRecall, PRECISION));
     assertThat(
         "@param precision is different than expected",
-        stats.getPrecision(Tag.Kind.PARAM),
+        stats.getPrecision(BlockTag.Kind.PARAM),
         closeTo(paramPrecision, PRECISION));
     assertThat(
         "@param recall is different than expected",
-        stats.getRecall(Tag.Kind.PARAM),
+        stats.getRecall(BlockTag.Kind.PARAM),
         closeTo(paramRecall, PRECISION));
     assertThat(
         "@return precision is different than expected",
-        stats.getPrecision(Tag.Kind.RETURN),
+        stats.getPrecision(BlockTag.Kind.RETURN),
         closeTo(returnPrecision, PRECISION));
     assertThat(
         "@return recall is different than expected",
-        stats.getRecall(Tag.Kind.RETURN),
+        stats.getRecall(BlockTag.Kind.RETURN),
         closeTo(returnRecall, PRECISION));
   }
 }

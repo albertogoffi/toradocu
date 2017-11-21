@@ -1,0 +1,338 @@
+[
+  {
+    "signature": "exceptionFactory()",
+    "name": "exceptionFactory",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.FactoryUtils",
+      "name": "FactoryUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.FactoryUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Factory<T>",
+      "name": "org.apache.commons.collections4.Factory<T>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the factory.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "nullFactory()",
+    "name": "nullFactory",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.FactoryUtils",
+      "name": "FactoryUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.FactoryUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Factory<T>",
+      "name": "org.apache.commons.collections4.Factory<T>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the factory.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "constantFactory(T constantToReturn)",
+    "name": "constantFactory",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.FactoryUtils",
+      "name": "FactoryUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.FactoryUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Factory<T>",
+      "name": "org.apache.commons.collections4.Factory<T>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "constantToReturn"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "constantToReturn"
+        },
+        "comment": "constantToReturn is constant. constant object to return each time in the factory.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the constant factory.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "prototypeFactory(T prototype)",
+    "name": "prototypeFactory",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.FactoryUtils",
+      "name": "FactoryUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.FactoryUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Factory<T>",
+      "name": "org.apache.commons.collections4.Factory<T>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "prototype"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "prototype"
+        },
+        "comment": "the object to clone each time in the factory.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the prototype factory, or a ConstantFactory#NULL_INSTANCE if the prototype is null.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the prototype cannot be cloned.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "instantiateFactory(java.lang.Class<T> classToInstantiate)",
+    "name": "instantiateFactory",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.FactoryUtils",
+      "name": "FactoryUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.FactoryUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Factory<T>",
+      "name": "org.apache.commons.collections4.Factory<T>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Class",
+          "name": "Class",
+          "isArray": false
+        },
+        "name": "classToInstantiate"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          },
+          "name": "classToInstantiate"
+        },
+        "comment": "the Class to instantiate each time in the factory.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the reflection factory.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the classToInstantiate is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      }
+    ]
+  },
+  {
+    "signature": "instantiateFactory(java.lang.Class<T> classToInstantiate, java.lang.Class<?>[] paramTypes, java.lang.Object[] args)",
+    "name": "instantiateFactory",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.FactoryUtils",
+      "name": "FactoryUtils",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.FactoryUtils",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.collections4.Factory<T>",
+      "name": "org.apache.commons.collections4.Factory<T>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Class",
+          "name": "Class",
+          "isArray": false
+        },
+        "name": "classToInstantiate"
+      },
+      {
+        "type": {
+          "qualifiedName": "[Ljava.lang.Class;",
+          "name": "Class[]",
+          "isArray": true
+        },
+        "name": "paramTypes"
+      },
+      {
+        "type": {
+          "qualifiedName": "[Ljava.lang.Object;",
+          "name": "Object[]",
+          "isArray": true
+        },
+        "name": "args"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Class",
+            "name": "Class",
+            "isArray": false
+          },
+          "name": "classToInstantiate"
+        },
+        "comment": "the Class to instantiate each time in the factory.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[Ljava.lang.Class;",
+            "name": "Class[]",
+            "isArray": true
+          },
+          "name": "paramTypes"
+        },
+        "comment": "parameter types for the constructor can be null.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[Ljava.lang.Object;",
+            "name": "Object[]",
+            "isArray": true
+          },
+          "name": "args"
+        },
+        "comment": "the arguments to pass to the constructor can be null.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the reflection factory.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.NullPointerException",
+          "name": "NullPointerException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the classToInstantiate is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the paramTypes and args don't match.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the constructor doesn't exist.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  }
+]
