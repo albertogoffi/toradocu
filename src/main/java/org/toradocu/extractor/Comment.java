@@ -117,7 +117,7 @@ public final class Comment {
         for (String word : words) {
           if (!word.isEmpty() && !word.matches(".*[0-9+-/*(){}[<>=]=?|!=].*")) {
             //search this word before this index in original text
-            List<Integer> occurrences = new ArrayList<Integer>();
+            List<Integer> occurrences = new ArrayList<>();
             occurrences.add(countStringOccurrence(word, subSentence, indexOfMatch));
             if (wordsMarkedAsCode.get(word) != null) {
               wordsMarkedAsCode.get(word).addAll(occurrences);
