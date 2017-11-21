@@ -66,11 +66,11 @@ public final class JavadocExtractor {
 
     //    log.info("Extracting Javadoc information of {} (in source folder {})", className, sourcePath);
 
-    // Obtain executable documentedExecutables by means of reflection.
+    // Obtain executable members (constructors and methods) by means of reflection.
     final Class<?> clazz = Reflection.getClass(className);
     final List<Executable> reflectionExecutables = getExecutables(clazz);
 
-    // Obtain executable documentedExecutables in the source code.
+    // Obtain executable members (constructors and methods) in the source code.
     final ImmutablePair<String, String> fileNameAndSimpleName =
         getFileNameAndSimpleName(clazz, className);
     final String fileName = fileNameAndSimpleName.getLeft();
@@ -79,7 +79,7 @@ public final class JavadocExtractor {
     final String simpleName = fileNameAndSimpleName.getRight();
     final List<CallableDeclaration<?>> sourceExecutables = getExecutables(simpleName, sourceFile);
 
-    // Maps each reflection executable member to its corresponding source member.
+    // Maps each reflection executable member to its corresponding source executable member.
     Map<Executable, CallableDeclaration<?>> executablesMap =
         mapExecutables(reflectionExecutables, sourceExecutables, className);
 
