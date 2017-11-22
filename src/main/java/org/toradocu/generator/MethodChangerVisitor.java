@@ -1,17 +1,15 @@
 package org.toradocu.generator;
 
-import com.github.javaparser.ASTHelper;
 import com.github.javaparser.JavaParser;
-import com.github.javaparser.ParseException;
-import com.github.javaparser.Position;
-import com.github.javaparser.Range;
 import com.github.javaparser.ast.Node;
+import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.body.MethodDeclaration;
-import com.github.javaparser.ast.body.VariableDeclaratorId;
+import com.github.javaparser.ast.body.Parameter;
 import com.github.javaparser.ast.comments.LineComment;
 import com.github.javaparser.ast.expr.AnnotationExpr;
 import com.github.javaparser.ast.expr.BooleanLiteralExpr;
 import com.github.javaparser.ast.expr.Expression;
+import com.github.javaparser.ast.expr.Name;
 import com.github.javaparser.ast.expr.NameExpr;
 import com.github.javaparser.ast.expr.SingleMemberAnnotationExpr;
 import com.github.javaparser.ast.expr.StringLiteralExpr;
@@ -21,30 +19,27 @@ import com.github.javaparser.ast.stmt.ReturnStmt;
 import com.github.javaparser.ast.stmt.Statement;
 import com.github.javaparser.ast.stmt.TryStmt;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
-import com.github.javaparser.ast.visitor.ModifierVisitorAdapter;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.github.javaparser.ast.visitor.ModifierVisitor;
 import java.util.Optional;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.toradocu.Checks;
+import java.util.StringJoiner;
+import org.apache.commons.lang3.tuple.Pair;
 import org.toradocu.Toradocu;
 import org.toradocu.conf.Configuration;
-import org.toradocu.extractor.ExecutableMember;
-import org.toradocu.extractor.ParamTag;
-import org.toradocu.extractor.Parameter;
-import org.toradocu.extractor.ReturnTag;
-import org.toradocu.extractor.ThrowsTag;
+import org.toradocu.extractor.DocumentedExecutable;
+import org.toradocu.extractor.DocumentedParameter;
+import org.toradocu.util.Checks;
+import randoop.condition.specification.OperationSpecification;
+import randoop.condition.specification.PostSpecification;
+import randoop.condition.specification.PreSpecification;
+import randoop.condition.specification.ThrowsSpecification;
 
 /**
  * Visitor that modifies the aspect template (see method {@code visit}) to generate an aspect
  * (oracle) for a {@code ExecutableMember}.
  */
-public class MethodChangerVisitor extends ModifierVisitorAdapter<ExecutableMember> {
+public class MethodChangerVisitor
+    extends ModifierVisitor<Pair<DocumentedExecutable, OperationSpecification>> {
 
-  /** {@code Logger} for this class. */
-  private static final Logger log = LoggerFactory.getLogger(MethodChangerVisitor.class);
   /** Holds Toradocu configuration options. */
   private final Configuration conf = Toradocu.configuration;
 
@@ -53,171 +48,141 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<ExecutableMembe
    * injecting the appropriate source code to get an aspect (oracle) for the method arg.
    *
    * @param methodDeclaration the method declaration of the method to visit
-   * @param executableMember the {@code ExecutableMember} for which to generate the aspect (oracle)
+   * @param spec the {@code ExecutableMember} for which to generate the aspect (oracle)
    * @return the {@code methodDeclaration} modified as and when needed
    * @throws NullPointerException if {@code methodDeclaration} or {@code executableMember} is null
    */
   @Override
-  public Node visit(MethodDeclaration methodDeclaration, ExecutableMember executableMember) {
+  public Node visit(
+      MethodDeclaration methodDeclaration,
+      Pair<DocumentedExecutable, OperationSpecification> spec) {
     Checks.nonNullParameter(methodDeclaration, "methodDeclaration");
-    Checks.nonNullParameter(executableMember, "executableMember");
+    Checks.nonNullParameter(spec, "spec");
 
-    switch (methodDeclaration.getName()) {
+    DocumentedExecutable documentedExecutable = spec.getKey();
+    OperationSpecification operationSpec = spec.getValue();
+
+    switch (methodDeclaration.getName().asString()) {
       case "advice":
-        adviceChanger(methodDeclaration, executableMember);
+        adviceChanger(methodDeclaration, documentedExecutable);
         break;
       case "getExpectedExceptions":
-        getExpectedExceptionChanger(methodDeclaration, executableMember);
+        getExpectedExceptionChanger(methodDeclaration, documentedExecutable, operationSpec);
         break;
       case "paramTagsSatisfied":
-        paramTagSatisfiedChanger(methodDeclaration, executableMember);
+        paramTagSatisfiedChanger(methodDeclaration, documentedExecutable, operationSpec);
         break;
       case "checkResult":
-        checkResultChanger(methodDeclaration, executableMember);
+        checkResultChanger(methodDeclaration, documentedExecutable, operationSpec);
         break;
     }
     return methodDeclaration;
   }
 
   private void checkResultChanger(
-      MethodDeclaration methodDeclaration, ExecutableMember executableMember) {
-    ReturnTag tag = executableMember.returnTag();
-
-    ReturnStmt returnResultStmt = new ReturnStmt();
-    returnResultStmt.setExpr(new NameExpr("result"));
-
-    if (tag == null || tag.getCondition().isEmpty()) {
-      methodDeclaration.getBody().getStmts().add(returnResultStmt);
-      return;
+      MethodDeclaration methodDeclaration,
+      DocumentedExecutable executableMember,
+      OperationSpecification spec) {
+    for (PostSpecification postSpecification : spec.getPostSpecifications()) {
+      String guard = addCasting(postSpecification.getGuard().getConditionText(), executableMember);
+      String property =
+          addCasting(postSpecification.getProperty().getConditionText(), executableMember);
+      String check = createBlock("if ((" + property + ")==false) { fail(\"Error!\"); }");
+      IfStmt ifStmt = createIfStmt(guard, postSpecification.getDescription(), check);
+      methodDeclaration.getBody().ifPresent(body -> body.addStatement(ifStmt));
     }
-
-    // Remove whitespaces to do not influence parsing.
-    String spec = tag.getCondition().replace(" ", "");
-
-    String guardCondition = addCasting(spec.substring(0, spec.indexOf("?")), executableMember);
-    String propertiesStr = spec.substring(spec.indexOf("?") + 1);
-    String[] properties = propertiesStr.split(":", 2);
-    String castedProperty = addCasting(properties[0], executableMember);
-    String thenBlock = createBlock("if ((" + castedProperty + ")==false) { fail(\"Error!\"); }");
-
-    IfStmt ifStmt;
-    if (properties.length > 1) {
-      String castedProperty1 = addCasting(properties[1], executableMember);
-      String elseBlock = createBlock("if ((" + castedProperty1 + ")==false) { fail(\"Error!\"); }");
-      ifStmt = createIfStmt(guardCondition, tag.getComment(), thenBlock, elseBlock);
-    } else {
-      ifStmt = createIfStmt(guardCondition, tag.getComment(), thenBlock);
-    }
-    methodDeclaration.getBody().getStmts().add(ifStmt);
-    methodDeclaration.getBody().getStmts().add(returnResultStmt);
+    ReturnStmt returnResultStmt = new ReturnStmt(new NameExpr("result"));
+    methodDeclaration.getBody().ifPresent(body -> body.addStatement(returnResultStmt));
   }
 
   private void paramTagSatisfiedChanger(
-      MethodDeclaration methodDeclaration, ExecutableMember executableMember) {
+      MethodDeclaration methodDeclaration,
+      DocumentedExecutable executableMember,
+      OperationSpecification specification) {
     boolean returnStmtNeeded = true;
-    for (ParamTag tag : executableMember.paramTags()) {
-      String condition = tag.getCondition();
-      if (condition.isEmpty()) {
-        continue;
-      }
+
+    for (PreSpecification preSpecification : specification.getPreSpecifications()) {
+      String condition = preSpecification.getGuard().getConditionText();
       condition = addCasting(condition, executableMember);
       String thenBlock = createBlock("return true;");
       String elseBlock = createBlock("return false;");
-      IfStmt ifStmt = createIfStmt(condition, tag.toString(), thenBlock, elseBlock);
-      methodDeclaration.getBody().getStmts().add(ifStmt);
+      IfStmt ifStmt =
+          createIfStmt(condition, preSpecification.getDescription(), thenBlock, elseBlock);
+      methodDeclaration.getBody().ifPresent(body -> body.addStatement(ifStmt));
       returnStmtNeeded = false;
     }
 
     if (returnStmtNeeded) {
-      ReturnStmt returnTrueStmt = new ReturnStmt();
-      returnTrueStmt.setExpr(new BooleanLiteralExpr(true));
-      methodDeclaration.getBody().getStmts().add(returnTrueStmt);
+      ReturnStmt returnTrueStmt = new ReturnStmt(new BooleanLiteralExpr(true));
+      methodDeclaration.getBody().ifPresent(body -> body.addStatement(returnTrueStmt));
     }
   }
 
   private void getExpectedExceptionChanger(
-      MethodDeclaration methodDeclaration, ExecutableMember executableMember) {
-    for (ThrowsTag tag : executableMember.throwsTags()) {
-      String condition = tag.getCondition();
-      if (condition.isEmpty()) {
-        continue;
-      }
+      MethodDeclaration methodDeclaration,
+      DocumentedExecutable executableMember,
+      OperationSpecification operationSpec) {
 
-      condition = addCasting(condition, executableMember);
+    for (ThrowsSpecification throwsSpecification : operationSpec.getThrowsSpecifications()) {
+      String condition =
+          addCasting(throwsSpecification.getGuard().getConditionText(), executableMember);
 
       IfStmt ifStmt = new IfStmt();
       Expression conditionExpression;
-      try {
-        conditionExpression = JavaParser.parseExpression(condition);
-        ifStmt.setCondition(conditionExpression);
-        // Add a try-catch block to prevent runtime error when looking for an exception type
-        // that is not on the classpath.
-        String addExpectedException =
-            "{try{expectedExceptions.add("
-                + "Class.forName(\""
-                + tag.exceptionType()
-                + "\")"
-                + ");} catch (ClassNotFoundException e) {"
-                + "System.err.println(\"Class not found!\" + e);}}";
-        ifStmt.setThenStmt(JavaParser.parseBlock(addExpectedException));
+      conditionExpression = JavaParser.parseExpression(condition);
+      ifStmt.setCondition(conditionExpression);
+      // Add a try-catch block to prevent runtime error when looking for an exception type
+      // that is not on the classpath.
+      String addExpectedException =
+          "{try{expectedExceptions.add("
+              + "Class.forName(\""
+              + throwsSpecification.getExceptionTypeName()
+              + "\")"
+              + ");} catch (ClassNotFoundException e) {"
+              + "System.err.println(\"Class not found!\" + e);}}";
+      ifStmt.setThenStmt(JavaParser.parseBlock(addExpectedException));
 
-        // Add a try-catch block to avoid NullPointerException to be raised while evaluating a
-        // boolean condition generated by Toradocu. For example, suppose that the first argument
-        // of a method is null, and that Toradocu generates a condition like
-        // args[0].isEmpty()==true. The condition generates a NullPointerException that we want
-        // to ignore.
-        ClassOrInterfaceType nullPointerException =
-            new ClassOrInterfaceType("java.lang.NullPointerException");
-        Position position = new Position(0, 0);
-        Range range = new Range(position, position);
-        CatchClause catchClause =
-            new CatchClause(
-                range,
-                0,
-                null,
-                nullPointerException,
-                new VariableDeclaratorId("e"),
-                JavaParser.parseBlock("{}"));
-        List<CatchClause> catchClauses = new ArrayList<>();
-        catchClauses.add(catchClause);
+      // Add a try-catch block to avoid NullPointerException to be raised while evaluating a
+      // boolean condition generated by Toradocu. For example, suppose that the first argument
+      // of a method is null, and that Toradocu generates a condition like
+      // args[0].isEmpty()==true. The condition generates a NullPointerException that we want
+      // to ignore.
+      ClassOrInterfaceType nullPointerException =
+          JavaParser.parseClassOrInterfaceType("java.lang.NullPointerException");
+      CatchClause catchClause =
+          new CatchClause(new Parameter(nullPointerException, "e"), JavaParser.parseBlock("{}"));
+      NodeList<CatchClause> catchClauses = new NodeList<>();
+      catchClauses.add(catchClause);
 
-        TryStmt nullCheckTryCatch = new TryStmt();
-        nullCheckTryCatch.setTryBlock(JavaParser.parseBlock("{" + ifStmt.toString() + "}"));
-        nullCheckTryCatch.setCatchs(catchClauses);
+      TryStmt nullCheckTryCatch = new TryStmt();
+      nullCheckTryCatch.setTryBlock(JavaParser.parseBlock("{" + ifStmt.toString() + "}"));
+      nullCheckTryCatch.setCatchClauses(catchClauses);
 
-        // Add comment to if condition. The comment is the original comment in the Java source
-        // code that has been translated by Toradocu in the commented boolean condition.
-        // Comment has to be added here, cause otherwise is ignored by JavaParser.parseBlock.
-        final Optional<Statement> ifCondition =
-            nullCheckTryCatch
-                .getTryBlock()
-                .getStmts()
-                .stream()
-                .filter(stm -> stm instanceof IfStmt)
-                .findFirst();
-        if (ifCondition.isPresent()) {
-          String comment = " " + tag.getKind() + " " + tag.exceptionType() + " " + tag.getComment();
-          ifCondition.get().setComment(new LineComment(comment));
-        }
-
-        ASTHelper.addStmt(methodDeclaration.getBody(), nullCheckTryCatch);
-      } catch (ParseException e) {
-        log.error("Parsing error during the aspect creation.", e);
-        e.printStackTrace();
+      // Add comment to if condition. The comment is the original comment in the Java source
+      // code that has been translated by Toradocu in the commented boolean condition.
+      // Comment has to be added here, cause otherwise is ignored by JavaParser.parseBlock.
+      final Optional<Statement> ifCondition =
+          nullCheckTryCatch
+              .getTryBlock()
+              .getStatements()
+              .stream()
+              .filter(stm -> stm instanceof IfStmt)
+              .findFirst();
+      if (ifCondition.isPresent()) {
+        String comment = throwsSpecification.getDescription();
+        ifCondition.get().setComment(new LineComment(comment));
       }
+
+      methodDeclaration.getBody().ifPresent(body -> body.addStatement(nullCheckTryCatch));
     }
 
-    try {
-      ASTHelper.addStmt(
-          methodDeclaration.getBody(), JavaParser.parseStatement("return expectedExceptions;"));
-    } catch (ParseException e) {
-      log.error("Parsing error during the aspect creation.", e);
-      e.printStackTrace();
-    }
+    methodDeclaration
+        .getBody()
+        .ifPresent(blockStmt -> blockStmt.addStatement("return expectedExceptions;"));
   }
 
   private void adviceChanger(
-      MethodDeclaration methodDeclaration, ExecutableMember executableMember) {
+      MethodDeclaration methodDeclaration, DocumentedExecutable executableMember) {
     String pointcut;
 
     if (executableMember.isConstructor()) {
@@ -231,8 +196,8 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<ExecutableMembe
     }
 
     AnnotationExpr annotation =
-        new SingleMemberAnnotationExpr(new NameExpr("Around"), new StringLiteralExpr(pointcut));
-    List<AnnotationExpr> annotations = methodDeclaration.getAnnotations();
+        new SingleMemberAnnotationExpr(new Name("Around"), new StringLiteralExpr(pointcut));
+    NodeList<AnnotationExpr> annotations = methodDeclaration.getAnnotations();
     annotations.add(annotation);
     methodDeclaration.setAnnotations(annotations);
   }
@@ -249,18 +214,13 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<ExecutableMembe
       String condition, String comment, String thenBlock, String elseBlock) {
     IfStmt ifStmt = new IfStmt();
     Expression conditionExpression;
-    try {
-      conditionExpression = JavaParser.parseExpression(condition);
-      ifStmt.setCondition(conditionExpression);
-      ifStmt.setThenStmt(JavaParser.parseBlock(thenBlock));
-      if (!elseBlock.isEmpty()) {
-        ifStmt.setElseStmt(JavaParser.parseBlock(elseBlock));
-      }
-      ifStmt.setComment(new LineComment(" " + comment));
-    } catch (ParseException e) {
-      log.error("Parsing error during the aspect creation.", e);
-      e.printStackTrace();
+    conditionExpression = JavaParser.parseExpression(condition);
+    ifStmt.setCondition(conditionExpression);
+    ifStmt.setThenStmt(JavaParser.parseBlock(thenBlock));
+    if (!elseBlock.isEmpty()) {
+      ifStmt.setElseStmt(JavaParser.parseBlock(elseBlock));
     }
+    ifStmt.setComment(new LineComment(" " + comment));
     return ifStmt;
   }
 
@@ -270,34 +230,28 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<ExecutableMembe
    * ExecutableMember} describing the method C.foo(), this method returns the string {@code
    * call(void C.foo())}.
    *
-   * @param method {@code ExecutableMember} for which to generate the pointcut definition
+   * @param executable {@code ExecutableMember} for which to generate the pointcut definition
    * @return the pointcut definition matching {@code method}
    */
-  private static String getPointcut(ExecutableMember method) {
+  private static String getPointcut(DocumentedExecutable executable) {
     StringBuilder pointcut = new StringBuilder();
 
-    if (method.isConstructor()) { // Constructors
-      pointcut.append(method.getDeclaringClass()).append(".new(");
+    if (executable.isConstructor()) { // Constructors
+      pointcut.append(executable.getDeclaringClass()).append(".new(");
     } else { // Regular methods
       pointcut
-          .append(method.getReturnType())
+          .append(executable.getReturnType())
           .append(" ")
-          .append(method.getDeclaringClass())
+          .append(executable.getDeclaringClass())
           .append(".")
-          .append(method.getName())
-          .append("(");
+          .append(executable.getName());
     }
 
-    Iterator<Parameter> parametersIterator = method.getParameters().iterator();
-    while (parametersIterator.hasNext()) {
-      Parameter parameter = parametersIterator.next();
-      pointcut.append(parameter.getType());
-      if (parametersIterator.hasNext()) {
-        pointcut.append(", ");
-      }
+    StringJoiner joiner = new StringJoiner(", ", "(", ")");
+    for (DocumentedParameter documentedParameter : executable.getParameters()) {
+      joiner.add(documentedParameter.getType().getName());
     }
-
-    pointcut.append(")");
+    pointcut.append(joiner.toString());
     return pointcut.toString();
   }
 
@@ -310,13 +264,13 @@ public class MethodChangerVisitor extends ModifierVisitorAdapter<ExecutableMembe
    * @return the input condition with casted method arguments and target
    * @throws NullPointerException if {@code condition} or {@code method} is null
    */
-  private static String addCasting(String condition, ExecutableMember method) {
+  private static String addCasting(String condition, DocumentedExecutable method) {
     Checks.nonNullParameter(condition, "condition");
     Checks.nonNullParameter(method, "method");
 
     int index = 0;
-    for (Parameter parameter : method.getParameters()) {
-      String type = parameter.getType().getQualifiedName();
+    for (DocumentedParameter parameter : method.getParameters()) {
+      String type = parameter.getType().getName();
       condition = condition.replace("args[" + index + "]", "((" + type + ") args[" + index + "])");
       index++;
     }

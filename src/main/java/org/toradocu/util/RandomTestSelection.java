@@ -63,7 +63,7 @@ public class RandomTestSelection {
     return chosenClass;
   }
 
-  private static int findTagsForMethod(CallableDeclaration sourceMember) {
+  private static int findTagsForMethod(CallableDeclaration<?> sourceMember) {
     String name = sourceMember.getNameAsString();
     if (name.equals("equals")
         || name.equals("hashCode")

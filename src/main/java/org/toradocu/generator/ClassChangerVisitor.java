@@ -2,15 +2,15 @@ package org.toradocu.generator;
 
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
-import com.github.javaparser.ast.visitor.ModifierVisitorAdapter;
-import org.toradocu.Checks;
+import com.github.javaparser.ast.visitor.ModifierVisitor;
+import org.toradocu.util.Checks;
 
 /**
  * Visitor that modifies the aspect template (see method {@code visit}) to generate an aspect
  * (oracle). In particular, this visitor changes the aspect class name to the appropriate aspect
  * name.
  */
-public class ClassChangerVisitor extends ModifierVisitorAdapter<String> {
+public class ClassChangerVisitor extends ModifierVisitor<String> {
 
   /**
    * Modifies the name of the class from the aspect template to {@code aspectName}.
@@ -25,7 +25,7 @@ public class ClassChangerVisitor extends ModifierVisitorAdapter<String> {
     Checks.nonNullParameter(declaration, "declaration");
     Checks.nonNullParameter(aspectName, "aspectName");
 
-    if (declaration.getName().equals("Aspect_Template")) {
+    if (declaration.getName().asString().equals("Aspect_Template")) {
       declaration.setName(aspectName);
     }
     return declaration;

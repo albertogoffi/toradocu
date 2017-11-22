@@ -3,7 +3,6 @@ package org.toradocu.generator;
 import static org.toradocu.Toradocu.configuration;
 
 import com.github.javaparser.JavaParser;
-import com.github.javaparser.ParseException;
 import com.github.javaparser.ast.CompilationUnit;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -11,12 +10,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.toradocu.Checks;
-import org.toradocu.extractor.BlockTag;
-import org.toradocu.extractor.ExecutableMember;
-import org.toradocu.extractor.ReturnTag;
+import org.toradocu.extractor.DocumentedExecutable;
+import org.toradocu.util.Checks;
+import randoop.condition.specification.OperationSpecification;
 
 /**
  * The oracle generator. The method {@code createAspects} of this class creates the aspects for a
@@ -28,72 +28,76 @@ public class OracleGenerator {
   private static final Logger log = LoggerFactory.getLogger(OracleGenerator.class);
 
   /**
-   * Creates one aspect for each method in the given {@code methods} list if the method has at least
-   * one comment translated by the condition translator.
+   * Creates aspects that check the given {@code specs}. This method creates one aspect for each
+   * method with specifications.
    *
-   * @param methods the {@code List} of methods to create aspects for. Must not be null.
+   * <p>Created aspects can be used to embed oracles in existing test suites.
+   *
+   * @param specs the specifications that created aspects will check at runtime. Must not be null.
    */
-  public static void createAspects(List<ExecutableMember> methods) {
-    if (!configuration.isOracleGenerationEnabled()) {
-      log.info("Oracle generator disabled: skipped aspect generation.");
-      return;
-    }
+  public static void createAspects(Map<DocumentedExecutable, OperationSpecification> specs) {
+    Checks.nonNullParameter(specs, "specs");
 
-    if (methods.isEmpty()) {
+    if (!configuration.isOracleGenerationEnabled()) {
+      log.info("Oracle generator disabled: aspect generation skipped.");
       return;
     }
 
     String aspectDir = configuration.getAspectsOutputDir();
     new File(aspectDir).mkdirs();
 
-    final String junitAspect = configuration.getJUnitTestCaseAspect();
-    final String aspectPath = configuration.getAspectsOutputDir() + File.separator + junitAspect;
-    try (InputStreamReader template =
-            new InputStreamReader(
-                Object.class.getResourceAsStream("/" + configuration.getJUnitTestCaseAspect()));
-        FileOutputStream output = new FileOutputStream(new File(aspectPath))) {
-      CompilationUnit cu = JavaParser.parse(template, true);
-      new JUnitTestCaseAspectChangerVisitor().visit(cu, null);
-      output.write(cu.toString().getBytes());
-    } catch (IOException | ParseException e) {
-      log.error("Oracle generation stopped: Impossible to create file " + aspectPath);
+    if (specs.isEmpty()) {
       return;
     }
 
+    final String junitAspect = configuration.getJUnitTestCaseAspect();
+    final String aspectPath = configuration.getAspectsOutputDir() + File.separator + junitAspect;
+    try {
+      addWithinDeclarationToPointcut(aspectPath);
+    } catch (IOException e) {
+      return;
+    }
+
+    // Create aspects.
     final List<String> createdAspectNames = new ArrayList<>();
     final String junitAspectName = junitAspect.substring(0, junitAspect.lastIndexOf("."));
     createdAspectNames.add(junitAspectName);
     int aspectNumber = 1;
-    for (ExecutableMember method : methods) {
-      List<BlockTag> tags = new ArrayList<>(method.paramTags());
-      tags.addAll(method.throwsTags());
-      ReturnTag returnTag = method.returnTag();
-      if (returnTag != null && returnTag.getCondition() != null) {
-        String condition = returnTag.getCondition();
-        if (!condition.isEmpty()) {
-          tags.add(returnTag);
-        }
-      }
-      boolean match = tags.stream().anyMatch(tag -> !tag.getCondition().isEmpty());
-      if (match) {
-        String aspectName = "Aspect_" + aspectNumber;
-        createAspect(method, aspectName);
-        createdAspectNames.add(aspectName);
-        aspectNumber++;
-      }
+    for (DocumentedExecutable method : specs.keySet()) {
+      String aspectName = "Aspect_" + aspectNumber++;
+      createAspect(method, specs.get(method), aspectName);
+      createdAspectNames.add(aspectName);
     }
+
     createAopXml(aspectDir, createdAspectNames);
+  }
+
+  // Add "within" declaration to pointcut definition.
+  private static void addWithinDeclarationToPointcut(String aspectPath) throws IOException {
+    try (InputStreamReader template =
+            new InputStreamReader(
+                Object.class.getResourceAsStream("/" + configuration.getJUnitTestCaseAspect()));
+        FileOutputStream output = new FileOutputStream(new File(aspectPath))) {
+      CompilationUnit cu = JavaParser.parse(template);
+      new JUnitTestCaseAspectChangerVisitor().visit(cu, null);
+      output.write(cu.toString().getBytes());
+    } catch (IOException e) {
+      log.error("Oracle generation stopped: Impossible to create file " + aspectPath);
+      throw e;
+    }
   }
 
   /**
    * Creates a new aspect for the given {@code method}.
    *
-   * @param method method for which an aspect will be created
-   * @param aspectName name of the file where the newly created aspect is saved
-   * @throws NullPointerException if {@code method} or {@code aspectName} is null
+   * @param method method for which an aspect will be created, must not be null
+   * @param specification the specs the created aspect has to check, must not be null
+   * @param aspectName name of the file where the newly created aspect is saved, must not be null
    */
-  private static void createAspect(ExecutableMember method, String aspectName) {
+  private static void createAspect(
+      DocumentedExecutable method, OperationSpecification specification, String aspectName) {
     Checks.nonNullParameter(method, "method");
+    Checks.nonNullParameter(specification, "specification");
     Checks.nonNullParameter(aspectName, "aspectName");
 
     String aspectPath = configuration.getAspectsOutputDir() + File.separator + aspectName;
@@ -102,12 +106,12 @@ public class OracleGenerator {
             new InputStreamReader(
                 Object.class.getResourceAsStream("/" + configuration.getAspectTemplate()));
         FileOutputStream output = new FileOutputStream(new File(aspectPath + ".java"))) {
-      CompilationUnit cu = JavaParser.parse(template, true);
+      CompilationUnit cu = JavaParser.parse(template);
 
-      new MethodChangerVisitor().visit(cu, method);
+      new MethodChangerVisitor().visit(cu, Pair.of(method, specification));
       new ClassChangerVisitor().visit(cu, aspectName);
       output.write(cu.toString().getBytes());
-    } catch (IOException | ParseException e) {
+    } catch (IOException e) {
       log.error("Error during aspect creation.", e);
     }
   }

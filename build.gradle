@@ -72,7 +72,7 @@ sourceSets {
   }
   test {
     java {
-      excludes = ['**/generator/*', '**/util/*', '**/regression/*']
+      excludes = ['**/util/*', '**/regression/*']
     }
   }
 }
@@ -96,6 +96,10 @@ startScripts.enabled = false
 distZip.enabled = false
 distTar.enabled = false
 assemble.enabled = false
+shadowJar.enabled = false
+startShadowScripts.enabled = false
+shadowDistZip.enabled = false
+shadowDistZip.enabled = false
 
 compileJava {
   options.compilerArgs << '-Xlint:unchecked'
@@ -126,7 +130,7 @@ dependencies {
   compile 'org.deeplearning4j:deeplearning4j-nlp:0.8.0'
   compile 'org.nd4j:nd4j-native-platform:0.8.0'
   compile 'org.jsoup:jsoup:1.8.3' // JSoup used only to remove HTML tags in comments.
-  compile 'com.github.javaparser:javaparser-core:3.2.10'
+  compile 'com.github.javaparser:javaparser-core:3.5.4'
   compile 'com.beust:jcommander:1.69'
   compile 'com.google.code.gson:gson:2.8.0'
   compile 'commons-io:commons-io:2.5'
@@ -259,7 +263,10 @@ task tags(type: Exec) {
 task installhook(type: Exec) {
   commandLine 'bash', '-c' , 'if [ -e .git -a ! -f .git/hooks/pre-commit ]; then ln -s ../../git-pre-commit-hook.sh .git/hooks/pre-commit; fi'
 }
-gradle.taskGraph.beforeTask.dependsOn installhook
+
+gradle.taskGraph.beforeTask { Task task ->
+  installhook.execute()
+}
 
 shadowJar {
   // default: "${baseName}-${version}-${classifier}.${extension}",

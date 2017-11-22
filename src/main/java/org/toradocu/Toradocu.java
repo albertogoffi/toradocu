@@ -22,6 +22,7 @@ import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.DocumentedType;
 import org.toradocu.extractor.JavadocExtractor;
+import org.toradocu.generator.OracleGenerator;
 import org.toradocu.output.util.JsonOutput;
 import org.toradocu.translator.CommentTranslator;
 import org.toradocu.translator.semantic.SemanticMatcher;
@@ -207,10 +208,11 @@ public class Toradocu {
 
       // Export generated specifications as Randoop specifications if requested.
       generateRandoopSpecs(specifications);
-    }
 
-    // === Oracle Generator ===
-    //    OracleGenerator.createAspects(methods);
+      // === Oracle Generator ===
+      // Note that aspect generation is enabled only when translation is enabled.
+      OracleGenerator.createAspects(specifications);
+    }
   }
 
   /**
