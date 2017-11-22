@@ -1,5 +1,5 @@
 # Toradocu: automated generation of test oracles from Javadoc documentation
-[![Build Status](https://travis-ci.org/albertogoffi/toradocu.svg?branch=refactor)](https://travis-ci.org/albertogoffi/toradocu)
+[![Build Status](https://travis-ci.org/albertogoffi/toradocu.svg?branch=master)](https://travis-ci.org/albertogoffi/toradocu)
 
 Toradocu generates test oracles from the Javadoc documentation of a
 class. Toradocu is described in the paper
