@@ -3,14 +3,14 @@ package org.toradocu.util;
 import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.List;
-import org.toradocu.extractor.DocumentedMethod;
-import org.toradocu.extractor.ReturnTag;
+import org.toradocu.output.util.JsonOutput;
+import org.toradocu.output.util.ReturnTagOutput;
+import org.toradocu.output.util.TagOutput;
 
 /**
  * Given a goal JSON file as produced by Toradocu, this program prints the number of specifications
@@ -28,37 +28,24 @@ public class SpecsCount {
     }
 
     final String jsonFile = args[0];
-    final List<DocumentedMethod> specs;
+    final List<JsonOutput> specs;
     try (BufferedReader file = Files.newBufferedReader(Paths.get(jsonFile))) {
-      Type collectionType = new TypeToken<Collection<DocumentedMethod>>() {}.getType();
+      Type collectionType = new TypeToken<Collection<JsonOutput>>() {}.getType();
       specs = GsonInstance.gson().fromJson(file, collectionType);
     }
 
     int pre = 0, post = 0, exc = 0;
 
-    for (DocumentedMethod method : specs) {
-      if (method.getTargetClass().equals(method.getContainingClass().getQualifiedName())
-          || !Modifier.isPrivate(method.getExecutable().getModifiers())) {
-        pre +=
-            method
-                .paramTags()
-                .stream()
-                .map(t -> t.getCondition())
-                .filter(c -> c.isPresent() && !c.get().isEmpty())
-                .count();
-        exc +=
-            method
-                .throwsTags()
-                .stream()
-                .map(t -> t.getCondition())
-                .filter(c -> c.isPresent() && !c.get().isEmpty())
-                .count();
-        ReturnTag returnTag = method.returnTag();
-        if (returnTag != null) {
-          final String condition = returnTag.getCondition().orElse("");
-          if (!condition.isEmpty()) {
-            post += 1;
-          }
+    for (JsonOutput output : specs) {
+      pre +=
+          output.paramTags.stream().map(TagOutput::getCondition).filter(c -> !c.isEmpty()).count();
+      exc +=
+          output.throwsTags.stream().map(TagOutput::getCondition).filter(c -> !c.isEmpty()).count();
+      ReturnTagOutput returnTag = output.returnTag;
+      if (returnTag != null) {
+        final String condition = returnTag.getCondition();
+        if (!condition.isEmpty()) {
+          post += 1;
         }
       }
     }

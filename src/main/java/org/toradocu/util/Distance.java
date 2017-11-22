@@ -3,7 +3,7 @@ package org.toradocu.util;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import org.toradocu.Toradocu;
+import org.toradocu.conf.Configuration;
 
 /**
  * This utility class returns the edit distance between two strings based on character edits and
@@ -24,7 +24,7 @@ public class Distance {
    *     deletions
    */
   public static int editDistance(String s0, String s1) {
-    return editDistance(Toradocu.configuration.getWordRemovalCost(), s0, s1);
+    return editDistance(s0, s1, Configuration.INSTANCE.getWordRemovalCost());
   }
 
   /**
@@ -32,41 +32,32 @@ public class Distance {
    * deletions. {@code s1} is the only string in which word deletions are considered when
    * calculating the edit distance. This method is mainly provided for testing purposes.
    *
-   * @param wordDeletionCost the cost of a single word deletion
    * @param s0 the first string to use in calculating distance. Word deletions are not considered
    *     for this string.
    * @param s1 the second string to use in calculating distance. Word deletions are considered for
    *     this string only.
+   * @param wordDeletionCost the cost of a single word deletion
    * @return the edit distance between the two strings, taking into account character edits and word
    *     deletions
    */
-  static int editDistance(int wordDeletionCost, String s0, String s1) {
+  static int editDistance(String s0, String s1, int wordDeletionCost) {
     String[] words = s1.split(" ");
     return editDistanceRecursive(wordDeletionCost, s0, new LinkedList<>(Arrays.asList(words)));
   }
 
   private static int editDistanceRecursive(int wordDeletionCost, String s0, List<String> s1) {
-    int minDistance = levenshteinDistance(s0, joinWords(s1));
+    int minDistance = levenshteinDistance(s0, String.join(" ", s1));
     for (int i = 0; i < s1.size(); i++) {
       String word = s1.remove(i);
-      int distance = wordDeletionCost + editDistanceRecursive(wordDeletionCost, s0, s1);
-      if (distance < minDistance) {
-        minDistance = distance;
+      if (!s1.isEmpty()) {
+        int distance = wordDeletionCost + editDistanceRecursive(wordDeletionCost, s0, s1);
+        if (distance < minDistance) {
+          minDistance = distance;
+        }
       }
       s1.add(i, word);
     }
     return minDistance;
-  }
-
-  private static String joinWords(List<String> words) {
-    if (words.isEmpty()) {
-      return "";
-    }
-    StringBuilder result = new StringBuilder(words.get(0));
-    for (int i = 1; i < words.size(); i++) {
-      result.append(" " + words.get(i));
-    }
-    return result.toString();
   }
 
   /**
@@ -76,7 +67,7 @@ public class Distance {
    * @param s1 the second string to use in calculating distance
    * @return the Levenshtein distance between the two strings
    */
-  public static int levenshteinDistance(String s0, String s1) {
+  private static int levenshteinDistance(String s0, String s1) {
     return levenshteinDistance(s0, s1, false);
   }
 
@@ -88,7 +79,7 @@ public class Distance {
    * @param caseSensitive true to consider case in calculating distance
    * @return the Levenshtein distance between the two strings
    */
-  public static int levenshteinDistance(String s0, String s1, boolean caseSensitive) {
+  private static int levenshteinDistance(String s0, String s1, boolean caseSensitive) {
     if (!caseSensitive) {
       s0 = s0.toLowerCase();
       s1 = s1.toLowerCase();

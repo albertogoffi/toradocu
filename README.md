@@ -1,5 +1,5 @@
 # Toradocu: automated generation of test oracles from Javadoc documentation
-[![Build Status](https://travis-ci.org/albertogoffi/toradocu.svg?branch=master)](https://travis-ci.org/albertogoffi/toradocu)
+[![Build Status](https://travis-ci.org/albertogoffi/toradocu.svg?branch=refactor)](https://travis-ci.org/albertogoffi/toradocu)
 
 Toradocu generates test oracles from the Javadoc documentation of a
 class. Toradocu is described in the paper
@@ -26,9 +26,9 @@ Building Toradocu requires Java JDK 1.8+.
 ## Running Toradocu
 Toradocu is a command-line tool. The list of all Toradocu command-line options is available [on the wiki](https://github.com/albertogoffi/toradocu/wiki/Command-Line-Options).
 To get a list of available command-line parameters, execute
-    
+
     java -jar build/libs/toradocu-1.0-all.jar --help
-    
+
 A typical Toradocu invocation looks like this:
 
     java -jar toradocu-1.0-all.jar \

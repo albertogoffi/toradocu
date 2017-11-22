@@ -1,0 +1,95 @@
+[
+  {
+    "signature": "org.jgrapht.generate.CompleteGraphGenerator(int size)",
+    "name": "org.jgrapht.generate.CompleteGraphGenerator",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.generate.CompleteGraphGenerator",
+      "name": "CompleteGraphGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.generate.CompleteGraphGenerator",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "size"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "size"
+        },
+        "comment": "number of vertices to be generated.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the specified size is negative.",
+        "kind": "THROWS",
+        "condition": "args[0]<0"
+      }
+    ]
+  },
+  {
+    "signature": "generateGraph(org.jgrapht.Graph<V, target, org.jgrapht.VertexFactory<V> vertexFactory, java.util.Map<java.lang.String, resultMap)",
+    "name": "generateGraph",
+    "containingClass": {
+      "qualifiedName": "org.jgrapht.generate.CompleteGraphGenerator",
+      "name": "CompleteGraphGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.jgrapht.generate.CompleteGraphGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.Graph",
+          "name": "Graph",
+          "isArray": false
+        },
+        "name": "target"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.jgrapht.VertexFactory",
+          "name": "VertexFactory",
+          "isArray": false
+        },
+        "name": "vertexFactory"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.util.Map",
+          "name": "Map",
+          "isArray": false
+        },
+        "name": "resultMap"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  }
+]

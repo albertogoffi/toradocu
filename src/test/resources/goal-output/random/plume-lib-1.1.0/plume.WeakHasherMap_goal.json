@@ -1,0 +1,447 @@
+[
+  {
+    "signature": "WeakHasherMap(int initialCapacity,float loadFactor)",
+    "name": "WeakHasherMap",
+    "containingClass": {
+      "qualifiedName": "plume.WeakHasherMap",
+      "name": "WeakHasherMap",
+      "isArray": false
+    },
+    "targetClass": "plume.WeakHasherMap",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "initialCapacity"
+      },
+      {
+        "type": {
+          "qualifiedName": "float",
+          "name": "float",
+          "isArray": false
+        },
+        "name": "loadFactor"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "initialCapacity"
+        },
+        "comment": "the initial capacity of the WeakHashMap",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "float",
+            "name": "float",
+            "isArray": false
+          },
+          "name": "loadFactor"
+        },
+        "comment": "the load factor of the WeakHashMap",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If the initial capacity is less than zero, or if the load factor is nonpositive",
+        "kind": "THROWS",
+        "condition": "args[0]<0 || args[1]<=0"
+      }
+    ]
+  },
+  {
+    "signature": "WeakHasherMap(int initialCapacity)",
+    "name": "WeakHasherMap",
+    "containingClass": {
+      "qualifiedName": "plume.WeakHasherMap",
+      "name": "WeakHasherMap",
+      "isArray": false
+    },
+    "targetClass": "plume.WeakHasherMap",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "initialCapacity"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "initialCapacity"
+        },
+        "comment": "the initial capacity of the WeakHashMap",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "If the initial capacity is less than zero",
+        "kind": "THROWS",
+        "condition": "args[0]<0"
+      }
+    ]
+  },
+  {
+    "signature": "WeakHasherMap()",
+    "name": "WeakHasherMap",
+    "containingClass": {
+      "qualifiedName": "plume.WeakHasherMap",
+      "name": "WeakHasherMap",
+      "isArray": false
+    },
+    "targetClass": "plume.WeakHasherMap",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "WeakHasherMap(plume.Hasher h)",
+    "name": "WeakHasherMap",
+    "containingClass": {
+      "qualifiedName": "plume.WeakHasherMap",
+      "name": "WeakHasherMap",
+      "isArray": false
+    },
+    "targetClass": "plume.WeakHasherMap",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "plume.Hasher",
+          "name": "Hasher",
+          "isArray": false
+        },
+        "name": "h"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "plume.Hasher",
+            "name": "Hasher",
+            "isArray": false
+          },
+          "name": "h"
+        },
+        "comment": "the Hasher to use when hashing values for this map",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "size()",
+    "name": "size",
+    "containingClass": {
+      "qualifiedName": "plume.WeakHasherMap",
+      "name": "WeakHasherMap",
+      "isArray": false
+    },
+    "targetClass": "plume.WeakHasherMap",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "isEmpty()",
+    "name": "isEmpty",
+    "containingClass": {
+      "qualifiedName": "plume.WeakHasherMap",
+      "name": "WeakHasherMap",
+      "isArray": false
+    },
+    "targetClass": "plume.WeakHasherMap",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "containsKey(java.lang.Object key)",
+    "name": "containsKey",
+    "containingClass": {
+      "qualifiedName": "plume.WeakHasherMap",
+      "name": "WeakHasherMap",
+      "isArray": false
+    },
+    "targetClass": "plume.WeakHasherMap",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key whose presence in this map is to be tested",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "get(java.lang.Object key)",
+    "name": "get",
+    "containingClass": {
+      "qualifiedName": "plume.WeakHasherMap",
+      "name": "WeakHasherMap",
+      "isArray": false
+    },
+    "targetClass": "plume.WeakHasherMap",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "V",
+      "name": "V",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key whose associated value, if any, is to be returned",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "put(java.lang.Object key,java.lang.Object value)",
+    "name": "put",
+    "containingClass": {
+      "qualifiedName": "plume.WeakHasherMap",
+      "name": "WeakHasherMap",
+      "isArray": false
+    },
+    "targetClass": "plume.WeakHasherMap",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "V",
+      "name": "V",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key that is to be mapped to the given value",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "the value to which the given key is to be mapped",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the previous value to which this key was mapped, or null if if there was no mapping for the key",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "remove(java.lang.Object key)",
+    "name": "remove",
+    "containingClass": {
+      "qualifiedName": "plume.WeakHasherMap",
+      "name": "WeakHasherMap",
+      "isArray": false
+    },
+    "targetClass": "plume.WeakHasherMap",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "V",
+      "name": "V",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key whose mapping is to be removed",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the value to which this key was mapped, or null if there was no mapping for the key",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "clear()",
+    "name": "clear",
+    "containingClass": {
+      "qualifiedName": "plume.WeakHasherMap",
+      "name": "WeakHasherMap",
+      "isArray": false
+    },
+    "targetClass": "plume.WeakHasherMap",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "entrySet()",
+    "name": "entrySet",
+    "containingClass": {
+      "qualifiedName": "plume.WeakHasherMap",
+      "name": "WeakHasherMap",
+      "isArray": false
+    },
+    "targetClass": "plume.WeakHasherMap",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Set",
+      "name": "Set",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  }
+]

@@ -14,7 +14,7 @@ public class JUnitTestCaseAspectChangerVisitor extends VoidVisitorAdapter<Void> 
   @Override
   public void visit(MethodDeclaration methodDeclaration, Void arg) {
     String testClass = Toradocu.configuration.getTestClass();
-    if (methodDeclaration.getName().equals("advice") && testClass != null) {
+    if (methodDeclaration.getName().asString().equals("advice") && testClass != null) {
       for (AnnotationExpr annotation : methodDeclaration.getAnnotations()) {
         if (annotation instanceof SingleMemberAnnotationExpr) {
           final Expression annotationValue =

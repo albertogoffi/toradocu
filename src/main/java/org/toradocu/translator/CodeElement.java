@@ -118,7 +118,7 @@ public abstract class CodeElement<T> implements Comparable<CodeElement<?>> {
    *
    * @return the wrapped code element that this object holds data on
    */
-  T getJavaCodeElement() {
+  public T getJavaCodeElement() {
     return javaCodeElement;
   }
 
@@ -173,11 +173,13 @@ public abstract class CodeElement<T> implements Comparable<CodeElement<?>> {
    * <p>The default implementation of this method do nothing and returns true. To effectively
    * perform a check, subclasses must override this method.
    *
+   * @param declaringClass declaring class of the {@code DocumentedExecutable} to check
+   *     compatibility in case of comparisons with receiver object
    * @param predicateTranslation the translation of the predicate whose compatibility with this code
-   *     element hase to be checked
+   *     element has to be checked
    * @return true if the predicate translation is compatible, false otherwise
    */
-  boolean isCompatibleWith(String predicateTranslation) {
+  boolean isCompatibleWith(Class<?> declaringClass, String predicateTranslation) {
     return true;
   }
 

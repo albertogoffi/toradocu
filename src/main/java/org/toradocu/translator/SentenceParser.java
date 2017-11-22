@@ -39,7 +39,8 @@ public class SentenceParser {
       complementRelations,
       conjunctionRelations,
       negationRelations,
-      numModifierRelations;
+      numModifierRelations,
+      auxRelations;
   /** Logger for this class. */
   private static final Logger log = LoggerFactory.getLogger(SentenceParser.class);
 
@@ -69,7 +70,7 @@ public class SentenceParser {
     // map a conjunction between two specific words to a conjunction between two propositions.
     Map<List<IndexedWord>, Proposition> propositionMap = new LinkedHashMap<>();
     // Proposition series that will be built and returned.
-    PropositionSeries propositionSeries = new PropositionSeries();
+    PropositionSeries propositionSeries = new PropositionSeries(semanticGraph);
 
     for (SemanticGraphEdge subjectRelation : subjectRelations) {
       // Get the words that make up the predicate.
@@ -199,12 +200,38 @@ public class SentenceParser {
       result = tryConjunctionPredicate(governor);
     }
     if (result.isEmpty()) {
-      log.warn(
-          "Unable to identify a predicate (governor = " + governor.word() + ") in \"{}\"",
-          semanticGraph.toRecoveredSentenceString());
+      result = tryAuxiliaryRelation(governor);
     }
+    //    if (result.isEmpty()) {
+    //      log.warn(
+    //          "Unable to identify a predicate (governor = " + governor.word() + ") in \"{}\"",
+    //          semanticGraph.toRecoveredSentenceString());
+    //    }
 
     return result;
+  }
+
+  /**
+   * Attempts to return the predicate words associated with the given governor, under the assumption
+   * that the predicate is bound to an auxiliary relation.
+   *
+   * @param governor the governor associated with the predicate
+   * @return the predicate words or an empty list if the predicate is not involved in an auxiliary
+   *     relation
+   */
+  private List<IndexedWord> tryAuxiliaryRelation(IndexedWord governor) {
+    List<IndexedWord> predicateWords = new ArrayList<>();
+
+    Optional<SemanticGraphEdge> auxEdge =
+        auxRelations.stream().filter(e -> e.getGovernor().equals(governor)).findFirst();
+    if (!auxEdge.isPresent()) {
+      return predicateWords;
+    }
+
+    IndexedWord aux = auxEdge.get().getDependent();
+    predicateWords.add(aux);
+    predicateWords.add(governor);
+    return predicateWords;
   }
 
   /**
@@ -360,16 +387,22 @@ public class SentenceParser {
       containerWords.add(container);
     }
 
-    return new Subject(extractSubjectWords(subjectWord), containerWords);
+    boolean isPassive =
+        getRelationsFromGraph("nsubjpass")
+            .stream()
+            .anyMatch(e -> e.getTarget().equals(subjectWord));
+
+    return new Subject(extractSubjectWords(subjectWord), containerWords, isPassive);
   }
 
   /** Initializes the relations fields using the semantic graph. */
   private void initializeRelations() {
     subjectRelations = getRelationsFromGraph("nsubj", "nsubjpass");
-    if (subjectRelations.isEmpty()) {
-      log.warn("Unable to identify subjects in \"{}\".", semanticGraph.toRecoveredSentenceString());
-    }
+    //    if (subjectRelations.isEmpty()) {
+    //      log.warn("Unable to identify subjects in \"{}\".", semanticGraph.toRecoveredSentenceString());
+    //    }
     copulaRelations = getRelationsFromGraph("cop");
+    auxRelations = getRelationsFromGraph("aux");
     complementRelations = getRelationsFromGraph("acomp", "xcomp", "dobj");
     conjunctionRelations = getRelationsFromGraph("conj:and", "conj:or", "conj:but");
     negationRelations = getRelationsFromGraph("neg");

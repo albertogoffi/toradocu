@@ -15,6 +15,8 @@ public class StaticMethodCodeElement extends CodeElement<Method> {
    * this static method
    */
   private String[] parameters;
+  /** The arguments of this method. */
+  private String[] args;
 
   /**
    * Constructs and initializes a {@code StaticMethodCodeElement} that identifies the given static
@@ -39,6 +41,17 @@ public class StaticMethodCodeElement extends CodeElement<Method> {
     }
 
     addIdentifier(methodName);
+
+    if (method.getParameterCount() != 0) {
+      String methodString = method.toGenericString();
+      String methodArgs =
+          methodString.substring(methodString.indexOf("(") + 1, methodString.indexOf(")"));
+      if (method.getParameterCount() == 1) args = new String[] {methodArgs};
+      else if (method.getParameterCount() > 1) {
+        args = methodArgs.split(" *,");
+        this.parameters = new String[args.length];
+      }
+    }
   }
 
   /**
@@ -49,6 +62,10 @@ public class StaticMethodCodeElement extends CodeElement<Method> {
    */
   public void setParameters(List<String> parameters) {
     this.parameters = parameters.toArray(new String[0]);
+  }
+
+  public String[] getArgs() {
+    return args;
   }
 
   /**

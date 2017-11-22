@@ -1,0 +1,743 @@
+[
+  {
+    "signature": "plume.FuzzyFloat()",
+    "name": "plume.FuzzyFloat",
+    "containingClass": {
+      "qualifiedName": "plume.FuzzyFloat",
+      "name": "FuzzyFloat",
+      "isArray": false
+    },
+    "targetClass": "plume.FuzzyFloat",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "plume.FuzzyFloat(double rel_diff)",
+    "name": "plume.FuzzyFloat",
+    "containingClass": {
+      "qualifiedName": "plume.FuzzyFloat",
+      "name": "FuzzyFloat",
+      "isArray": false
+    },
+    "targetClass": "plume.FuzzyFloat",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "rel_diff"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "rel_diff"
+        },
+        "comment": "rel_diff is relative. relative diff to use.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "set_rel_diff(double rel_diff)",
+    "name": "set_rel_diff",
+    "containingClass": {
+      "qualifiedName": "plume.FuzzyFloat",
+      "name": "FuzzyFloat",
+      "isArray": false
+    },
+    "targetClass": "plume.FuzzyFloat",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "rel_diff"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "rel_diff"
+        },
+        "comment": "rel_diff is new. new relative diff to use.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "eq(double d1, double d2)",
+    "name": "eq",
+    "containingClass": {
+      "qualifiedName": "plume.FuzzyFloat",
+      "name": "FuzzyFloat",
+      "isArray": false
+    },
+    "targetClass": "plume.FuzzyFloat",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "d1"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "d2"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "ne(double d1, double d2)",
+    "name": "ne",
+    "containingClass": {
+      "qualifiedName": "plume.FuzzyFloat",
+      "name": "FuzzyFloat",
+      "isArray": false
+    },
+    "targetClass": "plume.FuzzyFloat",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "d1"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "d2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d1"
+        },
+        "comment": "d1 is first. first value to compare.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d2"
+        },
+        "comment": "d2 is first. first value to compare.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "whether d1 and d2 are non-equal.",
+      "kind": "RETURN",
+      "condition": "args[0]!=args[1] ? result==true:result==false"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "lt(double d1, double d2)",
+    "name": "lt",
+    "containingClass": {
+      "qualifiedName": "plume.FuzzyFloat",
+      "name": "FuzzyFloat",
+      "isArray": false
+    },
+    "targetClass": "plume.FuzzyFloat",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "d1"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "d2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d1"
+        },
+        "comment": "d1 is first. first value to compare.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d2"
+        },
+        "comment": "d2 is first. first value to compare.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "whether d1 < d2.",
+      "kind": "RETURN",
+      "condition": "args[0]<args[1] ? result==true:result==false"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "lte(double d1, double d2)",
+    "name": "lte",
+    "containingClass": {
+      "qualifiedName": "plume.FuzzyFloat",
+      "name": "FuzzyFloat",
+      "isArray": false
+    },
+    "targetClass": "plume.FuzzyFloat",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "d1"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "d2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d1"
+        },
+        "comment": "d1 is first. first value to compare.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d2"
+        },
+        "comment": "d2 is first. first value to compare.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "whether d1 <= d2.",
+      "kind": "RETURN",
+      "condition": "args[0]<=args[1] ? result==true:result==false"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "gt(double d1, double d2)",
+    "name": "gt",
+    "containingClass": {
+      "qualifiedName": "plume.FuzzyFloat",
+      "name": "FuzzyFloat",
+      "isArray": false
+    },
+    "targetClass": "plume.FuzzyFloat",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "d1"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "d2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d1"
+        },
+        "comment": "d1 is first. first value to compare.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d2"
+        },
+        "comment": "d2 is first. first value to compare.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "whether d1 > d2.",
+      "kind": "RETURN",
+      "condition": "args[0]>args[1] ? result==true:result==false"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "gte(double d1, double d2)",
+    "name": "gte",
+    "containingClass": {
+      "qualifiedName": "plume.FuzzyFloat",
+      "name": "FuzzyFloat",
+      "isArray": false
+    },
+    "targetClass": "plume.FuzzyFloat",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "d1"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "d2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d1"
+        },
+        "comment": "d1 is first. first value to compare.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "d2"
+        },
+        "comment": "d2 is first. first value to compare.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "whether d1 > d2.",
+      "kind": "RETURN",
+      "condition": "args[0]>args[1] ? result==true:result==false"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "indexOf(double[] a, double elt)",
+    "name": "indexOf",
+    "containingClass": {
+      "qualifiedName": "plume.FuzzyFloat",
+      "name": "FuzzyFloat",
+      "isArray": false
+    },
+    "targetClass": "plume.FuzzyFloat",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[D",
+          "name": "double[]",
+          "isArray": true
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "elt"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[D",
+            "name": "double[]",
+            "isArray": true
+          },
+          "name": "a"
+        },
+        "comment": "the array to search.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "elt"
+        },
+        "comment": "the element to search for.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the first index containing the specified element, or -1 if the element is not found in the array.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "indexOf(double[] a, double[] sub)",
+    "name": "indexOf",
+    "containingClass": {
+      "qualifiedName": "plume.FuzzyFloat",
+      "name": "FuzzyFloat",
+      "isArray": false
+    },
+    "targetClass": "plume.FuzzyFloat",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[D",
+          "name": "double[]",
+          "isArray": true
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "[D",
+          "name": "double[]",
+          "isArray": true
+        },
+        "name": "sub"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[D",
+            "name": "double[]",
+            "isArray": true
+          },
+          "name": "a"
+        },
+        "comment": "the sequence to search in.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[D",
+            "name": "double[]",
+            "isArray": true
+          },
+          "name": "sub"
+        },
+        "comment": "the sequence to search for.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the first index whose subarray is equal to the specified array or -1 if no such subarray is found in the array.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "isElemMatch(double[] a1, double[] a2)",
+    "name": "isElemMatch",
+    "containingClass": {
+      "qualifiedName": "plume.FuzzyFloat",
+      "name": "FuzzyFloat",
+      "isArray": false
+    },
+    "targetClass": "plume.FuzzyFloat",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[D",
+          "name": "double[]",
+          "isArray": true
+        },
+        "name": "a1"
+      },
+      {
+        "type": {
+          "qualifiedName": "[D",
+          "name": "double[]",
+          "isArray": true
+        },
+        "name": "a2"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[D",
+            "name": "double[]",
+            "isArray": true
+          },
+          "name": "a1"
+        },
+        "comment": "a1 is first. first value to compare.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[D",
+            "name": "double[]",
+            "isArray": true
+          },
+          "name": "a2"
+        },
+        "comment": "a2 is first. first value to compare.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if a1 and a2 are set equivalent, false otherwise.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "isSubset(double[] smaller, double[] bigger)",
+    "name": "isSubset",
+    "containingClass": {
+      "qualifiedName": "plume.FuzzyFloat",
+      "name": "FuzzyFloat",
+      "isArray": false
+    },
+    "targetClass": "plume.FuzzyFloat",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[D",
+          "name": "double[]",
+          "isArray": true
+        },
+        "name": "smaller"
+      },
+      {
+        "type": {
+          "qualifiedName": "[D",
+          "name": "double[]",
+          "isArray": true
+        },
+        "name": "bigger"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[D",
+            "name": "double[]",
+            "isArray": true
+          },
+          "name": "smaller"
+        },
+        "comment": "smaller is possibly-smaller. possibly-smaller subset.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[D",
+            "name": "double[]",
+            "isArray": true
+          },
+          "name": "bigger"
+        },
+        "comment": "the possibly-larger set.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if smaller is a subset (each element of smaller is also a element of bigger) of bigger, false otherwise.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  }
+]

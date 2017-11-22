@@ -1,5 +1,6 @@
 package org.toradocu.translator;
 
+import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -27,10 +28,14 @@ public class PropositionSeries {
    */
   private final List<Conjunction> conjunctions;
 
+  private final SemanticGraph semanticGraph;
+
   /** Initializes an empty {@code PropositionSeries}. */
-  public PropositionSeries() {
+  PropositionSeries(SemanticGraph semanticGraph) {
+    this.semanticGraph = semanticGraph;
     propositions = new ArrayList<>();
     conjunctions = new ArrayList<>();
+    //    this(new ArrayList<>(), new ArrayList<>());
   }
 
   /**
@@ -42,12 +47,14 @@ public class PropositionSeries {
    * @throws IllegalArgumentException if the number of conjunctions is not exactly 1 less than the
    *     number of propositions, unless both are empty
    */
-  public PropositionSeries(List<Proposition> propositions, List<Conjunction> conjunctions) {
-    if (propositions.size() != 0
-        && conjunctions.size() != 0
+  PropositionSeries(
+      SemanticGraph semanticGraph, List<Proposition> propositions, List<Conjunction> conjunctions) {
+    if (!propositions.isEmpty()
+        && !conjunctions.isEmpty()
         && propositions.size() - conjunctions.size() != 1) {
       throw new IllegalArgumentException();
     }
+    this.semanticGraph = semanticGraph;
     this.propositions = propositions;
     this.conjunctions = conjunctions;
   }
@@ -110,7 +117,7 @@ public class PropositionSeries {
    *
    * @return the number of propositions in the series
    */
-  public int numberOfPropositions() {
+  int numberOfPropositions() {
     return propositions.size();
   }
 
@@ -119,7 +126,7 @@ public class PropositionSeries {
    *
    * @return an unmodifiable list view of the propositions in this series
    */
-  public List<Proposition> getPropositions() {
+  List<Proposition> getPropositions() {
     return Collections.unmodifiableList(propositions);
   }
 
@@ -128,7 +135,7 @@ public class PropositionSeries {
    *
    * @return an unmodifiable list view of the conjunctions in this series
    */
-  public List<Conjunction> getConjunctions() {
+  List<Conjunction> getConjunctions() {
     return Collections.unmodifiableList(conjunctions);
   }
 
@@ -147,11 +154,15 @@ public class PropositionSeries {
       i++;
     }
     if (i < numberOfPropositions()) {
-      output.append(propositions.get(i).getTranslation().get());
+      String current = propositions.get(i).getTranslation().get();
+      output.append(current);
       for (int j = i + 1; j < numberOfPropositions(); j++) {
         if (propositions.get(j).getTranslation().isPresent()) {
-          output.append(conjunctions.get(j - 1));
-          output.append(propositions.get(j).getTranslation().get());
+          String next = propositions.get(j).getTranslation().get();
+          if (!current.equals(next)) {
+            output.append(conjunctions.get(j - 1));
+            output.append(next);
+          }
         }
       }
     }
@@ -176,5 +187,9 @@ public class PropositionSeries {
       }
     }
     return output.toString();
+  }
+
+  public SemanticGraph getSemanticGraph() {
+    return semanticGraph;
   }
 }

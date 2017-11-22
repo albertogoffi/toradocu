@@ -3,6 +3,7 @@ package org.toradocu.translator;
 import java.lang.reflect.Parameter;
 import java.util.Set;
 import java.util.StringJoiner;
+import org.toradocu.conf.Configuration;
 
 /**
  * This class represents a parameter code element for use in translation. It holds String
@@ -94,10 +95,14 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
   }
 
   @Override
-  boolean isCompatibleWith(String predicateTranslation) {
+  boolean isCompatibleWith(Class<?> declaringClass, String predicateTranslation) {
     final Parameter subject = getJavaCodeElement();
     final Class<?> subjectType = subject.getType();
 
+    // Comparison with receiver object
+    if (predicateTranslation.equals("==" + Configuration.RECEIVER)) {
+      return subjectType.equals(declaringClass);
+    }
     // Boolean or boolean
     if (subjectType.equals(boolean.class) || subjectType.equals(Boolean.class)) {
       return predicateTranslation.equals("==true") || predicateTranslation.equals("==false");
@@ -121,13 +126,13 @@ public class ParameterCodeElement extends CodeElement<Parameter> {
           || predicateTranslation.startsWith("<=")
           || predicateTranslation.startsWith(">")
           || predicateTranslation.startsWith(">=")
-          || predicateTranslation.startsWith("==");
+          || predicateTranslation.startsWith("==")
+          || predicateTranslation.contains(".equals(");
     }
 
     // Non-primitives
     if (!subjectType.isPrimitive()
         && !predicateTranslation.equals("==null")
-        && !predicateTranslation.equals("==target")
         && (predicateTranslation.startsWith("==")
             || predicateTranslation.startsWith("<")
             || predicateTranslation.startsWith("<=")

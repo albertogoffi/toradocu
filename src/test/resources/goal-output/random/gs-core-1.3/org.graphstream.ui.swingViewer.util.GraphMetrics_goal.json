@@ -1,0 +1,857 @@
+[
+  {
+    "signature": "org.graphstream.ui.swingViewer.util.GraphMetrics()",
+    "name": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+      "name": "GraphMetrics",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "setDefaults()",
+    "name": "setDefaults",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+      "name": "GraphMetrics",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getDiagonal()",
+    "name": "getDiagonal",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+      "name": "GraphMetrics",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The diagonal.",
+      "kind": "RETURN",
+      "condition": "true ? result == target.diagonal"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getSize()",
+    "name": "getSize",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+      "name": "GraphMetrics",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.graphstream.ui.geom.Vector3",
+      "name": "org.graphstream.ui.geom.Vector3",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The size.",
+      "kind": "RETURN",
+      "condition": "true ? result.equals(target.size)"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getLowPoint()",
+    "name": "getLowPoint",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+      "name": "GraphMetrics",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.graphstream.ui.geom.Point3",
+      "name": "org.graphstream.ui.geom.Point3",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The lowest point.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getHighPoint()",
+    "name": "getHighPoint",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+      "name": "GraphMetrics",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.graphstream.ui.geom.Point3",
+      "name": "org.graphstream.ui.geom.Point3",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The highest point.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "graphWidthGU()",
+    "name": "graphWidthGU",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+      "name": "GraphMetrics",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "graphHeightGU()",
+    "name": "graphHeightGU",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+      "name": "GraphMetrics",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "graphDepthGU()",
+    "name": "graphDepthGU",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+      "name": "GraphMetrics",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "lengthToGu(double value, org.graphstream.ui.graphicGraph.stylesheet.StyleConstants$Units units)",
+    "name": "lengthToGu",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+      "name": "GraphMetrics",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "value"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.ui.graphicGraph.stylesheet.StyleConstants$Units",
+          "name": "Units",
+          "isArray": false
+        },
+        "name": "units"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "The value to convert.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.ui.graphicGraph.stylesheet.StyleConstants$Units",
+            "name": "Units",
+            "isArray": false
+          },
+          "name": "units"
+        },
+        "comment": "The units the value to convert is expressed in.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The value converted to GU.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "lengthToGu(org.graphstream.ui.graphicGraph.stylesheet.Value value)",
+    "name": "lengthToGu",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+      "name": "GraphMetrics",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.ui.graphicGraph.stylesheet.Value",
+          "name": "Value",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.ui.graphicGraph.stylesheet.Value",
+            "name": "Value",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "The value to convert (it contains its own units).",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "lengthToGu(org.graphstream.ui.graphicGraph.stylesheet.Values values, int index)",
+    "name": "lengthToGu",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+      "name": "GraphMetrics",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.ui.graphicGraph.stylesheet.Values",
+          "name": "Values",
+          "isArray": false
+        },
+        "name": "values"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.ui.graphicGraph.stylesheet.Values",
+            "name": "Values",
+            "isArray": false
+          },
+          "name": "values"
+        },
+        "comment": "The values set containing the value to convert (it contains its own units).",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "Index of the value to convert.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "lengthToPx(double value, org.graphstream.ui.graphicGraph.stylesheet.StyleConstants$Units units)",
+    "name": "lengthToPx",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+      "name": "GraphMetrics",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "value"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.ui.graphicGraph.stylesheet.StyleConstants$Units",
+          "name": "Units",
+          "isArray": false
+        },
+        "name": "units"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "The value to convert.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.ui.graphicGraph.stylesheet.StyleConstants$Units",
+            "name": "Units",
+            "isArray": false
+          },
+          "name": "units"
+        },
+        "comment": "The units the value to convert is expressed in.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "The value converted in pixels.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "lengthToPx(org.graphstream.ui.graphicGraph.stylesheet.Value value)",
+    "name": "lengthToPx",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+      "name": "GraphMetrics",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.ui.graphicGraph.stylesheet.Value",
+          "name": "Value",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.ui.graphicGraph.stylesheet.Value",
+            "name": "Value",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "The value to convert (it contains its own units).",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "lengthToPx(org.graphstream.ui.graphicGraph.stylesheet.Values values, int index)",
+    "name": "lengthToPx",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+      "name": "GraphMetrics",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.graphstream.ui.graphicGraph.stylesheet.Values",
+          "name": "Values",
+          "isArray": false
+        },
+        "name": "values"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.graphstream.ui.graphicGraph.stylesheet.Values",
+            "name": "Values",
+            "isArray": false
+          },
+          "name": "values"
+        },
+        "comment": "The values set containing the value to convert (it contains its own units).",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "Index of the value to convert.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "positionPixelToGu(int pixels, int index)",
+    "name": "positionPixelToGu",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+      "name": "GraphMetrics",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "pixels"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "toString()",
+    "name": "toString",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+      "name": "GraphMetrics",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "java.lang.String",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "setViewport(double viewportX, double viewportY, double viewportWidth, double viewportHeight)",
+    "name": "setViewport",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+      "name": "GraphMetrics",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "viewportX"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "viewportY"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "viewportWidth"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "viewportHeight"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "viewportWidth"
+        },
+        "comment": "The width in pixels of the view port.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "viewportHeight"
+        },
+        "comment": "The width in pixels of the view port.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "setRatioPx2Gu(double ratio)",
+    "name": "setRatioPx2Gu",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+      "name": "GraphMetrics",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "ratio"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "ratio"
+        },
+        "comment": "The ratio.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "setBounds(double minx, double miny, double minz, double maxx, double maxy, double maxz)",
+    "name": "setBounds",
+    "containingClass": {
+      "qualifiedName": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+      "name": "GraphMetrics",
+      "isArray": false
+    },
+    "targetClass": "org.graphstream.ui.swingViewer.util.GraphMetrics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "minx"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "miny"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "minz"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "maxx"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "maxy"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "maxz"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "minx"
+        },
+        "comment": "Lowest abscissa.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "miny"
+        },
+        "comment": "Lowest ordinate.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "minz"
+        },
+        "comment": "Lowest depth.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "maxx"
+        },
+        "comment": "Highest abscissa.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "maxy"
+        },
+        "comment": "Highest ordinate.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "maxz"
+        },
+        "comment": "Highest depth.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  }
+]

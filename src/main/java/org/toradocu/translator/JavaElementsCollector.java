@@ -1,24 +1,18 @@
 package org.toradocu.translator;
 
+import static java.util.stream.Collectors.toList;
+
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import java.lang.reflect.Executable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.stream.Collectors;
-import org.toradocu.extractor.DocumentedMethod;
+import java.util.*;
+import org.toradocu.extractor.Comment;
+import org.toradocu.extractor.DocumentedExecutable;
+import org.toradocu.extractor.DocumentedParameter;
 import org.toradocu.extractor.ParamTag;
-import org.toradocu.util.Reflection;
 
 /**
  * Collects all the Java elements that can be used for the condition translation. Java elements are
@@ -30,121 +24,163 @@ public class JavaElementsCollector {
    * Collects all the Java code elements that can be used for the condition translation. The code
    * elements are collected using reflection starting from the given method.
    *
-   * @param documentedMethod the method from which to start to collect the code elements
+   * @param documentedExecutable the method from which to start to collect the code elements
    * @return the collected code elements
    */
-  public static Set<CodeElement<?>> collect(DocumentedMethod documentedMethod) {
+  public static Set<CodeElement<?>> collect(DocumentedExecutable documentedExecutable) {
     Set<CodeElement<?>> collectedElements = new LinkedHashSet<>();
-    Class<?> containingClass =
-        Reflection.getClass(documentedMethod.getContainingClass().getQualifiedName());
+    final Class<?> containingClass = documentedExecutable.getDeclaringClass();
 
-    // The containing class cannot be loaded. Return an empty set of code elements.
-    if (containingClass == null) {
-      return collectedElements;
+    // Add the containing class.
+    collectedElements.add(containingClassOf(documentedExecutable));
+
+    // Add the parameters of the executable member.
+    collectedElements.addAll(parametersOf(documentedExecutable));
+
+    // Add fields of the containing class.
+    collectedElements.addAll(fieldsOf(containingClass));
+
+    // Add methods of the containing class (all but the method corresponding to documentedExecutable).
+    collectedElements.addAll(methodsOf(containingClass, documentedExecutable));
+
+    return collectedElements;
+  }
+
+  // Executable member is ignored and not included in the returned list of methods.
+  private static List<CodeElement<?>> methodsOf(
+      Class<?> containingClass, DocumentedExecutable documentedExecutable) {
+    final List<Method> methods = new ArrayList<>();
+    Collections.addAll(methods, containingClass.getMethods());
+    final Executable executable = documentedExecutable.getExecutable();
+    if (executable instanceof Method) {
+      Method method = (Method) executable;
+      methods.remove(method);
+    }
+    List<Class<?>> inScopeTypes = collectInScopeTypes(documentedExecutable);
+    methods.removeIf(method -> !invokableWithParameters(method, inScopeTypes));
+
+    List<CodeElement<?>> codeElements = new ArrayList<>();
+    for (Method method : methods) {
+      if (Modifier.isStatic(method.getModifiers())) {
+        codeElements.add(new StaticMethodCodeElement(method));
+      } else if (!documentedExecutable.isConstructor()) {
+        codeElements.add(new MethodCodeElement("target", method));
+      }
+    }
+    return codeElements;
+  }
+
+  private static List<Class<?>> collectInScopeTypes(DocumentedExecutable documentedExecutable) {
+    final List<Class<?>> availableTypes = new ArrayList<>();
+    final Class<?> containingClass = documentedExecutable.getDeclaringClass();
+
+    // Add parameters of the executable member.
+    Collections.addAll(availableTypes, documentedExecutable.getExecutable().getParameterTypes());
+
+    // Add target class.
+    availableTypes.add(containingClass);
+
+    // Add target class' fields.
+    for (Field field : containingClass.getFields()) {
+      availableTypes.add(field.getType());
     }
 
-    List<Type> inScopeTypes = new ArrayList<>();
-    inScopeTypes.add(containingClass);
+    return availableTypes;
+  }
 
-    // Add the containing class as a code element.
-    collectedElements.add(new ClassCodeElement(containingClass));
+  private static List<FieldCodeElement> fieldsOf(Class<?> aClass) {
+    return Arrays.stream(aClass.getFields())
+        .map(field -> new FieldCodeElement("target", field))
+        .collect(toList());
+  }
 
-    // Add parameters of the documented method.
-    final Executable executable = documentedMethod.getExecutable();
-    int paramIndex = 0;
-    List<Parameter> parameters = new ArrayList<>(Arrays.asList(executable.getParameters()));
+  private static List<ParameterCodeElement> parametersOf(
+      DocumentedExecutable documentedExecutable) {
+    List<ParameterCodeElement> paramCodeElements = new ArrayList<>();
 
-    // The first two parameters of enum constructors are synthetic and must be removed to
-    // reflect the source code.
-    if (containingClass.isEnum() && documentedMethod.isConstructor()) {
+    // The first two parameters of enum constructors are synthetic and must be removed to reflect
+    // the source code.
+    final List<DocumentedParameter> parameters = documentedExecutable.getParameters();
+    if (documentedExecutable.getDeclaringClass().isEnum() && documentedExecutable.isConstructor()) {
       parameters.remove(0);
       parameters.remove(0);
     }
 
+    int i = 0;
     HashMap<String, Integer> countIds = new HashMap<>();
-    Set<ParameterCodeElement> params = new HashSet<>();
-
-    for (java.lang.reflect.Parameter par : parameters) {
-      String paramName = documentedMethod.getParameters().get(paramIndex).getName();
-      // Extract identifiers from param comment
-      Set<String> ids = extractIdsFromParams(documentedMethod, paramName);
-
-      for (String id : ids) {
+    for (DocumentedParameter parameter : parameters) {
+      final Parameter reflectionParam = parameter.asReflectionParameter();
+      final String parameterName = parameter.getName();
+      final Set<String> identifiers =
+          extractIdentifiersFromParamTags(documentedExecutable, parameterName);
+      for (String id : identifiers) {
         Integer oldValue = countIds.getOrDefault(id, -1);
         countIds.put(id, ++oldValue);
       }
 
-      ParameterCodeElement p = new ParameterCodeElement(par, paramName, paramIndex, ids);
-      collectedElements.add(p);
-      params.add(p);
-
-      inScopeTypes.add(par.getType());
-      paramIndex++;
+      // TODO Generate code ids.
+      ParameterCodeElement param =
+          new ParameterCodeElement(reflectionParam, parameterName, i++, identifiers);
+      paramCodeElements.add(param);
     }
 
     // TODO Create a parameter code element directly with unique identifiers, thus removing
     // mergeIdentifiers() and related methods in ParameterCodeElement.
     // Select only valid identifiers for the parameters, i.e. the unique ones (count in map is 0)
-    for (ParameterCodeElement p : params) {
-      Set<String> ids = p.getOtherIdentifiers();
-      for (Entry<String, Integer> countId : countIds.entrySet()) {
-        String identifier = countId.getKey();
-        if (ids.contains(identifier) && countId.getValue() > 0) p.removeIdentifier(identifier);
-      }
+    for (ParameterCodeElement p : paramCodeElements) {
+      //      Set<String> ids = p.getOtherIdentifiers();
+      //      for (Map.Entry<String, Integer> countId : countIds.entrySet()) {
+      //        String identifier = countId.getKey();
+      //        if (ids.contains(identifier) && countId.getValue() > 0) p.removeIdentifier(identifier);
+      //      }
       p.mergeIdentifiers();
     }
 
-    // Add methods of the target class (all but the method corresponding to documentedMethod).
-    final List<Method> methods =
-        Arrays.stream(containingClass.getMethods())
-            .filter(
-                m ->
-                    !m.toGenericString().equals(executable.toGenericString())
-                        && checkCompatibility(m, inScopeTypes))
-            .collect(Collectors.toList());
-    for (Method method : methods) {
-      if (Modifier.isStatic(method.getModifiers())) {
-        collectedElements.add(new StaticMethodCodeElement(method));
-      } else if (!documentedMethod.isConstructor()) {
-        collectedElements.add(new MethodCodeElement("target", method));
-      }
-    }
+    return paramCodeElements;
+  }
 
-    // Add fields of the target class.
-    for (Field field : containingClass.getFields()) {
-      collectedElements.add(new FieldCodeElement("target", field));
-    }
-
-    return collectedElements;
+  private static ClassCodeElement containingClassOf(DocumentedExecutable documentedExecutable) {
+    return new ClassCodeElement(documentedExecutable.getDeclaringClass());
   }
 
   /**
    * For the parameter in input, find its param tag in the method's Javadoc and produce the
    * SemanticGraphs of the comment. For every graph, keep the root as identifier.
    *
-   * @param method the DocumentedMethod which the parameter belongs to
+   * @param method the DocumentedExecutable which the parameter belongs to
    * @param param the parameter
    * @return the extracted ids
    */
-  private static Set<String> extractIdsFromParams(DocumentedMethod method, String param) {
-    Set<ParamTag> paramTags = method.paramTags();
+  private static Set<String> extractIdentifiersFromParamTags(
+      DocumentedExecutable method, String param) {
+    List<ParamTag> paramTags = method.paramTags();
     Set<String> ids = new HashSet<>();
     for (ParamTag pt : paramTags) {
-      String paramName = pt.parameter().getName();
+      String paramName = pt.getParameter().getName();
+      String originalComment = pt.getComment().getText();
+      int semicolon = originalComment.indexOf(";");
+      if (semicolon != -1)
+        // Often param comments have a semicolon followed by a further description,
+        // not useful for our purpose here and possibly affecting the semantic graph
+        originalComment = originalComment.substring(0, semicolon);
+
       if (paramName.equals(param)) {
-        List<SemanticGraph> sgs = StanfordParser.getSemanticGraphs(pt.getComment());
-        for (SemanticGraph sg : sgs) ids.add(sg.getFirstRoot().word());
+        List<SemanticGraph> sgs =
+            Parser.parse(new Comment(originalComment), method)
+                .stream()
+                .map(PropositionSeries::getSemanticGraph)
+                .collect(toList());
+        for (SemanticGraph sg : sgs) {
+          ids.add(sg.getFirstRoot().word());
+        }
       }
     }
     return ids;
   }
 
-  private static boolean checkCompatibility(Method m, List<Type> inScopeTypes) {
-    for (java.lang.reflect.Parameter parameter : m.getParameters()) {
-      if (!inScopeTypes.contains(parameter.getType())) {
-        return false;
-      }
-    }
-    return true;
+  private static boolean invokableWithParameters(Method method, List<Class<?>> inScopeTypes) {
+    final List<? extends Class<?>> methodParamTypes =
+        Arrays.stream(method.getParameters()).map(Parameter::getType).collect(toList());
+    return inScopeTypes.containsAll(methodParamTypes);
   }
 }
