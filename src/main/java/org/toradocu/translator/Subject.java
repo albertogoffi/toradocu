@@ -27,6 +27,7 @@ public class Subject {
    * Creates a new subject with an empty container.
    *
    * @param subject the words composing the subject
+   * @param isPassive indicates whether this is a passive subject
    * @throws NullPointerException if {@code subject} is null
    */
   public Subject(List<IndexedWord> subject, boolean isPassive) {

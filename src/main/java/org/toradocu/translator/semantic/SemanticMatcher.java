@@ -93,6 +93,7 @@ public class SemanticMatcher {
    * @param proposition the {@code Proposition} extracted from the comment
    * @param comment comment text @return a map containing the best matches together with the
    *     distance computed in respect to the comment
+   * @return the best matches
    * @throws IOException if there were problems reading the vector model
    */
   public LinkedHashMap<CodeElement<?>, Double> runVectorMatch(
