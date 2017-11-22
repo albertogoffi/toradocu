@@ -25,7 +25,9 @@ public class Parser {
 
   /** The regular expressions used to identify patterns in the comment */
   private static final String INEQUALITY_NUMBER_REGEX =
-      " *((([<>=]=?)|(!=)) ?)-?([0-9]+(?!/)(.[0-9]+)?|zero|one|two|three|four|five|six|seven|eight|nine)";
+      " *(?!-)((([<>=]=?)|(!=)) ?)-?([0-9]+(?!/)(.[0-9]+)?|zero|one|two|three|four|five|six|seven|eight|nine)";
+
+  private static final String INEQUALITY_NULL_REGEX = "([=]=?|!=) ?null";
 
   private static final String GENERIC_TYPE_REGEX = " *(<T>)";
 
@@ -33,7 +35,7 @@ public class Parser {
       " * ?([a-zA-Z0-9]+) ?([<>=]=?) ?([a-zA-Z]+) ?([<>=]=?) ?([a-zA-Z0-9]+)";
 
   private static final String INEQUALITY_VAR_REGEX =
-      " *(([<>=]=?|!=) ?)(?!this)((?![a-zA-Z]+\\()([a-zA-Z][a-zA-Z0-9_]*)|([_][a-zA-Z0-9_]+))(\\.[a-zA-Z0-9_]+(\\(*\\))?)?";
+      " *(?<!-)(([<>=]=?|!=) ?)(?!this)((?![a-zA-Z]+\\()([a-zA-Z][a-zA-Z0-9_]*)|([_][a-zA-Z0-9_]+))(\\.[a-zA-Z0-9_]+(\\(*\\))?)?";
   private static final String PLACEHOLDER_PREFIX = " INEQUALITY_";
   private static final String INEQ_INSOF =
       "(?<!has )(?<!have )an (instance of)"; // e.g "an instance of"
@@ -161,6 +163,9 @@ public class Parser {
 
     java.util.regex.Matcher matcherIneqNumber =
         Pattern.compile(INEQUALITY_NUMBER_REGEX).matcher(text);
+
+    java.util.regex.Matcher matcherIneqNull = Pattern.compile(INEQUALITY_NULL_REGEX).matcher(text);
+
     while (matcherInstanceOf.find()) {
       // Instance of added to the comparator list
       // Replace "[an] instance of" with "instanceof"
@@ -200,6 +205,13 @@ public class Parser {
       inequalities.add(text.substring(matcherIneqNumber.start(), matcherIneqNumber.end()));
       placeholderText =
           placeholderText.replaceFirst(INEQUALITY_NUMBER_REGEX, PLACEHOLDER_PREFIX + i);
+      placeholderText = findVerb(placeholderText, i);
+      i++;
+    }
+
+    while (matcherIneqNull.find()) {
+      inequalities.add(text.substring(matcherIneqNull.start(), matcherIneqNull.end()));
+      placeholderText = placeholderText.replaceFirst(INEQUALITY_NULL_REGEX, PLACEHOLDER_PREFIX + i);
       placeholderText = findVerb(placeholderText, i);
       i++;
     }
