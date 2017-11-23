@@ -13,7 +13,7 @@ listed in ```toradocu/build.gradle```. Please refer to individual licenses.
 
 The MIT License (MIT)
 
-Copyright (c) 2016-2017 USI Università della Svizzera italiana
+Copyright (c) 2016-2017 USI Università della Svizzera italiana  
 Copyright (c) 2016-2017 University of Washington
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
