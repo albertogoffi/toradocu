@@ -248,7 +248,10 @@ class Matcher {
             .collect(Collectors.toSet());
 
     List<CodeElement<?>> sortedMethodList = new ArrayList<CodeElement<?>>(codeElements);
-    if (SemanticMatcher.isEnabled()) {
+    // Try the classic syntactic match first of all
+    match = syntacticMatch(predicate, codeElements, method);
+    if (match == null && SemanticMatcher.isEnabled()) {
+      // When the syntactic match fails, try semantic if enabled
       try {
         SemanticMatcher semanticMatcher = new SemanticMatcher(true, (float) 0.2, (float) 1.8);
 
@@ -266,15 +269,10 @@ class Matcher {
             semanticMethodList = semanticMethodList.subList(0, 4);
           }
           match = findBestMethodMatch(method, predicate, semanticMethodList);
-        } else {
-          // Semantic matching can fail due to errors in the underlying model!
-          match = syntacticMatch(predicate, codeElements, method);
         }
       } catch (Exception e) {
         e.printStackTrace();
       }
-    } else {
-      match = syntacticMatch(predicate, codeElements, method);
     }
     return match;
   }
