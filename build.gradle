@@ -96,7 +96,9 @@ startScripts.enabled = false
 distZip.enabled = false
 distTar.enabled = false
 assemble.enabled = false
-shadowJar.enabled = false
+if (!enableShadowJar) { // To run shadowJar task execute: ./gradlew shadowJar -PenableShadowJar=true
+  shadowJar.enabled = false
+}
 startShadowScripts.enabled = false
 shadowDistZip.enabled = false
 shadowDistZip.enabled = false

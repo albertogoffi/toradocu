@@ -211,7 +211,16 @@ public class Toradocu {
 
       // === Oracle Generator ===
       // Note that aspect generation is enabled only when translation is enabled.
-      OracleGenerator.createAspects(specifications);
+      if (configuration.isOracleGenerationEnabled()) {
+        try {
+          OracleGenerator.createAspects(specifications);
+        } catch (IOException e) {
+          e.printStackTrace();
+          log.error("Error during aspects creation.", e);
+        }
+      } else {
+        log.info("Oracle generator disabled: aspect generation skipped.");
+      }
     }
   }
 

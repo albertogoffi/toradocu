@@ -4,16 +4,19 @@ import static org.toradocu.Toradocu.configuration;
 
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
+import com.github.javaparser.ast.body.MethodDeclaration;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.toradocu.Toradocu;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.util.Checks;
 import randoop.condition.specification.OperationSpecification;
@@ -33,56 +36,79 @@ public class OracleGenerator {
    *
    * <p>Created aspects can be used to embed oracles in existing test suites.
    *
-   * @param specs the specifications that created aspects will check at runtime. Must not be null.
+   * @param specifications the specifications that created aspects will check at runtime. Must not
+   *     be null.
    */
-  public static void createAspects(Map<DocumentedExecutable, OperationSpecification> specs) {
-    Checks.nonNullParameter(specs, "specs");
+  public static void createAspects(Map<DocumentedExecutable, OperationSpecification> specifications)
+      throws IOException {
+    Checks.nonNullParameter(specifications, "specifications");
 
-    if (!configuration.isOracleGenerationEnabled()) {
-      log.info("Oracle generator disabled: aspect generation skipped.");
+    // Create output directory where aspects are saved.
+    final String aspectsOutputDir = configuration.getAspectsOutputDir();
+    final boolean outputDirCreationSucceeded = createOutputDir(aspectsOutputDir);
+    if (!outputDirCreationSucceeded || specifications.isEmpty()) {
       return;
     }
 
-    String aspectDir = configuration.getAspectsOutputDir();
-    new File(aspectDir).mkdirs();
-
-    if (specs.isEmpty()) {
-      return;
-    }
-
+    // Create Junit tests aspect.
+    final String inputAspectPath = "/" + configuration.getJUnitTestCaseAspect();
     final String junitAspect = configuration.getJUnitTestCaseAspect();
-    final String aspectPath = configuration.getAspectsOutputDir() + File.separator + junitAspect;
-    try {
-      addWithinDeclarationToPointcut(aspectPath);
-    } catch (IOException e) {
-      return;
-    }
+    final String outputAspectPath = aspectsOutputDir + File.separator + junitAspect;
+    final String testClass = Toradocu.configuration.getTestClass();
+    final String withinDeclaration = " && within(" + testClass + ")";
+    createJunitTestsAspect(inputAspectPath, outputAspectPath, withinDeclaration);
 
-    // Create aspects.
+    // Create oracle aspects.
     final List<String> createdAspectNames = new ArrayList<>();
     final String junitAspectName = junitAspect.substring(0, junitAspect.lastIndexOf("."));
     createdAspectNames.add(junitAspectName);
     int aspectNumber = 1;
-    for (DocumentedExecutable method : specs.keySet()) {
+    for (DocumentedExecutable method : specifications.keySet()) {
       String aspectName = "Aspect_" + aspectNumber++;
-      createAspect(method, specs.get(method), aspectName);
+      createAspect(method, specifications.get(method), aspectName);
       createdAspectNames.add(aspectName);
     }
 
-    createAopXml(aspectDir, createdAspectNames);
+    // Create aop.xml file needed by AspectJ. Aop file lists available aspects.
+    createAopXml(aspectsOutputDir, createdAspectNames);
   }
 
-  // Add "within" declaration to pointcut definition.
-  private static void addWithinDeclarationToPointcut(String aspectPath) throws IOException {
-    try (InputStreamReader template =
-            new InputStreamReader(
-                Object.class.getResourceAsStream("/" + configuration.getJUnitTestCaseAspect()));
-        FileOutputStream output = new FileOutputStream(new File(aspectPath))) {
-      CompilationUnit cu = JavaParser.parse(template);
-      new JUnitTestCaseAspectChangerVisitor().visit(cu, null);
+  /**
+   * Creates the directory specified by {@code aspectsOutputDir}.
+   *
+   * @param aspectsOutputDir the directory to be created
+   * @return {@code true} if the creation succeeded, {@code false} otherwise
+   */
+  private static boolean createOutputDir(String aspectsOutputDir) {
+    boolean creationSucceeded;
+    final File outputDir = new File(aspectsOutputDir);
+    if (outputDir.exists()) {
+      log.error("Directory where to store aspects already exists: " + aspectsOutputDir);
+      creationSucceeded = false;
+    } else {
+      creationSucceeded = outputDir.mkdirs();
+      if (!creationSucceeded) {
+        log.error("Error during creation of directory: " + aspectsOutputDir);
+      }
+    }
+    return creationSucceeded;
+  }
+
+  private static void createJunitTestsAspect(
+      String inputAspectPath, String outputAspectPath, String withinDeclaration)
+      throws IOException {
+    final InputStream aspect = Object.class.getResourceAsStream(inputAspectPath);
+    CompilationUnit cu = JavaParser.parse(aspect);
+    cu.findFirst(MethodDeclaration.class, m -> m.getNameAsString().equals("advice"))
+        .ifPresent(
+            m ->
+                m.getAnnotation(0)
+                    .ifStringLiteralExpr(e -> e.setValue(e.getValue() + withinDeclaration)));
+
+    try (FileOutputStream output = new FileOutputStream(new File(outputAspectPath))) {
       output.write(cu.toString().getBytes());
     } catch (IOException e) {
-      log.error("Oracle generation stopped: Impossible to create file " + aspectPath);
+      log.error("Error during creation of file: " + outputAspectPath, e);
       throw e;
     }
   }
@@ -100,16 +126,20 @@ public class OracleGenerator {
     Checks.nonNullParameter(specification, "specification");
     Checks.nonNullParameter(aspectName, "aspectName");
 
-    String aspectPath = configuration.getAspectsOutputDir() + File.separator + aspectName;
+    final InputStream aspectTemplate =
+        Object.class.getResourceAsStream("/" + configuration.getAspectTemplate());
+    CompilationUnit cu = JavaParser.parse(aspectTemplate);
 
-    try (InputStreamReader template =
-            new InputStreamReader(
-                Object.class.getResourceAsStream("/" + configuration.getAspectTemplate()));
-        FileOutputStream output = new FileOutputStream(new File(aspectPath + ".java"))) {
-      CompilationUnit cu = JavaParser.parse(template);
+    // Set the correct name to the newly created aspect class. Default name is "Aspect_Template".
+    cu.findFirst(
+            ClassOrInterfaceDeclaration.class, c -> c.getNameAsString().equals("Aspect_Template"))
+        .ifPresent(c -> c.setName(aspectName));
 
-      new MethodChangerVisitor().visit(cu, Pair.of(method, specification));
-      new ClassChangerVisitor().visit(cu, aspectName);
+    new MethodChangerVisitor().visit(cu, Pair.of(method, specification));
+
+    final String aspectPath =
+        configuration.getAspectsOutputDir() + File.separator + aspectName + ".java";
+    try (FileOutputStream output = new FileOutputStream(new File(aspectPath))) {
       output.write(cu.toString().getBytes());
     } catch (IOException e) {
       log.error("Error during aspect creation.", e);
