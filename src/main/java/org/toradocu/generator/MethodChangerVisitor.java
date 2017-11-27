@@ -103,6 +103,9 @@ public class MethodChangerVisitor
 
     for (PreSpecification preSpecification : specification.getPreSpecifications()) {
       String condition = preSpecification.getGuard().getConditionText();
+      if (condition.isEmpty()) {
+        continue; // TODO Does it make sense to have empty guards here? We should avoid that.
+      }
       condition = addCasting(condition, executableMember);
       String thenBlock = createBlock("return true;");
       String elseBlock = createBlock("return false;");
@@ -240,9 +243,9 @@ public class MethodChangerVisitor
       pointcut.append(executable.getDeclaringClass()).append(".new(");
     } else { // Regular methods
       pointcut
-          .append(executable.getReturnType())
+          .append(executable.getReturnType().getType())
           .append(" ")
-          .append(executable.getDeclaringClass())
+          .append(executable.getDeclaringClass().getName())
           .append(".")
           .append(executable.getName());
     }
@@ -270,15 +273,15 @@ public class MethodChangerVisitor
 
     int index = 0;
     for (DocumentedParameter parameter : method.getParameters()) {
-      String type = parameter.getType().getName();
+      String type = parameter.getType().getSimpleName();
       condition = condition.replace("args[" + index + "]", "((" + type + ") args[" + index + "])");
       index++;
     }
 
     // Casting of result object in condition.
-    String returnType = method.getReturnType().toString();
+    String returnType = method.getReturnType().getType().toString();
     if (returnType != null && !returnType.equals("void")) {
-      condition = condition.replace("result", "((" + method.getReturnType() + ") result)");
+      condition = condition.replace("result", "((" + returnType + ") result)");
     }
 
     // Casting of target object in condition.
