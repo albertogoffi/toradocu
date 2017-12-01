@@ -315,6 +315,17 @@ public class ReturnTranslator {
     String trueCase = tokens[0];
     String falseCase = tokens.length > 1 ? tokens[1] : "";
 
+    if (falseCase.equals("")) {
+      // The comment doesn't express a false-case. Can we complete the condition?
+      if (predicate.equalsIgnoreCase("true")) {
+        // Covers cases of comment that say "True if..." without explicit "false otherwise"
+        falseCase = "false otherwise";
+      } else if (trueCase.equalsIgnoreCase("false")) {
+        // Covers the symmetric case
+        falseCase = "true otherwise";
+      }
+    }
+
     if (!predicate.isEmpty() && !trueCase.isEmpty()) {
       String predicateTranslation = translateFirstPart(predicate, method);
       if (predicateTranslation != null) {

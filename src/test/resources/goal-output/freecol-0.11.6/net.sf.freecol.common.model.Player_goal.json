@@ -1663,7 +1663,7 @@
     "returnTag": {
       "comment": "True if this Player is dead.",
       "kind": "RETURN",
-      "condition": "target.getDead()?result==true"
+      "condition": "target.getDead()?result==true:result==false"
     },
     "throwsTags": []
   },
@@ -1687,7 +1687,7 @@
     "returnTag": {
       "comment": "True if this Player is dead.",
       "kind": "RETURN",
-      "condition": "target.isDead()?result==true"
+      "condition": "target.isDead()?result==true:result==false"
     },
     "throwsTags": []
   },
@@ -6213,7 +6213,7 @@
     "returnTag": {
       "comment": "True if the Tile has been explored.",
       "kind": "RETURN",
-      "condition": "args[0].isExplored() ? result==true"
+      "condition": "args[0].isExplored() ? result==true:result==false"
     },
     "throwsTags": []
   },
