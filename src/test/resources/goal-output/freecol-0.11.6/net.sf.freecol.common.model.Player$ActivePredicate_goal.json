@@ -28,7 +28,7 @@
     "returnTag": {
       "comment": "True if the unit can be moved.",
       "kind": "RETURN",
-      "condition": "args[0].couldMove() ? result == true"
+      "condition": "args[0].couldMove() ? result == true : result == false"
     },
     "throwsTags": []
   }

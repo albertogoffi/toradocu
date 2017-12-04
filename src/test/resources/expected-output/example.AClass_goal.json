@@ -384,7 +384,7 @@
     "returnTag": {
       "comment": "true if the numbers are equal.",
       "kind": "RETURN",
-      "condition": "args[0].equals(args[1]) ? result == true"
+      "condition": "args[0].equals(args[1]) ? result == true : result==false"
     },
     "throwsTags": []
   },
@@ -431,7 +431,7 @@
     "returnTag": {
       "comment": "true if the number is greater than five.",
       "kind": "RETURN",
-      "condition": "args[0]>5 ? result == true"
+      "condition": "args[0]>5 ? result == true : result == false"
     },
     "throwsTags": [
       {
@@ -490,7 +490,7 @@
     "returnTag": {
       "comment": "true if the array length is greater than 10.",
       "kind": "RETURN",
-      "condition": "args[0].length>10 ? result == true"
+      "condition": "args[0].length>10 ? result == true : result == false"
     },
     "throwsTags": [
       {
@@ -623,7 +623,7 @@
     "returnTag": {
       "comment": "true if first=second.",
       "kind": "RETURN",
-      "condition": "args[0]==args[1] ? result == true"
+      "condition": "args[0]==args[1] ? result == true : result == false"
     },
     "throwsTags": []
   },
@@ -664,7 +664,7 @@
     "returnTag": {
       "comment": "true if v1=v2.",
       "kind": "RETURN",
-      "condition": "args[0]==args[1] ? result == true"
+      "condition": "args[0]==args[1] ? result == true : result == false"
     },
     "throwsTags": []
   },
@@ -705,7 +705,7 @@
     "returnTag": {
       "comment": "true if v1>=v2.",
       "kind": "RETURN",
-      "condition": "args[0]>=args[1] ? result == true"
+      "condition": "args[0]>=args[1] ? result == true : result == false"
     },
     "throwsTags": []
   },
@@ -746,7 +746,7 @@
     "returnTag": {
       "comment": "true if v1 is smaller than v2.",
       "kind": "RETURN",
-      "condition": "args[0]<args[1] ? result == true"
+      "condition": "args[0]<args[1] ? result == true : result == false"
     },
     "throwsTags": []
   },

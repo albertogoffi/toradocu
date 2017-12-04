@@ -82,7 +82,7 @@
     "returnTag": {
       "comment": "true if the stack is currently empty",
       "kind": "RETURN",
-      "condition": "target.isEmpty() ? result==true"
+      "condition": "target.isEmpty() ? result==true:result==false"
     },
     "throwsTags": []
   },

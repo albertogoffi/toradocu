@@ -337,7 +337,7 @@
     "returnTag": {
       "comment": "true if this graph did not already contain the specified edge.",
       "kind": "RETURN",
-      "condition": "(target.containsEdge(args[0],args[1]))==false?result==true"
+      "condition": "(target.containsEdge(args[0],args[1]))==false?result==true:result==false"
     },
     "throwsTags": [
       {
@@ -420,7 +420,7 @@
     "returnTag": {
       "comment": "true if this graph did not already contain the specified vertex.",
       "kind": "RETURN",
-      "condition": "(target.containsVertex(args[0]))==false ? result==true"
+      "condition": "(target.containsVertex(args[0]))==false ? result==true:result==false"
     },
     "throwsTags": [
       {
