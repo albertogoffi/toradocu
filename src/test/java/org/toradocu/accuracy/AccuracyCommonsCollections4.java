@@ -3,7 +3,7 @@ package org.toradocu.accuracy;
 import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 
-public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallTestSuite {
+public class AccuracyCommonsCollections4 extends AbstractPrecisionRecallTestSuite {
 
   private static final String COMMONSCOLLECTIONS_4_SRC =
       "src/test/resources/src/commons-collections4-4.1-src/src/main/java/";
@@ -12,7 +12,7 @@ public class PrecisionRecallCommonsCollections4 extends AbstractPrecisionRecallT
   private static final String COMMONSCOLLECTIONS_4_GOAL_DIR =
       "src/test/resources/goal-output/commons-collections4-4.1/";
 
-  public PrecisionRecallCommonsCollections4() {
+  public AccuracyCommonsCollections4() {
     super(COMMONSCOLLECTIONS_4_SRC, COMMONSCOLLECTIONS_4_BIN, COMMONSCOLLECTIONS_4_GOAL_DIR);
   }
 

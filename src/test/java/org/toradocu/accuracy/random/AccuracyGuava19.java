@@ -3,13 +3,13 @@ package org.toradocu.accuracy.random;
 import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 
-public class AccuracyRandomGuava19 extends AbstractPrecisionRecallTestSuite {
+public class AccuracyGuava19 extends AbstractPrecisionRecallTestSuite {
 
   private static final String GUAVA_19_SRC = "src/test/resources/src/guava-19.0-sources/";
   private static final String GUAVA_19_BIN = "src/test/resources/bin/guava-19.0.jar";
   private static final String GUAVA_GOAL_DIR = "src/test/resources/goal-output/random/guava-19.0/";
 
-  public AccuracyRandomGuava19() {
+  public AccuracyGuava19() {
     super(GUAVA_19_SRC, GUAVA_19_BIN, GUAVA_GOAL_DIR);
   }
 

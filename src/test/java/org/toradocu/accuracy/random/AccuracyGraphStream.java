@@ -3,14 +3,14 @@ package org.toradocu.accuracy.random;
 import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
 
-public class AccuracyRandomGraphStream extends AbstractPrecisionRecallTestSuite {
+public class AccuracyGraphStream extends AbstractPrecisionRecallTestSuite {
 
   private static final String GRAPHSTREAM_SRC = "src/test/resources/src/gs-core-1.3-sources";
   private static final String GRAPHSTREAM_BIN = "src/test/resources/bin/gs-core-1.3.jar";
   private static final String GRAPHSTREAM_GOAL_DIR =
       "src/test/resources/goal-output/random/gs-core-1.3/";
 
-  public AccuracyRandomGraphStream() {
+  public AccuracyGraphStream() {
     super(GRAPHSTREAM_SRC, GRAPHSTREAM_BIN, GRAPHSTREAM_GOAL_DIR);
   }
 
