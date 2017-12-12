@@ -15,7 +15,7 @@ To see how to use Toradocu to automatically add test oracles to your test suite
 follow the [tutorial instructions](tutorial/README.md).
 
 ## Building Toradocu
-To compile Toradocu run the command: `./gradlew shadowJar -PenableShadowJar=true`
+To compile Toradocu run the command: `./gradlew shadowJar`
 
 This will create the file
 `build/libs/toradocu-1.0-all.jar`. The size of file is approximately 1 GB.
