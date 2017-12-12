@@ -96,15 +96,13 @@ startScripts.enabled = false
 distZip.enabled = false
 distTar.enabled = false
 assemble.enabled = false
-// To run shadowJar task execute: ./gradlew shadowJar -PenableShadowJar=true
-if (project.hasProperty('enableShadowJar') && enableShadowJar) {
-  shadowJar.enabled = true
-} else {
+// To exclude shadowJar task from build: ./gradlew build -PdisableShadowJar
+if (project.hasProperty('disableShadowJar')) {
   shadowJar.enabled = false
 }
 startShadowScripts.enabled = false
 shadowDistZip.enabled = false
-shadowDistZip.enabled = false
+shadowDistTar.enabled = false
 
 compileJava {
   options.compilerArgs << '-Xlint:unchecked'
