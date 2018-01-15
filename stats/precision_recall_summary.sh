@@ -8,7 +8,9 @@ ERROR_MESSAGE='Script must be invoked with one parameter: either "jdoctor" or "j
 # Random test suite.
 # TESTS='--tests org.toradocu.accuracy.random.*'
 # Non-random test suite.
-TESTS='--tests org.toradocu.accuracy.Accuracy*'
+# TESTS='--tests org.toradocu.accuracy.Accuracy*'
+# All test suites
+TESTS='--tests org.toradocu.accuracy.*'
 
 # The following is to run specific tests.
 #TESTS_PREFIX="org.toradocu.accuracy.PrecisionRecall"
