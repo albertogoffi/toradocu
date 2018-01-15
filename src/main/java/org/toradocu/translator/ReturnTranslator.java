@@ -21,7 +21,6 @@ public class ReturnTranslator {
 
   public List<PostSpecification> translate(ReturnTag tag, DocumentedExecutable excMember) {
     String commentText = tag.getComment().getText();
-
     //Manage translation of each sub-sentence linked by the Or conjunction separately
     String[] subSentences = manageOrConjunction(commentText);
     List<List<PostSpecification>> conditions = new ArrayList<List<PostSpecification>>();
@@ -120,8 +119,8 @@ public class ReturnTranslator {
   private static String manageArgsOperation(
       DocumentedExecutable method, java.util.regex.Matcher matcherOp) {
     String firstFactor = matcherOp.group(1);
-    String secFactor = matcherOp.group(4);
-    String op = matcherOp.group(3);
+    String secFactor = matcherOp.group(3);
+    String op = matcherOp.group(2);
 
     CodeElement<?> first = null;
     Set<CodeElement<?>> subject = new Matcher().subjectMatch(firstFactor, method);
@@ -388,11 +387,9 @@ public class ReturnTranslator {
       property = new Property(comment, "result==false");
     } else {
 
-      final String ARITHMETIC_OP_REGEX =
-          "(([a-zA-Z]+[0-9]?_?)+) ?([-+*/%]) ?(([a-zA-Z]+[0-9]?_?)+)";
+      final String ARITHMETIC_OP_REGEX = "([a-zA-Z0-9_]+) ?([-+*/%]) ?([a-zA-Z0-9_]+)";
 
-      final String BITWISE_OP_REGEX =
-          "(([a-zA-Z]+[0-9]?_?)+) ?(<<<?|>>>?|\\^|&|\\|) ?(([a-zA-Z]+[0-9]?_?)+)";
+      final String BITWISE_OP_REGEX = "([a-zA-Z0-9_]+) ?(<<<?|>>>?|\\^|&|\\|) ?([a-zA-Z0-9_]+)";
 
       java.util.regex.Matcher matcherArithmeticOp =
           Pattern.compile(ARITHMETIC_OP_REGEX).matcher(commentToTranslate);
