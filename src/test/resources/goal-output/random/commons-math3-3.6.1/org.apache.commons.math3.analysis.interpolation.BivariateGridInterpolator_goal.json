@@ -1,0 +1,136 @@
+[
+  {
+    "signature": "interpolate(double[] xval, double[] yval, double[][] fval)",
+    "name": "interpolate",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.interpolation.BivariateGridInterpolator",
+      "name": "BivariateGridInterpolator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.analysis.interpolation.BivariateGridInterpolator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.analysis.BivariateFunction",
+      "name": "org.apache.commons.math3.analysis.BivariateFunction",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[D",
+          "name": "double[]",
+          "isArray": true
+        },
+        "name": "xval"
+      },
+      {
+        "type": {
+          "qualifiedName": "[D",
+          "name": "double[]",
+          "isArray": true
+        },
+        "name": "yval"
+      },
+      {
+        "type": {
+          "qualifiedName": "[[D",
+          "name": "double[][]",
+          "isArray": true
+        },
+        "name": "fval"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[D",
+            "name": "double[]",
+            "isArray": true
+          },
+          "name": "xval"
+        },
+        "comment": "All the x-coordinates of the interpolation points sorted in increasing order.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[D",
+            "name": "double[]",
+            "isArray": true
+          },
+          "name": "yval"
+        },
+        "comment": "All the y-coordinates of the interpolation points sorted in increasing order.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[[D",
+            "name": "double[][]",
+            "isArray": true
+          },
+          "name": "fval"
+        },
+        "comment": "The values of the interpolation points on all the grid knots: fval[i][j] = f(xval[i] yval[j]).",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a function which interpolates the dataset.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NoDataException",
+          "name": "NoDataException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "any of the arrays has zero length.",
+        "kind": "THROWS",
+        "condition": "args[0].length==0 || args[1].length==0 || args[2].length==0"
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
+          "name": "DimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the array lengths are inconsistent.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NonMonotonicSequenceException",
+          "name": "NonMonotonicSequenceException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the array is not sorted.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException",
+          "name": "NumberIsTooSmallException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the number of points is too small for the order of the interpolation.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  }
+]

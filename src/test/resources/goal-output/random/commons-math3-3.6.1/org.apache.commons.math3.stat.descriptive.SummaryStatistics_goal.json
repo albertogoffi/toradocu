@@ -1,0 +1,1280 @@
+[
+  {
+    "signature": "org.apache.commons.math3.stat.descriptive.SummaryStatistics()",
+    "name": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "org.apache.commons.math3.stat.descriptive.SummaryStatistics(org.apache.commons.math3.stat.descriptive.SummaryStatistics original)",
+    "name": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+          "name": "SummaryStatistics",
+          "isArray": false
+        },
+        "name": "original"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+            "name": "SummaryStatistics",
+            "isArray": false
+          },
+          "name": "original"
+        },
+        "comment": "the SummaryStatistics instance to copy.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "original is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      }
+    ]
+  },
+  {
+    "signature": "getSummary()",
+    "name": "getSummary",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.StatisticalSummary",
+      "name": "org.apache.commons.math3.stat.descriptive.StatisticalSummary",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "Current values of statistics.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "addValue(double value)",
+    "name": "addValue",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "value"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "value"
+        },
+        "comment": "the value to add.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "getN()",
+    "name": "getN",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The number of available values.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getSum()",
+    "name": "getSum",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The sum or Double.NaN if no values have been added.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getSumsq()",
+    "name": "getSumsq",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The sum of squares.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getMean()",
+    "name": "getMean",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the mean.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getStandardDeviation()",
+    "name": "getStandardDeviation",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the standard deviation.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getQuadraticMean()",
+    "name": "getQuadraticMean",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "The quadratic mean or Double.NaN if no values have been added.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getVariance()",
+    "name": "getVariance",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the variance.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getPopulationVariance()",
+    "name": "getPopulationVariance",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the population variance.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getMax()",
+    "name": "getMax",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the maximum.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getMin()",
+    "name": "getMin",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the minimum.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getGeometricMean()",
+    "name": "getGeometricMean",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the geometric mean.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getSumOfLogs()",
+    "name": "getSumOfLogs",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the sum of logs.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getSecondMoment()",
+    "name": "getSecondMoment",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "second central moment statistic.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "toString()",
+    "name": "toString",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "java.lang.String",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "String with line feeds displaying statistics.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "clear()",
+    "name": "clear",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "equals(java.lang.Object object)",
+    "name": "equals",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "object"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "object"
+        },
+        "comment": "the object to test equality against.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if object equals this.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "hashCode()",
+    "name": "hashCode",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "hash code.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getSumImpl()",
+    "name": "getSumImpl",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+      "name": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the StorelessUnivariateStatistic implementing the sum.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setSumImpl(org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic sumImpl)",
+    "name": "setSumImpl",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+          "name": "StorelessUnivariateStatistic",
+          "isArray": false
+        },
+        "name": "sumImpl"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+            "name": "StorelessUnivariateStatistic",
+            "isArray": false
+          },
+          "name": "sumImpl"
+        },
+        "comment": "the StorelessUnivariateStatistic instance to use for computing the Sum.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalStateException",
+          "name": "MathIllegalStateException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "data has already been added (i.e if n >0).",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "getSumsqImpl()",
+    "name": "getSumsqImpl",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+      "name": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the StorelessUnivariateStatistic implementing the sum of squares.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setSumsqImpl(org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic sumsqImpl)",
+    "name": "setSumsqImpl",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+          "name": "StorelessUnivariateStatistic",
+          "isArray": false
+        },
+        "name": "sumsqImpl"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+            "name": "StorelessUnivariateStatistic",
+            "isArray": false
+          },
+          "name": "sumsqImpl"
+        },
+        "comment": "the StorelessUnivariateStatistic instance to use for computing the sum of squares.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalStateException",
+          "name": "MathIllegalStateException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "data has already been added (i.e if n > 0).",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "getMinImpl()",
+    "name": "getMinImpl",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+      "name": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the StorelessUnivariateStatistic implementing the minimum.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setMinImpl(org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic minImpl)",
+    "name": "setMinImpl",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+          "name": "StorelessUnivariateStatistic",
+          "isArray": false
+        },
+        "name": "minImpl"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+            "name": "StorelessUnivariateStatistic",
+            "isArray": false
+          },
+          "name": "minImpl"
+        },
+        "comment": "the StorelessUnivariateStatistic instance to use for computing the minimum.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalStateException",
+          "name": "MathIllegalStateException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "data has already been added (i.e if n > 0).",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "getMaxImpl()",
+    "name": "getMaxImpl",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+      "name": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the StorelessUnivariateStatistic implementing the maximum.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setMaxImpl(org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic maxImpl)",
+    "name": "setMaxImpl",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+          "name": "StorelessUnivariateStatistic",
+          "isArray": false
+        },
+        "name": "maxImpl"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+            "name": "StorelessUnivariateStatistic",
+            "isArray": false
+          },
+          "name": "maxImpl"
+        },
+        "comment": "the StorelessUnivariateStatistic instance to use for computing the maximum.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalStateException",
+          "name": "MathIllegalStateException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "data has already been added (i.e if n > 0).",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "getSumLogImpl()",
+    "name": "getSumLogImpl",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+      "name": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the StorelessUnivariateStatistic implementing the log sum.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setSumLogImpl(org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic sumLogImpl)",
+    "name": "setSumLogImpl",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+          "name": "StorelessUnivariateStatistic",
+          "isArray": false
+        },
+        "name": "sumLogImpl"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+            "name": "StorelessUnivariateStatistic",
+            "isArray": false
+          },
+          "name": "sumLogImpl"
+        },
+        "comment": "the StorelessUnivariateStatistic instance to use for computing the log sum.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalStateException",
+          "name": "MathIllegalStateException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "data has already been added (i.e if n > 0).",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "getGeoMeanImpl()",
+    "name": "getGeoMeanImpl",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+      "name": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the StorelessUnivariateStatistic implementing the geometric mean.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setGeoMeanImpl(org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic geoMeanImpl)",
+    "name": "setGeoMeanImpl",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+          "name": "StorelessUnivariateStatistic",
+          "isArray": false
+        },
+        "name": "geoMeanImpl"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+            "name": "StorelessUnivariateStatistic",
+            "isArray": false
+          },
+          "name": "geoMeanImpl"
+        },
+        "comment": "the StorelessUnivariateStatistic instance to use for computing the geometric mean.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalStateException",
+          "name": "MathIllegalStateException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "data has already been added (i.e if n > 0).",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "getMeanImpl()",
+    "name": "getMeanImpl",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+      "name": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the StorelessUnivariateStatistic implementing the mean.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setMeanImpl(org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic meanImpl)",
+    "name": "setMeanImpl",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+          "name": "StorelessUnivariateStatistic",
+          "isArray": false
+        },
+        "name": "meanImpl"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+            "name": "StorelessUnivariateStatistic",
+            "isArray": false
+          },
+          "name": "meanImpl"
+        },
+        "comment": "the StorelessUnivariateStatistic instance to use for computing the mean.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalStateException",
+          "name": "MathIllegalStateException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "data has already been added (i.e if n > 0).",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "getVarianceImpl()",
+    "name": "getVarianceImpl",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+      "name": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the StorelessUnivariateStatistic implementing the variance.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setVarianceImpl(org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic varianceImpl)",
+    "name": "setVarianceImpl",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+          "name": "StorelessUnivariateStatistic",
+          "isArray": false
+        },
+        "name": "varianceImpl"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+            "name": "StorelessUnivariateStatistic",
+            "isArray": false
+          },
+          "name": "varianceImpl"
+        },
+        "comment": "the StorelessUnivariateStatistic instance to use for computing the variance.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathIllegalStateException",
+          "name": "MathIllegalStateException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "data has already been added (i.e if n > 0).",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "copy()",
+    "name": "copy",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "a copy of this.",
+      "kind": "RETURN",
+      "condition": "result.equals(target)"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "copy(org.apache.commons.math3.stat.descriptive.SummaryStatistics source, org.apache.commons.math3.stat.descriptive.SummaryStatistics dest)",
+    "name": "copy",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+      "name": "SummaryStatistics",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+          "name": "SummaryStatistics",
+          "isArray": false
+        },
+        "name": "source"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+          "name": "SummaryStatistics",
+          "isArray": false
+        },
+        "name": "dest"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+            "name": "SummaryStatistics",
+            "isArray": false
+          },
+          "name": "source"
+        },
+        "comment": "SummaryStatistics to copy.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.stat.descriptive.SummaryStatistics",
+            "name": "SummaryStatistics",
+            "isArray": false
+          },
+          "name": "dest"
+        },
+        "comment": "SummaryStatistics to copy to.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "either source or dest is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null || args[1]==null"
+      }
+    ]
+  }
+]

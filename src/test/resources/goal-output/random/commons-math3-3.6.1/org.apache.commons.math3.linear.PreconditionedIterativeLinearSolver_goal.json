@@ -1,0 +1,795 @@
+[
+  {
+    "signature": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver(int maxIterations)",
+    "name": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver",
+      "name": "PreconditionedIterativeLinearSolver",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxIterations"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxIterations"
+        },
+        "comment": "maxIterations is maximum. maximum number of iterations.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver(org.apache.commons.math3.util.IterationManager manager)",
+    "name": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver",
+      "name": "PreconditionedIterativeLinearSolver",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.util.IterationManager",
+          "name": "IterationManager",
+          "isArray": false
+        },
+        "name": "manager"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.util.IterationManager",
+            "name": "IterationManager",
+            "isArray": false
+          },
+          "name": "manager"
+        },
+        "comment": "the custom iteration manager.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "manager is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      }
+    ]
+  },
+  {
+    "signature": "solve(org.apache.commons.math3.linear.RealLinearOperator a, org.apache.commons.math3.linear.RealLinearOperator m, org.apache.commons.math3.linear.RealVector b, org.apache.commons.math3.linear.RealVector x0)",
+    "name": "solve",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver",
+      "name": "PreconditionedIterativeLinearSolver",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "org.apache.commons.math3.linear.RealVector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "m"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "x0"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+            "name": "RealLinearOperator",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "a is linear. linear operator A of the system.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+            "name": "RealLinearOperator",
+            "isArray": false
+          },
+          "name": "m"
+        },
+        "comment": "the preconditioner. m is M ( null).",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "b is right-hand. right-hand side vector.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "x0"
+        },
+        "comment": "x0 is initial. initial guess of the solution.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new vector containing the solution.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "one of the parameters is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null || args[1]==null || args[2]==null || args[3]==null"
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.NonSquareOperatorException",
+          "name": "NonSquareOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "a or m is not square.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.MatrixDimensionMismatchException",
+          "name": "MatrixDimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "m b or x0 have dimensions inconsistent with a.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.MaxCountExceededException",
+          "name": "MaxCountExceededException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "at exhaustion of the iteration count unless a custom org.apache.commons.math3.util.Incrementor.MaxCountExceededCallback callback has been set at construction of the IterationManager.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "solve(org.apache.commons.math3.linear.RealLinearOperator a, org.apache.commons.math3.linear.RealVector b)",
+    "name": "solve",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver",
+      "name": "PreconditionedIterativeLinearSolver",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "org.apache.commons.math3.linear.RealVector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "solve(org.apache.commons.math3.linear.RealLinearOperator a, org.apache.commons.math3.linear.RealVector b, org.apache.commons.math3.linear.RealVector x0)",
+    "name": "solve",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver",
+      "name": "PreconditionedIterativeLinearSolver",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "org.apache.commons.math3.linear.RealVector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "x0"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "checkParameters(org.apache.commons.math3.linear.RealLinearOperator a, org.apache.commons.math3.linear.RealLinearOperator m, org.apache.commons.math3.linear.RealVector b, org.apache.commons.math3.linear.RealVector x0)",
+    "name": "checkParameters",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver",
+      "name": "PreconditionedIterativeLinearSolver",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "m"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "x0"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+            "name": "RealLinearOperator",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "a is linear. linear operator A of the system.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+            "name": "RealLinearOperator",
+            "isArray": false
+          },
+          "name": "m"
+        },
+        "comment": "the preconditioner. m is M ( null).",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "b is right-hand. right-hand side vector.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "x0"
+        },
+        "comment": "x0 is initial. initial guess of the solution.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "one of the parameters is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null || args[1]==null || args[2]==null || args[3]==null"
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.NonSquareOperatorException",
+          "name": "NonSquareOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "a or m is not square.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.MatrixDimensionMismatchException",
+          "name": "MatrixDimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "m b or x0 have dimensions inconsistent with a.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "solve(org.apache.commons.math3.linear.RealLinearOperator a, org.apache.commons.math3.linear.RealLinearOperator m, org.apache.commons.math3.linear.RealVector b)",
+    "name": "solve",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver",
+      "name": "PreconditionedIterativeLinearSolver",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "org.apache.commons.math3.linear.RealVector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "m"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+            "name": "RealLinearOperator",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "a is linear. linear operator A of the system.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+            "name": "RealLinearOperator",
+            "isArray": false
+          },
+          "name": "m"
+        },
+        "comment": "the preconditioner. m is M ( null).",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "b is right-hand. right-hand side vector.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new vector containing the solution.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "one of the parameters is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null || args[1]==null || args[2]==null"
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.NonSquareOperatorException",
+          "name": "NonSquareOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "a or m is not square.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.MatrixDimensionMismatchException",
+          "name": "MatrixDimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "m or b have dimensions inconsistent with a.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.MaxCountExceededException",
+          "name": "MaxCountExceededException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "at exhaustion of the iteration count unless a custom org.apache.commons.math3.util.Incrementor.MaxCountExceededCallback callback has been set at construction of the IterationManager.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "solveInPlace(org.apache.commons.math3.linear.RealLinearOperator a, org.apache.commons.math3.linear.RealLinearOperator m, org.apache.commons.math3.linear.RealVector b, org.apache.commons.math3.linear.RealVector x0)",
+    "name": "solveInPlace",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver",
+      "name": "PreconditionedIterativeLinearSolver",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "org.apache.commons.math3.linear.RealVector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "m"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "x0"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+            "name": "RealLinearOperator",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "a is linear. linear operator A of the system.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+            "name": "RealLinearOperator",
+            "isArray": false
+          },
+          "name": "m"
+        },
+        "comment": "the preconditioner. m is M ( null).",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "b is right-hand. right-hand side vector.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "x0"
+        },
+        "comment": "x0 is initial. initial guess of the solution.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a reference to x0 (shallow copy) updated with the solution.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "one of the parameters is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null || args[1]==null || args[2]==null || args[3]==null"
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.NonSquareOperatorException",
+          "name": "NonSquareOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "a or m is not square.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.MatrixDimensionMismatchException",
+          "name": "MatrixDimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "m b or x0 have dimensions inconsistent with a.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.MaxCountExceededException",
+          "name": "MaxCountExceededException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "at exhaustion of the iteration count unless a custom org.apache.commons.math3.util.Incrementor.MaxCountExceededCallback callback has been set at construction of the IterationManager.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "solveInPlace(org.apache.commons.math3.linear.RealLinearOperator a, org.apache.commons.math3.linear.RealVector b, org.apache.commons.math3.linear.RealVector x0)",
+    "name": "solveInPlace",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver",
+      "name": "PreconditionedIterativeLinearSolver",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "org.apache.commons.math3.linear.RealVector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "x0"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  }
+]

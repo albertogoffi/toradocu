@@ -1,0 +1,572 @@
+[
+  {
+    "signature": "isOutOfBoundsIndex(int bitIndex)",
+    "name": "isOutOfBoundsIndex",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.trie.KeyAnalyzer",
+      "name": "KeyAnalyzer",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.trie.KeyAnalyzer",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "bitIndex"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "isEqualBitKey(int bitIndex)",
+    "name": "isEqualBitKey",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.trie.KeyAnalyzer",
+      "name": "KeyAnalyzer",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.trie.KeyAnalyzer",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "bitIndex"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "isNullBitKey(int bitIndex)",
+    "name": "isNullBitKey",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.trie.KeyAnalyzer",
+      "name": "KeyAnalyzer",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.trie.KeyAnalyzer",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "bitIndex"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "isValidBitIndex(int bitIndex)",
+    "name": "isValidBitIndex",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.trie.KeyAnalyzer",
+      "name": "KeyAnalyzer",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.trie.KeyAnalyzer",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "bitIndex"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "bitsPerElement()",
+    "name": "bitsPerElement",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.trie.KeyAnalyzer",
+      "name": "KeyAnalyzer",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.trie.KeyAnalyzer",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the number of bits per element.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "lengthInBits(K key)",
+    "name": "lengthInBits",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.trie.KeyAnalyzer",
+      "name": "KeyAnalyzer",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.trie.KeyAnalyzer",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the bit length of the key.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "isBitSet(K key, int bitIndex, int lengthInBits)",
+    "name": "isBitSet",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.trie.KeyAnalyzer",
+      "name": "KeyAnalyzer",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.trie.KeyAnalyzer",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "bitIndex"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "lengthInBits"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key to check . key is not null.",
+        "kind": "PARAM",
+        "condition": "(args[0]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "bitIndex"
+        },
+        "comment": "the bit index to check.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "lengthInBits"
+        },
+        "comment": "lengthInBits is maximum. maximum key length in bits to check.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if the bit is set in the given key and bitIndex < lengthInBits, false otherwise.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "bitIndex(K key, int offsetInBits, int lengthInBits, K other, int otherOffsetInBits, int otherLengthInBits)",
+    "name": "bitIndex",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.trie.KeyAnalyzer",
+      "name": "KeyAnalyzer",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.trie.KeyAnalyzer",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "offsetInBits"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "lengthInBits"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "other"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "otherOffsetInBits"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "otherLengthInBits"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key to use.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "offsetInBits"
+        },
+        "comment": "the bit offset in the key.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "lengthInBits"
+        },
+        "comment": "lengthInBits is maximum. maximum key length in bits to use.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "other"
+        },
+        "comment": "the other key to use.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "otherOffsetInBits"
+        },
+        "comment": "the bit offset in the other key.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "otherLengthInBits"
+        },
+        "comment": "otherLengthInBits is maximum. maximum key length in bits for the other key.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the bit index where the key and other first differ.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "isPrefix(K prefix, int offsetInBits, int lengthInBits, K key)",
+    "name": "isPrefix",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.trie.KeyAnalyzer",
+      "name": "KeyAnalyzer",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.trie.KeyAnalyzer",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "prefix"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "offsetInBits"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "lengthInBits"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "key"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "prefix"
+        },
+        "comment": "the prefix to check.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "offsetInBits"
+        },
+        "comment": "the bit offset in the key.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "lengthInBits"
+        },
+        "comment": "lengthInBits is maximum. maximum key length in bits to use.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "key"
+        },
+        "comment": "the key to check.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if this is a valid prefix for the given key.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "compare(K o1, K o2)",
+    "name": "compare",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.collections4.trie.KeyAnalyzer",
+      "name": "KeyAnalyzer",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.collections4.trie.KeyAnalyzer",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "o1"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "o2"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  }
+]

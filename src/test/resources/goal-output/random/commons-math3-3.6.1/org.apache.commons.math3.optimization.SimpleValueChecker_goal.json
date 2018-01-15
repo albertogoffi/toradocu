@@ -1,0 +1,254 @@
+[
+  {
+    "signature": "org.apache.commons.math3.optimization.SimpleValueChecker()",
+    "name": "org.apache.commons.math3.optimization.SimpleValueChecker",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.optimization.SimpleValueChecker",
+      "name": "SimpleValueChecker",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.optimization.SimpleValueChecker",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "org.apache.commons.math3.optimization.SimpleValueChecker(double relativeThreshold, double absoluteThreshold)",
+    "name": "org.apache.commons.math3.optimization.SimpleValueChecker",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.optimization.SimpleValueChecker",
+      "name": "SimpleValueChecker",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.optimization.SimpleValueChecker",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "relativeThreshold"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "absoluteThreshold"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "relativeThreshold"
+        },
+        "comment": "relativeThreshold is relative. relative tolerance threshold.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "absoluteThreshold"
+        },
+        "comment": "absoluteThreshold is absolute. absolute tolerance threshold.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "org.apache.commons.math3.optimization.SimpleValueChecker(double relativeThreshold, double absoluteThreshold, int maxIter)",
+    "name": "org.apache.commons.math3.optimization.SimpleValueChecker",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.optimization.SimpleValueChecker",
+      "name": "SimpleValueChecker",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.optimization.SimpleValueChecker",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "relativeThreshold"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "absoluteThreshold"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxIter"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "relativeThreshold"
+        },
+        "comment": "relativeThreshold is relative. relative tolerance threshold.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "absoluteThreshold"
+        },
+        "comment": "absoluteThreshold is absolute. absolute tolerance threshold.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxIter"
+        },
+        "comment": "Maximum iteration count.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "maxIter <= 0.",
+        "kind": "THROWS",
+        "condition": "args[2]<=0"
+      }
+    ]
+  },
+  {
+    "signature": "converged(int iteration, org.apache.commons.math3.optimization.PointValuePair previous, org.apache.commons.math3.optimization.PointValuePair current)",
+    "name": "converged",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.optimization.SimpleValueChecker",
+      "name": "SimpleValueChecker",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.optimization.SimpleValueChecker",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "iteration"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.optimization.PointValuePair",
+          "name": "PointValuePair",
+          "isArray": false
+        },
+        "name": "previous"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.optimization.PointValuePair",
+          "name": "PointValuePair",
+          "isArray": false
+        },
+        "name": "current"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "iteration"
+        },
+        "comment": "Index of current iteration.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.optimization.PointValuePair",
+            "name": "PointValuePair",
+            "isArray": false
+          },
+          "name": "previous"
+        },
+        "comment": "previous is Best. Best point in the previous iteration.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.optimization.PointValuePair",
+            "name": "PointValuePair",
+            "isArray": false
+          },
+          "name": "current"
+        },
+        "comment": "current is Best. Best point in the current iteration.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if the algorithm has converged.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  }
+]

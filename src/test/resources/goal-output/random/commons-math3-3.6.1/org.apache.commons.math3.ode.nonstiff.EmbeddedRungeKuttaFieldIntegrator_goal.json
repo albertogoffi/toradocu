@@ -1,0 +1,971 @@
+[
+  {
+    "signature": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator(org.apache.commons.math3.Field<T> field, java.lang.String name, int fsal, double minStep, double maxStep, double scalAbsoluteTolerance, double scalRelativeTolerance)",
+    "name": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+      "name": "EmbeddedRungeKuttaFieldIntegrator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.Field",
+          "name": "Field",
+          "isArray": false
+        },
+        "name": "field"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "name"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "fsal"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "minStep"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "maxStep"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "scalAbsoluteTolerance"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "scalRelativeTolerance"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.Field",
+            "name": "Field",
+            "isArray": false
+          },
+          "name": "field"
+        },
+        "comment": "field to which the time and state vector elements belong.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "name"
+        },
+        "comment": "name of the method.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "fsal"
+        },
+        "comment": "index of the pre-computed derivative for fsal methods or -1 if method is not fsal.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "minStep"
+        },
+        "comment": "minimal step (sign is irrelevant regardless of integration direction forward or backward). minStep is the last step smaller than this.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "maxStep"
+        },
+        "comment": "maximal step (sign is irrelevant regardless of integration direction forward or backward). maxStep is the last step smaller than this.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "scalAbsoluteTolerance"
+        },
+        "comment": "allowed absolute error.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "scalRelativeTolerance"
+        },
+        "comment": "allowed relative error.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator(org.apache.commons.math3.Field<T> field, java.lang.String name, int fsal, double minStep, double maxStep, double[] vecAbsoluteTolerance, double[] vecRelativeTolerance)",
+    "name": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+      "name": "EmbeddedRungeKuttaFieldIntegrator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.Field",
+          "name": "Field",
+          "isArray": false
+        },
+        "name": "field"
+      },
+      {
+        "type": {
+          "qualifiedName": "java.lang.String",
+          "name": "String",
+          "isArray": false
+        },
+        "name": "name"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "fsal"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "minStep"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "maxStep"
+      },
+      {
+        "type": {
+          "qualifiedName": "[D",
+          "name": "double[]",
+          "isArray": true
+        },
+        "name": "vecAbsoluteTolerance"
+      },
+      {
+        "type": {
+          "qualifiedName": "[D",
+          "name": "double[]",
+          "isArray": true
+        },
+        "name": "vecRelativeTolerance"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.Field",
+            "name": "Field",
+            "isArray": false
+          },
+          "name": "field"
+        },
+        "comment": "field to which the time and state vector elements belong.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.String",
+            "name": "String",
+            "isArray": false
+          },
+          "name": "name"
+        },
+        "comment": "name of the method.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "fsal"
+        },
+        "comment": "index of the pre-computed derivative for fsal methods or -1 if method is not fsal.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "minStep"
+        },
+        "comment": "minimal step (. minStep is positive even for backward integration) the last step smaller than this.",
+        "kind": "PARAM",
+        "condition": "args[3]>0"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "maxStep"
+        },
+        "comment": "maximal step (. maxStep is positive even for backward integration).",
+        "kind": "PARAM",
+        "condition": "args[4]>0"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[D",
+            "name": "double[]",
+            "isArray": true
+          },
+          "name": "vecAbsoluteTolerance"
+        },
+        "comment": "allowed absolute error.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[D",
+            "name": "double[]",
+            "isArray": true
+          },
+          "name": "vecRelativeTolerance"
+        },
+        "comment": "allowed relative error.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "fraction(int p, int q)",
+    "name": "fraction",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+      "name": "EmbeddedRungeKuttaFieldIntegrator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "p"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "q"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "p"
+        },
+        "comment": "numerator.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "q"
+        },
+        "comment": "denominator.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "p/q computed in the instance field.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "fraction(double p, double q)",
+    "name": "fraction",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+      "name": "EmbeddedRungeKuttaFieldIntegrator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "p"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "q"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "p"
+        },
+        "comment": "numerator.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "q"
+        },
+        "comment": "denominator.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "p/q computed in the instance field.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "createInterpolator(boolean forward, T[][] yDotK, org.apache.commons.math3.ode.FieldODEStateAndDerivative<T> globalPreviousState, org.apache.commons.math3.ode.FieldODEStateAndDerivative<T> globalCurrentState, org.apache.commons.math3.ode.FieldEquationsMapper<T> mapper)",
+    "name": "createInterpolator",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+      "name": "EmbeddedRungeKuttaFieldIntegrator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.RungeKuttaFieldStepInterpolator<T>",
+      "name": "org.apache.commons.math3.ode.nonstiff.RungeKuttaFieldStepInterpolator<T>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "forward"
+      },
+      {
+        "type": {
+          "qualifiedName": "[[Lorg.apache.commons.math3.RealFieldElement;",
+          "name": "RealFieldElement[][]",
+          "isArray": true
+        },
+        "name": "yDotK"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.ode.FieldODEStateAndDerivative",
+          "name": "FieldODEStateAndDerivative",
+          "isArray": false
+        },
+        "name": "globalPreviousState"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.ode.FieldODEStateAndDerivative",
+          "name": "FieldODEStateAndDerivative",
+          "isArray": false
+        },
+        "name": "globalCurrentState"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.ode.FieldEquationsMapper",
+          "name": "FieldEquationsMapper",
+          "isArray": false
+        },
+        "name": "mapper"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "forward"
+        },
+        "comment": "integration direction indicator.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[[Lorg.apache.commons.math3.RealFieldElement;",
+            "name": "RealFieldElement[][]",
+            "isArray": true
+          },
+          "name": "yDotK"
+        },
+        "comment": "slopes at the intermediate points.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.ode.FieldODEStateAndDerivative",
+            "name": "FieldODEStateAndDerivative",
+            "isArray": false
+          },
+          "name": "globalPreviousState"
+        },
+        "comment": "start of the global step.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.ode.FieldODEStateAndDerivative",
+            "name": "FieldODEStateAndDerivative",
+            "isArray": false
+          },
+          "name": "globalCurrentState"
+        },
+        "comment": "end of the global step.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.ode.FieldEquationsMapper",
+            "name": "FieldEquationsMapper",
+            "isArray": false
+          },
+          "name": "mapper"
+        },
+        "comment": "mapper is equations. equations mapper for the all equations.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "external weights for the high order method from Butcher array.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getOrder()",
+    "name": "getOrder",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+      "name": "EmbeddedRungeKuttaFieldIntegrator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "order of the method.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getSafety()",
+    "name": "getSafety",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+      "name": "EmbeddedRungeKuttaFieldIntegrator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "safety factor.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setSafety(T safety)",
+    "name": "setSafety",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+      "name": "EmbeddedRungeKuttaFieldIntegrator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+          "name": "RealFieldElement",
+          "isArray": false
+        },
+        "name": "safety"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          },
+          "name": "safety"
+        },
+        "comment": "safety factor.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "integrate(org.apache.commons.math3.ode.FieldExpandableODE<T> equations, org.apache.commons.math3.ode.FieldODEState<T> initialState, T finalTime)",
+    "name": "integrate",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+      "name": "EmbeddedRungeKuttaFieldIntegrator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.ode.FieldODEStateAndDerivative<T>",
+      "name": "org.apache.commons.math3.ode.FieldODEStateAndDerivative<T>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.ode.FieldExpandableODE",
+          "name": "FieldExpandableODE",
+          "isArray": false
+        },
+        "name": "equations"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.ode.FieldODEState",
+          "name": "FieldODEState",
+          "isArray": false
+        },
+        "name": "initialState"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+          "name": "RealFieldElement",
+          "isArray": false
+        },
+        "name": "finalTime"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getMinReduction()",
+    "name": "getMinReduction",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+      "name": "EmbeddedRungeKuttaFieldIntegrator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "minimal reduction factor.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setMinReduction(T minReduction)",
+    "name": "setMinReduction",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+      "name": "EmbeddedRungeKuttaFieldIntegrator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+          "name": "RealFieldElement",
+          "isArray": false
+        },
+        "name": "minReduction"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          },
+          "name": "minReduction"
+        },
+        "comment": "minReduction is minimal. minimal reduction factor.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "getMaxGrowth()",
+    "name": "getMaxGrowth",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+      "name": "EmbeddedRungeKuttaFieldIntegrator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "maximal growth factor.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "setMaxGrowth(T maxGrowth)",
+    "name": "setMaxGrowth",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+      "name": "EmbeddedRungeKuttaFieldIntegrator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+          "name": "RealFieldElement",
+          "isArray": false
+        },
+        "name": "maxGrowth"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          },
+          "name": "maxGrowth"
+        },
+        "comment": "maximal growth factor.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "estimateError(T[][] yDotK, T[] y0, T[] y1, T h)",
+    "name": "estimateError",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+      "name": "EmbeddedRungeKuttaFieldIntegrator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "T",
+      "name": "T",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[[Lorg.apache.commons.math3.RealFieldElement;",
+          "name": "RealFieldElement[][]",
+          "isArray": true
+        },
+        "name": "yDotK"
+      },
+      {
+        "type": {
+          "qualifiedName": "[Lorg.apache.commons.math3.RealFieldElement;",
+          "name": "RealFieldElement[]",
+          "isArray": true
+        },
+        "name": "y0"
+      },
+      {
+        "type": {
+          "qualifiedName": "[Lorg.apache.commons.math3.RealFieldElement;",
+          "name": "RealFieldElement[]",
+          "isArray": true
+        },
+        "name": "y1"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+          "name": "RealFieldElement",
+          "isArray": false
+        },
+        "name": "h"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[[Lorg.apache.commons.math3.RealFieldElement;",
+            "name": "RealFieldElement[][]",
+            "isArray": true
+          },
+          "name": "yDotK"
+        },
+        "comment": "derivatives computed during the first stages.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[Lorg.apache.commons.math3.RealFieldElement;",
+            "name": "RealFieldElement[]",
+            "isArray": true
+          },
+          "name": "y0"
+        },
+        "comment": "estimate of the step at the start of the step.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[Lorg.apache.commons.math3.RealFieldElement;",
+            "name": "RealFieldElement[]",
+            "isArray": true
+          },
+          "name": "y1"
+        },
+        "comment": "estimate of the step at the end of the step.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.RealFieldElement",
+            "name": "RealFieldElement",
+            "isArray": false
+          },
+          "name": "h"
+        },
+        "comment": "h is current. current step.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "error ratio, greater than 1 if step should be rejected.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  }
+]
