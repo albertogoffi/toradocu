@@ -1,0 +1,326 @@
+[
+  {
+    "signature": "org.apache.commons.math3.genetics.AbstractListChromosome(java.util.List<T> representation)",
+    "name": "org.apache.commons.math3.genetics.AbstractListChromosome",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.AbstractListChromosome",
+      "name": "AbstractListChromosome",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.AbstractListChromosome",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "representation"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "representation"
+        },
+        "comment": "representation is inner. inner representation of the chromosome.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.genetics.InvalidRepresentationException",
+          "name": "InvalidRepresentationException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the representation can not represent a valid chromosome",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "org.apache.commons.math3.genetics.AbstractListChromosome(T[] representation)",
+    "name": "org.apache.commons.math3.genetics.AbstractListChromosome",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.AbstractListChromosome",
+      "name": "AbstractListChromosome",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.AbstractListChromosome",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[Ljava.lang.Object;",
+          "name": "Object[]",
+          "isArray": true
+        },
+        "name": "representation"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[Ljava.lang.Object;",
+            "name": "Object[]",
+            "isArray": true
+          },
+          "name": "representation"
+        },
+        "comment": "representation is inner. inner representation of the chromosome.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.genetics.InvalidRepresentationException",
+          "name": "InvalidRepresentationException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the representation can not represent a valid chromosome",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "org.apache.commons.math3.genetics.AbstractListChromosome(java.util.List<T> representation, boolean copyList)",
+    "name": "org.apache.commons.math3.genetics.AbstractListChromosome",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.AbstractListChromosome",
+      "name": "AbstractListChromosome",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.AbstractListChromosome",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "representation"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "copyList"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "representation"
+        },
+        "comment": "representation is inner. inner representation of the chromosome.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "copyList"
+        },
+        "comment": "if true the representation . copyList is copied otherwise representation . copyList is referenced.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "checkValidity(java.util.List<T> chromosomeRepresentation)",
+    "name": "checkValidity",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.AbstractListChromosome",
+      "name": "AbstractListChromosome",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.AbstractListChromosome",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "chromosomeRepresentation"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "chromosomeRepresentation"
+        },
+        "comment": "representation of the chromosome.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.genetics.InvalidRepresentationException",
+          "name": "InvalidRepresentationException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the representation can not represent a valid chromosome",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "getRepresentation()",
+    "name": "getRepresentation",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.AbstractListChromosome",
+      "name": "AbstractListChromosome",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.AbstractListChromosome",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List<T>",
+      "name": "java.util.List<T>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the representation of the chromosome.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getLength()",
+    "name": "getLength",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.AbstractListChromosome",
+      "name": "AbstractListChromosome",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.AbstractListChromosome",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the length of the chromosome.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "newFixedLengthChromosome(java.util.List<T> chromosomeRepresentation)",
+    "name": "newFixedLengthChromosome",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.AbstractListChromosome",
+      "name": "AbstractListChromosome",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.AbstractListChromosome",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.genetics.AbstractListChromosome<T>",
+      "name": "org.apache.commons.math3.genetics.AbstractListChromosome<T>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "chromosomeRepresentation"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "chromosomeRepresentation"
+        },
+        "comment": "chromosomeRepresentation is inner. inner array representation of the new chromosome.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "new instance extended from FixedLengthChromosome with the given arrayRepresentation.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "toString()",
+    "name": "toString",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.genetics.AbstractListChromosome",
+      "name": "AbstractListChromosome",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.genetics.AbstractListChromosome",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "java.lang.String",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  }
+]

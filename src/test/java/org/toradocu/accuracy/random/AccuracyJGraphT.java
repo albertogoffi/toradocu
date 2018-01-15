@@ -14,21 +14,6 @@ public class AccuracyJGraphT extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void testGraphs() throws Exception {
-    test("org.jgrapht.Graphs", 1, 0.5, 1, 1, 1, 1);
-  }
-
-  @Test
-  public void testKShortestPaths() throws Exception {
-    test("org.jgrapht.alg.KShortestPaths", 1, 1, 1, 1, 1, 1);
-  }
-
-  @Test
-  public void testLinearGraphGenerator() throws Exception {
-    test("org.jgrapht.generate.LinearGraphGenerator", 1, 1, 1, 1, 1, 1);
-  }
-
-  @Test
   public void testCompleteGraphGenerator() throws Exception {
     test("org.jgrapht.generate.CompleteGraphGenerator", 1, 1, 1, 1, 1, 1);
   }
@@ -37,4 +22,19 @@ public class AccuracyJGraphT extends AbstractPrecisionRecallTestSuite {
   public void testGraphDelegator() throws Exception {
     test("org.jgrapht.graph.GraphDelegator", 1, 1, 1, 1, 1, 1);
   }
+
+  //  @Test
+  //  public void testGraphs() throws Exception {
+  //    test("org.jgrapht.Graphs", 1, 0.5, 1, 1, 1, 1);
+  //  }
+  //
+  //  @Test
+  //  public void testKShortestPaths() throws Exception {
+  //    test("org.jgrapht.alg.KShortestPaths", 1, 1, 1, 1, 1, 1);
+  //  }
+  //
+  //  @Test
+  //  public void testLinearGraphGenerator() throws Exception {
+  //    test("org.jgrapht.generate.LinearGraphGenerator", 1, 1, 1, 1, 1, 1);
+  //  }
 }

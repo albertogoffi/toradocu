@@ -1,0 +1,376 @@
+[
+  {
+    "signature": "org.apache.commons.math3.random.HaltonSequenceGenerator(int dimension)",
+    "name": "org.apache.commons.math3.random.HaltonSequenceGenerator",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.HaltonSequenceGenerator",
+      "name": "HaltonSequenceGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.HaltonSequenceGenerator",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "dimension"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "dimension"
+        },
+        "comment": "the space dimension.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException",
+          "name": "OutOfRangeException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the space dimension is outside the allowed range of [1 40].",
+        "kind": "THROWS",
+        "condition": "args[0]<1 || args[0]>40"
+      }
+    ]
+  },
+  {
+    "signature": "org.apache.commons.math3.random.HaltonSequenceGenerator(int dimension, int[] bases, int[] weights)",
+    "name": "org.apache.commons.math3.random.HaltonSequenceGenerator",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.HaltonSequenceGenerator",
+      "name": "HaltonSequenceGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.HaltonSequenceGenerator",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "dimension"
+      },
+      {
+        "type": {
+          "qualifiedName": "[I",
+          "name": "int[]",
+          "isArray": true
+        },
+        "name": "bases"
+      },
+      {
+        "type": {
+          "qualifiedName": "[I",
+          "name": "int[]",
+          "isArray": true
+        },
+        "name": "weights"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "dimension"
+        },
+        "comment": "the space dimension.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[I",
+            "name": "int[]",
+            "isArray": true
+          },
+          "name": "bases"
+        },
+        "comment": "the base number for each dimension entries should be (pairwise) prime . bases is not null.",
+        "kind": "PARAM",
+        "condition": "(args[1]==null) == false"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[I",
+            "name": "int[]",
+            "isArray": true
+          },
+          "name": "weights"
+        },
+        "comment": "the weights used during scrambling null in which case no scrambling . weights is performed.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "base is null.",
+        "kind": "THROWS",
+        "condition": "args[1]==null"
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException",
+          "name": "OutOfRangeException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the space dimension is outside the range [1 len] where len refers to the length of the bases array.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.DimensionMismatchException",
+          "name": "DimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "weights is !=null and the length of the input arrays differ.",
+        "kind": "THROWS",
+        "condition": "args[2]!=null && args[1].length!=args[2].length"
+      }
+    ]
+  },
+  {
+    "signature": "nextVector()",
+    "name": "nextVector",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.HaltonSequenceGenerator",
+      "name": "HaltonSequenceGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.HaltonSequenceGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double[]",
+      "name": "double[]",
+      "isArray": true
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "scramble(int i, int j, int b, int digit)",
+    "name": "scramble",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.HaltonSequenceGenerator",
+      "name": "HaltonSequenceGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.HaltonSequenceGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "i"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "j"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "digit"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "i"
+        },
+        "comment": "the dimension index.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "j"
+        },
+        "comment": "the digit index.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "the base for this dimension.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "digit"
+        },
+        "comment": "digit is j-th. j-th digit.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the scrambled digit.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "skipTo(int index)",
+    "name": "skipTo",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.HaltonSequenceGenerator",
+      "name": "HaltonSequenceGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.HaltonSequenceGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double[]",
+      "name": "double[]",
+      "isArray": true
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "index"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "index"
+        },
+        "comment": "the index in the sequence to skip to.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the i-th point in the Halton sequence.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotPositiveException",
+          "name": "NotPositiveException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "index < 0.",
+        "kind": "THROWS",
+        "condition": "args[0]<0"
+      }
+    ]
+  },
+  {
+    "signature": "getNextIndex()",
+    "name": "getNextIndex",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.random.HaltonSequenceGenerator",
+      "name": "HaltonSequenceGenerator",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.random.HaltonSequenceGenerator",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the index of the next point.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  }
+]

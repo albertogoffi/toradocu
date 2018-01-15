@@ -1,0 +1,546 @@
+[
+  {
+    "signature": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet(double tolerance)",
+    "name": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+      "name": "IntervalsSet",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "tolerance"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "tolerance"
+        },
+        "comment": "tolerance below which points are considered identical.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet(double lower, double upper, double tolerance)",
+    "name": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+      "name": "IntervalsSet",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "lower"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "upper"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "tolerance"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "lower"
+        },
+        "comment": "lower bound of the interval . lower is lesser or equal to upper ( Double.NEGATIVE_INFINITY).",
+        "kind": "PARAM",
+        "condition": "args[0]<=args[1]"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "upper"
+        },
+        "comment": "upper bound of the interval . upper is greater or equal to lower ( Double.POSITIVE_INFINITY).",
+        "kind": "PARAM",
+        "condition": "args[1]>=args[0]"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "tolerance"
+        },
+        "comment": "tolerance below which points are considered identical.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet(org.apache.commons.math3.geometry.partitioning.BSPTree<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D> tree, double tolerance)",
+    "name": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+      "name": "IntervalsSet",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.partitioning.BSPTree",
+          "name": "BSPTree",
+          "isArray": false
+        },
+        "name": "tree"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "tolerance"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.partitioning.BSPTree",
+            "name": "BSPTree",
+            "isArray": false
+          },
+          "name": "tree"
+        },
+        "comment": "tree is inside/outside. inside/outside BSP tree representing the intervals set.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "tolerance"
+        },
+        "comment": "tolerance below which points are considered identical.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet(java.util.Collection<org.apache.commons.math3.geometry.partitioning.SubHyperplane<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>> boundary, double tolerance)",
+    "name": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+      "name": "IntervalsSet",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "boundary"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "tolerance"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "boundary"
+        },
+        "comment": "collection of boundary elements.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "tolerance"
+        },
+        "comment": "tolerance below which points are considered identical.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet()",
+    "name": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+      "name": "IntervalsSet",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet(double lower, double upper)",
+    "name": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+      "name": "IntervalsSet",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "lower"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "upper"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "lower"
+        },
+        "comment": "lower bound of the interval . lower is lesser or equal to upper ( Double.NEGATIVE_INFINITY).",
+        "kind": "PARAM",
+        "condition": "args[0]<=args[1]"
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "upper"
+        },
+        "comment": "upper bound of the interval . upper is greater or equal to lower ( Double.POSITIVE_INFINITY).",
+        "kind": "PARAM",
+        "condition": "args[1]>=args[0]"
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet(org.apache.commons.math3.geometry.partitioning.BSPTree<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D> tree)",
+    "name": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+      "name": "IntervalsSet",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.partitioning.BSPTree",
+          "name": "BSPTree",
+          "isArray": false
+        },
+        "name": "tree"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.partitioning.BSPTree",
+            "name": "BSPTree",
+            "isArray": false
+          },
+          "name": "tree"
+        },
+        "comment": "tree is inside/outside. inside/outside BSP tree representing the intervals set.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet(java.util.Collection<org.apache.commons.math3.geometry.partitioning.SubHyperplane<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>> boundary)",
+    "name": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+      "name": "IntervalsSet",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.Collection",
+          "name": "Collection",
+          "isArray": false
+        },
+        "name": "boundary"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.Collection",
+            "name": "Collection",
+            "isArray": false
+          },
+          "name": "boundary"
+        },
+        "comment": "collection of boundary elements.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "buildNew(org.apache.commons.math3.geometry.partitioning.BSPTree<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D> tree)",
+    "name": "buildNew",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+      "name": "IntervalsSet",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+      "name": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.partitioning.BSPTree",
+          "name": "BSPTree",
+          "isArray": false
+        },
+        "name": "tree"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "computeGeometricalProperties()",
+    "name": "computeGeometricalProperties",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+      "name": "IntervalsSet",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getInf()",
+    "name": "getInf",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+      "name": "IntervalsSet",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "lowest value belonging to the instance (Double.NEGATIVE_INFINITY if the instance doesn't have any low bound, Double.POSITIVE_INFINITY if the instance is empty).",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getSup()",
+    "name": "getSup",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+      "name": "IntervalsSet",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "highest value belonging to the instance (Double.POSITIVE_INFINITY if the instance doesn't have any high bound, Double.NEGATIVE_INFINITY if the instance is empty).",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "projectToBoundary(org.apache.commons.math3.geometry.Point<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D> point)",
+    "name": "projectToBoundary",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+      "name": "IntervalsSet",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.BoundaryProjection<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>",
+      "name": "org.apache.commons.math3.geometry.partitioning.BoundaryProjection<org.apache.commons.math3.geometry.euclidean.oned.Euclidean1D>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.Point",
+          "name": "Point",
+          "isArray": false
+        },
+        "name": "point"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "asList()",
+    "name": "asList",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+      "name": "IntervalsSet",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.List<org.apache.commons.math3.geometry.euclidean.oned.Interval>",
+      "name": "java.util.List<org.apache.commons.math3.geometry.euclidean.oned.Interval>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "a new ordered list containing Interval Interval elements.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "iterator()",
+    "name": "iterator",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+      "name": "IntervalsSet",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.util.Iterator<double[]>",
+      "name": "java.util.Iterator<double[]>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  }
+]

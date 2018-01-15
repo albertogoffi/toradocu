@@ -1,0 +1,365 @@
+[
+  {
+    "signature": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile(double p)",
+    "name": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+      "name": "PSquarePercentile",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "p"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "p"
+        },
+        "comment": "the percentile.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.OutOfRangeException",
+          "name": "OutOfRangeException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "p is not greater than 0 and less than or equal to 100.",
+        "kind": "THROWS",
+        "condition": "(args[0]>0) == false || (args[0]<=100)==false"
+      }
+    ]
+  },
+  {
+    "signature": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile()",
+    "name": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+      "name": "PSquarePercentile",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "hashCode()",
+    "name": "hashCode",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+      "name": "PSquarePercentile",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "equals(java.lang.Object o)",
+    "name": "equals",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+      "name": "PSquarePercentile",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.lang.Object",
+          "name": "Object",
+          "isArray": false
+        },
+        "name": "o"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.lang.Object",
+            "name": "Object",
+            "isArray": false
+          },
+          "name": "o"
+        },
+        "comment": "object to compare.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if o is a PSquarePercentile with equivalent internal state.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "increment(double observation)",
+    "name": "increment",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+      "name": "PSquarePercentile",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "observation"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "observation"
+        },
+        "comment": "the observation currently being added.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "toString()",
+    "name": "toString",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+      "name": "PSquarePercentile",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "java.lang.String",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "string representation of state data.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getN()",
+    "name": "getN",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+      "name": "PSquarePercentile",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "long",
+      "name": "long",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "copy()",
+    "name": "copy",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+      "name": "PSquarePercentile",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+      "name": "org.apache.commons.math3.stat.descriptive.StorelessUnivariateStatistic",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "quantile()",
+    "name": "quantile",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+      "name": "PSquarePercentile",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "quantile estimated by getResult().",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "clear()",
+    "name": "clear",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+      "name": "PSquarePercentile",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getResult()",
+    "name": "getResult",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+      "name": "PSquarePercentile",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "newMarkers(java.util.List<java.lang.Double> initialFive, double p)",
+    "name": "newMarkers",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+      "name": "PSquarePercentile",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile$PSquareMarkers",
+      "name": "org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile$PSquareMarkers",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.util.List",
+          "name": "List",
+          "isArray": false
+        },
+        "name": "initialFive"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "p"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.util.List",
+            "name": "List",
+            "isArray": false
+          },
+          "name": "initialFive"
+        },
+        "comment": "list of initial five elements.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "p"
+        },
+        "comment": "the quantile desired.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "an instance of PSquareMarkers.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  }
+]

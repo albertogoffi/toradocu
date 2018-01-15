@@ -40,4 +40,14 @@ public class AccuracyCommonsCollections4 extends AbstractPrecisionRecallTestSuit
   public void testCollectionBag() throws Exception {
     test("org.apache.commons.collections4.bag.CollectionBag", 1, 1, 1, 1, 1, 1);
   }
+
+  @Test
+  public void testKeyAnalyzer() throws Exception {
+    test("org.apache.commons.collections4.trie.KeyAnalyzer", 1, 1, 1, 1, 0, 1);
+  }
+
+  @Test
+  public void testHashedMap() throws Exception {
+    test("org.apache.commons.collections4.map.HashedMap", 1, 1, 1, 1, 1, 1);
+  }
 }

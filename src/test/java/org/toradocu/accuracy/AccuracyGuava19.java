@@ -53,10 +53,10 @@ public class AccuracyGuava19 extends AbstractPrecisionRecallTestSuite {
     test("com.google.common.hash.BloomFilter", 0, 0, 1, 1, 1, 1);
   }
 
-  @Test
-  public void testHashing() throws Exception {
-    test("com.google.common.hash.Hashing", 1, 1, 1, 0, 1, 1);
-  }
+  //  @Test
+  //  public void testHashing() throws Exception {
+  //    test("com.google.common.hash.Hashing", 1, 1, 1, 0, 1, 1);
+  //  }
 
   @Test
   public void testConcurrentHashMultiset() throws Exception {

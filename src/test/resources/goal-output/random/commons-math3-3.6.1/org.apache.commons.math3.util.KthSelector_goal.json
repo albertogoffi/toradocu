@@ -1,0 +1,178 @@
+[
+  {
+    "signature": "org.apache.commons.math3.util.KthSelector()",
+    "name": "org.apache.commons.math3.util.KthSelector",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.KthSelector",
+      "name": "KthSelector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.KthSelector",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "org.apache.commons.math3.util.KthSelector(org.apache.commons.math3.util.PivotingStrategyInterface pivotingStrategy)",
+    "name": "org.apache.commons.math3.util.KthSelector",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.KthSelector",
+      "name": "KthSelector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.KthSelector",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.util.PivotingStrategyInterface",
+          "name": "PivotingStrategyInterface",
+          "isArray": false
+        },
+        "name": "pivotingStrategy"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.util.PivotingStrategyInterface",
+            "name": "PivotingStrategyInterface",
+            "isArray": false
+          },
+          "name": "pivotingStrategy"
+        },
+        "comment": "pivoting strategy to use.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "when pivotingStrategy is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null"
+      }
+    ]
+  },
+  {
+    "signature": "getPivotingStrategy()",
+    "name": "getPivotingStrategy",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.KthSelector",
+      "name": "KthSelector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.KthSelector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.util.PivotingStrategyInterface",
+      "name": "org.apache.commons.math3.util.PivotingStrategyInterface",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "pivoting strategy.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "select(double[] work, int[] pivotsHeap, int k)",
+    "name": "select",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.util.KthSelector",
+      "name": "KthSelector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.util.KthSelector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[D",
+          "name": "double[]",
+          "isArray": true
+        },
+        "name": "work"
+      },
+      {
+        "type": {
+          "qualifiedName": "[I",
+          "name": "int[]",
+          "isArray": true
+        },
+        "name": "pivotsHeap"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "k"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[D",
+            "name": "double[]",
+            "isArray": true
+          },
+          "name": "work"
+        },
+        "comment": "work array to use to find out the Kth value.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[I",
+            "name": "int[]",
+            "isArray": true
+          },
+          "name": "pivotsHeap"
+        },
+        "comment": "cached pivots heap that used for efficient estimation.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "k"
+        },
+        "comment": "the index whose value in the array is of interest.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "Kth value.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  }
+]

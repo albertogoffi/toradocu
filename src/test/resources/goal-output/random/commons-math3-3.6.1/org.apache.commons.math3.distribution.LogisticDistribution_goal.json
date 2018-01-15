@@ -1,0 +1,428 @@
+[
+  {
+    "signature": "org.apache.commons.math3.distribution.LogisticDistribution(double mu, double s)",
+    "name": "org.apache.commons.math3.distribution.LogisticDistribution",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.distribution.LogisticDistribution",
+      "name": "LogisticDistribution",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.distribution.LogisticDistribution",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "mu"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "s"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "mu"
+        },
+        "comment": "location parameter.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "s"
+        },
+        "comment": "scale parameter (. s is positive).",
+        "kind": "PARAM",
+        "condition": "args[1]>0"
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "beta <= 0.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "org.apache.commons.math3.distribution.LogisticDistribution(org.apache.commons.math3.random.RandomGenerator rng, double mu, double s)",
+    "name": "org.apache.commons.math3.distribution.LogisticDistribution",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.distribution.LogisticDistribution",
+      "name": "LogisticDistribution",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.distribution.LogisticDistribution",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.random.RandomGenerator",
+          "name": "RandomGenerator",
+          "isArray": false
+        },
+        "name": "rng"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "mu"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "s"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.random.RandomGenerator",
+            "name": "RandomGenerator",
+            "isArray": false
+          },
+          "name": "rng"
+        },
+        "comment": "Random number generator.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "mu"
+        },
+        "comment": "location parameter.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "s"
+        },
+        "comment": "scale parameter (. s is positive).",
+        "kind": "PARAM",
+        "condition": "args[2]>0"
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NotStrictlyPositiveException",
+          "name": "NotStrictlyPositiveException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "beta <= 0.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "getLocation()",
+    "name": "getLocation",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.distribution.LogisticDistribution",
+      "name": "LogisticDistribution",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.distribution.LogisticDistribution",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the location parameter.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getScale()",
+    "name": "getScale",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.distribution.LogisticDistribution",
+      "name": "LogisticDistribution",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.distribution.LogisticDistribution",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the scale parameter.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "density(double x)",
+    "name": "density",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.distribution.LogisticDistribution",
+      "name": "LogisticDistribution",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.distribution.LogisticDistribution",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "x"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "cumulativeProbability(double x)",
+    "name": "cumulativeProbability",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.distribution.LogisticDistribution",
+      "name": "LogisticDistribution",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.distribution.LogisticDistribution",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "x"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "inverseCumulativeProbability(double p)",
+    "name": "inverseCumulativeProbability",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.distribution.LogisticDistribution",
+      "name": "LogisticDistribution",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.distribution.LogisticDistribution",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "p"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getNumericalMean()",
+    "name": "getNumericalMean",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.distribution.LogisticDistribution",
+      "name": "LogisticDistribution",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.distribution.LogisticDistribution",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getNumericalVariance()",
+    "name": "getNumericalVariance",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.distribution.LogisticDistribution",
+      "name": "LogisticDistribution",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.distribution.LogisticDistribution",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getSupportLowerBound()",
+    "name": "getSupportLowerBound",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.distribution.LogisticDistribution",
+      "name": "LogisticDistribution",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.distribution.LogisticDistribution",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "getSupportUpperBound()",
+    "name": "getSupportUpperBound",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.distribution.LogisticDistribution",
+      "name": "LogisticDistribution",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.distribution.LogisticDistribution",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "isSupportLowerBoundInclusive()",
+    "name": "isSupportLowerBoundInclusive",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.distribution.LogisticDistribution",
+      "name": "LogisticDistribution",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.distribution.LogisticDistribution",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "isSupportUpperBoundInclusive()",
+    "name": "isSupportUpperBoundInclusive",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.distribution.LogisticDistribution",
+      "name": "LogisticDistribution",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.distribution.LogisticDistribution",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "isSupportConnected()",
+    "name": "isSupportConnected",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.distribution.LogisticDistribution",
+      "name": "LogisticDistribution",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.distribution.LogisticDistribution",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  }
+]

@@ -1,0 +1,765 @@
+[
+  {
+    "signature": "getZero()",
+    "name": "getZero",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.Vector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector<S>",
+      "name": "org.apache.commons.math3.geometry.Vector<S>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "null vector of the vectorial space or origin point of the affine space.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getNorm1()",
+    "name": "getNorm1",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.Vector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "L1 norm for the vector.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getNorm()",
+    "name": "getNorm",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.Vector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "Euclidean norm for the vector.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getNormSq()",
+    "name": "getNormSq",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.Vector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "square of the Euclidean norm for the vector.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getNormInf()",
+    "name": "getNormInf",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.Vector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "L&infin; norm for the vector.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "add(org.apache.commons.math3.geometry.Vector<S> v)",
+    "name": "add",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.Vector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector<S>",
+      "name": "org.apache.commons.math3.geometry.Vector<S>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+          "name": "Vector",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+            "name": "Vector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "vector to add.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new vector.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "add(double factor, org.apache.commons.math3.geometry.Vector<S> v)",
+    "name": "add",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.Vector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector<S>",
+      "name": "org.apache.commons.math3.geometry.Vector<S>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "factor"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+          "name": "Vector",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "factor"
+        },
+        "comment": "scale factor to apply to v before adding it.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+            "name": "Vector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "vector to add.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new vector.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "subtract(org.apache.commons.math3.geometry.Vector<S> v)",
+    "name": "subtract",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.Vector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector<S>",
+      "name": "org.apache.commons.math3.geometry.Vector<S>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+          "name": "Vector",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+            "name": "Vector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "vector to subtract.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new vector.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "subtract(double factor, org.apache.commons.math3.geometry.Vector<S> v)",
+    "name": "subtract",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.Vector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector<S>",
+      "name": "org.apache.commons.math3.geometry.Vector<S>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "factor"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+          "name": "Vector",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "factor"
+        },
+        "comment": "scale factor to apply to v before subtracting it.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+            "name": "Vector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "vector to subtract.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new vector.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "negate()",
+    "name": "negate",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.Vector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector<S>",
+      "name": "org.apache.commons.math3.geometry.Vector<S>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "a new vector which is opposite to the instance.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "normalize()",
+    "name": "normalize",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.Vector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector<S>",
+      "name": "org.apache.commons.math3.geometry.Vector<S>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "a new normalized vector.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.MathArithmeticException",
+          "name": "MathArithmeticException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the norm is zero.",
+        "kind": "THROWS",
+        "condition": "target.getNorm()==0"
+      }
+    ]
+  },
+  {
+    "signature": "scalarMultiply(double a)",
+    "name": "scalarMultiply",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.Vector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector<S>",
+      "name": "org.apache.commons.math3.geometry.Vector<S>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "a"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "scalar.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a new vector.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "isInfinite()",
+    "name": "isInfinite",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.Vector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "true if any coordinate of this vector is infinite and none are NaN; false otherwise.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "distance1(org.apache.commons.math3.geometry.Vector<S> v)",
+    "name": "distance1",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.Vector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+          "name": "Vector",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+            "name": "Vector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "v is second. second vector.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the distance between the instance and p according to the L1 norm.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "distance(org.apache.commons.math3.geometry.Vector<S> v)",
+    "name": "distance",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.Vector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+          "name": "Vector",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+            "name": "Vector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "v is second. second vector.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the distance between the instance and p according to the L2 norm.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "distanceInf(org.apache.commons.math3.geometry.Vector<S> v)",
+    "name": "distanceInf",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.Vector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+          "name": "Vector",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+            "name": "Vector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "v is second. second vector.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the distance between the instance and p according to the L&infin; norm.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "distanceSq(org.apache.commons.math3.geometry.Vector<S> v)",
+    "name": "distanceSq",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.Vector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+          "name": "Vector",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+            "name": "Vector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "v is second. second vector.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the square of the distance between the instance and p.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "dotProduct(org.apache.commons.math3.geometry.Vector<S> v)",
+    "name": "dotProduct",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.Vector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+          "name": "Vector",
+          "isArray": false
+        },
+        "name": "v"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+            "name": "Vector",
+            "isArray": false
+          },
+          "name": "v"
+        },
+        "comment": "v is second. second vector.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the dot product this.v.",
+      "kind": "RETURN",
+      "condition": "true ? result==target"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "toString(java.text.NumberFormat format)",
+    "name": "toString",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Vector",
+      "name": "Vector",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.Vector",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "java.lang.String",
+      "name": "java.lang.String",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "java.text.NumberFormat",
+          "name": "NumberFormat",
+          "isArray": false
+        },
+        "name": "format"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "java.text.NumberFormat",
+            "name": "NumberFormat",
+            "isArray": false
+          },
+          "name": "format"
+        },
+        "comment": "the custom format for components.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a string representation of this vector.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  }
+]

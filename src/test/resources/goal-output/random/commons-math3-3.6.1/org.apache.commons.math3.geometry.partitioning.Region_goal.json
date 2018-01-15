@@ -1,0 +1,569 @@
+[
+  {
+    "signature": "buildNew(org.apache.commons.math3.geometry.partitioning.BSPTree<S> newTree)",
+    "name": "buildNew",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Region",
+      "name": "Region",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.partitioning.Region",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Region<S>",
+      "name": "org.apache.commons.math3.geometry.partitioning.Region<S>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.partitioning.BSPTree",
+          "name": "BSPTree",
+          "isArray": false
+        },
+        "name": "newTree"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.partitioning.BSPTree",
+            "name": "BSPTree",
+            "isArray": false
+          },
+          "name": "newTree"
+        },
+        "comment": "newTree is inside/outside. inside/outside BSP tree representing the new region.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "the built region.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "copySelf()",
+    "name": "copySelf",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Region",
+      "name": "Region",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.partitioning.Region",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Region<S>",
+      "name": "org.apache.commons.math3.geometry.partitioning.Region<S>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "a new region, copy of the instance.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "isEmpty()",
+    "name": "isEmpty",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Region",
+      "name": "Region",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.partitioning.Region",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "true if the instance is empty.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "isEmpty(org.apache.commons.math3.geometry.partitioning.BSPTree<S> node)",
+    "name": "isEmpty",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Region",
+      "name": "Region",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.partitioning.Region",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.partitioning.BSPTree",
+          "name": "BSPTree",
+          "isArray": false
+        },
+        "name": "node"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.partitioning.BSPTree",
+            "name": "BSPTree",
+            "isArray": false
+          },
+          "name": "node"
+        },
+        "comment": "root node of the sub-tree (must have Region Region tree semantics. node is i.e. the leaf nodes must have Boolean attributes representing an inside/outside property).",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if the sub-tree starting at the given node is empty.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "isFull()",
+    "name": "isFull",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Region",
+      "name": "Region",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.partitioning.Region",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "true if the instance covers the full space.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "isFull(org.apache.commons.math3.geometry.partitioning.BSPTree<S> node)",
+    "name": "isFull",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Region",
+      "name": "Region",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.partitioning.Region",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.partitioning.BSPTree",
+          "name": "BSPTree",
+          "isArray": false
+        },
+        "name": "node"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.partitioning.BSPTree",
+            "name": "BSPTree",
+            "isArray": false
+          },
+          "name": "node"
+        },
+        "comment": "root node of the sub-tree (must have Region Region tree semantics. node is i.e. the leaf nodes must have Boolean attributes representing an inside/outside property).",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if the sub-tree starting at the given node covers the full space.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "contains(org.apache.commons.math3.geometry.partitioning.Region<S> region)",
+    "name": "contains",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Region",
+      "name": "Region",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.partitioning.Region",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Region",
+          "name": "Region",
+          "isArray": false
+        },
+        "name": "region"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Region",
+            "name": "Region",
+            "isArray": false
+          },
+          "name": "region"
+        },
+        "comment": "region to check against the instance.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if the instance contains the specified tree.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "checkPoint(org.apache.commons.math3.geometry.Point<S> point)",
+    "name": "checkPoint",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Region",
+      "name": "Region",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.partitioning.Region",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Region$Location",
+      "name": "org.apache.commons.math3.geometry.partitioning.Region$Location",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.Point",
+          "name": "Point",
+          "isArray": false
+        },
+        "name": "point"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.Point",
+            "name": "Point",
+            "isArray": false
+          },
+          "name": "point"
+        },
+        "comment": "point to check.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a code representing the point status: either Location#INSIDE, Location#OUTSIDE or Location#BOUNDARY.",
+      "kind": "RETURN",
+      "condition": "result.equals(Location.INSIDE) || result.equals(Location.OUTSIDE) || result.equals(Location.BOUNDARY)"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "projectToBoundary(org.apache.commons.math3.geometry.Point<S> point)",
+    "name": "projectToBoundary",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Region",
+      "name": "Region",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.partitioning.Region",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.BoundaryProjection<S>",
+      "name": "org.apache.commons.math3.geometry.partitioning.BoundaryProjection<S>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.Point",
+          "name": "Point",
+          "isArray": false
+        },
+        "name": "point"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.Point",
+            "name": "Point",
+            "isArray": false
+          },
+          "name": "point"
+        },
+        "comment": "point to check.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "projection of the point on the boundary.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getTree(boolean includeBoundaryAttributes)",
+    "name": "getTree",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Region",
+      "name": "Region",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.partitioning.Region",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.BSPTree<S>",
+      "name": "org.apache.commons.math3.geometry.partitioning.BSPTree<S>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "includeBoundaryAttributes"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "includeBoundaryAttributes"
+        },
+        "comment": "if true the boundary attributes at internal nodes are guaranteed to be included (they included even if the argument is false. includeBoundaryAttributes is if they have already been computed due to a previous call).",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "underlying BSP tree.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getBoundarySize()",
+    "name": "getBoundarySize",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Region",
+      "name": "Region",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.partitioning.Region",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the size of the boundary (this is 0 in 1D, a length in 2D, an area in 3D ...).",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getSize()",
+    "name": "getSize",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Region",
+      "name": "Region",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.partitioning.Region",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "the size of the instance (this is a length in 1D, an area in 2D, a volume in 3D ...).",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "getBarycenter()",
+    "name": "getBarycenter",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Region",
+      "name": "Region",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.partitioning.Region",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.Point<S>",
+      "name": "org.apache.commons.math3.geometry.Point<S>",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "an object representing the barycenter.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "side(org.apache.commons.math3.geometry.partitioning.Hyperplane<S> hyperplane)",
+    "name": "side",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Region",
+      "name": "Region",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.partitioning.Region",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Side",
+      "name": "org.apache.commons.math3.geometry.partitioning.Side",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Hyperplane",
+          "name": "Hyperplane",
+          "isArray": false
+        },
+        "name": "hyperplane"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Hyperplane",
+            "name": "Hyperplane",
+            "isArray": false
+          },
+          "name": "hyperplane"
+        },
+        "comment": "reference hyperplane.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "one of Side#PLUS Side.PLUS, Side#MINUS Side.MINUS, Side#BOTH Side.BOTH or Side#HYPER Side.HYPER (the latter result can occur only if the tree contains only one cut hyperplane).",
+      "kind": "RETURN",
+      "condition": "result.equals(Side.PLUS) || result.equals(Side.MINUS) || result.equals(Side.BOTH) || result.equals(Side.HYPER)"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "intersection(org.apache.commons.math3.geometry.partitioning.SubHyperplane<S> sub)",
+    "name": "intersection",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.Region",
+      "name": "Region",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.geometry.partitioning.Region",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.geometry.partitioning.SubHyperplane<S>",
+      "name": "org.apache.commons.math3.geometry.partitioning.SubHyperplane<S>",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.geometry.partitioning.SubHyperplane",
+          "name": "SubHyperplane",
+          "isArray": false
+        },
+        "name": "sub"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.geometry.partitioning.SubHyperplane",
+            "name": "SubHyperplane",
+            "isArray": false
+          },
+          "name": "sub"
+        },
+        "comment": "sub-hyperplane traversing the region.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "filtered sub-hyperplane.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  }
+]

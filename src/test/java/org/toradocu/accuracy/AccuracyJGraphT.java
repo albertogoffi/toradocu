@@ -55,11 +55,6 @@ public class AccuracyJGraphT extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void testDirectedAcyclicGraph() throws Exception {
-    test("org.jgrapht.experimental.dag.DirectedAcyclicGraph", 1, 1, 1, 1, 1, 1);
-  }
-
-  @Test
   public void testPatonCycleBase() throws Exception {
     test("org.jgrapht.alg.cycle.PatonCycleBase", 1, 1, 1, 1, 1, 1);
   }

@@ -1,0 +1,1299 @@
+[
+  {
+    "signature": "org.apache.commons.math3.linear.SymmLQ(int maxIterations, double delta, boolean check)",
+    "name": "org.apache.commons.math3.linear.SymmLQ",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.SymmLQ",
+      "name": "SymmLQ",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.SymmLQ",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxIterations"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "delta"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "check"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maxIterations"
+        },
+        "comment": "maxIterations is maximum. maximum number of iterations.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "delta"
+        },
+        "comment": "the &delta parameter for the default stopping criterion.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "check"
+        },
+        "comment": "@code true} if self-adjointedness of both matrix and preconditioner should be checked.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "org.apache.commons.math3.linear.SymmLQ(org.apache.commons.math3.util.IterationManager manager, double delta, boolean check)",
+    "name": "org.apache.commons.math3.linear.SymmLQ",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.SymmLQ",
+      "name": "SymmLQ",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.SymmLQ",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.util.IterationManager",
+          "name": "IterationManager",
+          "isArray": false
+        },
+        "name": "manager"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "delta"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "check"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.util.IterationManager",
+            "name": "IterationManager",
+            "isArray": false
+          },
+          "name": "manager"
+        },
+        "comment": "the custom iteration manager.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "delta"
+        },
+        "comment": "the &delta parameter for the default stopping criterion.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "check"
+        },
+        "comment": "@code true} if self-adjointedness of both matrix and preconditioner should be checked.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": []
+  },
+  {
+    "signature": "getCheck()",
+    "name": "getCheck",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.SymmLQ",
+      "name": "SymmLQ",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.SymmLQ",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "true if the tests are to be performed.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "solve(org.apache.commons.math3.linear.RealLinearOperator a, org.apache.commons.math3.linear.RealLinearOperator m, org.apache.commons.math3.linear.RealVector b)",
+    "name": "solve",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.SymmLQ",
+      "name": "SymmLQ",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.SymmLQ",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "org.apache.commons.math3.linear.RealVector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "m"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.NonSelfAdjointOperatorException",
+          "name": "NonSelfAdjointOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "getCheck() is true and a or m is not self-adjoint.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.NonPositiveDefiniteOperatorException",
+          "name": "NonPositiveDefiniteOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "m is not positive definite.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.IllConditionedOperatorException",
+          "name": "IllConditionedOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "a is ill-conditioned.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "solve(org.apache.commons.math3.linear.RealLinearOperator a, org.apache.commons.math3.linear.RealLinearOperator m, org.apache.commons.math3.linear.RealVector b, boolean goodb, double shift)",
+    "name": "solve",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.SymmLQ",
+      "name": "SymmLQ",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.SymmLQ",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "org.apache.commons.math3.linear.RealVector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "m"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "goodb"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "shift"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+            "name": "RealLinearOperator",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "a is linear. linear operator A of the system.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+            "name": "RealLinearOperator",
+            "isArray": false
+          },
+          "name": "m"
+        },
+        "comment": "the preconditioner. m is M ( null).",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "b is right-hand. right-hand side vector.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "goodb"
+        },
+        "comment": "usually false. goodb is except if x is expected to contain a large multiple of b.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "shift"
+        },
+        "comment": "the amount to be subtracted to all diagonal elements of A.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a reference to x (shallow copy).",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "one of the parameters is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null || args[1]==null || args[2]==null"
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.NonSquareOperatorException",
+          "name": "NonSquareOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "a or m is not square.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.MatrixDimensionMismatchException",
+          "name": "MatrixDimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "m or b have dimensions inconsistent with a.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.MaxCountExceededException",
+          "name": "MaxCountExceededException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "at exhaustion of the iteration count unless a custom org.apache.commons.math3.util.Incrementor.MaxCountExceededCallback callback has been set at construction of the IterationManager.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.NonSelfAdjointOperatorException",
+          "name": "NonSelfAdjointOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "getCheck() is true and a or m is not self-adjoint.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.NonPositiveDefiniteOperatorException",
+          "name": "NonPositiveDefiniteOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "m is not positive definite.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.IllConditionedOperatorException",
+          "name": "IllConditionedOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "a is ill-conditioned.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "solve(org.apache.commons.math3.linear.RealLinearOperator a, org.apache.commons.math3.linear.RealLinearOperator m, org.apache.commons.math3.linear.RealVector b, org.apache.commons.math3.linear.RealVector x)",
+    "name": "solve",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.SymmLQ",
+      "name": "SymmLQ",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.SymmLQ",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "org.apache.commons.math3.linear.RealVector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "m"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "x"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "x"
+        },
+        "comment": "not meaningful in this implementation; . x is not considered as an initial guess (more).",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.NonSelfAdjointOperatorException",
+          "name": "NonSelfAdjointOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "getCheck() is true and a or m is not self-adjoint.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.NonPositiveDefiniteOperatorException",
+          "name": "NonPositiveDefiniteOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "m is not positive definite.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.IllConditionedOperatorException",
+          "name": "IllConditionedOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "a is ill-conditioned.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "solve(org.apache.commons.math3.linear.RealLinearOperator a, org.apache.commons.math3.linear.RealVector b)",
+    "name": "solve",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.SymmLQ",
+      "name": "SymmLQ",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.SymmLQ",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "org.apache.commons.math3.linear.RealVector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "b"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.NonSelfAdjointOperatorException",
+          "name": "NonSelfAdjointOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "getCheck() is true and a is not self-adjoint.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.IllConditionedOperatorException",
+          "name": "IllConditionedOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "a is ill-conditioned.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "solve(org.apache.commons.math3.linear.RealLinearOperator a, org.apache.commons.math3.linear.RealVector b, boolean goodb, double shift)",
+    "name": "solve",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.SymmLQ",
+      "name": "SymmLQ",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.SymmLQ",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "org.apache.commons.math3.linear.RealVector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "goodb"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "shift"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+            "name": "RealLinearOperator",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "a is linear. linear operator A of the system.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "b is right-hand. right-hand side vector.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "goodb"
+        },
+        "comment": "usually false. goodb is except if x is expected to contain a large multiple of b.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "shift"
+        },
+        "comment": "the amount to be subtracted to all diagonal elements of A.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a reference to x.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "one of the parameters is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null || args[1]==null"
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.NonSquareOperatorException",
+          "name": "NonSquareOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "a is not square.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.MatrixDimensionMismatchException",
+          "name": "MatrixDimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "b has dimensions inconsistent with a.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.MaxCountExceededException",
+          "name": "MaxCountExceededException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "at exhaustion of the iteration count unless a custom org.apache.commons.math3.util.Incrementor.MaxCountExceededCallback callback has been set at construction of the IterationManager.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.NonSelfAdjointOperatorException",
+          "name": "NonSelfAdjointOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "getCheck() is true and a is not self-adjoint.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.IllConditionedOperatorException",
+          "name": "IllConditionedOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "a is ill-conditioned.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "solve(org.apache.commons.math3.linear.RealLinearOperator a, org.apache.commons.math3.linear.RealVector b, org.apache.commons.math3.linear.RealVector x)",
+    "name": "solve",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.SymmLQ",
+      "name": "SymmLQ",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.SymmLQ",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "org.apache.commons.math3.linear.RealVector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "x"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "x"
+        },
+        "comment": "not meaningful in this implementation; . x is not considered as an initial guess (more).",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.NonSelfAdjointOperatorException",
+          "name": "NonSelfAdjointOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "getCheck() is true and a is not self-adjoint.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.IllConditionedOperatorException",
+          "name": "IllConditionedOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "a is ill-conditioned.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "solveInPlace(org.apache.commons.math3.linear.RealLinearOperator a, org.apache.commons.math3.linear.RealLinearOperator m, org.apache.commons.math3.linear.RealVector b, org.apache.commons.math3.linear.RealVector x)",
+    "name": "solveInPlace",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.SymmLQ",
+      "name": "SymmLQ",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.SymmLQ",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "org.apache.commons.math3.linear.RealVector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "m"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "x"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "x"
+        },
+        "comment": "the vector to be updated with the solution; x . x is not considered as an initial guess (more).",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.NonSelfAdjointOperatorException",
+          "name": "NonSelfAdjointOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "getCheck() is true and a or m is not self-adjoint.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.NonPositiveDefiniteOperatorException",
+          "name": "NonPositiveDefiniteOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "m is not positive definite.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.IllConditionedOperatorException",
+          "name": "IllConditionedOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "a is ill-conditioned.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "solveInPlace(org.apache.commons.math3.linear.RealLinearOperator a, org.apache.commons.math3.linear.RealLinearOperator m, org.apache.commons.math3.linear.RealVector b, org.apache.commons.math3.linear.RealVector x, boolean goodb, double shift)",
+    "name": "solveInPlace",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.SymmLQ",
+      "name": "SymmLQ",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.SymmLQ",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "org.apache.commons.math3.linear.RealVector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "m"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "x"
+      },
+      {
+        "type": {
+          "qualifiedName": "boolean",
+          "name": "boolean",
+          "isArray": false
+        },
+        "name": "goodb"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "shift"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+            "name": "RealLinearOperator",
+            "isArray": false
+          },
+          "name": "a"
+        },
+        "comment": "a is linear. linear operator A of the system.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+            "name": "RealLinearOperator",
+            "isArray": false
+          },
+          "name": "m"
+        },
+        "comment": "the preconditioner. m is M ( null).",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "b"
+        },
+        "comment": "b is right-hand. right-hand side vector.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "x"
+        },
+        "comment": "the vector to be updated with the solution; x . x is not considered as an initial guess (more).",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "boolean",
+            "name": "boolean",
+            "isArray": false
+          },
+          "name": "goodb"
+        },
+        "comment": "usually false. goodb is except if x is expected to contain a large multiple of b.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "shift"
+        },
+        "comment": "the amount to be subtracted to all diagonal elements of A.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "a reference to x (shallow copy).",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NullArgumentException",
+          "name": "NullArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "one of the parameters is null.",
+        "kind": "THROWS",
+        "condition": "args[0]==null || args[1]==null || args[2]==null || args[3]==null"
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.NonSquareOperatorException",
+          "name": "NonSquareOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "a or m is not square.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.MatrixDimensionMismatchException",
+          "name": "MatrixDimensionMismatchException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "m b or x have dimensions inconsistent with a.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.MaxCountExceededException",
+          "name": "MaxCountExceededException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "at exhaustion of the iteration count unless a custom org.apache.commons.math3.util.Incrementor.MaxCountExceededCallback callback has been set at construction of the IterationManager.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.NonSelfAdjointOperatorException",
+          "name": "NonSelfAdjointOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "getCheck() is true and a or m is not self-adjoint.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.NonPositiveDefiniteOperatorException",
+          "name": "NonPositiveDefiniteOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "m is not positive definite.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.IllConditionedOperatorException",
+          "name": "IllConditionedOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "a is ill-conditioned.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  },
+  {
+    "signature": "solveInPlace(org.apache.commons.math3.linear.RealLinearOperator a, org.apache.commons.math3.linear.RealVector b, org.apache.commons.math3.linear.RealVector x)",
+    "name": "solveInPlace",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.linear.SymmLQ",
+      "name": "SymmLQ",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.linear.SymmLQ",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+      "name": "org.apache.commons.math3.linear.RealVector",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealLinearOperator",
+          "name": "RealLinearOperator",
+          "isArray": false
+        },
+        "name": "a"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "b"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+          "name": "RealVector",
+          "isArray": false
+        },
+        "name": "x"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "org.apache.commons.math3.linear.RealVector",
+            "name": "RealVector",
+            "isArray": false
+          },
+          "name": "x"
+        },
+        "comment": "the vector to be updated with the solution; x . x is not considered as an initial guess (more).",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.NonSelfAdjointOperatorException",
+          "name": "NonSelfAdjointOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "getCheck() is true and a is not self-adjoint.",
+        "kind": "THROWS",
+        "condition": ""
+      },
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.linear.IllConditionedOperatorException",
+          "name": "IllConditionedOperatorException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "a is ill-conditioned.",
+        "kind": "THROWS",
+        "condition": ""
+      }
+    ]
+  }
+]
