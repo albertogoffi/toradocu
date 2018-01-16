@@ -705,7 +705,7 @@
         ],
         "comment": "if the probability of success is not in the range [0, 1].",
         "kind": "THROWS",
-        "condition": "args[1]>=0 && args[1]<=1"
+        "condition": "args[1]<0||args[1]>1"
       }
     ]
   },
