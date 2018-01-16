@@ -17,12 +17,14 @@ public class PreprocessorFactory {
     switch (tagKind) {
       case PARAM:
         phases.add(new ImplicitParamSubjectPatterns());
+        phases.add(new ExpandRange());
         phases.add(new RemoveCommas()); // TODO Make RemoveCommas a singleton?
         phases.add(new RemoveMayBe());
         phases.add(new NormalizeNonNullNonEmpty());
         phases.add(new NormalizeIt());
         break;
       case THROWS:
+        phases.add(new ExpandRange());
         phases.add(new RemoveCommas());
         phases.add(new NormalizeIfs());
         phases.add(new RemoveInitialIf());
@@ -30,6 +32,7 @@ public class PreprocessorFactory {
         phases.add(new NormalizeIt());
         break;
       case RETURN:
+        phases.add(new ExpandRange());
         phases.add(new NormalizeIfs());
         phases.add(new NormalizeNonNullNonEmpty());
         phases.add(new NormalizeIt());
