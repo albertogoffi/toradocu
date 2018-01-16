@@ -139,6 +139,7 @@ public class Parser {
         comment
             .getText()
             .replace("greater than or equal to", ">=")
+            .replace("greater or equal to", ">=")
             .replace("≥", ">=")
             .replace("less than or equal to", "<=")
             .replace("lesser than or equal to", "<=")
