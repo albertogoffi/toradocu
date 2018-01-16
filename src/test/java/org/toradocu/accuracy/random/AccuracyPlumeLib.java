@@ -17,24 +17,4 @@ public class AccuracyPlumeLib extends AbstractPrecisionRecallTestSuite {
   public void testFuzzyFloat() throws Exception {
     test("plume.FuzzyFloat", 1, 1, 1, 1, 1, 0.8);
   }
-
-  //  @Test
-  //  public void testMathMDE() throws Exception {
-  //    test("plume.MathMDE", 1, 1, 1, 0, 0.933, 1);
-  //  }
-  //
-  //  @Test
-  //  public void testEntryReader() throws Exception {
-  //    test("plume.EntryReader", 1, 1, 1, 1, 1, 1);
-  //  }
-  //
-  //  @Test
-  //  public void testWeakHasherMap() throws Exception {
-  //    test("plume.WeakHasherMap", 1, 1, 1, 1, 1, 1);
-  //  }
-  //
-  //  @Test
-  //  public void testArraysMDE() throws Exception {
-  //    test("plume.ArraysMDE", 0.888, 0.842, 0, 1, 0, 0);
-  //  }
 }
