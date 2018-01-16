@@ -152,10 +152,4 @@ public class AccuracyCommonsMath3 extends AbstractPrecisionRecallTestSuite {
   public void tesPreconditionedIterativeLinearSolver() throws Exception {
     test("org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver", 1, 1, 1, 1, 1, 1);
   }
-
-  //  @Test
-  //  public void testSubLine() throws Exception {
-  //    test("org.apache.commons.math3.geometry.euclidean.threed.SubLine", 1, 1, 1, 1, 1, 1);
-  //  }
-
 }

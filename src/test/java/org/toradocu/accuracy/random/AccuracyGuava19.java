@@ -27,14 +27,4 @@ public class AccuracyGuava19 extends AbstractPrecisionRecallTestSuite {
   public void testImmutableSortedMap() throws Exception {
     test("com.google.common.collect.ImmutableSortedMap", 1, 1, 1, 1, 1, 1);
   }
-
-  //  @Test
-  //  public void testAtomicDoubleArray() throws Exception {
-  //    test("com.google.common.util.concurrent.AtomicDoubleArray", 1, 1, 1, 1, 1, 1);
-  //  }
-  //
-  //  @Test
-  //  public void testFloats() throws Exception {
-  //    test("com.google.common.primitives.Floats", 0.75, 0.75, 1, 1, 1, 1);
-  //  }
 }
