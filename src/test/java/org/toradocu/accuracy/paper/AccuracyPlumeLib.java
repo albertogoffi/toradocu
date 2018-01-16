@@ -1,4 +1,4 @@
-package org.toradocu.accuracy.random;
+package org.toradocu.accuracy.paper;
 
 import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
@@ -30,6 +30,41 @@ public class AccuracyPlumeLib extends AbstractPrecisionRecallTestSuite {
   @Test
   public void testWeakHasherMap() throws Exception {
     test("plume.WeakHasherMap", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testRegexUtil() throws Exception {
+    test("plume.RegexUtil", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testFileCompiler() throws Exception {
+    test("plume.FileCompiler", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testWeakIdentityHashMap() throws Exception {
+    test("plume.WeakIdentityHashMap", 1, 1, 1, 1, 0, 0);
+  }
+
+  @Test
+  public void testTimeLimitProcess() throws Exception {
+    test("plume.TimeLimitProcess", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testEntryReaderFlnReader() throws Exception {
+    test("plume.EntryReader$FlnReader", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testStrTok() throws Exception {
+    test("plume.StrTok", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testUtilMDE() throws Exception {
+    test("plume.UtilMDE", 1, 1, 1, 1, 0.25, 0.333);
   }
 
   @Test

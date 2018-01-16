@@ -1,4 +1,4 @@
-package org.toradocu.accuracy.random;
+package org.toradocu.accuracy.paper;
 
 import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
@@ -36,5 +36,15 @@ public class AccuracyGraphStream extends AbstractPrecisionRecallTestSuite {
   @Test
   public void testPath() throws Exception {
     test("org.graphstream.graph.Path", 1, 1, 1, 1, 1, 0);
+  }
+
+  @Test
+  public void testSingleGraph() throws Exception {
+    test("org.graphstream.graph.implementations.SingleGraph", 1, 1, 0, 1, 1, 1);
+  }
+
+  @Test
+  public void testMultiGraph() throws Exception {
+    test("org.graphstream.graph.implementations.MultiGraph", 1, 1, 1, 1, 1, 1);
   }
 }

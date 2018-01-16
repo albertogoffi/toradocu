@@ -1,4 +1,4 @@
-package org.toradocu.old_accuracy;
+package org.toradocu.accuracy.random;
 
 import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
@@ -19,12 +19,22 @@ public class AccuracyFreeCol extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void testPlayerActivePredicate() throws Exception {
-    test("net.sf.freecol.common.model.Player$ActivePredicate", 1, 1, 1, 1, 1, 1);
+  public void testBuildingType() throws Exception {
+    test("net.sf.freecol.common.model.BuildingType", 1, 1, 1, 1, 0, 0);
   }
 
   @Test
-  public void testUnit() throws Exception {
-    test("net.sf.freecol.common.model.Unit", 1, 1, 0, 1, 0.083, 0.125);
+  public void testIndianNationType() throws Exception {
+    test("net.sf.freecol.common.model.IndianNationType", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testUnitLocation() throws Exception {
+    test("net.sf.freecol.common.model.UnitLocation", 1, 1, 1, 1, 1, 0);
+  }
+
+  @Test
+  public void testFeature() throws Exception {
+    test("net.sf.freecol.common.model.Feature", 1, 1, 1, 1, 1, 1);
   }
 }

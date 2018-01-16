@@ -10,7 +10,7 @@ public class AccuracyCommonsCollections4 extends AbstractPrecisionRecallTestSuit
   private static final String COMMONSCOLLECTIONS_4_BIN =
       "src/test/resources/bin/commons-collections4-4.1.jar";
   private static final String COMMONSCOLLECTIONS_4_GOAL_DIR =
-      "src/test/resources/goal-output/random/commons-collections4-4.1/";
+      "src/test/resources/goal-output/commons-collections4-4.1/";
 
   public AccuracyCommonsCollections4() {
     super(COMMONSCOLLECTIONS_4_SRC, COMMONSCOLLECTIONS_4_BIN, COMMONSCOLLECTIONS_4_GOAL_DIR);
@@ -39,15 +39,5 @@ public class AccuracyCommonsCollections4 extends AbstractPrecisionRecallTestSuit
   @Test
   public void testCollectionBag() throws Exception {
     test("org.apache.commons.collections4.bag.CollectionBag", 1, 1, 1, 1, 1, 1);
-  }
-
-  @Test
-  public void testKeyAnalyzer() throws Exception {
-    test("org.apache.commons.collections4.trie.KeyAnalyzer", 1, 1, 1, 1, 0, 1);
-  }
-
-  @Test
-  public void testHashedMap() throws Exception {
-    test("org.apache.commons.collections4.map.HashedMap", 1, 1, 1, 1, 1, 1);
   }
 }
