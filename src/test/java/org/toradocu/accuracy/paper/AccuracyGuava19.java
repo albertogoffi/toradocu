@@ -1,4 +1,4 @@
-package org.toradocu.accuracy;
+package org.toradocu.accuracy.paper;
 
 import org.junit.Test;
 import org.toradocu.testlib.AbstractPrecisionRecallTestSuite;
@@ -11,6 +11,31 @@ public class AccuracyGuava19 extends AbstractPrecisionRecallTestSuite {
 
   public AccuracyGuava19() {
     super(GUAVA_19_SRC, GUAVA_19_BIN, GUAVA_GOAL_DIR);
+  }
+
+  @Test
+  public void testUnicodeEscaper() throws Exception {
+    test("com.google.common.escape.UnicodeEscaper", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testImmutableSortedMapFauxverideShim() throws Exception {
+    test("com.google.common.collect.ImmutableSortedMapFauxverideShim", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testImmutableSortedMap() throws Exception {
+    test("com.google.common.collect.ImmutableSortedMap", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testAtomicDoubleArray() throws Exception {
+    test("com.google.common.util.concurrent.AtomicDoubleArray", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testFloats() throws Exception {
+    test("com.google.common.primitives.Floats", 0.75, 0.75, 1, 1, 1, 1);
   }
 
   @Test
@@ -54,11 +79,6 @@ public class AccuracyGuava19 extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void testHashing() throws Exception {
-    test("com.google.common.hash.Hashing", 1, 1, 1, 0, 1, 1);
-  }
-
-  @Test
   public void testConcurrentHashMultiset() throws Exception {
     test("com.google.common.collect.ConcurrentHashMultiset", 1, 1, 1, 1, 1, 1);
   }
@@ -66,11 +86,6 @@ public class AccuracyGuava19 extends AbstractPrecisionRecallTestSuite {
   @Test
   public void testDoubles() throws Exception {
     test("com.google.common.primitives.Doubles", 0.75, 0.75, 1, 1, 1, 1);
-  }
-
-  @Test
-  public void testFloats() throws Exception {
-    test("com.google.common.primitives.Floats", 0.75, 0.75, 1, 1, 1, 1);
   }
 
   @Test
@@ -91,10 +106,5 @@ public class AccuracyGuava19 extends AbstractPrecisionRecallTestSuite {
   @Test
   public void testVerify() throws Exception {
     test("com.google.common.base.Verify", 1, 1, 1, 1, 1, 1);
-  }
-
-  @Test
-  public void testAtomicDoubleArray() throws Exception {
-    test("com.google.common.util.concurrent.AtomicDoubleArray", 1, 1, 1, 1, 1, 1);
   }
 }
