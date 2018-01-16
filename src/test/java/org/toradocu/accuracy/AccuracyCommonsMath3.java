@@ -57,7 +57,7 @@ public class AccuracyCommonsMath3 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testRandomDataGenerator() throws Exception {
-    test("org.apache.commons.math3.random.RandomDataGenerator", 1, 0.941, 1, 1, 1, 1);
+    test("org.apache.commons.math3.random.RandomDataGenerator", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
@@ -109,7 +109,7 @@ public class AccuracyCommonsMath3 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testLoessInterpolator() throws Exception {
-    test("org.apache.commons.math3.analysis.interpolation.LoessInterpolator", 1, 0.125, 0, 1, 1, 1);
+    test("org.apache.commons.math3.analysis.interpolation.LoessInterpolator", 1, 0.25, 0, 1, 1, 1);
   }
 
   @Test
