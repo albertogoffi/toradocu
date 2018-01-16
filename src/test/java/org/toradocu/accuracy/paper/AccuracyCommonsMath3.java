@@ -125,7 +125,7 @@ public class AccuracyCommonsMath3 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testHaltonSequenceGenerator() throws Exception {
-    test("org.apache.commons.math3.random.HaltonSequenceGenerator", 0.75, 0.5, 1, 1, 1, 1);
+    test("org.apache.commons.math3.random.HaltonSequenceGenerator", 0.75, 0.75, 1, 1, 1, 1);
   }
 
   @Test
