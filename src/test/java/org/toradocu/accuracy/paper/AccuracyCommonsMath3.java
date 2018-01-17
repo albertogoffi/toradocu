@@ -83,7 +83,7 @@ public class AccuracyCommonsMath3 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testIntervalsSet() throws Exception {
-    test("org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet", 1, 1, 1, 0.5, 1, 1);
+    test("org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
@@ -125,7 +125,7 @@ public class AccuracyCommonsMath3 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testHaltonSequenceGenerator() throws Exception {
-    test("org.apache.commons.math3.random.HaltonSequenceGenerator", 0.666, 0.5, 1, 1, 1, 1);
+    test("org.apache.commons.math3.random.HaltonSequenceGenerator", 0.75, 0.75, 1, 1, 1, 1);
   }
 
   @Test
@@ -200,7 +200,7 @@ public class AccuracyCommonsMath3 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testRandomDataGenerator() throws Exception {
-    test("org.apache.commons.math3.random.RandomDataGenerator", 1, 0.941, 1, 1, 1, 1);
+    test("org.apache.commons.math3.random.RandomDataGenerator", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
@@ -252,7 +252,7 @@ public class AccuracyCommonsMath3 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testLoessInterpolator() throws Exception {
-    test("org.apache.commons.math3.analysis.interpolation.LoessInterpolator", 1, 0.125, 0, 1, 1, 1);
+    test("org.apache.commons.math3.analysis.interpolation.LoessInterpolator", 1, 0.25, 0, 1, 1, 1);
   }
 
   @Test
