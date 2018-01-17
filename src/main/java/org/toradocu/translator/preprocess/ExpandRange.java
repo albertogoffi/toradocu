@@ -8,8 +8,8 @@ import org.toradocu.extractor.BlockTag;
 import org.toradocu.extractor.DocumentedExecutable;
 
 /**
- * Preprocessing phase in which value ranges are replaced with standard inequalities using "<" and
- * ">" math operators.
+ * Preprocessing phase in which value ranges are replaced with standard inequalities using &lt; and
+ * &gt; math operators.
  */
 public class ExpandRange implements PreprocessingPhase {
 
