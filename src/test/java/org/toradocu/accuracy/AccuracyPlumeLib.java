@@ -24,11 +24,6 @@ public class AccuracyPlumeLib extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void testFileCompiler() throws Exception {
-    test("plume.FileCompiler", 1, 1, 1, 1, 1, 1);
-  }
-
-  @Test
   public void testWeakIdentityHashMap() throws Exception {
     test("plume.WeakIdentityHashMap", 1, 1, 1, 1, 0, 0);
   }
