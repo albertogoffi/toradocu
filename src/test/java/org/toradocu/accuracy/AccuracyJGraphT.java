@@ -15,47 +15,57 @@ public class AccuracyJGraphT extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void testAbstractGraph() throws Exception {
+  public void testAbstractGraph() {
     test("org.jgrapht.graph.AbstractGraph", 1, 0.5, 0, 1, 1, 1);
   }
 
   @Test
-  public void testGraph() throws Exception {
+  public void testGraph() {
     test("org.jgrapht.Graph", 1, 0.556, 1, 1, 0.666, 1);
   }
 
   @Test
-  public void testGraphs() throws Exception {
+  public void testGraphs() {
     test("org.jgrapht.Graphs", 1, 0.5, 1, 1, 1, 1);
   }
 
   @Test
-  public void testLinearGraphGenerator() throws Exception {
+  public void testLinearGraphGenerator() {
     test("org.jgrapht.generate.LinearGraphGenerator", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testEmptyGraphGenerator() throws Exception {
+  public void testEmptyGraphGenerator() {
     test("org.jgrapht.generate.EmptyGraphGenerator", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testKShortestPaths() throws Exception {
+  public void testKShortestPaths() {
     test("org.jgrapht.alg.KShortestPaths", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testDirectedSimpleCycles() throws Exception {
+  public void testDirectedSimpleCycles() {
     test("org.jgrapht.alg.cycle.DirectedSimpleCycles", 1, 1, 1, 1, 1, 0);
   }
 
   @Test
-  public void testAbstractPathElementList() throws Exception {
+  public void testAbstractPathElementList() {
     test("org.jgrapht.alg.AbstractPathElementList", 1, 0.8, 1, 1, 1, 1);
   }
 
   @Test
-  public void testPatonCycleBase() throws Exception {
+  public void testPatonCycleBase() {
     test("org.jgrapht.alg.cycle.PatonCycleBase", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testCompleteGraphGenerator() {
+    test("org.jgrapht.generate.CompleteGraphGenerator", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testGraphDelegator() {
+    test("org.jgrapht.graph.GraphDelegator", 1, 1, 1, 1, 1, 1);
   }
 }

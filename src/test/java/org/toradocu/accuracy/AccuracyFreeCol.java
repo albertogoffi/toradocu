@@ -14,17 +14,17 @@ public class AccuracyFreeCol extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void testPlayer() throws Exception {
+  public void testPlayer() {
     test("net.sf.freecol.common.model.Player", 1, 1, 1, 1, 0.357, 0.714);
   }
 
   @Test
-  public void testPlayerActivePredicate() throws Exception {
+  public void testPlayerActivePredicate() {
     test("net.sf.freecol.common.model.Player$ActivePredicate", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testUnit() throws Exception {
+  public void testUnit() {
     test("net.sf.freecol.common.model.Unit", 1, 1, 0, 1, 0.083, 0.125);
   }
 }

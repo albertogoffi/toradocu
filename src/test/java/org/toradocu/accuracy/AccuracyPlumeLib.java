@@ -14,52 +14,57 @@ public class AccuracyPlumeLib extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void testArraysMDE() throws Exception {
+  public void testArraysMDE() {
     test("plume.ArraysMDE", 0.888, 0.842, 0, 1, 0, 0);
   }
 
   @Test
-  public void testRegexUtil() throws Exception {
+  public void testRegexUtil() {
     test("plume.RegexUtil", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testWeakIdentityHashMap() throws Exception {
+  public void testWeakIdentityHashMap() {
     test("plume.WeakIdentityHashMap", 1, 1, 1, 1, 0, 0);
   }
 
   @Test
-  public void testTimeLimitProcess() throws Exception {
+  public void testTimeLimitProcess() {
     test("plume.TimeLimitProcess", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testWeakHasherMap() throws Exception {
+  public void testWeakHasherMap() {
     test("plume.WeakHasherMap", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testEntryReader() throws Exception {
+  public void testEntryReader() {
     test("plume.EntryReader", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testEntryReaderFlnReader() throws Exception {
+  public void testEntryReaderFlnReader() {
     test("plume.EntryReader$FlnReader", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testMathMDE() throws Exception {
+  public void testMathMDE() {
     test("plume.MathMDE", 1, 1, 1, 0, 0.933, 1);
   }
 
   @Test
-  public void testStrTok() throws Exception {
+  public void testStrTok() {
     test("plume.StrTok", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testUtilMDE() throws Exception {
+  public void testUtilMDE() {
     test("plume.UtilMDE", 1, 1, 1, 1, 0.25, 0.333);
+  }
+
+  @Test
+  public void testFuzzyFloat() {
+    test("plume.FuzzyFloat", 1, 1, 1, 1, 1, 0.8);
   }
 }

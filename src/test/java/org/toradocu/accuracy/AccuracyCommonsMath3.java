@@ -16,82 +16,82 @@ public class AccuracyCommonsMath3 extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void testGaussian() throws Exception {
+  public void testGaussian() {
     test("org.apache.commons.math3.analysis.function.Gaussian", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testUnivariateSolverUtils() throws Exception {
+  public void testUnivariateSolverUtils() {
     test("org.apache.commons.math3.analysis.solvers.UnivariateSolverUtils", 1, 1, 1, 1, 0, 1);
   }
 
   @Test
-  public void testComplex() throws Exception {
+  public void testComplex() {
     test("org.apache.commons.math3.complex.Complex", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testSimpleCurveFitter() throws Exception {
+  public void testSimpleCurveFitter() {
     test("org.apache.commons.math3.fitting.SimpleCurveFitter", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testAdaptiveStepsizeIntegrator() throws Exception {
+  public void testAdaptiveStepsizeIntegrator() {
     test("org.apache.commons.math3.ode.nonstiff.AdaptiveStepsizeIntegrator", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testPrimes() throws Exception {
+  public void testPrimes() {
     test("org.apache.commons.math3.primes.Primes", 1, 1, 1, 1, 0.5, 0.5);
   }
 
   @Test
-  public void testBitsStreamGenerator() throws Exception {
+  public void testBitsStreamGenerator() {
     test("org.apache.commons.math3.random.BitsStreamGenerator", 1, 0.666, 1, 1, 1, 1);
   }
 
   @Test
-  public void testRandomAdaptor() throws Exception {
+  public void testRandomAdaptor() {
     test("org.apache.commons.math3.random.RandomAdaptor", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testRandomDataGenerator() throws Exception {
+  public void testRandomDataGenerator() {
     test("org.apache.commons.math3.random.RandomDataGenerator", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testArithmeticUtils() throws Exception {
+  public void testArithmeticUtils() {
     test("org.apache.commons.math3.util.ArithmeticUtils", 1, 0.947, 1, 0.857, 0.857, 1);
   }
 
   @Test
-  public void testFastMath() throws Exception {
+  public void testFastMath() {
     test("org.apache.commons.math3.util.FastMath", 1, 1, 1, 1, 0.888, 1);
   }
 
   @Test
-  public void testLogistic() throws Exception {
+  public void testLogistic() {
     test("org.apache.commons.math3.analysis.function.Logistic", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testFunctionUtils() throws Exception {
+  public void testFunctionUtils() {
     test("org.apache.commons.math3.analysis.FunctionUtils", 1, 0, 1, 1, 1, 1);
   }
 
   @Test
-  public void testSimpsonIntegrator() throws Exception {
+  public void testSimpsonIntegrator() {
     test("org.apache.commons.math3.analysis.integration.SimpsonIntegrator", 0.5, 0.333, 1, 1, 1, 1);
   }
 
   @Test
-  public void testStepFunction() throws Exception {
+  public void testStepFunction() {
     test("org.apache.commons.math3.analysis.function.StepFunction", 1, 0.5, 1, 1, 1, 1);
   }
 
   @Test
-  public void testIterativeLegendreGaussIntegrator() throws Exception {
+  public void testIterativeLegendreGaussIntegrator() {
     test(
         "org.apache.commons.math3.analysis.integration.IterativeLegendreGaussIntegrator",
         1,
@@ -103,17 +103,17 @@ public class AccuracyCommonsMath3 extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void testLinearInterpolator() throws Exception {
+  public void testLinearInterpolator() {
     test("org.apache.commons.math3.analysis.interpolation.LinearInterpolator", 1, 0.5, 1, 1, 1, 1);
   }
 
   @Test
-  public void testLoessInterpolator() throws Exception {
+  public void testLoessInterpolator() {
     test("org.apache.commons.math3.analysis.interpolation.LoessInterpolator", 1, 0.25, 0, 1, 1, 1);
   }
 
   @Test
-  public void testPolynomialFunctionNewtonForm() throws Exception {
+  public void testPolynomialFunctionNewtonForm() {
     test(
         "org.apache.commons.math3.analysis.polynomials.PolynomialFunctionNewtonForm",
         1,
@@ -125,57 +125,57 @@ public class AccuracyCommonsMath3 extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void testBinaryMutation() throws Exception {
+  public void testBinaryMutation() {
     test("org.apache.commons.math3.genetics.BinaryMutation", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testCycleCrossover() throws Exception {
+  public void testCycleCrossover() {
     test("org.apache.commons.math3.genetics.CycleCrossover", 1, 0.333, 1, 1, 1, 1);
   }
 
   @Test
-  public void testBigFraction() throws Exception {
+  public void testBigFraction() {
     test("org.apache.commons.math3.fraction.BigFraction", 0.714, 0.625, 1, 1, 1, 1);
   }
 
   @Test
-  public void testFraction() throws Exception {
+  public void testFraction() {
     test("org.apache.commons.math3.fraction.Fraction", 0.857, 0.857, 1, 1, 1, 1);
   }
 
   @Test
-  public void testLine() throws Exception {
+  public void testLine() {
     test("org.apache.commons.math3.geometry.euclidean.threed.Line", 1, 1, 0, 1, 1, 1);
   }
 
   @Test
-  public void testSubLine() throws Exception {
+  public void testSubLine() {
     test("org.apache.commons.math3.geometry.euclidean.threed.SubLine", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testVector3D() throws Exception {
+  public void testVector3D() {
     test("org.apache.commons.math3.geometry.euclidean.threed.Vector3D", 1, 0.333, 1, 1, 1, 1);
   }
 
   @Test
-  public void testS2Point() throws Exception {
+  public void testS2Point() {
     test("org.apache.commons.math3.geometry.spherical.twod.S2Point", 1, 0, 1, 1, 1, 1);
   }
 
   @Test
-  public void testFieldRotation() throws Exception {
+  public void testFieldRotation() {
     test("org.apache.commons.math3.geometry.euclidean.threed.FieldRotation", 1, 0, 1, 1, 1, 1);
   }
 
   @Test
-  public void testRealVector() throws Exception {
+  public void testRealVector() {
     test("org.apache.commons.math3.linear.RealVector", 1, 0.421, 1, 1, 0, 1);
   }
 
   @Test
-  public void testDivideDifferenceInterpolator() throws Exception {
+  public void testDivideDifferenceInterpolator() {
     test(
         "org.apache.commons.math3.analysis.interpolation.DividedDifferenceInterpolator",
         1,
@@ -184,5 +184,143 @@ public class AccuracyCommonsMath3 extends AbstractPrecisionRecallTestSuite {
         1,
         1,
         1);
+  }
+
+  @Test
+  public void testUnivariateMultiStartOptimizer() {
+    test(
+        "org.apache.commons.math3.optimization.univariate.UnivariateMultiStartOptimizer",
+        1,
+        1,
+        0,
+        1,
+        1,
+        1);
+  }
+
+  @Test
+  public void testRandomKey() {
+    test("org.apache.commons.math3.genetics.RandomKey", 1, 0, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testAbstractSimplex() {
+    test("org.apache.commons.math3.optimization.direct.AbstractSimplex", 0.5, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testSum() {
+    test("org.apache.commons.math3.stat.descriptive.summary.Sum", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testDerivativeStructure() {
+    test(
+        "org.apache.commons.math3.analysis.differentiation.DerivativeStructure",
+        1,
+        0.5,
+        1,
+        1,
+        1,
+        1);
+  }
+
+  @Test
+  public void testBivariateGridInterpolator() {
+    test(
+        "org.apache.commons.math3.analysis.interpolation.BivariateGridInterpolator",
+        1,
+        1,
+        1,
+        1,
+        1,
+        1);
+  }
+
+  @Test
+  public void testLogisticDistribution() {
+    test("org.apache.commons.math3.distribution.LogisticDistribution", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testAbstractListChromosome() {
+    test("org.apache.commons.math3.genetics.AbstractListChromosome", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testInterval() {
+    test("org.apache.commons.math3.geometry.euclidean.oned.Interval", 1, 1, 1, 1, 1, 0);
+  }
+
+  @Test
+  public void testIntervalsSet() {
+    test("org.apache.commons.math3.geometry.euclidean.oned.IntervalsSet", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testRegion() {
+    test("org.apache.commons.math3.geometry.partitioning.Region", 1, 1, 1, 1, 0, 0);
+  }
+
+  @Test
+  public void testVector() {
+    test("org.apache.commons.math3.geometry.Vector", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testSymmLQ() {
+    test("org.apache.commons.math3.linear.SymmLQ", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testContinuousOutputModel() {
+    test("org.apache.commons.math3.ode.ContinuousOutputModel", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testEmbeddedRungeKuttaFieldIntegrator() {
+    test(
+        "org.apache.commons.math3.ode.nonstiff.EmbeddedRungeKuttaFieldIntegrator",
+        1,
+        1,
+        1,
+        1,
+        1,
+        1);
+  }
+
+  @Test
+  public void testSimpleValueChecker() {
+    test("org.apache.commons.math3.optimization.SimpleValueChecker", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testHaltonSequenceGenerator() {
+    test("org.apache.commons.math3.random.HaltonSequenceGenerator", 0.75, 0.75, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testDBSCANClusterer() {
+    test("org.apache.commons.math3.stat.clustering.DBSCANClusterer", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testPSquarePercentile() {
+    test("org.apache.commons.math3.stat.descriptive.rank.PSquarePercentile", 0, 0, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testSummaryStatistics() {
+    test("org.apache.commons.math3.stat.descriptive.SummaryStatistics", 1, 1, 1, 1, 1, 0);
+  }
+
+  @Test
+  public void testKthSelector() {
+    test("org.apache.commons.math3.util.KthSelector", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void tesPreconditionedIterativeLinearSolver() {
+    test("org.apache.commons.math3.linear.PreconditionedIterativeLinearSolver", 1, 1, 1, 1, 1, 1);
   }
 }

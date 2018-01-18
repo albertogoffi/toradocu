@@ -14,12 +14,37 @@ public class AccuracyGraphStream extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void testSingleGraph() throws Exception {
+  public void testSingleGraph() {
     test("org.graphstream.graph.implementations.SingleGraph", 1, 1, 0, 1, 1, 1);
   }
 
   @Test
-  public void testMultiGraph() throws Exception {
+  public void testMultiGraph() {
     test("org.graphstream.graph.implementations.MultiGraph", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testGraphMetrics() {
+    test("org.graphstream.ui.swingViewer.util.GraphMetrics", 1, 1, 1, 1, 0.666, 1);
+  }
+
+  @Test
+  public void testFixedArrayList() {
+    test("org.graphstream.util.set.FixedArrayList", 1, 0, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testGraphicElement() {
+    test("org.graphstream.ui.graphicGraph.GraphicElement", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testEnvironment() {
+    test("org.graphstream.util.Environment", 1, 1, 1, 1, 1, 0);
+  }
+
+  @Test
+  public void testPath() {
+    test("org.graphstream.graph.Path", 1, 1, 1, 1, 1, 0);
   }
 }

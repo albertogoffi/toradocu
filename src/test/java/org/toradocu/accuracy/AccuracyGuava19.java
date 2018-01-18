@@ -14,87 +14,102 @@ public class AccuracyGuava19 extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void testArrayListMultimap() throws Exception {
+  public void testArrayListMultimap() {
     test("com.google.common.collect.ArrayListMultimap", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testCharMatcher() throws Exception {
+  public void testCharMatcher() {
     test("com.google.common.base.CharMatcher", 1, 1, 0, 0, 0, 1);
   }
 
   @Test
-  public void testConverter() throws Exception {
+  public void testConverter() {
     test("com.google.common.base.Converter", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testSplitter() throws Exception {
+  public void testSplitter() {
     test("com.google.common.base.Splitter", 1, 1, 1, 0, 1, 1);
   }
 
   @Test
-  public void testThrowables() throws Exception {
+  public void testThrowables() {
     test("com.google.common.base.Throwables", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testCacheLoader() throws Exception {
+  public void testCacheLoader() {
     test("com.google.common.cache.CacheLoader", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testIterators() throws Exception {
+  public void testIterators() {
     test("com.google.common.collect.Iterators", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testBloomFilter() throws Exception {
+  public void testBloomFilter() {
     test("com.google.common.hash.BloomFilter", 0, 0, 1, 1, 1, 1);
   }
 
   @Test
-  public void testHashing() throws Exception {
+  public void testHashing() {
     test("com.google.common.hash.Hashing", 1, 1, 1, 0, 1, 1);
   }
 
   @Test
-  public void testConcurrentHashMultiset() throws Exception {
+  public void testConcurrentHashMultiset() {
     test("com.google.common.collect.ConcurrentHashMultiset", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testDoubles() throws Exception {
+  public void testDoubles() {
     test("com.google.common.primitives.Doubles", 0.75, 0.75, 1, 1, 1, 1);
   }
 
   @Test
-  public void testFloats() throws Exception {
+  public void testFloats() {
     test("com.google.common.primitives.Floats", 0.75, 0.75, 1, 1, 1, 1);
   }
 
   @Test
-  public void testMoreObjects() throws Exception {
+  public void testMoreObjects() {
     test("com.google.common.base.MoreObjects", 1, 1, 1, 1, 0, 0);
   }
 
   @Test
-  public void testShorts() throws Exception {
+  public void testShorts() {
     test("com.google.common.primitives.Shorts", 0.75, 0.5, 1, 1, 1, 1);
   }
 
   @Test
-  public void testStrings() throws Exception {
+  public void testStrings() {
     test("com.google.common.base.Strings", 1, 1, 1, 0.5, 0.25, 0.25);
   }
 
   @Test
-  public void testVerify() throws Exception {
+  public void testVerify() {
     test("com.google.common.base.Verify", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
-  public void testAtomicDoubleArray() throws Exception {
+  public void testAtomicDoubleArray() {
     test("com.google.common.util.concurrent.AtomicDoubleArray", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testUnicodeEscaper() {
+    test("com.google.common.escape.UnicodeEscaper", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testImmutableSortedMapFauxverideShim() {
+    test("com.google.common.collect.ImmutableSortedMapFauxverideShim", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
+  public void testImmutableSortedMap() {
+    test("com.google.common.collect.ImmutableSortedMap", 1, 1, 1, 1, 1, 1);
   }
 }
