@@ -5,9 +5,7 @@
 
 ERROR_MESSAGE='Script must be invoked with one parameter: either "jdoctor" or "jdoctor_semantics" or "tcomment"'
 
-# Random test suite.
-# TESTS='--tests org.toradocu.accuracy.random.*'
-# Non-random test suite.
+# General test suite.
 # TESTS='--tests org.toradocu.accuracy.Accuracy*'
 # Paper test suite (10% classes per project).
 TESTS='--tests org.toradocu.accuracy.paper.*'
