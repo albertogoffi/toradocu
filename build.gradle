@@ -67,12 +67,12 @@ jar {
 sourceSets {
   main {
     java {
-      excludes = ['**/util/old/*']
+      excludes = ['org/toradocu/util/old/*']
     }
   }
   test {
     java {
-      excludes = ['**/util/*', '**/regression/*']
+      excludes = ['org/toradocu/util/old*', 'org/toradocu/regression/*', 'org/toradocu/accuracy/paper/*']
     }
   }
 }
