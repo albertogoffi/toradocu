@@ -20,7 +20,7 @@ public class AccuracyGraphStream extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testFixedArrayList() throws Exception {
-    test("org.graphstream.util.set.FixedArrayList", 1, 0, 1, 1, 1, 0);
+    test("org.graphstream.util.set.FixedArrayList", 1, 0, 1, 1, 1, 1);
   }
 
   @Test
