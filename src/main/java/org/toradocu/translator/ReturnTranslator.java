@@ -366,8 +366,8 @@ public class ReturnTranslator {
     List<PostSpecification> specs = new ArrayList<>();
 
     String translation = null;
-    final String[] truePatterns = {"true", "true always", "true, always"};
-    final String[] falsePatterns = {"false", "false always", "false, always"};
+    final String[] truePatterns = {"true", "true always", "true, always", "always true"};
+    final String[] falsePatterns = {"false", "false always", "false, always", "always false"};
     final String commentToTranslate = comment;
 
     final boolean truePatternsMatch =
