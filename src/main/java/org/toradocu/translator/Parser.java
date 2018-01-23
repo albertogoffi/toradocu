@@ -145,11 +145,13 @@ public class Parser {
             .replace("lesser than or equal to", "<=")
             .replace("lesser or equal to", "<=")
             .replace("smaller than or equal to", "<=")
+            .replace("lower than or equal to", "<=")
             .replace("≤", "<=")
             .replace("greater than", ">")
             .replace("smaller than", "<")
             .replace("less than", "<")
             .replace("lesser than", "<")
+            .replace("lower than", "<")
             .replace("equal to", "==");
 
     java.util.regex.Matcher matcherInstanceOf = Pattern.compile(INEQ_INSOF).matcher(text);

@@ -324,10 +324,10 @@ public class AccuracyCommonsMath3 extends AbstractPrecisionRecallTestSuite {
     test(
         "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
         1,
-        0.421,
         1,
         1,
-        0,
+        1,
+        1,
         1);
   }
 }
