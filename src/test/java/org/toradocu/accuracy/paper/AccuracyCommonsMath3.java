@@ -72,11 +72,6 @@ public class AccuracyCommonsMath3 extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void testAbstractListChromosome() throws Exception {
-    test("org.apache.commons.math3.genetics.AbstractListChromosome", 1, 1, 1, 1, 1, 1);
-  }
-
-  @Test
   public void testInterval() throws Exception {
     test("org.apache.commons.math3.geometry.euclidean.oned.Interval", 1, 1, 1, 1, 1, 0);
   }
@@ -318,6 +313,18 @@ public class AccuracyCommonsMath3 extends AbstractPrecisionRecallTestSuite {
         "org.apache.commons.math3.analysis.interpolation.DividedDifferenceInterpolator",
         1,
         0.5,
+        1,
+        1,
+        1,
+        1);
+  }
+
+  @Test
+  public void testBracketingNthOrderBrentSolver() throws Exception {
+    test(
+        "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
+        1,
+        1,
         1,
         1,
         1,

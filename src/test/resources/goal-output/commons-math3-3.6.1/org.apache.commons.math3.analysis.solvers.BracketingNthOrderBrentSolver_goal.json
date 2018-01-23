@@ -1,0 +1,460 @@
+[
+  {
+    "signature": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver()",
+    "name": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
+      "name": "BracketingNthOrderBrentSolver",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
+    "isVarArgs": false,
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver(double absoluteAccuracy, int maximalOrder)",
+    "name": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
+      "name": "BracketingNthOrderBrentSolver",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "absoluteAccuracy"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maximalOrder"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "absoluteAccuracy"
+        },
+        "comment": "Absolute accuracy.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maximalOrder"
+        },
+        "comment": "maximalOrder is maximal. maximal order.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException",
+          "name": "NumberIsTooSmallException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "maximal order is lower than 2.",
+        "kind": "THROWS",
+        "condition": "args[1]<2"
+      }
+    ]
+  },
+  {
+    "signature": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver(double relativeAccuracy, double absoluteAccuracy, int maximalOrder)",
+    "name": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
+      "name": "BracketingNthOrderBrentSolver",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "relativeAccuracy"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "absoluteAccuracy"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maximalOrder"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "relativeAccuracy"
+        },
+        "comment": "Relative accuracy.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "absoluteAccuracy"
+        },
+        "comment": "Absolute accuracy.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maximalOrder"
+        },
+        "comment": "maximalOrder is maximal. maximal order.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException",
+          "name": "NumberIsTooSmallException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "maximal order is lower than 2.",
+        "kind": "THROWS",
+        "condition": "args[2]<2"
+      }
+    ]
+  },
+  {
+    "signature": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver(double relativeAccuracy, double absoluteAccuracy, double functionValueAccuracy, int maximalOrder)",
+    "name": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
+      "name": "BracketingNthOrderBrentSolver",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
+    "isVarArgs": false,
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "relativeAccuracy"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "absoluteAccuracy"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "functionValueAccuracy"
+      },
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maximalOrder"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "relativeAccuracy"
+        },
+        "comment": "Relative accuracy.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "absoluteAccuracy"
+        },
+        "comment": "Absolute accuracy.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "double",
+            "name": "double",
+            "isArray": false
+          },
+          "name": "functionValueAccuracy"
+        },
+        "comment": "Function value accuracy.",
+        "kind": "PARAM",
+        "condition": ""
+      },
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "int",
+            "name": "int",
+            "isArray": false
+          },
+          "name": "maximalOrder"
+        },
+        "comment": "maximalOrder is maximal. maximal order.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "org.apache.commons.math3.exception.NumberIsTooSmallException",
+          "name": "NumberIsTooSmallException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "maximal order is lower than 2.",
+        "kind": "THROWS",
+        "condition": "args[3]<2"
+      }
+    ]
+  },
+  {
+    "signature": "getMaximalOrder()",
+    "name": "getMaximalOrder",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
+      "name": "BracketingNthOrderBrentSolver",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "int",
+      "name": "int",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "returnTag": {
+      "comment": "maximal order.",
+      "kind": "RETURN",
+      "condition": ""
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "doSolve()",
+    "name": "doSolve",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
+      "name": "BracketingNthOrderBrentSolver",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "solve(int maxEval, org.apache.commons.math3.analysis.UnivariateFunction f, double min, double max, org.apache.commons.math3.analysis.solvers.AllowedSolution allowedSolution)",
+    "name": "solve",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
+      "name": "BracketingNthOrderBrentSolver",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxEval"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+          "name": "UnivariateFunction",
+          "isArray": false
+        },
+        "name": "f"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "min"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "max"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.solvers.AllowedSolution",
+          "name": "AllowedSolution",
+          "isArray": false
+        },
+        "name": "allowedSolution"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  },
+  {
+    "signature": "solve(int maxEval, org.apache.commons.math3.analysis.UnivariateFunction f, double min, double max, double startValue, org.apache.commons.math3.analysis.solvers.AllowedSolution allowedSolution)",
+    "name": "solve",
+    "containingClass": {
+      "qualifiedName": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
+      "name": "BracketingNthOrderBrentSolver",
+      "isArray": false
+    },
+    "targetClass": "org.apache.commons.math3.analysis.solvers.BracketingNthOrderBrentSolver",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "double",
+      "name": "double",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "int",
+          "name": "int",
+          "isArray": false
+        },
+        "name": "maxEval"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.UnivariateFunction",
+          "name": "UnivariateFunction",
+          "isArray": false
+        },
+        "name": "f"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "min"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "max"
+      },
+      {
+        "type": {
+          "qualifiedName": "double",
+          "name": "double",
+          "isArray": false
+        },
+        "name": "startValue"
+      },
+      {
+        "type": {
+          "qualifiedName": "org.apache.commons.math3.analysis.solvers.AllowedSolution",
+          "name": "AllowedSolution",
+          "isArray": false
+        },
+        "name": "allowedSolution"
+      }
+    ],
+    "paramTags": [],
+    "throwsTags": []
+  }
+]
