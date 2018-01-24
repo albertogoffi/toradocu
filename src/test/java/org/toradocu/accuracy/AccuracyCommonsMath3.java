@@ -243,6 +243,11 @@ public class AccuracyCommonsMath3 extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
+  public void testAbstractListChromosome() {
+    test("org.apache.commons.math3.genetics.AbstractListChromosome", 1, 1, 1, 1, 1, 1);
+  }
+
+  @Test
   public void testInterval() {
     test("org.apache.commons.math3.geometry.euclidean.oned.Interval", 1, 1, 1, 1, 1, 0);
   }
