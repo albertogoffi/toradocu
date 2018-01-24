@@ -58,7 +58,6 @@ public class SemanticMatcher {
                 "do",
                 "not",
                 "of",
-                "can",
                 "in",
                 "null",
                 "only",
