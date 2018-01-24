@@ -54,11 +54,6 @@ public class AccuracyJGraphT extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void testDirectedSimpleCycles() throws Exception {
-    test("org.jgrapht.alg.cycle.DirectedSimpleCycles", 1, 1, 1, 1, 1, 0);
-  }
-
-  @Test
   public void testAbstractPathElementList() throws Exception {
     test("org.jgrapht.alg.AbstractPathElementList", 1, 0.8, 1, 1, 1, 1);
   }
