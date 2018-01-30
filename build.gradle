@@ -105,7 +105,7 @@ shadowDistZip.enabled = false
 shadowDistTar.enabled = false
 
 compileJava {
-  options.compilerArgs << '-Xlint:unchecked'
+  options.compilerArgs << '-Xlint:unchecked,deprecation'
 }
 
 test {
@@ -152,22 +152,6 @@ configurations.all {
 
 task wrapper(type: Wrapper) {
   gradleVersion = '4.3.1'
-}
-
-/* Copy resources needed for doclet API to build directory after compilation. */
-task copyDocletResources1(type: Copy) {
-  from 'src/main/java/org/toradocu/doclet/internal/toolkit/resources'
-  into 'build/classes/main/org/toradocu/doclet/internal/toolkit/resources'
-}
-
-task copyDocletResources2(type: Copy) {
-  from 'src/main/java/org/toradocu/doclet/formats/html/resources'
-  into 'build/classes/main/org/toradocu/doclet/formats/html/resources'
-}
-
-compileJava.doLast {
-  tasks.copyDocletResources1.execute()
-  tasks.copyDocletResources2.execute()
 }
 
 import de.undercouch.gradle.tasks.download.Download
