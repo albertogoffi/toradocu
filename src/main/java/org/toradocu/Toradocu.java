@@ -89,7 +89,7 @@ public class Toradocu {
       final JavadocExtractor javadocExtractor = new JavadocExtractor();
       try {
         final DocumentedType documentedType =
-            javadocExtractor.extract(targetClass, configuration.getSourceDir().toString());
+            javadocExtractor.extract(targetClass, configuration.sourceDir.toString());
         members = documentedType.getDocumentedExecutables();
       } catch (ClassNotFoundException e) {
         log.error( // TODO Refine this error message for the specific caught exception.
@@ -97,7 +97,7 @@ public class Toradocu {
                 + "\nPossible reasons for the error are:"
                 + "\n1. The Javadoc documentations is wrong"
                 + "\n2. The path to the source code of your system is wrong: "
-                + configuration.getSourceDir()
+                + configuration.sourceDir
                 + "\n3. The path to the binaries of your system is wrong: "
                 + configuration.classDirs
                 + "\nPlease, check the correctness of the command line arguments."

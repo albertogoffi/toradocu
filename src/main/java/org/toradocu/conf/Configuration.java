@@ -1,18 +1,12 @@
 package org.toradocu.conf;
 
-import com.beust.jcommander.DynamicParameter;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.converters.FileConverter;
 import com.beust.jcommander.converters.PathConverter;
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /** Holds the configuration options (particularly command-line options) for Toradocu. */
 @SuppressWarnings("ImmutableEnumChecker")
@@ -35,11 +29,11 @@ public enum Configuration {
 
   @Parameter(
     names = "--source-dir",
-    description = "Specifies a directory containing source files of the target class",
+    description = "Path of the directory containing source files of the target class",
     converter = PathConverter.class,
     required = true
   )
-  private Path sourceDir;
+  public Path sourceDir;
 
   @Parameter(
     names = "--class-dir",
@@ -84,9 +78,6 @@ public enum Configuration {
     hidden = true
   )
   private File javadocExtractorOutput;
-
-  @DynamicParameter(names = "-J", description = "Javadoc options")
-  private Map<String, String> javadocOptionsMap = new HashMap<>();
 
   // Condition translator options
 
@@ -198,85 +189,18 @@ public enum Configuration {
   /** Aspect to instrument JUnit test cases. */
   private static final String JUNIT_TC_ASPECT = "TestCaseAspect.java";
 
-  /** Command-line options passed to the Javadoc tool. */
-  private List<String> javadocOptions = new ArrayList<>();
-
-  /**
-   * Temporary directory for Javadoc output or null if a non-temporary directory (e.g. the working
-   * directory) is set for Javadoc output.
-   */
-  private String javadocOutputDir;
-
   /**
    * Initializes the configuration based on the given command-line options. This method must be
    * called before Javadoc options or the temporary Javadoc output directory are retrieved.
    */
   public void initialize() {
     if (help) {
-      // No initialization necessary.
-      return;
+      return; // No initialization necessary.
     }
 
     if (statsFile == null) {
       statsFile = new File("stats.csv");
     }
-
-    // Initialize command-line options passed to Javadoc:
-    for (Map.Entry<String, String> javadocOption : javadocOptionsMap.entrySet()) {
-      javadocOptions.add(javadocOption.getKey());
-      if (!javadocOption.getValue().isEmpty()) {
-        javadocOptions.add(javadocOption.getValue());
-      }
-    }
-
-    // Suppress Javadoc console output.
-    if (!javadocOptions.contains("-quiet")) {
-      javadocOptions.add("-quiet");
-    }
-    // Process classes with protected and private modifiers.
-    if (!javadocOptions.contains("-private")) {
-      javadocOptions.add("-private");
-    }
-    // Set the Javadoc source files directory.
-    if (!javadocOptions.contains("-sourcepath")) {
-      javadocOptions.add("-sourcepath");
-      javadocOptions.add(sourceDir.toString());
-    }
-    // Attempt to use a temporary Javadoc output directory.
-    if (!javadocOptions.contains("-d")) {
-      try {
-        javadocOutputDir = Files.createTempDirectory(null).toString();
-        javadocOptions.add("-d");
-        javadocOptions.add(javadocOutputDir);
-      } catch (IOException e) {
-        // Could not create temporary directory so output to working directory instead.
-      }
-    }
-    // Use UTF-8 as default encoding.
-    if (!javadocOptions.contains("-encoding")) {
-      javadocOptions.add("-encoding");
-      javadocOptions.add("UTF-8");
-    }
-    // Specify the target package on which to run Javadoc.
-    javadocOptions.add(getTargetPackage());
-  }
-
-  /**
-   * Returns the package in which the target class is contained.
-   *
-   * @return the package in which the target class is contained
-   */
-  private String getTargetPackage() {
-    // Note that this implementation is currently incorrect.
-    // It does not correctly separate the package and class part for inner classes.
-    // One heuristic to fix this would be to separate package and class parts based
-    // on capitalization. This would not work in every case but would handle the
-    // majority of inner classes.
-    int packageStringEnd = targetClass.lastIndexOf(".");
-    if (packageStringEnd == -1) {
-      return "";
-    }
-    return targetClass.substring(0, packageStringEnd);
   }
 
   /**
@@ -323,33 +247,6 @@ public enum Configuration {
   public boolean help() {
     return help;
   }
-
-  /**
-   * Returns the path to a directory containing the source files of the target class.
-   *
-   * @return the path to a directory containing the source files of the target class
-   */
-  public Path getSourceDir() {
-    return sourceDir;
-  }
-
-  //  /**
-  //   * Returns paths to JAR files or directories containing binaries of the target class and its
-  //   * dependencies.
-  //   *
-  //   * @return paths to JAR files or directories containing binaries of the target class and its
-  //   *     dependencies
-  //   */
-  //  public List<String> getClassDir() {
-  //    final List<String> paths = new ArrayList<>();
-  //    final String separator = File.pathSeparator;
-  //    if (classDirs.contains(separator)) {
-  //      paths.addAll(Arrays.asList(classDirs.split(Pattern.quote(separator))));
-  //    } else {
-  //      paths.add(classDirs);
-  //    }
-  //    return paths;
-  //  }
 
   /**
    * Returns the file in which to export Javadoc extractor output or null if this file is not
@@ -454,16 +351,6 @@ public enum Configuration {
    */
   public File getStatsFile() {
     return statsFile;
-  }
-
-  /**
-   * Returns whether commas characters will be removed from the Javadoc comments, before they are
-   * parsed by the Stanford parser.
-   *
-   * @return true if the commas has to be removed, false otherwise
-   */
-  public boolean removeCommas() {
-    return removeCommas;
   }
 
   /**
