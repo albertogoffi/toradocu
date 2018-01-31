@@ -1,5 +1,6 @@
 package org.toradocu.util;
 
+import java.lang.reflect.Type;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.HashMap;
@@ -56,5 +57,16 @@ public class Reflection {
     } catch (ClassNotFoundException e) {
       return Class.forName(className);
     }
+  }
+
+  /**
+   * Checks if the given {@code type} is a primitive type.
+   *
+   * @param type a type
+   * @return {@code true} if {@code type} is a primitive type, {@code false} otherwise
+   */
+  public static boolean isPrimitive(Type type) {
+    String typeName = type.getTypeName();
+    return primitiveClasses.containsKey(typeName);
   }
 }

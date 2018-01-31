@@ -4,18 +4,24 @@ import static java.util.stream.Collectors.toList;
 
 import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.semgraph.SemanticGraph;
+import java.lang.reflect.GenericArrayType;
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.util.*;
+import java.lang.reflect.TypeVariable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.ReturnTag;
+import org.toradocu.util.Reflection;
 import randoop.condition.specification.Guard;
 import randoop.condition.specification.PostSpecification;
 import randoop.condition.specification.Property;
-import sun.reflect.generics.reflectiveObjects.GenericArrayTypeImpl;
-import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
-import sun.reflect.generics.reflectiveObjects.TypeVariableImpl;
 
 public class ReturnTranslator {
 
@@ -23,7 +29,7 @@ public class ReturnTranslator {
     String commentText = tag.getComment().getText();
     //Manage translation of each sub-sentence linked by the Or conjunction separately
     String[] subSentences = manageOrConjunction(commentText);
-    List<List<PostSpecification>> conditions = new ArrayList<List<PostSpecification>>();
+    List<List<PostSpecification>> conditions = new ArrayList<>();
 
     for (String subSentence : subSentences) {
       // Split the sentence in three parts: predicate + true case + false case.
@@ -69,7 +75,7 @@ public class ReturnTranslator {
    * We have translated the sub-sentences separately, now we have to join them with the conjunction.
    *
    * @param comment original comment text
-   * @param subSentences the sub-senteces composing the comment
+   * @param subSentences the sub-sentences composing the comment
    * @param conditions the translated conditions
    * @return a {@code List<PostSpecification>}
    */
@@ -100,10 +106,10 @@ public class ReturnTranslator {
       } else if (!conditions.get(0).isEmpty()
           && conditions.get(1).isEmpty()
           && subSentences[1].contains(" if ")) {
-        return new ArrayList<PostSpecification>();
+        return new ArrayList<>();
       } else if (conditions.get(0).isEmpty() && conditions.get(1).isEmpty()) {
         // We couldn't translate any of the sub-sentences, thus we return empty
-        return new ArrayList<PostSpecification>();
+        return new ArrayList<>();
       }
     }
     return conditions.get(0);
@@ -134,10 +140,10 @@ public class ReturnTranslator {
         second = subject.stream().findFirst().get();
       }
       if (second != null) {
-        String returnType = method.getReturnType().getType().getTypeName();
+        Type returnType = method.getReturnType().getType();
         if (checkSameType(method, second)
             && checkSameType(method, first)
-            && checkIfPrimitive(returnType)) {
+            && Reflection.isPrimitive(returnType)) {
           return "result==" + first.getJavaExpression() + op + second.getJavaExpression();
         }
       }
@@ -501,13 +507,13 @@ public class ReturnTranslator {
     final List<SemanticGraph> semanticGraphs =
         extractedPropositions.stream().map(PropositionSeries::getSemanticGraph).collect(toList());
 
-    CodeElement<?> codeElementMatch = findCodeElement(method, text, semanticGraphs);
+    CodeElement<?> codeElementMatch = findCodeElement(method, semanticGraphs);
     if (codeElementMatch != null) {
       // check if return type of method is the same of the code element that matches
       boolean isSameType = checkSameType(method, codeElementMatch);
 
       if (isSameType) {
-        if (checkIfPrimitive(method.getReturnType().getType().getTypeName())) {
+        if (Reflection.isPrimitive(method.getReturnType().getType())) {
           return "result == " + codeElementMatch.getJavaExpression();
         } else {
           return "result.equals(" + codeElementMatch.getJavaExpression() + ")";
@@ -518,54 +524,49 @@ public class ReturnTranslator {
   }
 
   /**
-   * Check if the type of the code element is primitive or not.
-   *
-   * @return true if the type is primitive, false otherwise
-   */
-  private static boolean checkIfPrimitive(String type) {
-    //TODO naive, don't we have any better?
-    String[] primitives = {"int", "char", "float", "double", "long", "short", "byte"};
-    return Arrays.asList(primitives).contains(type);
-  }
-
-  /**
    * Check if the method return type is the same type of code element.
    *
    * @param method method which return type must be checked
    * @param codeElement code element to compare
-   * @return true the types match
+   * @return true if the types match, false otherwise
    */
   private static boolean checkSameType(DocumentedExecutable method, CodeElement<?> codeElement) {
     Type methodReturn = method.getReturnType().getType();
 
-    if (methodReturn instanceof TypeVariableImpl || methodReturn instanceof GenericArrayTypeImpl) {
-      //TODO naive but we have not better choice for now
+    if (methodReturn instanceof TypeVariable || methodReturn instanceof GenericArrayType) {
+      // TODO naive but we have not better choice for now.
       return true;
     }
 
-    if (codeElement instanceof FieldCodeElement) {
-      if (methodReturn instanceof ParameterizedTypeImpl) {
+    if (methodReturn instanceof ParameterizedType) {
+      final Class<?> methodReturnRawType =
+          (Class<?>) ((ParameterizedType) methodReturn).getRawType();
+
+      if (codeElement instanceof FieldCodeElement) {
         return ((FieldCodeElement) codeElement)
             .getJavaCodeElement()
             .getType()
-            .isAssignableFrom(((ParameterizedTypeImpl) methodReturn).getRawType());
+            .isAssignableFrom(methodReturnRawType);
       }
-      return ((FieldCodeElement) codeElement)
-          .getJavaCodeElement()
-          .getType()
-          .isAssignableFrom((Class<?>) methodReturn);
-    }
-    if (codeElement instanceof ParameterCodeElement) {
-      if (methodReturn instanceof ParameterizedTypeImpl) {
+      if (codeElement instanceof ParameterCodeElement) {
         return ((ParameterCodeElement) codeElement)
             .getJavaCodeElement()
             .getType()
-            .isAssignableFrom(((ParameterizedTypeImpl) methodReturn).getRawType());
+            .isAssignableFrom(methodReturnRawType);
       }
-      return ((ParameterCodeElement) codeElement)
-          .getJavaCodeElement()
-          .getType()
-          .isAssignableFrom((Class<?>) methodReturn);
+    } else {
+      if (codeElement instanceof FieldCodeElement) {
+        return ((FieldCodeElement) codeElement)
+            .getJavaCodeElement()
+            .getType()
+            .isAssignableFrom((Class<?>) methodReturn);
+      }
+      if (codeElement instanceof ParameterCodeElement) {
+        return ((ParameterCodeElement) codeElement)
+            .getJavaCodeElement()
+            .getType()
+            .isAssignableFrom((Class<?>) methodReturn);
+      }
     }
     return false;
   }
@@ -574,18 +575,15 @@ public class ReturnTranslator {
    * Called by tryCodeElementMatch to search for a code element involved in the return tag.
    *
    * @param method the DocumentedExecutable the tag belongs to
-   * @param comment the String comment belonging to the tag
    * @param semanticGraphs list of {@code SemanticGraph} related to the comment
    * @return a code element if any, or null
    */
   private static CodeElement<?> findCodeElement(
-      DocumentedExecutable method, String comment, List<SemanticGraph> semanticGraphs) {
+      DocumentedExecutable method, List<SemanticGraph> semanticGraphs) {
     //Try a match looking at the semantic graph.
     CodeElement<?> codeElementMatch = null;
 
-    comment = comment.replace(";", "").replace(",", "").replace("'", "").replace("result ", "");
     for (SemanticGraph sg : semanticGraphs) {
-
       if (!sg.getAllNodesByPartOfSpeechPattern("IN").isEmpty()
           || !sg.getAllNodesByPartOfSpeechPattern("WDT").isEmpty()) {
         //there are relations such as "of...", "in...", "that/which..." usually sign of bias in our assumption

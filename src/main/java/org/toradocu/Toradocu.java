@@ -55,18 +55,19 @@ public class Toradocu {
    */
   public static void main(String[] args) {
     configuration = Configuration.INSTANCE;
-    JCommander options = null;
+    final JCommander jCommander =
+        JCommander.newBuilder().addObject(configuration).programName(TORADOCU_COMMAND).build();
     try {
-      options = new JCommander(configuration, args);
+      jCommander.parse(args);
     } catch (ParameterException e) {
+      e.getJCommander().usage();
       System.out.println(e.getMessage());
       System.exit(1);
     }
-    options.setProgramName(TORADOCU_COMMAND);
     configuration.initialize();
 
     if (configuration.help()) {
-      options.usage();
+      jCommander.usage();
       System.out.println("Options preceded by an asterisk are required.");
       System.exit(1);
     }
@@ -110,19 +111,6 @@ public class Toradocu {
         System.exit(1);
       }
     }
-    //    else {
-    //      // List of methods to analyze are read from a file specified with a command line option.
-    //      try (BufferedReader reader =
-    //          Files.newBufferedReader(configuration.getConditionTranslatorInput().toPath())) {
-    //        methods = new ArrayList<>();
-    //        methods.addAll(
-    //            GsonInstance.gson()
-    //                .fromJson(reader, new TypeToken<List<DocumentedExecutable>>() {}.getType()));
-    //      } catch (IOException e) {
-    //        log.error("Unable to read the file: " + configuration.getConditionTranslatorInput(), e);
-    //        System.exit(1);
-    //      }
-    //    }
 
     if (configuration.getJavadocExtractorOutput() != null) { // Print collection to the output file.
       try (BufferedWriter writer =
