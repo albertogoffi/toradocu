@@ -6,7 +6,7 @@
 # Check command line arguments
 if [ $# -ne 1 ]; then
     echo "No arguments supplied. This script must be invoked with the following argument:"
-    echo "- Target Test Suite [random|regression]"
+    echo "- Target Test Suite [paper|regression]"
     echo '"random" computes values with random test suite'
     echo '"regression" computes values with random test suite'
     exit 1
@@ -17,9 +17,9 @@ SUBJECTS_TABLE="$OUTPUT_DIR"/subject-classes-table.tex
 RESULTS_TABLE="$OUTPUT_DIR"/accuracy-table.tex
 MACROS="$OUTPUT_DIR"/macros.tex
 
-if [ "$1" = "random" ]; then
-    ACCURACY_TS=src/test/java/org/toradocu/accuracy/random
-    GOAL_FILES=src/test/resources/goal-output/random
+if [ "$1" = "paper" ]; then
+    ACCURACY_TS=src/test/java/org/toradocu/accuracy/paper
+    GOAL_FILES=src/test/resources/goal-output
 else
     ACCURACY_TS=src/test/java/org/toradocu/accuracy
     GOAL_FILES=src/test/resources/goal-output
