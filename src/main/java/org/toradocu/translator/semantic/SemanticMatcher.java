@@ -19,20 +19,11 @@ import org.toradocu.translator.*;
  */
 public class SemanticMatcher {
 
-  //  private static SemanticMatcher instance = null;
-
   private static boolean enabled;
   private final ArrayList stopwords;
-
-  //  private boolean stopWordsRemoval;
-  //  private float distanceThreshold;
   private float wmdThreshold;
 
-  //  private static GloveRandomAccessReader gloveDB;
-
   public SemanticMatcher(boolean stopWordsRemoval, float distanceThreshold, float wmdThreshold) {
-    //    this.stopWordsRemoval = stopWordsRemoval;
-    //    this.distanceThreshold = distanceThreshold;
     this.wmdThreshold = wmdThreshold;
 
     //TODO can this naive list be improved?
@@ -63,13 +54,6 @@ public class SemanticMatcher {
                 "only",
                 "already",
                 "specify"));
-
-    //    try {
-    //      gloveDB = GloveBinModelWrapper.getInstance().getGloveBinaryReader();
-    //    } catch (URISyntaxException e) {
-    //      e.printStackTrace();
-    //      gloveDB = null;
-    //    }
   }
 
   public static boolean isEnabled() {
@@ -106,129 +90,6 @@ public class SemanticMatcher {
     return wmdMatch(comment, proposition, subject, method, codeElements);
   }
 
-  //  /**
-  //   * Computes semantic distances through GloVe vectors. The vector corresponding to the comment must
-  //   * be compared with each vector representing a code element among the candidates. Both comment and
-  //   * code elements names must be parsed first (stopwords removal, trailing spaces removal, lowercase
-  //   * normalization). The computed distances are stored in a map that will be filtered at the end of
-  //   * the process.
-  //   *
-  //   * @param comment the comment text for which computing the distances
-  //   * @param subjectCodeElement the subject {@code CodeElement}
-  //   * @param proposition the {@code Proposition} extracted from the comment
-  //   * @param method the method which the comment to match belongs
-  //   * @param codeElements ist of potentially candidate {@code CodeElement}s
-  //   * @return a map containing the best matches together with the distance computed in respect to the
-  //   *     comment
-  //   * @throws IOException if there were problems reading the vector model
-  //   */
-  //  private LinkedHashMap<CodeElement<?>, Double> vectorsMatch(
-  //      String comment,
-  //      CodeElement<?> subjectCodeElement,
-  //      Proposition proposition,
-  //      DocumentedExecutable method,
-  //      List<CodeElement<?>> codeElements)
-  //      throws IOException {
-  //
-  //    String rightSentence = splitInSentences(comment, proposition);
-  //    Set<String> commentWordSet = parseComment(rightSentence);
-  //
-  //    if (commentWordSet.size() > 3) {
-  //      // Vectors sum doesn't work well with long comments: use WMD
-  //      if (commentWordSet.size() > 7)
-  //        //Increase the threshold in case of very long comments
-  //        this.wmdThreshold = (float) 6.05;
-  //
-  //      return wmdMatch(comment, proposition, subjectCodeElement, method, codeElements);
-  //    }
-  //
-  //    String parsedComment = String.join(" ", commentWordSet).replaceAll("\\s+", " ").trim();
-  //
-  //    DoubleVector originalCommentVector = getCommentVector(commentWordSet);
-  //
-  //    Map<CodeElement<?>, Double> distances = new LinkedHashMap<>();
-  //
-  //    String subject = proposition.getSubject().getSubject().toLowerCase();
-  //    String wordToIgnore = "";
-  //    if (codeElements != null && !codeElements.isEmpty()) {
-  //      for (CodeElement<?> codeElement : codeElements) {
-  //        //For each code element, compute the corresponding vector and compute the distance
-  //        //between it and the comment vector. Store the distances and filter them lately.
-  //        if (codeElement instanceof MethodCodeElement
-  //            && !((MethodCodeElement) codeElement).getReceiver().equals("target")
-  //            && !areComplementary((MethodCodeElement) codeElement, method)) {
-  //          // if receiver is not target, this is a method invoked from the subject, which for the reason
-  //          // is implicit and will be excluded from the vector computation
-  //          if (subject.lastIndexOf(" ") != -1)
-  //            // in case of composed subject take just the last word (may be the most significant)
-  //            wordToIgnore = subject.substring(subject.lastIndexOf(" ") + 1, subject.length());
-  //          else wordToIgnore = subject;
-  //
-  //          DoubleVector codeElementVector =
-  //              getCodeElementVector((MethodCodeElement) codeElement, wordToIgnore);
-  //
-  //          Set<String> modifiedComment = new LinkedHashSet<String>(commentWordSet);
-  //          modifiedComment.remove(wordToIgnore);
-  //          DoubleVector modifiedCommentVector = getCommentVector(modifiedComment);
-  //
-  //          measureAndStoreDistance(modifiedCommentVector, codeElementVector, codeElement, distances);
-  //        } else if (codeElement instanceof MethodCodeElement
-  //            && ((MethodCodeElement) codeElement).getReceiver().equals("target")
-  //            && !areComplementary((MethodCodeElement) codeElement, method)) {
-  //          if (proposition.getSubject().isPassive()
-  //              || subjectCodeElement.toString().startsWith("target:")) {
-  //            // assume it's legit to invoke a method of the target class if the subject is the receiver
-  //            // object itself or if the subject was passive (thus the action could be invoked not from,
-  //            // but on it, typically as an argument)
-  //            DoubleVector methodVector = getCodeElementVector(codeElement, null);
-  //            measureAndStoreDistance(originalCommentVector, methodVector, codeElement, distances);
-  //          }
-  //        }
-  //      }
-  //      return retainMatches(parsedComment, method.getSignature(), distances);
-  //    }
-  //    return null;
-  //  }
-
-  //  /**
-  //   * If the comment is made of more than one sentence, identify the one containing the proposition
-  //   * (thus the right one to translate).
-  //   *
-  //   * @param comment the whole comment
-  //   * @param proposition the proposition to translate
-  //   * @return sub-sentence containing the proposition
-  //   */
-  //  private String splitInSentences(String comment, Proposition proposition) {
-  //    String rightSentence = comment;
-  //
-  //    String[] sentences = comment.split("\\.");
-  //    for (String sentence : sentences) {
-  //      if (sentence.contains(proposition.getPredicate())) rightSentence = sentence;
-  //    }
-  //    return rightSentence;
-  //  }
-
-  //  /**
-  //   * Measure the cosine distance between two vectors.
-  //   *
-  //   * @param commentVector vector representing the comment
-  //   * @param codeElementVector the vector representing the code element
-  //   * @param codeElement the code element
-  //   * @param distances map where to store the code element together with the distance from the
-  //   *     comment
-  //   */
-  //  private void measureAndStoreDistance(
-  //      DoubleVector commentVector,
-  //      DoubleVector codeElementVector,
-  //      CodeElement<?> codeElement,
-  //      Map<CodeElement<?>, Double> distances) {
-  //    CosineDistance cos = new CosineDistance();
-  //    if (codeElementVector != null && commentVector != null) {
-  //      double dist = cos.measureDistance(codeElementVector, commentVector);
-  //      distances.put(codeElement, dist);
-  //    }
-  //  }
-
   /**
    * Returns true if the {@code DocumentedExecutable} is a setter and the possible candidate is the
    * symmetric getter
@@ -248,67 +109,6 @@ public class SemanticMatcher {
 
     return false;
   }
-
-  //  /**
-  //   * Build the vector representing a code element, made by its name camelCase-splitted
-  //   *
-  //   * @param codeElement the code element
-  //   * @param wordToIgnore word to exclude from the building, if any
-  //   * @return a {@code DoubleVector} representing the code element vector
-  //   * @throws IOException if the GloVe model couldn't be read
-  //   */
-  //  private DoubleVector getCodeElementVector(CodeElement<?> codeElement, String wordToIgnore)
-  //      throws IOException {
-  //    int index;
-  //    DoubleVector codeElementVector = null;
-  //    String name = "";
-  //    if (codeElement instanceof MethodCodeElement)
-  //      name = ((MethodCodeElement) codeElement).getJavaCodeElement().getName();
-  //    else if (codeElement instanceof GeneralCodeElement)
-  //      name = ((GeneralCodeElement) codeElement).getIdentifiers().stream().findFirst().get();
-  //    else return null;
-  //    ArrayList<String> camelId = new ArrayList<String>(Arrays.asList(name.split("(?<!^)(?=[A-Z])")));
-  //    if (camelId.size() > 3) return null;
-  //
-  //    String joinedId = String.join(" ", camelId).replaceAll("\\s+", " ").toLowerCase().trim();
-  //    ArrayList<String> parsedId = new ArrayList<String>(parseComment(joinedId));
-  //
-  //    if (wordToIgnore != null) parsedId.remove(wordToIgnore);
-  //
-  //    for (int i = 0; i < parsedId.size(); i++) {
-  //      DoubleVector v = gloveDB.get(parsedId.get(i).toLowerCase());
-  //      if (this.stopWordsRemoval && this.stopwords.contains(parsedId.get(i).toLowerCase())) continue;
-  //      if (v != null) {
-  //        if (codeElementVector == null) codeElementVector = v;
-  //        else codeElementVector = codeElementVector.add(v);
-  //      }
-  //    }
-  //
-  //    return codeElementVector;
-  //  }
-
-  //  /**
-  //   * Build the vector representing the comment.
-  //   *
-  //   * @param wordComment the {@code Set<String>} of words componing the comment
-  //   * @return a {@code DoubleVector} representing the comment vector
-  //   * @throws IOException if the GloVe model couldn't be read
-  //   */
-  //  private static DoubleVector getCommentVector(Set<String> wordComment) throws IOException {
-  //    DoubleVector commentVector = null;
-  //    Iterator<String> wordIterator = wordComment.iterator();
-  //    while (wordIterator.hasNext()) {
-  //      String word = wordIterator.next();
-  //      if (word != null) {
-  //        DoubleVector v = gloveDB.get(word.toLowerCase());
-  //        if (v != null) {
-  //          if (commentVector == null) commentVector = v;
-  //          else commentVector = commentVector.add(v);
-  //        } else return null;
-  //      }
-  //    }
-  //    return commentVector;
-  //  }
 
   /**
    * Parse the original tag comment. Special characters are removed. Then the comment is normalized
