@@ -690,10 +690,16 @@ public final class JavadocExtractor {
     // Look for an import statement to complete exception type name.
     CompilationUnit cu = getCompilationUnit(sourceCallable);
     final NodeList<ImportDeclaration> imports = cu.getImports();
-    for (ImportDeclaration anImport : imports) {
-      String importedType = anImport.getNameAsString();
-      if (importedType.endsWith(exceptionTypeName)) {
-        return Reflection.getClass(importedType);
+    for (ImportDeclaration importStatement : imports) {
+      String importedTypeName = importStatement.getNameAsString();
+      try {
+        if (importedTypeName.endsWith(exceptionTypeName)) {
+          return Reflection.getClass(importedTypeName);
+        } else if (importStatement.isAsterisk()) {
+          return Reflection.getClass(importedTypeName + "." + exceptionTypeName);
+        }
+      } catch (ClassNotFoundException e) {
+        // Intentionally empty: Apply other heuristics to load the exception type.
       }
     }
     // TODO Improve error message.
