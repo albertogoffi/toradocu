@@ -12,30 +12,59 @@ public class AccuracyRandomPlumeLib extends AbstractPrecisionRecallTestSuite {
   private static final String EXPECTED = "src/test/resources/PlumeLib-1.1.0/";
 
   @Test
-  public void fuzzyFloatTest() throws Exception {
+  public void testFuzzyFloat() {
     test("plume.FuzzyFloat");
   }
 
   @Test
-  public void entryReaderTest() throws Exception {
-    test("plume.EntryReader");
-  }
-
-  @Test
-  public void mathMDETest() throws Exception {
+  public void testMathMDE() {
     test("plume.MathMDE");
   }
 
   @Test
-  public void weakerHasherMapTest() throws Exception {
+  public void testEntryReader() {
+    test("plume.EntryReader");
+  }
+
+  @Test
+  public void testWeakHasherMap() {
     test("plume.WeakHasherMap");
   }
 
   @Test
-  public void arraysMDETest() throws Exception {
-    test("plume.ArraysMDE");
+  public void testRegexUtil() {
+    test("plume.RegexUtil");
   }
 
+  @Test
+  public void testWeakIdentityHashMap() {
+    test("plume.WeakIdentityHashMap");
+  }
+
+  @Test
+  public void testTimeLimitProcess() {
+    test("plume.TimeLimitProcess");
+  }
+
+//  @Test // Test ignored: support for inner classes is not available in Toradocu 0.1.
+  public void testEntryReaderFlnReader() {
+    test("plume.EntryReader$FlnReader");
+  }
+
+  @Test
+  public void testStrTok() {
+    test("plume.StrTok");
+  }
+
+  @Test
+  public void testUtilMDE() {
+    test("plume.UtilMDE");
+  }
+
+  @Test
+  public void testArraysMDE() {
+    test("plume.ArraysMDE");
+  }
 
   private void test(String clazz) {
     testSuiteStats.addTest(PrecisionRecallTest.test(clazz, SRC, EXPECTED));
