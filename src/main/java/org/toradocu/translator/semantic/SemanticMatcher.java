@@ -19,8 +19,21 @@ import org.toradocu.translator.*;
  */
 public class SemanticMatcher {
 
+  /**
+   * Tells whether the semantic matching is enabled or not according to configuration parameters.
+   */
   private static boolean enabled;
+
+  /**
+   * List of words to be ignored in the comment and code element name when performing semantic
+   * matching.
+   */
   private final ArrayList stopwords;
+
+  /**
+   * Threshold up to which a similarity distance is considered acceptable. Zero is perfect
+   * similarity.
+   */
   private float wmdThreshold;
 
   public SemanticMatcher(boolean stopWordsRemoval, float distanceThreshold, float wmdThreshold) {
@@ -78,7 +91,7 @@ public class SemanticMatcher {
    * @return the best matches
    * @throws IOException if there were problems reading the vector model
    */
-  public LinkedHashMap<CodeElement<?>, Double> runVectorMatch(
+  public LinkedHashMap<CodeElement<?>, Double> runSemanticMatch(
       List<CodeElement<?>> codeElements,
       DocumentedExecutable method,
       CodeElement<?> subject,

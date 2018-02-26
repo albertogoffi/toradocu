@@ -259,7 +259,8 @@ class Matcher {
         //being put in map in a different order every execution
         Collections.sort(sortedMethodList, new JavaExpressionComparator());
         LinkedHashMap<CodeElement<?>, Double> semanticMethodMatches =
-            semanticMatcher.runVectorMatch(sortedMethodList, method, subject, proposition, comment);
+            semanticMatcher.runSemanticMatch(
+                sortedMethodList, method, subject, proposition, comment);
 
         if (semanticMethodMatches != null && !semanticMethodMatches.isEmpty()) {
           List<CodeElement<?>> semanticMethodList =
