@@ -34,6 +34,16 @@ public class AccuracyRandomGraphStream extends AbstractPrecisionRecallTestSuite 
     test("org.graphstream.graph.Path");
   }
 
+  @Test
+  public void testSingleGraph() throws Exception {
+    test("org.graphstream.graph.implementations.SingleGraph");
+  }
+
+  @Test
+  public void testMultiGraph() throws Exception {
+    test("org.graphstream.graph.implementations.MultiGraph");
+  }
+
   private void test(String clazz) {
     testSuiteStats.addTest(PrecisionRecallTest.test(clazz, SRC, EXPECTED));
   }
