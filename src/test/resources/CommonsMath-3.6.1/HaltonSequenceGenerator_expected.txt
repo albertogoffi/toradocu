@@ -1,0 +1,5 @@
+org.apache.commons.math3.random.HaltonSequenceGenerator(int) throws org.apache.commons.math3.exception.OutOfRangeException if the space dimension is outside the allowed range of [1, 40] ==> [args[0]<1||args[0]>40]
+org.apache.commons.math3.random.HaltonSequenceGenerator(int, int[], int[]) throws org.apache.commons.math3.exception.DimensionMismatchException if weights is non-null and the length of the input arrays differ ==> [args[2]!=null&&args[1].length!=args[2].length]
+org.apache.commons.math3.random.HaltonSequenceGenerator(int, int[], int[]) throws org.apache.commons.math3.exception.NullArgumentException if base is null ==> [args[1]==null]
+org.apache.commons.math3.random.HaltonSequenceGenerator(int, int[], int[]) throws org.apache.commons.math3.exception.OutOfRangeException if the space dimension is outside the range [1, len], where len refers to the length of the bases array ==> []
+org.apache.commons.math3.random.HaltonSequenceGenerator.skipTo(int) throws org.apache.commons.math3.exception.NotPositiveException if index < 0 ==> [args[0]<0]
