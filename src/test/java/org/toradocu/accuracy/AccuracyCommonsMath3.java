@@ -146,7 +146,7 @@ public class AccuracyCommonsMath3 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testLine() {
-    test("org.apache.commons.math3.geometry.euclidean.threed.Line", 1, 1, 0, 1, 1, 1);
+    test("org.apache.commons.math3.geometry.euclidean.threed.Line", 1, 1, 1, 1, 1, 1);
   }
 
   @Test
