@@ -2,7 +2,7 @@ package example;
 
 import example.annotation.NotNull;
 import example.annotation.Nullable;
-import example.exception.*;
+import example.exception.AnException;
 import java.util.Collection;
 
 public class AClass {
