@@ -510,7 +510,7 @@ public final class JavadocExtractor {
               && !sourceExecutableNames.contains(executableName)
               && it.getParameterCount() == 0;
         });
-    // Remove valueOf(java.lang.String)
+    // Remove valueOf(java.lang.String) method.
     reflectionExecutables.removeIf(
         it -> {
           final String executableName = it.getName();
@@ -519,7 +519,6 @@ public final class JavadocExtractor {
               && it.getParameterCount() == 1
               && it.getParameters()[0].getType().getName().equals("java.lang.String");
         });
-    reflectionExecutables.stream().map(Executable::getName).forEach(System.out::println);
   }
 
   /**
