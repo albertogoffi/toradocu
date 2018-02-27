@@ -661,23 +661,28 @@ public final class JavadocExtractor {
       String exceptionTypeName,
       String className)
       throws ClassNotFoundException {
+
     try {
       return Reflection.getClass(exceptionTypeName);
     } catch (ClassNotFoundException e) {
       // Intentionally empty: Apply other heuristics to load the exception type.
     }
+
+    // Try to load the exception class from java.lang package.
+    try {
+      return Reflection.getClass("java.lang." + exceptionTypeName);
+    } catch (ClassNotFoundException e) {
+      // Intentionally empty: Apply other heuristics to load the exception type.
+    }
+
     // Try to load a nested class.
     try {
       return Reflection.getClass(className + "$" + exceptionTypeName);
     } catch (ClassNotFoundException e) {
       // Intentionally empty: Apply other heuristics to load the exception type.
     }
-    try {
-      return Reflection.getClass("java.lang." + exceptionTypeName);
-    } catch (ClassNotFoundException e) {
-      // Intentionally empty: Apply other heuristics to load the exception type.
-    }
-    // Look in classes of package.
+
+    // Look in classes of the target class' package.
     for (String classInPackage : classesInPackage) {
       if (classInPackage.contains(exceptionTypeName)) {
         // TODO Add a comment explaining why the following check is needed.
@@ -687,6 +692,7 @@ public final class JavadocExtractor {
         return Reflection.getClass(classInPackage);
       }
     }
+
     // Look for an import statement to complete exception type name.
     CompilationUnit cu = getCompilationUnit(sourceCallable);
     final NodeList<ImportDeclaration> imports = cu.getImports();
@@ -702,6 +708,7 @@ public final class JavadocExtractor {
         // Intentionally empty: Apply other heuristics to load the exception type.
       }
     }
+
     // TODO Improve error message.
     throw new ClassNotFoundException(
         "Unable to load exception type " + exceptionTypeName + ". Is it on the classpath?");
