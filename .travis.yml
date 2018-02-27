@@ -7,7 +7,7 @@ jdk:
 
 install: travis_wait 30 ./gradlew unzipGlove unzipGloveModels
 
-script: ./gradlew --info --stacktrace build -PdisableShadowJar && ./gradlew checkFormat
+script: ./gradlew build -PdisableShadowJar && ./gradlew checkFormat
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
