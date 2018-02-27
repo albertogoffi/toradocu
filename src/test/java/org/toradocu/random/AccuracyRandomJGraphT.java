@@ -50,11 +50,6 @@ public class AccuracyRandomJGraphT extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void testDirectedSimpleCycles() {
-    test("org.jgrapht.alg.cycle.DirectedSimpleCycles");
-  }
-
-  @Test
   public void testAbstractPathElementList() {
     test("org.jgrapht.alg.AbstractPathElementList");
   }

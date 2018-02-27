@@ -52,11 +52,6 @@ public class AccuracyRandomPlumeLib extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void testStrTok() {
-    test("plume.StrTok");
-  }
-
-  @Test
   public void testUtilMDE() {
     test("plume.UtilMDE");
   }
