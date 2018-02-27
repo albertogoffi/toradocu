@@ -8,10 +8,8 @@ import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.ImportDeclaration;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.NodeList;
-import com.github.javaparser.ast.body.BodyDeclaration;
-import com.github.javaparser.ast.body.CallableDeclaration;
-import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
-import com.github.javaparser.ast.body.ConstructorDeclaration;
+import com.github.javaparser.ast.body.*;
+import com.github.javaparser.ast.nodeTypes.NodeWithConstructors;
 import com.github.javaparser.ast.nodeTypes.modifiers.NodeWithPrivateModifier;
 import com.github.javaparser.javadoc.Javadoc;
 import com.github.javaparser.javadoc.JavadocBlockTag;
@@ -403,27 +401,31 @@ public final class JavadocExtractor {
   public List<CallableDeclaration<?>> getExecutables(String className, String sourcePath)
       throws FileNotFoundException {
     final List<CallableDeclaration<?>> sourceExecutables = new ArrayList<>();
-    final ClassOrInterfaceDeclaration sourceClass = getClassDefinition(className, sourcePath);
-    sourceExecutables.addAll(sourceClass.getConstructors());
-    sourceExecutables.addAll(sourceClass.getMethods());
+    final NodeWithConstructors<?> target = getTypeDefinition(className, sourcePath);
+    sourceExecutables.addAll(target.getConstructors());
+    sourceExecutables.addAll(target.getMethods());
     sourceExecutables.removeIf(NodeWithPrivateModifier::isPrivate); // Ignore private members.
     return Collections.unmodifiableList(sourceExecutables);
   }
 
-  private ClassOrInterfaceDeclaration getClassDefinition(String className, String sourcePath)
+  private NodeWithConstructors<?> getTypeDefinition(String typeName, String sourcePath)
       throws FileNotFoundException {
     final CompilationUnit cu = JavaParser.parse(new File(sourcePath));
 
     String nestedClassName = "";
-    if (className.contains("$")) {
+    int dollarsPosition = typeName.indexOf("$");
+    if (dollarsPosition != -1) {
       // Nested class.
-      nestedClassName = className.substring(className.indexOf("$") + 1, className.length());
-      className = className.substring(0, className.indexOf("$"));
+      nestedClassName = typeName.substring(dollarsPosition + 1, typeName.length());
+      typeName = typeName.substring(0, dollarsPosition);
     }
 
-    Optional<ClassOrInterfaceDeclaration> definitionOpt = cu.getClassByName(className);
+    Optional<? extends NodeWithConstructors<?>> definitionOpt = cu.getClassByName(typeName);
     if (!definitionOpt.isPresent()) {
-      definitionOpt = cu.getInterfaceByName(className);
+      definitionOpt = cu.getInterfaceByName(typeName);
+    }
+    if (!definitionOpt.isPresent()) {
+      definitionOpt = cu.getEnumByName(typeName);
     }
 
     if (definitionOpt.isPresent()) {
@@ -440,12 +442,13 @@ public final class JavadocExtractor {
           }
         }
       } else {
-        // Top-level class or interface.
+        // Top-level class, enum, or interface.
         return definitionOpt.get();
       }
     }
+
     throw new IllegalArgumentException(
-        "Impossible to find a class or interface with name " + className + " in " + sourcePath);
+        "Impossible to find a class or interface with name " + typeName + " in " + sourcePath);
   }
 
   /**
@@ -462,6 +465,7 @@ public final class JavadocExtractor {
       String className) {
 
     filterOutGeneratedConstructors(reflectionExecutables, sourceExecutables, className);
+    filterOutEnumMethods(reflectionExecutables, sourceExecutables);
 
     if (reflectionExecutables.size() != sourceExecutables.size()) {
       // TODO Add the differences to the error message to better characterize the error.
@@ -492,6 +496,30 @@ public final class JavadocExtractor {
       map.put(matches.get(0), sourceCallable);
     }
     return map;
+  }
+
+  private void filterOutEnumMethods(
+      List<Executable> reflectionExecutables, List<CallableDeclaration<?>> sourceExecutables) {
+    final List<String> sourceExecutableNames =
+        sourceExecutables.stream().map(it -> it.getName().asString()).collect(toList());
+    // Remove values() method.
+    reflectionExecutables.removeIf(
+        it -> {
+          final String executableName = it.getName();
+          return executableName.equals("values")
+              && !sourceExecutableNames.contains(executableName)
+              && it.getParameterCount() == 0;
+        });
+    // Remove valueOf(java.lang.String)
+    reflectionExecutables.removeIf(
+        it -> {
+          final String executableName = it.getName();
+          return executableName.equals("valueOf")
+              && !sourceExecutableNames.contains(executableName)
+              && it.getParameterCount() == 1
+              && it.getParameters()[0].getType().getName().equals("java.lang.String");
+        });
+    reflectionExecutables.stream().map(Executable::getName).forEach(System.out::println);
   }
 
   /**
