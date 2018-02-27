@@ -45,17 +45,12 @@ public class AccuracyJGraphT extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testGraph() throws Exception {
-    test("org.jgrapht.Graph", 1, 0.556, 1, 1, 0.666, 1);
+    test("org.jgrapht.Graph", 1, 0.556, 1, 1, 0.8, 1);
   }
 
   @Test
   public void testEmptyGraphGenerator() throws Exception {
     test("org.jgrapht.generate.EmptyGraphGenerator", 1, 1, 1, 1, 1, 1);
-  }
-
-  @Test
-  public void testDirectedSimpleCycles() throws Exception {
-    test("org.jgrapht.alg.cycle.DirectedSimpleCycles", 1, 1, 1, 1, 1, 0);
   }
 
   @Test

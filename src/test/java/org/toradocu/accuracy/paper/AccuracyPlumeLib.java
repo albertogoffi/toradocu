@@ -53,11 +53,6 @@ public class AccuracyPlumeLib extends AbstractPrecisionRecallTestSuite {
   }
 
   @Test
-  public void testStrTok() throws Exception {
-    test("plume.StrTok", 1, 1, 1, 1, 1, 1);
-  }
-
-  @Test
   public void testUtilMDE() throws Exception {
     test("plume.UtilMDE", 1, 1, 1, 1, 0.25, 0.333);
   }

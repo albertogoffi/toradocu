@@ -253,13 +253,14 @@ class Matcher {
     if (match == null && SemanticMatcher.isEnabled()) {
       // When the syntactic match fails, try semantic if enabled
       try {
-        SemanticMatcher semanticMatcher = new SemanticMatcher(true, (float) 0.2, (float) 1.8);
+        SemanticMatcher semanticMatcher = new SemanticMatcher(true, (float) 0.2, (float) 3.11);
 
         //it is important to provide a fixed order since this point, to prevent method with same score
         //being put in map in a different order every execution
         Collections.sort(sortedMethodList, new JavaExpressionComparator());
         LinkedHashMap<CodeElement<?>, Double> semanticMethodMatches =
-            semanticMatcher.runVectorMatch(sortedMethodList, method, subject, proposition, comment);
+            semanticMatcher.runSemanticMatch(
+                sortedMethodList, method, subject, proposition, comment);
 
         if (semanticMethodMatches != null && !semanticMethodMatches.isEmpty()) {
           List<CodeElement<?>> semanticMethodList =
