@@ -11,9 +11,7 @@ import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.translator.*;
 
 /**
- * Created by arianna on 29/05/17.
- *
- * <p>Main component. Contains all the methods to compute the {@code SemantichMatch}es for a given
+ * Main component. Contains all the methods to compute the {@code SemantichMatch}es for a given
  * class. This implements the "basic" semantic semantic, i.e. the one that uses plain vector sums.
  * Other kinds of matcher will extend this class.
  */
@@ -28,7 +26,7 @@ public class SemanticMatcher {
    * List of words to be ignored in the comment and code element name when performing semantic
    * matching.
    */
-  private final ArrayList stopwords;
+  private final ArrayList<String> stopwords;
 
   /**
    * Threshold up to which a similarity distance is considered acceptable. Zero is perfect
@@ -115,9 +113,7 @@ public class SemanticMatcher {
     String candidateName = candidate.getJavaCodeElement().getName();
     if (candidateName.matches("(.*)get[A-Z](.*)")) {
       String property = candidateName.split("get")[1];
-      if (method.getName().equals("set" + property)) {
-        return true;
-      }
+      return method.getName().equals("set" + property);
     }
 
     return false;
