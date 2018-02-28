@@ -2,24 +2,27 @@ buildscript {
   ext.kotlin_version = '1.2.21'
 
   repositories {
+    jcenter()
     mavenCentral()
   }
 
   dependencies {
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.2' // Workaround for https://github.com/johnrengelman/shadow/issues/336
   }
 }
 
 plugins {
   id 'java'
   id 'application'
-  id 'com.github.johnrengelman.shadow' version '2.0.1' // For creating the fat JAR
   id 'de.undercouch.download' version '3.3.0' // For the download tasks
   id 'eclipse' // Support for Eclipse projects
   id 'idea' // Support for IntelliJ IDEA projects
 }
 apply plugin: 'kotlin'
-// apply plugin: 'jacoco'
+
+mainClassName = "org.toradocu.Toradocu"
+apply plugin: 'com.github.johnrengelman.shadow' // Workaround for https://github.com/johnrengelman/shadow/issues/336
 
 task downloadGlove(type: Download) {
   src 'http://star-rep.inf.usi.ch/alberto/glove/raw/master/glove-binary.zip'
@@ -55,7 +58,6 @@ processResources.dependsOn(unzipGlove, unzipGloveModels)
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-mainClassName = "org.toradocu.Toradocu"
 version = '1.0'
 jar {
   manifest {
@@ -71,8 +73,21 @@ sourceSets {
   }
   test {
     java {
-      excludes = ['org/toradocu/util/old*', 'org/toradocu/regression/*', 'org/toradocu/accuracy/paper/*']
+      excludes = ['org/toradocu/util/old*', 'org/toradocu/regression/*',
+                  'org/toradocu/accuracy/paper/*', 'org/toradocu/generator/**']
     }
+  }
+}
+
+test {
+  exclude 'org/toradocu/generator/**'
+  reports {
+    html.enabled = true
+  }
+  // Print standard output during tests execution.
+  testLogging {
+    events = ['STANDARD_OUT', 'FAILED']
+    exceptionFormat = 'FULL'
   }
 }
 
@@ -105,18 +120,6 @@ shadowDistTar.enabled = false
 
 compileJava {
   options.compilerArgs << '-Xlint:unchecked,deprecation'
-}
-
-test {
-  exclude 'org/toradocu/generator/**'
-  reports {
-    html.enabled = true
-  }
-  // Print standard output during tests execution.
-  testLogging {
-    events = ['STANDARD_OUT', 'FAILED']
-    exceptionFormat = 'FULL'
-  }
 }
 
 repositories {
