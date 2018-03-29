@@ -22,6 +22,7 @@ public class PreprocessorFactory {
         phases.add(new RemoveMayBe());
         phases.add(new NormalizeNonNullNonEmpty());
         phases.add(new NormalizeIt());
+        phases.add(new Trim());
         break;
       case THROWS:
         phases.add(new ExpandRange());
@@ -30,6 +31,7 @@ public class PreprocessorFactory {
         phases.add(new RemoveInitialIf());
         phases.add(new NormalizeNonNullNonEmpty());
         phases.add(new NormalizeIt());
+        phases.add(new Trim());
         break;
       case RETURN:
         phases.add(new ExpandRange());
@@ -37,6 +39,7 @@ public class PreprocessorFactory {
         phases.add(new NormalizeNonNullNonEmpty());
         phases.add(new NormalizeIt());
         phases.add(new NormalizeWhether());
+        phases.add(new Trim());
         break;
     }
 
