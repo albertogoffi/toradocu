@@ -69,6 +69,12 @@ public enum Configuration {
   )
   private boolean silent = false;
 
+  @Parameter(
+    names = "--stop-on-error",
+    description = "Toradocu stops when there is an error in the being-analyzed Javadoc"
+  )
+  public boolean stopOnError = false;
+
   // Javadoc extractor options
 
   @Parameter(

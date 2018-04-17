@@ -8,7 +8,10 @@ import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.ImportDeclaration;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.NodeList;
-import com.github.javaparser.ast.body.*;
+import com.github.javaparser.ast.body.BodyDeclaration;
+import com.github.javaparser.ast.body.CallableDeclaration;
+import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
+import com.github.javaparser.ast.body.ConstructorDeclaration;
 import com.github.javaparser.ast.nodeTypes.NodeWithConstructors;
 import com.github.javaparser.ast.nodeTypes.modifiers.NodeWithPrivateModifier;
 import com.github.javaparser.javadoc.Javadoc;
@@ -32,6 +35,7 @@ import java.util.function.Predicate;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.toradocu.conf.Configuration;
 import org.toradocu.util.Reflection;
 
 /**
@@ -60,9 +64,9 @@ public final class JavadocExtractor {
    *     cannot be found in path {@code sourcePath}
    */
   public DocumentedType extract(String className, String sourcePath)
-      throws ClassNotFoundException, FileNotFoundException {
+      throws ClassNotFoundException, FileNotFoundException, ParameterNotFoundException {
 
-    //    log.info("Extracting Javadoc information of {} (in source folder {})", className, sourcePath);
+    log.trace("Extracting Javadoc information of {} (in source folder {})", className, sourcePath);
 
     // Obtain executable members (constructors and methods) by means of reflection.
     final Class<?> clazz = Reflection.getClass(className);
@@ -97,8 +101,8 @@ public final class JavadocExtractor {
       documentedExecutables.add(new DocumentedExecutable(reflectionMember, parameters, blockTags));
     }
 
-    //    log.info(
-    //        "Extracting Javadoc information of {} (in source folder {}) done", className, sourcePath);
+    log.trace(
+        "Extracting Javadoc information of {} (in source folder {}) done", className, sourcePath);
 
     // Create the documented class.
     return new DocumentedType(clazz, documentedExecutables);
@@ -137,6 +141,10 @@ public final class JavadocExtractor {
     File folder = new File(packagePath);
     File[] listOfFiles = folder.listFiles();
     List<String> classesInPackage = new ArrayList<>();
+    if (listOfFiles == null) {
+      return classesInPackage;
+    }
+
     for (File file : listOfFiles) {
       if (!file.getName().endsWith(".java")) {
         continue;
@@ -179,14 +187,16 @@ public final class JavadocExtractor {
    * @param className qualified name of the class defining {@code sourceCallable}
    * @return a triple of created tags: list of @param tags, return tag, list of @throws tags
    * @throws ClassNotFoundException if a type described in a Javadoc comment cannot be loaded (e.g.,
-   *     the type is not on the classpath)
+   *     the type is not on the classpath) and option stop-on-error is set.
+   * @throws ParameterNotFoundException if a parameter described in a comment does not correspond to
+   *     a formal parameter and the command line option stop-on-error is set.
    */
   private BlockTags createTags(
       List<String> classesInPackage,
       CallableDeclaration<?> callableMember,
       List<DocumentedParameter> parameters,
       String className)
-      throws ClassNotFoundException {
+      throws ClassNotFoundException, ParameterNotFoundException {
 
     List<ParamTag> paramTags = new ArrayList<>();
     ReturnTag returnTag = null;
@@ -199,9 +209,20 @@ public final class JavadocExtractor {
       for (JavadocBlockTag blockTag : blockTags) {
         switch (blockTag.getType()) {
           case PARAM:
-            final ParamTag paramTag = createParamTag(blockTag, parameters);
-            if (paramTag != null) { // Ignore @param comments describing generic type parameters.
-              paramTags.add(paramTag);
+            try {
+              final ParamTag paramTag = createParamTag(blockTag, parameters);
+              if (paramTag != null) { // Ignore @param comments describing generic type parameters.
+                paramTags.add(paramTag);
+              }
+            } catch (ParameterNotFoundException e) {
+              if (Configuration.INSTANCE.stopOnError) {
+                throw new ParameterNotFoundException(
+                    "Error parsing the Javadoc of method "
+                        + callableMember.getSignature()
+                        + ": "
+                        + e.getMessage(),
+                    e);
+              }
             }
             break;
           case RETURN:
@@ -209,7 +230,20 @@ public final class JavadocExtractor {
             break;
           case EXCEPTION:
           case THROWS:
-            throwsTags.add(createThrowsTag(classesInPackage, blockTag, callableMember, className));
+            try {
+              ThrowsTag throwsTag =
+                  createThrowsTag(classesInPackage, blockTag, callableMember, className);
+              throwsTags.add(throwsTag);
+            } catch (ClassNotFoundException e) {
+              if (Configuration.INSTANCE.stopOnError) {
+                throw new ClassNotFoundException(
+                    "Error parsing the Javadoc of method "
+                        + callableMember.getSignature()
+                        + ": "
+                        + e.getMessage(),
+                    e);
+              }
+            }
             break;
           default:
             // ignore other block tags
@@ -251,7 +285,7 @@ public final class JavadocExtractor {
         findExceptionType(classesInPackage, sourceCallable, exceptionName, className);
     String commentToken = "";
     if (tokens.length > 1) {
-      //a tag can report the exception type even without any description
+      // A tag can report the exception type even without any description
       commentToken = tokens[1];
     }
     Comment commentObject = new Comment(commentToken);
@@ -289,7 +323,8 @@ public final class JavadocExtractor {
    * @return the created tag, null if {@code blockTag} refers to a @param tag documenting a generic
    *     type parameter.
    */
-  private ParamTag createParamTag(JavadocBlockTag blockTag, List<DocumentedParameter> parameters) {
+  private ParamTag createParamTag(JavadocBlockTag blockTag, List<DocumentedParameter> parameters)
+      throws ParameterNotFoundException {
     final Type blockTagType = blockTag.getType();
     if (!blockTagType.equals(Type.PARAM)) {
       throw new IllegalArgumentException(
@@ -305,10 +340,16 @@ public final class JavadocExtractor {
 
     final List<DocumentedParameter> matchingParams =
         parameters.stream().filter(p -> p.getName().equals(paramName)).collect(toList());
-    // TODO If paramName not present in paramNames => issue a warning about incorrect documentation!
-    // TODO If more than one matching parameter found => issue a warning about incorrect documentation!
-    Comment commentObject = new Comment(blockTag.getContent().toText());
-    return new ParamTag(matchingParams.get(0), commentObject);
+
+    if (matchingParams.isEmpty()) {
+      throw new ParameterNotFoundException(
+          "Documented parameter " + paramName + " does not correspond to any formal parameter.");
+    } else if (matchingParams.size() > 1) {
+      throw new AssertionError("Error: multiple formal parameters with the same name.");
+    } else {
+      Comment commentObject = new Comment(blockTag.getContent().toText());
+      return new ParamTag(matchingParams.get(0), commentObject);
+    }
   }
 
   /**
@@ -587,7 +628,8 @@ public final class JavadocExtractor {
       final Parameter reflectionParam = reflectionParams[i];
       String reflectionQualifiedTypeName =
           rawType(reflectionParam.getParameterizedType().getTypeName());
-      //TODO Replace the next 18 lines, which do string manipulation, by code that uses data structures
+      // TODO Replace the next 18 lines, which do string manipulation, by code that uses data
+      // structures
       if (reflectionParam.isVarArgs() && !reflectionQualifiedTypeName.endsWith("[]")) {
         // Sometimes var args type name ends with "[]", sometimes don't. That's why we need this
         // check.
