@@ -92,7 +92,7 @@ public class Toradocu {
         final DocumentedType documentedType =
             javadocExtractor.extract(targetClass, configuration.sourceDir.toString());
         members = documentedType.getDocumentedExecutables();
-      }catch (ParameterNotFoundException e) {
+      } catch (ParameterNotFoundException e) {
         log.error(e.getMessage() + "\n" + Arrays.toString(e.getStackTrace()));
         System.exit(1);
       } catch (ClassNotFoundException e) {
