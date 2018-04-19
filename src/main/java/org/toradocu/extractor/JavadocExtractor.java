@@ -291,7 +291,7 @@ public final class JavadocExtractor {
       }
       Comment commentObject = new Comment(commentToken);
       return new ThrowsTag(exceptionType, commentObject);
-    } catch(ClassNotFoundException e) {
+    } catch (ClassNotFoundException e) {
       log.info("[Javadoc warning] Wrong exception type name");
       throw e;
     }
