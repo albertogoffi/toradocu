@@ -281,15 +281,20 @@ public final class JavadocExtractor {
     String comment = blockTag.getContent().toText();
     final String[] tokens = comment.split("[\\s\\t]+", 2);
     final String exceptionName = tokens[0];
-    Class<?> exceptionType =
-        findExceptionType(classesInPackage, sourceCallable, exceptionName, className);
-    String commentToken = "";
-    if (tokens.length > 1) {
-      // A tag can report the exception type even without any description
-      commentToken = tokens[1];
+    try {
+      Class<?> exceptionType =
+          findExceptionType(classesInPackage, sourceCallable, exceptionName, className);
+      String commentToken = "";
+      if (tokens.length > 1) {
+        // A tag can report the exception type even without any description
+        commentToken = tokens[1];
+      }
+      Comment commentObject = new Comment(commentToken);
+      return new ThrowsTag(exceptionType, commentObject);
+    } catch(ClassNotFoundException e) {
+      log.info("[Javadoc warning] Wrong exception type name");
+      throw e;
     }
-    Comment commentObject = new Comment(commentToken);
-    return new ThrowsTag(exceptionType, commentObject);
   }
 
   /**
@@ -342,6 +347,7 @@ public final class JavadocExtractor {
         parameters.stream().filter(p -> p.getName().equals(paramName)).collect(toList());
 
     if (matchingParams.isEmpty()) {
+      log.info("[Javadoc warning] Wrong parameter name");
       throw new ParameterNotFoundException(
           "Documented parameter " + paramName + " does not correspond to any formal parameter.");
     } else if (matchingParams.size() > 1) {
@@ -395,8 +401,8 @@ public final class JavadocExtractor {
 
     if (!notNullAnnotations.isEmpty() && !nullableAnnotations.isEmpty()) {
       // Parameter is annotated as both nullable and notNull.
-      log.warn(
-          "Wrong specification: parameter "
+      log.info(
+          "[Javadoc warning] Wrong specification: parameter "
               + parameter.getName()
               + " of type "
               + parameter.getType().asString()
