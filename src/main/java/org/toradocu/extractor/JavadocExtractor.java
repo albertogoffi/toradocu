@@ -305,8 +305,19 @@ public final class JavadocExtractor {
 
     final List<DocumentedParameter> matchingParams =
         parameters.stream().filter(p -> p.getName().equals(paramName)).collect(toList());
+
+    if (matchingParams.isEmpty()) {
+      log.warn("No matching parameter found for name " + paramName + ". Is the Javadoc correct?");
+      return null;
+    }
+    if (matchingParams.size() > 1) {
+      log.warn("More than one parameter matches name " + paramName + ". Is the Javadoc correct?");
+      return null;
+    }
     // TODO If paramName not present in paramNames => issue a warning about incorrect documentation!
     // TODO If more than one matching parameter found => issue a warning about incorrect documentation!
+    // TODO Or should we throw an exception? If we return null, no paramTag will be created. What would
+    // TODO be the consequences on the final specification?
     Comment commentObject = new Comment(blockTag.getContent().toText());
     return new ParamTag(matchingParams.get(0), commentObject);
   }
