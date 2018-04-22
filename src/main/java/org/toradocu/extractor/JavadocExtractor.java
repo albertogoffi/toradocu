@@ -428,6 +428,17 @@ public final class JavadocExtractor {
       definitionOpt = cu.getEnumByName(typeName);
     }
 
+    if (!definitionOpt.isPresent()) {
+      Optional<AnnotationDeclaration> annotationOpt = cu.getAnnotationDeclarationByName(typeName);
+      if (annotationOpt.isPresent()) {
+        throw new IllegalArgumentException(
+            "Unsupported declaration: "
+                + typeName
+                + " in "
+                + sourcePath
+                + " is an annotation declaration, not a class or interface");
+      }
+    }
     if (definitionOpt.isPresent()) {
       if (!nestedClassName.isEmpty()) {
         // Nested class.
