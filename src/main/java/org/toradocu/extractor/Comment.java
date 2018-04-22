@@ -142,7 +142,21 @@ public final class Comment {
    * @return the computed occurrence
    */
   private int countStringOccurrence(String word, String subSentence, int limitIndex) {
-    Matcher matcher = Pattern.compile("\\b" + word + "\\b").matcher(subSentence);
+    if (word.matches(".*[\\[\\]\\(\\)].*")) {
+      // Escape special characters to prevent errors in subsequent pattern compiling
+      word =
+          word.replaceAll("\\]", "\\\\]")
+              .replaceAll("\\[", "\\\\[")
+              .replaceAll("\\)", "\\)")
+              .replaceAll("\\(", "\\\\(")
+              .replaceAll("\\.", "\\\\.");
+
+      // Word boundaries do not work in case of special characters, thus use look ahead and look behind
+      word = "(?<!" + word + ")" + word + "(?!" + word + ")";
+    } else {
+      word = "\\b" + word + "\\b";
+    }
+    Matcher matcher = Pattern.compile(word).matcher(subSentence);
     int i = 0;
     while (matcher.find() && matcher.start() < limitIndex) {
       //Looping on method find preserves the order of matches,

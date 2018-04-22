@@ -16,6 +16,7 @@ public class CommentTest {
         "This comment contains a {@code codeElement}, another {@code one}, and a last {@code codeElement}";
     String simpleTag = "This comment contains a {@code codeElement}";
     String complexTag = "This comment contains a {@code complex codeElement}";
+    String specialCharTag = "This comment contains {@code specialCharacters[]}";
     String expressionTag = "This comment contains an expression: {@code i<0}";
     String regularHTMLTags = "This comment contains <b>bold text</b>";
     String selfClosingHTMLTags = "This comment contains a break <br/>";
@@ -48,6 +49,12 @@ public class CommentTest {
     assertThat(codeWordOccurrences.get(0), is(0));
 
     codeWordOccurrences = complexComment.getWordsMarkedAsCode().get("codeElement");
+    assertThat(codeWordOccurrences, not(is(nullValue())));
+    assertThat(codeWordOccurrences.size(), is(1));
+    assertThat(codeWordOccurrences.get(0), is(0));
+
+    Comment specialCharComment = new Comment(specialCharTag);
+    codeWordOccurrences = specialCharComment.getWordsMarkedAsCode().get("specialCharacters[]");
     assertThat(codeWordOccurrences, not(is(nullValue())));
     assertThat(codeWordOccurrences.size(), is(1));
     assertThat(codeWordOccurrences.get(0), is(0));
