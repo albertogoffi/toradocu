@@ -548,7 +548,9 @@ public final class JavadocExtractor {
       if (matches.size() > 1) {
         throw new AssertionError(
             "Found multiple reflection executable members corresponding to "
-                + sourceCallable.getSignature());
+                + sourceCallable.getSignature()
+                + ". Matching executable members are:\n"
+                + Arrays.toString(matches.toArray()));
       }
       map.put(matches.get(0), sourceCallable);
     }
