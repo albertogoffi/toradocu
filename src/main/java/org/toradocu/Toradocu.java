@@ -22,6 +22,7 @@ import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.DocumentedType;
 import org.toradocu.extractor.JavadocExtractor;
+import org.toradocu.extractor.ParameterNotFoundException;
 import org.toradocu.generator.OracleGenerator;
 import org.toradocu.output.util.JsonOutput;
 import org.toradocu.translator.CommentTranslator;
@@ -91,6 +92,9 @@ public class Toradocu {
         final DocumentedType documentedType =
             javadocExtractor.extract(targetClass, configuration.sourceDir.toString());
         members = documentedType.getDocumentedExecutables();
+      } catch (ParameterNotFoundException e) {
+        log.error(e.getMessage() + "\n" + Arrays.toString(e.getStackTrace()));
+        System.exit(1);
       } catch (ClassNotFoundException e) {
         log.error( // TODO Refine this error message for the specific caught exception.
             e.getMessage()
