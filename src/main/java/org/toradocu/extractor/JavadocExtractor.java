@@ -684,11 +684,13 @@ public final class JavadocExtractor {
    * @return the raw type
    */
   private String rawType(String type) {
-    int i = type.indexOf("<");
-    if (i != -1) { // If type contains "<".
-      return type.substring(0, i);
+    final int start = type.indexOf("<");
+    if (start == -1) {
+      return type;
+    } else { // If type contains "<".
+      final int end = type.lastIndexOf(">");
+      return type.substring(0, start) + type.substring(end + 1);
     }
-    return type;
   }
 
   /**
