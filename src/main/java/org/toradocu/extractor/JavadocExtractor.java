@@ -474,7 +474,6 @@ public final class JavadocExtractor {
     if (!definitionOpt.isPresent()) {
       definitionOpt = cu.getEnumByName(typeName);
     }
-
     if (definitionOpt.isPresent()) {
       if (!nestedClassName.isEmpty()) {
         // Nested class.
@@ -491,6 +490,16 @@ public final class JavadocExtractor {
       } else {
         // Top-level class, enum, or interface.
         return definitionOpt.get();
+      }
+    } else {
+      Optional<AnnotationDeclaration> annotationOpt = cu.getAnnotationDeclarationByName(typeName);
+      if (annotationOpt.isPresent()) {
+        throw new IllegalArgumentException(
+            "Unsupported declaration: "
+                + typeName
+                + " in "
+                + sourcePath
+                + " is an annotation declaration, not a class or interface");
       }
     }
 
