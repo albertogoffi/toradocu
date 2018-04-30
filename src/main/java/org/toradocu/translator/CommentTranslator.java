@@ -83,8 +83,8 @@ public class CommentTranslator {
       Operation operation = Operation.getOperation(member.getExecutable());
       List<String> paramNames =
           member.getParameters().stream().map(DocumentedParameter::getName).collect(toList());
-      Identifiers identifiers =
-          new Identifiers(paramNames, Configuration.RECEIVER, Configuration.RETURN_VALUE);
+      String receiverID = adjustReceiverName(Configuration.RECEIVER, paramNames);
+      Identifiers identifiers = new Identifiers(paramNames, receiverID, Configuration.RETURN_VALUE);
       OperationSpecification spec = new OperationSpecification(operation, identifiers);
 
       List<PreSpecification> preSpecifications = new ArrayList<>();
@@ -109,6 +109,21 @@ public class CommentTranslator {
       specs.put(member, spec);
     }
     return specs;
+  }
+
+  /**
+   * If randoop sepcs are enabled and receiver name conflicts with one parameter name, adjust the
+   * receiver name.
+   *
+   * @param receiver original receiver name
+   * @param paramNames list of parameters names
+   * @return adjusted receiver name
+   */
+  private static String adjustReceiverName(String receiver, List<String> paramNames) {
+    if (paramNames.contains(receiver) && Configuration.randoopSpecsFile() != null) {
+      return receiver + "-class-ID";
+    }
+    return receiver;
   }
 
   /**

@@ -159,7 +159,7 @@ public enum Configuration {
     converter = FileConverter.class,
     hidden = true
   )
-  private File randoopSpecs;
+  private static File randoopSpecs;
 
   @Parameter(
     names = "--disable-semantics",
@@ -374,7 +374,7 @@ public enum Configuration {
    *
    * @return the file where to export Toradocu generated specifications as Randoop specifications
    */
-  public File randoopSpecsFile() {
+  public static File randoopSpecsFile() {
     return randoopSpecs;
   }
 
