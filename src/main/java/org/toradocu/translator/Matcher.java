@@ -168,7 +168,8 @@ class Matcher {
       }
     }
 
-    if (match.equals("target==null")) { // Condition "target==null" is indeed not correct.
+    if (match.equals(
+        "receiverObjectID==null")) { // Condition "receiverObjectID==null" is indeed not correct.
       return null;
     }
 

@@ -9,6 +9,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
 import java.util.*;
+import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.DocumentedParameter;
@@ -64,7 +65,7 @@ public class JavaElementsCollector {
       if (Modifier.isStatic(method.getModifiers())) {
         codeElements.add(new StaticMethodCodeElement(method));
       } else if (!documentedExecutable.isConstructor()) {
-        codeElements.add(new MethodCodeElement("target", method));
+        codeElements.add(new MethodCodeElement(Configuration.RECEIVER, method));
       }
     }
     return codeElements;
@@ -90,7 +91,7 @@ public class JavaElementsCollector {
 
   private static List<FieldCodeElement> fieldsOf(Class<?> aClass) {
     return Arrays.stream(aClass.getFields())
-        .map(field -> new FieldCodeElement("target", field))
+        .map(field -> new FieldCodeElement(Configuration.RECEIVER, field))
         .collect(toList());
   }
 

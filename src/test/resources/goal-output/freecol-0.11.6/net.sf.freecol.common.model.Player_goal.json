@@ -466,7 +466,7 @@
     "returnTag": {
       "comment": "A name key, or null if Europe is null.",
       "kind": "RETURN",
-      "condition": "target.getEurope()==null ? result==null"
+      "condition": "receiverObjectID.getEurope()==null ? result==null"
     },
     "throwsTags": []
   },
@@ -1663,7 +1663,7 @@
     "returnTag": {
       "comment": "True if this Player is dead.",
       "kind": "RETURN",
-      "condition": "target.getDead()?result==true:result==false"
+      "condition": "receiverObjectID.getDead()?result==true:result==false"
     },
     "throwsTags": []
   },
@@ -1687,7 +1687,7 @@
     "returnTag": {
       "comment": "True if this Player is dead.",
       "kind": "RETURN",
-      "condition": "target.isDead()?result==true:result==false"
+      "condition": "receiverObjectID.isDead()?result==true:result==false"
     },
     "throwsTags": []
   },
@@ -4046,7 +4046,7 @@
     "returnTag": {
       "comment": "The Europe object, or null if the player is not European or indpendent.",
       "kind": "RETURN",
-      "condition": "(target.isEuropean())==false?result==null"
+      "condition": "(receiverObjectID.isEuropean())==false?result==null"
     },
     "throwsTags": []
   },
@@ -4112,7 +4112,7 @@
     "returnTag": {
       "comment": "True if this player has an instance of Europe.",
       "kind": "RETURN",
-      "condition": "target.getEurope() != null ? result==true"
+      "condition": "receiverObjectID.getEurope() != null ? result==true"
     },
     "throwsTags": []
   },
@@ -6623,7 +6623,7 @@
         "codeTags": [],
         "comment": "if player is null or this.",
         "kind": "THROWS",
-        "condition": "args[0]==null || args[0]==target"
+        "condition": "args[0]==null || args[0]==receiverObjectID"
       }
     ]
   },
@@ -7768,7 +7768,7 @@
     "returnTag": {
       "comment": "True if the Ownable is ours.",
       "kind": "RETURN",
-      "condition": "target.equals(args[0].getOwner()) ? result==true : result==false"
+      "condition": "receiverObjectID.equals(args[0].getOwner()) ? result==true : result==false"
     },
     "throwsTags": []
   },

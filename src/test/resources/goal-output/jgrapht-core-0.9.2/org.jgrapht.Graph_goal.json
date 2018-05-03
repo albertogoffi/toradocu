@@ -235,7 +235,7 @@
         "codeTags": [],
         "comment": "if source or target vertices are not found in the graph.",
         "kind": "THROWS",
-        "condition": "target.contains(arg[0])==false || target.contains(arg[1])==false"
+        "condition": "receiverObjectID.contains(arg[0])==false || receiverObjectID.contains(arg[1])==false"
       },
       {
         "exceptionType": {
@@ -337,7 +337,7 @@
     "returnTag": {
       "comment": "true if this graph did not already contain the specified edge.",
       "kind": "RETURN",
-      "condition": "(target.containsEdge(args[0],args[1]))==false?result==true:result==false"
+      "condition": "(receiverObjectID.containsEdge(args[0],args[1]))==false?result==true:result==false"
     },
     "throwsTags": [
       {
@@ -349,7 +349,7 @@
         "codeTags": [],
         "comment": "if source or target vertices are not found in the graph.",
         "kind": "THROWS",
-        "condition": "target.contains(arg[0])==false || target.contains(arg[1])==false"
+        "condition": "receiverObjectID.contains(arg[0])==false || receiverObjectID.contains(arg[1])==false"
       },
       {
         "exceptionType": {
@@ -420,7 +420,7 @@
     "returnTag": {
       "comment": "true if this graph did not already contain the specified vertex.",
       "kind": "RETURN",
-      "condition": "(target.containsVertex(args[0]))==false ? result==true:result==false"
+      "condition": "(receiverObjectID.containsVertex(args[0]))==false ? result==true:result==false"
     },
     "throwsTags": [
       {
@@ -679,7 +679,7 @@
         "codeTags": [],
         "comment": "if vertex is not found in the graph.",
         "kind": "THROWS",
-        "condition": "(target.containsVertex(args[0]))==false"
+        "condition": "(receiverObjectID.containsVertex(args[0]))==false"
       },
       {
         "exceptionType": {
@@ -993,7 +993,7 @@
     "returnTag": {
       "comment": "true if and only if the graph contained the specified edge.",
       "kind": "RETURN",
-      "condition": "target.containsEdge(args[0]) ? result==true : result==false"
+      "condition": "receiverObjectID.containsEdge(args[0]) ? result==true : result==false"
     },
     "throwsTags": []
   },
@@ -1040,7 +1040,7 @@
     "returnTag": {
       "comment": "true if the graph contained the specified vertex; false otherwise.",
       "kind": "RETURN",
-      "condition": "target.containsVertex(args[0]) ? result==true : result==false"
+      "condition": "receiverObjectID.containsVertex(args[0]) ? result==true : result==false"
     },
     "throwsTags": []
   },

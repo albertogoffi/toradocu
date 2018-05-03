@@ -84,7 +84,7 @@
     "returnTag": {
       "comment": "true iff size(a intersect b) ≥ i",
       "kind": "RETURN",
-      "condition": "target.intersectionCardinality(args[0],args[1])>=args[2] ? result==true"
+      "condition": "receiverObjectID.intersectionCardinality(args[0],args[1])>=args[2] ? result==true"
     },
     "throwsTags": []
   },
@@ -194,7 +194,7 @@
     "returnTag": {
       "comment": "true iff size(a intersect b intersect c) ≥ i",
       "kind": "RETURN",
-      "condition": "target.intersectionCardinality(args[0],args[1],args[2])>=args[3] ? result==true"
+      "condition": "receiverObjectID.intersectionCardinality(args[0],args[1],args[2])>=args[3] ? result==true"
     },
     "throwsTags": []
   },

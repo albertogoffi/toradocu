@@ -634,7 +634,7 @@
     "returnTag": {
       "comment": "an empty Bag",
       "kind": "RETURN",
-      "condition": "true ? result.equals(target.EMPTY_BAG)"
+      "condition": "true ? result.equals(receiverObjectID.EMPTY_BAG)"
     },
     "throwsTags": []
   },
@@ -658,7 +658,7 @@
     "returnTag": {
       "comment": "an empty sorted Bag",
       "kind": "RETURN",
-      "condition": "true ? result.equals(target.EMPTY_SORTED_BAG)"
+      "condition": "true ? result.equals(receiverObjectID.EMPTY_SORTED_BAG)"
     },
     "throwsTags": []
   }

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.*;
 import java.util.stream.Collectors;
+import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.translator.*;
 
@@ -204,7 +205,7 @@ public class SemanticMatcher {
         writer.append(String.valueOf(commentWordSet.size()) + ";");
 
         if (codeElement instanceof MethodCodeElement
-            && !((MethodCodeElement) codeElement).getReceiver().equals("target")
+            && !((MethodCodeElement) codeElement).getReceiver().equals(Configuration.RECEIVER)
             && !areComplementary((MethodCodeElement) codeElement, method)) {
           try {
             dist = wm.distance(parsedComment, parsedCodeElement);
@@ -213,10 +214,10 @@ public class SemanticMatcher {
           }
           distances.put(codeElement, dist);
         } else if (codeElement instanceof MethodCodeElement
-            && ((MethodCodeElement) codeElement).getReceiver().equals("target")
+            && ((MethodCodeElement) codeElement).getReceiver().equals(Configuration.RECEIVER)
             && !areComplementary((MethodCodeElement) codeElement, method)) {
           if (proposition.getSubject().isPassive()
-              || subjectCodeElement.toString().startsWith("target:")) {
+              || subjectCodeElement.toString().startsWith(Configuration.RECEIVER + ":")) {
             try {
               dist = wm.distance(parsedComment, parsedCodeElement);
             } catch (Exception e) {

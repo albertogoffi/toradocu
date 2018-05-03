@@ -845,7 +845,7 @@
     "returnTag": {
       "comment": "True if this unit can carry goods or other units.",
       "kind": "RETURN",
-      "condition": "(target.canCarryGoods() || target.canCarryUnits()) ? result==true:result==false"
+      "condition": "(receiverObjectID.canCarryGoods() || receiverObjectID.canCarryUnits()) ? result==true:result==false"
     },
     "throwsTags": []
   },
@@ -1674,7 +1674,7 @@
     "returnTag": {
       "comment": "The carrier this unit is aboard, or null if none.",
       "kind": "RETURN",
-      "condition": "!target.isOnCarrier() ? result==null"
+      "condition": "!receiverObjectID.isOnCarrier() ? result==null"
     },
     "throwsTags": []
   },
@@ -1770,7 +1770,7 @@
     "returnTag": {
       "comment": "True if this unit is on a tile.",
       "kind": "RETURN",
-      "condition": "target.getTile()!=null ? result==true"
+      "condition": "receiverObjectID.getTile()!=null ? result==true"
     },
     "throwsTags": []
   },
@@ -3580,7 +3580,7 @@
         "codeTags": [],
         "comment": "if this is not a treasure carrying unit.",
         "kind": "THROWS",
-        "condition": "(target.canCarryTreasure()) == false"
+        "condition": "(receiverObjectID.canCarryTreasure()) == false"
       }
     ]
   },
@@ -4780,7 +4780,7 @@
     "returnTag": {
       "comment": "True if the unit can either move immediately to the high seas or can make a move to a neighbouring high seas tile.",
       "kind": "RETURN",
-      "condition": "target.canMoveToHighSeas() ? result==true:result==false"
+      "condition": "receiverObjectID.canMoveToHighSeas() ? result==true:result==false"
     },
     "throwsTags": []
   },
@@ -6259,7 +6259,7 @@
     "returnTag": {
       "comment": "True if a threat was found.",
       "kind": "RETURN",
-      "condition": "target.searchForDanger(args[0], args[1])!=null ? result==true"
+      "condition": "receiverObjectID.searchForDanger(args[0], args[1])!=null ? result==true"
     },
     "throwsTags": []
   },
@@ -6521,7 +6521,7 @@
     "returnTag": {
       "comment": "True if there is free space.",
       "kind": "RETURN",
-      "condition": "target.getSpaceLeft() > 0 ? result == true : result == false"
+      "condition": "receiverObjectID.getSpaceLeft() > 0 ? result == true : result == false"
     },
     "throwsTags": []
   },
@@ -6641,7 +6641,7 @@
     "returnTag": {
       "comment": "True if the unit is carrying any goods cargo.",
       "kind": "RETURN",
-      "condition": "target.getGoodsSpaceTaken() > 0 ? result == true : result == false"
+      "condition": "receiverObjectID.getGoodsSpaceTaken() > 0 ? result == true : result == false"
     },
     "throwsTags": []
   },
@@ -6665,7 +6665,7 @@
     "returnTag": {
       "comment": "True if the unit is carrying any cargo.",
       "kind": "RETURN",
-      "condition": "target.getCargoSpaceTaken() > 0 ? result == true : result == false"
+      "condition": "receiverObjectID.getCargoSpaceTaken() > 0 ? result == true : result == false"
     },
     "throwsTags": []
   },
@@ -6932,7 +6932,7 @@
         "codeTags": [],
         "comment": "if this unit is not a treasure train.",
         "kind": "THROWS",
-        "condition": "(target.canCarryTreasure()) == false"
+        "condition": "(receiverObjectID.canCarryTreasure()) == false"
       }
     ]
   },
@@ -6991,7 +6991,7 @@
         "codeTags": [],
         "comment": "if this unit is not a treasure train.",
         "kind": "THROWS",
-        "condition": "(target.canCarryTreasure())==false"
+        "condition": "(receiverObjectID.canCarryTreasure())==false"
       }
     ]
   },

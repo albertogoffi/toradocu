@@ -285,7 +285,10 @@ public class MethodChangerVisitor
     }
 
     // Casting of target object in condition.
-    condition = condition.replace("target.", "((" + method.getDeclaringClass() + ") target).");
+    condition =
+        condition.replace(
+            Configuration.RECEIVER,
+            "((" + method.getDeclaringClass() + ") " + Configuration.RECEIVER + ").");
     return condition;
   }
 }

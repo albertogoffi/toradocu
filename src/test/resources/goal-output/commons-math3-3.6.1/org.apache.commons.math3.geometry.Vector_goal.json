@@ -405,7 +405,7 @@
         "codeTags": [],
         "comment": "the norm is zero.",
         "kind": "THROWS",
-        "condition": "target.getNorm()==0"
+        "condition": "receiverObjectID.getNorm()==0"
       }
     ]
   },
@@ -711,7 +711,7 @@
     "returnTag": {
       "comment": "the dot product this.v.",
       "kind": "RETURN",
-      "condition": "true ? result==target"
+      "condition": "true ? result==receiverObjectID"
     },
     "throwsTags": []
   },

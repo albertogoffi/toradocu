@@ -362,7 +362,7 @@
     "returnTag": {
       "comment": "the value to which this map maps the specified key, or null if the map contains no mapping for this key.",
       "kind": "RETURN",
-      "condition": "target.containsKey(args[0])==false ? result==null"
+      "condition": "receiverObjectID.containsKey(args[0])==false ? result==null"
     },
     "throwsTags": []
   },

@@ -1,6 +1,7 @@
 package org.toradocu.translator;
 
 import org.apache.commons.lang3.ClassUtils;
+import org.toradocu.conf.Configuration;
 
 /**
  * This class represents a {@code Class} code element for use in translation. It holds String
@@ -38,14 +39,14 @@ public class ClassCodeElement extends CodeElement<Class<?>> {
   }
 
   /**
-   * Builds and returns the string "target" as the Java expression representation of this parameter
-   * code element.
+   * Builds and returns the string representing the receiver object as the Java expression
+   * representation of the class code element.
    *
-   * @return the string "target" as the Java expression representation of this parameter code
-   *     element
+   * @return the string representing the receiver object as the Java expression representation of
+   *     the class code element
    */
   @Override
   public String buildJavaExpression() {
-    return "target";
+    return Configuration.RECEIVER;
   }
 }
