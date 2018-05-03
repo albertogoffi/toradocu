@@ -56,7 +56,7 @@
     "returnTag": {
       "comment": "the value associated with key; must not be null",
       "kind": "RETURN",
-      "condition": "true ? (result==null)==false"
+      "condition": "true ? (methodResultID==null)==false"
     },
     "throwsTags": [
       {
@@ -150,7 +150,7 @@
     "returnTag": {
       "comment": "the future new value associated with key; must not be null, must not return null",
       "kind": "RETURN",
-      "condition": "true ? (result==null)==false"
+      "condition": "true ? (methodResultID==null)==false"
     },
     "throwsTags": [
       {

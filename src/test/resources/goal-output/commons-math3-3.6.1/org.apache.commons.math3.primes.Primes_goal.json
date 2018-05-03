@@ -42,7 +42,7 @@
     "returnTag": {
       "comment": "true if n is prime. (All numbers < 2 return false).",
       "kind": "RETURN",
-      "condition": "args[0]<2 ? result==false"
+      "condition": "args[0]<2 ? methodResultID==false"
     },
     "throwsTags": []
   },
@@ -89,7 +89,7 @@
     "returnTag": {
       "comment": "the smallest prime greater than or equal to n.",
       "kind": "RETURN",
-      "condition": "true?result>=args[0]"
+      "condition": "true?methodResultID>=args[0]"
     },
     "throwsTags": [
       {

@@ -52,7 +52,7 @@
     "returnTag": {
       "comment": "The diagonal.",
       "kind": "RETURN",
-      "condition": "true ? result == receiverObjectID.diagonal"
+      "condition": "true ? methodResultID == receiverObjectID.diagonal"
     },
     "throwsTags": []
   },
@@ -76,7 +76,7 @@
     "returnTag": {
       "comment": "The size.",
       "kind": "RETURN",
-      "condition": "true ? result.equals(receiverObjectID.size)"
+      "condition": "true ? methodResultID.equals(receiverObjectID.size)"
     },
     "throwsTags": []
   },

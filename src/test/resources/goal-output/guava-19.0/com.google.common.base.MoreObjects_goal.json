@@ -38,7 +38,7 @@
     "returnTag": {
       "comment": "first if it is non-null; otherwise second if it is non-null",
       "kind": "RETURN",
-      "condition": "args[0] != null ? result == args[0] ; args[0] == null && args[1] != null ? result == args[1]"
+      "condition": "args[0] != null ? methodResultID == args[0] ; args[0] == null && args[1] != null ? methodResultID == args[1]"
     },
     "throwsTags": [
       {

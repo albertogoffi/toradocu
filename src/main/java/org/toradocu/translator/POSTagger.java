@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.Comment;
 
 public class POSTagger {
@@ -60,6 +61,10 @@ public class POSTagger {
         }
         inequalityIndex++;
         taggedSentence.add(new TaggedWord(wordString, "JJ"));
+      } else if (wordString.equalsIgnoreCase(Configuration.RETURN_VALUE)
+          || wordString.equalsIgnoreCase(Configuration.RECEIVER)) {
+        // Our identifiers must be considered nouns
+        taggedSentence.add(new TaggedWord(wordString, "NN"));
       } else if (wordString.equals("null")
           || wordString.equals("nonnull")
           || wordString.equals("non-null") && taggedWord.tag() == null) {

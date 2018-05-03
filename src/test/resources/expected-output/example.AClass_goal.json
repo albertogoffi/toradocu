@@ -384,7 +384,7 @@
     "returnTag": {
       "comment": "true if the numbers are equal.",
       "kind": "RETURN",
-      "condition": "args[0].equals(args[1]) ? result == true : result==false"
+      "condition": "args[0].equals(args[1]) ? methodResultID==true : methodResultID==false"
     },
     "throwsTags": []
   },
@@ -431,7 +431,7 @@
     "returnTag": {
       "comment": "true if the number is greater than five.",
       "kind": "RETURN",
-      "condition": "args[0]>5 ? result == true : result == false"
+      "condition": "args[0]>5 ? methodResultID==true : methodResultID==false"
     },
     "throwsTags": [
       {
@@ -490,7 +490,7 @@
     "returnTag": {
       "comment": "true if the array length is greater than 10.",
       "kind": "RETURN",
-      "condition": "args[0].length>10 ? result == true : result == false"
+      "condition": "args[0].length>10 ? methodResultID==true : methodResultID==false"
     },
     "throwsTags": [
       {
@@ -570,7 +570,7 @@
     "returnTag": {
       "comment": "n1-n2.",
       "kind": "RETURN",
-      "condition": "true?result==args[0]-args[1]"
+      "condition": "true?methodResultID==args[0]-args[1]"
     },
     "throwsTags": [
       {
@@ -623,7 +623,7 @@
     "returnTag": {
       "comment": "true if first=second.",
       "kind": "RETURN",
-      "condition": "args[0]==args[1] ? result == true : result == false"
+      "condition": "args[0]==args[1] ? methodResultID==true : methodResultID==false"
     },
     "throwsTags": []
   },
@@ -664,7 +664,7 @@
     "returnTag": {
       "comment": "true if v1=v2.",
       "kind": "RETURN",
-      "condition": "args[0]==args[1] ? result == true : result == false"
+      "condition": "args[0]==args[1] ? methodResultID==true : methodResultID==false"
     },
     "throwsTags": []
   },
@@ -705,7 +705,7 @@
     "returnTag": {
       "comment": "true if v1>=v2.",
       "kind": "RETURN",
-      "condition": "args[0]>=args[1] ? result == true : result == false"
+      "condition": "args[0]>=args[1] ? methodResultID==true : methodResultID==false"
     },
     "throwsTags": []
   },
@@ -746,7 +746,7 @@
     "returnTag": {
       "comment": "true if v1 is smaller than v2.",
       "kind": "RETURN",
-      "condition": "args[0]<args[1] ? result == true : result == false"
+      "condition": "args[0]<args[1] ? methodResultID==true : methodResultID==false"
     },
     "throwsTags": []
   },
@@ -814,7 +814,7 @@
     "returnTag": {
       "comment": "always true.",
       "kind": "RETURN",
-      "condition": "true?result==true"
+      "condition": "true?methodResultID==true"
     },
     "throwsTags": []
   },
@@ -882,7 +882,7 @@
     "returnTag": {
       "comment": "true always.",
       "kind": "RETURN",
-      "condition": "true?result==true"
+      "condition": "true?methodResultID==true"
     },
     "throwsTags": []
   },
@@ -950,7 +950,7 @@
     "returnTag": {
       "comment": "true always.",
       "kind": "RETURN",
-      "condition": "true?result==true"
+      "condition": "true?methodResultID==true"
     },
     "throwsTags": [
       {
@@ -1030,7 +1030,7 @@
     "returnTag": {
       "comment": "false always.",
       "kind": "RETURN",
-      "condition": "true?result==false"
+      "condition": "true?methodResultID==false"
     },
     "throwsTags": [
       {

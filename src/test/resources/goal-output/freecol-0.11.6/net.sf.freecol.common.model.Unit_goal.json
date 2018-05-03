@@ -845,7 +845,7 @@
     "returnTag": {
       "comment": "True if this unit can carry goods or other units.",
       "kind": "RETURN",
-      "condition": "(receiverObjectID.canCarryGoods() || receiverObjectID.canCarryUnits()) ? result==true:result==false"
+      "condition": "(receiverObjectID.canCarryGoods() || receiverObjectID.canCarryUnits()) ? methodResultID==true:methodResultID==false"
     },
     "throwsTags": []
   },
@@ -1674,7 +1674,7 @@
     "returnTag": {
       "comment": "The carrier this unit is aboard, or null if none.",
       "kind": "RETURN",
-      "condition": "!receiverObjectID.isOnCarrier() ? result==null"
+      "condition": "!receiverObjectID.isOnCarrier() ? methodResultID==null"
     },
     "throwsTags": []
   },
@@ -1770,7 +1770,7 @@
     "returnTag": {
       "comment": "True if this unit is on a tile.",
       "kind": "RETURN",
-      "condition": "receiverObjectID.getTile()!=null ? result==true"
+      "condition": "receiverObjectID.getTile()!=null ? methodResultID==true"
     },
     "throwsTags": []
   },
@@ -4780,7 +4780,7 @@
     "returnTag": {
       "comment": "True if the unit can either move immediately to the high seas or can make a move to a neighbouring high seas tile.",
       "kind": "RETURN",
-      "condition": "receiverObjectID.canMoveToHighSeas() ? result==true:result==false"
+      "condition": "receiverObjectID.canMoveToHighSeas() ? methodResultID==true:methodResultID==false"
     },
     "throwsTags": []
   },
@@ -6259,7 +6259,7 @@
     "returnTag": {
       "comment": "True if a threat was found.",
       "kind": "RETURN",
-      "condition": "receiverObjectID.searchForDanger(args[0], args[1])!=null ? result==true"
+      "condition": "receiverObjectID.searchForDanger(args[0], args[1])!=null ? methodResultID==true"
     },
     "throwsTags": []
   },
@@ -6521,7 +6521,7 @@
     "returnTag": {
       "comment": "True if there is free space.",
       "kind": "RETURN",
-      "condition": "receiverObjectID.getSpaceLeft() > 0 ? result == true : result == false"
+      "condition": "receiverObjectID.getSpaceLeft() > 0 ? methodResultID == true : methodResultID == false"
     },
     "throwsTags": []
   },
@@ -6641,7 +6641,7 @@
     "returnTag": {
       "comment": "True if the unit is carrying any goods cargo.",
       "kind": "RETURN",
-      "condition": "receiverObjectID.getGoodsSpaceTaken() > 0 ? result == true : result == false"
+      "condition": "receiverObjectID.getGoodsSpaceTaken() > 0 ? methodResultID == true : methodResultID == false"
     },
     "throwsTags": []
   },
@@ -6665,7 +6665,7 @@
     "returnTag": {
       "comment": "True if the unit is carrying any cargo.",
       "kind": "RETURN",
-      "condition": "receiverObjectID.getCargoSpaceTaken() > 0 ? result == true : result == false"
+      "condition": "receiverObjectID.getCargoSpaceTaken() > 0 ? methodResultID == true : methodResultID == false"
     },
     "throwsTags": []
   },

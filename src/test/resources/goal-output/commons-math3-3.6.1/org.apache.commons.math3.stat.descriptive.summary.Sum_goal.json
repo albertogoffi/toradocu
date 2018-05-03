@@ -232,7 +232,7 @@
     "returnTag": {
       "comment": "the sum of the values or 0 if length = 0.",
       "kind": "RETURN",
-      "condition": "args[2]==0 ? result==0"
+      "condition": "args[2]==0 ? methodResultID==0"
     },
     "throwsTags": [
       {
@@ -354,7 +354,7 @@
     "returnTag": {
       "comment": "the sum of the values or 0 if length = 0.",
       "kind": "RETURN",
-      "condition": "args[3]==0 ? result==0"
+      "condition": "args[3]==0 ? methodResultID==0"
     },
     "throwsTags": [
       {

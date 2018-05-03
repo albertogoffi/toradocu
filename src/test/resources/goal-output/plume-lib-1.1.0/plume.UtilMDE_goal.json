@@ -84,7 +84,7 @@
     "returnTag": {
       "comment": "true iff size(a intersect b) ≥ i",
       "kind": "RETURN",
-      "condition": "receiverObjectID.intersectionCardinality(args[0],args[1])>=args[2] ? result==true"
+      "condition": "receiverObjectID.intersectionCardinality(args[0],args[1])>=args[2] ? methodResultID==true"
     },
     "throwsTags": []
   },
@@ -194,7 +194,7 @@
     "returnTag": {
       "comment": "true iff size(a intersect b intersect c) ≥ i",
       "kind": "RETURN",
-      "condition": "receiverObjectID.intersectionCardinality(args[0],args[1],args[2])>=args[3] ? result==true"
+      "condition": "receiverObjectID.intersectionCardinality(args[0],args[1],args[2])>=args[3] ? methodResultID==true"
     },
     "throwsTags": []
   },
@@ -5192,7 +5192,7 @@
     "returnTag": {
       "comment": "the object in this set that is equal to key, or null",
       "kind": "RETURN",
-      "condition": "true?(result==args[1]||result==null)"
+      "condition": "true?(methodResultID==args[1]||methodResultID==null)"
     },
     "throwsTags": []
   },

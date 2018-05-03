@@ -302,7 +302,7 @@
     "returnTag": {
       "comment": "a code representing the point status: either Location#INSIDE, Location#OUTSIDE or Location#BOUNDARY.",
       "kind": "RETURN",
-      "condition": "result.equals(Location.INSIDE) || result.equals(Location.OUTSIDE) || result.equals(Location.BOUNDARY)"
+      "condition": "methodResultID.equals(Location.INSIDE) || methodResultID.equals(Location.OUTSIDE) || methodResultID.equals(Location.BOUNDARY)"
     },
     "throwsTags": []
   },
@@ -515,7 +515,7 @@
     "returnTag": {
       "comment": "one of Side#PLUS Side.PLUS, Side#MINUS Side.MINUS, Side#BOTH Side.BOTH or Side#HYPER Side.HYPER (the latter result can occur only if the tree contains only one cut hyperplane).",
       "kind": "RETURN",
-      "condition": "result.equals(Side.PLUS) || result.equals(Side.MINUS) || result.equals(Side.BOTH) || result.equals(Side.HYPER)"
+      "condition": "methodResultID.equals(Side.PLUS) || methodResultID.equals(Side.MINUS) || methodResultID.equals(Side.BOTH) || methodResultID.equals(Side.HYPER)"
     },
     "throwsTags": []
   },

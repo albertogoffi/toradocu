@@ -33,7 +33,7 @@
     "returnTag": {
       "comment": "a new empty FluentIterable",
       "kind": "RETURN",
-      "condition": "true ? result.isEmpty()==true"
+      "condition": "true ? methodResultID.isEmpty()==true"
     },
     "throwsTags": []
   },
@@ -80,7 +80,7 @@
     "returnTag": {
       "comment": "a new FluentIterable containing the singleton",
       "kind": "RETURN",
-      "condition": "true ? result.contains(args[0])==true"
+      "condition": "true ? methodResultID.contains(args[0])==true"
     },
     "throwsTags": []
   },

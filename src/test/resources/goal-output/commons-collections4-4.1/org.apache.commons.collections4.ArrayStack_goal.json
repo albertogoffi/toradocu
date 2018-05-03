@@ -82,7 +82,7 @@
     "returnTag": {
       "comment": "true if the stack is currently empty",
       "kind": "RETURN",
-      "condition": "receiverObjectID.isEmpty() ? result==true:result==false"
+      "condition": "receiverObjectID.isEmpty() ? methodResultID==true:methodResultID==false"
     },
     "throwsTags": []
   },
@@ -106,7 +106,7 @@
     "returnTag": {
       "comment": "the top item on the stack",
       "kind": "RETURN",
-      "condition": "true ? result.equals(receiverObjectID.peek())"
+      "condition": "true ? methodResultID.equals(receiverObjectID.peek())"
     },
     "throwsTags": [
       {
@@ -165,7 +165,7 @@
     "returnTag": {
       "comment": "the n'th item on the stack, zero relative",
       "kind": "RETURN",
-      "condition": "true ? result.equals(receiverObjectID.get(receiverObjectID.size() - args[0])-1)"
+      "condition": "true ? methodResultID.equals(receiverObjectID.get(receiverObjectID.size() - args[0])-1)"
     },
     "throwsTags": [
       {
@@ -260,7 +260,7 @@
     "returnTag": {
       "comment": "the item just pushed",
       "kind": "RETURN",
-      "condition": "true ? result.equals(args[0])"
+      "condition": "true ? methodResultID.equals(args[0])"
     },
     "throwsTags": []
   },
@@ -307,7 +307,7 @@
     "returnTag": {
       "comment": "the 1-based depth into the stack of the object, or -1 if not found",
       "kind": "RETURN",
-      "condition": "receiverObjectID.contains(args[0]) ? result==receiverObjectID.indexOf(args[0])+1 : result==-1"
+      "condition": "receiverObjectID.contains(args[0]) ? methodResultID==receiverObjectID.indexOf(args[0])+1 : methodResultID==-1"
     },
     "throwsTags": []
   }

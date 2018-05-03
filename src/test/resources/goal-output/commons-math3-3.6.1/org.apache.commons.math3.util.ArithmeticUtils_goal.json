@@ -63,7 +63,7 @@
     "returnTag": {
       "comment": "the sum x+y",
       "kind": "RETURN",
-      "condition": "true ? result==args[0]+args[1]"
+      "condition": "true ? methodResultID==args[0]+args[1]"
     },
     "throwsTags": [
       {
@@ -145,7 +145,7 @@
     "returnTag": {
       "comment": "the sum a+b",
       "kind": "RETURN",
-      "condition": "true ? result==args[0]+args[1]"
+      "condition": "true ? methodResultID==args[0]+args[1]"
     },
     "throwsTags": [
       {
@@ -1081,7 +1081,7 @@
     "returnTag": {
       "comment": "the product x * y.",
       "kind": "RETURN",
-      "condition": "true ? result==args[0]*args[1]"
+      "condition": "true ? methodResultID==args[0]*args[1]"
     },
     "throwsTags": [
       {
@@ -1163,7 +1163,7 @@
     "returnTag": {
       "comment": "the product a * b.",
       "kind": "RETURN",
-      "condition": "true ? result==args[0]*args[1]"
+      "condition": "true ? methodResultID==args[0]*args[1]"
     },
     "throwsTags": [
       {
@@ -1245,7 +1245,7 @@
     "returnTag": {
       "comment": "the difference x - y.",
       "kind": "RETURN",
-      "condition": "true ? result==args[0]-args[1]"
+      "condition": "true ? methodResultID==args[0]-args[1]"
     },
     "throwsTags": [
       {
@@ -1327,7 +1327,7 @@
     "returnTag": {
       "comment": "the difference a - b.",
       "kind": "RETURN",
-      "condition": "true ? result==args[0]-args[1]"
+      "condition": "true ? methodResultID==args[0]-args[1]"
     },
     "throwsTags": [
       {

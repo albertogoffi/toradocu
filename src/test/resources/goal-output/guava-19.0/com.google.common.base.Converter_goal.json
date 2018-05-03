@@ -79,7 +79,7 @@
     "returnTag": {
       "comment": "the converted instance; must not be null",
       "kind": "RETURN",
-      "condition": "true?(result==null)==false"
+      "condition": "true?(methodResultID==null)==false"
     },
     "throwsTags": []
   },
@@ -126,7 +126,7 @@
     "returnTag": {
       "comment": "the converted instance; must not be null",
       "kind": "RETURN",
-      "condition": "true ? (result==null)==false"
+      "condition": "true ? (methodResultID==null)==false"
     },
     "throwsTags": [
       {
@@ -176,7 +176,7 @@
     "returnTag": {
       "comment": "the converted value; is null if and only if a is null",
       "kind": "RETURN",
-      "condition": "args[0]==null ? result==null : result!=null"
+      "condition": "args[0]==null ? methodResultID==null : methodResultID!=null"
     },
     "throwsTags": []
   },
