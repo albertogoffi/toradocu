@@ -14,9 +14,9 @@ public enum Configuration {
   INSTANCE;
 
   /** Keyword that identifies receiver object in generated specifications. */
-  public static final String RECEIVER = "target";
+  public static final String RECEIVER = "receiverObjectID";
   /** Keyword that identifies method result in generated specifications. */
-  public static final String RETURN_VALUE = "result";
+  public static final String RETURN_VALUE = "methodResultID";
 
   // General options
 

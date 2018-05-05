@@ -91,7 +91,7 @@ public class MethodChangerVisitor
       IfStmt ifStmt = createIfStmt(guard, postSpecification.getDescription(), check);
       methodDeclaration.getBody().ifPresent(body -> body.addStatement(ifStmt));
     }
-    ReturnStmt returnResultStmt = new ReturnStmt(new NameExpr("result"));
+    ReturnStmt returnResultStmt = new ReturnStmt(new NameExpr(Configuration.RETURN_VALUE));
     methodDeclaration.getBody().ifPresent(body -> body.addStatement(returnResultStmt));
   }
 
@@ -281,11 +281,17 @@ public class MethodChangerVisitor
     // Casting of result object in condition.
     String returnType = method.getReturnType().getType().toString();
     if (returnType != null && !returnType.equals("void")) {
-      condition = condition.replace("result", "((" + returnType + ") result)");
+      condition =
+          condition.replace(
+              Configuration.RETURN_VALUE,
+              "((" + returnType + ")" + Configuration.RETURN_VALUE + ")");
     }
 
     // Casting of target object in condition.
-    condition = condition.replace("target.", "((" + method.getDeclaringClass() + ") target).");
+    condition =
+        condition.replace(
+            Configuration.RECEIVER,
+            "((" + method.getDeclaringClass() + ") " + Configuration.RECEIVER + ").");
     return condition;
   }
 }

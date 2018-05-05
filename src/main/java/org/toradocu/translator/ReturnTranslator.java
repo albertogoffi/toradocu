@@ -15,6 +15,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
+import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.ReturnTag;
@@ -66,7 +67,7 @@ public class ReturnTranslator {
     String subSentences[] = placeholderText.split(" or ");
     if (subSentences.length > 1) {
       // To help translation of the second sub-sentence, if any
-      subSentences[1] = "result is " + subSentences[1];
+      subSentences[1] = Configuration.RETURN_VALUE + " is " + subSentences[1];
     }
     return subSentences;
   }
@@ -144,7 +145,11 @@ public class ReturnTranslator {
         if (checkSameType(method, second)
             && checkSameType(method, first)
             && Reflection.isPrimitive(returnType)) {
-          return "result==" + first.getJavaExpression() + op + second.getJavaExpression();
+          return Configuration.RETURN_VALUE
+              + "=="
+              + first.getJavaExpression()
+              + op
+              + second.getJavaExpression();
         }
       }
     }
@@ -167,20 +172,20 @@ public class ReturnTranslator {
   private static String translateLastPart(String text, DocumentedExecutable method) {
     final String lowerCaseText = text.toLowerCase();
     if (lowerCaseText.contains("true")) {
-      return "result == true";
+      return Configuration.RETURN_VALUE + " == true";
     } else if (lowerCaseText.contains("false")) {
-      return "result == false";
+      return Configuration.RETURN_VALUE + " == false";
     } else {
       // The result is not a plain boolean, so it must be a code element.
       String[] splittedText = text.split(" ");
       for (String token : splittedText) {
         if (!token.isEmpty()) {
           if (token.equals("\"\"")) { // The empty String was found
-            return "result.equals(\"\")";
+            return Configuration.RETURN_VALUE + ".equals(\"\")";
           }
 
           final List<PropositionSeries> extractedPropositions =
-              Parser.parse(new Comment("result " + token), method);
+              Parser.parse(new Comment(Configuration.RETURN_VALUE + " " + token), method);
           final List<SemanticGraph> semanticGraphs =
               extractedPropositions
                   .stream()
@@ -188,7 +193,11 @@ public class ReturnTranslator {
                   .collect(toList());
 
           String translation =
-              tryPredicateMatch(method, semanticGraphs, extractedPropositions, "result " + token);
+              tryPredicateMatch(
+                  method,
+                  semanticGraphs,
+                  extractedPropositions,
+                  Configuration.RETURN_VALUE + " " + token);
           if (translation == null) {
             translation = tryCodeElementMatch(method, token);
           }
@@ -265,7 +274,7 @@ public class ReturnTranslator {
     switch (parsedComment) {
       case "true":
       case "false":
-        return "result == " + parsedComment;
+        return Configuration.RETURN_VALUE + " == " + parsedComment;
       default:
         {
           // No return of type boolean: it must be a more complex boolean condition, or a code element.
@@ -388,9 +397,9 @@ public class ReturnTranslator {
     Guard guard = new Guard(comment, "true");
     Property property = null;
     if (truePatternsMatch) {
-      property = new Property(comment, "result==true");
+      property = new Property(comment, Configuration.RETURN_VALUE + "==true");
     } else if (falsePatternsMatch) {
-      property = new Property(comment, "result==false");
+      property = new Property(comment, Configuration.RETURN_VALUE + "==false");
     } else {
 
       final String ARITHMETIC_OP_REGEX = "([a-zA-Z0-9_]+) ?([-+*/%]) ?([a-zA-Z0-9_]+)";
@@ -485,7 +494,9 @@ public class ReturnTranslator {
         for (PropositionSeries prop : extractedPropositions) {
           for (Proposition p : prop.getPropositions()) {
             predicateMatch =
-                new Matcher().predicateMatch(method, new GeneralCodeElement("result"), p, comment);
+                new Matcher()
+                    .predicateMatch(
+                        method, new GeneralCodeElement(Configuration.RETURN_VALUE), p, comment);
             if (predicateMatch != null) break;
           }
         }
@@ -514,9 +525,12 @@ public class ReturnTranslator {
 
       if (isSameType) {
         if (Reflection.isPrimitive(method.getReturnType().getType())) {
-          return "result == " + codeElementMatch.getJavaExpression();
+          return Configuration.RETURN_VALUE + " == " + codeElementMatch.getJavaExpression();
         } else {
-          return "result.equals(" + codeElementMatch.getJavaExpression() + ")";
+          return Configuration.RETURN_VALUE
+              + ".equals("
+              + codeElementMatch.getJavaExpression()
+              + ")";
         }
       }
     }

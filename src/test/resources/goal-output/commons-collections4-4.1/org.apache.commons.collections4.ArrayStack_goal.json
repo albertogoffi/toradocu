@@ -82,7 +82,7 @@
     "returnTag": {
       "comment": "true if the stack is currently empty",
       "kind": "RETURN",
-      "condition": "target.isEmpty() ? result==true:result==false"
+      "condition": "receiverObjectID.isEmpty() ? methodResultID==true:methodResultID==false"
     },
     "throwsTags": []
   },
@@ -106,7 +106,7 @@
     "returnTag": {
       "comment": "the top item on the stack",
       "kind": "RETURN",
-      "condition": "true ? result.equals(target.peek())"
+      "condition": "true ? methodResultID.equals(receiverObjectID.peek())"
     },
     "throwsTags": [
       {
@@ -118,7 +118,7 @@
         "codeTags": [],
         "comment": "if the stack is empty",
         "kind": "THROWS",
-        "condition": "target.isEmpty()"
+        "condition": "receiverObjectID.isEmpty()"
       }
     ]
   },
@@ -165,7 +165,7 @@
     "returnTag": {
       "comment": "the n'th item on the stack, zero relative",
       "kind": "RETURN",
-      "condition": "true ? result.equals(target.get(target.size() - args[0])-1)"
+      "condition": "true ? methodResultID.equals(receiverObjectID.get(receiverObjectID.size() - args[0])-1)"
     },
     "throwsTags": [
       {
@@ -177,7 +177,7 @@
         "codeTags": [],
         "comment": "if there are not enough items on the stack to satisfy this request",
         "kind": "THROWS",
-        "condition": "target.size()<args[0]"
+        "condition": "receiverObjectID.size()<args[0]"
       }
     ]
   },
@@ -213,7 +213,7 @@
         "codeTags": [],
         "comment": "if the stack is empty",
         "kind": "THROWS",
-        "condition": "target.isEmpty()"
+        "condition": "receiverObjectID.isEmpty()"
       }
     ]
   },
@@ -260,7 +260,7 @@
     "returnTag": {
       "comment": "the item just pushed",
       "kind": "RETURN",
-      "condition": "true ? result.equals(args[0])"
+      "condition": "true ? methodResultID.equals(args[0])"
     },
     "throwsTags": []
   },
@@ -307,7 +307,7 @@
     "returnTag": {
       "comment": "the 1-based depth into the stack of the object, or -1 if not found",
       "kind": "RETURN",
-      "condition": "target.contains(args[0]) ? result==target.indexOf(args[0])+1 : result==-1"
+      "condition": "receiverObjectID.contains(args[0]) ? methodResultID==receiverObjectID.indexOf(args[0])+1 : methodResultID==-1"
     },
     "throwsTags": []
   }

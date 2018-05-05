@@ -313,7 +313,7 @@
     "returnTag": {
       "comment": "a code representing the point status: either Location#INSIDE, Location#OUTSIDE or Location#BOUNDARY.",
       "kind": "RETURN",
-      "condition": "result.equals(Location.INSIDE) || result.equals(Location.OUTSIDE) || result.equals(Location.BOUNDARY)"
+      "condition": "methodResultID.equals(Location.INSIDE) || methodResultID.equals(Location.OUTSIDE) || methodResultID.equals(Location.BOUNDARY)"
     },
     "throwsTags": []
   }

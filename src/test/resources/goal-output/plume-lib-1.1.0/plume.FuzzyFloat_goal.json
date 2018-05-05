@@ -192,7 +192,7 @@
     "returnTag": {
       "comment": "whether d1 and d2 are non-equal.",
       "kind": "RETURN",
-      "condition": "args[0]!=args[1] ? result==true:result==false"
+      "condition": "args[0]!=args[1] ? methodResultID==true:methodResultID==false"
     },
     "throwsTags": []
   },
@@ -260,7 +260,7 @@
     "returnTag": {
       "comment": "whether d1 < d2.",
       "kind": "RETURN",
-      "condition": "args[0]<args[1] ? result==true:result==false"
+      "condition": "args[0]<args[1] ? methodResultID==true:methodResultID==false"
     },
     "throwsTags": []
   },
@@ -328,7 +328,7 @@
     "returnTag": {
       "comment": "whether d1 <= d2.",
       "kind": "RETURN",
-      "condition": "args[0]<=args[1] ? result==true:result==false"
+      "condition": "args[0]<=args[1] ? methodResultID==true:methodResultID==false"
     },
     "throwsTags": []
   },
@@ -396,7 +396,7 @@
     "returnTag": {
       "comment": "whether d1 > d2.",
       "kind": "RETURN",
-      "condition": "args[0]>args[1] ? result==true:result==false"
+      "condition": "args[0]>args[1] ? methodResultID==true:methodResultID==false"
     },
     "throwsTags": []
   },
@@ -464,7 +464,7 @@
     "returnTag": {
       "comment": "whether d1 > d2.",
       "kind": "RETURN",
-      "condition": "args[0]>args[1] ? result==true:result==false"
+      "condition": "args[0]>args[1] ? methodResultID==true:methodResultID==false"
     },
     "throwsTags": []
   },

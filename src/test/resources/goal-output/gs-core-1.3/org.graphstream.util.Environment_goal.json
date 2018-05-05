@@ -19,7 +19,7 @@
     "returnTag": {
       "comment": "A singleton instance of the global environment.",
       "kind": "RETURN",
-      "condition": "true ? result==target.GLOBAL_ENV"
+      "condition": "true ? methodResultID==receiverObjectID.GLOBAL_ENV"
     },
     "throwsTags": []
   },
@@ -90,7 +90,7 @@
     "returnTag": {
       "comment": "The parameter value (empty string if not set).",
       "kind": "RETURN",
-      "condition": "!target.hasParameter(args[0]) ? result.equals(\"\")"
+      "condition": "!receiverObjectID.hasParameter(args[0]) ? methodResultID.equals(\"\")"
     },
     "throwsTags": []
   },
@@ -454,7 +454,7 @@
         },
         "comment": "If true the environment is locked.",
         "kind": "PARAM",
-        "condition": "target.isLocked()"
+        "condition": "receiverObjectID.isLocked()"
       }
     ],
     "throwsTags": []

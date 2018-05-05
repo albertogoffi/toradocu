@@ -122,7 +122,7 @@
     "returnTag": {
       "comment": "true if the path contains the node.",
       "kind": "RETURN",
-      "condition": "target.getNodePath().contains(args[0]) ? result==true"
+      "condition": "receiverObjectID.getNodePath().contains(args[0]) ? methodResultID==true"
     },
     "throwsTags": []
   },
@@ -169,7 +169,7 @@
     "returnTag": {
       "comment": "true if the path contains the edge.",
       "kind": "RETURN",
-      "condition": "target.getEdgePath().contains(args[0]) ? result==true"
+      "condition": "receiverObjectID.getEdgePath().contains(args[0]) ? methodResultID==true"
     },
     "throwsTags": []
   },

@@ -172,7 +172,7 @@
         "codeTags": [],
         "comment": "if the comparator is locked",
         "kind": "THROWS",
-        "condition": "target.isLocked()"
+        "condition": "receiverObjectID.isLocked()"
       }
     ]
   },
@@ -196,7 +196,7 @@
     "returnTag": {
       "comment": "FixedOrderComparator.UnknownObjectBehavior",
       "kind": "RETURN",
-      "condition": "true ? result.equals(org.apache.commons.collections4.comparators.FixedOrderComparator.UnknownObjectBehavior)"
+      "condition": "true ? methodResultID.equals(org.apache.commons.collections4.comparators.FixedOrderComparator.UnknownObjectBehavior)"
     },
     "throwsTags": []
   },
@@ -250,7 +250,7 @@
         "codeTags": [],
         "comment": "if a comparison has been performed",
         "kind": "THROWS",
-        "condition": "target.isLocked()"
+        "condition": "receiverObjectID.isLocked()"
       },
       {
         "exceptionType": {
@@ -320,7 +320,7 @@
         "codeTags": [],
         "comment": "if a comparison has already been made",
         "kind": "THROWS",
-        "condition": "target.isLocked()"
+        "condition": "receiverObjectID.isLocked()"
       }
     ]
   },
@@ -411,7 +411,7 @@
         "codeTags": [],
         "comment": "if a comparison has already been made",
         "kind": "THROWS",
-        "condition": "target.isLocked()"
+        "condition": "receiverObjectID.isLocked()"
       }
     ]
   },

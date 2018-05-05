@@ -1157,7 +1157,7 @@
         ],
         "comment": "if this or v is the null vector",
         "kind": "THROWS",
-        "condition": "target.getNorm()==0 || args[0].getNorm()==0"
+        "condition": "receiverObjectID.getNorm()==0 || args[0].getNorm()==0"
       },
       {
         "exceptionType": {
@@ -1171,7 +1171,7 @@
         ],
         "comment": "if the dimensions of this and v do not match",
         "kind": "THROWS",
-        "condition": "target.getDimension() != args[0].getDimension()"
+        "condition": "receiverObjectID.getDimension() != args[0].getDimension()"
       }
     ]
   },
@@ -1233,7 +1233,7 @@
         ],
         "comment": "if v is not the same size as this vector.",
         "kind": "THROWS",
-        "condition": "args[0].getDimension() != target.getDimension()"
+        "condition": "args[0].getDimension() != receiverObjectID.getDimension()"
       }
     ]
   },
@@ -1295,7 +1295,7 @@
         ],
         "comment": "if v is not the same size as this vector.",
         "kind": "THROWS",
-        "condition": "args[0].getDimension() != target.getDimension()"
+        "condition": "args[0].getDimension() != receiverObjectID.getDimension()"
       }
     ]
   },
@@ -1357,7 +1357,7 @@
         ],
         "comment": "if v is not the same size as this vector.",
         "kind": "THROWS",
-        "condition": "args[0].getDimension() != target.getDimension()"
+        "condition": "args[0].getDimension() != receiverObjectID.getDimension()"
       }
     ]
   },
@@ -1491,7 +1491,7 @@
         ],
         "comment": "if v is not the same size as this vector.",
         "kind": "THROWS",
-        "condition": "args[0].getDimension() != target.getDimension()"
+        "condition": "args[0].getDimension() != receiverObjectID.getDimension()"
       }
     ]
   },
@@ -1553,7 +1553,7 @@
         ],
         "comment": "if v is not the same size as this vector.",
         "kind": "THROWS",
-        "condition": "args[0].getDimension() != target.getDimension()"
+        "condition": "args[0].getDimension() != receiverObjectID.getDimension()"
       }
     ]
   },
@@ -2040,7 +2040,7 @@
         ],
         "comment": "if v is not the same size as this vector.",
         "kind": "THROWS",
-        "condition": "args[0].getDimension() != target.getDimension()"
+        "condition": "args[0].getDimension() != receiverObjectID.getDimension()"
       },
       {
         "exceptionType": {
@@ -2054,7 +2054,7 @@
         ],
         "comment": "if this or v is the null vector",
         "kind": "THROWS",
-        "condition": "target.getNorm()==0 || args[0].getNorm()==0"
+        "condition": "receiverObjectID.getNorm()==0 || args[0].getNorm()==0"
       }
     ]
   },
@@ -2161,7 +2161,7 @@
         "codeTags": [],
         "comment": "if the norm is zero.",
         "kind": "THROWS",
-        "condition": "target.getNorm()==0"
+        "condition": "receiverObjectID.getNorm()==0"
       }
     ]
   },
@@ -2192,7 +2192,7 @@
         "codeTags": [],
         "comment": "if the norm is zero.",
         "kind": "THROWS",
-        "condition": "target.getNorm()==0"
+        "condition": "receiverObjectID.getNorm()==0"
       }
     ]
   },
@@ -2438,7 +2438,7 @@
         ],
         "comment": "if y is not the same size as this vector.",
         "kind": "THROWS",
-        "condition": "args[2].getDimension() != target.getDimension()"
+        "condition": "args[2].getDimension() != receiverObjectID.getDimension()"
       }
     ]
   },
@@ -2542,7 +2542,7 @@
         ],
         "comment": "if y is not the same size as this vector.",
         "kind": "THROWS",
-        "condition": "args[2].getDimension() != target.getDimension()"
+        "condition": "args[2].getDimension() != receiverObjectID.getDimension()"
       }
     ]
   },

@@ -19,7 +19,7 @@
     "returnTag": {
       "comment": "immutable empty collection",
       "kind": "RETURN",
-      "condition": "true?result.equals(target.EMPTY_COLLECTION)"
+      "condition": "true?methodResultID.equals(receiverObjectID.EMPTY_COLLECTION)"
     },
     "throwsTags": []
   },
@@ -66,7 +66,7 @@
     "returnTag": {
       "comment": "an empty collection if the argument is null",
       "kind": "RETURN",
-      "condition": "args[0]==null ? result.equals(org.apache.commons.collections4.CollectionUtils.emptyCollection())"
+      "condition": "args[0]==null ? methodResultID.equals(org.apache.commons.collections4.CollectionUtils.emptyCollection())"
     },
     "throwsTags": []
   },
@@ -1131,7 +1131,7 @@
     "returnTag": {
       "comment": "closure",
       "kind": "RETURN",
-      "condition": "true?result.equals(args[1])"
+      "condition": "true?methodResultID.equals(args[1])"
     },
     "throwsTags": []
   },
@@ -1199,7 +1199,7 @@
     "returnTag": {
       "comment": "closure",
       "kind": "RETURN",
-      "condition": "true?result.equals(args[1])"
+      "condition": "true?methodResultID.equals(args[1])"
     },
     "throwsTags": []
   },
@@ -1267,7 +1267,7 @@
     "returnTag": {
       "comment": "the last element in the collection, or null if either collection or closure is null",
       "kind": "RETURN",
-      "condition": "(args[0]==null || args[1]==null) ? result==null : args[0].get(args[0].size() - 1)"
+      "condition": "(args[0]==null || args[1]==null) ? methodResultID==null : args[0].get(args[0].size() - 1)"
     },
     "throwsTags": []
   },
@@ -1335,7 +1335,7 @@
     "returnTag": {
       "comment": "the last element in the collection, or null if either iterator or closure is null",
       "kind": "RETURN",
-      "condition": "args[0]==null || args[1]==null ? result==null"
+      "condition": "args[0]==null || args[1]==null ? methodResultID==null"
     },
     "throwsTags": []
   },
@@ -3389,7 +3389,7 @@
     "returnTag": {
       "comment": "the size of the specified collection or 0 if the object was null",
       "kind": "RETURN",
-      "condition": "args[0]==null ? result == 0"
+      "condition": "args[0]==null ? methodResultID == 0"
     },
     "throwsTags": [
       {
@@ -3448,7 +3448,7 @@
     "returnTag": {
       "comment": "true if empty or null",
       "kind": "RETURN",
-      "condition": "args[0].isEmpty() || args[0]==null ? result==true"
+      "condition": "args[0].isEmpty() || args[0]==null ? methodResultID==true"
     },
     "throwsTags": [
       {
@@ -3507,7 +3507,7 @@
     "returnTag": {
       "comment": "true if empty or null",
       "kind": "RETURN",
-      "condition": "args[0].isEmpty() || args[0]==null ? result==true"
+      "condition": "args[0].isEmpty() || args[0]==null ? methodResultID==true"
     },
     "throwsTags": []
   },
