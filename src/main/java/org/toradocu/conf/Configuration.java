@@ -175,7 +175,7 @@ public enum Configuration {
     description = "Enable/disable the generation of the aspects",
     arity = 1
   )
-  private boolean oracleGeneration = true;
+  private boolean oracleGeneration = false;
 
   @Parameter(
     names = "--test-class",
