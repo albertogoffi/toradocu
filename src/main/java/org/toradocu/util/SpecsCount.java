@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.List;
@@ -29,7 +30,12 @@ public class SpecsCount {
 
     final String jsonFile = args[0];
     final List<JsonOutput> specs;
-    try (BufferedReader file = Files.newBufferedReader(Paths.get(jsonFile))) {
+    Path path = Paths.get(jsonFile);
+    if (Files.isSymbolicLink(path)) {
+      path = Files.readSymbolicLink(path);
+    }
+
+    try (BufferedReader file = Files.newBufferedReader(path)) {
       Type collectionType = new TypeToken<Collection<JsonOutput>>() {}.getType();
       specs = GsonInstance.gson().fromJson(file, collectionType);
     }
