@@ -6,9 +6,9 @@
 ERROR_MESSAGE='Script must be invoked with one parameter: either "jdoctor" or "jdoctor_semantics" or "tcomment"'
 
 # General test suite.
-TESTS='--tests org.toradocu.accuracy.Accuracy*'
+#TESTS='--tests org.toradocu.accuracy.Accuracy*'
 # Paper test suite (10% classes per project).
-#TESTS='--tests org.toradocu.accuracy.paper.*'
+TESTS='--tests org.toradocu.accuracy.paper.*'
 
 # The following is to run specific tests.
 #TESTS_PREFIX="org.toradocu.accuracy.PrecisionRecall"
