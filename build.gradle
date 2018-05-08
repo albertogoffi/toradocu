@@ -78,6 +78,9 @@ sourceSets {
                   'org/toradocu/accuracy/paper/*',
                   'org/toradocu/generator/**']
     }
+    resources {
+      exclude 'goal-output/issta_2018'
+    }
   }
 }
 
