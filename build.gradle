@@ -75,7 +75,6 @@ sourceSets {
     java {
       excludes = ['org/toradocu/util/old*',
                   'org/toradocu/regression/*',
-                  'org/toradocu/accuracy/paper/*',
                   'org/toradocu/generator/**']
     }
     resources {
@@ -86,6 +85,7 @@ sourceSets {
 
 test {
   exclude 'org/toradocu/generator/**'
+  exclude 'org/toradocu/accuracy/paper/*'
   reports {
     html.enabled = true
   }
@@ -94,6 +94,12 @@ test {
     events = ['STANDARD_OUT', 'FAILED']
     exceptionFormat = 'FULL'
   }
+}
+
+task issta18 (type: Test) {
+  include 'org/toradocu/accuracy/paper/*'
+  enableAssertions = false
+  ignoreFailures = true
 }
 
 /* Pass Java system properties from the command line to test tasks. */
