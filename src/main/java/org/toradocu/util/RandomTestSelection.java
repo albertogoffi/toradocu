@@ -180,9 +180,6 @@ public class RandomTestSelection {
       PLUMELIB_SRC
     };
 
-    for (String project : projects) {
-      System.out.println(project);
-      System.out.println(countDocumented(getJavaProjectSources(project)));
-    }
+    System.out.println(countDocumented(getJavaProjectSources(args[0])));
   }
 }
