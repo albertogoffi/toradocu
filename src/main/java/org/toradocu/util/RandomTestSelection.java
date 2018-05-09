@@ -18,6 +18,12 @@ import org.toradocu.extractor.JavadocExtractor;
 
 public class RandomTestSelection {
 
+  /**
+   * Obtain all java source files in project root folder.
+   *
+   * @param projectRoot path to project root folder
+   * @return number of java files in project root folder
+   */
   private static List<Path> getJavaProjectSources(String projectRoot) {
     try {
       return Files.find(
@@ -32,6 +38,13 @@ public class RandomTestSelection {
     }
   }
 
+  /**
+   * Given a list of java files, pick a random one satisfying the criteria - at least 5 Javadoc
+   * tags, not considering: getters, setters, toString, equals and hashCode
+   *
+   * @param javaFiles list of path to java source files
+   * @return the class randomly picked satisfying the criteria
+   */
   private static Path pickRandomClass(List<Path> javaFiles) {
     JavadocExtractor extractor = new JavadocExtractor();
     List<CallableDeclaration<?>> methods;
@@ -63,6 +76,52 @@ public class RandomTestSelection {
     return chosenClass;
   }
 
+  /**
+   * Count total number of classes satisfying the criteria - at least 5 Javadoc tags, not
+   * considering: getters, setters, toString, equals and hashCode. i.e. the so-called "documented
+   * classes
+   *
+   * @param javaFiles list of path to java source files
+   * @return total number of documented classes
+   */
+  private static int countDocumented(List<Path> javaFiles) {
+    JavadocExtractor extractor = new JavadocExtractor();
+    List<CallableDeclaration<?>> methods;
+    int count = 0;
+
+    for (Path path : javaFiles) {
+      int index = new Random().nextInt(javaFiles.size());
+      String sourcePath = path.toString();
+      if (sourcePath.contains("package-info.java")) {
+        continue;
+      }
+      String className =
+          sourcePath.substring(sourcePath.lastIndexOf("/") + 1, sourcePath.lastIndexOf("."));
+      try {
+        methods = extractor.getExecutables(className, sourcePath);
+        int numberOfTags = 0;
+        for (CallableDeclaration m : methods) {
+          numberOfTags += findTagsForMethod(m);
+        }
+        if (numberOfTags > 4) {
+          count++;
+        }
+
+      } catch (Exception e) {
+        //ignore parse errors
+      }
+    }
+
+    return count;
+  }
+
+  /**
+   * Count Javadoc tags for a given member (CallableDeclaration) if not getter, setter, toString,
+   * equals or hashCode
+   *
+   * @param sourceMember the member
+   * @return total number of Javadoc tags
+   */
   private static int findTagsForMethod(CallableDeclaration<?> sourceMember) {
     String name = sourceMember.getNameAsString();
     if (name.equals("equals")
@@ -121,16 +180,6 @@ public class RandomTestSelection {
       PLUMELIB_SRC
     };
 
-    for (String project : projects) {
-      Path randomClass = pickRandomClass(getJavaProjectSources(project));
-      String className =
-          randomClass
-              .toString()
-              .replaceFirst(project, "")
-              .replaceAll("/", ".")
-              .replace(".java", "");
-
-      System.out.println(className);
-    }
+    System.out.println(countDocumented(getJavaProjectSources(args[0])));
   }
 }
