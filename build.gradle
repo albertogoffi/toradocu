@@ -252,6 +252,7 @@ task removeTestOutputDirs(type: Delete) {
 }
 
 test.dependsOn removeTestOutputDirs, cleanSource, extractBinaries
+issta18.dependsOn removeTestOutputDirs, cleanSource, extractBinaries
 
 /* Make Emacs TAGS table */
 task tags(type: Exec) {
