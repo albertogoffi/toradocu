@@ -3,12 +3,12 @@
 # "current": statistics about the current Toradocu version.
 # "tcomment": statistics using @tComment as translation engine.
 
-ERROR_MESSAGE='Script must be invoked with one parameter: either "jdoctor" or "jdoctor_semantics" or "tcomment"'
+ERROR_MESSAGE='Script must be invoked with one parameter: either "toradocu" or "toradocu_semantics" or "tcomment"'
 
 # General test suite.
-#TESTS='--tests org.toradocu.accuracy.Accuracy*'
-# Paper test suite (10% classes per project).
-TESTS='--tests org.toradocu.accuracy.paper.*'
+#TESTS='test --tests org.toradocu.accuracy.Accuracy*'
+# ISSTA18 Paper test suite (10% classes per project).
+TESTS='issta18'
 
 # The following is to run specific tests.
 #TESTS_PREFIX="org.toradocu.accuracy.PrecisionRecall"
@@ -16,16 +16,16 @@ TESTS='--tests org.toradocu.accuracy.paper.*'
 
 # Parse command line argument and set variables
 if [ $# -eq 1 ]; then
-  if [ "$1" = "jdoctor" ]; then
-    COMMAND="./gradlew --rerun-tasks -Dorg.toradocu.translator=nosemantics test $TESTS"
+  if [ "$1" = "toradocu" ]; then
+    COMMAND="./gradlew --rerun-tasks -Dorg.toradocu.translator=nosemantics $TESTS"
     STATS_FILE=results_.csv
     STATS_FILE_TO_SAVE=results.csv
-  elif [ "$1" = "jdoctor_semantics" ]; then
-    COMMAND="./gradlew --rerun-tasks test $TESTS"
+  elif [ "$1" = "toradocu_semantics" ]; then
+    COMMAND="./gradlew --rerun-tasks $TESTS"
     STATS_FILE=results_semantics_.csv
     STATS_FILE_TO_SAVE=results_semantics.csv
   elif [ "$1" = "tcomment" ]; then
-    COMMAND="./gradlew --rerun-tasks -Dorg.toradocu.translator=tcomment test $TESTS"
+    COMMAND="./gradlew --rerun-tasks -Dorg.toradocu.translator=tcomment $TESTS"
     STATS_FILE=results_tcomment_.csv
     STATS_FILE_TO_SAVE=results_tcomment.csv
   else
