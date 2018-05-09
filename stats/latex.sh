@@ -34,7 +34,8 @@ RESULTS_SEMANTICS="results_semantics.csv"
 RESULTS="results.csv"
 
 numberOfClasses() {
-    echo $(find "$1" -name "*.java" -type f | wc -l | tr -d " ")
+    #echo $(find "$1" -name "*.java" -type f | wc -l | tr -d " ")
+    echo $(java -cp build/libs/toradocu-1.0-all.jar org.toradocu.util.RandomTestSelection "$1")
 }
 
 numberOfAnalyzedClasses() {
