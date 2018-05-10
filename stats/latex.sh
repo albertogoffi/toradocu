@@ -31,7 +31,8 @@ TORADOCU="\OldToradocu"
 
 RESULTS_TCOMMENT="results_tcomment.csv"
 RESULTS_SEMANTICS="results_semantics.csv"
-RESULTS="results.csv"
+# this should be OldToradocu csv name according to the script in branch 0.1
+RESULTS="results_toradocu-0.1.csv"
 
 numberOfClasses() {
     #echo $(find "$1" -name "*.java" -type f | wc -l | tr -d " ")
@@ -206,9 +207,10 @@ cat results_toradocu_truncated.csv >> results_toradocu_truncated2.csv
 echo "$TORADOCU & "`python stats/results_table.py results_toradocu_truncated2.csv $MISSING` >> "$RESULTS_TABLE"
 rm results_toradocu_truncated.csv results_toradocu_truncated2.csv
 
-cat "$RESULTS" | $TAC | tail -n +15 | $TAC > results_jdoctor_truncated.csv
-echo "$JDOCTOR & "`python stats/results_table.py results_jdoctor_truncated.csv` >> "$RESULTS_TABLE"
-rm results_jdoctor_truncated.csv
+# Following lines are not used in later computations. Commenting them for now
+#cat "$RESULTS" | $TAC | tail -n +15 | $TAC > results_jdoctor_truncated.csv
+#echo "$JDOCTOR & "`python stats/results_table.py results_jdoctor_truncated.csv` >> "$RESULTS_TABLE"
+#rm results_jdoctor_truncated.csv
 
 cat "$RESULTS_SEMANTICS" | $TAC | tail -n +15 | $TAC > results_jdoctor_semantics_truncated.csv
 echo "$JDOCTORPLUS & "`python stats/results_table.py results_jdoctor_semantics_truncated.csv` >> "$RESULTS_TABLE"
