@@ -4,7 +4,7 @@
 set -e
 
 # Stats file used is the default for Toradocu
-STATS_FILE=results.csv
+STATS_FILE=results_toradocu-0.1.csv
 
 # Backup the old result file if present
 if [ -f $STATS_FILE ]; then
