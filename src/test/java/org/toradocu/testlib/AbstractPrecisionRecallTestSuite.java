@@ -35,7 +35,7 @@ public abstract class AbstractPrecisionRecallTestSuite {
 
     try (BufferedWriter resultsFile =
           Files.newBufferedWriter(
-              Paths.get("results.csv"),
+              Paths.get("results_toradocu-0.1.csv"),
               StandardOpenOption.CREATE,
               StandardOpenOption.APPEND)) {
       resultsFile.write(report.toString());
