@@ -8,6 +8,7 @@ import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -15,10 +16,12 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
+import org.mdkt.compiler.InMemoryJavaCompiler;
 import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.ReturnTag;
+import org.toradocu.util.FakeSourceBuilder;
 import org.toradocu.util.Reflection;
 import randoop.condition.specification.Guard;
 import randoop.condition.specification.PostSpecification;
@@ -440,6 +443,23 @@ public class ReturnTranslator {
       }
     }
     if (property != null) {
+      FakeSourceBuilder.getInstance().addCondition(guard.getConditionText());
+      FakeSourceBuilder.getInstance().addCondition(property.getConditionText());
+      FakeSourceBuilder.getInstance().addImport(method.getDeclaringClass().getName());
+      String sourceCode = FakeSourceBuilder.getInstance().buildSource();
+      try {
+        InMemoryJavaCompiler compiler = InMemoryJavaCompiler.newInstance();
+        //        compiler.useParentClassLoader(Reflection.getURLClassLoader());
+        List<String> classpath = new ArrayList<>();
+        for (URL url : Configuration.INSTANCE.classDirs) {
+          classpath.add(url.getPath());
+        }
+
+        compiler.useOptions("-cp", String.join(":", classpath));
+        Class<?> helloClass = compiler.compile("GeneratedSpecs", sourceCode);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
       specs.add(new PostSpecification(comment, guard, property));
     }
     return specs;
@@ -465,7 +485,16 @@ public class ReturnTranslator {
       Iterator<CodeElement<?>> it = argMatches.iterator();
       String replaceTarget = "{" + argument + "}";
       //Naive solution: picks the first match from the list.
-      String replacement = it.next().getJavaExpression();
+      CodeElement<?> codeElement = it.next();
+      String replacement = codeElement.getJavaExpression();
+
+      String type = "";
+      if (codeElement instanceof ClassCodeElement) {
+        type = ((ClassCodeElement) codeElement).getJavaCodeElement().getName();
+      }
+
+      FakeSourceBuilder.getInstance().addArgument(type, replacement);
+
       translation = translation.replace(replaceTarget, replacement);
       return translation;
     }
@@ -497,7 +526,12 @@ public class ReturnTranslator {
                 new Matcher()
                     .predicateMatch(
                         method, new GeneralCodeElement(Configuration.RETURN_VALUE), p, comment);
-            if (predicateMatch != null) break;
+            if (predicateMatch != null) {
+              FakeSourceBuilder.getInstance()
+                  .addArgument(
+                      method.getReturnType().getType().getTypeName(), Configuration.RETURN_VALUE);
+              break;
+            }
           }
         }
       }
