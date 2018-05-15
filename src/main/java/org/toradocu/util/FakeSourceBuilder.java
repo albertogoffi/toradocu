@@ -10,13 +10,6 @@ public class FakeSourceBuilder {
   private List<String> imports = new ArrayList<>();
   private static FakeSourceBuilder instance = null;
 
-  public static FakeSourceBuilder getInstance() {
-    if (instance == null) {
-      instance = new FakeSourceBuilder();
-    }
-    return instance;
-  }
-
   public String buildSource() {
     StringBuilder fakeSource = new StringBuilder();
 

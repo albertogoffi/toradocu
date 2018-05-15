@@ -351,14 +351,17 @@ public class ReturnTranslator {
         if (!conditionTranslation.isEmpty() && !predicateTranslation.isEmpty()) {
           Guard trueGuard = new Guard(textToTranslate, conditionTranslation);
           Property trueProperty = new Property(textToTranslate, predicateTranslation);
-          specs.add(new PostSpecification(textToTranslate, trueGuard, trueProperty));
-
+          if (isPostSpecCompilable(method, trueGuard, trueProperty)) {
+            specs.add(new PostSpecification(textToTranslate, trueGuard, trueProperty));
+          }
           String elsePredicate = translateLastPart(falseCase, method);
           if (elsePredicate != null) {
             String invertedGuard = "(" + conditionTranslation + ")==false";
             Guard falseGuard = new Guard(textToTranslate, invertedGuard);
             Property falseProperty = new Property(textToTranslate, elsePredicate);
-            specs.add(new PostSpecification(textToTranslate, falseGuard, falseProperty));
+            if (isPostSpecCompilable(method, falseGuard, falseProperty)) {
+              specs.add(new PostSpecification(textToTranslate, falseGuard, falseProperty));
+            }
           }
         }
       }
@@ -442,27 +445,38 @@ public class ReturnTranslator {
         property = new Property(comment, translation);
       }
     }
-    if (property != null) {
-      FakeSourceBuilder.getInstance().addCondition(guard.getConditionText());
-      FakeSourceBuilder.getInstance().addCondition(property.getConditionText());
-      FakeSourceBuilder.getInstance().addImport(method.getDeclaringClass().getName());
-      String sourceCode = FakeSourceBuilder.getInstance().buildSource();
-      try {
-        InMemoryJavaCompiler compiler = InMemoryJavaCompiler.newInstance();
-        //        compiler.useParentClassLoader(Reflection.getURLClassLoader());
-        List<String> classpath = new ArrayList<>();
-        for (URL url : Configuration.INSTANCE.classDirs) {
-          classpath.add(url.getPath());
-        }
-
-        compiler.useOptions("-cp", String.join(":", classpath));
-        Class<?> helloClass = compiler.compile("GeneratedSpecs", sourceCode);
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
+    if (property != null && isPostSpecCompilable(method, guard, property)) {
       specs.add(new PostSpecification(comment, guard, property));
     }
     return specs;
+  }
+
+  private static boolean isPostSpecCompilable(
+      DocumentedExecutable method, Guard guard, Property property) {
+    FakeSourceBuilder fakeSourceBuilder = new FakeSourceBuilder();
+    fakeSourceBuilder.addArgument(
+        method.getReturnType().getType().getTypeName(), Configuration.RETURN_VALUE);
+
+    fakeSourceBuilder.addArgument(method.getDeclaringClass().getName(), Configuration.RECEIVER);
+    fakeSourceBuilder.addCondition(guard.getConditionText());
+    fakeSourceBuilder.addCondition(property.getConditionText());
+    fakeSourceBuilder.addImport(method.getDeclaringClass().getName());
+    String sourceCode = fakeSourceBuilder.buildSource();
+    try {
+      InMemoryJavaCompiler compiler = InMemoryJavaCompiler.newInstance();
+      //        compiler.useParentClassLoader(Reflection.getURLClassLoader());
+      List<String> classpath = new ArrayList<>();
+      for (URL url : Configuration.INSTANCE.classDirs) {
+        classpath.add(url.getPath());
+      }
+
+      compiler.useOptions("-cp", String.join(":", classpath));
+      Class<?> helloClass = compiler.compile("GeneratedSpecs", sourceCode);
+    } catch (Exception e) {
+      e.printStackTrace();
+      return false;
+    }
+    return true;
   }
 
   /**
@@ -492,8 +506,6 @@ public class ReturnTranslator {
       if (codeElement instanceof ClassCodeElement) {
         type = ((ClassCodeElement) codeElement).getJavaCodeElement().getName();
       }
-
-      FakeSourceBuilder.getInstance().addArgument(type, replacement);
 
       translation = translation.replace(replaceTarget, replacement);
       return translation;
@@ -527,9 +539,6 @@ public class ReturnTranslator {
                     .predicateMatch(
                         method, new GeneralCodeElement(Configuration.RETURN_VALUE), p, comment);
             if (predicateMatch != null) {
-              FakeSourceBuilder.getInstance()
-                  .addArgument(
-                      method.getReturnType().getType().getTypeName(), Configuration.RETURN_VALUE);
               break;
             }
           }
