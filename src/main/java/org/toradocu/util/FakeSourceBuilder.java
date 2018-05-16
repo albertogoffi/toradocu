@@ -1,18 +1,16 @@
 package org.toradocu.util;
 
-import com.github.javaparser.ast.NodeList;
-import com.github.javaparser.ast.type.TypeParameter;
 import java.lang.reflect.TypeVariable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class FakeSourceBuilder {
 
-  private List<String> conditions = new ArrayList<>();
-  private List<String> arguments = new ArrayList<>();
-  private List<String> imports = new ArrayList<>();
-  private List<String> methodTypeParameters = new ArrayList<>();
-  private List<String> classTypeParameters = new ArrayList<>();
+  private Set<String> conditions = new HashSet<>();
+  private Set<String> arguments = new HashSet<>();
+  private Set<String> imports = new HashSet<>();
+  private Set<String> methodTypeParameters = new HashSet<>();
+  private Set<String> classTypeParameters = new HashSet<>();
 
   public String buildSource() {
     StringBuilder fakeSource = new StringBuilder();
