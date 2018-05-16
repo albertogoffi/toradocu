@@ -458,13 +458,17 @@ public class ReturnTranslator {
         method.getReturnType().getType().getTypeName(), Configuration.RETURN_VALUE);
 
     fakeSourceBuilder.addArgument(method.getDeclaringClass().getName(), Configuration.RECEIVER);
-    fakeSourceBuilder.addCondition(guard.getConditionText());
-    fakeSourceBuilder.addCondition(property.getConditionText());
+    String guardText = substituteArgs(fakeSourceBuilder, method, guard.getConditionText());
+    String propertyText = substituteArgs(fakeSourceBuilder, method, property.getConditionText());
+    fakeSourceBuilder.addCondition(guardText);
+    fakeSourceBuilder.addCondition(propertyText);
     fakeSourceBuilder.addImport(method.getDeclaringClass().getName());
+    fakeSourceBuilder.copyClassTypeArguments(method.getDeclaringClass().getTypeParameters());
+    fakeSourceBuilder.copyTypeArguments(method.getExecutable().getTypeParameters());
     String sourceCode = fakeSourceBuilder.buildSource();
     try {
       InMemoryJavaCompiler compiler = InMemoryJavaCompiler.newInstance();
-      //        compiler.useParentClassLoader(Reflection.getURLClassLoader());
+      compiler.ignoreWarnings();
       List<String> classpath = new ArrayList<>();
       for (URL url : Configuration.INSTANCE.classDirs) {
         classpath.add(url.getPath());
@@ -477,6 +481,20 @@ public class ReturnTranslator {
       return false;
     }
     return true;
+  }
+
+  private static String substituteArgs(
+      FakeSourceBuilder fakeSourceBuilder, DocumentedExecutable method, String text) {
+    final String ARGS_REGEX = "args\\[([0-9])\\]";
+    java.util.regex.Matcher argsMatcher = Pattern.compile(ARGS_REGEX).matcher(text);
+    while (argsMatcher.find()) {
+      int argIndex = Integer.valueOf(argsMatcher.group(1));
+      String parameter = method.getParameters().get(argIndex).getName();
+      text = text.replace(argsMatcher.group(0), parameter);
+      fakeSourceBuilder.addArgument(method.getParameters().get(argIndex).toString());
+    }
+
+    return text;
   }
 
   /**
