@@ -171,7 +171,7 @@ public class AccuracyCommonsMath3 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testRealVector() {
-    test("org.apache.commons.math3.linear.RealVector", 1, 0.421, 1, 1, 0, 1);
+    test("org.apache.commons.math3.linear.RealVector", 1, 0.421, 1, 1, 1, 1);
   }
 
   @Test
