@@ -1,6 +1,7 @@
 package org.toradocu.translator;
 
 import static java.util.stream.Collectors.toList;
+import static org.toradocu.util.ComplianceChecks.isPostSpecCompilable;
 
 import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.semgraph.SemanticGraph;
@@ -8,7 +9,6 @@ import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -16,23 +16,16 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
-import org.mdkt.compiler.InMemoryJavaCompiler;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.ReturnTag;
-import org.toradocu.util.FakeSourceBuilder;
 import org.toradocu.util.Reflection;
 import randoop.condition.specification.Guard;
 import randoop.condition.specification.PostSpecification;
 import randoop.condition.specification.Property;
 
 public class ReturnTranslator {
-
-  /** Logger of this class. */
-  private static final Logger log = LoggerFactory.getLogger(ReturnTranslator.class);
 
   public List<PostSpecification> translate(ReturnTag tag, DocumentedExecutable excMember) {
     String commentText = tag.getComment().getText();
@@ -465,60 +458,6 @@ public class ReturnTranslator {
       specs.add(new PostSpecification(comment, guard, property));
     }
     return specs;
-  }
-
-  private static boolean isPostSpecCompilable(
-      DocumentedExecutable method, Guard guard, Property property) {
-    FakeSourceBuilder fakeSourceBuilder = new FakeSourceBuilder();
-    fakeSourceBuilder.addArgument(
-        method.getReturnType().getType().getTypeName(), Configuration.RETURN_VALUE);
-
-    fakeSourceBuilder.addArgument(method.getDeclaringClass().getName(), Configuration.RECEIVER);
-    String guardText = substituteArgs(fakeSourceBuilder, method, guard.getConditionText());
-    String propertyText = substituteArgs(fakeSourceBuilder, method, property.getConditionText());
-    fakeSourceBuilder.addCondition(guardText);
-    fakeSourceBuilder.addCondition(propertyText);
-    fakeSourceBuilder.addImport(method.getDeclaringClass().getName());
-    fakeSourceBuilder.copyClassTypeArguments(method.getDeclaringClass().getTypeParameters());
-    fakeSourceBuilder.copyTypeArguments(method.getExecutable().getTypeParameters());
-    String sourceCode = fakeSourceBuilder.buildSource();
-    try {
-      InMemoryJavaCompiler compiler = InMemoryJavaCompiler.newInstance();
-      compiler.ignoreWarnings();
-      List<String> classpath = new ArrayList<>();
-      for (URL url : Configuration.INSTANCE.classDirs) {
-        classpath.add(url.getPath());
-      }
-      compiler.useOptions("-cp", String.join(":", classpath));
-      compiler.compile("GeneratedSpecs", sourceCode);
-    } catch (Exception e) {
-      log.info(
-          "The following condition was generated but discarded:\n"
-              + guard.getConditionText()
-              + "? : "
-              + property.getConditionText()
-              + "\n"
-              + e.getMessage()
-              + "\n");
-      return false;
-    }
-    return true;
-  }
-
-  private static String substituteArgs(
-      FakeSourceBuilder fakeSourceBuilder, DocumentedExecutable method, String text) {
-    if (text != null) {
-      final String ARGS_REGEX = "args\\[([0-9])\\]";
-      java.util.regex.Matcher argsMatcher = Pattern.compile(ARGS_REGEX).matcher(text);
-      while (argsMatcher.find()) {
-        int argIndex = Integer.valueOf(argsMatcher.group(1));
-        String parameter = method.getParameters().get(argIndex).getName();
-        text = text.replace(argsMatcher.group(0), parameter);
-        fakeSourceBuilder.addArgument(method.getParameters().get(argIndex).toString());
-      }
-    }
-
-    return text;
   }
 
   /**

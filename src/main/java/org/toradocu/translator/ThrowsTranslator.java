@@ -1,5 +1,7 @@
 package org.toradocu.translator;
 
+import static org.toradocu.util.ComplianceChecks.isSpecCompilable;
+
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.ThrowsTag;
 import randoop.condition.specification.Guard;
@@ -15,6 +17,12 @@ public class ThrowsTranslator {
 
     final Guard guard = new Guard(tag.getComment().getText(), commentTranslation);
     final String exceptionName = tag.getException().getName();
+
+    if (commentTranslation.isEmpty() || !isSpecCompilable(excMember, guard)) {
+      return new ThrowsSpecification(
+          tag.toString(), new Guard(tag.getComment().getText(), ""), exceptionName);
+    }
+
     return new ThrowsSpecification(tag.toString(), guard, exceptionName);
   }
 

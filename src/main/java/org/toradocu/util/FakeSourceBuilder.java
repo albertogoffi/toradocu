@@ -8,6 +8,7 @@ public class FakeSourceBuilder {
 
   private Set<String> conditions = new HashSet<>();
   private Set<String> arguments = new HashSet<>();
+  private Set<String> varArgArguments = new HashSet<>();
   private Set<String> imports = new HashSet<>();
   private Set<String> methodTypeParameters = new HashSet<>();
   private Set<String> classTypeParameters = new HashSet<>();
@@ -39,6 +40,10 @@ public class FakeSourceBuilder {
     fakeSource.append("void");
     fakeSource.append(" foo (");
     fakeSource.append(String.join(",", arguments));
+    if (!arguments.isEmpty() && !varArgArguments.isEmpty()) {
+      fakeSource.append(",");
+    }
+    fakeSource.append(String.join(",", varArgArguments));
     fakeSource.append(") {");
     fakeSource.append("\n");
     for (String condition : conditions) {
@@ -59,7 +64,24 @@ public class FakeSourceBuilder {
   }
 
   public void addArgument(String argumentDeclaration) {
-    arguments.add(argumentDeclaration);
+    int spaceBeforeArgName = argumentDeclaration.lastIndexOf(" ");
+    String type = argumentDeclaration.substring(0, spaceBeforeArgName);
+    String name = argumentDeclaration.substring(spaceBeforeArgName, argumentDeclaration.length());
+    addArgument(type, name);
+  }
+
+  public void addVarArgArgument(String type, String argument) {
+    if (type.contains("$")) {
+      type = type.replaceAll("\\$", ".");
+    }
+    varArgArguments.add(type + " " + argument);
+  }
+
+  public void addVarArgArgument(String argumentDeclaration) {
+    int spaceBeforeArgName = argumentDeclaration.lastIndexOf(" ");
+    String type = argumentDeclaration.substring(0, spaceBeforeArgName);
+    String name = argumentDeclaration.substring(spaceBeforeArgName, argumentDeclaration.length());
+    addVarArgArgument(type, name);
   }
 
   public void addCondition(String condition) {
