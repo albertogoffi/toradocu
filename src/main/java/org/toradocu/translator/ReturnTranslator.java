@@ -421,16 +421,18 @@ public class ReturnTranslator {
           Pattern.compile(BITWISE_OP_REGEX).matcher(commentToTranslate);
 
       java.util.regex.Matcher matcherBinOp =
-              Pattern.compile(BINARY_OP_REGEX).matcher(commentToTranslate);
+          Pattern.compile(BINARY_OP_REGEX).matcher(commentToTranslate);
 
       if (matcherArithmeticOp.find()) {
         translation = manageArgsOperation(method, matcherArithmeticOp);
       } else if (matcherBitOp.find()) {
         translation = manageArgsOperation(method, matcherBitOp);
-      }else if(matcherBinOp.find()) {
+      } else if (matcherBinOp.find()) {
         translation = manageArgsOperation(method, matcherBinOp);
-        String[] isolateBinaryOp = translation.split("(?<===)");
-        translation = isolateBinaryOp[0] + "(" + isolateBinaryOp[1] + ")";
+        if (!translation.isEmpty()) {
+          String[] isolateBinaryOp = translation.split("(?<===)");
+          translation = isolateBinaryOp[0] + "(" + isolateBinaryOp[1] + ")";
+        }
       }
       if (translation == null) {
         final List<PropositionSeries> extractedPropositions =
@@ -454,8 +456,7 @@ public class ReturnTranslator {
         property = new Property(comment, translation);
       }
     }
-    if (property != null
-            && isPostSpecCompilable(method, guard, property)) {
+    if (property != null && isPostSpecCompilable(method, guard, property)) {
       specs.add(new PostSpecification(comment, guard, property));
     }
     return specs;
@@ -495,7 +496,7 @@ public class ReturnTranslator {
 
   private static String substituteArgs(
       FakeSourceBuilder fakeSourceBuilder, DocumentedExecutable method, String text) {
-    if(text!=null) {
+    if (text != null) {
       final String ARGS_REGEX = "args\\[([0-9])\\]";
       java.util.regex.Matcher argsMatcher = Pattern.compile(ARGS_REGEX).matcher(text);
       while (argsMatcher.find()) {
