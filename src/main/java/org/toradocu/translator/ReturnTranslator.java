@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 import org.mdkt.compiler.InMemoryJavaCompiler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.DocumentedExecutable;
@@ -28,6 +30,9 @@ import randoop.condition.specification.PostSpecification;
 import randoop.condition.specification.Property;
 
 public class ReturnTranslator {
+
+  /** Logger of this class. */
+  private static final Logger log = LoggerFactory.getLogger(ReturnTranslator.class);
 
   public List<PostSpecification> translate(ReturnTag tag, DocumentedExecutable excMember) {
     String commentText = tag.getComment().getText();
@@ -484,11 +489,17 @@ public class ReturnTranslator {
       for (URL url : Configuration.INSTANCE.classDirs) {
         classpath.add(url.getPath());
       }
-
       compiler.useOptions("-cp", String.join(":", classpath));
-      Class<?> helloClass = compiler.compile("GeneratedSpecs", sourceCode);
+      compiler.compile("GeneratedSpecs", sourceCode);
     } catch (Exception e) {
-      e.printStackTrace();
+      log.info(
+          "The following condition was generated but discarded:\n"
+              + guard.getConditionText()
+              + "? : "
+              + property.getConditionText()
+              + "\n"
+              + e.getMessage()
+              + "\n");
       return false;
     }
     return true;
