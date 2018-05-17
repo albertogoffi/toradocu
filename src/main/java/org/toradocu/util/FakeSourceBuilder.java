@@ -52,6 +52,9 @@ public class FakeSourceBuilder {
   }
 
   public void addArgument(String type, String argument) {
+    if (type.contains("$")) {
+      type = type.replaceAll("\\$", ".");
+    }
     arguments.add(type + " " + argument);
   }
 
@@ -64,6 +67,10 @@ public class FakeSourceBuilder {
   }
 
   public void addImport(String anImport) {
+    if (anImport.contains("$")) {
+      // inner class
+      anImport = anImport.replaceAll("\\$", ".");
+    }
     imports.add(anImport);
   }
 
