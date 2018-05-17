@@ -410,7 +410,9 @@ public class ReturnTranslator {
 
       final String ARITHMETIC_OP_REGEX = "([a-zA-Z0-9_]+) ?([-+*/%]) ?([a-zA-Z0-9_]+)";
 
-      final String BITWISE_OP_REGEX = "([a-zA-Z0-9_]+) ?(<<<?|>>>?|\\^|&|\\|) ?([a-zA-Z0-9_]+)";
+      final String BITWISE_OP_REGEX = "([a-zA-Z0-9_]+) ?(<<<?|>>>?) ?([a-zA-Z0-9_]+)";
+
+      final String BINARY_OP_REGEX = "([a-zA-Z0-9_]+) ?(\\^|&|\\|) ?([a-zA-Z0-9_]+)";
 
       java.util.regex.Matcher matcherArithmeticOp =
           Pattern.compile(ARITHMETIC_OP_REGEX).matcher(commentToTranslate);
@@ -418,10 +420,17 @@ public class ReturnTranslator {
       java.util.regex.Matcher matcherBitOp =
           Pattern.compile(BITWISE_OP_REGEX).matcher(commentToTranslate);
 
+      java.util.regex.Matcher matcherBinOp =
+              Pattern.compile(BINARY_OP_REGEX).matcher(commentToTranslate);
+
       if (matcherArithmeticOp.find()) {
         translation = manageArgsOperation(method, matcherArithmeticOp);
       } else if (matcherBitOp.find()) {
         translation = manageArgsOperation(method, matcherBitOp);
+      }else if(matcherBinOp.find()) {
+        translation = manageArgsOperation(method, matcherBinOp);
+        String[] isolateBinaryOp = translation.split("(?<===)");
+        translation = isolateBinaryOp[0] + "(" + isolateBinaryOp[1] + ")";
       }
       if (translation == null) {
         final List<PropositionSeries> extractedPropositions =
@@ -445,7 +454,8 @@ public class ReturnTranslator {
         property = new Property(comment, translation);
       }
     }
-    if (property != null && isPostSpecCompilable(method, guard, property)) {
+    if (property != null
+            && isPostSpecCompilable(method, guard, property)) {
       specs.add(new PostSpecification(comment, guard, property));
     }
     return specs;
@@ -485,13 +495,15 @@ public class ReturnTranslator {
 
   private static String substituteArgs(
       FakeSourceBuilder fakeSourceBuilder, DocumentedExecutable method, String text) {
-    final String ARGS_REGEX = "args\\[([0-9])\\]";
-    java.util.regex.Matcher argsMatcher = Pattern.compile(ARGS_REGEX).matcher(text);
-    while (argsMatcher.find()) {
-      int argIndex = Integer.valueOf(argsMatcher.group(1));
-      String parameter = method.getParameters().get(argIndex).getName();
-      text = text.replace(argsMatcher.group(0), parameter);
-      fakeSourceBuilder.addArgument(method.getParameters().get(argIndex).toString());
+    if(text!=null) {
+      final String ARGS_REGEX = "args\\[([0-9])\\]";
+      java.util.regex.Matcher argsMatcher = Pattern.compile(ARGS_REGEX).matcher(text);
+      while (argsMatcher.find()) {
+        int argIndex = Integer.valueOf(argsMatcher.group(1));
+        String parameter = method.getParameters().get(argIndex).getName();
+        text = text.replace(argsMatcher.group(0), parameter);
+        fakeSourceBuilder.addArgument(method.getParameters().get(argIndex).toString());
+      }
     }
 
     return text;
