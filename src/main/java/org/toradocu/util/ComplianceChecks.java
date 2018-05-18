@@ -32,9 +32,6 @@ public class ComplianceChecks {
    * @return true if the condition was compilable, false otherwise
    */
   public static boolean isSpecCompilable(DocumentedExecutable method, Guard guard) {
-    if (guard.getConditionText() == null) {
-      System.out.println("??");
-    }
     if (Modifier.isPrivate(method.getDeclaringClass().getModifiers())) {
       // if the target class is private we cannot apply compliance check.
       return true;
@@ -56,7 +53,7 @@ public class ComplianceChecks {
     } catch (ClassNotFoundException e) {
       //ignore
     } catch (Exception e) {
-      e.printStackTrace();
+      //
     }
     return true;
   }
@@ -72,13 +69,6 @@ public class ComplianceChecks {
    */
   public static boolean isPostSpecCompilable(
       DocumentedExecutable method, Guard guard, Property property) {
-    if (guard.getConditionText() == null) {
-      System.out.println("??");
-    }
-
-    if (property.getConditionText() == null) {
-      System.out.println("??");
-    }
     if (Modifier.isPrivate(method.getDeclaringClass().getModifiers())) {
       // if the target class is private we cannot apply compliance check.
       return true;
@@ -107,7 +97,7 @@ public class ComplianceChecks {
     } catch (ClassNotFoundException e) {
       // ignore
     } catch (Exception e) {
-      e.printStackTrace();
+
     }
     return true;
   }
@@ -161,9 +151,6 @@ public class ComplianceChecks {
    */
   private static void importClassesInInstanceOf(
       DocumentedExecutable method, SourceCodeBuilder sourceCodeBuilder, String conditionText) {
-    if (conditionText == null || conditionText.isEmpty()) {
-      System.out.println("??");
-    }
     Matcher matcher = Pattern.compile(" instanceof ([A-Z][A-Za-z]+)").matcher(conditionText);
     while (matcher.find()) {
       String className = matcher.group(1);
