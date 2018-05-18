@@ -24,20 +24,23 @@ public class ComplianceChecks {
   private static final Logger log = LoggerFactory.getLogger(ComplianceChecks.class);
 
   /**
-   * Tries to compile the boolean condition in the given {@code Guard} and
-   * tells whether the compilation was successful.
+   * Tries to compile the boolean condition in the given {@code Guard} and tells whether the
+   * compilation was successful.
    *
    * @param method documented executable the guard belongs to
    * @param guard the guard which condition must be checked for compliance
    * @return true if the condition was compilable, false otherwise
    */
   public static boolean isSpecCompilable(DocumentedExecutable method, Guard guard) {
+    if (guard.getConditionText() == null) {
+      System.out.println("??");
+    }
     if (Modifier.isPrivate(method.getDeclaringClass().getModifiers())) {
       // if the target class is private we cannot apply compliance check.
       return true;
     }
     SourceCodeBuilder sourceCodeBuilder = addCommonInfo(method);
-    addGuardInformation(method, guard, sourceCodeBuilder);
+    addConditionCodeInformation(method, guard.getConditionText(), sourceCodeBuilder);
     String sourceCode = sourceCodeBuilder.buildSource();
     try {
       compileSource(sourceCode);
@@ -69,6 +72,13 @@ public class ComplianceChecks {
    */
   public static boolean isPostSpecCompilable(
       DocumentedExecutable method, Guard guard, Property property) {
+    if (guard.getConditionText() == null) {
+      System.out.println("??");
+    }
+
+    if (property.getConditionText() == null) {
+      System.out.println("??");
+    }
     if (Modifier.isPrivate(method.getDeclaringClass().getModifiers())) {
       // if the target class is private we cannot apply compliance check.
       return true;
@@ -78,8 +88,8 @@ public class ComplianceChecks {
     if (!methodReturnType.equals("void")) {
       sourceCodeBuilder.addArgument(methodReturnType, Configuration.RETURN_VALUE);
     }
-    addGuardInformation(method, guard, sourceCodeBuilder);
-    addPropertyInformation(method, property, sourceCodeBuilder);
+    addConditionCodeInformation(method, guard.getConditionText(), sourceCodeBuilder);
+    addConditionCodeInformation(method, property.getConditionText(), sourceCodeBuilder);
     String sourceCode = sourceCodeBuilder.buildSource();
     try {
       compileSource(sourceCode);
@@ -142,29 +152,19 @@ public class ComplianceChecks {
   }
 
   /**
-   * Extracts and add to the source code information expressed in the given {@code Guard}.
-   *
-   * @param method documented executable the guard belongs to
-   * @param guard the guard which condition must be checked for compliance
-   * @param sourceCodeBuilder {@code SourceCodeBuilder} object that wraps the source code
-   */
-  private static void addGuardInformation(
-      DocumentedExecutable method, Guard guard, SourceCodeBuilder sourceCodeBuilder) {
-    String guardText = substituteArgs(sourceCodeBuilder, method, guard.getConditionText());
-    sourceCodeBuilder.addCondition(guardText);
-    importClassesInInstanceOf(method, sourceCodeBuilder, guardText);
-  }
-
-  /**
-   * Finds if the condition involves an {@code instanceof} invocation and imports in the
-   * source code the classes it is referred to
+   * Finds if the condition involves an {@code instanceof} invocation and imports in the source code
+   * the classes it is referred to
    *
    * @param method the method which specifications must be compiled
    * @param sourceCodeBuilder {@code SourceCodeBuilder} object that wraps the source code
-   * @param guardText condition text
+   * @param conditionText condition text
    */
-  private static void importClassesInInstanceOf(DocumentedExecutable method, SourceCodeBuilder sourceCodeBuilder, String guardText) {
-    Matcher matcher = Pattern.compile(" instanceof ([A-Z][A-Za-z]+)").matcher(guardText);
+  private static void importClassesInInstanceOf(
+      DocumentedExecutable method, SourceCodeBuilder sourceCodeBuilder, String conditionText) {
+    if (conditionText == null || conditionText.isEmpty()) {
+      System.out.println("??");
+    }
+    Matcher matcher = Pattern.compile(" instanceof ([A-Z][A-Za-z]+)").matcher(conditionText);
     while (matcher.find()) {
       String className = matcher.group(1);
 
@@ -186,22 +186,22 @@ public class ComplianceChecks {
     }
   }
   /**
-   * Extracts and add to the source code information expressed in the given {@code Property}.
+   * Extracts and add to the source code information expressed in the given condition text.
    *
    * @param method documented executable the guard belongs to
-   * @param property the property which condition must be checked for compliance
+   * @param conditionText the condition text
    * @param sourceCodeBuilder {@code SourceCodeBuilder} object that wraps the source code
    */
-  private static void addPropertyInformation(
-      DocumentedExecutable method, Property property, SourceCodeBuilder sourceCodeBuilder) {
-    String propertyText = substituteArgs(sourceCodeBuilder, method, property.getConditionText());
-    sourceCodeBuilder.addCondition(propertyText);
-    importClassesInInstanceOf(method, sourceCodeBuilder, propertyText);
+  private static void addConditionCodeInformation(
+      DocumentedExecutable method, String conditionText, SourceCodeBuilder sourceCodeBuilder) {
+    String substitutedText = substituteArgs(sourceCodeBuilder, method, conditionText);
+    sourceCodeBuilder.addCondition(substitutedText);
+    importClassesInInstanceOf(method, sourceCodeBuilder, substitutedText);
   }
 
   /**
-   * Substitutes in the condition the actual arguments names, since Toradocu-generated
-   * conditions refer to the nth argument with the {@code args[n]} notation.
+   * Substitutes in the condition the actual arguments names, since Toradocu-generated conditions
+   * refer to the nth argument with the {@code args[n]} notation.
    *
    * @param sourceCodeBuilder {@code SourceCodeBuilder} object that wraps the source code
    * @param method documented executable the guard belongs to
@@ -209,7 +209,7 @@ public class ComplianceChecks {
    * @return condition text with argument names substituted
    */
   private static String substituteArgs(
-          SourceCodeBuilder sourceCodeBuilder, DocumentedExecutable method, String text) {
+      SourceCodeBuilder sourceCodeBuilder, DocumentedExecutable method, String text) {
     if (text != null) {
       final String ARGS_REGEX = "args\\[([0-9])\\]";
       java.util.regex.Matcher argsMatcher = Pattern.compile(ARGS_REGEX).matcher(text);

@@ -451,7 +451,9 @@ public class ReturnTranslator {
         if (translation.contains("{") && translation.contains("}")) {
           translation = extractVariablesFound(translation, method);
         }
-        property = new Property(comment, translation);
+        if (translation != null) {
+          property = new Property(comment, translation);
+        }
       }
     }
     if (property != null && isPostSpecCompilable(method, guard, property)) {
