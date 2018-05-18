@@ -42,18 +42,17 @@ public class ComplianceChecks {
     try {
       compileSource(sourceCode);
     } catch (CompilationException e) {
-      e.printStackTrace();
       log.info(
           "The following specification was generated but discarded:\n"
               + guard.getConditionText()
               + "\n"
-              + e.getMessage()
+              + e.getLocalizedMessage()
               + "\n");
       return false;
     } catch (ClassNotFoundException e) {
       //ignore
     } catch (Exception e) {
-      //
+      e.printStackTrace();
     }
     return true;
   }
@@ -84,20 +83,19 @@ public class ComplianceChecks {
     try {
       compileSource(sourceCode);
     } catch (CompilationException e) {
-      e.printStackTrace();
       log.info(
           "The following specification was generated but discarded:\n"
               + guard.getConditionText()
               + " ? "
               + property.getConditionText()
               + "\n"
-              + e.getMessage()
+              + e.getLocalizedMessage()
               + "\n");
       return false;
     } catch (ClassNotFoundException e) {
       // ignore
     } catch (Exception e) {
-
+      e.printStackTrace();
     }
     return true;
   }
