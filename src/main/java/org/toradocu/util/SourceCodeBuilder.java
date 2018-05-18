@@ -1,18 +1,15 @@
 package org.toradocu.util;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import org.jetbrains.annotations.NotNull;
 
-public class FakeSourceBuilder {
+public class SourceCodeBuilder {
 
   private Set<String> conditions = new HashSet<>();
   private Set<String> arguments = new HashSet<>();
@@ -25,7 +22,7 @@ public class FakeSourceBuilder {
   public String buildSource() {
     StringBuilder fakeSource = new StringBuilder();
 
-    if(!packageDeclaration.isEmpty()){
+    if (!packageDeclaration.isEmpty()) {
       fakeSource.append("package ");
       fakeSource.append(packageDeclaration);
       fakeSource.append(";");
@@ -114,7 +111,7 @@ public class FakeSourceBuilder {
     if (typeArguments != null) {
       for (TypeVariable<?> typeParam : typeArguments) {
         String typeParamDeclaration = typeParam.getName();
-        if(typeParam.getBounds().length>0) {
+        if (typeParam.getBounds().length > 0) {
           typeParamDeclaration = includeBounds(typeParam, typeParamDeclaration);
         }
         this.methodTypeParameters.add(typeParamDeclaration);
@@ -122,11 +119,10 @@ public class FakeSourceBuilder {
     }
   }
 
-  @NotNull
-  private String includeBounds(TypeVariable<?> typeParam, String typeParamDeclaration) {
+  @NotNull private String includeBounds(TypeVariable<?> typeParam, String typeParamDeclaration) {
     typeParamDeclaration += " extends ";
-    List<String> bounds = Arrays.stream(typeParam.getBounds()).
-            map(Type::getTypeName).collect(Collectors.toList());
+    List<String> bounds =
+        Arrays.stream(typeParam.getBounds()).map(Type::getTypeName).collect(Collectors.toList());
     typeParamDeclaration += String.join(",", bounds);
     return typeParamDeclaration;
   }
@@ -135,7 +131,7 @@ public class FakeSourceBuilder {
     if (typeArguments != null) {
       for (TypeVariable<? extends Class<?>> typeParam : typeArguments) {
         String typeParamDeclaration = typeParam.getName();
-        if(typeParam.getBounds().length>0) {
+        if (typeParam.getBounds().length > 0) {
           typeParamDeclaration = includeBounds(typeParam, typeParamDeclaration);
         }
         this.classTypeParameters.add(typeParamDeclaration);
