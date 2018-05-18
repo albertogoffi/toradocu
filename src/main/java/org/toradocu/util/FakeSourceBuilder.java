@@ -1,8 +1,16 @@
 package org.toradocu.util;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class FakeSourceBuilder {
 
@@ -12,19 +20,25 @@ public class FakeSourceBuilder {
   private Set<String> imports = new HashSet<>();
   private Set<String> methodTypeParameters = new HashSet<>();
   private Set<String> classTypeParameters = new HashSet<>();
+  private String packageDeclaration = "";
 
   public String buildSource() {
     StringBuilder fakeSource = new StringBuilder();
 
+    if(!packageDeclaration.isEmpty()){
+      fakeSource.append("package ");
+      fakeSource.append(packageDeclaration);
+      fakeSource.append(";");
+    }
     for (String anImport : imports) {
       fakeSource.append("import ");
       fakeSource.append(anImport);
       fakeSource.append(";");
       fakeSource.append("\n");
     }
-    fakeSource.append("public class GeneratedSpecs");
+    fakeSource.append("public class GeneratedSpecs ");
     if (!classTypeParameters.isEmpty()) {
-      fakeSource.append(" <");
+      fakeSource.append("<");
       fakeSource.append(String.join(",", classTypeParameters));
       fakeSource.append("> ");
     }
@@ -32,7 +46,7 @@ public class FakeSourceBuilder {
     fakeSource.append("\n");
     fakeSource.append("public ");
     if (!methodTypeParameters.isEmpty()) {
-      fakeSource.append(" <");
+      fakeSource.append("<");
       fakeSource.append(String.join(",", methodTypeParameters));
       fakeSource.append("> ");
     }
@@ -99,16 +113,37 @@ public class FakeSourceBuilder {
   public void copyTypeArguments(TypeVariable<?>[] typeArguments) {
     if (typeArguments != null) {
       for (TypeVariable<?> typeParam : typeArguments) {
-        this.methodTypeParameters.add(typeParam.getName());
+        String typeParamDeclaration = typeParam.getName();
+        if(typeParam.getBounds().length>0) {
+          typeParamDeclaration = includeBounds(typeParam, typeParamDeclaration);
+        }
+        this.methodTypeParameters.add(typeParamDeclaration);
       }
     }
+  }
+
+  @NotNull
+  private String includeBounds(TypeVariable<?> typeParam, String typeParamDeclaration) {
+    typeParamDeclaration += " extends ";
+    List<String> bounds = Arrays.stream(typeParam.getBounds()).
+            map(Type::getTypeName).collect(Collectors.toList());
+    typeParamDeclaration += String.join(",", bounds);
+    return typeParamDeclaration;
   }
 
   public void copyClassTypeArguments(TypeVariable<? extends Class<?>>[] typeArguments) {
     if (typeArguments != null) {
       for (TypeVariable<? extends Class<?>> typeParam : typeArguments) {
-        this.classTypeParameters.add(typeParam.getName());
+        String typeParamDeclaration = typeParam.getName();
+        if(typeParam.getBounds().length>0) {
+          typeParamDeclaration = includeBounds(typeParam, typeParamDeclaration);
+        }
+        this.classTypeParameters.add(typeParamDeclaration);
       }
     }
+  }
+
+  public void addPackage(Class<?> declaringClass) {
+    this.packageDeclaration = declaringClass.getPackage().getName();
   }
 }

@@ -20,7 +20,7 @@ public class AccuracyGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testCharMatcher() {
-    test("com.google.common.base.CharMatcher", 1, 1, 0, 0, 0, 1);
+    test("com.google.common.base.CharMatcher", 1, 1, 1, 0, 0, 1);
   }
 
   @Test
@@ -50,7 +50,7 @@ public class AccuracyGuava19 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testBloomFilter() {
-    test("com.google.common.hash.BloomFilter", 0, 0, 1, 1, 1, 1);
+    test("com.google.common.hash.BloomFilter", 1, 0, 1, 1, 1, 1);
   }
 
   @Test

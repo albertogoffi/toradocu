@@ -1,11 +1,14 @@
 package org.toradocu.util;
 
 import java.io.File;
+import java.lang.reflect.Modifier;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.mdkt.compiler.CompilationException;
 import org.mdkt.compiler.InMemoryJavaCompiler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,12 +25,17 @@ public class ComplianceChecks {
   private static final Logger log = LoggerFactory.getLogger(ComplianceChecks.class);
 
   public static boolean isSpecCompilable(DocumentedExecutable method, Guard guard) {
+    if(Modifier.isPrivate(method.getDeclaringClass().getModifiers())){
+      // if the target class is private we cannot apply compliance check.
+      return true;
+    }
     FakeSourceBuilder fakeSourceBuilder = addCommonInfo(method);
     addGuardInformation(method, guard, fakeSourceBuilder);
     String sourceCode = fakeSourceBuilder.buildSource();
     try {
       compileSource(sourceCode);
-    } catch (Exception e) {
+    } catch (CompilationException e) {
+      e.printStackTrace();
       log.info(
           "The following specification was generated but discarded:\n"
               + guard.getConditionText()
@@ -35,6 +43,10 @@ public class ComplianceChecks {
               + e.getMessage()
               + "\n");
       return false;
+    } catch (ClassNotFoundException e) {
+      //ignore
+    } catch (Exception e) {
+      e.printStackTrace();
     }
     return true;
   }
@@ -55,7 +67,8 @@ public class ComplianceChecks {
     String sourceCode = fakeSourceBuilder.buildSource();
     try {
       compileSource(sourceCode);
-    } catch (Exception e) {
+    } catch (CompilationException e) {
+      e.printStackTrace();
       log.info(
           "The following specification was generated but discarded:\n"
               + guard.getConditionText()
@@ -65,6 +78,10 @@ public class ComplianceChecks {
               + e.getMessage()
               + "\n");
       return false;
+    } catch (ClassNotFoundException e) {
+      // ignore
+    } catch (Exception e) {
+      e.printStackTrace();
     }
     return true;
   }
@@ -83,8 +100,11 @@ public class ComplianceChecks {
   private static FakeSourceBuilder addCommonInfo(DocumentedExecutable method) {
     FakeSourceBuilder fakeSourceBuilder = new FakeSourceBuilder();
     Class<?> declaringClass = method.getDeclaringClass();
-    Class<?>[] interfaces = declaringClass.getInterfaces();
-    //TODO extract "implements ..." and add to source code
+
+    if(!Modifier.isPublic(declaringClass.getModifiers())){
+      // class is package-private
+      fakeSourceBuilder.addPackage(declaringClass);
+    }
 
     fakeSourceBuilder.addImport(declaringClass.getName());
     fakeSourceBuilder.addArgument(declaringClass.getName(), Configuration.RECEIVER);
