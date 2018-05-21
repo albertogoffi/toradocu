@@ -7,9 +7,6 @@ class. Toradocu is described in the paper
 by Alberto Goffi, Alessandra Gorla, Michael D. Ernst, and Mauro Pezzè (presented
 at [ISSTA 2016](https://issta2016.cispa.saarland)).
 
-Toradocu takes the source code of a class as input and produces a set of
-[aspects](https://eclipse.org/aspectj/) that can be used as test oracles.
-
 ## Tutorial
 To see how to use Toradocu to automatically add test oracles to your test suite
 follow the [tutorial instructions](tutorial/README.md).
