@@ -255,6 +255,7 @@ shadowDistTar.enabled = false
 
 compileJava {
   options.compilerArgs << '-Xlint:unchecked,deprecation'
+  options.encoding = 'UTF-8'
 }
 
 repositories {
