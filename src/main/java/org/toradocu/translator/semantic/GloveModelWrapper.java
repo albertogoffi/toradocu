@@ -51,7 +51,7 @@ public class GloveModelWrapper {
     WordVectors gloveVectors = null;
     try {
       File gloveFinalFile = destinationFile.toFile();
-      gloveVectors = WordVectorSerializer.loadStaticModel(destinationFile.toFile());
+      gloveVectors = WordVectorSerializer.loadTxtVectors(gloveFinalFile);
       gloveFinalFile.deleteOnExit();
     } catch (Exception e) {
       e.printStackTrace();
