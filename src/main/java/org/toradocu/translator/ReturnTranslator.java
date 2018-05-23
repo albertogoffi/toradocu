@@ -1,6 +1,7 @@
 package org.toradocu.translator;
 
 import static java.util.stream.Collectors.toList;
+import static org.toradocu.util.ComplianceChecks.isPostSpecCompilable;
 
 import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.semgraph.SemanticGraph;
@@ -348,14 +349,17 @@ public class ReturnTranslator {
         if (!conditionTranslation.isEmpty() && !predicateTranslation.isEmpty()) {
           Guard trueGuard = new Guard(textToTranslate, conditionTranslation);
           Property trueProperty = new Property(textToTranslate, predicateTranslation);
-          specs.add(new PostSpecification(textToTranslate, trueGuard, trueProperty));
-
+          if (isPostSpecCompilable(method, trueGuard, trueProperty)) {
+            specs.add(new PostSpecification(textToTranslate, trueGuard, trueProperty));
+          }
           String elsePredicate = translateLastPart(falseCase, method);
           if (elsePredicate != null) {
             String invertedGuard = "(" + conditionTranslation + ")==false";
             Guard falseGuard = new Guard(textToTranslate, invertedGuard);
             Property falseProperty = new Property(textToTranslate, elsePredicate);
-            specs.add(new PostSpecification(textToTranslate, falseGuard, falseProperty));
+            if (isPostSpecCompilable(method, falseGuard, falseProperty)) {
+              specs.add(new PostSpecification(textToTranslate, falseGuard, falseProperty));
+            }
           }
         }
       }
@@ -404,7 +408,9 @@ public class ReturnTranslator {
 
       final String ARITHMETIC_OP_REGEX = "([a-zA-Z0-9_]+) ?([-+*/%]) ?([a-zA-Z0-9_]+)";
 
-      final String BITWISE_OP_REGEX = "([a-zA-Z0-9_]+) ?(<<<?|>>>?|\\^|&|\\|) ?([a-zA-Z0-9_]+)";
+      final String BITWISE_OP_REGEX = "([a-zA-Z0-9_]+) ?(<<<?|>>>?) ?([a-zA-Z0-9_]+)";
+
+      final String BINARY_OP_REGEX = "([a-zA-Z0-9_]+) ?(\\^|&|\\|) ?([a-zA-Z0-9_]+)";
 
       java.util.regex.Matcher matcherArithmeticOp =
           Pattern.compile(ARITHMETIC_OP_REGEX).matcher(commentToTranslate);
@@ -412,10 +418,19 @@ public class ReturnTranslator {
       java.util.regex.Matcher matcherBitOp =
           Pattern.compile(BITWISE_OP_REGEX).matcher(commentToTranslate);
 
+      java.util.regex.Matcher matcherBinOp =
+          Pattern.compile(BINARY_OP_REGEX).matcher(commentToTranslate);
+
       if (matcherArithmeticOp.find()) {
         translation = manageArgsOperation(method, matcherArithmeticOp);
       } else if (matcherBitOp.find()) {
         translation = manageArgsOperation(method, matcherBitOp);
+      } else if (matcherBinOp.find()) {
+        translation = manageArgsOperation(method, matcherBinOp);
+        if (!translation.isEmpty()) {
+          String[] isolateBinaryOp = translation.split("(?<===)");
+          translation = isolateBinaryOp[0] + "(" + isolateBinaryOp[1] + ")";
+        }
       }
       if (translation == null) {
         final List<PropositionSeries> extractedPropositions =
@@ -436,10 +451,12 @@ public class ReturnTranslator {
         if (translation.contains("{") && translation.contains("}")) {
           translation = extractVariablesFound(translation, method);
         }
-        property = new Property(comment, translation);
+        if (translation != null) {
+          property = new Property(comment, translation);
+        }
       }
     }
-    if (property != null) {
+    if (property != null && isPostSpecCompilable(method, guard, property)) {
       specs.add(new PostSpecification(comment, guard, property));
     }
     return specs;
@@ -465,7 +482,14 @@ public class ReturnTranslator {
       Iterator<CodeElement<?>> it = argMatches.iterator();
       String replaceTarget = "{" + argument + "}";
       //Naive solution: picks the first match from the list.
-      String replacement = it.next().getJavaExpression();
+      CodeElement<?> codeElement = it.next();
+      String replacement = codeElement.getJavaExpression();
+
+      String type = "";
+      if (codeElement instanceof ClassCodeElement) {
+        type = ((ClassCodeElement) codeElement).getJavaCodeElement().getName();
+      }
+
       translation = translation.replace(replaceTarget, replacement);
       return translation;
     }
@@ -497,7 +521,9 @@ public class ReturnTranslator {
                 new Matcher()
                     .predicateMatch(
                         method, new GeneralCodeElement(Configuration.RETURN_VALUE), p, comment);
-            if (predicateMatch != null) break;
+            if (predicateMatch != null) {
+              break;
+            }
           }
         }
       }

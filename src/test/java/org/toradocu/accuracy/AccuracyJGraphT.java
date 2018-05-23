@@ -21,7 +21,7 @@ public class AccuracyJGraphT extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testGraph() {
-    test("org.jgrapht.Graph", 1, 0.556, 1, 1, 0.8, 1);
+    test("org.jgrapht.Graph", 1, 0.556, 1, 1, 1, 1);
   }
 
   @Test

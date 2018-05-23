@@ -25,6 +25,6 @@ public class AccuracyFreeCol extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testUnit() {
-    test("net.sf.freecol.common.model.Unit", 1, 0.333, 0, 1, 0.083, 0.125);
+    test("net.sf.freecol.common.model.Unit", 1, 0.333, 0, 1, 0.1, 0.125);
   }
 }

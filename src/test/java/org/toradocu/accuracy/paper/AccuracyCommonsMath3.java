@@ -274,12 +274,12 @@ public class AccuracyCommonsMath3 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testBigFraction() throws Exception {
-    test("org.apache.commons.math3.fraction.BigFraction", 0.714, 0.625, 1, 1, 1, 1);
+    test("org.apache.commons.math3.fraction.BigFraction", 1, 0.625, 1, 1, 1, 1);
   }
 
   @Test
   public void testFraction() throws Exception {
-    test("org.apache.commons.math3.fraction.Fraction", 0.857, 0.857, 1, 1, 1, 1);
+    test("org.apache.commons.math3.fraction.Fraction", 1, 0.857, 1, 1, 1, 1);
   }
 
   @Test
@@ -289,7 +289,7 @@ public class AccuracyCommonsMath3 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testVector3D() throws Exception {
-    test("org.apache.commons.math3.geometry.euclidean.threed.Vector3D", 1, 0.333, 1, 1, 1, 1);
+    test("org.apache.commons.math3.geometry.euclidean.threed.Vector3D", 1, 0, 1, 1, 1, 1);
   }
 
   @Test
@@ -304,7 +304,7 @@ public class AccuracyCommonsMath3 extends AbstractPrecisionRecallTestSuite {
 
   @Test
   public void testRealVector() throws Exception {
-    test("org.apache.commons.math3.linear.RealVector", 1, 0.421, 1, 1, 0, 1);
+    test("org.apache.commons.math3.linear.RealVector", 1, 0.421, 1, 1, 1, 1);
   }
 
   @Test
