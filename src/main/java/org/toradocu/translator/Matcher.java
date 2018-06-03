@@ -347,7 +347,10 @@ class Matcher {
           pcount++;
         }
       }
-      if (foundArgMatch) break;
+      if (foundArgMatch) {
+        firstMatch = currentMatch;
+        break;
+      }
     }
     if (foundArgMatch && paramForMatch.size() == args.length) {
       String exp = firstMatch.getJavaExpression();
@@ -396,6 +399,13 @@ class Matcher {
         match = sortedCodeElements.stream().findFirst().get().getJavaExpression();
       }
     }
+    if (match != null
+        && firstMatch instanceof MethodCodeElement
+        && !((MethodCodeElement) firstMatch).getNullDereferenceCheck().isEmpty()) {
+      match =
+          "(" + ((MethodCodeElement) firstMatch).getNullDereferenceCheck() + ") && (" + match + ")";
+    }
+
     return match;
   }
 
