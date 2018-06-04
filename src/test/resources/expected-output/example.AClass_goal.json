@@ -81,7 +81,7 @@
         "codeTags": [],
         "comment": "x is empty.",
         "kind": "THROWS",
-        "condition": "args[0].isEmpty()"
+        "condition": "((args[0]==null)==false)&&(args[0].isEmpty())"
       }
     ]
   },
