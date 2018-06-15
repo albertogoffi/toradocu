@@ -1,0 +1,150 @@
+[
+  {
+    "signature": "simpleNullDeref(nulldereference.Resource resource)",
+    "name": "simpleNullDeref",
+    "containingClass": {
+      "qualifiedName": "nulldereference.ResourceManager",
+      "name": "ResourceManager",
+      "isArray": false
+    },
+    "targetClass": "nulldereference.ResourceManager",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "nulldereference.Resource",
+          "name": "Resource",
+          "isArray": false
+        },
+        "name": "resource"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "nulldereference.Resource",
+            "name": "Resource",
+            "isArray": false
+          },
+          "name": "resource"
+        },
+        "comment": "the resource to check.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if the resource is empty.",
+      "kind": "RETURN",
+      "condition": "((args[0]==null)==false) && (args[0].isEmpty()) ? methodResultID == true : methodResultID == false"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "complexNullDeref(nulldereference.Resource resource)",
+    "name": "complexNullDeref",
+    "containingClass": {
+      "qualifiedName": "nulldereference.ResourceManager",
+      "name": "ResourceManager",
+      "isArray": false
+    },
+    "targetClass": "nulldereference.ResourceManager",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "boolean",
+      "name": "boolean",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "nulldereference.Resource",
+          "name": "Resource",
+          "isArray": false
+        },
+        "name": "resource"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "nulldereference.Resource",
+            "name": "Resource",
+            "isArray": false
+          },
+          "name": "resource"
+        },
+        "comment": "the resource to check.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "returnTag": {
+      "comment": "true if the resource is empty. Resource is not null.",
+      "kind": "RETURN",
+      "condition": "(((args[0]==null)==false) && (args[0].isEmpty())) ? methodResultID == true : methodResultID == false"
+    },
+    "throwsTags": []
+  },
+  {
+    "signature": "arrayNullDeref(nulldereference.Resource[] resourceArray)",
+    "name": "arrayNullDeref",
+    "containingClass": {
+      "qualifiedName": "nulldereference.ResourceManager",
+      "name": "ResourceManager",
+      "isArray": false
+    },
+    "targetClass": "nulldereference.ResourceManager",
+    "isVarArgs": false,
+    "returnType": {
+      "qualifiedName": "void",
+      "name": "void",
+      "isArray": false
+    },
+    "parameters": [
+      {
+        "type": {
+          "qualifiedName": "[Lnulldereference.Resource;",
+          "name": "Resource[]",
+          "isArray": true
+        },
+        "name": "resourceArray"
+      }
+    ],
+    "paramTags": [
+      {
+        "parameter": {
+          "type": {
+            "qualifiedName": "[Lnulldereference.Resource;",
+            "name": "Resource[]",
+            "isArray": true
+          },
+          "name": "resourceArray"
+        },
+        "comment": "array to check.",
+        "kind": "PARAM",
+        "condition": ""
+      }
+    ],
+    "throwsTags": [
+      {
+        "exceptionType": {
+          "qualifiedName": "java.lang.IllegalArgumentException",
+          "name": "IllegalArgumentException",
+          "isArray": false
+        },
+        "codeTags": [],
+        "comment": "the array has length zero.",
+        "kind": "THROWS",
+        "condition": "args[0]!=null && args[0].length==0"
+      }
+    ]
+  }
+]

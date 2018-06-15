@@ -130,7 +130,11 @@ class Matcher {
       if (lengthPattern.find()) {
         final String lengthString = lengthPattern.group(1);
         final int length = lengthString.equals("zero") ? 0 : Integer.parseInt(lengthString);
-        return subject.getJavaExpression() + ".length==" + length;
+        return subject.getJavaExpression()
+            + "!=null && "
+            + subject.getJavaExpression()
+            + ".length=="
+            + length;
       }
       final java.util.regex.Matcher numberPattern =
           Pattern.compile("([<>=]=?|(!=)|is) ?([0-9]+|zero)").matcher(predicate);
@@ -141,14 +145,22 @@ class Matcher {
         if (operator.equals("is")) {
           operator = "==";
         }
-        return subject.getJavaExpression() + ".length" + operator + length;
+        return subject.getJavaExpression()
+            + "!=null && "
+            + subject.getJavaExpression()
+            + ".length"
+            + operator
+            + length;
       }
 
       // "zero-length" special case handling.
       java.util.regex.Matcher zeroLengthPattern =
           Pattern.compile("(is|are|has|have) zero-?length").matcher(predicate);
       if (zeroLengthPattern.find()) {
-        return subject.getJavaExpression() + ".length==0";
+        return subject.getJavaExpression()
+            + "!=null && "
+            + subject.getJavaExpression()
+            + ".length==0";
       }
     }
 

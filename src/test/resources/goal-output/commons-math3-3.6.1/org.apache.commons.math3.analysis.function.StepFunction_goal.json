@@ -116,7 +116,7 @@
         ],
         "comment": "if x or y are zero-length.",
         "kind": "THROWS",
-        "condition": "args[0].length==0 || args[1].length==0"
+        "condition": "args[0]!=null && args[0].length==0 || args[1]!=null && args[1].length==0"
       },
       {
         "exceptionType": {
