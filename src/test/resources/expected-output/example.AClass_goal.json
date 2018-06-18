@@ -81,7 +81,7 @@
         "codeTags": [],
         "comment": "x is empty.",
         "kind": "THROWS",
-        "condition": "args[0].isEmpty()"
+        "condition": "((args[0]==null)==false)&&(args[0].isEmpty())"
       }
     ]
   },
@@ -384,7 +384,7 @@
     "returnTag": {
       "comment": "true if the numbers are equal.",
       "kind": "RETURN",
-      "condition": "args[0].equals(args[1]) ? methodResultID==true : methodResultID==false"
+      "condition": "((args[0]==null)==false)&&(args[0].equals(args[1]))?methodResultID==true:methodResultID==false"
     },
     "throwsTags": []
   },
@@ -490,7 +490,7 @@
     "returnTag": {
       "comment": "true if the array length is greater than 10.",
       "kind": "RETURN",
-      "condition": "args[0].length>10 ? methodResultID==true : methodResultID==false"
+      "condition": "args[0]!=null && args[0].length>10 ? methodResultID==true : methodResultID==false"
     },
     "throwsTags": [
       {
@@ -502,7 +502,7 @@
         "codeTags": [],
         "comment": "the array lenght is 0.",
         "kind": "THROWS",
-        "condition": "args[0].length==0"
+        "condition": "args[0]!=null && args[0].length==0"
       }
     ]
   },

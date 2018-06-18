@@ -124,7 +124,7 @@
         ],
         "comment": "if the size of x is smaller than 2.",
         "kind": "THROWS",
-        "condition": "args[0].length<2"
+        "condition": "args[0]!=null && args[0].length<2"
       }
     ]
   }

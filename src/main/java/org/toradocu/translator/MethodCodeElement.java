@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 import java.util.StringJoiner;
+import org.toradocu.conf.Configuration;
 
 /**
  * This class represents an instance method code element for use in translation. It holds String
@@ -19,6 +20,8 @@ public class MethodCodeElement extends CodeElement<Method> {
   /** The arguments of this method. */
   private String[] args;
 
+  private String nullDereferenceCheck;
+
   /**
    * Constructs and initializes a {@code MethodCodeElement} that identifies the given method. The
    * given method must take no arguments.
@@ -29,7 +32,11 @@ public class MethodCodeElement extends CodeElement<Method> {
   public MethodCodeElement(String receiver, Method method) {
     super(method);
     this.receiver = receiver;
-
+    if (!receiver.equals(Configuration.RECEIVER)) {
+      this.nullDereferenceCheck = "(" + receiver + "==null)==false";
+    } else {
+      this.nullDereferenceCheck = "";
+    }
     // Add name identifier.
     String methodName = method.getName();
     if (methodName.startsWith("get")) {
@@ -66,6 +73,10 @@ public class MethodCodeElement extends CodeElement<Method> {
    */
   public void setParameters(List<String> parameters) {
     this.parameters = parameters.toArray(new String[0]);
+  }
+
+  public String getNullDereferenceCheck() {
+    return nullDereferenceCheck;
   }
 
   @Override
