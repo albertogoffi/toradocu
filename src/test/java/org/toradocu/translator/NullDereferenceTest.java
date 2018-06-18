@@ -25,8 +25,10 @@ import org.toradocu.util.GsonInstance;
 public class NullDereferenceTest {
   private static final Path resourcesPath = Paths.get("src", "test", "resources");
   private static final Path expectedOutput =
-      Paths.get("src/test/resources/expected-output/nulldereference.ResourceManager_goal.json");
-  private static final Path actualOutput = Paths.get("nulldereference.ResourceManager_out.json");
+      Paths.get(
+          "src/test/resources/expected-output/example.nulldereference.ResourceManager_goal.json");
+  private static final Path actualOutput =
+      Paths.get("example.nulldereference.ResourceManager_out.json");
 
   private static Path sourcePath;
 
@@ -37,16 +39,22 @@ public class NullDereferenceTest {
     JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
     int compilerExitCode = compiler.run(null, null, null, sourcePath.toString());
     assertThat(compilerExitCode, is(0));
+
+    sourcePath =
+        Paths.get(resourcesPath.toString(), "example/nulldereference", "ResourceManager.java");
+
+    compilerExitCode = compiler.run(null, null, null, sourcePath.toString());
+    assertThat(compilerExitCode, is(0));
   }
 
   @Test
   public void generatedSpecificationTest() throws Exception {
-    String targetPath = sourcePath.getParent().getParent().toString();
+    String targetPath = sourcePath.getParent().getParent().getParent().toString();
 
     String[] toradocuArgs =
         new String[] {
           "--target-class",
-          "nulldereference.ResourceManager",
+          "example.nulldereference.ResourceManager",
           "--condition-translator-output",
           actualOutput.toString(),
           "--class-dir",
