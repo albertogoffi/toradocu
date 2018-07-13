@@ -18,6 +18,7 @@ plugins {
   id 'de.undercouch.download' version '3.3.0' // For the download tasks
   id 'eclipse' // Support for Eclipse projects
   id 'idea' // Support for IntelliJ IDEA projects
+  id 'com.github.sherter.google-java-format' version '0.7.1'
 }
 apply plugin: 'kotlin'
 
@@ -233,7 +234,6 @@ tasks.withType(Test) {
 
 /* Create Javadoc documentation as part of build task. */
 build.dependsOn javadoc
-
 javadoc {
   options.encoding = 'UTF-8'
   exclude 'org/toradocu/generator/**'
@@ -396,41 +396,18 @@ task installGitHook(type: Copy) {
 }
 build.dependsOn(installGitHook)
 
+build.dependsOn verifyGoogleJavaFormat
+googleJavaFormat {
+  exclude 'out'
+  exclude 'src/test/resources'
+}
+
 shadowJar {
   // default: "${baseName}-${version}-${classifier}.${extension}",
   // where ${baseName} is the name of the directory into which the toradocu
   // repository is cloned.
   archiveName = "toradocu-${version}-${classifier}.${extension}"
 }
-
-task getCodeFormatScripts(type: Exec) {
-  description "Obtain the run-google-java-format scripts"
-  commandLine "bash", "-c",
-          "[ -d .run-google-java-format ] " +
-          "&& (cd .run-google-java-format && git pull -q) " +
-          "|| git clone -q https://github.com/plume-lib/run-google-java-format.git .run-google-java-format"
-}
-
-task checkFormat(type: Exec) {
-  description "Check whether the source code is properly formatted"
-  commandLine "bash", "-c",
-          "find src -name \"*.java\" -type f " +
-          "-not -path \"src/test/resources/*\" " +
-          "| xargs ./.run-google-java-format/check-google-java-format.py " +
-	  "|| (echo 'Try running:  gradle reformat' && false)"
-}
-checkFormat.dependsOn getCodeFormatScripts
-build.dependsOn checkFormat
-
-/* Format the code according to the Google Java format code style */
-task reformat(type: Exec) {
-  description "Format the Java source code"
-  commandLine "bash", "-c",
-          "find src -name \"*.java\" -type f " +
-          "-not -path \"src/test/resources/*\" " +
-          "| xargs ./.run-google-java-format/run-google-java-format.py"
-}
-reformat.dependsOn getCodeFormatScripts
 
 /* Downloads dependencies needed for the tutorial. */
 task tutorial(type: Download) {
