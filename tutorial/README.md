@@ -24,7 +24,7 @@ faults in a software system or incorrect assertions in its test suite.
 4. Compile and execute the test suite:
    ```
    javac -cp junit-4.12.jar:src test/net/ConnectionTest.java
-   java -cp junit-4.12.jar:hamcrest-core-1.3.jar:test:src org.junit.runner.JUnitCore net.ConnectionTest
+   java -cp junit-4.12.jar:hamcrest-core-1.3.jar:test:src:junit-4.12.jar org.junit.runner.JUnitCore net.ConnectionTest
    ```
    The test suite terminates with 1 failure, printing
    ```
@@ -53,7 +53,8 @@ faults in a software system or incorrect assertions in its test suite.
    --test-class net.ConnectionTest \
    --source-dir src \
    --class-dir src \
-   --aspects-output-dir aspects
+   --aspects-output-dir aspects \
+   --oracle-generation true
    ```
    Toradocu also prints the output of its condition translation phase, which is a JSON data
    structure.
@@ -77,8 +78,8 @@ faults in a software system or incorrect assertions in its test suite.
 
 6. Compile the generated aspects and weave them into the test suite of the system under test:
    ```
-   javac -g -cp aspectjrt-1.8.9.jar:src:junit-4.12.jar aspects/Aspect_*.java
-   java -cp aspectjtools-1.8.9.jar:aspectjweaver-1.8.9.jar:aspectjrt-1.8.9.jar:src org.aspectj.tools.ajc.Main -inpath aspects:test -outjar weaved_testsuite.jar -showWeaveInfo
+   javac -g -cp aspectjrt-1.8.9.jar:src:junit-4.12.jar aspects/*.java
+   java -cp aspectjtools-1.8.9.jar:aspectjweaver-1.8.9.jar:aspectjrt-1.8.9.jar:src org.aspectj.tools.ajc.Main -inpath aspects:test -outjar weaved_testsuite.jar -showWeaveInfo -source 1.8 -target 1.8
    ```
    The AspectJ tool outputs some information starting with `Join point ...`.
 
