@@ -41,7 +41,8 @@ public class JavaElementsCollector {
     // Add fields of the containing class.
     collectedElements.addAll(fieldsOf(containingClass));
 
-    // Add methods of the containing class (all but the method corresponding to documentedExecutable).
+    // Add methods of the containing class (all but the method corresponding to
+    // documentedExecutable).
     collectedElements.addAll(methodsOf(containingClass, documentedExecutable));
 
     return collectedElements;
@@ -132,7 +133,8 @@ public class JavaElementsCollector {
       //      Set<String> ids = p.getOtherIdentifiers();
       //      for (Map.Entry<String, Integer> countId : countIds.entrySet()) {
       //        String identifier = countId.getKey();
-      //        if (ids.contains(identifier) && countId.getValue() > 0) p.removeIdentifier(identifier);
+      //        if (ids.contains(identifier) && countId.getValue() > 0)
+      //          p.removeIdentifier(identifier);
       //      }
       p.mergeIdentifiers();
     }

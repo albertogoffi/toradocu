@@ -202,8 +202,8 @@ class Matcher {
     String match = null;
     String predicate = proposition.getPredicate();
 
-    //TODO check the following calls to extractBooleanCodeElements(): are they necessary before calling
-    //TODO JavaElementsCollector#collect()?
+    // TODO check the following calls to extractBooleanCodeElements(): are they necessary before
+    // TODO calling JavaElementsCollector#collect()?
     if (subject instanceof ParameterCodeElement) {
       ParameterCodeElement paramCodeElement = (ParameterCodeElement) subject;
       codeElements =
@@ -239,7 +239,7 @@ class Matcher {
             .filter(
                 e -> {
                   if (e.getJavaExpression().matches("(.*).set[A-Z](.*)")) {
-                    //exclude setters
+                    // exclude setters
                     return false;
                   }
                   if (e instanceof MethodCodeElement) {
@@ -269,8 +269,9 @@ class Matcher {
       try {
         SemanticMatcher semanticMatcher = new SemanticMatcher(true, (float) 0.2, (float) 3.11);
 
-        //it is important to provide a fixed order since this point, to prevent method with same score
-        //being put in map in a different order every execution
+        // it is important to provide a fixed order since this point, to prevent method with same
+        // score
+        // being put in map in a different order every execution
         Collections.sort(sortedMethodList, new JavaExpressionComparator());
         LinkedHashMap<CodeElement<?>, Double> semanticMethodMatches =
             semanticMatcher.runSemanticMatch(
@@ -370,12 +371,13 @@ class Matcher {
       for (int j = 0; j < paramForMatch.size() - 1; j++) match += paramForMatch.get(j) + ",";
       match += paramForMatch.get(paramForMatch.size() - 1) + ")";
     } else if (args
-        != null) { //the method is supposed to take params but we haven't find a match: does it have to take null?
-      //TODO check method match number of arguments!
+        != null) { // the method is supposed to take params but we haven't find a match: does it
+      // have to take null?
+      // TODO check method match number of arguments!
       final java.util.regex.Matcher nullPattern =
           Pattern.compile("(has|have|contains?) null").matcher(predicate);
 
-      final java.util.regex.Matcher equalPattern = //or is it the equals() method?
+      final java.util.regex.Matcher equalPattern = // or is it the equals() method?
           Pattern.compile("(is|are) equals?").matcher(predicate);
 
       firstMatch = sortedCodeElements.stream().findFirst().get();
@@ -388,7 +390,7 @@ class Matcher {
         receiver = receiver.replace("[", "").replace("]", "").replace("s", "");
         for (int i = 0; i < myParams.length && !foundArgMatch; i++) {
           Parameter p = myParams[i];
-          if (p.getName().equals(receiver)) { //found the receiver, who is the Object of same type?
+          if (p.getName().equals(receiver)) { // found the receiver, who is the Object of same type?
             String type = p.getParameterizedType().getTypeName();
             for (int j = 0; j < myParams.length; j++) {
               if (j != i && myParams[j].getParameterizedType().getTypeName().equals(type)) {
@@ -584,7 +586,7 @@ class Matcher {
     float floatNumber = 0;
     boolean isIntNumber = false;
 
-    if (!numberString.contains(".")) { //the number is an int
+    if (!numberString.contains(".")) { // the number is an int
       intNumber =
           (!numberWord.equals(""))
               ? intNumber = Integer.parseInt(numberWord)

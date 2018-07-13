@@ -21,172 +21,151 @@ public enum Configuration {
   // General options
 
   @Parameter(
-    names = "--target-class",
-    description = "Fully-qualified name of the class that Toradocu should analyze",
-    required = true
-  )
+      names = "--target-class",
+      description = "Fully-qualified name of the class that Toradocu should analyze",
+      required = true)
   private String targetClass;
 
   @Parameter(
-    names = "--source-dir",
-    description = "Path of the directory containing source files of the target class",
-    converter = PathConverter.class,
-    required = true
-  )
+      names = "--source-dir",
+      description = "Path of the directory containing source files of the target class",
+      converter = PathConverter.class,
+      required = true)
   public Path sourceDir;
 
   @Parameter(
-    names = "--class-dir",
-    description =
-        "Specifies JAR files or directories containing binaries of the target class and"
-            + " its dependencies. Use the standard classpath separator to separate different paths.",
-    listConverter = ClassDirsConverter.class,
-    required = true
-  )
+      names = "--class-dir",
+      description =
+          "Specifies JAR files or directories containing binaries of the target class and"
+              + " its dependencies. Use the standard classpath separator to separate different paths.",
+      listConverter = ClassDirsConverter.class,
+      required = true)
   public List<URL> classDirs;
 
   @Parameter(names = "--debug", description = "Enable fine-grained logging", hidden = true)
   private boolean debug = false;
 
   @Parameter(
-    names = {"--help", "-h"},
-    description = "Print a list of available options",
-    help = true
-  )
+      names = {"--help", "-h"},
+      description = "Print a list of available options",
+      help = true)
   private boolean help;
 
   @Parameter(
-    names = "--stats-file",
-    description = "File path to export Toradocu statistics in CSV format",
-    converter = FileConverter.class
-  )
+      names = "--stats-file",
+      description = "File path to export Toradocu statistics in CSV format",
+      converter = FileConverter.class)
   private File statsFile;
 
   @Parameter(
-    names = "--silent",
-    description = "Do not generate any output if no translation has been made",
-    hidden = true
-  )
+      names = "--silent",
+      description = "Do not generate any output if no translation has been made",
+      hidden = true)
   private boolean silent = false;
 
   @Parameter(
-    names = "--stop-on-error",
-    description = "Toradocu stops when there is an error in the being-analyzed Javadoc"
-  )
+      names = "--stop-on-error",
+      description = "Toradocu stops when there is an error in the being-analyzed Javadoc")
   public boolean stopOnError = false;
 
   // Javadoc extractor options
 
   @Parameter(
-    names = "--javadoc-extractor-output",
-    description = "File path to export Javadoc extractor output in JSON format",
-    converter = FileConverter.class,
-    hidden = true
-  )
+      names = "--javadoc-extractor-output",
+      description = "File path to export Javadoc extractor output in JSON format",
+      converter = FileConverter.class,
+      hidden = true)
   private File javadocExtractorOutput;
 
   // Condition translator options
 
   @Parameter(
-    names = "--condition-translation",
-    description = "Enable/disable the condition translator",
-    arity = 1,
-    hidden = true
-  )
+      names = "--condition-translation",
+      description = "Enable/disable the condition translator",
+      arity = 1,
+      hidden = true)
   private boolean conditionTranslation = true;
 
   @Parameter(
-    names = "--condition-translator-input",
-    description =
-        "Input file to the condition translator (this option disables the Javadoc extractor)",
-    converter = FileConverter.class,
-    hidden = true
-  )
+      names = "--condition-translator-input",
+      description =
+          "Input file to the condition translator (this option disables the Javadoc extractor)",
+      converter = FileConverter.class,
+      hidden = true)
   private File conditionTranslatorInput;
 
   @Parameter(
-    names = "--condition-translator-output",
-    description = "File path to export condition translator output in JSON format",
-    converter = FileConverter.class
-  )
+      names = "--condition-translator-output",
+      description = "File path to export condition translator output in JSON format",
+      converter = FileConverter.class)
   private File conditionTranslatorOutput;
 
   @Parameter(
-    names = "--distance-threshold",
-    description =
-        "Distance threshold: only code elements with edit distance less than this threshold"
-            + " will be considered candidates for translation",
-    hidden = true
-  )
+      names = "--distance-threshold",
+      description =
+          "Distance threshold: only code elements with edit distance less than this threshold"
+              + " will be considered candidates for translation",
+      hidden = true)
   private int distanceThreshold = 2;
 
   @Parameter(
-    names = "--word-removal-cost",
-    description = "Cost of a single word deletion in the edit distance algorithm",
-    hidden = true
-  )
+      names = "--word-removal-cost",
+      description = "Cost of a single word deletion in the edit distance algorithm",
+      hidden = true)
   private int wordRemovalCost = 1;
 
   @Parameter(
-    names = "--expected-output",
-    description =
-        "Condition extractor expected output file used to compute statistics about "
-            + "Toradocu's performance. Statistics are computed only if a valid expected output file"
-            + " is provided",
-    converter = FileConverter.class,
-    hidden = true
-  )
+      names = "--expected-output",
+      description =
+          "Condition extractor expected output file used to compute statistics about "
+              + "Toradocu's performance. Statistics are computed only if a valid expected output file"
+              + " is provided",
+      converter = FileConverter.class,
+      hidden = true)
   private File expectedOutput;
 
   @Parameter(
-    names = "--remove-commas",
-    arity = 1,
-    description = "Remove commas before the input text is parsed",
-    hidden = true
-  )
+      names = "--remove-commas",
+      arity = 1,
+      description = "Remove commas before the input text is parsed",
+      hidden = true)
   private boolean removeCommas = true;
 
   @Parameter(
-    names = "--tcomment",
-    description = "Use @tComment to translate comments",
-    hidden = true
-  )
+      names = "--tcomment",
+      description = "Use @tComment to translate comments",
+      hidden = true)
   private boolean tcomment = false;
 
   @Parameter(
-    names = "--randoop-specs",
-    description = "Path to file where to export comment translations as Randoop specifications.",
-    converter = FileConverter.class,
-    hidden = true
-  )
+      names = "--randoop-specs",
+      description = "Path to file where to export comment translations as Randoop specifications.",
+      converter = FileConverter.class,
+      hidden = true)
   private File randoopSpecs;
 
   @Parameter(
-    names = "--disable-semantics",
-    description = "Disable semantic-based matcher for comments translation.",
-    arity = 1
-  )
+      names = "--disable-semantics",
+      description = "Disable semantic-based matcher for comments translation.",
+      arity = 1)
   private boolean disableSemantics = false;
 
   // Aspect creation options
 
   @Parameter(
-    names = "--oracle-generation",
-    description = "Enable/disable the generation of the aspects",
-    arity = 1
-  )
+      names = "--oracle-generation",
+      description = "Enable/disable the generation of the aspects",
+      arity = 1)
   private boolean oracleGeneration = false;
 
   @Parameter(
-    names = "--test-class",
-    description = "Fully-qualified name of the class that will be instrumented with aspects"
-  )
+      names = "--test-class",
+      description = "Fully-qualified name of the class that will be instrumented with aspects")
   private String testClass;
 
   @Parameter(
-    names = "--aspects-output-dir",
-    description = "Specifies a directory where Toradocu will output aspects"
-  )
+      names = "--aspects-output-dir",
+      description = "Specifies a directory where Toradocu will output aspects")
   private String aspectsOutputDir = "aspects";
 
   /** File used as template for generated aspects. */

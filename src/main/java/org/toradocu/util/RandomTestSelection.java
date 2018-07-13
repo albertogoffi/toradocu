@@ -108,7 +108,7 @@ public class RandomTestSelection {
         }
 
       } catch (Exception e) {
-        //ignore parse errors
+        // ignore parse errors
       }
     }
 

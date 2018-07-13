@@ -30,8 +30,9 @@ public class CommentTest {
 
     Comment multiTagComment = new Comment(multipleTags);
     codeWordOccurrences = multiTagComment.getWordsMarkedAsCode().get("codeElement");
-    //codeElement is tagged as code twice (both the first and second occurrence) in multiTagComment.
-    //Thus we expect to find the values 0 and 1 (first and second occurrence).
+    // codeElement is tagged as code twice (both the first and second occurrence) in
+    // multiTagComment.
+    // Thus we expect to find the values 0 and 1 (first and second occurrence).
     assertThat(codeWordOccurrences, not(is(nullValue())));
     assertThat(codeWordOccurrences.size(), is(2));
     assertThat(codeWordOccurrences.get(0), is(0));
@@ -59,7 +60,7 @@ public class CommentTest {
     assertThat(codeWordOccurrences.size(), is(1));
     assertThat(codeWordOccurrences.get(0), is(0));
 
-    //From expression such as i<0, we do not retain signs and numbers
+    // From expression such as i<0, we do not retain signs and numbers
     Comment exprComment = new Comment(expressionTag);
     assertThat(exprComment.getWordsMarkedAsCode().size(), is(1));
     codeWordOccurrences = exprComment.getWordsMarkedAsCode().get("i");

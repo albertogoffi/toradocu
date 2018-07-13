@@ -38,7 +38,7 @@ public class SemanticMatcher {
   public SemanticMatcher(boolean stopWordsRemoval, float distanceThreshold, float wmdThreshold) {
     this.wmdThreshold = wmdThreshold;
 
-    //TODO can this naive list be improved?
+    // TODO can this naive list be improved?
     stopwords =
         new ArrayList<>(
             Arrays.asList(
@@ -180,8 +180,8 @@ public class SemanticMatcher {
     List<String> commentWordSet = parseComment(comment);
     if (codeElements != null && !codeElements.isEmpty()) {
       for (CodeElement<?> codeElement : codeElements) {
-        //For each code element, compute the corresponding vector and compute the distance
-        //between it and the comment vector. Store the distances and filter them lately.
+        // For each code element, compute the corresponding vector and compute the distance
+        // between it and the comment vector. Store the distances and filter them lately.
         String name;
         if (codeElement instanceof MethodCodeElement) {
           name = ((MethodCodeElement) codeElement).getJavaCodeElement().getName();
@@ -210,7 +210,7 @@ public class SemanticMatcher {
           try {
             dist = wm.distance(parsedComment, parsedCodeElement);
           } catch (Exception e) {
-            //do nothing
+            // do nothing
           }
           distances.put(codeElement, dist);
         } else if (codeElement instanceof MethodCodeElement
@@ -221,7 +221,7 @@ public class SemanticMatcher {
             try {
               dist = wm.distance(parsedComment, parsedCodeElement);
             } catch (Exception e) {
-              //do nothing
+              // do nothing
             }
             distances.put(codeElement, dist);
           }
@@ -269,7 +269,8 @@ public class SemanticMatcher {
       wmdThreshold = 5.96f;
     }
 
-    // Select as candidates only code elements that have a semantic distance below the chosen threshold.
+    // Select as candidates only code elements that have a semantic distance below the chosen
+    // threshold.
     LinkedHashMap<CodeElement<?>, Double> orderedDistances;
 
     if (!distances.isEmpty()) {

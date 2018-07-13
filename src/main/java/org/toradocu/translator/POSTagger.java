@@ -46,8 +46,8 @@ public class POSTagger {
         String[] inequalityToken = inequalities.get(inequalityIndex).split(" ");
         for (String inequalityWord : inequalityToken) {
           if (codeWordsInComment.get(inequalityWord) != null) {
-            //Behind this placeholder there is a codeword: update counter
-            //of occurrences already seen
+            // Behind this placeholder there is a codeword: update counter
+            // of occurrences already seen
             inequalityWord = inequalityWord;
             int codeWorCount = codeWordsSeen.get(inequalityWord);
             List<Integer> occurrenceInComment = codeWordsInComment.get(inequalityWord);
@@ -76,16 +76,16 @@ public class POSTagger {
         int codeWorCount = codeWordsSeen.get(wordString);
         for (int occurrence : occurrenceInComment) {
           if (codeWordsSeen.get(wordString) == occurrence) {
-            //This occurrence of the word is a codeword: tag it as NN
+            // This occurrence of the word is a codeword: tag it as NN
             taggedSentence.add(new TaggedWord(wordString, "NN"));
           } else {
-            //This is not the right occurrence: update counter but add no tag
+            // This is not the right occurrence: update counter but add no tag
             codeWordsSeen.put(wordString, ++codeWorCount);
             taggedSentence.add(taggedWord);
           }
         }
       } else if (parameters != null && parameters.contains(wordString)) {
-        //Last attempt: no code tags found. Make an assumption over parameters names.
+        // Last attempt: no code tags found. Make an assumption over parameters names.
         taggedSentence.add(new TaggedWord(wordString, "NN"));
       } else {
         taggedSentence.add(taggedWord);

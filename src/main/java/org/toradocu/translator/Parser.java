@@ -114,7 +114,7 @@ public class Parser {
    */
   private static String findVerb(String placeholderText, int i) {
     // Verbs that could appear before (the inequality, or the keyword this, etc.).
-    //One of these most be present and will be added otherwise.
+    // One of these most be present and will be added otherwise.
     String[] possibleVerbs = {"is", "is not", "isn't", "are", "are not", "aren't"};
     boolean containsVerb = false;
     for (String possibleVerb : possibleVerbs) {

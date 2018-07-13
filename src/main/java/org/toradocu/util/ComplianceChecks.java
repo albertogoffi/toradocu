@@ -50,7 +50,7 @@ public class ComplianceChecks {
               + "\n");
       return false;
     } catch (ClassNotFoundException e) {
-      //ignore
+      // ignore
     } catch (Exception e) {
       e.printStackTrace();
     }

@@ -24,7 +24,7 @@ public class JsonOutput {
   public List<ThrowsTagOutput> throwsTags;
 
   public JsonOutput(DocumentedExecutable member, OperationSpecification specification) {
-    //TODO translate the executable member to a serializable format
+    // TODO translate the executable member to a serializable format
     this.signature = member.getSignature();
     this.name = member.getName();
     this.containingClass =
