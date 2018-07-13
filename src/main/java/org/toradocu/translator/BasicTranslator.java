@@ -58,7 +58,7 @@ public class BasicTranslator {
       Iterator<String> it = conditions.iterator();
       StringBuilder conditionsBuilder = new StringBuilder("(" + it.next() + ")");
       while (it.hasNext()) {
-        //prevent redundancy
+        // prevent redundancy
         String nextCondition = it.next().replaceAll(" ", "");
         if (!conditionsBuilder.toString().contains(nextCondition)) {
           conditionsBuilder.append(Conjunction.OR + "(" + nextCondition + ")");
