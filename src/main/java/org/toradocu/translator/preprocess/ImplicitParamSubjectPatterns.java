@@ -64,7 +64,8 @@ public class ImplicitParamSubjectPatterns implements PreprocessingPhase {
       preProcessedComment = originalComment.replace(";", ",");
       String[] beginnings = {"the", "a", "an", "any"};
 
-      //param comment that contains a comma followed by a description (ignore non-mandatory conditions)
+      // param comment that contains a comma followed by a description (ignore non-mandatory
+      // conditions)
       String commaPattern = ".*(, (?!default)(?!may be)(?!can be)(?!could be)(?!possibly))(.*)";
       Matcher commaMatcher = Pattern.compile(commaPattern).matcher(preProcessedComment);
 
@@ -72,7 +73,7 @@ public class ImplicitParamSubjectPatterns implements PreprocessingPhase {
         return replaceCommaPattern(preProcessedComment, parameterName, beginnings);
       }
 
-      //Manage param comment starting with an adjective
+      // Manage param comment starting with an adjective
       preProcessedComment =
           manageFirstAdj(excMember, preProcessedComment, parameterName, beginnings);
     }
@@ -90,7 +91,7 @@ public class ImplicitParamSubjectPatterns implements PreprocessingPhase {
    */
   private String manageFirstAdj(
       DocumentedExecutable excMember, String comment, String parameterName, String[] beginnings) {
-    //TODO \\s?
+    // TODO \\s?
     String[] tokens = comment.split(" ");
     boolean hasArticle = (Arrays.asList(beginnings).contains(tokens[0]));
     String mayBeAdj = hasArticle ? tokens[1] : tokens[0];
@@ -105,7 +106,7 @@ public class ImplicitParamSubjectPatterns implements PreprocessingPhase {
       for (IndexedWord adj : adjs) {
         if (adj.word().equals(mayBeAdj)) {
           if (hasArticle)
-            //delete article
+            // delete article
             commentBuilder =
                 new StringBuilder(commentBuilder.toString().replaceFirst(tokens[0], ""));
 

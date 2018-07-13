@@ -15,7 +15,8 @@ public class NormalizeIfs implements PreprocessingPhase {
    */
   private static String normalizeComment(String comment, DocumentedExecutable method) {
     // Checks if comment contains "if and only if", " iff ", or starts with "iff".
-    // No need to check the beginning of a phrase since "if and only if" cannot be a substring of a word.
+    // No need to check the beginning of a phrase since "if and only if" cannot be a substring of a
+    // word.
     if (comment.contains("if and only if")
         || comment.startsWith("iff ")
         || comment.contains(" iff ")) {
@@ -26,7 +27,8 @@ public class NormalizeIfs implements PreprocessingPhase {
         comment = comment.substring(0, comment.length() - 1);
       }
       if (comment.contains("true if"))
-        // By adding this, Toradocu is able to understand that also the false property must be specified
+        // By adding this, Toradocu is able to understand that also the false property must be
+        // specified
         comment += ", false otherwise.";
       else if (comment.contains("null if")) comment += ", non-null otherwise.";
     }

@@ -116,7 +116,7 @@ public final class Comment {
         int indexOfMatch = codeMatcher.start();
         for (String word : words) {
           if (!word.isEmpty() && !word.matches(".*[0-9+-/*(){}[<>=]=?|!=].*")) {
-            //search this word before this index in original text
+            // search this word before this index in original text
             List<Integer> occurrences = new ArrayList<>();
             occurrences.add(countStringOccurrence(word, subSentence, indexOfMatch));
             if (wordsMarkedAsCode.get(word) != null) {
@@ -151,7 +151,8 @@ public final class Comment {
               .replaceAll("\\(", "\\\\(")
               .replaceAll("\\.", "\\\\.");
 
-      // Word boundaries do not work in case of special characters, thus use look ahead and look behind
+      // Word boundaries do not work in case of special characters, thus use look ahead and look
+      // behind
       word = "(?<!" + word + ")" + word + "(?!" + word + ")";
     } else {
       word = "\\b" + word + "\\b";
@@ -159,14 +160,14 @@ public final class Comment {
     Matcher matcher = Pattern.compile(word).matcher(subSentence);
     int i = 0;
     while (matcher.find() && matcher.start() < limitIndex) {
-      //Looping on method find preserves the order of matches,
-      //while staying behind the desired limitIndex counts how
-      //many matches are before the desired word
+      // Looping on method find preserves the order of matches,
+      // while staying behind the desired limitIndex counts how
+      // many matches are before the desired word
       i++;
     }
 
     if (!matcher.find(0)) {
-      //TODO check: could this happen?
+      // TODO check: could this happen?
       return -1;
     }
 
