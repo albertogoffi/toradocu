@@ -64,9 +64,12 @@ public class OracleGenerator {
     createdAspectNames.add(junitAspectName);
     int aspectNumber = 1;
     for (DocumentedExecutable method : specifications.keySet()) {
-      String aspectName = "Aspect_" + aspectNumber++;
-      createAspect(method, specifications.get(method), aspectName);
-      createdAspectNames.add(aspectName);
+      OperationSpecification specification = specifications.get(method);
+      if (!specification.isEmpty()) {
+        String aspectName = "Aspect_" + aspectNumber++;
+        createAspect(method, specification, aspectName);
+        createdAspectNames.add(aspectName);
+      }
     }
 
     // Create aop.xml file needed by AspectJ. Aop file lists available aspects.
