@@ -82,8 +82,12 @@ public class MethodCodeElement extends CodeElement<Method> {
   @Override
   boolean isCompatibleWith(Class<?> declaringClass, String predicateTranslation) {
     if (predicateTranslation.contains(".")) {
-      //if the translation is a method invocation, it must be this subject
-      return predicateTranslation.startsWith(getJavaExpression());
+      // if the translation is a method invocation, it must be this subject
+      String cleanPredicate = predicateTranslation.replaceAll("\\(", "").replaceAll("\\)", "");
+
+      String cleanExpression = getJavaExpression().replaceAll("\\(", "").replaceAll("\\)", "");
+
+      return cleanPredicate.startsWith(cleanExpression);
     }
     return true;
   }
