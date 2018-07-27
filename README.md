@@ -1,14 +1,35 @@
 # Toradocu: automated generation of test oracles from Javadoc documentation
 [![Build Status](https://travis-ci.org/albertogoffi/toradocu.svg?branch=master)](https://travis-ci.org/albertogoffi/toradocu)
 
-Toradocu generates test oracles from the Javadoc documentation of a
-class. Toradocu is described in the paper
-[*Automatic Generation of Oracles for Exceptional Behaviors*](http://star.inf.usi.ch/star/papers/16-issta-toradocu.pdf)
+Toradocu generates assertions from the Javadoc documentation of a
+class. 
+
+## Overview
+
+Toradocu takes the source code of a class as input and produces a set of specifications in JSON format. Toradocu can translate all kind of specifications at the method level:
+- preconditions;
+- normal postconditions;
+- exceptional postconditions.
+
+The tool combines different translations approaches: pattern match, syntax match and semantic match. All the generated specifications are **executable** and guaranteed to **compile**.
+
+Toradocu can also generate [aspects](https://eclipse.org/aspectj/) that can be used as test oracles.
+
+## Learn more
+
+Toradocu is described in the following publications:
+
+- [*Translating code comments to procedure specifications*](https://dl.acm.org/ft_gateway.cfm?id=3213872&ftid=1987515&dwn=1&CFID=56504352&CFTOKEN=8f0fbc83ebb920e6-2DEDE6B3-EB69-D16A-9DAEFEFB3A198929)
+by Arianna Blasi, Alberto Goffi, Konstantin Kuznetsov, Alessandra Gorla, Michael D. Ernst, Mauro Pezzè and Sergio Delgado (presented
+at [ISSTA 2018](https://conf.researchr.org/home/issta-2018)).
+
+	In this publication we refer to our tool as **Jdoctor**, which is the last official version of Toradocu (aka Toradocu 3.0).
+
+- [*Automatic Generation of Oracles for Exceptional Behaviors*](http://star.inf.usi.ch/star/papers/16-issta-toradocu.pdf)
 by Alberto Goffi, Alessandra Gorla, Michael D. Ernst, and Mauro Pezzè (presented
 at [ISSTA 2016](https://issta2016.cispa.saarland)).
 
-Toradocu takes the source code of a class as input and produces a set of
-[aspects](https://eclipse.org/aspectj/) that can be used as test oracles.
+	This publication describes the original work. In origin, Toradocu was processing only exceptional postconditions and was missing many of the current features.
 
 ## Tutorial
 To see how to use Toradocu to automatically add test oracles to your test suite
