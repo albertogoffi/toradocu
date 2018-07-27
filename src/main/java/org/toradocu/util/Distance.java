@@ -165,9 +165,9 @@ public class Distance {
       m = right.length();
     }
 
-    int[] p = new int[n + 1]; //'previous' cost array, horizontally
+    int[] p = new int[n + 1]; // 'previous' cost array, horizontally
     int[] d = new int[n + 1]; // cost array, horizontally
-    int[] tempD; //placeholder to assist in swapping p and d
+    int[] tempD; // placeholder to assist in swapping p and d
 
     // indexes into strings left and right
     int i; // iterates through left

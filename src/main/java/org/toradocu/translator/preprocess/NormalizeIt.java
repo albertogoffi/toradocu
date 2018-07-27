@@ -15,7 +15,8 @@ import org.toradocu.translator.PropositionSeries;
 public class NormalizeIt implements PreprocessingPhase {
 
   private static String normalizeComment(String comment, DocumentedExecutable method) {
-    // "it" would be translated as a standalone subject, but more probably it is referred to another more meaningful one:
+    // "it" would be translated as a standalone subject, but more probably it is referred to another
+    // more meaningful one:
     // probably a previous mentioned noun.
     if (comment.contains(" it ")) {
       final List<PropositionSeries> extractedPropositions =

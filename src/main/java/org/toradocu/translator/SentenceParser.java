@@ -399,7 +399,8 @@ public class SentenceParser {
   private void initializeRelations() {
     subjectRelations = getRelationsFromGraph("nsubj", "nsubjpass");
     //    if (subjectRelations.isEmpty()) {
-    //      log.warn("Unable to identify subjects in \"{}\".", semanticGraph.toRecoveredSentenceString());
+    //      log.warn("Unable to identify subjects in \"{}\".",
+    // semanticGraph.toRecoveredSentenceString());
     //    }
     copulaRelations = getRelationsFromGraph("cop");
     auxRelations = getRelationsFromGraph("aux");

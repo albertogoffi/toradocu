@@ -47,10 +47,10 @@ public class ExpandRange implements PreprocessingPhase {
       boolean insideRange = inRangeWords.contains(insideOrOutside);
       boolean outsideRange = outRangeWords.contains(insideOrOutside);
       if (!negation && insideRange || negation && outsideRange) {
-        //covers "inside/in range" and "not out/outside range"
+        // covers "inside/in range" and "not out/outside range"
         comment = comment.replaceFirst(SQUARE_BRACKETS_RANGE, ">" + min + " and <" + max);
       } else {
-        //covers "not in/inside range" and "out/outside range"
+        // covers "not in/inside range" and "out/outside range"
         comment = comment.replaceFirst(SQUARE_BRACKETS_RANGE, "<" + min + " or >" + max);
       }
     }

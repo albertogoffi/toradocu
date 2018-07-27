@@ -41,7 +41,7 @@ public class BasicTranslator {
   protected static String mergeConditions(Set<String> conditions) {
     conditions.removeIf(String::isEmpty); // TODO Why should we have empty conditions here?
 
-    //TODO check this (new code): why the parenthesis around a single condition?
+    // TODO check this (new code): why the parenthesis around a single condition?
     //    String delimiter = " " + Conjunction.OR + " ";
     //    StringJoiner joiner = new StringJoiner(delimiter);
     //    for (String condition : conditions) {
@@ -49,7 +49,7 @@ public class BasicTranslator {
     //    }
     //    return joiner.toString();
 
-    //Old code:
+    // Old code:
     if (conditions.size() == 0) {
       return "";
     } else if (conditions.size() == 1) {
@@ -58,7 +58,7 @@ public class BasicTranslator {
       Iterator<String> it = conditions.iterator();
       StringBuilder conditionsBuilder = new StringBuilder("(" + it.next() + ")");
       while (it.hasNext()) {
-        //prevent redundancy
+        // prevent redundancy
         String nextCondition = it.next().replaceAll(" ", "");
         if (!conditionsBuilder.toString().contains(nextCondition)) {
           conditionsBuilder.append(Conjunction.OR + "(" + nextCondition + ")");
@@ -116,12 +116,13 @@ public class BasicTranslator {
           Set<CodeElement<?>> argMatches;
           argMatches = matcher.subjectMatch(argument, method);
           if (argMatches.isEmpty()) {
-            //            ConditionTranslator.log.trace("Failed predicate translation for: " + p + " due to variable not found.");
+            //            ConditionTranslator.log.trace("Failed predicate translation for: " + p + "
+            // due to variable not found.");
             continue;
           } else {
             Iterator<CodeElement<?>> it = argMatches.iterator();
             String replaceTarget = "{" + argument + "}";
-            //Naive solution: picks the first match from the list.
+            // Naive solution: picks the first match from the list.
             String replacement = it.next().getJavaExpression();
             currentTranslation = currentTranslation.replace(replaceTarget, replacement);
           }

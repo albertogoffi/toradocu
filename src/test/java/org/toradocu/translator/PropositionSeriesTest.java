@@ -233,9 +233,9 @@ public class PropositionSeriesTest {
   private PropositionSeries getPropositions(Comment sentence, DocumentedExecutable member) {
 
     List<PropositionSeries> propositions = Parser.parse(sentence, member);
-    //assertThat(semanticGraphs.size(), is(1));
-    //SentenceParser parser = new SentenceParser(semanticGraphs.get(0));
-    //return parser.getPropositionSeries();
+    // assertThat(semanticGraphs.size(), is(1));
+    // SentenceParser parser = new SentenceParser(semanticGraphs.get(0));
+    // return parser.getPropositionSeries();
 
     return propositions.get(0);
   }

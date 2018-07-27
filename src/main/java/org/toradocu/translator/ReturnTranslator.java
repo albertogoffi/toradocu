@@ -29,7 +29,7 @@ public class ReturnTranslator {
 
   public List<PostSpecification> translate(ReturnTag tag, DocumentedExecutable excMember) {
     String commentText = tag.getComment().getText();
-    //Manage translation of each sub-sentence linked by the Or conjunction separately
+    // Manage translation of each sub-sentence linked by the Or conjunction separately
     String[] subSentences = manageOrConjunction(commentText);
     List<List<PostSpecification>> conditions = new ArrayList<>();
 
@@ -55,7 +55,7 @@ public class ReturnTranslator {
    * @return the sub-sentences
    */
   private String[] manageOrConjunction(String comment) {
-    //Ignore pattern expressions involving an "or"
+    // Ignore pattern expressions involving an "or"
     String placeholderText =
         comment
             .replaceAll("greater than or equal to", ">=")
@@ -210,12 +210,13 @@ public class ReturnTranslator {
               Set<CodeElement<?>> argMatches;
               argMatches = new Matcher().subjectMatch(argument, method);
               if (argMatches.isEmpty()) {
-                //            ConditionTranslator.log.trace("Failed predicate translation for: " + p + " due to variable not found.");
+                //            ConditionTranslator.log.trace("Failed predicate translation for: " + p
+                // + " due to variable not found.");
                 return null;
               } else {
                 Iterator<CodeElement<?>> it = argMatches.iterator();
                 String replaceTarget = "{" + argument + "}";
-                //Naive solution: picks the first match from the list.
+                // Naive solution: picks the first match from the list.
                 String replacement = it.next().getJavaExpression();
                 translation = translation.replace(replaceTarget, replacement);
               }
@@ -244,7 +245,7 @@ public class ReturnTranslator {
     // Identify propositions in the comment. Each sentence in the comment is parsed into a
     // PropositionSeries.
 
-    //text = removeInitial(text, "if");  already done in Preprocess part
+    // text = removeInitial(text, "if");  already done in Preprocess part
     List<PropositionSeries> extractedPropositions =
         Parser.parse(new Comment(trueCase, comment.getWordsMarkedAsCode()), method);
     Set<String> conditions = new LinkedHashSet<>();
@@ -278,7 +279,8 @@ public class ReturnTranslator {
         return Configuration.RETURN_VALUE + " == " + parsedComment;
       default:
         {
-          // No return of type boolean: it must be a more complex boolean condition, or a code element.
+          // No return of type boolean: it must be a more complex boolean condition, or a code
+          // element.
           final List<PropositionSeries> extractedPropositions =
               Parser.parse(new Comment(parsedComment), method);
           final List<SemanticGraph> semanticGraphs =
@@ -299,7 +301,7 @@ public class ReturnTranslator {
           }
         }
     }
-    //TODO: Change the exception with one more meaningful.
+    // TODO: Change the exception with one more meaningful.
     //    throw new IllegalArgumentException(text + " cannot be translated: Pattern not supported");
     return translation;
   }
@@ -476,12 +478,13 @@ public class ReturnTranslator {
     Set<CodeElement<?>> argMatches;
     argMatches = new Matcher().subjectMatch(argument, method);
     if (argMatches.isEmpty()) {
-      //            ConditionTranslator.log.trace("Failed predicate translation for: " + p + " due to variable not found.");
+      //            ConditionTranslator.log.trace("Failed predicate translation for: " + p + " due
+      // to variable not found.");
       return null;
     } else {
       Iterator<CodeElement<?>> it = argMatches.iterator();
       String replaceTarget = "{" + argument + "}";
-      //Naive solution: picks the first match from the list.
+      // Naive solution: picks the first match from the list.
       CodeElement<?> codeElement = it.next();
       String replacement = codeElement.getJavaExpression();
 
@@ -620,13 +623,14 @@ public class ReturnTranslator {
    */
   private static CodeElement<?> findCodeElement(
       DocumentedExecutable method, List<SemanticGraph> semanticGraphs) {
-    //Try a match looking at the semantic graph.
+    // Try a match looking at the semantic graph.
     CodeElement<?> codeElementMatch = null;
 
     for (SemanticGraph sg : semanticGraphs) {
       if (!sg.getAllNodesByPartOfSpeechPattern("IN").isEmpty()
           || !sg.getAllNodesByPartOfSpeechPattern("WDT").isEmpty()) {
-        //there are relations such as "of...", "in...", "that/which..." usually sign of bias in our assumption
+        // there are relations such as "of...", "in...", "that/which..." usually sign of bias in our
+        // assumption
         return null;
       }
       // No verb found: process nouns and their adjectives
