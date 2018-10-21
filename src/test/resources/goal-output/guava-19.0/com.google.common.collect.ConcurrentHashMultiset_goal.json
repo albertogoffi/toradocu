@@ -31,7 +31,7 @@
         },
         "comment": "backing map for storing the elements in the multiset and their counts. It must be empty.",
         "kind": "PARAM",
-        "condition": "((args[0]==null)==false)&&(args[0].isEmpty())"
+        "condition": "(args[0]==null)==false && args[0].isEmpty()"
       }
     ],
     "throwsTags": [
@@ -46,7 +46,7 @@
         ],
         "comment": "if countMap is not empty",
         "kind": "THROWS",
-        "condition": "(((args[0]==null)==false)&&(args[0].isEmpty()))==false"
+        "condition": "(args[0]==null)==false && (args[0].isEmpty())==false"
       }
     ]
   },

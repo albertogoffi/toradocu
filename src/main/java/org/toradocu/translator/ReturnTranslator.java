@@ -523,7 +523,10 @@ public class ReturnTranslator {
             predicateMatch =
                 new Matcher()
                     .predicateMatch(
-                        method, new GeneralCodeElement(Configuration.RETURN_VALUE), p, comment);
+                        method,
+                        new GeneralCodeElement(Configuration.RETURN_VALUE, null),
+                        p,
+                        comment);
             if (predicateMatch != null) {
               break;
             }

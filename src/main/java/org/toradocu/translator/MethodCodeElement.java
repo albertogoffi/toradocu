@@ -19,7 +19,7 @@ public class MethodCodeElement extends CodeElement<Method> {
   private String[] parameters;
   /** The arguments of this method. */
   private String[] args;
-
+  /** Expression that checks the nullness of the receiver. */
   private String nullDereferenceCheck;
 
   /**
@@ -35,7 +35,7 @@ public class MethodCodeElement extends CodeElement<Method> {
     if (!receiver.equals(Configuration.RECEIVER)) {
       this.nullDereferenceCheck = "(" + receiver + "==null)==false";
     } else {
-      this.nullDereferenceCheck = "";
+      this.nullDereferenceCheck = null;
     }
     // Add name identifier.
     String methodName = method.getName();
