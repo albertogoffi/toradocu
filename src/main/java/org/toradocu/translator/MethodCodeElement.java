@@ -22,8 +22,6 @@ public class MethodCodeElement extends CodeElement<Method> {
   /** Expression that checks the nullness of the receiver. */
   private String nullDereferenceCheck;
 
-  private String nullDereferenceCheck;
-
   /**
    * Constructs and initializes a {@code MethodCodeElement} that identifies the given method. The
    * given method must take no arguments.
