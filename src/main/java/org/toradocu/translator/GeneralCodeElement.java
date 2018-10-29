@@ -10,6 +10,7 @@ package org.toradocu.translator;
  */
 public class GeneralCodeElement extends CodeElement<String> {
 
+  /** Null dereference check regarding the dummy object, might be null */
   private String nullDereferenceCheck;
 
   /**
@@ -20,8 +21,7 @@ public class GeneralCodeElement extends CodeElement<String> {
    * @param nullDereferenceCheck the expression to check null dereference
    * @param identifiers Strings that identify this code element
    */
-  public GeneralCodeElement(
-      String representation, String nullDereferenceCheck, String... identifiers) {
+  GeneralCodeElement(String representation, String nullDereferenceCheck, String... identifiers) {
     super(representation);
     this.nullDereferenceCheck = nullDereferenceCheck;
     for (String identifier : identifiers) {
@@ -34,7 +34,12 @@ public class GeneralCodeElement extends CodeElement<String> {
     return getJavaCodeElement();
   }
 
-  public String getNullDereferenceCheck() {
+  /**
+   * Getter for the null dereference check
+   *
+   * @return the null dereference check
+   */
+  String getNullDereferenceCheck() {
     return nullDereferenceCheck;
   }
 }
