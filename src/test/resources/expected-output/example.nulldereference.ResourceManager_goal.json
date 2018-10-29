@@ -42,7 +42,7 @@
     "returnTag": {
       "comment": "true if the resource is empty.",
       "kind": "RETURN",
-      "condition": "((args[0]==null)==false) && (args[0].isEmpty()) ? methodResultID == true : methodResultID == false"
+      "condition": "(args[0]==null)==false && args[0].isEmpty() ? methodResultID == true : methodResultID == false"
     },
     "throwsTags": []
   },
@@ -89,7 +89,7 @@
     "returnTag": {
       "comment": "true if the resource is empty. Resource is not null.",
       "kind": "RETURN",
-      "condition": "(((args[0]==null)==false) && (args[0].isEmpty())) ? methodResultID == true : methodResultID == false"
+      "condition": "((args[0]==null)==false && args[0].isEmpty()) ? methodResultID == true : methodResultID == false"
     },
     "throwsTags": []
   },
