@@ -212,8 +212,7 @@ class Matcher {
     String predicate = proposition.getPredicate();
 
     // TODO check the following calls to extractBooleanCodeElements(): are they necessary before
-    // calling
-    // TODO JavaElementsCollector#collect()?
+    // TODO calling JavaElementsCollector#collect()?
     if (subject instanceof ParameterCodeElement) {
       ParameterCodeElement paramCodeElement = (ParameterCodeElement) subject;
       codeElements =
@@ -370,7 +369,7 @@ class Matcher {
         }
       }
       if (foundArgMatch) {
-        firstCodeMatch = currentMatch;
+        firstMatch = currentMatch;
         break;
       }
     }
@@ -444,14 +443,6 @@ class Matcher {
                 ((GeneralCodeElement) firstCodeMatch).getNullDereferenceCheck());
       }
     }
-    //    if (match != null
-    //        && firstMatch instanceof MethodCodeElement
-    //        && !((MethodCodeElement) firstMatch).getNullDereferenceCheck().isEmpty()) {
-    //      match =
-    //          "(" + ((MethodCodeElement) firstMatch).getNullDereferenceCheck() + ") && (" + match
-    // + ")";
-    //    }
-
     return match;
   }
 

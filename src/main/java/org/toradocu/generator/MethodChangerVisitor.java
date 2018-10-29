@@ -11,6 +11,7 @@ import com.github.javaparser.ast.expr.BooleanLiteralExpr;
 import com.github.javaparser.ast.expr.Expression;
 import com.github.javaparser.ast.expr.Name;
 import com.github.javaparser.ast.expr.NameExpr;
+import com.github.javaparser.ast.expr.SimpleName;
 import com.github.javaparser.ast.expr.SingleMemberAnnotationExpr;
 import com.github.javaparser.ast.expr.StringLiteralExpr;
 import com.github.javaparser.ast.stmt.CatchClause;
@@ -83,6 +84,11 @@ public class MethodChangerVisitor
       MethodDeclaration methodDeclaration,
       DocumentedExecutable executableMember,
       OperationSpecification spec) {
+    // Replace first parameter name ("result") with specific name from configuration.
+    methodDeclaration.getParameter(0).setName(new SimpleName(Configuration.RETURN_VALUE));
+    // Replace second parameter name ("target") with specific name from configuration.
+    methodDeclaration.getParameter(1).setName(new SimpleName(Configuration.RECEIVER));
+    // Check postconditions.
     for (PostSpecification postSpecification : spec.getPostSpecifications()) {
       String guard = addCasting(postSpecification.getGuard().getConditionText(), executableMember);
       String property =
@@ -99,8 +105,9 @@ public class MethodChangerVisitor
       MethodDeclaration methodDeclaration,
       DocumentedExecutable executableMember,
       OperationSpecification specification) {
+    // Replace first parameter name ("target") with specific name from configuration.
+    methodDeclaration.getParameter(0).setName(new SimpleName(Configuration.RECEIVER));
     boolean returnStmtNeeded = true;
-
     for (PreSpecification preSpecification : specification.getPreSpecifications()) {
       String condition = preSpecification.getGuard().getConditionText();
       if (condition.isEmpty()) {
@@ -125,7 +132,8 @@ public class MethodChangerVisitor
       MethodDeclaration methodDeclaration,
       DocumentedExecutable executableMember,
       OperationSpecification operationSpec) {
-
+    // Replace first parameter name ("target") with specific name from configuration.
+    methodDeclaration.getParameter(0).setName(new SimpleName(Configuration.RECEIVER));
     for (ThrowsSpecification throwsSpecification : operationSpec.getThrowsSpecifications()) {
       String condition =
           addCasting(throwsSpecification.getGuard().getConditionText(), executableMember);
@@ -291,7 +299,7 @@ public class MethodChangerVisitor
     condition =
         condition.replace(
             Configuration.RECEIVER,
-            "((" + method.getDeclaringClass() + ") " + Configuration.RECEIVER + ").");
+            "((" + method.getDeclaringClass().getName() + ") " + Configuration.RECEIVER + ")");
     return condition;
   }
 }

@@ -192,7 +192,8 @@ public class SourceCodeBuilder {
    * @param typeParamDeclaration the type parameter declaration
    * @return an updated type parameter declaration that specifies bounds
    */
-  @NotNull private String includeBounds(TypeVariable<?> typeParam, String typeParamDeclaration) {
+  @NotNull
+  private String includeBounds(TypeVariable<?> typeParam, String typeParamDeclaration) {
     typeParamDeclaration += " extends ";
     List<String> bounds =
         Arrays.stream(typeParam.getBounds()).map(Type::getTypeName).collect(Collectors.toList());

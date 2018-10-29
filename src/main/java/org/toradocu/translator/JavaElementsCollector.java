@@ -134,7 +134,7 @@ public class JavaElementsCollector {
       //      for (Map.Entry<String, Integer> countId : countIds.entrySet()) {
       //        String identifier = countId.getKey();
       //        if (ids.contains(identifier) && countId.getValue() > 0)
-      // p.removeIdentifier(identifier);
+      //          p.removeIdentifier(identifier);
       //      }
       p.mergeIdentifiers();
     }

@@ -87,7 +87,7 @@ public class BasicTranslator {
       Set<CodeElement<?>> subjectMatches;
       subjectMatches = matcher.subjectMatch(p.getSubject().getSubject(), method);
       if (subjectMatches.isEmpty()) {
-        //        ConditionTranslator.log.debug("Failed subject translation for: " + p);
+        // ConditionTranslator.log.debug("Failed subject translation for: " + p);
         return;
       }
       final Set<CodeElement<?>> matchingCodeElements = new LinkedHashSet<>();
