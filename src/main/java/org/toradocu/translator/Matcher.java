@@ -369,7 +369,7 @@ class Matcher {
         }
       }
       if (foundArgMatch) {
-        firstMatch = currentMatch;
+        firstCodeMatch = currentMatch;
         break;
       }
     }
