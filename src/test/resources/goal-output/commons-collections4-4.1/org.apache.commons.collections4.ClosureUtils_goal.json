@@ -670,7 +670,7 @@
         "codeTags": [],
         "comment": "if the closures collection is empty",
         "kind": "THROWS",
-        "condition": "((args[0]==null)==false)&&(args[0].isEmpty())"
+        "condition": "(args[0]==null)==false && args[0].isEmpty()"
       }
     ]
   },
@@ -1197,7 +1197,7 @@
         "codeTags": [],
         "comment": "if the map is empty",
         "kind": "THROWS",
-        "condition": "((args[0]==null)==false)&&(args[0].isEmpty())"
+        "condition": "(args[0]==null)==false && args[0].isEmpty()"
       },
       {
         "exceptionType": {
@@ -1289,7 +1289,7 @@
         "codeTags": [],
         "comment": "if the map is empty",
         "kind": "THROWS",
-        "condition": "((args[0]==null)==false)&&(args[0].isEmpty())"
+        "condition": "(args[0]==null)==false && args[0].isEmpty()"
       }
     ]
   }

@@ -884,7 +884,7 @@
         },
         "comment": "the first index to examine; must be nonnegative and no greater than sequence.length()",
         "kind": "PARAM",
-        "condition": "(args[0]<0) == false && (args[0]>args[1].length()) == false"
+        "condition": "(args[0]<0) == false && args[1]!=null && (args[0]>args[1].length()) == false"
       }
     ],
     "returnTag": {
@@ -904,7 +904,7 @@
         ],
         "comment": "if start is negative or greater than sequence.length()",
         "kind": "THROWS",
-        "condition": "args[1]<0 || args[1]>args[0].length()"
+        "condition": "args[1]<0 || args[0]!=null && args[1]>args[0].length()"
       }
     ]
   },

@@ -165,41 +165,50 @@ class Matcher {
     }
 
     // General case
-    String match = simpleMatch(predicate);
-    if (match != null && subject.isCompatibleWith(method.getDeclaringClass(), match)) {
+    Match match = simpleMatch(predicate);
+    if (match != null
+        && subject.isCompatibleWith(method.getDeclaringClass(), match.getBaseExpression())) {
       if (subject instanceof ContainerElementsCodeElement) {
         ContainerElementsCodeElement containerCodeElement = (ContainerElementsCodeElement) subject;
-        match = containerCodeElement.getJavaExpression(match);
+        match.setBaseExpression(containerCodeElement.getJavaExpression(match.getBaseExpression()));
       } else {
-        match = subject.getJavaExpression() + match;
+        match.setBaseExpression(subject.getJavaExpression() + match.getBaseExpression());
       }
     } else {
       match = codeElementsMatch(method, subject, proposition, comment);
-      if (match == null || !subject.isCompatibleWith(method.getDeclaringClass(), match)) {
+      if (match == null
+          || !subject.isCompatibleWith(method.getDeclaringClass(), match.getBaseExpression())) {
         return null;
       }
     }
 
-    if (match.equals(
-        Configuration.RECEIVER
-            + "==null")) { // Condition "receiverObjectID==null" is indeed not correct.
+    if (match
+        .getBaseExpression()
+        .equals(
+            Configuration.RECEIVER
+                + "==null")) { // Condition "receiverObjectID==null" is indeed not correct.
       return null;
     }
-
+    String finalMatch = "";
     if (proposition.isNegative()) {
-      return "(" + match + ") == false";
+      finalMatch = "(" + match.getBaseExpression() + ") == false";
+    } else {
+      finalMatch = match.getBaseExpression();
     }
 
-    return match;
+    if (match.getNullDereferenceCheck() != null) {
+      finalMatch = (match.getNullDereferenceCheck() + " && ").concat(finalMatch);
+    }
+
+    return finalMatch;
   }
 
-  private String codeElementsMatch(
+  private Match codeElementsMatch(
       DocumentedExecutable method,
       CodeElement<?> subject,
       Proposition proposition,
       String comment) {
     Set<CodeElement<?>> codeElements;
-    String match = null;
     String predicate = proposition.getPredicate();
 
     // TODO check the following calls to extractBooleanCodeElements(): are they necessary before
@@ -263,7 +272,7 @@ class Matcher {
 
     List<CodeElement<?>> sortedMethodList = new ArrayList<CodeElement<?>>(codeElements);
     // Try the classic syntactic match first of all
-    match = syntacticMatch(predicate, codeElements, method);
+    Match match = syntacticMatch(predicate, codeElements, method);
     if (match == null && SemanticMatcher.isEnabled()) {
       // When the syntactic match fails, try semantic if enabled
       try {
@@ -301,11 +310,10 @@ class Matcher {
    * @param method the {@code DocumentedExecutable} the predicate belongs to
    * @return the best matching code element according to the edit distance, null if none found
    */
-  private String syntacticMatch(
+  private Match syntacticMatch(
       String predicate, Set<CodeElement<?>> codeElements, DocumentedExecutable method) {
-    List<CodeElement<?>> sortedMethodList = new ArrayList<CodeElement<?>>(codeElements);
-    sortedMethodList =
-        new ArrayList<CodeElement<?>>(filterMatchingCodeElements(predicate, codeElements));
+    List<CodeElement<?>> sortedMethodList;
+    sortedMethodList = new ArrayList<>(filterMatchingCodeElements(predicate, codeElements));
     if (!sortedMethodList.isEmpty())
       Collections.sort(sortedMethodList, new JavaExpressionComparator());
     if (sortedMethodList.isEmpty()) {
@@ -317,18 +325,18 @@ class Matcher {
 
   /**
    * Search the best match between the {@code predicate} and the list of possibly matching sorted
-   * {@code CodeElement}s. This is especially to find the best mathod match in case of {@code
+   * {@code CodeElement}s. This is especially to find the best method match in case of {@code
    * MethodCodeElement}, by comparing the arguments needed.
    *
    * @param method the {@code DocumentedExecutable} the predicate is referring to
    * @param predicate the String predicate to match
    * @param sortedCodeElements sorted list of matching method {@code CodeElement}s
-   * @return String representation of the best match found
+   * @return object representation of the best match found
    */
-  private String findBestMethodMatch(
+  private Match findBestMethodMatch(
       DocumentedExecutable method, String predicate, List<CodeElement<?>> sortedCodeElements) {
-    String match = null;
-    CodeElement<?> firstMatch = null;
+    Match match = null;
+    CodeElement<?> firstCodeMatch = null;
     boolean foundArgMatch = false;
     List<String> paramForMatch = new ArrayList<String>();
     List<String> paramMatch = new ArrayList<String>();
@@ -353,7 +361,7 @@ class Matcher {
           if (paramMatch.contains(pt.getTypeName())) {
             paramForMatch.add("args[" + pcount + "]");
             if (!receiver.equals("args[" + pcount + "]")) {
-              firstMatch = currentMatch;
+              firstCodeMatch = currentMatch;
               foundArgMatch = true;
             }
           }
@@ -361,15 +369,23 @@ class Matcher {
         }
       }
       if (foundArgMatch) {
-        firstMatch = currentMatch;
+        firstCodeMatch = currentMatch;
         break;
       }
     }
     if (foundArgMatch && paramForMatch.size() == args.length) {
-      String exp = firstMatch.getJavaExpression();
-      match = exp.substring(0, exp.indexOf("(") + 1);
-      for (int j = 0; j < paramForMatch.size() - 1; j++) match += paramForMatch.get(j) + ",";
-      match += paramForMatch.get(paramForMatch.size() - 1) + ")";
+      String exp = firstCodeMatch.getJavaExpression();
+      if (firstCodeMatch instanceof MethodCodeElement) {
+        match =
+            new Match(
+                exp.substring(0, exp.indexOf("(") + 1),
+                ((MethodCodeElement) firstCodeMatch).getNullDereferenceCheck());
+      } else {
+        match = new Match(exp.substring(0, exp.indexOf("(") + 1), null);
+      }
+      for (int j = 0; j < paramForMatch.size() - 1; j++)
+        match.completeExpression(paramForMatch.get(j) + ",");
+      match.completeExpression(paramForMatch.get(paramForMatch.size() - 1) + ")");
     } else if (args
         != null) { // the method is supposed to take params but we haven't find a match: does it
       // have to take null?
@@ -380,10 +396,14 @@ class Matcher {
       final java.util.regex.Matcher equalPattern = // or is it the equals() method?
           Pattern.compile("(is|are) equals?").matcher(predicate);
 
-      firstMatch = sortedCodeElements.stream().findFirst().get();
+      firstCodeMatch = sortedCodeElements.stream().findFirst().get();
+
       if (nullPattern.find()) {
-        String exp = firstMatch.getJavaExpression();
-        match = exp.substring(0, exp.indexOf("(") + 1) + "null" + ")";
+        String exp = firstCodeMatch.getJavaExpression();
+        match =
+            new Match(
+                exp.substring(0, exp.indexOf("(") + 1) + "null" + ")",
+                ((MethodCodeElement) firstCodeMatch).getNullDereferenceCheck());
         foundArgMatch = true;
       } else if (equalPattern.find()) {
         // the equal method can be invoked only from an Object to an Object of the same type
@@ -394,8 +414,11 @@ class Matcher {
             String type = p.getParameterizedType().getTypeName();
             for (int j = 0; j < myParams.length; j++) {
               if (j != i && myParams[j].getParameterizedType().getTypeName().equals(type)) {
-                String exp = firstMatch.getJavaExpression();
-                match = exp.substring(0, exp.indexOf("(") + 1) + "args[" + j + "]" + ")";
+                String exp = firstCodeMatch.getJavaExpression();
+                match =
+                    new Match(
+                        exp.substring(0, exp.indexOf("(") + 1) + "args[" + j + "]" + ")",
+                        ((MethodCodeElement) firstCodeMatch).getNullDereferenceCheck());
                 foundArgMatch = true;
                 break;
               }
@@ -406,20 +429,20 @@ class Matcher {
     }
     if (!foundArgMatch) {
       // No match is the absolute best: just pick the first one, but only if it takes no arguments!
-      firstMatch = sortedCodeElements.stream().findFirst().get();
-      if ((firstMatch instanceof MethodCodeElement
-              && ((MethodCodeElement) firstMatch).getArgs() == null)
-          || firstMatch instanceof GeneralCodeElement) {
-        match = sortedCodeElements.stream().findFirst().get().getJavaExpression();
+      firstCodeMatch = sortedCodeElements.stream().findFirst().get();
+      if ((firstCodeMatch instanceof MethodCodeElement
+          && ((MethodCodeElement) firstCodeMatch).getArgs() == null)) {
+        match =
+            new Match(
+                firstCodeMatch.getJavaExpression(),
+                ((MethodCodeElement) firstCodeMatch).getNullDereferenceCheck());
+      } else if (firstCodeMatch instanceof GeneralCodeElement) {
+        match =
+            new Match(
+                firstCodeMatch.getJavaExpression(),
+                ((GeneralCodeElement) firstCodeMatch).getNullDereferenceCheck());
       }
     }
-    if (match != null
-        && firstMatch instanceof MethodCodeElement
-        && !((MethodCodeElement) firstMatch).getNullDereferenceCheck().isEmpty()) {
-      match =
-          "(" + ((MethodCodeElement) firstMatch).getNullDereferenceCheck() + ") && (" + match + ")";
-    }
-
     return match;
   }
 
@@ -469,7 +492,11 @@ class Matcher {
     Set<CodeElement<?>> result = new LinkedHashSet<>();
 
     if (type.isArray()) {
-      result.add(new GeneralCodeElement(receiver.getJavaExpression() + ".length==0", "isEmpty"));
+      result.add(
+          new GeneralCodeElement(
+              receiver.getJavaExpression() + ".length==0",
+              receiver.getJavaExpression() + "!=null",
+              "isEmpty"));
       return result;
     }
 
@@ -502,7 +529,7 @@ class Matcher {
    * @return a Java expression translation of the given predicate or null if the predicate could not
    *     be matched
    */
-  private static String simpleMatch(String predicate) {
+  private static Match simpleMatch(String predicate) {
     String verbs = "(is|are|be|is equal to|are equal to|equals to|return) ?";
 
     String predicates =
@@ -526,24 +553,28 @@ class Matcher {
 
     java.util.regex.Matcher instanceOf = Pattern.compile("(instanceof) (.*)").matcher(predicate);
 
-    String predicateTranslation;
+    Match match = null;
+    String translation = null;
     if (isPattern.find()) {
       // Get the last group in the regular expression.
-      predicateTranslation = manageIsPattern(isPattern);
+      translation = manageIsPattern(isPattern);
     } else if (isNotPattern.find()) {
-      predicateTranslation = manageIsNotPattern(isNotPattern);
+      translation = manageIsNotPattern(isNotPattern);
     } else if (inequalityNumber.find()) {
-      predicateTranslation = manageInequalityNumber(inequalityNumber);
+      translation = manageInequalityNumber(inequalityNumber);
     } else if (inequalityVar.find()) {
-      predicateTranslation = manageInequalityVar(predicate, inequalityVar);
+      match = manageInequalityVar(predicate, inequalityVar);
     } else if (predicate.equals("been set")) {
-      predicateTranslation = "!=null";
+      translation = "!=null";
     } else if (instanceOf.find()) {
-      predicateTranslation = " instanceof " + instanceOf.group(2);
-    } else {
-      predicateTranslation = null;
+      translation = " instanceof " + instanceOf.group(2);
     }
-    return predicateTranslation;
+
+    if (translation != null && match == null) {
+      match = new Match(translation, null);
+    }
+
+    return match;
   }
 
   /**
@@ -552,20 +583,24 @@ class Matcher {
    * @param inequalityVar the matching regex
    * @return the translation
    */
-  private static String manageInequalityVar(
+  private static Match manageInequalityVar(
       String predicate, java.util.regex.Matcher inequalityVar) {
-    String predicateTranslation;
+    Match match;
     // Get the variable from the last group of the regular expression.
     String variable = inequalityVar.group(3);
     // Get the symbol from the regular expression.
     String relation = inequalityVar.group(2);
     // Now we have the variable name, but who is it in the code? We'll have to find it.
-    if (relation == null || relation.equals("="))
-      predicateTranslation = "==" + "{" + variable + "}";
-    else predicateTranslation = relation + "{" + variable + "}";
-    if (predicate.contains(variable + "."))
-      predicateTranslation += predicate.substring(predicate.indexOf("."));
-    return predicateTranslation;
+    if (relation == null || relation.equals("=")) {
+      match = new Match("==" + "{" + variable + "}", null);
+    } else {
+      match = new Match(relation + "{" + variable + "}", null);
+    }
+    if (predicate.contains(variable + ".")) {
+      match.completeExpression(predicate.substring(predicate.indexOf(".")));
+      match.setNullDereferenceCheck("{" + variable + "}" + "!=null");
+    }
+    return match;
   }
 
   /**

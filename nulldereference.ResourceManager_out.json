@@ -1,13 +1,13 @@
 [
   {
-    "signature": "simpleNullDeref(example.nulldereference.Resource resource)",
+    "signature": "simpleNullDeref(nulldereference.Resource resource)",
     "name": "simpleNullDeref",
     "containingClass": {
-      "qualifiedName": "example.nulldereference.ResourceManager",
+      "qualifiedName": "nulldereference.ResourceManager",
       "name": "ResourceManager",
       "isArray": false
     },
-    "targetClass": "example.nulldereference.ResourceManager",
+    "targetClass": "nulldereference.ResourceManager",
     "isVarArgs": false,
     "returnType": {
       "qualifiedName": "boolean",
@@ -17,7 +17,7 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "example.nulldereference.Resource",
+          "qualifiedName": "nulldereference.Resource",
           "name": "Resource",
           "isArray": false
         },
@@ -28,7 +28,7 @@
       {
         "parameter": {
           "type": {
-            "qualifiedName": "example.nulldereference.Resource",
+            "qualifiedName": "nulldereference.Resource",
             "name": "Resource",
             "isArray": false
           },
@@ -42,19 +42,19 @@
     "returnTag": {
       "comment": "true if the resource is empty.",
       "kind": "RETURN",
-      "condition": "(args[0]==null)==false && args[0].isEmpty() ? methodResultID == true : methodResultID == false"
+      "condition": "((args[0]==null)==false) && (args[0].isEmpty()) ? methodResultID == true : methodResultID == false"
     },
     "throwsTags": []
   },
   {
-    "signature": "complexNullDeref(example.nulldereference.Resource resource)",
+    "signature": "complexNullDeref(nulldereference.Resource resource)",
     "name": "complexNullDeref",
     "containingClass": {
-      "qualifiedName": "example.nulldereference.ResourceManager",
+      "qualifiedName": "nulldereference.ResourceManager",
       "name": "ResourceManager",
       "isArray": false
     },
-    "targetClass": "example.nulldereference.ResourceManager",
+    "targetClass": "nulldereference.ResourceManager",
     "isVarArgs": false,
     "returnType": {
       "qualifiedName": "boolean",
@@ -64,7 +64,7 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "example.nulldereference.Resource",
+          "qualifiedName": "nulldereference.Resource",
           "name": "Resource",
           "isArray": false
         },
@@ -75,7 +75,7 @@
       {
         "parameter": {
           "type": {
-            "qualifiedName": "example.nulldereference.Resource",
+            "qualifiedName": "nulldereference.Resource",
             "name": "Resource",
             "isArray": false
           },
@@ -89,19 +89,19 @@
     "returnTag": {
       "comment": "true if the resource is empty. Resource is not null.",
       "kind": "RETURN",
-      "condition": "((args[0]==null)==false && args[0].isEmpty()) ? methodResultID == true : methodResultID == false"
+      "condition": "(((args[0]==null)==false) && (args[0].isEmpty())) ? methodResultID == true : methodResultID == false"
     },
     "throwsTags": []
   },
   {
-    "signature": "arrayNullDeref(example.nulldereference.Resource[] resourceArray)",
+    "signature": "arrayNullDeref(nulldereference.Resource[] resourceArray)",
     "name": "arrayNullDeref",
     "containingClass": {
-      "qualifiedName": "example.nulldereference.ResourceManager",
+      "qualifiedName": "nulldereference.ResourceManager",
       "name": "ResourceManager",
       "isArray": false
     },
-    "targetClass": "example.nulldereference.ResourceManager",
+    "targetClass": "nulldereference.ResourceManager",
     "isVarArgs": false,
     "returnType": {
       "qualifiedName": "void",
@@ -111,7 +111,7 @@
     "parameters": [
       {
         "type": {
-          "qualifiedName": "[Lexample.nulldereference.Resource;",
+          "qualifiedName": "[Lnulldereference.Resource;",
           "name": "Resource[]",
           "isArray": true
         },
@@ -122,7 +122,7 @@
       {
         "parameter": {
           "type": {
-            "qualifiedName": "[Lexample.nulldereference.Resource;",
+            "qualifiedName": "[Lnulldereference.Resource;",
             "name": "Resource[]",
             "isArray": true
           },

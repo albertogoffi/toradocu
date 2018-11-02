@@ -588,7 +588,7 @@
         },
         "comment": "a nonempty array of short values",
         "kind": "PARAM",
-        "condition": "(args[0].length==0) == false"
+        "condition": "args[0]!=null && (args[0].length==0) == false"
       }
     ],
     "returnTag": {
@@ -608,7 +608,7 @@
         ],
         "comment": "if array is empty",
         "kind": "THROWS",
-        "condition": "args[0].length==0"
+        "condition": "args[0]!=null && args[0].length==0"
       }
     ]
   },
@@ -659,7 +659,7 @@
         },
         "comment": "a nonempty array of short values",
         "kind": "PARAM",
-        "condition": "(args[0].length==0) == false"
+        "condition": "args[0]!=null && (args[0].length==0) == false"
       }
     ],
     "returnTag": {
@@ -679,7 +679,7 @@
         ],
         "comment": "if array is empty",
         "kind": "THROWS",
-        "condition": "args[0].length==0"
+        "condition": "args[0]!=null && args[0].length==0"
       }
     ]
   },
@@ -821,7 +821,7 @@
         ],
         "comment": "if bytes has fewer than 2 elements",
         "kind": "THROWS",
-        "condition": "args[0].length<2"
+        "condition": "args[0]!=null && args[0].length<2"
       }
     ]
   },

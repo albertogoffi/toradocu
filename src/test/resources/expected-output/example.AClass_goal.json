@@ -81,7 +81,7 @@
         "codeTags": [],
         "comment": "x is empty.",
         "kind": "THROWS",
-        "condition": "((args[0]==null)==false)&&(args[0].isEmpty())"
+        "condition": "(args[0]==null)==false&&args[0].isEmpty()"
       }
     ]
   },
@@ -384,7 +384,7 @@
     "returnTag": {
       "comment": "true if the numbers are equal.",
       "kind": "RETURN",
-      "condition": "((args[0]==null)==false)&&(args[0].equals(args[1]))?methodResultID==true:methodResultID==false"
+      "condition": "(args[0]==null)==false&&args[0].equals(args[1])?methodResultID==true:methodResultID==false"
     },
     "throwsTags": []
   },

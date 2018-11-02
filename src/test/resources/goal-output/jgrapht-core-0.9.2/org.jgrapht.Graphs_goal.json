@@ -283,7 +283,7 @@
     "returnTag": {
       "comment": "true if the target graph did not already contain the specified edge.",
       "kind": "RETURN",
-      "condition": "(((args[0]==null)==false)&&(args[0].containsEdge(args[2])))==false?methodResultID==true:methodResultID==false"
+      "condition": "(args[0]==null)==false && (args[0].containsEdge(args[2]))==false?methodResultID==true:methodResultID==false"
     },
     "throwsTags": []
   },
@@ -693,7 +693,7 @@
         "codeTags": [],
         "comment": "if the specified vertices contains one or more null vertices, or if the specified vertex collection is null.",
         "kind": "THROWS",
-        "condition": "((args[1]==null)==false)&&(args[1].contains(null))||args[1]==null"
+        "condition": "(args[1]==null)==false && args[1].contains(null)||args[1]==null"
       }
     ]
   },

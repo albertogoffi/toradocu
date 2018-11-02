@@ -19,7 +19,7 @@ public class MethodCodeElement extends CodeElement<Method> {
   private String[] parameters;
   /** The arguments of this method. */
   private String[] args;
-
+  /** Expression that checks the nullness of the receiver. */
   private String nullDereferenceCheck;
 
   /**
@@ -35,7 +35,7 @@ public class MethodCodeElement extends CodeElement<Method> {
     if (!receiver.equals(Configuration.RECEIVER)) {
       this.nullDereferenceCheck = "(" + receiver + "==null)==false";
     } else {
-      this.nullDereferenceCheck = "";
+      this.nullDereferenceCheck = null;
     }
     // Add name identifier.
     String methodName = method.getName();
@@ -83,7 +83,11 @@ public class MethodCodeElement extends CodeElement<Method> {
   boolean isCompatibleWith(Class<?> declaringClass, String predicateTranslation) {
     if (predicateTranslation.contains(".")) {
       // if the translation is a method invocation, it must be this subject
-      return predicateTranslation.startsWith(getJavaExpression());
+      String cleanPredicate = predicateTranslation.replaceAll("\\(", "").replaceAll("\\)", "");
+
+      String cleanExpression = getJavaExpression().replaceAll("\\(", "").replaceAll("\\)", "");
+
+      return cleanPredicate.startsWith(cleanExpression);
     }
     return true;
   }
