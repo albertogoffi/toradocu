@@ -251,7 +251,7 @@ public class MethodChangerVisitor
       pointcut.append(executable.getDeclaringClass()).append(".new(");
     } else { // Regular methods
       pointcut
-          .append(executable.getReturnType().getType())
+          .append(executable.getReturnType().getType().getTypeName())
           .append(" ")
           .append(executable.getDeclaringClass().getName())
           .append(".")
@@ -287,7 +287,7 @@ public class MethodChangerVisitor
     }
 
     // Casting of result object in condition.
-    String returnType = method.getReturnType().getType().toString();
+    String returnType = method.getReturnType().getType().getTypeName();
     if (returnType != null && !returnType.equals("void")) {
       condition =
           condition.replace(

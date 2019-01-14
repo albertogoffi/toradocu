@@ -87,7 +87,7 @@ public class OracleGenerator {
     final File outputDir = new File(aspectsOutputDir);
     if (outputDir.exists()) {
       log.error("Directory where to store aspects already exists: " + aspectsOutputDir);
-      creationSucceeded = false;
+      creationSucceeded = true;
     } else {
       creationSucceeded = outputDir.mkdirs();
       if (!creationSucceeded) {
