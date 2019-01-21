@@ -115,14 +115,16 @@ public class MethodChangerVisitor
       }
       condition = addCasting(condition, executableMember);
       String thenBlock = createBlock("return true;");
-      String elseBlock = createBlock("return false;");
+      String elseBlock = "";
       IfStmt ifStmt =
           createIfStmt(condition, preSpecification.getDescription(), thenBlock, elseBlock);
       methodDeclaration.getBody().ifPresent(body -> body.addStatement(ifStmt));
       returnStmtNeeded = false;
     }
-
-    if (returnStmtNeeded) {
+    if (!returnStmtNeeded) {
+      ReturnStmt returnFalseStmt = new ReturnStmt(new BooleanLiteralExpr(false));
+      methodDeclaration.getBody().ifPresent(body -> body.addStatement(returnFalseStmt));
+    } else {
       ReturnStmt returnTrueStmt = new ReturnStmt(new BooleanLiteralExpr(true));
       methodDeclaration.getBody().ifPresent(body -> body.addStatement(returnTrueStmt));
     }
@@ -135,6 +137,9 @@ public class MethodChangerVisitor
     // Replace first parameter name ("target") with specific name from configuration.
     methodDeclaration.getParameter(0).setName(new SimpleName(Configuration.RECEIVER));
     for (ThrowsSpecification throwsSpecification : operationSpec.getThrowsSpecifications()) {
+      if (throwsSpecification.getGuard().getConditionText().isEmpty()) {
+        continue;
+      }
       String condition =
           addCasting(throwsSpecification.getGuard().getConditionText(), executableMember);
 
@@ -250,8 +255,9 @@ public class MethodChangerVisitor
     if (executable.isConstructor()) { // Constructors
       pointcut.append(executable.getDeclaringClass()).append(".new(");
     } else { // Regular methods
+      String type = executable.getReturnType().getType().getTypeName();
       pointcut
-          .append(executable.getReturnType().getType().getTypeName())
+          .append(type)
           .append(" ")
           .append(executable.getDeclaringClass().getName())
           .append(".")
@@ -281,7 +287,7 @@ public class MethodChangerVisitor
 
     int index = 0;
     for (DocumentedParameter parameter : method.getParameters()) {
-      String type = parameter.getType().getSimpleName();
+      String type = parameter.getType().getTypeName();
       condition = condition.replace("args[" + index + "]", "((" + type + ") args[" + index + "])");
       index++;
     }
