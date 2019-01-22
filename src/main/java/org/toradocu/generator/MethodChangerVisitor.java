@@ -24,6 +24,7 @@ import com.github.javaparser.ast.visitor.ModifierVisitor;
 import java.util.Optional;
 import java.util.StringJoiner;
 import org.apache.commons.lang3.tuple.Pair;
+import org.jetbrains.annotations.NotNull;
 import org.toradocu.Toradocu;
 import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.DocumentedExecutable;
@@ -256,6 +257,7 @@ public class MethodChangerVisitor
       pointcut.append(executable.getDeclaringClass()).append(".new(");
     } else { // Regular methods
       String type = executable.getReturnType().getType().getTypeName();
+      type = removeParametersFromType(type);
       pointcut
           .append(type)
           .append(" ")
@@ -288,13 +290,15 @@ public class MethodChangerVisitor
     int index = 0;
     for (DocumentedParameter parameter : method.getParameters()) {
       String type = parameter.getType().getTypeName();
+      type = removeParametersFromType(type);
       condition = condition.replace("args[" + index + "]", "((" + type + ") args[" + index + "])");
       index++;
     }
 
     // Casting of result object in condition.
     String returnType = method.getReturnType().getType().getTypeName();
-    if (returnType != null && !returnType.equals("void")) {
+    returnType = removeParametersFromType(returnType);
+    if (!returnType.equals("void")) {
       condition =
           condition.replace(
               Configuration.RETURN_VALUE,
@@ -302,10 +306,26 @@ public class MethodChangerVisitor
     }
 
     // Casting of target object in condition.
+    String type = method.getDeclaringClass().getName();
+    type = removeParametersFromType(type);
     condition =
         condition.replace(
-            Configuration.RECEIVER,
-            "((" + method.getDeclaringClass().getName() + ") " + Configuration.RECEIVER + ")");
+            Configuration.RECEIVER, "((" + type + ") " + Configuration.RECEIVER + ")");
     return condition;
+  }
+
+  /**
+   * Remove the type parameter(s) from a generic type and returns the resulting string.
+   *
+   * @param genericType the generic type to be cleaned
+   * @return the type without parameter(s)
+   */
+  @NotNull
+  private static String removeParametersFromType(String genericType) {
+    int generics = genericType.indexOf("<");
+    if (generics != -1) {
+      return genericType.substring(0, generics);
+    }
+    return genericType;
   }
 }
