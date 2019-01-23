@@ -1,6 +1,6 @@
+import static org.junit.Assert.fail;
 import java.util.ArrayList;
 import java.util.List;
-import static org.junit.Assert.fail;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -38,18 +38,18 @@ public class Aspect_1 {
         }
     }
 
-    private boolean paramTagsSatisfied(Object target, Object[] args) {
+    private boolean paramTagsSatisfied(Object receiverObjectID, Object[] args) {
         return true;
     }
 
-    private Object checkResult(Object result, Object target, Object[] args) {
-        return result;
+    private Object checkResult(Object methodResultID, Object receiverObjectID, Object[] args) {
+        return methodResultID;
     }
 
-    private List<Class<?>> getExpectedExceptions(Object target, Object[] args) {
+    private List<Class<?>> getExpectedExceptions(Object receiverObjectID, Object[] args) {
         List<Class<?>> expectedExceptions = new ArrayList<Class<?>>();
         try {
-            // @throws java.lang.IllegalArgumentException if expectedKeys or expectedValuesPerKey is negative
+            // @throws java.lang.IllegalArgumentException expectedKeys or expectedValuesPerKey is negative.
             if (((int) args[0]) < 0 || ((int) args[1]) < 0) {
                 try {
                     expectedExceptions.add(Class.forName("java.lang.IllegalArgumentException"));

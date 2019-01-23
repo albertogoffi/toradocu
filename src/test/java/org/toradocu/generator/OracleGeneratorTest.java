@@ -21,7 +21,9 @@ public class OracleGeneratorTest {
           "--class-dir",
           "src/test/resources/bin/guava-19.0.jar",
           "--source-dir",
-          "src/test/resources/src/guava-19.0-sources"
+          "src/test/resources/src/guava-19.0-sources",
+          "--oracle-generation",
+          "true"
         });
 
     String outputDir = Toradocu.configuration.getAspectsOutputDir();

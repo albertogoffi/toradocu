@@ -24,6 +24,7 @@ import com.github.javaparser.ast.visitor.ModifierVisitor;
 import java.util.Optional;
 import java.util.StringJoiner;
 import org.apache.commons.lang3.tuple.Pair;
+import org.jetbrains.annotations.NotNull;
 import org.toradocu.Toradocu;
 import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.DocumentedExecutable;
@@ -115,14 +116,16 @@ public class MethodChangerVisitor
       }
       condition = addCasting(condition, executableMember);
       String thenBlock = createBlock("return true;");
-      String elseBlock = createBlock("return false;");
+      String elseBlock = "";
       IfStmt ifStmt =
           createIfStmt(condition, preSpecification.getDescription(), thenBlock, elseBlock);
       methodDeclaration.getBody().ifPresent(body -> body.addStatement(ifStmt));
       returnStmtNeeded = false;
     }
-
-    if (returnStmtNeeded) {
+    if (!returnStmtNeeded) {
+      ReturnStmt returnFalseStmt = new ReturnStmt(new BooleanLiteralExpr(false));
+      methodDeclaration.getBody().ifPresent(body -> body.addStatement(returnFalseStmt));
+    } else {
       ReturnStmt returnTrueStmt = new ReturnStmt(new BooleanLiteralExpr(true));
       methodDeclaration.getBody().ifPresent(body -> body.addStatement(returnTrueStmt));
     }
@@ -135,6 +138,9 @@ public class MethodChangerVisitor
     // Replace first parameter name ("target") with specific name from configuration.
     methodDeclaration.getParameter(0).setName(new SimpleName(Configuration.RECEIVER));
     for (ThrowsSpecification throwsSpecification : operationSpec.getThrowsSpecifications()) {
+      if (throwsSpecification.getGuard().getConditionText().isEmpty()) {
+        continue;
+      }
       String condition =
           addCasting(throwsSpecification.getGuard().getConditionText(), executableMember);
 
@@ -250,8 +256,10 @@ public class MethodChangerVisitor
     if (executable.isConstructor()) { // Constructors
       pointcut.append(executable.getDeclaringClass()).append(".new(");
     } else { // Regular methods
+      String type = executable.getReturnType().getType().getTypeName();
+      type = removeParametersFromType(type);
       pointcut
-          .append(executable.getReturnType().getType())
+          .append(type)
           .append(" ")
           .append(executable.getDeclaringClass().getName())
           .append(".")
@@ -281,14 +289,16 @@ public class MethodChangerVisitor
 
     int index = 0;
     for (DocumentedParameter parameter : method.getParameters()) {
-      String type = parameter.getType().getSimpleName();
+      String type = parameter.getType().getTypeName();
+      type = removeParametersFromType(type);
       condition = condition.replace("args[" + index + "]", "((" + type + ") args[" + index + "])");
       index++;
     }
 
     // Casting of result object in condition.
-    String returnType = method.getReturnType().getType().toString();
-    if (returnType != null && !returnType.equals("void")) {
+    String returnType = method.getReturnType().getType().getTypeName();
+    returnType = removeParametersFromType(returnType);
+    if (!returnType.equals("void")) {
       condition =
           condition.replace(
               Configuration.RETURN_VALUE,
@@ -296,10 +306,26 @@ public class MethodChangerVisitor
     }
 
     // Casting of target object in condition.
+    String type = method.getDeclaringClass().getName();
+    type = removeParametersFromType(type);
     condition =
         condition.replace(
-            Configuration.RECEIVER,
-            "((" + method.getDeclaringClass().getName() + ") " + Configuration.RECEIVER + ")");
+            Configuration.RECEIVER, "((" + type + ") " + Configuration.RECEIVER + ")");
     return condition;
+  }
+
+  /**
+   * Remove the type parameter(s) from a generic type and returns the resulting string.
+   *
+   * @param genericType the generic type to be cleaned
+   * @return the type without parameter(s)
+   */
+  @NotNull
+  private static String removeParametersFromType(String genericType) {
+    int generics = genericType.indexOf("<");
+    if (generics != -1) {
+      return genericType.substring(0, generics);
+    }
+    return genericType;
   }
 }
