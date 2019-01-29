@@ -5,7 +5,7 @@ import org.aspectj.lang.annotation.Aspect;
 @Aspect
 public class TestCaseAspect {
 
-  @Around("execution(@org.junit.Test * *(..))")
+  @Around("execution(* *(..))")
   public Object advice(ProceedingJoinPoint jp) throws Throwable {
     try {
       return jp.proceed();
