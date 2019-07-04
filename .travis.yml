@@ -14,10 +14,10 @@ install: travis_wait 30 ./gradlew unzipGlove unzipGloveModels
 
 script: ./gradlew build -PdisableShadowJar
 
+## If the cache gets corrupted, clean it at https://travis-ci.com/ORG/REPO/caches .
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
-
 cache:
   directories:
     - $HOME/.gradle/caches/
