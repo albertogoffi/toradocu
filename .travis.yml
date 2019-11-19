@@ -8,7 +8,7 @@ jdk:
 addons:
   apt:
     packages:
-      - openjdk-java8-installer
+      - openjdk-8-jdk
 
 install: travis_wait 30 ./gradlew unzipGlove unzipGloveModels
 
