@@ -3,12 +3,12 @@ language: java
 sudo: required
 
 jdk:
-  - oraclejdk8
+  - openjdkjdk8
 
 addons:
   apt:
     packages:
-      - oracle-java8-installer
+      - openjdk-java8-installer
 
 install: travis_wait 30 ./gradlew unzipGlove unzipGloveModels
 
