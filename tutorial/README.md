@@ -116,5 +116,10 @@ open source projects like
 
 To generate aspects for these methods in directory `aspects/`, run:
 ```
-./gradlew test --tests "org.toradocu.accuracy.paper.Accuracy*" -Dorg.toradocu.generator=true
+./gradlew test --tests "org.toradocu.accuracy.Accuracy*" -Dorg.toradocu.generator=true
 ```
+## ISSTA 2018 Artifact Evaluation
+
+More instructions to run the latest official release of Toradocu (a.k.a JDoctor) can be found in the Wiki:
+
+https://github.com/albertogoffi/toradocu/wiki/ISSTA-2018----Artifact-Evaluation
