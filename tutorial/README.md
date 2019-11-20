@@ -79,7 +79,7 @@ faults in a software system or incorrect assertions in its test suite.
 6. Compile the generated aspects and weave them into the test suite of the system under test:
    ```
    javac -g -cp aspectjrt-1.8.9.jar:src:junit-4.12.jar aspects/*.java
-   java -cp aspectjtools-1.8.9.jar:aspectjweaver-1.8.9.jar:aspectjrt-1.8.9.jar:src org.aspectj.tools.ajc.Main -inpath aspects:test -outjar weaved_testsuite.jar -showWeaveInfo -source 1.8 -target 1.8
+   java -cp aspectjtools-1.9.4.jar:aspectjweaver-1.9.4.jar:aspectjrt-1.9.4.jar:junit-4.12.jar:src org.aspectj.tools.ajc.Main -inpath aspects:test -outjar weaved_testsuite.jar -showWeaveInfo -source 1.8 -target 1.8
    ```
    The AspectJ tool outputs some information starting with `Join point ...`.
 
@@ -109,12 +109,12 @@ faults in a software system or incorrect assertions in its test suite.
 
 ## Run Toradocu on Multiple Classes
 
-You can run Toradocu on about 300 real-world methods taken from
+You can run Toradocu on about 500 real-world methods taken from
 open source projects like
 [Google Guava](https://github.com/google/guava) and
 [Apache Commons Math](https://commons.apache.org/proper/commons-math/)
 
 To generate aspects for these methods in directory `aspects/`, run:
 ```
-./gradlew test --tests "org.toradocu.PrecisionRecall*" -Dorg.toradocu.generator=true
+./gradlew test --tests "org.toradocu.accuracy.paper.PrecisionRecall*" -Dorg.toradocu.generator=true
 ```
