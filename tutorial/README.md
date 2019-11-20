@@ -116,5 +116,5 @@ open source projects like
 
 To generate aspects for these methods in directory `aspects/`, run:
 ```
-./gradlew test --tests "org.toradocu.accuracy.paper.PrecisionRecall*" -Dorg.toradocu.generator=true
+./gradlew test --tests "org.toradocu.accuracy.paper.Accuracy*" -Dorg.toradocu.generator=true
 ```
