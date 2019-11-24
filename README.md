@@ -5,7 +5,6 @@ Toradocu generates assertions from the Javadoc documentation of a
 class. 
 
 ## Overview
-
 Toradocu takes the source code of a class as input and produces a set of specifications in JSON format. Toradocu can translate all kind of specifications at the method level:
 - preconditions;
 - normal postconditions;
@@ -16,7 +15,6 @@ The tool combines different translations approaches: pattern match, syntax match
 Toradocu can also generate [aspects](https://eclipse.org/aspectj/) that can be used as test oracles.
 
 ## Learn more
-
 Toradocu is described in the following publications:
 
 - [*Translating code comments to procedure specifications*](https://dl.acm.org/ft_gateway.cfm?id=3213872&ftid=1987515&dwn=1&CFID=56504352&CFTOKEN=8f0fbc83ebb920e6-2DEDE6B3-EB69-D16A-9DAEFEFB3A198929)
@@ -31,7 +29,7 @@ at [ISSTA 2016](https://issta2016.cispa.saarland)).
 
 	This publication describes the original work. In origin, Toradocu was processing only exceptional postconditions and was missing many of the current features.
 
-## Tutorial
+## Aspects tutorial
 To see how to use Toradocu to automatically add test oracles to your test suite
 follow the [tutorial instructions](tutorial/README.md).
 
@@ -42,7 +40,6 @@ This will create the file
 `build/libs/toradocu-1.0-all.jar`. The size of file is approximately 1 GB.
 
 Building Toradocu requires Java JDK 1.8+.
-
 
 ## Running Toradocu
 Toradocu is a command-line tool. The list of all Toradocu command-line options is available [on the wiki](https://github.com/albertogoffi/toradocu/wiki/Command-Line-Options).
@@ -59,6 +56,10 @@ A typical Toradocu invocation looks like this:
 	   --class-dir project/bin \
        --aspects-output-dir aspects
 
+## Toradocu + Randoop integration
+Toradocu's assertions are integrated in Randoop, to augment its generated test cases with semantically meaningful oracles. Follow this link to see how the integration works:
+
+https://github.com/ariannab/toyproject
 
 ## Using Toradocu Aspects
 With those options, Toradocu generates [AspectJ aspects](https://eclipse.org/aspectj/) in the
