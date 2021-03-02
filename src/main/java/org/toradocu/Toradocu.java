@@ -24,6 +24,7 @@ import org.toradocu.extractor.DocumentedType;
 import org.toradocu.extractor.JavadocExtractor;
 import org.toradocu.extractor.ParameterNotFoundException;
 import org.toradocu.generator.OracleGenerator;
+import org.toradocu.generator.TestGenerator;
 import org.toradocu.output.util.JsonOutput;
 import org.toradocu.translator.CommentTranslator;
 import org.toradocu.translator.semantic.SemanticMatcher;
@@ -142,7 +143,7 @@ public class Toradocu {
 
       // Use @tComment or the standard condition translator to translate comments.
       if (configuration.useTComment()) {
-        specifications = tcomment.TcommentKt.translate(members);
+        specifications = null;//tcomment.TcommentKt.translate(members);
       } else {
         specifications = CommentTranslator.createSpecifications(members);
       }
@@ -200,6 +201,21 @@ public class Toradocu {
 
       // Export generated specifications as Randoop specifications if requested.
       generateRandoopSpecs(specifications);
+
+      // === Test Generator ===
+      // Note that test generation is enabled only when translation is enabled.
+      if (configuration.isTestGenerationEnabled()) {
+        log.info("** Starting test generation...");
+        try {
+          TestGenerator.createTests(specifications);
+          log.info("** Test generation completed");
+        } catch (Throwable e) {
+          e.printStackTrace();
+          log.error("Error during test creation.", e);
+        }
+      } else {
+        log.info("Test generator disabled: test generation skipped.");
+      }
 
       // === Oracle Generator ===
       // Note that aspect generation is enabled only when translation is enabled.

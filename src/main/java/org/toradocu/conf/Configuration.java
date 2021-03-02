@@ -153,20 +153,43 @@ public enum Configuration {
   // Aspect creation options
 
   @Parameter(
+      names = "--test-generation",
+      description = "Enable/disable the generation of the test cases",
+      arity = 1)
+  	private boolean testGeneration = false;
+
+  @Parameter(
+	  names = "--test-output-dir",
+	  description = "Specifies a directory where Toradocu will store the generated test cases")
+	  private String testOutputDir = "tests";
+
+  @Parameter(
+	  names = "--evosuite-jar",
+	  description = "Specifies the path to the jar of EvoSuite")
+	  private String evosuiteJar = "evosuite-shaded-1.0.6-SNAPSHOT.jar";
+
+  @Parameter(
+      names = "--evosuite-budget",
+      description = "Specifies the maximum time (in seconds) allowed to EvoSuite for test case generation")
+  	  private int evosuiteBudget = 180;
+
+  // Aspect creation options
+
+  @Parameter(
       names = "--oracle-generation",
       description = "Enable/disable the generation of the aspects",
       arity = 1)
-  private boolean oracleGeneration = false;
+  	  private boolean oracleGeneration = false;
 
   @Parameter(
       names = "--test-class",
       description = "Fully-qualified name of the class that will be instrumented with aspects")
-  private String testClass;
+  	  private String testClass;
 
   @Parameter(
       names = "--aspects-output-dir",
       description = "Specifies a directory where Toradocu will output aspects")
-  private String aspectsOutputDir = "aspects";
+	  private String aspectsOutputDir = "aspects";
 
   /** File used as template for generated aspects. */
   private static final String ASPECT_TEMPLATE = "AspectTemplate.java";
@@ -300,6 +323,43 @@ public enum Configuration {
     return aspectsOutputDir;
   }
 
+  /**
+   * Returns true if test cases should be generated after translation.
+   *
+   * @return true if test cases should be generated after translation
+   */
+  public boolean isTestGenerationEnabled() {
+    return testGeneration;
+  }
+
+  /**
+   * Returns the path to the directory in which generated test cases should be output.
+   *
+   * @return the path to the directory in which generated test cases should be output
+   */
+  public String getTestOutputDir() {
+    return testOutputDir;
+  }
+
+  /**
+   * Returns the path to the evosuite jar executable.
+   *
+   * @return the path to the evosuite jar executable
+   */
+  public String getEvoSuiteJar() {
+    return evosuiteJar;
+  }
+  
+  /**
+   * Returns the time budget allowed for evosuite to generate test cases.
+   *
+   * @return the time budget allowed for evosuite to generate test cases
+   */
+  public int getEvoSuiteBudget() {
+    return evosuiteBudget;
+  }
+  
+  
   /**
    * Returns the distance threshold that has been set for code element matching.
    *
