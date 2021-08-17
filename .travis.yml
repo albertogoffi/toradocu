@@ -10,7 +10,7 @@ addons:
     packages:
       - openjdk-8-jdk
 
-install: travis_wait 30 ./gradlew unzipGlove unzipGloveModels
+install: ./gradlew unzipGlove unzipGloveModels
 
 script: ./gradlew build -PdisableShadowJar
 
