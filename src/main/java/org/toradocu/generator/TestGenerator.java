@@ -651,7 +651,7 @@ private static String replaceFormalParamsWithActualValues(String guardString, Ex
     Checks.nonNullParameter(evaluatorName, "evaluatorName");
 
     final InputStream evaluatorTemplate =
-        Object.class.getResourceAsStream(File.separator + EVALUATOR_TEMPLATE_NAME + ".java");
+            ClassLoader.getSystemResourceAsStream(EVALUATOR_TEMPLATE_NAME + ".java");
     CompilationUnit cu = JavaParser.parse(evaluatorTemplate);
 
     // Set the correct package for the newly created evaluator
