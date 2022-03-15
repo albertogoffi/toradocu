@@ -15,10 +15,10 @@ buildscript {
 plugins {
   id 'java'
   id 'application'
-  id 'de.undercouch.download' version '3.3.0' // For the download tasks
+  id 'de.undercouch.download' version '4.0.0' // For the download tasks
   id 'eclipse' // Support for Eclipse projects
   id 'idea' // Support for IntelliJ IDEA projects
-  id 'com.github.sherter.google-java-format' version '0.7.1'
+  id 'com.github.sherter.google-java-format' version '0.9'
 }
 apply plugin: 'kotlin'
 
@@ -99,6 +99,12 @@ test {
 
 task issta18(type: Test) {
   include 'org/toradocu/accuracy/paper/*'
+  enableAssertions = false
+  ignoreFailures = true
+}
+
+task testgen(type: Test) {
+  include 'org/toradocu/testgen/*'
   enableAssertions = false
   ignoreFailures = true
 }
@@ -299,14 +305,14 @@ import de.undercouch.gradle.tasks.download.Download
 /* Downloads binaries of the systems used to measure Toradocu's precision and recall. */
 task downloadBinaries(type: Download) {
   src ([
-    'http://repo1.maven.org/maven2/org/apache/commons/commons-collections4/4.1/commons-collections4-4.1.jar',
-    'http://repo1.maven.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar',
-    'http://repo1.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0.jar',
-    'http://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2.jar',
+    'https://repo1.maven.org/maven2/org/apache/commons/commons-collections4/4.1/commons-collections4-4.1.jar',
+    'https://repo1.maven.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar',
+    'https://repo1.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0.jar',
+    'https://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2.jar',
     'https://github.com/mernst/plume-lib/releases/download/v1.1.0/plume-lib-1.1.0.tar.gz',
     'http://www.inf.usi.ch/phd/goffi/toradocu/freecol-0.11.6.jar',
-    'http://central.maven.org/maven2/commons-cli/commons-cli/1.3.1/commons-cli-1.3.1.jar',
-    'http://repo1.maven.org/maven2/org/graphstream/gs-core/1.3/gs-core-1.3.jar'
+    'https://central.maven.org/maven2/commons-cli/commons-cli/1.3.1/commons-cli-1.3.1.jar',
+    'https://repo1.maven.org/maven2/org/graphstream/gs-core/1.3/gs-core-1.3.jar'
   ])
   dest 'src/test/resources/bin'
   onlyIfNewer true
@@ -325,8 +331,8 @@ task downloadSources(type: Download) {
   src ([
     'https://archive.apache.org/dist/commons/collections/source/commons-collections4-4.1-src.zip',
     'https://archive.apache.org/dist/commons/math/source/commons-math3-3.6.1-src.zip',
-    'http://repo1.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0-sources.jar',
-    'http://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2-sources.jar',
+    'https://repo1.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0-sources.jar',
+    'https://repo1.maven.org/maven2/org/jgrapht/jgrapht-core/0.9.2/jgrapht-core-0.9.2-sources.jar',
     'https://github.com/mernst/plume-lib/releases/download/v1.1.0/plume-lib-1.1.0.tar.gz',
     'http://www.inf.usi.ch/phd/goffi/toradocu/freecol-0.11.6-src.zip',
     'http://repo1.maven.org/maven2/org/graphstream/gs-core/1.3/gs-core-1.3-sources.jar'
@@ -334,6 +340,7 @@ task downloadSources(type: Download) {
   dest 'src/test/resources/src'
   onlyIfNewer true
   overwrite false
+  acceptAnyCertificate true
 }
 
 /* Extracts source archives of the systems used to measure Toradocu's precision and recall. */
@@ -379,6 +386,7 @@ task removeTestOutputDirs(type: Delete) {
 
 test.dependsOn removeTestOutputDirs, cleanSource, extractBinaries
 issta18.dependsOn copyIssta2018GoalFiles, removeTestOutputDirs, cleanSource, extractBinaries
+testgen.dependsOn copyIssta2018GoalFiles, removeTestOutputDirs, cleanSource, extractBinaries
 
 /* Make Emacs TAGS table */
 task tags(type: Exec) {

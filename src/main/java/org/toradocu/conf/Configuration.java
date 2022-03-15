@@ -8,6 +8,8 @@ import java.net.URL;
 import java.nio.file.Path;
 import java.util.List;
 
+import org.toradocu.generator.TestGeneratorSummaryData;
+
 /** Holds the configuration options (particularly command-line options) for Toradocu. */
 @SuppressWarnings("ImmutableEnumChecker")
 public enum Configuration {
@@ -17,7 +19,7 @@ public enum Configuration {
   public static final String RECEIVER = "receiverObjectID";
   /** Keyword that identifies method result in generated specifications. */
   public static final String RETURN_VALUE = "methodResultID";
-
+  
   // General options
 
   @Parameter(
@@ -166,7 +168,7 @@ public enum Configuration {
   @Parameter(
 	  names = "--evosuite-jar",
 	  description = "Specifies the path to the jar of EvoSuite")
-	  private String evosuiteJar = "evosuite-shaded-1.0.6-SNAPSHOT.jar";
+	  private String evosuiteJar = "evosuite-shaded-1.1.1-SNAPSHOT.jar";
 
   @Parameter(
       names = "--evosuite-budget",
