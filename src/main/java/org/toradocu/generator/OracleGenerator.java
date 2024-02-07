@@ -3,6 +3,7 @@ package org.toradocu.generator;
 import static org.toradocu.Toradocu.configuration;
 
 import com.github.javaparser.JavaParser;
+import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
@@ -101,7 +102,7 @@ public class OracleGenerator {
       String inputAspectPath, String outputAspectPath, String withinDeclaration)
       throws IOException {
     final InputStream aspect = Object.class.getResourceAsStream(inputAspectPath);
-    CompilationUnit cu = JavaParser.parse(aspect);
+    CompilationUnit cu = StaticJavaParser.parse(aspect);
     cu.findFirst(MethodDeclaration.class, m -> m.getNameAsString().equals("advice"))
         .ifPresent(
             m ->
@@ -131,7 +132,7 @@ public class OracleGenerator {
 
     final InputStream aspectTemplate =
         Object.class.getResourceAsStream("/" + configuration.getAspectTemplate());
-    CompilationUnit cu = JavaParser.parse(aspectTemplate);
+    CompilationUnit cu = StaticJavaParser.parse(aspectTemplate);
 
     // Set the correct name to the newly created aspect class. Default name is "Aspect_Template".
     cu.findFirst(

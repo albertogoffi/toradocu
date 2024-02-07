@@ -25,6 +25,7 @@ import org.toradocu.extractor.JavadocExtractor;
 import org.toradocu.extractor.ParameterNotFoundException;
 import org.toradocu.generator.OracleGenerator;
 import org.toradocu.generator.TestGenerator;
+import org.toradocu.generator.TestGeneratorValidation;
 import org.toradocu.output.util.JsonOutput;
 import org.toradocu.translator.CommentTranslator;
 import org.toradocu.translator.semantic.SemanticMatcher;
@@ -177,6 +178,7 @@ public class Toradocu {
       }
 
       // Create statistics.
+      /*
       File expectedResultFile = configuration.getExpectedOutput();
       if (expectedResultFile != null) {
         Type collectionType = new TypeToken<List<JsonOutput>>() {}.getType();
@@ -197,7 +199,7 @@ public class Toradocu {
         } catch (IOException e) {
           log.error("Unable to read the file: " + configuration.getConditionTranslatorInput(), e);
         }
-      }
+      }*/
 
       // Export generated specifications as Randoop specifications if requested.
       generateRandoopSpecs(specifications);
@@ -208,7 +210,11 @@ public class Toradocu {
         log.info("** Starting test generation...");
         try {
           TestGenerator.createTests(specifications);
+          //aggiungere qui invocazione ad Evosuite per generazione esterna seguita da invocazione a metodo per modifica casi di test per la valutazione
           log.info("** Test generation completed");
+          log.info("** Starting test generation for validation...");
+          TestGeneratorValidation.createTests(specifications);
+          log.info("** Test generation for validation completed");
         } catch (Throwable e) {
           e.printStackTrace();
           log.error("Error during test creation.", e);

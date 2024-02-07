@@ -4,6 +4,7 @@ import static java.util.stream.Collectors.toList;
 import static org.toradocu.extractor.DocumentedExecutable.BlockTags;
 
 import com.github.javaparser.JavaParser;
+import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.ImportDeclaration;
 import com.github.javaparser.ast.Node;
@@ -458,7 +459,7 @@ public final class JavadocExtractor {
 
   private NodeWithConstructors<?> getTypeDefinition(String typeName, String sourcePath)
       throws FileNotFoundException {
-    final CompilationUnit cu = JavaParser.parse(new File(sourcePath));
+    final CompilationUnit cu = StaticJavaParser.parse(new File(sourcePath));
 
     String nestedClassName = "";
     int dollarsPosition = typeName.indexOf("$");
