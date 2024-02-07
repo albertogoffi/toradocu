@@ -1,5 +1,4 @@
 
-
 import static java.lang.Double.*;
 import static java.lang.Math.*;
 
@@ -21,12 +20,12 @@ public class EvoSuiteEvaluator_Template {
 			___INTERNAL__retVal_ = null;
 			DistanceAlgo algo = populateCalculators_preconds();
 			double d = calculateDistance(algo);
-			//logDistanceAndParamsOnEvoSuiteConsole(d, "test0");
+			// logDistanceAndParamsOnEvoSuiteConsole(d, "test0");
 			return d;
 		} catch (Throwable e) {
 			logOnEvosuiteConsole("this.getClass().getName()" + ": failed with unexpected exception : " + e);
 			int i = 0;
-			for (StackTraceElement msg: e.getStackTrace()) {
+			for (StackTraceElement msg : e.getStackTrace()) {
 				logOnEvosuiteConsole("this.getClass().getName()" + ":                                    " + msg);
 				if (i++ >= 10) {
 					break;
@@ -41,12 +40,12 @@ public class EvoSuiteEvaluator_Template {
 			___INTERNAL__retVal_ = ___retval;
 			DistanceAlgo algo = populateCalculators_postconds();
 			double d = calculateDistance(algo);
-			//logDistanceAndParamsOnEvoSuiteConsole(d, "test1");
+			// logDistanceAndParamsOnEvoSuiteConsole(d, "test1");
 			return d;
 		} catch (Throwable e) {
 			logOnEvosuiteConsole("this.getClass().getName()" + ": failed with unexpected exception : " + e);
 			int i = 0;
-			for (StackTraceElement msg: e.getStackTrace()) {
+			for (StackTraceElement msg : e.getStackTrace()) {
 				logOnEvosuiteConsole("this.getClass().getName()" + ":                                    " + msg);
 				if (i++ >= 10) {
 					break;
@@ -55,26 +54,28 @@ public class EvoSuiteEvaluator_Template {
 			return 1d;
 		}
 	}
-	
+
 	public String toString() {
 		String s = "";
 		return s;
 	}
 
-	/* instantiate the calculator as follows: 
+	/*
+	 * instantiate the calculator as follows:
 	 * 
 	 * DistanceCalculationAlgo calculatorAlgo = distanceAlgoAs...
-	 * calculatorAlgo.calculators.add(new ...);
-	 * calculatorAlgo.calculators.add(new ...);
-	 * ...
-	 * */
+	 * calculatorAlgo.calculators.add(new ...); calculatorAlgo.calculators.add(new
+	 * ...); ...
+	 */
 	private DistanceAlgo populateCalculators_preconds() {
-		DistanceAlgo algo = computeDistanceWithConjunctiveAlgo(); //Conjunctive algorithm by default. Customize if needed
+		DistanceAlgo algo = computeDistanceWithConjunctiveAlgo(); // Conjunctive algorithm by default. Customize if
+																	// needed
 		return algo;
 	}
 
 	private DistanceAlgo populateCalculators_postconds() {
-		DistanceAlgo algo = computeDistanceWithConjunctiveAlgo(); //Conjunctive algorithm by default. Customize if needed
+		DistanceAlgo algo = computeDistanceWithConjunctiveAlgo(); // Conjunctive algorithm by default. Customize if
+																	// needed
 		return algo;
 	}
 
@@ -82,31 +83,42 @@ public class EvoSuiteEvaluator_Template {
 		if (algo == null) {
 			throw new RuntimeException("No distance algo selected");
 		}
-		return algo.calculate();    	
+		return algo.calculate();
 	}
 
 	DistanceAlgo computeDistanceWithConjunctiveAlgo() {
 		return new DistanceAlgo() {
-			double init() {	return 0; }
-			double compose(double current, double other) { return current + other; }
+			double init() {
+				return 0;
+			}
+
+			double compose(double current, double other) {
+				return current + other;
+			}
 		};
 	}
 
 	DistanceAlgo computeDistanceWithDisjunctiveAlgo() {
 		return new DistanceAlgo() {
-			double init() {	return 1; }
-			double compose(double current, double other) { return current * other; }
+			double init() {
+				return 1;
+			}
+
+			double compose(double current, double other) {
+				return current * other;
+			}
 		};
 	}
 
 	private abstract class DistanceAlgo {
 		final ArrayList<DistanceCalculator> calculators = new ArrayList<>();
+
 		double calculate() {
 			if (calculators.isEmpty()) {
 				return 0d;
 			}
 			double d = init();
-			for (DistanceCalculator c: calculators) {
+			for (DistanceCalculator c : calculators) {
 				try {
 					d = compose(d, normalize(c.calculate()));
 				} catch (Throwable e) {
@@ -117,11 +129,14 @@ public class EvoSuiteEvaluator_Template {
 				System.out.println("0 distance");
 			return d;
 		}
+
 		private double normalize(double val) {
-            return Double.isFinite(val) ? val / (1d + val) : 1d;
+			return Double.isFinite(val) ? val / (1d + val) : 1d;
 		}
+
 		abstract double init();
-		abstract double compose(double dist1, double dist2);  
+
+		abstract double compose(double dist1, double dist2);
 	}
 
 	private interface DistanceCalculator {
@@ -130,59 +145,76 @@ public class EvoSuiteEvaluator_Template {
 
 	private abstract class ConditionDistanceCalculator implements DistanceCalculator {
 		public double calculate() {
-			return ___INTERNAL__retVal_ instanceof Throwable ? BIG_DISTANCE : condition() ? 0 : isNaN(cdistance()) ? MED_DISTANCE : SMALL_DISTANCE + abs(cdistance());
-			// ___INTERNAL__retVal_ is always null for preconditions (test0), 
-			// but it can be Throwable for postconditions (test1) if the method under evaluation is throwing exceptions,
+			return ___INTERNAL__retVal_ instanceof Throwable ? BIG_DISTANCE
+					: condition() ? 0 : isNaN(cdistance()) ? MED_DISTANCE : SMALL_DISTANCE + abs(cdistance());
+			// ___INTERNAL__retVal_ is always null for preconditions (test0),
+			// but it can be Throwable for postconditions (test1) if the method under
+			// evaluation is throwing exceptions,
 			// meaning that the postcondition cannot be evaluated
 		}
+
 		abstract boolean condition();
+
 		abstract double cdistance();
 	}
 
 	private abstract class NegConditionDistanceCalculator extends ConditionDistanceCalculator {
 		public double calculate() {
-			return ___INTERNAL__retVal_ instanceof Throwable ? 0 : !condition() ? 0 : isNaN(cdistance()) ? MED_DISTANCE : SMALL_DISTANCE + abs(cdistance());
-			// ___INTERNAL__retVal_ is always null for preconditions (test0), 
-			// but it can be Throwable for postconditions(test1) if the method under evaluation is throwing exceptions,
+			return ___INTERNAL__retVal_ instanceof Throwable ? 0
+					: !condition() ? 0 : isNaN(cdistance()) ? MED_DISTANCE : SMALL_DISTANCE + abs(cdistance());
+			// ___INTERNAL__retVal_ is always null for preconditions (test0),
+			// but it can be Throwable for postconditions(test1) if the method under
+			// evaluation is throwing exceptions,
 			// meaning that the postcondition cannot be evaluated
 		}
 	}
 
 	private abstract class ExceptionDistanceCalculator implements DistanceCalculator {
 		public double calculate() {
-			return !(___INTERNAL__retVal_ instanceof Throwable) ? MED_DISTANCE : currentExceptionCanonicalName().equals(exceptionCanonicalName()) ? 0 : BIG_DISTANCE; 
+			return !(___INTERNAL__retVal_ instanceof Throwable) ? MED_DISTANCE
+					: currentExceptionCanonicalName().equals(exceptionCanonicalName()) ? 0 : BIG_DISTANCE;
 		}
+
 		String currentExceptionCanonicalName() {
 			if (___INTERNAL__retVal_ == null) {
 				return null;
 			}
 			Class<?> classOfretVal_ = ___INTERNAL__retVal_.getClass();
 			try {
-				// Unbox classes that EvoSuite mocked, if any 
+				// Unbox classes that EvoSuite mocked, if any
 				Class<?> class_OverrideMock = loadClassAtRuntime("org.evosuite.runtime.mock.OverrideMock");
-				while (class_OverrideMock.isAssignableFrom(classOfretVal_) &&
-						(classOfretVal_.getCanonicalName().startsWith("shaded.org.evosuite.runtime.mock.") ||
-						classOfretVal_.getCanonicalName().startsWith("org.evosuite.runtime.mock."))) { 
+				while (class_OverrideMock.isAssignableFrom(classOfretVal_)
+						&& (classOfretVal_.getCanonicalName().startsWith("shaded.org.evosuite.runtime.mock.")
+								|| classOfretVal_.getCanonicalName().startsWith("org.evosuite.runtime.mock."))) {
 					classOfretVal_ = classOfretVal_.getSuperclass();
 				}
 			} catch (ClassNotFoundException e) {
-				logOnEvosuiteConsole("this.getClass().getName()" + ": failed to dynamically load class org.evosuite.runtime.mock.OverrideMock: " + e);
+				logOnEvosuiteConsole("this.getClass().getName()"
+						+ ": failed to dynamically load class org.evosuite.runtime.mock.OverrideMock: " + e);
 			}
-			//logOnEvosuiteConsole(this.getClass().getName() + ": " + " canonicalName is " + classOfretVal_.getCanonicalName() + ", orginally was " + ___INTERNAL__retVal_.getClass().getCanonicalName());
+			// logOnEvosuiteConsole(this.getClass().getName() + ": " + " canonicalName is "
+			// + classOfretVal_.getCanonicalName() + ", orginally was " +
+			// ___INTERNAL__retVal_.getClass().getCanonicalName());
 			return classOfretVal_.getCanonicalName();
 		}
+
 		abstract String exceptionCanonicalName();
 	}
 
 	private abstract class NegExceptionDistanceCalculator extends ExceptionDistanceCalculator {
 		public double calculate() {
 			String currentExcpCanonicalName = currentExceptionCanonicalName();
-			double d = ___INTERNAL__retVal_ != null && currentExcpCanonicalName.equals(exceptionCanonicalName()) ? SMALL_DISTANCE : isEvosuiteException(currentExcpCanonicalName) ? BIG_DISTANCE : 0; 
-			//logOnEvosuiteConsole(this.getClass().getName() + ": " + " then distacnce is " + d);
+			double d = ___INTERNAL__retVal_ != null && currentExcpCanonicalName.equals(exceptionCanonicalName())
+					? SMALL_DISTANCE
+					: isEvosuiteException(currentExcpCanonicalName) ? BIG_DISTANCE : 0;
+			// logOnEvosuiteConsole(this.getClass().getName() + ": " + " then distacnce is "
+			// + d);
 			return d;
 		}
+
 		private boolean isEvosuiteException(String canonicalName) {
-			return canonicalName.startsWith("shaded.org.evosuite.runtime.") || canonicalName.startsWith("org.evosuite.runtime.");
+			return canonicalName != null && (canonicalName.startsWith("shaded.org.evosuite.runtime.")
+					|| canonicalName.startsWith("org.evosuite.runtime."));
 		}
 	}
 
@@ -190,23 +222,28 @@ public class EvoSuiteEvaluator_Template {
 
 	private void logDistanceAndParamsOnEvoSuiteConsole(double d, String callerName) {
 		logOnEvosuiteConsole(this.getClass().getName() + ": " + callerName + ": distance is " + d);
-		logOnEvosuiteConsole(this.getClass().getName() + ": " + callerName + ": Retval is " + (___INTERNAL__retVal_ == null ? "null" : ___INTERNAL__retVal_.getClass().getCanonicalName()));
-		logOnEvosuiteConsole(this.getClass().getName() + ": " + callerName + ": Receiver is " + (___INTERNAL__receiverObjectID__ == null ? "null" : ___INTERNAL__receiverObjectID__.getClass().getCanonicalName()));
-		for (Object ___obj: ___INTERNAL__args__) {
-			logOnEvosuiteConsole(this.getClass().getName() + ": " + callerName + ": Param is " + (___obj == null ? "null" : ___obj.getClass().getCanonicalName()));			
+		logOnEvosuiteConsole(this.getClass().getName() + ": " + callerName + ": Retval is "
+				+ (___INTERNAL__retVal_ == null ? "null" : ___INTERNAL__retVal_.getClass().getCanonicalName()));
+		logOnEvosuiteConsole(this.getClass().getName() + ": " + callerName + ": Receiver is "
+				+ (___INTERNAL__receiverObjectID__ == null ? "null"
+						: ___INTERNAL__receiverObjectID__.getClass().getCanonicalName()));
+		for (Object ___obj : ___INTERNAL__args__) {
+			logOnEvosuiteConsole(this.getClass().getName() + ": " + callerName + ": Param is "
+					+ (___obj == null ? "null" : ___obj.getClass().getCanonicalName()));
 		}
 
 	}
 
 	private void logOnEvosuiteConsole(String msg) {
-		//Execute LoggingUtils.getEvoLogger().info(msg);
+		// Execute LoggingUtils.getEvoLogger().info(msg);
 		try {
 			Class<?> class_LoggingUtils = loadClassAtRuntime("org.evosuite.utils.LoggingUtils");
 			Method method_getEvoLogger = class_LoggingUtils.getMethod("getEvoLogger", new Class[] {});
 			Object object_evoLogger = method_getEvoLogger.invoke(null, new Object[] {});
-			Method evoLogger_info = object_evoLogger.getClass().getMethod("info", new Class[] {String.class});
-			evoLogger_info.invoke(object_evoLogger, new Object[] {msg});
-		} catch (ClassNotFoundException | NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			Method evoLogger_info = object_evoLogger.getClass().getMethod("info", new Class[] { String.class });
+			evoLogger_info.invoke(object_evoLogger, new Object[] { msg });
+		} catch (ClassNotFoundException | NoSuchMethodException | SecurityException | IllegalAccessException
+				| IllegalArgumentException | InvocationTargetException e) {
 			throw new RuntimeException(e.getMessage());
 		}
 	}
