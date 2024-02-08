@@ -404,7 +404,7 @@ public class TestGenerator {
 								.getNameAsString().equals(targetMethodName)));
 		callsToTargetMethodTmp.addAll(cu.findAll(ExpressionStmt.class, c -> c.getExpression().isObjectCreationExpr()
 				&& c.getExpression().asObjectCreationExpr().getType().getNameAsString().equals(targetMethodName)));
-		
+
 		List<ExpressionStmt> callsToTargetMethod = new ArrayList<ExpressionStmt>();
 		for (ExpressionStmt es : callsToTargetMethodTmp) {
 			NodeList<Expression> argsMethod = null;
@@ -446,8 +446,8 @@ public class TestGenerator {
 			}
 			if (found)
 				callsToTargetMethod.add(es);
-		}	
-		
+		}
+
 		if (callsToTargetMethod.isEmpty()) {
 			TestGeneratorSummaryData._I().incTestCasesWithoutTargetMehtod();
 			List<ExpressionStmt> check = cu.findAll(ExpressionStmt.class,
@@ -525,8 +525,8 @@ public class TestGenerator {
 				blockStmt.addStatement(failStmt);
 				tryStmt.setTryBlock(blockStmt);
 				CatchClause catchClause = new CatchClause();
-				catchClause.setParameter(
-						new Parameter(StaticJavaParser.parseType(exceptionName), StaticJavaParser.parseSimpleName("_e__")));
+				catchClause.setParameter(new Parameter(StaticJavaParser.parseType(exceptionName),
+						StaticJavaParser.parseSimpleName("_e__")));
 				NodeList<CatchClause> catches = new NodeList<>();
 				catches.add(catchClause);
 				tryStmt.setCatchClauses(catches);
@@ -626,7 +626,8 @@ public class TestGenerator {
 			}
 		}
 		if (condToAssume != null) {
-			Statement assumeStmt = StaticJavaParser.parseStatement("org.junit.Assume.assumeTrue(" + condToAssume + ");");
+			Statement assumeStmt = StaticJavaParser
+					.parseStatement("org.junit.Assume.assumeTrue(" + condToAssume + ");");
 			assumeStmt.setLineComment(comment);
 			insertionPoint.addBefore(assumeStmt, targetCall);
 		}
@@ -668,7 +669,11 @@ public class TestGenerator {
 		NodeList<Expression> args = callExpr.isMethodCallExpr() ? callExpr.asMethodCallExpr().getArguments()
 				: callExpr.asObjectCreationExpr().getArguments();
 		for (Expression arg : args) {
-			ret = ret.replace("args[" + index + "]", /* "((" + type + ") */ arg.toString());
+			if (arg.isCastExpr()) {
+				ret = ret.replace("args[" + index + "]", "(" + arg.toString() + ")");
+			} else {
+				ret = ret.replace("args[" + index + "]", /* "((" + type + ") */ arg.toString());
+			}
 			++index;
 		}
 		return ret;

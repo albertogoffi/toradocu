@@ -248,6 +248,9 @@ public class TestGeneratorValidation {
 						String argMethodTypeString = argMethodType.describe();
 						if (argMethodTypeString.contains("<"))
 							argMethodTypeString = argMethodTypeString.substring(0, argMethodTypeString.indexOf("<"));
+						// Potenzialmente interessante
+						// Reflection.getClass(argMethodTypeString.contains("boolean") ? "bool" :
+						// argMethodTypeString);
 
 						VariableDeclarationExpr argWantedJP = StaticJavaParser
 								.parseVariableDeclarationExpr(argWanted.toString());
@@ -580,7 +583,11 @@ public class TestGeneratorValidation {
 		NodeList<Expression> args = callExpr.isMethodCallExpr() ? callExpr.asMethodCallExpr().getArguments()
 				: callExpr.asObjectCreationExpr().getArguments();
 		for (Expression arg : args) {
-			ret = ret.replace("args[" + index + "]", /* "((" + type + ") */ arg.toString());
+			if (arg.isCastExpr()) {
+				ret = ret.replace("args[" + index + "]", "(" + arg.toString() + ")");
+			} else {
+				ret = ret.replace("args[" + index + "]", /* "((" + type + ") */ arg.toString());
+			}
 			++index;
 		}
 		return ret;
@@ -623,7 +630,7 @@ public class TestGeneratorValidation {
 			classpathTarget += ":" + cp.getPath();
 		}
 		retVal.add("/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java");
-		retVal.add("-Xmx4G");
+		retVal.add("-Xmx16G");
 		// enabled assertions since evosuite is generating failing test cases for them
 		// retVal.add("-ea");
 		retVal.add("-jar");
@@ -631,7 +638,7 @@ public class TestGeneratorValidation {
 		retVal.add("-class");
 		retVal.add(targetClass);
 		retVal.add("-mem");
-		retVal.add("2048");
+		retVal.add("16384");
 		retVal.add("-DCP=" + classpathTarget);
 		retVal.add("-Dassertions=false");
 		retVal.add("-Dsearch_budget=" + configuration.getEvoSuiteBudget()); // configuration.getEvoSuiteBudget()
