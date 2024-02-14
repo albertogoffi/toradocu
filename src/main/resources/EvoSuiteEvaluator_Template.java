@@ -182,7 +182,7 @@ public class EvoSuiteEvaluator_Template {
 			return d;
 		}
 		private boolean isEvosuiteException(String canonicalName) {
-			return canonicalName.startsWith("shaded.org.evosuite.runtime.") || canonicalName.startsWith("org.evosuite.runtime.");
+			return canonicalName != null && (canonicalName.startsWith("shaded.org.evosuite.runtime.") || canonicalName.startsWith("org.evosuite.runtime."));
 		}
 	}
 
