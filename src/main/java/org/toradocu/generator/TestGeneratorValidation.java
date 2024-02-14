@@ -12,7 +12,6 @@ import com.github.javaparser.ast.comments.LineComment;
 import com.github.javaparser.ast.expr.Expression;
 import com.github.javaparser.ast.expr.MethodCallExpr;
 import com.github.javaparser.ast.expr.StringLiteralExpr;
-import com.github.javaparser.ast.expr.VariableDeclarationExpr;
 import com.github.javaparser.ast.stmt.BlockStmt;
 import com.github.javaparser.ast.stmt.CatchClause;
 import com.github.javaparser.ast.stmt.ExpressionStmt;
@@ -20,6 +19,8 @@ import com.github.javaparser.ast.stmt.IfStmt;
 import com.github.javaparser.ast.stmt.Statement;
 import com.github.javaparser.ast.stmt.TryStmt;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
+import com.github.javaparser.resolution.declarations.ResolvedConstructorDeclaration;
+import com.github.javaparser.resolution.declarations.ResolvedMethodDeclaration;
 import com.github.javaparser.resolution.types.ResolvedType;
 import com.github.javaparser.symbolsolver.JavaSymbolSolver;
 import com.github.javaparser.symbolsolver.resolution.typesolvers.CombinedTypeSolver;
@@ -209,82 +210,69 @@ public class TestGeneratorValidation {
 				&& c.getExpression().asObjectCreationExpr().getType().getNameAsString().equals(targetMethodName)));
 		List<ExpressionStmt> callsToTargetMethod = new ArrayList<ExpressionStmt>();
 		for (ExpressionStmt es : callsToTargetMethodTmp) {
+			List<ResolvedType> targetMethodParameters;
 			NodeList<Expression> argsMethod = null;
-			if (es.getExpression().isObjectCreationExpr())
-				argsMethod = es.getExpression().asObjectCreationExpr().getArguments();
-			else if (es.getExpression().isAssignExpr()
-					&& es.getExpression().asAssignExpr().getValue().isObjectCreationExpr()) {
-				argsMethod = es.getExpression().asAssignExpr().getValue().asObjectCreationExpr().getArguments();
-			} else if (es.getExpression().isVariableDeclarationExpr() && es.getExpression().asVariableDeclarationExpr()
-					.getVariable(0).getInitializer().get().isObjectCreationExpr()) {
-				argsMethod = es.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().get()
-						.asObjectCreationExpr().getArguments();
-			} else if (es.getExpression().isMethodCallExpr()) {
-				argsMethod = es.getExpression().asMethodCallExpr().getArguments();
-			} else if (es.getExpression().isAssignExpr()
-					&& es.getExpression().asAssignExpr().getValue().isMethodCallExpr()) {
-				argsMethod = es.getExpression().asAssignExpr().getValue().asMethodCallExpr().getArguments();
-			} else if (es.getExpression().isVariableDeclarationExpr() && es.getExpression().asVariableDeclarationExpr()
-					.getVariable(0).getInitializer().get().isMethodCallExpr()) {
-				argsMethod = es.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().get()
-						.asMethodCallExpr().getArguments();
-			} else {
-				throw new RuntimeException("Unexpected call to target method: " + es);
-			}
-			List<DocumentedParameter> argsWanted = targetMethod.getParameters();
-			boolean found = false;
-			if (argsMethod.size() == argsWanted.size()) {
-				found = false;
-				// TODO:
-				// Il seguente codice non può funzionare in quanto non siamo a conoscenza dei
-				// tipi degli argomenti
-
-				for (int i = 0; i < argsMethod.size(); i++) {
-					found = false;
-					Expression argMethod = argsMethod.get(i);
-					DocumentedParameter argWanted = argsWanted.get(i);
-					try {
-						ResolvedType argMethodType = argMethod.calculateResolvedType();
-						String argMethodTypeString = argMethodType.describe();
-						if (argMethodTypeString.contains("<"))
-							argMethodTypeString = argMethodTypeString.substring(0, argMethodTypeString.indexOf("<"));
-						// Potenzialmente interessante
-						// Reflection.getClass(argMethodTypeString.contains("boolean") ? "bool" :
-						// argMethodTypeString);
-
-						VariableDeclarationExpr argWantedJP = StaticJavaParser
-								.parseVariableDeclarationExpr(argWanted.toString());
-						String argWantedTypeString = argWantedJP.getCommonType().toString();
-						if (argWantedTypeString.contains("<"))
-							argWantedTypeString = argWantedTypeString.substring(0, argWantedTypeString.indexOf("<"));
-
-						/*
-						 * TypeSolver typeSolver = new ReflectionTypeSolver();
-						 * ResolvedReferenceTypeDeclaration argWantedTypeSolved =
-						 * typeSolver.solveType(argWantedType.getCanonicalName()); ReferenceTypeImpl
-						 * referenceTypeImpl = new ReferenceTypeImpl(argWantedTypeSolved, typeSolver);
-						 * argMethodType.isAssignableBy(referenceTypeImpl);
-						 */
-						if (argMethodType.isPrimitive())
-							if (argWantedTypeString.equals(argMethodTypeString)) {
-								found = true;
-							} else {
-								found = false;
-							}
-						else {
-							found = true;
-						}
-					} catch (Exception e) {
-						found = true;
-					}
-					if (!found)
-						break;
+			try {
+				if (es.getExpression().isObjectCreationExpr()) {
+					ResolvedConstructorDeclaration rcd = es.getExpression().asObjectCreationExpr().resolve();
+					targetMethodParameters = rcd.formalParameterTypes();
+					argsMethod = es.getExpression().asObjectCreationExpr().getArguments();
+				} else if (es.getExpression().isAssignExpr()
+						&& es.getExpression().asAssignExpr().getValue().isObjectCreationExpr()) {
+					ResolvedConstructorDeclaration rcd = es.getExpression().asAssignExpr().getValue()
+							.asObjectCreationExpr().resolve();
+					targetMethodParameters = rcd.formalParameterTypes();
+					argsMethod = es.getExpression().asAssignExpr().getValue().asObjectCreationExpr().getArguments();
+				} else if (es.getExpression().isVariableDeclarationExpr() && es.getExpression()
+						.asVariableDeclarationExpr().getVariable(0).getInitializer().get().isObjectCreationExpr()) {
+					ResolvedConstructorDeclaration rcd = es.getExpression().asVariableDeclarationExpr().getVariable(0)
+							.getInitializer().get().asObjectCreationExpr().resolve();
+					targetMethodParameters = rcd.formalParameterTypes();
+					argsMethod = es.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().get()
+							.asObjectCreationExpr().getArguments();
+				} else if (es.getExpression().isMethodCallExpr()) {
+					ResolvedMethodDeclaration rcd = es.getExpression().asMethodCallExpr().resolve();
+					targetMethodParameters = rcd.formalParameterTypes();
+					argsMethod = es.getExpression().asMethodCallExpr().getArguments();
+				} else if (es.getExpression().isAssignExpr()
+						&& es.getExpression().asAssignExpr().getValue().isMethodCallExpr()) {
+					ResolvedMethodDeclaration rcd = es.getExpression().asAssignExpr().getValue().asMethodCallExpr()
+							.resolve();
+					targetMethodParameters = rcd.formalParameterTypes();
+					argsMethod = es.getExpression().asAssignExpr().getValue().asMethodCallExpr().getArguments();
+				} else if (es.getExpression().isVariableDeclarationExpr() && es.getExpression()
+						.asVariableDeclarationExpr().getVariable(0).getInitializer().get().isMethodCallExpr()) {
+					ResolvedMethodDeclaration rcd = es.getExpression().asVariableDeclarationExpr().getVariable(0)
+							.getInitializer().get().asMethodCallExpr().resolve();
+					targetMethodParameters = rcd.formalParameterTypes();
+					argsMethod = es.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().get()
+							.asMethodCallExpr().getArguments();
+				} else {
+					throw new RuntimeException("Unexpected call to target method: " + es);
 				}
+				List<DocumentedParameter> argsWanted = targetMethod.getParameters();
 
-				if (found)
-					callsToTargetMethod.add(es);
+				boolean found = false;
+				if (targetMethodParameters.size() == argsWanted.size()) {
+					for (int i = 0; i < argsMethod.size(); i++) {
+						found = false;
+						ResolvedType argMethod = targetMethodParameters.get(i);
+						DocumentedParameter argWanted = argsWanted.get(i);
+						String argMethodString = argMethod.describe();
+						String argWantedString = argWanted.toString().substring(0,
+								argWanted.toString().indexOf(" " + argWanted.getName()));
+						found = argMethodString.equals(argWantedString);
+						if (!found)
+							break;
+					}
+					if (found)
+						callsToTargetMethod.add(es);
+				}
+			} catch (Exception e) {
+				// TODO This is a temporary fix. We should analyze why the SymbolSolver
+				// sometimes fails in detecting the constructor/method declaration
+				callsToTargetMethod.add(es);
 			}
-
 		}
 
 		for (int i = 0; i < callsToTargetMethod.size(); i++) {
@@ -634,7 +622,8 @@ public class TestGeneratorValidation {
 		// enabled assertions since evosuite is generating failing test cases for them
 		// retVal.add("-ea");
 		retVal.add("-jar");
-		retVal.add("/mnt/Backup/toradocu/lib-evosuite/evosuite-1.2.0.jar");
+		retVal.add(configuration.getEvoSuiteJar());
+		// retVal.add("/mnt/Backup/toradocu/lib-evosuite/evosuite-1.2.0.jar");
 		retVal.add("-class");
 		retVal.add(targetClass);
 		retVal.add("-mem");
