@@ -302,6 +302,120 @@ class Matcher {
     return match;
   }
 
+  
+  private Match OLD_findBestMethodMatch(
+		  DocumentedExecutable method, String predicate, List<CodeElement<?>> sortedCodeElements) {
+	  Match match = null;
+	  CodeElement<?> firstCodeMatch = null;
+	  boolean foundArgMatch = false;
+	  List<String> paramForMatch = new ArrayList<String>();
+	  List<String> paramMatch = new ArrayList<String>();
+	  String[] args = null;
+	  String receiver = "";
+	  java.lang.reflect.Parameter[] myParams = method.getExecutable().getParameters();
+
+	  for (CodeElement<?> currentMatch : sortedCodeElements) {
+		  if (currentMatch instanceof MethodCodeElement) {
+			  args = ((MethodCodeElement) currentMatch).getArgs();
+			  receiver = ((MethodCodeElement) currentMatch).getReceiver();
+		  } else if (currentMatch instanceof StaticMethodCodeElement) {
+			  args = ((StaticMethodCodeElement) currentMatch).getArgs();
+		  } else continue;
+		  // Match is a String: before building it, check if the method has parameters,
+		  // and fill the parenthesis () with the right ones
+		  if (args != null) {
+			  paramMatch = Arrays.asList(args);
+			  int pcount = 0;
+			  for (java.lang.reflect.Parameter p : myParams) {
+				  Type pt = p.getParameterizedType();
+				  if (paramMatch.contains(pt.getTypeName())) {
+					  paramForMatch.add("args[" + pcount + "]");
+					  if (!receiver.equals("args[" + pcount + "]")) {
+						  firstCodeMatch = currentMatch;
+						  foundArgMatch = true;
+					  }
+				  }
+				  pcount++;
+			  }
+		  }
+		  if (foundArgMatch) {
+			  firstCodeMatch = currentMatch;
+			  break;
+		  }
+	  }
+	  if (foundArgMatch && paramForMatch.size() == args.length) {
+		  String exp = firstCodeMatch.getJavaExpression();
+		  if (firstCodeMatch instanceof MethodCodeElement) {
+			  match =
+					  new Match(
+							  exp.substring(0, exp.indexOf("(") + 1),
+							  ((MethodCodeElement) firstCodeMatch).getNullDereferenceCheck());
+		  } else {
+			  match = new Match(exp.substring(0, exp.indexOf("(") + 1), null);
+		  }
+		  for (int j = 0; j < paramForMatch.size() - 1; j++)
+			  match.completeExpression(paramForMatch.get(j) + ",");
+		  match.completeExpression(paramForMatch.get(paramForMatch.size() - 1) + ")");
+	  } else if (args
+			  != null) { // the method is supposed to take params but we haven't find a match: does it
+		  // have to take null?
+		  // TODO check method match number of arguments!
+		  final java.util.regex.Matcher nullPattern =
+				  Pattern.compile("(has|have|contains?) null").matcher(predicate);
+
+		  final java.util.regex.Matcher equalPattern = // or is it the equals() method?
+				  Pattern.compile("(is|are) equals?").matcher(predicate);
+
+		  firstCodeMatch = sortedCodeElements.stream().findFirst().get();
+
+		  if (nullPattern.find()) {
+			  String exp = firstCodeMatch.getJavaExpression();
+			  match =
+					  new Match(
+							  exp.substring(0, exp.indexOf("(") + 1) + "null" + ")",
+							  ((MethodCodeElement) firstCodeMatch).getNullDereferenceCheck());
+			  foundArgMatch = true;
+		  } else if (equalPattern.find()) {
+			  // the equal method can be invoked only from an Object to an Object of the same type
+			  receiver = receiver.replace("[", "").replace("]", "").replace("s", "");
+			  for (int i = 0; i < myParams.length && !foundArgMatch; i++) {
+				  Parameter p = myParams[i];
+				  if (p.getName().equals(receiver)) { // found the receiver, who is the Object of same type?
+					  String type = p.getParameterizedType().getTypeName();
+					  for (int j = 0; j < myParams.length; j++) {
+						  if (j != i && myParams[j].getParameterizedType().getTypeName().equals(type)) {
+							  String exp = firstCodeMatch.getJavaExpression();
+							  match =
+									  new Match(
+											  exp.substring(0, exp.indexOf("(") + 1) + "args[" + j + "]" + ")",
+											  ((MethodCodeElement) firstCodeMatch).getNullDereferenceCheck());
+							  foundArgMatch = true;
+							  break;
+						  }
+					  }
+				  }
+			  }
+		  }
+	  }
+	  if (!foundArgMatch) {
+		  // No match is the absolute best: just pick the first one, but only if it takes no arguments!
+		  firstCodeMatch = sortedCodeElements.stream().findFirst().get();
+		  if ((firstCodeMatch instanceof MethodCodeElement
+				  && ((MethodCodeElement) firstCodeMatch).getArgs() == null)) {
+			  match =
+					  new Match(
+							  firstCodeMatch.getJavaExpression(),
+							  ((MethodCodeElement) firstCodeMatch).getNullDereferenceCheck());
+		  } else if (firstCodeMatch instanceof GeneralCodeElement) {
+			  match =
+					  new Match(
+							  firstCodeMatch.getJavaExpression(),
+							  ((GeneralCodeElement) firstCodeMatch).getNullDereferenceCheck());
+		  }
+	  }
+	  return match;
+  }
+  
   /**
    * Run classic syntactic match based on edit distance
    *
@@ -339,12 +453,13 @@ class Matcher {
     CodeElement<?> firstCodeMatch = null;
     boolean foundArgMatch = false;
     List<String> paramForMatch = new ArrayList<String>();
-    List<String> paramMatch = new ArrayList<String>();
     String[] args = null;
     String receiver = "";
     java.lang.reflect.Parameter[] myParams = method.getExecutable().getParameters();
 
     for (CodeElement<?> currentMatch : sortedCodeElements) {
+    	foundArgMatch = false;
+        paramForMatch.clear();
       if (currentMatch instanceof MethodCodeElement) {
         args = ((MethodCodeElement) currentMatch).getArgs();
         receiver = ((MethodCodeElement) currentMatch).getReceiver();
@@ -353,9 +468,56 @@ class Matcher {
       } else continue;
       // Match is a String: before building it, check if the method has parameters,
       // and fill the parenthesis () with the right ones
-      if (args != null) {
-        paramMatch = Arrays.asList(args);
-        int pcount = 0;
+      foundArgMatch = true;
+      if (args != null) {    	  
+          foundArgMatch = false;
+    	  //List<String> paramMatch = Arrays.asList(args);
+
+          List<String> candidateNames = Arrays.asList(predicate.split(" "));
+    	  int numNullSeenAndNotUsed = 0;
+    	  for (String candidateName: candidateNames) {
+    		  if (candidateName.contentEquals("null")) {
+    			  ++numNullSeenAndNotUsed;
+    		  }
+    	  }
+          for (String argType: args) {
+        	  // Search a match for the arg: matches with a keyword in the predicate and has same type as arg 
+        	  boolean foundMatchingKeyword = false;
+        	  for (String candidateName: candidateNames) {
+        		  Set<CodeElement<?>> candidatesMatches = this.subjectMatch(candidateName, method);
+        		  for (CodeElement<?> candidateM: candidatesMatches) {
+        			  if (candidateM.equals(currentMatch) || candidateM.equals(receiver)) {
+        				  continue;
+        			  }
+        			  Type retType;
+        			  if (candidateM instanceof MethodCodeElement) {
+        				  retType = ((MethodCodeElement) candidateM).getJavaCodeElement().getGenericReturnType();
+        			  } else if (candidateM instanceof StaticMethodCodeElement) {
+        				  retType = ((StaticMethodCodeElement) candidateM).getJavaCodeElement().getGenericReturnType();
+        			  } else if (candidateM instanceof ParameterCodeElement) {
+        				  retType = ((ParameterCodeElement) candidateM).getJavaCodeElement().getParameterizedType();
+        			  } else {
+        				  continue;
+        			  }
+        			  if (argType.equals(retType.getTypeName())) {
+        				  paramForMatch.add(candidateM.buildJavaExpression());
+        				  foundMatchingKeyword = true;
+        				  break;
+        			  }
+        		  }
+        		  if (foundMatchingKeyword) {
+        			  break;
+        		  }
+        	  }
+        	  if (!foundMatchingKeyword && numNullSeenAndNotUsed > 0) {
+        		  --numNullSeenAndNotUsed;
+        		  paramForMatch.add("null");
+        	  }
+          }
+          
+          foundArgMatch = (paramForMatch.size() == args.length);
+          
+        /*int pcount = 0;
         for (java.lang.reflect.Parameter p : myParams) {
           Type pt = p.getParameterizedType();
           if (paramMatch.contains(pt.getTypeName())) {
@@ -366,26 +528,33 @@ class Matcher {
             }
           }
           pcount++;
-        }
+        }*/
       }
+
       if (foundArgMatch) {
         firstCodeMatch = currentMatch;
         break;
       }
     }
-    if (foundArgMatch && paramForMatch.size() == args.length) {
+        
+    if (foundArgMatch) {
       String exp = firstCodeMatch.getJavaExpression();
       if (firstCodeMatch instanceof MethodCodeElement) {
         match =
             new Match(
-                exp.substring(0, exp.indexOf("(") + 1),
+                exp.substring(0, exp.lastIndexOf("(") + 1),
                 ((MethodCodeElement) firstCodeMatch).getNullDereferenceCheck());
       } else {
-        match = new Match(exp.substring(0, exp.indexOf("(") + 1), null);
+        match = new Match(exp.substring(0, exp.lastIndexOf("(") + 1), null);
       }
-      for (int j = 0; j < paramForMatch.size() - 1; j++)
-        match.completeExpression(paramForMatch.get(j) + ",");
-      match.completeExpression(paramForMatch.get(paramForMatch.size() - 1) + ")");
+      for (int j = 0; j < paramForMatch.size(); j++) {
+    	  if (j == paramForMatch.size() - 1) {
+    	      match.completeExpression(paramForMatch.get(paramForMatch.size() - 1));    		  
+    	  } else {
+    		  match.completeExpression(paramForMatch.get(j) + ",");
+    	  }
+      }
+	  match.completeExpression(")");
     } else if (args
         != null) { // the method is supposed to take params but we haven't find a match: does it
       // have to take null?
@@ -443,6 +612,22 @@ class Matcher {
                 ((GeneralCodeElement) firstCodeMatch).getNullDereferenceCheck());
       }
     }
+    
+    Match old_match = OLD_findBestMethodMatch(method, predicate, sortedCodeElements);
+    //COMPARISON:
+    if (old_match != null && match != null) {
+    	if (!old_match.getBaseExpression().equals(match.getBaseExpression())) {
+    	    System.out.println("[DEBUG: COMPARISON WARNING] " + method.getSignature() + "::" + predicate + "...");
+        	System.out.println("[DEBUG: COMPARISON WARNING] OLD DIFFERS. OLD: " + old_match.getBaseExpression() + " , NEW: " + match.getBaseExpression());
+    	}
+    } else if (old_match != null) {
+        System.out.println("[DEBUG: COMPARISON WARNING] " + method.getSignature() + "::" + predicate + "...");
+    	System.out.println("[DEBUG: COMPARISON WARNING] ONLY OLD: " + old_match.getBaseExpression());
+    } else if (match != null) {
+        System.out.println("[DEBUG: COMPARISON WARNING] " + method.getSignature() + "::" + predicate + "...");
+    	System.out.println("[DEBUG: COMPARISON WARNING] ONLY NEW: " + match.getBaseExpression());    	
+    }
+
     return match;
   }
 
