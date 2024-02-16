@@ -1,4 +1,4 @@
-package org.toradocu.testgen;
+package org.toradocu.temp;
 
 import org.junit.Test;
 import org.toradocu.testlib.TestgenTest;

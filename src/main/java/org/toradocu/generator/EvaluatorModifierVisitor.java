@@ -1,6 +1,7 @@
 package org.toradocu.generator;
 
 import com.github.javaparser.JavaParser;
+import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.expr.BinaryExpr;
@@ -79,7 +80,7 @@ public class EvaluatorModifierVisitor extends ModifierVisitor<Object> {
 				String type = "java.lang.Object";
 				String name = "___receiver__object___";
 				methodDeclaration.addParameter(type, name);
-				Statement stmt = JavaParser.parseStatement(RECEIVEROBJECT_FIELD + " = " + name + ";");
+				Statement stmt = StaticJavaParser.parseStatement(RECEIVEROBJECT_FIELD + " = " + name + ";");
 				methodDeclaration.getBody().ifPresent(blockStmt -> blockStmt.addStatement(0, stmt));
 			}
 
@@ -91,10 +92,10 @@ public class EvaluatorModifierVisitor extends ModifierVisitor<Object> {
 				methodDeclaration.addParameter(type, name);
 				allNames += (allNames.isEmpty() ? "" : ", ") + name;
 			}
-			Statement stmt = JavaParser.parseStatement(ARGS_FIELD + " = new Object[] {" + allNames + "};");
+			Statement stmt = StaticJavaParser.parseStatement(ARGS_FIELD + " = new Object[] {" + allNames + "};");
 			methodDeclaration.getBody().ifPresent(blockStmt -> blockStmt.addStatement(0, stmt));
 		} else if (methodName.equals("toString")) { 
-			Statement stmt = JavaParser.parseStatement("s += \"" + 
+			Statement stmt = StaticJavaParser.parseStatement("s += \"" + 
 					(instrumentationData.preconds.length > 0 ? instrumentationData.preconds[0] : "true") + " ---> " +
 					(instrumentationData.postconds.length > 0 ? instrumentationData.postconds[0] : "true") + "\";");
 			methodDeclaration.getBody().ifPresent(blockStmt -> blockStmt.addStatement(1, stmt));			
@@ -109,17 +110,17 @@ public class EvaluatorModifierVisitor extends ModifierVisitor<Object> {
 				"        return \"" + exceptionCanonicalName + "\";\n" + 
 				"    }\n" + 
 				"});\n";  
-		methodDeclaration.getBody().ifPresent(blockStmt -> blockStmt.addStatement(1, JavaParser.parseStatement(code)));
+		methodDeclaration.getBody().ifPresent(blockStmt -> blockStmt.addStatement(1, StaticJavaParser.parseStatement(code)));
 	}
 
 	private void addConditionDistanceCalculators(MethodDeclaration methodDeclaration, DocumentedExecutable documentedExecutable, String[] conds, boolean lookForFailure) {
 		if (lookForFailure) {
 			String code = "DistanceAlgo algo = computeDistanceWithDisjunctiveAlgo();";
-			methodDeclaration.getBody().ifPresent(blockStmt -> blockStmt.replace(blockStmt.getStatement(0), JavaParser.parseStatement(code)));			
+			methodDeclaration.getBody().ifPresent(blockStmt -> blockStmt.replace(blockStmt.getStatement(0), StaticJavaParser.parseStatement(code)));			
 		}
 		for (int i = 0; i < conds.length; ++i) {
 			String cond = addCasting(conds[i], documentedExecutable);
-			Expression condExpr = JavaParser.parseExpression(cond);
+			Expression condExpr = StaticJavaParser.parseExpression(cond);
 			Expression condDistance = turnConditionToConditionDistance(condExpr, false);
 			String formattedCond = condExpr.toString().
 					replace("receiverObjectID", RECEIVEROBJECT_FIELD).
@@ -138,7 +139,7 @@ public class EvaluatorModifierVisitor extends ModifierVisitor<Object> {
 					"        return " + formattedCondDistance + ";\n" +
 					"    }\n" + 
 					"});\n";  
-			methodDeclaration.getBody().ifPresent(blockStmt -> blockStmt.addStatement(1, JavaParser.parseStatement(code)));
+			methodDeclaration.getBody().ifPresent(blockStmt -> blockStmt.addStatement(1, StaticJavaParser.parseStatement(code)));
 		}
 	}
 
