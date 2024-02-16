@@ -13,6 +13,9 @@ import org.toradocu.conf.Configuration;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.translator.semantic.SemanticMatcher;
 
+import edu.stanford.nlp.ling.IndexedWord;
+import edu.stanford.nlp.semgraph.SemanticGraph;
+
 /**
  * The {@code Matcher} class translates subjects and predicates in Javadoc comments to Java
  * expressions containing Java code elements.
@@ -58,7 +61,34 @@ class Matcher {
     subject = subject.trim();
 
     // Filter and return the CodeElements whose name is similar to subject.
-    return filterMatchingCodeElements(subject, codeElements);
+    Set<CodeElement<?>> matchingCodeElements = filterMatchingCodeElements(subject, codeElements);
+    // If some CodeElement is a method that requires parameters, 
+    //    try to instantiate the parameters, or remove the CodeElement otherwise
+    Set<CodeElement<?>> candidateMatchings = new HashSet<>(matchingCodeElements);
+    for (CodeElement<?> codeElement: candidateMatchings) {
+        String[] args = null;
+		if (codeElement instanceof MethodCodeElement) {
+            args = ((MethodCodeElement) codeElement).getArgs();
+		} else if (codeElement instanceof StaticMethodCodeElement) {
+            args = ((StaticMethodCodeElement) codeElement).getArgs();
+		} else {
+			continue; //only methods can require parameters, keep this CodeElement as is
+		}
+		if (args == null || args.length == 0) {
+			continue; //no parameters needed, keep this CodeElement as is
+		}
+    	String[] instantiatedArgs = possiblyAssignArgsWithParameters(args, method);
+    	if (instantiatedArgs != null) {
+    		if (codeElement instanceof MethodCodeElement) {
+                ((MethodCodeElement) codeElement).setParameters(Arrays.asList(instantiatedArgs));
+    		} else if (codeElement instanceof StaticMethodCodeElement) {
+                ((StaticMethodCodeElement) codeElement).setParameters(Arrays.asList(instantiatedArgs));
+    		}
+    	} else {//parameters could not be instantiated
+    		matchingCodeElements.remove(codeElement);
+    	}
+    }
+    return matchingCodeElements;
   }
 
   /**
@@ -120,7 +150,7 @@ class Matcher {
       DocumentedExecutable method,
       CodeElement<?> subject,
       Proposition proposition,
-      String comment) {
+      String comment, SemanticGraph sg) {
 
     String predicate = proposition.getPredicate();
     // Special case to handle predicates about arrays' length. We need a more general solution.
@@ -175,7 +205,7 @@ class Matcher {
         match.setBaseExpression(subject.getJavaExpression() + match.getBaseExpression());
       }
     } else {
-      match = codeElementsMatch(method, subject, proposition, comment);
+      match = codeElementsMatch(method, subject, proposition, comment, sg);
       if (match == null
           || !subject.isCompatibleWith(method.getDeclaringClass(), match.getBaseExpression())) {
         return null;
@@ -207,7 +237,7 @@ class Matcher {
       DocumentedExecutable method,
       CodeElement<?> subject,
       Proposition proposition,
-      String comment) {
+      String comment, SemanticGraph sg) {
     Set<CodeElement<?>> codeElements;
     String predicate = proposition.getPredicate();
 
@@ -271,8 +301,13 @@ class Matcher {
             .collect(Collectors.toSet());
 
     List<CodeElement<?>> sortedMethodList = new ArrayList<CodeElement<?>>(codeElements);
+    
+    List<String> wordsForParameterMatching = relevantWords(sg.vertexListSorted());
+    List<String> wordsInSubject = relevantWords(proposition.getSubject().getSubjectWords());
+    List<String> wordsForParameterMatching_noSubject = new ArrayList<>(wordsForParameterMatching);
+    wordsForParameterMatching_noSubject.removeAll(wordsInSubject);
     // Try the classic syntactic match first of all
-    Match match = syntacticMatch(predicate, codeElements, method);
+    Match match = syntacticMatch(predicate, codeElements, method, wordsForParameterMatching_noSubject);
     if (match == null && SemanticMatcher.isEnabled()) {
       // When the syntactic match fails, try semantic if enabled
       try {
@@ -293,7 +328,9 @@ class Matcher {
           if (semanticMethodList.size() > 5) {
             semanticMethodList = semanticMethodList.subList(0, 4);
           }
-          match = findBestMethodMatch(method, predicate, semanticMethodList);
+          // NB: As this is a semantic match, also the subject can be a parameter for the predicate 
+          // in the call below. E.g., if the sentence is in passive form
+          match = findBestMethodMatch(method, predicate, semanticMethodList, wordsForParameterMatching);
         }
       } catch (Exception e) {
         e.printStackTrace();
@@ -303,7 +340,24 @@ class Matcher {
   }
 
   
-  private Match OLD_findBestMethodMatch(
+  private List<String> relevantWords(List<IndexedWord> wordList) {
+	  ArrayList<String> ret = new ArrayList<>();
+	  for (IndexedWord word: wordList) {
+		  String tag = word.tag();
+		  String w = word.word();
+		  if (tag.startsWith("NN") || 
+				  tag.startsWith("WP") ||
+				  tag.startsWith("JJ") ||
+				  tag.startsWith("PR") ||
+				  tag.startsWith("FW") ||
+				  tag.startsWith("SYM")) {
+			  ret.add(w);
+		  }
+	  }
+	  return ret;
+  }
+
+private Match OLD_findBestMethodMatch(
 		  DocumentedExecutable method, String predicate, List<CodeElement<?>> sortedCodeElements) {
 	  Match match = null;
 	  CodeElement<?> firstCodeMatch = null;
@@ -422,10 +476,11 @@ class Matcher {
    * @param predicate predicate to match
    * @param codeElements list of candidate code elements to match
    * @param method the {@code DocumentedExecutable} the predicate belongs to
+ * @param wordsForParameterMatching 
    * @return the best matching code element according to the edit distance, null if none found
    */
   private Match syntacticMatch(
-      String predicate, Set<CodeElement<?>> codeElements, DocumentedExecutable method) {
+      String predicate, Set<CodeElement<?>> codeElements, DocumentedExecutable method, List<String> wordsForParameterMatching) {
     List<CodeElement<?>> sortedMethodList;
     sortedMethodList = new ArrayList<>(filterMatchingCodeElements(predicate, codeElements));
     if (!sortedMethodList.isEmpty())
@@ -433,7 +488,7 @@ class Matcher {
     if (sortedMethodList.isEmpty()) {
       return null;
     } else {
-      return findBestMethodMatch(method, predicate, sortedMethodList);
+      return findBestMethodMatch(method, predicate, sortedMethodList, wordsForParameterMatching);
     }
   }
 
@@ -445,10 +500,11 @@ class Matcher {
    * @param method the {@code DocumentedExecutable} the predicate is referring to
    * @param predicate the String predicate to match
    * @param sortedCodeElements sorted list of matching method {@code CodeElement}s
+ * @param wordsForParameterMatching 
    * @return object representation of the best match found
    */
   private Match findBestMethodMatch(
-      DocumentedExecutable method, String predicate, List<CodeElement<?>> sortedCodeElements) {
+      DocumentedExecutable method, String predicate, List<CodeElement<?>> sortedCodeElements, List<String> wordsForParameterMatching) {
     Match match = null;
     CodeElement<?> firstCodeMatch = null;
     boolean foundArgMatch = false;
@@ -473,34 +529,37 @@ class Matcher {
           foundArgMatch = false;
     	  //List<String> paramMatch = Arrays.asList(args);
 
-          List<String> candidateNames = Arrays.asList(predicate.split(" "));
+          List<String> candidateKeywords = new ArrayList<>(wordsForParameterMatching);
     	  int numNullSeenAndNotUsed = 0;
-    	  for (String candidateName: candidateNames) {
+    	  for (int i = 0; i < wordsForParameterMatching.size(); ++i) {
+    		  String candidateName = wordsForParameterMatching.get(i);
     		  if (candidateName.contentEquals("null")) {
+    			  candidateKeywords.remove(i - numNullSeenAndNotUsed);
     			  ++numNullSeenAndNotUsed;
     		  }
     	  }
           for (String argType: args) {
         	  // Search a match for the arg: matches with a keyword in the predicate and has same type as arg 
         	  boolean foundMatchingKeyword = false;
-        	  for (String candidateName: candidateNames) {
+        	  for (String candidateName: candidateKeywords) { // check match for each keyword
         		  Set<CodeElement<?>> candidatesMatches = this.subjectMatch(candidateName, method);
-        		  for (CodeElement<?> candidateM: candidatesMatches) {
+        		  for (CodeElement<?> candidateM: candidatesMatches) { 
         			  if (candidateM.equals(currentMatch) || candidateM.equals(receiver)) {
         				  continue;
         			  }
-        			  Type retType;
+        			  Type candidateRetType;
         			  if (candidateM instanceof MethodCodeElement) {
-        				  retType = ((MethodCodeElement) candidateM).getJavaCodeElement().getGenericReturnType();
+        				  candidateRetType = ((MethodCodeElement) candidateM).getJavaCodeElement().getGenericReturnType();
         			  } else if (candidateM instanceof StaticMethodCodeElement) {
-        				  retType = ((StaticMethodCodeElement) candidateM).getJavaCodeElement().getGenericReturnType();
+        				  candidateRetType = ((StaticMethodCodeElement) candidateM).getJavaCodeElement().getGenericReturnType();
         			  } else if (candidateM instanceof ParameterCodeElement) {
-        				  retType = ((ParameterCodeElement) candidateM).getJavaCodeElement().getParameterizedType();
+        				  candidateRetType = ((ParameterCodeElement) candidateM).getJavaCodeElement().getParameterizedType();
         			  } else {
         				  continue;
         			  }
-        			  if (argType.equals(retType.getTypeName())) {
-        				  paramForMatch.add(candidateM.buildJavaExpression());
+        			  if (argType.equals(candidateRetType.getTypeName())) {
+        				  String expr = candidateM.buildJavaExpression();
+        				  paramForMatch.add(expr);
         				  foundMatchingKeyword = true;
         				  break;
         			  }
@@ -617,7 +676,7 @@ class Matcher {
     //COMPARISON:
     if (old_match != null && match != null) {
     	if (!old_match.getBaseExpression().equals(match.getBaseExpression())) {
-    	    System.out.println("[DEBUG: COMPARISON WARNING] " + method.getSignature() + "::" + predicate + "...");
+    	    System.out.println("[DEBUG: COMPARISON WARNING] " + method.getDeclaringClass() + "." + method.getSignature() + "::" + predicate + "...");
         	System.out.println("[DEBUG: COMPARISON WARNING] OLD DIFFERS. OLD: " + old_match.getBaseExpression() + " , NEW: " + match.getBaseExpression());
     	}
     } else if (old_match != null) {
@@ -631,7 +690,37 @@ class Matcher {
     return match;
   }
 
-  /**
+  private String[] possiblyAssignArgsWithParameters(String[] candidateArgs, DocumentedExecutable method) {
+	  java.lang.reflect.Parameter[] params = method.getExecutable().getParameters();
+	  String[] assignedArgs = null;
+	  if (candidateArgs != null) {
+		  assignedArgs = new String[candidateArgs.length];
+		  HashSet<Integer> usedParams = new HashSet<>();
+		  for (int i = 0; i < candidateArgs.length; ++i) {	
+			  String candidateA = candidateArgs[i];
+			  boolean foundMatch = false;
+			  for (int j = 0; j < params.length; ++j) {
+				  if (usedParams.contains(j)) {
+					  continue;
+				  }
+				  java.lang.reflect.Parameter p = params[j];
+				  Type pt = p.getParameterizedType();
+				  if (candidateA.equals(pt.getTypeName())) {
+					  assignedArgs[i] = "args[" + j + "]";
+					  foundMatch = true;
+					  usedParams.add(j);
+					  break;
+				  }
+			  }
+			  if (!foundMatch) {
+				  return null; //we need a match for all args, but did not found any for at least an arg
+			  }
+		  }
+	  }
+	  return assignedArgs;
+}
+
+/**
    * Extracts and returns all the boolean methods of {@code type}, including methods that take as
    * parameter {@code parameterType}.
    *

@@ -103,7 +103,14 @@ public class MethodCodeElement extends CodeElement<Method> {
   protected String buildJavaExpression() {
     StringJoiner paramsJoiner = new StringJoiner(", ", "(", ")");
     if (args != null) {
-      Arrays.stream(args).forEach(paramsJoiner::add);
+      //Arrays.stream(args).forEach(paramsJoiner::add);
+    	for (int i = 0; i < args.length; ++i) {
+    		if (parameters != null && parameters.length > i && parameters[i] != null) {
+    			paramsJoiner.add(parameters[i]);
+    		} else {
+    			paramsJoiner.add(args[i]);    			
+    		}
+    	}
       return receiver + "." + getJavaCodeElement().getName() + paramsJoiner;
     } else return receiver + "." + getJavaCodeElement().getName() + "()";
   }

@@ -9,7 +9,6 @@ import java.util.List;
  * Java conditions.
  */
 public class StaticMethodCodeElement extends CodeElement<Method> {
-
   /**
    * Actual parameter values used to build the Java expression corresponding to the invocation of
    * this static method
@@ -79,13 +78,22 @@ public class StaticMethodCodeElement extends CodeElement<Method> {
   protected String buildJavaExpression() {
     final Method method = getJavaCodeElement();
     String javaExpression = method.getDeclaringClass().getName() + "." + method.getName() + "(";
-
-    for (String parameter : parameters) {
+    if (args != null) {
+    	//Arrays.stream(args).forEach(paramsJoiner::add);
+    	for (int i = 0; i < args.length; ++i) {
+    		if (parameters != null && parameters.length > i && parameters[0] != null) {
+    			javaExpression += parameters[i];
+    		} else {
+    			javaExpression += args[i];    			
+    		}
+    	}
+    }
+    /*for (String parameter : parameters) {
       javaExpression += parameter + ", ";
     }
     if (javaExpression.endsWith(", ")) {
       javaExpression = javaExpression.substring(0, javaExpression.length() - 2);
-    }
+    }*/
     return javaExpression + ")";
   }
 }

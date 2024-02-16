@@ -4,6 +4,9 @@ import java.util.*;
 import org.toradocu.extractor.BlockTag;
 import org.toradocu.extractor.DocumentedExecutable;
 
+import edu.stanford.nlp.ling.IndexedWord;
+import edu.stanford.nlp.semgraph.SemanticGraph;
+
 /**
  * The {@code BasicTranslator} class holds the {@code translate()} methods for {@code BlockTag} of
  * kind Param and Throws, since the translation process needed for this two tags is the same.
@@ -83,6 +86,8 @@ public class BasicTranslator {
   public static void translate(
       PropositionSeries propositionSeries, DocumentedExecutable method, String comment) {
     Matcher matcher = new Matcher();
+    SemanticGraph sg = propositionSeries.getSemanticGraph();
+    Collection<IndexedWord> s = sg.vertexListSorted();
     for (Proposition p : propositionSeries.getPropositions()) {
       Set<CodeElement<?>> subjectMatches;
       subjectMatches = matcher.subjectMatch(p.getSubject().getSubject(), method);
@@ -103,7 +108,7 @@ public class BasicTranslator {
       // element.
       Map<CodeElement<?>, String> translations = new LinkedHashMap<>();
       for (CodeElement<?> subjectMatch : matchingCodeElements) {
-        String currentTranslation = matcher.predicateMatch(method, subjectMatch, p, comment);
+        String currentTranslation = matcher.predicateMatch(method, subjectMatch, p, comment, sg);
         if (currentTranslation == null) {
           //          ConditionTranslator.log.trace("Failed predicate translation for: " + p);
           continue;

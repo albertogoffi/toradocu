@@ -526,7 +526,7 @@ public class ReturnTranslator {
                         method,
                         new GeneralCodeElement(Configuration.RETURN_VALUE, null),
                         p,
-                        comment);
+                        comment, sg);
             if (predicateMatch != null) {
               break;
             }
