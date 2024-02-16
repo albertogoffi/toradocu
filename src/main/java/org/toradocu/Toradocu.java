@@ -196,9 +196,8 @@ public class Toradocu {
 				log.info("** Starting test generation...");
 				try {
 					TestGenerator.createTests(specifications);
-					// aggiungere qui invocazione ad Evosuite per generazione esterna seguita da
-					// invocazione a metodo per modifica casi di test per la valutazione
 					log.info("** Test generation completed");
+					
 					log.info("** Starting test generation for validation...");
 					TestGeneratorValidation.createTests(specifications);
 					log.info("** Test generation for validation completed");

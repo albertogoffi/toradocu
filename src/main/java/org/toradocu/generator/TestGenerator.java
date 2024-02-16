@@ -799,7 +799,7 @@ public class TestGenerator {
 		for (URL cp : configuration.classDirs) {
 			classpathTarget += ":" + cp.getPath();
 		}
-		retVal.add("/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/bin/java");
+		retVal.add("/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java");
 		retVal.add("-Xmx4G");
 		retVal.add("-jar");
 		retVal.add(configuration.getEvoSuiteJar());

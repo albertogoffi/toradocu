@@ -4,12 +4,15 @@ import static org.toradocu.Toradocu.configuration;
 
 import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.Modifier;
 import com.github.javaparser.ast.Modifier.Keyword;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
+import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.comments.LineComment;
 import com.github.javaparser.ast.expr.Expression;
+import com.github.javaparser.ast.expr.MarkerAnnotationExpr;
 import com.github.javaparser.ast.expr.MethodCallExpr;
 import com.github.javaparser.ast.expr.StringLiteralExpr;
 import com.github.javaparser.ast.stmt.BlockStmt;
@@ -159,26 +162,229 @@ public class TestGeneratorValidation {
 			throw new RuntimeException("Unexpected test fail structure");
 		else {
 			ClassOrInterfaceDeclaration clax = claxes.get(0);
-			ClassOrInterfaceType t = StaticJavaParser.parseClassOrInterfaceType("java.util.HashSet<String>");
-			Expression e = StaticJavaParser.parseExpression("new java.util.HashSet<String>()");
-			clax.addFieldWithInitializer(t, "guard_lta", e, Keyword.PUBLIC);
+			ClassOrInterfaceType uniqueGuardIdsType = StaticJavaParser
+					.parseClassOrInterfaceType("java.util.HashSet<String>");
+			Expression uniqueGuardIdsIdsInit = StaticJavaParser.parseExpression("new java.util.HashSet<String>()");
+			clax.addFieldWithInitializer(uniqueGuardIdsType, "uniqueGuardIds_lta", uniqueGuardIdsIdsInit,
+					Keyword.PUBLIC);
+
+			ClassOrInterfaceType globalGuardsIdsType = StaticJavaParser
+					.parseClassOrInterfaceType("java.util.HashMap<String, String>");
+			Expression globalGuardsIdsInit = StaticJavaParser
+					.parseExpression("new java.util.HashMap<String, String>()");
+			clax.addFieldWithInitializer(globalGuardsIdsType, "globalGuardsIds_lta", globalGuardsIdsInit,
+					Keyword.PUBLIC, Keyword.STATIC);
+			MethodDeclaration md = clax.addMethod("init", Modifier.Keyword.PUBLIC, Modifier.Keyword.STATIC);
+			md.setType(new com.github.javaparser.ast.type.VoidType());
+			md.addAnnotation(new MarkerAnnotationExpr("org.junit.BeforeClass"));
+			BlockStmt bs = md.createBody();
+			int identifier = 0;
+			int specificationCounter = 0;
+			for (DocumentedExecutable targetMethod : allSpecs.keySet()) {
+				OperationSpecification os = allSpecs.get(targetMethod);
+				if (os.getPostSpecifications().size() != 0 || os.getThrowsSpecifications().size() != 0) {
+					List<ExpressionStmt> methodCallsToEnrich = identifyMethodCallsToEnrich(cu, targetMethod);
+					ArrayList<Specification> targetSpecs = new ArrayList<>();
+					targetSpecs.addAll(os.getThrowsSpecifications());
+					targetSpecs.addAll(os.getPostSpecifications());
+					for (Specification spec : targetSpecs) {
+						if (methodCallsToEnrich.size() != 0) {
+							bs.addStatement("globalGuardsIds_lta.put(\"" + specificationCounter + "\",\"present\");");
+							identifier = enrichTestWithOracle2(spec, targetMethod, methodCallsToEnrich, allSpecs,
+									identifier, specificationCounter);
+						} else {
+							bs.addStatement(
+									"globalGuardsIds_lta.put(\"" + specificationCounter + "\",\"not-present\");");
+						}
+						specificationCounter++;
+					}
+				}
+			}
+			// write out the enriched test case
+			try (FileOutputStream output = new FileOutputStream(currentTestCase)) {
+				output.write(cu.toString().getBytes());
+			} catch (IOException e) {
+				log.error("Error while writing the enriched test case to file: " + currentTestCase, e);
+			}
 		}
-		int identifier = 0;
-		for (DocumentedExecutable de : allSpecs.keySet()) {
-			OperationSpecification os = allSpecs.get(de);
-			identifier = enrichTestWithOracle(cu, testsDir, testName, de, os, allSpecs, identifier);
+	}
+
+	private static List<ExpressionStmt> identifyMethodCallsToEnrich(CompilationUnit cu,
+			DocumentedExecutable targetMethod) {
+		String targetMethodName = targetMethod.getName().substring(targetMethod.getName().lastIndexOf('.') + 1);
+		List<ExpressionStmt> callsToTargetMethodTmp = cu.findAll(ExpressionStmt.class,
+				c -> c.getExpression().isVariableDeclarationExpr()
+						&& c.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().isPresent()
+						&& c.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().get()
+								.isMethodCallExpr()
+						&& c.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().get()
+								.asMethodCallExpr().getNameAsString().equals(targetMethodName));
+		callsToTargetMethodTmp.addAll(cu.findAll(ExpressionStmt.class,
+				c -> c.getExpression().isAssignExpr() && c.getExpression().asAssignExpr().getValue().isMethodCallExpr()
+						&& c.getExpression().asAssignExpr().getValue().asMethodCallExpr().getNameAsString()
+								.equals(targetMethodName)));
+		callsToTargetMethodTmp.addAll(cu.findAll(ExpressionStmt.class, c -> c.getExpression().isMethodCallExpr()
+				&& c.getExpression().asMethodCallExpr().getNameAsString().equals(targetMethodName)));
+		callsToTargetMethodTmp.addAll(cu.findAll(ExpressionStmt.class,
+				c -> c.getExpression().isVariableDeclarationExpr()
+						&& c.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().isPresent()
+						&& c.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().get()
+								.isObjectCreationExpr()
+						&& c.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().get()
+								.asObjectCreationExpr().getType().getNameAsString().equals(targetMethodName)));
+		callsToTargetMethodTmp.addAll(cu.findAll(ExpressionStmt.class,
+				c -> c.getExpression().isAssignExpr()
+						&& c.getExpression().asAssignExpr().getValue().isObjectCreationExpr()
+						&& c.getExpression().asAssignExpr().getValue().asObjectCreationExpr().getType()
+								.getNameAsString().equals(targetMethodName)));
+		callsToTargetMethodTmp.addAll(cu.findAll(ExpressionStmt.class, c -> c.getExpression().isObjectCreationExpr()
+				&& c.getExpression().asObjectCreationExpr().getType().getNameAsString().equals(targetMethodName)));
+		List<ExpressionStmt> callsToTargetMethod = new ArrayList<ExpressionStmt>();
+		for (ExpressionStmt es : callsToTargetMethodTmp) {
+			List<ResolvedType> targetMethodParameters;
+			NodeList<Expression> argsMethod = null;
+			try {
+				if (es.getExpression().isObjectCreationExpr()) {
+					ResolvedConstructorDeclaration rcd = es.getExpression().asObjectCreationExpr().resolve();
+					targetMethodParameters = rcd.formalParameterTypes();
+					argsMethod = es.getExpression().asObjectCreationExpr().getArguments();
+				} else if (es.getExpression().isAssignExpr()
+						&& es.getExpression().asAssignExpr().getValue().isObjectCreationExpr()) {
+					ResolvedConstructorDeclaration rcd = es.getExpression().asAssignExpr().getValue()
+							.asObjectCreationExpr().resolve();
+					targetMethodParameters = rcd.formalParameterTypes();
+					argsMethod = es.getExpression().asAssignExpr().getValue().asObjectCreationExpr().getArguments();
+				} else if (es.getExpression().isVariableDeclarationExpr() && es.getExpression()
+						.asVariableDeclarationExpr().getVariable(0).getInitializer().get().isObjectCreationExpr()) {
+					ResolvedConstructorDeclaration rcd = es.getExpression().asVariableDeclarationExpr().getVariable(0)
+							.getInitializer().get().asObjectCreationExpr().resolve();
+					targetMethodParameters = rcd.formalParameterTypes();
+					argsMethod = es.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().get()
+							.asObjectCreationExpr().getArguments();
+				} else if (es.getExpression().isMethodCallExpr()) {
+					ResolvedMethodDeclaration rcd = es.getExpression().asMethodCallExpr().resolve();
+					targetMethodParameters = rcd.formalParameterTypes();
+					argsMethod = es.getExpression().asMethodCallExpr().getArguments();
+				} else if (es.getExpression().isAssignExpr()
+						&& es.getExpression().asAssignExpr().getValue().isMethodCallExpr()) {
+					ResolvedMethodDeclaration rcd = es.getExpression().asAssignExpr().getValue().asMethodCallExpr()
+							.resolve();
+					targetMethodParameters = rcd.formalParameterTypes();
+					argsMethod = es.getExpression().asAssignExpr().getValue().asMethodCallExpr().getArguments();
+				} else if (es.getExpression().isVariableDeclarationExpr() && es.getExpression()
+						.asVariableDeclarationExpr().getVariable(0).getInitializer().get().isMethodCallExpr()) {
+					ResolvedMethodDeclaration rcd = es.getExpression().asVariableDeclarationExpr().getVariable(0)
+							.getInitializer().get().asMethodCallExpr().resolve();
+					targetMethodParameters = rcd.formalParameterTypes();
+					argsMethod = es.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().get()
+							.asMethodCallExpr().getArguments();
+				} else {
+					throw new RuntimeException("Unexpected call to target method: " + es);
+				}
+				List<DocumentedParameter> argsWanted = targetMethod.getParameters();
+
+				boolean found = false;
+				if (targetMethodParameters.size() == argsWanted.size()) {
+					for (int i = 0; i < argsMethod.size(); i++) {
+						found = false;
+						ResolvedType argMethod = targetMethodParameters.get(i);
+						DocumentedParameter argWanted = argsWanted.get(i);
+						String argMethodString = argMethod.describe();
+						String argWantedString = argWanted.toString().substring(0,
+								argWanted.toString().indexOf(" " + argWanted.getName()));
+						found = argMethodString.equals(argWantedString);
+						if (!found)
+							break;
+					}
+					if (found)
+						callsToTargetMethod.add(es);
+				}
+			} catch (Exception e) {
+				// TODO This is a temporary fix. We should analyze why the SymbolSolver
+				// sometimes fails in detecting the constructor/method declaration
+				callsToTargetMethod.add(es);
+			}
 		}
-		// write out the enriched test case
-		try (FileOutputStream output = new FileOutputStream(currentTestCase)) {
-			output.write(cu.toString().getBytes());
-		} catch (IOException e) {
-			log.error("Error while writing the enriched test case to file: " + currentTestCase, e);
+		return callsToTargetMethod;
+	}
+
+	private static int enrichTestWithOracle2(Specification spec, DocumentedExecutable targetMethod,
+			List<ExpressionStmt> methodCallsToEnrich, Map<DocumentedExecutable, OperationSpecification> allSpecs,
+			int identifier, int specificationCounter) {
+		String targetMethodName = targetMethod.getName().substring(targetMethod.getName().lastIndexOf('.') + 1);
+		for (int i = 0; i < methodCallsToEnrich.size(); i++) {
+			ExpressionStmt targetCall = methodCallsToEnrich.get(i);
+			// Call for which we shall add the oracle
+			NodeList<Statement> insertionPoint = null;
+			try {
+				insertionPoint = ((BlockStmt) targetCall.getParentNode().get()).getStatements();
+			} catch (Exception e) {
+				String targetCallWithAssignmentStmt = " _methodResult__ = " + targetCall;
+				Statement targetCallWithAssignment = StaticJavaParser.parseStatement(targetCallWithAssignmentStmt);
+				insertionPoint = ((BlockStmt) targetCallWithAssignment.getParentNode().get()).getStatements();
+			}
+
+			// add assumptions: the guard of the oracle, plus all preconditions
+			String clause = composeGuardClause(spec, targetCall, insertionPoint, targetMethodName, "");
+			// Skip unmodeled guard
+			if (clause.contains("SKIP_UNMODELED")) {
+				String comment = "Skipped check due to unmodeled guard: " + spec.getGuard() + " "
+						+ spec.getDescription();
+				targetCall.addOrphanComment(new LineComment(comment));
+				continue;
+			}
+			String guardsComment = "Automatically generated test oracle with guard:" + spec.getGuard().toString();
+			for (PreSpecification precond : allSpecs.get(targetMethod).getPreSpecifications()) {
+				clause = composeGuardClause(precond, targetCall, insertionPoint, targetMethodName, clause);
+				// Skip unmodeled guard
+				if (clause.contains("SKIP_UNMODELED")) {
+					String comment = "Skipped check due to unmodeled guard precondition: " + precond.getGuard() + " "
+							+ spec.getDescription();
+					targetCall.addOrphanComment(new LineComment(comment));
+					continue;
+				}
+				guardsComment = guardsComment + precond.getDescription();
+			}
+			// Skip unmodeled guard
+			if (clause.contains("SKIP_UNMODELED")) {
+				continue;
+			}
+
+			// Skip non satisfiable pre-conditions
+			if (clause.contains("null.")) {
+				String comment = "Skipped check due to non satisfiable pre-conditions: " + clause + " "
+						+ spec.getDescription();
+				targetCall.addOrphanComment(new LineComment(comment));
+				continue;
+			}
+			addIfGuard(clause, targetCall, targetMethod.getReturnType().getType(), insertionPoint, identifier,
+					guardsComment);
+
+			// add assert
+			if (spec instanceof PostSpecification) {
+				// the postCondition of the oracle, plus all postConditions with empty guards
+				ExpressionStmt newTargetCall = addAssertClause((PostSpecification) spec, clause, targetCall,
+						insertionPoint, targetMethodName, targetMethod.getReturnType().getType(), false, identifier,
+						specificationCounter);
+				methodCallsToEnrich.set(i, newTargetCall);
+				targetCall = newTargetCall;
+			} else if (spec instanceof ThrowsSpecification) {
+				// the try-catch block to check for the expected
+				addFailClause((ThrowsSpecification) spec, clause, targetCall, insertionPoint, targetMethodName,
+						targetMethod.getReturnType().getType(), false, identifier, specificationCounter);
+			} else {
+				// exception
+				throw new RuntimeException(
+						"Spec of unexpected type " + spec.getClass().getName() + ": " + spec.getDescription());
+			}
+			identifier++;
 		}
+		return identifier;
 	}
 
 	private static int enrichTestWithOracle(CompilationUnit cu, Path testsDir, String testName,
 			DocumentedExecutable targetMethod, OperationSpecification os,
-			Map<DocumentedExecutable, OperationSpecification> allSpecs, int identifier) {
+			Map<DocumentedExecutable, OperationSpecification> allSpecs, int identifier, int specificationCounter) {
 
 		String targetMethodName = targetMethod.getName().substring(targetMethod.getName().lastIndexOf('.') + 1);
 		List<ExpressionStmt> callsToTargetMethodTmp = cu.findAll(ExpressionStmt.class,
@@ -331,14 +537,14 @@ public class TestGeneratorValidation {
 				if (spec instanceof PostSpecification) {
 					// the postCondition of the oracle, plus all postConditions with empty guards
 					ExpressionStmt newTargetCall = addAssertClause((PostSpecification) spec, clause, targetCall,
-							insertionPoint, targetMethodName, targetMethod.getReturnType().getType(), false,
-							identifier);
+							insertionPoint, targetMethodName, targetMethod.getReturnType().getType(), false, identifier,
+							i);
 					callsToTargetMethod.set(i, newTargetCall);
 					targetCall = newTargetCall;
 				} else if (spec instanceof ThrowsSpecification) {
 					// the try-catch block to check for the expected
 					addFailClause((ThrowsSpecification) spec, clause, targetCall, insertionPoint, targetMethodName,
-							targetMethod.getReturnType().getType(), false, identifier);
+							targetMethod.getReturnType().getType(), false, identifier, i);
 				} else {
 					// exception
 					throw new RuntimeException(
@@ -358,7 +564,7 @@ public class TestGeneratorValidation {
 			IfStmt i = new IfStmt();
 			i.setCondition(clauseExp);
 			MethodCallExpr mce = new MethodCallExpr();
-			mce.setScope(StaticJavaParser.parseExpression("guard_lta"));
+			mce.setScope(StaticJavaParser.parseExpression("uniqueGuardIds_lta"));
 			mce.setName("add");
 			mce.addArgument(new StringLiteralExpr(Integer.toString(identifier)));
 			BlockStmt bs = new BlockStmt();
@@ -381,9 +587,9 @@ public class TestGeneratorValidation {
 
 	private static void addFailClause(ThrowsSpecification postCond, String clause, ExpressionStmt targetCall,
 			NodeList<Statement> insertionPoint, String targetMethodName, Type targetMethodReturnType,
-			boolean isGeneralPostCond, int identifier) {
-		Statement assertStmt = StaticJavaParser
-				.parseStatement("if(guard_lta.contains(\"" + identifier + "\")) {org.junit.Assert.fail();}");
+			boolean isGeneralPostCond, int identifier, int specificationCounter) {
+		Statement assertStmt = StaticJavaParser.parseStatement("if(uniqueGuardIds_lta.contains(\"" + identifier
+				+ "\")) {globalGuardsIds_lta.put(\"" + specificationCounter + "\",\"fail\");org.junit.Assert.fail();}");
 		String comment = "Automatically generated test oracle:" + postCond.getDescription();
 		assertStmt.setLineComment(comment);
 		insertionPoint.addAfter(assertStmt, targetCall);
@@ -396,12 +602,32 @@ public class TestGeneratorValidation {
 					cc.getParameter().setType(Exception.class);
 
 					BlockStmt bs = cc.getBody();
-					Statement assertStmt2 = StaticJavaParser.parseStatement("if(guard_lta.contains(\"" + identifier
-							+ "\")) {org.junit.Assert.assertTrue(" + cc.getParameter().getName() + " instanceof "
-							+ postCond.getExceptionTypeName() + ");}");
+					IfStmt ifs = new IfStmt();
+					ifs.setCondition(
+							StaticJavaParser.parseExpression("uniqueGuardIds_lta.contains(\"" + identifier + "\")"));
+					IfStmt ifs2 = new IfStmt();
+					ifs2.setCondition(StaticJavaParser.parseExpression(cc.getParameter().getName() + " instanceof "
+							+ postCond.getExceptionTypeName() + " && (globalGuardsIds_lta.get(\"" + specificationCounter
+							+ "\").equals(\"present\") || globalGuardsIds_lta.get(\"" + specificationCounter
+							+ "\").equals(\"pass\"))"));
+					ifs2.setThenStmt(StaticJavaParser
+							.parseStatement("globalGuardsIds_lta.put(\"" + specificationCounter + "\",\"pass\");"));
+					ifs2.setElseStmt(StaticJavaParser
+							.parseStatement("globalGuardsIds_lta.put(\"" + specificationCounter + "\",\"fail\");"));
+					BlockStmt bsif = new BlockStmt();
+					bsif.addStatement(ifs2);
+					bsif.addStatement("org.junit.Assert.assertTrue(" + cc.getParameter().getName() + " instanceof "
+							+ postCond.getExceptionTypeName() + ");");
+					ifs.setThenStmt(bsif);
+
+					// Statement assertStmt2 =
+					// StaticJavaParser.parseStatement("if(uniqueGuardIds_lta.contains(\"" +
+					// identifier + "\")) {org.junit.Assert.assertTrue(" +
+					// cc.getParameter().getName() + " instanceof " +
+					// postCond.getExceptionTypeName() + ");}");
 					String comment2 = "Automatically generated test oracle:" + postCond.getDescription();
-					assertStmt2.setLineComment(comment2);
-					bs.addStatement(assertStmt2);
+					ifs.setLineComment(comment2);
+					bs.addStatement(ifs);
 					cc.setBody(bs);
 				}
 			}
@@ -410,7 +636,7 @@ public class TestGeneratorValidation {
 
 	private static ExpressionStmt addAssertClause(PostSpecification postCond, String clause, ExpressionStmt targetCall,
 			NodeList<Statement> insertionPoint, String targetMethodName, Type targetMethodReturnType,
-			boolean isGeneralPostCond, int identifier) {
+			boolean isGeneralPostCond, int identifier, int specificationCounter) {
 		ExpressionStmt targetCallToConsider = targetCall;
 		String postCondCondition = postCond.getProperty().getConditionText();
 		String oracle = null;
@@ -466,11 +692,24 @@ public class TestGeneratorValidation {
 						+ insertionPoint.getParentNode());
 			}
 		}
-		Statement assertStmt = StaticJavaParser.parseStatement(
-				"if(guard_lta.contains(\"" + identifier + "\")) {org.junit.Assert.assertTrue(" + oracle + ");}");
+		IfStmt ifs = new IfStmt();
+		ifs.setCondition(StaticJavaParser.parseExpression("uniqueGuardIds_lta.contains(\"" + identifier + "\")"));
+		IfStmt ifs2 = new IfStmt();
+		ifs2.setCondition(StaticJavaParser.parseExpression(oracle + " && (globalGuardsIds_lta.get(\""
+				+ specificationCounter + "\").equals(\"present\") || globalGuardsIds_lta.get(\"" + specificationCounter
+				+ "\").equals(\"pass\"))"));
+		ifs2.setThenStmt(
+				StaticJavaParser.parseStatement("globalGuardsIds_lta.put(\"" + specificationCounter + "\",\"pass\");"));
+		ifs2.setElseStmt(
+				StaticJavaParser.parseStatement("globalGuardsIds_lta.put(\"" + specificationCounter + "\",\"fail\");"));
+		BlockStmt bsif = new BlockStmt();
+		bsif.addStatement(ifs2);
+		bsif.addStatement("org.junit.Assert.assertTrue(" + oracle + ");");
+		ifs.setThenStmt(bsif);
+
 		String comment = "Automatically generated test oracle:" + postCond.getDescription();
-		assertStmt.setLineComment(comment);
-		insertionPoint.addAfter(assertStmt, targetCallToConsider);
+		ifs.setLineComment(comment);
+		insertionPoint.addAfter(ifs, targetCallToConsider);
 		Optional<Node> n = insertionPoint.getParentNode();
 		if (n.isPresent()) {
 			n = n.get().getParentNode();
@@ -479,7 +718,8 @@ public class TestGeneratorValidation {
 				for (CatchClause cc : ts.getCatchClauses()) {
 					BlockStmt bs = cc.getBody();
 					Statement assertStmt2 = StaticJavaParser.parseStatement(
-							"if(guard_lta.contains(\"" + identifier + "\")) {org.junit.Assert.fail();}");
+							"if(uniqueGuardIds_lta.contains(\"" + identifier + "\")) {globalGuardsIds_lta.put(\""
+									+ specificationCounter + "\",\"fail\");org.junit.Assert.fail();}");
 					String comment2 = "Automatically generated test oracle:" + postCond.getDescription();
 					assertStmt2.setLineComment(comment2);
 					bs.addStatement(assertStmt2);
@@ -617,7 +857,7 @@ public class TestGeneratorValidation {
 		for (URL cp : configuration.classDirs) {
 			classpathTarget += ":" + cp.getPath();
 		}
-		retVal.add("/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/bin/java");
+		retVal.add("/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java");
 		retVal.add("-Xmx16G");
 		// enabled assertions since evosuite is generating failing test cases for them
 		// retVal.add("-ea");
