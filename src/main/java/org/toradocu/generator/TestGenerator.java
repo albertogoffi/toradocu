@@ -20,6 +20,8 @@ import com.github.javaparser.resolution.declarations.ResolvedConstructorDeclarat
 import com.github.javaparser.resolution.declarations.ResolvedMethodDeclaration;
 import com.github.javaparser.resolution.types.ResolvedType;
 
+import edu.stanford.nlp.semgraph.SemanticGraph;
+
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -45,8 +47,13 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.toradocu.extractor.Comment;
 import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.DocumentedParameter;
+import org.toradocu.translator.Parser;
+import org.toradocu.translator.PropositionSeries;
+import org.toradocu.translator.Matcher;
+import org.toradocu.translator.Matcher.WordType;
 import org.toradocu.util.Checks;
 import randoop.condition.specification.OperationSpecification;
 import randoop.condition.specification.PostSpecification;
@@ -379,6 +386,35 @@ public class TestGenerator {
 		}
 
 		String targetMethodName = targetMethod.getName().substring(targetMethod.getName().lastIndexOf('.') + 1);
+	
+		List<MethodDeclaration> methodDeclarations = cu.findAll(com.github.javaparser.ast.body.MethodDeclaration.class,
+				c -> true);
+		for (MethodDeclaration m : methodDeclarations) {
+			String testMethodName = "test";
+			testMethodName += capitalizeFirstChar(targetMethodName);
+			testMethodName += "_"; 
+			if (spec instanceof ThrowsSpecification) {
+				ThrowsSpecification throwsSpec = (ThrowsSpecification) spec;
+				String excName = throwsSpec.getExceptionTypeName();
+				testMethodName += excName.substring(excName.lastIndexOf('.') + 1);
+				String guardText = spec.getGuard().getDescription();			
+				testMethodName += "_";
+				testMethodName += extractTextForTestName(guardText, targetMethod);
+			} else if (spec instanceof PostSpecification) {
+				PostSpecification postSpec = (PostSpecification) spec;
+				String propertyText = postSpec.getProperty().getDescription();
+				testMethodName += extractTextForTestName(propertyText, targetMethod);
+				/*String resultText = propertyText.indexOf("if") >= 0 ? propertyText.substring(0, propertyText.indexOf("if")) : propertyText;
+				testMethodName += extractTextForTestName(resultText, targetMethod);
+				String guardText = propertyText.indexOf("if") >= 0 ? propertyText.substring(propertyText.indexOf("if")) : null;
+				if (guardText != null) {
+					testMethodName += "_";
+					testMethodName += extractTextForTestName(guardText, targetMethod);
+				}*/
+			}
+			m.setName(testMethodName);
+		}
+		
 		List<ExpressionStmt> callsToTargetMethodTmp = cu.findAll(ExpressionStmt.class,
 				c -> c.getExpression().isVariableDeclarationExpr()
 						&& c.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().isPresent()
@@ -573,6 +609,28 @@ public class TestGenerator {
 
 	}
 
+	private static String extractTextForTestName(String description, DocumentedExecutable method) {
+		String text = "";
+		List<PropositionSeries> props = Parser.parse(new Comment(description), method);
+		for (PropositionSeries p: props) {
+			SemanticGraph sg = p.getSemanticGraph();
+			List<String> words = Matcher.relevantWords(sg.vertexListSorted(), 
+					WordType.NN, WordType.WP, WordType.JJ, 
+		    		WordType.PR, WordType.FW, WordType.SYM,
+		    		WordType.VB, WordType.CC, WordType.IN,
+		    		WordType.TO, WordType.EX, WordType.RB, 
+		    		WordType.WRB);
+			for (String w: words) {
+				text += capitalizeFirstChar(w);
+			}
+		}
+		return text;
+	}
+
+	private static String capitalizeFirstChar(String string) {
+		return string.substring(0, 1).toUpperCase() + string.substring(1);
+	}
+
 	private static void addAssertClause(PostSpecification postCond, ExpressionStmt targetCall,
 			NodeList<Statement> insertionPoint, String targetMethodName, Type targetMethodReturnType,
 			boolean isGeneralPostCond) {
@@ -741,7 +799,7 @@ public class TestGenerator {
 		for (URL cp : configuration.classDirs) {
 			classpathTarget += ":" + cp.getPath();
 		}
-		retVal.add("/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java");
+		retVal.add("/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/bin/java");
 		retVal.add("-Xmx4G");
 		retVal.add("-jar");
 		retVal.add(configuration.getEvoSuiteJar());

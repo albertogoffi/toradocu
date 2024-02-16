@@ -20,7 +20,7 @@ import edu.stanford.nlp.semgraph.SemanticGraph;
  * The {@code Matcher} class translates subjects and predicates in Javadoc comments to Java
  * expressions containing Java code elements.
  */
-class Matcher {
+public class Matcher {
 
   /**
    * Represents the threshold for the edit distance above which {@code CodeElement}s are considered
@@ -302,8 +302,12 @@ class Matcher {
 
     List<CodeElement<?>> sortedMethodList = new ArrayList<CodeElement<?>>(codeElements);
     
-    List<String> wordsForParameterMatching = relevantWords(sg.vertexListSorted());
-    List<String> wordsInSubject = relevantWords(proposition.getSubject().getSubjectWords());
+    List<String> wordsForParameterMatching = relevantWords(sg.vertexListSorted(), 
+    		WordType.NN, WordType.WP, WordType.JJ, 
+    		WordType.PR, WordType.FW, WordType.SYM);
+    List<String> wordsInSubject = relevantWords(proposition.getSubject().getSubjectWords(),
+    		WordType.NN, WordType.WP, WordType.JJ, 
+    		WordType.PR, WordType.FW, WordType.SYM);
     List<String> wordsForParameterMatching_noSubject = new ArrayList<>(wordsForParameterMatching);
     wordsForParameterMatching_noSubject.removeAll(wordsInSubject);
     // Try the classic syntactic match first of all
@@ -339,25 +343,48 @@ class Matcher {
     return match;
   }
 
+  public static enum WordType {
+	  NN, //NN* (NN, NNS, NNP, NNPS) names
+	  WP, //WP* (WP, WP$) Wh-pronouns
+	  PR, //PR* (PRP, PRP$) pronouns
+	  FW, //foreign word
+	  SYM, //symbol
+	  JJ, //JJ* (JJ, JJR, JJS) adjectives
+	  
+	  IN, //Preposition or subordinating conjunction
+	  RB, //RB* (RB, RBR, RBS) adverbs
+	  TO, //to
+	  VB, //VB* (VB, VBD, VBG, VBN, VBP, VBZ) verbs
+	  CC, //Coordinating conjunction
+	  CD, //Cardinal number
+	  DT, //Determiner
+	  EX, //Existential there
+	  LS, //List item marker
+	  MD, //Modal
+	  PDT,//Predeterminer
+	  POS,//Possessive ending
+	  RP, //Particle
+	  UH, //Interjection
+	  WDT,//Wh-determiner
+	  WRB //Wh-adverb
+  }
   
-  private List<String> relevantWords(List<IndexedWord> wordList) {
+  public static List<String> relevantWords(List<IndexedWord> wordList, WordType... tagSpecifier) {
 	  ArrayList<String> ret = new ArrayList<>();
 	  for (IndexedWord word: wordList) {
 		  String tag = word.tag();
 		  String w = word.word();
-		  if (tag.startsWith("NN") || 
-				  tag.startsWith("WP") ||
-				  tag.startsWith("JJ") ||
-				  tag.startsWith("PR") ||
-				  tag.startsWith("FW") ||
-				  tag.startsWith("SYM")) {
-			  ret.add(w);
+		  for (WordType ts: tagSpecifier) {
+			  if (tag.startsWith(ts.name())) {
+				  ret.add(w);
+				  break; //added
+			  }
 		  }
 	  }
 	  return ret;
   }
 
-private Match OLD_findBestMethodMatch(
+ private Match OLD_findBestMethodMatch(
 		  DocumentedExecutable method, String predicate, List<CodeElement<?>> sortedCodeElements) {
 	  Match match = null;
 	  CodeElement<?> firstCodeMatch = null;

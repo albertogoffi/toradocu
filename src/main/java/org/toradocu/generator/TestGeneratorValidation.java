@@ -617,7 +617,7 @@ public class TestGeneratorValidation {
 		for (URL cp : configuration.classDirs) {
 			classpathTarget += ":" + cp.getPath();
 		}
-		retVal.add("/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java");
+		retVal.add("/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/bin/java");
 		retVal.add("-Xmx16G");
 		// enabled assertions since evosuite is generating failing test cases for them
 		// retVal.add("-ea");
