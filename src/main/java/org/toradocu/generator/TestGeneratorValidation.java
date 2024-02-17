@@ -285,16 +285,22 @@ public class TestGeneratorValidation {
 
 				boolean found = false;
 				if (targetMethodParameters.size() == argsWanted.size()) {
-					for (int i = 0; i < argsMethod.size(); i++) {
-						found = false;
-						ResolvedType argMethod = targetMethodParameters.get(i);
-						DocumentedParameter argWanted = argsWanted.get(i);
-						String argMethodString = argMethod.describe();
-						String argWantedString = argWanted.toString().substring(0,
-								argWanted.toString().indexOf(" " + argWanted.getName()));
-						found = argMethodString.equals(argWantedString);
-						if (!found)
-							break;
+					if (targetMethodParameters.size() == 0) {
+						found = true;
+					} else {
+						for (int i = 0; i < argsMethod.size(); i++) {
+							found = false;
+							ResolvedType argMethod = targetMethodParameters.get(i);
+							DocumentedParameter argWanted = argsWanted.get(i);
+							String argMethodString = argMethod.describe();
+							String argWantedString = argWanted.toString().substring(0,
+									argWanted.toString().indexOf(" " + argWanted.getName()));
+							// Replace $ with . to allow comparison of inner classes
+							argWantedString = argWantedString.replace("$", ".");
+							found = argMethodString.equals(argWantedString);
+							if (!found)
+								break;
+						}
 					}
 					if (found)
 						callsToTargetMethod.add(es);
