@@ -386,35 +386,37 @@ public class TestGenerator {
 		}
 
 		String targetMethodName = targetMethod.getName().substring(targetMethod.getName().lastIndexOf('.') + 1);
-	
+
 		List<MethodDeclaration> methodDeclarations = cu.findAll(com.github.javaparser.ast.body.MethodDeclaration.class,
 				c -> true);
 		for (MethodDeclaration m : methodDeclarations) {
 			String testMethodName = "test";
 			testMethodName += capitalizeFirstChar(targetMethodName);
-			testMethodName += "_"; 
+			testMethodName += "_";
 			if (spec instanceof ThrowsSpecification) {
 				ThrowsSpecification throwsSpec = (ThrowsSpecification) spec;
 				String excName = throwsSpec.getExceptionTypeName();
 				testMethodName += excName.substring(excName.lastIndexOf('.') + 1);
-				String guardText = spec.getGuard().getDescription();			
+				String guardText = spec.getGuard().getDescription();
 				testMethodName += "_";
 				testMethodName += extractTextForTestName(guardText, targetMethod);
 			} else if (spec instanceof PostSpecification) {
 				PostSpecification postSpec = (PostSpecification) spec;
 				String propertyText = postSpec.getProperty().getDescription();
 				testMethodName += extractTextForTestName(propertyText, targetMethod);
-				/*String resultText = propertyText.indexOf("if") >= 0 ? propertyText.substring(0, propertyText.indexOf("if")) : propertyText;
-				testMethodName += extractTextForTestName(resultText, targetMethod);
-				String guardText = propertyText.indexOf("if") >= 0 ? propertyText.substring(propertyText.indexOf("if")) : null;
-				if (guardText != null) {
-					testMethodName += "_";
-					testMethodName += extractTextForTestName(guardText, targetMethod);
-				}*/
+				/*
+				 * String resultText = propertyText.indexOf("if") >= 0 ?
+				 * propertyText.substring(0, propertyText.indexOf("if")) : propertyText;
+				 * testMethodName += extractTextForTestName(resultText, targetMethod); String
+				 * guardText = propertyText.indexOf("if") >= 0 ?
+				 * propertyText.substring(propertyText.indexOf("if")) : null; if (guardText !=
+				 * null) { testMethodName += "_"; testMethodName +=
+				 * extractTextForTestName(guardText, targetMethod); }
+				 */
 			}
 			m.setName(testMethodName);
 		}
-		
+
 		List<ExpressionStmt> callsToTargetMethodTmp = cu.findAll(ExpressionStmt.class,
 				c -> c.getExpression().isVariableDeclarationExpr()
 						&& c.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().isPresent()
@@ -489,16 +491,22 @@ public class TestGenerator {
 
 				boolean found = false;
 				if (targetMethodParameters.size() == argsWanted.size()) {
-					for (int i = 0; i < argsMethod.size(); i++) {
-						found = false;
-						ResolvedType argMethod = targetMethodParameters.get(i);
-						DocumentedParameter argWanted = argsWanted.get(i);
-						String argMethodString = argMethod.describe();
-						String argWantedString = argWanted.toString().substring(0,
-								argWanted.toString().indexOf(" " + argWanted.getName()));
-						found = argMethodString.equals(argWantedString);
-						if (!found)
-							break;
+					if (targetMethodParameters.size() == 0) {
+						found = true;
+					} else {
+						for (int i = 0; i < argsMethod.size(); i++) {
+							found = false;
+							ResolvedType argMethod = targetMethodParameters.get(i);
+							DocumentedParameter argWanted = argsWanted.get(i);
+							String argMethodString = argMethod.describe();
+							String argWantedString = argWanted.toString().substring(0,
+									argWanted.toString().indexOf(" " + argWanted.getName()));
+							// Replace $ with . to allow comparison of inner classes
+							argWantedString = argWantedString.replace("$", ".");
+							found = argMethodString.equals(argWantedString);
+							if (!found)
+								break;
+						}
 					}
 					if (found)
 						callsToTargetMethod.add(es);
@@ -612,15 +620,12 @@ public class TestGenerator {
 	private static String extractTextForTestName(String description, DocumentedExecutable method) {
 		String text = "";
 		List<PropositionSeries> props = Parser.parse(new Comment(description), method);
-		for (PropositionSeries p: props) {
+		for (PropositionSeries p : props) {
 			SemanticGraph sg = p.getSemanticGraph();
-			List<String> words = Matcher.relevantWords(sg.vertexListSorted(), 
-					WordType.NN, WordType.WP, WordType.JJ, 
-		    		WordType.PR, WordType.FW, WordType.SYM,
-		    		WordType.VB, WordType.CC, WordType.IN,
-		    		WordType.TO, WordType.EX, WordType.RB, 
-		    		WordType.WRB);
-			for (String w: words) {
+			List<String> words = Matcher.relevantWords(sg.vertexListSorted(), WordType.NN, WordType.WP, WordType.JJ,
+					WordType.PR, WordType.FW, WordType.SYM, WordType.VB, WordType.CC, WordType.IN, WordType.TO,
+					WordType.EX, WordType.RB, WordType.WRB);
+			for (String w : words) {
 				text += capitalizeFirstChar(w);
 			}
 		}
