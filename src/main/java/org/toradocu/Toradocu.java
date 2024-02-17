@@ -4,9 +4,7 @@ import static org.toradocu.translator.CommentTranslator.processCondition;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
-import com.google.gson.reflect.TypeToken;
 import java.io.*;
-import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
@@ -30,7 +28,6 @@ import org.toradocu.output.util.JsonOutput;
 import org.toradocu.translator.CommentTranslator;
 import org.toradocu.translator.semantic.SemanticMatcher;
 import org.toradocu.util.GsonInstance;
-import org.toradocu.util.Stats;
 import randoop.condition.specification.Guard;
 import randoop.condition.specification.OperationSpecification;
 import randoop.condition.specification.PostSpecification;
@@ -197,16 +194,26 @@ public class Toradocu {
 				try {
 					TestGenerator.createTests(specifications);
 					log.info("** Test generation completed");
-					
-					log.info("** Starting test generation for validation...");
-					TestGeneratorValidation.createTests(specifications);
-					log.info("** Test generation for validation completed");
 				} catch (Throwable e) {
 					e.printStackTrace();
 					log.error("Error during test creation.", e);
 				}
 			} else {
 				log.info("Test generator disabled: test generation skipped.");
+			}
+
+			// === Validation Test Generator ===
+			if (configuration.isTestValidationEnabled()) {
+				log.info("** Starting test generation for validation...");
+				try {
+					TestGeneratorValidation.createTests(specifications);
+					log.info("** Test generation for validation completed");
+				} catch (Throwable e) {
+					e.printStackTrace();
+					log.error("Error during validation test creation.", e);
+				}
+			} else {
+				log.info("Validation test generator disabled: validation test generation skipped.");
 			}
 
 			// === Oracle Generator ===

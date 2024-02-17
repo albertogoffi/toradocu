@@ -84,6 +84,8 @@ public class TestgenTest {
 						"--evosuite-budget",
 						"60",
 						"--test-generation",
+						"true",
+						"--validate-tests",
 						"true"
 		};
 		final List<String> argsList = new ArrayList<>(Arrays.asList(toradocuArgs));
