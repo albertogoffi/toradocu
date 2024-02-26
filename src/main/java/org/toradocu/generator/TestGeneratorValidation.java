@@ -444,7 +444,7 @@ public class TestGeneratorValidation {
 			if (n.isPresent() && (n.get() instanceof TryStmt)) {
 				TryStmt ts = (TryStmt) n.get();
 				for (CatchClause cc : ts.getCatchClauses()) {
-					cc.getParameter().setType(Exception.class);
+					cc.getParameter().setType(Throwable.class);
 
 					BlockStmt bs = cc.getBody();
 					IfStmt ifs = new IfStmt();
