@@ -629,6 +629,7 @@ public class TestGenerator {
 				text += capitalizeFirstChar(w);
 			}
 		}
+		text = text.replaceAll("[^A-Za-z_$0-9]", "_");
 		return text;
 	}
 
