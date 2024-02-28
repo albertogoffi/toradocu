@@ -22,6 +22,7 @@ import com.github.javaparser.ast.stmt.IfStmt;
 import com.github.javaparser.ast.stmt.Statement;
 import com.github.javaparser.ast.stmt.TryStmt;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
+import com.github.javaparser.ast.visitor.VoidVisitor;
 import com.github.javaparser.resolution.declarations.ResolvedConstructorDeclaration;
 import com.github.javaparser.resolution.declarations.ResolvedMethodDeclaration;
 import com.github.javaparser.resolution.types.ResolvedType;
@@ -196,7 +197,7 @@ public class TestGeneratorValidation {
 							// TODO non-modeled guards are classified as present. They should be skipped or
 							// classified as non-present
 							bs.addStatement("globalGuardsIds_lta.put(\"" + specificationCounter + "\",\"present\");");
-							identifier = enrichTestWithOracle2(spec, targetMethod, methodCallsToEnrich, allSpecs,
+							identifier = enrichTestWithOracle(spec, targetMethod, methodCallsToEnrich, allSpecs,
 									identifier, specificationCounter);
 						} else {
 							bs.addStatement(
@@ -225,6 +226,12 @@ public class TestGeneratorValidation {
 
 	private static List<ExpressionStmt> identifyMethodCallsToEnrich(CompilationUnit cu,
 			DocumentedExecutable targetMethod) {
+		List<ExpressionStmt> callsToTargetMethodTest = new ArrayList<ExpressionStmt>();
+		SupportStructure ss = new SupportStructure(targetMethod, callsToTargetMethodTest);
+		VoidVisitor <SupportStructure> visitor = new IdentifyCallsToEnrichVisitor();
+		visitor.visit(cu, ss);
+		
+		/*
 		String targetMethodName = targetMethod.getName().substring(targetMethod.getName().lastIndexOf('.') + 1);
 		List<ExpressionStmt> callsToTargetMethodTmp = cu.findAll(ExpressionStmt.class,
 				c -> c.getExpression().isVariableDeclarationExpr()
@@ -326,9 +333,11 @@ public class TestGeneratorValidation {
 			}
 		}
 		return callsToTargetMethod;
+		*/
+		return ss.getTargetCallsList();
 	}
 
-	private static int enrichTestWithOracle2(Specification spec, DocumentedExecutable targetMethod,
+	private static int enrichTestWithOracle(Specification spec, DocumentedExecutable targetMethod,
 			List<ExpressionStmt> methodCallsToEnrich, Map<DocumentedExecutable, OperationSpecification> allSpecs,
 			int identifier, int specificationCounter) {
 		String targetMethodName = targetMethod.getName().substring(targetMethod.getName().lastIndexOf('.') + 1);
