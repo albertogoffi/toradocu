@@ -11,6 +11,8 @@ import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.comments.LineComment;
+import com.github.javaparser.ast.expr.ArrayCreationExpr;
+import com.github.javaparser.ast.expr.ArrayInitializerExpr;
 import com.github.javaparser.ast.expr.Expression;
 import com.github.javaparser.ast.expr.MarkerAnnotationExpr;
 import com.github.javaparser.ast.expr.MethodCallExpr;
@@ -19,6 +21,7 @@ import com.github.javaparser.ast.stmt.BlockStmt;
 import com.github.javaparser.ast.stmt.CatchClause;
 import com.github.javaparser.ast.stmt.ExpressionStmt;
 import com.github.javaparser.ast.stmt.IfStmt;
+import com.github.javaparser.ast.stmt.ReturnStmt;
 import com.github.javaparser.ast.stmt.Statement;
 import com.github.javaparser.ast.stmt.TryStmt;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
@@ -42,6 +45,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.extractor.DocumentedExecutable;
@@ -168,6 +172,21 @@ public class TestGeneratorValidation {
 			Expression uniqueGuardIdsIdsInit = StaticJavaParser.parseExpression("new java.util.HashSet<String>()");
 			clax.addFieldWithInitializer(uniqueGuardIdsType, "uniqueGuardIds_lta", uniqueGuardIdsIdsInit,
 					Keyword.PUBLIC);
+
+			// Add contracts method
+			MethodDeclaration mdContracts = clax.addMethod("contracts", Modifier.Keyword.PUBLIC,
+					Modifier.Keyword.STATIC);
+			mdContracts.setType("String []");
+			BlockStmt contractsBlock = mdContracts.createBody();
+			ReturnStmt returnContractsStmt = new ReturnStmt();
+			contractsBlock.addStatement(returnContractsStmt);
+			ArrayCreationExpr contractsArray = new ArrayCreationExpr();
+			contractsArray.setElementType("String");
+			ArrayInitializerExpr contractsArrayInit = new ArrayInitializerExpr();
+			contractsArray.setInitializer(contractsArrayInit);
+			returnContractsStmt.setExpression(contractsArray);
+			NodeList<Expression> contracts = contractsArrayInit.getValues();
+
 			// Add beforeClass method
 			ClassOrInterfaceType globalGuardsIdsType = StaticJavaParser
 					.parseClassOrInterfaceType("java.util.HashMap<String, String>");
@@ -175,10 +194,11 @@ public class TestGeneratorValidation {
 					.parseExpression("new java.util.HashMap<String, String>()");
 			clax.addFieldWithInitializer(globalGuardsIdsType, "globalGuardsIds_lta", globalGuardsIdsInit,
 					Keyword.PUBLIC, Keyword.STATIC);
-			MethodDeclaration md = clax.addMethod("init", Modifier.Keyword.PUBLIC, Modifier.Keyword.STATIC);
-			md.setType(new com.github.javaparser.ast.type.VoidType());
-			md.addAnnotation(new MarkerAnnotationExpr("org.junit.BeforeClass"));
-			BlockStmt bs = md.createBody();
+			MethodDeclaration mdInit = clax.addMethod("init", Modifier.Keyword.PUBLIC, Modifier.Keyword.STATIC);
+			mdInit.setType(new com.github.javaparser.ast.type.VoidType());
+			mdInit.addAnnotation(new MarkerAnnotationExpr("org.junit.BeforeClass"));
+			BlockStmt bs = mdInit.createBody();
+
 			int identifier = 0;
 			int specificationCounter = 0;
 			for (DocumentedExecutable targetMethod : allSpecs.keySet()) {
@@ -189,10 +209,12 @@ public class TestGeneratorValidation {
 					targetSpecs.addAll(os.getThrowsSpecifications());
 					targetSpecs.addAll(os.getPostSpecifications());
 					for (Specification spec : targetSpecs) {
+						contracts.add(new StringLiteralExpr(StringEscapeUtils.escapeJava(spec.toString())));
 						if (methodCallsToEnrich.size() != 0) {
 							// TODO non-modeled guards are classified as present. They should be skipped or
 							// classified as non-present
-							bs.addStatement("globalGuardsIds_lta.put(\"" + specificationCounter + "\",\"present\");");
+							bs.addStatement(
+									"globalGuardsIds_lta.put(\"" + specificationCounter + "\",\"not-executed\");");
 							identifier = enrichTestWithOracle(spec, targetMethod, methodCallsToEnrich, allSpecs,
 									identifier, specificationCounter);
 						} else {
@@ -205,11 +227,11 @@ public class TestGeneratorValidation {
 			}
 
 			// Add AfterClass
-			md = clax.addMethod("generateReport", Modifier.Keyword.PUBLIC, Modifier.Keyword.STATIC);
-			md.setType(new com.github.javaparser.ast.type.VoidType());
-			md.addAnnotation(new MarkerAnnotationExpr("org.junit.AfterClass"));
-			BlockStmt bs2 = md.createBody();
-			bs2.addStatement("lta.test.utils.TestUtils.report(globalGuardsIds_lta, \"" + targetClass + "\");");
+			mdInit = clax.addMethod("generateReport", Modifier.Keyword.PUBLIC, Modifier.Keyword.STATIC);
+			mdInit.setType(new com.github.javaparser.ast.type.VoidType());
+			mdInit.addAnnotation(new MarkerAnnotationExpr("org.junit.AfterClass"));
+			BlockStmt bs2 = mdInit.createBody();
+			bs2.addStatement("lta.test.utils.TestUtils.report(globalGuardsIds_lta, \"" + targetClass + "\", contracts());");
 
 			// write out the enriched test case
 			try (FileOutputStream output = new FileOutputStream(currentTestCase)) {
@@ -224,112 +246,108 @@ public class TestGeneratorValidation {
 			DocumentedExecutable targetMethod) {
 		List<ExpressionStmt> callsToTargetMethodTest = new ArrayList<ExpressionStmt>();
 		SupportStructure ss = new SupportStructure(targetMethod, callsToTargetMethodTest);
-		VoidVisitor <SupportStructure> visitor = new IdentifyCallsToEnrichVisitor();
+		VoidVisitor<SupportStructure> visitor = new IdentifyCallsToEnrichVisitor();
 		visitor.visit(cu, ss);
-		
-		/*
-		String targetMethodName = targetMethod.getName().substring(targetMethod.getName().lastIndexOf('.') + 1);
-		List<ExpressionStmt> callsToTargetMethodTmp = cu.findAll(ExpressionStmt.class,
-				c -> c.getExpression().isVariableDeclarationExpr()
-						&& c.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().isPresent()
-						&& c.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().get()
-								.isMethodCallExpr()
-						&& c.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().get()
-								.asMethodCallExpr().getNameAsString().equals(targetMethodName));
-		callsToTargetMethodTmp.addAll(cu.findAll(ExpressionStmt.class,
-				c -> c.getExpression().isAssignExpr() && c.getExpression().asAssignExpr().getValue().isMethodCallExpr()
-						&& c.getExpression().asAssignExpr().getValue().asMethodCallExpr().getNameAsString()
-								.equals(targetMethodName)));
-		callsToTargetMethodTmp.addAll(cu.findAll(ExpressionStmt.class, c -> c.getExpression().isMethodCallExpr()
-				&& c.getExpression().asMethodCallExpr().getNameAsString().equals(targetMethodName)));
-		callsToTargetMethodTmp.addAll(cu.findAll(ExpressionStmt.class,
-				c -> c.getExpression().isVariableDeclarationExpr()
-						&& c.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().isPresent()
-						&& c.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().get()
-								.isObjectCreationExpr()
-						&& c.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().get()
-								.asObjectCreationExpr().getType().getNameAsString().equals(targetMethodName)));
-		callsToTargetMethodTmp.addAll(cu.findAll(ExpressionStmt.class,
-				c -> c.getExpression().isAssignExpr()
-						&& c.getExpression().asAssignExpr().getValue().isObjectCreationExpr()
-						&& c.getExpression().asAssignExpr().getValue().asObjectCreationExpr().getType()
-								.getNameAsString().equals(targetMethodName)));
-		callsToTargetMethodTmp.addAll(cu.findAll(ExpressionStmt.class, c -> c.getExpression().isObjectCreationExpr()
-				&& c.getExpression().asObjectCreationExpr().getType().getNameAsString().equals(targetMethodName)));
-		List<ExpressionStmt> callsToTargetMethod = new ArrayList<ExpressionStmt>();
-		for (ExpressionStmt es : callsToTargetMethodTmp) {
-			List<ResolvedType> targetMethodParameters;
-			NodeList<Expression> argsMethod = null;
-			try {
-				if (es.getExpression().isObjectCreationExpr()) {
-					ResolvedConstructorDeclaration rcd = es.getExpression().asObjectCreationExpr().resolve();
-					targetMethodParameters = rcd.formalParameterTypes();
-					argsMethod = es.getExpression().asObjectCreationExpr().getArguments();
-				} else if (es.getExpression().isAssignExpr()
-						&& es.getExpression().asAssignExpr().getValue().isObjectCreationExpr()) {
-					ResolvedConstructorDeclaration rcd = es.getExpression().asAssignExpr().getValue()
-							.asObjectCreationExpr().resolve();
-					targetMethodParameters = rcd.formalParameterTypes();
-					argsMethod = es.getExpression().asAssignExpr().getValue().asObjectCreationExpr().getArguments();
-				} else if (es.getExpression().isVariableDeclarationExpr() && es.getExpression()
-						.asVariableDeclarationExpr().getVariable(0).getInitializer().get().isObjectCreationExpr()) {
-					ResolvedConstructorDeclaration rcd = es.getExpression().asVariableDeclarationExpr().getVariable(0)
-							.getInitializer().get().asObjectCreationExpr().resolve();
-					targetMethodParameters = rcd.formalParameterTypes();
-					argsMethod = es.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().get()
-							.asObjectCreationExpr().getArguments();
-				} else if (es.getExpression().isMethodCallExpr()) {
-					ResolvedMethodDeclaration rcd = es.getExpression().asMethodCallExpr().resolve();
-					targetMethodParameters = rcd.formalParameterTypes();
-					argsMethod = es.getExpression().asMethodCallExpr().getArguments();
-				} else if (es.getExpression().isAssignExpr()
-						&& es.getExpression().asAssignExpr().getValue().isMethodCallExpr()) {
-					ResolvedMethodDeclaration rcd = es.getExpression().asAssignExpr().getValue().asMethodCallExpr()
-							.resolve();
-					targetMethodParameters = rcd.formalParameterTypes();
-					argsMethod = es.getExpression().asAssignExpr().getValue().asMethodCallExpr().getArguments();
-				} else if (es.getExpression().isVariableDeclarationExpr() && es.getExpression()
-						.asVariableDeclarationExpr().getVariable(0).getInitializer().get().isMethodCallExpr()) {
-					ResolvedMethodDeclaration rcd = es.getExpression().asVariableDeclarationExpr().getVariable(0)
-							.getInitializer().get().asMethodCallExpr().resolve();
-					targetMethodParameters = rcd.formalParameterTypes();
-					argsMethod = es.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().get()
-							.asMethodCallExpr().getArguments();
-				} else {
-					throw new RuntimeException("Unexpected call to target method: " + es);
-				}
-				List<DocumentedParameter> argsWanted = targetMethod.getParameters();
 
-				boolean found = false;
-				if (targetMethodParameters.size() == argsWanted.size()) {
-					if (targetMethodParameters.size() == 0) {
-						found = true;
-					} else {
-						for (int i = 0; i < argsMethod.size(); i++) {
-							found = false;
-							ResolvedType argMethod = targetMethodParameters.get(i);
-							DocumentedParameter argWanted = argsWanted.get(i);
-							String argMethodString = argMethod.describe();
-							String argWantedString = argWanted.toString().substring(0,
-									argWanted.toString().indexOf(" " + argWanted.getName()));
-							// Replace $ with . to allow comparison of inner classes
-							argWantedString = argWantedString.replace("$", ".");
-							found = argMethodString.equals(argWantedString);
-							if (!found)
-								break;
-						}
-					}
-					if (found)
-						callsToTargetMethod.add(es);
-				}
-			} catch (Exception e) {
-				// TODO This is a temporary fix. We should analyze why the SymbolSolver
-				// sometimes fails in detecting the constructor/method declaration
-				callsToTargetMethod.add(es);
-			}
-		}
-		return callsToTargetMethod;
-		*/
+		/*
+		 * String targetMethodName =
+		 * targetMethod.getName().substring(targetMethod.getName().lastIndexOf('.') +
+		 * 1); List<ExpressionStmt> callsToTargetMethodTmp =
+		 * cu.findAll(ExpressionStmt.class, c ->
+		 * c.getExpression().isVariableDeclarationExpr() &&
+		 * c.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer()
+		 * .isPresent() &&
+		 * c.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer()
+		 * .get() .isMethodCallExpr() &&
+		 * c.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer()
+		 * .get() .asMethodCallExpr().getNameAsString().equals(targetMethodName));
+		 * callsToTargetMethodTmp.addAll(cu.findAll(ExpressionStmt.class, c ->
+		 * c.getExpression().isAssignExpr() &&
+		 * c.getExpression().asAssignExpr().getValue().isMethodCallExpr() &&
+		 * c.getExpression().asAssignExpr().getValue().asMethodCallExpr().
+		 * getNameAsString() .equals(targetMethodName)));
+		 * callsToTargetMethodTmp.addAll(cu.findAll(ExpressionStmt.class, c ->
+		 * c.getExpression().isMethodCallExpr() &&
+		 * c.getExpression().asMethodCallExpr().getNameAsString().equals(
+		 * targetMethodName)));
+		 * callsToTargetMethodTmp.addAll(cu.findAll(ExpressionStmt.class, c ->
+		 * c.getExpression().isVariableDeclarationExpr() &&
+		 * c.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer()
+		 * .isPresent() &&
+		 * c.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer()
+		 * .get() .isObjectCreationExpr() &&
+		 * c.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer()
+		 * .get()
+		 * .asObjectCreationExpr().getType().getNameAsString().equals(targetMethodName))
+		 * ); callsToTargetMethodTmp.addAll(cu.findAll(ExpressionStmt.class, c ->
+		 * c.getExpression().isAssignExpr() &&
+		 * c.getExpression().asAssignExpr().getValue().isObjectCreationExpr() &&
+		 * c.getExpression().asAssignExpr().getValue().asObjectCreationExpr().getType()
+		 * .getNameAsString().equals(targetMethodName)));
+		 * callsToTargetMethodTmp.addAll(cu.findAll(ExpressionStmt.class, c ->
+		 * c.getExpression().isObjectCreationExpr() &&
+		 * c.getExpression().asObjectCreationExpr().getType().getNameAsString().equals(
+		 * targetMethodName))); List<ExpressionStmt> callsToTargetMethod = new
+		 * ArrayList<ExpressionStmt>(); for (ExpressionStmt es : callsToTargetMethodTmp)
+		 * { List<ResolvedType> targetMethodParameters; NodeList<Expression> argsMethod
+		 * = null; try { if (es.getExpression().isObjectCreationExpr()) {
+		 * ResolvedConstructorDeclaration rcd =
+		 * es.getExpression().asObjectCreationExpr().resolve(); targetMethodParameters =
+		 * rcd.formalParameterTypes(); argsMethod =
+		 * es.getExpression().asObjectCreationExpr().getArguments(); } else if
+		 * (es.getExpression().isAssignExpr() &&
+		 * es.getExpression().asAssignExpr().getValue().isObjectCreationExpr()) {
+		 * ResolvedConstructorDeclaration rcd =
+		 * es.getExpression().asAssignExpr().getValue()
+		 * .asObjectCreationExpr().resolve(); targetMethodParameters =
+		 * rcd.formalParameterTypes(); argsMethod =
+		 * es.getExpression().asAssignExpr().getValue().asObjectCreationExpr().
+		 * getArguments(); } else if (es.getExpression().isVariableDeclarationExpr() &&
+		 * es.getExpression()
+		 * .asVariableDeclarationExpr().getVariable(0).getInitializer().get().
+		 * isObjectCreationExpr()) { ResolvedConstructorDeclaration rcd =
+		 * es.getExpression().asVariableDeclarationExpr().getVariable(0)
+		 * .getInitializer().get().asObjectCreationExpr().resolve();
+		 * targetMethodParameters = rcd.formalParameterTypes(); argsMethod =
+		 * es.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer(
+		 * ).get() .asObjectCreationExpr().getArguments(); } else if
+		 * (es.getExpression().isMethodCallExpr()) { ResolvedMethodDeclaration rcd =
+		 * es.getExpression().asMethodCallExpr().resolve(); targetMethodParameters =
+		 * rcd.formalParameterTypes(); argsMethod =
+		 * es.getExpression().asMethodCallExpr().getArguments(); } else if
+		 * (es.getExpression().isAssignExpr() &&
+		 * es.getExpression().asAssignExpr().getValue().isMethodCallExpr()) {
+		 * ResolvedMethodDeclaration rcd =
+		 * es.getExpression().asAssignExpr().getValue().asMethodCallExpr() .resolve();
+		 * targetMethodParameters = rcd.formalParameterTypes(); argsMethod =
+		 * es.getExpression().asAssignExpr().getValue().asMethodCallExpr().getArguments(
+		 * ); } else if (es.getExpression().isVariableDeclarationExpr() &&
+		 * es.getExpression()
+		 * .asVariableDeclarationExpr().getVariable(0).getInitializer().get().
+		 * isMethodCallExpr()) { ResolvedMethodDeclaration rcd =
+		 * es.getExpression().asVariableDeclarationExpr().getVariable(0)
+		 * .getInitializer().get().asMethodCallExpr().resolve(); targetMethodParameters
+		 * = rcd.formalParameterTypes(); argsMethod =
+		 * es.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer(
+		 * ).get() .asMethodCallExpr().getArguments(); } else { throw new
+		 * RuntimeException("Unexpected call to target method: " + es); }
+		 * List<DocumentedParameter> argsWanted = targetMethod.getParameters();
+		 * 
+		 * boolean found = false; if (targetMethodParameters.size() ==
+		 * argsWanted.size()) { if (targetMethodParameters.size() == 0) { found = true;
+		 * } else { for (int i = 0; i < argsMethod.size(); i++) { found = false;
+		 * ResolvedType argMethod = targetMethodParameters.get(i); DocumentedParameter
+		 * argWanted = argsWanted.get(i); String argMethodString = argMethod.describe();
+		 * String argWantedString = argWanted.toString().substring(0,
+		 * argWanted.toString().indexOf(" " + argWanted.getName())); // Replace $ with .
+		 * to allow comparison of inner classes argWantedString =
+		 * argWantedString.replace("$", "."); found =
+		 * argMethodString.equals(argWantedString); if (!found) break; } } if (found)
+		 * callsToTargetMethod.add(es); } } catch (Exception e) { // TODO This is a
+		 * temporary fix. We should analyze why the SymbolSolver // sometimes fails in
+		 * detecting the constructor/method declaration callsToTargetMethod.add(es); } }
+		 * return callsToTargetMethod;
+		 */
 		return ss.getTargetCallsList();
 	}
 
@@ -348,16 +366,16 @@ public class TestGeneratorValidation {
 				Statement targetCallWithAssignment = StaticJavaParser.parseStatement(targetCallWithAssignmentStmt);
 				insertionPoint = ((BlockStmt) targetCallWithAssignment.getParentNode().get()).getStatements();
 			}
-
 			// add assumptions: the guard of the oracle, plus all preconditions
 			String clause = composeGuardClause(spec, targetCall, insertionPoint, targetMethodName, "");
 			// Skip unmodeled guard
 			if (clause.contains("SKIP_UNMODELED")) {
 				String comment = "Skipped check due to unmodeled guard: " + spec.getGuard() + " "
 						+ spec.getDescription();
-				targetCall.addOrphanComment(new LineComment(comment));
+				addSkipClause(identifier, specificationCounter, targetCall, comment, insertionPoint);
 				continue;
 			}
+
 			String guardsComment = "Automatically generated test oracle with guard:" + spec.getGuard().toString();
 			for (PreSpecification precond : allSpecs.get(targetMethod).getPreSpecifications()) {
 				clause = composeGuardClause(precond, targetCall, insertionPoint, targetMethodName, clause);
@@ -365,13 +383,16 @@ public class TestGeneratorValidation {
 				if (clause.contains("SKIP_UNMODELED")) {
 					String comment = "Skipped check due to unmodeled guard precondition: " + precond.getGuard() + " "
 							+ spec.getDescription();
-					targetCall.addOrphanComment(new LineComment(comment));
+					addSkipClause(identifier, specificationCounter, targetCall, comment, insertionPoint);
 					continue;
 				}
 				guardsComment = guardsComment + precond.getDescription();
 			}
 			// Skip unmodeled guard
 			if (clause.contains("SKIP_UNMODELED")) {
+				String comment = "Skipped check due to unmodeled clause. THIS SHOULDN'T HAPPEN BECAUSE UNMODELED CHECKS HAVE LAREADY BEEN PERFORMED."
+						+ spec.getDescription();
+				addSkipClause(identifier, specificationCounter, targetCall, comment, insertionPoint);
 				continue;
 			}
 
@@ -379,7 +400,7 @@ public class TestGeneratorValidation {
 			if (clause.contains("null.")) {
 				String comment = "Skipped check due to non satisfiable pre-conditions: " + clause + " "
 						+ spec.getDescription();
-				targetCall.addOrphanComment(new LineComment(comment));
+				addSkipClause(identifier, specificationCounter, targetCall, comment, insertionPoint);
 				continue;
 			}
 			addIfGuard(clause, targetCall, targetMethod.getReturnType().getType(), insertionPoint, identifier,
@@ -405,6 +426,20 @@ public class TestGeneratorValidation {
 			identifier++;
 		}
 		return identifier;
+	}
+
+	private static void addSkipClause(int identifier, int specificationCounter, ExpressionStmt targetCall,
+			String comment, NodeList<Statement> insertionPoint) {
+		IfStmt ifUniqueGuard = new IfStmt();
+		ifUniqueGuard
+				.setCondition(StaticJavaParser.parseExpression("uniqueGuardIds_lta.contains(\"" + identifier + "\")"));
+		IfStmt ifContractStatus = new IfStmt();
+		ifContractStatus.setCondition(StaticJavaParser
+				.parseExpression("globalGuardsIds_lta.get(\"" + specificationCounter + "\").equals(\"not-executed\")"));
+		ifContractStatus.setThenStmt(
+				new BlockStmt().addStatement("globalGuardsIds_lta.put(\"" + specificationCounter + "\",\"skipped\");"));
+		ifUniqueGuard.setComment(new LineComment(comment));
+		insertionPoint.addBefore(ifUniqueGuard, targetCall);
 	}
 
 	private static void addIfGuard(String clause, ExpressionStmt targetCall, Type targetCallReturnType,
@@ -453,23 +488,25 @@ public class TestGeneratorValidation {
 					cc.getParameter().setType(Throwable.class);
 
 					BlockStmt bs = cc.getBody();
-					IfStmt ifs = new IfStmt();
-					ifs.setCondition(
+					IfStmt ifUniqueGuard = new IfStmt();
+					ifUniqueGuard.setCondition(
 							StaticJavaParser.parseExpression("uniqueGuardIds_lta.contains(\"" + identifier + "\")"));
-					IfStmt ifs2 = new IfStmt();
-					ifs2.setCondition(StaticJavaParser.parseExpression(cc.getParameter().getName() + " instanceof "
-							+ postCond.getExceptionTypeName() + " && (globalGuardsIds_lta.get(\"" + specificationCounter
-							+ "\").equals(\"present\") || globalGuardsIds_lta.get(\"" + specificationCounter
-							+ "\").equals(\"pass\"))"));
-					ifs2.setThenStmt(StaticJavaParser
+					IfStmt ifContractStatus = new IfStmt();
+					ifContractStatus.setCondition(StaticJavaParser.parseExpression(
+							cc.getParameter().getName() + " instanceof " + postCond.getExceptionTypeName()));
+					IfStmt thenIfContractStatus = new IfStmt();
+					thenIfContractStatus.setCondition(StaticJavaParser.parseExpression(
+							"!globalGuardsIds_lta.get(\"" + specificationCounter + "\").equals(\"fail\")"));
+					thenIfContractStatus.setThenStmt(StaticJavaParser
 							.parseStatement("globalGuardsIds_lta.put(\"" + specificationCounter + "\",\"pass\");"));
-					ifs2.setElseStmt(StaticJavaParser
+					ifContractStatus.setThenStmt(new BlockStmt().addStatement(thenIfContractStatus));
+					ifContractStatus.setElseStmt(StaticJavaParser
 							.parseStatement("globalGuardsIds_lta.put(\"" + specificationCounter + "\",\"fail\");"));
-					BlockStmt bsif = new BlockStmt();
-					bsif.addStatement(ifs2);
-					bsif.addStatement("org.junit.Assert.assertTrue(" + cc.getParameter().getName() + " instanceof "
-							+ postCond.getExceptionTypeName() + ");");
-					ifs.setThenStmt(bsif);
+					BlockStmt thenIfUniqueGuard = new BlockStmt();
+					thenIfUniqueGuard.addStatement(ifContractStatus);
+					thenIfUniqueGuard.addStatement("org.junit.Assert.assertTrue(" + cc.getParameter().getName()
+							+ " instanceof " + postCond.getExceptionTypeName() + ");");
+					ifUniqueGuard.setThenStmt(thenIfUniqueGuard);
 
 					// Statement assertStmt2 =
 					// StaticJavaParser.parseStatement("if(uniqueGuardIds_lta.contains(\"" +
@@ -477,8 +514,8 @@ public class TestGeneratorValidation {
 					// cc.getParameter().getName() + " instanceof " +
 					// postCond.getExceptionTypeName() + ");}");
 					String comment2 = "Automatically generated test oracle:" + postCond.getDescription();
-					ifs.setLineComment(comment2);
-					bs.addStatement(ifs);
+					ifUniqueGuard.setLineComment(comment2);
+					bs.addStatement(ifUniqueGuard);
 					cc.setBody(bs);
 				}
 			}
@@ -543,24 +580,27 @@ public class TestGeneratorValidation {
 						+ insertionPoint.getParentNode());
 			}
 		}
-		IfStmt ifs = new IfStmt();
-		ifs.setCondition(StaticJavaParser.parseExpression("uniqueGuardIds_lta.contains(\"" + identifier + "\")"));
-		IfStmt ifs2 = new IfStmt();
-		ifs2.setCondition(StaticJavaParser.parseExpression(oracle + " && (globalGuardsIds_lta.get(\""
-				+ specificationCounter + "\").equals(\"present\") || globalGuardsIds_lta.get(\"" + specificationCounter
-				+ "\").equals(\"pass\"))"));
-		ifs2.setThenStmt(
+		IfStmt ifUniqueGuard = new IfStmt();
+		ifUniqueGuard
+				.setCondition(StaticJavaParser.parseExpression("uniqueGuardIds_lta.contains(\"" + identifier + "\")"));
+		IfStmt ifContractStatus = new IfStmt();
+		ifContractStatus.setCondition(StaticJavaParser.parseExpression(oracle));
+		IfStmt thenIfContractStatus = new IfStmt();
+		thenIfContractStatus.setCondition(StaticJavaParser
+				.parseExpression("!globalGuardsIds_lta.get(\"" + specificationCounter + "\").equals(\"fail\")"));
+		thenIfContractStatus.setThenStmt(
 				StaticJavaParser.parseStatement("globalGuardsIds_lta.put(\"" + specificationCounter + "\",\"pass\");"));
-		ifs2.setElseStmt(
+		ifContractStatus.setThenStmt(new BlockStmt().addStatement(thenIfContractStatus));
+		ifContractStatus.setElseStmt(
 				StaticJavaParser.parseStatement("globalGuardsIds_lta.put(\"" + specificationCounter + "\",\"fail\");"));
-		BlockStmt bsif = new BlockStmt();
-		bsif.addStatement(ifs2);
-		bsif.addStatement("org.junit.Assert.assertTrue(" + oracle + ");");
-		ifs.setThenStmt(bsif);
+		BlockStmt thenIfUniqueGuard = new BlockStmt();
+		thenIfUniqueGuard.addStatement(ifContractStatus);
+		thenIfUniqueGuard.addStatement("org.junit.Assert.assertTrue(" + oracle + ");");
+		ifUniqueGuard.setThenStmt(thenIfUniqueGuard);
 
 		String comment = "Automatically generated test oracle:" + postCond.getDescription();
-		ifs.setLineComment(comment);
-		insertionPoint.addAfter(ifs, targetCallToConsider);
+		ifUniqueGuard.setLineComment(comment);
+		insertionPoint.addAfter(ifUniqueGuard, targetCallToConsider);
 		Optional<Node> n = insertionPoint.getParentNode();
 		if (n.isPresent()) {
 			n = n.get().getParentNode();
