@@ -23,9 +23,6 @@ import com.github.javaparser.ast.stmt.Statement;
 import com.github.javaparser.ast.stmt.TryStmt;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
 import com.github.javaparser.ast.visitor.VoidVisitor;
-import com.github.javaparser.resolution.declarations.ResolvedConstructorDeclaration;
-import com.github.javaparser.resolution.declarations.ResolvedMethodDeclaration;
-import com.github.javaparser.resolution.types.ResolvedType;
 import com.github.javaparser.symbolsolver.JavaSymbolSolver;
 import com.github.javaparser.symbolsolver.resolution.typesolvers.CombinedTypeSolver;
 import com.github.javaparser.symbolsolver.resolution.typesolvers.JavaParserTypeSolver;
@@ -48,7 +45,6 @@ import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.toradocu.extractor.DocumentedExecutable;
-import org.toradocu.extractor.DocumentedParameter;
 import org.toradocu.util.Checks;
 import randoop.condition.specification.OperationSpecification;
 import randoop.condition.specification.PostSpecification;
@@ -428,7 +424,8 @@ public class TestGeneratorValidation {
 			try {
 				insertionPoint.addBefore(i, targetCall);
 			} catch (Throwable e) {
-				String assignStmt = targetCallReturnType.getTypeName() + " _methodResult__ = " + targetCall;
+				String targetCallReturnTypeName = targetCallReturnType.getTypeName().replaceAll("<[A-Za-z_$]+>", "<?>");
+				String assignStmt = targetCallReturnTypeName + " _methodResult__ = " + targetCall;
 				Statement targetCallWithAssignment = StaticJavaParser.parseStatement(assignStmt);
 				try {
 					insertionPoint.addBefore(i, targetCallWithAssignment);

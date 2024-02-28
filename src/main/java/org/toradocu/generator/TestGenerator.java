@@ -656,7 +656,8 @@ public class TestGenerator {
 		if (oracle.contains("_methodResult__")) {
 			// targetCall has a return value which is currently not assigned to any variable
 			// in the test case
-			String assignStmt = targetMethodReturnType.getTypeName() + " _methodResult__ = " + targetCall;
+			String targetMethodReturnTypeName = targetMethodReturnType.getTypeName().replaceAll("<[A-Za-z_$]+>", "<?>");
+			String assignStmt = targetMethodReturnTypeName + " _methodResult__ = " + targetCall;
 			try {
 				Statement targetCallWithAssignment = StaticJavaParser.parseStatement(assignStmt);
 				insertionPoint.replace(targetCall, targetCallWithAssignment);
