@@ -448,42 +448,33 @@ public class TestGenerator {
 		List<ExpressionStmt> callsToTargetMethod = new ArrayList<ExpressionStmt>();
 		for (ExpressionStmt es : callsToTargetMethodTmp) {
 			List<ResolvedType> targetMethodParameters;
-			NodeList<Expression> argsMethod = null;
 			try {
 				if (es.getExpression().isObjectCreationExpr()) {
 					ResolvedConstructorDeclaration rcd = es.getExpression().asObjectCreationExpr().resolve();
 					targetMethodParameters = rcd.formalParameterTypes();
-					argsMethod = es.getExpression().asObjectCreationExpr().getArguments();
 				} else if (es.getExpression().isAssignExpr()
 						&& es.getExpression().asAssignExpr().getValue().isObjectCreationExpr()) {
 					ResolvedConstructorDeclaration rcd = es.getExpression().asAssignExpr().getValue()
 							.asObjectCreationExpr().resolve();
 					targetMethodParameters = rcd.formalParameterTypes();
-					argsMethod = es.getExpression().asAssignExpr().getValue().asObjectCreationExpr().getArguments();
 				} else if (es.getExpression().isVariableDeclarationExpr() && es.getExpression()
 						.asVariableDeclarationExpr().getVariable(0).getInitializer().get().isObjectCreationExpr()) {
 					ResolvedConstructorDeclaration rcd = es.getExpression().asVariableDeclarationExpr().getVariable(0)
 							.getInitializer().get().asObjectCreationExpr().resolve();
 					targetMethodParameters = rcd.formalParameterTypes();
-					argsMethod = es.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().get()
-							.asObjectCreationExpr().getArguments();
 				} else if (es.getExpression().isMethodCallExpr()) {
 					ResolvedMethodDeclaration rcd = es.getExpression().asMethodCallExpr().resolve();
 					targetMethodParameters = rcd.formalParameterTypes();
-					argsMethod = es.getExpression().asMethodCallExpr().getArguments();
 				} else if (es.getExpression().isAssignExpr()
 						&& es.getExpression().asAssignExpr().getValue().isMethodCallExpr()) {
 					ResolvedMethodDeclaration rcd = es.getExpression().asAssignExpr().getValue().asMethodCallExpr()
 							.resolve();
 					targetMethodParameters = rcd.formalParameterTypes();
-					argsMethod = es.getExpression().asAssignExpr().getValue().asMethodCallExpr().getArguments();
 				} else if (es.getExpression().isVariableDeclarationExpr() && es.getExpression()
 						.asVariableDeclarationExpr().getVariable(0).getInitializer().get().isMethodCallExpr()) {
 					ResolvedMethodDeclaration rcd = es.getExpression().asVariableDeclarationExpr().getVariable(0)
 							.getInitializer().get().asMethodCallExpr().resolve();
 					targetMethodParameters = rcd.formalParameterTypes();
-					argsMethod = es.getExpression().asVariableDeclarationExpr().getVariable(0).getInitializer().get()
-							.asMethodCallExpr().getArguments();
 				} else {
 					throw new RuntimeException("Unexpected call to target method: " + es);
 				}
@@ -494,7 +485,7 @@ public class TestGenerator {
 					if (targetMethodParameters.size() == 0) {
 						found = true;
 					} else {
-						for (int i = 0; i < argsMethod.size(); i++) {
+						for (int i = 0; i < targetMethodParameters.size(); i++) {
 							found = false;
 							ResolvedType argMethod = targetMethodParameters.get(i);
 							DocumentedParameter argWanted = argsWanted.get(i);
@@ -514,6 +505,7 @@ public class TestGenerator {
 			} catch (Exception e) {
 				// TODO This is a temporary fix. We should analyze why the SymbolSolver
 				// sometimes fails in detecting the constructor/method declaration
+				log.warn("SymbolSolver failure. A check will be added but it may need to be manually removed.", e);
 				callsToTargetMethod.add(es);
 			}
 		}
@@ -629,7 +621,7 @@ public class TestGenerator {
 				text += capitalizeFirstChar(w);
 			}
 		}
-		text = text.replaceAll("[^A-Za-z_$0-9]", "_");
+		text = text.replaceAll("[^A-Za-z_$0-9]", "");
 		return text;
 	}
 
