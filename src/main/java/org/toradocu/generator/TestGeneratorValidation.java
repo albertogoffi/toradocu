@@ -231,7 +231,8 @@ public class TestGeneratorValidation {
 			mdInit.setType(new com.github.javaparser.ast.type.VoidType());
 			mdInit.addAnnotation(new MarkerAnnotationExpr("org.junit.AfterClass"));
 			BlockStmt bs2 = mdInit.createBody();
-			bs2.addStatement("lta.test.utils.TestUtils.report(globalGuardsIds_lta, \"" + targetClass + "\", contracts());");
+			bs2.addStatement(
+					"lta.test.utils.TestUtils.report(globalGuardsIds_lta, \"" + targetClass + "\", contracts());");
 
 			// write out the enriched test case
 			try (FileOutputStream output = new FileOutputStream(currentTestCase)) {
@@ -373,6 +374,7 @@ public class TestGeneratorValidation {
 				String comment = "Skipped check due to unmodeled guard: " + spec.getGuard() + " "
 						+ spec.getDescription();
 				addSkipClause(identifier, specificationCounter, targetCall, comment, insertionPoint);
+				identifier++;
 				continue;
 			}
 
@@ -384,6 +386,7 @@ public class TestGeneratorValidation {
 					String comment = "Skipped check due to unmodeled guard precondition: " + precond.getGuard() + " "
 							+ spec.getDescription();
 					addSkipClause(identifier, specificationCounter, targetCall, comment, insertionPoint);
+					identifier++;
 					continue;
 				}
 				guardsComment = guardsComment + precond.getDescription();
@@ -393,6 +396,7 @@ public class TestGeneratorValidation {
 				String comment = "Skipped check due to unmodeled clause. THIS SHOULDN'T HAPPEN BECAUSE UNMODELED CHECKS HAVE LAREADY BEEN PERFORMED."
 						+ spec.getDescription();
 				addSkipClause(identifier, specificationCounter, targetCall, comment, insertionPoint);
+				identifier++;
 				continue;
 			}
 
@@ -401,6 +405,7 @@ public class TestGeneratorValidation {
 				String comment = "Skipped check due to non satisfiable pre-conditions: " + clause + " "
 						+ spec.getDescription();
 				addSkipClause(identifier, specificationCounter, targetCall, comment, insertionPoint);
+				identifier++;
 				continue;
 			}
 			addIfGuard(clause, targetCall, targetMethod.getReturnType().getType(), insertionPoint, identifier,
@@ -430,16 +435,18 @@ public class TestGeneratorValidation {
 
 	private static void addSkipClause(int identifier, int specificationCounter, ExpressionStmt targetCall,
 			String comment, NodeList<Statement> insertionPoint) {
-		IfStmt ifUniqueGuard = new IfStmt();
-		ifUniqueGuard
-				.setCondition(StaticJavaParser.parseExpression("uniqueGuardIds_lta.contains(\"" + identifier + "\")"));
+
+		Statement uniqueStmt = StaticJavaParser.parseStatement("uniqueGuardIds_lta.add(\"" + identifier + "\");");
+		uniqueStmt.setComment(new LineComment(comment));
+		insertionPoint.addBefore(uniqueStmt, targetCall);
+
 		IfStmt ifContractStatus = new IfStmt();
 		ifContractStatus.setCondition(StaticJavaParser
 				.parseExpression("globalGuardsIds_lta.get(\"" + specificationCounter + "\").equals(\"not-executed\")"));
 		ifContractStatus.setThenStmt(
 				new BlockStmt().addStatement("globalGuardsIds_lta.put(\"" + specificationCounter + "\",\"skipped\");"));
-		ifUniqueGuard.setComment(new LineComment(comment));
-		insertionPoint.addBefore(ifUniqueGuard, targetCall);
+		insertionPoint.addBefore(ifContractStatus, targetCall);
+
 	}
 
 	private static void addIfGuard(String clause, ExpressionStmt targetCall, Type targetCallReturnType,
