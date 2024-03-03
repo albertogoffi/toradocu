@@ -9,8 +9,8 @@ import org.toradocu.extractor.DocumentedExecutable;
 import org.toradocu.extractor.DocumentedParameter;
 
 import com.github.javaparser.ast.Node;
-import com.github.javaparser.ast.comments.Comment;
-import com.github.javaparser.ast.comments.LineComment;
+import com.github.javaparser.ast.NodeList;
+import com.github.javaparser.ast.expr.Expression;
 import com.github.javaparser.ast.expr.MethodCallExpr;
 import com.github.javaparser.ast.expr.ObjectCreationExpr;
 import com.github.javaparser.ast.stmt.ExpressionStmt;
@@ -33,33 +33,13 @@ public class IdentifyCallsToEnrichVisitor extends VoidVisitorAdapter<SupportStru
 			try {
 				ResolvedMethodDeclaration analyzedMethodDeclaration = analyzedMethodExpr.resolve();
 				List<ResolvedType> analyzedMethodParameters = analyzedMethodDeclaration.formalParameterTypes();
-				extracted(analyzedMethodExpr, analyzedMethodParameters, ss, targetCall);
+				analyzeArgsMatch(analyzedMethodExpr, analyzedMethodParameters, ss, targetCall);
 			} catch (Exception e) {
-				// TODO This is a temporary fix. We should analyze why the SymbolSolver
-				// sometimes fails in detecting the constructor/method declaration
-				log.warn("SymbolSolver failure. A check will be added but it may need to be manually removed.", e);
-				boolean cont = true;
-				Node n = analyzedMethodExpr;
-				do {
-					Optional<Node> optionalParent = n.getParentNode();
-					if (!optionalParent.isPresent()) {
-						throw new RuntimeException("Method creation expression found without expression statement");
-					} else {
-						n = optionalParent.get();
-						if (n instanceof ExpressionStmt) {
-							ExpressionStmt es = (ExpressionStmt) n;
-							String comment = "";
-							Optional<Comment> optionalComment = es.getComment();
-							if (optionalComment.isPresent())
-								comment = comment + optionalComment.get().asString();
-							es.setLineComment(
-									comment + "Check added due to SymbolSolver failure. Check if removal is needed.");
-							ss.getTargetCallsList().add(es);
-							cont = false;
-						}
-					}
-
-				} while (cont);
+				// The following is a fix in case the JavaParser SymbolSolver fails in resolving
+				// a declaration
+				log.warn("SymbolSolver failure.");
+				NodeList<Expression> analyzedMethodArgs = analyzedMethodExpr.getArguments();
+				analyzeArgsMatchFallback(analyzedMethodExpr, analyzedMethodArgs, ss, targetCall);
 			}
 		}
 	}
@@ -74,38 +54,19 @@ public class IdentifyCallsToEnrichVisitor extends VoidVisitorAdapter<SupportStru
 				ResolvedConstructorDeclaration analyzedConstructorDeclaration = analyzedConstructorExpr.resolve();
 				List<ResolvedType> analyzedConstructorParameters = analyzedConstructorDeclaration
 						.formalParameterTypes();
-				extracted(analyzedConstructorExpr, analyzedConstructorParameters, ss, targetCall);
+				analyzeArgsMatch(analyzedConstructorExpr, analyzedConstructorParameters, ss, targetCall);
 			} catch (Exception e) {
-				// TODO This is a temporary fix. We should analyze why the SymbolSolver
-				// sometimes fails in detecting the constructor/method declaration
-				log.warn("SymbolSolver failure. A check will be added but it may need to be manually removed.", e);
-				boolean cont = true;
-				Node n = analyzedConstructorExpr;
-				do {
-					Optional<Node> optionalParent = n.getParentNode();
-					if (!optionalParent.isPresent()) {
-						throw new RuntimeException("Method creation expression found without expression statement");
-					} else {
-						n = optionalParent.get();
-						if (n instanceof ExpressionStmt) {
-							ExpressionStmt es = (ExpressionStmt) n;
-							String comment = "";
-							Optional<Comment> optionalComment = es.getComment();
-							if (optionalComment.isPresent())
-								comment = comment + optionalComment.get().asString();
-							es.setLineComment(
-									comment + "Check added due to SymbolSolver failure. Check if removal is needed.");
-							ss.getTargetCallsList().add(es);
-							cont = false;
-						}
-					}
+				// The following is a fix in case the JavaParser SymbolSolver fails in resolving
+				// a declaration
+				log.warn("SymbolSolver failure.");
+				NodeList<Expression> analyzedMethodArgs = analyzedConstructorExpr.getArguments();
+				analyzeArgsMatchFallback(analyzedConstructorExpr, analyzedMethodArgs, ss, targetCall);
 
-				} while (cont);
 			}
 		}
 	}
 
-	private void extracted(Node analyzedExpr, List<ResolvedType> analyzedParameters, SupportStructure ss,
+	private void analyzeArgsMatch(Node analyzedExpr, List<ResolvedType> analyzedParameters, SupportStructure ss,
 			DocumentedExecutable targetCall) {
 
 		List<DocumentedParameter> argsCall = targetCall.getParameters();
@@ -127,6 +88,58 @@ public class IdentifyCallsToEnrichVisitor extends VoidVisitorAdapter<SupportStru
 					found = argMethodString.equals(argWantedString);
 					if (!found)
 						break;
+				}
+			}
+			if (found) {
+				boolean cont = true;
+				Node n = analyzedExpr;
+				do {
+					Optional<Node> optionalParent = n.getParentNode();
+					if (!optionalParent.isPresent()) {
+						throw new RuntimeException("Method creation expression found without expression statement");
+					} else {
+						n = optionalParent.get();
+						if (n instanceof ExpressionStmt) {
+							ss.getTargetCallsList().add((ExpressionStmt) n);
+							cont = false;
+						}
+					}
+
+				} while (cont);
+			}
+		}
+	}
+
+	private void analyzeArgsMatchFallback(Node analyzedExpr, NodeList<Expression> analyzedParameters,
+			SupportStructure ss, DocumentedExecutable targetCall) {
+		List<DocumentedParameter> argsCall = targetCall.getParameters();
+		boolean found = false;
+		if (analyzedParameters.size() == argsCall.size()) {
+			if (analyzedParameters.size() == 0) {
+				found = true;
+			} else {
+				for (int i = 0; i < analyzedParameters.size(); i++) {
+					found = false;
+					DocumentedParameter argWanted = argsCall.get(i);
+					Expression argMethod = analyzedParameters.get(i);
+					String argWantedType = argWanted.getType().getCanonicalName();
+					try {
+						String argMethodType = argMethod.calculateResolvedType().erasure().describe();
+						if (argMethodType.contains("<")) {
+							String firstPart = argMethodType.substring(0, argMethodType.indexOf("<"));
+							String secondPart = argMethodType.substring(argMethodType.lastIndexOf(">") + 1);
+							argMethodType = firstPart + secondPart;
+						}
+						found = argWantedType.equals(argMethodType);
+						if (!found) {
+							log.warn(
+									"Match excluded by alternative match algorithm. Since this is not perfect (for example in the case of implicit casting) a potential valid check may have been excluded.");
+							log.warn("Arguments not matching: " + argWantedType + " and " + argMethodType);
+							break;
+						}
+					} catch (Exception e) {
+						log.error("Failure during resolvedType calculation", e);
+					}
 				}
 			}
 			if (found) {
