@@ -26,29 +26,33 @@ public class IdentifyCallsToEnrichVisitor extends VoidVisitorAdapter<SupportStru
 
 	@Override
 	public void visit(MethodCallExpr analyzedMethodExpr, SupportStructure ss) {
-		DocumentedExecutable targetCall = ss.getTargetCall();
-		String targetCallName = targetCall.getName().substring(targetCall.getName().lastIndexOf('.') + 1);
-		String analyzedMethodName = analyzedMethodExpr.getNameAsString();
-		if (targetCallName.equals(analyzedMethodName)) {
-			try {
-				ResolvedMethodDeclaration analyzedMethodDeclaration = analyzedMethodExpr.resolve();
-				List<ResolvedType> analyzedMethodParameters = analyzedMethodDeclaration.formalParameterTypes();
-				analyzeArgsMatch(analyzedMethodExpr, analyzedMethodParameters, ss, targetCall);
-			} catch (Exception e) {
-				// The following is a fix in case the JavaParser SymbolSolver fails in resolving
-				// a declaration
-				log.warn("SymbolSolver failure.");
-				NodeList<Expression> analyzedMethodArgs = analyzedMethodExpr.getArguments();
-				analyzeArgsMatchFallback(analyzedMethodExpr, analyzedMethodArgs, ss, targetCall);
+		if (!analyzedMethodExpr.toString().contains("_lta")) {
+			String analyzedMethodName = analyzedMethodExpr.getNameAsString();
+			DocumentedExecutable targetCall = ss.getTargetCall();
+			String targetCallName = targetCall.getName().substring(targetCall.getName().lastIndexOf('.') + 1);
+
+			if (targetCallName.equals(analyzedMethodName)) {
+				try {
+					ResolvedMethodDeclaration analyzedMethodDeclaration = analyzedMethodExpr.resolve();
+					List<ResolvedType> analyzedMethodParameters = analyzedMethodDeclaration.formalParameterTypes();
+					analyzeArgsMatch(analyzedMethodExpr, analyzedMethodParameters, ss, targetCall);
+				} catch (Exception e) {
+					// The following is a fix in case the JavaParser SymbolSolver fails in resolving
+					// a declaration
+					log.warn("SymbolSolver failure.");
+					NodeList<Expression> analyzedMethodArgs = analyzedMethodExpr.getArguments();
+					analyzeArgsMatchFallback(analyzedMethodExpr, analyzedMethodArgs, ss, targetCall);
+				}
 			}
 		}
 	}
 
 	@Override
 	public void visit(ObjectCreationExpr analyzedConstructorExpr, SupportStructure ss) {
+		String analyzedConstructorName = analyzedConstructorExpr.getType().getNameAsString();
 		DocumentedExecutable targetCall = ss.getTargetCall();
 		String targetCallName = targetCall.getName().substring(targetCall.getName().lastIndexOf('.') + 1);
-		String analyzedConstructorName = analyzedConstructorExpr.getType().getNameAsString();
+
 		if (targetCallName.equals(analyzedConstructorName)) {
 			try {
 				ResolvedConstructorDeclaration analyzedConstructorDeclaration = analyzedConstructorExpr.resolve();
@@ -61,7 +65,6 @@ public class IdentifyCallsToEnrichVisitor extends VoidVisitorAdapter<SupportStru
 				log.warn("SymbolSolver failure.");
 				NodeList<Expression> analyzedMethodArgs = analyzedConstructorExpr.getArguments();
 				analyzeArgsMatchFallback(analyzedConstructorExpr, analyzedMethodArgs, ss, targetCall);
-
 			}
 		}
 	}
@@ -134,7 +137,7 @@ public class IdentifyCallsToEnrichVisitor extends VoidVisitorAdapter<SupportStru
 						if (!found) {
 							log.warn(
 									"Match excluded by alternative match algorithm. Since this is not perfect (for example in the case of implicit casting) a potential valid check may have been excluded.");
-							log.warn("Arguments not matching: " + argWantedType + " and " + argMethodType);
+							log.warn("Arguments not matching: wanted: " + argWantedType + "; found: " + argMethodType);
 							break;
 						}
 					} catch (Exception e) {
