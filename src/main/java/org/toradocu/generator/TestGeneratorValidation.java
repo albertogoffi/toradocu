@@ -29,6 +29,7 @@ import com.github.javaparser.ast.type.PrimitiveType;
 import com.github.javaparser.ast.visitor.VoidVisitor;
 import com.github.javaparser.symbolsolver.JavaSymbolSolver;
 import com.github.javaparser.symbolsolver.resolution.typesolvers.CombinedTypeSolver;
+import com.github.javaparser.symbolsolver.resolution.typesolvers.JarTypeSolver;
 import com.github.javaparser.symbolsolver.resolution.typesolvers.JavaParserTypeSolver;
 import com.github.javaparser.symbolsolver.resolution.typesolvers.ReflectionTypeSolver;
 
@@ -38,8 +39,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -174,9 +177,40 @@ public class TestGeneratorValidation {
 				log.error("Error while creating empty test case: " + currentTestCase, e);
 			}
 		}
+
+		// Create backup test case
+		String backupTestCaseAbsPath = currentTestCase.getAbsolutePath().replace("generated-tests",
+				"generated-tests-backup");
+		File backupTestCase = new File(backupTestCaseAbsPath);
+		try {
+			backupTestCase.mkdirs();
+			Path copiedTestCase = Paths.get(backupTestCase.toURI());
+			Files.copy(testCaseAbsPath, copiedTestCase, StandardCopyOption.REPLACE_EXISTING);
+		} catch (Exception e) {
+			log.error("Fail in backup test cases creation.", e);
+		}
+		String currentScaffolding = testCaseAbsPath.toString().replace("_ESTest", "_ESTest_scaffolding");
+		Path scaffoldingFilePath = Paths.get(currentScaffolding);
+		String backupScaffoldingAbsPath = backupTestCaseAbsPath.replace("_ESTest", "_ESTest_scaffolding");
+		try {
+			Path copiedScaffolding = Paths.get(backupScaffoldingAbsPath);
+			Files.copy(scaffoldingFilePath, copiedScaffolding, StandardCopyOption.REPLACE_EXISTING);
+		} catch (IOException e) {
+			log.warn("Could not copy scaffolding file. This is normal if Evosuite failed in generating a case.");
+		}
+
 		CombinedTypeSolver combinedTypeSolver = new CombinedTypeSolver();
 		combinedTypeSolver.add(new JavaParserTypeSolver(configuration.sourceDir));
 		combinedTypeSolver.add(new ReflectionTypeSolver());
+		try {
+			// combinedTypeSolver.add(new
+			// JarTypeSolver("/home/guglielmo/junit/junit-4.13.1.jar"));
+			combinedTypeSolver.add(new JarTypeSolver(configuration.getEvoSuiteJar()));
+		} catch (IOException e) {
+			log.error("Wrong path to Evosuite lib.", e);
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		JavaSymbolSolver symbolSolver = new JavaSymbolSolver(combinedTypeSolver);
 		StaticJavaParser.getConfiguration().setSymbolResolver(symbolSolver);
 		CompilationUnit cu = null;
@@ -201,6 +235,8 @@ public class TestGeneratorValidation {
 					StaticJavaParser.parseExpression("0"), Keyword.PUBLIC, Keyword.STATIC);
 			clax.addFieldWithInitializer(PrimitiveType.intType(), "failedConds", StaticJavaParser.parseExpression("0"),
 					Keyword.PUBLIC, Keyword.STATIC);
+			clax.addFieldWithInitializer(PrimitiveType.intType(), "satisfiedPreconds",
+					StaticJavaParser.parseExpression("0"), Keyword.PUBLIC, Keyword.STATIC);
 
 			// Add contracts method
 			MethodDeclaration mdContracts = clax.addMethod("contracts", Modifier.Keyword.PUBLIC,
@@ -260,7 +296,7 @@ public class TestGeneratorValidation {
 			mdInit.addAnnotation(new MarkerAnnotationExpr("org.junit.AfterClass"));
 			BlockStmt bs2 = mdInit.createBody();
 			bs2.addStatement("lta.test.utils.TestUtils.report(globalGuardsIds_lta, \"" + targetClass
-					+ "\", contracts(), violatedPreconds, failedConds);");
+					+ "\", contracts(), satisfiedPreconds, violatedPreconds, failedConds);");
 
 			// write out the enriched test case
 			try (FileOutputStream output = new FileOutputStream(currentTestCase)) {
@@ -330,6 +366,7 @@ public class TestGeneratorValidation {
 				precondIf.setCondition(StaticJavaParser.parseExpression(precondClause));
 				BlockStmt precondSatisfiedBlock = new BlockStmt();
 				precondIf.setThenStmt(precondSatisfiedBlock);
+				precondSatisfiedBlock.addStatement(StaticJavaParser.parseStatement("satisfiedPreconds++;"));
 				precondIf.setElseStmt(
 						new BlockStmt().addStatement(StaticJavaParser.parseStatement("violatedPreconds++;")));
 				precondComment = "Precondition: " + precondComment;
