@@ -126,7 +126,7 @@ public class TestGeneratorValidation {
 		// Launch EvoSuite
 		List<String> evosuiteCommand = buildEvoSuiteCommand(outputDir, testsDir);
 		final Path evosuiteLogFilePath = testsDir.resolve("evosuite-log-" + targetClass + ".txt");
-
+/*
 		try {
 			Process processEvosuite = launchProcess(evosuiteCommand, evosuiteLogFilePath);
 			log.info("Launched EvoSuite process, command line: " + evosuiteCommand.stream().reduce("", (s1, s2) -> {
@@ -134,7 +134,8 @@ public class TestGeneratorValidation {
 			}));
 			try {
 				processEvosuite.waitFor();
-			} catch (InterruptedException e) { // the performer was shut down: kill the EvoSuite job
+			} catch (InterruptedException e) {
+				// the performer was shut down: kill the EvoSuite job
 				log.info("Unexpected InterruptedException while running EvoSuite: " + e);
 				processEvosuite.destroy();
 			}
@@ -142,7 +143,7 @@ public class TestGeneratorValidation {
 			log.error("Unexpected I/O error while running EvoSuite: " + e);
 			throw new RuntimeException(e);
 		}
-
+*/
 		// Step 2/2: Enrich the generated test cases with assumptions and assertions
 		enrichTestWithOracle(testsDir, targetClass, specifications);
 
@@ -237,6 +238,8 @@ public class TestGeneratorValidation {
 					Keyword.PUBLIC, Keyword.STATIC);
 			clax.addFieldWithInitializer(PrimitiveType.intType(), "satisfiedPreconds",
 					StaticJavaParser.parseExpression("0"), Keyword.PUBLIC, Keyword.STATIC);
+			clax.addFieldWithInitializer(PrimitiveType.intType(), "passedConds", StaticJavaParser.parseExpression("0"),
+					Keyword.PUBLIC, Keyword.STATIC);
 
 			// Add contracts method
 			MethodDeclaration mdContracts = clax.addMethod("contracts", Modifier.Keyword.PUBLIC,
@@ -296,7 +299,7 @@ public class TestGeneratorValidation {
 			mdInit.addAnnotation(new MarkerAnnotationExpr("org.junit.AfterClass"));
 			BlockStmt bs2 = mdInit.createBody();
 			bs2.addStatement("lta.test.utils.TestUtils.report(globalGuardsIds_lta, \"" + targetClass
-					+ "\", contracts(), satisfiedPreconds, violatedPreconds, failedConds);");
+					+ "\", contracts(), satisfiedPreconds, violatedPreconds, passedConds, failedConds);");
 
 			// write out the enriched test case
 			try (FileOutputStream output = new FileOutputStream(currentTestCase)) {
@@ -498,8 +501,11 @@ public class TestGeneratorValidation {
 					IfStmt thenIfContractStatus = new IfStmt();
 					thenIfContractStatus.setCondition(StaticJavaParser.parseExpression(
 							"!globalGuardsIds_lta.get(\"" + specificationCounter + "\").equals(\"fail\")"));
-					thenIfContractStatus.setThenStmt(StaticJavaParser
+					BlockStmt thenThenIfContractStatus = new BlockStmt();
+					thenThenIfContractStatus.addStatement(StaticJavaParser
 							.parseStatement("globalGuardsIds_lta.put(\"" + specificationCounter + "\",\"pass\");"));
+					thenThenIfContractStatus.addStatement("passedConds++;");
+					thenIfContractStatus.setThenStmt(thenThenIfContractStatus);
 					ifContractStatus.setThenStmt(new BlockStmt().addStatement(thenIfContractStatus));
 					BlockStmt elseIfContractStatus = new BlockStmt();
 					elseIfContractStatus.addStatement(StaticJavaParser
@@ -566,8 +572,11 @@ public class TestGeneratorValidation {
 		IfStmt thenIfContractStatus = new IfStmt();
 		thenIfContractStatus.setCondition(StaticJavaParser
 				.parseExpression("!globalGuardsIds_lta.get(\"" + specificationCounter + "\").equals(\"fail\")"));
-		thenIfContractStatus.setThenStmt(
+		BlockStmt thenThenIfContractStatus = new BlockStmt();
+		thenThenIfContractStatus.addStatement(
 				StaticJavaParser.parseStatement("globalGuardsIds_lta.put(\"" + specificationCounter + "\",\"pass\");"));
+		thenThenIfContractStatus.addStatement("passedConds++;");
+		thenIfContractStatus.setThenStmt(thenThenIfContractStatus);
 		ifContractStatus.setThenStmt(new BlockStmt().addStatement(thenIfContractStatus));
 		BlockStmt elseIfContractStatus = new BlockStmt();
 		elseIfContractStatus.addStatement(
