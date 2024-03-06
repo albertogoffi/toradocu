@@ -126,7 +126,7 @@ public class TestGeneratorValidation {
 		// Launch EvoSuite
 		List<String> evosuiteCommand = buildEvoSuiteCommand(outputDir, testsDir);
 		final Path evosuiteLogFilePath = testsDir.resolve("evosuite-log-" + targetClass + ".txt");
-/*
+
 		try {
 			Process processEvosuite = launchProcess(evosuiteCommand, evosuiteLogFilePath);
 			log.info("Launched EvoSuite process, command line: " + evosuiteCommand.stream().reduce("", (s1, s2) -> {
@@ -143,7 +143,7 @@ public class TestGeneratorValidation {
 			log.error("Unexpected I/O error while running EvoSuite: " + e);
 			throw new RuntimeException(e);
 		}
-*/
+
 		// Step 2/2: Enrich the generated test cases with assumptions and assertions
 		enrichTestWithOracle(testsDir, targetClass, specifications);
 
@@ -283,7 +283,8 @@ public class TestGeneratorValidation {
 							bs.addStatement(
 									"globalGuardsIds_lta.put(\"" + specificationCounter + "\",\"not-executed\");");
 							identifier = enrichTestWithOracle(spec, targetMethod, existingPrecondChecks,
-									methodCallsToEnrich, allSpecs, identifier, specificationCounter);
+									methodCallsToEnrich, os.getThrowsSpecifications(), allSpecs, identifier,
+									specificationCounter);
 						} else {
 							bs.addStatement(
 									"globalGuardsIds_lta.put(\"" + specificationCounter + "\",\"not-present\");");
@@ -321,7 +322,8 @@ public class TestGeneratorValidation {
 
 	private static int enrichTestWithOracle(Specification spec, DocumentedExecutable targetMethod,
 			HashMap<Integer, HashMap<String, IfStmt>> existingPrecondChecks, List<ExpressionStmt> methodCallsToEnrich,
-			Map<DocumentedExecutable, OperationSpecification> allSpecs, int identifier, int specificationCounter) {
+			List<ThrowsSpecification> associatedThowSpecs, Map<DocumentedExecutable, OperationSpecification> allSpecs,
+			int identifier, int specificationCounter) {
 		String targetMethodName = targetMethod.getName().substring(targetMethod.getName().lastIndexOf('.') + 1);
 		for (int i = 0; i < methodCallsToEnrich.size(); i++) {
 			ExpressionStmt targetCall = methodCallsToEnrich.get(i);
@@ -381,8 +383,17 @@ public class TestGeneratorValidation {
 				existingPrecondChecks.put(i, fill);
 			}
 
+			// In case exceptions are present, for all guards we must add as a mutually
+			// exclusive check all the guards of the other throws (or all throws in case of
+			// returns)
+			String clause = "";
+			for (ThrowsSpecification ts : associatedThowSpecs) {
+				if ((spec instanceof ThrowsSpecification) && !ts.equals(spec))
+					clause = composePartialGuardClause(ts, targetCall, targetMethodName, clause);
+			}
+
 			// Add postcondition oracle guard
-			String clause = composeGuardClause(spec, targetCall, targetMethodName, "");
+			clause = composeGuardClause(spec, targetCall, targetMethodName, clause);
 			// Skip unmodeled guard
 			if (clause.contains("SKIP_UNMODELED")) {
 				String comment = "Skipped check due to unmodeled guard: " + spec.getGuard() + " "
@@ -609,6 +620,31 @@ public class TestGeneratorValidation {
 			}
 		}
 		return targetCallToConsider;
+	}
+
+	private static String composePartialGuardClause(Specification spec, ExpressionStmt targetCall,
+			String targetMethodName, String existingClause) {
+		String guard = spec.getGuard().getConditionText();
+		String condToAssume = null;
+		if (guard != null && !guard.isEmpty()) {
+			condToAssume = replaceFormalParamsWithActualValues(guard, targetCall);
+		} else if (!(spec instanceof PreSpecification)) {
+			if (!spec.getGuard().getDescription().isEmpty()) {
+				return existingClause;
+			} else {
+				// According to Toradocu, this oracle has no guard (no condition/description
+				// were identified)
+				condToAssume = "!(true)";
+			}
+		}
+		if (condToAssume != null) {
+			if (existingClause.isEmpty()) {
+				existingClause = "!(" + condToAssume + ")";
+			} else {
+				existingClause = existingClause + "&&" + "!(" + condToAssume + ")";
+			}
+		}
+		return existingClause;
 	}
 
 	private static String composeGuardClause(Specification spec, ExpressionStmt targetCall, String targetMethodName,
