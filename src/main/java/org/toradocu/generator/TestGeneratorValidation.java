@@ -204,13 +204,9 @@ public class TestGeneratorValidation {
 		combinedTypeSolver.add(new JavaParserTypeSolver(configuration.sourceDir));
 		combinedTypeSolver.add(new ReflectionTypeSolver());
 		try {
-			// combinedTypeSolver.add(new
-			// JarTypeSolver("/home/guglielmo/junit/junit-4.13.1.jar"));
 			combinedTypeSolver.add(new JarTypeSolver(configuration.getEvoSuiteJar()));
 		} catch (IOException e) {
 			log.error("Wrong path to Evosuite lib.", e);
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		JavaSymbolSolver symbolSolver = new JavaSymbolSolver(combinedTypeSolver);
 		StaticJavaParser.getConfiguration().setSymbolResolver(symbolSolver);
@@ -687,6 +683,9 @@ public class TestGeneratorValidation {
 		}
 		if (callExpr.isMethodCallExpr() && callExpr.asMethodCallExpr().getScope().isPresent()) {
 			ret = ret.replace("receiverObjectID", callExpr.asMethodCallExpr().getScope().get().toString());
+		}
+		if (callExpr.isObjectCreationExpr() && ret.contains("receiverObjectID")) {
+			ret = ret.replace("receiverObjectID", callExpr.asObjectCreationExpr().getTypeAsString());
 		}
 
 		// replace methodResult with result from target
